@@ -27,24 +27,27 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/how-it-works">
-                  <a className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                    How It Works
-                  </a>
+                <Link
+                  href="/how-it-works"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  How It Works
                 </Link>
               </li>
               <li>
-                <Link href="/features">
-                  <a className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                    Features
-                  </a>
+                <Link
+                  href="/features"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  Features
                 </Link>
               </li>
               <li>
-                <Link href="/pricing">
-                  <a className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                    Pricing
-                  </a>
+                <Link
+                  href="/pricing"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  Pricing
                 </Link>
               </li>
             </ul>
@@ -57,17 +60,19 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2">
               <li>
-                <Link href="/teams">
-                  <a className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                    Teams
-                  </a>
+                <Link
+                  href="/teams"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  Teams
                 </Link>
               </li>
               <li>
-                <Link href="/employers">
-                  <a className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                    For Employers
-                  </a>
+                <Link
+                  href="/employers"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  For Employers
                 </Link>
               </li>
               <li>
@@ -104,10 +109,11 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <Link href="/faqs">
-                  <a className="text-muted-foreground hover:text-primary transition-colors text-sm">
-                    FAQs
-                  </a>
+                <Link
+                  href="/faqs"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  FAQs
                 </Link>
               </li>
             </ul>

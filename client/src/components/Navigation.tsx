@@ -20,22 +20,25 @@ export default function Navigation() {
     <nav className="sticky top-0 z-50 bg-background border-b border-border">
       <div className="container flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <Link href="/">
-          <a className="flex items-center gap-2 font-display text-2xl font-bold text-primary hover:opacity-80 transition-opacity">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold">
-              D
-            </div>
-            <span className="hidden sm:inline">DentaSmart</span>
-          </a>
+        <Link
+          href="/"
+          className="flex items-center gap-2 font-display text-2xl font-bold text-primary hover:opacity-80 transition-opacity"
+        >
+          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold">
+            D
+          </div>
+          <span className="hidden sm:inline">DentaSmart</span>
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
-            <Link key={item.href} href={item.href}>
-              <a className="text-foreground hover:text-primary transition-colors font-medium">
-                {item.label}
-              </a>
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-foreground hover:text-primary transition-colors font-medium"
+            >
+              {item.label}
             </Link>
           ))}
         </div>
@@ -69,13 +72,13 @@ export default function Navigation() {
         <div className="md:hidden border-t border-border bg-secondary">
           <div className="container py-4 flex flex-col gap-4">
             {navItems.map((item) => (
-              <Link key={item.href} href={item.href}>
-                <a
-                  className="text-foreground hover:text-primary transition-colors font-medium block py-2"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </a>
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-foreground hover:text-primary transition-colors font-medium block py-2"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
               </Link>
             ))}
             <div className="flex flex-col gap-2 pt-4 border-t border-border">

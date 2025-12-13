@@ -20,11 +20,9 @@ export default function NotFound() {
             Sorry, we couldn't find the page you're looking for.
           </p>
           <Link href="/">
-            <a>
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
-                Go back home
-              </Button>
-            </a>
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
+              Go back home
+            </Button>
           </Link>
         </div>
       </section>
