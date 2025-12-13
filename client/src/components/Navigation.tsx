@@ -17,17 +17,27 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-background border-b border-border">
+    <nav className="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
       <div className="container flex items-center justify-between h-16 md:h-20">
-        {/* Logo */}
+        {/* Logo with Slogan */}
         <Link
           href="/"
-          className="flex items-center gap-2 font-display text-2xl font-bold text-primary hover:opacity-80 transition-opacity"
+          className="flex items-center gap-2 hover:opacity-80 transition-opacity"
         >
-          <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold">
-            D
+          <div className="flex items-center gap-1.5">
+            {/* Tooth Icon */}
+            <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-lg">
+              🦷
+            </div>
+            <div className="flex flex-col leading-tight">
+              <span className="font-display text-lg font-bold text-primary">
+                DentaSmart
+              </span>
+              <span className="text-xs text-muted-foreground font-medium">
+                Your AI Dental Companion
+              </span>
+            </div>
           </div>
-          <span className="hidden sm:inline">DentaSmart</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -36,7 +46,7 @@ export default function Navigation() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-foreground hover:text-primary transition-colors font-medium"
+              className="text-foreground hover:text-primary transition-colors font-medium text-sm"
             >
               {item.label}
             </Link>
@@ -45,10 +55,17 @@ export default function Navigation() {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex gap-3">
-          <Button variant="outline" size="sm">
+          <Button
+            variant="outline"
+            size="sm"
+            className="border-primary text-primary hover:bg-primary/5"
+          >
             See Pricing
           </Button>
-          <Button size="sm" className="bg-primary hover:bg-primary/90">
+          <Button
+            size="sm"
+            className="bg-primary hover:bg-primary/90 text-white font-semibold"
+          >
             Download the App
           </Button>
         </div>
@@ -69,7 +86,7 @@ export default function Navigation() {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden border-t border-border bg-secondary">
+        <div className="md:hidden border-t border-border bg-white">
           <div className="container py-4 flex flex-col gap-4">
             {navItems.map((item) => (
               <Link
@@ -82,10 +99,13 @@ export default function Navigation() {
               </Link>
             ))}
             <div className="flex flex-col gap-2 pt-4 border-t border-border">
-              <Button variant="outline" className="w-full">
+              <Button
+                variant="outline"
+                className="w-full border-primary text-primary hover:bg-primary/5"
+              >
                 See Pricing
               </Button>
-              <Button className="w-full bg-primary hover:bg-primary/90">
+              <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold">
                 Download the App
               </Button>
             </div>

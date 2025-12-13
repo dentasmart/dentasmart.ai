@@ -43,41 +43,41 @@
 }
 
 :root {
-  /* DentaSmart Calm Clarity Design System */
-  /* Primary: Teal #00B8A9 | Secondary: Warm Cream #FFF8F3 | Accent: Soft Green #A8D8BA */
+  /* DentaSmart Official Branding */
+  /* Primary: Teal #00BCD4 | Secondary: Light Cyan #E0F7FA | Accent: Dark Teal #00838F */
   
-  --primary: #00B8A9;
-  --primary-foreground: #FFF8F3;
-  --sidebar-primary: #00A89F;
-  --sidebar-primary-foreground: #FFF8F3;
-  --chart-1: #A8D8BA;
-  --chart-2: #00B8A9;
-  --chart-3: #00A89F;
-  --chart-4: #008B7F;
-  --chart-5: #006B63;
+  --primary: #00BCD4;
+  --primary-foreground: #ffffff;
+  --sidebar-primary: #0097A7;
+  --sidebar-primary-foreground: #ffffff;
+  --chart-1: #4DD0E1;
+  --chart-2: #00BCD4;
+  --chart-3: #0097A7;
+  --chart-4: #00838F;
+  --chart-5: #006064;
   --radius: 0.5rem;
-  --background: #FFFFFF;
-  --foreground: #1A2332;
-  --card: #FFF8F3;
-  --card-foreground: #1A2332;
-  --popover: #FFFFFF;
-  --popover-foreground: #1A2332;
-  --secondary: #FFF8F3;
-  --secondary-foreground: #1A2332;
-  --muted: #E8F4F2;
-  --muted-foreground: #5A6B7A;
-  --accent: #A8D8BA;
-  --accent-foreground: #1A2332;
-  --destructive: #EF4444;
-  --destructive-foreground: #FFFFFF;
-  --border: #E0E8EC;
-  --input: #F5F7FA;
-  --ring: #00B8A9;
-  --sidebar: #FFFFFF;
-  --sidebar-foreground: #1A2332;
-  --sidebar-accent: #A8D8BA;
-  --sidebar-accent-foreground: #1A2332;
-  --sidebar-border: #E0E8EC;
+  --background: #FAFAFA;
+  --foreground: #1A1A1A;
+  --card: #ffffff;
+  --card-foreground: #1A1A1A;
+  --popover: #ffffff;
+  --popover-foreground: #1A1A1A;
+  --secondary: #E0F7FA;
+  --secondary-foreground: #00695C;
+  --muted: #B2DFDB;
+  --muted-foreground: #004D40;
+  --accent: #4DD0E1;
+  --accent-foreground: #00695C;
+  --destructive: #D32F2F;
+  --destructive-foreground: #ffffff;
+  --border: #E0E0E0;
+  --input: #E0E0E0;
+  --ring: #00BCD4;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1A1A1A;
+  --sidebar-accent: #E0F7FA;
+  --sidebar-accent-foreground: #00695C;
+  --sidebar-border: #E0E0E0;
   --sidebar-ring: #00B8A9;
 }
 
