@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import Testimonials from "@/components/Testimonials";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
@@ -282,6 +283,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <Testimonials />
 
       {/* Pricing Snapshot */}
       <section className="py-16 md:py-24 bg-white">
