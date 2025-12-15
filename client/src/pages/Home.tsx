@@ -20,12 +20,12 @@ export default function Home() {
 
               {/* Main Headline - Problem + Empathy */}
               <h1 className="text-5xl md:text-6xl font-display font-bold text-foreground mb-6 leading-tight">
-                Stop guessing about your teeth
+                Stop worrying about your teeth
               </h1>
 
-              {/* Subheadline - Empathy */}
+              {/* Subheadline - Outcome-Oriented */}
               <p className="text-xl text-foreground/70 leading-relaxed mb-8">
-                You shouldn't have to wait until your dentist appointment to know something's wrong. DentaSmart gives you clear, instant insights into your oral health—so you can make confident decisions and avoid expensive surprises.
+                You shouldn't have to wait until your dentist appointment to know something's wrong. DentaSmart gives you clear, instant insights into your oral health—so you can catch problems early, avoid expensive emergencies, and walk into every appointment in control.
               </p>
 
               {/* Micro-proof */}
@@ -83,25 +83,25 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-3xl">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            The problem: You're in the dark about your teeth
+            The problem: Dental anxiety and uncertainty
           </h2>
 
           <div className="space-y-6">
             {[
               {
                 icon: "❓",
-                problem: "You don't know what your dentist sees",
+                problem: "You don't understand what your dentist sees",
                 detail: "X-rays, charts, and technical jargon leave you confused and anxious",
               },
               {
                 icon: "💰",
                 problem: "You get blindsided by costs",
-                detail: "Surprise bills and insurance denials derail your finances",
+                detail: "Surprise bills and insurance denials derail your finances and stress you out",
               },
               {
                 icon: "⏰",
                 problem: "You wait for problems to hurt",
-                detail: "By the time you feel pain, damage is already done",
+                detail: "By the time you feel pain, damage is already done and treatment is expensive",
               },
             ].map((item, idx) => (
               <div key={idx} className="bg-secondary rounded-xl p-6 border border-border">
@@ -125,7 +125,7 @@ export default function Home() {
             The answer: Your Personal AI Dental Companion
           </h2>
           <p className="text-lg text-foreground/70 text-center mb-12 leading-relaxed">
-            DentaSmart analyzes your mouth, explains what's happening, and helps you make confident decisions—before you see your dentist.
+            DentaSmart analyzes your mouth in seconds, explains what's happening in plain language, and helps you make informed decisions—before you see your dentist.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -144,7 +144,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The Change - What Improves */}
+      {/* The Change - What Improves (Outcome-Oriented) */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-3xl">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
@@ -155,11 +155,11 @@ export default function Home() {
             {[
               {
                 before: "You're confused by dental jargon",
-                after: "You understand exactly what's happening in your mouth",
+                after: "You understand exactly what's happening and why it matters",
               },
               {
                 before: "You fear surprise dental bills",
-                after: "You know costs upfront and can plan accordingly",
+                after: "You know costs upfront and budget with confidence",
               },
               {
                 before: "You wait for pain to act",
@@ -167,7 +167,7 @@ export default function Home() {
               },
               {
                 before: "You feel anxious at dental appointments",
-                after: "You walk in confident and prepared with questions",
+                after: "You walk in prepared, informed, and in control of the conversation",
               },
             ].map((item, idx) => (
               <div key={idx} className="bg-secondary rounded-xl p-6 border border-border">
@@ -194,10 +194,10 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-primary/5">
         <div className="container max-w-3xl text-center">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-8">
-            The end result: Peace of mind
+            The end result: Complete peace of mind
           </h2>
           <p className="text-xl text-foreground/70 leading-relaxed mb-12">
-            You take control of your oral health. You make informed decisions. You avoid expensive surprises. And you walk into every dental appointment confident, prepared, and in charge.
+            You take control of your oral health. You catch problems early. You avoid expensive emergencies. And you walk into every dental appointment confident, prepared, and in charge of your own health decisions.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -319,7 +319,7 @@ export default function Home() {
       <section className="py-16 md:py-24 bg-gradient-to-r from-primary/10 to-secondary">
         <div className="container max-w-3xl text-center">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-            Ready to understand your teeth?
+            Ready to stop worrying?
           </h2>
           <p className="text-lg text-foreground/70 mb-8">
             Download DentaSmart today and get instant insights into your oral health.

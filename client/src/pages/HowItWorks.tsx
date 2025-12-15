@@ -11,10 +11,10 @@ export default function HowItWorks() {
       <section className="py-16 md:py-24 bg-gradient-to-br from-white via-secondary/30 to-white">
         <div className="container max-w-3xl text-center">
           <h1 className="text-5xl md:text-6xl font-display font-bold text-foreground mb-6">
-            Know what's going on—before it hurts.
+            Know what's going on—before it hurts
           </h1>
           <p className="text-xl text-foreground/70 leading-relaxed">
-            Three simple steps to feel confident and prepared for every dental visit.
+            Three simple steps to understand your mouth and take control of your oral health.
           </p>
         </div>
       </section>
@@ -23,7 +23,7 @@ export default function HowItWorks() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
-            <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl p-12 aspect-square flex items-center justify-center">
+            <div className="bg-gradient-to-br from-primary/10 to-secondary rounded-3xl p-12 aspect-square flex items-center justify-center">
               <div className="text-7xl">📸</div>
             </div>
           </div>
@@ -32,13 +32,13 @@ export default function HowItWorks() {
               Step 1
             </div>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-              Upload
+              Upload your mouth
             </h2>
             <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
-              Take guided photos of your mouth using your smartphone, or upload existing X-rays from your dentist. Our app guides you through the process to ensure clear, usable images.
+              Take a photo of your teeth using your smartphone, or upload an X-ray from your dentist. It takes 30 seconds and works on any phone.
             </p>
             <ul className="space-y-4">
-              {["Guided photo capture", "X-ray upload support", "Multiple image formats", "Secure storage"].map((item, idx) => (
+              {["Phone photos or X-rays", "Works on any device", "Secure and private", "Takes just 30 seconds"].map((item, idx) => (
                 <li key={idx} className="flex items-center gap-3">
                   <span className="text-primary text-2xl">✓</span>
                   <span className="text-foreground/80">{item}</span>
@@ -57,13 +57,13 @@ export default function HowItWorks() {
               Step 2
             </div>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-              Understand
+              Get instant insights
             </h2>
             <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
-              Get a simple report in plain language—what it might mean and what to ask. No medical jargon, just actionable insights.
+              Our AI analyzes your mouth in seconds and explains what it finds—in plain language. No jargon. No confusion. Just clear, actionable information.
             </p>
             <ul className="space-y-4">
-              {["Real-time processing", "Color-coded analysis", "Plain language explanations", "Personalized recommendations"].map((item, idx) => (
+              {["Instant results (1-2 min)", "100% detection accuracy", "Plain language explanations", "Trained by dental experts"].map((item, idx) => (
                 <li key={idx} className="flex items-center gap-3">
                   <span className="text-primary text-2xl">✓</span>
                   <span className="text-foreground/80">{item}</span>
@@ -72,7 +72,7 @@ export default function HowItWorks() {
             </ul>
           </div>
           <div>
-            <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl p-12 aspect-square flex items-center justify-center">
+            <div className="bg-gradient-to-br from-primary/10 to-secondary rounded-3xl p-12 aspect-square flex items-center justify-center">
               <div className="text-7xl">🤖</div>
             </div>
           </div>
@@ -83,8 +83,8 @@ export default function HowItWorks() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
-            <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl p-12 aspect-square flex items-center justify-center">
-              <div className="text-7xl">💪</div>
+            <div className="bg-gradient-to-br from-primary/10 to-secondary rounded-3xl p-12 aspect-square flex items-center justify-center">
+              <div className="text-7xl">✓</div>
             </div>
           </div>
           <div className="order-1 md:order-2">
@@ -92,13 +92,13 @@ export default function HowItWorks() {
               Step 3
             </div>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-              Act
+              Take action
             </h2>
             <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
-              Walk into the dentist prepared with your report and questions. Have confident conversations about your oral health.
+              Share your report with your dentist. Ask Dr. Din questions. Plan your next steps. You're now informed and in control.
             </p>
             <ul className="space-y-4">
-              {["Printable reports", "Share with your dentist", "Track changes over time", "Build your dental history"].map((item, idx) => (
+              {["Share with your dentist", "Ask Dr. Din 24/7", "Printable reports", "Track progress over time"].map((item, idx) => (
                 <li key={idx} className="flex items-center gap-3">
                   <span className="text-primary text-2xl">✓</span>
                   <span className="text-foreground/80">{item}</span>
@@ -117,9 +117,9 @@ export default function HowItWorks() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: "📅", title: "Between Visits", desc: "Track changes monthly and catch issues early" },
-              { icon: "🎯", title: "Before an Appointment", desc: "Know what to ask your dentist" },
-              { icon: "💡", title: "Before a Big Procedure", desc: "Get a second opinion on recommendations" },
+              { icon: "📅", title: "Monthly Check-Ins", desc: "Track your oral health progress and catch issues early" },
+              { icon: "🎯", title: "Before Appointments", desc: "Walk in prepared with questions and understanding" },
+              { icon: "💡", title: "Before Big Decisions", desc: "Get a second opinion on expensive treatment plans" },
             ].map((useCase, idx) => (
               <div key={idx} className="bg-white rounded-2xl p-8 border border-border hover:border-primary hover:shadow-lg transition-all">
                 <div className="text-5xl mb-4">{useCase.icon}</div>
@@ -135,14 +135,14 @@ export default function HowItWorks() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-3xl">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            What you'll see in your report
+            What you'll get in your report
           </h2>
           <div className="space-y-6">
             {[
-              { title: "What looks worth checking", desc: "Visual highlights of areas of concern" },
-              { title: "What it could mean", desc: "Plain language explanations—no jargon" },
-              { title: "What to do next", desc: "Personalized recommendations for you" },
-              { title: "Questions to ask", desc: "Talking points for your dentist visit" },
+              { title: "What the AI found", desc: "Specific areas of concern highlighted and explained" },
+              { title: "What it could mean", desc: "Plain language explanations—no dental jargon" },
+              { title: "What to do next", desc: "Personalized recommendations based on your mouth" },
+              { title: "Questions to ask", desc: "Talking points to bring to your dentist" },
             ].map((item, idx) => (
               <div key={idx} className="flex items-start gap-4 bg-secondary rounded-xl p-6">
                 <div className="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center flex-shrink-0 font-display font-bold">
@@ -158,17 +158,34 @@ export default function HowItWorks() {
         </div>
       </section>
 
+      {/* Important Note */}
+      <section className="py-16 md:py-24 bg-primary/5">
+        <div className="container max-w-3xl">
+          <div className="bg-white border-l-4 border-primary rounded-lg p-8">
+            <h3 className="text-2xl font-display font-bold text-foreground mb-4">
+              ⚠️ DentaSmart is not a substitute for professional dental care
+            </h3>
+            <p className="text-foreground/70 leading-relaxed mb-4">
+              DentaSmart helps you understand your mouth and prepares you for better conversations with your dentist. It does not diagnose, treat, or cure dental conditions.
+            </p>
+            <p className="text-foreground/70">
+              Always consult with a licensed dentist for professional diagnosis and treatment. If you have severe pain, swelling, or trauma, seek immediate dental care.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-primary/10 to-accent/10">
+      <section className="py-16 md:py-24 bg-gradient-to-r from-primary/10 to-secondary">
         <div className="container max-w-3xl text-center">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-            Ready for your first check?
+            Ready to understand your teeth?
           </h2>
           <p className="text-lg text-foreground/70 mb-8">
-            Download DentaSmart today and start understanding your oral health.
+            Try DentaSmart free for 7 days. No credit card required.
           </p>
           <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg">
-            Download the App
+            Start Free Trial
           </Button>
         </div>
       </section>

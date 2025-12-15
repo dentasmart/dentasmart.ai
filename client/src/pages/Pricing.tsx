@@ -14,7 +14,7 @@ export default function Pricing() {
             Simple, honest pricing
           </h1>
           <p className="text-xl text-foreground/70 leading-relaxed">
-            No hidden fees. No surprises. Choose the plan that fits your situation.
+            No hidden fees. No surprises. Choose the plan that works for you.
           </p>
         </div>
       </section>
@@ -23,13 +23,13 @@ export default function Pricing() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container max-w-3xl">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            What do you need most?
+            What's your situation?
           </h2>
           <div className="space-y-4">
             {[
-              { icon: "🛡️", text: "I want prevention", plan: "Clarity" },
-              { icon: "💭", text: "I need a second opinion", plan: "Consult" },
-              { icon: "🏥", text: "I want an insurance alternative", plan: "Complete (Waitlist)" },
+              { icon: "🛡️", text: "I want to monitor my oral health", plan: "Clarity" },
+              { icon: "💭", text: "I need a second opinion on treatment", plan: "Consult" },
+              { icon: "🏥", text: "I want comprehensive dental coverage", plan: "Complete (Waitlist)" },
             ].map((option, idx) => (
               <button
                 key={idx}
@@ -49,106 +49,119 @@ export default function Pricing() {
       {/* Plan Cards */}
       <section className="py-16 md:py-24 bg-secondary/30">
         <div className="container">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            Choose your plan
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Clarity */}
-            <div className="rounded-2xl p-8 border-2 border-primary bg-gradient-to-br from-primary/5 to-secondary shadow-xl scale-105">
-              <div className="inline-block bg-primary text-white px-3 py-1 rounded-full text-xs font-semibold mb-4">Most Popular</div>
-              <div className="text-5xl mb-4">🛡️</div>
-              <h3 className="text-2xl font-display font-bold text-foreground mb-2">Clarity</h3>
-              <p className="text-muted-foreground mb-6">Prevention & tracking</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Clarity Plan */}
+            <div className="bg-white rounded-2xl p-8 border-2 border-border hover:border-primary hover:shadow-lg transition-all">
               <div className="mb-6">
-                <span className="text-5xl font-display font-bold text-primary">$75</span>
-                <span className="text-muted-foreground ml-2">/year</span>
+                <h3 className="text-2xl font-display font-bold text-foreground mb-2">Clarity</h3>
+                <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold">
+                  Most Popular
+                </div>
               </div>
-              <p className="text-foreground/70 mb-8 text-sm">Best for staying ahead month to month</p>
-              <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold mb-6">Get Started</Button>
-              <div className="space-y-3 border-t border-border pt-6">
-                {["Monthly tracking + score", "Photo + X-ray explanations", "Dr. Din support", "Dental record vault", "Printable reports"].map((feature, idx) => (
-                  <div key={idx} className="flex items-center gap-3">
+              <div className="mb-6">
+                <p className="text-5xl font-display font-bold text-primary mb-2">$75</p>
+                <p className="text-muted-foreground">/year (or $7/month)</p>
+              </div>
+              <p className="text-foreground/70 mb-8">
+                Monthly monitoring to track your oral health and catch problems early.
+              </p>
+              <ul className="space-y-4 mb-8">
+                {[
+                  "Unlimited monthly scans",
+                  "Wellness score tracking",
+                  "Dr. Din 24/7 support",
+                  "Dental record vault",
+                  "Share with dentist",
+                  "Progress reports",
+                ].map((feature, idx) => (
+                  <li key={idx} className="flex items-center gap-3">
                     <span className="text-primary text-lg">✓</span>
-                    <span className="text-foreground/80 text-sm">{feature}</span>
-                  </div>
+                    <span className="text-foreground/70">{feature}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
+              <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold">
+                Start Free Trial
+              </Button>
             </div>
 
-            {/* Consult */}
-            <div className="rounded-2xl p-8 border-2 border-border bg-white hover:border-primary hover:shadow-lg transition-all">
-              <div className="text-5xl mb-4">💭</div>
-              <h3 className="text-2xl font-display font-bold text-foreground mb-2">Consult</h3>
-              <p className="text-muted-foreground mb-6">Second opinion</p>
+            {/* Consult Plan */}
+            <div className="bg-white rounded-2xl p-8 border-2 border-border hover:border-primary hover:shadow-lg transition-all">
               <div className="mb-6">
-                <span className="text-5xl font-display font-bold text-primary">$30</span>
-                <span className="text-muted-foreground ml-2">one-time</span>
+                <h3 className="text-2xl font-display font-bold text-foreground mb-2">Consult</h3>
+                <div className="text-xs font-semibold text-muted-foreground">One-time purchase</div>
               </div>
-              <p className="text-foreground/70 mb-8 text-sm">Best for expensive treatment plans</p>
-              <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold mb-6">Get a Consult</Button>
-              <div className="space-y-3 border-t border-primary/20 pt-6">
-                {["Plain-language summary", "Comparison and questions", "Risk of delaying", "Printable report", "Share with dentist"].map((feature, idx) => (
-                  <div key={idx} className="flex items-center gap-3">
+              <div className="mb-6">
+                <p className="text-5xl font-display font-bold text-primary mb-2">$30</p>
+                <p className="text-muted-foreground">one-time</p>
+              </div>
+              <p className="text-foreground/70 mb-8">
+                Get a second opinion on a specific treatment plan or concern.
+              </p>
+              <ul className="space-y-4 mb-8">
+                {[
+                  "Single scan analysis",
+                  "Detailed report",
+                  "Treatment recommendations",
+                  "Dr. Din consultation",
+                  "Printable report",
+                  "Valid for 30 days",
+                ].map((feature, idx) => (
+                  <li key={idx} className="flex items-center gap-3">
                     <span className="text-primary text-lg">✓</span>
-                    <span className="text-foreground/80 text-sm">{feature}</span>
-                  </div>
+                    <span className="text-foreground/70">{feature}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
+              <Button
+                variant="outline"
+                className="w-full border-primary text-primary hover:bg-primary/5 font-semibold"
+              >
+                Get Second Opinion
+              </Button>
             </div>
 
-            {/* Complete */}
-            <div className="rounded-2xl p-8 border-2 border-border bg-white hover:border-primary hover:shadow-lg transition-all">
-              <div className="text-5xl mb-4">🏥</div>
-              <h3 className="text-2xl font-display font-bold text-foreground mb-2">Complete</h3>
-              <p className="text-muted-foreground mb-6">Insurance alternative</p>
+            {/* Complete Plan */}
+            <div className="bg-white rounded-2xl p-8 border-2 border-border opacity-60">
               <div className="mb-6">
-                <span className="text-4xl font-display font-bold text-primary">Coming</span>
-                <span className="text-muted-foreground ml-2 block text-lg">Soon</span>
+                <h3 className="text-2xl font-display font-bold text-foreground mb-2">Complete</h3>
+                <div className="inline-block bg-muted text-muted-foreground px-3 py-1 rounded-full text-xs font-semibold">
+                  Coming Soon
+                </div>
               </div>
-              <p className="text-foreground/70 mb-8 text-sm">Best for lower-cost access to care</p>
-              <Button variant="outline" className="w-full border-primary text-primary hover:bg-primary/5 font-semibold mb-6">Join Waitlist</Button>
-              <div className="space-y-3 border-t border-border pt-6">
-                {["Discount dental network", "Transparent estimates", "BNPL options", "Everything in Clarity", "Family plans"].map((feature, idx) => (
-                  <div key={idx} className="flex items-center gap-3">
-                    <span className="text-primary text-lg">✓</span>
-                    <span className="text-foreground/80 text-sm">{feature}</span>
-                  </div>
+              <div className="mb-6">
+                <p className="text-5xl font-display font-bold text-muted-foreground mb-2">TBD</p>
+                <p className="text-muted-foreground">/month</p>
+              </div>
+              <p className="text-foreground/70 mb-8">
+                Comprehensive dental coverage with AI-powered care coordination.
+              </p>
+              <ul className="space-y-4 mb-8">
+                {[
+                  "Everything in Clarity",
+                  "Dental insurance alternative",
+                  "Preventive care coverage",
+                  "Treatment coordination",
+                  "Network of dentists",
+                  "Direct billing",
+                ].map((feature, idx) => (
+                  <li key={idx} className="flex items-center gap-3">
+                    <span className="text-muted-foreground text-lg">✓</span>
+                    <span className="text-foreground/70">{feature}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
+              <Button disabled className="w-full">
+                Join Waitlist
+              </Button>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ROI Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            The ROI of prevention
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              { icon: "💰", title: "Average dental procedure", value: "$500–$2,000" },
-              { icon: "🛡️", title: "Cost of early detection", value: "$75/year" },
-              { icon: "✓", title: "Procedures prevented", value: "Up to 3 per year" },
-              { icon: "📊", title: "Average savings", value: "$1,000+/year" },
-            ].map((item, idx) => (
-              <div key={idx} className="bg-secondary rounded-2xl p-8 text-center">
-                <div className="text-5xl mb-4">{item.icon}</div>
-                <p className="text-foreground/70 mb-2 text-sm">{item.title}</p>
-                <p className="text-3xl font-display font-bold text-primary">{item.value}</p>
-              </div>
-            ))}
-          </div>
-          <p className="text-center text-foreground/70 mt-12 leading-relaxed">
-            Early detection through DentaSmart can help you avoid expensive procedures and maintain better oral health long-term.
-          </p>
         </div>
       </section>
 
       {/* Comparison Table */}
-      <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container">
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container max-w-4xl">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
             Compare plans
           </h2>
@@ -159,26 +172,22 @@ export default function Pricing() {
                   <th className="text-left py-4 px-4 font-display font-bold text-foreground">Feature</th>
                   <th className="text-center py-4 px-4 font-display font-bold text-foreground">Clarity</th>
                   <th className="text-center py-4 px-4 font-display font-bold text-foreground">Consult</th>
-                  <th className="text-center py-4 px-4 font-display font-bold text-foreground">Complete</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  { feature: "AI Analysis", clarity: true, consult: true, complete: true },
-                  { feature: "Monthly Check-ins", clarity: true, consult: false, complete: true },
-                  { feature: "Wellness Score", clarity: true, consult: false, complete: true },
-                  { feature: "Dr. Din Access", clarity: true, consult: false, complete: true },
-                  { feature: "Dental Record Vault", clarity: true, consult: true, complete: true },
-                  { feature: "Printable Reports", clarity: true, consult: true, complete: true },
-                  { feature: "Dentist Sharing", clarity: true, consult: true, complete: true },
-                  { feature: "Family Plans", clarity: false, consult: false, complete: true },
-                  { feature: "Discount Network", clarity: false, consult: false, complete: true },
+                  { feature: "AI Analysis", clarity: "✓", consult: "✓" },
+                  { feature: "Monthly Monitoring", clarity: "✓", consult: "✗" },
+                  { feature: "Wellness Score", clarity: "✓", consult: "✗" },
+                  { feature: "Dr. Din 24/7", clarity: "✓", consult: "✓" },
+                  { feature: "Dental Record Vault", clarity: "✓", consult: "✗" },
+                  { feature: "Share with Dentist", clarity: "✓", consult: "✓" },
+                  { feature: "Progress Tracking", clarity: "✓", consult: "✗" },
                 ].map((row, idx) => (
-                  <tr key={idx} className="border-b border-border hover:bg-white/50 transition-colors">
-                    <td className="py-4 px-4 text-foreground font-medium">{row.feature}</td>
-                    <td className="text-center py-4 px-4">{row.clarity ? <span className="text-primary text-2xl">✓</span> : <span className="text-muted-foreground">—</span>}</td>
-                    <td className="text-center py-4 px-4">{row.consult ? <span className="text-primary text-2xl">✓</span> : <span className="text-muted-foreground">—</span>}</td>
-                    <td className="text-center py-4 px-4">{row.complete ? <span className="text-primary text-2xl">✓</span> : <span className="text-muted-foreground">—</span>}</td>
+                  <tr key={idx} className="border-b border-border">
+                    <td className="py-4 px-4 font-semibold text-foreground">{row.feature}</td>
+                    <td className="py-4 px-4 text-center text-primary">{row.clarity}</td>
+                    <td className="py-4 px-4 text-center text-primary">{row.consult}</td>
                   </tr>
                 ))}
               </tbody>
@@ -187,40 +196,59 @@ export default function Pricing() {
         </div>
       </section>
 
-      {/* FAQs */}
-      <section className="py-16 md:py-24 bg-white">
+      {/* FAQ */}
+      <section className="py-16 md:py-24 bg-secondary/30">
         <div className="container max-w-3xl">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            Quick answers
+            Pricing questions
           </h2>
           <div className="space-y-6">
             {[
-              { q: "Is this dental insurance?", a: "No. Complete is an alternative model with a discount program (coming soon), not insurance." },
-              { q: "Can my family use one plan?", a: "Yes. Family plans include up to 2 adults and 3 children under 18 in one household." },
-              { q: "Do I need X-rays?", a: "No. You can start with monthly mouth photos. Upload X-rays when you have them." },
-              { q: "Can I cancel anytime?", a: "Yes. You can cancel your subscription anytime without penalties." },
-              { q: "What if I'm not satisfied?", a: "We offer a 30-day money-back guarantee on all plans." },
-            ].map((faq, idx) => (
-              <div key={idx} className="bg-secondary rounded-xl p-6 border border-border hover:border-primary transition-colors">
-                <h4 className="font-display font-bold text-foreground mb-3">{faq.q}</h4>
-                <p className="text-foreground/70">{faq.a}</p>
+              {
+                q: "Is there a free trial?",
+                a: "Yes! Try Clarity free for 7 days. No credit card required. Cancel anytime.",
+              },
+              {
+                q: "Can I cancel anytime?",
+                a: "Absolutely. Cancel your subscription anytime with no penalties or questions.",
+              },
+              {
+                q: "What payment methods do you accept?",
+                a: "We accept all major credit cards, Apple Pay, and Google Pay.",
+              },
+              {
+                q: "Is my data secure?",
+                a: "Yes. All data is HIPAA-compliant, encrypted, and never sold to third parties.",
+              },
+              {
+                q: "Can I upgrade or downgrade?",
+                a: "Yes. You can change your plan anytime. We'll prorate any charges.",
+              },
+              {
+                q: "Do you offer family plans?",
+                a: "You can manage multiple family members on one account. Contact us for details.",
+              },
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white rounded-xl p-6 border border-border">
+                <h3 className="font-display font-bold text-foreground mb-3">{item.q}</h3>
+                <p className="text-foreground/70">{item.a}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-primary/10 to-accent/10">
+      {/* Final CTA */}
+      <section className="py-16 md:py-24 bg-gradient-to-r from-primary/10 to-secondary">
         <div className="container max-w-3xl text-center">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-            Ready to get started?
+            Ready to take control?
           </h2>
           <p className="text-lg text-foreground/70 mb-8">
-            Choose your plan and start protecting your smile today.
+            Start your free 7-day trial of Clarity today. No credit card required.
           </p>
           <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg">
-            Download the App
+            Start Free Trial
           </Button>
         </div>
       </section>

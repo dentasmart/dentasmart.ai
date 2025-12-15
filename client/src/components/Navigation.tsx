@@ -27,25 +27,16 @@ export default function Navigation() {
   return (
     <nav className="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
       <div className="container flex items-center justify-between h-16 md:h-20">
-        {/* Logo with Slogan */}
+        {/* Logo with Official Image */}
         <Link
           href="/"
           className="flex items-center gap-2 hover:opacity-80 transition-opacity"
         >
-          <div className="flex items-center gap-1.5">
-            {/* Tooth Icon */}
-            <div className="w-9 h-9 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-lg">
-              🦷
-            </div>
-            <div className="flex flex-col leading-tight">
-              <span className="font-display text-lg font-bold text-primary">
-                DentaSmart
-              </span>
-              <span className="text-xs text-muted-foreground font-medium">
-                Your AI Dental Companion
-              </span>
-            </div>
-          </div>
+          <img
+            src="/images/dentasmart-logo.png"
+            alt="DentaSmart Logo"
+            className="h-12 md:h-14 w-auto"
+          />
         </Link>
 
         {/* Desktop Navigation */}
