@@ -54,7 +54,8 @@ export default function Pricing() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Clarity */}
-            <div className="rounded-2xl p-8 border-2 border-border bg-white hover:border-primary hover:shadow-lg transition-all">
+            <div className="rounded-2xl p-8 border-2 border-primary bg-gradient-to-br from-primary/5 to-secondary shadow-xl scale-105">
+              <div className="inline-block bg-primary text-white px-3 py-1 rounded-full text-xs font-semibold mb-4">Most Popular</div>
               <div className="text-5xl mb-4">🛡️</div>
               <h3 className="text-2xl font-display font-bold text-foreground mb-2">Clarity</h3>
               <p className="text-muted-foreground mb-6">Prevention & tracking</p>
@@ -74,9 +75,8 @@ export default function Pricing() {
               </div>
             </div>
 
-            {/* Consult (Featured) */}
-            <div className="rounded-2xl p-8 border-2 border-primary bg-gradient-to-br from-primary/5 to-secondary shadow-xl scale-105">
-              <div className="inline-block bg-primary text-white px-3 py-1 rounded-full text-xs font-semibold mb-4">Most Popular</div>
+            {/* Consult */}
+            <div className="rounded-2xl p-8 border-2 border-border bg-white hover:border-primary hover:shadow-lg transition-all">
               <div className="text-5xl mb-4">💭</div>
               <h3 className="text-2xl font-display font-bold text-foreground mb-2">Consult</h3>
               <p className="text-muted-foreground mb-6">Second opinion</p>

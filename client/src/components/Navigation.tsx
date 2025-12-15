@@ -1,10 +1,11 @@
-import { Link } from "wouter";
+import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [location] = useLocation();
 
   const navItems = [
     { label: "Home", href: "/" },
@@ -15,6 +16,13 @@ export default function Navigation() {
     { label: "Teams", href: "/teams" },
     { label: "FAQs", href: "/faqs" },
   ];
+
+  const isActive = (href: string) => {
+    if (href === "/") {
+      return location === "/";
+    }
+    return location.startsWith(href);
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
@@ -46,7 +54,11 @@ export default function Navigation() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-foreground hover:text-primary transition-colors font-medium text-sm"
+              className={`font-medium text-sm transition-colors ${
+                isActive(item.href)
+                  ? "text-primary border-b-2 border-primary pb-1"
+                  : "text-foreground hover:text-primary"
+              }`}
             >
               {item.label}
             </Link>
@@ -92,7 +104,11 @@ export default function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-foreground hover:text-primary transition-colors font-medium block py-2"
+                className={`font-medium block py-2 transition-colors ${
+                  isActive(item.href)
+                    ? "text-primary border-l-2 border-primary pl-2"
+                    : "text-foreground hover:text-primary"
+                }`}
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
