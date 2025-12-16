@@ -1,8 +1,11 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export default function Pricing() {
+  const [planType, setPlanType] = useState<"individual" | "family">("individual");
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Navigation />
@@ -46,6 +49,34 @@ export default function Pricing() {
         </div>
       </section>
 
+      {/* Individual vs Family Toggle */}
+      <section className="py-8 md:py-12 bg-secondary/30">
+        <div className="container max-w-3xl">
+          <div className="flex justify-center gap-4">
+            <button
+              onClick={() => setPlanType("individual")}
+              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                planType === "individual"
+                  ? "bg-primary text-white shadow-lg"
+                  : "bg-white text-foreground border-2 border-border hover:border-primary"
+              }`}
+            >
+              Individual
+            </button>
+            <button
+              onClick={() => setPlanType("family")}
+              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                planType === "family"
+                  ? "bg-primary text-white shadow-lg"
+                  : "bg-white text-foreground border-2 border-border hover:border-primary"
+              }`}
+            >
+              Family
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* Plan Cards */}
       <section className="py-16 md:py-24 bg-secondary/30">
         <div className="container">
@@ -59,11 +90,15 @@ export default function Pricing() {
                 </div>
               </div>
               <div className="mb-6">
-                <p className="text-5xl font-display font-bold text-primary mb-2">$75</p>
-                <p className="text-muted-foreground">/year (or $7/month)</p>
+                <p className="text-5xl font-display font-bold text-primary mb-2">
+                  ${planType === "individual" ? "75" : "150"}
+                </p>
+                <p className="text-muted-foreground">/year</p>
               </div>
               <p className="text-foreground/70 mb-8">
-                Monthly monitoring to track your oral health and catch problems early.
+                {planType === "individual"
+                  ? "Monthly monitoring to track your oral health and catch problems early."
+                  : "Monthly monitoring for your entire family with shared insights and progress tracking."}
               </p>
               <ul className="space-y-4 mb-8">
                 {[
@@ -73,7 +108,8 @@ export default function Pricing() {
                   "Dental record vault",
                   "Share with dentist",
                   "Progress reports",
-                ].map((feature, idx) => (
+                  planType === "family" && "Up to 4 family members",
+                ].filter(Boolean).map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-3">
                     <span className="text-primary text-lg">✓</span>
                     <span className="text-foreground/70">{feature}</span>
@@ -122,19 +158,23 @@ export default function Pricing() {
             </div>
 
             {/* Complete Plan */}
-            <div className="bg-white rounded-2xl p-8 border-2 border-border opacity-60">
+            <div className="bg-white rounded-2xl p-8 border-2 border-border hover:border-primary hover:shadow-lg transition-all">
               <div className="mb-6">
                 <h3 className="text-2xl font-display font-bold text-foreground mb-2">Complete</h3>
-                <div className="inline-block bg-muted text-muted-foreground px-3 py-1 rounded-full text-xs font-semibold">
+                <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold">
                   Coming Soon
                 </div>
               </div>
               <div className="mb-6">
-                <p className="text-5xl font-display font-bold text-muted-foreground mb-2">TBD</p>
-                <p className="text-muted-foreground">/month</p>
+                <p className="text-5xl font-display font-bold text-primary mb-2">
+                  ${planType === "individual" ? "150" : "300"}
+                </p>
+                <p className="text-muted-foreground">/year</p>
               </div>
               <p className="text-foreground/70 mb-8">
-                Comprehensive dental coverage with AI-powered care coordination.
+                {planType === "individual"
+                  ? "Comprehensive dental coverage with AI-powered care coordination."
+                  : "Comprehensive dental coverage for your entire family with AI-powered care coordination."}
               </p>
               <ul className="space-y-4 mb-8">
                 {[
@@ -144,9 +184,10 @@ export default function Pricing() {
                   "Treatment coordination",
                   "Network of dentists",
                   "Direct billing",
-                ].map((feature, idx) => (
+                  planType === "family" && "Up to 4 family members",
+                ].filter(Boolean).map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-3">
-                    <span className="text-muted-foreground text-lg">✓</span>
+                    <span className="text-primary text-lg">✓</span>
                     <span className="text-foreground/70">{feature}</span>
                   </li>
                 ))}
@@ -226,7 +267,7 @@ export default function Pricing() {
               },
               {
                 q: "Do you offer family plans?",
-                a: "You can manage multiple family members on one account. Contact us for details.",
+                a: "Yes! Use the Family toggle above to see family plan pricing. One subscription covers up to 4 family members.",
               },
             ].map((item, idx) => (
               <div key={idx} className="bg-white rounded-xl p-6 border border-border">

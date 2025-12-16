@@ -158,23 +158,6 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      {/* Important Note */}
-      <section className="py-16 md:py-24 bg-primary/5">
-        <div className="container max-w-3xl">
-          <div className="bg-white border-l-4 border-primary rounded-lg p-8">
-            <h3 className="text-2xl font-display font-bold text-foreground mb-4">
-              ⚠️ DentaSmart is not a substitute for professional dental care
-            </h3>
-            <p className="text-foreground/70 leading-relaxed mb-4">
-              DentaSmart helps you understand your mouth and prepares you for better conversations with your dentist. It does not diagnose, treat, or cure dental conditions.
-            </p>
-            <p className="text-foreground/70">
-              Always consult with a licensed dentist for professional diagnosis and treatment. If you have severe pain, swelling, or trauma, seek immediate dental care.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Final CTA */}
       <section className="py-16 md:py-24 bg-gradient-to-r from-primary/10 to-secondary">
         <div className="container max-w-3xl text-center">

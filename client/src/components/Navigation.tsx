@@ -13,7 +13,7 @@ export default function Navigation() {
     { label: "Features", href: "/features" },
     { label: "Pricing", href: "/pricing" },
     { label: "For Employers", href: "/employers" },
-    { label: "Teams", href: "/teams" },
+    { label: "Team", href: "/team" },
     { label: "FAQs", href: "/faqs" },
   ];
 
@@ -27,16 +27,17 @@ export default function Navigation() {
   return (
     <nav className="sticky top-0 z-50 bg-white border-b border-border shadow-sm">
       <div className="container flex items-center justify-between h-16 md:h-20">
-        {/* Logo with Official Image */}
+        {/* Logo with Official Image and Slogan */}
         <Link
           href="/"
-          className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+          className="flex flex-col items-start gap-1 hover:opacity-80 transition-opacity"
         >
           <img
             src="/images/dentasmart-logo.png"
             alt="DentaSmart Logo"
-            className="h-12 md:h-14 w-auto"
+            className="h-10 md:h-12 w-auto"
           />
+          <p className="text-xs md:text-xs text-foreground/60 font-medium leading-tight">Your Personal AI Dental Companion</p>
         </Link>
 
         {/* Desktop Navigation */}

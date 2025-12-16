@@ -9,7 +9,7 @@ import HowItWorks from "./pages/HowItWorks";
 import Features from "./pages/Features";
 import Pricing from "./pages/Pricing";
 import Employers from "./pages/Employers";
-import Teams from "./pages/Teams";
+import Team from "./pages/Team";
 import FAQs from "./pages/FAQs";
 
 
@@ -21,7 +21,7 @@ function Router() {
       <Route path={"/features"} component={Features} />
       <Route path={"/pricing"} component={Pricing} />
       <Route path={"/employers"} component={Employers} />
-      <Route path={"/teams"} component={Teams} />
+      <Route path={"/team"} component={Team} />
       <Route path={"/faqs"} component={FAQs} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
