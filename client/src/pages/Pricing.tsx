@@ -184,6 +184,7 @@ export default function Pricing() {
                   "Treatment coordination",
                   "75,000+ Dentists Network",
                   "Direct billing",
+                  "Buy Now, Pay Later available",
                   planType === "family" && "Up to 4 family members",
                 ].filter(Boolean).map((feature, idx) => (
                   <li key={idx} className="flex items-center gap-3">
@@ -230,6 +231,7 @@ export default function Pricing() {
                   { feature: "Basic Procedures Savings", clarity: "✗", consult: "✗", complete: "20-60% off" },
                   { feature: "Major Procedures Savings", clarity: "✗", consult: "✗", complete: "20-60% off" },
                   { feature: "Cosmetic Procedures", clarity: "✗", consult: "✗", complete: "Included" },
+                  { feature: "Buy Now, Pay Later", clarity: "✗", consult: "✗", complete: "Available" },
                 ].map((row, idx) => (
                   <tr key={idx} className="border-b border-border">
                     <td className="py-4 px-4 font-semibold text-foreground">{row.feature}</td>
@@ -248,56 +250,21 @@ export default function Pricing() {
       <section className="py-16 md:py-24 bg-secondary/30">
         <div className="container max-w-3xl">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            Pricing questions
+            Common questions
           </h2>
           <div className="space-y-6">
             {[
-              {
-                q: "Is there a free trial?",
-                a: "Yes! Try Clarity free for 7 days. No credit card required. Cancel anytime.",
-              },
-              {
-                q: "Can I cancel anytime?",
-                a: "Absolutely. Cancel your subscription anytime with no penalties or questions.",
-              },
-              {
-                q: "What payment methods do you accept?",
-                a: "We accept all major credit cards, Apple Pay, and Google Pay.",
-              },
-              {
-                q: "Is my data secure?",
-                a: "Yes. All data is HIPAA-compliant, encrypted, and never sold to third parties.",
-              },
-              {
-                q: "Can I upgrade or downgrade?",
-                a: "Yes. You can change your plan anytime. We'll prorate any charges.",
-              },
-              {
-                q: "Do you offer family plans?",
-                a: "Yes! Use the Family toggle above to see family plan pricing. One subscription covers up to 4 family members.",
-              },
-            ].map((item, idx) => (
+              { q: "Can I switch plans later?", a: "Yes, you can upgrade or downgrade your plan at any time from your account settings." },
+              { q: "Is there a waiting period?", a: "No. Unlike traditional insurance, DentaSmart benefits start immediately." },
+              { q: "Does it cover pre-existing conditions?", a: "Yes. We don't exclude pre-existing conditions. You get full benefits from day one." },
+              { q: "How does the family plan work?", a: "The family plan covers up to 4 members. You can add more members for a small additional fee." },
+            ].map((faq, idx) => (
               <div key={idx} className="bg-white rounded-xl p-6 border border-border">
-                <h3 className="font-display font-bold text-foreground mb-3">{item.q}</h3>
-                <p className="text-foreground/70">{item.a}</p>
+                <h3 className="text-lg font-bold text-foreground mb-2">{faq.q}</h3>
+                <p className="text-foreground/70">{faq.a}</p>
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-primary/10 to-secondary">
-        <div className="container max-w-3xl text-center">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-            Ready to take control?
-          </h2>
-          <p className="text-lg text-foreground/70 mb-8">
-            Start your free 7-day trial of Clarity today. No credit card required.
-          </p>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg">
-            Start Free Trial
-          </Button>
         </div>
       </section>
 

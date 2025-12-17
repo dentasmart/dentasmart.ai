@@ -115,6 +115,7 @@ export default function Employers() {
                   { feature: "Waiting Periods", trad: "6-12 months for major work", denta: "No waiting periods" },
                   { feature: "Deductibles", trad: "$50 - $100 per person", denta: "No deductibles" },
                   { feature: "Pre-existing Conditions", trad: "Often excluded", denta: "No exclusions" },
+                  { feature: "Payment Flexibility (BNPL)", trad: "Not available", denta: "Buy Now, Pay Later included", highlight: true },
                   { feature: "Switch Plans", trad: "Open enrollment only", denta: "Switch easily anytime" },
                 ].map((row, idx) => (
                   <tr key={idx} className={`border-b border-border ${row.highlight ? "bg-secondary/10" : ""}`}>
@@ -144,28 +145,28 @@ export default function Employers() {
           
           {/* Cost Comparison */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-white rounded-2xl p-8 border-2 border-border">
+            <div className="bg-white rounded-2xl p-8 border-2 border-border flex flex-col items-center justify-center">
               <p className="text-foreground/70 mb-4 text-sm font-semibold text-center">Traditional Insurance</p>
               <div className="text-center mb-6">
-                <p className="text-5xl font-display font-bold text-foreground">~$1,200</p>
+                <p className="text-6xl font-display font-bold text-foreground">~$1,200</p>
                 <p className="text-muted-foreground text-sm mt-2">per employee/year</p>
               </div>
-              <div className="bg-secondary rounded-lg p-4 text-center">
+              <div className="bg-secondary rounded-lg p-4 text-center w-full max-w-xs">
                 <p className="text-muted-foreground text-xs mb-1">Monthly Cost</p>
                 <p className="text-2xl font-display font-bold text-foreground">~$100</p>
               </div>
             </div>
             
-            <div className="bg-gradient-to-br from-primary/10 to-secondary rounded-2xl p-8 border-2 border-primary">
-              <div className="inline-block bg-primary text-white px-3 py-1 rounded-full text-xs font-semibold mb-4 w-full text-center">
+            <div className="bg-gradient-to-br from-primary/10 to-secondary rounded-2xl p-8 border-2 border-primary flex flex-col items-center justify-center relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-full bg-primary text-white text-center py-1 text-xs font-bold uppercase tracking-wider">
                 75% SAVINGS
               </div>
-              <p className="text-foreground/70 mb-4 text-sm font-semibold text-center">DentaSmart Complete</p>
+              <p className="text-foreground/70 mb-4 text-sm font-semibold text-center mt-6">DentaSmart Complete</p>
               <div className="text-center mb-6">
-                <p className="text-5xl font-display font-bold text-primary">~$300</p>
+                <p className="text-6xl font-display font-bold text-primary">~$300</p>
                 <p className="text-muted-foreground text-sm mt-2">per employee/year</p>
               </div>
-              <div className="bg-white rounded-lg p-4 text-center border border-primary/20">
+              <div className="bg-white rounded-lg p-4 text-center border border-primary/20 w-full max-w-xs shadow-sm">
                 <p className="text-muted-foreground text-xs mb-1">Monthly Cost</p>
                 <p className="text-2xl font-display font-bold text-primary">$20-50</p>
               </div>
