@@ -106,16 +106,16 @@ export default function Employers() {
                 {[
                   { feature: "Annual Cost (Individual)", trad: "$400 - $700+", denta: "$150", highlight: true },
                   { feature: "Annual Cost (Family)", trad: "$1,000 - $1,500+", denta: "$300", highlight: true },
-                  { feature: "Waiting Periods", trad: "6-12 months for major work", denta: "None - Immediate access" },
-                  { feature: "Annual Maximums", trad: "Capped at $1,000 - $1,500", denta: "No annual limits" },
-                  { feature: "Deductibles", trad: "$50 - $100 per person", denta: "$0 deductible" },
-                  { feature: "Preventive Care", trad: "100% covered (usually)", denta: "Included (AI Monitoring)" },
-                  { feature: "Major Procedures", trad: "50% coverage after waiting", denta: "20-60% savings immediately" },
-                  { feature: "Cosmetic Dentistry", trad: "Rarely covered", denta: "Included in savings" },
-                  { feature: "AI Health Monitoring", trad: "Not available", denta: "Included monthly" },
-                  { feature: "24/7 Dentist Chat", trad: "Limited or extra cost", denta: "Included unlimited" },
-                  { feature: "Payment Options", trad: "Pay in full at time of service", denta: "Buy Now, Pay Later options" },
-                  { feature: "Paperwork & Claims", trad: "Complex forms required", denta: "No paperwork needed" },
+                  { feature: "Preventive Care (Checkups, Cleanings, X-Rays)", trad: "100% covered (usually)", denta: "Included (AI Monitoring)" },
+                  { feature: "Basic Procedures (Fillings, Extractions)", trad: "80% coverage after deductible", denta: "20-60% savings immediately" },
+                  { feature: "Major Procedures (Root Canals, Crowns)", trad: "50% coverage after waiting", denta: "20-60% savings immediately" },
+                  { feature: "Cosmetic Procedures (Implants, Whitening)", trad: "Not covered", denta: "Included in savings" },
+                  { feature: "Dentist Network", trad: "Limited PPO Network", denta: "75,000+ Locations" },
+                  { feature: "Annual Spending Caps", trad: "Capped at $1,000 - $1,500", denta: "No annual caps" },
+                  { feature: "Waiting Periods", trad: "6-12 months for major work", denta: "No waiting periods" },
+                  { feature: "Deductibles", trad: "$50 - $100 per person", denta: "No deductibles" },
+                  { feature: "Pre-existing Conditions", trad: "Often excluded", denta: "No exclusions" },
+                  { feature: "Switch Plans", trad: "Open enrollment only", denta: "Switch easily anytime" },
                 ].map((row, idx) => (
                   <tr key={idx} className={`border-b border-border ${row.highlight ? "bg-secondary/10" : ""}`}>
                     <td className="py-4 px-6 font-semibold text-foreground">{row.feature}</td>
@@ -209,10 +209,10 @@ export default function Employers() {
                 <div className="text-5xl mb-4">{benefit.icon}</div>
                 <h3 className="text-2xl font-display font-bold text-foreground mb-6">{benefit.title}</h3>
                 <ul className="space-y-3">
-                  {benefit.bullets.map((bullet, bidx) => (
-                    <li key={bidx} className="flex items-start gap-3">
-                      <span className="text-primary text-lg flex-shrink-0">✓</span>
-                      <span className="text-foreground/80 text-sm">{bullet}</span>
+                  {benefit.bullets.map((bullet, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="text-primary font-bold">✓</span>
+                      <span className="text-foreground/70">{bullet}</span>
                     </li>
                   ))}
                 </ul>
@@ -222,88 +222,34 @@ export default function Employers() {
         </div>
       </section>
 
-      {/* Rollout Plan */}
+      {/* Demo Form */}
       <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            Get started in minutes
-          </h2>
-          <div className="space-y-8">
-            {[
-              { num: "1", title: "Create Account", desc: "Set up your employer account in minutes" },
-              { num: "2", title: "Upload Roster", desc: "Add your employee list via CSV or manual entry" },
-              { num: "3", title: "Employees Download", desc: "Send invites and they start using DentaSmart" },
-              { num: "4", title: "Track Results", desc: "Monitor engagement and health improvements" },
-            ].map((step, idx) => (
-              <div key={idx} className="flex gap-6 items-start">
-                <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center flex-shrink-0 font-display text-2xl font-bold shadow-lg">
-                  {step.num}
-                </div>
-                <div className="flex-1 pt-2">
-                  <h3 className="text-2xl font-display font-bold text-foreground mb-2">{step.title}</h3>
-                  <p className="text-foreground/70">{step.desc}</p>
-                </div>
+        <div className="container max-w-xl">
+          <div className="bg-white rounded-2xl p-8 shadow-lg border border-border">
+            <h2 className="text-3xl font-display font-bold text-foreground mb-6 text-center">
+              See how much you can save
+            </h2>
+            <p className="text-foreground/70 text-center mb-8">
+              Get a custom ROI analysis for your company in 24 hours.
+            </p>
+            <form className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-1">Company Name</label>
+                <input type="text" className="w-full p-3 rounded-lg border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="Acme Corp" />
               </div>
-            ))}
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-1">Number of Employees</label>
+                <input type="number" className="w-full p-3 rounded-lg border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="50" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-1">Work Email</label>
+                <input type="email" className="w-full p-3 rounded-lg border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="you@company.com" />
+              </div>
+              <Button className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-6 text-lg shadow-lg mt-4">
+                Request Demo & ROI Report
+              </Button>
+            </form>
           </div>
-        </div>
-      </section>
-
-      {/* Demo Form Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-2xl">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6 text-center">
-            Get a 15-minute demo
-          </h2>
-          <p className="text-lg text-foreground/70 mb-12 text-center">
-            We'll show you pricing, rollout, and what employees see.
-          </p>
-          <form className="bg-secondary rounded-2xl p-8 border-2 border-border space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">Company Name</label>
-                <input type="text" placeholder="Your company" className="w-full px-4 py-2 rounded-lg border border-border bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">Your Name</label>
-                <input type="text" placeholder="Your name" className="w-full px-4 py-2 rounded-lg border border-border bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
-              </div>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">Title</label>
-                <input type="text" placeholder="Your title" className="w-full px-4 py-2 rounded-lg border border-border bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-foreground mb-2">Email</label>
-                <input type="email" placeholder="your@email.com" className="w-full px-4 py-2 rounded-lg border border-border bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
-              </div>
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-foreground mb-2">Employee Count</label>
-              <input type="number" placeholder="Number of employees" className="w-full px-4 py-2 rounded-lg border border-border bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary" />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold text-foreground mb-2">What are you trying to improve?</label>
-              <textarea placeholder="Tell us about your goals" rows={4} className="w-full px-4 py-2 rounded-lg border border-border bg-white text-foreground focus:outline-none focus:ring-2 focus:ring-primary resize-none" />
-            </div>
-            <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold">Request Demo</Button>
-          </form>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-primary/10 to-accent/10">
-        <div className="container max-w-3xl text-center">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-            Ready to transform your dental benefits?
-          </h2>
-          <p className="text-lg text-foreground/70 mb-8">
-            Request a demo and see how DentaSmart can help your employees.
-          </p>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg">
-            Request a Demo
-          </Button>
         </div>
       </section>
 

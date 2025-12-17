@@ -182,7 +182,7 @@ export default function Pricing() {
                   "Dental insurance alternative",
                   "Preventive care coverage",
                   "Treatment coordination",
-                  "Network of dentists",
+                  "75,000+ Dentists Network",
                   "Direct billing",
                   planType === "family" && "Up to 4 family members",
                 ].filter(Boolean).map((feature, idx) => (
@@ -202,7 +202,7 @@ export default function Pricing() {
 
       {/* Comparison Table */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-4xl">
+        <div className="container max-w-5xl">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
             Compare plans
           </h2>
@@ -213,22 +213,29 @@ export default function Pricing() {
                   <th className="text-left py-4 px-4 font-display font-bold text-foreground">Feature</th>
                   <th className="text-center py-4 px-4 font-display font-bold text-foreground">Clarity</th>
                   <th className="text-center py-4 px-4 font-display font-bold text-foreground">Consult</th>
+                  <th className="text-center py-4 px-4 font-display font-bold text-foreground">Complete</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  { feature: "AI Analysis", clarity: "✓", consult: "✓" },
-                  { feature: "Monthly Monitoring", clarity: "✓", consult: "✗" },
-                  { feature: "Wellness Score", clarity: "✓", consult: "✗" },
-                  { feature: "Dr. Din 24/7", clarity: "✓", consult: "✓" },
-                  { feature: "Dental Record Vault", clarity: "✓", consult: "✗" },
-                  { feature: "Share with Dentist", clarity: "✓", consult: "✓" },
-                  { feature: "Progress Tracking", clarity: "✓", consult: "✗" },
+                  { feature: "AI Analysis", clarity: "✓", consult: "✓", complete: "✓" },
+                  { feature: "Monthly Monitoring", clarity: "✓", consult: "✗", complete: "✓" },
+                  { feature: "Wellness Score", clarity: "✓", consult: "✗", complete: "✓" },
+                  { feature: "Dr. Din 24/7", clarity: "✓", consult: "✓", complete: "✓" },
+                  { feature: "Dental Record Vault", clarity: "✓", consult: "✗", complete: "✓" },
+                  { feature: "Share with Dentist", clarity: "✓", consult: "✓", complete: "✓" },
+                  { feature: "Progress Tracking", clarity: "✓", consult: "✗", complete: "✓" },
+                  { feature: "75,000+ Dentists Network", clarity: "✗", consult: "✗", complete: "✓" },
+                  { feature: "Preventive Care Savings", clarity: "✗", consult: "✗", complete: "20-60% off" },
+                  { feature: "Basic Procedures Savings", clarity: "✗", consult: "✗", complete: "20-60% off" },
+                  { feature: "Major Procedures Savings", clarity: "✗", consult: "✗", complete: "20-60% off" },
+                  { feature: "Cosmetic Procedures", clarity: "✗", consult: "✗", complete: "Included" },
                 ].map((row, idx) => (
                   <tr key={idx} className="border-b border-border">
                     <td className="py-4 px-4 font-semibold text-foreground">{row.feature}</td>
                     <td className="py-4 px-4 text-center text-primary">{row.clarity}</td>
                     <td className="py-4 px-4 text-center text-primary">{row.consult}</td>
+                    <td className="py-4 px-4 text-center text-primary">{row.complete}</td>
                   </tr>
                 ))}
               </tbody>
