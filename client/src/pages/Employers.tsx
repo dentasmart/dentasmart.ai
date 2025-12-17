@@ -74,31 +74,63 @@ export default function Employers() {
         </div>
       </section>
 
-      {/* What Employees Love */}
+      {/* Detailed Comparison Table */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            What employees love
+        <div className="container max-w-5xl">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6 text-center">
+            Compare the value
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { icon: "🎯", title: "Catch Problems Early", bullets: ["Monthly check-ins", "Proactive risk indicators", "Prevent expensive emergencies"] },
-              { icon: "💬", title: "24/7 Support", bullets: ["Chat with Dr. Din anytime", "Reduce dental anxiety", "Get answers instantly"] },
-              { icon: "💰", title: "Real Savings", bullets: ["Discount network (coming soon)", "Transparent pricing", "BNPL options"] },
-            ].map((benefit, idx) => (
-              <div key={idx} className="bg-secondary rounded-2xl p-8">
-                <div className="text-5xl mb-4">{benefit.icon}</div>
-                <h3 className="text-2xl font-display font-bold text-foreground mb-6">{benefit.title}</h3>
-                <ul className="space-y-3">
-                  {benefit.bullets.map((bullet, bidx) => (
-                    <li key={bidx} className="flex items-start gap-3">
-                      <span className="text-primary text-lg flex-shrink-0">✓</span>
-                      <span className="text-foreground/80 text-sm">{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <p className="text-lg text-foreground/70 text-center mb-12 max-w-3xl mx-auto">
+            See how DentaSmart Complete stacks up against traditional insurance carriers like Cigna, Aetna, and Humana.
+          </p>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr>
+                  <th className="text-left py-6 px-6 bg-secondary/30 rounded-tl-2xl border-b-2 border-border w-1/3">
+                    <span className="font-display font-bold text-xl text-foreground">Feature</span>
+                  </th>
+                  <th className="text-center py-6 px-6 bg-secondary/30 border-b-2 border-border w-1/3">
+                    <div className="font-display font-bold text-xl text-foreground mb-1">Traditional Insurance</div>
+                    <div className="text-sm text-muted-foreground">(Cigna, Aetna, Humana)</div>
+                  </th>
+                  <th className="text-center py-6 px-6 bg-primary/5 rounded-tr-2xl border-b-2 border-primary w-1/3 relative">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+                    <div className="font-display font-bold text-xl text-primary mb-1">DentaSmart Complete</div>
+                    <div className="text-sm text-primary/80">All-in-one Solution</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { feature: "Annual Cost (Individual)", trad: "$400 - $700+", denta: "$150", highlight: true },
+                  { feature: "Annual Cost (Family)", trad: "$1,000 - $1,500+", denta: "$300", highlight: true },
+                  { feature: "Waiting Periods", trad: "6-12 months for major work", denta: "None - Immediate access" },
+                  { feature: "Annual Maximums", trad: "Capped at $1,000 - $1,500", denta: "No annual limits" },
+                  { feature: "Deductibles", trad: "$50 - $100 per person", denta: "$0 deductible" },
+                  { feature: "Preventive Care", trad: "100% covered (usually)", denta: "Included (AI Monitoring)" },
+                  { feature: "Major Procedures", trad: "50% coverage after waiting", denta: "20-60% savings immediately" },
+                  { feature: "Cosmetic Dentistry", trad: "Rarely covered", denta: "Included in savings" },
+                  { feature: "AI Health Monitoring", trad: "Not available", denta: "Included monthly" },
+                  { feature: "24/7 Dentist Chat", trad: "Limited or extra cost", denta: "Included unlimited" },
+                  { feature: "Payment Options", trad: "Pay in full at time of service", denta: "Buy Now, Pay Later options" },
+                  { feature: "Paperwork & Claims", trad: "Complex forms required", denta: "No paperwork needed" },
+                ].map((row, idx) => (
+                  <tr key={idx} className={`border-b border-border ${row.highlight ? "bg-secondary/10" : ""}`}>
+                    <td className="py-4 px-6 font-semibold text-foreground">{row.feature}</td>
+                    <td className="py-4 px-6 text-center text-foreground/70">{row.trad}</td>
+                    <td className="py-4 px-6 text-center font-bold text-primary bg-primary/5">{row.denta}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          
+          <div className="mt-8 text-center">
+            <p className="text-sm text-muted-foreground">
+              *Comparison based on average PPO plans from major carriers for 2024-2025. Actual insurance costs vary by location and employer contribution.
+            </p>
           </div>
         </div>
       </section>
@@ -158,15 +190,40 @@ export default function Employers() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <p className="text-center text-foreground/70 leading-relaxed">
-            You can reduce dental benefit cost by up to 75% while giving employees something they actually use and love.
-          </p>
+      {/* What Employees Love */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
+            What employees love
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { icon: "🎯", title: "Catch Problems Early", bullets: ["Monthly check-ins", "Proactive risk indicators", "Prevent expensive emergencies"] },
+              { icon: "💬", title: "24/7 Support", bullets: ["Chat with Dr. Din anytime", "Reduce dental anxiety", "Get answers instantly"] },
+              { icon: "💳", title: "Flexible Payments", bullets: ["Buy Now, Pay Later options", "No surprise bills", "Transparent pricing"] },
+            ].map((benefit, idx) => (
+              <div key={idx} className="bg-secondary rounded-2xl p-8">
+                <div className="text-5xl mb-4">{benefit.icon}</div>
+                <h3 className="text-2xl font-display font-bold text-foreground mb-6">{benefit.title}</h3>
+                <ul className="space-y-3">
+                  {benefit.bullets.map((bullet, bidx) => (
+                    <li key={bidx} className="flex items-start gap-3">
+                      <span className="text-primary text-lg flex-shrink-0">✓</span>
+                      <span className="text-foreground/80 text-sm">{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Rollout Plan */}
-      <section className="py-16 md:py-24 bg-white">
+      <section className="py-16 md:py-24 bg-secondary/30">
         <div className="container max-w-3xl">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
             Get started in minutes
@@ -186,30 +243,6 @@ export default function Employers() {
                   <h3 className="text-2xl font-display font-bold text-foreground mb-2">{step.title}</h3>
                   <p className="text-foreground/70">{step.desc}</p>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* What Employers Get */}
-      <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            Everything you need to manage benefits
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              "Simple billing",
-              "Usage reporting",
-              "Engagement metrics",
-              "Support and onboarding",
-              "Quarterly reviews",
-              "Dedicated success contact",
-            ].map((item, idx) => (
-              <div key={idx} className="flex items-center gap-3 bg-white rounded-lg p-4 border border-border">
-                <span className="text-primary text-2xl">✓</span>
-                <p className="text-foreground/80">{item}</p>
               </div>
             ))}
           </div>
