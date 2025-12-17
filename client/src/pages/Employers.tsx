@@ -105,22 +105,60 @@ export default function Employers() {
 
       {/* ROI Section */}
       <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container max-w-3xl">
+        <div className="container max-w-4xl">
           <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
             The simplest math you'll do all year
           </h2>
+          
+          {/* Cost Comparison */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-white rounded-2xl p-8 border-2 border-border text-center">
-              <p className="text-foreground/70 mb-4 text-sm font-semibold">Traditional Insurance</p>
-              <p className="text-5xl font-display font-bold text-foreground">~$1,200</p>
-              <p className="text-muted-foreground text-sm mt-2">per employee/year</p>
+            <div className="bg-white rounded-2xl p-8 border-2 border-border">
+              <p className="text-foreground/70 mb-4 text-sm font-semibold text-center">Traditional Insurance</p>
+              <div className="text-center mb-6">
+                <p className="text-5xl font-display font-bold text-foreground">~$1,200</p>
+                <p className="text-muted-foreground text-sm mt-2">per employee/year</p>
+              </div>
+              <div className="bg-secondary rounded-lg p-4 text-center">
+                <p className="text-muted-foreground text-xs mb-1">Monthly Cost</p>
+                <p className="text-2xl font-display font-bold text-foreground">~$100</p>
+              </div>
             </div>
-            <div className="bg-gradient-to-br from-primary/10 to-secondary rounded-2xl p-8 border-2 border-primary text-center">
-              <p className="text-foreground/70 mb-4 text-sm font-semibold">DentaSmart Complete</p>
-              <p className="text-5xl font-display font-bold text-primary">~$300</p>
-              <p className="text-muted-foreground text-sm mt-2">per employee/year</p>
+            
+            <div className="bg-gradient-to-br from-primary/10 to-secondary rounded-2xl p-8 border-2 border-primary">
+              <div className="inline-block bg-primary text-white px-3 py-1 rounded-full text-xs font-semibold mb-4 w-full text-center">
+                75% SAVINGS
+              </div>
+              <p className="text-foreground/70 mb-4 text-sm font-semibold text-center">DentaSmart Complete</p>
+              <div className="text-center mb-6">
+                <p className="text-5xl font-display font-bold text-primary">~$300</p>
+                <p className="text-muted-foreground text-sm mt-2">per employee/year</p>
+              </div>
+              <div className="bg-white rounded-lg p-4 text-center border border-primary/20">
+                <p className="text-muted-foreground text-xs mb-1">Monthly Cost</p>
+                <p className="text-2xl font-display font-bold text-primary">$20-50</p>
+              </div>
             </div>
           </div>
+
+          {/* Savings Breakdown */}
+          <div className="bg-white rounded-2xl p-8 border border-primary/20 mb-8">
+            <h3 className="font-display font-bold text-foreground mb-8 text-center text-2xl">Your Savings Per Employee</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="text-center p-6 bg-gradient-to-br from-primary/5 to-secondary rounded-xl">
+                <p className="text-4xl font-display font-bold text-primary mb-2">$900</p>
+                <p className="text-sm text-foreground/70">Annual Savings</p>
+              </div>
+              <div className="text-center p-6 bg-gradient-to-br from-primary/5 to-secondary rounded-xl">
+                <p className="text-4xl font-display font-bold text-primary mb-2">$75</p>
+                <p className="text-sm text-foreground/70">Monthly Savings</p>
+              </div>
+              <div className="text-center p-6 bg-gradient-to-br from-primary/5 to-secondary rounded-xl">
+                <p className="text-4xl font-display font-bold text-primary mb-2">4x</p>
+                <p className="text-sm text-foreground/70">Better Value</p>
+              </div>
+            </div>
+          </div>
+
           <p className="text-center text-foreground/70 leading-relaxed">
             You can reduce dental benefit cost by up to 75% while giving employees something they actually use and love.
           </p>

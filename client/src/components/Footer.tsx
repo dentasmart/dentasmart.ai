@@ -8,12 +8,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold">
-                D
-              </div>
-              <span className="font-display text-lg font-bold text-primary">
-                DentaSmart
-              </span>
+              <img src="/dentasmart-logo.png" alt="DentaSmart" className="h-8 w-auto" />
             </div>
             <p className="text-muted-foreground text-sm">
               Your Personal AI Dental Companion
@@ -61,10 +56,10 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/teams"
+                  href="/team"
                   className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
-                  Teams
+                  Team
                 </Link>
               </li>
               <li>
