@@ -1,175 +1,192 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { ArrowRight, Camera, Brain, MessageSquare, FileText, Activity, ShieldCheck } from "lucide-react";
 
 export default function HowItWorks() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-white via-secondary/30 to-white">
-        <div className="container max-w-3xl text-center">
+      {/* Hero Section - Simplified */}
+      <section className="py-20 bg-gradient-to-b from-secondary/30 to-white">
+        <div className="container max-w-4xl text-center">
           <h1 className="text-5xl md:text-6xl font-display font-bold text-foreground mb-6">
-            Know what's going on—before it hurts
+            Know what's going on—<br/>before it hurts
           </h1>
-          <p className="text-xl text-foreground/70 leading-relaxed">
+          <p className="text-xl text-foreground/70 max-w-2xl mx-auto">
             Three simple steps to understand your mouth and take control of your oral health.
           </p>
         </div>
       </section>
 
-      {/* Step 1: Upload */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="order-2 md:order-1">
-            <div className="bg-gradient-to-br from-primary/10 to-secondary rounded-3xl p-12 aspect-square flex items-center justify-center">
-              <div className="text-7xl">📸</div>
-            </div>
-          </div>
-          <div className="order-1 md:order-2">
-            <div className="inline-block bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
-              Step 1
-            </div>
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-              Upload your mouth
-            </h2>
-            <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
-              Take a photo of your teeth using your smartphone, or upload an X-ray from your dentist. It takes 30 seconds and works on any phone.
-            </p>
-            <ul className="space-y-4">
-              {["Phone photos or X-rays", "Works on any device", "Secure and private", "Takes just 30 seconds"].map((item, idx) => (
-                <li key={idx} className="flex items-center gap-3">
-                  <span className="text-primary text-2xl">✓</span>
-                  <span className="text-foreground/80">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Step 2: Analyze */}
-      <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <div className="inline-block bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
-              Step 2
-            </div>
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-              Get instant insights
-            </h2>
-            <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
-              Our AI analyzes your mouth in seconds and explains what it finds—in plain language. No jargon. No confusion. Just clear, actionable information.
-            </p>
-            <ul className="space-y-4">
-              {["Instant results (1-2 min)", "100% detection accuracy", "Plain language explanations", "Trained by dental experts"].map((item, idx) => (
-                <li key={idx} className="flex items-center gap-3">
-                  <span className="text-primary text-2xl">✓</span>
-                  <span className="text-foreground/80">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <div className="bg-gradient-to-br from-primary/10 to-secondary rounded-3xl p-12 aspect-square flex items-center justify-center">
-              <div className="text-7xl">🤖</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Step 3: Act */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="order-2 md:order-1">
-            <div className="bg-gradient-to-br from-primary/10 to-secondary rounded-3xl p-12 aspect-square flex items-center justify-center">
-              <div className="text-7xl">✓</div>
-            </div>
-          </div>
-          <div className="order-1 md:order-2">
-            <div className="inline-block bg-primary text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
-              Step 3
-            </div>
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-              Take action
-            </h2>
-            <p className="text-lg text-foreground/70 mb-6 leading-relaxed">
-              Share your report with your dentist. Ask Dr. Din questions. Plan your next steps. You're now informed and in control.
-            </p>
-            <ul className="space-y-4">
-              {["Share with your dentist", "Ask Dr. Din 24/7", "Printable reports", "Track progress over time"].map((item, idx) => (
-                <li key={idx} className="flex items-center gap-3">
-                  <span className="text-primary text-2xl">✓</span>
-                  <span className="text-foreground/80">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Use Cases */}
-      <section className="py-16 md:py-24 bg-secondary/30">
+      {/* 3-Step Visual Process - Connected Flow */}
+      <section className="py-12 md:py-20 bg-white">
         <div className="container">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            Use DentaSmart when you need it most
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { icon: "📅", title: "Monthly Check-Ins", desc: "Track your oral health progress and catch issues early" },
-              { icon: "🎯", title: "Before Appointments", desc: "Walk in prepared with questions and understanding" },
-              { icon: "💡", title: "Before Big Decisions", desc: "Get a second opinion on expensive treatment plans" },
-            ].map((useCase, idx) => (
-              <div key={idx} className="bg-white rounded-2xl p-8 border border-border hover:border-primary hover:shadow-lg transition-all">
-                <div className="text-5xl mb-4">{useCase.icon}</div>
-                <h3 className="text-xl font-display font-bold text-foreground mb-3">{useCase.title}</h3>
-                <p className="text-foreground/70">{useCase.desc}</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+            {/* Connecting Line (Desktop) */}
+            <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-primary/20 via-primary/40 to-primary/20 -z-10"></div>
+
+            {/* Step 1 */}
+            <div className="flex flex-col items-center text-center group">
+              <div className="w-24 h-24 bg-white border-4 border-secondary rounded-full flex items-center justify-center mb-6 shadow-lg group-hover:border-primary group-hover:scale-110 transition-all duration-300 relative z-10">
+                <Camera className="w-10 h-10 text-primary" />
+                <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm border-2 border-white">1</div>
               </div>
-            ))}
+              <h3 className="text-2xl font-display font-bold text-foreground mb-3">Upload</h3>
+              <p className="text-foreground/70 max-w-xs">
+                Take a photo or upload an X-ray. Works on any phone in 30 seconds.
+              </p>
+            </div>
+
+            {/* Step 2 */}
+            <div className="flex flex-col items-center text-center group">
+              <div className="w-24 h-24 bg-white border-4 border-secondary rounded-full flex items-center justify-center mb-6 shadow-lg group-hover:border-primary group-hover:scale-110 transition-all duration-300 relative z-10">
+                <Brain className="w-10 h-10 text-primary" />
+                <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm border-2 border-white">2</div>
+              </div>
+              <h3 className="text-2xl font-display font-bold text-foreground mb-3">Analyze</h3>
+              <p className="text-foreground/70 max-w-xs">
+                AI scans for issues instantly. Get results in plain English, not jargon.
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="flex flex-col items-center text-center group">
+              <div className="w-24 h-24 bg-white border-4 border-secondary rounded-full flex items-center justify-center mb-6 shadow-lg group-hover:border-primary group-hover:scale-110 transition-all duration-300 relative z-10">
+                <MessageSquare className="w-10 h-10 text-primary" />
+                <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-bold text-sm border-2 border-white">3</div>
+              </div>
+              <h3 className="text-2xl font-display font-bold text-foreground mb-3">Act</h3>
+              <p className="text-foreground/70 max-w-xs">
+                Chat with Dr. Din. Share reports with your dentist. Fix issues early.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* What You'll See */}
+      {/* Visual Feature Grid - Less Text, More Iconography */}
+      <section className="py-16 md:py-24 bg-secondary/30">
+        <div className="container max-w-5xl">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-16">
+            What you get in your report
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Card 1 */}
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-border hover:shadow-md transition-all flex items-start gap-6">
+              <div className="bg-primary/10 p-4 rounded-xl">
+                <Activity className="w-8 h-8 text-primary" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">Visual Findings</h3>
+                <p className="text-foreground/70 text-sm">
+                  We highlight exactly where the problem is on your image. No guessing.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-border hover:shadow-md transition-all flex items-start gap-6">
+              <div className="bg-primary/10 p-4 rounded-xl">
+                <FileText className="w-8 h-8 text-primary" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">Plain English</h3>
+                <p className="text-foreground/70 text-sm">
+                  "Mesial caries on #14" becomes "Small cavity between your upper left molars."
+                </p>
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-border hover:shadow-md transition-all flex items-start gap-6">
+              <div className="bg-primary/10 p-4 rounded-xl">
+                <ShieldCheck className="w-8 h-8 text-primary" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">Action Plan</h3>
+                <p className="text-foreground/70 text-sm">
+                  Clear next steps: Watch it, treat it, or get a second opinion.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 4 */}
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-border hover:shadow-md transition-all flex items-start gap-6">
+              <div className="bg-primary/10 p-4 rounded-xl">
+                <MessageSquare className="w-8 h-8 text-primary" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2">Talking Points</h3>
+                <p className="text-foreground/70 text-sm">
+                  Specific questions to ask your dentist so you walk in prepared.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Use Cases - Visual Cards */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            What you'll get in your report
+        <div className="container max-w-5xl">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-12">
+            When to use DentaSmart
           </h2>
-          <div className="space-y-6">
-            {[
-              { title: "What the AI found", desc: "Specific areas of concern highlighted and explained" },
-              { title: "What it could mean", desc: "Plain language explanations—no dental jargon" },
-              { title: "What to do next", desc: "Personalized recommendations based on your mouth" },
-              { title: "Questions to ask", desc: "Talking points to bring to your dentist" },
-            ].map((item, idx) => (
-              <div key={idx} className="flex items-start gap-4 bg-secondary rounded-xl p-6">
-                <div className="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center flex-shrink-0 font-display font-bold">
-                  {idx + 1}
-                </div>
-                <div className="flex-1">
-                  <h3 className="font-display font-bold text-foreground mb-1">{item.title}</h3>
-                  <p className="text-foreground/70">{item.desc}</p>
-                </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="group relative overflow-hidden rounded-2xl aspect-[4/5] bg-secondary/20 border border-border hover:border-primary transition-all">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-6 z-20 text-white">
+                <div className="text-4xl mb-4 transform group-hover:-translate-y-2 transition-transform duration-300">📅</div>
+                <h3 className="text-xl font-bold mb-2">Monthly Check-in</h3>
+                <p className="text-white/80 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
+                  Scan once a month to catch issues before they become painful.
+                </p>
               </div>
-            ))}
+            </div>
+
+            <div className="group relative overflow-hidden rounded-2xl aspect-[4/5] bg-secondary/20 border border-border hover:border-primary transition-all">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-6 z-20 text-white">
+                <div className="text-4xl mb-4 transform group-hover:-translate-y-2 transition-transform duration-300">🦷</div>
+                <h3 className="text-xl font-bold mb-2">Pre-Appointment</h3>
+                <p className="text-white/80 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
+                  Scan before your visit so you know what to expect.
+                </p>
+              </div>
+            </div>
+
+            <div className="group relative overflow-hidden rounded-2xl aspect-[4/5] bg-secondary/20 border border-border hover:border-primary transition-all">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+              <div className="absolute bottom-0 left-0 right-0 p-6 z-20 text-white">
+                <div className="text-4xl mb-4 transform group-hover:-translate-y-2 transition-transform duration-300">💡</div>
+                <h3 className="text-xl font-bold mb-2">Second Opinion</h3>
+                <p className="text-white/80 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
+                  Unsure about a treatment plan? Get an unbiased AI check.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-primary/10 to-secondary">
-        <div className="container max-w-3xl text-center">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-            Ready to understand your teeth?
+      {/* Final CTA - Minimalist */}
+      <section className="py-20 bg-primary/5">
+        <div className="container text-center">
+          <h2 className="text-4xl font-display font-bold text-foreground mb-6">
+            Ready to see clearly?
           </h2>
-          <p className="text-lg text-foreground/70 mb-8">
-            Try DentaSmart free for 7 days. No credit card required.
-          </p>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg">
-            Start Free Trial
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg px-8 h-12 text-lg">
+              Start Free Trial
+            </Button>
+            <p className="text-sm text-foreground/60 mt-4 sm:mt-0 sm:ml-4">
+              No credit card required • Cancel anytime
+            </p>
+          </div>
         </div>
       </section>
 
