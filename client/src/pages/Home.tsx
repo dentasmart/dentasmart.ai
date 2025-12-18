@@ -50,11 +50,12 @@ export default function Home() {
             </div>
 
             {/* Right: Visual */}
-            <div className="bg-gradient-to-br from-primary/10 to-secondary rounded-2xl h-80 md:h-96 flex items-center justify-center border-2 border-primary/20 shadow-lg">
-              <div className="text-center">
-                <div className="text-8xl mb-4">🦷</div>
-                <p className="text-foreground/60 font-semibold">AI Dental Insights</p>
-              </div>
+            <div className="relative h-[600px] w-full flex items-center justify-center">
+              <img 
+                src="/images/ai-dental-insights-app.png" 
+                alt="DentaSmart App Interface showing AI Dental Insights" 
+                className="h-full w-auto object-contain drop-shadow-2xl"
+              />
             </div>
           </div>
         </div>
