@@ -149,7 +149,7 @@ export default function Employers() {
               <p className="text-foreground/70 mb-4 text-sm font-semibold text-center">Traditional Insurance</p>
               <div className="text-center mb-6">
                 <p className="text-6xl font-display font-bold text-foreground">~$1,200</p>
-                <p className="text-muted-foreground text-sm mt-2">per employee/year</p>
+                <p className="text-muted-foreground text-sm mt-2">per employee family/year</p>
               </div>
               <div className="bg-secondary rounded-lg p-4 text-center w-full max-w-xs">
                 <p className="text-muted-foreground text-xs mb-1">Monthly Cost</p>
@@ -164,7 +164,7 @@ export default function Employers() {
               <p className="text-foreground/70 mb-4 text-sm font-semibold text-center mt-6">DentaSmart Complete</p>
               <div className="text-center mb-6">
                 <p className="text-6xl font-display font-bold text-primary">~$300</p>
-                <p className="text-muted-foreground text-sm mt-2">per employee/year</p>
+                <p className="text-muted-foreground text-sm mt-2">per employee family/year</p>
               </div>
               <div className="bg-white rounded-lg p-4 text-center border border-primary/20 w-full max-w-xs shadow-sm">
                 <p className="text-muted-foreground text-xs mb-1">Monthly Cost</p>

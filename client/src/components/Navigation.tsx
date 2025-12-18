@@ -12,7 +12,7 @@ export default function Navigation() {
     { label: "How It Works", href: "/how-it-works" },
     { label: "Features", href: "/features" },
     { label: "Pricing", href: "/pricing" },
-    { label: "For Employers", href: "/employers" },
+    { label: "Employers", href: "/employers" },
     { label: "Team", href: "/team" },
     { label: "FAQs", href: "/faqs" },
   ];
