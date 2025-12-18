@@ -1,7 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Camera, Brain, MessageSquare, FileText, Activity, ShieldCheck } from "lucide-react";
+import { ArrowRight, Camera, Brain, MessageSquare, FileText, Activity, ShieldCheck, Calendar, Bell, HeartPulse, ClipboardList, TrendingUp } from "lucide-react";
 
 export default function HowItWorks() {
   return (
@@ -68,58 +68,123 @@ export default function HowItWorks() {
 
       {/* Visual Feature Grid - Less Text, More Iconography */}
       <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container max-w-5xl">
+        <div className="container max-w-6xl">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-center mb-16">
             What you get in your report
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Card 1 */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-border hover:shadow-md transition-all flex items-start gap-6">
-              <div className="bg-primary/10 p-4 rounded-xl">
-                <Activity className="w-8 h-8 text-primary" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Card 1: Visual Findings */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-border hover:shadow-md transition-all flex flex-col gap-4">
+              <div className="bg-primary/10 w-14 h-14 rounded-xl flex items-center justify-center">
+                <Activity className="w-7 h-7 text-primary" />
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2">Visual Findings</h3>
+                <h3 className="text-lg font-bold mb-2">Visual Findings</h3>
                 <p className="text-foreground/70 text-sm">
                   We highlight exactly where the problem is on your image. No guessing.
                 </p>
               </div>
             </div>
 
-            {/* Card 2 */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-border hover:shadow-md transition-all flex items-start gap-6">
-              <div className="bg-primary/10 p-4 rounded-xl">
-                <FileText className="w-8 h-8 text-primary" />
+            {/* Card 2: Plain English */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-border hover:shadow-md transition-all flex flex-col gap-4">
+              <div className="bg-primary/10 w-14 h-14 rounded-xl flex items-center justify-center">
+                <FileText className="w-7 h-7 text-primary" />
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2">Plain English</h3>
+                <h3 className="text-lg font-bold mb-2">Plain English</h3>
                 <p className="text-foreground/70 text-sm">
                   "Mesial caries on #14" becomes "Small cavity between your upper left molars."
                 </p>
               </div>
             </div>
 
-            {/* Card 3 */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-border hover:shadow-md transition-all flex items-start gap-6">
-              <div className="bg-primary/10 p-4 rounded-xl">
-                <ShieldCheck className="w-8 h-8 text-primary" />
+            {/* Card 3: Action Plan */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-border hover:shadow-md transition-all flex flex-col gap-4">
+              <div className="bg-primary/10 w-14 h-14 rounded-xl flex items-center justify-center">
+                <ShieldCheck className="w-7 h-7 text-primary" />
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2">Action Plan</h3>
+                <h3 className="text-lg font-bold mb-2">Action Plan</h3>
                 <p className="text-foreground/70 text-sm">
                   Clear next steps: Watch it, treat it, or get a second opinion.
                 </p>
               </div>
             </div>
 
-            {/* Card 4 */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-border hover:shadow-md transition-all flex items-start gap-6">
-              <div className="bg-primary/10 p-4 rounded-xl">
-                <MessageSquare className="w-8 h-8 text-primary" />
+            {/* Card 4: Care Plan */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-border hover:shadow-md transition-all flex flex-col gap-4">
+              <div className="bg-primary/10 w-14 h-14 rounded-xl flex items-center justify-center">
+                <ClipboardList className="w-7 h-7 text-primary" />
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-2">Talking Points</h3>
+                <h3 className="text-lg font-bold mb-2">Care Plan</h3>
+                <p className="text-foreground/70 text-sm">
+                  A personalized roadmap for your treatments and daily hygiene routine.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 5: Timelines */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-border hover:shadow-md transition-all flex flex-col gap-4">
+              <div className="bg-primary/10 w-14 h-14 rounded-xl flex items-center justify-center">
+                <Calendar className="w-7 h-7 text-primary" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold mb-2">Timelines</h3>
+                <p className="text-foreground/70 text-sm">
+                  Know exactly when to schedule appointments and follow-ups.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 6: Reminders */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-border hover:shadow-md transition-all flex flex-col gap-4">
+              <div className="bg-primary/10 w-14 h-14 rounded-xl flex items-center justify-center">
+                <Bell className="w-7 h-7 text-primary" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold mb-2">Reminders</h3>
+                <p className="text-foreground/70 text-sm">
+                  Smart notifications so you never miss a check-up or daily habit.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 7: Risk Assessment */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-border hover:shadow-md transition-all flex flex-col gap-4">
+              <div className="bg-primary/10 w-14 h-14 rounded-xl flex items-center justify-center">
+                <TrendingUp className="w-7 h-7 text-primary" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold mb-2">Risk Assessment</h3>
+                <p className="text-foreground/70 text-sm">
+                  Understand your long-term risks for cavities, gum disease, and more.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 8: Oral Health Score */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-border hover:shadow-md transition-all flex flex-col gap-4">
+              <div className="bg-primary/10 w-14 h-14 rounded-xl flex items-center justify-center">
+                <HeartPulse className="w-7 h-7 text-primary" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold mb-2">Oral Health Score</h3>
+                <p className="text-foreground/70 text-sm">
+                  A simple 0-100 score to track your overall dental wellness over time.
+                </p>
+              </div>
+            </div>
+
+            {/* Card 9: Talking Points */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-border hover:shadow-md transition-all flex flex-col gap-4">
+              <div className="bg-primary/10 w-14 h-14 rounded-xl flex items-center justify-center">
+                <MessageSquare className="w-7 h-7 text-primary" />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold mb-2">Talking Points</h3>
                 <p className="text-foreground/70 text-sm">
                   Specific questions to ask your dentist so you walk in prepared.
                 </p>
