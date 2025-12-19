@@ -168,7 +168,7 @@ export default function Employers() {
               </div>
               <div className="bg-white rounded-lg p-4 text-center border border-primary/20 w-full max-w-xs shadow-sm">
                 <p className="text-muted-foreground text-xs mb-1">Monthly Cost</p>
-                <p className="text-2xl font-display font-bold text-primary">$20-50</p>
+                <p className="text-2xl font-display font-bold text-primary">$25</p>
               </div>
             </div>
           </div>
