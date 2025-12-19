@@ -26,7 +26,7 @@ export default function Home() {
 
               {/* Subheadline - Outcome-Oriented */}
               <p className="text-xl text-foreground/70 leading-relaxed mb-8">
-                You shouldn't have to wait until your dentist appointment to know something's wrong. DentaSmart gives you clear, instant insights into your oral health—so you can catch problems early, avoid expensive emergencies, and walk into every appointment in control.
+                You shouldn't have to wait until your dentist appointment to know something's wrong. DentaSmart gives you clear, instant insights into your oral health so you can catch problems early, avoid expensive emergencies, and walk into every appointment in control.
               </p>
 
               {/* Micro-proof */}
@@ -127,7 +127,7 @@ export default function Home() {
             The answer: Your Personal AI Dental Companion
           </h2>
           <p className="text-lg text-foreground/70 text-center mb-12 leading-relaxed">
-            DentaSmart analyzes your mouth in seconds, explains what's happening in plain language, and helps you make informed decisions—before you see your dentist.
+            DentaSmart analyzes your mouth in seconds, explains what's happening in plain language, and helps you make informed decisions before you see your dentist.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -237,7 +237,7 @@ export default function Home() {
               {
                 num: "2",
                 title: "Get Instant Insights",
-                desc: "Our AI analyzes and explains what it finds—in plain language",
+                desc: "Our AI analyzes and explains what it finds in plain language",
               },
               {
                 num: "3",

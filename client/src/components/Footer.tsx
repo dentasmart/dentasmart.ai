@@ -8,7 +8,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src="/dentasmart-logo.png" alt="DentaSmart" className="h-8 w-auto" />
+              <img src="/images/dentasmart-logo.png" alt="DentaSmart Logo" className="h-8 w-auto" />
             </div>
             <p className="text-muted-foreground text-sm">
               Your Personal AI Dental Companion
@@ -24,6 +24,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/how-it-works"
+                  title="How DentaSmart AI Works"
                   className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
                   How It Works
@@ -32,6 +33,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/features"
+                  title="DentaSmart AI Features"
                   className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
                   Features
@@ -40,6 +42,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/pricing"
+                  title="DentaSmart Pricing Plans"
                   className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
                   Pricing
@@ -57,6 +60,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/team"
+                  title="Meet the DentaSmart Team"
                   className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
                   Team
@@ -65,9 +69,10 @@ export default function Footer() {
               <li>
                 <Link
                   href="/employers"
+                  title="DentaSmart for Employers"
                   className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
-                  For Employers
+                  Employers
                 </Link>
               </li>
               <li>
@@ -106,6 +111,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/faqs"
+                  title="Frequently Asked Questions"
                   className="text-muted-foreground hover:text-primary transition-colors text-sm"
                 >
                   FAQs

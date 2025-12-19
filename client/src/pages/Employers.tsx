@@ -11,7 +11,7 @@ export default function Employers() {
       <section className="py-16 md:py-24 bg-gradient-to-br from-white via-secondary/30 to-white">
         <div className="container max-w-3xl text-center">
           <h1 className="text-5xl md:text-6xl font-display font-bold text-foreground mb-6">
-            A dental benefit employees actually use—at 75% less cost
+            A dental benefit employees actually use at 75% less cost
           </h1>
           <p className="text-xl text-foreground/70 leading-relaxed">
             Give employees a Personal AI Dental Companion that helps prevent problems, reduce anxiety, and avoid expensive surprises.

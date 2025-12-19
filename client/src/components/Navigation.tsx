@@ -46,6 +46,7 @@ export default function Navigation() {
             <Link
               key={item.href}
               href={item.href}
+              title={`Learn more about DentaSmart ${item.label}`}
               className={`font-medium text-sm transition-colors ${
                 isActive(item.href)
                   ? "text-primary border-b-2 border-primary pb-1"
