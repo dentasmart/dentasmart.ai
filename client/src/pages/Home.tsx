@@ -298,17 +298,17 @@ Prevent problems early and get a second opinion before costly dental work.
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
             <div className="bg-secondary rounded-xl p-8 border-2 border-border text-center">
-              <p className="text-foreground/70 mb-4 text-sm font-semibold">Monthly Monitoring</p>
+              <p className="text-foreground/70 mb-4 text-sm font-semibold">Clarity Plan</p>
               <p className="text-5xl font-display font-bold text-primary mb-2">$75</p>
               <p className="text-muted-foreground text-sm">/year</p>
-              <p className="text-foreground/70 text-sm mt-4">Clarity Plan</p>
+              <p className="text-foreground/70 text-sm mt-4">Unlimited Full Mouth Analysis</p>
             </div>
 
             <div className="bg-secondary rounded-xl p-8 border-2 border-border text-center">
-              <p className="text-foreground/70 mb-4 text-sm font-semibold">One-Time Second Opinion</p>
+              <p className="text-foreground/70 mb-4 text-sm font-semibold">Consult Plan</p>
               <p className="text-5xl font-display font-bold text-primary mb-2">$30</p>
               <p className="text-muted-foreground text-sm">one-time</p>
-              <p className="text-foreground/70 text-sm mt-4">Consult Plan</p>
+              <p className="text-foreground/70 text-sm mt-4">One-time Analysis (Second Opinion)</p>
             </div>
           </div>
 
