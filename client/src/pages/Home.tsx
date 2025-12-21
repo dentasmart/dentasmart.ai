@@ -26,7 +26,7 @@ export default function Home() {
 
               {/* Subheadline - Outcome-Oriented */}
               <p className="text-xl text-foreground/70 leading-relaxed mb-8">
-                You shouldn't have to wait until your dentist appointment to know something's wrong. DentaSmart gives you clear, instant insights into your oral health so you can catch problems early, avoid expensive emergencies, and walk into every appointment in control.
+                You shouldn't have to wait until your next dentist visit or until you feel pain to know something's changing. DentaSmart helps you monitor your teeth and gums monthly with a quick photo check, then gives plain-English explanations, clear care guidance, and reminders based on your results. And when a treatment plan feels expensive or confusing, DentaSmart helps you get a second opinion so you can prevent problems early and avoid costly surprises.
               </p>
 
               {/* Micro-proof */}
