@@ -60,19 +60,18 @@ export default function Navigation() {
 
         {/* Desktop CTA */}
         <div className="hidden md:flex gap-3">
-          <Button
-            variant="outline"
-            size="sm"
-            className="border-primary text-primary hover:bg-primary/5"
+          <a
+            href="https://apps.apple.com/app/dentasmart/id6670000000"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            See Pricing
-          </Button>
-          <Button
-            size="sm"
-            className="bg-primary hover:bg-primary/90 text-white font-semibold"
-          >
-            Download the App
-          </Button>
+            <Button
+              size="sm"
+              className="bg-primary hover:bg-primary/90 text-white font-semibold"
+            >
+              Download the App
+            </Button>
+          </a>
         </div>
 
         {/* Mobile Menu Button */}
@@ -108,15 +107,16 @@ export default function Navigation() {
               </Link>
             ))}
             <div className="flex flex-col gap-2 pt-4 border-t border-border">
-              <Button
-                variant="outline"
-                className="w-full border-primary text-primary hover:bg-primary/5"
+              <a
+                href="https://apps.apple.com/app/dentasmart/id6670000000"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full"
               >
-                See Pricing
-              </Button>
-              <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold">
-                Download the App
-              </Button>
+                <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold">
+                  Download the App
+                </Button>
+              </a>
             </div>
           </div>
         </div>
