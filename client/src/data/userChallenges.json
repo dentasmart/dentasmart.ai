@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "title": "Prevention",
+    "challenge": "Catch problems before they hurt.",
+    "solution": "DentaSmart gives you the tools to save your smile before problems strike.",
+    "imagePrompt": "A serene, minimalist close-up of a healthy, glowing smile with a subtle shield or protective aura, symbolizing prevention and safety. Soft, natural lighting, high-end photography style."
+  },
+  {
+    "id": 2,
+    "title": "Second Opinion",
+    "challenge": "41% of patients distrust their dental diagnoses.",
+    "solution": "Get a second opinion in seconds and regain confidence in your care.",
+    "imagePrompt": "A split composition showing a confused person looking at a dental x-ray on one side, and a clear, reassuring AI analysis on a smartphone screen on the other. Clean, modern aesthetic."
+  },
+  {
+    "id": 3,
+    "title": "Affordability",
+    "challenge": "Traditional dental insurance costs around $1,200 a year.",
+    "solution": "DentaSmart delivers better care for 75% less. Quality guidance for the cost of a Netflix subscription.",
+    "imagePrompt": "A conceptual image showing a stack of gold coins balancing a single tooth, representing value and savings. Minimalist, elegant, with a focus on balance and smart choices."
+  },
+  {
+    "id": 4,
+    "title": "AI Advantages",
+    "challenge": "Answers at 2 AM? Skip the waiting room.",
+    "solution": "Your dentist in your pocket, 24/7. 100% detection accuracy because you deserve certainty.",
+    "imagePrompt": "A futuristic yet warm image of a smartphone glowing softly in a dark room, displaying a friendly AI dental assistant interface. Symbolizes 24/7 availability and comfort."
+  },
+  {
+    "id": 5,
+    "title": "Dental Anxiety",
+    "challenge": "Turn dental fear into dental confidence.",
+    "solution": "No more dread – know what to expect before you sit in the chair. Replace anxiety with answers.",
+    "imagePrompt": "A person looking calm and confident while holding a smartphone, with a blurred dental chair in the background. The focus is on the person's relaxed expression and the empowering device."
+  },
+  {
+    "id": 6,
+    "title": "Trust & Clarity",
+    "challenge": "No more dental jargon – just clear, plain-language explanations.",
+    "solution": "See what your dentist sees – in plain English. Clarity in diagnosis, confidence in decisions.",
+    "imagePrompt": "A magnifying glass revealing clear, simple text over a complex dental document or x-ray. Represents clarity, transparency, and understanding."
+  },
+  {
+    "id": 7,
+    "title": "Care Consistency",
+    "challenge": "Stay on track with your dental care every day.",
+    "solution": "Your daily dental coach for a lifetime of smiles. Little habits, big results.",
+    "imagePrompt": "A series of calendar days checked off with small, happy tooth icons, symbolizing consistency and daily progress. Clean, organized, and motivating."
+  },
+  {
+    "id": 8,
+    "title": "Emergency Avoidance",
+    "challenge": "A midnight toothache that lands you in the ER.",
+    "solution": "Catch early signs of trouble before they become emergencies. Sleep soundly knowing you're in control.",
+    "imagePrompt": "A peaceful bedroom scene at night, with a smartphone on the nightstand displaying a 'All Clear' notification. Represents peace of mind and avoidance of emergencies."
+  },
+  {
+    "id": 9,
+    "title": "No Insurance",
+    "challenge": "No dental insurance? No problem.",
+    "solution": "Get expert insights and preventive care on your phone for a fraction of the cost.",
+    "imagePrompt": "A diverse group of people smiling confidently, with a subtle graphic overlay of a broken chain representing freedom from insurance constraints. Inclusive and empowering."
+  },
+  {
+    "id": 10,
+    "title": "Habit Building",
+    "challenge": "Oral health habits are easy to slip up on.",
+    "solution": "Personalized tips and gentle reminders to keep you on track. Your smile's personal trainer.",
+    "imagePrompt": "A friendly notification on a smartwatch or phone screen saying 'Time for a quick scan!', with a background of a healthy lifestyle setting (e.g., yoga mat, water bottle)."
+  },
+  {
+    "id": 11,
+    "title": "Empowerment",
+    "challenge": "From 'I'm terrified' to 'I got this'.",
+    "solution": "Knowledge is the antidote to fear. Walk into your next appointment calm and confident.",
+    "imagePrompt": "A superhero cape draped over a toothbrush or a smartphone, symbolizing the empowerment of the patient. Playful yet meaningful."
+  },
+  {
+    "id": 12,
+    "title": "Transparency",
+    "challenge": "Total transparency – no more surprises in your care or your bill.",
+    "solution": "The truth about your teeth, unfiltered and unbiased. No upselling, just understanding.",
+    "imagePrompt": "A clear glass of water with a perfect tooth inside, symbolizing purity, transparency, and truth. High-key lighting, very clean look."
+  },
+  {
+    "id": 13,
+    "title": "Continuous Care",
+    "challenge": "Don't start from scratch every time you see a new dentist.",
+    "solution": "All your records and progress in one place. A continuous story of your oral health.",
+    "imagePrompt": "A continuous line drawing that forms a smile, connecting different points in time. Artistic, fluid, and representing continuity."
+  },
+  {
+    "id": 14,
+    "title": "Smart Savings",
+    "challenge": "That tiny cavity just turned into a $1,200 crown.",
+    "solution": "Early detection can turn a $150 fix into avoiding a $1,200 disaster.",
+    "imagePrompt": "A piggy bank shaped like a tooth, with a small coin being dropped in. Represents saving money through smart dental care."
+  },
+  {
+    "id": 15,
+    "title": "Daily Tracking",
+    "challenge": "Step count, heart rate, sleep quality—why not your teeth?",
+    "solution": "A simple oral health score (0 to 100) that updates as you use it. Like a Fitbit for your smile.",
+    "imagePrompt": "A dashboard interface showing a 'Health Score' of 95/100, surrounded by other health metrics like heart rate and steps. Integrated, modern, and tech-focused."
+  }
+]

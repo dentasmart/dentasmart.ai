@@ -1,255 +1,224 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
+import { Check, ArrowRight, Building2, Users, TrendingDown, ShieldCheck } from "lucide-react";
 
 export default function Employers() {
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-white via-secondary/30 to-white">
-        <div className="container max-w-3xl text-center">
-          <h1 className="text-5xl md:text-6xl font-display font-bold text-foreground mb-6">
-            A dental benefit employees actually use at 75% less cost
+      {/* Hero Section - Editorial Style */}
+      <section className="relative py-32 md:py-48 bg-stone-100 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/challenges/care_consistency.jpg" 
+            alt="Corporate Wellness" 
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-100/90 via-stone-100/60 to-stone-100" />
+        </div>
+
+        <div className="container relative z-10 px-4 mx-auto max-w-5xl text-center">
+          <h1 className="text-5xl md:text-7xl font-light tracking-tight text-stone-900 mb-8 leading-[1.1]">
+            A dental benefit employees <br />
+            <span className="font-normal italic">actually use</span>.
           </h1>
-          <p className="text-xl text-foreground/70 leading-relaxed">
-            Give employees a Personal AI Dental Companion that helps prevent problems, reduce anxiety, and avoid expensive surprises.
+          <p className="text-xl md:text-2xl text-stone-600 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
+            Give your team a Personal AI Dental Companion that prevents problems, reduces anxiety, and costs 75% less than traditional insurance.
           </p>
-        </div>
-      </section>
-
-      {/* The Problem */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            Traditional dental benefits don't work
-          </h2>
-          <p className="text-lg text-foreground/70 mb-12 text-center leading-relaxed">
-            They're expensive, rarely used, and employees still pay a lot out of pocket.
-          </p>
-          <div className="space-y-6">
-            {[
-              { icon: "💰", title: "High cost per employee", desc: "~$1,200/year with low utilization" },
-              { icon: "😕", title: "Low employee satisfaction", desc: "Dental benefits rank last in satisfaction surveys" },
-              { icon: "📉", title: "Preventive care underutilized", desc: "Leads to expensive emergency procedures" },
-            ].map((problem, idx) => (
-              <div key={idx} className="bg-secondary rounded-xl p-6 border border-border">
-                <div className="flex items-start gap-4">
-                  <div className="text-4xl">{problem.icon}</div>
-                  <div>
-                    <h3 className="font-display font-bold text-foreground mb-2">{problem.title}</h3>
-                    <p className="text-foreground/70">{problem.desc}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Button size="lg" className="bg-stone-900 hover:bg-stone-800 text-white rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105">
+              Schedule a Demo
+            </Button>
+            <Button size="lg" variant="outline" className="border-stone-300 text-stone-900 hover:bg-stone-200 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300">
+              Calculate Savings
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* The Solution */}
-      <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            DentaSmart makes dental benefits simple
-          </h2>
-          <div className="space-y-6">
-            {[
-              { icon: "✓", title: "Employees get monthly guidance", desc: "AI-powered insights help them stay on top of their oral health" },
-              { icon: "✓", title: "HR gets easy rollout", desc: "Simple setup, minimal administration, powerful results" },
-              { icon: "✓", title: "Costs drop significantly", desc: "Reduce benefit costs by up to 75% while improving outcomes" },
-            ].map((benefit, idx) => (
-              <div key={idx} className="bg-white rounded-xl p-6 border border-border">
-                <div className="flex items-start gap-4">
-                  <div className="text-3xl text-primary">{benefit.icon}</div>
-                  <div>
-                    <h3 className="font-display font-bold text-foreground mb-2">{benefit.title}</h3>
-                    <p className="text-foreground/70">{benefit.desc}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Detailed Comparison Table */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-5xl">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6 text-center">
-            Compare the value
-          </h2>
-          <p className="text-lg text-foreground/70 text-center mb-12 max-w-3xl mx-auto">
-            See how DentaSmart Complete stacks up against traditional insurance carriers like Cigna, Aetna, and Humana.
-          </p>
-          
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr>
-                  <th className="text-left py-6 px-6 bg-secondary/30 rounded-tl-2xl border-b-2 border-border w-1/3">
-                    <span className="font-display font-bold text-xl text-foreground">Feature</span>
-                  </th>
-                  <th className="text-center py-6 px-6 bg-secondary/30 border-b-2 border-border w-1/3">
-                    <div className="font-display font-bold text-xl text-foreground mb-1">Traditional Insurance</div>
-                    <div className="text-sm text-muted-foreground">(Cigna, Aetna, Humana)</div>
-                  </th>
-                  <th className="text-center py-6 px-6 bg-primary/5 rounded-tr-2xl border-b-2 border-primary w-1/3 relative">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-primary"></div>
-                    <div className="font-display font-bold text-xl text-primary mb-1">DentaSmart Complete</div>
-                    <div className="text-sm text-primary/80">All-in-one Solution</div>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { feature: "Annual Cost (Individual)", trad: "$400 - $700+", denta: "$150", highlight: true },
-                  { feature: "Annual Cost (Family)", trad: "$1,000 - $1,500+", denta: "$300", highlight: true },
-                  { feature: "Preventive Care (Checkups, Cleanings, X-Rays)", trad: "100% covered (usually)", denta: "Included (AI Monitoring)" },
-                  { feature: "Basic Procedures (Fillings, Extractions)", trad: "80% coverage after deductible", denta: "20-60% savings immediately" },
-                  { feature: "Major Procedures (Root Canals, Crowns)", trad: "50% coverage after waiting", denta: "20-60% savings immediately" },
-                  { feature: "Cosmetic Procedures (Implants, Whitening)", trad: "Not covered", denta: "Included in savings" },
-                  { feature: "Dentist Network", trad: "Limited PPO Network", denta: "75,000+ Locations" },
-                  { feature: "Annual Spending Caps", trad: "Capped at $1,000 - $1,500", denta: "No annual caps" },
-                  { feature: "Waiting Periods", trad: "6-12 months for major work", denta: "No waiting periods" },
-                  { feature: "Deductibles", trad: "$50 - $100 per person", denta: "No deductibles" },
-                  { feature: "Pre-existing Conditions", trad: "Often excluded", denta: "No exclusions" },
-                  { feature: "Payment Flexibility (BNPL)", trad: "Not available", denta: "Buy Now, Pay Later included", highlight: true },
-                  { feature: "Switch Plans", trad: "Open enrollment only", denta: "Switch easily anytime" },
-                ].map((row, idx) => (
-                  <tr key={idx} className={`border-b border-border ${row.highlight ? "bg-secondary/10" : ""}`}>
-                    <td className="py-4 px-6 font-semibold text-foreground">{row.feature}</td>
-                    <td className="py-4 px-6 text-center text-foreground/70">{row.trad}</td>
-                    <td className="py-4 px-6 text-center font-bold text-primary bg-primary/5">{row.denta}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          
-          <div className="mt-8 text-center">
-            <p className="text-sm text-muted-foreground">
-              *Comparison based on average PPO plans from major carriers for 2024-2025. Actual insurance costs vary by location and employer contribution.
+      {/* The Problem - Minimalist Grid */}
+      <section className="py-32 bg-white">
+        <div className="container px-4 mx-auto max-w-6xl">
+          <div className="text-center mb-24">
+            <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
+              Traditional benefits are broken
+            </h2>
+            <p className="text-xl text-stone-600 font-light max-w-2xl mx-auto">
+              Expensive premiums, low utilization, and reactive care don't solve the real problem.
             </p>
           </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              { 
+                icon: TrendingDown, 
+                title: "High Cost, Low Value", 
+                desc: "~$1,200/year per employee with less than 50% utilization rates." 
+              },
+              { 
+                icon: Users, 
+                title: "Low Satisfaction", 
+                desc: "Dental benefits consistently rank last in employee satisfaction surveys." 
+              },
+              { 
+                icon: ShieldCheck, 
+                title: "Reactive Care", 
+                desc: "Employees wait for pain, leading to expensive emergency procedures and lost productivity." 
+              }
+            ].map((item, idx) => (
+              <div key={idx} className="text-center group">
+                <div className="w-20 h-20 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:bg-stone-900 transition-colors duration-500">
+                  <item.icon className="w-8 h-8 text-stone-900 group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-2xl font-medium text-stone-900 mb-4">{item.title}</h3>
+                <p className="text-stone-600 font-light leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ROI Section */}
-      <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container max-w-4xl">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
+      {/* User Challenges Carousel */}
+      <UserChallengesCarousel />
+
+      {/* Comparison Table - Clean & Modern */}
+      <section className="py-32 bg-stone-50">
+        <div className="container px-4 mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
+              Compare the value
+            </h2>
+            <p className="text-xl text-stone-600 font-light max-w-3xl mx-auto">
+              See how DentaSmart Complete stacks up against traditional carriers.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-3xl shadow-sm border border-stone-100 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-stone-100">
+                    <th className="text-left py-8 px-8 w-1/3">
+                      <span className="text-lg font-medium text-stone-900">Feature</span>
+                    </th>
+                    <th className="text-center py-8 px-8 w-1/3 bg-stone-50/50">
+                      <div className="text-lg font-medium text-stone-500 mb-1">Traditional Insurance</div>
+                      <div className="text-sm text-stone-400 font-light">(Cigna, Aetna, Humana)</div>
+                    </th>
+                    <th className="text-center py-8 px-8 w-1/3 bg-stone-900 text-white relative">
+                      <div className="text-lg font-medium mb-1">DentaSmart Complete</div>
+                      <div className="text-sm text-white/70 font-light">All-in-one Solution</div>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-stone-100">
+                  {[
+                    { feature: "Annual Cost (Family)", trad: "$1,000 - $1,500+", denta: "$300", highlight: true },
+                    { feature: "Preventive Care", trad: "100% covered (usually)", denta: "Included (AI Monitoring)" },
+                    { feature: "Major Procedures", trad: "50% coverage (waiting period)", denta: "20-60% savings immediately" },
+                    { feature: "Cosmetic Procedures", trad: "Not covered", denta: "Included in savings" },
+                    { feature: "Annual Caps", trad: "$1,000 - $1,500 limit", denta: "No annual caps" },
+                    { feature: "Waiting Periods", trad: "6-12 months", denta: "No waiting periods" },
+                    { feature: "Deductibles", trad: "$50 - $100 per person", denta: "No deductibles" },
+                    { feature: "Payment Flexibility", trad: "Not available", denta: "Buy Now, Pay Later included" },
+                  ].map((row, idx) => (
+                    <tr key={idx} className="group hover:bg-stone-50/30 transition-colors">
+                      <td className="py-6 px-8 font-medium text-stone-700">{row.feature}</td>
+                      <td className="py-6 px-8 text-center text-stone-500 font-light bg-stone-50/30">{row.trad}</td>
+                      <td className={`py-6 px-8 text-center font-medium ${row.highlight ? 'text-stone-900 bg-stone-100' : 'text-stone-900 bg-stone-50'}`}>
+                        {row.denta}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className="text-center text-sm text-stone-400 mt-8 font-light">
+            *Comparison based on average PPO plans from major carriers. Actual costs vary by location.
+          </p>
+        </div>
+      </section>
+
+      {/* ROI - Big Numbers */}
+      <section className="py-32 bg-white">
+        <div className="container px-4 mx-auto max-w-5xl">
+          <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-24 text-center">
             The simplest math you'll do all year
           </h2>
-          
-          {/* Cost Comparison */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-white rounded-2xl p-8 border-2 border-border flex flex-col items-center justify-center">
-              <p className="text-foreground/70 mb-4 text-sm font-semibold text-center">Traditional Insurance</p>
-              <div className="text-center mb-6">
-                <p className="text-6xl font-display font-bold text-foreground">~$1,200</p>
-                <p className="text-muted-foreground text-sm mt-2">per employee family/year</p>
-              </div>
-              <div className="bg-secondary rounded-lg p-4 text-center w-full max-w-xs">
-                <p className="text-muted-foreground text-xs mb-1">Monthly Cost</p>
-                <p className="text-2xl font-display font-bold text-foreground">~$100</p>
-              </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
+            <div className="text-center p-12 rounded-3xl bg-stone-50 border border-stone-100">
+              <p className="text-stone-500 font-medium mb-4">Traditional Insurance</p>
+              <div className="text-6xl md:text-7xl font-light text-stone-400 mb-2">~$1,200</div>
+              <p className="text-stone-400 text-sm">per employee family/year</p>
             </div>
-            
-            <div className="bg-gradient-to-br from-primary/10 to-secondary rounded-2xl p-8 border-2 border-primary flex flex-col items-center justify-center relative overflow-hidden">
-              <div className="absolute top-0 left-0 w-full bg-primary text-white text-center py-1 text-xs font-bold uppercase tracking-wider">
-                75% SAVINGS
+
+            <div className="text-center p-12 rounded-3xl bg-stone-900 text-white relative overflow-hidden shadow-xl transform md:scale-110">
+              <div className="absolute top-6 right-6 bg-white text-stone-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                75% Savings
               </div>
-              <p className="text-foreground/70 mb-4 text-sm font-semibold text-center mt-6">DentaSmart Complete</p>
-              <div className="text-center mb-6">
-                <p className="text-6xl font-display font-bold text-primary">~$300</p>
-                <p className="text-muted-foreground text-sm mt-2">per employee family/year</p>
-              </div>
-              <div className="bg-white rounded-lg p-4 text-center border border-primary/20 w-full max-w-xs shadow-sm">
-                <p className="text-muted-foreground text-xs mb-1">Monthly Cost</p>
-                <p className="text-2xl font-display font-bold text-primary">$25</p>
+              <p className="text-white/70 font-medium mb-4">DentaSmart Complete</p>
+              <div className="text-6xl md:text-7xl font-light text-white mb-2">~$300</div>
+              <p className="text-white/50 text-sm">per employee family/year</p>
+              <div className="mt-8 inline-block bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 border border-white/20">
+                <span className="text-white font-medium">$25</span>
+                <span className="text-white/70 text-sm ml-2">/ month</span>
               </div>
             </div>
           </div>
 
-          {/* Savings Breakdown */}
-          <div className="bg-white rounded-2xl p-8 border border-primary/20 mb-8">
-            <h3 className="font-display font-bold text-foreground mb-8 text-center text-2xl">Your Savings Per Employee</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center p-6 bg-gradient-to-br from-primary/5 to-secondary rounded-xl">
-                <p className="text-4xl font-display font-bold text-primary mb-2">$900</p>
-                <p className="text-sm text-foreground/70">Annual Savings</p>
-              </div>
-              <div className="text-center p-6 bg-gradient-to-br from-primary/5 to-secondary rounded-xl">
-                <p className="text-4xl font-display font-bold text-primary mb-2">$75</p>
-                <p className="text-sm text-foreground/70">Monthly Savings</p>
-              </div>
-              <div className="text-center p-6 bg-gradient-to-br from-primary/5 to-secondary rounded-xl">
-                <p className="text-4xl font-display font-bold text-primary mb-2">4x</p>
-                <p className="text-sm text-foreground/70">Better Value</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What Employees Love */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            What employees love
-          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: "🎯", title: "Catch Problems Early", bullets: ["Monthly check-ins", "Proactive risk indicators", "Prevent expensive emergencies"] },
-              { icon: "💬", title: "24/7 Support", bullets: ["Chat with Dr. Din anytime", "Reduce dental anxiety", "Get answers instantly"] },
-              { icon: "💳", title: "Flexible Payments", bullets: ["Buy Now, Pay Later options", "No surprise bills", "Transparent pricing"] },
-            ].map((benefit, idx) => (
-              <div key={idx} className="bg-secondary rounded-2xl p-8">
-                <div className="text-5xl mb-4">{benefit.icon}</div>
-                <h3 className="text-2xl font-display font-bold text-foreground mb-6">{benefit.title}</h3>
-                <ul className="space-y-3">
-                  {benefit.bullets.map((bullet, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <span className="text-primary font-bold">✓</span>
-                      <span className="text-foreground/70">{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
+              { value: "$900", label: "Annual Savings Per Employee" },
+              { value: "4x", label: "Better Value Proposition" },
+              { value: "0", label: "Administrative Headache" }
+            ].map((stat, idx) => (
+              <div key={idx} className="text-center p-8 rounded-2xl bg-stone-50">
+                <div className="text-5xl font-light text-stone-900 mb-2">{stat.value}</div>
+                <div className="text-sm uppercase tracking-widest text-stone-500 font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Demo Form */}
-      <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container max-w-xl">
-          <div className="bg-white rounded-2xl p-8 shadow-lg border border-border">
-            <h2 className="text-3xl font-display font-bold text-foreground mb-6 text-center">
-              See how much you can save
-            </h2>
-            <p className="text-foreground/70 text-center mb-8">
-              Get a custom ROI analysis for your company in 24 hours.
-            </p>
-            <form className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-1">Company Name</label>
-                <input type="text" className="w-full p-3 rounded-lg border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="Acme Corp" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-1">Number of Employees</label>
-                <input type="number" className="w-full p-3 rounded-lg border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="50" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-foreground mb-1">Work Email</label>
-                <input type="email" className="w-full p-3 rounded-lg border border-border focus:border-primary focus:ring-1 focus:ring-primary outline-none" placeholder="you@company.com" />
-              </div>
-              <Button className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-6 text-lg shadow-lg mt-4">
-                Request Demo & ROI Report
-              </Button>
-            </form>
+      {/* Final CTA */}
+      <section className="relative py-40 flex items-center justify-center overflow-hidden bg-stone-900">
+        <div className="absolute inset-0 z-0 opacity-30">
+          <img 
+            src="/images/challenges/smart_savings.jpg" 
+            alt="Smart Savings" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        
+        <div className="container relative z-10 text-center px-4">
+          <h2 className="text-5xl md:text-7xl font-light text-white mb-8 tracking-tight">
+            Ready to upgrade your benefits?
+          </h2>
+          <p className="text-xl md:text-2xl text-white/80 font-light mb-12 max-w-2xl mx-auto">
+            Join forward-thinking companies saving thousands while improving employee health.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Button 
+              size="lg" 
+              className="bg-white text-stone-900 hover:bg-stone-100 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105"
+            >
+              Schedule a Demo
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="border-white/30 text-white hover:bg-white/10 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300"
+            >
+              Contact Sales
+            </Button>
           </div>
         </div>
       </section>

@@ -2,346 +2,276 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import Testimonials from "@/components/Testimonials";
 import { Button } from "@/components/ui/button";
+import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900">
       <Navigation />
 
-      {/* Hero Section - Tagline + Problem + Empathy */}
-      <section className="py-20 md:py-32 bg-gradient-to-br from-white via-secondary/20 to-white">
-        <div className="container max-w-4xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Left: Headline & Copy */}
-            <div>
-              {/* Tagline */}
-              <div className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold mb-6 border border-primary/20">
-                ✓ Understand Your Mouth Before Your Dentist Explains It
-              </div>
+      {/* Hero Section - Oura Style */}
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-stone-100">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/challenges/prevention.jpg" 
+            alt="DentaSmart Lifestyle" 
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-100/80 via-stone-100/50 to-stone-100" />
+        </div>
 
-              {/* Main Headline - Problem + Empathy */}
-              <h1 className="text-5xl md:text-6xl font-display font-bold text-foreground mb-6 leading-tight">
-                Stop worrying about your teeth
-              </h1>
+        <div className="container relative z-10 px-4 text-center max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-stone-900 mb-8 leading-[1.1]">
+              Understand your mouth <br />
+              <span className="font-normal italic">before</span> your dentist explains it.
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-stone-600 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+              DentaSmart helps you monitor your teeth and gums monthly with a quick photo check and clear guidance.
+              Prevent problems early and get a second opinion before costly dental work.
+            </p>
 
-              {/* Subheadline - Outcome-Oriented */}
-              <p className="text-xl text-foreground/70 leading-relaxed mb-8">
-                DentaSmart helps you monitor your teeth and gums monthly with a quick photo check and clear guidance.
-Prevent problems early and get a second opinion before costly dental work.
-              </p>
-
-              {/* Micro-proof */}
-              <p className="text-sm text-primary font-semibold mb-8 flex items-center gap-2">
-                <span className="text-lg">✓</span> Works with any dentist. Any dental plan.
-              </p>
-
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg">
-                  Download the App
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-primary text-primary hover:bg-primary/5 font-semibold"
-                >
-                  See Pricing
-                </Button>
-              </div>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <Button 
+                size="lg" 
+                className="bg-stone-900 hover:bg-stone-800 text-white rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105"
+                onClick={() => window.open('https://apps.apple.com/us/app/dentasmart/id6449540000', '_blank')}
+              >
+                Download the App
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-stone-300 text-stone-700 hover:bg-stone-200 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300"
+              >
+                See Pricing
+              </Button>
             </div>
+          </motion.div>
+        </div>
+      </section>
 
-            {/* Right: Visual */}
-            <div className="relative h-[600px] w-full flex items-center justify-center">
+      {/* User Challenges Carousel */}
+      <UserChallengesCarousel />
+
+      {/* Social Proof - Minimalist */}
+      <section className="py-24 bg-white border-y border-stone-100">
+        <div className="container px-4 mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+            {[
+              { value: "50K+", label: "Scans Analyzed" },
+              { value: "100%", label: "Detection Accuracy" },
+              { value: "24/7", label: "Dr. Din Support" }
+            ].map((stat, idx) => (
+              <div key={idx} className="space-y-2">
+                <div className="text-5xl md:text-6xl font-light text-stone-900 tracking-tighter">
+                  {stat.value}
+                </div>
+                <div className="text-sm uppercase tracking-widest text-stone-500 font-medium">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* The Problem - Editorial Layout */}
+      <section className="py-32 bg-stone-50">
+        <div className="container px-4 mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
               <img 
-                src="/images/ai-dental-insights-app.png" 
-                alt="DentaSmart App Interface showing AI Dental Insights" 
-                className="h-full w-auto object-contain drop-shadow-2xl"
+                src="/images/challenges/dental_anxiety.jpg" 
+                alt="Dental Anxiety" 
+                className="w-full h-full object-cover"
               />
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Social Proof - Trust Metrics */}
-      <section className="py-12 md:py-16 bg-secondary/30 border-y border-border">
-        <div className="container">
-          <div className="grid grid-cols-3 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-display font-bold text-primary mb-2">50K+</div>
-              <p className="text-sm text-foreground/70">Scans Analyzed</p>
-            </div>
-            <div>
-              <div className="text-4xl font-display font-bold text-primary mb-2">100%</div>
-              <p className="text-sm text-foreground/70">Detection Accuracy</p>
-            </div>
-            <div>
-              <div className="text-4xl font-display font-bold text-primary mb-2">24/7</div>
-              <p className="text-sm text-foreground/70">Dr. Din Support</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* The Problem - One Clear Issue */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            The problem: Dental anxiety and uncertainty
-          </h2>
-
-          <div className="space-y-6">
-            {[
-              {
-                icon: "❓",
-                problem: "You don't understand what your dentist sees",
-                detail: "X-rays, charts, and technical jargon leave you confused and anxious",
-              },
-              {
-                icon: "💰",
-                problem: "You get blindsided by costs",
-                detail: "Surprise bills and insurance denials derail your finances and stress you out",
-              },
-              {
-                icon: "⏰",
-                problem: "You wait for problems to hurt",
-                detail: "By the time you feel pain, damage is already done and treatment is expensive",
-              },
-            ].map((item, idx) => (
-              <div key={idx} className="bg-secondary rounded-xl p-6 border border-border">
-                <div className="flex items-start gap-4">
-                  <span className="text-3xl">{item.icon}</span>
-                  <div>
-                    <h3 className="font-display font-bold text-foreground mb-2">{item.problem}</h3>
-                    <p className="text-foreground/70">{item.detail}</p>
+            <div className="space-y-12">
+              <h2 className="text-4xl md:text-5xl font-light leading-tight text-stone-900">
+                The problem isn't just your teeth. <br />
+                <span className="italic font-normal">It's the uncertainty.</span>
+              </h2>
+              
+              <div className="space-y-8">
+                {[
+                  {
+                    title: "Confusing Jargon",
+                    desc: "X-rays and technical terms leave you feeling lost in translation."
+                  },
+                  {
+                    title: "Surprise Costs",
+                    desc: "Unexpected bills and insurance denials derail your budget."
+                  },
+                  {
+                    title: "Waiting Too Long",
+                    desc: "By the time you feel pain, the damage is done and expensive."
+                  }
+                ].map((item, idx) => (
+                  <div key={idx} className="border-l-2 border-stone-200 pl-6 py-2">
+                    <h3 className="text-xl font-medium text-stone-900 mb-2">{item.title}</h3>
+                    <p className="text-stone-600 font-light leading-relaxed">{item.desc}</p>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* The Answer - Solution */}
-      <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6 text-center">
-            The answer: Your Personal AI Dental Companion
-          </h2>
-          <p className="text-lg text-foreground/70 text-center mb-12 leading-relaxed">
-            DentaSmart analyzes your mouth in seconds, explains what's happening in plain language, and helps you make informed decisions before you see your dentist.
-          </p>
+      {/* The Solution - Feature Grid */}
+      <section className="py-32 bg-white">
+        <div className="container px-4 mx-auto max-w-6xl">
+          <div className="text-center max-w-3xl mx-auto mb-24">
+            <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
+              Your Personal AI Dental Companion
+            </h2>
+            <p className="text-xl text-stone-600 font-light leading-relaxed">
+              DentaSmart analyzes your mouth in seconds, explains what's happening in plain language, and helps you make informed decisions.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: "🔍", title: "Upload & Analyze", desc: "Take photos or upload X-rays. Get instant AI analysis." },
-              { icon: "📊", title: "Understand Results", desc: "Plain-language explanations. No jargon. No confusion." },
-              { icon: "💬", title: "Ask Dr. Din", desc: "Chat 24/7 with your AI dental companion. Get answers anytime." },
+              { 
+                icon: "🔍", 
+                title: "Upload & Analyze", 
+                desc: "Take photos or upload X-rays. Get instant AI analysis.",
+                image: "/images/challenges/ai_advantages.jpg"
+              },
+              { 
+                icon: "📊", 
+                title: "Understand Results", 
+                desc: "Plain-language explanations. No jargon. No confusion.",
+                image: "/images/challenges/trust_clarity.jpg"
+              },
+              { 
+                icon: "💬", 
+                title: "Ask Dr. Din", 
+                desc: "Chat 24/7 with your AI dental companion. Get answers anytime.",
+                image: "/images/challenges/daily_tracking.jpg"
+              }
             ].map((feature, idx) => (
-              <div key={idx} className="bg-white rounded-xl p-6 border border-border text-center">
-                <div className="text-5xl mb-4">{feature.icon}</div>
-                <h3 className="font-display font-bold text-foreground mb-2">{feature.title}</h3>
-                <p className="text-foreground/70 text-sm">{feature.desc}</p>
+              <div key={idx} className="group relative aspect-[3/4] rounded-3xl overflow-hidden bg-stone-100">
+                <img 
+                  src={feature.image} 
+                  alt={feature.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 p-8 text-white">
+                  <div className="text-4xl mb-4">{feature.icon}</div>
+                  <h3 className="text-2xl font-medium mb-2">{feature.title}</h3>
+                  <p className="text-white/80 font-light leading-relaxed">{feature.desc}</p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* The Change - What Improves (Outcome-Oriented) */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            What changes with DentaSmart
+      {/* Pricing - Minimalist Cards */}
+      <section className="py-32 bg-stone-50">
+        <div className="container px-4 mx-auto max-w-5xl">
+          <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-16 text-center">
+            Simple, transparent pricing
           </h2>
 
-          <div className="space-y-6">
-            {[
-              {
-                before: "You're confused by dental jargon",
-                after: "You understand exactly what's happening and why it matters",
-              },
-              {
-                before: "You fear surprise dental bills",
-                after: "You know costs upfront and budget with confidence",
-              },
-              {
-                before: "You wait for pain to act",
-                after: "You catch problems early and prevent expensive emergencies",
-              },
-              {
-                before: "You feel anxious at dental appointments",
-                after: "You walk in prepared, informed, and in control of the conversation",
-              },
-            ].map((item, idx) => (
-              <div key={idx} className="bg-secondary rounded-xl p-6 border border-border">
-                <div className="mb-3">
-                  <p className="text-sm text-muted-foreground mb-2">Before</p>
-                  <p className="text-foreground/60">{item.before}</p>
-                </div>
-                <div className="flex items-center justify-center my-3">
-                  <div className="w-8 h-0.5 bg-primary"></div>
-                  <span className="text-primary text-lg mx-2">→</span>
-                  <div className="w-8 h-0.5 bg-primary"></div>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-white rounded-3xl p-10 shadow-sm border border-stone-100 hover:shadow-md transition-all duration-300">
+              <div className="flex justify-between items-start mb-8">
                 <div>
-                  <p className="text-sm text-primary font-semibold mb-2">After</p>
-                  <p className="text-foreground font-semibold">{item.after}</p>
+                  <h3 className="text-2xl font-medium text-stone-900">Clarity Plan</h3>
+                  <p className="text-stone-500 mt-1">Unlimited Full Mouth Analysis</p>
+                </div>
+                <div className="text-right">
+                  <span className="text-4xl font-light text-stone-900">$75</span>
+                  <span className="text-stone-500 block text-sm">/year</span>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* The End Result - Ultimate Outcome */}
-      <section className="py-16 md:py-24 bg-primary/5">
-        <div className="container max-w-3xl text-center">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-8">
-            The end result: Complete peace of mind
-          </h2>
-          <p className="text-xl text-foreground/70 leading-relaxed mb-12">
-            You take control of your oral health. You catch problems early. You avoid expensive emergencies. And you walk into every dental appointment confident, prepared, and in charge of your own health decisions.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {[
-              "✓ Clarity about your mouth",
-              "✓ Control over your costs",
-              "✓ Confidence at the dentist",
-            ].map((item, idx) => (
-              <div key={idx} className="bg-white rounded-lg p-4 border border-primary/20 font-semibold text-foreground">
-                {item}
-              </div>
-            ))}
-          </div>
-
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg">
-            Start Your Free Trial
-          </Button>
-        </div>
-      </section>
-
-      {/* How It Works - Simple 3-Step */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            How it works
-          </h2>
-
-          <div className="space-y-8">
-            {[
-              {
-                num: "1",
-                title: "Upload Your Mouth",
-                desc: "Take a photo or upload an X-ray from your phone",
-              },
-              {
-                num: "2",
-                title: "Get Instant Insights",
-                desc: "Our AI analyzes and explains what it finds in plain language",
-              },
-              {
-                num: "3",
-                title: "Take Action",
-                desc: "Share with your dentist, ask Dr. Din questions, or plan your next steps",
-              },
-            ].map((step, idx) => (
-              <div key={idx} className="flex gap-6 items-start">
-                <div className="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center flex-shrink-0 font-display text-2xl font-bold shadow-lg">
-                  {step.num}
-                </div>
-                <div className="flex-1 pt-1">
-                  <h3 className="text-2xl font-display font-bold text-foreground mb-2">{step.title}</h3>
-                  <p className="text-foreground/70">{step.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Core Features */}
-      <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            What you get
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {[
-              { icon: "🤖", title: "AI-Powered Analysis", desc: "Trained by dental experts. 100% detection accuracy." },
-              { icon: "📸", title: "Photo + X-ray Support", desc: "Works with phone photos and uploaded X-rays." },
-              { icon: "💬", title: "Dr. Din 24/7", desc: "Chat with your AI dental companion anytime." },
-              { icon: "📊", title: "Wellness Score", desc: "Track your oral health progress month to month." },
-              { icon: "🎯", title: "Personalized Recommendations", desc: "Get specific guidance based on your mouth." },
-              { icon: "🔒", title: "Secure & Private", desc: "HIPAA-compliant. Your data is yours alone." },
-            ].map((feature, idx) => (
-              <div key={idx} className="bg-white rounded-xl p-6 border border-border hover:border-primary hover:shadow-lg transition-all">
-                <div className="text-5xl mb-4">{feature.icon}</div>
-                <h3 className="font-display font-bold text-foreground mb-2">{feature.title}</h3>
-                <p className="text-foreground/70">{feature.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <Testimonials />
-
-      {/* Pricing Snapshot */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            Simple pricing
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-            <div className="bg-secondary rounded-xl p-8 border-2 border-border text-center">
-              <p className="text-foreground/70 mb-4 text-sm font-semibold">Clarity Plan</p>
-              <p className="text-5xl font-display font-bold text-primary mb-2">$75</p>
-              <p className="text-muted-foreground text-sm">/year</p>
-              <p className="text-foreground/70 text-sm mt-4">Unlimited Full Mouth Analysis</p>
+              <ul className="space-y-4 mb-10">
+                <li className="flex items-center text-stone-600 font-light">
+                  <span className="w-2 h-2 bg-stone-900 rounded-full mr-3" />
+                  Unlimited AI scans
+                </li>
+                <li className="flex items-center text-stone-600 font-light">
+                  <span className="w-2 h-2 bg-stone-900 rounded-full mr-3" />
+                  Monthly monitoring
+                </li>
+                <li className="flex items-center text-stone-600 font-light">
+                  <span className="w-2 h-2 bg-stone-900 rounded-full mr-3" />
+                  Priority Dr. Din support
+                </li>
+              </ul>
+              <Button className="w-full bg-stone-900 hover:bg-stone-800 text-white rounded-full py-6 text-lg">
+                Start Free Trial
+              </Button>
             </div>
 
-            <div className="bg-secondary rounded-xl p-8 border-2 border-border text-center">
-              <p className="text-foreground/70 mb-4 text-sm font-semibold">Consult Plan</p>
-              <p className="text-5xl font-display font-bold text-primary mb-2">$30</p>
-              <p className="text-muted-foreground text-sm">one-time</p>
-              <p className="text-foreground/70 text-sm mt-4">One-time Analysis (Second Opinion)</p>
+            <div className="bg-white rounded-3xl p-10 shadow-sm border border-stone-100 hover:shadow-md transition-all duration-300">
+              <div className="flex justify-between items-start mb-8">
+                <div>
+                  <h3 className="text-2xl font-medium text-stone-900">Consult Plan</h3>
+                  <p className="text-stone-500 mt-1">One-time Analysis (Second Opinion)</p>
+                </div>
+                <div className="text-right">
+                  <span className="text-4xl font-light text-stone-900">$30</span>
+                  <span className="text-stone-500 block text-sm">one-time</span>
+                </div>
+              </div>
+              <ul className="space-y-4 mb-10">
+                <li className="flex items-center text-stone-600 font-light">
+                  <span className="w-2 h-2 bg-stone-900 rounded-full mr-3" />
+                  Single comprehensive scan
+                </li>
+                <li className="flex items-center text-stone-600 font-light">
+                  <span className="w-2 h-2 bg-stone-900 rounded-full mr-3" />
+                  Detailed report PDF
+                </li>
+                <li className="flex items-center text-stone-600 font-light">
+                  <span className="w-2 h-2 bg-stone-900 rounded-full mr-3" />
+                  Second opinion verification
+                </li>
+              </ul>
+              <Button variant="outline" className="w-full border-stone-300 text-stone-900 hover:bg-stone-50 rounded-full py-6 text-lg">
+                Get One-Time Scan
+              </Button>
             </div>
-          </div>
-
-          <div className="text-center">
-            <p className="text-foreground/70 mb-6">7-day free trial. No credit card required.</p>
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg">
-              Start Free Trial
-            </Button>
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-primary/10 to-secondary">
-        <div className="container max-w-3xl text-center">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
+      {/* Final CTA - Image Background */}
+      <section className="relative py-40 flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/challenges/empowerment.jpg" 
+            alt="Empowerment" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+        </div>
+        
+        <div className="container relative z-10 text-center px-4">
+          <h2 className="text-5xl md:text-7xl font-light text-white mb-8 tracking-tight">
             Ready to stop worrying?
           </h2>
-          <p className="text-lg text-foreground/70 mb-8">
+          <p className="text-xl md:text-2xl text-white/90 font-light mb-12 max-w-2xl mx-auto">
             Download DentaSmart today and get instant insights into your oral health.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg">
-              Download the App
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-primary text-primary hover:bg-primary/5 font-semibold"
-            >
-              Learn More
-            </Button>
-          </div>
+          <Button 
+            size="lg" 
+            className="bg-white text-stone-900 hover:bg-stone-100 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105"
+            onClick={() => window.open('https://apps.apple.com/us/app/dentasmart/id6449540000', '_blank')}
+          >
+            Download the App
+          </Button>
         </div>
       </section>
 
