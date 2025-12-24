@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Plus, Minus } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Plus, Minus, X } from 'lucide-react';
 import defaultChallenges from '../data/userChallenges.json';
 
 // Default image mapping
@@ -79,6 +79,11 @@ export function UserChallengesCarousel({
     setExpandedId(expandedId === id ? null : id);
   };
 
+  const handleCloseClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setExpandedId(null);
+  };
+
   return (
     <section className="py-24 bg-stone-50 overflow-hidden">
       <div className="container px-4 mx-auto mb-12 flex justify-between items-end">
@@ -137,12 +142,30 @@ export function UserChallengesCarousel({
                 <img 
                   src={images[challenge.id]} 
                   alt={challenge.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${
+                    isExpanded ? 'blur-sm scale-105' : ''
+                  }`}
                 />
                 <div className={`absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/80 transition-opacity duration-500 ${
-                  isExpanded ? 'opacity-90' : 'opacity-60 group-hover:opacity-70'
+                  isExpanded ? 'opacity-90 bg-black/40' : 'opacity-60 group-hover:opacity-70'
                 }`} />
               </div>
+
+              {/* Close Button (Top Right) */}
+              <AnimatePresence>
+                {isExpanded && (
+                  <motion.button
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    onClick={handleCloseClick}
+                    className="absolute top-6 right-6 z-20 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/10 hover:bg-white/30 transition-colors text-white"
+                    aria-label="Close card"
+                  >
+                    <X className="w-5 h-5" />
+                  </motion.button>
+                )}
+              </AnimatePresence>
 
               {/* Content */}
               <div className="absolute inset-0 p-8 flex flex-col justify-end text-white">
@@ -154,7 +177,7 @@ export function UserChallengesCarousel({
 
                 <motion.div layout="position" className="relative z-10">
                   <h3 className={`font-medium leading-tight mb-4 transition-all duration-500 ${
-                    isExpanded ? 'text-3xl md:text-4xl' : 'text-2xl'
+                    isExpanded ? 'text-3xl md:text-4xl drop-shadow-lg' : 'text-2xl'
                   }`}>
                     {challenge.challenge}
                   </h3>
@@ -167,7 +190,7 @@ export function UserChallengesCarousel({
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
                       >
-                        <p className="text-lg text-white/90 font-light leading-relaxed border-t border-white/20 pt-4 mt-4">
+                        <p className="text-lg text-white font-light leading-relaxed border-t border-white/30 pt-4 mt-4 drop-shadow-md">
                           {challenge.solution}
                         </p>
                       </motion.div>
@@ -175,12 +198,12 @@ export function UserChallengesCarousel({
                   </AnimatePresence>
                 </motion.div>
 
-                {/* Toggle Icon */}
-                <div className={`absolute bottom-8 right-8 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/10 transition-all duration-300 ${
-                  isExpanded ? 'bg-white text-stone-900 rotate-180' : 'group-hover:bg-white/30'
-                }`}>
-                  {isExpanded ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
-                </div>
+                {/* Toggle Icon (Bottom Right) - Only show Plus when collapsed */}
+                {!isExpanded && (
+                  <div className="absolute bottom-8 right-8 w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center border border-white/10 transition-all duration-300 group-hover:bg-white/30">
+                    <Plus className="w-5 h-5" />
+                  </div>
+                )}
               </div>
             </motion.div>
           );
