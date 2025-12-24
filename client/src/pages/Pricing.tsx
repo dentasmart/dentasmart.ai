@@ -1,74 +1,59 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
 import { useState } from "react";
+import { Check, X } from "lucide-react";
 
 export default function Pricing() {
   const [planType, setPlanType] = useState<"individual" | "family">("individual");
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-white via-secondary/30 to-white">
-        <div className="container max-w-3xl text-center">
-          <h1 className="text-5xl md:text-6xl font-display font-bold text-foreground mb-6">
-            Simple, honest pricing
+      {/* Hero Section - Editorial Style */}
+      <section className="relative py-32 md:py-48 bg-stone-100 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/challenges/affordability.jpg" 
+            alt="Simple Pricing" 
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-100/90 via-stone-100/60 to-stone-100" />
+        </div>
+
+        <div className="container relative z-10 px-4 mx-auto max-w-4xl text-center">
+          <h1 className="text-5xl md:text-7xl font-light tracking-tight text-stone-900 mb-8 leading-[1.1]">
+            Simple, honest <br />
+            <span className="font-normal italic">pricing</span>.
           </h1>
-          <p className="text-xl text-foreground/70 leading-relaxed">
+          <p className="text-xl md:text-2xl text-stone-600 max-w-2xl mx-auto font-light leading-relaxed">
             No hidden fees. No surprises. Choose the plan that works for you.
           </p>
         </div>
       </section>
 
-      {/* Plan Chooser */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            What's your situation?
-          </h2>
-          <div className="space-y-4">
-            {[
-              { icon: "🛡️", text: "I want to monitor my oral health", plan: "Clarity" },
-              { icon: "💭", text: "I need a second opinion on treatment", plan: "Consult" },
-              { icon: "🏥", text: "I want comprehensive dental coverage", plan: "Complete (Waitlist)" },
-            ].map((option, idx) => (
-              <button
-                key={idx}
-                className="w-full flex items-center gap-4 p-6 bg-secondary rounded-xl border-2 border-border hover:border-primary transition-all text-left hover:shadow-lg"
-              >
-                <span className="text-4xl">{option.icon}</span>
-                <div>
-                  <p className="text-lg font-display font-bold text-foreground">{option.text}</p>
-                  <p className="text-sm text-muted-foreground">→ {option.plan}</p>
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Individual vs Family Toggle */}
-      <section className="py-8 md:py-12 bg-secondary/30">
-        <div className="container max-w-3xl">
-          <div className="flex justify-center gap-4">
+      {/* Plan Toggle - Minimalist */}
+      <section className="py-12 bg-white sticky top-16 md:top-20 z-40 border-b border-stone-100/50 backdrop-blur-md bg-white/80">
+        <div className="container flex justify-center">
+          <div className="bg-stone-100 p-1 rounded-full inline-flex">
             <button
               onClick={() => setPlanType("individual")}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+              className={`px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                 planType === "individual"
-                  ? "bg-primary text-white shadow-lg"
-                  : "bg-white text-foreground border-2 border-border hover:border-primary"
+                  ? "bg-white text-stone-900 shadow-sm"
+                  : "text-stone-500 hover:text-stone-900"
               }`}
             >
               Individual
             </button>
             <button
               onClick={() => setPlanType("family")}
-              className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+              className={`px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                 planType === "family"
-                  ? "bg-primary text-white shadow-lg"
-                  : "bg-white text-foreground border-2 border-border hover:border-primary"
+                  ? "bg-white text-stone-900 shadow-sm"
+                  : "text-stone-500 hover:text-stone-900"
               }`}
             >
               Family
@@ -77,64 +62,64 @@ export default function Pricing() {
         </div>
       </section>
 
-      {/* Plan Cards */}
-      <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+      {/* Pricing Cards - Clean & Modern */}
+      <section className="py-24 bg-white">
+        <div className="container px-4 mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
             {/* Clarity Plan */}
-            <div className="bg-white rounded-2xl p-8 border-2 border-border hover:border-primary hover:shadow-lg transition-all">
-              <div className="mb-6">
-                <h3 className="text-2xl font-display font-bold text-foreground mb-2">Clarity</h3>
-                <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold">
-                  Most Popular
+            <div className="bg-stone-50 rounded-3xl p-10 border border-stone-100 hover:shadow-lg transition-all duration-300 flex flex-col">
+              <div className="mb-8">
+                <h3 className="text-2xl font-medium text-stone-900 mb-2">Clarity</h3>
+                <p className="text-stone-500 text-sm font-medium uppercase tracking-wider">Most Popular</p>
+              </div>
+              <div className="mb-8">
+                <div className="flex items-baseline">
+                  <span className="text-5xl font-light text-stone-900">${planType === "individual" ? "75" : "150"}</span>
+                  <span className="text-stone-500 ml-2">/year</span>
                 </div>
-              </div>
-              <div className="mb-6">
-                <p className="text-5xl font-display font-bold text-primary mb-2">
-                  ${planType === "individual" ? "75" : "150"}
+                <p className="text-stone-600 mt-4 font-light leading-relaxed">
+                  {planType === "individual"
+                    ? "Monthly monitoring to track your oral health and catch problems early."
+                    : "Monthly monitoring for your entire family with shared insights."}
                 </p>
-                <p className="text-muted-foreground">/year</p>
               </div>
-              <p className="text-foreground/70 mb-8">
-                {planType === "individual"
-                  ? "Monthly monitoring to track your oral health and catch problems early."
-                  : "Monthly monitoring for your entire family with shared insights and progress tracking."}
-              </p>
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-4 mb-10 flex-grow">
                 {[
                   "Unlimited monthly scans",
                   "Wellness score tracking",
                   "Dr. Din 24/7 support",
                   "Dental record vault",
                   "Share with dentist",
-                  "Progress reports",
                   planType === "family" && "Up to 4 family members",
                 ].filter(Boolean).map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-3">
-                    <span className="text-primary text-lg">✓</span>
-                    <span className="text-foreground/70">{feature}</span>
+                  <li key={idx} className="flex items-center text-stone-700 font-light text-sm">
+                    <Check className="w-4 h-4 text-stone-900 mr-3" />
+                    {feature}
                   </li>
                 ))}
               </ul>
-              <Button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold">
+              <Button className="w-full bg-stone-900 hover:bg-stone-800 text-white rounded-full py-6 text-lg font-medium transition-all duration-300">
                 Start Free Trial
               </Button>
             </div>
 
             {/* Consult Plan */}
-            <div className="bg-white rounded-2xl p-8 border-2 border-border hover:border-primary hover:shadow-lg transition-all">
-              <div className="mb-6">
-                <h3 className="text-2xl font-display font-bold text-foreground mb-2">Consult</h3>
-                <div className="text-xs font-semibold text-muted-foreground">One-time purchase</div>
+            <div className="bg-white rounded-3xl p-10 border border-stone-200 hover:shadow-lg transition-all duration-300 flex flex-col relative overflow-hidden">
+              <div className="mb-8">
+                <h3 className="text-2xl font-medium text-stone-900 mb-2">Consult</h3>
+                <p className="text-stone-500 text-sm font-medium uppercase tracking-wider">One-time</p>
               </div>
-              <div className="mb-6">
-                <p className="text-5xl font-display font-bold text-primary mb-2">$30</p>
-                <p className="text-muted-foreground">one-time</p>
+              <div className="mb-8">
+                <div className="flex items-baseline">
+                  <span className="text-5xl font-light text-stone-900">$30</span>
+                  <span className="text-stone-500 ml-2">one-time</span>
+                </div>
+                <p className="text-stone-600 mt-4 font-light leading-relaxed">
+                  Get a second opinion on a specific treatment plan or concern.
+                </p>
               </div>
-              <p className="text-foreground/70 mb-8">
-                Get a second opinion on a specific treatment plan or concern.
-              </p>
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-4 mb-10 flex-grow">
                 {[
                   "Single scan analysis",
                   "Detailed report",
@@ -143,125 +128,132 @@ export default function Pricing() {
                   "Printable report",
                   "Valid for 30 days",
                 ].map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-3">
-                    <span className="text-primary text-lg">✓</span>
-                    <span className="text-foreground/70">{feature}</span>
+                  <li key={idx} className="flex items-center text-stone-700 font-light text-sm">
+                    <Check className="w-4 h-4 text-stone-900 mr-3" />
+                    {feature}
                   </li>
                 ))}
               </ul>
-              <Button
-                variant="outline"
-                className="w-full border-primary text-primary hover:bg-primary/5 font-semibold"
-              >
+              <Button variant="outline" className="w-full border-stone-300 text-stone-900 hover:bg-stone-50 rounded-full py-6 text-lg font-medium transition-all duration-300">
                 Get Second Opinion
               </Button>
             </div>
 
             {/* Complete Plan */}
-            <div className="bg-white rounded-2xl p-8 border-2 border-border hover:border-primary hover:shadow-lg transition-all">
-              <div className="mb-6">
-                <h3 className="text-2xl font-display font-bold text-foreground mb-2">Complete</h3>
-                <div className="inline-block bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold">
-                  Coming Soon
+            <div className="bg-stone-900 rounded-3xl p-10 text-white hover:shadow-xl transition-all duration-300 flex flex-col relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-white/10 px-4 py-2 rounded-bl-2xl text-xs font-bold uppercase tracking-wider">
+                Waitlist
+              </div>
+              <div className="mb-8">
+                <h3 className="text-2xl font-medium text-white mb-2">Complete</h3>
+                <p className="text-white/50 text-sm font-medium uppercase tracking-wider">Coming Soon</p>
+              </div>
+              <div className="mb-8">
+                <div className="flex items-baseline">
+                  <span className="text-5xl font-light text-white">${planType === "individual" ? "150" : "300"}</span>
+                  <span className="text-white/50 ml-2">/year</span>
                 </div>
-              </div>
-              <div className="mb-6">
-                <p className="text-5xl font-display font-bold text-primary mb-2">
-                  ${planType === "individual" ? "150" : "300"}
+                <p className="text-white/70 mt-4 font-light leading-relaxed">
+                  Comprehensive dental coverage with AI-powered care coordination.
                 </p>
-                <p className="text-muted-foreground">/year</p>
               </div>
-              <p className="text-foreground/70 mb-8">
-                {planType === "individual"
-                  ? "Comprehensive dental coverage with AI-powered care coordination."
-                  : "Comprehensive dental coverage for your entire family with AI-powered care coordination."}
-              </p>
-              <ul className="space-y-4 mb-8">
+              <ul className="space-y-4 mb-10 flex-grow">
                 {[
                   "Everything in Clarity",
                   "Dental insurance alternative",
                   "Preventive care coverage",
-                  "Treatment coordination",
                   "75,000+ Dentists Network",
-                  "Direct billing",
+                  "20-60% savings on procedures",
                   "Buy Now, Pay Later available",
                   planType === "family" && "Up to 4 family members",
                 ].filter(Boolean).map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-3">
-                    <span className="text-primary text-lg">✓</span>
-                    <span className="text-foreground/70">{feature}</span>
+                  <li key={idx} className="flex items-center text-white/80 font-light text-sm">
+                    <Check className="w-4 h-4 text-white mr-3" />
+                    {feature}
                   </li>
                 ))}
               </ul>
-              <Button disabled className="w-full">
+              <Button className="w-full bg-white text-stone-900 hover:bg-stone-100 rounded-full py-6 text-lg font-medium transition-all duration-300">
                 Join Waitlist
               </Button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* User Challenges Carousel */}
+      <UserChallengesCarousel />
+
+      {/* Comparison Table - Clean */}
+      <section className="py-32 bg-stone-50">
+        <div className="container px-4 mx-auto max-w-5xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
+              Compare plans
+            </h2>
+          </div>
+
+          <div className="bg-white rounded-3xl shadow-sm border border-stone-100 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-stone-100">
+                    <th className="text-left py-6 px-6 w-1/4 font-medium text-stone-900">Feature</th>
+                    <th className="text-center py-6 px-6 w-1/4 font-medium text-stone-900">Clarity</th>
+                    <th className="text-center py-6 px-6 w-1/4 font-medium text-stone-900">Consult</th>
+                    <th className="text-center py-6 px-6 w-1/4 font-medium text-stone-900 bg-stone-900 text-white">Complete</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-stone-100">
+                  {[
+                    { feature: "AI Analysis", clarity: true, consult: true, complete: true },
+                    { feature: "Monthly Monitoring", clarity: true, consult: false, complete: true },
+                    { feature: "Wellness Score", clarity: true, consult: false, complete: true },
+                    { feature: "Dr. Din 24/7", clarity: true, consult: true, complete: true },
+                    { feature: "Dental Record Vault", clarity: true, consult: false, complete: true },
+                    { feature: "Share with Dentist", clarity: true, consult: true, complete: true },
+                    { feature: "Progress Tracking", clarity: true, consult: false, complete: true },
+                    { feature: "75,000+ Dentists Network", clarity: false, consult: false, complete: true },
+                    { feature: "Procedure Savings (20-60%)", clarity: false, consult: false, complete: true },
+                    { feature: "Buy Now, Pay Later", clarity: false, consult: false, complete: true },
+                  ].map((row, idx) => (
+                    <tr key={idx} className="group hover:bg-stone-50/30 transition-colors">
+                      <td className="py-5 px-6 text-sm font-medium text-stone-700">{row.feature}</td>
+                      <td className="py-5 px-6 text-center">
+                        {row.clarity ? <Check className="w-5 h-5 mx-auto text-stone-900" /> : <span className="text-stone-300">—</span>}
+                      </td>
+                      <td className="py-5 px-6 text-center">
+                        {row.consult ? <Check className="w-5 h-5 mx-auto text-stone-900" /> : <span className="text-stone-300">—</span>}
+                      </td>
+                      <td className="py-5 px-6 text-center bg-stone-900/5 group-hover:bg-stone-900/10 transition-colors">
+                        {row.complete ? <Check className="w-5 h-5 mx-auto text-stone-900" /> : <span className="text-stone-300">—</span>}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Comparison Table */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-5xl">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
-            Compare plans
-          </h2>
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b-2 border-border">
-                  <th className="text-left py-4 px-4 font-display font-bold text-foreground">Feature</th>
-                  <th className="text-center py-4 px-4 font-display font-bold text-foreground">Clarity</th>
-                  <th className="text-center py-4 px-4 font-display font-bold text-foreground">Consult</th>
-                  <th className="text-center py-4 px-4 font-display font-bold text-foreground">Complete</th>
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  { feature: "AI Analysis", clarity: "✓", consult: "✓", complete: "✓" },
-                  { feature: "Monthly Monitoring", clarity: "✓", consult: "✗", complete: "✓" },
-                  { feature: "Wellness Score", clarity: "✓", consult: "✗", complete: "✓" },
-                  { feature: "Dr. Din 24/7", clarity: "✓", consult: "✓", complete: "✓" },
-                  { feature: "Dental Record Vault", clarity: "✓", consult: "✗", complete: "✓" },
-                  { feature: "Share with Dentist", clarity: "✓", consult: "✓", complete: "✓" },
-                  { feature: "Progress Tracking", clarity: "✓", consult: "✗", complete: "✓" },
-                  { feature: "75,000+ Dentists Network", clarity: "✗", consult: "✗", complete: "✓" },
-                  { feature: "Preventive Care Savings", clarity: "✗", consult: "✗", complete: "20-60% off" },
-                  { feature: "Basic Procedures Savings", clarity: "✗", consult: "✗", complete: "20-60% off" },
-                  { feature: "Major Procedures Savings", clarity: "✗", consult: "✗", complete: "20-60% off" },
-                  { feature: "Cosmetic Procedures", clarity: "✗", consult: "✗", complete: "Included" },
-                  { feature: "Buy Now, Pay Later", clarity: "✗", consult: "✗", complete: "Available" },
-                ].map((row, idx) => (
-                  <tr key={idx} className="border-b border-border">
-                    <td className="py-4 px-4 font-semibold text-foreground">{row.feature}</td>
-                    <td className="py-4 px-4 text-center text-primary">{row.clarity}</td>
-                    <td className="py-4 px-4 text-center text-primary">{row.consult}</td>
-                    <td className="py-4 px-4 text-center text-primary">{row.complete}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-12 text-center">
+      {/* FAQ - Minimalist Accordion Style */}
+      <section className="py-32 bg-white">
+        <div className="container px-4 mx-auto max-w-3xl">
+          <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-16 text-center">
             Common questions
           </h2>
-          <div className="space-y-6">
+          <div className="space-y-8">
             {[
               { q: "Can I switch plans later?", a: "Yes, you can upgrade or downgrade your plan at any time from your account settings." },
               { q: "Is there a waiting period?", a: "No. Unlike traditional insurance, DentaSmart benefits start immediately." },
               { q: "Does it cover pre-existing conditions?", a: "Yes. We don't exclude pre-existing conditions. You get full benefits from day one." },
               { q: "How does the family plan work?", a: "The family plan covers up to 4 members. You can add more members for a small additional fee." },
             ].map((faq, idx) => (
-              <div key={idx} className="bg-white rounded-xl p-6 border border-border">
-                <h3 className="text-lg font-bold text-foreground mb-2">{faq.q}</h3>
-                <p className="text-foreground/70">{faq.a}</p>
+              <div key={idx} className="border-b border-stone-100 pb-8">
+                <h3 className="text-xl font-medium text-stone-900 mb-3">{faq.q}</h3>
+                <p className="text-stone-600 font-light leading-relaxed">{faq.a}</p>
               </div>
             ))}
           </div>
