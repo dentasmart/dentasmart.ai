@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import Testimonials from "@/components/Testimonials";
 import { Button } from "@/components/ui/button";
 import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
+import { Link } from "wouter";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -45,13 +46,15 @@ export default function Home() {
               >
                 Download the App
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-stone-300 text-stone-700 hover:bg-stone-200 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300"
-              >
-                See Pricing
-              </Button>
+              <Link href="/pricing">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-stone-300 text-stone-700 hover:bg-stone-200 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300"
+                >
+                  See Pricing
+                </Button>
+              </Link>
             </div>
           </motion.div>
         </div>

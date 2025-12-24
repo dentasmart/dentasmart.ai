@@ -61,7 +61,7 @@ export default function Navigation() {
         {/* Desktop CTA */}
         <div className="hidden md:flex gap-3">
           <a
-            href="https://apps.apple.com/app/dentasmart/id6670000000"
+            href="https://apps.apple.com/us/app/dentasmart/id6449540000"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -108,7 +108,7 @@ export default function Navigation() {
             ))}
             <div className="flex flex-col gap-2 pt-4 border-t border-border">
               <a
-                href="https://apps.apple.com/app/dentasmart/id6670000000"
+                href="https://apps.apple.com/us/app/dentasmart/id6449540000"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full"
