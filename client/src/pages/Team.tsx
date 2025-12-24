@@ -162,7 +162,7 @@ export default function Team() {
           <Button 
             size="lg" 
             className="bg-white text-stone-900 hover:bg-stone-100 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105"
-            onClick={() => window.open('https://apps.apple.com/us/app/dentasmart/id6449540000', '_blank')}
+            onClick={() => window.open('https://apps.apple.com/us/app/dentasmart/id6670311232', '_blank')}
           >
             Download the App
           </Button>
