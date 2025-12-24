@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight, Plus, Minus } from 'lucide-react';
-import userChallenges from '../data/userChallenges.json';
+import defaultChallenges from '../data/userChallenges.json';
 
-// Map challenge IDs to their image paths
-const challengeImages: Record<number, string> = {
+// Default image mapping
+const defaultImages: Record<number, string> = {
   1: '/images/challenges/prevention.jpg',
   2: '/images/challenges/second_opinion.jpg',
   3: '/images/challenges/affordability.jpg',
@@ -22,7 +22,26 @@ const challengeImages: Record<number, string> = {
   15: '/images/challenges/daily_tracking.jpg',
 };
 
-export function UserChallengesCarousel() {
+interface Challenge {
+  id: number;
+  title: string;
+  challenge: string;
+  solution: string;
+}
+
+interface UserChallengesCarouselProps {
+  challenges?: Challenge[];
+  images?: Record<number, string>;
+  title?: string;
+  subtitle?: string;
+}
+
+export function UserChallengesCarousel({ 
+  challenges = defaultChallenges, 
+  images = defaultImages,
+  title = "Challenges we solve",
+  subtitle = "See how DentaSmart transforms common dental struggles into confident smiles."
+}: UserChallengesCarouselProps) {
   const [expandedId, setExpandedId] = useState<number | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
@@ -43,7 +62,7 @@ export function UserChallengesCarousel() {
       checkScroll();
       return () => container.removeEventListener('scroll', checkScroll);
     }
-  }, []);
+  }, [challenges]); // Re-run when challenges change
 
   const scroll = (direction: 'left' | 'right') => {
     if (scrollContainerRef.current) {
@@ -65,10 +84,10 @@ export function UserChallengesCarousel() {
       <div className="container px-4 mx-auto mb-12 flex justify-between items-end">
         <div>
           <h2 className="text-4xl md:text-5xl font-light tracking-tight text-stone-900 mb-4">
-            Challenges we solve
+            {title}
           </h2>
           <p className="text-xl text-stone-600 max-w-2xl font-light">
-            See how DentaSmart transforms common dental struggles into confident smiles.
+            {subtitle}
           </p>
         </div>
         
@@ -101,7 +120,7 @@ export function UserChallengesCarousel() {
         className="flex overflow-x-auto gap-6 px-4 md:px-8 pb-12 snap-x snap-mandatory scrollbar-hide"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        {userChallenges.map((challenge) => {
+        {challenges.map((challenge) => {
           const isExpanded = expandedId === challenge.id;
           
           return (
@@ -116,7 +135,7 @@ export function UserChallengesCarousel() {
               {/* Background Image */}
               <div className="absolute inset-0 w-full h-full">
                 <img 
-                  src={challengeImages[challenge.id]} 
+                  src={images[challenge.id]} 
                   alt={challenge.title}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />

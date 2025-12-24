@@ -2,6 +2,29 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
+import faqChallenges from "@/data/faqChallenges.json";
+import { motion, AnimatePresence } from "framer-motion";
+import { Plus, Minus } from "lucide-react";
+
+// Map FAQ challenge IDs to their image paths
+const faqChallengeImages: Record<number, string> = {
+  1: '/images/faq/privacy_security.jpg',
+  2: '/images/faq/ai_accuracy.jpg',
+  3: '/images/faq/dentist_relationship.jpg',
+  4: '/images/faq/no_insurance_cost.jpg',
+  5: '/images/faq/kids_family.jpg',
+  6: '/images/faq/phone_only.jpg',
+  7: '/images/faq/fast_results.jpg',
+  8: '/images/faq/second_opinion_crown.jpg',
+  9: '/images/faq/emergency_help.jpg',
+  10: '/images/faq/braces_ortho.jpg',
+  11: '/images/faq/cancel_anytime.jpg',
+  12: '/images/faq/share_doctor.jpg',
+  13: '/images/faq/invisible_pain.jpg',
+  14: '/images/faq/prevention_tips.jpg',
+  15: '/images/faq/easy_tech.jpg',
+};
 
 export default function FAQs() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -64,47 +87,81 @@ export default function FAQs() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
+    <div className="min-h-screen flex flex-col bg-stone-50">
       <Navigation />
 
       {/* Hero Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-white via-secondary/30 to-white">
-        <div className="container max-w-3xl text-center">
-          <h1 className="text-5xl md:text-6xl font-display font-bold text-foreground mb-6">
-            Frequently asked questions
-          </h1>
-          <p className="text-xl text-foreground/70 leading-relaxed">
+      <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-stone-100">
+        <div className="container px-4 mx-auto text-center max-w-4xl">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-5xl md:text-7xl font-light tracking-tight text-stone-900 mb-8"
+          >
+            Common questions
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            className="text-xl md:text-2xl text-stone-600 font-light leading-relaxed max-w-2xl mx-auto"
+          >
             Everything you need to know about DentaSmart. Can't find your answer? Reach out to our support team.
-          </p>
+          </motion.p>
         </div>
       </section>
 
+      {/* User Challenges Carousel */}
+      <UserChallengesCarousel 
+        challenges={faqChallenges} 
+        images={faqChallengeImages}
+        title="Your questions, answered"
+        subtitle="Explore real-world scenarios and find clarity on how DentaSmart fits into your life."
+      />
+
       {/* FAQs */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="container max-w-3xl">
+      <section className="py-24 bg-white">
+        <div className="container px-4 mx-auto max-w-3xl">
           {faqCategories.map((category, catIdx) => (
-            <div key={catIdx} className="mb-16">
-              <h2 className="text-3xl font-display font-bold text-foreground mb-8">{category.title}</h2>
+            <div key={catIdx} className="mb-20 last:mb-0">
+              <h2 className="text-3xl font-light tracking-tight text-stone-900 mb-8 pb-4 border-b border-stone-200">
+                {category.title}
+              </h2>
               <div className="space-y-4">
                 {category.faqs.map((faq, idx) => {
                   const globalIdx = catIdx * 100 + idx;
                   const isOpen = openIndex === globalIdx;
                   return (
-                    <div key={idx} className="border border-border rounded-lg overflow-hidden hover:border-primary transition-colors">
+                    <div key={idx} className="group">
                       <button
                         onClick={() => setOpenIndex(isOpen ? null : globalIdx)}
-                        className="w-full flex items-center justify-between p-6 bg-secondary hover:bg-secondary/80 transition-colors text-left"
+                        className="w-full flex items-start justify-between py-6 text-left focus:outline-none"
                       >
-                        <h3 className="font-display font-bold text-foreground pr-4">{faq.q}</h3>
-                        <span className={`text-primary text-2xl flex-shrink-0 transition-transform ${isOpen ? "rotate-180" : ""}`}>
-                          ▼
+                        <h3 className="text-xl font-medium text-stone-900 pr-8 group-hover:text-stone-600 transition-colors">
+                          {faq.q}
+                        </h3>
+                        <span className={`flex-shrink-0 ml-4 w-8 h-8 rounded-full border border-stone-200 flex items-center justify-center transition-all duration-300 ${
+                          isOpen ? "bg-stone-900 text-white border-stone-900 rotate-180" : "bg-transparent text-stone-400 group-hover:border-stone-400 group-hover:text-stone-600"
+                        }`}>
+                          {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                         </span>
                       </button>
-                      {isOpen && (
-                        <div className="p-6 bg-white border-t border-border">
-                          <p className="text-foreground/70 leading-relaxed">{faq.a}</p>
-                        </div>
-                      )}
+                      <AnimatePresence>
+                        {isOpen && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="overflow-hidden"
+                          >
+                            <p className="text-lg text-stone-600 font-light leading-relaxed pb-8 pr-12">
+                              {faq.a}
+                            </p>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </div>
                   );
                 })}
@@ -115,23 +172,33 @@ export default function FAQs() {
       </section>
 
       {/* Contact Support */}
-      <section className="py-16 md:py-24 bg-secondary/30">
-        <div className="container max-w-3xl text-center">
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-foreground mb-6">
-            Didn't find your answer?
+      <section className="py-24 bg-stone-100">
+        <div className="container px-4 mx-auto text-center max-w-3xl">
+          <h2 className="text-4xl md:text-5xl font-light tracking-tight text-stone-900 mb-6">
+            Still have questions?
           </h2>
-          <p className="text-lg text-foreground/70 mb-12">
+          <p className="text-xl text-stone-600 font-light mb-12">
             Our support team is here to help. Reach out anytime.
           </p>
-          <div className="space-y-4 mb-8">
-            <p className="text-foreground">
-              <span className="font-semibold">Email:</span> support@dentasmart.ai
-            </p>
-            <p className="text-foreground">
-              <span className="font-semibold">Chat:</span> Available in the app 24/7
-            </p>
+          
+          <div className="grid md:grid-cols-2 gap-8 mb-12 text-left max-w-lg mx-auto">
+            <div className="bg-white p-8 rounded-2xl shadow-sm">
+              <h3 className="text-lg font-medium text-stone-900 mb-2">Email Support</h3>
+              <p className="text-stone-600 font-light mb-4">Get a response within 24 hours.</p>
+              <a href="mailto:support@dentasmart.ai" className="text-stone-900 font-medium hover:underline">
+                support@dentasmart.ai
+              </a>
+            </div>
+            <div className="bg-white p-8 rounded-2xl shadow-sm">
+              <h3 className="text-lg font-medium text-stone-900 mb-2">In-App Chat</h3>
+              <p className="text-stone-600 font-light mb-4">Available 24/7 for instant help.</p>
+              <span className="text-stone-900 font-medium">
+                Open the DentaSmart App
+              </span>
+            </div>
           </div>
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold shadow-lg">
+
+          <Button size="lg" className="bg-stone-900 hover:bg-stone-800 text-white rounded-full px-8 py-6 text-lg h-auto transition-all duration-300 hover:scale-105">
             Contact Support
           </Button>
         </div>

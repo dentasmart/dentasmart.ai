@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "title": "Privacy & Security",
+    "challenge": "Is my data safe?",
+    "solution": "Your dental photos and health data are protected with bank-grade encryption and full HIPAA compliance. We never share your personal information without your explicit consent."
+  },
+  {
+    "id": 2,
+    "title": "Accuracy",
+    "challenge": "Can a phone really see cavities?",
+    "solution": "Yes. Our AI is trained on millions of clinically annotated dental images. It can detect early signs of decay, gum disease, and other issues often invisible to the naked eye, with accuracy comparable to a human dentist."
+  },
+  {
+    "id": 3,
+    "title": "Care Model",
+    "challenge": "Does this replace my dentist?",
+    "solution": "No. DentaSmart is a companion, not a replacement. We help you monitor your health between visits so you can catch issues early. Think of us as a 'check engine light' for your mouth that helps you visit the dentist at the right time."
+  },
+  {
+    "id": 4,
+    "title": "Cost & Access",
+    "challenge": "I don't have insurance.",
+    "solution": "That's exactly why we're here. DentaSmart gives you professional-grade insights and care guidance for a fraction of the cost of a single dental visit, with no insurance required."
+  },
+  {
+    "id": 5,
+    "title": "Family",
+    "challenge": "Can I use it for my kids?",
+    "solution": "Absolutely. The Family Plan covers up to 4 members, making it perfect for tracking your children's oral development and building healthy habits early."
+  },
+  {
+    "id": 6,
+    "title": "Usability",
+    "challenge": "Do I need special equipment?",
+    "solution": "None at all. All you need is your smartphone. Our app guides you to take the perfect photos using just your phone's camera and a standard bathroom mirror."
+  },
+  {
+    "id": 7,
+    "title": "Speed",
+    "challenge": "How fast are the results?",
+    "solution": "Instant. Our AI analyzes your photos in seconds, providing you with a comprehensive report, wellness score, and actionable next steps immediately after you upload."
+  },
+  {
+    "id": 8,
+    "title": "Second Opinions",
+    "challenge": "Do I really need that crown?",
+    "solution": "Unsure about a treatment plan? Our Consult Plan provides an unbiased second opinion from our AI and licensed dentists, helping you avoid unnecessary procedures and costs."
+  },
+  {
+    "id": 9,
+    "title": "Urgent Care",
+    "challenge": "I have a dental emergency.",
+    "solution": "Chipped tooth or sudden pain? Use DentaSmart to assess the severity immediately. We'll tell you if you need to rush to the ER, see a dentist tomorrow, or if it can wait."
+  },
+  {
+    "id": 10,
+    "title": "Orthodontics",
+    "challenge": "Does it work with braces?",
+    "solution": "Yes! Monitoring hygiene is even more critical with braces. DentaSmart helps you spot plaque buildup around brackets and wires to prevent white spots and gum issues."
+  },
+  {
+    "id": 11,
+    "title": "Subscription",
+    "challenge": "Can I cancel anytime?",
+    "solution": "Yes. We believe in earning your trust every month. There are no long-term contracts or cancellation fees. You can manage your subscription directly in the app."
+  },
+  {
+    "id": 12,
+    "title": "Integration",
+    "challenge": "Can I share this with my doctor?",
+    "solution": "Easily. You can export your full dental report and history as a PDF or secure link to share with your dentist, ensuring they have the full picture of your oral health."
+  },
+  {
+    "id": 13,
+    "title": "Symptoms",
+    "challenge": "My tooth hurts but looks fine.",
+    "solution": "Pain often precedes visible issues. Our symptom checker asks the right questions to narrow down potential causes, from grinding to gum recession, and guides you on what to do next."
+  },
+  {
+    "id": 14,
+    "title": "Prevention",
+    "challenge": "Why do I still get cavities?",
+    "solution": "Brushing isn't always enough. We analyze your specific risk factors—like diet, dry mouth, or technique—to give you a personalized prevention plan that actually works."
+  },
+  {
+    "id": 15,
+    "title": "Accessibility",
+    "challenge": "I'm not good with technology.",
+    "solution": "We designed DentaSmart for everyone. Large text, voice-guided photo taking, and a simple interface mean you don't need to be a tech expert to take control of your health."
+  }
+]
