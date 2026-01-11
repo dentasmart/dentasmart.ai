@@ -2,32 +2,39 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
-import { Brain, MessageSquare, ShieldCheck, Activity, Lock, TrendingUp, Check } from "lucide-react";
+import { Brain, MessageSquare, ShieldCheck, Activity, Lock, Check } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Features() {
   return (
-    <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900">
+    <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
       <Navigation />
 
-      {/* Hero Section - Editorial Style */}
-      <section className="relative py-32 md:py-48 bg-stone-100 overflow-hidden">
+      {/* Hero Section - Abstract & Tech */}
+      <section className="relative py-40 md:py-52 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/challenges/ai_advantages.jpg" 
+            src="/images/backgrounds/features-abstract.jpg" 
             alt="AI Dental Analysis" 
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-stone-100/90 via-stone-100/60 to-stone-100" />
+          <div className="absolute inset-0 bg-stone-900/30 backdrop-blur-[1px]" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto max-w-4xl text-center">
-          <h1 className="text-5xl md:text-7xl font-light tracking-tight text-stone-900 mb-8 leading-[1.1]">
-            Everything you need to <br />
-            <span className="font-normal italic">understand your teeth</span>.
-          </h1>
-          <p className="text-xl md:text-2xl text-stone-600 max-w-2xl mx-auto font-light leading-relaxed">
-            Powerful features designed to give you clarity, control, and confidence in your oral health journey.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mb-8 leading-[1.1] drop-shadow-lg">
+              Everything you need to <br />
+              <span className="font-normal italic">understand your teeth</span>.
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-md">
+              Powerful features designed to give you clarity, control, and confidence in your oral health journey.
+            </p>
+          </motion.div>
         </div>
       </section>
 
@@ -58,7 +65,14 @@ export default function Features() {
                 desc: "Make confident decisions about your dental care with data-backed insights." 
               }
             ].map((feature, idx) => (
-              <div key={idx} className="text-center group">
+              <motion.div 
+                key={idx} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.2, duration: 0.6 }}
+                className="text-center group"
+              >
                 <div className="w-20 h-20 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:bg-stone-900 transition-colors duration-500">
                   <feature.icon className="w-8 h-8 text-stone-900 group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
                 </div>
@@ -66,7 +80,7 @@ export default function Features() {
                 <p className="text-stone-600 font-light leading-relaxed max-w-xs mx-auto">
                   {feature.desc}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -78,7 +92,13 @@ export default function Features() {
           
           {/* AI Analysis */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-            <div className="order-2 md:order-1">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-2 md:order-1"
+            >
               <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
                 AI-Powered Analysis
               </h2>
@@ -93,26 +113,43 @@ export default function Features() {
                   </li>
                 ))}
               </ul>
-            </div>
-            <div className="order-1 md:order-2 relative aspect-square rounded-3xl overflow-hidden bg-stone-200">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-1 md:order-2 relative aspect-square rounded-3xl overflow-hidden bg-stone-200 shadow-xl"
+            >
               <img 
                 src="/images/challenges/ai_advantages.jpg" 
                 alt="AI Analysis" 
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
-            </div>
+            </motion.div>
           </div>
 
           {/* Dr. Din */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-            <div className="relative aspect-square rounded-3xl overflow-hidden bg-stone-200">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative aspect-square rounded-3xl overflow-hidden bg-stone-200 shadow-xl"
+            >
               <img 
                 src="/images/challenges/daily_tracking.jpg" 
                 alt="Dr. Din Chat" 
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
-            </div>
-            <div>
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
               <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
                 Dr. Din: Your AI Dental Companion
               </h2>
@@ -127,12 +164,18 @@ export default function Features() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           </div>
 
           {/* Dental Record Vault */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-            <div className="order-2 md:order-1">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-2 md:order-1"
+            >
               <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
                 Your Dental Record Vault
               </h2>
@@ -147,21 +190,29 @@ export default function Features() {
                   </li>
                 ))}
               </ul>
-            </div>
-            <div className="order-1 md:order-2 relative aspect-square rounded-3xl overflow-hidden bg-stone-200">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="order-1 md:order-2 relative aspect-square rounded-3xl overflow-hidden bg-stone-200 shadow-xl"
+            >
               <img 
                 src="/images/challenges/transparency.jpg" 
                 alt="Secure Vault" 
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 w-full h-full object-cover hover:scale-105 transition-transform duration-700"
               />
-            </div>
+            </motion.div>
           </div>
 
         </div>
       </section>
 
       {/* User Challenges Carousel */}
-      <UserChallengesCarousel />
+      <section className="py-20 bg-stone-100">
+        <UserChallengesCarousel />
+      </section>
 
       {/* Security Section - Clean & Trustworthy */}
       <section className="py-32 bg-white">
@@ -181,10 +232,17 @@ export default function Features() {
               { title: "Encrypted Storage", desc: "AES-256 encryption for data at rest and in transit." },
               { title: "Your Data, Your Control", desc: "Export or delete your data anytime with one click." }
             ].map((item, idx) => (
-              <div key={idx} className="bg-stone-50 p-6 rounded-2xl">
+              <motion.div 
+                key={idx} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                className="bg-stone-50 p-6 rounded-2xl border border-stone-100"
+              >
                 <h3 className="font-medium text-stone-900 mb-2">{item.title}</h3>
                 <p className="text-stone-600 font-light text-sm">{item.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -201,7 +259,7 @@ export default function Features() {
           </p>
           <Button 
             size="lg" 
-            className="bg-white text-stone-900 hover:bg-stone-100 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105"
+            className="bg-white text-stone-900 hover:bg-stone-100 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl"
             onClick={() => window.open('https://apps.apple.com/us/app/dentasmart/id6670311232', '_blank')}
           >
             Start Free Trial

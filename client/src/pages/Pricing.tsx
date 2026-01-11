@@ -3,41 +3,48 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
 import { useState } from "react";
-import { Check, X } from "lucide-react";
+import { Check } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Pricing() {
   const [planType, setPlanType] = useState<"individual" | "family">("individual");
 
   return (
-    <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900">
+    <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
       <Navigation />
 
-      {/* Hero Section - Editorial Style */}
-      <section className="relative py-32 md:py-48 bg-stone-100 overflow-hidden">
+      {/* Hero Section - Calm & Balanced */}
+      <section className="relative py-40 md:py-52 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/challenges/affordability.jpg" 
+            src="/images/backgrounds/pricing-calm.jpg" 
             alt="Simple Pricing" 
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-stone-100/90 via-stone-100/60 to-stone-100" />
+          <div className="absolute inset-0 bg-stone-900/20 backdrop-blur-[1px]" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto max-w-4xl text-center">
-          <h1 className="text-5xl md:text-7xl font-light tracking-tight text-stone-900 mb-8 leading-[1.1]">
-            Simple, honest <br />
-            <span className="font-normal italic">pricing</span>.
-          </h1>
-          <p className="text-xl md:text-2xl text-stone-600 max-w-2xl mx-auto font-light leading-relaxed">
-            No hidden fees. No surprises. Choose the plan that works for you.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mb-8 leading-[1.1] drop-shadow-lg">
+              Simple, honest <br />
+              <span className="font-normal italic">pricing</span>.
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-md">
+              No hidden fees. No surprises. Choose the plan that works for you.
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* Plan Toggle - Minimalist */}
       <section className="py-12 bg-white sticky top-16 md:top-20 z-40 border-b border-stone-100/50 backdrop-blur-md bg-white/80">
         <div className="container flex justify-center">
-          <div className="bg-stone-100 p-1 rounded-full inline-flex">
+          <div className="bg-stone-100 p-1 rounded-full inline-flex shadow-inner">
             <button
               onClick={() => setPlanType("individual")}
               className={`px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
@@ -68,10 +75,16 @@ export default function Pricing() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
             {/* Clarity Plan */}
-            <div className="bg-stone-50 rounded-3xl p-10 border border-stone-100 hover:shadow-lg transition-all duration-300 flex flex-col">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="bg-stone-50 rounded-3xl p-10 border border-stone-100 hover:shadow-xl transition-all duration-500 flex flex-col"
+            >
               <div className="mb-8">
                 <h3 className="text-2xl font-medium text-stone-900 mb-2">Clarity</h3>
-                <p className="text-stone-500 text-sm font-medium uppercase tracking-wider">Most Popular</p>
+                <p className="text-stone-500 text-xs font-bold uppercase tracking-widest">Most Popular</p>
               </div>
               <div className="mb-8">
                 <div className="flex items-baseline">
@@ -99,16 +112,22 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <Button className="w-full bg-stone-900 hover:bg-stone-800 text-white rounded-full py-6 text-lg font-medium transition-all duration-300">
+              <Button className="w-full bg-stone-900 hover:bg-stone-800 text-white rounded-full py-6 text-lg font-medium transition-all duration-300 shadow-lg">
                 Start Free Trial
               </Button>
-            </div>
+            </motion.div>
 
             {/* Consult Plan */}
-            <div className="bg-white rounded-3xl p-10 border border-stone-200 hover:shadow-lg transition-all duration-300 flex flex-col relative overflow-hidden">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1, duration: 0.5 }}
+              className="bg-white rounded-3xl p-10 border border-stone-200 hover:shadow-xl transition-all duration-500 flex flex-col relative overflow-hidden"
+            >
               <div className="mb-8">
                 <h3 className="text-2xl font-medium text-stone-900 mb-2">Consult</h3>
-                <p className="text-stone-500 text-sm font-medium uppercase tracking-wider">One-time</p>
+                <p className="text-stone-500 text-xs font-bold uppercase tracking-widest">One-time</p>
               </div>
               <div className="mb-8">
                 <div className="flex items-baseline">
@@ -137,16 +156,22 @@ export default function Pricing() {
               <Button variant="outline" className="w-full border-stone-300 text-stone-900 hover:bg-stone-50 rounded-full py-6 text-lg font-medium transition-all duration-300">
                 Get Second Opinion
               </Button>
-            </div>
+            </motion.div>
 
             {/* Complete Plan */}
-            <div className="bg-stone-900 rounded-3xl p-10 text-white hover:shadow-xl transition-all duration-300 flex flex-col relative overflow-hidden">
-              <div className="absolute top-0 right-0 bg-white/10 px-4 py-2 rounded-bl-2xl text-xs font-bold uppercase tracking-wider">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+              className="bg-stone-900 rounded-3xl p-10 text-white hover:shadow-2xl transition-all duration-500 flex flex-col relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 bg-white/10 px-4 py-2 rounded-bl-2xl text-xs font-bold uppercase tracking-wider backdrop-blur-sm">
                 Waitlist
               </div>
               <div className="mb-8">
                 <h3 className="text-2xl font-medium text-white mb-2">Complete</h3>
-                <p className="text-white/50 text-sm font-medium uppercase tracking-wider">Coming Soon</p>
+                <p className="text-white/50 text-xs font-bold uppercase tracking-widest">Coming Soon</p>
               </div>
               <div className="mb-8">
                 <div className="flex items-baseline">
@@ -173,17 +198,19 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <Button className="w-full bg-white text-stone-900 hover:bg-stone-100 rounded-full py-6 text-lg font-medium transition-all duration-300">
+              <Button className="w-full bg-white text-stone-900 hover:bg-stone-100 rounded-full py-6 text-lg font-medium transition-all duration-300 shadow-lg">
                 Join Waitlist
               </Button>
-            </div>
+            </motion.div>
 
           </div>
         </div>
       </section>
 
       {/* User Challenges Carousel */}
-      <UserChallengesCarousel />
+      <section className="py-20 bg-stone-100">
+        <UserChallengesCarousel />
+      </section>
 
       {/* Comparison Table - Clean */}
       <section className="py-32 bg-stone-50">
@@ -251,10 +278,17 @@ export default function Pricing() {
               { q: "Does it cover pre-existing conditions?", a: "Yes. We don't exclude pre-existing conditions. You get full benefits from day one." },
               { q: "How does the family plan work?", a: "The family plan covers up to 4 members. You can add more members for a small additional fee." },
             ].map((faq, idx) => (
-              <div key={idx} className="border-b border-stone-100 pb-8">
+              <motion.div 
+                key={idx} 
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                className="border-b border-stone-100 pb-8"
+              >
                 <h3 className="text-xl font-medium text-stone-900 mb-3">{faq.q}</h3>
                 <p className="text-stone-600 font-light leading-relaxed">{faq.a}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

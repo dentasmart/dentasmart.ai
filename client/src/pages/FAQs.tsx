@@ -87,38 +87,45 @@ export default function FAQs() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-stone-50">
+    <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 md:pt-40 md:pb-32 bg-stone-100">
-        <div className="container px-4 mx-auto text-center max-w-4xl">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
+      {/* Hero Section - Calm & Clear */}
+      <section className="relative py-40 md:py-52 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/backgrounds/faq-clarity.jpg" 
+            alt="DentaSmart FAQs" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-stone-900/20 backdrop-blur-[1px]" />
+        </div>
+
+        <div className="container relative z-10 px-4 mx-auto text-center max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-5xl md:text-7xl font-light tracking-tight text-stone-900 mb-8"
+            transition={{ duration: 0.8 }}
           >
-            Common questions
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-xl md:text-2xl text-stone-600 font-light leading-relaxed max-w-2xl mx-auto"
-          >
-            Everything you need to know about DentaSmart. Can't find your answer? Reach out to our support team.
-          </motion.p>
+            <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mb-8 leading-[1.1] drop-shadow-lg">
+              Common questions
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-md">
+              Everything you need to know about DentaSmart. Can't find your answer? Reach out to our support team.
+            </p>
+          </motion.div>
         </div>
       </section>
 
       {/* User Challenges Carousel */}
-      <UserChallengesCarousel 
-        challenges={faqChallenges} 
-        images={faqChallengeImages}
-        title="Your questions, answered"
-        subtitle="Explore real-world scenarios and find clarity on how DentaSmart fits into your life."
-      />
+      <section className="py-20 bg-stone-100">
+        <UserChallengesCarousel 
+          challenges={faqChallenges} 
+          images={faqChallengeImages}
+          title="Your questions, answered"
+          subtitle="Explore real-world scenarios and find clarity on how DentaSmart fits into your life."
+        />
+      </section>
 
       {/* FAQs */}
       <section className="py-24 bg-white">
@@ -182,14 +189,14 @@ export default function FAQs() {
           </p>
           
           <div className="grid md:grid-cols-2 gap-8 mb-12 text-left max-w-lg mx-auto">
-            <div className="bg-white p-8 rounded-2xl shadow-sm">
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-stone-100">
               <h3 className="text-lg font-medium text-stone-900 mb-2">Email Support</h3>
               <p className="text-stone-600 font-light mb-4">Get a response within 24 hours.</p>
               <a href="mailto:support@dentasmart.ai" className="text-stone-900 font-medium hover:underline">
                 support@dentasmart.ai
               </a>
             </div>
-            <div className="bg-white p-8 rounded-2xl shadow-sm">
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-stone-100">
               <h3 className="text-lg font-medium text-stone-900 mb-2">In-App Chat</h3>
               <p className="text-stone-600 font-light mb-4">Available 24/7 for instant help.</p>
               <span className="text-stone-900 font-medium">
@@ -198,7 +205,7 @@ export default function FAQs() {
             </div>
           </div>
 
-          <Button size="lg" className="bg-stone-900 hover:bg-stone-800 text-white rounded-full px-8 py-6 text-lg h-auto transition-all duration-300 hover:scale-105">
+          <Button size="lg" className="bg-stone-900 hover:bg-stone-800 text-white rounded-full px-8 py-6 text-lg h-auto transition-all duration-300 hover:scale-105 shadow-lg">
             Contact Support
           </Button>
         </div>

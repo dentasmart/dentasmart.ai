@@ -43,77 +43,92 @@
 }
 
 :root {
-  /* DentaSmart Official Branding */
-  /* Primary: Teal #00BCD4 | Secondary: Light Cyan #E0F7FA | Accent: Dark Teal #00838F */
+  /* Oura-Inspired "Stone" Palette */
+  /* Primary: DentaSmart Teal #00BCD4 (Kept for brand identity) */
+  /* Backgrounds: Warm Stone/Sand tones instead of sterile white */
   
   --primary: #00BCD4;
   --primary-foreground: #ffffff;
-  --sidebar-primary: #0097A7;
-  --sidebar-primary-foreground: #ffffff;
-  --chart-1: #4DD0E1;
-  --chart-2: #00BCD4;
-  --chart-3: #0097A7;
-  --chart-4: #00838F;
-  --chart-5: #006064;
-  --radius: 0.5rem;
-  --background: #FAFAFA;
-  --foreground: #1A1A1A;
-  --card: #ffffff;
-  --card-foreground: #1A1A1A;
-  --popover: #ffffff;
-  --popover-foreground: #1A1A1A;
-  --secondary: #E0F7FA;
-  --secondary-foreground: #00695C;
-  --muted: #B2DFDB;
-  --muted-foreground: #004D40;
-  --accent: #4DD0E1;
-  --accent-foreground: #00695C;
+  
+  /* Stone / Sand Tones */
+  --background: #F5F3F0; /* Warm stone background */
+  --foreground: #2D2A26; /* Soft charcoal text */
+  
+  --card: #FFFFFF;
+  --card-foreground: #2D2A26;
+  
+  --popover: #FFFFFF;
+  --popover-foreground: #2D2A26;
+  
+  --secondary: #E8E5E0; /* Slightly darker stone for secondary backgrounds */
+  --secondary-foreground: #2D2A26;
+  
+  --muted: #D6D3CE;
+  --muted-foreground: #6B665F;
+  
+  --accent: #E0F7FA; /* Light teal accent */
+  --accent-foreground: #006064;
+  
   --destructive: #D32F2F;
   --destructive-foreground: #ffffff;
-  --border: #E0E0E0;
-  --input: #E0E0E0;
+  
+  --border: #E6E2DE;
+  --input: #E6E2DE;
   --ring: #00BCD4;
-  --sidebar: #ffffff;
-  --sidebar-foreground: #1A1A1A;
-  --sidebar-accent: #E0F7FA;
-  --sidebar-accent-foreground: #00695C;
-  --sidebar-border: #E0E0E0;
-  --sidebar-ring: #00B8A9;
+  
+  --radius: 0.75rem; /* Slightly more rounded for organic feel */
+  
+  /* Chart Colors (Teal Spectrum) */
+  --chart-1: #00BCD4;
+  --chart-2: #26C6DA;
+  --chart-3: #4DD0E1;
+  --chart-4: #80DEEA;
+  --chart-5: #B2EBF2;
+  
+  --sidebar: #F5F3F0;
+  --sidebar-foreground: #2D2A26;
+  --sidebar-accent: #E8E5E0;
+  --sidebar-accent-foreground: #2D2A26;
+  --sidebar-border: #E6E2DE;
+  --sidebar-ring: #00BCD4;
 }
 
 .dark {
-  --primary: var(--color-blue-700);
-  --primary-foreground: var(--color-blue-50);
-  --sidebar-primary: var(--color-blue-500);
-  --sidebar-primary-foreground: var(--color-blue-50);
-  --background: oklch(0.141 0.005 285.823);
-  --foreground: oklch(0.85 0.005 65);
-  --card: oklch(0.21 0.006 285.885);
-  --card-foreground: oklch(0.85 0.005 65);
-  --popover: oklch(0.21 0.006 285.885);
-  --popover-foreground: oklch(0.85 0.005 65);
-  --secondary: oklch(0.24 0.006 286.033);
-  --secondary-foreground: oklch(0.7 0.005 65);
-  --muted: oklch(0.274 0.006 286.033);
-  --muted-foreground: oklch(0.705 0.015 286.067);
-  --accent: oklch(0.274 0.006 286.033);
-  --accent-foreground:  oklch(0.92 0.005 65);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.488 0.243 264.376);
-  --chart-1: var(--color-blue-300);
-  --chart-2: var(--color-blue-500);
-  --chart-3: var(--color-blue-600);
-  --chart-4: var(--color-blue-700);
-  --chart-5: var(--color-blue-800);
-  --sidebar: oklch(0.21 0.006 285.885);
-  --sidebar-foreground: oklch(0.85 0.005 65);
-  --sidebar-accent: oklch(0.274 0.006 286.033);
-  --sidebar-accent-foreground:  oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.488 0.243 264.376);
+  /* Dark Mode - Deep Stone / Slate */
+  --background: #1C1B1A;
+  --foreground: #F5F3F0;
+  
+  --card: #262422;
+  --card-foreground: #F5F3F0;
+  
+  --popover: #262422;
+  --popover-foreground: #F5F3F0;
+  
+  --primary: #00BCD4;
+  --primary-foreground: #ffffff;
+  
+  --secondary: #33302E;
+  --secondary-foreground: #F5F3F0;
+  
+  --muted: #45423F;
+  --muted-foreground: #A8A49F;
+  
+  --accent: #006064;
+  --accent-foreground: #E0F7FA;
+  
+  --destructive: #EF5350;
+  --destructive-foreground: #ffffff;
+  
+  --border: #33302E;
+  --input: #33302E;
+  --ring: #00BCD4;
+  
+  --sidebar: #1C1B1A;
+  --sidebar-foreground: #F5F3F0;
+  --sidebar-accent: #33302E;
+  --sidebar-accent-foreground: #F5F3F0;
+  --sidebar-border: #33302E;
+  --sidebar-ring: #00BCD4;
 }
 
 @layer base {
@@ -121,67 +136,43 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground font-sans antialiased;
     font-family: 'Inter', sans-serif;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Outfit', sans-serif;
-    font-weight: 700;
+    font-weight: 300; /* Lighter weights for editorial feel */
+    letter-spacing: -0.02em;
   }
   h1 {
-    @apply text-5xl md:text-6xl font-bold text-foreground;
+    @apply text-5xl md:text-7xl font-light text-foreground leading-[1.1];
   }
   h2 {
-    @apply text-4xl md:text-5xl font-bold text-foreground;
+    @apply text-4xl md:text-5xl font-light text-foreground leading-tight;
   }
   h3 {
-    @apply text-2xl md:text-3xl font-bold text-foreground;
+    @apply text-2xl md:text-3xl font-normal text-foreground;
   }
   h4 {
-    @apply text-xl md:text-2xl font-bold text-foreground;
+    @apply text-xl md:text-2xl font-medium text-foreground;
   }
-  button:not(:disabled),
-  [role="button"]:not([aria-disabled="true"]),
-  [type="button"]:not(:disabled),
-  [type="submit"]:not(:disabled),
-  [type="reset"]:not(:disabled),
-  a[href],
-  select:not(:disabled),
-  input[type="checkbox"]:not(:disabled),
-  input[type="radio"]:not(:disabled) {
-    @apply cursor-pointer;
-  }
+  
   /* Typography utilities */
   .font-display {
     font-family: 'Outfit', sans-serif;
-    font-weight: 700;
   }
   .font-body {
     font-family: 'Inter', sans-serif;
-    font-weight: 400;
   }
 }
 
 @layer components {
-  /**
-   * Custom container utility that centers content and adds responsive padding.
-   *
-   * This overrides Tailwind's default container behavior to:
-   * - Auto-center content (mx-auto)
-   * - Add responsive horizontal padding
-   * - Set max-width for large screens
-   *
-   * Usage: <div className="container">...</div>
-   *
-   * For custom widths, use max-w-* utilities directly:
-   * <div className="max-w-6xl mx-auto px-4">...</div>
-   */
   .container {
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding-left: 1rem; /* 16px - mobile padding */
-    padding-right: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 
   .flex {
@@ -191,16 +182,29 @@
 
   @media (min-width: 640px) {
     .container {
-      padding-left: 1.5rem; /* 24px - tablet padding */
-      padding-right: 1.5rem;
+      padding-left: 2rem;
+      padding-right: 2rem;
     }
   }
 
   @media (min-width: 1024px) {
     .container {
-      padding-left: 2rem; /* 32px - desktop padding */
-      padding-right: 2rem;
-      max-width: 1280px; /* Standard content width */
+      padding-left: 3rem;
+      padding-right: 3rem;
+      max-width: 1400px; /* Wider container for editorial layout */
     }
+  }
+  
+  /* Custom Utilities for Oura Aesthetic */
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .glass-panel {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-sm;
+  }
+  
+  .stone-card {
+    @apply bg-card border border-border/50 shadow-sm hover:shadow-md transition-all duration-500;
   }
 }

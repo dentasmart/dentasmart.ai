@@ -2,22 +2,38 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Linkedin } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Team() {
   return (
-    <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900">
+    <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
       <Navigation />
 
-      {/* Hero Section - Minimalist */}
-      <section className="py-32 md:py-48 bg-stone-100">
-        <div className="container px-4 mx-auto max-w-4xl text-center">
-          <h1 className="text-5xl md:text-7xl font-light tracking-tight text-stone-900 mb-8 leading-[1.1]">
-            The right team for <br />
-            <span className="font-normal italic">the right problem</span>.
-          </h1>
-          <p className="text-xl md:text-2xl text-stone-600 max-w-3xl mx-auto font-light leading-relaxed">
-            Meet the passionate experts behind DentaSmart's mission to revolutionize oral healthcare through AI innovation.
-          </p>
+      {/* Hero Section - Human & Warm */}
+      <section className="relative py-40 md:py-52 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/backgrounds/team-collab.jpg" 
+            alt="DentaSmart Team" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-stone-900/30 backdrop-blur-[1px]" />
+        </div>
+
+        <div className="container relative z-10 px-4 mx-auto max-w-4xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mb-8 leading-[1.1] drop-shadow-lg">
+              The right team for <br />
+              <span className="font-normal italic">the right problem</span>.
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto font-light leading-relaxed drop-shadow-md">
+              Meet the passionate experts behind DentaSmart's mission to revolutionize oral healthcare through AI innovation.
+            </p>
+          </motion.div>
         </div>
       </section>
 
@@ -35,14 +51,20 @@ export default function Team() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {/* Qasim Mueen */}
-            <div className="group">
-              <div className="aspect-square bg-stone-100 rounded-3xl mb-8 overflow-hidden relative">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="group"
+            >
+              <div className="aspect-square bg-stone-100 rounded-3xl mb-8 overflow-hidden relative shadow-sm group-hover:shadow-md transition-all duration-500">
                 <div className="absolute inset-0 flex items-center justify-center text-6xl grayscale group-hover:grayscale-0 transition-all duration-500">
                   👨‍💼
                 </div>
               </div>
               <h3 className="text-2xl font-medium text-stone-900 mb-2">Qasim Mueen</h3>
-              <p className="text-stone-500 font-medium mb-4 uppercase tracking-wider text-sm">Founder & CEO</p>
+              <p className="text-stone-500 font-medium mb-4 uppercase tracking-wider text-xs">Founder & CEO</p>
               <p className="text-stone-600 font-light leading-relaxed mb-6 text-sm">
                 Co-Founder & CEO of Zigron and FraudLens. Former Partner at Abode Systems (sold for $50M). Co-Founder of TransparentHands.org.
               </p>
@@ -50,17 +72,23 @@ export default function Team() {
                 <Linkedin className="w-5 h-5 mr-2" />
                 <span className="text-sm font-medium">LinkedIn</span>
               </a>
-            </div>
+            </motion.div>
 
             {/* Kashif Mueen */}
-            <div className="group">
-              <div className="aspect-square bg-stone-100 rounded-3xl mb-8 overflow-hidden relative">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              className="group"
+            >
+              <div className="aspect-square bg-stone-100 rounded-3xl mb-8 overflow-hidden relative shadow-sm group-hover:shadow-md transition-all duration-500">
                 <div className="absolute inset-0 flex items-center justify-center text-6xl grayscale group-hover:grayscale-0 transition-all duration-500">
                   👨‍💻
                 </div>
               </div>
               <h3 className="text-2xl font-medium text-stone-900 mb-2">Kashif Mueen</h3>
-              <p className="text-stone-500 font-medium mb-4 uppercase tracking-wider text-sm">Co-founder & CTO</p>
+              <p className="text-stone-500 font-medium mb-4 uppercase tracking-wider text-xs">Co-founder & CTO</p>
               <p className="text-stone-600 font-light leading-relaxed mb-6 text-sm">
                 25+ years in enterprise architecture, cloud, AI & ML. Former Partner at Abode Systems. Co-Founder of FraudLens and WhereverTV.
               </p>
@@ -68,17 +96,23 @@ export default function Team() {
                 <Linkedin className="w-5 h-5 mr-2" />
                 <span className="text-sm font-medium">LinkedIn</span>
               </a>
-            </div>
+            </motion.div>
 
             {/* Dr. Saba Ahmed */}
-            <div className="group">
-              <div className="aspect-square bg-stone-100 rounded-3xl mb-8 overflow-hidden relative">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="group"
+            >
+              <div className="aspect-square bg-stone-100 rounded-3xl mb-8 overflow-hidden relative shadow-sm group-hover:shadow-md transition-all duration-500">
                 <div className="absolute inset-0 flex items-center justify-center text-6xl grayscale group-hover:grayscale-0 transition-all duration-500">
                   👩‍⚕️
                 </div>
               </div>
               <h3 className="text-2xl font-medium text-stone-900 mb-2">Dr. Saba Ahmed</h3>
-              <p className="text-stone-500 font-medium mb-4 uppercase tracking-wider text-sm">Product Lead</p>
+              <p className="text-stone-500 font-medium mb-4 uppercase tracking-wider text-xs">Product Lead</p>
               <p className="text-stone-600 font-light leading-relaxed mb-6 text-sm">
                 Dental Surgeon with 10+ years clinical experience. Expert in merging patient care and technology to drive healthcare innovation.
               </p>
@@ -86,7 +120,7 @@ export default function Team() {
                 <Linkedin className="w-5 h-5 mr-2" />
                 <span className="text-sm font-medium">LinkedIn</span>
               </a>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -105,9 +139,15 @@ export default function Team() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Tyrette Hamilton */}
-            <div className="bg-white p-10 rounded-3xl shadow-sm border border-stone-100 hover:shadow-md transition-all duration-300">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-white p-10 rounded-3xl shadow-sm border border-stone-100 hover:shadow-md transition-all duration-300"
+            >
               <h3 className="text-2xl font-medium text-stone-900 mb-2">Tyrette Hamilton</h3>
-              <p className="text-stone-500 font-medium mb-6 uppercase tracking-wider text-sm">Strategic Advisor</p>
+              <p className="text-stone-500 font-medium mb-6 uppercase tracking-wider text-xs">Strategic Advisor</p>
               <p className="text-stone-600 font-light leading-relaxed mb-8">
                 Former COO of P&R Dental Strategies. 25+ years in dental insurance, benefit design, and regulatory compliance.
               </p>
@@ -115,12 +155,18 @@ export default function Team() {
                 <Linkedin className="w-5 h-5 mr-2" />
                 <span className="text-sm font-medium">LinkedIn</span>
               </a>
-            </div>
+            </motion.div>
 
             {/* Peter Fuentes */}
-            <div className="bg-white p-10 rounded-3xl shadow-sm border border-stone-100 hover:shadow-md transition-all duration-300">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1, duration: 0.6 }}
+              className="bg-white p-10 rounded-3xl shadow-sm border border-stone-100 hover:shadow-md transition-all duration-300"
+            >
               <h3 className="text-2xl font-medium text-stone-900 mb-2">Peter Fuentes, DMD</h3>
-              <p className="text-stone-500 font-medium mb-6 uppercase tracking-wider text-sm">Strategic Advisor</p>
+              <p className="text-stone-500 font-medium mb-6 uppercase tracking-wider text-xs">Strategic Advisor</p>
               <p className="text-stone-600 font-light leading-relaxed mb-8">
                 Current Chief Dental Officer of MetLife (20M lives). Former CDO of Liberty Dental. 20+ years of industry leadership.
               </p>
@@ -128,7 +174,7 @@ export default function Team() {
                 <Linkedin className="w-5 h-5 mr-2" />
                 <span className="text-sm font-medium">LinkedIn</span>
               </a>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -161,7 +207,7 @@ export default function Team() {
           </p>
           <Button 
             size="lg" 
-            className="bg-white text-stone-900 hover:bg-stone-100 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105"
+            className="bg-white text-stone-900 hover:bg-stone-100 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl"
             onClick={() => window.open('https://apps.apple.com/us/app/dentasmart/id6670311232', '_blank')}
           >
             Download the App

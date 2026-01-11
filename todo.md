@@ -1,0 +1,39 @@
+# Oura-Inspired Redesign Todo List
+
+## Phase 25: Design System & Assets
+- [ ] Update `client/src/index.css` with "Stone" color palette (warm grays, creams) and refined typography.
+- [ ] Generate premium background images for:
+    - [ ] Home Hero (Lifestyle, confidence)
+    - [ ] How It Works (Simplicity, phone interaction)
+    - [ ] Features (Abstract/Macro tech + nature)
+    - [ ] Pricing (Peace of mind, calm)
+    - [ ] Employers (Modern workplace)
+    - [ ] Team (Collaboration)
+    - [ ] FAQs (Clarity)
+
+## Phase 26: Navigation & Mobile Menu
+- [ ] Redesign `Navigation.tsx` to be transparent/blur on scroll.
+- [ ] Build a premium full-screen mobile menu with smooth animations (Framer Motion).
+- [ ] Ensure "Download App" CTA is prominent but elegant.
+
+## Phase 27: Home Page Redesign
+- [ ] Hero Section: Full-screen lifestyle image, centered or split layout, elegant typography.
+- [ ] "Problem" Section: Editorial layout with large typography.
+- [ ] "Solution" Section: Minimalist feature grid with stone backgrounds.
+- [ ] Testimonials: Clean, high-trust layout.
+- [ ] CTA: Large, inviting, "stone" colored buttons.
+
+## Phase 28: Inner Pages
+- [ ] **How It Works:** Visual timeline, less text, more breathing room.
+- [ ] **Features:** Large product shots (mockups) mixed with lifestyle imagery.
+- [ ] **Pricing:** Elegant cards, clear hierarchy, "stone" borders.
+
+## Phase 29: Support Pages
+- [ ] **Employers:** Professional yet human-centric B2B layout.
+- [ ] **Team:** Clean grid with hover effects.
+- [ ] **FAQs:** Minimalist accordion with smooth expansion.
+
+## Phase 30: Mobile Polish
+- [ ] Verify touch targets.
+- [ ] Check font sizes on small screens.
+- [ ] Ensure no horizontal scroll.

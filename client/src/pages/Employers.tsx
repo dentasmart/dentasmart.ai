@@ -2,40 +2,47 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
-import { Check, ArrowRight, Building2, Users, TrendingDown, ShieldCheck } from "lucide-react";
+import { TrendingDown, Users, ShieldCheck, Check } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Employers() {
   return (
-    <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900">
+    <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
       <Navigation />
 
-      {/* Hero Section - Editorial Style */}
-      <section className="relative py-32 md:py-48 bg-stone-100 overflow-hidden">
+      {/* Hero Section - Professional & Modern */}
+      <section className="relative py-40 md:py-52 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/challenges/care_consistency.jpg" 
+            src="/images/backgrounds/employers-office.jpg" 
             alt="Corporate Wellness" 
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-stone-100/90 via-stone-100/60 to-stone-100" />
+          <div className="absolute inset-0 bg-stone-900/30 backdrop-blur-[1px]" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto max-w-5xl text-center">
-          <h1 className="text-5xl md:text-7xl font-light tracking-tight text-stone-900 mb-8 leading-[1.1]">
-            A dental benefit employees <br />
-            <span className="font-normal italic">actually use</span>.
-          </h1>
-          <p className="text-xl md:text-2xl text-stone-600 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
-            Give your team a Personal AI Dental Companion that prevents problems, reduces anxiety, and costs 75% less than traditional insurance.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button size="lg" className="bg-stone-900 hover:bg-stone-800 text-white rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105">
-              Schedule a Demo
-            </Button>
-            <Button size="lg" variant="outline" className="border-stone-300 text-stone-900 hover:bg-stone-200 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300">
-              Calculate Savings
-            </Button>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mb-8 leading-[1.1] drop-shadow-lg">
+              A dental benefit employees <br />
+              <span className="font-normal italic">actually use</span>.
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-12 font-light leading-relaxed drop-shadow-md">
+              Give your team a Personal AI Dental Companion that prevents problems, reduces anxiety, and costs 75% less than traditional insurance.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Button size="lg" className="bg-white text-stone-900 hover:bg-stone-100 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0">
+                Schedule a Demo
+              </Button>
+              <Button size="lg" variant="outline" className="bg-white/10 backdrop-blur-md border-white/30 text-white hover:bg-white/20 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300">
+                Calculate Savings
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -69,7 +76,14 @@ export default function Employers() {
                 desc: "Employees wait for pain, leading to expensive emergency procedures and lost productivity." 
               }
             ].map((item, idx) => (
-              <div key={idx} className="text-center group">
+              <motion.div 
+                key={idx} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.2, duration: 0.6 }}
+                className="text-center group"
+              >
                 <div className="w-20 h-20 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-8 group-hover:bg-stone-900 transition-colors duration-500">
                   <item.icon className="w-8 h-8 text-stone-900 group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
                 </div>
@@ -77,14 +91,16 @@ export default function Employers() {
                 <p className="text-stone-600 font-light leading-relaxed">
                   {item.desc}
                 </p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* User Challenges Carousel */}
-      <UserChallengesCarousel />
+      <section className="py-20 bg-stone-100">
+        <UserChallengesCarousel />
+      </section>
 
       {/* Comparison Table - Clean & Modern */}
       <section className="py-32 bg-stone-50">
@@ -153,13 +169,25 @@ export default function Employers() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
-            <div className="text-center p-12 rounded-3xl bg-stone-50 border border-stone-100">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center p-12 rounded-3xl bg-stone-50 border border-stone-100"
+            >
               <p className="text-stone-500 font-medium mb-4">Traditional Insurance</p>
               <div className="text-6xl md:text-7xl font-light text-stone-400 mb-2">~$1,200</div>
               <p className="text-stone-400 text-sm">per employee family/year</p>
-            </div>
+            </motion.div>
 
-            <div className="text-center p-12 rounded-3xl bg-stone-900 text-white relative overflow-hidden shadow-xl transform md:scale-110">
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center p-12 rounded-3xl bg-stone-900 text-white relative overflow-hidden shadow-xl transform md:scale-110"
+            >
               <div className="absolute top-6 right-6 bg-white text-stone-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                 75% Savings
               </div>
@@ -170,7 +198,7 @@ export default function Employers() {
                 <span className="text-white font-medium">$25</span>
                 <span className="text-white/70 text-sm ml-2">/ month</span>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -179,10 +207,17 @@ export default function Employers() {
               { value: "4x", label: "Better Value Proposition" },
               { value: "0", label: "Administrative Headache" }
             ].map((stat, idx) => (
-              <div key={idx} className="text-center p-8 rounded-2xl bg-stone-50">
+              <motion.div 
+                key={idx} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.2, duration: 0.6 }}
+                className="text-center p-8 rounded-2xl bg-stone-50"
+              >
                 <div className="text-5xl font-light text-stone-900 mb-2">{stat.value}</div>
                 <div className="text-sm uppercase tracking-widest text-stone-500 font-medium">{stat.label}</div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -199,27 +234,34 @@ export default function Employers() {
         </div>
         
         <div className="container relative z-10 text-center px-4">
-          <h2 className="text-5xl md:text-7xl font-light text-white mb-8 tracking-tight">
-            Ready to upgrade your benefits?
-          </h2>
-          <p className="text-xl md:text-2xl text-white/80 font-light mb-12 max-w-2xl mx-auto">
-            Join forward-thinking companies saving thousands while improving employee health.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button 
-              size="lg" 
-              className="bg-white text-stone-900 hover:bg-stone-100 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105"
-            >
-              Schedule a Demo
-            </Button>
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="border-white/30 text-white hover:bg-white/10 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300"
-            >
-              Contact Sales
-            </Button>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-5xl md:text-7xl font-light text-white mb-8 tracking-tight">
+              Ready to upgrade your benefits?
+            </h2>
+            <p className="text-xl md:text-2xl text-white/80 font-light mb-12 max-w-2xl mx-auto">
+              Join forward-thinking companies saving thousands while improving employee health.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Button 
+                size="lg" 
+                className="bg-white text-stone-900 hover:bg-stone-100 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0"
+              >
+                Schedule a Demo
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="bg-white/10 backdrop-blur-md border-white/30 text-white hover:bg-white/20 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300"
+              >
+                Contact Sales
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </section>
 
