@@ -8,7 +8,7 @@ import { ArrowRight, Check, Shield, Smartphone, Activity } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
+    <div className="min-h-screen flex flex-col bg-background font-sans text-foreground selection:bg-primary/20">
       <Navigation />
 
       {/* Hero Section - Cinematic & Editorial */}
@@ -28,12 +28,12 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight text-white mb-8 leading-[1.1] drop-shadow-lg">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-normal tracking-tight text-white mb-8 leading-[1.1] drop-shadow-lg">
               Understand your mouth <br />
               <span className="font-normal italic">before</span> your dentist explains it.
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-12 font-light leading-relaxed drop-shadow-md text-balance">
+            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-12 font-normal leading-relaxed drop-shadow-md text-balance">
               Monthly monitoring, instant insights, and peace of mind. 
               Your personal AI dental companion is here.
             </p>
@@ -41,7 +41,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button 
                 size="lg" 
-                className="bg-white text-stone-900 hover:bg-stone-100 rounded-full px-10 py-8 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0"
+                className="bg-white text-primary hover:bg-white/90 rounded-full px-10 py-8 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0"
                 onClick={() => window.open('https://apps.apple.com/us/app/dentasmart/id6670311232', '_blank')}
               >
                 Download the App
@@ -72,7 +72,7 @@ export default function Home() {
       </section>
 
       {/* Video Section - StoryBrand Aligned */}
-      <section className="py-24 bg-stone-50 border-b border-stone-100">
+      <section className="py-24 bg-secondary border-b border-border">
         <div className="container px-4 mx-auto max-w-5xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -80,14 +80,14 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-6">
               See DentaSmart in Action
             </h2>
-            <p className="text-xl text-stone-600 font-light max-w-2xl mx-auto mb-12 leading-relaxed">
+            <p className="text-xl text-muted-foreground font-normal max-w-2xl mx-auto mb-12 leading-relaxed">
               Watch our explainer video to learn how DentaSmart empowers you with AI-driven insights into your oral health.
             </p>
             
-            <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl bg-stone-900">
+            <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl bg-foreground">
               <iframe 
                 width="100%" 
                 height="100%" 
@@ -120,7 +120,7 @@ export default function Home() {
                 transition={{ delay: idx * 0.2, duration: 0.6 }}
                 className="space-y-2 pt-8 md:pt-0"
               >
-                <div className="text-5xl md:text-6xl font-light text-stone-900 tracking-tighter">
+                <div className="text-5xl md:text-6xl font-normal text-foreground tracking-tighter">
                   {stat.value}
                 </div>
                 <div className="text-xs uppercase tracking-widest text-stone-500 font-medium">
@@ -150,7 +150,7 @@ export default function Home() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               <div className="absolute bottom-8 left-8 text-white">
-                <p className="text-lg font-light italic">"I used to dread the dentist. Now I know exactly what to expect."</p>
+                <p className="text-lg font-normal italic">"I used to dread the dentist. Now I know exactly what to expect."</p>
                 <p className="text-sm mt-2 font-medium opacity-80">— Sarah, DentaSmart User</p>
               </div>
             </motion.div>
@@ -161,7 +161,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="text-4xl md:text-6xl font-light leading-tight text-stone-900"
+                className="text-4xl md:text-6xl font-normal leading-tight text-foreground"
               >
                 The problem isn't just your teeth. <br />
                 <span className="italic font-normal text-stone-500">It's the uncertainty.</span>
@@ -190,11 +190,11 @@ export default function Home() {
                     transition={{ delay: idx * 0.2, duration: 0.6 }}
                     className="group"
                   >
-                    <h3 className="text-2xl font-normal text-stone-900 mb-3 group-hover:text-primary transition-colors duration-300 flex items-center gap-3">
-                      <span className="w-2 h-2 rounded-full bg-stone-300 group-hover:bg-primary transition-colors" />
+                    <h3 className="text-2xl font-normal text-foreground mb-3 group-hover:text-primary transition-colors duration-300 flex items-center gap-3">
+                      <span className="w-2 h-2 rounded-full bg-muted group-hover:bg-primary transition-colors" />
                       {item.title}
                     </h3>
-                    <p className="text-stone-600 font-light leading-relaxed pl-5 border-l border-stone-200 group-hover:border-primary/30 transition-colors duration-300">
+                    <p className="text-muted-foreground font-normal leading-relaxed pl-5 border-l border-border group-hover:border-primary/30 transition-colors duration-300">
                       {item.desc}
                     </p>
                   </motion.div>
@@ -206,9 +206,9 @@ export default function Home() {
       </section>
 
       {/* User Challenges Carousel - Seamless Integration */}
-      <section className="py-20 bg-stone-100">
+      <section className="py-20 bg-secondary">
         <div className="container px-4 mx-auto mb-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-light text-stone-900">Real Scenarios. Real Clarity.</h2>
+          <h2 className="text-3xl md:text-4xl font-normal text-foreground">Real Scenarios. Real Clarity.</h2>
         </div>
         <UserChallengesCarousel />
       </section>
@@ -217,10 +217,10 @@ export default function Home() {
       <section className="py-32 bg-white">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="text-center max-w-3xl mx-auto mb-24">
-            <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-6">
               Your Personal AI Dental Companion
             </h2>
-            <p className="text-xl text-stone-600 font-light leading-relaxed">
+            <p className="text-xl text-muted-foreground font-normal leading-relaxed">
               DentaSmart analyzes your mouth in seconds, explains what's happening in plain language, and helps you make informed decisions.
             </p>
           </div>
@@ -252,7 +252,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.2, duration: 0.6 }}
-                className="group relative aspect-[3/4] rounded-2xl overflow-hidden bg-stone-100 shadow-lg hover:shadow-2xl transition-all duration-500"
+                className="group relative aspect-[3/4] rounded-2xl overflow-hidden bg-secondary shadow-lg hover:shadow-2xl transition-all duration-500"
               >
                 <img 
                   src={feature.image} 
@@ -264,7 +264,7 @@ export default function Home() {
                 <div className="absolute bottom-0 left-0 p-8 text-white w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                   <feature.icon className="w-10 h-10 mb-6 text-white/90" strokeWidth={1.5} />
                   <h3 className="text-2xl font-medium mb-3">{feature.title}</h3>
-                  <p className="text-white/80 font-light leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                  <p className="text-white/80 font-normal leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                     {feature.desc}
                   </p>
                   <div className="mt-6 pt-6 border-t border-white/20 flex items-center text-sm font-medium tracking-wide uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
@@ -280,7 +280,7 @@ export default function Home() {
       {/* Pricing - Elegant Cards */}
       <section className="py-32 bg-stone-50">
         <div className="container px-4 mx-auto max-w-5xl">
-          <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-16 text-center">
+          <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-16 text-center">
             Simple, transparent pricing
           </h2>
 
@@ -290,16 +290,16 @@ export default function Home() {
               whileHover={{ y: -10 }}
               className="bg-white rounded-3xl p-10 shadow-sm border border-stone-100 hover:shadow-xl transition-all duration-500 relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 bg-stone-900 text-white text-xs font-bold px-4 py-2 rounded-bl-xl uppercase tracking-wider">
+              <div className="absolute top-0 right-0 bg-foreground text-white text-xs font-bold px-4 py-2 rounded-bl-xl uppercase tracking-wider">
                 Most Popular
               </div>
               <div className="flex justify-between items-start mb-8">
                 <div>
-                  <h3 className="text-3xl font-light text-stone-900">Clarity</h3>
-                  <p className="text-stone-500 mt-2 font-light">Unlimited Full Mouth Analysis</p>
+                  <h3 className="text-3xl font-normal text-foreground">Clarity</h3>
+                  <p className="text-stone-500 mt-2 font-normal">Unlimited Full Mouth Analysis</p>
                 </div>
                 <div className="text-right">
-                  <span className="text-5xl font-light text-stone-900">$75</span>
+                  <span className="text-5xl font-normal text-foreground">$75</span>
                   <span className="text-stone-400 block text-sm mt-1">/year</span>
                 </div>
               </div>
@@ -310,13 +310,13 @@ export default function Home() {
                   "Priority Dr. Din support",
                   "Dental record vault"
                 ].map((item, i) => (
-                  <li key={i} className="flex items-center text-stone-600 font-light">
+                  <li key={i} className="flex items-center text-muted-foreground font-normal">
                     <Check className="w-5 h-5 text-primary mr-4" />
                     {item}
                   </li>
                 ))}
               </ul>
-              <Button className="w-full bg-stone-900 hover:bg-stone-800 text-white rounded-full py-7 text-lg transition-all duration-300 shadow-lg hover:shadow-xl">
+              <Button className="w-full bg-foreground hover:bg-stone-800 text-white rounded-full py-7 text-lg transition-all duration-300 shadow-lg hover:shadow-xl">
                 Start Free Trial
               </Button>
             </motion.div>
@@ -324,15 +324,15 @@ export default function Home() {
             {/* Consult Plan */}
             <motion.div 
               whileHover={{ y: -10 }}
-              className="bg-stone-100/50 rounded-3xl p-10 border border-stone-200 hover:shadow-lg transition-all duration-500"
+              className="bg-secondary/50 rounded-3xl p-10 border border-border hover:shadow-lg transition-all duration-500"
             >
               <div className="flex justify-between items-start mb-8">
                 <div>
-                  <h3 className="text-3xl font-light text-stone-900">Consult</h3>
-                  <p className="text-stone-500 mt-2 font-light">One-time Analysis</p>
+                  <h3 className="text-3xl font-normal text-foreground">Consult</h3>
+                  <p className="text-stone-500 mt-2 font-normal">One-time Analysis</p>
                 </div>
                 <div className="text-right">
-                  <span className="text-5xl font-light text-stone-900">$30</span>
+                  <span className="text-5xl font-normal text-foreground">$30</span>
                   <span className="text-stone-400 block text-sm mt-1">one-time</span>
                 </div>
               </div>
@@ -343,13 +343,13 @@ export default function Home() {
                   "Second opinion verification",
                   "Valid for 30 days"
                 ].map((item, i) => (
-                  <li key={i} className="flex items-center text-stone-600 font-light">
+                  <li key={i} className="flex items-center text-muted-foreground font-normal">
                     <Check className="w-5 h-5 text-stone-400 mr-4" />
                     {item}
                   </li>
                 ))}
               </ul>
-              <Button variant="outline" className="w-full bg-transparent border-stone-300 text-stone-900 hover:bg-white rounded-full py-7 text-lg transition-all duration-300">
+              <Button variant="outline" className="w-full bg-transparent border-stone-300 text-foreground hover:bg-white rounded-full py-7 text-lg transition-all duration-300">
                 Get One-Time Scan
               </Button>
             </motion.div>
@@ -365,7 +365,7 @@ export default function Home() {
             alt="Empowerment" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-stone-900/40 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-foreground/40 backdrop-blur-[2px]" />
         </div>
         
         <div className="container relative z-10 text-center px-4">
@@ -375,15 +375,15 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-5xl md:text-7xl font-light text-white mb-8 tracking-tight drop-shadow-lg">
+            <h2 className="text-5xl md:text-7xl font-normal text-white mb-8 tracking-tight drop-shadow-lg">
               Ready to stop worrying?
             </h2>
-            <p className="text-xl md:text-2xl text-white/90 font-light mb-12 max-w-2xl mx-auto drop-shadow-md">
+            <p className="text-xl md:text-2xl text-white/90 font-normal mb-12 max-w-2xl mx-auto drop-shadow-md">
               Download DentaSmart today and get instant insights into your oral health.
             </p>
             <Button 
               size="lg" 
-              className="bg-white text-stone-900 hover:bg-stone-100 rounded-full px-12 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-2xl border-0"
+              className="bg-white text-primary hover:bg-white/90 rounded-full px-12 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-2xl border-0"
               onClick={() => window.open('https://apps.apple.com/us/app/dentasmart/id6670311232', '_blank')}
             >
               Download the App

@@ -43,92 +43,94 @@
 }
 
 :root {
-  /* Oura-Inspired "Stone" Palette */
-  /* Primary: DentaSmart Teal #00BCD4 (Kept for brand identity) */
-  /* Backgrounds: Warm Stone/Sand tones instead of sterile white */
+  /* DentaSmart Brand Palette */
+  /* Primary Teal: #21B9C6 */
+  /* Dark Gray/Black: #232020 */
+  /* Light Gray: #D2D9D9 */
+  /* White: #FFFFFF */
   
-  --primary: #00BCD4;
+  --primary: #21B9C6;
   --primary-foreground: #ffffff;
   
-  /* Stone / Sand Tones */
-  --background: #F5F3F0; /* Warm stone background */
-  --foreground: #2D2A26; /* Soft charcoal text */
+  /* Backgrounds: Clean, modern, slightly warm/stone to keep Oura feel but branded */
+  --background: #FFFFFF; 
+  --foreground: #232020; /* Brand Dark Gray */
   
   --card: #FFFFFF;
-  --card-foreground: #2D2A26;
+  --card-foreground: #232020;
   
   --popover: #FFFFFF;
-  --popover-foreground: #2D2A26;
+  --popover-foreground: #232020;
   
-  --secondary: #E8E5E0; /* Slightly darker stone for secondary backgrounds */
-  --secondary-foreground: #2D2A26;
+  --secondary: #F5F7F7; /* Very light tint of brand gray/teal */
+  --secondary-foreground: #232020;
   
-  --muted: #D6D3CE;
-  --muted-foreground: #6B665F;
+  --muted: #D2D9D9; /* Brand Light Gray */
+  --muted-foreground: #6B7280;
   
   --accent: #E0F7FA; /* Light teal accent */
-  --accent-foreground: #006064;
+  --accent-foreground: #21B9C6;
   
   --destructive: #D32F2F;
   --destructive-foreground: #ffffff;
   
-  --border: #E6E2DE;
-  --input: #E6E2DE;
-  --ring: #00BCD4;
+  --border: #E5E7EB;
+  --input: #E5E7EB;
+  --ring: #21B9C6;
   
-  --radius: 0.75rem; /* Slightly more rounded for organic feel */
+  --radius: 0.75rem;
   
   /* Chart Colors (Teal Spectrum) */
-  --chart-1: #00BCD4;
-  --chart-2: #26C6DA;
-  --chart-3: #4DD0E1;
-  --chart-4: #80DEEA;
-  --chart-5: #B2EBF2;
+  --chart-1: #21B9C6;
+  --chart-2: #4DD0E1;
+  --chart-3: #80DEEA;
+  --chart-4: #B2EBF2;
+  --chart-5: #E0F7FA;
   
-  --sidebar: #F5F3F0;
-  --sidebar-foreground: #2D2A26;
-  --sidebar-accent: #E8E5E0;
-  --sidebar-accent-foreground: #2D2A26;
-  --sidebar-border: #E6E2DE;
-  --sidebar-ring: #00BCD4;
+  --sidebar: #F5F7F7;
+  --sidebar-foreground: #232020;
+  --sidebar-accent: #E0F7FA;
+  --sidebar-accent-foreground: #21B9C6;
+  --sidebar-border: #E5E7EB;
+  --sidebar-ring: #21B9C6;
 }
 
 .dark {
-  /* Dark Mode - Deep Stone / Slate */
-  --background: #1C1B1A;
-  --foreground: #F5F3F0;
+  /* Dark Mode - Deep Charcoal */
+  --background: #232020; /* Brand Dark Gray */
+  --foreground: #FFFFFF;
   
-  --card: #262422;
-  --card-foreground: #F5F3F0;
+  --card: #2D2A2A;
+  --card-foreground: #FFFFFF;
   
-  --popover: #262422;
-  --popover-foreground: #F5F3F0;
+  --popover: #2D2A2A;
+  --popover-foreground: #FFFFFF;
   
-  --primary: #00BCD4;
+  --primary: #21B9C6;
   --primary-foreground: #ffffff;
   
-  --secondary: #33302E;
-  --secondary-foreground: #F5F3F0;
+  --secondary: #333030;
+  --secondary-foreground: #FFFFFF;
   
-  --muted: #45423F;
-  --muted-foreground: #A8A49F;
+  --muted: #4A4747;
+  --muted-foreground: #D2D9D9;
   
-  --accent: #006064;
-  --accent-foreground: #E0F7FA;
+  --accent: #21B9C6;
+  --accent-foreground: #FFFFFF;
   
   --destructive: #EF5350;
   --destructive-foreground: #ffffff;
   
-  --border: #33302E;
-  --input: #33302E;
-  --ring: #00BCD4;
+  --border: #333030;
+  --input: #333030;
+  --ring: #21B9C6;
   
-  --sidebar: #1C1B1A;
-  --sidebar-foreground: #F5F3F0;
-  --sidebar-accent: #33302E;
-  --sidebar-accent-foreground: #F5F3F0;
-  --sidebar-border: #33302E;
-  --sidebar-ring: #00BCD4;
+  --sidebar: #232020;
+  --sidebar-foreground: #FFFFFF;
+  --sidebar-accent: #333030;
+  --sidebar-accent-foreground: #FFFFFF;
+  --sidebar-border: #333030;
+  --sidebar-ring: #21B9C6;
 }
 
 @layer base {
@@ -137,21 +139,21 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif; /* Brand Font */
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 300; /* Lighter weights for editorial feel */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600; /* SemiBold for headings per brand guide */
     letter-spacing: -0.02em;
   }
   h1 {
-    @apply text-5xl md:text-7xl font-light text-foreground leading-[1.1];
+    @apply text-5xl md:text-7xl font-semibold text-foreground leading-[1.1];
   }
   h2 {
-    @apply text-4xl md:text-5xl font-light text-foreground leading-tight;
+    @apply text-4xl md:text-5xl font-semibold text-foreground leading-tight;
   }
   h3 {
-    @apply text-2xl md:text-3xl font-normal text-foreground;
+    @apply text-2xl md:text-3xl font-medium text-foreground;
   }
   h4 {
     @apply text-xl md:text-2xl font-medium text-foreground;
@@ -159,10 +161,10 @@
   
   /* Typography utilities */
   .font-display {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
   .font-body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
   }
 }
 
@@ -191,20 +193,20 @@
     .container {
       padding-left: 3rem;
       padding-right: 3rem;
-      max-width: 1400px; /* Wider container for editorial layout */
+      max-width: 1400px;
     }
   }
   
-  /* Custom Utilities for Oura Aesthetic */
+  /* Custom Utilities */
   .text-balance {
     text-wrap: balance;
   }
   
   .glass-panel {
-    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-sm;
+    @apply bg-white/90 backdrop-blur-md border border-white/20 shadow-sm;
   }
   
-  .stone-card {
-    @apply bg-card border border-border/50 shadow-sm hover:shadow-md transition-all duration-500;
+  .brand-card {
+    @apply bg-card border border-border/50 shadow-sm hover:shadow-md transition-all duration-500 rounded-2xl;
   }
 }

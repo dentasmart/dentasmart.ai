@@ -49,12 +49,12 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex flex-col items-start gap-1 group z-50 relative">
             <img
-              src="/images/dentasmart-logo.png"
+              src="/images/logo.png"
               alt="DentaSmart Logo"
               className="h-8 md:h-10 w-auto transition-transform duration-300 group-hover:scale-105"
             />
             <p className={`text-[10px] md:text-xs font-medium tracking-wide transition-colors duration-300 ${
-              scrolled || isOpen ? "text-stone-500" : "text-white/80"
+              scrolled || isOpen ? "text-muted-foreground" : "text-white/90"
             }`}>
               Your Personal AI Dental Companion
             </p>
@@ -89,7 +89,7 @@ export default function Navigation() {
             >
               <Button
                 size="sm"
-                className="bg-stone-900 hover:bg-stone-800 text-white rounded-full px-6 py-5 text-sm font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+                className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-5 text-sm font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
               >
                 Download App
               </Button>
@@ -128,7 +128,7 @@ export default function Navigation() {
             animate={{ opacity: 1, clipPath: "circle(150% at 100% 0%)" }}
             exit={{ opacity: 0, clipPath: "circle(0% at 100% 0%)" }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-40 bg-stone-50 flex flex-col pt-24 px-6 pb-8 lg:hidden"
+            className="fixed inset-0 z-40 bg-background flex flex-col pt-24 px-6 pb-8 lg:hidden"
           >
             <div className="flex flex-col gap-6 flex-1 overflow-y-auto">
               {navItems.map((item, idx) => (
@@ -141,7 +141,7 @@ export default function Navigation() {
                   <Link
                     href={item.href}
                     className={`text-3xl font-light tracking-tight block py-2 ${
-                      isActive(item.href) ? "text-stone-900" : "text-stone-400"
+                      isActive(item.href) ? "text-primary font-medium" : "text-muted-foreground"
                     }`}
                     onClick={() => setIsOpen(false)}
                   >
@@ -163,7 +163,7 @@ export default function Navigation() {
                 rel="noopener noreferrer"
                 className="block w-full"
               >
-                <Button className="w-full bg-stone-900 text-white rounded-full py-6 text-lg font-medium">
+                <Button className="w-full bg-primary text-white rounded-full py-6 text-lg font-medium hover:bg-primary/90">
                   Download the App
                 </Button>
               </a>
