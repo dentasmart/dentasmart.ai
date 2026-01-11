@@ -37,3 +37,10 @@
 - [ ] Verify touch targets.
 - [ ] Check font sizes on small screens.
 - [ ] Ensure no horizontal scroll.
+
+## Phase 31: Add Video Section
+- [ ] Add "See DentaSmart in Action" video section to Home.tsx below hero
+  - [ ] Embed YouTube video: https://www.youtube.com/watch?v=Y1aoiv81rZo
+  - [ ] Use StoryBrand copy (Problem -> Solution -> Success)
+  - [ ] Ensure SEO optimization (H2, descriptive text)
+  - [ ] Match Oura-inspired aesthetic (padding, rounded corners, shadow)

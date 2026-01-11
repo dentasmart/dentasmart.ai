@@ -71,6 +71,38 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* Video Section - StoryBrand Aligned */}
+      <section className="py-24 bg-stone-50 border-b border-stone-100">
+        <div className="container px-4 mx-auto max-w-5xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
+              See DentaSmart in Action
+            </h2>
+            <p className="text-xl text-stone-600 font-light max-w-2xl mx-auto mb-12 leading-relaxed">
+              Watch our explainer video to learn how DentaSmart empowers you with AI-driven insights into your oral health.
+            </p>
+            
+            <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl bg-stone-900">
+              <iframe 
+                width="100%" 
+                height="100%" 
+                src="https://www.youtube.com/embed/Y1aoiv81rZo" 
+                title="DentaSmart Explainer Video" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowFullScreen
+                className="absolute inset-0 w-full h-full"
+              ></iframe>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Social Proof - Minimalist & Clean */}
       <section className="py-24 bg-white border-b border-stone-100">
         <div className="container px-4 mx-auto">
