@@ -2,154 +2,140 @@ import { Link } from "wouter";
 
 export default function Footer() {
   return (
-    <footer className="bg-background border-t border-border py-12 md:py-16">
-      <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <img src="/images/dentasmart-logo.png" alt="DentaSmart Logo" className="h-8 w-auto" />
+    <footer className="bg-stone-900 text-white py-20 border-t border-stone-800">
+      <div className="container px-4 mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+          
+          {/* Brand & StoryBrand Overview - Spans 5 columns */}
+          <div className="lg:col-span-5 space-y-8">
+            <div className="flex flex-col items-start gap-4">
+              <img 
+                src="/images/logo.png" 
+                alt="DentaSmart Logo" 
+                className="h-12 w-auto brightness-0 invert" 
+              />
+              <p className="text-xl font-light tracking-wide text-white/90">
+                Your Personal AI Dental Companion
+              </p>
             </div>
-            <p className="text-muted-foreground text-sm">
-              Your Personal AI Dental Companion
-            </p>
+            
+            <div className="space-y-6 max-w-md">
+              <p className="text-stone-400 font-light leading-relaxed">
+                Most people feel anxious and confused about their dental health. 
+                We provide an AI companion that analyzes your mouth instantly and explains everything in plain English, 
+                so you can stop worrying and start making confident decisions about your care.
+              </p>
+              
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-3 text-sm text-stone-300 font-light">
+                  <span className="w-1.5 h-1.5 rounded-full bg-teal-400"></span>
+                  <span>Understand your oral health</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-stone-300 font-light">
+                  <span className="w-1.5 h-1.5 rounded-full bg-teal-400"></span>
+                  <span>Avoid surprise costs</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-stone-300 font-light">
+                  <span className="w-1.5 h-1.5 rounded-full bg-teal-400"></span>
+                  <span>Feel confident at the dentist</span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Product */}
-          <div>
-            <h4 className="font-display font-bold text-foreground mb-4">
-              Product
-            </h4>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/how-it-works"
-                  title="How DentaSmart AI Works"
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  How It Works
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/features"
-                  title="DentaSmart AI Features"
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  Features
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/pricing"
-                  title="DentaSmart Pricing Plans"
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  Pricing
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {/* Spacer - Spans 1 column */}
+          <div className="hidden lg:block lg:col-span-1"></div>
 
-          {/* Company */}
-          <div>
-            <h4 className="font-display font-bold text-foreground mb-4">
-              Company
-            </h4>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/team"
-                  title="Meet the DentaSmart Team"
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  Team
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/employers"
-                  title="DentaSmart for Employers"
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  Employers
-                </Link>
-              </li>
-              <li>
-                <a
-                  href="mailto:support@dentasmart.ai"
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* Navigation Links - Spans 6 columns */}
+          <div className="lg:col-span-6 grid grid-cols-2 md:grid-cols-3 gap-8">
+            
+            {/* Product */}
+            <div>
+              <h4 className="font-medium text-white mb-6 tracking-wide">Product</h4>
+              <ul className="space-y-4">
+                <li>
+                  <Link href="/how-it-works" className="text-stone-400 hover:text-white transition-colors font-light text-sm">
+                    How It Works
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/features" className="text-stone-400 hover:text-white transition-colors font-light text-sm">
+                    Features
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/pricing" className="text-stone-400 hover:text-white transition-colors font-light text-sm">
+                    Pricing
+                  </Link>
+                </li>
+                <li>
+                  <a href="https://apps.apple.com/us/app/dentasmart/id6670311232" target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-white transition-colors font-light text-sm">
+                    Download App
+                  </a>
+                </li>
+              </ul>
+            </div>
 
-          {/* Legal */}
-          <div>
-            <h4 className="font-display font-bold text-foreground mb-4">
-              Legal
-            </h4>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="#"
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  Terms of Service
-                </a>
-              </li>
-              <li>
-                <Link
-                  href="/faqs"
-                  title="Frequently Asked Questions"
-                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
-                >
-                  FAQs
-                </Link>
-              </li>
-            </ul>
+            {/* Company */}
+            <div>
+              <h4 className="font-medium text-white mb-6 tracking-wide">Company</h4>
+              <ul className="space-y-4">
+                <li>
+                  <Link href="/team" className="text-stone-400 hover:text-white transition-colors font-light text-sm">
+                    Team
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/employers" className="text-stone-400 hover:text-white transition-colors font-light text-sm">
+                    For Employers
+                  </Link>
+                </li>
+                <li>
+                  <a href="mailto:support@dentasmart.ai" className="text-stone-400 hover:text-white transition-colors font-light text-sm">
+                    Contact Support
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div>
+              <h4 className="font-medium text-white mb-6 tracking-wide">Legal</h4>
+              <ul className="space-y-4">
+                <li>
+                  <Link href="/privacy" className="text-stone-400 hover:text-white transition-colors font-light text-sm">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms" className="text-stone-400 hover:text-white transition-colors font-light text-sm">
+                    Terms of Service
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/faqs" className="text-stone-400 hover:text-white transition-colors font-light text-sm">
+                    FAQs
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
-        {/* Bottom */}
-        <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-muted-foreground text-sm">
+        {/* Bottom Bar */}
+        <div className="border-t border-stone-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-stone-500 text-sm font-light">
             © 2025 DentaSmart. All rights reserved.
           </p>
-          <div className="flex gap-4">
-            <a
-              href="#"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label="Twitter"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
+          
+          <div className="flex gap-6">
+            <a href="#" className="text-stone-500 hover:text-white transition-colors" aria-label="Twitter">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7-7 7-7a10.6 10.6 0 01-3 1" />
               </svg>
             </a>
-            <a
-              href="#"
-              className="text-muted-foreground hover:text-primary transition-colors"
-              aria-label="LinkedIn"
-            >
-              <svg
-                className="w-5 h-5"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
+            <a href="#" className="text-stone-500 hover:text-white transition-colors" aria-label="LinkedIn">
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
               </svg>
             </a>

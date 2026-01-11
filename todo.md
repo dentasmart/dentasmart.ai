@@ -44,3 +44,11 @@
   - [ ] Use StoryBrand copy (Problem -> Solution -> Success)
   - [ ] Ensure SEO optimization (H2, descriptive text)
   - [ ] Match Oura-inspired aesthetic (padding, rounded corners, shadow)
+
+## Phase 33: Update Footer
+- [ ] Move new logo to `client/public/images/logo.png`
+- [ ] Update `Footer.tsx`:
+  - [ ] Add StoryBrand overview (Guide/Plan/Success)
+  - [ ] Use new logo image
+  - [ ] Fix visual separation (remove/adjust border or spacing between sections)
+  - [ ] Ensure "Your Personal AI Dental Companion" tagline is prominent
