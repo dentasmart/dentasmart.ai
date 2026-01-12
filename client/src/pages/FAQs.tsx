@@ -94,7 +94,7 @@ export default function FAQs() {
       <section className="relative py-40 md:py-52 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/backgrounds/faq-clarity.jpg" 
+            src="/images/backgrounds/hero-faqs-book.jpg" 
             alt="DentaSmart FAQs" 
             className="w-full h-full object-cover"
           />

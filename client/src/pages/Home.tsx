@@ -19,7 +19,7 @@ export default function Home() {
             alt="DentaSmart Lifestyle" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/40 to-transparent" />
         </div>
 
         <div className="container relative z-10 px-4 text-center max-w-5xl mx-auto pt-10">
@@ -28,7 +28,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-normal tracking-tight text-foreground mb-8 leading-[1.1]">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-normal tracking-tight text-foreground mb-8 leading-[1.1] relative z-10">
               Understand your mouth <br />
               <span className="font-normal italic">before</span> your dentist explains it.
             </h1>
@@ -222,7 +222,7 @@ export default function Home() {
                 icon: Smartphone, 
                 title: "Upload & Analyze", 
                 desc: "Take photos or upload X-rays. Get instant AI analysis.",
-                image: "/images/challenges/ai_advantages.jpg"
+                image: "/images/app-preview.png"
               },
               { 
                 icon: Activity, 
