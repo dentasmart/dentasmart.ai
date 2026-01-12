@@ -2,7 +2,8 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
-import { TrendingDown, Users, ShieldCheck, Check } from "lucide-react";
+import { TrendingDown, Users, ShieldCheck } from "lucide-react";
+import { ValueComparisonTable } from "@/components/ValueComparisonTable";
 import { motion } from "framer-motion";
 
 export default function Employers() {
@@ -114,47 +115,7 @@ export default function Employers() {
             </p>
           </div>
 
-          <div className="bg-white rounded-3xl shadow-sm border border-stone-100 overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-stone-100">
-                    <th className="text-left py-8 px-8 w-1/3">
-                      <span className="text-lg font-medium text-stone-900">Feature</span>
-                    </th>
-                    <th className="text-center py-8 px-8 w-1/3 bg-stone-50/50">
-                      <div className="text-lg font-medium text-stone-500 mb-1">Traditional Insurance</div>
-                      <div className="text-sm text-stone-400 font-light">(Cigna, Aetna, Humana)</div>
-                    </th>
-                    <th className="text-center py-8 px-8 w-1/3 bg-stone-900 text-white relative">
-                      <div className="text-lg font-medium mb-1">DentaSmart Complete</div>
-                      <div className="text-sm text-white/70 font-light">All-in-one Solution</div>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-stone-100">
-                  {[
-                    { feature: "Annual Cost (Family)", trad: "$1,000 - $1,500+", denta: "$300", highlight: true },
-                    { feature: "Preventive Care", trad: "100% covered (usually)", denta: "Included (AI Monitoring)" },
-                    { feature: "Major Procedures", trad: "50% coverage (waiting period)", denta: "20-60% savings immediately" },
-                    { feature: "Cosmetic Procedures", trad: "Not covered", denta: "Included in savings" },
-                    { feature: "Annual Caps", trad: "$1,000 - $1,500 limit", denta: "No annual caps" },
-                    { feature: "Waiting Periods", trad: "6-12 months", denta: "No waiting periods" },
-                    { feature: "Deductibles", trad: "$50 - $100 per person", denta: "No deductibles" },
-                    { feature: "Payment Flexibility", trad: "Not available", denta: "Buy Now, Pay Later included" },
-                  ].map((row, idx) => (
-                    <tr key={idx} className="group hover:bg-stone-50/30 transition-colors">
-                      <td className="py-6 px-8 font-medium text-stone-700">{row.feature}</td>
-                      <td className="py-6 px-8 text-center text-stone-500 font-light bg-stone-50/30">{row.trad}</td>
-                      <td className={`py-6 px-8 text-center font-medium ${row.highlight ? 'text-stone-900 bg-stone-100' : 'text-stone-900 bg-stone-50'}`}>
-                        {row.denta}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <ValueComparisonTable />
           <p className="text-center text-sm text-stone-400 mt-8 font-light">
             *Comparison based on average PPO plans from major carriers. Actual costs vary by location.
           </p>

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
 import { useState } from "react";
 import { Check } from "lucide-react";
+import { ValueComparisonTable } from "@/components/ValueComparisonTable";
 import { motion } from "framer-motion";
 
 export default function Pricing() {
@@ -261,11 +262,21 @@ export default function Pricing() {
                 </tbody>
               </table>
             </div>
+          </div>          <div className="mt-32">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6">
+                Compare the value
+              </h2>
+              <p className="text-xl text-muted-foreground font-light max-w-3xl mx-auto">
+                See how DentaSmart Complete stacks up against traditional carriers.
+              </p>
+            </div>
+            <ValueComparisonTable />
           </div>
         </div>
       </section>
 
-      {/* FAQ - Minimalist Accordion Style */}
+      {/* FAQ Section - Minimalist Accordion Style */}
       <section className="py-32 bg-white">
         <div className="container px-4 mx-auto max-w-3xl">
           <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-16 text-center">
