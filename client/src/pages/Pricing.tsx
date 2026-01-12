@@ -42,15 +42,15 @@ export default function Pricing() {
       </section>
 
       {/* Plan Toggle - Minimalist */}
-      <section className="py-12 bg-white sticky top-16 md:top-20 z-40 border-b border-stone-100/50 backdrop-blur-md bg-white/80">
+      <section className="py-8 bg-white">
         <div className="container flex justify-center">
-          <div className="bg-stone-100 p-1 rounded-full inline-flex shadow-inner">
+          <div className="bg-accent/10 p-1 rounded-full inline-flex shadow-inner">
             <button
               onClick={() => setPlanType("individual")}
               className={`px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                 planType === "individual"
-                  ? "bg-white text-stone-900 shadow-sm"
-                  : "text-stone-500 hover:text-stone-900"
+                  ? "bg-white text-primary shadow-sm"
+                  : "text-muted-foreground hover:text-primary"
               }`}
             >
               Individual
@@ -59,8 +59,8 @@ export default function Pricing() {
               onClick={() => setPlanType("family")}
               className={`px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                 planType === "family"
-                  ? "bg-white text-stone-900 shadow-sm"
-                  : "text-stone-500 hover:text-stone-900"
+                  ? "bg-white text-primary shadow-sm"
+                  : "text-muted-foreground hover:text-primary"
               }`}
             >
               Family
@@ -70,7 +70,7 @@ export default function Pricing() {
       </section>
 
       {/* Pricing Cards - Clean & Modern */}
-      <section className="py-24 bg-white">
+      <section className="py-8 bg-white">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
@@ -80,18 +80,18 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-stone-50 rounded-3xl p-10 border border-stone-100 hover:shadow-xl transition-all duration-500 flex flex-col"
+              className="bg-blue-50/30 rounded-3xl p-10 border border-blue-100 hover:shadow-xl transition-all duration-500 flex flex-col"
             >
               <div className="mb-8">
-                <h3 className="text-2xl font-medium text-stone-900 mb-2">Clarity</h3>
-                <p className="text-stone-500 text-xs font-bold uppercase tracking-widest">Most Popular</p>
+                <h3 className="text-2xl font-medium text-foreground mb-2">Clarity</h3>
+                <p className="text-primary text-xs font-bold uppercase tracking-widest">Most Popular</p>
               </div>
               <div className="mb-8">
                 <div className="flex items-baseline">
-                  <span className="text-5xl font-light text-stone-900">${planType === "individual" ? "75" : "150"}</span>
-                  <span className="text-stone-500 ml-2">/year</span>
+                  <span className="text-5xl font-light text-foreground">${planType === "individual" ? "75" : "150"}</span>
+                  <span className="text-muted-foreground ml-2">/year</span>
                 </div>
-                <p className="text-stone-600 mt-4 font-light leading-relaxed">
+                <p className="text-muted-foreground mt-4 font-light leading-relaxed">
                   {planType === "individual"
                     ? "Monthly monitoring to track your oral health and catch problems early."
                     : "Monthly monitoring for your entire family with shared insights."}
@@ -106,13 +106,13 @@ export default function Pricing() {
                   "Share with dentist",
                   planType === "family" && "Up to 4 family members",
                 ].filter(Boolean).map((feature, idx) => (
-                  <li key={idx} className="flex items-center text-stone-700 font-light text-sm">
-                    <Check className="w-4 h-4 text-stone-900 mr-3" />
+                  <li key={idx} className="flex items-center text-muted-foreground font-light text-sm">
+                    <Check className="w-4 h-4 text-primary mr-3" />
                     {feature}
                   </li>
                 ))}
               </ul>
-              <Button className="w-full bg-stone-900 hover:bg-stone-800 text-white rounded-full py-6 text-lg font-medium transition-all duration-300 shadow-lg">
+              <Button className="w-full bg-primary hover:bg-primary/90 text-white rounded-full py-6 text-lg font-medium transition-all duration-300 shadow-lg">
                 Start Free Trial
               </Button>
             </motion.div>
@@ -123,18 +123,18 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.5 }}
-              className="bg-white rounded-3xl p-10 border border-stone-200 hover:shadow-xl transition-all duration-500 flex flex-col relative overflow-hidden"
+              className="bg-white rounded-3xl p-10 border border-blue-100 hover:shadow-xl transition-all duration-500 flex flex-col relative overflow-hidden"
             >
               <div className="mb-8">
-                <h3 className="text-2xl font-medium text-stone-900 mb-2">Consult</h3>
-                <p className="text-stone-500 text-xs font-bold uppercase tracking-widest">One-time</p>
+                <h3 className="text-2xl font-medium text-foreground mb-2">Consult</h3>
+                <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest">One-time</p>
               </div>
               <div className="mb-8">
                 <div className="flex items-baseline">
-                  <span className="text-5xl font-light text-stone-900">$30</span>
-                  <span className="text-stone-500 ml-2">one-time</span>
+                  <span className="text-5xl font-light text-foreground">$30</span>
+                  <span className="text-muted-foreground ml-2">one-time</span>
                 </div>
-                <p className="text-stone-600 mt-4 font-light leading-relaxed">
+                <p className="text-muted-foreground mt-4 font-light leading-relaxed">
                   Get a second opinion on a specific treatment plan or concern.
                 </p>
               </div>
@@ -147,13 +147,13 @@ export default function Pricing() {
                   "Printable report",
                   "Valid for 30 days",
                 ].map((feature, idx) => (
-                  <li key={idx} className="flex items-center text-stone-700 font-light text-sm">
-                    <Check className="w-4 h-4 text-stone-900 mr-3" />
+                  <li key={idx} className="flex items-center text-muted-foreground font-light text-sm">
+                    <Check className="w-4 h-4 text-primary mr-3" />
                     {feature}
                   </li>
                 ))}
               </ul>
-              <Button variant="outline" className="w-full border-stone-300 text-stone-900 hover:bg-stone-50 rounded-full py-6 text-lg font-medium transition-all duration-300">
+              <Button variant="outline" className="w-full border-primary/20 text-primary hover:bg-blue-50 rounded-full py-6 text-lg font-medium transition-all duration-300">
                 Get Second Opinion
               </Button>
             </motion.div>
@@ -164,7 +164,7 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="bg-stone-900 rounded-3xl p-10 text-white hover:shadow-2xl transition-all duration-500 flex flex-col relative overflow-hidden"
+              className="bg-gradient-to-br from-primary to-teal-700 rounded-3xl p-10 text-white hover:shadow-2xl transition-all duration-500 flex flex-col relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 bg-white/10 px-4 py-2 rounded-bl-2xl text-xs font-bold uppercase tracking-wider backdrop-blur-sm">
                 Waitlist
@@ -198,7 +198,7 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <Button className="w-full bg-white text-stone-900 hover:bg-stone-100 rounded-full py-6 text-lg font-medium transition-all duration-300 shadow-lg">
+              <Button className="w-full bg-white text-primary hover:bg-blue-50 rounded-full py-6 text-lg font-medium transition-all duration-300 shadow-lg">
                 Join Waitlist
               </Button>
             </motion.div>
@@ -208,15 +208,15 @@ export default function Pricing() {
       </section>
 
       {/* User Challenges Carousel */}
-      <section className="py-20 bg-stone-100">
+      <section className="py-12 bg-accent/5">
         <UserChallengesCarousel />
       </section>
 
       {/* Comparison Table - Clean */}
-      <section className="py-32 bg-stone-50">
+      <section className="py-12 bg-white">
         <div className="container px-4 mx-auto max-w-5xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6">
               Compare plans
             </h2>
           </div>
