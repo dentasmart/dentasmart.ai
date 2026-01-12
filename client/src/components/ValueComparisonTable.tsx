@@ -46,7 +46,7 @@ export function ValueComparisonTable() {
       insurance: "$50 - $100 per person" 
     },
     { 
-      name: "Monthly Monitoring & Insights", 
+      name: "Monthly Monitoring & Detailed AI Oral Health Insights", 
       denta: "Included", 
       savings: "Not available", 
       insurance: "Not available" 
@@ -100,7 +100,7 @@ export function ValueComparisonTable() {
               </th>
               <th className="text-center py-6 px-6 w-1/4 bg-primary text-white relative">
                 <div className="text-xl font-bold mb-1">DentaSmart Complete</div>
-                <div className="text-sm text-white/80 font-medium">All-in-one Solution</div>
+                <div className="text-sm text-white/80 font-medium">Dental Benefit Plan</div>
               </th>
               <th className="text-center py-6 px-6 w-1/4 bg-blue-50/50">
                 <div className="text-lg font-medium text-stone-700 mb-1">Dental Savings Plans</div>
