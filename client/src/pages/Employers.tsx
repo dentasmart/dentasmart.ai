@@ -135,7 +135,7 @@ export default function Employers() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-center p-12 rounded-3xl bg-stone-50 border border-stone-100"
+              className="text-center p-12 rounded-3xl bg-stone-50 border border-stone-100 h-full flex flex-col justify-center"
             >
               <p className="text-stone-500 font-medium mb-4">Traditional Insurance</p>
               <div className="text-6xl md:text-7xl font-light text-stone-400 mb-2">~$1,200</div>
@@ -147,9 +147,9 @@ export default function Employers() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-center p-12 rounded-3xl bg-gradient-to-br from-primary to-teal-700 text-white relative overflow-hidden shadow-xl transform md:scale-110"
+              className="text-center p-12 rounded-3xl bg-gradient-to-br from-primary to-teal-700 text-white relative overflow-hidden shadow-xl h-full flex flex-col justify-center"
             >
-              <div className="absolute top-6 right-6 bg-white text-stone-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+              <div className="absolute top-6 left-6 bg-white text-stone-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                 75% Savings
               </div>
               <p className="text-white/70 font-medium mb-4">DentaSmart Complete</p>
