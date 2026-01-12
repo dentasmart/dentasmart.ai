@@ -82,3 +82,19 @@
 - [ ] Replace "Stone" backgrounds with clean white/teal gradients
 - [ ] Update section transitions for a medical-tech feel
 - [ ] Ensure typography remains "Poppins" but fits the new theme
+
+## Phase 43: Reduce Whitespace & Fix Home Hero
+- [ ] Reduce vertical padding (py-*) across all Home page sections
+- [ ] Add light blueish tint overlay to Home hero image
+- [ ] Ensure hero text has high contrast against new background
+- [ ] Tighten spacing between headings and content
+
+## Phase 44: Fix Footer
+- [ ] Verify Footer component reusability and consistency
+- [ ] Ensure footer background and text colors are correct (light blue/dark text)
+- [ ] Check footer spacing and layout
+
+## Phase 45: Inner Pages Fixes
+- [ ] Apply light blueish hero tint to all inner pages
+- [ ] Reduce whitespace on How It Works, Features, Pricing, etc.
+- [ ] Ensure text visibility on all headers
