@@ -3,7 +3,7 @@ import { Check, X } from "lucide-react";
 export function ValueComparisonTable() {
   const features = [
     { 
-      name: "Annual Cost (Family)", 
+      name: "Annual Cost (Individual/Family)", 
       denta: "$300", 
       savings: "$100 - $200", 
       insurance: "$1,000 - $1,500+",
@@ -46,16 +46,46 @@ export function ValueComparisonTable() {
       insurance: "$50 - $100 per person" 
     },
     { 
-      name: "AI Monitoring & Wellness Score", 
-      denta: true, 
-      savings: false, 
-      insurance: false 
+      name: "Monthly Monitoring & Insights", 
+      denta: "Included", 
+      savings: "Not available", 
+      insurance: "Not available" 
     },
     { 
-      name: "24/7 AI Dentist (Dr. Din)", 
-      denta: true, 
-      savings: false, 
-      insurance: false 
+      name: "Care Plan & Timeline", 
+      denta: "Included", 
+      savings: "Not available", 
+      insurance: "Not available" 
+    },
+    { 
+      name: "Risk Assessment", 
+      denta: "Included", 
+      savings: "Not available", 
+      insurance: "Not available" 
+    },
+    { 
+      name: "Care Reminders", 
+      denta: "Included", 
+      savings: "Not available", 
+      insurance: "Not available" 
+    },
+    { 
+      name: "Dentist Recommendations", 
+      denta: "Smart Matching", 
+      savings: "Directory list only", 
+      insurance: "Directory list only" 
+    },
+    { 
+      name: "Price Estimates", 
+      denta: "Included", 
+      savings: "Not available", 
+      insurance: "Not available" 
+    },
+    { 
+      name: "Buy Now, Pay Later", 
+      denta: "Included", 
+      savings: "Not available", 
+      insurance: "Not available" 
     },
   ];
 
