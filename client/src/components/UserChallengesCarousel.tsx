@@ -176,7 +176,7 @@ export function UserChallengesCarousel({
                 </motion.div>
 
                 <motion.div layout="position" className="relative z-10">
-                  <h3 className={`font-medium leading-tight mb-4 transition-all duration-500 ${
+                  <h3 className={`font-medium leading-tight mb-4 transition-all duration-500 text-[#D0F0F5] ${
                     isExpanded ? 'text-3xl md:text-4xl drop-shadow-lg' : 'text-2xl'
                   }`}>
                     {challenge.challenge}
