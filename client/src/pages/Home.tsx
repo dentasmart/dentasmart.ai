@@ -13,14 +13,14 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section - Cinematic & Editorial */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[600px] md:min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="/images/backgrounds/hero-smile-home.jpg" 
             alt="DentaSmart Lifestyle" 
             className="w-full h-full object-cover object-top md:object-center"
           />
-          <div className="absolute inset-0 bg-white/60" />
+          <div className="absolute inset-0 bg-white/85 md:bg-white/60" />
         </div>
 
         <div className="container relative z-10 px-4 text-left max-w-5xl mx-auto pt-10">

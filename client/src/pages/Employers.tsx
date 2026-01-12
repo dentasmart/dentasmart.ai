@@ -12,14 +12,14 @@ export default function Employers() {
       <Navigation />
 
       {/* Hero Section - Professional & Modern */}
-      <section className="relative py-40 md:py-52 overflow-hidden">
+      <section className="relative py-24 md:py-52 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="/images/backgrounds/employers-office.jpg" 
             alt="Corporate Wellness" 
             className="w-full h-full object-cover object-top md:object-center"
           />
-          <div className="absolute inset-0 bg-white/60" />
+          <div className="absolute inset-0 bg-white/85 md:bg-white/60" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto max-w-5xl text-left">
