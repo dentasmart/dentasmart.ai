@@ -6,7 +6,7 @@ export default function HowItWorksHero() {
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/images/backgrounds/how-it-works-hero-composite-v2.jpg" 
+          src="/images/backgrounds/how-it-works-hero-final.png" 
           alt="Man holding phone with DentaSmart App" 
           className="w-full h-full object-cover object-center"
         />
