@@ -66,7 +66,7 @@ export default function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-sm font-medium tracking-wide transition-all duration-300 relative group ${
+                className={`text-base font-medium tracking-wide transition-all duration-300 relative group ${
                   isActive(item.href)
                     ? (scrolled ? "text-teal-900" : "text-teal-900")
                     : (scrolled ? "text-teal-600 hover:text-teal-800" : "text-teal-700 hover:text-teal-900")

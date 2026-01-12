@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, Check, Shield, Smartphone, Activity } from "lucide-react";
+import { ArrowRight, Shield, Smartphone, Activity } from "lucide-react";
+import { LeadMagnet } from "@/components/LeadMagnet";
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
           <img 
             src="/images/backgrounds/hero-smile-home.jpg" 
             alt="DentaSmart Lifestyle" 
-            className="w-full h-full object-cover object-[center_30%] md:object-center"
+            className="w-full h-full object-cover object-top md:object-center"
           />
           <div className="absolute inset-0 bg-white/60" />
         </div>
@@ -28,7 +29,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-normal tracking-tight text-foreground mb-8 leading-[1.1] relative z-10">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-normal tracking-tight text-foreground mb-8 leading-[1.1] relative z-10">
               Understand your mouth <br />
               <span className="font-normal italic">before</span> your dentist explains it.
             </h1>
@@ -268,85 +269,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Pricing - Elegant Cards */}
-      <section className="py-12 bg-gradient-to-b from-white to-accent/10">
-        <div className="container px-4 mx-auto max-w-5xl">
-          <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-16 text-center">
-            Simple, transparent pricing
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Clarity Plan */}
-            <motion.div 
-              whileHover={{ y: -10 }}
-              className="bg-white rounded-3xl p-10 shadow-sm border border-border/50 hover:shadow-xl transition-all duration-500 relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 bg-foreground text-white text-xs font-bold px-4 py-2 rounded-bl-xl uppercase tracking-wider">
-                Most Popular
-              </div>
-              <div className="flex justify-between items-start mb-8">
-                <div>
-                  <h3 className="text-3xl font-normal text-foreground">Clarity</h3>
-                  <p className="text-muted-foreground mt-2 font-normal">Unlimited Full Mouth Analysis</p>
-                </div>
-                <div className="text-right">
-                  <span className="text-5xl font-normal text-foreground">$75</span>
-                  <span className="text-stone-400 block text-sm mt-1">/year</span>
-                </div>
-              </div>
-              <ul className="space-y-5 mb-6">
-                {[
-                  "Unlimited AI scans",
-                  "Monthly monitoring",
-                  "Priority Dr. Din support",
-                  "Dental record vault"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center text-muted-foreground font-normal">
-                    <Check className="w-5 h-5 text-primary mr-4" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Button className="w-full bg-foreground hover:bg-stone-800 text-white rounded-full py-7 text-lg transition-all duration-300 shadow-lg hover:shadow-xl">
-                Start Free Trial
-              </Button>
-            </motion.div>
-
-            {/* Consult Plan */}
-            <motion.div 
-              whileHover={{ y: -10 }}
-              className="bg-accent/5/50 rounded-3xl p-10 border border-border hover:shadow-lg transition-all duration-500"
-            >
-              <div className="flex justify-between items-start mb-8">
-                <div>
-                  <h3 className="text-3xl font-normal text-foreground">Consult</h3>
-                  <p className="text-muted-foreground mt-2 font-normal">One-time Analysis</p>
-                </div>
-                <div className="text-right">
-                  <span className="text-5xl font-normal text-foreground">$30</span>
-                  <span className="text-stone-400 block text-sm mt-1">one-time</span>
-                </div>
-              </div>
-              <ul className="space-y-5 mb-6">
-                {[
-                  "Single comprehensive scan",
-                  "Detailed report PDF",
-                  "Second opinion verification",
-                  "Valid for 30 days"
-                ].map((item, i) => (
-                  <li key={i} className="flex items-center text-muted-foreground font-normal">
-                    <Check className="w-5 h-5 text-stone-400 mr-4" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Button variant="outline" className="w-full bg-transparent border-stone-300 text-foreground hover:bg-white rounded-full py-7 text-lg transition-all duration-300">
-                Get One-Time Scan
-              </Button>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+      {/* Lead Magnet Widget */}
+      <LeadMagnet />
 
       {/* Final CTA - Cinematic */}
       <section className="relative py-24 flex items-center justify-center overflow-hidden bg-[#D0F0F5]">

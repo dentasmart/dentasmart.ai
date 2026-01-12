@@ -16,7 +16,7 @@ export default function Features() {
           <img 
             src="/images/backgrounds/hero-smile-generic.jpg" 
             alt="AI Dental Analysis" 
-            className="w-full h-full object-cover object-[center_30%] md:object-center"
+            className="w-full h-full object-cover object-top md:object-center"
           />
           <div className="absolute inset-0 bg-white/60" />
         </div>
@@ -27,7 +27,7 @@ export default function Features() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
+            <h1 className="text-4xl md:text-6xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
               Everything you need to <br />
               <span className="font-normal italic">understand your teeth</span>.
             </h1>

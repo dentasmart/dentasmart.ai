@@ -20,7 +20,7 @@ export default function Pricing() {
           <img 
             src="/images/backgrounds/hero-smile-pricing.jpg" 
             alt="Simple Pricing" 
-            className="w-full h-full object-cover object-[center_30%] md:object-center"
+            className="w-full h-full object-cover object-top md:object-center"
           />
           <div className="absolute inset-0 bg-white/60" />
         </div>
@@ -31,7 +31,7 @@ export default function Pricing() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
+            <h1 className="text-4xl md:text-6xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
               Simple, honest <br />
               <span className="font-normal italic">pricing</span>.
             </h1>

@@ -16,7 +16,7 @@ export default function HowItWorks() {
           <img 
             src="/images/backgrounds/how-it-works.jpg" 
             alt="DentaSmart App Interface" 
-            className="w-full h-full object-cover object-[center_30%] md:object-center"
+            className="w-full h-full object-cover object-top md:object-center"
           />
           <div className="absolute inset-0 bg-white/60" />
         </div>
@@ -27,7 +27,7 @@ export default function HowItWorks() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-normal tracking-tight text-foreground mb-4 leading-[1.1]">
+            <h1 className="text-4xl md:text-6xl font-normal tracking-tight text-foreground mb-4 leading-[1.1]">
               Know what's going on <br />
               <span className="font-normal italic">before</span> it hurts.
             </h1>
