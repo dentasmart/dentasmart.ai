@@ -206,7 +206,7 @@ export default function Home() {
       </section>
 
       {/* User Challenges Carousel - Seamless Integration */}
-      <section className="py-20 bg-accent/5">
+      <section className="py-12 bg-accent/5">
         <div className="container px-4 mx-auto mb-6 text-center">
           <h2 className="text-3xl md:text-4xl font-normal text-foreground">Real Scenarios. Real Clarity.</h2>
         </div>
@@ -214,7 +214,7 @@ export default function Home() {
       </section>
 
       {/* The Solution - Minimalist Feature Grid */}
-      <section className="py-16 bg-white">
+      <section className="py-12 bg-white">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-6">
@@ -278,7 +278,7 @@ export default function Home() {
       </section>
 
       {/* Pricing - Elegant Cards */}
-      <section className="py-16 bg-gradient-to-b from-white to-accent/10">
+      <section className="py-12 bg-gradient-to-b from-white to-accent/10">
         <div className="container px-4 mx-auto max-w-5xl">
           <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-16 text-center">
             Simple, transparent pricing
@@ -358,15 +358,8 @@ export default function Home() {
       </section>
 
       {/* Final CTA - Cinematic */}
-      <section className="relative py-40 flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="/images/challenges/empowerment.jpg" 
-            alt="Empowerment" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-foreground/40 backdrop-blur-[2px]" />
-        </div>
+      <section className="relative py-24 flex items-center justify-center overflow-hidden bg-[#E6F4F6]">
+        
         
         <div className="container relative z-10 text-center px-4">
           <motion.div
@@ -375,15 +368,15 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-5xl md:text-7xl font-normal text-white mb-8 tracking-tight drop-shadow-lg">
+            <h2 className="text-4xl md:text-6xl font-normal text-foreground mb-6 tracking-tight">
               Ready to stop worrying?
             </h2>
-            <p className="text-xl md:text-2xl text-white/90 font-normal mb-6 max-w-2xl mx-auto drop-shadow-md">
+            <p className="text-xl md:text-2xl text-muted-foreground font-normal mb-8 max-w-2xl mx-auto">
               Download DentaSmart today and get instant insights into your oral health.
             </p>
             <Button 
               size="lg" 
-              className="bg-white text-primary hover:bg-white/90 rounded-full px-12 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-2xl border-0"
+              className="bg-primary text-white hover:bg-primary/90 rounded-full px-12 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0"
               onClick={() => window.open('https://apps.apple.com/us/app/dentasmart/id6670311232', '_blank')}
             >
               Download the App

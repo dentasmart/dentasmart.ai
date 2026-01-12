@@ -105,3 +105,14 @@
 - [ ] Drastically reduce vertical padding (py-*) on Home page sections
 - [ ] Remove excessive whitespace between "Real Scenarios" and "Pricing"
 - [ ] Tighten spacing on inner pages (HowItWorks, Features, etc.)
+
+## Phase 51: Fix Large Gap & Redesign Pre-Footer
+- [ ] Remove excessive padding/margin between carousel and "Your Personal AI Dental Companion" section on Home page
+- [ ] Redesign "Ready to take control?" section to use dark theme matching the footer
+- [ ] Ensure Footer component is correctly using the dark design
+
+## Phase 54: Revert Footer to Light Blue & Fix Pre-Footer
+- [ ] Revert Footer to light blue background with dark text
+- [ ] Ensure logo is full-color (remove brightness-0 invert)
+- [ ] Remove excessive padding/margin between carousel and "Your Personal AI Dental Companion" section on Home page
+- [ ] Redesign "Ready to take control?" section to match the light blue footer theme
