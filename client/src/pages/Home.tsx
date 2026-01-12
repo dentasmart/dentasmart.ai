@@ -22,7 +22,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
         </div>
 
-        <div className="container relative z-10 px-4 text-center max-w-5xl mx-auto pt-20">
+        <div className="container relative z-10 px-4 text-center max-w-5xl mx-auto pt-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -33,7 +33,7 @@ export default function Home() {
               <span className="font-normal italic">before</span> your dentist explains it.
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-12 font-normal leading-relaxed drop-shadow-md text-balance">
+            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-6 font-normal leading-relaxed drop-shadow-md text-balance">
               Monthly monitoring, instant insights, and peace of mind. 
               Your personal AI dental companion is here.
             </p>
@@ -72,7 +72,7 @@ export default function Home() {
       </section>
 
       {/* Video Section - StoryBrand Aligned */}
-      <section className="py-24 bg-accent/5 border-b border-border">
+      <section className="py-12 bg-accent/5 border-b border-border">
         <div className="container px-4 mx-auto max-w-5xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -83,7 +83,7 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-6">
               See DentaSmart in Action
             </h2>
-            <p className="text-xl text-muted-foreground font-normal max-w-2xl mx-auto mb-12 leading-relaxed">
+            <p className="text-xl text-muted-foreground font-normal max-w-2xl mx-auto mb-6 leading-relaxed">
               Watch our explainer video to learn how DentaSmart empowers you with AI-driven insights into your oral health.
             </p>
             
@@ -104,7 +104,7 @@ export default function Home() {
       </section>
 
       {/* Social Proof - Minimalist & Clean */}
-      <section className="py-24 bg-white border-b border-border/50">
+      <section className="py-12 bg-white border-b border-border/50">
         <div className="container px-4 mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-border/50">
             {[
@@ -133,9 +133,9 @@ export default function Home() {
       </section>
 
       {/* The Problem - Editorial Layout with Large Typography */}
-      <section className="py-32 md:py-48 bg-gradient-to-b from-white to-accent/10 overflow-hidden">
+      <section className="py-16 md:py-24 bg-gradient-to-b from-white to-accent/10 overflow-hidden">
         <div className="container px-4 mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -155,7 +155,7 @@ export default function Home() {
               </div>
             </motion.div>
             
-            <div className="space-y-16">
+            <div className="space-y-8">
               <motion.h2 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -167,7 +167,7 @@ export default function Home() {
                 <span className="italic font-normal text-muted-foreground">It's the uncertainty.</span>
               </motion.h2>
               
-              <div className="space-y-12">
+              <div className="space-y-6">
                 {[
                   {
                     title: "Confusing Jargon",
@@ -207,16 +207,16 @@ export default function Home() {
 
       {/* User Challenges Carousel - Seamless Integration */}
       <section className="py-20 bg-accent/5">
-        <div className="container px-4 mx-auto mb-12 text-center">
+        <div className="container px-4 mx-auto mb-6 text-center">
           <h2 className="text-3xl md:text-4xl font-normal text-foreground">Real Scenarios. Real Clarity.</h2>
         </div>
         <UserChallengesCarousel />
       </section>
 
       {/* The Solution - Minimalist Feature Grid */}
-      <section className="py-32 bg-white">
+      <section className="py-16 bg-white">
         <div className="container px-4 mx-auto max-w-6xl">
-          <div className="text-center max-w-3xl mx-auto mb-24">
+          <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-6">
               Your Personal AI Dental Companion
             </h2>
@@ -278,7 +278,7 @@ export default function Home() {
       </section>
 
       {/* Pricing - Elegant Cards */}
-      <section className="py-32 bg-gradient-to-b from-white to-accent/10">
+      <section className="py-16 bg-gradient-to-b from-white to-accent/10">
         <div className="container px-4 mx-auto max-w-5xl">
           <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-16 text-center">
             Simple, transparent pricing
@@ -303,7 +303,7 @@ export default function Home() {
                   <span className="text-stone-400 block text-sm mt-1">/year</span>
                 </div>
               </div>
-              <ul className="space-y-5 mb-12">
+              <ul className="space-y-5 mb-6">
                 {[
                   "Unlimited AI scans",
                   "Monthly monitoring",
@@ -336,7 +336,7 @@ export default function Home() {
                   <span className="text-stone-400 block text-sm mt-1">one-time</span>
                 </div>
               </div>
-              <ul className="space-y-5 mb-12">
+              <ul className="space-y-5 mb-6">
                 {[
                   "Single comprehensive scan",
                   "Detailed report PDF",
@@ -378,7 +378,7 @@ export default function Home() {
             <h2 className="text-5xl md:text-7xl font-normal text-white mb-8 tracking-tight drop-shadow-lg">
               Ready to stop worrying?
             </h2>
-            <p className="text-xl md:text-2xl text-white/90 font-normal mb-12 max-w-2xl mx-auto drop-shadow-md">
+            <p className="text-xl md:text-2xl text-white/90 font-normal mb-6 max-w-2xl mx-auto drop-shadow-md">
               Download DentaSmart today and get instant insights into your oral health.
             </p>
             <Button 

@@ -11,7 +11,7 @@ export default function HowItWorks() {
       <Navigation />
 
       {/* Hero Section - Minimalist & Zen */}
-      <section className="relative py-40 md:py-52 overflow-hidden">
+      <section className="relative py-20 md:py-24 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="/images/backgrounds/how-it-works.jpg" 
@@ -27,7 +27,7 @@ export default function HowItWorks() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-normal tracking-tight text-white mb-8 leading-[1.1] drop-shadow-lg">
+            <h1 className="text-5xl md:text-7xl font-normal tracking-tight text-white mb-4 leading-[1.1] drop-shadow-lg">
               Know what's going on <br />
               <span className="font-normal italic">before</span> it hurts.
             </h1>
@@ -39,9 +39,9 @@ export default function HowItWorks() {
       </section>
 
       {/* 3-Step Visual Process - Editorial Style */}
-      <section className="py-32 bg-white">
+      <section className="py-16 bg-white">
         <div className="container px-4 mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
             {/* Connecting Line (Desktop) */}
             <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-px bg-border -z-10"></div>
 
@@ -53,7 +53,7 @@ export default function HowItWorks() {
               transition={{ duration: 0.6 }}
               className="flex flex-col items-center text-center group"
             >
-              <div className="w-24 h-24 bg-white border border-border rounded-full flex items-center justify-center mb-8 shadow-sm group-hover:border-primary group-hover:scale-105 transition-all duration-500 relative z-10">
+              <div className="w-24 h-24 bg-white border border-border rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:border-primary group-hover:scale-105 transition-all duration-500 relative z-10">
                 <Camera className="w-8 h-8 text-foreground" strokeWidth={1.5} />
                 <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-medium text-sm">1</div>
               </div>
@@ -71,7 +71,7 @@ export default function HowItWorks() {
               transition={{ delay: 0.2, duration: 0.6 }}
               className="flex flex-col items-center text-center group"
             >
-              <div className="w-24 h-24 bg-white border border-border rounded-full flex items-center justify-center mb-8 shadow-sm group-hover:border-primary group-hover:scale-105 transition-all duration-500 relative z-10">
+              <div className="w-24 h-24 bg-white border border-border rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:border-primary group-hover:scale-105 transition-all duration-500 relative z-10">
                 <Brain className="w-8 h-8 text-foreground" strokeWidth={1.5} />
                 <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-medium text-sm">2</div>
               </div>
@@ -89,7 +89,7 @@ export default function HowItWorks() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="flex flex-col items-center text-center group"
             >
-              <div className="w-24 h-24 bg-white border border-border rounded-full flex items-center justify-center mb-8 shadow-sm group-hover:border-primary group-hover:scale-105 transition-all duration-500 relative z-10">
+              <div className="w-24 h-24 bg-white border border-border rounded-full flex items-center justify-center mb-4 shadow-sm group-hover:border-primary group-hover:scale-105 transition-all duration-500 relative z-10">
                 <MessageSquare className="w-8 h-8 text-foreground" strokeWidth={1.5} />
                 <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-medium text-sm">3</div>
               </div>
@@ -108,9 +108,9 @@ export default function HowItWorks() {
       </section>
 
       {/* Report Features - Clean Grid */}
-      <section className="py-32 bg-white">
+      <section className="py-16 bg-white">
         <div className="container px-4 mx-auto max-w-6xl">
-          <div className="text-center mb-24">
+          <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-6">
               What you get in your report
             </h2>
@@ -189,9 +189,9 @@ export default function HowItWorks() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-32 bg-white text-center">
+      <section className="py-16 bg-white text-center">
         <div className="container px-4 mx-auto max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-8">
+          <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-4">
             Ready to take control?
           </h2>
           <p className="text-xl text-muted-foreground font-normal mb-12 leading-relaxed">

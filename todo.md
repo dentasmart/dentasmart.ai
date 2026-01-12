@@ -98,3 +98,10 @@
 - [ ] Apply light blueish hero tint to all inner pages
 - [ ] Reduce whitespace on How It Works, Features, Pricing, etc.
 - [ ] Ensure text visibility on all headers
+
+## Phase 47: Revert Footer & Fix Spacing
+- [ ] Revert Footer to dark background (bg-foreground)
+- [ ] Update copyright year to 2026
+- [ ] Drastically reduce vertical padding (py-*) on Home page sections
+- [ ] Remove excessive whitespace between "Real Scenarios" and "Pricing"
+- [ ] Tighten spacing on inner pages (HowItWorks, Features, etc.)
