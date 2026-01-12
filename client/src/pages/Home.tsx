@@ -1,4 +1,3 @@
-import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
@@ -6,61 +5,116 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Smartphone, Activity } from "lucide-react";
 import { LeadMagnet } from "@/components/LeadMagnet";
+import Navigation from "@/components/Navigation";
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-foreground selection:bg-primary/20">
       <Navigation />
 
-      {/* Hero Section - Cinematic & Editorial */}
-      <section className="relative min-h-[600px] md:min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="/images/backgrounds/hero-smile-home.jpg" 
-            alt="DentaSmart Lifestyle" 
-            className="w-full h-full object-cover object-top md:object-center"
-          />
-          <div className="absolute inset-0 bg-white/85 md:bg-white/60" />
+      {/* Hero Section - Modern Split Layout */}
+      <section className="relative min-h-[800px] md:min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50/50">
+        {/* Background Elements */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-teal-50/40 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4" />
         </div>
 
-        <div className="container relative z-10 px-4 text-left max-w-5xl mx-auto pt-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-normal tracking-tight text-foreground mb-8 leading-[1.1] relative z-10">
-              Understand your mouth <br />
-              <span className="font-normal italic">before</span> your dentist explains it.
-            </h1>
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-20 md:pt-0">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mr-auto mb-6 font-normal leading-relaxed text-balance">
-              Monthly monitoring, instant insights, and peace of mind. 
-              Your personal AI dental companion is here.
-            </p>
+            {/* Left Column: Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="text-left max-w-2xl"
+            >
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-foreground mb-8 leading-[1.1]">
+                Understand your mouth <br />
+                <span className="font-normal italic text-primary">before</span> your dentist explains it.
+              </h1>
+              
+              <p className="text-xl md:text-2xl text-muted-foreground mb-10 font-normal leading-relaxed text-balance">
+                Monthly monitoring, instant insights, and peace of mind. 
+                Your personal AI dental companion is here.
+              </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-start items-center sm:items-start">
-              <Button 
-                size="lg" 
-                className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0"
-                onClick={() => window.open('https://apps.apple.com/us/app/dentasmart/id6670311232', '_blank')}
-              >
-                Download the App
-              </Button>
-              <Link href="/pricing">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-10 py-8 text-lg font-medium transition-all duration-300"
+              <div className="flex flex-col sm:flex-row gap-6 justify-start items-center sm:items-start">
+                <Button 
+                  size="lg" 
+                  className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0 w-full sm:w-auto"
+                  onClick={() => window.open('https://apps.apple.com/us/app/dentasmart/id6670311232', '_blank')}
                 >
-                  See Pricing
+                  Download the App
                 </Button>
-              </Link>
-            </div>
-          </motion.div>
+                <Link href="/pricing">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-10 py-8 text-lg font-medium transition-all duration-300 w-full sm:w-auto"
+                  >
+                    See Pricing
+                  </Button>
+                </Link>
+              </div>
+            </motion.div>
+
+            {/* Right Column: App Image */}
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="relative flex justify-center lg:justify-end"
+            >
+              <div className="relative w-[280px] md:w-[320px] lg:w-[360px] xl:w-[400px]">
+                {/* Glow Effect */}
+                <div className="absolute inset-0 bg-primary/20 blur-[60px] rounded-full scale-90" />
+                
+                {/* Phone Image */}
+                <img 
+                  src="/images/dentasmart_app_hero.png" 
+                  alt="DentaSmart App Interface" 
+                  className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[3rem] border-[8px] border-white shadow-xl"
+                />
+                
+                {/* Floating Elements for Depth */}
+                <motion.div 
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -right-8 top-20 z-20 bg-white p-4 rounded-2xl shadow-lg border border-border/50 hidden md:block"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
+                      <Shield className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Health Score</p>
+                      <p className="text-lg font-bold text-foreground">81/100</p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                  className="absolute -left-8 bottom-32 z-20 bg-white p-4 rounded-2xl shadow-lg border border-border/50 hidden md:block"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
+                      <Activity className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Status</p>
+                      <p className="text-lg font-bold text-foreground">Excellent</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+
+          </div>
         </div>
-        
-        {/* Scroll Indicator Removed */}
       </section>
 
       {/* Video Section - StoryBrand Aligned */}
