@@ -190,7 +190,7 @@ export function UserChallengesCarousel({
                         exit={{ opacity: 0, height: 0 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
                       >
-                        <p className="text-lg text-white font-light leading-relaxed border-t border-white/30 pt-4 mt-4 drop-shadow-md">
+                        <p className="text-lg text-[#D0F0F5] font-normal leading-relaxed border-t border-white/30 pt-4 mt-4 drop-shadow-md">
                           {challenge.solution}
                         </p>
                       </motion.div>
