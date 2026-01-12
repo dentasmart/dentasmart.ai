@@ -18,7 +18,7 @@ export default function HowItWorks() {
             alt="DentaSmart App Interface" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-white/60" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto max-w-4xl text-center">
@@ -27,11 +27,11 @@ export default function HowItWorks() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-normal tracking-tight text-white mb-4 leading-[1.1] drop-shadow-lg">
+            <h1 className="text-5xl md:text-7xl font-normal tracking-tight text-foreground mb-4 leading-[1.1]">
               Know what's going on <br />
               <span className="font-normal italic">before</span> it hurts.
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-normal leading-relaxed drop-shadow-md">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-normal leading-relaxed">
               Three simple steps to understand your mouth and take control of your oral health.
             </p>
           </motion.div>

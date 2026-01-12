@@ -22,7 +22,7 @@ export default function Pricing() {
             alt="Simple Pricing" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-stone-900/20 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-white/60" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto max-w-4xl text-center">
@@ -31,11 +31,11 @@ export default function Pricing() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mb-8 leading-[1.1] drop-shadow-lg">
+            <h1 className="text-5xl md:text-7xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
               Simple, honest <br />
               <span className="font-normal italic">pricing</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-md">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
               No hidden fees. No surprises. Choose the plan that works for you.
             </p>
           </motion.div>
@@ -262,7 +262,8 @@ export default function Pricing() {
                 </tbody>
               </table>
             </div>
-          </div>          <div className="mt-32">
+          </div>
+          <div className="mt-32">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6">
                 Compare the value

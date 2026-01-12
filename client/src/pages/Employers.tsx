@@ -19,7 +19,7 @@ export default function Employers() {
             alt="Corporate Wellness" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-stone-900/30 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-white/60" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto max-w-5xl text-center">
@@ -28,18 +28,18 @@ export default function Employers() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mb-8 leading-[1.1] drop-shadow-lg">
+            <h1 className="text-5xl md:text-7xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
               A dental benefit employees <br />
               <span className="font-normal italic">actually use</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-12 font-light leading-relaxed drop-shadow-md">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 font-light leading-relaxed">
               Give your team a Personal AI Dental Companion that prevents problems, reduces anxiety, and costs 75% less than traditional insurance.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button size="lg" className="bg-white text-stone-900 hover:bg-stone-100 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0">
+              <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0">
                 Schedule a Demo
               </Button>
-              <Button size="lg" variant="outline" className="bg-white/10 backdrop-blur-md border-white/30 text-white hover:bg-white/20 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300">
+              <Button size="lg" variant="outline" className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300">
                 Calculate Savings
               </Button>
             </div>

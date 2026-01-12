@@ -18,7 +18,7 @@ export default function Features() {
             alt="AI Dental Analysis" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-stone-900/30 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-white/60" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto max-w-4xl text-center">
@@ -27,11 +27,11 @@ export default function Features() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mb-8 leading-[1.1] drop-shadow-lg">
+            <h1 className="text-5xl md:text-7xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
               Everything you need to <br />
               <span className="font-normal italic">understand your teeth</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-md">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
               Powerful features designed to give you clarity, control, and confidence in your oral health journey.
             </p>
           </motion.div>

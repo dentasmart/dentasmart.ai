@@ -19,7 +19,7 @@ export default function Home() {
             alt="DentaSmart Lifestyle" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/40 to-transparent" />
+          <div className="absolute inset-0 bg-white/60" />
         </div>
 
         <div className="container relative z-10 px-4 text-center max-w-5xl mx-auto pt-10">
@@ -222,7 +222,7 @@ export default function Home() {
                 icon: Smartphone, 
                 title: "Upload & Analyze", 
                 desc: "Take photos or upload X-rays. Get instant AI analysis.",
-                image: "/images/app-preview.png"
+                image: "/Adam.png"
               },
               { 
                 icon: Activity, 

@@ -98,7 +98,7 @@ export default function FAQs() {
             alt="DentaSmart FAQs" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-stone-900/20 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-white/60" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto text-center max-w-4xl">
@@ -107,10 +107,10 @@ export default function FAQs() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mb-8 leading-[1.1] drop-shadow-lg">
+            <h1 className="text-5xl md:text-7xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
               Common questions
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-md">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
               Everything you need to know about DentaSmart. Can't find your answer? Reach out to our support team.
             </p>
           </motion.div>
