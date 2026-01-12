@@ -2,17 +2,41 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
-import HowItWorksHero from "@/components/HowItWorksHero";
 import { Camera, Brain, MessageSquare, Activity, FileText, ShieldCheck, ClipboardList, Calendar, Bell, TrendingUp, HeartPulse } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function HowItWorks() {
   return (
-    <div className="min-h-screen flex flex-col bg-white font-sans text-foreground selection:bg-primary/20">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-accent/10 font-sans text-foreground selection:bg-primary/20">
       <Navigation />
 
-      {/* New Hero Section with App Visual */}
-      <HowItWorksHero />
+      {/* Hero Section - Minimalist & Zen */}
+      <section className="relative py-20 md:py-24 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/backgrounds/how-it-works.jpg" 
+            alt="DentaSmart App Interface" 
+            className="w-full h-full object-cover object-top md:object-center"
+          />
+          <div className="absolute inset-0 bg-white/85 md:bg-white/60" />
+        </div>
+
+        <div className="container relative z-10 px-4 mx-auto max-w-4xl text-left">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-4xl md:text-6xl font-normal tracking-tight text-foreground mb-4 leading-[1.1]">
+              Know what's going on <br />
+              <span className="font-normal italic">before</span> it hurts.
+            </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mr-auto font-normal leading-relaxed">
+              Three simple steps to understand your mouth and take control of your oral health.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
       {/* 3-Step Visual Process - Editorial Style */}
       <section className="py-16 bg-white">
