@@ -72,7 +72,7 @@ export default function Home() {
       </section>
 
       {/* Video Section - StoryBrand Aligned */}
-      <section className="py-24 bg-secondary border-b border-border">
+      <section className="py-24 bg-accent/5 border-b border-border">
         <div className="container px-4 mx-auto max-w-5xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -104,9 +104,9 @@ export default function Home() {
       </section>
 
       {/* Social Proof - Minimalist & Clean */}
-      <section className="py-24 bg-white border-b border-stone-100">
+      <section className="py-24 bg-white border-b border-border/50">
         <div className="container px-4 mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-stone-100">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-border/50">
             {[
               { value: "50K+", label: "Scans Analyzed" },
               { value: "100%", label: "Detection Accuracy" },
@@ -123,7 +123,7 @@ export default function Home() {
                 <div className="text-5xl md:text-6xl font-normal text-foreground tracking-tighter">
                   {stat.value}
                 </div>
-                <div className="text-xs uppercase tracking-widest text-stone-500 font-medium">
+                <div className="text-xs uppercase tracking-widest text-muted-foreground font-medium">
                   {stat.label}
                 </div>
               </motion.div>
@@ -133,7 +133,7 @@ export default function Home() {
       </section>
 
       {/* The Problem - Editorial Layout with Large Typography */}
-      <section className="py-32 md:py-48 bg-stone-50 overflow-hidden">
+      <section className="py-32 md:py-48 bg-gradient-to-b from-white to-accent/10 overflow-hidden">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <motion.div 
@@ -164,7 +164,7 @@ export default function Home() {
                 className="text-4xl md:text-6xl font-normal leading-tight text-foreground"
               >
                 The problem isn't just your teeth. <br />
-                <span className="italic font-normal text-stone-500">It's the uncertainty.</span>
+                <span className="italic font-normal text-muted-foreground">It's the uncertainty.</span>
               </motion.h2>
               
               <div className="space-y-12">
@@ -206,7 +206,7 @@ export default function Home() {
       </section>
 
       {/* User Challenges Carousel - Seamless Integration */}
-      <section className="py-20 bg-secondary">
+      <section className="py-20 bg-accent/5">
         <div className="container px-4 mx-auto mb-12 text-center">
           <h2 className="text-3xl md:text-4xl font-normal text-foreground">Real Scenarios. Real Clarity.</h2>
         </div>
@@ -252,7 +252,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.2, duration: 0.6 }}
-                className="group relative aspect-[3/4] rounded-2xl overflow-hidden bg-secondary shadow-lg hover:shadow-2xl transition-all duration-500"
+                className="group relative aspect-[3/4] rounded-2xl overflow-hidden bg-accent/5 shadow-lg hover:shadow-2xl transition-all duration-500"
               >
                 <img 
                   src={feature.image} 
@@ -278,7 +278,7 @@ export default function Home() {
       </section>
 
       {/* Pricing - Elegant Cards */}
-      <section className="py-32 bg-stone-50">
+      <section className="py-32 bg-gradient-to-b from-white to-accent/10">
         <div className="container px-4 mx-auto max-w-5xl">
           <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-16 text-center">
             Simple, transparent pricing
@@ -288,7 +288,7 @@ export default function Home() {
             {/* Clarity Plan */}
             <motion.div 
               whileHover={{ y: -10 }}
-              className="bg-white rounded-3xl p-10 shadow-sm border border-stone-100 hover:shadow-xl transition-all duration-500 relative overflow-hidden"
+              className="bg-white rounded-3xl p-10 shadow-sm border border-border/50 hover:shadow-xl transition-all duration-500 relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 bg-foreground text-white text-xs font-bold px-4 py-2 rounded-bl-xl uppercase tracking-wider">
                 Most Popular
@@ -296,7 +296,7 @@ export default function Home() {
               <div className="flex justify-between items-start mb-8">
                 <div>
                   <h3 className="text-3xl font-normal text-foreground">Clarity</h3>
-                  <p className="text-stone-500 mt-2 font-normal">Unlimited Full Mouth Analysis</p>
+                  <p className="text-muted-foreground mt-2 font-normal">Unlimited Full Mouth Analysis</p>
                 </div>
                 <div className="text-right">
                   <span className="text-5xl font-normal text-foreground">$75</span>
@@ -324,12 +324,12 @@ export default function Home() {
             {/* Consult Plan */}
             <motion.div 
               whileHover={{ y: -10 }}
-              className="bg-secondary/50 rounded-3xl p-10 border border-border hover:shadow-lg transition-all duration-500"
+              className="bg-accent/5/50 rounded-3xl p-10 border border-border hover:shadow-lg transition-all duration-500"
             >
               <div className="flex justify-between items-start mb-8">
                 <div>
                   <h3 className="text-3xl font-normal text-foreground">Consult</h3>
-                  <p className="text-stone-500 mt-2 font-normal">One-time Analysis</p>
+                  <p className="text-muted-foreground mt-2 font-normal">One-time Analysis</p>
                 </div>
                 <div className="text-right">
                   <span className="text-5xl font-normal text-foreground">$30</span>

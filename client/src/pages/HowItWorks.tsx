@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 export default function HowItWorks() {
   return (
-    <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-white to-accent/10 font-sans text-foreground selection:bg-primary/20">
       <Navigation />
 
       {/* Hero Section - Minimalist & Zen */}
@@ -18,7 +18,7 @@ export default function HowItWorks() {
             alt="DentaSmart App Interface" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-stone-900/20 backdrop-blur-[1px]" />
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-[1px]" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto max-w-4xl text-center">
@@ -27,11 +27,11 @@ export default function HowItWorks() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-light tracking-tight text-white mb-8 leading-[1.1] drop-shadow-lg">
+            <h1 className="text-5xl md:text-7xl font-normal tracking-tight text-white mb-8 leading-[1.1] drop-shadow-lg">
               Know what's going on <br />
               <span className="font-normal italic">before</span> it hurts.
             </h1>
-            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-light leading-relaxed drop-shadow-md">
+            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto font-normal leading-relaxed drop-shadow-md">
               Three simple steps to understand your mouth and take control of your oral health.
             </p>
           </motion.div>
@@ -43,7 +43,7 @@ export default function HowItWorks() {
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
             {/* Connecting Line (Desktop) */}
-            <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-px bg-stone-200 -z-10"></div>
+            <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-px bg-border -z-10"></div>
 
             {/* Step 1 */}
             <motion.div 
@@ -53,12 +53,12 @@ export default function HowItWorks() {
               transition={{ duration: 0.6 }}
               className="flex flex-col items-center text-center group"
             >
-              <div className="w-24 h-24 bg-white border border-stone-200 rounded-full flex items-center justify-center mb-8 shadow-sm group-hover:border-stone-900 group-hover:scale-105 transition-all duration-500 relative z-10">
-                <Camera className="w-8 h-8 text-stone-900" strokeWidth={1.5} />
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-stone-900 text-white rounded-full flex items-center justify-center font-medium text-sm">1</div>
+              <div className="w-24 h-24 bg-white border border-border rounded-full flex items-center justify-center mb-8 shadow-sm group-hover:border-primary group-hover:scale-105 transition-all duration-500 relative z-10">
+                <Camera className="w-8 h-8 text-foreground" strokeWidth={1.5} />
+                <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-medium text-sm">1</div>
               </div>
-              <h3 className="text-2xl font-medium text-stone-900 mb-4">Upload</h3>
-              <p className="text-stone-600 font-light leading-relaxed max-w-xs">
+              <h3 className="text-2xl font-medium text-foreground mb-4">Upload</h3>
+              <p className="text-muted-foreground font-normal leading-relaxed max-w-xs">
                 Take a photo or upload an X-ray. Works on any phone in 30 seconds.
               </p>
             </motion.div>
@@ -71,12 +71,12 @@ export default function HowItWorks() {
               transition={{ delay: 0.2, duration: 0.6 }}
               className="flex flex-col items-center text-center group"
             >
-              <div className="w-24 h-24 bg-white border border-stone-200 rounded-full flex items-center justify-center mb-8 shadow-sm group-hover:border-stone-900 group-hover:scale-105 transition-all duration-500 relative z-10">
-                <Brain className="w-8 h-8 text-stone-900" strokeWidth={1.5} />
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-stone-900 text-white rounded-full flex items-center justify-center font-medium text-sm">2</div>
+              <div className="w-24 h-24 bg-white border border-border rounded-full flex items-center justify-center mb-8 shadow-sm group-hover:border-primary group-hover:scale-105 transition-all duration-500 relative z-10">
+                <Brain className="w-8 h-8 text-foreground" strokeWidth={1.5} />
+                <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-medium text-sm">2</div>
               </div>
-              <h3 className="text-2xl font-medium text-stone-900 mb-4">Analyze</h3>
-              <p className="text-stone-600 font-light leading-relaxed max-w-xs">
+              <h3 className="text-2xl font-medium text-foreground mb-4">Analyze</h3>
+              <p className="text-muted-foreground font-normal leading-relaxed max-w-xs">
                 AI scans for issues instantly. Get results in plain English, not jargon.
               </p>
             </motion.div>
@@ -89,12 +89,12 @@ export default function HowItWorks() {
               transition={{ delay: 0.4, duration: 0.6 }}
               className="flex flex-col items-center text-center group"
             >
-              <div className="w-24 h-24 bg-white border border-stone-200 rounded-full flex items-center justify-center mb-8 shadow-sm group-hover:border-stone-900 group-hover:scale-105 transition-all duration-500 relative z-10">
-                <MessageSquare className="w-8 h-8 text-stone-900" strokeWidth={1.5} />
-                <div className="absolute -top-2 -right-2 w-8 h-8 bg-stone-900 text-white rounded-full flex items-center justify-center font-medium text-sm">3</div>
+              <div className="w-24 h-24 bg-white border border-border rounded-full flex items-center justify-center mb-8 shadow-sm group-hover:border-primary group-hover:scale-105 transition-all duration-500 relative z-10">
+                <MessageSquare className="w-8 h-8 text-foreground" strokeWidth={1.5} />
+                <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center font-medium text-sm">3</div>
               </div>
-              <h3 className="text-2xl font-medium text-stone-900 mb-4">Act</h3>
-              <p className="text-stone-600 font-light leading-relaxed max-w-xs">
+              <h3 className="text-2xl font-medium text-foreground mb-4">Act</h3>
+              <p className="text-muted-foreground font-normal leading-relaxed max-w-xs">
                 Chat with Dr. Din. Share reports with your dentist. Fix issues early.
               </p>
             </motion.div>
@@ -103,18 +103,18 @@ export default function HowItWorks() {
       </section>
 
       {/* User Challenges Carousel */}
-      <section className="py-20 bg-stone-100">
+      <section className="py-20 bg-accent/5">
         <UserChallengesCarousel />
       </section>
 
       {/* Report Features - Clean Grid */}
-      <section className="py-32 bg-stone-50">
+      <section className="py-32 bg-white">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="text-center mb-24">
-            <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
+            <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-6">
               What you get in your report
             </h2>
-            <p className="text-xl text-stone-600 font-light">
+            <p className="text-xl text-muted-foreground font-normal">
               Comprehensive insights, simplified for you.
             </p>
           </div>
@@ -173,13 +173,13 @@ export default function HowItWorks() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05, duration: 0.5 }}
-                className="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 hover:shadow-md transition-all duration-300 group"
+                className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-md transition-all duration-300 group"
               >
-                <div className="w-12 h-12 bg-stone-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-stone-900 transition-colors duration-300">
-                  <feature.icon className="w-6 h-6 text-stone-900 group-hover:text-white transition-colors duration-300" strokeWidth={1.5} />
+                <div className="w-12 h-12 bg-accent/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
+                  <feature.icon className="w-6 h-6 text-foreground group-hover:text-white transition-colors duration-300" strokeWidth={1.5} />
                 </div>
-                <h3 className="text-xl font-medium text-stone-900 mb-3">{feature.title}</h3>
-                <p className="text-stone-600 font-light leading-relaxed text-sm">
+                <h3 className="text-xl font-medium text-foreground mb-3">{feature.title}</h3>
+                <p className="text-muted-foreground font-normal leading-relaxed text-sm">
                   {feature.desc}
                 </p>
               </motion.div>
@@ -191,15 +191,15 @@ export default function HowItWorks() {
       {/* Final CTA */}
       <section className="py-32 bg-white text-center">
         <div className="container px-4 mx-auto max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-8">
+          <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-8">
             Ready to take control?
           </h2>
-          <p className="text-xl text-stone-600 font-light mb-12 leading-relaxed">
+          <p className="text-xl text-muted-foreground font-normal mb-12 leading-relaxed">
             Join thousands of users who are already smarter about their dental health.
           </p>
           <Button 
             size="lg" 
-            className="bg-stone-900 hover:bg-stone-800 text-white rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl"
+            className="bg-primary hover:bg-primary/90 text-white rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl"
             onClick={() => window.open('https://apps.apple.com/us/app/dentasmart/id6670311232', '_blank')}
           >
             Download the App

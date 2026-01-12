@@ -71,3 +71,14 @@
 ## Phase 37: Inner Pages & Footer
 - [ ] Update `Footer.tsx` background and text colors to match brand guidelines.
 - [ ] Review and update all inner pages (`HowItWorks`, `Features`, `Pricing`, `Employers`, `Team`, `FAQs`) to ensure brand consistency.
+
+## Phase 39: Revamp Footer
+- [ ] Change footer background to light blue (brand tint)
+- [ ] Update footer text color to dark gray for contrast
+- [ ] Ensure logo visibility on light background
+- [ ] Fix visual separation between content and footer
+
+## Phase 40: Refine Home Page
+- [ ] Replace "Stone" backgrounds with clean white/teal gradients
+- [ ] Update section transitions for a medical-tech feel
+- [ ] Ensure typography remains "Poppins" but fits the new theme
