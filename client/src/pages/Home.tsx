@@ -349,7 +349,7 @@ export default function Home() {
       </section>
 
       {/* Final CTA - Cinematic */}
-      <section className="relative py-24 flex items-center justify-center overflow-hidden bg-[#E6F4F6]">
+      <section className="relative py-24 flex items-center justify-center overflow-hidden bg-[#D0F0F5]">
         
         
         <div className="container relative z-10 text-center px-4">

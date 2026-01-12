@@ -221,18 +221,18 @@ export default function Pricing() {
             </h2>
           </div>
 
-<div className="bg-white rounded-3xl shadow-sm border border-blue-100 overflow-hidden">
+<div className="bg-white rounded-3xl shadow-lg border border-blue-200 overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[600px]">
                 <thead>
-                  <tr className="border-b border-blue-100 bg-blue-50/50">
-                    <th className="text-left py-4 px-4 md:py-6 md:px-6 w-1/4 font-medium text-stone-900 sticky left-0 bg-blue-50/50 backdrop-blur-sm z-10">Feature</th>
-                    <th className="text-center py-4 px-2 md:py-6 md:px-6 w-1/4 font-medium text-stone-900">Clarity</th>
-                    <th className="text-center py-4 px-2 md:py-6 md:px-6 w-1/4 font-medium text-stone-900">Consult</th>
-                    <th className="text-center py-4 px-2 md:py-6 md:px-6 w-1/4 font-medium text-white bg-primary">Complete</th>
+                  <tr className="border-b border-blue-200 bg-blue-100/50">
+                    <th className="text-left py-5 px-6 w-1/4 font-semibold text-primary sticky left-0 bg-blue-50 backdrop-blur-sm z-10">Feature</th>
+                    <th className="text-center py-5 px-4 w-1/4 font-semibold text-primary">Clarity</th>
+                    <th className="text-center py-5 px-4 w-1/4 font-semibold text-primary">Consult</th>
+                    <th className="text-center py-5 px-4 w-1/4 font-semibold text-white bg-primary">Complete</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-blue-50">
+                <tbody className="divide-y divide-blue-100">
                   {[
                     { feature: "AI Analysis", clarity: true, consult: true, complete: true },
                     { feature: "Monthly Monitoring", clarity: true, consult: false, complete: true },
@@ -245,16 +245,16 @@ export default function Pricing() {
                     { feature: "Procedure Savings (20-60%)", clarity: false, consult: false, complete: true },
                     { feature: "Buy Now, Pay Later", clarity: false, consult: false, complete: true },
                   ].map((row, idx) => (
-                    <tr key={idx} className={`${idx % 2 === 0 ? 'bg-white' : 'bg-blue-50/30'} hover:bg-blue-50 transition-colors`}>
-                      <td className={`py-4 px-4 md:py-6 md:px-6 text-stone-600 font-light text-sm md:text-base sticky left-0 z-10 ${idx % 2 === 0 ? 'bg-white' : 'bg-blue-50/30'}`}>{row.feature}</td>
-                      <td className="py-4 px-2 md:py-6 md:px-6 text-center">
-                        {row.clarity ? <Check className="w-5 h-5 text-primary mx-auto" /> : <span className="text-stone-300">—</span>}
+                    <tr key={idx} className={`${idx % 2 === 0 ? 'bg-white' : 'bg-blue-50/60'} hover:bg-blue-100/50 transition-colors`}>
+                      <td className={`py-5 px-6 text-teal-900 font-medium text-sm md:text-base sticky left-0 z-10 ${idx % 2 === 0 ? 'bg-white' : 'bg-blue-50'}`}>{row.feature}</td>
+                      <td className="py-5 px-4 text-center">
+                        {row.clarity ? <Check className="w-6 h-6 text-primary mx-auto" /> : <span className="text-blue-200">—</span>}
                       </td>
-                      <td className="py-4 px-2 md:py-6 md:px-6 text-center">
-                        {row.consult ? <Check className="w-5 h-5 text-primary mx-auto" /> : <span className="text-stone-300">—</span>}
+                      <td className="py-5 px-4 text-center">
+                        {row.consult ? <Check className="w-6 h-6 text-primary mx-auto" /> : <span className="text-blue-200">—</span>}
                       </td>
-                      <td className="py-4 px-2 md:py-6 md:px-6 text-center bg-blue-50/50">
-                        {row.complete ? <Check className="w-5 h-5 text-primary mx-auto" /> : <span className="text-stone-300">—</span>}
+                      <td className="py-5 px-4 text-center bg-blue-50/50 border-l border-blue-100">
+                        {row.complete ? <Check className="w-6 h-6 text-primary mx-auto" /> : <span className="text-blue-200">—</span>}
                       </td>
                     </tr>
                   ))}
