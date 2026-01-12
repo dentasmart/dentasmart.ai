@@ -12,12 +12,18 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-background font-sans text-foreground selection:bg-primary/20">
       <Navigation />
 
-      {/* Hero Section - Modern Split Layout */}
-      <section className="relative min-h-[800px] md:min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-slate-50 to-blue-50/50">
-        {/* Background Elements */}
-        <div className="absolute inset-0 z-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-teal-50/40 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4" />
+      {/* Hero Section - Full Background Image with Overlay */}
+      <section className="relative min-h-[600px] md:min-h-[800px] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/backgrounds/home-hero-lady-smile.jpg" 
+            alt="Woman with healthy smile" 
+            className="w-full h-full object-cover object-center md:object-[center_20%]"
+          />
+          {/* Gradient Overlay for Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-transparent md:via-white/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent md:hidden" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-20 md:pt-0">
@@ -60,58 +66,8 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Right Column: App Image */}
-            <motion.div
-              initial={{ opacity: 0, y: 40, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-              className="relative flex justify-center lg:justify-end"
-            >
-              <div className="relative w-[280px] md:w-[320px] lg:w-[360px] xl:w-[400px]">
-                {/* Glow Effect */}
-                <div className="absolute inset-0 bg-primary/20 blur-[60px] rounded-full scale-90" />
-                
-                {/* Phone Image */}
-                <img 
-                  src="/images/dentasmart_app_hero.png" 
-                  alt="DentaSmart App Interface" 
-                  className="relative z-10 w-full h-auto drop-shadow-2xl rounded-[3rem] border-[8px] border-white shadow-xl"
-                />
-                
-                {/* Floating Elements for Depth */}
-                <motion.div 
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="absolute -right-8 top-20 z-20 bg-white p-4 rounded-2xl shadow-lg border border-border/50 hidden md:block"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600">
-                      <Shield className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Health Score</p>
-                      <p className="text-lg font-bold text-foreground">81/100</p>
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.div 
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  className="absolute -left-8 bottom-32 z-20 bg-white p-4 rounded-2xl shadow-lg border border-border/50 hidden md:block"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">
-                      <Activity className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Status</p>
-                      <p className="text-lg font-bold text-foreground">Excellent</p>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
+            {/* Right Column: Empty to let image show through, or optional floating elements */}
+            <div className="hidden lg:block"></div>
 
           </div>
         </div>
@@ -233,16 +189,16 @@ export default function Home() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: idx * 0.2, duration: 0.6 }}
-                    className="group"
+                    transition={{ delay: idx * 0.1, duration: 0.6 }}
+                    className="flex gap-4"
                   >
-                    <h3 className="text-2xl font-normal text-foreground mb-3 group-hover:text-primary transition-colors duration-300 flex items-center gap-3">
-                      <span className="w-2 h-2 rounded-full bg-muted group-hover:bg-primary transition-colors" />
-                      {item.title}
-                    </h3>
-                    <p className="text-muted-foreground font-normal leading-relaxed pl-5 border-l border-border group-hover:border-primary/30 transition-colors duration-300">
-                      {item.desc}
-                    </p>
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                      <ArrowRight className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-medium text-foreground mb-2">{item.title}</h3>
+                      <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                    </div>
                   </motion.div>
                 ))}
               </div>
@@ -251,108 +207,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* User Challenges Carousel - Seamless Integration */}
-      <section className="py-12 bg-accent/5">
-        <div className="container px-4 mx-auto mb-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-normal text-foreground">Real Scenarios. Real Clarity.</h2>
-        </div>
-        <UserChallengesCarousel />
-      </section>
+      {/* User Challenges Carousel */}
+      <UserChallengesCarousel />
 
-      {/* The Solution - Minimalist Feature Grid */}
-      <section className="py-12 bg-white">
-        <div className="container px-4 mx-auto max-w-6xl">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-6">
-              Your Personal AI Dental Companion
-            </h2>
-            <p className="text-xl text-muted-foreground font-normal leading-relaxed">
-              DentaSmart analyzes your mouth in seconds, explains what's happening in plain language, and helps you make informed decisions.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { 
-                icon: Smartphone, 
-                title: "Upload & Analyze", 
-                desc: "Take photos or upload X-rays. Get instant AI analysis.",
-                image: "/Adam.png"
-              },
-              { 
-                icon: Activity, 
-                title: "Understand Results", 
-                desc: "Plain-language explanations. No jargon. No confusion.",
-                image: "/images/challenges/trust_clarity.jpg"
-              },
-              { 
-                icon: Shield, 
-                title: "Ask Dr. Din", 
-                desc: "Chat 24/7 with your AI dental companion. Get answers anytime.",
-                image: "/images/challenges/daily_tracking.jpg"
-              }
-            ].map((feature, idx) => (
-              <motion.div 
-                key={idx} 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.2, duration: 0.6 }}
-                className="group relative aspect-[3/4] rounded-2xl overflow-hidden bg-accent/5 shadow-lg hover:shadow-2xl transition-all duration-500"
-              >
-                <img 
-                  src={feature.image} 
-                  alt={feature.title}
-                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
-                
-                <div className="absolute bottom-0 left-0 p-8 text-white w-full transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <feature.icon className="w-10 h-10 mb-6 text-white/90" strokeWidth={1.5} />
-                  <h3 className="text-2xl font-medium mb-3">{feature.title}</h3>
-                  <p className="text-white/80 font-normal leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                    {feature.desc}
-                  </p>
-                  <div className="mt-6 pt-6 border-t border-white/20 flex items-center text-sm font-medium tracking-wide uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-                    Learn More <ArrowRight className="w-4 h-4 ml-2" />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Lead Magnet Widget */}
+      {/* Lead Magnet Section */}
       <LeadMagnet />
-
-      {/* Final CTA - Cinematic */}
-      <section className="relative py-24 flex items-center justify-center overflow-hidden bg-[#D0F0F5]">
-        
-        
-        <div className="container relative z-10 text-center px-4">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-4xl md:text-6xl font-normal text-foreground mb-6 tracking-tight">
-              Ready to stop worrying?
-            </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground font-normal mb-8 max-w-2xl mx-auto">
-              Download DentaSmart today and get instant insights into your oral health.
-            </p>
-            <Button 
-              size="lg" 
-              className="bg-primary text-white hover:bg-primary/90 rounded-full px-12 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0"
-              onClick={() => window.open('https://apps.apple.com/us/app/dentasmart/id6670311232', '_blank')}
-            >
-              Download the App
-            </Button>
-          </motion.div>
-        </div>
-      </section>
 
       <Footer />
     </div>
