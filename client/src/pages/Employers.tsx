@@ -147,7 +147,7 @@ export default function Employers() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-center p-12 rounded-3xl bg-stone-900 text-white relative overflow-hidden shadow-xl transform md:scale-110"
+              className="text-center p-12 rounded-3xl bg-gradient-to-br from-primary to-teal-700 text-white relative overflow-hidden shadow-xl transform md:scale-110"
             >
               <div className="absolute top-6 right-6 bg-white text-stone-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                 75% Savings
