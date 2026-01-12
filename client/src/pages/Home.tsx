@@ -15,7 +15,7 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/backgrounds/home-hero-light.jpg" 
+            src="/images/backgrounds/hero-smile-home.jpg" 
             alt="DentaSmart Lifestyle" 
             className="w-full h-full object-cover"
           />

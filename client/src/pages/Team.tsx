@@ -13,7 +13,7 @@ export default function Team() {
       <section className="relative py-40 md:py-52 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/backgrounds/team-collab.jpg" 
+            src="/images/backgrounds/hero-smile-team.jpg" 
             alt="DentaSmart Team" 
             className="w-full h-full object-cover"
           />
@@ -197,7 +197,7 @@ export default function Team() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-32 bg-stone-900 text-center">
+      <section className="py-32 bg-primary text-center">
         <div className="container px-4 mx-auto max-w-3xl">
           <h2 className="text-4xl md:text-5xl font-light text-white mb-8">
             Join our mission
@@ -207,7 +207,7 @@ export default function Team() {
           </p>
           <Button 
             size="lg" 
-            className="bg-white text-stone-900 hover:bg-stone-100 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl"
+            className="bg-white text-primary hover:bg-blue-50 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl"
             onClick={() => window.open('https://apps.apple.com/us/app/dentasmart/id6670311232', '_blank')}
           >
             Download the App

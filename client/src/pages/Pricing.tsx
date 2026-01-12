@@ -17,7 +17,7 @@ export default function Pricing() {
       <section className="relative py-40 md:py-52 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/backgrounds/pricing-calm.jpg" 
+            src="/images/backgrounds/hero-smile-pricing.jpg" 
             alt="Simple Pricing" 
             className="w-full h-full object-cover"
           />

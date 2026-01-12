@@ -14,7 +14,7 @@ export default function Features() {
       <section className="relative py-40 md:py-52 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/backgrounds/features-abstract.jpg" 
+            src="/images/backgrounds/hero-smile-generic.jpg" 
             alt="AI Dental Analysis" 
             className="w-full h-full object-cover"
           />
