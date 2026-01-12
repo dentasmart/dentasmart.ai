@@ -209,14 +209,14 @@ export default function Pricing() {
       </section>
 
       {/* User Challenges Carousel */}
-      <section className="py-12 bg-accent/5">
+      <section className="py-0 bg-accent/5">
         <UserChallengesCarousel />
       </section>
 
       {/* Comparison Table - Clean */}
-      <section className="py-12 bg-white">
+      <section className="py-8 bg-white">
         <div className="container px-4 mx-auto max-w-5xl">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8">
             <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6">
               Compare plans
             </h2>
