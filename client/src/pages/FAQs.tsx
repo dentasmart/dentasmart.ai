@@ -179,33 +179,33 @@ export default function FAQs() {
       </section>
 
       {/* Contact Support */}
-      <section className="py-24 bg-stone-100">
+      <section className="py-32 bg-[#D0F0F5] text-center">
         <div className="container px-4 mx-auto text-center max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-light tracking-tight text-stone-900 mb-6">
+          <h2 className="text-4xl md:text-5xl font-light tracking-tight text-foreground mb-6">
             Still have questions?
           </h2>
-          <p className="text-xl text-stone-600 font-light mb-12">
+          <p className="text-xl text-muted-foreground font-light mb-12">
             Our support team is here to help. Reach out anytime.
           </p>
           
           <div className="grid md:grid-cols-2 gap-8 mb-12 text-left max-w-lg mx-auto">
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-stone-100">
-              <h3 className="text-lg font-medium text-stone-900 mb-2">Email Support</h3>
-              <p className="text-stone-600 font-light mb-4">Get a response within 24 hours.</p>
-              <a href="mailto:support@dentasmart.ai" className="text-stone-900 font-medium hover:underline">
+              <h3 className="text-lg font-medium text-foreground mb-2">Email Support</h3>
+              <p className="text-muted-foreground font-light mb-4">Get a response within 24 hours.</p>
+              <a href="mailto:support@dentasmart.ai" className="text-primary font-medium hover:underline">
                 support@dentasmart.ai
               </a>
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-stone-100">
-              <h3 className="text-lg font-medium text-stone-900 mb-2">In-App Chat</h3>
-              <p className="text-stone-600 font-light mb-4">Available 24/7 for instant help.</p>
-              <span className="text-stone-900 font-medium">
+              <h3 className="text-lg font-medium text-foreground mb-2">In-App Chat</h3>
+              <p className="text-muted-foreground font-light mb-4">Available 24/7 for instant help.</p>
+              <span className="text-primary font-medium">
                 Open the DentaSmart App
               </span>
             </div>
           </div>
 
-          <Button size="lg" className="bg-stone-900 hover:bg-stone-800 text-white rounded-full px-8 py-6 text-lg h-auto transition-all duration-300 hover:scale-105 shadow-lg">
+          <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 py-6 text-lg h-auto transition-all duration-300 hover:scale-105 shadow-lg">
             Contact Support
           </Button>
         </div>

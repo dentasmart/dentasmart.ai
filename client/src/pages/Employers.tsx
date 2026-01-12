@@ -185,44 +185,29 @@ export default function Employers() {
       </section>
 
       {/* Final CTA */}
-      <section className="relative py-40 flex items-center justify-center overflow-hidden bg-stone-900">
-        <div className="absolute inset-0 z-0 opacity-30">
-          <img 
-            src="/images/challenges/smart_savings.jpg" 
-            alt="Smart Savings" 
-            className="w-full h-full object-cover"
-          />
-        </div>
-        
-        <div className="container relative z-10 text-center px-4">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-5xl md:text-7xl font-light text-white mb-8 tracking-tight">
-              Ready to upgrade your benefits?
-            </h2>
-            <p className="text-xl md:text-2xl text-white/80 font-light mb-12 max-w-2xl mx-auto">
-              Join forward-thinking companies saving thousands while improving employee health.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <Button 
-                size="lg" 
-                className="bg-white text-stone-900 hover:bg-stone-100 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0"
-              >
-                Schedule a Demo
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="bg-white/10 backdrop-blur-md border-white/30 text-white hover:bg-white/20 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300"
-              >
-                Contact Sales
-              </Button>
-            </div>
-          </motion.div>
+      <section className="py-32 bg-[#D0F0F5] text-center">
+        <div className="container px-4 mx-auto max-w-3xl">
+          <h2 className="text-4xl md:text-5xl font-light text-foreground mb-8">
+            Ready to upgrade your benefits?
+          </h2>
+          <p className="text-xl text-muted-foreground font-light mb-12 leading-relaxed">
+            Join forward-thinking companies saving thousands while improving employee health.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <Button 
+              size="lg" 
+              className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0"
+            >
+              Schedule a Demo
+            </Button>
+            <Button 
+              size="lg" 
+              variant="outline"
+              className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300"
+            >
+              Contact Sales
+            </Button>
+          </div>
         </div>
       </section>
 

@@ -189,7 +189,7 @@ export default function HowItWorks() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-16 bg-white text-center">
+      <section className="py-32 bg-[#D0F0F5] text-center">
         <div className="container px-4 mx-auto max-w-3xl">
           <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-4">
             Ready to take control?
