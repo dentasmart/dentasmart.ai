@@ -96,12 +96,12 @@ export default function FAQs() {
           <img 
             src="/images/backgrounds/hero-faqs-book.jpg" 
             alt="DentaSmart FAQs" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-[center_30%] md:object-center"
           />
           <div className="absolute inset-0 bg-white/60" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto text-center max-w-4xl">
+        <div className="container relative z-10 px-4 mx-auto text-left max-w-4xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -110,7 +110,7 @@ export default function FAQs() {
             <h1 className="text-5xl md:text-7xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
               Common questions
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mr-auto font-light leading-relaxed">
               Everything you need to know about DentaSmart. Can't find your answer? Reach out to our support team.
             </p>
           </motion.div>

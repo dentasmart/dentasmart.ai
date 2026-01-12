@@ -16,12 +16,12 @@ export default function HowItWorks() {
           <img 
             src="/images/backgrounds/how-it-works.jpg" 
             alt="DentaSmart App Interface" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-[center_30%] md:object-center"
           />
           <div className="absolute inset-0 bg-white/60" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-4xl text-center">
+        <div className="container relative z-10 px-4 mx-auto max-w-4xl text-left">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -31,7 +31,7 @@ export default function HowItWorks() {
               Know what's going on <br />
               <span className="font-normal italic">before</span> it hurts.
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-normal leading-relaxed">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mr-auto font-normal leading-relaxed">
               Three simple steps to understand your mouth and take control of your oral health.
             </p>
           </motion.div>

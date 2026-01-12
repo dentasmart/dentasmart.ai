@@ -54,7 +54,7 @@ export default function Navigation() {
               className="h-8 md:h-10 w-auto transition-transform duration-300 group-hover:scale-105"
             />
             <p className={`text-[10px] md:text-xs font-medium tracking-wide transition-colors duration-300 ${
-              scrolled || isOpen ? "text-muted-foreground" : "text-white/90"
+              scrolled || isOpen ? "text-teal-700" : "text-teal-800"
             }`}>
               Your Personal AI Dental Companion
             </p>
@@ -68,13 +68,13 @@ export default function Navigation() {
                 href={item.href}
                 className={`text-sm font-medium tracking-wide transition-all duration-300 relative group ${
                   isActive(item.href)
-                    ? (scrolled ? "text-stone-900" : "text-white")
-                    : (scrolled ? "text-stone-500 hover:text-stone-900" : "text-white/70 hover:text-white")
+                    ? (scrolled ? "text-teal-900" : "text-teal-900")
+                    : (scrolled ? "text-teal-600 hover:text-teal-800" : "text-teal-700 hover:text-teal-900")
                 }`}
               >
                 {item.label}
                 <span className={`absolute -bottom-1 left-0 w-full h-px bg-stone-900 origin-left transition-transform duration-300 ${
-                  isActive(item.href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-50" + (scrolled ? " bg-stone-900" : " bg-white")
+                  isActive(item.href) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-50" + (scrolled ? " bg-teal-900" : " bg-teal-900")
                 }`} />
               </Link>
             ))}
@@ -98,7 +98,7 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className={`lg:hidden p-2 z-50 relative transition-colors duration-300 ${scrolled || isOpen ? "text-stone-900" : "text-white"}`}
+            className={`lg:hidden p-2 z-50 relative transition-colors duration-300 ${scrolled || isOpen ? "text-teal-900" : "text-teal-900"}`}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >

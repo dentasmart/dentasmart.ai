@@ -20,12 +20,12 @@ export default function Pricing() {
           <img 
             src="/images/backgrounds/hero-smile-pricing.jpg" 
             alt="Simple Pricing" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-[center_30%] md:object-center"
           />
           <div className="absolute inset-0 bg-white/60" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-4xl text-center">
+        <div className="container relative z-10 px-4 mx-auto max-w-4xl text-left">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -35,7 +35,7 @@ export default function Pricing() {
               Simple, honest <br />
               <span className="font-normal italic">pricing</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mr-auto font-light leading-relaxed">
               No hidden fees. No surprises. Choose the plan that works for you.
             </p>
           </motion.div>

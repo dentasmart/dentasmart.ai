@@ -17,12 +17,12 @@ export default function Employers() {
           <img 
             src="/images/backgrounds/employers-office.jpg" 
             alt="Corporate Wellness" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-[center_30%] md:object-center"
           />
           <div className="absolute inset-0 bg-white/60" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-5xl text-center">
+        <div className="container relative z-10 px-4 mx-auto max-w-5xl text-left">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -32,10 +32,10 @@ export default function Employers() {
               A dental benefit employees <br />
               <span className="font-normal italic">actually use</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-12 font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mr-auto mb-12 font-light leading-relaxed">
               Give your team a Personal AI Dental Companion that prevents problems, reduces anxiety, and costs 75% less than traditional insurance.
             </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-start">
               <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0">
                 Schedule a Demo
               </Button>

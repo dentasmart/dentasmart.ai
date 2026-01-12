@@ -16,12 +16,12 @@ export default function Features() {
           <img 
             src="/images/backgrounds/hero-smile-generic.jpg" 
             alt="AI Dental Analysis" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-[center_30%] md:object-center"
           />
           <div className="absolute inset-0 bg-white/60" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-4xl text-center">
+        <div className="container relative z-10 px-4 mx-auto max-w-4xl text-left">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -31,7 +31,7 @@ export default function Features() {
               Everything you need to <br />
               <span className="font-normal italic">understand your teeth</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mr-auto font-light leading-relaxed">
               Powerful features designed to give you clarity, control, and confidence in your oral health journey.
             </p>
           </motion.div>

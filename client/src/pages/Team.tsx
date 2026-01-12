@@ -15,12 +15,12 @@ export default function Team() {
           <img 
             src="/images/backgrounds/hero-team-creative.jpg" 
             alt="DentaSmart Team" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-[center_30%] md:object-center"
           />
           <div className="absolute inset-0 bg-white/60" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-4xl text-center">
+        <div className="container relative z-10 px-4 mx-auto max-w-4xl text-left">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -30,7 +30,7 @@ export default function Team() {
               The right team for <br />
               <span className="font-normal italic">the right problem</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mr-auto font-light leading-relaxed">
               Meet the passionate experts behind DentaSmart's mission to revolutionize oral healthcare through AI innovation.
             </p>
           </motion.div>

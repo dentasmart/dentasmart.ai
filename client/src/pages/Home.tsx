@@ -17,12 +17,12 @@ export default function Home() {
           <img 
             src="/images/backgrounds/hero-smile-home.jpg" 
             alt="DentaSmart Lifestyle" 
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-[center_30%] md:object-center"
           />
           <div className="absolute inset-0 bg-white/60" />
         </div>
 
-        <div className="container relative z-10 px-4 text-center max-w-5xl mx-auto pt-10">
+        <div className="container relative z-10 px-4 text-left max-w-5xl mx-auto pt-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -33,12 +33,12 @@ export default function Home() {
               <span className="font-normal italic">before</span> your dentist explains it.
             </h1>
             
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-6 font-normal leading-relaxed text-balance">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mr-auto mb-6 font-normal leading-relaxed text-balance">
               Monthly monitoring, instant insights, and peace of mind. 
               Your personal AI dental companion is here.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-start items-center sm:items-start">
               <Button 
                 size="lg" 
                 className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0"
