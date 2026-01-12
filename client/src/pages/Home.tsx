@@ -15,11 +15,11 @@ export default function Home() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/backgrounds/home-hero.jpg" 
+            src="/images/backgrounds/home-hero-light.jpg" 
             alt="DentaSmart Lifestyle" 
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/30" />
         </div>
 
         <div className="container relative z-10 px-4 text-center max-w-5xl mx-auto pt-10">
@@ -28,12 +28,12 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-normal tracking-tight text-white mb-8 leading-[1.1] drop-shadow-lg">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-normal tracking-tight text-foreground mb-8 leading-[1.1]">
               Understand your mouth <br />
               <span className="font-normal italic">before</span> your dentist explains it.
             </h1>
             
-            <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto mb-6 font-normal leading-relaxed drop-shadow-md text-balance">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto mb-6 font-normal leading-relaxed text-balance">
               Monthly monitoring, instant insights, and peace of mind. 
               Your personal AI dental companion is here.
             </p>
@@ -41,7 +41,7 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <Button 
                 size="lg" 
-                className="bg-white text-primary hover:bg-white/90 rounded-full px-10 py-8 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0"
+                className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0"
                 onClick={() => window.open('https://apps.apple.com/us/app/dentasmart/id6670311232', '_blank')}
               >
                 Download the App
@@ -50,7 +50,7 @@ export default function Home() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="bg-white/10 backdrop-blur-md border-white/30 text-white hover:bg-white/20 rounded-full px-10 py-8 text-lg font-medium transition-all duration-300"
+                  className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-10 py-8 text-lg font-medium transition-all duration-300"
                 >
                   See Pricing
                 </Button>
@@ -59,16 +59,7 @@ export default function Home() {
           </motion.div>
         </div>
         
-        {/* Scroll Indicator */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/70 flex flex-col items-center gap-2"
-        >
-          <span className="text-xs uppercase tracking-widest font-medium">Scroll</span>
-          <div className="w-px h-12 bg-gradient-to-b from-white to-transparent" />
-        </motion.div>
+        {/* Scroll Indicator Removed */}
       </section>
 
       {/* Video Section - StoryBrand Aligned */}
