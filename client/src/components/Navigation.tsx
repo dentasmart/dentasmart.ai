@@ -42,7 +42,7 @@ export default function Navigation() {
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled || isOpen
             ? "bg-white/90 backdrop-blur-md border-b border-stone-200/50 py-2"
-            : "bg-transparent py-4"
+            : "bg-white/30 backdrop-blur-md py-4"
         }`}
       >
         <div className="container flex items-center justify-between h-16 md:h-20">
