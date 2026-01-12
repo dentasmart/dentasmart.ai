@@ -6,12 +6,12 @@ export default function HowItWorksHero() {
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/images/backgrounds/how-it-works-hero-composite.jpg" 
+          src="/images/backgrounds/how-it-works-hero-composite-v2.jpg" 
           alt="Man holding phone with DentaSmart App" 
           className="w-full h-full object-cover object-center"
         />
-        {/* Overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent" />
+        {/* Overlay for text readability - Adjusted to be cleaner white gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />
       </div>
 
       <div className="container px-4 mx-auto max-w-7xl relative z-10">
