@@ -108,11 +108,11 @@ export default function FAQs() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
+            <h1 className="text-4xl md:text-6xl font-light tracking-tight text-black mb-8 leading-[1.1]">
               Get answers, <br />
               <span className="font-normal italic text-primary">not confusion</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mr-auto font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-stone-700 max-w-2xl mr-auto font-light leading-relaxed">
               You have questions about your dental health and our app. We have clear, simple answers. No jargon, just the facts.
             </p>
           </motion.div>

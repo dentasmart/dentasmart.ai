@@ -36,7 +36,7 @@ export default function HowItWorks() {
               </div>
               <h3 className="text-2xl font-medium text-foreground mb-4">Upload</h3>
               <p className="text-muted-foreground font-normal leading-relaxed max-w-xs">
-                Take a photo or upload an X-ray. Works on any phone in 30 seconds.
+                Take a photo or upload an X-ray. Works on any phone in minutes.
               </p>
             </motion.div>
 
@@ -165,7 +165,8 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      {/* Final CTA */}\n      <DownloadCTA />
+      {/* Final CTA */}
+      <DownloadCTA />
 
       <Footer />
     </div>

@@ -29,11 +29,11 @@ export default function Employers() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
+            <h1 className="text-4xl md:text-6xl font-light tracking-tight text-black mb-8 leading-[1.1]">
               Stop overpaying for <br />
               <span className="font-normal italic text-primary">unused dental benefits</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mr-auto mb-12 font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-stone-700 max-w-3xl mr-auto mb-12 font-light leading-relaxed">
               Traditional insurance is expensive and reactive. Switch to a proactive AI dental benefit that employees love, and save 75% on your costs.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-start">

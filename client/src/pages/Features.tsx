@@ -100,11 +100,11 @@ export default function Features() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
+            <h1 className="text-4xl md:text-6xl font-light tracking-tight text-black mb-8 leading-[1.1]">
               The tools you need to <br />
               <span className="font-normal italic text-primary">take control</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mr-auto font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-stone-700 max-w-2xl mr-auto font-light leading-relaxed">
               From instant X-ray analysis to 24/7 answers from Dr. Din, we give you the power to make confident decisions about your dental care.
             </p>
           </motion.div>

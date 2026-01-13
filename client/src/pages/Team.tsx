@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 export default function Team() {
   return (
-    <div className="min-h-screen flex flex-col bg-background font-sans text-foreground selection:bg-primary/20">
+    <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <Navigation />
 
       {/* Hero Section - Clean & Professional */}
@@ -26,11 +26,11 @@ export default function Team() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-normal tracking-tight text-foreground mb-8 leading-[1.1]">
+            <h1 className="text-5xl md:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
               Experts dedicated to <br />
               <span className="font-normal italic text-primary">your smile</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto font-normal leading-relaxed">
+            <p className="text-xl md:text-2xl text-stone-700 max-w-3xl mx-auto font-normal leading-relaxed">
               We're a team of dentists, engineers, and innovators united by one goal: to make dental care simple, transparent, and accessible for everyone.
             </p>
           </motion.div>
@@ -57,8 +57,8 @@ export default function Team() {
                 <div className="w-16 h-16 mx-auto bg-primary/10 rounded-2xl flex items-center justify-center text-primary">
                   <item.icon className="w-8 h-8" />
                 </div>
-                <h3 className="text-xl font-medium text-foreground">{item.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                <h3 className="text-xl font-medium text-black">{item.title}</h3>
+                <p className="text-stone-700 leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -69,10 +69,10 @@ export default function Team() {
       <section className="py-24 bg-slate-50/50">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-6">
+            <h2 className="text-4xl md:text-5xl font-normal text-black mb-6">
               Leadership Team
             </h2>
-            <p className="text-xl text-muted-foreground font-normal">
+            <p className="text-xl text-stone-700 font-normal">
               Visionary leaders driving innovation in AI-powered dental care.
             </p>
           </div>
@@ -89,12 +89,12 @@ export default function Team() {
               <div className="w-24 h-24 bg-blue-100 rounded-full mb-6 flex items-center justify-center text-4xl group-hover:scale-110 transition-transform duration-300">
                 👨‍💼
               </div>
-              <h3 className="text-2xl font-medium text-foreground mb-1">Qasim Mueen</h3>
+              <h3 className="text-2xl font-medium text-black mb-1">Qasim Mueen</h3>
               <p className="text-primary font-medium mb-4 text-sm uppercase tracking-wider">Founder & CEO</p>
-              <p className="text-muted-foreground leading-relaxed mb-6 text-sm">
+              <p className="text-stone-700 leading-relaxed mb-6 text-sm">
                 Co-Founder & CEO of Zigron and FraudLens. Former Partner at Abode Systems (sold for $50M). Co-Founder of TransparentHands.org.
               </p>
-              <a href="#" className="inline-flex items-center text-foreground hover:text-primary transition-colors">
+              <a href="#" className="inline-flex items-center text-black hover:text-primary transition-colors">
                 <Linkedin className="w-5 h-5 mr-2" />
                 <span className="text-sm font-medium">LinkedIn</span>
               </a>
@@ -111,12 +111,12 @@ export default function Team() {
               <div className="w-24 h-24 bg-teal-100 rounded-full mb-6 flex items-center justify-center text-4xl group-hover:scale-110 transition-transform duration-300">
                 👨‍💻
               </div>
-              <h3 className="text-2xl font-medium text-foreground mb-1">Kashif Mueen</h3>
+              <h3 className="text-2xl font-medium text-black mb-1">Kashif Mueen</h3>
               <p className="text-primary font-medium mb-4 text-sm uppercase tracking-wider">Co-founder & CTO</p>
-              <p className="text-muted-foreground leading-relaxed mb-6 text-sm">
+              <p className="text-stone-700 leading-relaxed mb-6 text-sm">
                 25+ years in enterprise architecture, cloud, AI & ML. Former Partner at Abode Systems. Co-Founder of FraudLens and WhereverTV.
               </p>
-              <a href="#" className="inline-flex items-center text-foreground hover:text-primary transition-colors">
+              <a href="#" className="inline-flex items-center text-black hover:text-primary transition-colors">
                 <Linkedin className="w-5 h-5 mr-2" />
                 <span className="text-sm font-medium">LinkedIn</span>
               </a>
@@ -133,12 +133,12 @@ export default function Team() {
               <div className="w-24 h-24 bg-purple-100 rounded-full mb-6 flex items-center justify-center text-4xl group-hover:scale-110 transition-transform duration-300">
                 👩‍⚕️
               </div>
-              <h3 className="text-2xl font-medium text-foreground mb-1">Dr. Saba Ahmed</h3>
+              <h3 className="text-2xl font-medium text-black mb-1">Dr. Saba Ahmed</h3>
               <p className="text-primary font-medium mb-4 text-sm uppercase tracking-wider">Product Lead</p>
-              <p className="text-muted-foreground leading-relaxed mb-6 text-sm">
+              <p className="text-stone-700 leading-relaxed mb-6 text-sm">
                 Dental Surgeon with 10+ years clinical experience. Expert in merging patient care and technology to drive healthcare innovation.
               </p>
-              <a href="#" className="inline-flex items-center text-foreground hover:text-primary transition-colors">
+              <a href="#" className="inline-flex items-center text-black hover:text-primary transition-colors">
                 <Linkedin className="w-5 h-5 mr-2" />
                 <span className="text-sm font-medium">LinkedIn</span>
               </a>
@@ -151,10 +151,10 @@ export default function Team() {
       <section className="py-24 bg-white">
         <div className="container px-4 mx-auto max-w-5xl">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-6">
+            <h2 className="text-4xl md:text-5xl font-normal text-black mb-6">
               Advisory Board
             </h2>
-            <p className="text-xl text-muted-foreground font-normal">
+            <p className="text-xl text-stone-700 font-normal">
               Industry experts guiding our strategic vision.
             </p>
           </div>
@@ -168,12 +168,12 @@ export default function Team() {
               transition={{ duration: 0.6 }}
               className="bg-slate-50 p-10 rounded-3xl border border-border/50 hover:border-primary/20 transition-all duration-300"
             >
-              <h3 className="text-2xl font-medium text-foreground mb-2">Tyrette Hamilton</h3>
-              <p className="text-muted-foreground font-medium mb-6 uppercase tracking-wider text-xs">Strategic Advisor</p>
-              <p className="text-muted-foreground font-normal leading-relaxed mb-8">
+              <h3 className="text-2xl font-medium text-black mb-2">Tyrette Hamilton</h3>
+              <p className="text-stone-700 font-medium mb-6 uppercase tracking-wider text-xs">Strategic Advisor</p>
+              <p className="text-stone-700 font-normal leading-relaxed mb-8">
                 Former COO of P&R Dental Strategies. 25+ years in dental insurance, benefit design, and regulatory compliance.
               </p>
-              <a href="#" className="inline-flex items-center text-foreground hover:text-primary transition-colors">
+              <a href="#" className="inline-flex items-center text-black hover:text-primary transition-colors">
                 <Linkedin className="w-5 h-5 mr-2" />
                 <span className="text-sm font-medium">LinkedIn</span>
               </a>
@@ -187,12 +187,12 @@ export default function Team() {
               transition={{ delay: 0.1, duration: 0.6 }}
               className="bg-slate-50 p-10 rounded-3xl border border-border/50 hover:border-primary/20 transition-all duration-300"
             >
-              <h3 className="text-2xl font-medium text-foreground mb-2">Peter Fuentes, DMD</h3>
-              <p className="text-muted-foreground font-medium mb-6 uppercase tracking-wider text-xs">Strategic Advisor</p>
-              <p className="text-muted-foreground font-normal leading-relaxed mb-8">
+              <h3 className="text-2xl font-medium text-black mb-2">Peter Fuentes, DMD</h3>
+              <p className="text-stone-700 font-medium mb-6 uppercase tracking-wider text-xs">Strategic Advisor</p>
+              <p className="text-stone-700 font-normal leading-relaxed mb-8">
                 Current Chief Dental Officer of MetLife (20M lives). Former CDO of Liberty Dental. 20+ years of industry leadership.
               </p>
-              <a href="#" className="inline-flex items-center text-foreground hover:text-primary transition-colors">
+              <a href="#" className="inline-flex items-center text-black hover:text-primary transition-colors">
                 <Linkedin className="w-5 h-5 mr-2" />
                 <span className="text-sm font-medium">LinkedIn</span>
               </a>

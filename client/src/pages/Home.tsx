@@ -9,7 +9,7 @@ import Navigation from "@/components/Navigation";
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col bg-background font-sans text-foreground selection:bg-primary/20">
+    <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <Navigation />
 
       {/* Hero Section - Full Background Image with Overlay */}
@@ -36,12 +36,12 @@ export default function Home() {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="text-left max-w-2xl"
             >
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-foreground mb-8 leading-[1.1]">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
                 Stop guessing about <br />
                 <span className="font-normal italic text-primary">your teeth</span>.
               </h1>
               
-              <p className="text-xl md:text-2xl text-muted-foreground mb-10 font-normal leading-relaxed text-balance">
+              <p className="text-xl md:text-2xl text-stone-700 mb-10 font-normal leading-relaxed text-balance">
                 Get clear, instant insights into your oral health. Catch issues early and avoid expensive surprises, without the wait.
               </p>
 
@@ -81,10 +81,10 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-6">
+            <h2 className="text-4xl md:text-5xl font-normal text-black mb-6">
               See DentaSmart in Action
             </h2>
-            <p className="text-xl text-muted-foreground font-normal max-w-2xl mx-auto mb-6 leading-relaxed">
+            <p className="text-xl text-stone-700 font-normal max-w-2xl mx-auto mb-6 leading-relaxed">
               Watch our explainer video to learn how DentaSmart empowers you with AI-driven insights into your oral health.
             </p>
             
@@ -121,10 +121,10 @@ export default function Home() {
                 transition={{ delay: idx * 0.2, duration: 0.6 }}
                 className="space-y-2 pt-8 md:pt-0"
               >
-                <div className="text-5xl md:text-6xl font-normal text-foreground tracking-tighter">
+                <div className="text-5xl md:text-6xl font-normal text-black tracking-tighter">
                   {stat.value}
                 </div>
-                <div className="text-xs uppercase tracking-widest text-muted-foreground font-medium">
+                <div className="text-xs uppercase tracking-widest text-stone-700 font-medium">
                   {stat.label}
                 </div>
               </motion.div>
@@ -162,10 +162,10 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className="text-4xl md:text-6xl font-normal leading-tight text-foreground"
+                className="text-4xl md:text-6xl font-normal leading-tight text-black"
               >
                 The problem isn't just your teeth. <br />
-                <span className="italic font-normal text-muted-foreground">It's the uncertainty.</span>
+                <span className="italic font-normal text-stone-700">It's the uncertainty.</span>
               </motion.h2>
               
               <div className="space-y-6">
@@ -195,8 +195,8 @@ export default function Home() {
                       <ArrowRight className="w-5 h-5 text-primary" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-medium text-foreground mb-2">{item.title}</h3>
-                      <p className="text-muted-foreground leading-relaxed">{item.desc}</p>
+                      <h3 className="text-xl font-medium text-black mb-2">{item.title}</h3>
+                      <p className="text-stone-700 leading-relaxed">{item.desc}</p>
                     </div>
                   </motion.div>
                 ))}

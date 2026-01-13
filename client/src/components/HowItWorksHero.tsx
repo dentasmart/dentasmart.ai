@@ -36,11 +36,11 @@ export default function HowItWorksHero() {
               transition={{ duration: 0.8 }}
               className="text-left max-w-xl"
             >
-              <h1 className="text-5xl md:text-7xl font-normal tracking-tight text-foreground mb-8 leading-[1.1]">
+              <h1 className="text-5xl md:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
                 See what your dentist sees <br />
-                <span className="font-normal italic text-primary">in seconds</span>.
+                <span className="font-normal italic text-primary">in minutes</span>.
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground font-normal leading-relaxed mb-8">
+              <p className="text-xl md:text-2xl text-stone-700 font-normal leading-relaxed mb-8">
                 No medical degree required. Just snap a photo, and let our AI translate the confusing details into a clear plan you can actually understand.
               </p>
             </motion.div>

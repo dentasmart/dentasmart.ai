@@ -32,7 +32,7 @@ export default function Pricing() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
+            <h1 className="text-4xl md:text-6xl font-light tracking-tight text-black mb-8 leading-[1.1]">
               Peace of mind for less than <br />
               <span className="font-normal italic text-primary">a single filling</span>.
             </h1>
@@ -85,12 +85,12 @@ export default function Pricing() {
               className="bg-blue-50/30 rounded-3xl p-10 border border-blue-100 hover:shadow-xl transition-all duration-500 flex flex-col"
             >
               <div className="mb-8">
-                <h3 className="text-2xl font-medium text-foreground mb-2">Clarity</h3>
+                <h3 className="text-2xl font-medium text-black mb-2">Clarity</h3>
                 <p className="text-primary text-xs font-bold uppercase tracking-widest">Most Popular</p>
               </div>
               <div className="mb-8">
                 <div className="flex items-baseline">
-                  <span className="text-5xl font-light text-foreground">${planType === "individual" ? "75" : "150"}</span>
+                  <span className="text-5xl font-light text-black">${planType === "individual" ? "75" : "150"}</span>
                   <span className="text-black ml-2">/year</span>
                 </div>
                 <p className="text-black mt-4 font-light leading-relaxed">
@@ -128,12 +128,12 @@ export default function Pricing() {
               className="bg-white rounded-3xl p-10 border border-blue-100 hover:shadow-xl transition-all duration-500 flex flex-col relative overflow-hidden"
             >
               <div className="mb-8">
-                <h3 className="text-2xl font-medium text-foreground mb-2">Consult</h3>
+                <h3 className="text-2xl font-medium text-black mb-2">Consult</h3>
                 <p className="text-black text-xs font-bold uppercase tracking-widest">One-time</p>
               </div>
               <div className="mb-8">
                 <div className="flex items-baseline">
-                  <span className="text-5xl font-light text-foreground">$30</span>
+                  <span className="text-5xl font-light text-black">$30</span>
                   <span className="text-black ml-2">one-time</span>
                 </div>
                 <p className="text-black mt-4 font-light leading-relaxed">
@@ -218,7 +218,7 @@ export default function Pricing() {
       <section className="py-8 bg-white">
         <div className="container px-4 mx-auto max-w-5xl">
           <div className="text-center mb-8">
-            <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6">
+            <h2 className="text-4xl md:text-5xl font-light text-black mb-6">
               Compare plans
             </h2>
           </div>
@@ -266,7 +266,7 @@ export default function Pricing() {
           </div>
           <div className="mt-32">
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6">
+              <h2 className="text-4xl md:text-5xl font-light text-black mb-6">
                 Compare the value
               </h2>
               <p className="text-xl text-black font-light max-w-3xl mx-auto">
