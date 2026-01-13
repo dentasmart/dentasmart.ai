@@ -112,7 +112,7 @@ export default function Features() {
       </section>
 
       {/* Feature Deep Dives - Alternating Layout */}
-      <section className="py-32 bg-stone-50">
+      <section className="pt-32 pb-10 bg-stone-50">
         <div className="container px-4 mx-auto max-w-6xl space-y-32">
           
           {features.map((feature, idx) => (
