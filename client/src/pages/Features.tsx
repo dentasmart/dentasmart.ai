@@ -104,7 +104,7 @@ export default function Features() {
               The tools you need to <br />
               <span className="font-normal italic text-primary">take control</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-stone-700 max-w-2xl mr-auto font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-black max-w-2xl mr-auto font-light leading-relaxed">
               From instant X-ray analysis to 24/7 answers from Dr. Din, we give you the power to make confident decisions about your dental care.
             </p>
           </motion.div>
@@ -132,7 +132,7 @@ export default function Features() {
                 </div>
                 <ul className="space-y-4">
                   {feature.points.map((point, pIdx) => (
-                    <li key={pIdx} className="flex items-start text-stone-700 font-light">
+                    <li key={pIdx} className="flex items-start text-black font-light">
                       <Check className="w-5 h-5 text-stone-900 mr-3 mt-1 flex-shrink-0" />
                       <span>{point}</span>
                     </li>

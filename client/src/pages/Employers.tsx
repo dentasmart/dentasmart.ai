@@ -33,7 +33,7 @@ export default function Employers() {
               Stop overpaying for <br />
               <span className="font-normal italic text-primary">unused dental benefits</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-stone-700 max-w-3xl mr-auto mb-12 font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-black max-w-3xl mr-auto mb-12 font-light leading-relaxed">
               Traditional insurance is expensive and reactive. Switch to a proactive AI dental benefit that employees love, and save 75% on your costs.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-start">
