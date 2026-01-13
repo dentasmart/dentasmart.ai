@@ -20,22 +20,22 @@ export default function Footer() {
             </div>
             
             <div className="space-y-6 max-w-md">
-              <p className="text-muted-foreground font-light leading-relaxed">
+              <p className="text-black font-light leading-relaxed">
                 Most people feel anxious and confused about their dental health. 
                 We provide an AI companion that analyzes your mouth instantly and explains everything in plain English, 
                 so you can stop worrying and start making confident decisions about your care.
               </p>
               
               <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-3 text-sm text-muted-foreground font-light">
+                <div className="flex items-center gap-3 text-sm text-black font-light">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
                   <span>Understand your oral health</span>
                 </div>
-                <div className="flex items-center gap-3 text-sm text-muted-foreground font-light">
+                <div className="flex items-center gap-3 text-sm text-black font-light">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
                   <span>Avoid surprise costs</span>
                 </div>
-                <div className="flex items-center gap-3 text-sm text-muted-foreground font-light">
+                <div className="flex items-center gap-3 text-sm text-black font-light">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
                   <span>Feel confident at the dentist</span>
                 </div>
@@ -54,22 +54,22 @@ export default function Footer() {
               <h4 className="font-medium text-foreground mb-6 tracking-wide">Product</h4>
               <ul className="space-y-4">
                 <li>
-                  <Link href="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/how-it-works" className="text-black hover:text-primary transition-colors font-light text-sm">
                     How It Works
                   </Link>
                 </li>
                 <li>
-                  <Link href="/features" className="text-muted-foreground hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/features" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Features
                   </Link>
                 </li>
                 <li>
-                  <Link href="/pricing" className="text-muted-foreground hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/pricing" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Pricing
                   </Link>
                 </li>
                 <li>
-                  <a href="https://apps.apple.com/us/app/dentasmart/id6670311232" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors font-light text-sm">
+                  <a href="https://apps.apple.com/us/app/dentasmart/id6670311232" target="_blank" rel="noopener noreferrer" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Download App
                   </a>
                 </li>
@@ -81,17 +81,17 @@ export default function Footer() {
               <h4 className="font-medium text-foreground mb-6 tracking-wide">Company</h4>
               <ul className="space-y-4">
                 <li>
-                  <Link href="/team" className="text-muted-foreground hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/team" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Team
                   </Link>
                 </li>
                 <li>
-                  <Link href="/employers" className="text-muted-foreground hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/employers" className="text-black hover:text-primary transition-colors font-light text-sm">
                     For Employers
                   </Link>
                 </li>
                 <li>
-                  <a href="mailto:support@dentasmart.ai" className="text-muted-foreground hover:text-primary transition-colors font-light text-sm">
+                  <a href="mailto:support@dentasmart.ai" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Contact Support
                   </a>
                 </li>
@@ -103,17 +103,17 @@ export default function Footer() {
               <h4 className="font-medium text-foreground mb-6 tracking-wide">Legal</h4>
               <ul className="space-y-4">
                 <li>
-                  <Link href="/privacy" className="text-muted-foreground hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/privacy" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link href="/terms" className="text-muted-foreground hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/terms" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Terms of Service
                   </Link>
                 </li>
                 <li>
-                  <Link href="/faqs" className="text-muted-foreground hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/faqs" className="text-black hover:text-primary transition-colors font-light text-sm">
                     FAQs
                   </Link>
                 </li>
@@ -124,17 +124,17 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-primary/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-muted-foreground text-sm font-light">
+          <p className="text-black text-sm font-light">
             © 2026 DentaSmart. All rights reserved.
           </p>
           
           <div className="flex gap-6">
-            <a href="#" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Twitter">
+            <a href="#" className="text-black hover:text-primary transition-colors" aria-label="Twitter">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7-7 7-7a10.6 10.6 0 01-3 1" />
               </svg>
             </a>
-            <a href="#" className="text-muted-foreground hover:text-foreground transition-colors" aria-label="LinkedIn">
+            <a href="#" className="text-black hover:text-foreground transition-colors" aria-label="LinkedIn">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
               </svg>

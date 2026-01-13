@@ -35,7 +35,7 @@ export default function Pricing() {
               Simple, honest <br />
               <span className="font-normal italic">pricing</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mr-auto font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-black max-w-2xl mr-auto font-light leading-relaxed">
               No hidden fees. No surprises. Choose the plan that works for you.
             </p>
           </motion.div>
@@ -51,7 +51,7 @@ export default function Pricing() {
               className={`px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                 planType === "individual"
                   ? "bg-white text-primary shadow-sm"
-                  : "text-muted-foreground hover:text-primary"
+                  : "text-black hover:text-primary"
               }`}
             >
               Individual
@@ -61,7 +61,7 @@ export default function Pricing() {
               className={`px-8 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                 planType === "family"
                   ? "bg-white text-primary shadow-sm"
-                  : "text-muted-foreground hover:text-primary"
+                  : "text-black hover:text-primary"
               }`}
             >
               Family
@@ -90,9 +90,9 @@ export default function Pricing() {
               <div className="mb-8">
                 <div className="flex items-baseline">
                   <span className="text-5xl font-light text-foreground">${planType === "individual" ? "75" : "150"}</span>
-                  <span className="text-muted-foreground ml-2">/year</span>
+                  <span className="text-black ml-2">/year</span>
                 </div>
-                <p className="text-muted-foreground mt-4 font-light leading-relaxed">
+                <p className="text-black mt-4 font-light leading-relaxed">
                   {planType === "individual"
                     ? "Monthly monitoring to track your oral health and catch problems early."
                     : "Monthly monitoring for your entire family with shared insights."}
@@ -107,7 +107,7 @@ export default function Pricing() {
                   "Share with dentist",
                   planType === "family" && "Up to 4 family members",
                 ].filter(Boolean).map((feature, idx) => (
-                  <li key={idx} className="flex items-center text-muted-foreground font-light text-sm">
+                  <li key={idx} className="flex items-center text-black font-light text-sm">
                     <Check className="w-4 h-4 text-primary mr-3" />
                     {feature}
                   </li>
@@ -128,14 +128,14 @@ export default function Pricing() {
             >
               <div className="mb-8">
                 <h3 className="text-2xl font-medium text-foreground mb-2">Consult</h3>
-                <p className="text-muted-foreground text-xs font-bold uppercase tracking-widest">One-time</p>
+                <p className="text-black text-xs font-bold uppercase tracking-widest">One-time</p>
               </div>
               <div className="mb-8">
                 <div className="flex items-baseline">
                   <span className="text-5xl font-light text-foreground">$30</span>
-                  <span className="text-muted-foreground ml-2">one-time</span>
+                  <span className="text-black ml-2">one-time</span>
                 </div>
-                <p className="text-muted-foreground mt-4 font-light leading-relaxed">
+                <p className="text-black mt-4 font-light leading-relaxed">
                   Get a second opinion on a specific treatment plan or concern.
                 </p>
               </div>
@@ -148,7 +148,7 @@ export default function Pricing() {
                   "Printable report",
                   "Valid for 30 days",
                 ].map((feature, idx) => (
-                  <li key={idx} className="flex items-center text-muted-foreground font-light text-sm">
+                  <li key={idx} className="flex items-center text-black font-light text-sm">
                     <Check className="w-4 h-4 text-primary mr-3" />
                     {feature}
                   </li>
@@ -172,14 +172,14 @@ export default function Pricing() {
               </div>
               <div className="mb-8">
                 <h3 className="text-2xl font-medium text-white mb-2">Complete</h3>
-                <p className="text-white/50 text-xs font-bold uppercase tracking-widest">Coming Soon</p>
+                <p className="text-white text-xs font-bold uppercase tracking-widest">Coming Soon</p>
               </div>
               <div className="mb-8">
                 <div className="flex items-baseline">
                   <span className="text-5xl font-light text-white">${planType === "individual" ? "150" : "300"}</span>
-                  <span className="text-white/50 ml-2">/year</span>
+                  <span className="text-white ml-2">/year</span>
                 </div>
-                <p className="text-white/70 mt-4 font-light leading-relaxed">
+                <p className="text-white mt-4 font-light leading-relaxed">
                   Comprehensive dental coverage with AI-powered care coordination.
                 </p>
               </div>
@@ -193,7 +193,7 @@ export default function Pricing() {
                   "Buy Now, Pay Later available",
                   planType === "family" && "Up to 4 family members",
                 ].filter(Boolean).map((feature, idx) => (
-                  <li key={idx} className="flex items-center text-white/80 font-light text-sm">
+                  <li key={idx} className="flex items-center text-white font-light text-sm">
                     <Check className="w-4 h-4 text-white mr-3" />
                     {feature}
                   </li>
@@ -268,7 +268,7 @@ export default function Pricing() {
               <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6">
                 Compare the value
               </h2>
-              <p className="text-xl text-muted-foreground font-light max-w-3xl mx-auto">
+              <p className="text-xl text-black font-light max-w-3xl mx-auto">
                 See how DentaSmart Complete stacks up against traditional carriers.
               </p>
             </div>
@@ -312,7 +312,7 @@ export default function Pricing() {
           <h2 className="text-4xl md:text-5xl font-light text-foreground mb-8">
             Ready to get started?
           </h2>
-          <p className="text-xl text-muted-foreground font-light mb-12 leading-relaxed">
+          <p className="text-xl text-black font-light mb-12 leading-relaxed">
             Choose the plan that's right for you and take control of your oral health today.
           </p>
           <Button 
