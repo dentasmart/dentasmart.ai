@@ -159,7 +159,11 @@ export default function Features() {
       </section>
 
       {/* User Challenges Carousel */}
-      <section className="pt-0 pb-10 bg-stone-100">
+      <section className="pt-0 pb-10 bg-stone-100 relative">
+        {/* Section Separator */}
+        <div className="container px-4 mx-auto">
+          <div className="w-full h-px bg-stone-200 mb-16" />
+        </div>
         <UserChallengesCarousel />
       </section>
 
