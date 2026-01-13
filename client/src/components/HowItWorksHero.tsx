@@ -2,33 +2,27 @@ import { motion } from "framer-motion";
 
 export default function HowItWorksHero() {
   return (
-    <section className="relative bg-white overflow-hidden">
-      {/* Mobile Layout: Full Background */}
-      <div className="md:hidden absolute inset-0 z-0">
+    <section className="relative bg-white overflow-hidden h-[80vh] md:h-[700px]">
+      {/* Full Width Background Image - Unified for Mobile & Desktop */}
+      <div className="absolute inset-0 z-0">
         <img 
           src="/images/backgrounds/how-it-works-hero-final.png" 
           alt="Man holding phone with DentaSmart App" 
           className="w-full h-full object-cover object-top"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/60 to-transparent" />
+        {/* Gradient Overlay for Text Readability */}
+        {/* Mobile: Top-down fade to ensure text at top is readable */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/50 to-transparent md:hidden" />
+        
+        {/* Desktop: Left-to-right fade to ensure text on left is readable against image */}
+        <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-white via-white/70 to-transparent" />
       </div>
 
-      {/* Desktop Layout: Right-Aligned Image with Gradient Blend */}
-      <div className="hidden md:block absolute inset-y-0 right-0 w-[55%] z-0">
-        <img 
-          src="/images/backgrounds/how-it-works-hero-final.png" 
-          alt="Man holding phone with DentaSmart App" 
-          className="w-full h-full object-cover object-[center_top]"
-        />
-        {/* Gradient Mask to Blend into White Background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/20 to-transparent w-1/2" />
-      </div>
-
-      <div className="container px-4 mx-auto max-w-7xl relative z-10">
-        <div className="flex flex-col md:flex-row items-center min-h-[80vh] md:min-h-[650px]">
+      <div className="container px-4 mx-auto max-w-7xl relative z-10 h-full">
+        <div className="flex flex-col justify-center h-full">
           
-          {/* Text Content - Left Side */}
-          <div className="w-full md:w-1/2 pt-32 pb-12 md:py-32">
+          {/* Text Content - Left Aligned */}
+          <div className="w-full md:w-1/2 pt-20 md:pt-0">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
