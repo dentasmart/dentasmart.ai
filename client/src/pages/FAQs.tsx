@@ -119,7 +119,7 @@ export default function FAQs() {
       </section>
 
       {/* User Challenges Carousel */}
-      <section className="py-20 bg-stone-100">
+      <section className="pt-20 pb-0 bg-stone-100">
         <UserChallengesCarousel 
           challenges={faqChallenges} 
           images={faqChallengeImages}
@@ -129,7 +129,7 @@ export default function FAQs() {
       </section>
 
       {/* FAQs */}
-      <section className="py-24 bg-white">
+      <section className="pt-10 pb-24 bg-white">
         <div className="container px-4 mx-auto max-w-3xl">
           {faqCategories.map((category, catIdx) => (
             <div key={catIdx} className="mb-20 last:mb-0">
