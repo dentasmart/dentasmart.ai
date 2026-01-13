@@ -201,18 +201,18 @@ export default function Team() {
         </div>
       </section>
 
-      {/* Mission - Editorial */}
-      <section className="py-24 bg-slate-900 text-white">
+      {/* Mission - StoryBrand Aligned */}
+      <section className="py-24 bg-[#D0F0F5] text-stone-900">
         <div className="container px-4 mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl md:text-5xl font-normal mb-12">
+          <h2 className="text-4xl md:text-5xl font-normal mb-12 text-stone-900">
             Our Mission
           </h2>
-          <div className="text-xl md:text-2xl text-slate-300 font-light leading-relaxed space-y-8">
+          <div className="text-xl md:text-2xl text-stone-700 font-light leading-relaxed space-y-8">
             <p>
-              To revolutionize oral healthcare by empowering people with AI-driven insights that help them understand their teeth, make confident decisions, and build stronger relationships with their dental providers.
+              <strong className="font-medium text-stone-900">Your oral health is the gateway to your overall well-being.</strong> Yet, for too long, dental care has felt confusing, reactive, and disconnected from the rest of your healthcare journey.
             </p>
             <p>
-              We believe everyone deserves clarity about their oral health. By combining cutting-edge AI technology with clinical expertise, we're making dental care more transparent, accessible, and preventive.
+              We believe you shouldn't have to be a dentist to understand what's happening in your own mouth. That's why we built DentaSmart—to give you the clarity to catch issues early, the confidence to make informed decisions, and the peace of mind that comes from knowing you're in control of your health.
             </p>
           </div>
         </div>
