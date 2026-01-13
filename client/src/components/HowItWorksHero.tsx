@@ -3,19 +3,26 @@ import { motion } from "framer-motion";
 export default function HowItWorksHero() {
   return (
     <section className="relative bg-white overflow-hidden h-[80vh] md:h-[700px]">
-      {/* Full Width Background Image - Unified for Mobile & Desktop */}
-      <div className="absolute inset-0 z-0">
+      {/* Mobile Layout: Full Background Image */}
+      <div className="md:hidden absolute inset-0 z-0">
         <img 
           src="/images/backgrounds/how-it-works-hero-final.png" 
           alt="Man holding phone with DentaSmart App" 
           className="w-full h-full object-cover object-center"
         />
-        {/* Gradient Overlay for Text Readability */}
-        {/* Mobile: Top-down fade to ensure text at top is readable */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/50 to-transparent md:hidden" />
-        
-        {/* Desktop: Left-to-right fade to ensure text on left is readable against image */}
-        <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-white via-white/70 to-transparent" />
+        {/* Mobile Gradient: Top-down fade for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/50 to-transparent" />
+      </div>
+
+      {/* Desktop Layout: Split Screen (Image on Right) */}
+      <div className="hidden md:block absolute inset-y-0 right-0 w-1/2 z-0">
+        <img 
+          src="/images/backgrounds/how-it-works-hero-final.png" 
+          alt="Man holding phone with DentaSmart App" 
+          className="w-full h-full object-cover object-center"
+        />
+        {/* Desktop Gradient: Left-to-right fade to blend image into white background */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent" />
       </div>
 
       <div className="container px-4 mx-auto max-w-7xl relative z-10 h-full">
