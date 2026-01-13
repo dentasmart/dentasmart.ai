@@ -110,7 +110,7 @@ export default function FAQs() {
           >
             <h1 className="text-4xl md:text-6xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
               Get answers, <br />
-              <span className="font-normal italic">not confusion</span>.
+              <span className="font-normal italic text-primary">not confusion</span>.
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mr-auto font-light leading-relaxed">
               You have questions about your dental health and our app. We have clear, simple answers. No jargon, just the facts.

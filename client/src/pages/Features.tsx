@@ -102,7 +102,7 @@ export default function Features() {
           >
             <h1 className="text-4xl md:text-6xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
               The tools you need to <br />
-              <span className="font-normal italic">take control</span>.
+              <span className="font-normal italic text-primary">take control</span>.
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mr-auto font-light leading-relaxed">
               From instant X-ray analysis to 24/7 answers from Dr. Din, we give you the power to make confident decisions about your dental care.

@@ -212,7 +212,7 @@ export default function Team() {
               <strong className="font-medium text-stone-900">Your oral health is the gateway to your overall well-being.</strong> Yet, for too long, dental care has felt confusing, reactive, and disconnected from the rest of your healthcare journey.
             </p>
             <p>
-              We believe you shouldn't have to be a dentist to understand what's happening in your own mouth. That's why we built DentaSmart—to give you the clarity to catch issues early, the confidence to make informed decisions, and the peace of mind that comes from knowing you're in control of your health.
+              We believe you shouldn't have to be a dentist to understand what's happening in your own mouth. That's why we built DentaSmart, to give you the clarity to catch issues early, the confidence to make informed decisions, and the peace of mind that comes from knowing you're in control of your health.
             </p>
           </div>
         </div>

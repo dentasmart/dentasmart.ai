@@ -34,7 +34,7 @@ export default function Pricing() {
           >
             <h1 className="text-4xl md:text-6xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
               Peace of mind for less than <br />
-              <span className="font-normal italic">a single filling</span>.
+              <span className="font-normal italic text-primary">a single filling</span>.
             </h1>
             <p className="text-xl md:text-2xl text-black max-w-2xl mr-auto font-light leading-relaxed">
               Stop worrying about surprise dental bills. Get year-round monitoring and expert guidance for a simple, transparent price.

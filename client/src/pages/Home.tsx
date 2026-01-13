@@ -42,7 +42,7 @@ export default function Home() {
               </h1>
               
               <p className="text-xl md:text-2xl text-muted-foreground mb-10 font-normal leading-relaxed text-balance">
-                Get clear, instant insights into your oral health. Catch issues early and avoid expensive surprises—without the wait.
+                Get clear, instant insights into your oral health. Catch issues early and avoid expensive surprises, without the wait.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-6 justify-start items-center sm:items-start">
