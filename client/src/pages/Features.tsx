@@ -112,7 +112,7 @@ export default function Features() {
       </section>
 
       {/* Feature Deep Dives - Alternating Layout */}
-      <section className="pt-32 pb-10 bg-stone-50">
+      <section className="pt-32 pb-0 bg-stone-50">
         <div className="container px-4 mx-auto max-w-6xl space-y-32">
           
           {features.map((feature, idx) => (
@@ -159,7 +159,7 @@ export default function Features() {
       </section>
 
       {/* User Challenges Carousel */}
-      <section className="py-10 bg-stone-100">
+      <section className="pt-0 pb-10 bg-stone-100">
         <UserChallengesCarousel />
       </section>
 
