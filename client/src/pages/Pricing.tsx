@@ -5,6 +5,7 @@ import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
 import { useState } from "react";
 import { Check } from "lucide-react";
 import { ValueComparisonTable } from "@/components/ValueComparisonTable";
+import { DownloadCTA } from "@/components/DownloadCTA";
 import { motion } from "framer-motion";
 
 export default function Pricing() {
@@ -306,24 +307,7 @@ export default function Pricing() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-32 bg-[#D0F0F5] text-center">
-        <div className="container px-4 mx-auto max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-light text-foreground mb-8">
-            Ready to get started?
-          </h2>
-          <p className="text-xl text-black font-light mb-12 leading-relaxed">
-            Choose the plan that's right for you and take control of your oral health today.
-          </p>
-          <Button 
-            size="lg" 
-            className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl"
-            onClick={() => window.open('https://apps.apple.com/us/app/dentasmart/id6670311232', '_blank')}
-          >
-            Download the App
-          </Button>
-        </div>
-      </section>
+{/* Final CTA */}\n      <DownloadCTA />
 
       <Footer />
     </div>

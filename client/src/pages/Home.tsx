@@ -4,7 +4,7 @@ import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Smartphone, Activity } from "lucide-react";
-import { LeadMagnet } from "@/components/LeadMagnet";
+import { DownloadCTA } from "@/components/DownloadCTA";
 import Navigation from "@/components/Navigation";
 
 export default function Home() {
@@ -211,7 +211,7 @@ export default function Home() {
       <UserChallengesCarousel />
 
       {/* Lead Magnet Section */}
-      <LeadMagnet />
+      <DownloadCTA />
 
       <Footer />
     </div>

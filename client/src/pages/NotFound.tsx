@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
+import { DownloadCTA } from "@/components/DownloadCTA";
 
 export default function NotFound() {
   return (
@@ -27,7 +28,7 @@ export default function NotFound() {
         </div>
       </section>
 
-      <Footer />
+      <DownloadCTA />\n      <Footer />
     </div>
   );
 }

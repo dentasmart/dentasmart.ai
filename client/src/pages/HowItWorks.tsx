@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
 import HowItWorksHero from "@/components/HowItWorksHero";
+import { DownloadCTA } from "@/components/DownloadCTA";
 import { Camera, Brain, MessageSquare, Activity, FileText, ShieldCheck, ClipboardList, Calendar, Bell, TrendingUp, HeartPulse } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -164,24 +165,7 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-32 bg-[#D0F0F5] text-center">
-        <div className="container px-4 mx-auto max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-4">
-            Ready to take control?
-          </h2>
-          <p className="text-xl text-muted-foreground font-normal mb-12 leading-relaxed">
-            Join thousands of users who are already smarter about their dental health.
-          </p>
-          <Button 
-            size="lg" 
-            className="bg-primary hover:bg-primary/90 text-white rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl"
-            onClick={() => window.open('https://apps.apple.com/us/app/dentasmart/id6670311232', '_blank')}
-          >
-            Download the App
-          </Button>
-        </div>
-      </section>
+      {/* Final CTA */}\n      <DownloadCTA />
 
       <Footer />
     </div>
