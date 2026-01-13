@@ -8,7 +8,7 @@ export default function HowItWorksHero() {
         <img 
           src="/images/backgrounds/how-it-works-hero-final.png" 
           alt="Man holding phone with DentaSmart App" 
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-cover object-center"
         />
         {/* Gradient Overlay for Text Readability */}
         {/* Mobile: Top-down fade to ensure text at top is readable */}
