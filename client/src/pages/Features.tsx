@@ -210,7 +210,7 @@ export default function Features() {
       </section>
 
       {/* User Challenges Carousel */}
-      <section className="py-20 bg-stone-100">
+      <section className="py-10 bg-stone-100">
         <UserChallengesCarousel />
       </section>
 
