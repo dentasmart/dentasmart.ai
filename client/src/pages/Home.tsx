@@ -37,13 +37,12 @@ export default function Home() {
               className="text-left max-w-2xl"
             >
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-foreground mb-8 leading-[1.1]">
-                Understand your mouth <br />
-                <span className="font-normal italic text-primary">before</span> your dentist explains it.
+                Stop guessing about <br />
+                <span className="font-normal italic text-primary">your teeth</span>.
               </h1>
               
               <p className="text-xl md:text-2xl text-muted-foreground mb-10 font-normal leading-relaxed text-balance">
-                Monthly monitoring, instant insights, and peace of mind. 
-                Your personal AI dental companion is here.
+                You shouldn't have to wait for a dentist appointment to know if your mouth is healthy. DentaSmart gives you clear, instant insights so you can catch issues early and avoid expensive surprises.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-6 justify-start items-center sm:items-start">

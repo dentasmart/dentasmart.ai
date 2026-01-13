@@ -33,11 +33,11 @@ export default function Pricing() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-6xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
-              Simple, honest <br />
-              <span className="font-normal italic">pricing</span>.
+              Peace of mind for less than <br />
+              <span className="font-normal italic">a single filling</span>.
             </h1>
             <p className="text-xl md:text-2xl text-black max-w-2xl mr-auto font-light leading-relaxed">
-              No hidden fees. No surprises. Choose the plan that works for you.
+              Stop worrying about surprise dental bills. Get year-round monitoring and expert guidance for a simple, transparent price.
             </p>
           </motion.div>
         </div>

@@ -30,11 +30,11 @@ export default function Employers() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-6xl font-light tracking-tight text-foreground mb-8 leading-[1.1]">
-              A dental benefit employees <br />
-              <span className="font-normal italic">actually use</span>.
+              Stop overpaying for <br />
+              <span className="font-normal italic">unused dental benefits</span>.
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mr-auto mb-12 font-light leading-relaxed">
-              Give your team a Personal AI Dental Companion that prevents problems, reduces anxiety, and costs 75% less than traditional insurance.
+              Traditional insurance is expensive and reactive. Switch to a proactive AI dental benefit that employees love—and save 75% on your costs.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-start">
               <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0">

@@ -37,11 +37,11 @@ export default function HowItWorksHero() {
               className="text-left max-w-xl"
             >
               <h1 className="text-5xl md:text-7xl font-normal tracking-tight text-foreground mb-8 leading-[1.1]">
-                Know what's going on <br />
-                <span className="font-normal italic text-primary">before</span> it hurts.
+                See what your dentist sees <br />
+                <span className="font-normal italic text-primary">in seconds</span>.
               </h1>
               <p className="text-xl md:text-2xl text-muted-foreground font-normal leading-relaxed mb-8">
-                Three simple steps to understand your mouth and take control of your oral health.
+                No medical degree required. Just snap a photo, and let our AI translate the confusing details into a clear plan you can actually understand.
               </p>
             </motion.div>
           </div>

@@ -27,11 +27,11 @@ export default function Team() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-7xl font-normal tracking-tight text-foreground mb-8 leading-[1.1]">
-              The right team for <br />
-              <span className="font-normal italic text-primary">the right problem</span>.
+              Experts dedicated to <br />
+              <span className="font-normal italic text-primary">your smile</span>.
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto font-normal leading-relaxed">
-              Meet the passionate experts behind DentaSmart's mission to revolutionize oral healthcare through AI innovation.
+              We're a team of dentists, engineers, and innovators united by one goal: to make dental care simple, transparent, and accessible for everyone.
             </p>
           </motion.div>
         </div>
