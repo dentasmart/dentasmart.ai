@@ -11,7 +11,15 @@ export default function Team() {
       <Navigation />
 
       {/* Hero Section - Clean & Professional */}
-      <section className="relative py-24 md:py-32 overflow-hidden bg-gradient-to-b from-slate-50 to-white">
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/backgrounds/team-hero.jpg" 
+            alt="DentaSmart Team" 
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-white/90" />
+        </div>
         <div className="container relative z-10 px-4 mx-auto max-w-5xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
