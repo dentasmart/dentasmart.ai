@@ -188,7 +188,7 @@ export default function Pricing() {
               </div>
               <div className="mb-8">
                 <h3 className="text-2xl font-medium text-white mb-2">Benefits</h3>
-                <p className="text-white text-xs font-bold uppercase tracking-widest">Dental Benefits Membership</p>
+                <p className="text-white text-xs font-bold uppercase tracking-widest">Dental Benefits Membership (Not insurance)</p>
               </div>
               <div className="mb-8">
                 <div className="flex flex-col">
@@ -202,7 +202,7 @@ export default function Pricing() {
                   </p>
                 </div>
                 <p className="text-white mt-4 font-light leading-relaxed">
-                  Member benefits that make care more affordable and predictable. (Not insurance)
+                  Member benefits that make care more affordable and predictable.
                 </p>
               </div>
               <ul className="space-y-4 mb-10 flex-grow">
