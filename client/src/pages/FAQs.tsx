@@ -68,12 +68,12 @@ export default function FAQs() {
       ],
     },
     {
-      title: "Dr. Din",
+      title: "Din",
       faqs: [
-        { q: "What is Dr. Din?", a: "Dr. Din is your 24/7 AI dental companion. You can chat with Dr. Din anytime to ask questions about your oral health, get explanations, or prepare for dental appointments." },
-        { q: "Is Dr. Din a real dentist?", a: "No, Dr. Din is an AI trained by real dentists. Dr. Din provides educational guidance, not medical advice. Always consult with your dentist for medical decisions." },
-        { q: "Can Dr. Din diagnose me?", a: "Dr. Din can't diagnose conditions, but can help you understand your symptoms and prepare questions for your dentist." },
-        { q: "Is Dr. Din available 24/7?", a: "Yes. Dr. Din is available anytime, anywhere. Responses are typically instant." },
+        { q: "What is Din?", a: "Din is your 24/7 AI dental companion. You can chat with Din anytime to ask questions about your oral health, get explanations, or prepare for dental appointments." },
+        { q: "Is Din a real dentist?", a: "No, Din is an advanced AI trained on vast dental knowledge. Din provides educational guidance, not medical advice. Always consult with your dentist for medical decisions." },
+        { q: "Can Din diagnose me?", a: "Din can't diagnose conditions, but can help you understand your symptoms and prepare questions for your dentist." },
+        { q: "Is Din available 24/7?", a: "Yes. Din is available anytime, anywhere. Responses are typically instant." },
       ],
     },
     {

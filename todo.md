@@ -135,3 +135,9 @@
 
 ## Technical Recommendations
 - [ ] Remove ".php" from URLs (This is a React SPA, so there shouldn't be .php extensions, but I will verify links).
+
+# Regulatory Compliance Updates (Jan 15)
+
+## Content Updates
+- [ ] Replace "Dr. Din" with "AI Chatbot Din" (or similar StoryBrand-aligned term) across the entire website to avoid regulatory issues.
+- [ ] Ensure the new description emphasizes "highly trained in dentistry" and "personal oral health context" without implying a human doctor.

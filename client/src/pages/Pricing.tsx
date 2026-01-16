@@ -103,7 +103,7 @@ export default function Pricing() {
                 {[
                   "Unlimited monthly scans",
                   "Wellness score tracking",
-                  "Dr. Din 24/7 support",
+                  "Din 24/7 support",
                   "Dental record vault",
                   "Share with dentist",
                   planType === "family" && "Up to 4 family members",
@@ -145,7 +145,7 @@ export default function Pricing() {
                   "Single scan analysis",
                   "Detailed report",
                   "Treatment recommendations",
-                  "Dr. Din consultation",
+                  "Din consultation",
                   "Printable report",
                   "Valid for 30 days",
                 ].map((feature, idx) => (
@@ -239,7 +239,7 @@ export default function Pricing() {
                     { feature: "AI Analysis", clarity: true, consult: true, complete: true },
                     { feature: "Monthly Monitoring", clarity: true, consult: false, complete: true },
                     { feature: "Wellness Score", clarity: true, consult: false, complete: true },
-                    { feature: "Dr. Din 24/7", clarity: true, consult: true, complete: true },
+                    { feature: "Din 24/7", clarity: true, consult: true, complete: true },
                     { feature: "Dental Record Vault", clarity: true, consult: false, complete: true },
                     { feature: "Share with Dentist", clarity: true, consult: true, complete: true },
                     { feature: "Progress Tracking", clarity: true, consult: false, complete: true },

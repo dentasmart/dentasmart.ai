@@ -167,7 +167,7 @@ export default function Testimonials() {
               { icon: "⭐", stat: "4.9/5", label: "App Store Rating" },
               { icon: "👥", stat: "50K+", label: "Active Users" },
               { icon: "✓", stat: "100%", label: "Detection Accuracy" },
-              { icon: "🏥", stat: "24/7", label: "Dr. Din Support" },
+              { icon: "🏥", stat: "24/7", label: "Din Support" },
             ].map((item, idx) => (
               <div key={idx}>
                 <div className="text-4xl mb-2">{item.icon}</div>

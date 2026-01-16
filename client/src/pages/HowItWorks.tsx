@@ -72,7 +72,7 @@ export default function HowItWorks() {
               </div>
               <h3 className="text-2xl font-medium text-foreground mb-4">Act</h3>
               <p className="text-muted-foreground font-normal leading-relaxed max-w-xs">
-                Chat with Dr. Din. Share reports with your dentist. Fix issues early.
+                Chat with Din. Share reports with your dentist. Fix issues early.
               </p>
             </motion.div>
           </div>

@@ -68,7 +68,7 @@ export default function Features() {
       image: "/images/features/oral_wellness_score.png"
     },
     {
-      title: "Your Virtual Dentist 24/7: Din",
+      title: "Your AI Dental Guide 24/7: Din",
       description: "Your helpful, always-available AI bot, Din, is here to guide your dental questions and explain your results.\n\nDin is your personal AI dental companion, ready to chat whenever you have questions about your oral health, DentaSmart insights, or general dental topics. Din provides clear, personalized answers in plain language (not just English), acting as a knowledgeable and supportive friend on your oral health journey.",
       points: [
         "Instant Answers: Get immediate responses to your dental questions, any time of day.",
