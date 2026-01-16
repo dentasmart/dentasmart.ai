@@ -250,13 +250,13 @@ export default function Pricing() {
                     <tr key={idx} className={`${idx % 2 === 0 ? 'bg-white' : 'bg-blue-50/60'} hover:bg-blue-100/50 transition-colors`}>
                       <td className={`py-5 px-6 text-teal-900 font-medium text-sm md:text-base sticky left-0 z-10 ${idx % 2 === 0 ? 'bg-white' : 'bg-blue-50'}`}>{row.feature}</td>
                       <td className="py-5 px-4 text-center">
-                        {row.clarity ? <Check className="w-6 h-6 text-primary mx-auto" /> : <span className="text-blue-200">—</span>}
+                        {row.clarity ? <Check className="w-6 h-6 text-primary mx-auto" /> : <span className="text-blue-200">,</span>}
                       </td>
                       <td className="py-5 px-4 text-center">
-                        {row.consult ? <Check className="w-6 h-6 text-primary mx-auto" /> : <span className="text-blue-200">—</span>}
+                        {row.consult ? <Check className="w-6 h-6 text-primary mx-auto" /> : <span className="text-blue-200">,</span>}
                       </td>
                       <td className="py-5 px-4 text-center bg-blue-50/50 border-l border-blue-100">
-                        {row.complete ? <Check className="w-6 h-6 text-primary mx-auto" /> : <span className="text-blue-200">—</span>}
+                        {row.complete ? <Check className="w-6 h-6 text-primary mx-auto" /> : <span className="text-blue-200">,</span>}
                       </td>
                     </tr>
                   ))}

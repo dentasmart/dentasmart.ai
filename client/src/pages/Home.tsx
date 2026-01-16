@@ -170,7 +170,7 @@ export default function Home() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               <div className="absolute bottom-8 left-8 text-white">
                 <p className="text-lg font-normal italic">"I used to dread the dentist. Now I know exactly what to expect."</p>
-                <p className="text-sm mt-2 font-medium opacity-80">— Sarah, DentaSmart User</p>
+                <p className="text-sm mt-2 font-medium opacity-80">, Sarah, DentaSmart User</p>
               </div>
             </motion.div>
             

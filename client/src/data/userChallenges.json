@@ -100,7 +100,7 @@
   {
     "id": 15,
     "title": "Daily Tracking",
-    "challenge": "Step count, heart rate, sleep quality—why not your teeth?",
+    "challenge": "Step count, heart rate, sleep quality, why not your teeth?",
     "solution": "A simple oral health score (0 to 100) that updates as you use it. Like a Fitbit for your smile.",
     "imagePrompt": "A dashboard interface showing a 'Health Score' of 95/100, surrounded by other health metrics like heart rate and steps. Integrated, modern, and tech-focused."
   }
