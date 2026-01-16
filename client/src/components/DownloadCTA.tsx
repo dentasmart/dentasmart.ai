@@ -1,6 +1,23 @@
 import { motion } from "framer-motion";
+import { useLocation } from "wouter";
 
 export function DownloadCTA() {
+  const [location, setLocation] = useLocation();
+
+  const handleAndroidClick = (e: React.MouseEvent) => {
+    // If we are already on the home page, manually scroll
+    if (location === "/") {
+      e.preventDefault();
+      const element = document.getElementById("android-waitlist");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        // Update hash without reloading
+        window.history.pushState(null, "", "/#android-waitlist");
+      }
+    }
+    // Otherwise, let the default anchor behavior handle navigation to /#android-waitlist
+  };
+
   return (
     <section className="py-24 bg-gradient-to-br from-[#0097A7] to-[#006978] text-white text-center">
       <div className="container px-4 mx-auto">
@@ -36,6 +53,7 @@ export function DownloadCTA() {
               <a 
                 href="/#android-waitlist" 
                 className="hover:opacity-90 transition-opacity block"
+                onClick={handleAndroidClick}
               >
                 <img 
                   src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 

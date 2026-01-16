@@ -7,8 +7,24 @@ import { ArrowRight, Shield, Smartphone, Activity } from "lucide-react";
 import { DownloadCTA } from "@/components/DownloadCTA";
 import { AndroidEarlyAccess } from "@/components/AndroidEarlyAccess";
 import Navigation from "@/components/Navigation";
+import { useEffect } from "react";
+import { useLocation } from "wouter";
 
 export default function Home() {
+  const [location] = useLocation();
+
+  useEffect(() => {
+    // Handle hash navigation manually to ensure scroll happens
+    if (window.location.hash === "#android-waitlist") {
+      const element = document.getElementById("android-waitlist");
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100); // Small delay to ensure rendering
+      }
+    }
+  }, [location]);
+
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <Navigation />
@@ -210,11 +226,11 @@ export default function Home() {
       {/* User Challenges Carousel */}
       <UserChallengesCarousel />
 
-      {/* Android Early Access Section */}
-      <AndroidEarlyAccess />
-
       {/* Lead Magnet Section */}
       <DownloadCTA />
+
+      {/* Android Early Access Section */}
+      <AndroidEarlyAccess />
 
       <Footer />
     </div>
