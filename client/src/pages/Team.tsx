@@ -86,8 +86,8 @@ export default function Team() {
               transition={{ duration: 0.6 }}
               className="bg-white p-8 rounded-3xl shadow-sm border border-border/50 hover:shadow-md transition-all duration-300 group"
             >
-              <div className="w-24 h-24 bg-blue-100 rounded-full mb-6 flex items-center justify-center text-4xl group-hover:scale-110 transition-transform duration-300">
-                👨‍💼
+              <div className="w-24 h-24 rounded-full mb-6 overflow-hidden group-hover:scale-110 transition-transform duration-300 border-2 border-primary/10">
+                <img src="/images/team/qasim_mueen.png" alt="Qasim Mueen" className="w-full h-full object-cover" />
               </div>
               <h3 className="text-2xl font-medium text-black mb-1">Qasim Mueen</h3>
               <p className="text-primary font-medium mb-4 text-sm uppercase tracking-wider">Founder & CEO</p>
@@ -108,8 +108,8 @@ export default function Team() {
               transition={{ delay: 0.1, duration: 0.6 }}
               className="bg-white p-8 rounded-3xl shadow-sm border border-border/50 hover:shadow-md transition-all duration-300 group"
             >
-              <div className="w-24 h-24 bg-teal-100 rounded-full mb-6 flex items-center justify-center text-4xl group-hover:scale-110 transition-transform duration-300">
-                👨‍💻
+              <div className="w-24 h-24 rounded-full mb-6 overflow-hidden group-hover:scale-110 transition-transform duration-300 border-2 border-primary/10">
+                <img src="/images/team/kashif_mueen.png" alt="Kashif Mueen" className="w-full h-full object-cover" />
               </div>
               <h3 className="text-2xl font-medium text-black mb-1">Kashif Mueen</h3>
               <p className="text-primary font-medium mb-4 text-sm uppercase tracking-wider">Co-founder & CTO</p>
@@ -130,8 +130,8 @@ export default function Team() {
               transition={{ delay: 0.2, duration: 0.6 }}
               className="bg-white p-8 rounded-3xl shadow-sm border border-border/50 hover:shadow-md transition-all duration-300 group"
             >
-              <div className="w-24 h-24 bg-purple-100 rounded-full mb-6 flex items-center justify-center text-4xl group-hover:scale-110 transition-transform duration-300">
-                👩‍⚕️
+              <div className="w-24 h-24 rounded-full mb-6 overflow-hidden group-hover:scale-110 transition-transform duration-300 border-2 border-primary/10">
+                <img src="/images/team/saba_ahmed.png" alt="Dr. Saba Ahmed" className="w-full h-full object-cover" />
               </div>
               <h3 className="text-2xl font-medium text-black mb-1">Dr. Saba Ahmed</h3>
               <p className="text-primary font-medium mb-4 text-sm uppercase tracking-wider">Product Lead</p>
@@ -168,8 +168,15 @@ export default function Team() {
               transition={{ duration: 0.6 }}
               className="bg-slate-50 p-10 rounded-3xl border border-border/50 hover:border-primary/20 transition-all duration-300"
             >
-              <h3 className="text-2xl font-medium text-black mb-2">Tyrette Hamilton</h3>
-              <p className="text-stone-700 font-medium mb-6 uppercase tracking-wider text-xs">Strategic Advisor</p>
+              <div className="flex items-center gap-6 mb-6">
+                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-primary/10 flex-shrink-0">
+                  <img src="/images/team/tyrette_hamilton.png" alt="Tyrette Hamilton" className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-medium text-black mb-1">Tyrette Hamilton</h3>
+                  <p className="text-stone-700 font-medium uppercase tracking-wider text-xs">Strategic Advisor</p>
+                </div>
+              </div>
               <p className="text-stone-700 font-normal leading-relaxed mb-8">
                 Former COO of P&R Dental Strategies. 25+ years in dental insurance, benefit design, and regulatory compliance.
               </p>
@@ -187,8 +194,15 @@ export default function Team() {
               transition={{ delay: 0.1, duration: 0.6 }}
               className="bg-slate-50 p-10 rounded-3xl border border-border/50 hover:border-primary/20 transition-all duration-300"
             >
-              <h3 className="text-2xl font-medium text-black mb-2">Peter Fuentes, DMD</h3>
-              <p className="text-stone-700 font-medium mb-6 uppercase tracking-wider text-xs">Strategic Advisor</p>
+              <div className="flex items-center gap-6 mb-6">
+                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-primary/10 flex-shrink-0">
+                  <img src="/images/team/peter_fuentes.png" alt="Peter Fuentes, DMD" className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-medium text-black mb-1">Peter Fuentes, DMD</h3>
+                  <p className="text-stone-700 font-medium uppercase tracking-wider text-xs">Strategic Advisor</p>
+                </div>
+              </div>
               <p className="text-stone-700 font-normal leading-relaxed mb-8">
                 Current Chief Dental Officer of MetLife (20M lives). Former CDO of Liberty Dental. 20+ years of industry leadership.
               </p>
