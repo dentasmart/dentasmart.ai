@@ -218,7 +218,8 @@ export default function Team() {
         </div>
       </section>
 
-      {/* Final CTA */}\n      <DownloadCTA />
+      {/* Final CTA */}
+      <DownloadCTA />
 
       <Footer />
     </div>
