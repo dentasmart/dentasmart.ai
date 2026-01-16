@@ -99,7 +99,7 @@ export function ValueComparisonTable() {
                 <span className="text-lg font-semibold text-stone-900">Feature</span>
               </th>
               <th className="text-center py-6 px-6 w-1/4 bg-primary text-white relative">
-                <div className="text-xl font-bold mb-1">DentaSmart Complete</div>
+                <div className="text-xl font-bold mb-1">DentaSmart Benefits</div>
                 <div className="text-sm text-white/80 font-medium">Dental Benefit Plan</div>
               </th>
               <th className="text-center py-6 px-6 w-1/4 bg-blue-50/50">

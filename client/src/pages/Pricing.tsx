@@ -11,6 +11,11 @@ import { motion } from "framer-motion";
 export default function Pricing() {
   const [planType, setPlanType] = useState<"individual" | "family">("individual");
 
+  // Helper to calculate daily price
+  const getDailyPrice = (yearlyPrice: number) => {
+    return (yearlyPrice / 365).toFixed(2);
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
       <Navigation />
@@ -76,7 +81,7 @@ export default function Pricing() {
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            {/* Clarity Plan */}
+            {/* Insights Plan (formerly Clarity) */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -85,13 +90,19 @@ export default function Pricing() {
               className="bg-blue-50/30 rounded-3xl p-10 border border-blue-100 hover:shadow-xl transition-all duration-500 flex flex-col"
             >
               <div className="mb-8">
-                <h3 className="text-2xl font-medium text-black mb-2">Clarity</h3>
-                <p className="text-primary text-xs font-bold uppercase tracking-widest">Most Popular</p>
+                <h3 className="text-2xl font-medium text-black mb-2">Insights</h3>
+                <p className="text-primary text-xs font-bold uppercase tracking-widest">Monthly Monitoring</p>
               </div>
               <div className="mb-8">
-                <div className="flex items-baseline">
-                  <span className="text-5xl font-light text-black">${planType === "individual" ? "75" : "150"}</span>
-                  <span className="text-black ml-2">/year</span>
+                <div className="flex flex-col">
+                  <div className="flex items-baseline">
+                    <span className="text-lg font-medium text-stone-500 mr-2">ONLY</span>
+                    <span className="text-5xl font-light text-black">${getDailyPrice(planType === "individual" ? 75 : 150)}</span>
+                    <span className="text-black ml-2">/day</span>
+                  </div>
+                  <p className="text-sm text-stone-500 mt-2">
+                    Billed as ${planType === "individual" ? "75" : "150"} yearly
+                  </p>
                 </div>
                 <p className="text-black mt-4 font-light leading-relaxed">
                   {planType === "individual"
@@ -104,8 +115,9 @@ export default function Pricing() {
                   "Unlimited monthly scans",
                   "Wellness score tracking",
                   "Din 24/7 support",
-                  "Dental record vault",
+                  "Secure Dental History",
                   "Share with dentist",
+                  "Includes Second Opinion",
                   planType === "family" && "Up to 4 family members",
                 ].filter(Boolean).map((feature, idx) => (
                   <li key={idx} className="flex items-center text-black font-light text-sm">
@@ -119,7 +131,7 @@ export default function Pricing() {
               </Button>
             </motion.div>
 
-            {/* Consult Plan */}
+            {/* Second Opinion Plan (formerly Consult) */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -128,16 +140,19 @@ export default function Pricing() {
               className="bg-white rounded-3xl p-10 border border-blue-100 hover:shadow-xl transition-all duration-500 flex flex-col relative overflow-hidden"
             >
               <div className="mb-8">
-                <h3 className="text-2xl font-medium text-black mb-2">Consult</h3>
-                <p className="text-black text-xs font-bold uppercase tracking-widest">One-time</p>
+                <h3 className="text-2xl font-medium text-black mb-2">Second Opinion</h3>
+                <p className="text-black text-xs font-bold uppercase tracking-widest">One-Time</p>
               </div>
               <div className="mb-8">
                 <div className="flex items-baseline">
                   <span className="text-5xl font-light text-black">$30</span>
                   <span className="text-black ml-2">one-time</span>
                 </div>
+                <p className="text-sm text-stone-500 mt-2">
+                  Less than a typical specialist co-pay
+                </p>
                 <p className="text-black mt-4 font-light leading-relaxed">
-                  Get a second opinion on a specific treatment plan or concern.
+                  Upload your treatment plan or concern. Get an apples-to-apples comparison.
                 </p>
               </div>
               <ul className="space-y-4 mb-10 flex-grow">
@@ -160,7 +175,7 @@ export default function Pricing() {
               </Button>
             </motion.div>
 
-            {/* Complete Plan */}
+            {/* Benefits Plan (formerly Complete) */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -169,29 +184,36 @@ export default function Pricing() {
               className="bg-gradient-to-br from-primary to-teal-700 rounded-3xl p-10 text-white hover:shadow-2xl transition-all duration-500 flex flex-col relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 bg-white/10 px-4 py-2 rounded-bl-2xl text-xs font-bold uppercase tracking-wider backdrop-blur-sm">
-                Waitlist
+                Coming Soon
               </div>
               <div className="mb-8">
-                <h3 className="text-2xl font-medium text-white mb-2">Complete</h3>
-                <p className="text-white text-xs font-bold uppercase tracking-widest">Coming Soon</p>
+                <h3 className="text-2xl font-medium text-white mb-2">Benefits</h3>
+                <p className="text-white text-xs font-bold uppercase tracking-widest">Dental Benefits Membership</p>
               </div>
               <div className="mb-8">
-                <div className="flex items-baseline">
-                  <span className="text-5xl font-light text-white">${planType === "individual" ? "150" : "300"}</span>
-                  <span className="text-white ml-2">/year</span>
+                <div className="flex flex-col">
+                  <div className="flex items-baseline">
+                    <span className="text-lg font-medium text-white/80 mr-2">ONLY</span>
+                    <span className="text-5xl font-light text-white">${getDailyPrice(planType === "individual" ? 150 : 300)}</span>
+                    <span className="text-white ml-2">/day</span>
+                  </div>
+                  <p className="text-sm text-white/70 mt-2">
+                    Billed as ${planType === "individual" ? "150" : "300"} yearly
+                  </p>
                 </div>
                 <p className="text-white mt-4 font-light leading-relaxed">
-                  Comprehensive dental coverage with AI-powered care coordination.
+                  Member benefits that make care more affordable and predictable. (Not insurance)
                 </p>
               </div>
               <ul className="space-y-4 mb-10 flex-grow">
                 {[
-                  "Everything in Clarity",
+                  "Everything in Insights",
                   "Dental insurance alternative",
                   "Preventive care coverage",
                   "75,000+ Dentists Network",
                   "20-60% savings on procedures",
                   "Buy Now, Pay Later available",
+                  "Includes Second Opinion",
                   planType === "family" && "Up to 4 family members",
                 ].filter(Boolean).map((feature, idx) => (
                   <li key={idx} className="flex items-center text-white font-light text-sm">
@@ -223,40 +245,39 @@ export default function Pricing() {
             </h2>
           </div>
 
-<div className="bg-white rounded-3xl shadow-lg border border-blue-200 overflow-hidden">
+          <div className="bg-white rounded-3xl shadow-lg border border-blue-200 overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full min-w-[600px]">
                 <thead>
                   <tr className="border-b border-blue-200 bg-blue-100/50">
                     <th className="text-left py-5 px-6 w-1/4 font-semibold text-primary sticky left-0 bg-blue-50 backdrop-blur-sm z-10">Feature</th>
-                    <th className="text-center py-5 px-4 w-1/4 font-semibold text-primary">Clarity</th>
-                    <th className="text-center py-5 px-4 w-1/4 font-semibold text-primary">Consult</th>
-                    <th className="text-center py-5 px-4 w-1/4 font-semibold text-white bg-primary">Complete</th>
+                    <th className="text-center py-5 px-4 w-1/4 font-semibold text-primary">Insights</th>
+                    <th className="text-center py-5 px-4 w-1/4 font-semibold text-primary">Second Opinion</th>
+                    <th className="text-center py-5 px-4 w-1/4 font-semibold text-white bg-primary">Benefits</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-blue-100">
                   {[
-                    { feature: "AI Analysis", clarity: true, consult: true, complete: true },
-                    { feature: "Monthly Monitoring", clarity: true, consult: false, complete: true },
-                    { feature: "Wellness Score", clarity: true, consult: false, complete: true },
-                    { feature: "Din 24/7", clarity: true, consult: true, complete: true },
-                    { feature: "Dental Record Vault", clarity: true, consult: false, complete: true },
-                    { feature: "Share with Dentist", clarity: true, consult: true, complete: true },
-                    { feature: "Progress Tracking", clarity: true, consult: false, complete: true },
-                    { feature: "75,000+ Dentists Network", clarity: false, consult: false, complete: true },
-                    { feature: "Procedure Savings (20-60%)", clarity: false, consult: false, complete: true },
-                    { feature: "Buy Now, Pay Later", clarity: false, consult: false, complete: true },
+                    { feature: "AI Analysis", insights: true, secondOpinion: true, benefits: true },
+                    { feature: "Monthly Monitoring", insights: true, secondOpinion: false, benefits: true },
+                    { feature: "Wellness Score", insights: true, secondOpinion: false, benefits: true },
+                    { feature: "Din 24/7", insights: true, secondOpinion: true, benefits: true },
+                    { feature: "Secure Dental History", insights: true, secondOpinion: false, benefits: true },
+                    { feature: "Share with Dentist", insights: true, secondOpinion: true, benefits: true },
+                    { feature: "Progress Tracking", insights: true, secondOpinion: false, benefits: true },
+                    { feature: "Procedure Savings (20-60%)", insights: false, secondOpinion: false, benefits: true },
+                    { feature: "Buy Now, Pay Later", insights: false, secondOpinion: false, benefits: true },
                   ].map((row, idx) => (
                     <tr key={idx} className={`${idx % 2 === 0 ? 'bg-white' : 'bg-blue-50/60'} hover:bg-blue-100/50 transition-colors`}>
                       <td className={`py-5 px-6 text-teal-900 font-medium text-sm md:text-base sticky left-0 z-10 ${idx % 2 === 0 ? 'bg-white' : 'bg-blue-50'}`}>{row.feature}</td>
                       <td className="py-5 px-4 text-center">
-                        {row.clarity ? <Check className="w-6 h-6 text-primary mx-auto" /> : <span className="text-blue-200">,</span>}
+                        {row.insights ? <Check className="w-6 h-6 text-primary mx-auto" /> : <span className="text-blue-200">,</span>}
                       </td>
                       <td className="py-5 px-4 text-center">
-                        {row.consult ? <Check className="w-6 h-6 text-primary mx-auto" /> : <span className="text-blue-200">,</span>}
+                        {row.secondOpinion ? <Check className="w-6 h-6 text-primary mx-auto" /> : <span className="text-blue-200">,</span>}
                       </td>
                       <td className="py-5 px-4 text-center bg-blue-50/50 border-l border-blue-100">
-                        {row.complete ? <Check className="w-6 h-6 text-primary mx-auto" /> : <span className="text-blue-200">,</span>}
+                        {row.benefits ? <Check className="w-6 h-6 text-primary mx-auto" /> : <span className="text-blue-200">,</span>}
                       </td>
                     </tr>
                   ))}
@@ -270,7 +291,7 @@ export default function Pricing() {
                 Compare the value
               </h2>
               <p className="text-xl text-black font-light max-w-3xl mx-auto">
-                See how DentaSmart Complete stacks up against traditional carriers.
+                See how DentaSmart Benefits stacks up against traditional carriers.
               </p>
             </div>
             <ValueComparisonTable />
@@ -290,6 +311,8 @@ export default function Pricing() {
               { q: "Is there a waiting period?", a: "No. Unlike traditional insurance, DentaSmart benefits start immediately." },
               { q: "Does it cover pre-existing conditions?", a: "Yes. We don't exclude pre-existing conditions. You get full benefits from day one." },
               { q: "How does the family plan work?", a: "The family plan covers up to 4 members. You can add more members for a small additional fee." },
+              { q: "What's the difference between Insights and Second Opinion?", a: "Insights is for ongoing monthly monitoring and wellness tracking. Second Opinion is a one-time service for a specific treatment plan comparison." },
+              { q: "Do you offer family plans?", a: "Family plans are coming soon with the Benefits plan. Sign up for the waitlist to be notified." },
             ].map((faq, idx) => (
               <motion.div 
                 key={idx} 
@@ -307,7 +330,8 @@ export default function Pricing() {
         </div>
       </section>
 
-{/* Final CTA */}\n      <DownloadCTA />
+      {/* Final CTA */}
+      <DownloadCTA />
 
       <Footer />
     </div>

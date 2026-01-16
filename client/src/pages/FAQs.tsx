@@ -61,9 +61,9 @@ export default function FAQs() {
     {
       title: "Pricing & Plans",
       faqs: [
-        { q: "What's the difference between Clarity and Consult?", a: "Clarity is $75/year for ongoing monthly monitoring and wellness tracking. Consult is $30 one-time for a second opinion on a specific treatment plan." },
+        { q: "What's the difference between Insights and Second Opinion?", a: "Insights is $75/year for ongoing monthly monitoring and wellness tracking. Second Opinion is $30 one-time for a specific treatment plan comparison." },
         { q: "Can I cancel anytime?", a: "Yes. You can cancel your subscription anytime without penalties." },
-        { q: "Do you offer family plans?", a: "Family plans are coming soon with the Complete plan. Sign up for the waitlist to be notified." },
+        { q: "Do you offer family plans?", a: "Family plans are coming soon with the Benefits plan. Sign up for the waitlist to be notified." },
         { q: "Is there a money-back guarantee?", a: "Yes. We offer a 30-day money-back guarantee on all plans." },
       ],
     },

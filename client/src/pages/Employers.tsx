@@ -112,7 +112,7 @@ export default function Employers() {
               Compare the value
             </h2>
             <p className="text-xl text-stone-600 font-light max-w-3xl mx-auto">
-              See how DentaSmart Complete stacks up against traditional carriers.
+              See how DentaSmart Benefits stacks up against traditional carriers.
             </p>
           </div>
 
@@ -153,7 +153,7 @@ export default function Employers() {
               <div className="absolute top-6 left-6 bg-white text-stone-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                 75% Savings
               </div>
-              <p className="text-white/70 font-medium mb-4">DentaSmart Complete</p>
+              <p className="text-white/70 font-medium mb-4">DentaSmart Benefits</p>
               <div className="text-6xl md:text-7xl font-light text-white mb-2">~$300</div>
               <p className="text-white/50 text-sm">per employee family/year</p>
               <div className="mt-8 inline-block bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 border border-white/20">
