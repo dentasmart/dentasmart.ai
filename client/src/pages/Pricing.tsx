@@ -312,7 +312,7 @@ export default function Pricing() {
               { q: "Does it cover pre-existing conditions?", a: "Yes. We don't exclude pre-existing conditions. You get full benefits from day one." },
               { q: "How does the family plan work?", a: "The family plan covers up to 4 members. You can add more members for a small additional fee." },
               { q: "What's the difference between Insights and Second Opinion?", a: "Insights is for ongoing monthly monitoring and wellness tracking. Second Opinion is a one-time service for a specific treatment plan comparison." },
-              { q: "Do you offer family plans?", a: "Family plans are coming soon with the Benefits plan. Sign up for the waitlist to be notified." },
+              { q: "Do you offer family plans?", a: "Yes. All our plans offer family options to cover your loved ones. You can easily add family members during signup or from your account settings." },
             ].map((faq, idx) => (
               <motion.div 
                 key={idx} 

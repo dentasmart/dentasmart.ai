@@ -52,6 +52,18 @@ export function ValueComparisonTable() {
       insurance: "Not available" 
     },
     { 
+      name: "Second Opinion", 
+      denta: "Included", 
+      savings: "Not available", 
+      insurance: "Not available" 
+    },
+    { 
+      name: "Secure Dental History", 
+      denta: "Included", 
+      savings: "Not available", 
+      insurance: "Not available" 
+    },
+    { 
       name: "Care Plan & Timeline", 
       denta: "Included", 
       savings: "Not available", 
@@ -99,8 +111,8 @@ export function ValueComparisonTable() {
                 <span className="text-lg font-semibold text-stone-900">Feature</span>
               </th>
               <th className="text-center py-6 px-6 w-1/4 bg-primary text-white relative">
-                <div className="text-xl font-bold mb-1">DentaSmart Benefits</div>
-                <div className="text-sm text-white/80 font-medium">Dental Benefit Plan</div>
+                <div className="text-xl font-bold mb-1">DentaSmart Benefits Plan</div>
+                <div className="text-sm text-white/80 font-medium">Dental Benefits Membership</div>
               </th>
               <th className="text-center py-6 px-6 w-1/4 bg-blue-50/50">
                 <div className="text-lg font-medium text-stone-700 mb-1">Dental Savings Plans</div>
