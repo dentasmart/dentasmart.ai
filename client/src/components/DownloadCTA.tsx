@@ -32,16 +32,21 @@ export function DownloadCTA() {
                 className="h-10 w-auto"
               />
             </a>
-            <a 
-              href="/#android-waitlist" 
-              className="hover:opacity-90 transition-opacity"
-            >
-              <img 
-                src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
-                alt="Get it on Google Play" 
-                className="h-10 w-auto"
-              />
-            </a>
+            <div className="relative group">
+              <a 
+                href="/#android-waitlist" 
+                className="hover:opacity-90 transition-opacity block"
+              >
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
+                  alt="Get it on Google Play" 
+                  className="h-10 w-auto"
+                />
+              </a>
+              <div className="absolute -top-3 -right-2 bg-white text-[#006978] text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm border border-white/20 uppercase tracking-wider transform group-hover:scale-105 transition-transform">
+                Coming Soon
+              </div>
+            </div>
           </div>
 
           <p className="text-white text-lg font-medium mb-6">
