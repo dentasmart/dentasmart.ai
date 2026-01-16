@@ -70,7 +70,7 @@ export default function FAQs() {
     {
       title: "Din",
       faqs: [
-        { q: "What is Din?", a: "Din is your 24/7 AI dental companion. You can chat with Din anytime to ask questions about your oral health, get explanations, or prepare for dental appointments." },
+        { q: "What is Din?", a: "Din is your 24/7 AI oral health guide. You can chat with Din anytime to ask questions about your oral health, get explanations, or prepare for dental appointments." },
         { q: "Is Din a real dentist?", a: "No, Din is an advanced AI trained on vast dental knowledge. Din provides educational guidance, not medical advice. Always consult with your dentist for medical decisions." },
         { q: "Can Din diagnose me?", a: "Din can't diagnose conditions, but can help you understand your symptoms and prepare questions for your dentist." },
         { q: "Is Din available 24/7?", a: "Yes. Din is available anytime, anywhere. Responses are typically instant." },

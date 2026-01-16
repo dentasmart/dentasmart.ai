@@ -69,7 +69,7 @@ export default function Features() {
     },
     {
       title: "Your AI Dental Guide 24/7: Din",
-      description: "Your helpful, always-available AI bot, Din, is here to guide your dental questions and explain your results.\n\nDin is your personal AI dental companion, ready to chat whenever you have questions about your oral health, DentaSmart insights, or general dental topics. Din provides clear, personalized answers in plain language (not just English), acting as a knowledgeable and supportive friend on your oral health journey.",
+      description: "Your helpful, always-available AI bot, Din, is here to guide your dental questions and explain your results.\n\nDin is your personal AI oral health guide, ready to chat whenever you have questions about your oral health, DentaSmart insights, or general dental topics. Din provides clear, personalized answers in plain language (not just English), acting as a knowledgeable and supportive friend on your oral health journey.",
       points: [
         "Instant Answers: Get immediate responses to your dental questions, any time of day.",
         "Result Explanations: Din can help you understand your X-ray and image analysis reports.",

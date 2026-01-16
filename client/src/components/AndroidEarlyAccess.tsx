@@ -30,7 +30,7 @@ export function AndroidEarlyAccess() {
             Sign up now to get early access of the android version of Dentasmart
           </h2>
           <p className="text-white/90 text-lg md:text-xl mb-10 font-light leading-relaxed">
-            Join thousands of people who've stopped worrying about their teeth and started taking action. Get early access to your Personal AI Dental Companion.
+            Join thousands of people who've stopped worrying about their teeth and started taking action. Get early access to your Personal AI Oral Health Guide.
           </p>
 
           {submitted ? (

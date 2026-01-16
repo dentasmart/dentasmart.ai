@@ -56,7 +56,7 @@ export default function Navigation() {
             <p className={`text-[10px] md:text-xs font-medium tracking-wide transition-colors duration-300 ${
               scrolled || isOpen ? "text-teal-700" : "text-teal-800"
             }`}>
-              Your Personal AI Dental Companion
+              Your Personal AI Oral Health Guide
             </p>
           </Link>
 
