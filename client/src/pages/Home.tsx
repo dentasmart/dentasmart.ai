@@ -5,6 +5,7 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Smartphone, Activity } from "lucide-react";
 import { DownloadCTA } from "@/components/DownloadCTA";
+import { AndroidEarlyAccess } from "@/components/AndroidEarlyAccess";
 import Navigation from "@/components/Navigation";
 
 export default function Home() {
@@ -208,6 +209,9 @@ export default function Home() {
 
       {/* User Challenges Carousel */}
       <UserChallengesCarousel />
+
+      {/* Android Early Access Section */}
+      <AndroidEarlyAccess />
 
       {/* Lead Magnet Section */}
       <DownloadCTA />

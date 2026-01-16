@@ -33,7 +33,7 @@ export function DownloadCTA() {
               />
             </a>
             <a 
-              href="#" 
+              href="/#android-waitlist" 
               className="hover:opacity-90 transition-opacity"
             >
               <img 

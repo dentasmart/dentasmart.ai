@@ -34,7 +34,7 @@ export default function FAQs() {
     {
       title: "Getting Started",
       faqs: [
-        { q: "How do I get started with DentaSmart?", a: "Download the app from the App Store or Google Play, create an account, and take your first mouth photos or upload X-rays. You'll get your first report within minutes." },
+        { q: "How do I get started with DentaSmart?", a: "Download the app from the App Store (Android coming soon), create an account, and take your first mouth photos or upload X-rays. You'll get your first report within minutes." },
         { q: "Do I need to be a patient at a specific dental office?", a: "No. DentaSmart works with any dentist at any dental office. It's designed to complement your existing dental care." },
         { q: "Is there a free trial?", a: "Yes. Download the app and try DentaSmart free for 7 days. No credit card required." },
         { q: "What if I don't have any X-rays?", a: "No problem. You can start with monthly mouth photos using your smartphone. Upload X-rays whenever you have them." },
@@ -79,7 +79,7 @@ export default function FAQs() {
     {
       title: "Technical",
       faqs: [
-        { q: "What phones does DentaSmart work on?", a: "DentaSmart works on iOS 14+ and Android 10+. Download from the App Store or Google Play." },
+        { q: "What phones does DentaSmart work on?", a: "DentaSmart works on iOS 14+ and Android 10+. Download from the App Store (Android coming soon)." },
         { q: "Do I need an internet connection?", a: "Yes, you need internet to upload images and get analysis. Some features work offline." },
         { q: "Can I use DentaSmart on my computer?", a: "Currently, DentaSmart is mobile-only. We're working on a web version." },
         { q: "What if I have technical issues?", a: "Contact our support team at support@dentasmart.ai or through the app. We typically respond within 24 hours." },
