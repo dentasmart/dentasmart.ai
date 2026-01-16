@@ -22,7 +22,7 @@ export default function Footer() {
             <div className="space-y-6 max-w-md">
               <p className="text-black font-light leading-relaxed">
                 Most people feel anxious and confused about their dental health. 
-                We provide an AI companion that analyzes your mouth instantly and explains everything in plain English, 
+                We provide an AI guide that analyzes your mouth instantly and explains everything in plain English, 
                 so you can stop worrying and start making confident decisions about your care.
               </p>
               
