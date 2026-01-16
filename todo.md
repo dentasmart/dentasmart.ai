@@ -116,3 +116,22 @@
 - [ ] Ensure logo is full-color (remove brightness-0 invert)
 - [ ] Remove excessive padding/margin between carousel and "Your Personal AI Dental Companion" section on Home page
 - [ ] Redesign "Ready to take control?" section to match the light blue footer theme
+
+# Feedback Action Items (Jan 15)
+
+## Content Updates
+- [ ] Change all mentions of "Dr. Din" to "Din" across the website.
+
+## Homepage Design Improvements
+- [ ] Reduce negative space around the hero content.
+- [ ] Left-align all content around the mockup (already done, but verify).
+- [ ] Resize all images to ensure they do not overpower the text.
+
+## Typography and Headings
+- [ ] Ensure all headings render clearly and consistently (check font size, weight, spacing).
+
+## Navigation Bar
+- [ ] Improve background color/texture of the navigation bar.
+
+## Technical Recommendations
+- [ ] Remove ".php" from URLs (This is a React SPA, so there shouldn't be .php extensions, but I will verify links).

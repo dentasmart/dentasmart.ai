@@ -41,8 +41,8 @@ export default function Navigation() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled || isOpen
-            ? "bg-white/90 backdrop-blur-md border-b border-stone-200/50 py-2"
-            : "bg-white/30 backdrop-blur-md py-4"
+            ? "bg-white/95 backdrop-blur-xl border-b border-stone-200/50 py-2 shadow-sm"
+            : "bg-white/80 backdrop-blur-lg py-4 border-b border-transparent"
         }`}
       >
         <div className="container flex items-center justify-between h-16 md:h-20">

@@ -68,11 +68,11 @@ export default function Features() {
       image: "/images/features/oral_wellness_score.png"
     },
     {
-      title: "Your Virtual Dentist 24/7: Dr. Din",
-      description: "Your helpful, always-available AI bot, Dr. Din, is here to guide your dental questions and explain your results.\n\nDr. Din is your personal AI dental companion, ready to chat whenever you have questions about your oral health, DentaSmart insights, or general dental topics. Dr. Din provides clear, personalized answers in plain language (not just English), acting as a knowledgeable and supportive friend on your oral health journey.",
+      title: "Your Virtual Dentist 24/7: Din",
+      description: "Your helpful, always-available AI bot, Din, is here to guide your dental questions and explain your results.\n\nDin is your personal AI dental companion, ready to chat whenever you have questions about your oral health, DentaSmart insights, or general dental topics. Din provides clear, personalized answers in plain language (not just English), acting as a knowledgeable and supportive friend on your oral health journey.",
       points: [
         "Instant Answers: Get immediate responses to your dental questions, any time of day.",
-        "Result Explanations: Dr. Din can help you understand your X-ray and image analysis reports.",
+        "Result Explanations: Din can help you understand your X-ray and image analysis reports.",
         "Supportive Guidance: Receive helpful tips and information to empower your dental decisions."
       ],
       image: "/images/features/dr_din_chat.png"
@@ -105,7 +105,7 @@ export default function Features() {
               <span className="font-normal italic text-primary">take control</span>.
             </h1>
             <p className="text-xl md:text-2xl text-black max-w-2xl mr-auto font-light leading-relaxed">
-              From instant X-ray analysis to 24/7 answers from Dr. Din, we give you the power to make confident decisions about your dental care.
+              From instant X-ray analysis to 24/7 answers from Din, we give you the power to make confident decisions about your dental care.
             </p>
           </motion.div>
         </div>

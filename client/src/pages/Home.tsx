@@ -13,7 +13,7 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section - Full Background Image with Overlay */}
-      <section className="relative min-h-[600px] md:min-h-[800px] flex items-center overflow-hidden">
+      <section className="relative min-h-[500px] md:min-h-[700px] flex items-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -26,7 +26,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent md:hidden" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-20 md:pt-0">
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-10 md:pt-0">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             
             {/* Left Column: Text Content */}
@@ -111,7 +111,7 @@ export default function Home() {
             {[
               { value: "50K+", label: "Scans Analyzed" },
               { value: "100%", label: "Detection Accuracy" },
-              { value: "24/7", label: "Dr. Din Support" }
+              { value: "24/7", label: "Din Support" }
             ].map((stat, idx) => (
               <motion.div 
                 key={idx} 
