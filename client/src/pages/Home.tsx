@@ -1,6 +1,7 @@
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
+import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Smartphone, Activity } from "lucide-react";
@@ -225,6 +226,9 @@ export default function Home() {
 
       {/* User Challenges Carousel */}
       <UserChallengesCarousel />
+
+      {/* Testimonials Carousel */}
+      <TestimonialsCarousel />
 
       {/* Lead Magnet Section */}
       <DownloadCTA />
