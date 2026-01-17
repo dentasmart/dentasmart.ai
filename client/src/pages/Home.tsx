@@ -40,7 +40,7 @@ export default function Home() {
             className="w-full h-full object-cover object-center md:object-[80%_20%]"
           />
           {/* Gradient Overlay for Text Readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-transparent md:via-white/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent md:via-white/60" />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent md:hidden" />
         </div>
 

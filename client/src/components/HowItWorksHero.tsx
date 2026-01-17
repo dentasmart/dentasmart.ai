@@ -8,7 +8,7 @@ export default function HowItWorksHero() {
         <img 
           src="/images/backgrounds/how-it-works-hero-final.png" 
           alt="Man holding phone with DentaSmart App" 
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover object-[center_top]"
         />
         {/* Mobile Gradient: Top-down fade for text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/50 to-transparent" />
@@ -19,10 +19,10 @@ export default function HowItWorksHero() {
         <img 
           src="/images/backgrounds/how-it-works-hero-final.png" 
           alt="Man holding phone with DentaSmart App" 
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover object-[center_top]"
         />
         {/* Desktop Gradient: Left-to-right fade to blend image into white background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/60 to-transparent" />
       </div>
 
       <div className="container px-4 mx-auto max-w-7xl relative z-10 h-full">
