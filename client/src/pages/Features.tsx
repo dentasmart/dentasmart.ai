@@ -92,9 +92,9 @@ export default function Features() {
             alt="AI Dental Analysis" 
             className="w-full h-full object-cover object-top md:object-center"
           />
-          {/* Gradient Overlay for Text Readability - Increased Opacity */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent md:via-white/75" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent md:hidden" />
+          {/* Gradient Overlay for Text Readability - Adjusted to match Home */}
+          <div className="absolute inset-0 bg-white/80 md:bg-white/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-10 md:pt-0">
@@ -172,7 +172,7 @@ export default function Features() {
       </section>
 
       {/* User Challenges Carousel */}
-      <section className="pt-0 pb-24 bg-white relative">
+      <section className="pt-0 pb-24 bg-stone-100 relative">
         <UserChallengesCarousel />
       </section>
 
