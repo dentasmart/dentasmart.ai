@@ -16,12 +16,14 @@ export default function Home() {
 
   useEffect(() => {
     // Handle hash navigation manually to ensure scroll happens
-    if (window.location.hash === "#android-waitlist") {
-      const element = document.getElementById("android-waitlist");
+    const hash = window.location.hash;
+    if (hash === "#android-waitlist" || hash === "#download-cta") {
+      const id = hash.substring(1);
+      const element = document.getElementById(id);
       if (element) {
         setTimeout(() => {
           element.scrollIntoView({ behavior: "smooth" });
-        }, 100); // Small delay to ensure rendering
+        }, 300); // Increased delay to ensure full page render
       }
     }
   }, [location]);
