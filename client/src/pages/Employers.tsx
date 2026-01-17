@@ -7,10 +7,15 @@ import { ValueComparisonTable } from "@/components/ValueComparisonTable";
 import { SavingsCalculator } from "@/components/SavingsCalculator";
 import { DownloadCTA } from "@/components/DownloadCTA";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import { DemoRequestModal } from "@/components/DemoRequestModal";
 
 export default function Employers() {
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
+      <DemoRequestModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
       <Navigation />
 
       {/* Hero Section - Professional & Modern */}
@@ -38,7 +43,11 @@ export default function Employers() {
               Traditional insurance is expensive and reactive. Switch to a proactive AI dental benefit that employees actually use, and save 75% on your costs.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-start">
-              <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0">
+              <Button 
+                size="lg" 
+                className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0 cursor-pointer"
+                onClick={() => setIsDemoModalOpen(true)}
+              >
                 Schedule a Demo
               </Button>
               <Button 
