@@ -91,7 +91,7 @@ export default function Features() {
             alt="AI Dental Analysis" 
             className="w-full h-full object-cover object-top md:object-center"
           />
-          <div className="absolute inset-0 bg-white/85 md:bg-white/60" />
+          <div className="absolute inset-0 bg-white/95 md:bg-white/90" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto max-w-4xl text-left">
@@ -104,7 +104,7 @@ export default function Features() {
               The tools you need to <br />
               <span className="font-normal italic text-primary">take control</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-black max-w-2xl mr-auto font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-black font-normal max-w-2xl mr-auto leading-relaxed">
               From instant X-ray analysis to 24/7 answers from Din, we give you the power to make confident decisions about your dental care.
             </p>
           </motion.div>

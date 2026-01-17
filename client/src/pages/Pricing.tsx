@@ -28,7 +28,7 @@ export default function Pricing() {
             alt="Simple Pricing" 
             className="w-full h-full object-cover object-top md:object-center"
           />
-          <div className="absolute inset-0 bg-white/90 md:bg-white/80" />
+          <div className="absolute inset-0 bg-white/95 md:bg-white/90" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto max-w-4xl text-left">
@@ -41,7 +41,7 @@ export default function Pricing() {
               Peace of mind for less than <br />
               <span className="font-normal italic text-primary">a single filling</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-black max-w-2xl mr-auto font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-black font-normal max-w-2xl mr-auto leading-relaxed">
               Stop worrying about surprise dental bills. Get year-round monitoring and expert guidance for a simple, transparent price.
             </p>
           </motion.div>
