@@ -20,7 +20,7 @@ export default function Employers() {
             alt="Corporate Wellness" 
             className="w-full h-full object-cover object-top md:object-center"
           />
-          <div className="absolute inset-0 bg-white/90 md:bg-white/80" />
+          <div className="absolute inset-0 bg-white/95 md:bg-white/90" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto max-w-5xl text-left">
@@ -33,7 +33,7 @@ export default function Employers() {
               Stop overpaying for <br />
               <span className="font-normal italic text-primary">unused dental benefits</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-black max-w-3xl mr-auto mb-12 font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-black font-normal max-w-3xl mr-auto mb-12 leading-relaxed">
               Traditional insurance is expensive and reactive. Switch to a proactive AI dental benefit that employees love, and save 75% on your costs.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-start">

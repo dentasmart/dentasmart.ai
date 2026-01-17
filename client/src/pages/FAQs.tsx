@@ -99,7 +99,7 @@ export default function FAQs() {
             alt="DentaSmart FAQs" 
             className="w-full h-full object-cover object-top md:object-center"
           />
-          <div className="absolute inset-0 bg-white/90 md:bg-white/80" />
+          <div className="absolute inset-0 bg-white/95 md:bg-white/90" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto text-left max-w-4xl">
@@ -112,7 +112,7 @@ export default function FAQs() {
               Get answers, <br />
               <span className="font-normal italic text-primary">not confusion</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-black max-w-2xl mr-auto font-light leading-relaxed">
+            <p className="text-xl md:text-2xl text-black font-normal max-w-2xl mr-auto leading-relaxed">
               You have questions about your dental health and our app. We have clear, simple answers. No jargon, just the facts.
             </p>
           </motion.div>
