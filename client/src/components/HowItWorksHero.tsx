@@ -8,7 +8,7 @@ export default function HowItWorksHero() {
         <img 
           src="/images/backgrounds/how-it-works-hero-new.png" 
           alt="Man holding phone with DentaSmart App" 
-          className="w-full h-full object-cover object-[75%_center] md:object-[center_top]"
+          className="w-full h-full object-cover md:object-contain object-[75%_center] md:object-right-bottom"
         />
         {/* Heavy White Overlay for Text Readability */}
         <div className="absolute inset-0 bg-white/90 md:bg-white/80" />
