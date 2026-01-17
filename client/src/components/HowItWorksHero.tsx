@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function HowItWorksHero() {
   return (
-    <section className="relative bg-white overflow-hidden h-[80vh] md:h-[700px]">
+    <section className="relative bg-white overflow-hidden h-[80vh] md:h-[700px] pt-24 md:pt-0">
       {/* Mobile Layout: Full Background Image */}
       <div className="md:hidden absolute inset-0 z-0">
         <img 
@@ -15,7 +15,7 @@ export default function HowItWorksHero() {
       </div>
 
       {/* Desktop Layout: Split Screen (Image on Right) */}
-      <div className="hidden md:block absolute inset-y-0 right-0 w-1/2 z-0">
+      <div className="hidden md:block absolute top-24 bottom-0 right-0 w-1/2 z-0">
         <img 
           src="/images/backgrounds/how-it-works-hero-final.png" 
           alt="Man holding phone with DentaSmart App" 

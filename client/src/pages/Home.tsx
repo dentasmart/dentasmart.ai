@@ -37,7 +37,7 @@ export default function Home() {
           <img 
             src="/images/backgrounds/home-hero-lady-smile.jpg" 
             alt="Woman with healthy smile" 
-            className="w-full h-full object-cover object-center md:object-[center_20%]"
+            className="w-full h-full object-cover object-center md:object-[80%_20%]"
           />
           {/* Gradient Overlay for Text Readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-transparent md:via-white/40" />
