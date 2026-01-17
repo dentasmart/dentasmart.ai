@@ -85,7 +85,7 @@ export function UserChallengesCarousel({
   };
 
   return (
-    <section className="pt-0 pb-24 bg-stone-50 overflow-hidden">
+    <section className="bg-transparent overflow-hidden">
       <div className="container px-4 mx-auto mb-12 flex justify-between items-end">
         <div>
           <h2 className="text-4xl md:text-5xl font-light tracking-tight text-stone-900 mb-4">
