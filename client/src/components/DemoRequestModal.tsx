@@ -69,7 +69,7 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
                   See DentaSmart in Action
                 </DialogTitle>
                 <DialogDescription className="text-stone-600 text-base">
-                  Fill out the form below to schedule a personalized demo. We'll show you exactly how much you can save.
+                  Fill out the form below to schedule a personalized demo. We'll show you how to improve employee oral health while saving an estimated 75% on costs.
                 </DialogDescription>
               </DialogHeader>
 
@@ -150,7 +150,7 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
                 <Button 
                   type="submit" 
                   disabled={isSubmitting}
-                  className="w-full bg-primary hover:bg-primary/90 text-white rounded-full py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 mt-2"
+                  className="w-full bg-primary hover:bg-primary/90 text-white rounded-full py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 mt-2 cursor-pointer"
                 >
                   {isSubmitting ? (
                     <>
