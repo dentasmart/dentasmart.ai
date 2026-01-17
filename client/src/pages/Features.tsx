@@ -83,38 +83,50 @@ export default function Features() {
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
       <Navigation />
 
-      {/* Hero Section - Abstract & Tech */}
-      <section className="relative py-24 md:py-52 overflow-hidden">
+      {/* Hero Section - Full Background Image with Overlay */}
+      <section className="relative min-h-[500px] md:min-h-[700px] flex items-center overflow-hidden">
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
             src="/images/backgrounds/hero-smile-generic.jpg" 
             alt="AI Dental Analysis" 
             className="w-full h-full object-cover object-top md:object-center"
           />
-          {/* Heavy White Overlay for Text Readability */}
-          <div className="absolute inset-0 bg-white/95" />
+          {/* Gradient Overlay for Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent md:via-white/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent md:hidden" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-4xl text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-4xl md:text-6xl font-light tracking-tight text-black mb-8 leading-[1.1]">
-              Everything you need to <br />
-              <span className="font-normal italic text-primary">stop worrying</span> about your teeth.
-            </h1>
-            <p className="text-xl md:text-2xl text-black font-normal max-w-2xl mr-auto leading-relaxed">
-              You shouldn't have to feel anxious or confused about your oral health. We give you the tools to see what your dentist sees, so you can make decisions with total confidence.
-            </p>
-          </motion.div>
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-10 md:pt-0">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left Column: Text Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="text-left max-w-2xl lg:col-span-7 xl:col-span-6"
+            >
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
+                Everything you need to <br />
+                <span className="font-normal italic text-primary">stop worrying</span> about your teeth.
+              </h1>
+              
+              <p className="text-xl md:text-2xl text-stone-700 mb-10 font-normal leading-relaxed text-balance">
+                You shouldn't have to feel anxious or confused about your oral health. We give you the tools to see what your dentist sees, so you can make decisions with total confidence.
+              </p>
+            </motion.div>
+
+            {/* Right Column: Empty to let image show through */}
+            <div className="hidden lg:block lg:col-span-5 xl:col-span-6"></div>
+
+          </div>
         </div>
       </section>
 
       {/* Feature Deep Dives - Alternating Layout */}
-      <section className="pt-32 pb-0 bg-stone-50">
-        <div className="container px-4 mx-auto max-w-6xl space-y-32">
+      <section className="py-24 bg-stone-50">
+        <div className="container px-4 mx-auto max-w-6xl space-y-24">
           
           {features.map((feature, idx) => (
             <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
@@ -160,16 +172,12 @@ export default function Features() {
       </section>
 
       {/* User Challenges Carousel */}
-      <section className="pt-0 pb-10 bg-stone-100 relative">
-        {/* Section Separator */}
-        <div className="container px-4 mx-auto">
-          <div className="w-full h-px bg-stone-200 mb-16" />
-        </div>
+      <section className="py-24 bg-white relative">
         <UserChallengesCarousel />
       </section>
 
       {/* Security Section - Clean & Trustworthy */}
-      <section className="py-32 bg-white">
+      <section className="py-24 bg-stone-50">
         <div className="container px-4 mx-auto max-w-4xl text-center">
           <div className="w-20 h-20 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-8">
             <Lock className="w-8 h-8 text-stone-900" strokeWidth={1.5} />

@@ -92,7 +92,7 @@ export default function FAQs() {
       <Navigation />
 
       {/* Hero Section - Calm & Clear */}
-      <section className="relative py-24 md:py-52 overflow-hidden">
+      <section className="relative min-h-[500px] md:min-h-[700px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="/images/backgrounds/hero-faqs-book.jpg" 
@@ -102,13 +102,13 @@ export default function FAQs() {
           <div className="absolute inset-0 bg-white/95 md:bg-white/90" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto text-left max-w-4xl">
+        <div className="container relative z-10 px-4 mx-auto text-left max-w-4xl pt-10 md:pt-0">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl font-light tracking-tight text-black mb-8 leading-[1.1]">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
               Get answers, <br />
               <span className="font-normal italic text-primary">not confusion</span>.
             </h1>
@@ -120,7 +120,7 @@ export default function FAQs() {
       </section>
 
       {/* User Challenges Carousel */}
-      <section className="pt-20 pb-0 bg-stone-100">
+      <section className="py-24 bg-stone-50">
         <UserChallengesCarousel 
           challenges={faqChallenges} 
           images={faqChallengeImages}
@@ -130,7 +130,7 @@ export default function FAQs() {
       </section>
 
       {/* FAQs */}
-      <section className="pt-10 pb-24 bg-white">
+      <section className="py-24 bg-white">
         <div className="container px-4 mx-auto max-w-3xl">
           {faqCategories.map((category, catIdx) => (
             <div key={catIdx} className="mb-20 last:mb-0">

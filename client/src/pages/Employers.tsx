@@ -14,7 +14,7 @@ export default function Employers() {
       <Navigation />
 
       {/* Hero Section - Professional & Modern */}
-      <section className="relative py-24 md:py-52 overflow-hidden">
+      <section className="relative min-h-[500px] md:min-h-[700px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="/images/backgrounds/employers-office.jpg" 
@@ -24,18 +24,18 @@ export default function Employers() {
           <div className="absolute inset-0 bg-white/95 md:bg-white/90" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-5xl text-left">
+        <div className="container relative z-10 px-4 mx-auto max-w-5xl text-left pt-10 md:pt-0">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl font-light tracking-tight text-black mb-8 leading-[1.1]">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
               Stop overpaying for <br />
               <span className="font-normal italic text-primary">unused dental benefits</span>.
             </h1>
             <p className="text-xl md:text-2xl text-black font-normal max-w-3xl mr-auto mb-12 leading-relaxed">
-              Traditional insurance is expensive and reactive. Switch to a proactive AI dental benefit that employees love, and save 75% on your costs.
+              Traditional insurance is expensive and reactive. Switch to a proactive AI dental benefit that employees actually use, and save 75% on your costs.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-start">
               <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0">
@@ -60,9 +60,9 @@ export default function Employers() {
       </section>
 
       {/* The Problem - Minimalist Grid */}
-      <section className="py-32 bg-white">
+      <section className="py-24 bg-white">
         <div className="container px-4 mx-auto max-w-6xl">
-          <div className="text-center mb-24">
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
               Traditional benefits are broken
             </h2>
@@ -76,7 +76,7 @@ export default function Employers() {
               { 
                 icon: TrendingDown, 
                 title: "High Cost, Low Value", 
-                desc: "~$1,200/year per employee with less than 50% utilization rates." 
+                desc: "About $1,200/year per employee with less than 50% utilization rates." 
               },
               { 
                 icon: Users, 
@@ -111,12 +111,12 @@ export default function Employers() {
       </section>
 
       {/* User Challenges Carousel */}
-      <section className="py-20 bg-stone-100">
+      <section className="py-24 bg-stone-50">
         <UserChallengesCarousel />
       </section>
 
       {/* Comparison Table - Clean & Modern */}
-      <section className="py-32 bg-stone-50">
+      <section className="py-24 bg-white">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
@@ -135,11 +135,10 @@ export default function Employers() {
       </section>
 
       {/* ROI - Big Numbers */}
-      <section id="savings-calculator" className="py-32 bg-white">
+      <section id="savings-calculator" className="py-24 bg-stone-50">
         <div className="container px-4 mx-auto max-w-5xl">
 
-
-          <div className="mb-24">
+          <div className="mb-16">
             <SavingsCalculator />
           </div>
 

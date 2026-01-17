@@ -21,7 +21,7 @@ export default function Pricing() {
       <Navigation />
 
       {/* Hero Section - Calm & Balanced */}
-      <section className="relative py-24 md:py-52 overflow-hidden">
+      <section className="relative min-h-[500px] md:min-h-[700px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="/images/backgrounds/hero-smile-pricing.jpg" 
@@ -31,13 +31,13 @@ export default function Pricing() {
           <div className="absolute inset-0 bg-white/95 md:bg-white/90" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-4xl text-left">
+        <div className="container relative z-10 px-4 mx-auto max-w-4xl text-left pt-10 md:pt-0">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-6xl font-light tracking-tight text-black mb-8 leading-[1.1]">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
               Peace of mind for less than <br />
               <span className="font-normal italic text-primary">a single filling</span>.
             </h1>
@@ -49,7 +49,7 @@ export default function Pricing() {
       </section>
 
       {/* Plan Toggle - Minimalist */}
-      <section className="py-8 bg-white">
+      <section className="py-12 bg-white">
         <div className="container flex justify-center">
           <div className="bg-accent/10 p-1 rounded-full inline-flex shadow-inner">
             <button
@@ -77,7 +77,7 @@ export default function Pricing() {
       </section>
 
       {/* Pricing Cards - Clean & Modern */}
-      <section className="py-8 bg-white">
+      <section className="pb-24 bg-white">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
@@ -232,14 +232,14 @@ export default function Pricing() {
       </section>
 
       {/* User Challenges Carousel */}
-      <section className="py-0 bg-accent/5">
+      <section className="py-24 bg-stone-50">
         <UserChallengesCarousel />
       </section>
 
       {/* Comparison Table - Clean */}
-      <section className="py-8 bg-white">
+      <section className="py-24 bg-white">
         <div className="container px-4 mx-auto max-w-5xl">
-          <div className="text-center mb-8">
+          <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-light text-black mb-6">
               Compare plans
             </h2>
