@@ -45,14 +45,14 @@ export default function Home() {
         </div>
 
         <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-10 md:pt-0">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left Column: Text Content */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-left max-w-2xl"
+              className="text-left max-w-2xl lg:col-span-7 xl:col-span-6"
             >
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
                 Stop guessing about <br />
@@ -84,7 +84,7 @@ export default function Home() {
             </motion.div>
 
             {/* Right Column: Empty to let image show through, or optional floating elements */}
-            <div className="hidden lg:block"></div>
+            <div className="hidden lg:block lg:col-span-5 xl:col-span-6"></div>
 
           </div>
         </div>
@@ -106,7 +106,30 @@ export default function Home() {
               Watch our explainer video to learn how DentaSmart empowers you with AI-driven insights into your oral health.
             </p>
             
-            <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl bg-foreground">
+            <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl bg-foreground group">
+              {/* Custom Thumbnail Overlay */}
+              <div 
+                className="absolute inset-0 z-10 cursor-pointer group-hover:scale-105 transition-transform duration-700"
+                onClick={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  // Auto-play video when thumbnail is clicked
+                  const iframe = e.currentTarget.nextElementSibling as HTMLIFrameElement;
+                  if (iframe) {
+                    iframe.src += "?autoplay=1";
+                  }
+                }}
+              >
+                <img 
+                  src="/images/video-thumbnail.jpg" 
+                  alt="DentaSmart Video Thumbnail" 
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/20 flex items-center justify-center group-hover:bg-black/30 transition-colors">
+                  <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                    <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-white border-b-[12px] border-b-transparent ml-1"></div>
+                  </div>
+                </div>
+              </div>
               <iframe 
                 width="100%" 
                 height="100%" 
