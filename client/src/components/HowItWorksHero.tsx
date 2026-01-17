@@ -3,26 +3,15 @@ import { motion } from "framer-motion";
 export default function HowItWorksHero() {
   return (
     <section className="relative bg-white overflow-hidden h-[80vh] md:h-[700px] pt-24 md:pt-0">
-      {/* Mobile Layout: Full Background Image */}
-      <div className="md:hidden absolute inset-0 z-0">
+      {/* Full Background Image for All Screens */}
+      <div className="absolute inset-0 z-0">
         <img 
-          src="/images/backgrounds/hero-how-it-works-composite.jpg" 
+          src="/images/backgrounds/how-it-works-hero-new.png" 
           alt="Man holding phone with DentaSmart App" 
-          className="w-full h-full object-cover object-[center_top]"
+          className="w-full h-full object-cover object-top md:object-[center_20%]"
         />
-        {/* Mobile Gradient: Top-down fade for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/50 to-transparent" />
-      </div>
-
-      {/* Desktop Layout: Split Screen (Image on Right) */}
-      <div className="hidden md:block absolute top-24 bottom-0 right-0 w-1/2 z-0">
-        <img 
-          src="/images/backgrounds/hero-how-it-works-composite.jpg" 
-          alt="Man holding phone with DentaSmart App" 
-          className="w-full h-full object-cover object-[center_top]"
-        />
-        {/* Desktop Gradient: Left-to-right fade to blend image into white background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-white/60 to-transparent" />
+        {/* Heavy White Overlay for Text Readability */}
+        <div className="absolute inset-0 bg-white/85" />
       </div>
 
       <div className="container px-4 mx-auto max-w-7xl relative z-10 h-full">
