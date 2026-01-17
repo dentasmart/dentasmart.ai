@@ -137,9 +137,7 @@ export default function Employers() {
       {/* ROI - Big Numbers */}
       <section id="savings-calculator" className="py-32 bg-white">
         <div className="container px-4 mx-auto max-w-5xl">
-          <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-12 text-center">
-            The simplest math you'll do all year
-          </h2>
+
 
           <div className="mb-24">
             <SavingsCalculator />

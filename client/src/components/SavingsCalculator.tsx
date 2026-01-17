@@ -7,9 +7,9 @@ import { Slider } from "@/components/ui/slider";
 
 export function SavingsCalculator() {
   // State for inputs
-  const [traditionalFamilyCost, setTraditionalFamilyCost] = useState(1200);
-  const [singleCount, setSingleCount] = useState(10);
-  const [familyCount, setFamilyCount] = useState(10);
+  const [traditionalFamilyCost, setTraditionalFamilyCost] = useState<number | "">(1200);
+  const [singleCount, setSingleCount] = useState<number | "">(10);
+  const [familyCount, setFamilyCount] = useState<number | "">(10);
   const [contributionPercent, setContributionPercent] = useState(75);
 
   // Derived state for calculations
@@ -24,13 +24,17 @@ export function SavingsCalculator() {
   useEffect(() => {
     // Assumption: Individual traditional insurance is approx 50% of family cost
     // if not explicitly provided. Keeping it simple as requested.
-    const traditionalIndividualCost = traditionalFamilyCost * 0.5;
+    const safeTradFamilyCost = Number(traditionalFamilyCost) || 0;
+    const safeSingleCount = Number(singleCount) || 0;
+    const safeFamilyCount = Number(familyCount) || 0;
+
+    const traditionalIndividualCost = safeTradFamilyCost * 0.5;
 
     const tradCost = 
-      ((singleCount * traditionalIndividualCost) + (familyCount * traditionalFamilyCost)) * (contributionPercent / 100);
+      ((safeSingleCount * traditionalIndividualCost) + (safeFamilyCount * safeTradFamilyCost)) * (contributionPercent / 100);
     
     const dsCost = 
-      ((singleCount * DS_INDIVIDUAL_RATE) + (familyCount * DS_FAMILY_RATE)) * (contributionPercent / 100);
+      ((safeSingleCount * DS_INDIVIDUAL_RATE) + (safeFamilyCount * DS_FAMILY_RATE)) * (contributionPercent / 100);
 
     setTraditionalTotal(tradCost);
     setDentaSmartTotal(dsCost);
@@ -66,6 +70,9 @@ export function SavingsCalculator() {
             </div>
             
             <div className="space-y-8">
+              <p className="text-sm text-stone-500 italic">
+                Enter your current costs and employee counts below to see your potential savings.
+              </p>
               {/* Traditional Cost Input */}
               <div className="space-y-3">
                 <Label htmlFor="trad-cost" className="text-sm font-medium text-stone-600">
@@ -77,7 +84,8 @@ export function SavingsCalculator() {
                     id="trad-cost"
                     type="number"
                     value={traditionalFamilyCost}
-                    onChange={(e) => setTraditionalFamilyCost(Number(e.target.value))}
+                    onChange={(e) => setTraditionalFamilyCost(e.target.value === "" ? "" : Number(e.target.value))}
+                    placeholder="0"
                     className="pl-9 h-12 text-lg bg-stone-50 border-stone-200 focus:border-primary focus:ring-primary/20"
                   />
                 </div>
@@ -98,7 +106,8 @@ export function SavingsCalculator() {
                       id="single-count"
                       type="number"
                       value={singleCount}
-                      onChange={(e) => setSingleCount(Number(e.target.value))}
+                      onChange={(e) => setSingleCount(e.target.value === "" ? "" : Number(e.target.value))}
+                      placeholder="0"
                       className="pl-9 h-12 text-lg bg-stone-50 border-stone-200 focus:border-primary focus:ring-primary/20"
                     />
                   </div>
@@ -113,7 +122,8 @@ export function SavingsCalculator() {
                       id="family-count"
                       type="number"
                       value={familyCount}
-                      onChange={(e) => setFamilyCount(Number(e.target.value))}
+                      onChange={(e) => setFamilyCount(e.target.value === "" ? "" : Number(e.target.value))}
+                      placeholder="0"
                       className="pl-9 h-12 text-lg bg-stone-50 border-stone-200 focus:border-primary focus:ring-primary/20"
                     />
                   </div>
@@ -156,7 +166,7 @@ export function SavingsCalculator() {
                 <span className="ml-3 text-stone-400 text-sm">/ year</span>
               </div>
               <p className="text-stone-400 text-sm mt-2">
-                Based on your inputs for {singleCount + familyCount} employees
+                Based on your inputs for {(Number(singleCount) || 0) + (Number(familyCount) || 0)} employees
               </p>
             </motion.div>
 
@@ -169,7 +179,9 @@ export function SavingsCalculator() {
               transition={{ delay: 0.1 }}
             >
               <div className="absolute top-6 right-6 bg-white text-primary px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                {Math.round((totalSavings / traditionalTotal) * 100) || 0}% SAVINGS
+                {traditionalTotal > 0 && totalSavings > 0 
+                  ? `${Math.round((totalSavings / traditionalTotal) * 100)}% SAVINGS` 
+                  : "N/A"}
               </div>
 
               <h4 className="text-white/80 font-medium mb-2">DentaSmart Benefits Cost</h4>
@@ -192,7 +204,7 @@ export function SavingsCalculator() {
                   </div>
                   <div className="text-right">
                     <p className="text-white/70 text-sm">
-                      That's <span className="font-bold text-white">{formatCurrency(totalSavings / 12)}</span> extra cash flow per month
+                      That's <span className="font-bold text-white">{totalSavings > 0 ? formatCurrency(totalSavings / 12) : "$0"}</span> extra cash flow per month
                     </p>
                   </div>
                 </div>
