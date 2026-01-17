@@ -66,7 +66,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-6 justify-start items-center sm:items-start">
                 <Button 
                   size="lg" 
-                  className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0 w-full sm:w-auto"
+                  className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0 w-full sm:w-auto cursor-pointer relative z-20"
                   onClick={() => {
                     const element = document.getElementById('download-cta');
                     if (element) {
@@ -80,7 +80,7 @@ export default function Home() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-10 py-8 text-lg font-medium transition-all duration-300 w-full sm:w-auto"
+                    className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-10 py-8 text-lg font-medium transition-all duration-300 w-full sm:w-auto cursor-pointer relative z-20"
                   >
                     See Pricing
                   </Button>

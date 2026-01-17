@@ -82,18 +82,22 @@ export default function Navigation() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-4">
-            <a
-              href="https://apps.apple.com/us/app/dentasmart/id6670311232"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Button
+              size="sm"
+              className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-5 text-sm font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
+              onClick={() => {
+                if (location === '/') {
+                  const element = document.getElementById('download-cta');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                } else {
+                  window.location.href = '/#download-cta';
+                }
+              }}
             >
-              <Button
-                size="sm"
-                className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-5 text-sm font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
-              >
-                Download App
-              </Button>
-            </a>
+              Download App
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -157,16 +161,22 @@ export default function Navigation() {
               transition={{ delay: 0.5, duration: 0.4 }}
               className="mt-auto pt-8 border-t border-stone-200"
             >
-              <a
-                href="https://apps.apple.com/us/app/dentasmart/id6670311232"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full"
+              <Button 
+                className="w-full bg-primary text-white rounded-full py-6 text-lg font-medium hover:bg-primary/90 cursor-pointer"
+                onClick={() => {
+                  setIsOpen(false);
+                  if (location === '/') {
+                    const element = document.getElementById('download-cta');
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  } else {
+                    window.location.href = '/#download-cta';
+                  }
+                }}
               >
-                <Button className="w-full bg-primary text-white rounded-full py-6 text-lg font-medium hover:bg-primary/90">
-                  Download the App
-                </Button>
-              </a>
+                Download the App
+              </Button>
               <p className="text-center text-stone-400 text-sm mt-6 font-light">
                 © 2025 DentaSmart. All rights reserved.
               </p>
