@@ -20,7 +20,7 @@ export default function Employers() {
             alt="Corporate Wellness" 
             className="w-full h-full object-cover object-top md:object-center"
           />
-          <div className="absolute inset-0 bg-white/85 md:bg-white/60" />
+          <div className="absolute inset-0 bg-white/90 md:bg-white/80" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto max-w-5xl text-left">
@@ -40,7 +40,12 @@ export default function Employers() {
               <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0">
                 Schedule a Demo
               </Button>
-              <Button size="lg" variant="outline" className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                onClick={() => window.location.href = '/pricing#savings-calculator'}
+                className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300"
+              >
                 Calculate Savings
               </Button>
             </div>
@@ -185,7 +190,8 @@ export default function Employers() {
         </div>
       </section>
 
-      {/* Final CTA */}\n      <DownloadCTA />
+      {/* Final CTA */}
+      <DownloadCTA />
 
       <Footer />
     </div>

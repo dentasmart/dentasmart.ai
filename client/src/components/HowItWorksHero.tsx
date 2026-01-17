@@ -6,7 +6,7 @@ export default function HowItWorksHero() {
       {/* Mobile Layout: Full Background Image */}
       <div className="md:hidden absolute inset-0 z-0">
         <img 
-          src="/images/backgrounds/how-it-works-hero-final.png" 
+          src="/images/backgrounds/hero-how-it-works-composite.jpg" 
           alt="Man holding phone with DentaSmart App" 
           className="w-full h-full object-cover object-[center_top]"
         />
@@ -17,7 +17,7 @@ export default function HowItWorksHero() {
       {/* Desktop Layout: Split Screen (Image on Right) */}
       <div className="hidden md:block absolute top-24 bottom-0 right-0 w-1/2 z-0">
         <img 
-          src="/images/backgrounds/how-it-works-hero-final.png" 
+          src="/images/backgrounds/hero-how-it-works-composite.jpg" 
           alt="Man holding phone with DentaSmart App" 
           className="w-full h-full object-cover object-[center_top]"
         />
