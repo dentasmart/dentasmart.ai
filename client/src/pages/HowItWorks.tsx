@@ -80,7 +80,7 @@ export default function HowItWorks() {
       </section>
 
       {/* User Challenges Carousel */}
-      <section className="py-20 bg-accent/5">
+      <section className="py-24 bg-stone-100">
         <UserChallengesCarousel />
       </section>
 

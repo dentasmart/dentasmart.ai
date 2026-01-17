@@ -232,7 +232,7 @@ export default function Pricing() {
       </section>
 
       {/* User Challenges Carousel */}
-      <section className="py-24 bg-stone-50">
+      <section className="py-24 bg-stone-100">
         <UserChallengesCarousel />
       </section>
 

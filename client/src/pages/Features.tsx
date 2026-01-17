@@ -125,7 +125,7 @@ export default function Features() {
       </section>
 
       {/* Feature Deep Dives - Alternating Layout */}
-      <section className="pt-24 pb-12 bg-stone-50">
+      <section className="pt-24 pb-24 bg-white">
         <div className="container px-4 mx-auto max-w-6xl space-y-24">
           
           {features.map((feature, idx) => (
@@ -172,14 +172,14 @@ export default function Features() {
       </section>
 
       {/* User Challenges Carousel */}
-      <section className="pt-0 pb-24 bg-stone-100 relative">
+      <section className="py-24 bg-stone-100 relative">
         <UserChallengesCarousel />
       </section>
 
       {/* Security Section - Clean & Trustworthy */}
-      <section className="py-24 bg-stone-50">
+      <section className="py-24 bg-white">
         <div className="container px-4 mx-auto max-w-4xl text-center">
-          <div className="w-20 h-20 bg-stone-100 rounded-full flex items-center justify-center mx-auto mb-8">
+          <div className="w-20 h-20 bg-stone-50 rounded-full flex items-center justify-center mx-auto mb-8">
             <Lock className="w-8 h-8 text-stone-900" strokeWidth={1.5} />
           </div>
           <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-8">
