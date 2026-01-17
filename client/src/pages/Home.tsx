@@ -55,21 +55,26 @@ export default function Home() {
               className="text-left max-w-2xl lg:col-span-7 xl:col-span-6"
             >
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
-                Stop guessing about <br />
-                <span className="font-normal italic text-primary">your teeth</span>.
+                Get instant clarity about <br />
+                <span className="font-normal italic text-primary">your oral health</span>.
               </h1>
               
               <p className="text-xl md:text-2xl text-stone-700 mb-10 font-normal leading-relaxed text-balance">
-                Get clear, instant insights into your oral health. Catch issues early and avoid expensive surprises, without the wait.
+                Upload a photo of your teeth (or your X-rays) and get an AI-powered Oral Health Score, a Risk Assessment, and a clear Next-Step Plan, plus reminders to stay on track.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-6 justify-start items-center sm:items-start">
                 <Button 
                   size="lg" 
                   className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0 w-full sm:w-auto"
-                  onClick={() => window.open('https://apps.apple.com/us/app/dentasmart/id6670311232', '_blank')}
+                  onClick={() => {
+                    const element = document.getElementById('download-cta');
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
                 >
-                  Download the App
+                  Get My Oral Health Score
                 </Button>
                 <Link href="/pricing">
                   <Button

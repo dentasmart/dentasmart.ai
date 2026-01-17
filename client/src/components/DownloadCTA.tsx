@@ -19,7 +19,7 @@ export function DownloadCTA() {
   };
 
   return (
-    <section className="py-24 bg-gradient-to-br from-[#0097A7] to-[#006978] text-white text-center">
+    <section id="download-cta" className="py-24 bg-gradient-to-br from-[#0097A7] to-[#006978] text-white text-center">
       <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
