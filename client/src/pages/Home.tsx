@@ -60,7 +60,7 @@ export default function Home() {
               </h1>
               
               <p className="text-xl md:text-2xl text-stone-700 mb-10 font-normal leading-relaxed text-balance">
-                Upload a photo of your teeth (or your X-rays) and get an AI-powered Oral Health Score, a Risk Assessment, and a clear Next-Step Plan, plus reminders to stay on track.
+                Upload a photo of your teeth (or your X-rays) and get AI-powered oral health insights in minutes with an easy-to-follow plan & reminders.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-6 justify-start items-center sm:items-start">
