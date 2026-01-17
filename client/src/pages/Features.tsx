@@ -8,72 +8,72 @@ import { motion } from "framer-motion";
 export default function Features() {
   const features = [
     {
-      title: "AI X-ray Analysis",
-      description: "Gain deeper understanding of your dental health with AI-powered analysis of your X-rays.\n\nOur advanced AI reviews your dental X-rays, highlighting potential areas of concern and providing educational insights. This helps you understand what your dentist sees and empowers you to ask informed questions about your oral health.",
+      title: "Stop Wondering What Your X-Rays Mean",
+      description: "You shouldn't have to nod along pretending to understand complex dental jargon.\n\nOur AI X-ray Analysis acts as your personal translator, instantly highlighting areas of concern in simple, clear language. Finally, you can see exactly what your dentist sees and feel confident in your treatment plan.",
       points: [
-        "Visual Insights: See color-coded overlays on your X-rays indicating areas for attention.",
-        "Detailed Explanations: Get clear, simple explanations of complex dental terms and findings.",
-        "Preparation for Visits: Walk into your dental appointments with a better understanding of your X-rays."
+        "Instant Clarity: See color-coded overlays that make issues obvious.",
+        "Plain English: No more confusing medical terms—just clear explanations.",
+        "Confidence: Walk into your appointment knowing exactly what to ask."
       ],
       image: "/images/features/ai_xray_analysis.png"
     },
     {
-      title: "AI-Powered Mouth Image Insights",
-      description: "Understand visual indicators in your mouth images before they become bigger concerns.\n\nSimply take photos of your mouth with your smartphone, and our AI will analyze them to identify visual cues related to your oral health. This feature helps you monitor changes and proactively address potential issues.",
+      title: "Catch Issues Before They Become Emergencies",
+      description: "Waiting for your 6-month checkup can leave you vulnerable to silent problems.\n\nWith AI-Powered Mouth Image Insights, you can scan your smile anytime. Our technology spots subtle visual cues you might miss, giving you the peace of mind that comes from knowing you're catching potential issues early.",
       points: [
-        "Self-Monitoring: Easily track the appearance of your teeth and gums over time.",
-        "Early Visual Cues: Our AI can highlight subtle changes that might warrant attention.",
-        "Guided Photography: In-app guidance helps you capture the best possible images for analysis."
+        "Peace of Mind: Check your oral health whenever you feel uncertain.",
+        "Early Detection: Spot visual changes before they turn into painful problems.",
+        "Easy Monitoring: Track your gum and tooth health from the comfort of home."
       ],
       image: "/images/features/mouth_image_insights.png"
     },
     {
-      title: "Personalized Recommendations",
-      description: "Get AI-generated suggestions based on your input and images – educational, not clinical.\n\nDentaSmart provides tailored advice and tips to help you improve your oral hygiene and maintain a healthy smile. These recommendations are designed to educate and empower you, offering actionable steps you can take in your daily routine.",
+      title: "Personalized Care That Actually Fits Your Life",
+      description: "Generic dental advice rarely leads to lasting results.\n\nGet Personalized Recommendations that adapt to your unique oral health profile. Instead of one-size-fits-all tips, you get actionable, tailored guidance that helps you improve your daily routine without feeling overwhelmed.",
       points: [
-        "Customized Advice: Suggestions are unique to your oral health profile.",
-        "Actionable Steps: Clear, easy-to-follow guidance for daily care.",
-        "Educational Focus: Learn how to proactively manage your oral health."
+        "Tailored for You: Advice based on your specific scan results.",
+        "Simple Steps: Actionable tips that fit easily into your daily routine.",
+        "Better Habits: Learn exactly what *your* mouth needs to stay healthy."
       ],
       image: "/images/features/personalized_recommendations.png"
     },
     {
-      title: "Interactive Health Timeline",
-      description: "Track your oral wellness journey visually and intuitively.\n\nSee your progress over time with an interactive timeline that charts your oral health score, uploaded images, and key insights. This visual history helps you stay motivated and understand the long-term impact of your oral care habits.",
+      title: "See Your Progress, Stay Motivated",
+      description: "It's hard to improve what you can't measure.\n\nOur Interactive Health Timeline turns your oral health journey into a clear visual story. Watch your improvements over time, celebrate your wins, and stay motivated to keep your smile healthy for life.",
       points: [
-        "Visual Progress: Watch your oral health score evolve over months and years.",
-        "Historical Insights: Review past analyses and compare them with your current status.",
-        "Motivation & Engagement: Stay on track with a clear overview of your journey."
+        "Visual Proof: See your health score improve as you build better habits.",
+        "Complete History: Keep all your scans and insights in one secure place.",
+        "Stay on Track: A clear view of your journey keeps you focused on the long term."
       ],
       image: "/images/features/interactive_timeline.png"
     },
     {
-      title: "Proactive Risk Indicators",
-      description: "Get notified when patterns suggest areas to watch, helping you stay ahead of potential issues.\n\nOur AI continuously monitors your data for subtle patterns that might indicate an increased risk for certain dental conditions. Receive timely alerts and educational information, allowing you to take preventive action or discuss concerns with your dentist before problems escalate.",
+      title: "Know Your Risks Before They Become Reality",
+      description: "Most dental problems are preventable if you know what to look for.\n\nProactive Risk Indicators work like a weather forecast for your mouth, alerting you to patterns that could lead to future trouble. Take control today so you don't have to deal with expensive repairs tomorrow.",
       points: [
-        "Early Warnings: Be alerted to potential risks before they become serious.",
-        "Preventive Action: Empower yourself to address issues proactively.",
-        "Informed Discussions: Have specific points to discuss with your dental professional."
+        "Future-Proofing: Identify risk factors before they cause damage.",
+        "Proactive Alerts: Get notified about patterns that need attention.",
+        "Save Money: Prevention is always cheaper than a cure."
       ],
       image: "/images/features/proactive_risk_indicators.png"
     },
     {
-      title: "Dynamic Oral Wellness Score",
-      description: "Monitor changes in your dental health score over time, providing a clear snapshot of your oral well-being.\n\nYour personalized oral wellness score, ranging from 0-100, gives you an easy-to-understand metric of your overall dental health. This score dynamically updates as you use DentaSmart, reflecting the impact of your oral care habits and helping you set goals for improvement.",
+      title: "A Simple Score for Total Clarity",
+      description: "Dental health shouldn't be a guessing game.\n\nYour Dynamic Oral Wellness Score gives you a single, easy-to-understand number between 0-100. It’s the quickest way to know exactly where you stand, so you can stop worrying and start smiling.",
       points: [
-        "Simple Metric: One clear number to understand your oral health status.",
-        "Real-time Updates: Score adjusts as you upload new data and follow recommendations.",
-        "Goal Setting: Work towards improving your score with personalized guidance."
+        "Instant Status: Know your oral health standing at a glance.",
+        "Real-Time Feedback: Watch your score rise as you take care of your teeth.",
+        "Clear Goals: A simple target to aim for every day."
       ],
       image: "/images/features/oral_wellness_score.png"
     },
     {
-      title: "Your AI Dental Guide 24/7: Din",
-      description: "Your helpful, always-available AI bot, Din, is here to guide your dental questions and explain your results.\n\nDin is your personal AI oral health guide, ready to chat whenever you have questions about your oral health, DentaSmart insights, or general dental topics. Din provides clear, personalized answers in plain language (not just English), acting as a knowledgeable and supportive friend on your oral health journey.",
+      title: "Your 24/7 Dental Companion",
+      description: "Questions about your teeth don't always happen during office hours.\n\nMeet Din, your AI dental guide. Whether it's 2 AM or 2 PM, Din is ready to answer your questions, explain your results, and offer supportive advice in plain language. You're never alone on your journey to better health.",
       points: [
-        "Instant Answers: Get immediate responses to your dental questions, any time of day.",
-        "Result Explanations: Din can help you understand your X-ray and image analysis reports.",
-        "Supportive Guidance: Receive helpful tips and information to empower your dental decisions."
+        "Always Available: Get answers the moment you need them.",
+        "Friendly Support: A judgment-free zone for all your dental questions.",
+        "Expert Knowledge: Instant access to reliable dental information."
       ],
       image: "/images/features/dr_din_chat.png"
     }
@@ -91,7 +91,8 @@ export default function Features() {
             alt="AI Dental Analysis" 
             className="w-full h-full object-cover object-top md:object-center"
           />
-          <div className="absolute inset-0 bg-white/95 md:bg-white/90" />
+          {/* Heavy White Overlay for Text Readability */}
+          <div className="absolute inset-0 bg-white/95" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto max-w-4xl text-left">
@@ -101,11 +102,11 @@ export default function Features() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-6xl font-light tracking-tight text-black mb-8 leading-[1.1]">
-              The tools you need to <br />
-              <span className="font-normal italic text-primary">take control</span>.
+              Everything you need to <br />
+              <span className="font-normal italic text-primary">stop worrying</span> about your teeth.
             </h1>
             <p className="text-xl md:text-2xl text-black font-normal max-w-2xl mr-auto leading-relaxed">
-              From instant X-ray analysis to 24/7 answers from Din, we give you the power to make confident decisions about your dental care.
+              You shouldn't have to feel anxious or confused about your oral health. We give you the tools to see what your dentist sees, so you can make decisions with total confidence.
             </p>
           </motion.div>
         </div>
@@ -174,16 +175,16 @@ export default function Features() {
             <Lock className="w-8 h-8 text-stone-900" strokeWidth={1.5} />
           </div>
           <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-8">
-            Security & Privacy First
+            Your Privacy is Our Priority
           </h2>
           <p className="text-xl text-stone-600 font-light leading-relaxed mb-12">
-            Your health data is protected by law. We use bank-level encryption and never sell your data to third parties. You own your data, always.
+            You trust us with your health data, and we take that responsibility seriously. We use bank-level encryption to ensure your information stays private, secure, and completely under your control.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
             {[
-              { title: "HIPAA Compliant", desc: "Full regulatory compliance for health data protection." },
-              { title: "Encrypted Storage", desc: "AES-256 encryption for data at rest and in transit." },
-              { title: "Your Data, Your Control", desc: "Export or delete your data anytime with one click." }
+              { title: "HIPAA Compliant", desc: "We meet the highest standards for health data protection." },
+              { title: "Bank-Level Encryption", desc: "Your data is encrypted at rest and in transit." },
+              { title: "You Own Your Data", desc: "Export or delete your information anytime, instantly." }
             ].map((item, idx) => (
               <motion.div 
                 key={idx} 
