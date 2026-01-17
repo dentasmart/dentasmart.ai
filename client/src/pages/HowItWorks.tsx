@@ -16,7 +16,7 @@ export default function HowItWorks() {
       <HowItWorksHero />
 
       {/* 3-Step Visual Process - Editorial Style */}
-      <section className="py-16 bg-white">
+      <section className="pt-12 pb-24 bg-white">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
             {/* Connecting Line (Desktop) */}

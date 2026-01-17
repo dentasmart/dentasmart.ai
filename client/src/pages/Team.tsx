@@ -11,7 +11,7 @@ export default function Team() {
       <Navigation />
 
       {/* Hero Section - Clean & Professional */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
+      <section className="relative min-h-[500px] md:min-h-[600px] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="/images/backgrounds/team-hero.jpg" 
@@ -20,7 +20,7 @@ export default function Team() {
           />
           <div className="absolute inset-0 bg-white/90" />
         </div>
-        <div className="container relative z-10 px-4 mx-auto max-w-5xl text-center">
+        <div className="container relative z-10 px-4 mx-auto max-w-5xl text-center pt-10 md:pt-0">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
