@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
 import { TrendingDown, Users, ShieldCheck } from "lucide-react";
 import { ValueComparisonTable } from "@/components/ValueComparisonTable";
+import { SavingsCalculator } from "@/components/SavingsCalculator";
 import { DownloadCTA } from "@/components/DownloadCTA";
 import { motion } from "framer-motion";
 
@@ -43,7 +44,12 @@ export default function Employers() {
               <Button 
                 size="lg" 
                 variant="outline" 
-                onClick={() => window.location.href = '/pricing#savings-calculator'}
+                onClick={() => {
+                  const element = document.getElementById('savings-calculator');
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
                 className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300"
               >
                 Calculate Savings
@@ -129,43 +135,14 @@ export default function Employers() {
       </section>
 
       {/* ROI - Big Numbers */}
-      <section className="py-32 bg-white">
+      <section id="savings-calculator" className="py-32 bg-white">
         <div className="container px-4 mx-auto max-w-5xl">
-          <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-24 text-center">
+          <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-12 text-center">
             The simplest math you'll do all year
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-24">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center p-12 rounded-3xl bg-stone-50 border border-stone-100 h-full flex flex-col justify-center"
-            >
-              <p className="text-stone-500 font-medium mb-4">Traditional Insurance</p>
-              <div className="text-6xl md:text-7xl font-light text-stone-400 mb-2">~$1,200</div>
-              <p className="text-stone-400 text-sm">per employee family/year</p>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center p-12 rounded-3xl bg-gradient-to-br from-primary to-teal-700 text-white relative overflow-hidden shadow-xl h-full flex flex-col justify-center"
-            >
-              <div className="absolute top-6 left-6 bg-white text-stone-900 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                75% Savings
-              </div>
-              <p className="text-white/70 font-medium mb-4">DentaSmart Benefits</p>
-              <div className="text-6xl md:text-7xl font-light text-white mb-2">~$300</div>
-              <p className="text-white/50 text-sm">per employee family/year</p>
-              <div className="mt-8 inline-block bg-white/10 backdrop-blur-sm rounded-full px-6 py-2 border border-white/20">
-                <span className="text-white font-medium">$25</span>
-                <span className="text-white/70 text-sm ml-2">/ month</span>
-              </div>
-            </motion.div>
+          <div className="mb-24">
+            <SavingsCalculator />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
