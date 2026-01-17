@@ -181,7 +181,7 @@ export function SavingsCalculator() {
               <div className="absolute top-6 right-6 bg-white text-primary px-4 py-2 rounded-full text-sm font-bold shadow-lg">
                 {traditionalTotal > 0 && totalSavings > 0 
                   ? `${Math.round((totalSavings / traditionalTotal) * 100)}% SAVINGS` 
-                  : "N/A"}
+                  : "NO SAVINGS"}
               </div>
 
               <h4 className="text-white/80 font-medium mb-2">DentaSmart Benefits Cost</h4>
@@ -199,7 +199,7 @@ export function SavingsCalculator() {
                       Total Annual Savings
                     </p>
                     <p className="text-3xl md:text-4xl font-bold text-white">
-                      {formatCurrency(totalSavings)}
+                      {totalSavings > 0 ? formatCurrency(totalSavings) : "$0"}
                     </p>
                   </div>
                   <div className="text-right">

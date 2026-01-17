@@ -50,7 +50,7 @@ export default function Employers() {
                     element.scrollIntoView({ behavior: 'smooth' });
                   }
                 }}
-                className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300"
+                className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 cursor-pointer"
               >
                 Calculate Savings
               </Button>
