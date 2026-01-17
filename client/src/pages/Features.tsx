@@ -92,8 +92,8 @@ export default function Features() {
             alt="AI Dental Analysis" 
             className="w-full h-full object-cover object-top md:object-center"
           />
-          {/* Gradient Overlay for Text Readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent md:via-white/60" />
+          {/* Gradient Overlay for Text Readability - Increased Opacity */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-transparent md:via-white/75" />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent md:hidden" />
         </div>
 
@@ -108,12 +108,12 @@ export default function Features() {
               className="text-left max-w-2xl lg:col-span-7 xl:col-span-6"
             >
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
-                Everything you need to <br />
-                <span className="font-normal italic text-primary">stop worrying</span> about your teeth.
+                Stop worrying about <br />
+                <span className="font-normal italic text-primary">your teeth</span>.
               </h1>
               
               <p className="text-xl md:text-2xl text-stone-700 mb-10 font-normal leading-relaxed text-balance">
-                You shouldn't have to feel anxious or confused about your oral health. We give you the tools to see what your dentist sees, so you can make decisions with total confidence.
+                See what your dentist sees. Understand your oral health instantly. Make decisions with total confidence.
               </p>
             </motion.div>
 
@@ -125,7 +125,7 @@ export default function Features() {
       </section>
 
       {/* Feature Deep Dives - Alternating Layout */}
-      <section className="py-24 bg-stone-50">
+      <section className="pt-24 pb-12 bg-stone-50">
         <div className="container px-4 mx-auto max-w-6xl space-y-24">
           
           {features.map((feature, idx) => (
@@ -172,7 +172,7 @@ export default function Features() {
       </section>
 
       {/* User Challenges Carousel */}
-      <section className="py-24 bg-white relative">
+      <section className="pt-0 pb-24 bg-white relative">
         <UserChallengesCarousel />
       </section>
 
