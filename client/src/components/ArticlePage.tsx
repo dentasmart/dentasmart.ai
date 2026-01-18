@@ -1,13 +1,15 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowLeft, CheckCircle2, Share2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { DownloadCTA } from "@/components/DownloadCTA";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 
 interface ArticleProps {
+  id: string;
   title: string;
   category: string;
   readTime: string;
@@ -34,7 +36,12 @@ interface ArticleProps {
   metaDescription: string;
 }
 
-export default function ArticlePage({ article }: { article: ArticleProps }) {
+interface ArticlePageProps {
+  article: ArticleProps;
+  relatedArticles?: ArticleProps[];
+}
+
+export default function ArticlePage({ article, relatedArticles = [] }: ArticlePageProps) {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <Navigation />
@@ -115,6 +122,59 @@ export default function ArticlePage({ article }: { article: ArticleProps }) {
           </motion.div>
         </div>
       </section>
+
+      {/* Related Articles Section */}
+      {relatedArticles.length > 0 && (
+        <section className="py-20 bg-stone-50 border-t border-stone-200">
+          <div className="container px-4 mx-auto max-w-7xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-stone-900 mb-4">Related Articles</h2>
+              <p className="text-lg text-stone-600">More insights to help you understand your oral health.</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {relatedArticles.map((relatedArticle, index) => (
+                <motion.div
+                  key={relatedArticle.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <Link href={`/hub/${relatedArticle.id}`}>
+                    <Card className="h-full hover:shadow-xl transition-all duration-300 border-stone-200 bg-white group cursor-pointer overflow-hidden flex flex-col">
+                      <CardHeader className="pb-4">
+                        <div className="flex justify-between items-start mb-4">
+                          <Badge variant="secondary" className="bg-stone-100 text-stone-600 hover:bg-stone-200">
+                            {relatedArticle.category}
+                          </Badge>
+                          <span className="text-xs font-medium text-stone-400 flex items-center">
+                            <BookOpen className="w-3 h-3 mr-1" />
+                            {relatedArticle.readTime}
+                          </span>
+                        </div>
+                        <CardTitle className="text-xl font-bold text-stone-900 group-hover:text-primary transition-colors leading-tight">
+                          {relatedArticle.title}
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="flex-grow">
+                        <CardDescription className="text-base text-stone-600 line-clamp-3">
+                          {relatedArticle.problem.content}
+                        </CardDescription>
+                      </CardContent>
+                      <CardFooter className="pt-4 border-t border-stone-100 mt-auto">
+                        <span className="text-sm font-medium text-primary flex items-center group-hover:translate-x-1 transition-transform">
+                          Read Article <ArrowRight className="w-4 h-4 ml-1" />
+                        </span>
+                      </CardFooter>
+                    </Card>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <DownloadCTA />
       <Footer />
