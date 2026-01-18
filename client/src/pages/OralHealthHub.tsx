@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import Navigation from "@/components/Navigation";
+import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
 import { useState } from "react";
 import { dentistArticles } from "@/data/dentistArticles";
@@ -36,6 +37,10 @@ export default function OralHealthHub() {
 
   return (
     <div className="min-h-screen bg-background font-sans">
+      <SEO 
+        title="Oral Health Hub" 
+        description="Clear answers to your dental questions. We break down the confusing world of dentistry and insurance into simple, honest guides."
+      />
       <Navigation />
       
       {/* Hero Section - Light Background matching Home Page */}

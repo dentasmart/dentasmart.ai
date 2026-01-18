@@ -8,6 +8,7 @@ import { ArrowRight, Shield, Smartphone, Activity } from "lucide-react";
 import { DownloadCTA } from "@/components/DownloadCTA";
 import { AndroidEarlyAccess } from "@/components/AndroidEarlyAccess";
 import Navigation from "@/components/Navigation";
+import SEO from "@/components/SEO";
 import { useEffect } from "react";
 import { useLocation } from "wouter";
 
@@ -30,6 +31,10 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
+      <SEO 
+        title="Your Personal AI Oral Health Guide" 
+        description="Get instant clarity about your oral health. Upload a photo and get AI-powered insights, personalized plans, and reminders in minutes."
+      />
       <Navigation />
 
       {/* Hero Section - Full Background Image with Overlay */}
@@ -46,7 +51,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent md:hidden" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-20 md:pt-0">
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-32 md:pt-0">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left Column: Text Content */}

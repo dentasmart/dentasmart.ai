@@ -1,5 +1,6 @@
 import { useRoute } from "wouter";
 import ArticlePage from "@/components/ArticlePage";
+import SEO from "@/components/SEO";
 import { dentistArticles } from "@/data/dentistArticles";
 import { insuranceArticles } from "@/data/insuranceArticles";
 import { clinicalArticles } from "@/data/clinicalArticles";
@@ -33,5 +34,13 @@ export default function Article() {
     return <NotFound />;
   }
 
-  return <ArticlePage article={article} relatedArticles={relatedArticles} />;
+  return (
+    <>
+      <SEO 
+        title={article.title} 
+        description={article.metaDescription}
+      />
+      <ArticlePage article={article} relatedArticles={relatedArticles} />
+    </>
+  );
 }
