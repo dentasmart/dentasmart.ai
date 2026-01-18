@@ -39,25 +39,25 @@ export default function OralHealthHub() {
       <Navigation />
       
       {/* Hero Section - Light Background matching Home Page */}
-      <section className="relative min-h-[400px] md:min-h-[500px] flex items-center overflow-hidden">
+      <section className="relative min-h-[500px] md:min-h-[600px] flex items-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/backgrounds/home-hero-lady-smile.jpg" 
-            alt="Woman with healthy smile" 
-            className="w-full h-full object-cover object-center md:object-[80%_20%]"
+            src="/images/backgrounds/hub-hero.jpg" 
+            alt="Dentist explaining treatment to patient" 
+            className="w-full h-full object-cover object-center md:object-right"
           />
-          {/* Gradient Overlay for Text Readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/40 md:via-white/70" />
+          {/* Gradient Overlay for Text Readability - Stronger on left for text */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/20 md:via-white/80" />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent md:hidden" />
         </div>
         
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-20 md:pt-0 text-center">
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-32 md:pt-0 text-left">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto"
+            className="max-w-3xl mr-auto"
           >
             <Badge className="mb-6 bg-primary/10 text-primary hover:bg-primary/20 px-4 py-1.5 text-sm rounded-full border-0 font-medium">
               Oral Health Hub
@@ -67,12 +67,12 @@ export default function OralHealthHub() {
               <span className="font-normal italic text-primary">dental questions</span>.
             </h1>
             
-            <p className="text-xl md:text-2xl text-stone-700 mb-12 font-normal leading-relaxed text-balance max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-stone-700 mb-12 font-normal leading-relaxed text-balance max-w-2xl mr-auto">
               Stop guessing about your teeth. We break down the confusing world of dentistry and insurance into simple, honest guides.
             </p>
 
             {/* Search Bar */}
-            <div className="relative max-w-xl mx-auto mb-12">
+            <div className="relative max-w-xl mr-auto mb-12">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                 <Search className="h-5 w-5 text-stone-400" />
               </div>
@@ -86,7 +86,7 @@ export default function OralHealthHub() {
             </div>
 
             {/* Category Filters */}
-            <div className="flex flex-wrap justify-center gap-3">
+            <div className="flex flex-wrap justify-start gap-3">
               {categories.map((category) => (
                 <Button
                   key={category}
