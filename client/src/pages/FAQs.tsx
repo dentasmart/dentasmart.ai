@@ -124,7 +124,7 @@ export default function FAQs() {
           <div className="absolute inset-0 bg-white/95 md:bg-white/90" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto text-left max-w-4xl pt-10 md:pt-0">
+        <div className="container relative z-10 px-4 mx-auto text-left max-w-4xl pt-32 md:pt-0">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
