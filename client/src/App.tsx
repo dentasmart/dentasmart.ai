@@ -13,7 +13,9 @@ import Employers from "./pages/Employers";
 import Team from "@/pages/Team";
 import OralHealthHub from "@/pages/OralHealthHub";
 import Article from "@/pages/Article";
-import FAQs from "./pages/FAQs";
+import FAQs from "@/pages/FAQs";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import TermsOfService from "@/pages/TermsOfService";
 
 
 function Router() {
@@ -27,7 +29,9 @@ function Router() {
       <Route path="/team" component={Team} />
       <Route path="/hub" component={OralHealthHub} />
       <Route path="/hub/:id" component={Article} />
-      <Route path={"/faqs"} component={FAQs} />
+      <Route path="/faqs" component={FAQs} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/terms-of-service" component={TermsOfService} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
