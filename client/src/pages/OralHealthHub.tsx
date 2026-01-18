@@ -4,6 +4,8 @@ import { ArrowRight, BookOpen, ShieldCheck, Stethoscope } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 const articles = [
   // Dentist Problems
@@ -173,6 +175,7 @@ const articles = [
 export default function OralHealthHub() {
   return (
     <div className="min-h-screen bg-background font-sans">
+      <Navigation />
       {/* Hero Section - Matching Home Page Style */}
       <section className="relative min-h-[400px] md:min-h-[500px] flex items-center overflow-hidden">
         {/* Background Image */}
@@ -279,6 +282,7 @@ export default function OralHealthHub() {
           </Link>
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
