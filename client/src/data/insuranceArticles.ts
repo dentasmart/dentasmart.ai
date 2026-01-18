@@ -223,7 +223,7 @@ export const insuranceArticles = [
     metaDescription: "Insurance covers cleanings, but is that enough? Discover the prevention gap in dental coverage and how to fill it.",
     problem: {
       heading: "The Problem: The 'Cleanings Only' Mindset",
-      content: "Most plans cover two cleanings a year at 100%. We're trained to think that if we go to those two appointments, we're 'preventing' problems. But insurance rarely covers the tools needed for true daily prevention—like high-quality electric toothbrushes, specialized rinses, or more frequent monitoring."
+      content: "Most plans cover two cleanings a year at 100%. We're trained to think that if we go to those two appointments, we're 'preventing' problems. But insurance rarely covers the tools needed for true daily prevention like high-quality electric toothbrushes, specialized rinses, or more frequent monitoring."
     },
     empathy: {
       heading: "Why This Backfires",
