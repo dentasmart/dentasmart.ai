@@ -20,7 +20,7 @@ export default function Team() {
           />
           <div className="absolute inset-0 bg-white/90" />
         </div>
-        <div className="container relative z-10 px-4 mx-auto max-w-5xl text-center pt-32 md:pt-0">
+        <div className="container relative z-10 px-4 mx-auto max-w-5xl text-left pt-32 md:pt-0">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -30,7 +30,7 @@ export default function Team() {
               Experts dedicated to <br />
               <span className="font-normal italic text-primary">your smile</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-stone-700 max-w-3xl mx-auto font-normal leading-relaxed">
+            <p className="text-xl md:text-2xl text-stone-700 max-w-3xl mr-auto font-normal leading-relaxed">
               We're a team of dentists, engineers, and innovators united by one goal: to make dental care simple, transparent, and accessible for everyone.
             </p>
           </motion.div>
