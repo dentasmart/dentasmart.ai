@@ -50,13 +50,13 @@ export default function ArticlePage({ article, relatedArticles = [] }: ArticlePa
 
       {/* Article Header */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-[#E6F4F6] border-b border-primary/10">
-        <div className="container px-4 mx-auto max-w-3xl text-center">
+        <div className="container px-4 mx-auto max-w-3xl text-left">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="flex items-center justify-start gap-3 mb-6">
               <Badge variant="secondary" className="bg-white/80 border border-primary/10 text-stone-600 hover:bg-white">
                 {article.category}
               </Badge>
@@ -66,7 +66,7 @@ export default function ArticlePage({ article, relatedArticles = [] }: ArticlePa
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-stone-900 mb-8 leading-tight tracking-tight">
               {article.title}
             </h1>
-            <div className="flex items-center justify-center gap-4">
+            <div className="flex items-center justify-start gap-4">
               <Link href="/hub">
                 <Button variant="ghost" className="text-stone-500 hover:text-stone-900 hover:bg-white/50 rounded-full">
                   <ArrowLeft className="w-4 h-4 mr-2" /> Back to Oral Health Hub
