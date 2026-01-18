@@ -103,7 +103,7 @@ export default function Home() {
       </section>
 
       {/* Video Section - StoryBrand Aligned */}
-      <section className="py-12 bg-accent/5 border-b border-border">
+      <section id="video-section" className="py-12 bg-accent/5 border-b border-border">
         <div className="container px-4 mx-auto max-w-5xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
