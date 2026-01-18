@@ -5,7 +5,8 @@ import { useState } from "react";
 import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
 import faqChallenges from "@/data/faqChallenges.json";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
 import { DownloadCTA } from "@/components/DownloadCTA";
 
 // Map FAQ challenge IDs to their image paths
@@ -29,6 +30,8 @@ const faqChallengeImages: Record<number, string> = {
 
 export default function FAQs() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   const faqCategories = [
     {
@@ -87,6 +90,25 @@ export default function FAQs() {
     },
   ];
 
+  // Flatten FAQs for search
+  const allFaqs = faqCategories.flatMap(cat => 
+    cat.faqs.map(faq => ({ ...faq, category: cat.title }))
+  );
+
+  // Filter logic
+  const filteredFaqs = allFaqs.filter(faq => {
+    const matchesSearch = faq.q.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          faq.a.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory = selectedCategory === "All" || faq.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
+
+  // Group filtered FAQs back by category for display (if "All" is selected)
+  // Or display as a single list if searching/filtering specific category
+  const displayCategories = selectedCategory === "All" && !searchQuery 
+    ? faqCategories 
+    : [{ title: searchQuery ? "Search Results" : selectedCategory, faqs: filteredFaqs }];
+
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
       <Navigation />
@@ -112,9 +134,52 @@ export default function FAQs() {
               Get answers, <br />
               <span className="font-normal italic text-primary">not confusion</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-black font-normal max-w-2xl mr-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-black font-normal max-w-2xl mr-auto leading-relaxed mb-12">
               You have questions about your dental health and our app. We have clear, simple answers. No jargon, just the facts.
             </p>
+
+            {/* Search Bar */}
+            <div className="relative max-w-xl mr-auto mb-12">
+              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                <Search className="h-5 w-5 text-stone-400" />
+              </div>
+              <Input
+                type="text"
+                placeholder="Search for a question (e.g., 'price', 'privacy', 'accuracy')..."
+                className="pl-12 py-6 text-lg rounded-full bg-white border-stone-200 text-stone-900 placeholder:text-stone-400 focus:border-primary shadow-lg transition-all"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+
+            {/* Category Filters */}
+            <div className="flex flex-wrap justify-start gap-3">
+              <Button
+                variant={selectedCategory === "All" ? "default" : "outline"}
+                className={`rounded-full px-6 ${
+                  selectedCategory === "All"
+                    ? "bg-primary text-white hover:bg-primary/90 border-primary shadow-md" 
+                    : "bg-white text-stone-600 border-stone-200 hover:bg-stone-50 hover:text-stone-900"
+                }`}
+                onClick={() => setSelectedCategory("All")}
+              >
+                All
+              </Button>
+              {faqCategories.map((cat) => (
+                <Button
+                  key={cat.title}
+                  variant={selectedCategory === cat.title ? "default" : "outline"}
+                  className={`rounded-full px-6 ${
+                    selectedCategory === cat.title 
+                      ? "bg-primary text-white hover:bg-primary/90 border-primary shadow-md" 
+                      : "bg-white text-stone-600 border-stone-200 hover:bg-stone-50 hover:text-stone-900"
+                  }`}
+                  onClick={() => setSelectedCategory(cat.title)}
+                >
+                  {cat.title}
+                </Button>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
@@ -132,19 +197,22 @@ export default function FAQs() {
       {/* FAQs */}
       <section className="py-24 bg-white">
         <div className="container px-4 mx-auto max-w-3xl">
-          {faqCategories.map((category, catIdx) => (
-            <div key={catIdx} className="mb-20 last:mb-0">
-              <h2 className="text-3xl font-light tracking-tight text-stone-900 mb-8 pb-4 border-b border-stone-200">
-                {category.title}
-              </h2>
-              <div className="space-y-4">
-                {category.faqs.map((faq, idx) => {
-                  const globalIdx = catIdx * 100 + idx;
-                  const isOpen = openIndex === globalIdx;
-                  return (
-                    <div key={idx} className="group">
+          {displayCategories.map((category, catIdx) => (
+            category.faqs.length > 0 ? (
+              <div key={catIdx} className="mb-20 last:mb-0">
+                <h2 className="text-3xl font-light tracking-tight text-stone-900 mb-8 pb-4 border-b border-stone-200">
+                  {category.title}
+                </h2>
+                <div className="space-y-4">
+                  {category.faqs.map((faq, idx) => {
+                    // Create a unique ID based on the question text to avoid index collisions when filtering
+                    const uniqueId = faq.q.replace(/\s+/g, '-').toLowerCase();
+                    const isOpen = openIndex === (uniqueId as any); 
+                    
+                    return (
+                      <div key={idx} className="group">
                       <button
-                        onClick={() => setOpenIndex(isOpen ? null : globalIdx)}
+                        onClick={() => setOpenIndex(isOpen ? null : uniqueId as any)}
                         className="w-full flex items-start justify-between py-6 text-left focus:outline-none"
                       >
                         <h3 className="text-xl font-medium text-stone-900 pr-8 group-hover:text-stone-600 transition-colors">
@@ -176,6 +244,7 @@ export default function FAQs() {
                 })}
               </div>
             </div>
+            ) : null
           ))}
         </div>
       </section>
