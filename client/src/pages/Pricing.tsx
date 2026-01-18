@@ -49,7 +49,7 @@ export default function Pricing() {
               <Button 
                 size="lg" 
                 className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0 cursor-pointer"
-                onClick={() => document.getElementById('pricing-plans')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => window.location.href = '/#download-cta'}
               >
                 Start Your Free Trial
               </Button>
@@ -57,9 +57,9 @@ export default function Pricing() {
                 size="lg" 
                 variant="outline"
                 className="bg-white/80 text-stone-700 hover:bg-white hover:text-primary border-stone-200 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 cursor-pointer"
-                onClick={() => window.location.href = 'mailto:sales@dentasmart.com'}
+                onClick={() => window.location.href = '/#download-cta'}
               >
-                Contact Sales
+                Get Second Opinion
               </Button>
             </div>
           </motion.div>

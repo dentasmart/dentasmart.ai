@@ -42,14 +42,7 @@ export default function Team() {
               >
                 Get Your Oral Health Score
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="bg-white/80 text-stone-700 hover:bg-white hover:text-primary border-stone-200 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 cursor-pointer"
-                onClick={() => document.getElementById('values-section')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Read Our Values
-              </Button>
+              
             </div>
           </motion.div>
           </div>
