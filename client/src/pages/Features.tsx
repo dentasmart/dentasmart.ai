@@ -97,7 +97,7 @@ export default function Features() {
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-10 md:pt-0">
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-32 md:pt-0">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left Column: Text Content */}

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+
 import { Link } from "wouter";
 import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,8 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { DownloadCTA } from "@/components/DownloadCTA";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
+import { motion } from "framer-motion";
+
 
 interface ArticleProps {
   id: string;

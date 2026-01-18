@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function HowItWorksHero() {
   return (
-    <section className="relative bg-white overflow-hidden h-[80vh] md:h-[700px] pt-24 md:pt-0">
+    <section className="relative bg-white overflow-hidden h-[80vh] md:h-[700px] pt-32 md:pt-0">
       {/* Full Background Image for All Screens */}
       <div className="absolute inset-0 z-0">
         <img 
@@ -18,7 +18,7 @@ export default function HowItWorksHero() {
         <div className="flex flex-col justify-center h-full">
           
           {/* Text Content - Left Aligned */}
-          <div className="w-full md:w-1/2 pt-20 md:pt-0">
+          <div className="w-full md:w-1/2 pt-0 md:pt-0">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
