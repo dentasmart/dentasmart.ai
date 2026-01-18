@@ -40,7 +40,7 @@ export default function ArticlePage({ article }: { article: ArticleProps }) {
       <Navigation />
 
       {/* Article Header */}
-      <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-stone-50 border-b border-stone-100">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-[#E6F4F6] border-b border-primary/10">
         <div className="container px-4 mx-auto max-w-3xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -48,7 +48,7 @@ export default function ArticlePage({ article }: { article: ArticleProps }) {
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center justify-center gap-3 mb-6">
-              <Badge variant="secondary" className="bg-white border border-stone-200 text-stone-600 hover:bg-stone-50">
+              <Badge variant="secondary" className="bg-white/80 border border-primary/10 text-stone-600 hover:bg-white">
                 {article.category}
               </Badge>
               <span className="text-sm font-medium text-stone-400">•</span>
@@ -59,7 +59,7 @@ export default function ArticlePage({ article }: { article: ArticleProps }) {
             </h1>
             <div className="flex items-center justify-center gap-4">
               <Link href="/hub">
-                <Button variant="ghost" className="text-stone-500 hover:text-stone-900 hover:bg-stone-100 rounded-full">
+                <Button variant="ghost" className="text-stone-500 hover:text-stone-900 hover:bg-white/50 rounded-full">
                   <ArrowLeft className="w-4 h-4 mr-2" /> Back to Oral Health Hub
                 </Button>
               </Link>

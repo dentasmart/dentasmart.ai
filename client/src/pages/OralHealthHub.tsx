@@ -38,10 +38,19 @@ export default function OralHealthHub() {
     <div className="min-h-screen bg-background font-sans">
       <Navigation />
       
-      {/* Hero Section - Dark Background matching Footer */}
-      <section className="relative min-h-[400px] md:min-h-[500px] flex items-center overflow-hidden bg-stone-900 text-white">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10 bg-[url('/images/backgrounds/grid-pattern.png')] bg-repeat" />
+      {/* Hero Section - Light Background matching Home Page */}
+      <section className="relative min-h-[400px] md:min-h-[500px] flex items-center overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/backgrounds/home-hero-lady-smile.jpg" 
+            alt="Woman with healthy smile" 
+            className="w-full h-full object-cover object-center md:object-[80%_20%]"
+          />
+          {/* Gradient Overlay for Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/40 md:via-white/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent md:hidden" />
+        </div>
         
         <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-20 md:pt-0 text-center">
           <motion.div
@@ -50,15 +59,15 @@ export default function OralHealthHub() {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto"
           >
-            <Badge className="mb-6 bg-primary/20 text-primary hover:bg-primary/30 px-4 py-1.5 text-sm rounded-full border-0 font-medium">
+            <Badge className="mb-6 bg-primary/10 text-primary hover:bg-primary/20 px-4 py-1.5 text-sm rounded-full border-0 font-medium">
               Oral Health Hub
             </Badge>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-8 leading-[1.1]">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
               Clear answers to your <br />
-              <span className="text-primary">dental questions</span>.
+              <span className="font-normal italic text-primary">dental questions</span>.
             </h1>
             
-            <p className="text-xl md:text-2xl text-stone-300 mb-12 font-normal leading-relaxed text-balance max-w-2xl mx-auto">
+            <p className="text-xl md:text-2xl text-stone-700 mb-12 font-normal leading-relaxed text-balance max-w-2xl mx-auto">
               Stop guessing about your teeth. We break down the confusing world of dentistry and insurance into simple, honest guides.
             </p>
 
@@ -70,7 +79,7 @@ export default function OralHealthHub() {
               <Input
                 type="text"
                 placeholder="Search for a topic (e.g., 'cavity', 'insurance', 'pain')..."
-                className="pl-12 py-6 text-lg rounded-full bg-white/10 border-white/20 text-white placeholder:text-stone-400 focus:bg-white/20 focus:border-primary transition-all"
+                className="pl-12 py-6 text-lg rounded-full bg-white border-stone-200 text-stone-900 placeholder:text-stone-400 focus:border-primary shadow-lg transition-all"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -84,8 +93,8 @@ export default function OralHealthHub() {
                   variant={selectedCategory === category ? "default" : "outline"}
                   className={`rounded-full px-6 ${
                     selectedCategory === category 
-                      ? "bg-primary text-white hover:bg-primary/90 border-primary" 
-                      : "bg-transparent text-stone-300 border-stone-600 hover:bg-white/10 hover:text-white"
+                      ? "bg-primary text-white hover:bg-primary/90 border-primary shadow-md" 
+                      : "bg-white text-stone-600 border-stone-200 hover:bg-stone-50 hover:text-stone-900"
                   }`}
                   onClick={() => setSelectedCategory(category)}
                 >
