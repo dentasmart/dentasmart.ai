@@ -57,7 +57,7 @@ export default function OralHealthHub() {
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent md:hidden" />
         </div>
         
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-32 md:pt-0 text-left">
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-32 text-left">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
