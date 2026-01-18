@@ -31,7 +31,8 @@ export default function Pricing() {
           <div className="absolute inset-0 bg-white/95 md:bg-white/90" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-4xl text-left pt-32 md:pt-0">
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl text-left pt-32 md:pt-0">
+          <div className="max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -45,6 +46,7 @@ export default function Pricing() {
               Stop worrying about surprise dental bills. Get year-round monitoring and expert guidance for a simple, transparent price.
             </p>
           </motion.div>
+          </div>
         </div>
       </section>
 
