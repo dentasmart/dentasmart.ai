@@ -60,7 +60,7 @@ export default function ArticlePage({ article }: { article: ArticleProps }) {
             <div className="flex items-center justify-center gap-4">
               <Link href="/hub">
                 <Button variant="ghost" className="text-stone-500 hover:text-stone-900 hover:bg-stone-100 rounded-full">
-                  <ArrowLeft className="w-4 h-4 mr-2" /> Back to Hub
+                  <ArrowLeft className="w-4 h-4 mr-2" /> Back to Oral Health Hub
                 </Button>
               </Link>
             </div>
