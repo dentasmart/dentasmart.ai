@@ -42,16 +42,33 @@ export default function Pricing() {
               Peace of mind for less than <br />
               <span className="font-normal italic text-primary">a single filling</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-black font-normal max-w-2xl mr-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-black font-normal max-w-2xl mr-auto leading-relaxed mb-10">
               Stop worrying about surprise dental bills. Get year-round monitoring and expert guidance for a simple, transparent price.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-start">
+              <Button 
+                size="lg" 
+                className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0 cursor-pointer"
+                onClick={() => document.getElementById('pricing-plans')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Start Your Free Trial
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="bg-white/80 text-stone-700 hover:bg-white hover:text-primary border-stone-200 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 cursor-pointer"
+                onClick={() => window.location.href = 'mailto:sales@dentasmart.com'}
+              >
+                Contact Sales
+              </Button>
+            </div>
           </motion.div>
           </div>
         </div>
       </section>
 
       {/* Plan Toggle - Minimalist */}
-      <section className="py-12 bg-white">
+      <section id="pricing-plans" className="py-12 bg-white">
         <div className="container flex justify-center">
           <div className="bg-accent/10 p-1 rounded-full inline-flex shadow-inner">
             <button

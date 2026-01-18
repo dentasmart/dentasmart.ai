@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 export default function HowItWorksHero() {
   return (
@@ -29,9 +30,26 @@ export default function HowItWorksHero() {
                 See what your dentist sees <br />
                 <span className="font-normal italic text-primary">in minutes</span>.
               </h1>
-              <p className="text-xl md:text-2xl text-stone-700 font-normal leading-relaxed mb-8">
+              <p className="text-xl md:text-2xl text-stone-700 font-normal leading-relaxed mb-10">
                 No medical degree required. Just snap a photo, and let our AI translate the confusing details into a clear plan you can actually understand.
               </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-start">
+                <Button 
+                  size="lg" 
+                  className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0 cursor-pointer"
+                  onClick={() => document.getElementById('download-cta')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Start Your Scan
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  className="bg-white/80 text-stone-700 hover:bg-white hover:text-primary border-stone-200 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 cursor-pointer"
+                  onClick={() => document.getElementById('steps-section')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Watch the Video
+                </Button>
+              </div>
             </motion.div>
           </div>
 

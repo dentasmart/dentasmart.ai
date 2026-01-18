@@ -31,16 +31,33 @@ export default function Team() {
               Experts dedicated to <br />
               <span className="font-normal italic text-primary">your smile</span>.
             </h1>
-            <p className="text-xl md:text-2xl text-stone-700 max-w-3xl mr-auto font-normal leading-relaxed">
+            <p className="text-xl md:text-2xl text-stone-700 max-w-3xl mr-auto font-normal leading-relaxed mb-10">
               We're a team of dentists, engineers, and innovators united by one goal: to make dental care simple, transparent, and accessible for everyone.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-start">
+              <Button 
+                size="lg" 
+                className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0 cursor-pointer"
+                onClick={() => document.getElementById('download-cta')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Get Your Oral Health Score
+              </Button>
+              <Button 
+                size="lg" 
+                variant="outline"
+                className="bg-white/80 text-stone-700 hover:bg-white hover:text-primary border-stone-200 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 cursor-pointer"
+                onClick={() => document.getElementById('values-section')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Read Our Values
+              </Button>
+            </div>
           </motion.div>
           </div>
         </div>
       </section>
 
       {/* Values Section */}
-      <section className="py-16 bg-white border-b border-border/50">
+      <section id="values-section" className="py-16 bg-white border-b border-border/50">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[

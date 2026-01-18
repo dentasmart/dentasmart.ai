@@ -4,6 +4,7 @@ import { DownloadCTA } from "@/components/DownloadCTA";
 import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
 import { Lock, Check } from "lucide-react";
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 
 export default function Features() {
   const features = [
@@ -115,6 +116,23 @@ export default function Features() {
               <p className="text-xl md:text-2xl text-stone-700 mb-10 font-normal leading-relaxed text-balance">
                 See what your dentist sees. Understand your oral health instantly. Make decisions with total confidence.
               </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-start">
+                <Button 
+                  size="lg" 
+                  className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0 cursor-pointer"
+                  onClick={() => document.getElementById('download-cta')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  Get Your Free Analysis
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  className="bg-white/80 text-stone-700 hover:bg-white hover:text-primary border-stone-200 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 cursor-pointer"
+                  onClick={() => document.getElementById('feature-deep-dives')?.scrollIntoView({ behavior: 'smooth' })}
+                >
+                  View Sample Report
+                </Button>
+              </div>
             </motion.div>
 
             {/* Right Column: Empty to let image show through */}
@@ -125,7 +143,7 @@ export default function Features() {
       </section>
 
       {/* Feature Deep Dives - Alternating Layout */}
-      <section className="pt-24 pb-24 bg-white">
+      <section id="feature-deep-dives" className="pt-24 pb-24 bg-white">
         <div className="container px-4 mx-auto max-w-6xl space-y-24">
           
           {features.map((feature, idx) => (
