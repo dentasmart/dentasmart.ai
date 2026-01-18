@@ -10,7 +10,9 @@ import HowItWorks from "./pages/HowItWorks";
 import Features from "./pages/Features";
 import Pricing from "./pages/Pricing";
 import Employers from "./pages/Employers";
-import Team from "./pages/Team";
+import Team from "@/pages/Team";
+import OralHealthHub from "@/pages/OralHealthHub";
+import Article from "@/pages/Article";
 import FAQs from "./pages/FAQs";
 
 
@@ -22,7 +24,9 @@ function Router() {
       <Route path={"/features"} component={Features} />
       <Route path={"/pricing"} component={Pricing} />
       <Route path={"/employers"} component={Employers} />
-      <Route path={"/team"} component={Team} />
+      <Route path="/team" component={Team} />
+      <Route path="/hub" component={OralHealthHub} />
+      <Route path="/hub/:id" component={Article} />
       <Route path={"/faqs"} component={FAQs} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}

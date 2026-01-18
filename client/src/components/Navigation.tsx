@@ -25,6 +25,7 @@ export default function Navigation() {
     { label: "Pricing", href: "/pricing" },
     { label: "Employers", href: "/employers" },
     { label: "Team", href: "/team" },
+    { label: "Blog", href: "/hub" },
     { label: "FAQs", href: "/faqs" },
   ];
 
