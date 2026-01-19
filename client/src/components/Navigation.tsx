@@ -48,7 +48,7 @@ export default function Navigation() {
       >
         <div className="container flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex flex-col items-start gap-1 group z-50 relative">
+          <Link href="/" className="flex flex-col items-center gap-1 group z-50 relative">
             <img
               src="/images/logo.png"
               alt="DentaSmart Logo"

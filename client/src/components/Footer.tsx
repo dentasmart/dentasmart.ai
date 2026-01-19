@@ -9,7 +9,7 @@ export default function Footer() {
           
           {/* Brand & StoryBrand Overview - Spans 5 columns */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="flex flex-col items-start gap-4">
+            <div className="flex flex-col items-center gap-4">
               <img 
                 src="/images/logo.png" 
                 alt="DentaSmart Logo" 
