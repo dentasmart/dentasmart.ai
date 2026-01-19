@@ -5,11 +5,11 @@ export default function Footer() {
   return (
     <footer className="bg-[#E6F4F6] text-black py-12 border-t border-primary/10">
       <div className="container px-4 mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-8">
+       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-8">
           
           {/* Brand & StoryBrand Overview - Spans 5 columns */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="flex flex-col items-center gap-4">
+            <div className="flex flex-col items-center gap-4 w-fit">
               <img 
                 src="/images/logo.png" 
                 alt="DentaSmart Logo" 
