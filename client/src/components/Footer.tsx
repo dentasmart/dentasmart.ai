@@ -3,9 +3,9 @@ import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#E6F4F6] text-black py-20 border-t border-primary/10">
+    <footer className="bg-[#E6F4F6] text-black py-12 border-t border-primary/10">
       <div className="container px-4 mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-8">
           
           {/* Brand & StoryBrand Overview - Spans 5 columns */}
           <div className="lg:col-span-5 space-y-8">
@@ -124,7 +124,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-primary/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="border-t border-primary/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-black text-sm font-light">
             © 2026 DentaSmart. All rights reserved.
           </p>
