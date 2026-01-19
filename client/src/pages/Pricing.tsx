@@ -7,9 +7,11 @@ import { Check } from "lucide-react";
 import { ValueComparisonTable } from "@/components/ValueComparisonTable";
 import { DownloadCTA } from "@/components/DownloadCTA";
 import { motion } from "framer-motion";
+import { WaitlistPopup } from "@/components/WaitlistPopup";
 
 export default function Pricing() {
   const [planType, setPlanType] = useState<"individual" | "family">("individual");
+  const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
 
   // Helper to calculate daily price
   const getDailyPrice = (yearlyPrice: number) => {
@@ -145,7 +147,10 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <Button className="w-full bg-primary hover:bg-primary/90 text-white rounded-full py-6 text-lg font-medium transition-all duration-300 shadow-lg">
+              <Button 
+                className="w-full bg-primary hover:bg-primary/90 text-white rounded-full py-6 text-lg font-medium transition-all duration-300 shadow-lg"
+                onClick={() => window.location.href = '/#download-cta'}
+              >
                 Start Free Trial
               </Button>
             </motion.div>
@@ -189,7 +194,11 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <Button variant="outline" className="w-full border-primary/20 text-primary hover:bg-blue-50 rounded-full py-6 text-lg font-medium transition-all duration-300">
+              <Button 
+                variant="outline" 
+                className="w-full border-primary/20 text-primary hover:bg-blue-50 rounded-full py-6 text-lg font-medium transition-all duration-300"
+                onClick={() => window.location.href = '/#download-cta'}
+              >
                 Get Second Opinion
               </Button>
             </motion.div>
@@ -241,7 +250,10 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
-              <Button className="w-full bg-white text-primary hover:bg-blue-50 rounded-full py-6 text-lg font-medium transition-all duration-300 shadow-lg">
+              <Button 
+                className="w-full bg-white text-primary hover:bg-blue-50 rounded-full py-6 text-lg font-medium transition-all duration-300 shadow-lg"
+                onClick={() => setIsWaitlistOpen(true)}
+              >
                 Join Waitlist
               </Button>
             </motion.div>
@@ -249,6 +261,8 @@ export default function Pricing() {
           </div>
         </div>
       </section>
+
+      <WaitlistPopup isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
 
       {/* User Challenges Carousel */}
       <section className="py-24 bg-stone-100">
