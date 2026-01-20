@@ -132,13 +132,37 @@ export default function Home() {
                 }}
               >
                 <img 
-                  src="/images/video-thumbnail.jpg" 
+                  src="/images/narrator-thumbnail.png" 
                   alt="DentaSmart Video Thumbnail" 
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-black/20 flex items-center justify-center group-hover:bg-black/30 transition-colors">
-                  <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                    <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-white border-b-[12px] border-b-transparent ml-1"></div>
+                
+                {/* Overlay Content */}
+                <div className="absolute inset-0 flex flex-col justify-between p-6 md:p-10">
+                  {/* Top Left: Headline Box */}
+                  <div className="bg-primary/90 backdrop-blur-sm rounded-xl p-6 max-w-md shadow-lg">
+                    <h3 className="text-white text-2xl md:text-3xl font-bold leading-tight">
+                      Stop guessing about your oral health.
+                    </h3>
+                    <p className="text-white/90 mt-2 text-lg font-medium">
+                      Get instant clarity today.
+                    </p>
+                  </div>
+
+                  {/* Bottom Right: Logo */}
+                  <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8">
+                    <img 
+                      src="/images/logo.png" 
+                      alt="DentaSmart Logo" 
+                      className="h-8 md:h-10 w-auto drop-shadow-md bg-white/90 rounded-lg px-3 py-1"
+                    />
+                  </div>
+
+                  {/* Center: Play Button */}
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform pointer-events-auto">
+                      <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-white border-b-[12px] border-b-transparent ml-1"></div>
+                    </div>
                   </div>
                 </div>
               </div>
