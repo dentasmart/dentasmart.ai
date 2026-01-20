@@ -11,7 +11,7 @@ Last updated June 12, 2025
 ## Agreement to Our Legal Terms
 
 We are DentaSmart ("Company," "we," "us," "our").
-We operate the website dentasmart.ai, as well as any other related products and services that refer or link to these legal terms (the "Legal Terms") (collectively, the "Services"). You can contact us by email at support@dentasmart.ai or by mail at 251 Little Falls Drive, Wilmington, DE 19808, United States.
+We operate the website dentasmart.ai, as well as any other related products and services that refer or link to these legal terms (the "Legal Terms") (collectively, the "Services"). You can contact us by email at support@dentasmart.ai.
 
 These Legal Terms constitute a legally binding agreement made between you, whether personally or on behalf of an entity (“you”), and concerning your access to and use of the Services. You agree that by accessing the Services, you have read, understood, and agreed to be bound by all of these Legal Terms. **IF YOU DO NOT AGREE WITH ALL OF THESE LEGAL TERMS, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE SERVICES AND YOU MUST DISCONTINUE USE IMMEDIATELY.**
 
