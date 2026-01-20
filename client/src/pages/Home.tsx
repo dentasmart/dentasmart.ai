@@ -138,23 +138,23 @@ export default function Home() {
                 />
                 
                 {/* Overlay Content */}
-                <div className="absolute inset-0 flex flex-col justify-between p-6 md:p-10">
+                <div className="absolute inset-0 flex flex-col justify-between p-4 md:p-10 items-start">
                   {/* Top Left: Headline Box */}
-                  <div className="bg-primary/90 backdrop-blur-sm rounded-xl p-6 max-w-md shadow-lg">
-                    <h3 className="text-white text-2xl md:text-3xl font-bold leading-tight">
+                  <div className="bg-primary/90 backdrop-blur-sm rounded-xl p-4 md:p-6 max-w-[70%] md:max-w-md shadow-lg">
+                    <h3 className="text-white text-lg md:text-3xl font-bold leading-tight">
                       Stop guessing about your oral health.
                     </h3>
-                    <p className="text-white/90 mt-2 text-lg font-medium">
+                    <p className="text-white/90 mt-1 md:mt-2 text-sm md:text-lg font-medium">
                       Get instant clarity today.
                     </p>
                   </div>
 
                   {/* Bottom Right: Logo */}
-                  <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8">
+                  <div className="absolute bottom-4 right-4 md:bottom-8 md:right-8">
                     <img 
                       src="/images/logo.png" 
                       alt="DentaSmart Logo" 
-                      className="h-8 md:h-10 w-auto drop-shadow-md bg-white/90 rounded-lg px-3 py-1"
+                      className="h-6 md:h-10 w-auto drop-shadow-md bg-white/90 rounded-lg px-2 py-1 md:px-3 md:py-1"
                     />
                   </div>
 
