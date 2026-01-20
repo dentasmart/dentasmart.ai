@@ -160,10 +160,10 @@ export default function Home() {
 
                   {/* Center: Play Button */}
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="w-20 h-20 rounded-full shadow-lg group-hover:scale-110 transition-transform pointer-events-auto">
-                      <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-lg">
+                    <div className="w-20 h-20 group-hover:scale-110 transition-transform pointer-events-auto">
+                      <svg viewBox="0 0 100 100" className="w-full h-full filter drop-shadow-lg">
                         <circle cx="50" cy="50" r="48" fill="#DC2626" stroke="white" strokeWidth="4" />
-                        <path d="M40 30 L70 50 L40 70 Z" fill="white" />
+                        <path d="M42 32 L68 50 L42 68 Z" fill="white" />
                       </svg>
                     </div>
                   </div>
