@@ -61,7 +61,7 @@ export default function Pricing() {
                 className="bg-white/80 text-stone-700 hover:bg-white hover:text-primary border-stone-200 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 cursor-pointer"
                 onClick={() => window.location.href = '/#download-cta'}
               >
-                Get Second Opinion
+                Get Second Review
               </Button>
             </div>
           </motion.div>
@@ -138,7 +138,7 @@ export default function Pricing() {
                   "Din 24/7 support",
                   "Secure Dental History",
                   "Share with dentist",
-                  "Includes Second Opinion",
+                  "Includes Second Review",
                   planType === "family" && "Up to 4 family members",
                 ].filter(Boolean).map((feature, idx) => (
                   <li key={idx} className="flex items-center text-black font-light text-sm">
@@ -155,7 +155,7 @@ export default function Pricing() {
               </Button>
             </motion.div>
 
-            {/* Second Opinion Plan (formerly Consult) */}
+            {/* Second Review Plan (formerly Consult) */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -164,7 +164,7 @@ export default function Pricing() {
               className="bg-white rounded-3xl p-10 border border-blue-100 hover:shadow-xl transition-all duration-500 flex flex-col relative overflow-hidden"
             >
               <div className="mb-8">
-                <h3 className="text-2xl font-medium text-black mb-2">Second Opinion</h3>
+                <h3 className="text-2xl font-medium text-black mb-2">Second Review</h3>
                 <p className="text-black text-xs font-bold uppercase tracking-widest">One-Time</p>
               </div>
               <div className="mb-8">
@@ -199,7 +199,7 @@ export default function Pricing() {
                 className="w-full border-primary/20 text-primary hover:bg-blue-50 rounded-full py-6 text-lg font-medium transition-all duration-300"
                 onClick={() => window.location.href = '/#download-cta'}
               >
-                Get Second Opinion
+                Get Second Review
               </Button>
             </motion.div>
 
@@ -241,7 +241,7 @@ export default function Pricing() {
                   "75,000+ Dentists Network",
                   "20-60% savings on procedures",
                   "Buy Now, Pay Later available",
-                  "Includes Second Opinion",
+                  "Includes Second Review",
                   planType === "family" && "Up to 4 family members",
                 ].filter(Boolean).map((feature, idx) => (
                   <li key={idx} className="flex items-center text-white font-light text-sm">
@@ -285,7 +285,7 @@ export default function Pricing() {
                   <tr className="border-b border-blue-200 bg-blue-100/50">
                     <th className="text-left py-5 px-6 w-1/4 font-semibold text-primary sticky left-0 bg-blue-50 backdrop-blur-sm z-10">Feature</th>
                     <th className="text-center py-5 px-4 w-1/4 font-semibold text-primary">Insights</th>
-                    <th className="text-center py-5 px-4 w-1/4 font-semibold text-primary">Second Opinion</th>
+                    <th className="text-center py-5 px-4 w-1/4 font-semibold text-primary">Second Review</th>
                     <th className="text-center py-5 px-4 w-1/4 font-semibold text-white bg-primary">Benefits</th>
                   </tr>
                 </thead>
@@ -344,7 +344,7 @@ export default function Pricing() {
               { q: "Is there a waiting period?", a: "No. Unlike traditional insurance, DentaSmart benefits start immediately." },
               { q: "Does it cover pre-existing conditions?", a: "Yes. We don't exclude pre-existing conditions. You get full benefits from day one." },
               { q: "How does the family plan work?", a: "The family plan covers up to 4 members. You can add more members for a small additional fee." },
-              { q: "What's the difference between Insights and Second Opinion?", a: "Insights is for ongoing monthly monitoring and wellness tracking. Second Opinion is a one-time service for a specific treatment plan comparison." },
+              { q: "What's the difference between Insights and Second Review?", a: "Insights is for ongoing monthly monitoring and wellness tracking. Second Review is a one-time service for a specific treatment plan comparison." },
               { q: "Do you offer family plans?", a: "Yes. All our plans offer family options to cover your loved ones. You can easily add family members during signup or from your account settings." },
             ].map((faq, idx) => (
               <motion.div 

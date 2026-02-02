@@ -52,7 +52,7 @@ export function ValueComparisonTable() {
       insurance: "Not available" 
     },
     { 
-      name: "Second Opinion", 
+      name: "Second Review", 
       denta: "Included", 
       savings: "Not available", 
       insurance: "Not available" 

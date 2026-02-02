@@ -64,7 +64,7 @@ export default function FAQs() {
     {
       title: "Pricing & Plans",
       faqs: [
-        { q: "What's the difference between Insights and Second Opinion?", a: "Insights is $75/year for ongoing monthly monitoring and wellness tracking. Second Opinion is $30 one-time for a specific treatment plan comparison." },
+        { q: "What's the difference between Insights and Second Review?", a: "Insights is $75/year for ongoing monthly monitoring and wellness tracking. Second Review is $30 one-time for a specific treatment plan comparison." },
         { q: "Can I cancel anytime?", a: "Yes. You can cancel your subscription anytime without penalties." },
         { q: "Do you offer family plans?", a: "Yes. All our plans offer family options to cover your loved ones. You can easily add family members during signup or from your account settings." },
         { q: "Is there a money-back guarantee?", a: "Yes. We offer a 30-day money-back guarantee on all plans." },
