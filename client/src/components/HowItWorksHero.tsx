@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export default function HowItWorksHero() {
   return (
-    <section className="relative bg-white overflow-hidden h-[80vh] md:h-[700px] pt-32 md:pt-0">
+    <section className="relative bg-white overflow-hidden min-h-screen flex items-center pt-32 md:pt-0">
       {/* Full Background Image for All Screens */}
       <div className="absolute inset-0 z-0">
         <img 

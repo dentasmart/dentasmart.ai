@@ -92,6 +92,11 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/hub" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    Blogs
+                  </Link>
+                </li>
+                <li>
                   <a href="mailto:support@dentasmart.ai" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Contact Support
                   </a>

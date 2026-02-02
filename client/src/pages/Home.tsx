@@ -38,7 +38,7 @@ export default function Home() {
       <Navigation />
 
       {/* Hero Section - Full Background Image with Overlay */}
-      <section className="relative min-h-[500px] md:min-h-[700px] flex items-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
