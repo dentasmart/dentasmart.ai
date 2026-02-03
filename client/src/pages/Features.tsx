@@ -16,7 +16,7 @@ export default function Features() {
         "Plain English: No more confusing medical terms—just clear explanations.",
         "Confidence: Walk into your appointment knowing exactly what to ask."
       ],
-      image: "/images/features/ai_xray_analysis.png"
+      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/ZDzeChpbpgMeHJVN.png"
     },
     {
       title: "Catch Issues Before They Become Emergencies",
@@ -168,7 +168,7 @@ export default function Features() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className={`order-1 ${idx % 2 === 0 ? 'md:order-2' : 'md:order-1'} relative aspect-square rounded-3xl overflow-hidden bg-stone-200 shadow-xl`}
+                className={`order-1 ${idx % 2 === 0 ? 'md:order-2' : 'md:order-1'} relative aspect-[4/5] rounded-3xl overflow-hidden bg-stone-200 shadow-xl`}
               >
                 <img 
                   src={feature.image} 
