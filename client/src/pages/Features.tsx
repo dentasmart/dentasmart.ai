@@ -76,7 +76,7 @@ export default function Features() {
         "Friendly Support: A judgment-free zone for all your dental questions.",
         "Expert Knowledge: Instant access to reliable dental information."
       ],
-      image: "/images/features/dr_din_chat.png"
+      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/YSjOjqlpUabDbzAW.png"
     }
   ];
 
