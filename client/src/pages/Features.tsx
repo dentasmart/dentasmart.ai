@@ -56,7 +56,7 @@ export default function Features() {
         "Proactive Alerts: Get notified about patterns that need attention.",
         "Save Money: Prevention is always cheaper than a cure."
       ],
-      image: "/images/features/proactive_risk_indicators.png"
+      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/OmKqTEPOiEaBSwig.png"
     },
     {
       title: "A Simple Score for Total Clarity",
