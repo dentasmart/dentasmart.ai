@@ -22,7 +22,7 @@ export default function Employers() {
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/backgrounds/employers-office.jpg" 
+            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/GXvgxLOgMTanohTM.jpg" 
             alt="Corporate Wellness" 
             className="w-full h-full object-cover object-top md:object-center"
           />

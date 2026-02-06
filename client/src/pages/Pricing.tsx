@@ -26,7 +26,7 @@ export default function Pricing() {
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/backgrounds/hero-smile-pricing.jpg" 
+            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/uUGabAOXJTEInHmQ.jpg" 
             alt="Simple Pricing" 
             className="w-full h-full object-cover object-top md:object-center"
           />

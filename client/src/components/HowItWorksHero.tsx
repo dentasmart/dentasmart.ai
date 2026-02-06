@@ -7,7 +7,7 @@ export default function HowItWorksHero() {
       {/* Full Background Image for All Screens */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/images/backgrounds/how-it-works-hero-new.png" 
+          src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/uotZeSAZAkxXBmnI.jpg" 
           alt="Man holding phone with DentaSmart App" 
           className="w-full h-full object-cover md:object-contain object-[75%_center] md:object-right-bottom"
         />

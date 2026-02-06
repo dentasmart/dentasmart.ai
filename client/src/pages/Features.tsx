@@ -69,7 +69,7 @@ export default function Features() {
       image: "/images/features/oral_wellness_score.png"
     },
     {
-      title: "Your 24/7 Personal AI Oral Health Guide",
+      title: "Your 24/7 Personal AI Dental Guide",
       description: "Questions about your teeth don't always happen during office hours.\n\nMeet Din, your AI dental guide. Whether it's 2 AM or 2 PM, Din is ready to answer your questions, explain your results, and offer supportive advice in plain language. You're never alone on your journey to better health.",
       points: [
         "Always Available: Get answers the moment you need them.",
@@ -89,7 +89,7 @@ export default function Features() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/backgrounds/hero-smile-generic.jpg" 
+            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/igpJzLRSWiTIcexa.jpg" 
             alt="AI Dental Analysis" 
             className="w-full h-full object-cover object-top md:object-center"
           />

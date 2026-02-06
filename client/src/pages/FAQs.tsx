@@ -11,21 +11,21 @@ import { DownloadCTA } from "@/components/DownloadCTA";
 
 // Map FAQ challenge IDs to their image paths
 const faqChallengeImages: Record<number, string> = {
-  1: '/images/faq/privacy_security.jpg',
-  2: '/images/faq/ai_accuracy.jpg',
-  3: '/images/faq/dentist_relationship.jpg',
-  4: '/images/faq/no_insurance_cost.jpg',
-  5: '/images/faq/kids_family.jpg',
-  6: '/images/faq/phone_only.jpg',
-  7: '/images/faq/fast_results.jpg',
-  8: '/images/faq/second_opinion_crown.jpg',
-  9: '/images/faq/emergency_help.jpg',
-  10: '/images/faq/braces_ortho.jpg',
-  11: '/images/faq/cancel_anytime.jpg',
-  12: '/images/faq/share_doctor.jpg',
-  13: '/images/faq/invisible_pain.jpg',
-  14: '/images/faq/prevention_tips.jpg',
-  15: '/images/faq/easy_tech.jpg',
+  1: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/ortFUKlUXMHBiXYm.jpg',
+  2: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/qOeGvQuJnUqtvRvT.jpg',
+  3: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/llLRbXoCzeyMeAfn.jpg',
+  4: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/eugbQZohrtgtbTJx.jpg',
+  5: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/FpadAgriSErcKtgI.jpg',
+  6: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/dXXgcWAdPttMxeda.jpg',
+  7: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/EOTithFPkyVmOBis.jpg',
+  8: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/jXdMmoTEdbWUcSpb.jpg',
+  9: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/gGapYAFZQmpdrPCF.jpg',
+  10: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/ZTdIbrjtUSmXULHA.jpg',
+  11: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/FQmXcgOOtzipJgcp.jpg',
+  12: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/MvlpeGIipAfhvGbU.jpg',
+  13: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/QCxaOOzMPDUukYbC.jpg',
+  14: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/PriyWZEyjWTnjbVz.jpg',
+  15: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/nlpGZGfIENeWYTMQ.jpg',
 };
 
 export default function FAQs() {
@@ -117,7 +117,7 @@ export default function FAQs() {
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/backgrounds/hero-faqs-book.jpg" 
+            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/J78j9z38y0l207r7.jpg" 
             alt="DentaSmart FAQs" 
             className="w-full h-full object-cover object-top md:object-center"
           />

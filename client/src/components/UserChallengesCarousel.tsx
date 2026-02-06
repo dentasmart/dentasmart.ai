@@ -5,21 +5,21 @@ import defaultChallenges from '../data/userChallenges.json';
 
 // Default image mapping
 const defaultImages: Record<number, string> = {
-  1: '/images/challenges/prevention.jpg',
-  2: '/images/challenges/second_opinion.jpg',
-  3: '/images/challenges/affordability.jpg',
-  4: '/images/challenges/ai_advantages.jpg',
-  5: '/images/challenges/dental_anxiety.jpg',
-  6: '/images/challenges/trust_clarity.jpg',
-  7: '/images/challenges/care_consistency.jpg',
-  8: '/images/challenges/emergency_avoidance.jpg',
-  9: '/images/challenges/no_insurance.jpg',
-  10: '/images/challenges/habit_building.jpg',
-  11: '/images/challenges/empowerment.jpg',
-  12: '/images/challenges/transparency.jpg',
-  13: '/images/challenges/continuous_care.jpg',
-  14: '/images/challenges/smart_savings.jpg',
-  15: '/images/challenges/daily_tracking.jpg',
+  1: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/kqbtmhnnWjXBFwxN.jpg',
+  2: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/vWIVfyPBobntLGIz.jpg',
+  3: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/anhNbpYEsjYAENrG.jpg',
+  4: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/vMkUwiRFfsZCpBey.jpg',
+  5: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/aCHSoYIkHQxoISFY.jpg',
+  6: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/qxBXHmKeIMzYHljf.jpg',
+  7: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/MonqdoKhyFBpISXD.jpg',
+  8: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/BkdckSOLLUMzPWAC.jpg',
+  9: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/zazpdkPwKVVuwMrq.jpg',
+  10: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/XZusOpUDOktZBHbT.jpg',
+  11: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/qohnbjBwaOkXXhcC.jpg',
+  12: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/WsZHNLHpfJioFYxr.jpg',
+  13: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/bcRFjqplGSaXwUpZ.jpg',
+  14: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/DGwZUVQlOgLZAvil.jpg',
+  15: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/oqHjapRifpwhrZqg.jpg',
 };
 
 interface Challenge {

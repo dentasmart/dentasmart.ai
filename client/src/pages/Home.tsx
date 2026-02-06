@@ -32,7 +32,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO 
-        title="Your Personal AI Oral Health Guide" 
+        title="Your Personal AI Dental Guide" 
         description="Get instant clarity about your oral health. Upload a photo and get AI-powered insights, personalized plans, and reminders in minutes."
       />
       <Navigation />
@@ -42,7 +42,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/backgrounds/home-hero-lady-smile.jpg" 
+            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/dOrOUbRuSUXPRulY.jpg" 
             alt="Woman with healthy smile" 
             className="w-full h-full object-cover object-center md:object-[80%_20%]"
           />
@@ -132,7 +132,7 @@ export default function Home() {
                 }}
               >
                 <img 
-                  src="/images/narrator-thumbnail.png" 
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/TvPOfaYiJQjCDzyy.jpg" 
                   alt="DentaSmart Video Thumbnail" 
                   className="w-full h-full object-cover"
                 />

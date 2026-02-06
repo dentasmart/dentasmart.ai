@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dentasmart.ai/sitemap.xml
