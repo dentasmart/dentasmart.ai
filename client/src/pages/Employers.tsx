@@ -120,7 +120,7 @@ export default function Employers() {
               { step: "03", title: "Reports drive decisions", desc: "Data-driven insights for smarter care choices." }
             ].map((item, idx) => (
               <div key={idx} className="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 relative overflow-hidden">
-                <div className="text-8xl font-bold text-stone-100 absolute -top-4 -right-4 select-none">{item.step}</div>
+                <div className="text-8xl font-bold text-primary/10 absolute -top-4 -right-4 select-none">{item.step}</div>
                 <div className="relative z-10">
                   <h3 className="text-2xl font-medium text-stone-900 mb-3">{item.title}</h3>
                   <p className="text-stone-600 font-light">{item.desc}</p>
