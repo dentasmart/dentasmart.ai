@@ -62,12 +62,12 @@ export default function Home() {
               className="text-left max-w-2xl lg:col-span-7 xl:col-span-6"
             >
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
-                Get instant clarity about <br />
-                <span className="font-normal italic text-primary">your oral health</span>.
+                Know what’s happening <br />
+                <span className="font-normal italic text-primary">in your mouth</span>.
               </h1>
               
               <p className="text-xl md:text-2xl text-stone-700 mb-10 font-normal leading-relaxed text-balance">
-                Upload a photo of your teeth (or your X-rays) and get AI-powered oral health insights in minutes with an easy-to-follow plan & reminders.
+                Upload a photo of your teeth or X-rays and get clear AI insights in minutes, with an easy plan to prevent expensive surprises.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-6 justify-start items-center sm:items-start">
