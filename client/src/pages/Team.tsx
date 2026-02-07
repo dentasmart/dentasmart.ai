@@ -49,6 +49,21 @@ export default function Team() {
         </div>
       </section>
 
+      {/* Why Trust Us Section */}
+      <section className="py-16 bg-white border-b border-border/50">
+        <div className="container px-4 mx-auto max-w-4xl text-center">
+          <h2 className="text-3xl md:text-4xl font-normal text-black mb-8">Why trust us</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="p-6 bg-stone-50 rounded-2xl">
+              <p className="text-xl text-stone-800 font-medium">Built by AI and healthcare leaders.</p>
+            </div>
+            <div className="p-6 bg-stone-50 rounded-2xl">
+              <p className="text-xl text-stone-800 font-medium">Advised by leaders in dental benefits and clinical dentistry.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Values Section */}
       <section id="values-section" className="py-8 bg-white border-b border-border/50">
         <div className="container px-4 mx-auto max-w-6xl">
@@ -240,6 +255,21 @@ export default function Team() {
             <p>
               We believe you shouldn't have to be a dentist to understand what's happening in your own mouth. That's why we built DentaSmart, to give you the clarity to catch issues early, the confidence to make informed decisions, and the peace of mind that comes from knowing you're in control of your health.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Clinical Safety and Responsibility */}
+      <section className="py-16 bg-white">
+        <div className="container px-4 mx-auto max-w-4xl text-center">
+          <h2 className="text-3xl md:text-4xl font-normal text-black mb-6">Clinical safety and responsibility</h2>
+          <p className="text-xl text-stone-700 mb-8">
+            We help users understand oral health and prepare for licensed dental care.
+          </p>
+          <div className="flex justify-center gap-6 text-sm font-medium text-primary">
+            <a href="/privacy" className="hover:underline">Privacy Policy</a>
+            <span className="text-stone-300">|</span>
+            <a href="/terms" className="hover:underline">Terms of Service</a>
           </div>
         </div>
       </section>
