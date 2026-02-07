@@ -27,11 +27,12 @@ export default function HowItWorksHero() {
               className="text-left max-w-xl"
             >
               <h1 className="text-5xl md:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
-                See what your dentist sees <br />
-                <span className="font-normal italic text-primary">in minutes</span>.
+                From "I'm not sure" to <br />
+                <span className="font-normal italic text-primary">"I've got a plan"</span> <br />
+                in 4 steps.
               </h1>
               <p className="text-xl md:text-2xl text-stone-700 font-normal leading-relaxed mb-10">
-                No medical degree required. Just snap a photo, and let our AI translate the confusing details into a clear plan you can actually understand.
+                A quick scan gives you clarity, so you know what to do next.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-start">
                 <Button 
@@ -39,7 +40,7 @@ export default function HowItWorksHero() {
                   className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0 cursor-pointer"
                   onClick={() => document.getElementById('download-cta')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  Start Your Scan
+                  Get My Oral Health Score
                 </Button>
                 
               </div>
