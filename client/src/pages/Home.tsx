@@ -244,59 +244,278 @@ export default function Home() {
                 transition={{ duration: 0.8 }}
                 className="text-4xl md:text-6xl font-normal leading-tight text-black"
               >
-                The problem isn't just your teeth. <br />
-                <span className="italic font-normal text-stone-700">It's the uncertainty.</span>
+                The problem isn't your teeth. <br />
+                <span className="italic font-normal text-stone-700">It's not knowing.</span>
               </motion.h2>
               
-              <div className="space-y-6">
-                {[
-                  {
-                    title: "Confusing Jargon",
-                    desc: "X-rays and technical terms leave you feeling lost in translation. We translate 'doctor speak' into plain English."
-                  },
-                  {
-                    title: "Surprise Costs",
-                    desc: "Unexpected bills and insurance denials derail your budget. Know the costs before you sit in the chair."
-                  },
-                  {
-                    title: "Waiting Too Long",
-                    desc: "By the time you feel pain, the damage is done. Catch issues months before they become emergencies."
-                  }
-                ].map((item, idx) => (
-                  <motion.div 
-                    key={idx} 
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1, duration: 0.6 }}
-                    className="flex gap-4"
-                  >
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                      <ArrowRight className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-medium text-black mb-2">{item.title}</h3>
-                      <p className="text-stone-700 leading-relaxed">{item.desc}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+<ul className="space-y-6">
+                <li className="flex items-start">
+                  <div className="w-2 h-2 rounded-full bg-primary mt-2.5 mr-4 flex-shrink-0" />
+                  <span className="text-xl text-stone-700 font-normal leading-relaxed">Dental jargon makes you feel powerless</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="w-2 h-2 rounded-full bg-primary mt-2.5 mr-4 flex-shrink-0" />
+                  <span className="text-xl text-stone-700 font-normal leading-relaxed">Surprise costs show up after you say yes</span>
+                </li>
+                <li className="flex items-start">
+                  <div className="w-2 h-2 rounded-full bg-primary mt-2.5 mr-4 flex-shrink-0" />
+                  <span className="text-xl text-stone-700 font-normal leading-relaxed">By the time it hurts, it is expensive</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* User Challenges Carousel */}
-      <UserChallengesCarousel />
+      {/* The Guide Section - Empathy + Authority */}
+      <section className="py-24 bg-white">
+        <div className="container px-4 mx-auto max-w-4xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-normal text-black mb-8">
+              We get it. Dental care can feel like a guessing game.
+            </h2>
+            <div className="space-y-4 mb-12">
+              <p className="text-xl text-stone-700 font-normal leading-relaxed">
+                Most people feel anxious and confused about their dental health.
+              </p>
+              <p className="text-xl text-stone-700 font-normal leading-relaxed">
+                DentaSmart gives you a clear starting point so you can make confident decisions.
+              </p>
+            </div>
+            
+            <div className="flex flex-wrap justify-center gap-4">
+              <div className="bg-stone-100 px-6 py-3 rounded-full text-stone-900 font-medium text-sm md:text-base">
+                50K+ scans analyzed
+              </div>
+              <div className="bg-stone-100 px-6 py-3 rounded-full text-stone-900 font-medium text-sm md:text-base">
+                Advised by dental benefit and clinical leaders
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-      {/* Testimonials Carousel */}
-      <TestimonialsCarousel />
+      {/* The Plan Section - 3 Steps */}
+      <section className="py-24 bg-stone-50">
+        <div className="container px-4 mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              {
+                step: "01",
+                title: "Upload a photo",
+                desc: "Take a quick picture of your teeth or upload your X-rays securely."
+              },
+              {
+                step: "02",
+                title: "Get instant insights",
+                desc: "Our AI analyzes your oral health and explains it in plain English."
+              },
+              {
+                step: "03",
+                title: "Take control",
+                desc: "Follow your personalized plan to prevent issues and save money."
+              }
+            ].map((item, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.2, duration: 0.6 }}
+                className="relative p-8 rounded-3xl bg-white shadow-lg border border-stone-100"
+              >
+                <div className="text-6xl font-light text-primary/20 mb-6 absolute top-4 right-6">
+                  {item.step}
+                </div>
+                <h3 className="text-2xl font-medium text-black mb-4 relative z-10">
+                  {item.title}
+                </h3>
+                <p className="text-stone-600 font-light leading-relaxed relative z-10">
+                  {item.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      {/* Lead Magnet Section */}
-      <DownloadCTA />
+      {/* Benefits Section - 6 Cards */}
+      <section className="py-24 bg-white">
+        <div className="container px-4 mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-normal text-black mb-6">
+              Everything you need to smile with confidence.
+            </h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Oral Health Score",
+                desc: "Know what needs attention now vs later."
+              },
+              {
+                title: "Second Review",
+                desc: "Sanity check before you commit."
+              },
+              {
+                title: "Plain-English Report",
+                desc: "Understand what your dentist is saying."
+              },
+              {
+                title: "Prevention Reminders",
+                desc: "Stay on track month to month."
+              },
+              {
+                title: "Cost Awareness",
+                desc: "Reduce surprise bills and unnecessary work."
+              },
+              {
+                title: "24/7 Dr. Din",
+                desc: "Ask questions anytime."
+              }
+            ].map((item, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                className="p-8 rounded-2xl bg-stone-50 hover:bg-stone-100 transition-colors duration-300"
+              >
+                <h3 className="text-xl font-medium text-black mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-stone-600 font-light leading-relaxed">
+                  {item.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-      {/* Android Early Access Section */}
-      <AndroidEarlyAccess />
+      {/* Real Stories, Real Savings */}
+      <section className="py-24 bg-stone-50">
+        <div className="container px-4 mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-normal text-black mb-6">
+              Real Stories, <span className="text-primary italic">Real Savings</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            {[
+              {
+                problem: "I was terrified of going to the dentist.",
+                change: "DentaSmart explained everything before I went.",
+                outcome: "I saved $500 and felt confident.",
+                author: "Sarah J."
+              },
+              {
+                problem: "I didn't understand my treatment plan.",
+                change: "The AI broke down the jargon instantly.",
+                outcome: "I avoided an unnecessary procedure.",
+                author: "Michael T."
+              },
+              {
+                problem: "I always worried about surprise bills.",
+                change: "I knew the costs upfront.",
+                outcome: "No more financial anxiety.",
+                author: "Elena R."
+              }
+            ].map((item, idx) => (
+              <motion.div 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                className="bg-white p-8 rounded-3xl shadow-sm border border-stone-100"
+              >
+                <div className="space-y-6">
+                  <div>
+                    <div className="text-xs uppercase tracking-wider text-stone-500 font-medium mb-1">The Problem</div>
+                    <p className="text-stone-900 font-medium">"{item.problem}"</p>
+                  </div>
+                  <div>
+                    <div className="text-xs uppercase tracking-wider text-primary font-medium mb-1">What Changed</div>
+                    <p className="text-stone-700">"{item.change}"</p>
+                  </div>
+                  <div>
+                    <div className="text-xs uppercase tracking-wider text-green-600 font-medium mb-1">The Outcome</div>
+                    <p className="text-stone-900 font-medium">"{item.outcome}"</p>
+                  </div>
+                </div>
+                <div className="mt-8 pt-6 border-t border-stone-100 text-stone-500 text-sm">
+                  — {item.author}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link href="/stories">
+              <Button variant="outline" className="rounded-full px-8 border-stone-300 text-stone-700 hover:bg-stone-100">
+                Read more stories
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Download Section - Device Aware */}
+      <section id="download-cta" className="py-24 bg-white border-t border-stone-100">
+        <div className="container px-4 mx-auto max-w-4xl text-center">
+          <h2 className="text-4xl md:text-5xl font-normal text-black mb-6">
+            Download DentaSmart
+          </h2>
+          <p className="text-xl text-stone-700 font-light mb-12">
+            Start with a free scan today.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-2xl mx-auto">
+            {/* iOS Column */}
+            <div className="flex flex-col items-center space-y-6 p-8 rounded-3xl bg-stone-50 border border-stone-100">
+              <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-2">
+                <Smartphone className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-medium text-black">iOS</h3>
+              <Button className="w-full bg-black text-white hover:bg-stone-800 rounded-full h-12">
+                Download on App Store
+              </Button>
+              <div className="flex flex-col items-center">
+                <div className="w-32 h-32 bg-white p-2 rounded-xl shadow-sm mb-2">
+                  {/* QR Code Placeholder */}
+                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://apps.apple.com/app/id123456789" alt="App Store QR" className="w-full h-full" />
+                </div>
+                <span className="text-xs text-stone-500">Scan to download</span>
+              </div>
+            </div>
+
+            {/* Android Column */}
+            <div className="flex flex-col items-center space-y-6 p-8 rounded-3xl bg-stone-50 border border-stone-100">
+              <div className="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center mb-2">
+                <Smartphone className="w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-medium text-black">Android</h3>
+              <Button className="w-full bg-green-600 text-white hover:bg-green-700 rounded-full h-12">
+                Join Early Access
+              </Button>
+              <div className="text-center px-4">
+                <p className="text-sm text-stone-600">
+                  We're putting the finishing touches on our Android app. Join the waitlist to be notified first.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>
