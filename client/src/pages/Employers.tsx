@@ -185,6 +185,25 @@ export default function Employers() {
         </div>
       </section>
 
+      {/* Proof - Advisor Credibility */}
+      <section className="py-16 bg-white border-t border-stone-100">
+        <div className="container px-4 mx-auto max-w-4xl text-center">
+          <h2 className="text-3xl md:text-4xl font-light text-stone-900 mb-8">
+            Trusted by industry leaders
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="p-8 bg-stone-50 rounded-2xl">
+              <p className="text-lg text-stone-800 font-medium mb-2">"Built by AI and healthcare leaders."</p>
+              <p className="text-sm text-stone-500">Ensuring enterprise-grade reliability.</p>
+            </div>
+            <div className="p-8 bg-stone-50 rounded-2xl">
+              <p className="text-lg text-stone-800 font-medium mb-2">"Advised by dental benefit experts."</p>
+              <p className="text-sm text-stone-500">Designed for real-world clinical impact.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <DownloadSection />
 
