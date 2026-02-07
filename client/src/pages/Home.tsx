@@ -1,6 +1,6 @@
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
+import { BenefitsCarousel } from "@/components/BenefitsCarousel";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -232,45 +232,40 @@ export default function Home() {
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-              <div className="absolute bottom-8 left-8 text-white">
-                <p className="text-lg font-normal italic">"I used to dread the dentist. Now I know exactly what to expect."</p>
-                <p className="text-sm mt-2 font-medium opacity-80">, Sarah, DentaSmart User</p>
-              </div>
             </motion.div>
             
-            <div className="space-y-8">
-              <motion.h2 
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="text-4xl md:text-6xl font-normal leading-tight text-black"
-              >
-                The problem isn't your teeth. <br />
-                <span className="italic font-normal text-stone-700">It's not knowing.</span>
-              </motion.h2>
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="lg:pl-12"
+            >
+              <h2 className="text-5xl md:text-6xl font-normal text-black mb-8 leading-tight">
+                The problem isn't <br />
+                your teeth. <br />
+                <span className="italic text-primary">It's not knowing.</span>
+              </h2>
               
-<ul className="space-y-6">
-                <li className="flex items-start">
-                  <div className="w-2 h-2 rounded-full bg-primary mt-2.5 mr-4 flex-shrink-0" />
-                  <span className="text-xl text-stone-700 font-normal leading-relaxed">Dental jargon makes you feel powerless</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="w-2 h-2 rounded-full bg-primary mt-2.5 mr-4 flex-shrink-0" />
-                  <span className="text-xl text-stone-700 font-normal leading-relaxed">Surprise costs show up after you say yes</span>
-                </li>
-                <li className="flex items-start">
-                  <div className="w-2 h-2 rounded-full bg-primary mt-2.5 mr-4 flex-shrink-0" />
-                  <span className="text-xl text-stone-700 font-normal leading-relaxed">By the time it hurts, it is expensive</span>
-                </li>
-              </ul>
-            </div>
+              <div className="space-y-6">
+                {[
+                  "Dental jargon makes you feel powerless",
+                  "Surprise costs show up after you say yes",
+                  "By the time it hurts, it is expensive"
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-4">
+                    <div className="w-2 h-2 rounded-full bg-primary mt-2.5 flex-shrink-0" />
+                    <p className="text-xl text-stone-700 font-light">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* The Guide Section - Empathy + Authority */}
-      <section className="py-24 bg-white">
+      {/* The Guide - Empathy & Authority */}
+      <section className="py-24 bg-stone-900 text-white">
         <div className="container px-4 mx-auto max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -278,50 +273,34 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-normal text-black mb-8">
+            <h2 className="text-4xl md:text-5xl font-normal mb-8">
               We get it. Dental care can feel like a guessing game.
             </h2>
-            <div className="space-y-4 mb-12">
-              <p className="text-xl text-stone-700 font-normal leading-relaxed">
-                Most people feel anxious and confused about their dental health.
-              </p>
-              <p className="text-xl text-stone-700 font-normal leading-relaxed">
-                DentaSmart gives you a clear starting point so you can make confident decisions.
-              </p>
-            </div>
+            <p className="text-xl md:text-2xl text-stone-300 font-light mb-12 leading-relaxed">
+              Most people feel anxious and confused about their dental health. <br />
+              <span className="text-white font-normal">DentaSmart gives you a clear starting point so you can make confident decisions.</span>
+            </p>
             
             <div className="flex flex-wrap justify-center gap-4">
-              <div className="bg-stone-100 px-6 py-3 rounded-full text-stone-900 font-medium text-sm md:text-base">
-                50K+ scans analyzed
+              <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full border border-white/20 text-sm font-medium tracking-wide uppercase">
+                50K+ Scans Analyzed
               </div>
-              <div className="bg-stone-100 px-6 py-3 rounded-full text-stone-900 font-medium text-sm md:text-base">
-                Advised by dental benefit and clinical leaders
+              <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full border border-white/20 text-sm font-medium tracking-wide uppercase">
+                Advised by Clinical Leaders
               </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* The Plan Section - 3 Steps */}
-      <section className="py-24 bg-stone-50">
+      {/* The Plan - 3 Step Strip */}
+      <section className="py-16 bg-primary text-white">
         <div className="container px-4 mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {[
-              {
-                step: "01",
-                title: "Upload a photo",
-                desc: "Take a quick picture of your teeth or upload your X-rays securely."
-              },
-              {
-                step: "02",
-                title: "Get instant insights",
-                desc: "Our AI analyzes your oral health and explains it in plain English."
-              },
-              {
-                step: "03",
-                title: "Take control",
-                desc: "Follow your personalized plan to prevent issues and save money."
-              }
+              { step: "01", title: "Upload a Photo", desc: "Take a quick picture of your teeth or upload X-rays." },
+              { step: "02", title: "Get Instant Insights", desc: "Our AI analyzes your oral health in seconds." },
+              { step: "03", title: "Take Control", desc: "Follow a clear, personalized plan to better health." }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}
@@ -329,78 +308,21 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.2, duration: 0.6 }}
-                className="relative p-8 rounded-3xl bg-white shadow-lg border border-stone-100"
+                className="relative"
               >
-                <div className="text-6xl font-light text-primary/20 mb-6 absolute top-4 right-6">
+                <div className="text-6xl font-bold text-white/20 absolute -top-8 left-1/2 -translate-x-1/2 select-none">
                   {item.step}
                 </div>
-                <h3 className="text-2xl font-medium text-black mb-4 relative z-10">
-                  {item.title}
-                </h3>
-                <p className="text-stone-600 font-light leading-relaxed relative z-10">
-                  {item.desc}
-                </p>
+                <h3 className="text-2xl font-medium mb-2 relative z-10">{item.title}</h3>
+                <p className="text-white/80 font-light relative z-10">{item.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Benefits Section - 6 Cards */}
-      <section className="py-24 bg-white">
-        <div className="container px-4 mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-normal text-black mb-6">
-              Everything you need to smile with confidence.
-            </h2>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Oral Health Score",
-                desc: "Know what needs attention now vs later."
-              },
-              {
-                title: "Second Review",
-                desc: "Sanity check before you commit."
-              },
-              {
-                title: "Plain-English Report",
-                desc: "Understand what your dentist is saying."
-              },
-              {
-                title: "Prevention Reminders",
-                desc: "Stay on track month to month."
-              },
-              {
-                title: "Cost Awareness",
-                desc: "Reduce surprise bills and unnecessary work."
-              },
-              {
-                title: "24/7 AI Oral Health Guide - Din",
-                desc: "Ask questions anytime."
-              }
-            ].map((item, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1, duration: 0.5 }}
-                className="p-8 rounded-2xl bg-stone-50 hover:bg-stone-100 transition-colors duration-300"
-              >
-                <h3 className="text-xl font-medium text-black mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-stone-600 font-light leading-relaxed">
-                  {item.desc}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Benefits Section (Carousel) */}
+      <BenefitsCarousel />
 
       {/* Real Stories, Real Savings */}
       <section className="py-24 bg-stone-50">
@@ -450,7 +372,7 @@ export default function Home() {
                     <p className="text-stone-700">"{item.change}"</p>
                   </div>
                   <div>
-                    <div className="text-xs uppercase tracking-wider text-primary font-medium mb-1">The Outcome</div>
+                    <div className="text-xs uppercase tracking-wider text-green-600 font-medium mb-1">The Outcome</div>
                     <p className="text-stone-900 font-medium">"{item.outcome}"</p>
                   </div>
                 </div>
@@ -463,7 +385,7 @@ export default function Home() {
 
           <div className="text-center">
             <Link href="/stories">
-              <Button variant="outline" className="rounded-full px-8 border-stone-300 text-stone-700 hover:bg-stone-100">
+              <Button variant="outline" className="rounded-full px-8 border-stone-300 text-stone-600 hover:bg-stone-100 hover:text-black">
                 Read more stories
               </Button>
             </Link>
@@ -472,31 +394,34 @@ export default function Home() {
       </section>
 
       {/* Download Section - Device Aware */}
-      <section id="download-cta" className="py-24 bg-white border-t border-stone-100">
-        <div className="container px-4 mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl md:text-5xl font-normal text-black mb-6">
-            Download DentaSmart
-          </h2>
-          <p className="text-xl text-stone-700 font-light mb-12">
-            Start with a free scan today.
-          </p>
+      <section id="download-cta" className="py-24 bg-white">
+        <div className="container px-4 mx-auto max-w-4xl">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-normal text-black mb-4">
+              Download DentaSmart
+            </h2>
+            <p className="text-xl text-stone-600 font-light">
+              Start with a free scan today.
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* iOS Column */}
             <div className="flex flex-col items-center space-y-6 p-8 rounded-3xl bg-stone-50 border border-stone-100">
               <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mb-2">
-                <Smartphone className="w-8 h-8" />
+                <svg viewBox="0 0 24 24" className="w-8 h-8 fill-current">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.21-1.96 1.07-3.11-1.05.05-2.31.74-3.03 1.59-.67.79-1.25 2.05-1.09 3.2 1.17.09 2.35-.84 3.05-1.68" />
+                </svg>
               </div>
               <h3 className="text-xl font-medium text-black">iOS</h3>
               <Button className="w-full bg-black text-white hover:bg-stone-800 rounded-full h-12">
                 Download on App Store
               </Button>
-              <div className="flex flex-col items-center">
-                <div className="w-32 h-32 bg-white p-2 rounded-xl shadow-sm mb-2">
-                  {/* QR Code Placeholder */}
-                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://apps.apple.com/app/id123456789" alt="App Store QR" className="w-full h-full" />
+              <div className="w-32 h-32 bg-white p-2 rounded-xl shadow-sm border border-stone-100">
+                {/* Placeholder for QR Code */}
+                <div className="w-full h-full bg-stone-200 rounded-lg flex items-center justify-center text-xs text-stone-500 text-center">
+                  QR Code
                 </div>
-                <span className="text-xs text-stone-500">Scan to download</span>
               </div>
             </div>
 
