@@ -104,7 +104,7 @@ export default function Home() {
       </section>
 
       {/* Video Section - StoryBrand Aligned */}
-      <section id="video-section" className="py-12 bg-accent/5 border-b border-border">
+      <section id="video-section" className="py-6 bg-accent/5 border-b border-border">
         <div className="container px-4 mx-auto max-w-5xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -179,7 +179,7 @@ export default function Home() {
       </section>
 
       {/* Social Proof - Minimalist & Clean */}
-      <section className="py-12 bg-white border-b border-border/50">
+      <section className="py-6 bg-white border-b border-border/50">
         <div className="container px-4 mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-border/50">
             {[
@@ -208,7 +208,7 @@ export default function Home() {
       </section>
 
       {/* The Problem - Editorial Layout with Large Typography */}
-      <section className="py-16 md:py-24 bg-gradient-to-b from-white to-accent/10 overflow-hidden">
+      <section className="py-8 md:py-12 bg-gradient-to-b from-white to-accent/10 overflow-hidden">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <motion.div 
@@ -257,7 +257,7 @@ export default function Home() {
       </section>
 
       {/* The Guide - Empathy & Authority */}
-      <section className="py-24 bg-stone-900 text-white">
+      <section className="py-12 bg-stone-900 text-white">
         <div className="container px-4 mx-auto max-w-4xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -286,7 +286,7 @@ export default function Home() {
       </section>
 
       {/* The Plan - 3 Step Strip */}
-      <section className="py-16 bg-primary text-white">
+      <section className="py-8 bg-primary text-white">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {[
@@ -317,7 +317,7 @@ export default function Home() {
       <BenefitsCarousel />
 
       {/* Real Stories, Real Savings */}
-      <section className="py-24 bg-stone-50">
+      <section className="py-12 bg-stone-50">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-normal text-black mb-6">

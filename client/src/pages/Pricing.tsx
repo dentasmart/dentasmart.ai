@@ -70,7 +70,7 @@ export default function Pricing() {
       </section>
 
       {/* Plan Toggle - Minimalist */}
-      <section id="pricing-plans" className="py-12 bg-white">
+      <section id="pricing-plans" className="py-6 bg-white">
         <div className="container flex justify-center">
           <div className="bg-accent/10 p-1 rounded-full inline-flex shadow-inner">
             <button
@@ -98,7 +98,7 @@ export default function Pricing() {
       </section>
 
       {/* Pricing Cards - Clean & Modern */}
-      <section className="pb-24 bg-white">
+      <section className="pb-12 bg-white">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
@@ -264,12 +264,12 @@ export default function Pricing() {
       <WaitlistPopup isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
 
       {/* Benefits Carousel */}
-      <section className="py-24 bg-stone-50 overflow-hidden">
+      <section className="py-12 bg-stone-50 overflow-hidden">
         <BenefitsCarousel />
       </section>
 
       {/* Comparison Table - Clean */}
-      <section className="py-24 bg-white">
+      <section className="py-12 bg-white">
         <div className="container px-4 mx-auto max-w-5xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-light text-black mb-6">

@@ -50,7 +50,7 @@ export default function Team() {
       </section>
 
       {/* Values Section */}
-      <section id="values-section" className="py-16 bg-white border-b border-border/50">
+      <section id="values-section" className="py-8 bg-white border-b border-border/50">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
@@ -78,7 +78,7 @@ export default function Team() {
       </section>
 
       {/* Leadership Team - Clean Cards */}
-      <section className="py-24 bg-slate-50/50">
+      <section className="py-12 bg-slate-50/50">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-normal text-black mb-6">
@@ -160,7 +160,7 @@ export default function Team() {
       </section>
 
       {/* Advisory Board - Clean List */}
-      <section className="py-24 bg-white">
+      <section className="py-12 bg-white">
         <div className="container px-4 mx-auto max-w-5xl">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-normal text-black mb-6">
@@ -228,7 +228,7 @@ export default function Team() {
       </section>
 
       {/* Mission - StoryBrand Aligned */}
-      <section className="py-24 bg-[#D0F0F5] text-stone-900">
+      <section className="py-12 bg-[#D0F0F5] text-stone-900">
         <div className="container px-4 mx-auto max-w-4xl text-center">
           <h2 className="text-4xl md:text-5xl font-normal mb-12 text-stone-900">
             Our Mission

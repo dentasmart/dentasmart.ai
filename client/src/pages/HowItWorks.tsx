@@ -17,7 +17,7 @@ export default function HowItWorks() {
       <HowItWorksHero />
 
       {/* 4-Step Visual Process (New StoryBrand) */}
-      <section className="pt-12 pb-24 bg-white">
+      <section className="pt-6 pb-6 bg-white">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
             {/* Connecting Line (Desktop) */}
@@ -99,12 +99,12 @@ export default function HowItWorks() {
       </section>
 
       {/* Benefits Carousel (Standardized) */}
-      <section className="py-24 bg-stone-50 overflow-hidden">
+      <section className="py-6 bg-white overflow-hidden">
         <BenefitsCarousel />
       </section>
 
       {/* What you'll walk away with - 3 Tiles (New StoryBrand) */}
-      <section className="py-24 bg-stone-50">
+      <section className="py-6 bg-stone-50">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-6">
@@ -152,7 +152,7 @@ export default function HowItWorks() {
       </section>
 
       {/* Detailed Report Features - Clean Grid (Restored) */}
-      <section className="py-16 bg-white">
+      <section className="py-6 bg-white">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-6">
@@ -233,7 +233,7 @@ export default function HowItWorks() {
       </section>
 
       {/* FAQ Teaser (New StoryBrand) */}
-      <section className="py-24 bg-white border-t border-stone-100">
+      <section className="py-6 bg-white border-t border-stone-100">
         <div className="container px-4 mx-auto max-w-4xl text-center">
           <h2 className="text-3xl md:text-4xl font-normal text-foreground mb-8">
             Common Questions

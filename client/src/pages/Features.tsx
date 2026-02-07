@@ -136,8 +136,8 @@ export default function Features() {
       </section>
 
       {/* Feature Deep Dives - Alternating Layout */}
-      <section id="feature-deep-dives" className="pt-24 pb-24 bg-white">
-        <div className="container px-4 mx-auto max-w-6xl space-y-24">
+      <section id="feature-deep-dives" className="pt-12 pb-12 bg-white">
+        <div className="container px-4 mx-auto max-w-6xl space-y-12">
           
           {features.map((feature, idx) => (
             <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
@@ -183,12 +183,12 @@ export default function Features() {
       </section>
 
       {/* Benefits Carousel */}
-      <section className="py-24 bg-stone-50 overflow-hidden">
+      <section className="py-12 bg-stone-50 overflow-hidden">
         <BenefitsCarousel />
       </section>
 
       {/* Security Section - Clean & Trustworthy */}
-      <section className="py-24 bg-white">
+      <section className="py-12 bg-white">
         <div className="container px-4 mx-auto max-w-4xl text-center">
           <div className="w-20 h-20 bg-stone-50 rounded-full flex items-center justify-center mx-auto mb-8">
             <Lock className="w-8 h-8 text-stone-900" strokeWidth={1.5} />

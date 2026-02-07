@@ -71,7 +71,7 @@ export default function Employers() {
       </section>
 
       {/* The Problem - Minimalist Grid */}
-      <section className="py-24 bg-white">
+      <section className="py-12 bg-white">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
@@ -122,12 +122,12 @@ export default function Employers() {
       </section>
 
       {/* Benefits Carousel */}
-      <section className="py-24 bg-stone-50 overflow-hidden">
+      <section className="py-12 bg-stone-50 overflow-hidden">
         <BenefitsCarousel />
       </section>
 
       {/* Comparison Table - Clean & Modern */}
-      <section className="py-24 bg-white">
+      <section className="py-12 bg-white">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
@@ -146,7 +146,7 @@ export default function Employers() {
       </section>
 
       {/* ROI - Big Numbers */}
-      <section id="savings-calculator" className="py-24 bg-stone-50">
+      <section id="savings-calculator" className="py-12 bg-stone-50">
         <div className="container px-4 mx-auto max-w-5xl">
 
           <div className="mb-16">

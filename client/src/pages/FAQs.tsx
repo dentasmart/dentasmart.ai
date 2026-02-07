@@ -187,12 +187,12 @@ export default function FAQs() {
       </section>
 
       {/* Benefits Carousel */}
-      <section className="py-24 bg-stone-50 overflow-hidden">
+      <section className="py-12 bg-stone-50 overflow-hidden">
         <BenefitsCarousel />
       </section>
 
       {/* FAQs */}
-      <section className="py-24 bg-white">
+      <section className="py-12 bg-white">
         <div className="container px-4 mx-auto max-w-3xl">
           {displayCategories.map((category, catIdx) => (
             category.faqs.length > 0 ? (
