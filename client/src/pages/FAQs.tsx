@@ -38,31 +38,37 @@ export default function FAQs() {
       title: "Getting Started",
       faqs: [
         { q: "How do I get started with DentaSmart?", a: "Download the app from the App Store (Android coming soon), create an account, and take your first mouth photos or upload X-rays. You'll get your first report within minutes." },
-        { q: "Do I need to be a patient at a specific dental office?", a: "No. DentaSmart works with any dentist at any dental office. It's designed to complement your existing dental care." },
         { q: "Is there a free trial?", a: "Yes. Download the app and try DentaSmart free for 7 days. No credit card required." },
-        { q: "What if I don't have any X-rays?", a: "No problem. You can start with monthly mouth photos using your smartphone. Upload X-rays whenever you have them." },
+        { q: "What phones does DentaSmart work on?", a: "DentaSmart works on iOS 14+ and Android 10+. Download from the App Store (Android coming soon)." },
       ],
     },
     {
-      title: "How It Works",
+      title: "Photos and X-rays",
+      faqs: [
+        { q: "What if I don't have any X-rays?", a: "No problem. You can start with monthly mouth photos using your smartphone. Upload X-rays whenever you have them." },
+        { q: "How long does analysis take?", a: "Analysis is typically completed within 1-2 minutes of uploading your images or X-rays." },
+        { q: "What can DentaSmart detect?", a: "DentaSmart can identify potential cavities, gum disease, tooth wear, alignment issues, and other visible oral health concerns. It provides educational insights to help you understand what you're seeing." },
+      ],
+    },
+    {
+      title: "Accuracy and Safety",
       faqs: [
         { q: "How accurate is the AI analysis?", a: "Our AI has 100% detection accuracy for identifying potential areas of concern. It's trained by dental experts and validated against clinical outcomes. However, it's not a substitute for a professional dental exam." },
-        { q: "What can DentaSmart detect?", a: "DentaSmart can identify potential cavities, gum disease, tooth wear, alignment issues, and other visible oral health concerns. It provides educational insights to help you understand what you're seeing." },
-        { q: "How long does analysis take?", a: "Analysis is typically completed within 1-2 minutes of uploading your images or X-rays." },
-        { q: "Can I share my report with my dentist?", a: "Yes. You can easily share your DentaSmart report with your dentist via email or print it out to bring to your appointment." },
+        { q: "Is Din a real dentist?", a: "No, Din is an advanced AI trained on vast dental knowledge. Din provides educational guidance, not medical advice. Always consult with your dentist for medical decisions." },
+        { q: "Can Din diagnose me?", a: "Din can't diagnose conditions, but can help you understand your symptoms and prepare questions for your dentist." },
       ],
     },
     {
-      title: "Privacy & Security",
+      title: "Privacy",
       faqs: [
         { q: "Is my data secure?", a: "Yes. All data is encrypted end-to-end and stored on secure, HIPAA-compliant servers. We never sell your data." },
         { q: "Who has access to my information?", a: "Only you and anyone you explicitly share your report with (like your dentist) have access to your information." },
-        { q: "How long is my data stored?", a: "Your data is stored for as long as your account is active. You can request deletion anytime." },
         { q: "Is DentaSmart HIPAA compliant?", a: "Yes. DentaSmart is fully HIPAA compliant and meets all healthcare privacy and security standards." },
+        { q: "How long is my data stored?", a: "Your data is stored for as long as your account is active. You can request deletion anytime." },
       ],
     },
     {
-      title: "Pricing & Plans",
+      title: "Pricing",
       faqs: [
         { q: "What's the difference between Insights and Second Review?", a: "Insights is $75/year for ongoing monthly monitoring and wellness tracking. Second Review is $30 one-time for a specific treatment plan comparison." },
         { q: "Can I cancel anytime?", a: "Yes. You can cancel your subscription anytime without penalties." },
@@ -71,21 +77,11 @@ export default function FAQs() {
       ],
     },
     {
-      title: "Din",
+      title: "Dentist Relationship",
       faqs: [
-        { q: "What is Din?", a: "Din is your 24/7 AI oral health guide. You can chat with Din anytime to ask questions about your oral health, get explanations, or prepare for dental appointments." },
-        { q: "Is Din a real dentist?", a: "No, Din is an advanced AI trained on vast dental knowledge. Din provides educational guidance, not medical advice. Always consult with your dentist for medical decisions." },
-        { q: "Can Din diagnose me?", a: "Din can't diagnose conditions, but can help you understand your symptoms and prepare questions for your dentist." },
-        { q: "Is Din available 24/7?", a: "Yes. Din is available anytime, anywhere. Responses are typically instant." },
-      ],
-    },
-    {
-      title: "Technical",
-      faqs: [
-        { q: "What phones does DentaSmart work on?", a: "DentaSmart works on iOS 14+ and Android 10+. Download from the App Store (Android coming soon)." },
-        { q: "Do I need an internet connection?", a: "Yes, you need internet to upload images and get analysis. Some features work offline." },
-        { q: "Can I use DentaSmart on my computer?", a: "Currently, DentaSmart is mobile-only. We're working on a web version." },
-        { q: "What if I have technical issues?", a: "Contact our support team at support@dentasmart.ai or through the app. We typically respond within 24 hours." },
+        { q: "Do I need to be a patient at a specific dental office?", a: "No. DentaSmart works with any dentist at any dental office. It's designed to complement your existing dental care." },
+        { q: "Can I share my report with my dentist?", a: "Yes. You can easily share your DentaSmart report with your dentist via email or print it out to bring to your appointment." },
+        { q: "Is it a dentist replacement?", a: "No. DentaSmart is a tool to help you monitor your oral health between visits and understand your dentist's recommendations better. It does not replace professional care." },
       ],
     },
   ];
@@ -131,6 +127,18 @@ export default function FAQs() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
+            {/* Start Here Module */}
+            <div className="mb-10 inline-block bg-white/80 backdrop-blur-sm border border-primary/20 rounded-2xl p-6 shadow-sm">
+              <h3 className="text-lg font-medium text-stone-900 mb-2">Start here</h3>
+              <p className="text-stone-600 mb-4">If you only do one thing today: get your Oral Health Score.</p>
+              <Button 
+                onClick={() => document.getElementById('download-cta')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-2 text-sm font-medium shadow-md"
+              >
+                Get My Oral Health Score
+              </Button>
+            </div>
+
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
               Get answers, <br />
               <span className="font-normal italic text-primary">not confusion</span>.
