@@ -37,11 +37,11 @@ export default function Employers() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
-              Stop overpaying for <br />
-              <span className="font-normal italic text-primary">unused dental benefits</span>.
+              Give employees dental clarity <br />
+              <span className="font-normal italic text-primary">without the insurance headache</span>.
             </h1>
             <p className="text-xl md:text-2xl text-black font-normal max-w-3xl mr-auto mb-12 leading-relaxed">
-              Traditional insurance is expensive and reactive. Switch to a proactive AI dental benefit that employees actually use, and save 75% on your costs.
+              A modern dental benefit that helps employees catch issues early and reduce unnecessary spend.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-start">
               <Button 
@@ -49,20 +49,7 @@ export default function Employers() {
                 className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0 cursor-pointer"
                 onClick={() => setIsDemoModalOpen(true)}
               >
-                Schedule a Demo
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                onClick={() => {
-                  const element = document.getElementById('savings-calculator');
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 cursor-pointer"
-              >
-                Calculate Savings
+                Book a Demo
               </Button>
             </div>
           </motion.div>
@@ -75,29 +62,26 @@ export default function Employers() {
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
-              Traditional benefits are broken
+              The problem with traditional dental benefits
             </h2>
-            <p className="text-xl text-stone-600 font-light max-w-2xl mx-auto">
-              Expensive premiums, low utilization, and reactive care don't solve the real problem.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
               { 
                 icon: TrendingDown, 
-                title: "High Cost, Low Value", 
-                desc: "About $1,200/year per employee with less than 50% utilization rates." 
+                title: "Delayed Care", 
+                desc: "Employees delay care until it becomes expensive." 
               },
               { 
                 icon: Users, 
-                title: "Low Satisfaction", 
-                desc: "Dental benefits consistently rank last in employee satisfaction surveys." 
+                title: "Confusing Benefits", 
+                desc: "Benefits feel confusing and underused." 
               },
               { 
                 icon: ShieldCheck, 
-                title: "Reactive Care", 
-                desc: "Employees wait for pain, leading to expensive emergency procedures and lost productivity." 
+                title: "Surprise Bills", 
+                desc: "HR gets complaints about surprise bills." 
               }
             ].map((item, idx) => (
               <motion.div 
@@ -116,6 +100,32 @@ export default function Employers() {
                   {item.desc}
                 </p>
               </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* The Plan - 3 Steps */}
+      <section className="py-16 bg-stone-50">
+        <div className="container px-4 mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
+              A simple plan for better oral health
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { step: "01", title: "Launch in days", desc: "Seamless onboarding for your entire team." },
+              { step: "02", title: "Employees scan monthly", desc: "Proactive monitoring catches issues early." },
+              { step: "03", title: "Reports drive decisions", desc: "Data-driven insights for smarter care choices." }
+            ].map((item, idx) => (
+              <div key={idx} className="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 relative overflow-hidden">
+                <div className="text-8xl font-bold text-stone-100 absolute -top-4 -right-4 select-none">{item.step}</div>
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-medium text-stone-900 mb-3">{item.title}</h3>
+                  <p className="text-stone-600 font-light">{item.desc}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -145,7 +155,7 @@ export default function Employers() {
         </div>
       </section>
 
-      {/* ROI - Big Numbers */}
+      {/* Outcomes - Big Numbers */}
       <section id="savings-calculator" className="py-12 bg-stone-50">
         <div className="container px-4 mx-auto max-w-5xl">
 
@@ -155,9 +165,9 @@ export default function Employers() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { value: "$900", label: "Annual Savings Per Employee" },
-              { value: "4x", label: "Better Value Proposition" },
-              { value: "0", label: "Administrative Headache" }
+              { value: "High", label: "Utilization vs Traditional" },
+              { value: "Better", label: "Employee Confidence" },
+              { value: "Fewer", label: "Surprise Escalations" }
             ].map((stat, idx) => (
               <motion.div 
                 key={idx} 
@@ -165,9 +175,9 @@ export default function Employers() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.2, duration: 0.6 }}
-                className="text-center p-8 rounded-2xl bg-stone-50"
+                className="text-center p-8 rounded-2xl bg-white shadow-sm border border-stone-100"
               >
-                <div className="text-5xl font-light text-stone-900 mb-2">{stat.value}</div>
+                <div className="text-4xl font-light text-stone-900 mb-2">{stat.value}</div>
                 <div className="text-sm uppercase tracking-widest text-stone-500 font-medium">{stat.label}</div>
               </motion.div>
             ))}
