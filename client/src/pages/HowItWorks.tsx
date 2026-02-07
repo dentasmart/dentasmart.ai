@@ -2,8 +2,8 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import HowItWorksHero from "@/components/HowItWorksHero";
-import { DownloadCTA } from "@/components/DownloadCTA";
-import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
+import { DownloadSection } from "@/components/DownloadSection";
+import { BenefitsCarousel } from "@/components/BenefitsCarousel";
 import { Camera, Brain, FileText, MessageSquare, Activity, ShieldCheck, ClipboardList, Calendar, Bell, TrendingUp, HeartPulse } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
@@ -98,9 +98,9 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      {/* User Challenges Carousel (Restored) */}
-      <section className="py-24 bg-stone-100">
-        <UserChallengesCarousel />
+      {/* Benefits Carousel (Standardized) */}
+      <section className="py-24 bg-stone-50 overflow-hidden">
+        <BenefitsCarousel />
       </section>
 
       {/* What you'll walk away with - 3 Tiles (New StoryBrand) */}
@@ -254,7 +254,7 @@ export default function HowItWorks() {
       </section>
 
       {/* Final CTA */}
-      <DownloadCTA />
+      <DownloadSection />
 
       <Footer />
     </div>
