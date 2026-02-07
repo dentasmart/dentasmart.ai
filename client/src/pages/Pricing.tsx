@@ -264,7 +264,7 @@ export default function Pricing() {
       <WaitlistPopup isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
 
       {/* Benefits Carousel */}
-      <section className="py-12 bg-stone-50 overflow-hidden">
+      <section className="py-12 bg-white overflow-hidden">
         <BenefitsCarousel />
       </section>
 
