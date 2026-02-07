@@ -151,14 +151,7 @@ export default function Home() {
                     </p>
                   </div>
 
-                  {/* Bottom Right: Logo */}
-                  <div className="absolute bottom-4 right-4 md:bottom-8 md:right-8">
-                    <img 
-                      src="/images/logo.png" 
-                      alt="DentaSmart Logo" 
-                      className="h-6 md:h-10 w-auto drop-shadow-md bg-white/90 rounded-lg px-2 py-1 md:px-3 md:py-1"
-                    />
-                  </div>
+                  {/* Bottom Right: Logo - Removed for cleaner look */}
 
                   {/* Center: Play Button */}
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -414,9 +407,11 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-medium text-black">iOS</h3>
-              <Button className="w-full bg-black text-white hover:bg-stone-800 rounded-full h-12">
-                Download on App Store
-              </Button>
+              <a href="https://apps.apple.com/us/app/dentasmart/id6476543210" target="_blank" rel="noopener noreferrer" className="w-full">
+                <Button className="w-full bg-black text-white hover:bg-stone-800 rounded-full h-12">
+                  Download on App Store
+                </Button>
+              </a>
               <div className="w-32 h-32 bg-white p-2 rounded-xl shadow-sm border border-stone-100">
                 <img 
                   src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/JqfJbWjVjQxYwXyv.png" 
