@@ -53,7 +53,7 @@ export function BlogCTABanner() {
               </button>
               
               <div className="text-center md:text-left pr-8">
-                <h3 className="text-lg md:text-xl font-medium mb-1">Want clarity about your own mouth?</h3>
+                <h3 className="text-lg md:text-xl font-medium mb-1 text-white">Want clarity about your own mouth?</h3>
                 <p className="text-stone-400 text-sm hidden md:block">Get instant AI insights from your photos.</p>
               </div>
               
