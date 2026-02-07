@@ -16,6 +16,7 @@ import Article from "@/pages/Article";
 import FAQs from "@/pages/FAQs";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
+import Stories from "@/pages/Stories";
 
 
 function Router() {
@@ -32,6 +33,7 @@ function Router() {
       <Route path="/faqs" component={FAQs} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/terms-of-service" component={TermsOfService} />
+      <Route path="/stories" component={Stories} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

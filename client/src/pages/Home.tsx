@@ -6,7 +6,8 @@ import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Smartphone, Activity } from "lucide-react";
 import { DownloadCTA } from "@/components/DownloadCTA";
-import { AndroidEarlyAccess } from "@/components/AndroidEarlyAccess";
+import { AndroidEarlyAccessModal } from "@/components/AndroidEarlyAccessModal";
+import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import SEO from "@/components/SEO";
 import { useEffect } from "react";
@@ -14,6 +15,7 @@ import { useLocation } from "wouter";
 
 export default function Home() {
   const [location] = useLocation();
+  const [isAndroidModalOpen, setIsAndroidModalOpen] = useState(false);
 
   useEffect(() => {
     // Handle hash navigation manually to ensure scroll happens
@@ -225,7 +227,7 @@ export default function Home() {
               className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl"
             >
               <img 
-                src="/images/challenges/dental_anxiety.jpg" 
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/MVOEXBpESLROdzsK.jpg" 
                 alt="Dental Anxiety" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
               />
@@ -376,7 +378,7 @@ export default function Home() {
                 desc: "Reduce surprise bills and unnecessary work."
               },
               {
-                title: "24/7 Dr. Din",
+                title: "24/7 AI Oral Health Guide - Din",
                 desc: "Ask questions anytime."
               }
             ].map((item, idx) => (
@@ -448,7 +450,7 @@ export default function Home() {
                     <p className="text-stone-700">"{item.change}"</p>
                   </div>
                   <div>
-                    <div className="text-xs uppercase tracking-wider text-green-600 font-medium mb-1">The Outcome</div>
+                    <div className="text-xs uppercase tracking-wider text-primary font-medium mb-1">The Outcome</div>
                     <p className="text-stone-900 font-medium">"{item.outcome}"</p>
                   </div>
                 </div>
@@ -500,13 +502,20 @@ export default function Home() {
 
             {/* Android Column */}
             <div className="flex flex-col items-center space-y-6 p-8 rounded-3xl bg-stone-50 border border-stone-100">
-              <div className="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center mb-2">
+              <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mb-2">
                 <Smartphone className="w-8 h-8" />
               </div>
               <h3 className="text-xl font-medium text-black">Android</h3>
-              <Button className="w-full bg-green-600 text-white hover:bg-green-700 rounded-full h-12">
+             <Button 
+                className="w-full bg-primary text-white hover:bg-primary/90 rounded-full h-12"
+                onClick={() => setIsAndroidModalOpen(true)}
+              >
                 Join Early Access
               </Button>
+              <AndroidEarlyAccessModal 
+                isOpen={isAndroidModalOpen} 
+                onClose={() => setIsAndroidModalOpen(false)} 
+              />
               <div className="text-center px-4">
                 <p className="text-sm text-stone-600">
                   We're putting the finishing touches on our Android app. Join the waitlist to be notified first.
