@@ -4,6 +4,7 @@ import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import { DownloadSection } from "@/components/DownloadSection";
 
 export default function Stories() {
   const stories = [
@@ -120,21 +121,7 @@ export default function Stories() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-primary text-white">
-        <div className="container px-4 mx-auto max-w-4xl text-center">
-          <h2 className="text-4xl md:text-5xl font-normal mb-8">
-            Ready to write your own success story?
-          </h2>
-          <p className="text-xl text-white/90 font-light mb-12 max-w-2xl mx-auto">
-            Join thousands of users who are taking control of their dental health today.
-          </p>
-          <Link href="/#download-cta">
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-10 py-8 text-lg font-medium shadow-xl border-0">
-              Get Started for Free
-            </Button>
-          </Link>
-        </div>
-      </section>
+      <DownloadSection />
 
       <Footer />
     </div>

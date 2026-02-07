@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { DownloadCTA } from "@/components/DownloadCTA";
+import { DownloadSection } from "@/components/DownloadSection";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import { motion } from "framer-motion";
@@ -178,7 +178,7 @@ export default function ArticlePage({ article, relatedArticles = [] }: ArticlePa
         </section>
       )}
 
-      <DownloadCTA />
+      <DownloadSection />
       <Footer />
     </div>
   );

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, BookOpen, Search, ShieldCheck, Stethoscope, Activity } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { DownloadSection } from "@/components/DownloadSection";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -172,21 +173,7 @@ export default function OralHealthHub() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-white">
-        <div className="container px-4 mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-stone-900 mb-6">
-            Stop wondering. Start knowing.
-          </h2>
-          <p className="text-xl text-stone-600 mb-10 max-w-2xl mx-auto">
-            You shouldn't have to rely on confusing jargon or insurance codes to understand your health. DentaSmart gives you the clarity you deserve.
-          </p>
-          <Link href="/#download-cta">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-white rounded-full px-10 py-8 text-xl shadow-lg hover:shadow-xl transition-all">
-              Get Clarity Now
-            </Button>
-          </Link>
-        </div>
-      </section>
+      <DownloadSection />
       <Footer />
     </div>
   );

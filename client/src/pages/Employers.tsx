@@ -1,11 +1,11 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
+import { BenefitsCarousel } from "@/components/BenefitsCarousel";
 import { TrendingDown, Users, ShieldCheck } from "lucide-react";
 import { ValueComparisonTable } from "@/components/ValueComparisonTable";
 import { SavingsCalculator } from "@/components/SavingsCalculator";
-import { DownloadCTA } from "@/components/DownloadCTA";
+import { DownloadSection } from "@/components/DownloadSection";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { DemoRequestModal } from "@/components/DemoRequestModal";
@@ -121,9 +121,9 @@ export default function Employers() {
         </div>
       </section>
 
-      {/* User Challenges Carousel */}
-      <section className="py-24 bg-stone-100">
-        <UserChallengesCarousel />
+      {/* Benefits Carousel */}
+      <section className="py-24 bg-stone-50 overflow-hidden">
+        <BenefitsCarousel />
       </section>
 
       {/* Comparison Table - Clean & Modern */}
@@ -176,7 +176,7 @@ export default function Employers() {
       </section>
 
       {/* Final CTA */}
-      <DownloadCTA />
+      <DownloadSection />
 
       <Footer />
     </div>

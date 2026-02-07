@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Linkedin, Users, Target, Lightbulb } from "lucide-react";
-import { DownloadCTA } from "@/components/DownloadCTA";
+import { DownloadSection } from "@/components/DownloadSection";
 import { motion } from "framer-motion";
 
 export default function Team() {
@@ -245,7 +245,7 @@ export default function Team() {
       </section>
 
       {/* Final CTA */}
-      <DownloadCTA />
+      <DownloadSection />
 
       <Footer />
     </div>

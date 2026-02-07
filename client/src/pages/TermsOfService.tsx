@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { DownloadSection } from "@/components/DownloadSection";
 
 const termsContent = `
 # Terms and Conditions
@@ -244,6 +245,7 @@ export default function TermsOfService() {
         </div>
       </main>
 
+      <DownloadSection />
       <Footer />
     </div>
   );

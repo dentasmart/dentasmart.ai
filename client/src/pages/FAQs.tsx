@@ -2,12 +2,12 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
-import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
+import { BenefitsCarousel } from "@/components/BenefitsCarousel";
 import faqChallenges from "@/data/faqChallenges.json";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import { DownloadCTA } from "@/components/DownloadCTA";
+import { DownloadSection } from "@/components/DownloadSection";
 
 // Map FAQ challenge IDs to their image paths
 const faqChallengeImages: Record<number, string> = {
@@ -186,14 +186,9 @@ export default function FAQs() {
         </div>
       </section>
 
-      {/* User Challenges Carousel */}
-      <section className="py-24 bg-stone-50">
-        <UserChallengesCarousel 
-          challenges={faqChallenges} 
-          images={faqChallengeImages}
-          title="Your questions, answered"
-          subtitle="Explore real-world scenarios and find clarity on how DentaSmart fits into your life."
-        />
+      {/* Benefits Carousel */}
+      <section className="py-24 bg-stone-50 overflow-hidden">
+        <BenefitsCarousel />
       </section>
 
       {/* FAQs */}
@@ -252,7 +247,7 @@ export default function FAQs() {
       </section>
 
       {/* Final CTA */}
-      <DownloadCTA />
+      <DownloadSection />
 
       <Footer />
     </div>

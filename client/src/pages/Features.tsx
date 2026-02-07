@@ -1,7 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { DownloadCTA } from "@/components/DownloadCTA";
-import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
+import { DownloadSection } from "@/components/DownloadSection";
+import { BenefitsCarousel } from "@/components/BenefitsCarousel";
 import { Lock, Check } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -182,9 +182,9 @@ export default function Features() {
         </div>
       </section>
 
-      {/* User Challenges Carousel */}
-      <section className="py-24 bg-stone-100 relative">
-        <UserChallengesCarousel />
+      {/* Benefits Carousel */}
+      <section className="py-24 bg-stone-50 overflow-hidden">
+        <BenefitsCarousel />
       </section>
 
       {/* Security Section - Clean & Trustworthy */}
@@ -222,7 +222,7 @@ export default function Features() {
       </section>
 
       {/* Final CTA */}
-      <DownloadCTA />
+      <DownloadSection />
 
       <Footer />
     </div>

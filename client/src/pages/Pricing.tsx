@@ -1,11 +1,11 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
+import { BenefitsCarousel } from "@/components/BenefitsCarousel";
 import { useState } from "react";
 import { Check } from "lucide-react";
 import { ValueComparisonTable } from "@/components/ValueComparisonTable";
-import { DownloadCTA } from "@/components/DownloadCTA";
+import { DownloadSection } from "@/components/DownloadSection";
 import { motion } from "framer-motion";
 import { WaitlistPopup } from "@/components/WaitlistPopup";
 
@@ -237,7 +237,6 @@ export default function Pricing() {
                 {[
                   "Everything in Insights",
                   "Dental insurance alternative",
-                  "Preventive care coverage",
                   "75,000+ Dentists Network",
                   "20-60% savings on procedures",
                   "Buy Now, Pay Later available",
@@ -264,9 +263,9 @@ export default function Pricing() {
 
       <WaitlistPopup isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
 
-      {/* User Challenges Carousel */}
-      <section className="py-24 bg-stone-100">
-        <UserChallengesCarousel />
+      {/* Benefits Carousel */}
+      <section className="py-24 bg-stone-50 overflow-hidden">
+        <BenefitsCarousel />
       </section>
 
       {/* Comparison Table - Clean */}
@@ -298,19 +297,20 @@ export default function Pricing() {
                     { feature: "Secure Dental History", insights: true, secondOpinion: false, benefits: true },
                     { feature: "Share with Dentist", insights: true, secondOpinion: true, benefits: true },
                     { feature: "Progress Tracking", insights: true, secondOpinion: false, benefits: true },
-                    { feature: "Procedure Savings (20-60%)", insights: false, secondOpinion: false, benefits: true },
-                    { feature: "Buy Now, Pay Later", insights: false, secondOpinion: false, benefits: true },
+                    { feature: "Treatment Review", insights: false, secondOpinion: true, benefits: true },
+                    { feature: "Discount Network", insights: false, secondOpinion: false, benefits: true },
+                    { feature: "Financing Options", insights: false, secondOpinion: false, benefits: true },
                   ].map((row, idx) => (
-                    <tr key={idx} className={`${idx % 2 === 0 ? 'bg-white' : 'bg-blue-50/60'} hover:bg-blue-100/50 transition-colors`}>
-                      <td className={`py-5 px-6 text-teal-900 font-medium text-sm md:text-base sticky left-0 z-10 ${idx % 2 === 0 ? 'bg-white' : 'bg-blue-50'}`}>{row.feature}</td>
-                      <td className="py-5 px-4 text-center">
-                        {row.insights ? <Check className="w-6 h-6 text-primary mx-auto" /> : <span className="text-blue-200">,</span>}
+                    <tr key={idx} className="hover:bg-blue-50/50 transition-colors">
+                      <td className="text-left py-4 px-6 font-medium text-stone-900 sticky left-0 bg-white z-10 border-r border-blue-100">{row.feature}</td>
+                      <td className="text-center py-4 px-4">
+                        {row.insights ? <Check className="w-5 h-5 text-primary mx-auto" /> : <span className="text-stone-300">-</span>}
                       </td>
-                      <td className="py-5 px-4 text-center">
-                        {row.secondOpinion ? <Check className="w-6 h-6 text-primary mx-auto" /> : <span className="text-blue-200">,</span>}
+                      <td className="text-center py-4 px-4">
+                        {row.secondOpinion ? <Check className="w-5 h-5 text-primary mx-auto" /> : <span className="text-stone-300">-</span>}
                       </td>
-                      <td className="py-5 px-4 text-center bg-blue-50/50 border-l border-blue-100">
-                        {row.benefits ? <Check className="w-6 h-6 text-primary mx-auto" /> : <span className="text-blue-200">,</span>}
+                      <td className="text-center py-4 px-4 bg-blue-50/30">
+                        {row.benefits ? <Check className="w-5 h-5 text-primary mx-auto" /> : <span className="text-stone-300">-</span>}
                       </td>
                     </tr>
                   ))}
@@ -318,53 +318,11 @@ export default function Pricing() {
               </table>
             </div>
           </div>
-          <div className="mt-32">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-light text-black mb-6">
-                Compare the value
-              </h2>
-              <p className="text-xl text-black font-light max-w-3xl mx-auto">
-                See how DentaSmart Benefits stacks up against traditional carriers.
-              </p>
-            </div>
-            <ValueComparisonTable />
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section - Minimalist Accordion Style */}
-      <section className="py-32 bg-white">
-        <div className="container px-4 mx-auto max-w-3xl">
-          <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-16 text-center">
-            Common questions
-          </h2>
-          <div className="space-y-8">
-            {[
-              { q: "Can I switch plans later?", a: "Yes, you can upgrade or downgrade your plan at any time from your account settings." },
-              { q: "Is there a waiting period?", a: "No. Unlike traditional insurance, DentaSmart benefits start immediately." },
-              { q: "Does it cover pre-existing conditions?", a: "Yes. We don't exclude pre-existing conditions. You get full benefits from day one." },
-              { q: "How does the family plan work?", a: "The family plan covers up to 4 members. You can add more members for a small additional fee." },
-              { q: "What's the difference between Insights and Second Review?", a: "Insights is for ongoing monthly monitoring and wellness tracking. Second Review is a one-time service for a specific treatment plan comparison." },
-              { q: "Do you offer family plans?", a: "Yes. All our plans offer family options to cover your loved ones. You can easily add family members during signup or from your account settings." },
-            ].map((faq, idx) => (
-              <motion.div 
-                key={idx} 
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1, duration: 0.5 }}
-                className="border-b border-stone-100 pb-8"
-              >
-                <h3 className="text-xl font-medium text-stone-900 mb-3">{faq.q}</h3>
-                <p className="text-stone-600 font-light leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
       {/* Final CTA */}
-      <DownloadCTA />
+      <DownloadSection />
 
       <Footer />
     </div>

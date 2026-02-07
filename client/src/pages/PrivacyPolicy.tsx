@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { DownloadSection } from "@/components/DownloadSection";
 
 const privacyContent = `
 # Privacy Policy
@@ -257,6 +258,7 @@ export default function PrivacyPolicy() {
         </div>
       </main>
 
+      <DownloadSection />
       <Footer />
     </div>
   );
