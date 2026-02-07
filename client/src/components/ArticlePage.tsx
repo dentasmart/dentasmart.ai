@@ -8,6 +8,7 @@ import { DownloadSection } from "@/components/DownloadSection";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import { motion } from "framer-motion";
+import { BlogCTABanner } from "@/components/BlogCTABanner";
 
 
 interface ArticleProps {
@@ -179,6 +180,7 @@ export default function ArticlePage({ article, relatedArticles = [] }: ArticlePa
       )}
 
       <DownloadSection />
+      <BlogCTABanner />
       <Footer />
     </div>
   );
