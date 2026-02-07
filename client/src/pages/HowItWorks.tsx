@@ -3,7 +3,8 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import HowItWorksHero from "@/components/HowItWorksHero";
 import { DownloadCTA } from "@/components/DownloadCTA";
-import { Camera, Brain, FileText, MessageSquare, Activity, ShieldCheck, ClipboardList } from "lucide-react";
+import { UserChallengesCarousel } from "@/components/UserChallengesCarousel";
+import { Camera, Brain, FileText, MessageSquare, Activity, ShieldCheck, ClipboardList, Calendar, Bell, TrendingUp, HeartPulse } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 
@@ -12,10 +13,10 @@ export default function HowItWorks() {
     <div className="min-h-screen flex flex-col bg-white font-sans text-foreground selection:bg-primary/20">
       <Navigation />
 
-      {/* Hero Section */}
+      {/* Hero Section (New StoryBrand) */}
       <HowItWorksHero />
 
-      {/* 4-Step Visual Process */}
+      {/* 4-Step Visual Process (New StoryBrand) */}
       <section className="pt-12 pb-24 bg-white">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
@@ -97,7 +98,12 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      {/* What you'll walk away with - 3 Tiles */}
+      {/* User Challenges Carousel (Restored) */}
+      <section className="py-24 bg-stone-100">
+        <UserChallengesCarousel />
+      </section>
+
+      {/* What you'll walk away with - 3 Tiles (New StoryBrand) */}
       <section className="py-24 bg-stone-50">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="text-center mb-16">
@@ -145,7 +151,88 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      {/* FAQ Teaser */}
+      {/* Detailed Report Features - Clean Grid (Restored) */}
+      <section className="py-16 bg-white">
+        <div className="container px-4 mx-auto max-w-6xl">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-6">
+              What you get in your report
+            </h2>
+            <p className="text-xl text-muted-foreground font-normal">
+              Comprehensive insights, simplified for you.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { 
+                icon: Activity, 
+                title: "Visual Findings", 
+                desc: "We highlight exactly where the problem is on your image. No guessing." 
+              },
+              { 
+                icon: FileText, 
+                title: "Plain English", 
+                desc: "\"Mesial caries on #14\" becomes \"Small cavity between your upper left molars.\"" 
+              },
+              { 
+                icon: ShieldCheck, 
+                title: "Action Plan", 
+                desc: "Clear next steps: Watch it, treat it, or get a second opinion." 
+              },
+              { 
+                icon: ClipboardList, 
+                title: "Care Plan", 
+                desc: "A personalized roadmap for your treatments and daily hygiene routine." 
+              },
+              { 
+                icon: Calendar, 
+                title: "Timelines", 
+                desc: "Know exactly when to schedule appointments and follow-ups." 
+              },
+              { 
+                icon: Bell, 
+                title: "Reminders", 
+                desc: "Smart notifications so you never miss a check-up or daily habit." 
+              },
+              { 
+                icon: TrendingUp, 
+                title: "Risk Assessment", 
+                desc: "Understand your long-term risks for cavities, gum disease, and more." 
+              },
+              { 
+                icon: HeartPulse, 
+                title: "Oral Health Score", 
+                desc: "A simple 0-100 score to track your overall dental wellness over time." 
+              },
+              { 
+                icon: MessageSquare, 
+                title: "Talking Points", 
+                desc: "Specific questions to ask your dentist so you walk in prepared." 
+              }
+            ].map((feature, idx) => (
+              <motion.div 
+                key={idx} 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.05, duration: 0.5 }}
+                className="bg-white p-8 rounded-3xl shadow-sm border border-border hover:shadow-md transition-all duration-300 group"
+              >
+                <div className="w-12 h-12 bg-accent/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
+                  <feature.icon className="w-6 h-6 text-foreground group-hover:text-white transition-colors duration-300" strokeWidth={1.5} />
+                </div>
+                <h3 className="text-xl font-medium text-foreground mb-3">{feature.title}</h3>
+                <p className="text-muted-foreground font-normal leading-relaxed text-sm">
+                  {feature.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Teaser (New StoryBrand) */}
       <section className="py-24 bg-white border-t border-stone-100">
         <div className="container px-4 mx-auto max-w-4xl text-center">
           <h2 className="text-3xl md:text-4xl font-normal text-foreground mb-8">
