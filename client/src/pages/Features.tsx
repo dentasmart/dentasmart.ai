@@ -26,7 +26,7 @@ export default function Features() {
         "Early Detection: Spot visual changes before they turn into painful problems.",
         "Easy Monitoring: Track your gum and tooth health from the comfort of home."
       ],
-      image: "/images/features/mouth_image_insights.png"
+      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/AfieCruvYKKqBoIa.png"
     },
     {
       title: "Personalized Care That Actually Fits Your Life",
@@ -36,7 +36,7 @@ export default function Features() {
         "Simple Steps: Actionable tips that fit easily into your daily routine.",
         "Better Habits: Learn exactly what *your* mouth needs to stay healthy."
       ],
-      image: "/images/features/personalized_recommendations.png"
+      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/ChlTSVZDNZEOfine.png"
     },
     {
       title: "See Your Progress, Stay Motivated",
@@ -46,7 +46,7 @@ export default function Features() {
         "Complete History: Keep all your scans and insights in one secure place.",
         "Stay on Track: A clear view of your journey keeps you focused on the long term."
       ],
-      image: "/images/features/interactive_timeline.png"
+      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/QmtzzNkXnZNbJvtj.png"
     },
     {
       title: "Know Your Risks Before They Become Reality",
@@ -66,7 +66,7 @@ export default function Features() {
         "Real-Time Feedback: Watch your score rise as you take care of your teeth.",
         "Clear Goals: A simple target to aim for every day."
       ],
-      image: "/images/features/oral_wellness_score.png"
+      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/fBPWoPfvQrOmKAcw.png"
     },
     {
       title: "Your 24/7 Personal AI Dental Guide",
