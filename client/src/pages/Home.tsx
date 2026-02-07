@@ -273,10 +273,10 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-normal mb-8">
+            <h2 className="text-4xl md:text-5xl font-normal mb-8 text-white">
               We get it. Dental care can feel like a guessing game.
             </h2>
-            <p className="text-xl md:text-2xl text-stone-300 font-light mb-12 leading-relaxed">
+            <p className="text-xl md:text-2xl text-stone-200 font-light mb-12 leading-relaxed">
               Most people feel anxious and confused about their dental health. <br />
               <span className="text-white font-normal">DentaSmart gives you a clear starting point so you can make confident decisions.</span>
             </p>
@@ -310,11 +310,11 @@ export default function Home() {
                 transition={{ delay: idx * 0.2, duration: 0.6 }}
                 className="relative"
               >
-                <div className="text-6xl font-bold text-white/20 absolute -top-8 left-1/2 -translate-x-1/2 select-none">
+                <div className="text-6xl font-bold text-white/30 absolute -top-8 left-1/2 -translate-x-1/2 select-none">
                   {item.step}
                 </div>
-                <h3 className="text-2xl font-medium mb-2 relative z-10">{item.title}</h3>
-                <p className="text-white/80 font-light relative z-10">{item.desc}</p>
+                <h3 className="text-2xl font-medium mb-2 relative z-10 text-white">{item.title}</h3>
+                <p className="text-white font-light relative z-10">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -418,10 +418,11 @@ export default function Home() {
                 Download on App Store
               </Button>
               <div className="w-32 h-32 bg-white p-2 rounded-xl shadow-sm border border-stone-100">
-                {/* Placeholder for QR Code */}
-                <div className="w-full h-full bg-stone-200 rounded-lg flex items-center justify-center text-xs text-stone-500 text-center">
-                  QR Code
-                </div>
+                <img 
+                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/JqfJbWjVjQxYwXyv.png" 
+                  alt="Download on iOS QR Code" 
+                  className="w-full h-full object-contain"
+                />
               </div>
             </div>
 
