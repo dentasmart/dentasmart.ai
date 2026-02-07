@@ -134,7 +134,7 @@ export default function Home() {
                 }}
               >
                 <img 
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/TvPOfaYiJQjCDzyy.jpg" 
+                  src="/images/narrator-thumbnail.png" 
                   alt="DentaSmart Video Thumbnail" 
                   className="w-full h-full object-cover"
                 />
@@ -407,14 +407,14 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-medium text-black">iOS</h3>
-              <a href="https://apps.apple.com/us/app/dentasmart/id6476543210" target="_blank" rel="noopener noreferrer" className="w-full">
+              <a href="https://apps.apple.com/us/app/dentasmart/id6670311232" target="_blank" rel="noopener noreferrer" className="w-full">
                 <Button className="w-full bg-black text-white hover:bg-stone-800 rounded-full h-12">
                   Download on App Store
                 </Button>
               </a>
               <div className="w-32 h-32 bg-white p-2 rounded-xl shadow-sm border border-stone-100">
                 <img 
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/JqfJbWjVjQxYwXyv.png" 
+                  src="/images/qr-code.png" 
                   alt="Download on iOS QR Code" 
                   className="w-full h-full object-contain"
                 />
