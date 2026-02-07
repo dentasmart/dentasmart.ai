@@ -260,16 +260,18 @@ export default function Team() {
       </section>
 
       {/* Clinical Safety and Responsibility */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-stone-50 border-t border-stone-200">
         <div className="container px-4 mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl md:text-4xl font-normal text-black mb-6">Clinical safety and responsibility</h2>
-          <p className="text-xl text-stone-700 mb-8">
-            We help users understand oral health and prepare for licensed dental care.
-          </p>
-          <div className="flex justify-center gap-6 text-sm font-medium text-primary">
-            <a href="/privacy" className="hover:underline">Privacy Policy</a>
-            <span className="text-stone-300">|</span>
-            <a href="/terms" className="hover:underline">Terms of Service</a>
+          <div className="bg-white p-10 rounded-3xl shadow-sm border border-stone-100">
+            <h2 className="text-3xl md:text-4xl font-normal text-black mb-6">Clinical safety and responsibility</h2>
+            <p className="text-xl text-stone-700 mb-10 leading-relaxed">
+              We help users understand oral health and prepare for licensed dental care.
+            </p>
+            <div className="flex justify-center gap-8 text-base font-medium text-primary">
+              <a href="/privacy-policy" className="hover:underline hover:text-primary/80 transition-colors">Privacy Policy</a>
+              <span className="text-stone-300">|</span>
+              <a href="/terms-of-service" className="hover:underline hover:text-primary/80 transition-colors">Terms of Service</a>
+            </div>
           </div>
         </div>
       </section>
