@@ -109,12 +109,12 @@ export default function Features() {
               className="text-left max-w-2xl lg:col-span-7 xl:col-span-6"
             >
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
-                Stop worrying about <br />
-                <span className="font-normal italic text-primary">your teeth</span>.
+                Everything you need to understand <br />
+                <span className="font-normal italic text-primary">your oral health</span>.
               </h1>
               
               <p className="text-xl md:text-2xl text-stone-700 mb-10 font-normal leading-relaxed text-balance">
-                See what your dentist sees. Understand your oral health instantly. Make decisions with total confidence.
+                Clarity first. Confidence next.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-start">
                 <Button 
@@ -122,7 +122,7 @@ export default function Features() {
                   className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0 cursor-pointer"
                   onClick={() => document.getElementById('download-cta')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  Get Your Free Analysis
+                  Get My Oral Health Score
                 </Button>
                 
               </div>
