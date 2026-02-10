@@ -1,0 +1,15 @@
+{
+  "query": "SELECT id, slug, title FROM blog_posts WHERE slug LIKE '%dentist%explain%' OR title LIKE '%Explain Diagnoses%' LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT id, slug, title FROM blog_posts WHERE slug LIKE '%dentist%explain%' OR title LIKE '%Explain Diagnoses%' LIMIT 5;",
+  "rows": [
+    {
+      "id": "1",
+      "slug": "unclear-diagnoses",
+      "title": "Why Don't Dentists Clearly Explain Diagnoses?"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tslug\ttitle\n1\tunclear-diagnoses\tWhy Don't Dentists Clearly Explain Diagnoses?\n",
+  "stderr": "",
+  "execution_time_ms": 93
+}

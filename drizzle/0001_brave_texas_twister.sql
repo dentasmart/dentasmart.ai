@@ -1,0 +1,43 @@
+CREATE TABLE `admin_users` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`username` varchar(100) NOT NULL,
+	`passwordHash` varchar(255) NOT NULL,
+	`displayName` varchar(200),
+	`createdAt` timestamp NOT NULL DEFAULT (now()),
+	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `admin_users_id` PRIMARY KEY(`id`),
+	CONSTRAINT `admin_users_username_unique` UNIQUE(`username`)
+);
+--> statement-breakpoint
+CREATE TABLE `blog_posts` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`title` varchar(500) NOT NULL,
+	`slug` varchar(500) NOT NULL,
+	`category` enum('Dentist Problems','Dental Problems','Insurance Problems') NOT NULL,
+	`readTime` varchar(50) DEFAULT '3 min read',
+	`problemHeading` varchar(500),
+	`problemContent` text,
+	`empathyHeading` varchar(500),
+	`empathyContent` text,
+	`solutionHeading` varchar(500),
+	`solutionContent` text,
+	`changeHeading` varchar(500),
+	`changeContent` text,
+	`resultHeading` varchar(500),
+	`resultContent` text,
+	`bodyHtml` text,
+	`metaTitle` varchar(200),
+	`metaDescription` text,
+	`metaKeywords` text,
+	`ogTitle` varchar(200),
+	`ogDescription` text,
+	`ogImage` varchar(1000),
+	`canonicalUrl` varchar(1000),
+	`status` enum('draft','published','unpublished') NOT NULL DEFAULT 'draft',
+	`featuredImage` varchar(1000),
+	`publishedAt` timestamp,
+	`createdAt` timestamp NOT NULL DEFAULT (now()),
+	`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+	CONSTRAINT `blog_posts_id` PRIMARY KEY(`id`),
+	CONSTRAINT `blog_posts_slug_unique` UNIQUE(`slug`)
+);

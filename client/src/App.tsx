@@ -17,9 +17,12 @@ import FAQs from "@/pages/FAQs";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
 import Stories from "@/pages/Stories";
-
+import AdminLogin from "@/pages/AdminLogin";
+import AdminDashboard from "@/pages/AdminDashboard";
+import AdminBlogEditor from "@/pages/AdminBlogEditor";
 
 function Router() {
+  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
       <Route path={"/"} component={Home} />
@@ -34,6 +37,10 @@ function Router() {
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/terms-of-service" component={TermsOfService} />
       <Route path="/stories" component={Stories} />
+      <Route path="/admin/login" component={AdminLogin} />
+      <Route path="/admin" component={AdminDashboard} />
+      <Route path="/admin/new" component={AdminBlogEditor} />
+      <Route path="/admin/edit/:id" component={AdminBlogEditor} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

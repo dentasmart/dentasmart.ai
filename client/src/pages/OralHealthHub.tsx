@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, BookOpen, Search, ShieldCheck, Stethoscope, Activity } from "lucide-react";
+import { ArrowRight, BookOpen, Search, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DownloadSection } from "@/components/DownloadSection";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,17 +9,8 @@ import { Input } from "@/components/ui/input";
 import Navigation from "@/components/Navigation";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
-import { useState } from "react";
-import { dentistArticles } from "@/data/dentistArticles";
-import { insuranceArticles } from "@/data/insuranceArticles";
-import { clinicalArticles } from "@/data/clinicalArticles";
-
-// Combine all articles
-const allArticles = [
-  ...dentistArticles.map(a => ({ ...a, icon: Stethoscope })),
-  ...insuranceArticles.map(a => ({ ...a, icon: ShieldCheck })),
-  ...clinicalArticles.map(a => ({ ...a, icon: Activity }))
-];
+import { useState, useMemo } from "react";
+import { trpc } from "@/lib/trpc";
 
 const categories = ["All", "Dental Problems", "Dentist Problems", "Insurance Problems"];
 
@@ -27,14 +18,15 @@ export default function OralHealthHub() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  // Filter logic
-  const filteredArticles = allArticles.filter(article => {
-    const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                          article.problem.content.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = selectedCategory === "All" || article.category === selectedCategory;
-    
-    return matchesSearch && matchesCategory;
+  // Fetch published articles from database
+  const { data, isLoading } = trpc.blog.list.useQuery({
+    publishedOnly: true,
+    limit: 100,
+    category: selectedCategory !== "All" ? selectedCategory : undefined,
+    search: searchQuery || undefined,
   });
+
+  const articles = useMemo(() => data?.posts || [], [data]);
 
   return (
     <div className="min-h-screen bg-background font-sans">
@@ -115,9 +107,14 @@ export default function OralHealthHub() {
       {/* Articles Grid */}
       <section className="py-20 bg-stone-50 min-h-[600px]">
         <div className="container px-4 mx-auto max-w-7xl">
-          {filteredArticles.length > 0 ? (
+          {isLoading ? (
+            <div className="flex justify-center items-center py-20">
+              <Loader2 className="w-8 h-8 animate-spin text-primary" />
+              <span className="ml-3 text-stone-600">Loading articles...</span>
+            </div>
+          ) : articles.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredArticles.map((article, index) => (
+              {articles.map((article, index) => (
                 <motion.div
                   key={article.id}
                   initial={{ opacity: 0, y: 20 }}
@@ -125,7 +122,7 @@ export default function OralHealthHub() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
                 >
-                  <Link href={`/hub/${article.id}`}>
+                  <Link href={`/hub/${article.slug}`}>
                     <Card className="h-full hover:shadow-xl transition-all duration-300 border-stone-200 bg-white group cursor-pointer overflow-hidden flex flex-col">
                       <CardHeader className="pb-4">
                         <div className="flex justify-between items-start mb-4">
@@ -143,7 +140,7 @@ export default function OralHealthHub() {
                       </CardHeader>
                       <CardContent className="flex-grow">
                         <CardDescription className="text-base text-stone-600 line-clamp-3">
-                          {article.problem.content}
+                          {article.problemContent || article.metaDescription}
                         </CardDescription>
                       </CardContent>
                       <CardFooter className="pt-4 border-t border-stone-100 mt-auto">
