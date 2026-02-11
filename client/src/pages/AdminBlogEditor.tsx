@@ -39,7 +39,6 @@ import {
   Clock,
   AlertCircle,
 } from "lucide-react";
-import { toast } from "sonner";
 import BlogEditor from "@/components/BlogEditor";
 
 export default function AdminBlogEditor() {
@@ -94,6 +93,8 @@ export default function AdminBlogEditor() {
   // UI state
   const [seoOpen, setSeoOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("structured");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   // Populate form when editing
   useEffect(() => {
@@ -170,37 +171,84 @@ export default function AdminBlogEditor() {
     }
   }, [title, slugManuallyEdited]);
 
+  // Parse tRPC/Zod errors into human-readable messages
+  const parseErrorMessage = (err: any): string => {
+    // Handle Zod validation errors (array of issues)
+    if (err?.message) {
+      try {
+        const parsed = JSON.parse(err.message);
+        if (Array.isArray(parsed)) {
+          return parsed
+            .map((issue: any) => {
+              const field = issue.path?.join(" > ") || "Field";
+              const friendlyField = field.charAt(0).toUpperCase() + field.slice(1);
+              return `${friendlyField}: ${issue.message || "is invalid"}`;
+            })
+            .join(". ");
+        }
+      } catch {
+        // Not JSON, use as-is
+      }
+      // Clean up common tRPC error prefixes
+      const msg = err.message.replace(/^TRPCClientError:\s*/i, "");
+      return msg || "Something went wrong. Please try again.";
+    }
+    return "Something went wrong. Please try again.";
+  };
+
+  // Helper to show messages at top of page
+  const showError = (msg: string) => {
+    setErrorMessage(msg);
+    setSuccessMessage(null);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  const showSuccess = (msg: string) => {
+    setSuccessMessage(msg);
+    setErrorMessage(null);
+    setTimeout(() => setSuccessMessage(null), 5000);
+  };
+
   // Mutations
   const createMutation = trpc.blog.create.useMutation({
     onSuccess: (data) => {
-      toast.success("Article created successfully!");
+      showSuccess("Article created successfully!");
       setLocation(`/admin/edit/${data.id}`);
     },
     onError: (err) => {
-      toast.error(err.message || "Failed to create article");
+      const msg = parseErrorMessage(err);
+      showError(msg);
     },
   });
 
   const updateMutation = trpc.blog.update.useMutation({
     onSuccess: () => {
-      toast.success("Article saved successfully!");
+      showSuccess("Article saved successfully!");
     },
     onError: (err) => {
-      toast.error(err.message || "Failed to save article");
+      const msg = parseErrorMessage(err);
+      showError(msg);
     },
   });
 
   const publishMutation = trpc.blog.publish.useMutation({
     onSuccess: () => {
       setStatus("published");
-      toast.success("Article published!");
+      showSuccess("Article published! It is now live on the website.");
+    },
+    onError: (err) => {
+      const msg = parseErrorMessage(err);
+      showError(msg);
     },
   });
 
   const unpublishMutation = trpc.blog.unpublish.useMutation({
     onSuccess: () => {
       setStatus("unpublished");
-      toast.success("Article unpublished");
+      showSuccess("Article unpublished. It is no longer visible on the website.");
+    },
+    onError: (err) => {
+      const msg = parseErrorMessage(err);
+      showError(msg);
     },
   });
 
@@ -250,9 +298,10 @@ export default function AdminBlogEditor() {
 
   const handleSave = () => {
     if (!title.trim()) {
-      toast.error("Title is required");
+      showError("Please enter a title for your article before saving.");
       return;
     }
+    setErrorMessage(null);
     if (isNew) {
       createMutation.mutate(formData);
     } else if (editId) {
@@ -261,6 +310,11 @@ export default function AdminBlogEditor() {
   };
 
   const handleSaveAsDraft = () => {
+    if (!title.trim()) {
+      showError("Please enter a title for your article before saving.");
+      return;
+    }
+    setErrorMessage(null);
     setStatus("draft");
     if (isNew) {
       createMutation.mutate({ ...formData, status: "draft" });
@@ -271,9 +325,10 @@ export default function AdminBlogEditor() {
 
   const handlePublish = () => {
     if (!title.trim()) {
-      toast.error("Title is required before publishing");
+      showError("Please enter a title for your article before publishing.");
       return;
     }
+    setErrorMessage(null);
     if (isNew) {
       createMutation.mutate({ ...formData, status: "published" });
     } else if (editId) {
@@ -347,6 +402,40 @@ export default function AdminBlogEditor() {
           </div>
         </div>
       </header>
+
+      {/* Error / Success Banner */}
+      {errorMessage && (
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+          <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-start gap-3">
+            <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+            <div className="flex-1">
+              <p className="text-sm font-medium text-red-800">{errorMessage}</p>
+            </div>
+            <button
+              onClick={() => setErrorMessage(null)}
+              className="text-red-400 hover:text-red-600 cursor-pointer"
+            >
+              &times;
+            </button>
+          </div>
+        </div>
+      )}
+      {successMessage && (
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+          <div className="bg-green-50 border border-green-200 rounded-xl p-4 flex items-start gap-3">
+            <Eye className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+            <div className="flex-1">
+              <p className="text-sm font-medium text-green-800">{successMessage}</p>
+            </div>
+            <button
+              onClick={() => setSuccessMessage(null)}
+              className="text-green-400 hover:text-green-600 cursor-pointer"
+            >
+              &times;
+            </button>
+          </div>
+        </div>
+      )}
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

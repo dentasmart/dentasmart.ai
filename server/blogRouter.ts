@@ -14,6 +14,7 @@ import {
   seedAdminUser,
 } from "./blogDb";
 import { SignJWT, jwtVerify } from "jose";
+import { storagePut } from "./storage";
 
 const ADMIN_COOKIE_NAME = "blog_admin_session";
 const JWT_SECRET_KEY = process.env.JWT_SECRET || "dentasmart-blog-admin-secret";
@@ -288,5 +289,22 @@ export const blogRouter = router({
     .query(async ({ input }) => {
       const exists = await slugExists(input.slug, input.excludeId);
       return { exists };
+    }),
+
+  // Image upload for blog editor
+  uploadImage: adminBlogProcedure
+    .input(z.object({
+      fileName: z.string(),
+      fileBase64: z.string(),
+      mimeType: z.string(),
+    }))
+    .mutation(async ({ input }) => {
+      const { fileName, fileBase64, mimeType } = input;
+      const buffer = Buffer.from(fileBase64, "base64");
+      const randomSuffix = Math.random().toString(36).substring(2, 10);
+      const sanitizedName = fileName.replace(/[^a-zA-Z0-9.-]/g, "_");
+      const fileKey = `blog-images/${randomSuffix}-${sanitizedName}`;
+      const { url } = await storagePut(fileKey, buffer, mimeType);
+      return { url };
     }),
 });

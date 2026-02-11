@@ -191,3 +191,8 @@
 - [x] Remove status dropdown from editor - new articles always start as Draft
 - [x] Control status through action buttons only (Save Draft, Publish, Unpublish)
 - [x] Show current status as a read-only badge instead of dropdown
+
+# Fixes - Feb 11, 2026 (Round 5)
+
+- [x] Replace browser prompt() for image insert with proper upload modal (drag & drop + URL option)
+- [x] Move error/validation messages to top of page as human-readable banners (not raw JSON in bottom-right)

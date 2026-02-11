@@ -9,6 +9,14 @@ import { TextStyle } from "@tiptap/extension-text-style";
 import Color from "@tiptap/extension-color";
 import Placeholder from "@tiptap/extension-placeholder";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import {
   Bold,
   Italic,
@@ -32,7 +40,8 @@ import {
   Type,
   Palette,
 } from "lucide-react";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
+import ImageUploadModal from "./ImageUploadModal";
 
 interface BlogEditorProps {
   content: string;
@@ -41,6 +50,10 @@ interface BlogEditorProps {
 }
 
 export default function BlogEditor({ content, onChange, placeholder }: BlogEditorProps) {
+  const [showImageModal, setShowImageModal] = useState(false);
+  const [showLinkDialog, setShowLinkDialog] = useState(false);
+  const [linkUrl, setLinkUrl] = useState("");
+
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -93,24 +106,34 @@ export default function BlogEditor({ content, onChange, placeholder }: BlogEdito
     }
   }, [content, editor]);
 
-  const setLink = useCallback(() => {
+  const openLinkDialog = useCallback(() => {
     if (!editor) return;
-    const previousUrl = editor.getAttributes("link").href;
-    const url = window.prompt("Enter URL:", previousUrl);
-    if (url === null) return;
-    if (url === "") {
-      editor.chain().focus().extendMarkRange("link").unsetLink().run();
-      return;
-    }
-    editor.chain().focus().extendMarkRange("link").setLink({ href: url }).run();
+    const previousUrl = editor.getAttributes("link").href || "";
+    setLinkUrl(previousUrl);
+    setShowLinkDialog(true);
   }, [editor]);
 
-  const addImage = useCallback(() => {
+  const handleLinkSubmit = useCallback(() => {
     if (!editor) return;
-    const url = window.prompt("Enter image URL:");
-    if (url) {
-      editor.chain().focus().setImage({ src: url }).run();
+    if (!linkUrl.trim()) {
+      editor.chain().focus().extendMarkRange("link").unsetLink().run();
+    } else {
+      editor.chain().focus().extendMarkRange("link").setLink({ href: linkUrl }).run();
     }
+    setShowLinkDialog(false);
+    setLinkUrl("");
+  }, [editor, linkUrl]);
+
+  const handleLinkRemove = useCallback(() => {
+    if (!editor) return;
+    editor.chain().focus().extendMarkRange("link").unsetLink().run();
+    setShowLinkDialog(false);
+    setLinkUrl("");
+  }, [editor]);
+
+  const handleImageInsert = useCallback((url: string, alt?: string) => {
+    if (!editor) return;
+    editor.chain().focus().setImage({ src: url, alt: alt || "" }).run();
   }, [editor]);
 
   if (!editor) return null;
@@ -264,10 +287,10 @@ export default function BlogEditor({ content, onChange, placeholder }: BlogEdito
 
         {/* Insert */}
         <div className="flex items-center gap-0.5 pr-2 border-r border-stone-200">
-          <ToolbarButton onClick={setLink} active={editor.isActive("link")} title="Insert Link">
+          <ToolbarButton onClick={openLinkDialog} active={editor.isActive("link")} title="Insert Link">
             <LinkIcon className="w-4 h-4" />
           </ToolbarButton>
-          <ToolbarButton onClick={addImage} title="Insert Image">
+          <ToolbarButton onClick={() => setShowImageModal(true)} title="Insert Image">
             <ImageIcon className="w-4 h-4" />
           </ToolbarButton>
           <ToolbarButton
@@ -299,6 +322,62 @@ export default function BlogEditor({ content, onChange, placeholder }: BlogEdito
 
       {/* Editor Content */}
       <EditorContent editor={editor} />
+
+      {/* Image Upload Modal */}
+      <ImageUploadModal
+        open={showImageModal}
+        onClose={() => setShowImageModal(false)}
+        onInsert={handleImageInsert}
+      />
+
+      {/* Link Dialog */}
+      <Dialog open={showLinkDialog} onOpenChange={setShowLinkDialog}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <LinkIcon className="w-5 h-5 text-primary" />
+              Insert Link
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-3 mt-2">
+            <div>
+              <label className="text-sm text-stone-600 mb-1 block">URL</label>
+              <Input
+                value={linkUrl}
+                onChange={(e) => setLinkUrl(e.target.value)}
+                placeholder="https://example.com"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    handleLinkSubmit();
+                  }
+                }}
+                autoFocus
+              />
+            </div>
+          </div>
+          <DialogFooter className="mt-4">
+            {editor?.isActive("link") && (
+              <Button
+                variant="outline"
+                onClick={handleLinkRemove}
+                className="text-red-600 border-red-200 hover:bg-red-50 cursor-pointer mr-auto"
+              >
+                Remove Link
+              </Button>
+            )}
+            <Button variant="outline" onClick={() => setShowLinkDialog(false)} className="cursor-pointer">
+              Cancel
+            </Button>
+            <Button
+              onClick={handleLinkSubmit}
+              className="bg-primary hover:bg-primary/90 text-white cursor-pointer"
+            >
+              {linkUrl.trim() ? "Apply Link" : "Remove Link"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
