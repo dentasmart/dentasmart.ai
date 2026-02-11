@@ -217,13 +217,23 @@ export default function BlogEditor({ content, onChange, placeholder }: BlogEdito
           >
             <ListOrdered className="w-4 h-4" />
           </ToolbarButton>
-          <ToolbarButton
+        </div>
+
+        {/* StoryBrand Callout */}
+        <div className="flex items-center gap-0.5 pr-2 border-r border-stone-200">
+          <button
+            type="button"
             onClick={() => editor.chain().focus().toggleBlockquote().run()}
-            active={editor.isActive("blockquote")}
-            title="Blockquote"
+            title="StoryBrand Callout — adds a teal sidebar highlight to the selected text"
+            className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-colors cursor-pointer ${
+              editor.isActive("blockquote")
+                ? "bg-primary/15 text-primary border border-primary/30"
+                : "text-stone-600 hover:bg-stone-200 hover:text-stone-900 border border-transparent"
+            }`}
           >
             <Quote className="w-4 h-4" />
-          </ToolbarButton>
+            <span>Callout</span>
+          </button>
         </div>
 
         {/* Colors & Highlight */}

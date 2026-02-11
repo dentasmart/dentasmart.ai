@@ -181,3 +181,7 @@
 # Fixes - Feb 11, 2026 (Round 2)
 
 - [x] Make WYSIWYG editor styling match public blog page exactly (typography, spacing, blockquotes, headings, paragraphs)
+
+# Fixes - Feb 11, 2026 (Round 3)
+
+- [x] Add blockquote button to WYSIWYG editor toolbar for StoryBrand callout style
