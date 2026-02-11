@@ -118,7 +118,7 @@ export default function Article() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="prose prose-lg prose-stone mx-auto"
+              className="mx-auto"
             >
               {hasBodyHtml ? (
                 /* Render WYSIWYG HTML content */

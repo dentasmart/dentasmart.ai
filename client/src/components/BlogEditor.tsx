@@ -81,7 +81,7 @@ export default function BlogEditor({ content, onChange, placeholder }: BlogEdito
     editorProps: {
       attributes: {
         class:
-          "prose prose-stone max-w-none min-h-[400px] p-6 focus:outline-none [&_a]:text-primary [&_a]:underline [&_h1]:text-3xl [&_h1]:font-bold [&_h2]:text-2xl [&_h2]:font-semibold [&_h3]:text-xl [&_h3]:font-medium [&_blockquote]:border-l-4 [&_blockquote]:border-primary [&_blockquote]:pl-4 [&_blockquote]:italic [&_blockquote]:text-stone-600",
+          "blog-content min-h-[400px] p-8 focus:outline-none max-w-3xl mx-auto",
       },
     },
   });

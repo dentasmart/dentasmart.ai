@@ -177,3 +177,7 @@
 - [x] Change /hub URL to /oral-health-hub for better SEO
 - [x] Show existing blog content in Rich Text Editor (not just StoryBrand sections)
 - [x] Add published dates to all blogs, backdate existing ones starting December 2025
+
+# Fixes - Feb 11, 2026 (Round 2)
+
+- [x] Make WYSIWYG editor styling match public blog page exactly (typography, spacing, blockquotes, headings, paragraphs)
