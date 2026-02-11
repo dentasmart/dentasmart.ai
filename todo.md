@@ -185,3 +185,9 @@
 # Fixes - Feb 11, 2026 (Round 3)
 
 - [x] Add blockquote button to WYSIWYG editor toolbar for StoryBrand callout style
+
+# Fixes - Feb 11, 2026 (Round 4)
+
+- [x] Remove status dropdown from editor - new articles always start as Draft
+- [x] Control status through action buttons only (Save Draft, Publish, Unpublish)
+- [x] Show current status as a read-only badge instead of dropdown

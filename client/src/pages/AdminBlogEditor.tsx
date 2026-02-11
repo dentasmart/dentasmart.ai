@@ -305,20 +305,11 @@ export default function AdminBlogEditor() {
               </span>
             </div>
             <div className="flex items-center gap-2">
+              {/* Save Draft: saves without publishing */}
               <Button
                 variant="outline"
                 size="sm"
                 onClick={handleSaveAsDraft}
-                disabled={isSaving}
-                className="cursor-pointer"
-              >
-                <FileText className="w-4 h-4 mr-1" />
-                Save Draft
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleSave}
                 disabled={isSaving}
                 className="cursor-pointer"
               >
@@ -327,8 +318,9 @@ export default function AdminBlogEditor() {
                 ) : (
                   <Save className="w-4 h-4 mr-1" />
                 )}
-                Save
+                Save Draft
               </Button>
+              {/* Publish / Unpublish toggle */}
               {status === "published" ? (
                 <Button
                   size="sm"
@@ -461,16 +453,27 @@ export default function AdminBlogEditor() {
 
               <div>
                 <Label className="text-xs font-medium text-stone-500 mb-1 block">Status</Label>
-                <Select value={status} onValueChange={(v) => setStatus(v as typeof status)}>
-                  <SelectTrigger className="border-stone-200">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="draft">Draft</SelectItem>
-                    <SelectItem value="published">Published</SelectItem>
-                    <SelectItem value="unpublished">Unpublished</SelectItem>
-                  </SelectContent>
-                </Select>
+                <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium ${
+                  status === "published"
+                    ? "bg-green-100 text-green-700"
+                    : status === "draft"
+                    ? "bg-amber-100 text-amber-700"
+                    : "bg-stone-100 text-stone-600"
+                }`}>
+                  <span className={`w-2 h-2 rounded-full ${
+                    status === "published"
+                      ? "bg-green-500"
+                      : status === "draft"
+                      ? "bg-amber-500"
+                      : "bg-stone-400"
+                  }`} />
+                  {status === "published" ? "Published" : status === "draft" ? "Draft" : "Unpublished"}
+                </div>
+                <p className="text-xs text-stone-400 mt-1.5">
+                  {status === "draft" && "Use the buttons above to Save Draft or Publish."}
+                  {status === "published" && "This article is live. Click Unpublish to take it offline."}
+                  {status === "unpublished" && "This article is offline. Click Publish to make it live."}
+                </p>
               </div>
 
               <div>
