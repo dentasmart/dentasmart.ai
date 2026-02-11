@@ -122,7 +122,7 @@ export default function OralHealthHub() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
                 >
-                  <Link href={`/hub/${article.slug}`}>
+                  <Link href={`/oral-health-hub/${article.slug}`}>
                     <Card className="h-full hover:shadow-xl transition-all duration-300 border-stone-200 bg-white group cursor-pointer overflow-hidden flex flex-col">
                       <CardHeader className="pb-4">
                         <div className="flex justify-between items-start mb-4">
@@ -143,7 +143,10 @@ export default function OralHealthHub() {
                           {article.problemContent || article.metaDescription}
                         </CardDescription>
                       </CardContent>
-                      <CardFooter className="pt-4 border-t border-stone-100 mt-auto">
+                      <CardFooter className="pt-4 border-t border-stone-100 mt-auto flex justify-between items-center">
+                        <span className="text-xs text-stone-400">
+                          {article.publishedAt ? new Date(article.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : ""}
+                        </span>
                         <span className="text-sm font-medium text-primary flex items-center group-hover:translate-x-1 transition-transform">
                           Read Article <ArrowRight className="w-4 h-4 ml-1" />
                         </span>

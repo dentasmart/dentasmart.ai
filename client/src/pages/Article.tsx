@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 import { BlogCTABanner } from "@/components/BlogCTABanner";
 
 export default function Article() {
-  const [match, params] = useRoute("/hub/:id");
+  const [match, params] = useRoute("/oral-health-hub/:id");
   const slug = params?.id || "";
 
   // Fetch article from database by slug
@@ -87,12 +87,20 @@ export default function Article() {
                 </Badge>
                 <span className="text-sm font-medium text-stone-400">•</span>
                 <span className="text-sm font-medium text-stone-500">{article.readTime}</span>
+                {article.publishedAt && (
+                  <>
+                    <span className="text-sm font-medium text-stone-400">•</span>
+                    <span className="text-sm font-medium text-stone-500">
+                      {new Date(article.publishedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+                    </span>
+                  </>
+                )}
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-stone-900 mb-8 leading-tight tracking-tight">
                 {article.title}
               </h1>
               <div className="flex items-center justify-start gap-4">
-                <Link href="/hub">
+                <Link href="/oral-health-hub">
                   <Button variant="ghost" className="text-stone-500 hover:text-stone-900 hover:bg-white/50 rounded-full">
                     <ArrowLeft className="w-4 h-4 mr-2" /> Back to Oral Health Hub
                   </Button>
@@ -191,7 +199,7 @@ export default function Article() {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Link href={`/hub/${relatedArticle.slug}`}>
+                    <Link href={`/oral-health-hub/${relatedArticle.slug}`}>
                       <Card className="h-full hover:shadow-xl transition-all duration-300 border-stone-200 bg-white group cursor-pointer overflow-hidden flex flex-col">
                         <CardHeader className="pb-4">
                           <div className="flex justify-between items-start mb-4">

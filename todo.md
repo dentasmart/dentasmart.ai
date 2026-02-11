@@ -171,3 +171,9 @@
 - [x] Connect public blog pages to load from database dynamically
 - [x] Write vitest tests for blog API routes
 - [x] Admin login page with DentaSmart branding
+
+# Fixes - Feb 11, 2026
+
+- [x] Change /hub URL to /oral-health-hub for better SEO
+- [x] Show existing blog content in Rich Text Editor (not just StoryBrand sections)
+- [x] Add published dates to all blogs, backdate existing ones starting December 2025

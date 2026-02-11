@@ -25,7 +25,7 @@ export default function Navigation() {
     { label: "Pricing", href: "/pricing" },
     { label: "Employers", href: "/employers" },
     { label: "Team", href: "/team" },
-    { label: "Blogs", href: "/hub" },
+    { label: "Blogs", href: "/oral-health-hub" },
     { label: "FAQs", href: "/faqs" },
   ];
 

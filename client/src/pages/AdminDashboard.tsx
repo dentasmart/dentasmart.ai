@@ -276,7 +276,7 @@ export default function AdminDashboard() {
                     <TableHead className="font-semibold text-stone-700">Title</TableHead>
                     <TableHead className="font-semibold text-stone-700 hidden md:table-cell">Category</TableHead>
                     <TableHead className="font-semibold text-stone-700">Status</TableHead>
-                    <TableHead className="font-semibold text-stone-700 hidden lg:table-cell">Updated</TableHead>
+                    <TableHead className="font-semibold text-stone-700 hidden lg:table-cell">Published</TableHead>
                     <TableHead className="font-semibold text-stone-700 text-right">Actions</TableHead>
                   </TableRow>
                 </TableHeader>
@@ -288,7 +288,7 @@ export default function AdminDashboard() {
                           <p className="font-medium text-stone-900 group-hover:text-primary transition-colors line-clamp-1">
                             {post.title}
                           </p>
-                          <p className="text-xs text-stone-400 mt-0.5">/hub/{post.slug}</p>
+                          <p className="text-xs text-stone-400 mt-0.5">/oral-health-hub/{post.slug}</p>
                           <div className="md:hidden mt-1">{getCategoryBadge(post.category)}</div>
                         </div>
                       </TableCell>
@@ -297,7 +297,7 @@ export default function AdminDashboard() {
                       </TableCell>
                       <TableCell>{getStatusBadge(post.status)}</TableCell>
                       <TableCell className="hidden lg:table-cell text-sm text-stone-500">
-                        {post.updatedAt ? new Date(post.updatedAt).toLocaleDateString() : "—"}
+                        {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "—"}
                       </TableCell>
                       <TableCell>
                         <div className="flex items-center justify-end gap-1">
@@ -334,7 +334,7 @@ export default function AdminDashboard() {
                             </Button>
                           )}
                           {post.status === "published" && (
-                            <Link href={`/hub/${post.slug}`} target="_blank">
+                            <Link href={`/oral-health-hub/${post.slug}`} target="_blank">
                               <Button
                                 variant="ghost"
                                 size="sm"

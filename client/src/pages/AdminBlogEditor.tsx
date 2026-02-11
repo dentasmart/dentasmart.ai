@@ -114,7 +114,34 @@ export default function AdminBlogEditor() {
       setChangeContent(existingPost.changeContent || "");
       setResultHeading(existingPost.resultHeading || "");
       setResultContent(existingPost.resultContent || "");
-      setBodyHtml(existingPost.bodyHtml || "");
+      // If bodyHtml exists, use it; otherwise auto-generate from StoryBrand sections
+      if (existingPost.bodyHtml && existingPost.bodyHtml.trim()) {
+        setBodyHtml(existingPost.bodyHtml);
+      } else {
+        // Convert StoryBrand structured content to HTML for the Rich Text Editor
+        const sections: string[] = [];
+        if (existingPost.problemHeading || existingPost.problemContent) {
+          sections.push(`<h2>${existingPost.problemHeading || "The Problem"}</h2>`);
+          if (existingPost.problemContent) sections.push(`<p>${existingPost.problemContent}</p>`);
+        }
+        if (existingPost.empathyHeading || existingPost.empathyContent) {
+          sections.push(`<h3>${existingPost.empathyHeading || "Why This Feels Frustrating"}</h3>`);
+          if (existingPost.empathyContent) sections.push(`<blockquote><p>${existingPost.empathyContent}</p></blockquote>`);
+        }
+        if (existingPost.solutionHeading || existingPost.solutionContent) {
+          sections.push(`<h2>${existingPost.solutionHeading || "The Simple Truth"}</h2>`);
+          if (existingPost.solutionContent) sections.push(`<p>${existingPost.solutionContent}</p>`);
+        }
+        if (existingPost.changeHeading || existingPost.changeContent) {
+          sections.push(`<h3>${existingPost.changeHeading || "What Should Happen Instead"}</h3>`);
+          if (existingPost.changeContent) sections.push(`<p>${existingPost.changeContent}</p>`);
+        }
+        if (existingPost.resultHeading || existingPost.resultContent) {
+          sections.push(`<h2>${existingPost.resultHeading || "How DentaSmart Helps"}</h2>`);
+          if (existingPost.resultContent) sections.push(`<p>${existingPost.resultContent}</p>`);
+        }
+        setBodyHtml(sections.join("\n"));
+      }
       setMetaTitle(existingPost.metaTitle || "");
       setMetaDescription(existingPost.metaDescription || "");
       setMetaKeywords(existingPost.metaKeywords || "");
@@ -124,12 +151,8 @@ export default function AdminBlogEditor() {
       setCanonicalUrl(existingPost.canonicalUrl || "");
       setFeaturedImage(existingPost.featuredImage || "");
 
-      // Determine which tab to show
-      if (existingPost.bodyHtml && existingPost.bodyHtml.trim()) {
-        setActiveTab("wysiwyg");
-      } else {
-        setActiveTab("structured");
-      }
+      // Always default to Rich Text Editor tab for reviewing content
+      setActiveTab("wysiwyg");
     }
   }, [existingPost]);
 
@@ -494,7 +517,7 @@ export default function AdminBlogEditor() {
               <div>
                 <Label className="text-xs font-medium text-stone-500 mb-1 block">URL Slug</Label>
                 <div className="flex items-center gap-1">
-                  <span className="text-xs text-stone-400 whitespace-nowrap">/hub/</span>
+                  <span className="text-xs text-stone-400 whitespace-nowrap">/oral-health-hub/</span>
                   <Input
                     value={slug}
                     onChange={(e) => {
@@ -507,7 +530,7 @@ export default function AdminBlogEditor() {
                 </div>
                 {!isNew && slug && (
                   <p className="text-xs text-stone-400 mt-1">
-                    Live URL: /hub/{slug}
+                    Live URL: /oral-health-hub/{slug}
                   </p>
                 )}
               </div>

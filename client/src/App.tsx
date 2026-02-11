@@ -31,8 +31,8 @@ function Router() {
       <Route path={"/pricing"} component={Pricing} />
       <Route path={"/employers"} component={Employers} />
       <Route path="/team" component={Team} />
-      <Route path="/hub" component={OralHealthHub} />
-      <Route path="/hub/:id" component={Article} />
+      <Route path="/oral-health-hub" component={OralHealthHub} />
+      <Route path="/oral-health-hub/:id" component={Article} />
       <Route path="/faqs" component={FAQs} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/terms-of-service" component={TermsOfService} />

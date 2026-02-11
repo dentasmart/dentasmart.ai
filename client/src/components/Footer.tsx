@@ -92,7 +92,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/hub" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/oral-health-hub" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Blogs
                   </Link>
                 </li>
