@@ -121,7 +121,7 @@ export default function Team() {
               <p className="text-stone-700 leading-relaxed mb-6 text-sm">
                 Co-Founder & CEO of Zigron and FraudLens. Former Partner at Abode Systems (sold for $50M). Co-Founder of TransparentHands.org.
               </p>
-              <a href="#" className="inline-flex items-center text-black hover:text-primary transition-colors">
+              <a href="https://www.linkedin.com/in/zigron/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-black hover:text-primary transition-colors">
                 <Linkedin className="w-5 h-5 mr-2" />
                 <span className="text-sm font-medium">LinkedIn</span>
               </a>
@@ -143,7 +143,7 @@ export default function Team() {
               <p className="text-stone-700 leading-relaxed mb-6 text-sm">
                 25+ years in enterprise architecture, cloud, AI & ML. Former Partner at Abode Systems. Co-Founder of FraudLens and WhereverTV.
               </p>
-              <a href="#" className="inline-flex items-center text-black hover:text-primary transition-colors">
+              <a href="https://www.linkedin.com/in/kashif-mueen-2321361/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-black hover:text-primary transition-colors">
                 <Linkedin className="w-5 h-5 mr-2" />
                 <span className="text-sm font-medium">LinkedIn</span>
               </a>
@@ -165,7 +165,7 @@ export default function Team() {
               <p className="text-stone-700 leading-relaxed mb-6 text-sm">
                 Dental Surgeon with 10+ years clinical experience. Expert in merging patient care and technology to drive healthcare innovation.
               </p>
-              <a href="#" className="inline-flex items-center text-black hover:text-primary transition-colors">
+              <a href="https://www.linkedin.com/in/dr-saba-ahmed-41293b227/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-black hover:text-primary transition-colors">
                 <Linkedin className="w-5 h-5 mr-2" />
                 <span className="text-sm font-medium">LinkedIn</span>
               </a>
@@ -207,7 +207,7 @@ export default function Team() {
               <p className="text-stone-700 font-normal leading-relaxed mb-8">
                 Former COO of P&R Dental Strategies. 25+ years in dental insurance, benefit design, and regulatory compliance.
               </p>
-              <a href="#" className="inline-flex items-center text-black hover:text-primary transition-colors">
+              <a href="https://www.linkedin.com/in/tyhamilton/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-black hover:text-primary transition-colors">
                 <Linkedin className="w-5 h-5 mr-2" />
                 <span className="text-sm font-medium">LinkedIn</span>
               </a>
@@ -233,7 +233,7 @@ export default function Team() {
               <p className="text-stone-700 font-normal leading-relaxed mb-8">
                 Current Chief Dental Officer of MetLife (20M lives). Former CDO of Liberty Dental. 20+ years of industry leadership.
               </p>
-              <a href="#" className="inline-flex items-center text-black hover:text-primary transition-colors">
+              <a href="https://www.linkedin.com/in/peter-fuentes-dmd-42861613/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-black hover:text-primary transition-colors">
                 <Linkedin className="w-5 h-5 mr-2" />
                 <span className="text-sm font-medium">LinkedIn</span>
               </a>

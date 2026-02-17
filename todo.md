@@ -196,3 +196,7 @@
 
 - [x] Replace browser prompt() for image insert with proper upload modal (drag & drop + URL option)
 - [x] Move error/validation messages to top of page as human-readable banners (not raw JSON in bottom-right)
+
+# Fixes - Feb 16, 2026
+
+- [x] Fix LinkedIn URLs on Team page for all team members (Qasim, Kashif, Dr. Saba, Pete, Ty)
