@@ -205,3 +205,5 @@
 
 - [x] Replace hero section generic model photo with split visual: iPhone mockup (Oral Health Score) + iPhone mockup (AI Analysis report)
 - [x] Upload user-provided app screenshots to S3 and use them inside CSS iPhone frames
+
+- [x] Replace How It Works hero section generic photo with iPhone mockups: X-Ray Analysis (left) + Initial Care (right)
