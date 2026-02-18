@@ -210,3 +210,10 @@
 
 - [x] Replace Oral Health Score image on Features page ("A simple score for total clarity" section) with new updated screenshot
 - [x] Wrap Oral Health Score image on Features page in iPhone mockup frame (matching Home/How It Works style)
+
+# Hero Section Fixes - Feb 18, 2026
+
+- [x] Fix How It Works hero section layout on laptop (text cut off at top, phones too large)
+- [x] Fix FAQs hero section — add relevant StoryBrand-aligned image (right side is empty)
+- [x] Fix Features hero section — replace irrelevant beach image with dental/health relevant image
+- [x] Fix Pricing hero section — replace with more relevant, user-attracting image

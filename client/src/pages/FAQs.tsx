@@ -109,87 +109,81 @@ export default function FAQs() {
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
       <Navigation />
 
-      {/* Hero Section - Calm & Clear */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Hero Section - Calm & Clear with Image */}
+      <section className="relative overflow-hidden pt-28 md:pt-32 lg:pt-36 pb-12 md:pb-16">
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/J78j9z38y0l207r7.jpg" 
-            alt="DentaSmart FAQs" 
-            className="w-full h-full object-cover object-top md:object-center"
+            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/GqjyClSdowSQrUkA.jpg" 
+            alt="Woman finding answers on her phone" 
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-white/95 md:bg-white/90" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/60 md:hidden" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto text-left max-w-7xl pt-32 md:pt-0">
-          <div className="max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            {/* Start Here Module */}
-            <div className="mb-10 inline-block bg-white/80 backdrop-blur-sm border border-primary/20 rounded-2xl p-6 shadow-sm">
-              <h3 className="text-lg font-medium text-stone-900 mb-2">Start here</h3>
-              <p className="text-stone-600 mb-4">If you only do one thing today: get your Oral Health Score.</p>
-              <Button 
-                onClick={() => document.getElementById('download-cta')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-2 text-sm font-medium shadow-md"
-              >
-                Get My Oral Health Score
-              </Button>
-            </div>
+        <div className="container relative z-10 px-4 mx-auto text-left max-w-7xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="lg:col-span-7 xl:col-span-6"
+            >
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-6 leading-[1.1]">
+                Get answers, <br />
+                <span className="font-normal italic text-primary">not confusion</span>.
+              </h1>
+              <p className="text-lg md:text-xl text-stone-700 font-normal max-w-2xl mr-auto leading-relaxed mb-8">
+                You have questions about your dental health and our app. We have clear, simple answers. No jargon, just the facts.
+              </p>
 
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
-              Get answers, <br />
-              <span className="font-normal italic text-primary">not confusion</span>.
-            </h1>
-            <p className="text-xl md:text-2xl text-black font-normal max-w-2xl mr-auto leading-relaxed mb-12">
-              You have questions about your dental health and our app. We have clear, simple answers. No jargon, just the facts.
-            </p>
-
-            {/* Search Bar */}
-            <div className="relative max-w-xl mr-auto mb-12">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 text-stone-400" />
+              {/* Search Bar */}
+              <div className="relative max-w-xl mr-auto mb-8">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <Search className="h-5 w-5 text-stone-400" />
+                </div>
+                <Input
+                  type="text"
+                  placeholder="Search for a question (e.g., 'price', 'privacy', 'accuracy')..."
+                  className="pl-12 py-6 text-lg rounded-full bg-white border-stone-200 text-stone-900 placeholder:text-stone-400 focus:border-primary shadow-lg transition-all"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
               </div>
-              <Input
-                type="text"
-                placeholder="Search for a question (e.g., 'price', 'privacy', 'accuracy')..."
-                className="pl-12 py-6 text-lg rounded-full bg-white border-stone-200 text-stone-900 placeholder:text-stone-400 focus:border-primary shadow-lg transition-all"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-            </div>
 
-            {/* Category Filters */}
-            <div className="flex flex-wrap justify-start gap-3">
-              <Button
-                variant={selectedCategory === "All" ? "default" : "outline"}
-                className={`rounded-full px-6 ${
-                  selectedCategory === "All"
-                    ? "bg-primary text-white hover:bg-primary/90 border-primary shadow-md" 
-                    : "bg-white text-stone-600 border-stone-200 hover:bg-stone-50 hover:text-stone-900"
-                }`}
-                onClick={() => setSelectedCategory("All")}
-              >
-                All
-              </Button>
-              {faqCategories.map((cat) => (
+              {/* Category Filters */}
+              <div className="flex flex-wrap justify-start gap-3">
                 <Button
-                  key={cat.title}
-                  variant={selectedCategory === cat.title ? "default" : "outline"}
+                  variant={selectedCategory === "All" ? "default" : "outline"}
                   className={`rounded-full px-6 ${
-                    selectedCategory === cat.title 
+                    selectedCategory === "All"
                       ? "bg-primary text-white hover:bg-primary/90 border-primary shadow-md" 
                       : "bg-white text-stone-600 border-stone-200 hover:bg-stone-50 hover:text-stone-900"
                   }`}
-                  onClick={() => setSelectedCategory(cat.title)}
+                  onClick={() => setSelectedCategory("All")}
                 >
-                  {cat.title}
+                  All
                 </Button>
-              ))}
-            </div>
-          </motion.div>
+                {faqCategories.map((cat) => (
+                  <Button
+                    key={cat.title}
+                    variant={selectedCategory === cat.title ? "default" : "outline"}
+                    className={`rounded-full px-6 ${
+                      selectedCategory === cat.title 
+                        ? "bg-primary text-white hover:bg-primary/90 border-primary shadow-md" 
+                        : "bg-white text-stone-600 border-stone-200 hover:bg-stone-50 hover:text-stone-900"
+                    }`}
+                    onClick={() => setSelectedCategory(cat.title)}
+                  >
+                    {cat.title}
+                  </Button>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right Column: Empty to let background image show through */}
+            <div className="hidden lg:block lg:col-span-5 xl:col-span-6"></div>
           </div>
         </div>
       </section>

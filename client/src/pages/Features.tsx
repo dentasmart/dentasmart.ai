@@ -86,20 +86,20 @@ export default function Features() {
       <Navigation />
 
       {/* Hero Section - Full Background Image with Overlay */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative overflow-hidden pt-28 md:pt-32 lg:pt-36 pb-12 md:pb-16">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/igpJzLRSWiTIcexa.jpg" 
-            alt="AI Dental Analysis" 
-            className="w-full h-full object-cover object-top md:object-center"
+            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/ZwswpLjHnfyByaVR.jpg" 
+            alt="Woman smiling while checking dental health on phone" 
+            className="w-full h-full object-cover object-center"
           />
-          {/* Gradient Overlay for Text Readability - Adjusted to match Home */}
-          <div className="absolute inset-0 bg-white/80 md:bg-white/60" />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent" />
+          {/* Gradient Overlay for Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/60 md:hidden" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-32 md:pt-0">
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left Column: Text Content */}
@@ -109,12 +109,12 @@ export default function Features() {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="text-left max-w-2xl lg:col-span-7 xl:col-span-6"
             >
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-6 leading-[1.1]">
                 Everything you need to understand <br />
                 <span className="font-normal italic text-primary">your oral health</span>.
               </h1>
               
-              <p className="text-xl md:text-2xl text-stone-700 mb-10 font-normal leading-relaxed text-balance">
+              <p className="text-lg md:text-xl text-stone-700 mb-8 font-normal leading-relaxed text-balance">
                 Clarity first. Confidence next.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-start">

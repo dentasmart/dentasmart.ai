@@ -22,49 +22,54 @@ export default function Pricing() {
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
       <Navigation />
 
-      {/* Hero Section - Calm & Balanced */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Hero Section - Calm & Balanced with Family Image */}
+      <section className="relative overflow-hidden pt-28 md:pt-32 lg:pt-36 pb-12 md:pb-16">
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/uUGabAOXJTEInHmQ.jpg" 
-            alt="Simple Pricing" 
-            className="w-full h-full object-cover object-top md:object-center"
+            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/oaONyntFCCtQKvAL.jpg" 
+            alt="Happy family smiling with healthy teeth" 
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-white/95 md:bg-white/90" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/60 md:hidden" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl text-left pt-32 md:pt-0">
-          <div className="max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
-              Peace of mind for less than <br />
-              <span className="font-normal italic text-primary">a single filling</span>.
-            </h1>
-            <p className="text-xl md:text-2xl text-black font-normal max-w-2xl mr-auto leading-relaxed mb-10">
-              Stop worrying about surprise dental bills. Get year-round monitoring and expert guidance for a simple, transparent price.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-start">
-              <Button 
-                size="lg" 
-                className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0 cursor-pointer"
-                onClick={() => window.location.href = '/#download-cta'}
-              >
-                Start Your Free Trial
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="bg-white/80 text-stone-700 hover:bg-white hover:text-primary border-stone-200 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 cursor-pointer"
-                onClick={() => window.location.href = '/#download-cta'}
-              >
-                Get Second Review
-              </Button>
-            </div>
-          </motion.div>
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="lg:col-span-7 xl:col-span-6"
+            >
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-6 leading-[1.1]">
+                Peace of mind for less than <br />
+                <span className="font-normal italic text-primary">a single filling</span>.
+              </h1>
+              <p className="text-lg md:text-xl text-stone-700 font-normal max-w-2xl mr-auto leading-relaxed mb-8">
+                Stop worrying about surprise dental bills. Get year-round monitoring and expert guidance for a simple, transparent price.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-start">
+                <Button 
+                  size="lg" 
+                  className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0 cursor-pointer"
+                  onClick={() => window.location.href = '/#download-cta'}
+                >
+                  Start Your Free Trial
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  className="bg-white/80 text-stone-700 hover:bg-white hover:text-primary border-stone-200 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 cursor-pointer"
+                  onClick={() => window.location.href = '/#download-cta'}
+                >
+                  Get Second Review
+                </Button>
+              </div>
+            </motion.div>
+
+            {/* Right Column: Empty to let background image show through */}
+            <div className="hidden lg:block lg:col-span-5 xl:col-span-6"></div>
           </div>
         </div>
       </section>
