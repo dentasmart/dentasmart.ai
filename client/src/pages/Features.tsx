@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 export default function Features() {
-  const features = [
+  const features: { title: string; description: string; points: string[]; image: string; isPhone?: boolean }[] = [
     {
       title: "Stop Wondering What Your X-Rays Mean",
       description: "You shouldn't have to nod along pretending to understand complex dental jargon.\n\nOur AI X-ray Analysis acts as your personal translator, instantly highlighting areas of concern in simple, clear language. Finally, you can see exactly what your dentist sees and feel confident in your treatment plan.",
@@ -66,7 +66,8 @@ export default function Features() {
         "Real-Time Feedback: Watch your score rise as you take care of your teeth.",
         "Clear Goals: A simple target to aim for every day."
       ],
-      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/fBPWoPfvQrOmKAcw.png"
+      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/DawnQOxKtdjguhLp.jpeg",
+      isPhone: true
     },
     {
       title: "Your 24/7 Personal AI Dental Guide",
@@ -168,13 +169,30 @@ export default function Features() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-                className={`order-1 ${idx % 2 === 0 ? 'md:order-2' : 'md:order-1'} relative aspect-[4/5] rounded-3xl overflow-hidden bg-stone-200 shadow-xl`}
+                className={`order-1 ${idx % 2 === 0 ? 'md:order-2' : 'md:order-1'} relative ${feature.isPhone ? 'flex items-center justify-center py-8' : 'aspect-[4/5] rounded-3xl overflow-hidden bg-stone-200 shadow-xl'}`}
               >
-                <img 
-                  src={feature.image} 
-                  alt={feature.title} 
-                  className="absolute inset-0 w-full h-full object-contain bg-white hover:scale-105 transition-transform duration-700"
-                />
+                {feature.isPhone ? (
+                  <div className="relative w-[240px] sm:w-[280px] md:w-[300px]">
+                    <div className="relative rounded-[2.5rem] sm:rounded-[3rem] border-[6px] sm:border-[8px] border-stone-900 bg-stone-900 shadow-2xl overflow-hidden">
+                      {/* iPhone Notch */}
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] sm:w-[100px] h-[22px] sm:h-[28px] bg-stone-900 rounded-b-2xl z-20" />
+                      {/* Screen Content */}
+                      <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
+                        <img 
+                          src={feature.image} 
+                          alt={feature.title} 
+                          className="w-full h-full object-cover object-top"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <img 
+                    src={feature.image} 
+                    alt={feature.title} 
+                    className="absolute inset-0 w-full h-full object-contain bg-white hover:scale-105 transition-transform duration-700"
+                  />
+                )}
               </motion.div>
             </div>
           ))}
