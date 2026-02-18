@@ -38,32 +38,26 @@ export default function Home() {
       />
       <Navigation />
 
-      {/* Hero Section - Full Background Image with Overlay */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/dOrOUbRuSUXPRulY.jpg" 
-            alt="Woman with healthy smile" 
-            className="w-full h-full object-cover object-center md:object-[80%_20%]"
-          />
-          {/* Gradient Overlay for Text Readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/80 to-transparent md:via-white/60" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent md:hidden" />
+      {/* Hero Section - Split Visual with iPhone Mockups */}
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-white via-accent/5 to-primary/5">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 z-0 opacity-30">
+          <div className="absolute top-20 right-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 left-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-32 md:pt-0">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {/* Left Column: Text Content */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="text-left max-w-2xl lg:col-span-7 xl:col-span-6"
+              className="text-left max-w-2xl lg:col-span-5"
             >
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
-                Know what’s happening <br />
+                Know what's happening <br />
                 <span className="font-normal italic text-primary">in your mouth</span>.
               </h1>
               
@@ -96,8 +90,53 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Right Column: Empty to let image show through, or optional floating elements */}
-            <div className="hidden lg:block lg:col-span-5 xl:col-span-6"></div>
+            {/* Right Column: iPhone Mockups */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+              className="lg:col-span-7 flex justify-center items-end gap-4 md:gap-6 lg:gap-8 pb-8 lg:pb-0"
+            >
+              {/* iPhone Mockup - Oral Health Score */}
+              <div className="relative flex-shrink-0 w-[180px] sm:w-[220px] md:w-[260px] lg:w-[280px]">
+                <div className="relative rounded-[2.5rem] sm:rounded-[3rem] border-[6px] sm:border-[8px] border-stone-900 bg-stone-900 shadow-2xl overflow-hidden">
+                  {/* iPhone Notch */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] sm:w-[100px] h-[22px] sm:h-[28px] bg-stone-900 rounded-b-2xl z-20" />
+                  {/* Screen Content */}
+                  <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
+                    <img 
+                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/JQpBfeUURrCKTqFU.png" 
+                      alt="DentaSmart Oral Health Score - Your personalized dental health rating" 
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                </div>
+                {/* Label */}
+                <div className="text-center mt-3 sm:mt-4">
+                  <span className="text-xs sm:text-sm font-medium text-stone-600 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">Oral Health Score</span>
+                </div>
+              </div>
+
+              {/* iPhone Mockup - AI Analysis Report */}
+              <div className="relative flex-shrink-0 w-[180px] sm:w-[220px] md:w-[260px] lg:w-[280px] mt-12 sm:mt-16">
+                <div className="relative rounded-[2.5rem] sm:rounded-[3rem] border-[6px] sm:border-[8px] border-stone-900 bg-stone-900 shadow-2xl overflow-hidden">
+                  {/* iPhone Notch */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] sm:w-[100px] h-[22px] sm:h-[28px] bg-stone-900 rounded-b-2xl z-20" />
+                  {/* Screen Content */}
+                  <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
+                    <img 
+                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/kQkbFcHfULXNLoOD.png" 
+                      alt="DentaSmart AI Analysis - Detailed dental condition report" 
+                      className="w-full h-full object-cover object-top"
+                    />
+                  </div>
+                </div>
+                {/* Label */}
+                <div className="text-center mt-3 sm:mt-4">
+                  <span className="text-xs sm:text-sm font-medium text-stone-600 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">AI Analysis Report</span>
+                </div>
+              </div>
+            </motion.div>
 
           </div>
         </div>

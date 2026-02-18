@@ -200,3 +200,8 @@
 # Fixes - Feb 16, 2026
 
 - [x] Fix LinkedIn URLs on Team page for all team members (Qasim, Kashif, Dr. Saba, Pete, Ty)
+
+# Fixes - Feb 18, 2026
+
+- [x] Replace hero section generic model photo with split visual: iPhone mockup (Oral Health Score) + iPhone mockup (AI Analysis report)
+- [x] Upload user-provided app screenshots to S3 and use them inside CSS iPhone frames
