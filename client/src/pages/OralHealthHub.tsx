@@ -46,17 +46,18 @@ export default function OralHealthHub() {
             className="w-full h-full object-cover object-center md:object-right"
           />
           {/* Gradient Overlay for Text Readability - Stronger on left for text */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-white/20 md:via-white/80" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent md:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/60 md:hidden" />
         </div>
         
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-32 text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="max-w-3xl mr-auto"
-          >
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-32 md:pt-0 text-left">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="lg:col-span-7 xl:col-span-6"
+            >
             <Badge className="mb-6 bg-primary/10 text-primary hover:bg-primary/20 px-4 py-1.5 text-sm rounded-full border-0 font-medium">
               Oral Health Hub
             </Badge>
@@ -100,7 +101,11 @@ export default function OralHealthHub() {
                 </Button>
               ))}
             </div>
-          </motion.div>
+            </motion.div>
+
+            {/* Right Column: Empty to let background image show through */}
+            <div className="hidden lg:block lg:col-span-5 xl:col-span-6"></div>
+          </div>
         </div>
       </section>
 

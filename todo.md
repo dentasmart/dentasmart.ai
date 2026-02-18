@@ -217,3 +217,10 @@
 - [x] Fix FAQs hero section — add relevant StoryBrand-aligned image (right side is empty)
 - [x] Fix Features hero section — replace irrelevant beach image with dental/health relevant image
 - [x] Fix Pricing hero section — replace with more relevant, user-attracting image
+
+# Uniform Hero Sections - Feb 18, 2026
+
+- [x] Standardize ALL main menu page hero sections to full viewport height (min-h-screen) on laptop
+- [x] Uniform layout: left text (col-span-6/7) + right image showing through, same padding, same gradient overlay
+- [x] Pages to update: Home, How It Works, Features, Pricing, Employers, Team, Blogs, FAQs
+- [x] No text cut-offs, no image cut-offs, consistent CTA placement

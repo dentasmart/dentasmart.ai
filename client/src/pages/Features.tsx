@@ -86,7 +86,7 @@ export default function Features() {
       <Navigation />
 
       {/* Hero Section - Full Background Image with Overlay */}
-      <section className="relative overflow-hidden pt-28 md:pt-32 lg:pt-36 pb-12 md:pb-16">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -99,7 +99,7 @@ export default function Features() {
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/60 md:hidden" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl">
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-32 md:pt-0">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             {/* Left Column: Text Content */}

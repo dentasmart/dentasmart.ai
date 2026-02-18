@@ -18,10 +18,12 @@ export default function Team() {
             alt="DentaSmart Team" 
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-white/90" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/60 md:hidden" />
         </div>
         <div className="container relative z-10 px-4 mx-auto max-w-7xl text-left pt-32 md:pt-0">
-          <div className="max-w-3xl">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7 xl:col-span-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -45,6 +47,10 @@ export default function Team() {
               
             </div>
           </motion.div>
+            </div>
+
+            {/* Right Column: Empty to let background image show through */}
+            <div className="hidden lg:block lg:col-span-5 xl:col-span-6"></div>
           </div>
         </div>
       </section>

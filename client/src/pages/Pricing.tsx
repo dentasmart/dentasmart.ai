@@ -23,7 +23,7 @@ export default function Pricing() {
       <Navigation />
 
       {/* Hero Section - Calm & Balanced with Family Image */}
-      <section className="relative overflow-hidden pt-28 md:pt-32 lg:pt-36 pb-12 md:pb-16">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/oaONyntFCCtQKvAL.jpg" 
@@ -34,7 +34,7 @@ export default function Pricing() {
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/60 md:hidden" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl text-left">
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl text-left pt-32 md:pt-0">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
