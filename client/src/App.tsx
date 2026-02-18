@@ -5,6 +5,9 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { usePageTracking } from "@/hooks/usePageTracking";
+import { useEffect } from "react";
+import { initGA4 } from "@/lib/analytics";
 import Home from "./pages/Home";
 import HowItWorks from "./pages/HowItWorks";
 import Features from "./pages/Features";
@@ -20,46 +23,85 @@ import Stories from "@/pages/Stories";
 import AdminLogin from "@/pages/AdminLogin";
 import AdminDashboard from "@/pages/AdminDashboard";
 import AdminBlogEditor from "@/pages/AdminBlogEditor";
+import { lazy, Suspense } from "react";
 
-function Router() {
-  // make sure to consider if you need authentication for certain routes
+// Lazy-loaded new pages
+const Download = lazy(() => import("./pages/Download"));
+const InstantScan = lazy(() => import("./pages/InstantScan"));
+const PhotoGuide = lazy(() => import("./pages/PhotoGuide"));
+const Answers = lazy(() => import("./pages/Answers"));
+const ComparePage = lazy(() => import("./pages/ComparePage"));
+const FindADentist = lazy(() => import("./pages/FindADentist"));
+const HubCategory = lazy(() => import("./pages/HubCategory"));
+const AdminSeoSetup = lazy(() => import("./pages/AdminSeoSetup"));
+
+function PageLoader() {
   return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/how-it-works"} component={HowItWorks} />
-      <Route path={"/features"} component={Features} />
-      <Route path={"/pricing"} component={Pricing} />
-      <Route path={"/employers"} component={Employers} />
-      <Route path="/team" component={Team} />
-      <Route path="/oral-health-hub" component={OralHealthHub} />
-      <Route path="/oral-health-hub/:id" component={Article} />
-      <Route path="/faqs" component={FAQs} />
-      <Route path="/privacy-policy" component={PrivacyPolicy} />
-      <Route path="/terms-of-service" component={TermsOfService} />
-      <Route path="/stories" component={Stories} />
-      <Route path="/admin/login" component={AdminLogin} />
-      <Route path="/admin" component={AdminDashboard} />
-      <Route path="/admin/new" component={AdminBlogEditor} />
-      <Route path="/admin/edit/:id" component={AdminBlogEditor} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
+    </div>
   );
 }
 
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
+function Router() {
+  usePageTracking();
+
+  return (
+    <Suspense fallback={<PageLoader />}>
+      <Switch>
+        <Route path={"/"} component={Home} />
+        <Route path={"/how-it-works"} component={HowItWorks} />
+        <Route path={"/features"} component={Features} />
+        <Route path={"/pricing"} component={Pricing} />
+        <Route path={"/employers"} component={Employers} />
+        <Route path="/team" component={Team} />
+        <Route path="/oral-health-hub" component={OralHealthHub} />
+        <Route path="/oral-health-hub/:id" component={Article} />
+        <Route path="/faqs" component={FAQs} />
+        <Route path="/privacy-policy" component={PrivacyPolicy} />
+        <Route path="/terms-of-service" component={TermsOfService} />
+        <Route path="/stories" component={Stories} />
+
+        {/* Conversion pages */}
+        <Route path="/download" component={Download} />
+        <Route path="/instant-scan" component={InstantScan} />
+        <Route path="/photo-guide" component={PhotoGuide} />
+
+        {/* Hub category pages */}
+        <Route path="/hub" component={OralHealthHub} />
+        <Route path="/hub/:category" component={HubCategory} />
+
+        {/* GEO pages */}
+        <Route path="/answers" component={Answers} />
+        <Route path="/compare/:slug" component={ComparePage} />
+        <Route path="/find-a-dentist" component={FindADentist} />
+
+        {/* Admin */}
+        <Route path="/admin/login" component={AdminLogin} />
+        <Route path="/admin" component={AdminDashboard} />
+        <Route path="/admin/new" component={AdminBlogEditor} />
+        <Route path="/admin/edit/:id" component={AdminBlogEditor} />
+        <Route path="/admin/seo-analytics-setup" component={AdminSeoSetup} />
+
+        <Route path={"/404"} component={NotFound} />
+        <Route component={NotFound} />
+      </Switch>
+    </Suspense>
+  );
+}
 
 function App() {
+  useEffect(() => {
+    // Initialize GA4 if measurement ID is configured
+    const ga4Id = (import.meta as any).env?.VITE_GA4_MEASUREMENT_ID;
+    if (ga4Id) {
+      initGA4(ga4Id);
+    }
+  }, []);
+
   return (
     <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="light"
-        // switchable
-      >
+      <ThemeProvider defaultTheme="light">
         <TooltipProvider>
           <Toaster />
           <ScrollToTop />

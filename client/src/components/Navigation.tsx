@@ -3,16 +3,19 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { trackEvent } from "@/lib/analytics";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [showStickyCta, setShowStickyCta] = useState(false);
   const [location] = useLocation();
 
   // Handle scroll effect for transparent-to-solid transition
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+      setShowStickyCta(window.scrollY > 600);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -100,6 +103,30 @@ export default function Navigation() {
               Download App
             </Button>
           </div>
+
+          {/* Sticky CTA - appears after scrolling */}
+          <AnimatePresence>
+            {showStickyCta && !isOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="hidden lg:flex items-center gap-3 absolute right-4 top-full mt-2 bg-primary/95 backdrop-blur-sm text-white rounded-full px-5 py-2.5 shadow-lg"
+              >
+                <span className="text-sm font-medium">Get your free oral health score</span>
+                <Button
+                  size="sm"
+                  className="bg-white text-primary hover:bg-white/90 rounded-full px-4 py-1.5 text-xs font-medium cursor-pointer h-auto"
+                  onClick={() => {
+                    trackEvent("sticky_cta_click", { page: location });
+                    window.location.href = "/download";
+                  }}
+                >
+                  Start Free
+                </Button>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Mobile Menu Button */}
           <button
