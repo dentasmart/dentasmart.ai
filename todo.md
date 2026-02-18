@@ -224,3 +224,10 @@
 - [x] Uniform layout: left text (col-span-6/7) + right image showing through, same padding, same gradient overlay
 - [x] Pages to update: Home, How It Works, Features, Pricing, Employers, Team, Blogs, FAQs
 - [x] No text cut-offs, no image cut-offs, consistent CTA placement
+
+# Mobile Hero Image Optimization - Feb 18, 2026
+
+- [x] Optimize Blogs (OralHealthHub) hero section image for mobile screens
+- [x] Optimize Features hero section image for mobile screens
+- [x] Optimize Team hero section image for mobile screens
+- [x] Reduce Employers hero heading font size so text fits properly without cut-off

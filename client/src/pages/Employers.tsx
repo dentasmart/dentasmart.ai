@@ -38,7 +38,7 @@ export default function Employers() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
               Give employees dental clarity <br />
               <span className="font-normal italic text-primary">without the insurance headache</span>.
             </h1>

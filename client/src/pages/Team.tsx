@@ -16,10 +16,10 @@ export default function Team() {
           <img 
             src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/aCeHxvEyoAWpKkct.jpg" 
             alt="DentaSmart Team" 
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-top md:object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/60 md:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/40 to-white/80 md:hidden" />
         </div>
         <div className="container relative z-10 px-4 mx-auto max-w-7xl text-left pt-32 md:pt-0">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -29,7 +29,7 @@ export default function Team() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-6 leading-[1.1]">
               Experts dedicated to <br />
               <span className="font-normal italic text-primary">your smile</span>.
             </h1>

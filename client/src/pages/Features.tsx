@@ -92,11 +92,11 @@ export default function Features() {
           <img 
             src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/ZwswpLjHnfyByaVR.jpg" 
             alt="Woman smiling while checking dental health on phone" 
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-top md:object-center"
           />
           {/* Gradient Overlay for Text Readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/60 md:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/40 to-white/80 md:hidden" />
         </div>
 
         <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-32 md:pt-0">

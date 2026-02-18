@@ -43,11 +43,11 @@ export default function OralHealthHub() {
           <img 
             src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/QUJzfPwTjdiBdwFs.jpg" 
             alt="Dentist explaining treatment to patient" 
-            className="w-full h-full object-cover object-center md:object-right"
+            className="w-full h-full object-cover object-top md:object-right"
           />
           {/* Gradient Overlay for Text Readability - Stronger on left for text */}
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/60 md:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/40 to-white/80 md:hidden" />
         </div>
         
         <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-32 md:pt-0 text-left">
@@ -61,7 +61,7 @@ export default function OralHealthHub() {
             <Badge className="mb-6 bg-primary/10 text-primary hover:bg-primary/20 px-4 py-1.5 text-sm rounded-full border-0 font-medium">
               Oral Health Hub
             </Badge>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-6 leading-[1.1]">
               Clear answers to your <br />
               <span className="font-normal italic text-primary">dental questions</span>.
             </h1>
