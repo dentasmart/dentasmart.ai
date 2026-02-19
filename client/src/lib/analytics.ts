@@ -67,23 +67,28 @@ export function trackPageView(path: string, title?: string): void {
   }
 }
 
+/** Default GA4 Measurement ID for DentaSmart */
+const DEFAULT_GA4_ID = "G-G9VKVT0PDJ";
+
 /**
  * Initialize GA4 by injecting the gtag.js script.
  * Called once from main.tsx or a layout component.
- * If measurementId is empty/missing, this is a no-op.
+ * Uses the default DentaSmart GA4 ID if none is provided.
+ * The gtag.js script is also loaded in index.html for immediate tracking.
  */
-export function initGA4(measurementId: string): void {
-  if (!measurementId || typeof window === "undefined") return;
+export function initGA4(measurementId?: string): void {
+  const id = measurementId || DEFAULT_GA4_ID;
+  if (!id || typeof window === "undefined") return;
 
   // Avoid double-init
-  if (document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${measurementId}"]`)) {
+  if (document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${id}"]`)) {
     return;
   }
 
   // Create script tag
   const script = document.createElement("script");
   script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
   document.head.appendChild(script);
 
   // Initialize dataLayer and gtag
@@ -92,7 +97,7 @@ export function initGA4(measurementId: string): void {
     window.dataLayer!.push(args);
   };
   window.gtag("js", new Date());
-  window.gtag("config", measurementId, {
+  window.gtag("config", id, {
     send_page_view: false, // We handle page views manually for SPA
   });
 }
