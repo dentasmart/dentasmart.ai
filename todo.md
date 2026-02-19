@@ -266,3 +266,4 @@
 
 ## Phase 6: Find a Dentist Helper
 - [x] Create /find-a-dentist helper page (not a directory)
+- [x] Fix InstantScan page hero section — heading cut off at top, needs uniform hero layout with full viewport height and background image

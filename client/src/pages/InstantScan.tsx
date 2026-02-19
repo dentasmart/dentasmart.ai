@@ -38,17 +38,27 @@ export default function InstantScan() {
       />
       <Navigation />
 
-      {/* Hero */}
+      {/* Hero - Uniform layout matching all other pages */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-white to-primary/10" />
+          <img
+            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/dOrOUbRuSUXPRulY.jpg"
+            alt="Woman smiling with healthy teeth"
+            className="w-full h-full object-cover object-center md:object-[70%_30%]"
+          />
+          {/* Gradient Overlay for Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-white/20 md:via-white/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent md:hidden" />
         </div>
+
         <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-32 md:pt-0">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
+              className="text-left max-w-2xl lg:col-span-7 xl:col-span-6"
             >
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-2 text-sm font-medium mb-6">
                 <Sparkles className="w-4 h-4" />
@@ -77,7 +87,7 @@ export default function InstantScan() {
 
               <Button
                 size="lg"
-                className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer"
+                className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer shadow-xl"
                 onClick={() => {
                   trackEvent("cta_get_score_click", { source: "instant_scan_page" });
                   window.location.href = "/#download-cta";
@@ -92,35 +102,8 @@ export default function InstantScan() {
               </div>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="hidden lg:block"
-            >
-              <div className="bg-stone-50 rounded-3xl p-8 border border-stone-100">
-                <div className="text-center mb-6">
-                  <h3 className="text-xl font-medium text-black">How It Works</h3>
-                </div>
-                <div className="space-y-6">
-                  {[
-                    { step: "1", title: "Take a Photo", desc: "Snap a picture of your teeth or upload an X-ray" },
-                    { step: "2", title: "AI Analyzes", desc: "Our AI scans for cavities, gum issues, and more" },
-                    { step: "3", title: "Get Your Report", desc: "Receive a clear report with your oral health score" },
-                  ].map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-4">
-                      <div className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center flex-shrink-0 text-sm font-bold">
-                        {item.step}
-                      </div>
-                      <div>
-                        <h4 className="font-medium text-black">{item.title}</h4>
-                        <p className="text-sm text-stone-600">{item.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+            {/* Right Column: Let image show through */}
+            <div className="hidden lg:block lg:col-span-5 xl:col-span-6"></div>
           </div>
         </div>
       </section>
