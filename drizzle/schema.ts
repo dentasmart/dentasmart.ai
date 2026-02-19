@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean } from "drizzle-orm/mysql-core";
+import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean, json } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -20,7 +20,8 @@ export type InsertUser = typeof users.$inferInsert;
 
 /**
  * Blog posts table for the Oral Health Hub Management system.
- * Supports full CRUD, SEO metadata, status management, and categorization.
+ * Supports full CRUD, SEO metadata, status management, categorization,
+ * and extended CMS fields for hub architecture (SEO/GEO).
  */
 export const blogPosts = mysqlTable("blog_posts", {
   id: int("id").autoincrement().primaryKey(),
@@ -28,7 +29,10 @@ export const blogPosts = mysqlTable("blog_posts", {
   // Content fields
   title: varchar("title", { length: 500 }).notNull(),
   slug: varchar("slug", { length: 500 }).notNull().unique(),
-  category: mysqlEnum("category", ["Dentist Problems", "Dental Problems", "Insurance Problems"]).notNull(),
+  category: mysqlEnum("category", [
+    "Dentist Problems", "Dental Problems", "Insurance Problems",
+    "Symptoms", "Gums", "Cavities", "X-Rays", "Costs"
+  ]).notNull(),
   readTime: varchar("readTime", { length: 50 }).default("3 min read"),
   
   // Structured content sections (StoryBrand format)
@@ -55,6 +59,19 @@ export const blogPosts = mysqlTable("blog_posts", {
   ogImage: varchar("ogImage", { length: 1000 }),
   canonicalUrl: varchar("canonicalUrl", { length: 1000 }),
   
+  // Extended SEO/GEO CMS fields
+  primaryKeyword: varchar("primaryKeyword", { length: 200 }),
+  secondaryKeywords: text("secondaryKeywords"), // comma-separated
+  atAGlanceAnswer: text("atAGlanceAnswer"), // 80-120 word summary
+  keyTakeaways: text("keyTakeaways"), // JSON array of 3 bullet strings
+  whenUrgent: text("whenUrgent"), // JSON array of red flag strings
+  faqs: text("faqs"), // JSON array of {question, answer} pairs
+  relatedPosts: text("relatedPosts"), // JSON array of slug strings
+  
+  // Review/authority fields
+  reviewedByName: varchar("reviewedByName", { length: 200 }),
+  reviewedByCredentials: varchar("reviewedByCredentials", { length: 500 }),
+  
   // Status management
   status: mysqlEnum("status", ["draft", "published", "unpublished"]).default("draft").notNull(),
   
@@ -69,6 +86,17 @@ export const blogPosts = mysqlTable("blog_posts", {
 
 export type BlogPost = typeof blogPosts.$inferSelect;
 export type InsertBlogPost = typeof blogPosts.$inferInsert;
+
+/**
+ * Android waitlist for email capture.
+ */
+export const androidWaitlist = mysqlTable("android_waitlist", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }).notNull().unique(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type AndroidWaitlistEntry = typeof androidWaitlist.$inferSelect;
 
 /**
  * Admin users table for blog management authentication.

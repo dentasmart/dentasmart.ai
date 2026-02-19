@@ -119,7 +119,7 @@ export async function listBlogPosts(options: {
   }
 
   if (category && category !== "All") {
-    conditions.push(eq(blogPosts.category, category as "Dentist Problems" | "Dental Problems" | "Insurance Problems"));
+    conditions.push(eq(blogPosts.category, category as any));
   }
 
   if (search) {

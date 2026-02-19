@@ -61,7 +61,7 @@ export default function AdminBlogEditor() {
   const [title, setTitle] = useState("");
   const [slug, setSlug] = useState("");
   const [slugManuallyEdited, setSlugManuallyEdited] = useState(false);
-  const [category, setCategory] = useState<"Dentist Problems" | "Dental Problems" | "Insurance Problems">("Dental Problems");
+  const [category, setCategory] = useState<"Dentist Problems" | "Dental Problems" | "Insurance Problems" | "Symptoms" | "Gums" | "Cavities" | "X-Rays" | "Costs">("Dental Problems");
   const [readTime, setReadTime] = useState("3 min read");
   const [status, setStatus] = useState<"draft" | "published" | "unpublished">("draft");
 

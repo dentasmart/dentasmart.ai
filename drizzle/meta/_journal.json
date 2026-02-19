@@ -15,6 +15,13 @@
       "when": 1770695073745,
       "tag": "0001_brave_texas_twister",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1771450800556,
+      "tag": "0002_amazing_richard_fisk",
+      "breakpoints": true
     }
   ]
 }
