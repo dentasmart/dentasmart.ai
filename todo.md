@@ -346,3 +346,7 @@
 - [x] Add 301 redirects for old hub category URLs
 - [x] Update sitemap with all Batch 2 and Batch 3 pages
 - [x] Write and pass vitest tests for SEO routes (33 tests passing)
+
+# Favicon Fix - Feb 21, 2026
+- [x] Fix missing favicon in Google search results
+- [x] Ensure favicon.ico, apple-touch-icon, and multiple sizes are properly configured
