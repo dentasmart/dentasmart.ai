@@ -133,3 +133,54 @@ describe("SEO Routes", () => {
     });
   });
 });
+
+describe("Conditions/Symptoms/Guides in Sitemap", () => {
+  it("should include all 15 condition pages in sitemap", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/sitemap.xml");
+
+    const conditions = [
+      "toothache", "cavities", "gum-disease", "wisdom-teeth-pain", "teeth-whitening",
+      "sensitive-teeth", "cracked-tooth", "dental-abscess", "root-canal", "dental-crown",
+      "teeth-grinding", "dental-implants", "dry-socket", "oral-thrush", "tmj-disorder",
+    ];
+
+    for (const condition of conditions) {
+      expect(res.text).toContain(`https://dentasmart.ai/conditions/${condition}`);
+    }
+
+    // Also check the conditions index
+    expect(res.text).toContain("https://dentasmart.ai/conditions</loc>");
+  });
+
+  it("should include all 10 symptom pages in sitemap", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/sitemap.xml");
+
+    const symptoms = [
+      "tooth-pain-when-biting", "bleeding-gums", "tooth-sensitivity", "jaw-pain", "bad-breath",
+      "swollen-gums", "loose-tooth", "dry-mouth", "tooth-discoloration", "mouth-sores",
+    ];
+
+    for (const symptom of symptoms) {
+      expect(res.text).toContain(`https://dentasmart.ai/symptoms/${symptom}`);
+    }
+
+    // Also check the symptoms index
+    expect(res.text).toContain("https://dentasmart.ai/symptoms</loc>");
+  });
+
+  it("should include all 3 guide pages in sitemap", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/sitemap.xml");
+
+    const guides = ["brushing-guide", "flossing-guide", "dental-visit-guide"];
+
+    for (const guide of guides) {
+      expect(res.text).toContain(`https://dentasmart.ai/guides/${guide}`);
+    }
+
+    // Also check the guides index
+    expect(res.text).toContain("https://dentasmart.ai/guides</loc>");
+  });
+});

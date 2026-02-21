@@ -36,6 +36,24 @@ async function startServer() {
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
+  // 301 Redirects for old hub URLs to new structured routes
+  const hubRedirects: Record<string, string> = {
+    // Old hub articles that now have dedicated condition pages
+    "/oral-health-hub/oral-health-score-explained": "/conditions/toothache",
+    "/oral-health-hub/dental-benefits-utilization-guide": "/conditions/gum-disease",
+    // Hub category redirects to new index pages
+    "/hub/understanding-dental-conditions": "/conditions",
+    "/hub/treatment-guides": "/guides",
+    "/hub/prevention-tips": "/guides/brushing-guide",
+  };
+  app.use((req, res, next) => {
+    const redirect = hubRedirects[req.path];
+    if (redirect) {
+      return res.redirect(301, redirect);
+    }
+    next();
+  });
+
   // SEO routes (robots.txt, sitemap.xml)
   registerSeoRoutes(app);
   // tRPC API

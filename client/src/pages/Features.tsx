@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { DownloadSection } from "@/components/DownloadSection";
 import { BenefitsCarousel } from "@/components/BenefitsCarousel";
 import { Lock, Check } from "lucide-react";
+import { MedicalAdvisoryBoard } from "@/components/MedicalAdvisoryBoard";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
@@ -204,6 +205,9 @@ export default function Features() {
       <section className="py-12 bg-stone-50 overflow-hidden">
         <BenefitsCarousel />
       </section>
+
+      {/* Medical Advisory Board */}
+      <MedicalAdvisoryBoard />
 
       {/* Security Section - Clean & Trustworthy */}
       <section className="py-12 bg-white">

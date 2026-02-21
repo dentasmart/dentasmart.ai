@@ -35,6 +35,14 @@ const FindADentist = lazy(() => import("./pages/FindADentist"));
 const HubCategory = lazy(() => import("./pages/HubCategory"));
 const AdminSeoSetup = lazy(() => import("./pages/AdminSeoSetup"));
 
+// SEO content pages
+const ConditionsIndex = lazy(() => import("./pages/conditions/ConditionsIndex"));
+const ConditionPage = lazy(() => import("./pages/conditions/ConditionPage"));
+const SymptomsIndex = lazy(() => import("./pages/symptoms/SymptomsIndex"));
+const SymptomPage = lazy(() => import("./pages/symptoms/SymptomPage"));
+const GuidesIndex = lazy(() => import("./pages/guides/GuidesIndex"));
+const GuidePage = lazy(() => import("./pages/guides/GuidePage"));
+
 function PageLoader() {
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -70,6 +78,14 @@ function Router() {
         {/* Hub category pages */}
         <Route path="/hub" component={OralHealthHub} />
         <Route path="/hub/:category" component={HubCategory} />
+
+        {/* Conditions, Symptoms, Guides (SEO content pages) */}
+        <Route path="/conditions" component={ConditionsIndex} />
+        <Route path="/conditions/:slug" component={ConditionPage} />
+        <Route path="/symptoms" component={SymptomsIndex} />
+        <Route path="/symptoms/:slug" component={SymptomPage} />
+        <Route path="/guides" component={GuidesIndex} />
+        <Route path="/guides/:slug" component={GuidePage} />
 
         {/* GEO pages */}
         <Route path="/answers" component={Answers} />

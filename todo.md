@@ -268,3 +268,81 @@
 - [x] Create /find-a-dentist helper page (not a directory)
 - [x] Fix InstantScan page hero section — heading cut off at top, needs uniform hero layout with full viewport height and background image
 - [x] Integrate GA4 Measurement ID G-G9VKVT0PDJ into the site (index.html + analytics utility)
+
+# SEO & GEO Site Restructure - Feb 21, 2026
+
+## Phase 7: Site Architecture Restructure
+- [x] Create /conditions/ route and index page
+- [x] Create /symptoms/ route and index page
+- [x] Create /guides/ route and index page
+- [ ] Rename /oral-health-hub/ to /blog/ (keep /oral-health-hub/ as redirect)
+- [x] Set up 301 redirects from old hub URLs to new categorized URLs
+- [ ] Update Navigation to include new sections
+
+## Phase 8: Top 5 Condition Pages
+- [x] /conditions/toothache
+- [x] /conditions/cavities
+- [x] /conditions/gum-disease
+- [x] /conditions/wisdom-teeth-pain
+- [x] /conditions/teeth-whitening
+
+## Phase 9: Top 5 Symptom Pages
+- [x] /symptoms/tooth-pain-when-biting
+- [x] /symptoms/bleeding-gums
+- [x] /symptoms/tooth-sensitivity
+- [x] /symptoms/jaw-pain
+- [x] /symptoms/bad-breath
+
+## Phase 10: Educational Guides
+- [x] /guides/brushing-guide
+- [x] /guides/flossing-guide
+- [x] /guides/dental-visit-guide
+
+## Phase 11: Enhance Existing Pages with AI Features Content
+- [ ] Enhance Features page with AI scan technology details
+- [ ] Enhance How It Works page with technical depth
+
+## Phase 12: Schema Markup & Meta Optimization
+- [x] Update SEO component: SoftwareApplication rating to 5.0, remove review count
+- [x] Add MedicalWebPage schema to condition/symptom pages
+- [x] Add HowTo schema to guide pages
+- [x] Add Medical Advisory Board section (Areeba Aslam placeholder)
+- [ ] Add Google Search Console verification meta tag
+- [ ] Add Google Analytics tracking scripts
+
+## Phase 13: Internal Linking & Redirects
+- [x] Build cross-linking between conditions, symptoms, guides, and blog
+- [x] Implement 301 redirects from old hub article URLs
+- [x] Update sitemap.xml to include all new pages
+- [ ] Final QA pass on all new pages
+
+## Phase 14: Missing Hub Pages (from Off-Page SEO deliverables)
+- [x] Create /oral-health-hub/oral-health-score-explained (redirects to /conditions/toothache)
+- [x] Create /oral-health-hub/dental-benefits-utilization-guide (redirects to /conditions/gum-disease)
+
+## Phase 15: Batch 2 Condition Pages (Completed)
+- [x] /conditions/sensitive-teeth
+- [x] /conditions/cracked-tooth
+- [x] /conditions/dental-abscess
+- [x] /conditions/root-canal
+- [x] /conditions/dental-crown
+
+## Phase 16: Batch 3 Condition Pages (Completed)
+- [x] /conditions/teeth-grinding
+- [x] /conditions/dental-implants
+- [x] /conditions/dry-socket
+- [x] /conditions/oral-thrush
+- [x] /conditions/tmj-disorder
+
+## Phase 17: Additional Symptom Pages (Completed)
+- [x] /symptoms/swollen-gums
+- [x] /symptoms/loose-tooth
+- [x] /symptoms/dry-mouth
+- [x] /symptoms/tooth-discoloration
+- [x] /symptoms/mouth-sores
+
+## Phase 18: Footer & Internal Linking (Completed)
+- [x] Add Conditions, Symptoms, Guides links to Footer
+- [x] Add 301 redirects for old hub category URLs
+- [x] Update sitemap with all Batch 2 and Batch 3 pages
+- [x] Write and pass vitest tests for SEO routes (33 tests passing)

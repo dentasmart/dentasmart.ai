@@ -78,8 +78,8 @@ export default function SEO({
     },
     aggregateRating: {
       "@type": "AggregateRating",
-      ratingValue: "4.8",
-      ratingCount: "1200",
+      ratingValue: "5.0",
+      bestRating: "5",
     },
   };
 

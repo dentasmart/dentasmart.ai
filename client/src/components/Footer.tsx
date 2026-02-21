@@ -104,10 +104,30 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Legal */}
+            {/* Resources */}
             <div>
-              <h4 className="font-medium text-black mb-6 tracking-wide">Legal</h4>
+              <h4 className="font-medium text-black mb-6 tracking-wide">Resources</h4>
               <ul className="space-y-4">
+                <li>
+                  <Link href="/conditions" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    Dental Conditions
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/symptoms" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    Symptom Guide
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/guides" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    Oral Health Guides
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/faqs" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    FAQs
+                  </Link>
+                </li>
                 <li>
                   <Link href="/privacy-policy" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Privacy Policy
@@ -116,11 +136,6 @@ export default function Footer() {
                 <li>
                   <Link href="/terms-of-service" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Terms of Service
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/faqs" className="text-black hover:text-primary transition-colors font-light text-sm">
-                    FAQs
                   </Link>
                 </li>
               </ul>

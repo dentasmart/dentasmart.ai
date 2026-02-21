@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Linkedin, Users, Target, Lightbulb } from "lucide-react";
+import { MedicalAdvisoryBoard } from "@/components/MedicalAdvisoryBoard";
 import { DownloadSection } from "@/components/DownloadSection";
 import { motion } from "framer-motion";
 
@@ -264,6 +265,9 @@ export default function Team() {
           </div>
         </div>
       </section>
+
+      {/* Medical Advisory Board */}
+      <MedicalAdvisoryBoard />
 
       {/* Clinical Safety and Responsibility */}
       <section className="py-20 bg-stone-50 border-t border-stone-200">
