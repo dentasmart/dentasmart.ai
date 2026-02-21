@@ -1,0 +1,184 @@
+{
+  "query": "SELECT slug FROM blog_posts ORDER BY slug LIMIT 60;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT slug FROM blog_posts ORDER BY slug LIMIT 60;",
+  "rows": [
+    {
+      "slug": "at-what-age-should-my-child-first-see-a-dentist"
+    },
+    {
+      "slug": "bad-breath"
+    },
+    {
+      "slug": "bad-breath-halitosis"
+    },
+    {
+      "slug": "black-line-on-tooth"
+    },
+    {
+      "slug": "bleeding-gums"
+    },
+    {
+      "slug": "bone-loss-dental-xray"
+    },
+    {
+      "slug": "canker-sore-vs-cold-sore"
+    },
+    {
+      "slug": "cavity-symptoms-tooth-decay"
+    },
+    {
+      "slug": "choosing-right-dentist"
+    },
+    {
+      "slug": "communication-gap"
+    },
+    {
+      "slug": "cosmetic-vs-necessary"
+    },
+    {
+      "slug": "cost-transparency"
+    },
+    {
+      "slug": "cracked-tooth"
+    },
+    {
+      "slug": "cracked-tooth-symptoms"
+    },
+    {
+      "slug": "crown-pain-sensitivity"
+    },
+    {
+      "slug": "denied-claims"
+    },
+    {
+      "slug": "employer-dental-plans"
+    },
+    {
+      "slug": "enamel-erosion"
+    },
+    {
+      "slug": "fear-of-dentist"
+    },
+    {
+      "slug": "filling-feels-high-pain-biting"
+    },
+    {
+      "slug": "gum-boil"
+    },
+    {
+      "slug": "gum-recession"
+    },
+    {
+      "slug": "gums-hurt-when-flossing"
+    },
+    {
+      "slug": "how-can-ai-detect-a-cavity-in-my-dental-xray"
+    },
+    {
+      "slug": "how-do-i-know-its-time-for-dental-implants"
+    },
+    {
+      "slug": "in-network-confusion"
+    },
+    {
+      "slug": "insurance-limitations"
+    },
+    {
+      "slug": "jaw-pain-tmj"
+    },
+    {
+      "slug": "loose-tooth-adults"
+    },
+    {
+      "slug": "maximize-benefits"
+    },
+    {
+      "slug": "misleading-insurance"
+    },
+    {
+      "slug": "missing-teeth"
+    },
+    {
+      "slug": "mouth-ulcer-not-healing"
+    },
+    {
+      "slug": "no-insurance-options"
+    },
+    {
+      "slug": "overtreatment-concerns"
+    },
+    {
+      "slug": "pain-when-biting-or-chewing"
+    },
+    {
+      "slug": "pre-authorization"
+    },
+    {
+      "slug": "preventive-care-gap"
+    },
+    {
+      "slug": "questioning-recommendations"
+    },
+    {
+      "slug": "root-canal-symptoms"
+    },
+    {
+      "slug": "rushed-decisions"
+    },
+    {
+      "slug": "second-opinions"
+    },
+    {
+      "slug": "silent-gum-disease"
+    },
+    {
+      "slug": "stained-teeth"
+    },
+    {
+      "slug": "swollen-gums-around-one-tooth"
+    },
+    {
+      "slug": "teeth-grinding"
+    },
+    {
+      "slug": "teeth-grinding-bruxism"
+    },
+    {
+      "slug": "tooth-abscess-infection"
+    },
+    {
+      "slug": "tooth-hurts-cold-water"
+    },
+    {
+      "slug": "tooth-pain-toothache"
+    },
+    {
+      "slug": "tooth-sensitivity"
+    },
+    {
+      "slug": "tooth-sensitivity-cold-hot"
+    },
+    {
+      "slug": "unclear-diagnoses"
+    },
+    {
+      "slug": "undetected-cavities"
+    },
+    {
+      "slug": "waiting-periods"
+    },
+    {
+      "slug": "white-spots-on-teeth"
+    },
+    {
+      "slug": "wisdom-teeth-confusion"
+    },
+    {
+      "slug": "wisdom-tooth-pain"
+    }
+  ],
+  "messages": [],
+  "stdout": "slug\nat-what-age-should-my-child-first-see-a-dentist\nbad-breath\nbad-breath-halitosis\nblack-line-on-tooth\nbleeding-gums\nbone-loss-dental-xray\ncanker-sore-vs-cold-sore\ncavity-symptoms-tooth-decay\nchoosing-right-dentist\ncommunication-gap\ncosmetic-vs-necessary\ncost-transparency\ncracked-tooth\ncracked-tooth-symptoms\ncrown-pain-sensitivity\ndenied-claims\nemployer-dental-plans\nenamel-erosion\nfear-of-dentist\nfilling-feels-high-pain-biting\ngum-boil\ngum-recession\ngums-hurt-when-flossing\nhow-can-ai-detect-a-cavity-in-my-dental-xray\nhow-do-i-know-its-time-for-dental-implants\nin-network-confusion\ninsurance-limitations\njaw-pain-tmj\nloose-tooth-adults\nmaximize-benefits\nmisleading-insurance\nmissing-teeth\nmouth-ulcer-not-healing\nno-insurance-options\novertreatment-concerns\npain-when-biting-or-chewing\npre-authorization\npreventive-care-gap\nquestioning-recommendations\nroot-canal-symptoms\nrushed-decisions\nsecond-opinions\nsilent-gum-disease\nstained-teeth\nswollen-gums-around-one-tooth\nteeth-grinding\nteeth-grinding-bruxism\ntooth-abscess-infection\ntooth-hurts-cold-water\ntooth-pain-toothache\ntooth-sensitivity\ntooth-sensitivity-cold-hot\nunclear-diagnoses\nundetected-cavities\nwaiting-periods\nwhite-spots-on-teeth\nwisdom-teeth-confusion\nwisdom-tooth-pain\n",
+  "stderr": "",
+  "execution_time_ms": 53
+}

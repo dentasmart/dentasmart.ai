@@ -1,0 +1,13 @@
+{
+  "query": "SELECT GROUP_CONCAT(slug ORDER BY slug SEPARATOR ', ') as all_slugs FROM blog_posts;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT GROUP_CONCAT(slug ORDER BY slug SEPARATOR ', ') as all_slugs FROM blog_posts;",
+  "rows": [
+    {
+      "all_slugs": "at-what-age-should-my-child-first-see-a-dentist, bad-breath, bad-breath-halitosis, black-line-on-tooth, bleeding-gums, bone-loss-dental-xray, canker-sore-vs-cold-sore, cavity-symptoms-tooth-decay, choosing-right-dentist, communication-gap, cosmetic-vs-necessary, cost-transparency, cracked-tooth, cracked-tooth-symptoms, crown-pain-sensitivity, denied-claims, employer-dental-plans, enamel-erosion, fear-of-dentist, filling-feels-high-pain-biting, gum-boil, gum-recession, gums-hurt-when-flossing, how-can-ai-detect-a-cavity-in-my-dental-xray, how-do-i-know-its-time-for-dental-implants, in-network-confusion, insurance-limitations, jaw-pain-tmj, loose-tooth-adults, maximize-benefits, misleading-insurance, missing-teeth, mouth-ulcer-not-healing, no-insurance-options, overtreatment-concerns, pain-when-biting-or-chewing, pre-authorization, preventive-care-gap, questioning-recommendations, root-canal-symptoms, rushed-decisions, second-opinions, silent-gum-disease, stained-teeth, swollen-gums-around-one-tooth, teeth-grin"
+    }
+  ],
+  "messages": [],
+  "stdout": "all_slugs\nat-what-age-should-my-child-first-see-a-dentist, bad-breath, bad-breath-halitosis, black-line-on-tooth, bleeding-gums, bone-loss-dental-xray, canker-sore-vs-cold-sore, cavity-symptoms-tooth-decay, choosing-right-dentist, communication-gap, cosmetic-vs-necessary, cost-transparency, cracked-tooth, cracked-tooth-symptoms, crown-pain-sensitivity, denied-claims, employer-dental-plans, enamel-erosion, fear-of-dentist, filling-feels-high-pain-biting, gum-boil, gum-recession, gums-hurt-when-flossing, how-can-ai-detect-a-cavity-in-my-dental-xray, how-do-i-know-its-time-for-dental-implants, in-network-confusion, insurance-limitations, jaw-pain-tmj, loose-tooth-adults, maximize-benefits, misleading-insurance, missing-teeth, mouth-ulcer-not-healing, no-insurance-options, overtreatment-concerns, pain-when-biting-or-chewing, pre-authorization, preventive-care-gap, questioning-recommendations, root-canal-symptoms, rushed-decisions, second-opinions, silent-gum-disease, stained-teeth, swollen-gums-around-one-tooth, teeth-grin\n",
+  "stderr": "",
+  "execution_time_ms": 58
+}

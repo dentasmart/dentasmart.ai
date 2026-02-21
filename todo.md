@@ -359,3 +359,6 @@
 # Instant Scan Hero Fix - Feb 21, 2026
 - [x] Remove "AI-Powered Analysis" badge from Instant Scan hero
 - [x] Move hero text up and adjust text size so everything fits in laptop viewport
+
+# DentaSmart Content Agent - Feb 21, 2026
+- [ ] Set up DentaSmart Content Agent (Mon/Wed/Fri at 9 AM EST) for autonomous content publishing

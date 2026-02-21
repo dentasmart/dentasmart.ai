@@ -1,0 +1,260 @@
+{
+  "query": "SELECT slug, title, category FROM blog_posts WHERE status = 'published' ORDER BY publishedAt DESC LIMIT 50;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT slug, title, category FROM blog_posts WHERE status = 'published' ORDER BY publishedAt DESC LIMIT 50;",
+  "rows": [
+    {
+      "slug": "at-what-age-should-my-child-first-see-a-dentist",
+      "title": "At What Age Should My Child First See a Dentist?",
+      "category": "Dental Problems"
+    },
+    {
+      "slug": "how-do-i-know-its-time-for-dental-implants",
+      "title": "How Do I Know It’s Time for Dental Implants?",
+      "category": "Dental Problems"
+    },
+    {
+      "slug": "white-spots-on-teeth",
+      "title": "White Spots on Teeth: What Do They Mean?",
+      "category": "Symptoms"
+    },
+    {
+      "slug": "black-line-on-tooth",
+      "title": "What's That Black Line on My Tooth?",
+      "category": "Symptoms"
+    },
+    {
+      "slug": "gum-boil",
+      "title": "Gum Boil: What Is That Pimple on Your Gums?",
+      "category": "Gums"
+    },
+    {
+      "slug": "crown-pain-sensitivity",
+      "title": "Crown Pain and Sensitivity: What to Know",
+      "category": "Symptoms"
+    },
+    {
+      "slug": "jaw-pain-tmj",
+      "title": "Jaw Pain and TMJ: What to Know",
+      "category": "Symptoms"
+    },
+    {
+      "slug": "swollen-gums-around-one-tooth",
+      "title": "Swollen Gums Around One Tooth: A Guide",
+      "category": "Gums"
+    },
+    {
+      "slug": "bone-loss-dental-xray",
+      "title": "What Bone Loss on a Dental X-Ray Really Means",
+      "category": "X-Rays"
+    },
+    {
+      "slug": "root-canal-symptoms",
+      "title": "Root Canal Symptoms: Signs You Might Need a Root Canal",
+      "category": "Symptoms"
+    },
+    {
+      "slug": "teeth-grinding-bruxism",
+      "title": "Teeth Grinding (Bruxism): What It Is and What to Do",
+      "category": "Symptoms"
+    },
+    {
+      "slug": "loose-tooth-adults",
+      "title": "Loose Tooth in Adults: A Guide to Causes and Treatment",
+      "category": "Gums"
+    },
+    {
+      "slug": "mouth-ulcer-not-healing",
+      "title": "Mouth Ulcer Not Healing? When to See a Dentist",
+      "category": "Symptoms"
+    },
+    {
+      "slug": "canker-sore-vs-cold-sore",
+      "title": "Canker Sore vs. Cold Sore: What's the Difference?",
+      "category": "Symptoms"
+    },
+    {
+      "slug": "tooth-hurts-cold-water",
+      "title": "Why Your Tooth Hurts When Drinking Cold Water",
+      "category": "Symptoms"
+    },
+    {
+      "slug": "filling-feels-high-pain-biting",
+      "title": "Why Does My New Filling Feel High? Pain When Biting",
+      "category": "Symptoms"
+    },
+    {
+      "slug": "gums-hurt-when-flossing",
+      "title": "Why Do My Gums Hurt When I Floss?",
+      "category": "Gums"
+    },
+    {
+      "slug": "pain-when-biting-or-chewing",
+      "title": "Pain When Biting or Chewing: Causes and Next Steps",
+      "category": "Symptoms"
+    },
+    {
+      "slug": "bad-breath-halitosis",
+      "title": "Bad Breath (Halitosis): Causes and How to Fix It",
+      "category": "Symptoms"
+    },
+    {
+      "slug": "cracked-tooth-symptoms",
+      "title": "Cracked Tooth Symptoms: How to Tell If Your Tooth Is Cracked",
+      "category": "Symptoms"
+    },
+    {
+      "slug": "tooth-sensitivity-cold-hot",
+      "title": "Tooth Sensitivity to Cold or Hot: Why It Happens",
+      "category": "Symptoms"
+    },
+    {
+      "slug": "cavity-symptoms-tooth-decay",
+      "title": "Cavity Symptoms (Tooth Decay): How to Spot It Early",
+      "category": "Cavities"
+    },
+    {
+      "slug": "tooth-abscess-infection",
+      "title": "Tooth Abscess (Infection): Signs, Risks, and What to Do",
+      "category": "Symptoms"
+    },
+    {
+      "slug": "bleeding-gums",
+      "title": "Bleeding Gums: Why They Bleed and How to Stop It",
+      "category": "Gums"
+    },
+    {
+      "slug": "wisdom-tooth-pain",
+      "title": "Wisdom Tooth Pain: What It Means and When to Act",
+      "category": "Symptoms"
+    },
+    {
+      "slug": "gum-recession",
+      "title": "Gum Recession: Why Gums Pull Back and What to Do",
+      "category": "Gums"
+    },
+    {
+      "slug": "tooth-pain-toothache",
+      "title": "Tooth Pain (Toothache): What It Means and What to Do",
+      "category": "Symptoms"
+    },
+    {
+      "slug": "how-can-ai-detect-a-cavity-in-my-dental-xray",
+      "title": "How Can AI Detect A Cavity In My Dental-Xray?",
+      "category": "Dental Problems"
+    },
+    {
+      "slug": "maximize-benefits",
+      "title": "How to Maximize Your Dental Insurance Benefits",
+      "category": "Insurance Problems"
+    },
+    {
+      "slug": "employer-dental-plans",
+      "title": "Is Your Employer's Dental Plan Actually Good?",
+      "category": "Insurance Problems"
+    },
+    {
+      "slug": "no-insurance-options",
+      "title": "What Are Your Options If You Don't Have Dental Insurance?",
+      "category": "Insurance Problems"
+    },
+    {
+      "slug": "cosmetic-vs-necessary",
+      "title": "When Does Insurance Consider Dental Work 'Cosmetic'?",
+      "category": "Insurance Problems"
+    },
+    {
+      "slug": "pre-authorization",
+      "title": "What Is Dental Pre-Authorization and Why Does It Matter?",
+      "category": "Insurance Problems"
+    },
+    {
+      "slug": "waiting-periods",
+      "title": "Why Do Dental Insurance Plans Have Waiting Periods?",
+      "category": "Insurance Problems"
+    },
+    {
+      "slug": "in-network-confusion",
+      "title": "What Does 'In-Network' Actually Mean for Dental Care?",
+      "category": "Insurance Problems"
+    },
+    {
+      "slug": "insurance-limitations",
+      "title": "Why Does Dental Insurance Have Such Low Annual Limits?",
+      "category": "Insurance Problems"
+    },
+    {
+      "slug": "denied-claims",
+      "title": "Why Do Insurance Companies Deny Dental Claims?",
+      "category": "Insurance Problems"
+    },
+    {
+      "slug": "misleading-insurance",
+      "title": "Why Does Dental Insurance Feel Misleading?",
+      "category": "Insurance Problems"
+    },
+    {
+      "slug": "enamel-erosion",
+      "title": "Is Your Diet Destroying Your Tooth Enamel?",
+      "category": "Dental Problems"
+    },
+    {
+      "slug": "missing-teeth",
+      "title": "What Happens When You Don't Replace a Missing Tooth?",
+      "category": "Dental Problems"
+    },
+    {
+      "slug": "cracked-tooth",
+      "title": "What Happens If I Ignore a Cracked Tooth?",
+      "category": "Dental Problems"
+    },
+    {
+      "slug": "bad-breath",
+      "title": "Why Does My Breath Smell Bad Even After Brushing?",
+      "category": "Dental Problems"
+    },
+    {
+      "slug": "stained-teeth",
+      "title": "Why Are My Teeth Staining and What Can I Do?",
+      "category": "Dental Problems"
+    },
+    {
+      "slug": "teeth-grinding",
+      "title": "Am I Grinding My Teeth Without Knowing It?",
+      "category": "Dental Problems"
+    },
+    {
+      "slug": "wisdom-teeth-confusion",
+      "title": "Do My Wisdom Teeth Really Need to Come Out?",
+      "category": "Dental Problems"
+    },
+    {
+      "slug": "tooth-sensitivity",
+      "title": "Why Are My Teeth So Sensitive?",
+      "category": "Dental Problems"
+    },
+    {
+      "slug": "silent-gum-disease",
+      "title": "Is Gum Disease Really That Serious?",
+      "category": "Dental Problems"
+    },
+    {
+      "slug": "undetected-cavities",
+      "title": "Why Do Cavities Go Undetected Too Long?",
+      "category": "Dental Problems"
+    },
+    {
+      "slug": "choosing-right-dentist",
+      "title": "How Do You Choose the Right Dentist?",
+      "category": "Dentist Problems"
+    },
+    {
+      "slug": "communication-gap",
+      "title": "Why Is There a Communication Gap Between Dentists and Patients?",
+      "category": "Dentist Problems"
+    }
+  ],
+  "messages": [],
+  "stdout": "slug\ttitle\tcategory\nat-what-age-should-my-child-first-see-a-dentist\tAt What Age Should My Child First See a Dentist?\tDental Problems\nhow-do-i-know-its-time-for-dental-implants\tHow Do I Know It’s Time for Dental Implants?\tDental Problems\nwhite-spots-on-teeth\tWhite Spots on Teeth: What Do They Mean?\tSymptoms\nblack-line-on-tooth\tWhat's That Black Line on My Tooth?\tSymptoms\ngum-boil\tGum Boil: What Is That Pimple on Your Gums?\tGums\ncrown-pain-sensitivity\tCrown Pain and Sensitivity: What to Know\tSymptoms\njaw-pain-tmj\tJaw Pain and TMJ: What to Know\tSymptoms\nswollen-gums-around-one-tooth\tSwollen Gums Around One Tooth: A Guide\tGums\nbone-loss-dental-xray\tWhat Bone Loss on a Dental X-Ray Really Means\tX-Rays\nroot-canal-symptoms\tRoot Canal Symptoms: Signs You Might Need a Root Canal\tSymptoms\nteeth-grinding-bruxism\tTeeth Grinding (Bruxism): What It Is and What to Do\tSymptoms\nloose-tooth-adults\tLoose Tooth in Adults: A Guide to Causes and Treatment\tGums\nmouth-ulcer-not-healing\tMouth Ulcer Not Healing? When to See a Dentist\tSymptoms\ncanker-sore-vs-cold-sore\tCanker Sore vs. Cold Sore: What's the Difference?\tSymptoms\ntooth-hurts-cold-water\tWhy Your Tooth Hurts When Drinking Cold Water\tSymptoms\nfilling-feels-high-pain-biting\tWhy Does My New Filling Feel High? Pain When Biting\tSymptoms\ngums-hurt-when-flossing\tWhy Do My Gums Hurt When I Floss?\tGums\npain-when-biting-or-chewing\tPain When Biting or Chewing: Causes and Next Steps\tSymptoms\nbad-breath-halitosis\tBad Breath (Halitosis): Causes and How to Fix It\tSymptoms\ncracked-tooth-symptoms\tCracked Tooth Symptoms: How to Tell If Your Tooth Is Cracked\tSymptoms\ntooth-sensitivity-cold-hot\tTooth Sensitivity to Cold or Hot: Why It Happens\tSymptoms\ncavity-symptoms-tooth-decay\tCavity Symptoms (Tooth Decay): How to Spot It Early\tCavities\ntooth-abscess-infection\tTooth Abscess (Infection): Signs, Risks, and What to Do\tSymptoms\nbleeding-gums\tBleeding Gums: Why They Bleed and How to Stop It\tGums\nwisdom-tooth-pain\tWisdom Tooth Pain: What It Means and When to Act\tSymptoms\ngum-recession\tGum Recession: Why Gums Pull Back and What to Do\tGums\ntooth-pain-toothache\tTooth Pain (Toothache): What It Means and What to Do\tSymptoms\nhow-can-ai-detect-a-cavity-in-my-dental-xray\tHow Can AI Detect A Cavity In My Dental-Xray?\tDental Problems\nmaximize-benefits\tHow to Maximize Your Dental Insurance Benefits\tInsurance Problems\nemployer-dental-plans\tIs Your Employer's Dental Plan Actually Good?\tInsurance Problems\nno-insurance-options\tWhat Are Your Options If You Don't Have Dental Insurance?\tInsurance Problems\ncosmetic-vs-necessary\tWhen Does Insurance Consider Dental Work 'Cosmetic'?\tInsurance Problems\npre-authorization\tWhat Is Dental Pre-Authorization and Why Does It Matter?\tInsurance Problems\nwaiting-periods\tWhy Do Dental Insurance Plans Have Waiting Periods?\tInsurance Problems\nin-network-confusion\tWhat Does 'In-Network' Actually Mean for Dental Care?\tInsurance Problems\ninsurance-limitations\tWhy Does Dental Insurance Have Such Low Annual Limits?\tInsurance Problems\ndenied-claims\tWhy Do Insurance Companies Deny Dental Claims?\tInsurance Problems\nmisleading-insurance\tWhy Does Dental Insurance Feel Misleading?\tInsurance Problems\nenamel-erosion\tIs Your Diet Destroying Your Tooth Enamel?\tDental Problems\nmissing-teeth\tWhat Happens When You Don't Replace a Missing Tooth?\tDental Problems\ncracked-tooth\tWhat Happens If I Ignore a Cracked Tooth?\tDental Problems\nbad-breath\tWhy Does My Breath Smell Bad Even After Brushing?\tDental Problems\nstained-teeth\tWhy Are My Teeth Staining and What Can I Do?\tDental Problems\nteeth-grinding\tAm I Grinding My Teeth Without Knowing It?\tDental Problems\nwisdom-teeth-confusion\tDo My Wisdom Teeth Really Need to Come Out?\tDental Problems\ntooth-sensitivity\tWhy Are My Teeth So Sensitive?\tDental Problems\nsilent-gum-disease\tIs Gum Disease Really That Serious?\tDental Problems\nundetected-cavities\tWhy Do Cavities Go Undetected Too Long?\tDental Problems\nchoosing-right-dentist\tHow Do You Choose the Right Dentist?\tDentist Problems\ncommunication-gap\tWhy Is There a Communication Gap Between Dentists and Patients?\tDentist Problems\n",
+  "stderr": "",
+  "execution_time_ms": 265
+}
