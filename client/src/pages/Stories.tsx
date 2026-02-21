@@ -111,7 +111,7 @@ export default function Stories() {
                   </div>
                 </div>
                 <div className="mt-8 pt-6 border-t border-stone-200 text-stone-500 text-sm flex justify-between items-center">
-                  <span>— {item.author}</span>
+                  <span>- {item.author}</span>
                   <span className="text-xs bg-white px-2 py-1 rounded-full border border-stone-200">{item.role}</span>
                 </div>
               </motion.div>

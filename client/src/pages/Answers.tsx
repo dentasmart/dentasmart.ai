@@ -34,16 +34,16 @@ const qaData: QA[] = [
   { q: "How long does a filling last?", a: "Composite (tooth-colored) fillings typically last 5-10 years. Amalgam (silver) fillings can last 10-15 years. Factors like grinding, diet, and oral hygiene affect longevity. DentaSmart can monitor your existing fillings for signs of wear.", category: "Cavities" },
 
   // Gums
-  { q: "What is the difference between gingivitis and periodontitis?", a: "Gingivitis is early-stage gum disease with inflammation and bleeding — it is reversible. Periodontitis is advanced gum disease where bone loss occurs — it is manageable but not fully reversible. Early detection prevents progression.", category: "Gums" },
+  { q: "What is the difference between gingivitis and periodontitis?", a: "Gingivitis is early-stage gum disease with inflammation and bleeding. It is reversible. Periodontitis is advanced gum disease where bone loss occurs. It is manageable but not fully reversible. Early detection prevents progression.", category: "Gums" },
   { q: "Can gum disease cause tooth loss?", a: "Yes. Advanced periodontitis destroys the bone supporting your teeth, eventually causing them to loosen and fall out. It is the leading cause of tooth loss in adults. Regular monitoring helps catch it early.", category: "Gums" },
   { q: "How do I reverse gum recession?", a: "Mild gum recession can be managed with better brushing technique (soft brush, gentle pressure) and regular cleanings. Severe recession may need gum grafting surgery. DentaSmart helps you track gum levels over time.", category: "Gums" },
   { q: "Why are my gums swollen around one tooth?", a: "Localized gum swelling usually indicates an infection, a food particle trapped under the gumline, or a periodontal abscess. If it persists more than a few days, see a dentist. Upload a photo to DentaSmart for initial guidance.", category: "Gums" },
   { q: "Does gum disease affect overall health?", a: "Research links gum disease to heart disease, diabetes complications, respiratory infections, and pregnancy complications. Bacteria from infected gums can enter the bloodstream and affect other organs.", category: "Gums" },
 
   // X-rays
-  { q: "Can I understand my dental X-ray myself?", a: "Dental X-rays can be confusing without training. DentaSmart uses AI to analyze your X-rays and explain findings in plain language — showing you exactly where issues are and what they mean.", category: "X-rays" },
+  { q: "Can I understand my dental X-ray myself?", a: "Dental X-rays can be confusing without training. DentaSmart uses AI to analyze your X-rays and explain findings in plain language, showing you exactly where issues are and what they mean.", category: "X-rays" },
   { q: "How often should I get dental X-rays?", a: "Most adults need bitewing X-rays every 1-2 years and a full-mouth series every 3-5 years. High-risk patients may need them more often. Your dentist will recommend based on your specific needs.", category: "X-rays" },
-  { q: "Are dental X-rays safe?", a: "Yes. Modern digital X-rays use very low radiation — about the same as a short airplane flight. The diagnostic benefits far outweigh the minimal risk. Pregnant women should inform their dentist.", category: "X-rays" },
+  { q: "Are dental X-rays safe?", a: "Yes. Modern digital X-rays use very low radiation, about the same as a short airplane flight. The diagnostic benefits far outweigh the minimal risk. Pregnant women should inform their dentist.", category: "X-rays" },
   { q: "What does bone loss look like on a dental X-ray?", a: "Bone loss appears as dark areas around tooth roots where bone should be white/opaque. Healthy bone comes up close to the crown of the tooth. DentaSmart can identify and highlight bone loss patterns in your X-rays.", category: "X-rays" },
   { q: "Can an X-ray show a cracked tooth?", a: "Not always. Hairline cracks often do not show on standard X-rays. However, X-rays can reveal related signs like bone loss, widened ligament spaces, or root fractures. A 3D CBCT scan is better for detecting cracks.", category: "X-rays" },
 
@@ -58,11 +58,11 @@ const qaData: QA[] = [
   { q: "Why is dental care so expensive?", a: "Dental care costs reflect specialized training, equipment, materials, and overhead. Many procedures require precision work on a tiny scale. DentaSmart helps you understand costs upfront and prioritize treatments to manage expenses.", category: "Costs" },
   { q: "How can I save money on dental care?", a: "Catch problems early (when a $200 filling prevents a $1,500 root canal), compare prices between dentists, ask about payment plans, and use DentaSmart to monitor your oral health between visits.", category: "Costs" },
   { q: "Is dental insurance worth it?", a: "It depends on your needs. Most dental insurance caps at $1,000-2,000/year with waiting periods for major work. If you only need cleanings, a discount plan may be cheaper. DentaSmart costs $4.99/month for unlimited monitoring.", category: "Costs" },
-  { q: "What dental work is most urgent?", a: "Infections (abscesses), uncontrolled bleeding, severe pain, and broken teeth with sharp edges are dental emergencies. DentaSmart helps you triage — understanding which issues need immediate attention versus routine care.", category: "Costs" },
+  { q: "What dental work is most urgent?", a: "Infections (abscesses), uncontrolled bleeding, severe pain, and broken teeth with sharp edges are dental emergencies. DentaSmart helps you triage by understanding which issues need immediate attention versus routine care.", category: "Costs" },
   { q: "Can I negotiate dental prices?", a: "Yes. Many dentists offer cash-pay discounts (10-20%), payment plans, or will match competitor quotes. Ask before treatment. Knowing the typical cost range (which DentaSmart provides) gives you negotiating power.", category: "Costs" },
 
   // Prevention
-  { q: "How often should I really floss?", a: "Once daily is the recommendation. Flossing removes plaque and food from between teeth where your brush cannot reach. If your gums bleed when you start, keep going — they will stop bleeding within 1-2 weeks of regular flossing.", category: "Prevention" },
+  { q: "How often should I really floss?", a: "Once daily is the recommendation. Flossing removes plaque and food from between teeth where your brush cannot reach. If your gums bleed when you start, keep going. They will stop bleeding within 1-2 weeks of regular flossing.", category: "Prevention" },
   { q: "Does mouthwash replace flossing?", a: "No. Mouthwash kills bacteria and freshens breath but cannot physically remove plaque and food particles stuck between teeth. Think of it as a supplement to brushing and flossing, not a replacement.", category: "Prevention" },
   { q: "How often should I visit the dentist?", a: "Most people should visit every 6 months for a cleaning and checkup. High-risk patients (gum disease, smokers, diabetics) may need visits every 3-4 months. DentaSmart helps you monitor between visits.", category: "Prevention" },
   { q: "Can diet affect my dental health?", a: "Absolutely. Sugar feeds cavity-causing bacteria. Acidic foods and drinks erode enamel. Calcium-rich foods strengthen teeth. Crunchy vegetables help clean teeth naturally. Water is the best drink for dental health.", category: "Prevention" },
@@ -73,13 +73,13 @@ const qaData: QA[] = [
   { q: "Is my dental data private with DentaSmart?", a: "Yes. Your dental photos and data are encrypted and stored securely. We never share your personal health information with third parties. You can delete your data at any time from the app.", category: "DentaSmart" },
   { q: "Can DentaSmart replace my dentist?", a: "No. DentaSmart is a monitoring and education tool that helps you understand your oral health between dental visits. It helps you prepare for appointments and catch issues early, but it does not replace professional care.", category: "DentaSmart" },
   { q: "What types of photos can I upload?", a: "You can upload photos of your teeth (front, sides), close-ups of specific concerns, and dental X-rays (bitewings, periapical, panoramic). Check our photo guide for tips on getting the clearest images.", category: "DentaSmart" },
-  { q: "How is DentaSmart different from Googling symptoms?", a: "Google gives you a list of possibilities that can cause anxiety. DentaSmart analyzes YOUR actual teeth and gives you a personalized assessment with a clear score and action plan — not generic information.", category: "DentaSmart" },
+  { q: "How is DentaSmart different from Googling symptoms?", a: "Google gives you a list of possibilities that can cause anxiety. DentaSmart analyzes YOUR actual teeth and gives you a personalized assessment with a clear score and action plan, not generic information.", category: "DentaSmart" },
 
   // Children & Family
   { q: "When should my child first see a dentist?", a: "The American Academy of Pediatric Dentistry recommends a first visit by age 1 or within 6 months of the first tooth appearing. Early visits establish a dental home and catch issues before they become problems.", category: "Family" },
   { q: "Are baby teeth important if they fall out anyway?", a: "Yes. Baby teeth hold space for permanent teeth, help with speech development, and allow proper chewing for nutrition. Infected baby teeth can damage the developing permanent teeth underneath.", category: "Family" },
   { q: "Is teeth grinding in children normal?", a: "Mild teeth grinding (bruxism) is common in children and often resolves on its own. However, persistent grinding can wear down enamel and cause jaw pain. Consult a dentist if it continues past age 6.", category: "Family" },
-  { q: "Can pregnancy affect my dental health?", a: "Yes. Hormonal changes during pregnancy increase the risk of gingivitis and gum disease. Morning sickness acid can erode enamel. Dental care during pregnancy is safe and important — do not skip checkups.", category: "Family" },
+  { q: "Can pregnancy affect my dental health?", a: "Yes. Hormonal changes during pregnancy increase the risk of gingivitis and gum disease. Morning sickness acid can erode enamel. Dental care during pregnancy is safe and important. Do not skip checkups.", category: "Family" },
   { q: "At what age do wisdom teeth come in?", a: "Wisdom teeth typically emerge between ages 17-25. Not everyone gets them, and not all need removal. They should be removed if they are impacted, causing pain, or pushing other teeth. X-rays help determine the best approach.", category: "Family" },
 ];
 
@@ -123,7 +123,7 @@ export default function Answers() {
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
         title="Dental Health Answers - 50 Common Questions Explained Simply"
-        description="Get clear, simple answers to the most common dental health questions. From tooth pain to X-rays, cavities to costs — no jargon, just facts."
+        description="Get clear, simple answers to the most common dental health questions. From tooth pain to X-rays, cavities to costs. No jargon, just facts."
         canonical="https://dentasmart.ai/answers"
       />
       {/* Inject FAQPage schema */}
@@ -149,7 +149,7 @@ export default function Answers() {
               <span className="italic text-primary">answered simply</span>.
             </h1>
             <p className="text-xl text-stone-600 font-light leading-relaxed max-w-2xl mx-auto mb-8">
-              50 common dental health questions explained in plain language. No jargon, no confusion — just the facts you need.
+              50 common dental health questions explained in plain language. No jargon, no confusion. Just the facts you need.
             </p>
 
             {/* Search */}

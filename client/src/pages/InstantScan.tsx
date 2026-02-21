@@ -52,7 +52,7 @@ export default function InstantScan() {
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent md:hidden" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-32 md:pt-0">
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-36 md:pt-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -65,7 +65,7 @@ export default function InstantScan() {
                 AI-Powered Analysis
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-6 leading-tight">
-                See what your dentist sees — <span className="italic text-primary">before your visit</span>.
+                See what your dentist sees<br /><span className="italic text-primary">before your visit</span>.
               </h1>
               <p className="text-xl text-stone-600 mb-8 font-light leading-relaxed">
                 Upload a photo of your teeth or X-rays. Our AI analyzes it in seconds and gives you a clear, jargon-free report so you know exactly what is going on.

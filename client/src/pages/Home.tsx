@@ -408,7 +408,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="mt-8 pt-6 border-t border-stone-100 text-stone-500 text-sm">
-                  — {item.author}
+                  - {item.author}
                 </div>
               </motion.div>
             ))}

@@ -17,7 +17,7 @@ const dentistTypes = [
 ];
 
 const tips = [
-  { title: "Know What You Need", desc: "DentaSmart tells you which type of dentist to see based on your scan results — general dentist, periodontist, endodontist, or oral surgeon." },
+  { title: "Know What You Need", desc: "DentaSmart tells you which type of dentist to see based on your scan results, whether that is a general dentist, periodontist, endodontist, or oral surgeon." },
   { title: "Check Reviews", desc: "Look for dentists with consistent 4+ star reviews. Pay attention to comments about communication, wait times, and treatment explanations." },
   { title: "Ask About Costs Upfront", desc: "Use DentaSmart's cost estimates as a baseline. Call the office and ask for their fee for the specific procedure you need." },
   { title: "Verify Insurance Acceptance", desc: "If you have insurance, confirm the dentist is in-network before booking. Out-of-network visits can cost 2-3x more." },
@@ -60,7 +60,7 @@ export default function FindADentist() {
                 <span className="italic text-primary">for your needs</span>.
               </h1>
               <p className="text-xl text-stone-600 mb-8 font-light leading-relaxed">
-                Not sure which type of dentist you need? DentaSmart analyzes your scan and recommends the right specialist — so you skip the guesswork and go straight to the right care.
+                Not sure which type of dentist you need? DentaSmart analyzes your scan and recommends the right specialist, so you skip the guesswork and go straight to the right care.
               </p>
               <Button
                 size="lg"

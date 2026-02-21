@@ -297,7 +297,7 @@ export default function AdminDashboard() {
                       </TableCell>
                       <TableCell>{getStatusBadge(post.status)}</TableCell>
                       <TableCell className="hidden lg:table-cell text-sm text-stone-500">
-                        {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "—"}
+                        {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "-"}
                       </TableCell>
                       <TableCell>
                         <div className="flex items-center justify-end gap-1">

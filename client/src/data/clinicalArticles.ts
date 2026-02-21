@@ -73,7 +73,7 @@ export const clinicalArticles = [
     },
     change: {
       heading: "What Should Happen Instead",
-      content: "You should know which teeth are under stress. Identifying wear patterns and structural weaknesses early allows you to protect the tooth—perhaps with a night guard or a crown—before it breaks catastrophically."
+      content: "You should know which teeth are under stress. Identifying wear patterns and structural weaknesses early allows you to protect the tooth,perhaps with a night guard or a crown,before it breaks catastrophically."
     },
     result: {
       heading: "How DentaSmart Helps",
@@ -92,7 +92,7 @@ export const clinicalArticles = [
     },
     empathy: {
       heading: "Why This Is Traumatic",
-      content: "Dental pain is unique in its intensity. It stops your life. The panic of needing help *right now*—especially on a weekend or holiday—is overwhelming. You feel helpless and desperate for relief."
+      content: "Dental pain is unique in its intensity. It stops your life. The panic of needing help *right now*,especially on a weekend or holiday,is overwhelming. You feel helpless and desperate for relief."
     },
     solution: {
       heading: "The Simple Truth: Infections Don't Go Away",
@@ -150,7 +150,7 @@ export const clinicalArticles = [
     },
     solution: {
       heading: "The Simple Truth: Stress Comes Out at Night",
-      content: "Bruxism (grinding) puts massive force on your teeth—far more than chewing. It can crack teeth, destroy dental work, and flatten your bite. It's often a subconscious release of stress, happening while you sleep, so you can't consciously stop it."
+      content: "Bruxism (grinding) puts massive force on your teeth,far more than chewing. It can crack teeth, destroy dental work, and flatten your bite. It's often a subconscious release of stress, happening while you sleep, so you can't consciously stop it."
     },
     change: {
       heading: "What Should Happen Instead",
@@ -181,7 +181,7 @@ export const clinicalArticles = [
     },
     change: {
       heading: "What Should Happen Instead",
-      content: "You should monitor their position before they hurt. X-rays can show the angle of eruption years in advance. You should have a plan to remove them (if needed) at the optimal time—usually in your late teens—rather than waiting for an emergency in your 30s."
+      content: "You should monitor their position before they hurt. X-rays can show the angle of eruption years in advance. You should have a plan to remove them (if needed) at the optimal time,usually in your late teens,rather than waiting for an emergency in your 30s."
     },
     result: {
       heading: "How DentaSmart Helps",
@@ -254,7 +254,7 @@ export const clinicalArticles = [
     },
     empathy: {
       heading: "Why This Is Vital",
-      content: "The survival rate for oral cancer is high *if* caught early, but drops significantly if caught late. The thought that a simple check could save your life—but is often skipped—is a heavy burden. You want peace of mind knowing you're clear."
+      content: "The survival rate for oral cancer is high *if* caught early, but drops significantly if caught late. The thought that a simple check could save your life,but is often skipped,is a heavy burden. You want peace of mind knowing you're clear."
     },
     solution: {
       heading: "The Simple Truth: It Hides in Plain Sight",

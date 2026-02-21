@@ -350,3 +350,8 @@
 # Favicon Fix - Feb 21, 2026
 - [x] Fix missing favicon in Google search results
 - [x] Ensure favicon.ico, apple-touch-icon, and multiple sizes are properly configured
+
+# Bug Fix - Feb 21, 2026
+- [x] Fix Instant Scan page hero text cutoff (heading not fully visible)
+- [x] Remove em dash from Instant Scan hero heading
+- [x] Full site sweep: removed all 59 em dashes from 13 files across entire codebase

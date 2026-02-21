@@ -53,14 +53,14 @@ export default function AdminSeoSetup() {
               <div className="bg-stone-50 rounded-lg p-4 text-sm text-stone-600">
                 <p className="font-medium text-black mb-2">Events being tracked automatically:</p>
                 <ul className="space-y-1">
-                  <li>• <code className="text-xs bg-stone-100 px-1 rounded">page_view</code> — Every page navigation</li>
-                  <li>• <code className="text-xs bg-stone-100 px-1 rounded">cta_get_score_click</code> — Main CTA clicks</li>
-                  <li>• <code className="text-xs bg-stone-100 px-1 rounded">download_ios_click</code> — iOS download clicks</li>
-                  <li>• <code className="text-xs bg-stone-100 px-1 rounded">android_waitlist_submit</code> — Android waitlist signups</li>
-                  <li>• <code className="text-xs bg-stone-100 px-1 rounded">pricing_plan_select</code> — Pricing plan selections</li>
-                  <li>• <code className="text-xs bg-stone-100 px-1 rounded">faq_expand</code> — FAQ question expansions</li>
-                  <li>• <code className="text-xs bg-stone-100 px-1 rounded">blog_read</code> — Article reads</li>
-                  <li>• <code className="text-xs bg-stone-100 px-1 rounded">employer_demo_request</code> — Employer demo requests</li>
+                  <li>• <code className="text-xs bg-stone-100 px-1 rounded">page_view</code> - Every page navigation</li>
+                  <li>• <code className="text-xs bg-stone-100 px-1 rounded">cta_get_score_click</code> - Main CTA clicks</li>
+                  <li>• <code className="text-xs bg-stone-100 px-1 rounded">download_ios_click</code> - iOS download clicks</li>
+                  <li>• <code className="text-xs bg-stone-100 px-1 rounded">android_waitlist_submit</code> - Android waitlist signups</li>
+                  <li>• <code className="text-xs bg-stone-100 px-1 rounded">pricing_plan_select</code> - Pricing plan selections</li>
+                  <li>• <code className="text-xs bg-stone-100 px-1 rounded">faq_expand</code> - FAQ question expansions</li>
+                  <li>• <code className="text-xs bg-stone-100 px-1 rounded">blog_read</code> - Article reads</li>
+                  <li>• <code className="text-xs bg-stone-100 px-1 rounded">employer_demo_request</code> - Employer demo requests</li>
                 </ul>
               </div>
               <Button

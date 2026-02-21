@@ -14,7 +14,7 @@ export default function Features() {
       description: "You shouldn't have to nod along pretending to understand complex dental jargon.\n\nOur AI X-ray Analysis acts as your personal translator, instantly highlighting areas of concern in simple, clear language. Finally, you can see exactly what your dentist sees and feel confident in your treatment plan.",
       points: [
         "Instant Clarity: See color-coded overlays that make issues obvious.",
-        "Plain English: No more confusing medical terms—just clear explanations.",
+        "Plain English: No more confusing medical terms. Just clear explanations.",
         "Confidence: Walk into your appointment knowing exactly what to ask."
       ],
       image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/ZDzeChpbpgMeHJVN.png"

@@ -19,7 +19,7 @@ export const insuranceArticles = [
     },
     change: {
       heading: "What Should Happen Instead",
-      content: "You should know exactly what your plan is—and what it isn't—before you sit in the chair. You should understand that 'covered' doesn't always mean 'paid for.' Clarity matters more than promises. You deserve to know the real financial picture so you can plan accordingly."
+      content: "You should know exactly what your plan is, and what it is not, before you sit in the chair. You should understand that 'covered' doesn't always mean 'paid for.' Clarity matters more than promises. You deserve to know the real financial picture so you can plan accordingly."
     },
     result: {
       heading: "How DentaSmart Helps",
@@ -146,7 +146,7 @@ export const insuranceArticles = [
     },
     empathy: {
       heading: "Why This Creates Anxiety",
-      content: "When you don't understand the rules, you feel anxious about playing the game. You worry that you're missing something important or that you're going to make a costly mistake. This confusion leads to paralysis—people avoid the dentist simply because they don't know what it will cost."
+      content: "When you don't understand the rules, you feel anxious about playing the game. You worry that you're missing something important or that you're going to make a costly mistake. This confusion leads to paralysis. People avoid the dentist simply because they don't know what it will cost."
     },
     solution: {
       heading: "The Simple Truth: Complexity is Profitable",

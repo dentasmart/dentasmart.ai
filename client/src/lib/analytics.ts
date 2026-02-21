@@ -47,7 +47,7 @@ export function trackEvent(event: AnalyticsEvent, params?: EventParams): void {
       window.gtag("event", event, params);
     }
   } catch {
-    // Silently fail — analytics should never break the app
+    // Silently fail - analytics should never break the app
   }
 }
 

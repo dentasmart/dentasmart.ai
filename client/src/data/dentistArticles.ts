@@ -204,7 +204,7 @@ export const dentistArticles = [
     },
     solution: {
       heading: "The Simple Truth: The System Isn't Built for Second Reviews",
-      content: "Traditional dentistry is built on the relationship between one doctor and one patient. The system doesn't make it easy to share records or get a quick 'gut check' from another professional. It's designed to keep you in one chair. But in every other area of life—from car repairs to home renovations—we get multiple quotes. Your health deserves the same scrutiny."
+      content: "Traditional dentistry is built on the relationship between one doctor and one patient. The system doesn't make it easy to share records or get a quick 'gut check' from another professional. It's designed to keep you in one chair. But in every other area of life, from car repairs to home renovations—we get multiple quotes. Your health deserves the same scrutiny."
     },
     change: {
       heading: "What Should Happen Instead",
@@ -258,7 +258,7 @@ export const dentistArticles = [
     },
     solution: {
       heading: "The Simple Truth: Information Gaps Remove Control",
-      content: "Control comes from understanding. When you don't have the information, you can't have control. The traditional dental model often hoards information—keeping the charts and X-rays behind the desk—which inadvertently strips you of your agency."
+      content: "Control comes from understanding. When you don't have the information, you can't have control. The traditional dental model often hoards information, keeping the charts and X-rays behind the desk, which inadvertently strips you of your agency."
     },
     change: {
       heading: "What Should Happen Instead",
