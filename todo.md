@@ -355,3 +355,7 @@
 - [x] Fix Instant Scan page hero text cutoff (heading not fully visible)
 - [x] Remove em dash from Instant Scan hero heading
 - [x] Full site sweep: removed all 59 em dashes from 13 files across entire codebase
+
+# Instant Scan Hero Fix - Feb 21, 2026
+- [x] Remove "AI-Powered Analysis" badge from Instant Scan hero
+- [x] Move hero text up and adjust text size so everything fits in laptop viewport

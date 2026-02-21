@@ -4,7 +4,7 @@ import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/lib/analytics";
 import { motion } from "framer-motion";
-import { Camera, ArrowRight, CheckCircle, Clock, Shield, Sparkles } from "lucide-react";
+import { Camera, ArrowRight, CheckCircle, Clock, Shield } from "lucide-react";
 import { useEffect } from "react";
 
 const scanTypes = [
@@ -52,7 +52,7 @@ export default function InstantScan() {
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent md:hidden" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-36 md:pt-24">
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-24 md:pt-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -60,18 +60,14 @@ export default function InstantScan() {
               transition={{ duration: 0.8 }}
               className="text-left max-w-2xl lg:col-span-7 xl:col-span-6"
             >
-              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-2 text-sm font-medium mb-6">
-                <Sparkles className="w-4 h-4" />
-                AI-Powered Analysis
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-[3.25rem] font-normal tracking-tight text-black mb-4 leading-tight">
                 See what your dentist sees<br /><span className="italic text-primary">before your visit</span>.
               </h1>
-              <p className="text-xl text-stone-600 mb-8 font-light leading-relaxed">
+              <p className="text-lg text-stone-600 mb-6 font-light leading-relaxed">
                 Upload a photo of your teeth or X-rays. Our AI analyzes it in seconds and gives you a clear, jargon-free report so you know exactly what is going on.
               </p>
 
-              <div className="space-y-4 mb-8">
+              <div className="space-y-3 mb-6">
                 {[
                   "No appointment needed",
                   "Results in under 60 seconds",
@@ -87,7 +83,7 @@ export default function InstantScan() {
 
               <Button
                 size="lg"
-                className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer shadow-xl"
+                className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-6 text-lg font-medium cursor-pointer shadow-xl"
                 onClick={() => {
                   trackEvent("cta_get_score_click", { source: "instant_scan_page" });
                   window.location.href = "/#download-cta";
