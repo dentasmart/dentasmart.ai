@@ -86,11 +86,14 @@ export default function AdminDashboard() {
     return map;
   }, [categories]);
 
-  // Build filter list from categories
+  // Build filter list from categories (use ID as value for API)
   const categoryFilterOptions = useMemo(() => {
-    if (!categories) return ["All"];
+    if (!categories) return [{ label: "All", value: "All" }];
     const parents = categories.filter((c) => !c.parentId);
-    return ["All", ...parents.map((p) => p.name)];
+    return [
+      { label: "All", value: "All" },
+      ...parents.map((p) => ({ label: p.name, value: String(p.id) })),
+    ];
   }, [categories]);
 
   // Mutations
@@ -281,8 +284,8 @@ export default function AdminDashboard() {
               <SelectValue placeholder="Category" />
             </SelectTrigger>
             <SelectContent>
-              {categoryFilterOptions.map((c) => (
-                <SelectItem key={c} value={c}>{c}</SelectItem>
+              {categoryFilterOptions.map((opt) => (
+                <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
               ))}
             </SelectContent>
           </Select>

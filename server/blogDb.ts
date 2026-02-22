@@ -105,7 +105,7 @@ export async function listBlogPosts(options: {
     search,
     page = 1,
     limit = 20,
-    sortBy = "updatedAt",
+    sortBy = "publishedAt",
     sortOrder = "desc",
     publishedOnly = false,
   } = options;
@@ -119,7 +119,13 @@ export async function listBlogPosts(options: {
   }
 
   if (category && category !== "All") {
-    conditions.push(eq(blogPosts.category, category as any));
+    // Try to match by categoryId (new system) - category param may be a name or ID
+    const catIdNum = parseInt(category);
+    if (!isNaN(catIdNum)) {
+      conditions.push(eq(blogPosts.categoryId, catIdNum));
+    } else {
+      conditions.push(eq(blogPosts.category, category as any));
+    }
   }
 
   if (search) {

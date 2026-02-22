@@ -12,7 +12,7 @@ import Footer from "@/components/Footer";
 import { useState, useMemo } from "react";
 import { trpc } from "@/lib/trpc";
 
-const LEGACY_CATEGORIES = ["All", "Dental Problems", "Dentist Problems", "Insurance Problems", "Symptoms", "Gums", "Cavities", "X-Rays"];
+// Categories are now loaded from database only
 
 const COLOR_MAP: Record<string, { bg: string; text: string; activeBg: string }> = {
   stone: { bg: "bg-stone-100", text: "text-stone-700", activeBg: "bg-stone-700" },
@@ -36,12 +36,7 @@ export default function OralHealthHub() {
   const { data: allCategories } = trpc.blog.listCategories.useQuery();
 
   const parentCategories = useMemo(() => allCategories?.filter((c) => !c.parentId) || [], [allCategories]);
-  const subcategoriesForSelected = useMemo(() => {
-    if (!allCategories || selectedCategory === "All") return [];
-    const parent = allCategories.find((c) => !c.parentId && c.name === selectedCategory);
-    if (!parent) return [];
-    return allCategories.filter((c) => c.parentId === parent.id);
-  }, [allCategories, selectedCategory]);
+
 
   // Build category lookup
   const categoryMap = useMemo(() => {
@@ -50,12 +45,12 @@ export default function OralHealthHub() {
     return map;
   }, [allCategories]);
 
-  // Use database categories if available, otherwise fallback to legacy
+  // Build filter options with IDs for API
   const filterCategories = useMemo(() => {
-    if (parentCategories.length > 0) {
-      return ["All", ...parentCategories.map((c) => c.name)];
-    }
-    return LEGACY_CATEGORIES;
+    return [
+      { label: "All", value: "All" },
+      ...parentCategories.map((c) => ({ label: c.name, value: String(c.id) })),
+    ];
   }, [parentCategories]);
 
   // Fetch published articles from database
@@ -66,14 +61,28 @@ export default function OralHealthHub() {
     search: searchQuery || undefined,
   });
 
+  // Get the selected category label for display
+  const selectedCategoryLabel = useMemo(() => {
+    const found = filterCategories.find((c) => c.value === selectedCategory);
+    return found?.label || "All";
+  }, [filterCategories, selectedCategory]);
+
   // Filter by subcategory on the client side if selected
   const articles = useMemo(() => {
     const posts = data?.posts || [];
     if (!selectedSubcategory || !allCategories) return posts;
     const subCat = allCategories.find((c) => c.name === selectedSubcategory && c.parentId);
     if (!subCat) return posts;
-    return posts.filter((p) => (p as any).subcategoryId === subCat.id);
+    return posts.filter((p: any) => p.subcategoryId === subCat.id);
   }, [data, selectedSubcategory, allCategories]);
+
+  // Build subcategories for the selected parent
+  const subcategoriesForSelected = useMemo(() => {
+    if (!allCategories || selectedCategory === "All") return [];
+    const parentId = parseInt(selectedCategory);
+    if (isNaN(parentId)) return [];
+    return allCategories.filter((c) => c.parentId === parentId);
+  }, [allCategories, selectedCategory]);
 
   // Get display info for an article's category/subcategory
   const getArticleCategoryDisplay = (article: any) => {
@@ -167,19 +176,19 @@ export default function OralHealthHub() {
             <div className="flex flex-wrap justify-start gap-3 mb-4">
               {filterCategories.map((cat) => (
                 <Button
-                  key={cat}
-                  variant={selectedCategory === cat ? "default" : "outline"}
+                  key={cat.value}
+                  variant={selectedCategory === cat.value ? "default" : "outline"}
                   className={`rounded-full px-6 cursor-pointer ${
-                    selectedCategory === cat 
+                    selectedCategory === cat.value 
                       ? "bg-primary text-white hover:bg-primary/90 border-primary shadow-md" 
                       : "bg-white text-stone-600 border-stone-200 hover:bg-stone-50 hover:text-stone-900"
                   }`}
                   onClick={() => {
-                    setSelectedCategory(cat);
+                    setSelectedCategory(cat.value);
                     setSelectedSubcategory(null);
                   }}
                 >
-                  {cat}
+                  {cat.label}
                 </Button>
               ))}
             </div>
@@ -202,7 +211,7 @@ export default function OralHealthHub() {
                   }`}
                   onClick={() => setSelectedSubcategory(null)}
                 >
-                  All {selectedCategory}
+                  All {selectedCategoryLabel}
                 </Button>
                 {subcategoriesForSelected.map((sub) => {
                   const isActive = selectedSubcategory === sub.name;
@@ -240,7 +249,7 @@ export default function OralHealthHub() {
             <div className="flex items-center gap-2 mb-8 text-sm text-stone-500">
               <span>Showing:</span>
               <Badge variant="secondary" className="bg-primary/10 text-primary border-0">
-                {selectedCategory}
+                {selectedCategoryLabel}
               </Badge>
               {selectedSubcategory && (
                 <>

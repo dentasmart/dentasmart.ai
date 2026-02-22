@@ -32,14 +32,14 @@ export default function Article() {
     return map;
   }, [allCategories]);
 
-  // Fetch related articles (same category)
+  // Fetch related articles (same category using categoryId)
   const { data: relatedData } = trpc.blog.list.useQuery(
     {
-      category: article?.category,
+      category: (article as any)?.categoryId ? String((article as any).categoryId) : undefined,
       publishedOnly: true,
       limit: 4,
     },
-    { enabled: !!article?.category }
+    { enabled: !!(article as any)?.categoryId }
   );
 
   const relatedArticles = (relatedData?.posts || []).filter(a => a.slug !== slug).slice(0, 3);
@@ -98,7 +98,7 @@ export default function Article() {
                   if (catInfo) {
                     return (
                       <div className="flex items-center gap-1.5">
-                        <Link href={`/oral-health-hub/category/${article.category?.toLowerCase().replace(/\s+/g, '-')}`}>
+                        <Link href="/oral-health-hub">
                           <Badge variant="secondary" className="bg-white/80 border border-primary/10 text-stone-600 hover:bg-white cursor-pointer">
                             {catInfo.name}
                           </Badge>
@@ -238,9 +238,31 @@ export default function Article() {
                       <Card className="h-full hover:shadow-xl transition-all duration-300 border-stone-200 bg-white group cursor-pointer overflow-hidden flex flex-col">
                         <CardHeader className="pb-4">
                           <div className="flex justify-between items-start mb-4">
-                            <Badge variant="secondary" className="bg-stone-100 text-stone-600 hover:bg-stone-200">
-                              {relatedArticle.category}
-                            </Badge>
+                            {(() => {
+                              const rCatId = (relatedArticle as any).categoryId;
+                              const rSubId = (relatedArticle as any).subcategoryId;
+                              const rCatInfo = rCatId ? categoryMap.get(rCatId) : null;
+                              const rSubInfo = rSubId ? categoryMap.get(rSubId) : null;
+                              if (rCatInfo) {
+                                return (
+                                  <div className="flex items-center gap-1">
+                                    <Badge variant="secondary" className="bg-stone-100 text-stone-600 hover:bg-stone-200 text-xs">
+                                      {rCatInfo.name}
+                                    </Badge>
+                                    {rSubInfo && (
+                                      <Badge variant="secondary" className="bg-stone-50 text-stone-500 hover:bg-stone-100 text-[10px]">
+                                        {rSubInfo.name}
+                                      </Badge>
+                                    )}
+                                  </div>
+                                );
+                              }
+                              return (
+                                <Badge variant="secondary" className="bg-stone-100 text-stone-600 hover:bg-stone-200">
+                                  {relatedArticle.category}
+                                </Badge>
+                              );
+                            })()}
                             <span className="text-xs font-medium text-stone-400 flex items-center">
                               <BookOpen className="w-3 h-3 mr-1" />
                               {relatedArticle.readTime}

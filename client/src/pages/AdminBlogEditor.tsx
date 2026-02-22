@@ -583,47 +583,24 @@ export default function AdminBlogEditor() {
 
               <div>
                 <Label className="text-xs font-medium text-stone-500 mb-1 block">Category</Label>
-                {parentCategories.length > 0 ? (
-                  <Select
-                    value={categoryId ? String(categoryId) : "none"}
-                    onValueChange={(v) => {
-                      const newCatId = v === "none" ? null : Number(v);
-                      setCategoryId(newCatId);
-                      setSubcategoryId(null);
-                      // Also update legacy category field for backwards compatibility
-                      if (newCatId && allCategories) {
-                        const cat = allCategories.find((c) => c.id === newCatId);
-                        if (cat) setCategory(cat.name as typeof category);
-                      }
-                    }}
-                  >
-                    <SelectTrigger className="border-stone-200">
-                      <SelectValue placeholder="Select category" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="none">No category</SelectItem>
-                      {parentCategories.map((c) => (
-                        <SelectItem key={c.id} value={String(c.id)}>{c.name}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                ) : (
-                  <Select value={category} onValueChange={(v) => setCategory(v as typeof category)}>
-                    <SelectTrigger className="border-stone-200">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="Dentist Problems">Dentist Problems</SelectItem>
-                      <SelectItem value="Dental Problems">Dental Problems</SelectItem>
-                      <SelectItem value="Insurance Problems">Insurance Problems</SelectItem>
-                      <SelectItem value="Symptoms">Symptoms</SelectItem>
-                      <SelectItem value="Gums">Gums</SelectItem>
-                      <SelectItem value="Cavities">Cavities</SelectItem>
-                      <SelectItem value="X-Rays">X-Rays</SelectItem>
-                      <SelectItem value="Costs">Costs</SelectItem>
-                    </SelectContent>
-                  </Select>
-                )}
+                <Select
+                  value={categoryId ? String(categoryId) : "none"}
+                  onValueChange={(v) => {
+                    const newCatId = v === "none" ? null : Number(v);
+                    setCategoryId(newCatId);
+                    setSubcategoryId(null);
+                  }}
+                >
+                  <SelectTrigger className="border-stone-200">
+                    <SelectValue placeholder="Select category" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="none">No category</SelectItem>
+                    {parentCategories.map((c) => (
+                      <SelectItem key={c.id} value={String(c.id)}>{c.name}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
 
               {categoryId && subcategories.length > 0 && (

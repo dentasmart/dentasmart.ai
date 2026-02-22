@@ -376,3 +376,13 @@
 - [x] Update public blog pages to show category/subcategory badges
 - [x] Add category/subcategory filtering on main blog hub page
 - [x] Write tests for category system (15 tests passing)
+
+# Category Restructure - Feb 22, 2026
+- [x] Clear old categories and create new 3-tier taxonomy (Dental Issues, Dentist Challenges, Insurance Problems)
+- [x] Create all subcategories under each main category
+- [x] Reassign all 59 blog posts to correct category/subcategory IDs (39 Dental Issues, 10 Dentist Challenges, 10 Insurance Problems)
+- [x] Update admin dashboard default sort to date descending
+- [x] Update blog editor category dropdown to use new taxonomy (categoryId/subcategoryId only)
+- [x] Update public Oral Health Hub with main category + subcategory secondary filters
+- [x] Update Article page and admin dashboard category display to use categoryId/subcategoryId
+- [x] Write/update tests for restructured categories (54 tests passing)

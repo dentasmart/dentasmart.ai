@@ -249,6 +249,96 @@ describe("blog.deleteCategory (admin)", () => {
   });
 });
 
+describe("blog categories - 3-tier taxonomy structure", () => {
+  it("has exactly 3 parent categories: Dental Issues, Dentist Challenges, Insurance Problems", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    const categories = await caller.blog.listCategories();
+    const parents = categories.filter((c) => c.parentId === null);
+    const parentNames = parents.map((p) => p.name).sort();
+
+    expect(parentNames).toEqual(["Dental Issues", "Dentist Challenges", "Insurance Problems"]);
+  });
+
+  it("each parent category has subcategories", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    const categories = await caller.blog.listCategories();
+    const parents = categories.filter((c) => c.parentId === null);
+
+    for (const parent of parents) {
+      const subs = categories.filter((c) => c.parentId === parent.id);
+      expect(subs.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("Dental Issues has expected subcategories", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    const categories = await caller.blog.listCategories();
+    const dentalIssues = categories.find((c) => c.name === "Dental Issues" && !c.parentId);
+    expect(dentalIssues).toBeDefined();
+
+    const subs = categories.filter((c) => c.parentId === dentalIssues!.id);
+    const subNames = subs.map((s) => s.name);
+
+    expect(subNames).toContain("Cavities & Tooth Decay");
+    expect(subNames).toContain("Gum Disease");
+    expect(subNames).toContain("Tooth Pain & Sensitivity");
+  });
+
+  it("filtering by categoryId returns only posts in that category", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    const categories = await caller.blog.listCategories();
+    const dentalIssues = categories.find((c) => c.name === "Dental Issues" && !c.parentId);
+    expect(dentalIssues).toBeDefined();
+
+    const filtered = await caller.blog.list({
+      category: String(dentalIssues!.id),
+      publishedOnly: true,
+      limit: 100,
+    });
+
+    // All returned posts should have the Dental Issues categoryId
+    for (const post of filtered.posts) {
+      expect((post as any).categoryId).toBe(dentalIssues!.id);
+    }
+  });
+
+  it("all posts have categoryId and subcategoryId assigned", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    const allPosts = await caller.blog.list({ limit: 100 });
+
+    for (const post of allPosts.posts) {
+      expect((post as any).categoryId).not.toBeNull();
+      expect((post as any).subcategoryId).not.toBeNull();
+    }
+  });
+
+  it("default sort is by publishedAt descending", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    const result = await caller.blog.list({ publishedOnly: true, limit: 10 });
+    const posts = result.posts;
+
+    if (posts.length >= 2) {
+      for (let i = 0; i < posts.length - 1; i++) {
+        const dateA = new Date(posts[i].publishedAt!).getTime();
+        const dateB = new Date(posts[i + 1].publishedAt!).getTime();
+        expect(dateA).toBeGreaterThanOrEqual(dateB);
+      }
+    }
+  });
+});
+
 describe("blog category unauthorized access", () => {
   it("rejects createCategory without admin auth", async () => {
     const ctx = createPublicContext();
