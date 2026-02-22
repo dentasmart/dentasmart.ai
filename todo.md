@@ -361,4 +361,18 @@
 - [x] Move hero text up and adjust text size so everything fits in laptop viewport
 
 # DentaSmart Content Agent - Feb 21, 2026
-- [ ] Set up DentaSmart Content Agent (Mon/Wed/Fri at 9 AM EST) for autonomous content publishing
+- [x] Set up DentaSmart Content Agent (Mon/Wed/Fri at 9 AM EST) for autonomous content publishing
+- [x] First run completed: Published blog post "Electric vs. Manual Toothbrush" (1,509 words, 8 internal links)
+- [x] Delivery report emailed to ali.ikram@dentasmart.ai
+- [x] Sitemap updated with new blog URL
+- [x] Full agent specification saved to /home/ubuntu/dentasmart-content-agent-spec.md
+
+# Category System & Admin Fixes - Feb 22, 2026
+- [x] Fix published count bug in admin stats (shows 15 instead of 59)
+- [x] Create categories/subcategories database tables and migration
+- [x] Build category management API endpoints (CRUD)
+- [x] Build admin category management UI page
+- [x] Update blog editor to use category/subcategory dropdown selectors
+- [x] Update public blog pages to show category/subcategory badges
+- [x] Add category/subcategory filtering on main blog hub page
+- [x] Write tests for category system (15 tests passing)

@@ -72,6 +72,10 @@ export const blogPosts = mysqlTable("blog_posts", {
   reviewedByName: varchar("reviewedByName", { length: 200 }),
   reviewedByCredentials: varchar("reviewedByCredentials", { length: 500 }),
   
+  // Category references (new hierarchical system)
+  categoryId: int("categoryId"),
+  subcategoryId: int("subcategoryId"),
+  
   // Status management
   status: mysqlEnum("status", ["draft", "published", "unpublished"]).default("draft").notNull(),
   
@@ -113,3 +117,22 @@ export const adminUsers = mysqlTable("admin_users", {
 
 export type AdminUser = typeof adminUsers.$inferSelect;
 export type InsertAdminUser = typeof adminUsers.$inferInsert;
+
+/**
+ * Blog categories table for hierarchical category/subcategory management.
+ * Supports parent-child relationships for organizing blog content.
+ */
+export const blogCategories = mysqlTable("blog_categories", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 200 }).notNull(),
+  slug: varchar("slug", { length: 200 }).notNull().unique(),
+  parentId: int("parentId"),
+  description: text("description"),
+  color: varchar("color", { length: 50 }).default("stone"),
+  sortOrder: int("sortOrder").default(0),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type BlogCategory = typeof blogCategories.$inferSelect;
+export type InsertBlogCategory = typeof blogCategories.$inferInsert;

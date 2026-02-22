@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useLocation, Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
@@ -44,10 +44,10 @@ import {
   ChevronLeft,
   ChevronRight,
   ExternalLink,
+  FolderTree,
 } from "lucide-react";
 import { toast } from "sonner";
 
-const CATEGORIES = ["All", "Dentist Problems", "Dental Problems", "Insurance Problems"];
 const STATUSES = ["All", "draft", "published", "unpublished"];
 
 export default function AdminDashboard() {
@@ -72,6 +72,26 @@ export default function AdminDashboard() {
     page,
     limit,
   });
+
+  // Stats (separate query for accurate totals)
+  const { data: stats } = trpc.blog.stats.useQuery();
+
+  // Categories
+  const { data: categories } = trpc.blog.listCategories.useQuery();
+
+  // Build category lookup maps
+  const categoryMap = useMemo(() => {
+    const map = new Map<number, { name: string; color: string; parentId: number | null }>();
+    categories?.forEach((c) => map.set(c.id, { name: c.name, color: c.color || "stone", parentId: c.parentId }));
+    return map;
+  }, [categories]);
+
+  // Build filter list from categories
+  const categoryFilterOptions = useMemo(() => {
+    if (!categories) return ["All"];
+    const parents = categories.filter((c) => !c.parentId);
+    return ["All", ...parents.map((p) => p.name)];
+  }, [categories]);
 
   // Mutations
   const publishMutation = trpc.blog.publish.useMutation({
@@ -125,15 +145,57 @@ export default function AdminDashboard() {
     }
   };
 
-  const getCategoryBadge = (cat: string) => {
-    const colors: Record<string, string> = {
+  const getCategoryDisplay = (post: any) => {
+    const catId = post.categoryId;
+    const subId = post.subcategoryId;
+    const catInfo = catId ? categoryMap.get(catId) : null;
+    const subInfo = subId ? categoryMap.get(subId) : null;
+
+    const colorMap: Record<string, string> = {
+      stone: "bg-stone-100 text-stone-700",
+      blue: "bg-blue-100 text-blue-700",
+      purple: "bg-purple-100 text-purple-700",
+      orange: "bg-orange-100 text-orange-700",
+      green: "bg-green-100 text-green-700",
+      red: "bg-red-100 text-red-700",
+      amber: "bg-amber-100 text-amber-700",
+      teal: "bg-teal-100 text-teal-700",
+      pink: "bg-pink-100 text-pink-700",
+      indigo: "bg-indigo-100 text-indigo-700",
+    };
+
+    // Fallback to legacy category field
+    const legacyColors: Record<string, string> = {
       "Dentist Problems": "bg-blue-100 text-blue-700",
       "Dental Problems": "bg-purple-100 text-purple-700",
       "Insurance Problems": "bg-orange-100 text-orange-700",
+      "Symptoms": "bg-amber-100 text-amber-700",
+      "Gums": "bg-green-100 text-green-700",
+      "Cavities": "bg-red-100 text-red-700",
+      "X-Rays": "bg-teal-100 text-teal-700",
+      "Costs": "bg-indigo-100 text-indigo-700",
     };
+
+    if (catInfo) {
+      const catColor = colorMap[catInfo.color] || "bg-stone-100 text-stone-700";
+      return (
+        <div className="flex flex-col gap-1">
+          <Badge className={`${catColor} hover:opacity-80 border-0 text-xs`}>
+            {catInfo.name}
+          </Badge>
+          {subInfo && (
+            <Badge className={`${colorMap[subInfo.color] || catColor} hover:opacity-80 border-0 text-[10px] opacity-80`}>
+              {subInfo.name}
+            </Badge>
+          )}
+        </div>
+      );
+    }
+
+    // Legacy fallback
     return (
-      <Badge className={`${colors[cat] || "bg-stone-100 text-stone-600"} hover:opacity-80 border-0 text-xs`}>
-        {cat}
+      <Badge className={`${legacyColors[post.category] || "bg-stone-100 text-stone-600"} hover:opacity-80 border-0 text-xs`}>
+        {post.category}
       </Badge>
     );
   };
@@ -180,22 +242,22 @@ export default function AdminDashboard() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <StatCard
             label="Total Articles"
-            value={data?.total || 0}
+            value={stats?.total || 0}
             icon={<FileText className="w-5 h-5 text-primary" />}
           />
           <StatCard
             label="Published"
-            value={data?.posts.filter((p) => p.status === "published").length || 0}
+            value={stats?.published || 0}
             icon={<Eye className="w-5 h-5 text-green-600" />}
           />
           <StatCard
             label="Drafts"
-            value={data?.posts.filter((p) => p.status === "draft").length || 0}
+            value={stats?.drafts || 0}
             icon={<Edit className="w-5 h-5 text-amber-600" />}
           />
           <StatCard
             label="Unpublished"
-            value={data?.posts.filter((p) => p.status === "unpublished").length || 0}
+            value={stats?.unpublished || 0}
             icon={<EyeOff className="w-5 h-5 text-stone-500" />}
           />
         </div>
@@ -219,7 +281,7 @@ export default function AdminDashboard() {
               <SelectValue placeholder="Category" />
             </SelectTrigger>
             <SelectContent>
-              {CATEGORIES.map((c) => (
+              {categoryFilterOptions.map((c) => (
                 <SelectItem key={c} value={c}>{c}</SelectItem>
               ))}
             </SelectContent>
@@ -234,6 +296,14 @@ export default function AdminDashboard() {
               ))}
             </SelectContent>
           </Select>
+          <Button
+            variant="outline"
+            onClick={() => setLocation("/admin/categories")}
+            className="cursor-pointer border-stone-200"
+          >
+            <FolderTree className="w-4 h-4 mr-2" />
+            Categories
+          </Button>
           <Button
             onClick={() => setLocation("/admin/new")}
             className="bg-primary hover:bg-primary/90 text-white cursor-pointer"
@@ -289,11 +359,11 @@ export default function AdminDashboard() {
                             {post.title}
                           </p>
                           <p className="text-xs text-stone-400 mt-0.5">/oral-health-hub/{post.slug}</p>
-                          <div className="md:hidden mt-1">{getCategoryBadge(post.category)}</div>
+                          <div className="md:hidden mt-1">{getCategoryDisplay(post)}</div>
                         </div>
                       </TableCell>
                       <TableCell className="hidden md:table-cell">
-                        {getCategoryBadge(post.category)}
+                        {getCategoryDisplay(post)}
                       </TableCell>
                       <TableCell>{getStatusBadge(post.status)}</TableCell>
                       <TableCell className="hidden lg:table-cell text-sm text-stone-500">

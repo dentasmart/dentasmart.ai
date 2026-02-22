@@ -1,6 +1,6 @@
-import { eq, like, and, or, desc, asc, sql } from "drizzle-orm";
+import { eq, like, and, or, desc, asc, sql, isNull } from "drizzle-orm";
 import { getDb } from "./db";
-import { blogPosts, adminUsers, InsertBlogPost, BlogPost, InsertAdminUser } from "../drizzle/schema";
+import { blogPosts, adminUsers, blogCategories, InsertBlogPost, BlogPost, InsertAdminUser, BlogCategory, InsertBlogCategory } from "../drizzle/schema";
 import bcrypt from "bcryptjs";
 
 // ============ Admin User Helpers ============
@@ -171,6 +171,108 @@ export async function slugExists(slug: string, excludeId?: number): Promise<bool
   const results = await db
     .select({ count: sql<number>`count(*)` })
     .from(blogPosts)
+    .where(and(...conditions));
+
+  return Number(results[0].count) > 0;
+}
+
+// ============ Blog Stats ============
+
+export async function getBlogStats() {
+  const db = await getDb();
+  if (!db) return { total: 0, published: 0, drafts: 0, unpublished: 0 };
+
+  const result = await db
+    .select({
+      total: sql<number>`count(*)`,
+      published: sql<number>`SUM(CASE WHEN status = 'published' THEN 1 ELSE 0 END)`,
+      drafts: sql<number>`SUM(CASE WHEN status = 'draft' THEN 1 ELSE 0 END)`,
+      unpublished: sql<number>`SUM(CASE WHEN status = 'unpublished' THEN 1 ELSE 0 END)`,
+    })
+    .from(blogPosts);
+
+  return {
+    total: Number(result[0].total),
+    published: Number(result[0].published),
+    drafts: Number(result[0].drafts),
+    unpublished: Number(result[0].unpublished),
+  };
+}
+
+// ============ Blog Category Helpers ============
+
+export async function listCategories(): Promise<BlogCategory[]> {
+  const db = await getDb();
+  if (!db) return [];
+
+  return await db
+    .select()
+    .from(blogCategories)
+    .orderBy(asc(blogCategories.sortOrder), asc(blogCategories.name));
+}
+
+export async function getCategoryById(id: number): Promise<BlogCategory | null> {
+  const db = await getDb();
+  if (!db) return null;
+
+  const results = await db.select().from(blogCategories).where(eq(blogCategories.id, id)).limit(1);
+  return results.length > 0 ? results[0] : null;
+}
+
+export async function createCategory(data: InsertBlogCategory): Promise<number> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  const result = await db.insert(blogCategories).values(data);
+  return Number(result[0].insertId);
+}
+
+export async function updateCategory(id: number, data: Partial<InsertBlogCategory>) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  await db.update(blogCategories).set(data).where(eq(blogCategories.id, id));
+}
+
+export async function deleteCategory(id: number) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  // First check if any posts use this category
+  const postsUsingCategory = await db
+    .select({ count: sql<number>`count(*)` })
+    .from(blogPosts)
+    .where(or(eq(blogPosts.categoryId, id), eq(blogPosts.subcategoryId, id)));
+  
+  if (Number(postsUsingCategory[0].count) > 0) {
+    throw new Error("Cannot delete category: it is used by existing blog posts. Reassign posts first.");
+  }
+
+  // Check if it has children
+  const children = await db
+    .select({ count: sql<number>`count(*)` })
+    .from(blogCategories)
+    .where(eq(blogCategories.parentId, id));
+  
+  if (Number(children[0].count) > 0) {
+    throw new Error("Cannot delete category: it has subcategories. Delete subcategories first.");
+  }
+
+  await db.delete(blogCategories).where(eq(blogCategories.id, id));
+}
+
+export async function categorySlugExists(slug: string, excludeId?: number): Promise<boolean> {
+  const db = await getDb();
+  if (!db) return false;
+
+  const conditions = [eq(blogCategories.slug, slug)];
+  if (excludeId) {
+    conditions.push(sql`${blogCategories.id} != ${excludeId}`);
+  }
+
+  const results = await db
+    .select({ count: sql<number>`count(*)` })
+    .from(blogCategories)
     .where(and(...conditions));
 
   return Number(results[0].count) > 0;

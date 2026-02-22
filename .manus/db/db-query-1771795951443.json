@@ -1,0 +1,38 @@
+{
+  "query": "SELECT category, COUNT(*) as cnt FROM blog_posts GROUP BY category ORDER BY cnt DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT category, COUNT(*) as cnt FROM blog_posts GROUP BY category ORDER BY cnt DESC;",
+  "rows": [
+    {
+      "category": "Symptoms",
+      "cnt": "17"
+    },
+    {
+      "category": "Dental Problems",
+      "cnt": "14"
+    },
+    {
+      "category": "Dentist Problems",
+      "cnt": "10"
+    },
+    {
+      "category": "Insurance Problems",
+      "cnt": "10"
+    },
+    {
+      "category": "Gums",
+      "cnt": "6"
+    },
+    {
+      "category": "Cavities",
+      "cnt": "1"
+    },
+    {
+      "category": "X-Rays",
+      "cnt": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "category\tcnt\nSymptoms\t17\nDental Problems\t14\nDentist Problems\t10\nInsurance Problems\t10\nGums\t6\nCavities\t1\nX-Rays\t1\n",
+  "stderr": "",
+  "execution_time_ms": 90
+}

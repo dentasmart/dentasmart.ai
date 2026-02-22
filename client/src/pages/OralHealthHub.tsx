@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { ArrowRight, BookOpen, Search, Loader2 } from "lucide-react";
+import { ArrowRight, BookOpen, Search, Loader2, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DownloadSection } from "@/components/DownloadSection";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -12,11 +12,51 @@ import Footer from "@/components/Footer";
 import { useState, useMemo } from "react";
 import { trpc } from "@/lib/trpc";
 
-const categories = ["All", "Dental Problems", "Dentist Problems", "Insurance Problems"];
+const LEGACY_CATEGORIES = ["All", "Dental Problems", "Dentist Problems", "Insurance Problems", "Symptoms", "Gums", "Cavities", "X-Rays"];
+
+const COLOR_MAP: Record<string, { bg: string; text: string; activeBg: string }> = {
+  stone: { bg: "bg-stone-100", text: "text-stone-700", activeBg: "bg-stone-700" },
+  blue: { bg: "bg-blue-100", text: "text-blue-700", activeBg: "bg-blue-600" },
+  purple: { bg: "bg-purple-100", text: "text-purple-700", activeBg: "bg-purple-600" },
+  orange: { bg: "bg-orange-100", text: "text-orange-700", activeBg: "bg-orange-600" },
+  green: { bg: "bg-green-100", text: "text-green-700", activeBg: "bg-green-600" },
+  red: { bg: "bg-red-100", text: "text-red-700", activeBg: "bg-red-600" },
+  amber: { bg: "bg-amber-100", text: "text-amber-700", activeBg: "bg-amber-600" },
+  teal: { bg: "bg-teal-100", text: "text-teal-700", activeBg: "bg-teal-600" },
+  pink: { bg: "bg-pink-100", text: "text-pink-700", activeBg: "bg-pink-600" },
+  indigo: { bg: "bg-indigo-100", text: "text-indigo-700", activeBg: "bg-indigo-600" },
+};
 
 export default function OralHealthHub() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
+
+  // Fetch categories from database
+  const { data: allCategories } = trpc.blog.listCategories.useQuery();
+
+  const parentCategories = useMemo(() => allCategories?.filter((c) => !c.parentId) || [], [allCategories]);
+  const subcategoriesForSelected = useMemo(() => {
+    if (!allCategories || selectedCategory === "All") return [];
+    const parent = allCategories.find((c) => !c.parentId && c.name === selectedCategory);
+    if (!parent) return [];
+    return allCategories.filter((c) => c.parentId === parent.id);
+  }, [allCategories, selectedCategory]);
+
+  // Build category lookup
+  const categoryMap = useMemo(() => {
+    const map = new Map<number, { name: string; color: string; parentId: number | null }>();
+    allCategories?.forEach((c) => map.set(c.id, { name: c.name, color: c.color || "stone", parentId: c.parentId }));
+    return map;
+  }, [allCategories]);
+
+  // Use database categories if available, otherwise fallback to legacy
+  const filterCategories = useMemo(() => {
+    if (parentCategories.length > 0) {
+      return ["All", ...parentCategories.map((c) => c.name)];
+    }
+    return LEGACY_CATEGORIES;
+  }, [parentCategories]);
 
   // Fetch published articles from database
   const { data, isLoading } = trpc.blog.list.useQuery({
@@ -26,7 +66,48 @@ export default function OralHealthHub() {
     search: searchQuery || undefined,
   });
 
-  const articles = useMemo(() => data?.posts || [], [data]);
+  // Filter by subcategory on the client side if selected
+  const articles = useMemo(() => {
+    const posts = data?.posts || [];
+    if (!selectedSubcategory || !allCategories) return posts;
+    const subCat = allCategories.find((c) => c.name === selectedSubcategory && c.parentId);
+    if (!subCat) return posts;
+    return posts.filter((p) => (p as any).subcategoryId === subCat.id);
+  }, [data, selectedSubcategory, allCategories]);
+
+  // Get display info for an article's category/subcategory
+  const getArticleCategoryDisplay = (article: any) => {
+    const catId = article.categoryId;
+    const subId = article.subcategoryId;
+    const catInfo = catId ? categoryMap.get(catId) : null;
+    const subInfo = subId ? categoryMap.get(subId) : null;
+
+    if (catInfo) {
+      const color = COLOR_MAP[catInfo.color] || COLOR_MAP.stone;
+      return (
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <Badge className={`${color.bg} ${color.text} hover:opacity-80 border-0 text-xs`}>
+            {catInfo.name}
+          </Badge>
+          {subInfo && (
+            <>
+              <ChevronRight className="w-3 h-3 text-stone-300" />
+              <Badge className={`${(COLOR_MAP[subInfo.color] || color).bg} ${(COLOR_MAP[subInfo.color] || color).text} hover:opacity-80 border-0 text-[10px]`}>
+                {subInfo.name}
+              </Badge>
+            </>
+          )}
+        </div>
+      );
+    }
+
+    // Legacy fallback
+    return (
+      <Badge variant="secondary" className="bg-stone-100 text-stone-600 hover:bg-stone-200">
+        {article.category}
+      </Badge>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-background font-sans">
@@ -36,16 +117,14 @@ export default function OralHealthHub() {
       />
       <Navigation />
       
-      {/* Hero Section - Light Background matching Home Page */}
+      {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
             src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/QUJzfPwTjdiBdwFs.jpg" 
             alt="Dentist explaining treatment to patient" 
             className="w-full h-full object-cover object-top md:object-right"
           />
-          {/* Gradient Overlay for Text Readability - Stronger on left for text */}
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/30" />
           <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/40 to-white/80 md:hidden" />
         </div>
@@ -71,7 +150,7 @@ export default function OralHealthHub() {
             </p>
 
             {/* Search Bar */}
-            <div className="relative max-w-xl mr-auto mb-12">
+            <div className="relative max-w-xl mr-auto mb-8">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                 <Search className="h-5 w-5 text-stone-400" />
               </div>
@@ -85,25 +164,69 @@ export default function OralHealthHub() {
             </div>
 
             {/* Category Filters */}
-            <div className="flex flex-wrap justify-start gap-3">
-              {categories.map((category) => (
+            <div className="flex flex-wrap justify-start gap-3 mb-4">
+              {filterCategories.map((cat) => (
                 <Button
-                  key={category}
-                  variant={selectedCategory === category ? "default" : "outline"}
-                  className={`rounded-full px-6 ${
-                    selectedCategory === category 
+                  key={cat}
+                  variant={selectedCategory === cat ? "default" : "outline"}
+                  className={`rounded-full px-6 cursor-pointer ${
+                    selectedCategory === cat 
                       ? "bg-primary text-white hover:bg-primary/90 border-primary shadow-md" 
                       : "bg-white text-stone-600 border-stone-200 hover:bg-stone-50 hover:text-stone-900"
                   }`}
-                  onClick={() => setSelectedCategory(category)}
+                  onClick={() => {
+                    setSelectedCategory(cat);
+                    setSelectedSubcategory(null);
+                  }}
                 >
-                  {category}
+                  {cat}
                 </Button>
               ))}
             </div>
+
+            {/* Subcategory Filters (shown when a parent category is selected and has subcategories) */}
+            {subcategoriesForSelected.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="flex flex-wrap justify-start gap-2"
+              >
+                <Button
+                  variant={!selectedSubcategory ? "default" : "outline"}
+                  size="sm"
+                  className={`rounded-full px-4 text-sm cursor-pointer ${
+                    !selectedSubcategory
+                      ? "bg-stone-700 text-white hover:bg-stone-600 border-stone-700"
+                      : "bg-white/80 text-stone-500 border-stone-200 hover:bg-stone-50"
+                  }`}
+                  onClick={() => setSelectedSubcategory(null)}
+                >
+                  All {selectedCategory}
+                </Button>
+                {subcategoriesForSelected.map((sub) => {
+                  const isActive = selectedSubcategory === sub.name;
+                  const color = COLOR_MAP[sub.color || "stone"] || COLOR_MAP.stone;
+                  return (
+                    <Button
+                      key={sub.id}
+                      variant={isActive ? "default" : "outline"}
+                      size="sm"
+                      className={`rounded-full px-4 text-sm cursor-pointer ${
+                        isActive
+                          ? `${color.activeBg} text-white border-transparent`
+                          : `${color.bg} ${color.text} border-transparent hover:opacity-80`
+                      }`}
+                      onClick={() => setSelectedSubcategory(isActive ? null : sub.name)}
+                    >
+                      {sub.name}
+                    </Button>
+                  );
+                })}
+              </motion.div>
+            )}
             </motion.div>
 
-            {/* Right Column: Empty to let background image show through */}
             <div className="hidden lg:block lg:col-span-5 xl:col-span-6"></div>
           </div>
         </div>
@@ -112,6 +235,32 @@ export default function OralHealthHub() {
       {/* Articles Grid */}
       <section className="py-20 bg-stone-50 min-h-[600px]">
         <div className="container px-4 mx-auto max-w-7xl">
+          {/* Active filter breadcrumb */}
+          {(selectedCategory !== "All" || selectedSubcategory) && (
+            <div className="flex items-center gap-2 mb-8 text-sm text-stone-500">
+              <span>Showing:</span>
+              <Badge variant="secondary" className="bg-primary/10 text-primary border-0">
+                {selectedCategory}
+              </Badge>
+              {selectedSubcategory && (
+                <>
+                  <ChevronRight className="w-3 h-3" />
+                  <Badge variant="secondary" className="bg-primary/5 text-primary border-0">
+                    {selectedSubcategory}
+                  </Badge>
+                </>
+              )}
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-stone-400 hover:text-stone-600 ml-2 cursor-pointer"
+                onClick={() => { setSelectedCategory("All"); setSelectedSubcategory(null); }}
+              >
+                Clear
+              </Button>
+            </div>
+          )}
+
           {isLoading ? (
             <div className="flex justify-center items-center py-20">
               <Loader2 className="w-8 h-8 animate-spin text-primary" />
@@ -131,10 +280,8 @@ export default function OralHealthHub() {
                     <Card className="h-full hover:shadow-xl transition-all duration-300 border-stone-200 bg-white group cursor-pointer overflow-hidden flex flex-col">
                       <CardHeader className="pb-4">
                         <div className="flex justify-between items-start mb-4">
-                          <Badge variant="secondary" className="bg-stone-100 text-stone-600 hover:bg-stone-200">
-                            {article.category}
-                          </Badge>
-                          <span className="text-xs font-medium text-stone-400 flex items-center">
+                          {getArticleCategoryDisplay(article)}
+                          <span className="text-xs font-medium text-stone-400 flex items-center flex-shrink-0 ml-2">
                             <BookOpen className="w-3 h-3 mr-1" />
                             {article.readTime}
                           </span>
@@ -167,8 +314,8 @@ export default function OralHealthHub() {
               <p className="text-stone-600">Try adjusting your search or category filter.</p>
               <Button 
                 variant="link" 
-                className="mt-4 text-primary"
-                onClick={() => { setSearchQuery(""); setSelectedCategory("All"); }}
+                className="mt-4 text-primary cursor-pointer"
+                onClick={() => { setSearchQuery(""); setSelectedCategory("All"); setSelectedSubcategory(null); }}
               >
                 Clear all filters
               </Button>

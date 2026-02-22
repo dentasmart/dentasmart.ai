@@ -12,6 +12,13 @@ import {
   getAdminById,
   slugExists,
   seedAdminUser,
+  getBlogStats,
+  listCategories,
+  getCategoryById,
+  createCategory,
+  updateCategory,
+  deleteCategory,
+  categorySlugExists,
 } from "./blogDb";
 import { SignJWT, jwtVerify } from "jose";
 import { storagePut } from "./storage";
@@ -144,6 +151,8 @@ export const blogRouter = router({
       ogImage: z.string().optional(),
       canonicalUrl: z.string().optional(),
       featuredImage: z.string().optional(),
+      categoryId: z.number().nullable().optional(),
+      subcategoryId: z.number().nullable().optional(),
       primaryKeyword: z.string().optional(),
       secondaryKeywords: z.string().optional(),
       atAGlanceAnswer: z.string().optional(),
@@ -202,6 +211,8 @@ export const blogRouter = router({
       ogImage: z.string().optional(),
       canonicalUrl: z.string().optional(),
       featuredImage: z.string().optional(),
+      categoryId: z.number().nullable().optional(),
+      subcategoryId: z.number().nullable().optional(),
       primaryKeyword: z.string().optional(),
       secondaryKeywords: z.string().optional(),
       atAGlanceAnswer: z.string().optional(),
@@ -302,11 +313,79 @@ export const blogRouter = router({
       return await listBlogPosts(input || {});
     }),
 
+  // ============ Stats (Admin) ============
+  stats: adminBlogProcedure.query(async () => {
+    return await getBlogStats();
+  }),
+
   checkSlug: publicProcedure
     .input(z.object({ slug: z.string(), excludeId: z.number().optional() }))
     .query(async ({ input }) => {
       const exists = await slugExists(input.slug, input.excludeId);
       return { exists };
+    }),
+
+  // ============ Category CRUD (Admin) ============
+  listCategories: publicProcedure.query(async () => {
+    return await listCategories();
+  }),
+
+  createCategory: adminBlogProcedure
+    .input(z.object({
+      name: z.string().min(1, "Name is required"),
+      slug: z.string().min(1, "Slug is required"),
+      parentId: z.number().nullable().optional(),
+      description: z.string().optional(),
+      color: z.string().optional(),
+      sortOrder: z.number().optional(),
+    }))
+    .mutation(async ({ input }) => {
+      const exists = await categorySlugExists(input.slug);
+      if (exists) {
+        throw new TRPCError({ code: "CONFLICT", message: "A category with this slug already exists" });
+      }
+      const id = await createCategory({
+        name: input.name,
+        slug: input.slug,
+        parentId: input.parentId ?? null,
+        description: input.description,
+        color: input.color || "stone",
+        sortOrder: input.sortOrder || 0,
+      });
+      return { id };
+    }),
+
+  updateCategory: adminBlogProcedure
+    .input(z.object({
+      id: z.number(),
+      name: z.string().optional(),
+      slug: z.string().optional(),
+      parentId: z.number().nullable().optional(),
+      description: z.string().optional(),
+      color: z.string().optional(),
+      sortOrder: z.number().optional(),
+    }))
+    .mutation(async ({ input }) => {
+      const { id, ...data } = input;
+      if (data.slug) {
+        const exists = await categorySlugExists(data.slug, id);
+        if (exists) {
+          throw new TRPCError({ code: "CONFLICT", message: "A category with this slug already exists" });
+        }
+      }
+      await updateCategory(id, data);
+      return { success: true };
+    }),
+
+  deleteCategory: adminBlogProcedure
+    .input(z.object({ id: z.number() }))
+    .mutation(async ({ input }) => {
+      try {
+        await deleteCategory(input.id);
+        return { success: true };
+      } catch (err: any) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: err.message });
+      }
     }),
 
   // Image upload for blog editor

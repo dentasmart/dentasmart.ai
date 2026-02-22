@@ -34,6 +34,7 @@ const ComparePage = lazy(() => import("./pages/ComparePage"));
 const FindADentist = lazy(() => import("./pages/FindADentist"));
 const HubCategory = lazy(() => import("./pages/HubCategory"));
 const AdminSeoSetup = lazy(() => import("./pages/AdminSeoSetup"));
+const AdminCategories = lazy(() => import("./pages/AdminCategories"));
 
 // SEO content pages
 const ConditionsIndex = lazy(() => import("./pages/conditions/ConditionsIndex"));
@@ -98,6 +99,7 @@ function Router() {
         <Route path="/admin/new" component={AdminBlogEditor} />
         <Route path="/admin/edit/:id" component={AdminBlogEditor} />
         <Route path="/admin/seo-analytics-setup" component={AdminSeoSetup} />
+        <Route path="/admin/categories" component={AdminCategories} />
 
         <Route path={"/404"} component={NotFound} />
         <Route component={NotFound} />

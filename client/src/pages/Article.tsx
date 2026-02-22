@@ -1,10 +1,10 @@
 import { useRoute } from "wouter";
 import SEO from "@/components/SEO";
 import NotFound from "@/pages/NotFound";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
-import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2, Loader2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2, ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -23,6 +23,14 @@ export default function Article() {
     { slug },
     { enabled: !!slug }
   );
+
+  // Fetch categories for display
+  const { data: allCategories } = trpc.blog.listCategories.useQuery();
+  const categoryMap = useMemo(() => {
+    const map = new Map<number, { name: string; color: string; parentId: number | null }>();
+    allCategories?.forEach((c) => map.set(c.id, { name: c.name, color: c.color || "stone", parentId: c.parentId }));
+    return map;
+  }, [allCategories]);
 
   // Fetch related articles (same category)
   const { data: relatedData } = trpc.blog.list.useQuery(
@@ -81,10 +89,37 @@ export default function Article() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="flex items-center justify-start gap-3 mb-6">
-                <Badge variant="secondary" className="bg-white/80 border border-primary/10 text-stone-600 hover:bg-white">
-                  {article.category}
-                </Badge>
+              <div className="flex items-center justify-start gap-3 mb-6 flex-wrap">
+                {(() => {
+                  const catId = (article as any).categoryId;
+                  const subId = (article as any).subcategoryId;
+                  const catInfo = catId ? categoryMap.get(catId) : null;
+                  const subInfo = subId ? categoryMap.get(subId) : null;
+                  if (catInfo) {
+                    return (
+                      <div className="flex items-center gap-1.5">
+                        <Link href={`/oral-health-hub/category/${article.category?.toLowerCase().replace(/\s+/g, '-')}`}>
+                          <Badge variant="secondary" className="bg-white/80 border border-primary/10 text-stone-600 hover:bg-white cursor-pointer">
+                            {catInfo.name}
+                          </Badge>
+                        </Link>
+                        {subInfo && (
+                          <>
+                            <ChevronRight className="w-3 h-3 text-stone-400" />
+                            <Badge variant="secondary" className="bg-white/80 border border-primary/10 text-stone-500 hover:bg-white text-xs">
+                              {subInfo.name}
+                            </Badge>
+                          </>
+                        )}
+                      </div>
+                    );
+                  }
+                  return (
+                    <Badge variant="secondary" className="bg-white/80 border border-primary/10 text-stone-600 hover:bg-white">
+                      {article.category}
+                    </Badge>
+                  );
+                })()}
                 <span className="text-sm font-medium text-stone-400">•</span>
                 <span className="text-sm font-medium text-stone-500">{article.readTime}</span>
                 {article.publishedAt && (
