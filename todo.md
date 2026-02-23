@@ -386,3 +386,8 @@
 - [x] Update public Oral Health Hub with main category + subcategory secondary filters
 - [x] Update Article page and admin dashboard category display to use categoryId/subcategoryId
 - [x] Write/update tests for restructured categories (54 tests passing)
+
+# Mobile Hero Image Fix - Feb 22, 2026
+- [x] Fix Team page hero image cut off on mobile
+- [x] Fix Blogs (OralHealthHub) page hero image cut off on mobile
+- [x] Fix Features page hero image cut off on mobile

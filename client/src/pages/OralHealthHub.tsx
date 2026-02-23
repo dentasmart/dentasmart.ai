@@ -127,18 +127,18 @@ export default function OralHealthHub() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/QUJzfPwTjdiBdwFs.jpg" 
             alt="Dentist explaining treatment to patient" 
-            className="w-full h-full object-cover object-top md:object-right"
+            className="w-full h-full object-cover object-[50%_20%] md:object-right"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/30" />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/40 to-white/80 md:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/30 to-white/60 md:hidden" />
         </div>
         
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-32 md:pt-0 text-left">
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-28 md:pt-0 text-left">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
