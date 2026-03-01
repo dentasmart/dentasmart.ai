@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 
 const SITE_URL = "https://dentasmart.ai";
-const DEFAULT_OG_IMAGE = "https://dentasmart.ai/og-image.png";
+const DEFAULT_OG_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663137878519/bguxPMV2uwRUGpkQABmyXT/og-image_914b065d.png";
 
 interface SEOProps {
   title: string;

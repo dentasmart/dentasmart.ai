@@ -93,7 +93,7 @@ async function generateSitemapXml(): Promise<string> {
         : new Date().toISOString().split("T")[0];
       blogUrls += `
   <url>
-    <loc>${SITE_URL}/oral-health-hub/${post.id}</loc>
+    <loc>${SITE_URL}/oral-health-hub/${post.slug}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>

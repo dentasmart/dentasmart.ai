@@ -119,8 +119,8 @@ describe("SEO Routes", () => {
       const app = createTestApp();
       const res = await request(app).get("/sitemap.xml");
 
-      expect(res.text).toContain("https://dentasmart.ai/oral-health-hub/1");
-      expect(res.text).toContain("https://dentasmart.ai/oral-health-hub/2");
+      expect(res.text).toContain("https://dentasmart.ai/oral-health-hub/test-post");
+      expect(res.text).toContain("https://dentasmart.ai/oral-health-hub/another-post");
     });
 
     it("should include priority and changefreq for static routes", async () => {

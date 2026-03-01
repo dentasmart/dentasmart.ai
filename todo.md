@@ -429,3 +429,9 @@
 - [x] Run QA checklist verification (no TypeScript errors, no LSP errors, dev server running)
 - [x] Run tests (54 tests passing across 4 test files)
 - [x] Produce before/after change summary
+
+# SEO Enhancements & Hero Fix - Mar 1, 2026
+- [x] Submit sitemap to Google Search Console (manual step: GSC requires OAuth, instructions provided to user)
+- [x] Add Open Graph and Twitter Card meta tags to SEO component (already existed, created OG image and uploaded to CDN)
+- [x] Create dynamic server-side sitemap that auto-includes new blog posts (117 URLs, fixed slug bug, removed static files)
+- [x] Fix hero section padding on condition/symptom/guide pages (back links hidden under nav) - changed pt-32/md:pt-24 to pt-36/md:pt-36
