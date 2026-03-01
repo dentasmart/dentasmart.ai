@@ -151,15 +151,22 @@ Disallow: /api/
 `);
   });
 
-  // Serve dynamic sitemap for local development and as fallback
-  app.get("/sitemap.xml", async (_req: Request, res: Response) => {
+  // Sitemap handler shared by both routes
+  const serveSitemap = async (_req: Request, res: Response) => {
     try {
       const sitemap = await generateSitemapXml();
       res.set("Content-Type", "application/xml; charset=utf-8");
+      res.set("Cache-Control", "public, max-age=3600");
       res.send(sitemap);
     } catch (e) {
       console.error("Sitemap generation error:", e);
       res.status(500).send("Error generating sitemap");
     }
-  });
+  };
+
+  // /api/sitemap — production route (bypasses platform CDN that intercepts /sitemap.xml)
+  app.get("/api/sitemap", serveSitemap);
+
+  // /sitemap.xml — works in local dev (platform CDN overrides this in production)
+  app.get("/sitemap.xml", serveSitemap);
 }

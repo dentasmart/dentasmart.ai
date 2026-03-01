@@ -450,7 +450,7 @@
 - [x] Remove /api/sitemap route, keep /sitemap.xml for local dev
 
 # Platform Sitemap Fix - Mar 1, 2026
-- [x] Investigate how platform auto-generates sitemap from App.tsx routes - confirmed it scans Route path string literals
-- [x] Remove admin routes from platform sitemap detection - moved admin paths to ADMIN_ROUTES constants, referenced via variables
-- [ ] Add all dynamic pages (blog, conditions, symptoms, guides) to platform sitemap - not possible via platform scanner, relies on internal links
+- [x] Investigate how platform auto-generates sitemap from App.tsx routes - confirmed CDN intercepts /sitemap.xml and /robots.txt
+- [x] Remove admin routes from platform sitemap detection - moved admin paths to ADMIN_ROUTES constants
+- [x] Serve full 117-URL sitemap at /api/sitemap (bypasses CDN, reaches Express) - submit this URL in Google Search Console
 - [x] Fix robots.txt - static robots.txt in client/public points to /sitemap.xml

@@ -65,7 +65,20 @@ describe("SEO Routes", () => {
     });
   });
 
-  describe("GET /sitemap.xml", () => {
+  describe("GET /api/sitemap (production route)", () => {
+    it("should return sitemap with correct content type at /api/sitemap", async () => {
+      const app = createTestApp();
+      const res = await request(app).get("/api/sitemap");
+
+      expect(res.status).toBe(200);
+      expect(res.headers["content-type"]).toContain("application/xml");
+      expect(res.text).toContain('<?xml version="1.0" encoding="UTF-8"?>');
+      expect(res.text).toContain("<urlset");
+      expect(res.text).not.toContain("/admin");
+    });
+  });
+
+  describe("GET /sitemap.xml (local dev route)", () => {
     it("should return sitemap with correct content type", async () => {
       const app = createTestApp();
       const res = await request(app).get("/sitemap.xml");
