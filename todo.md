@@ -441,5 +441,5 @@
 - [x] Remove all /admin URLs from sitemap.xml - filtered out all admin routes, 117 clean URLs remain
 
 # Sitemap Platform Override Fix - Mar 1, 2026
-- [x] Fix production sitemap: moved sitemap to /api/sitemap.xml to bypass platform CDN auto-generation, proper XML with 117 URLs, no admin pages
+- [x] Fix production sitemap: moved sitemap to /api/sitemap (no .xml extension) to bypass platform CDN and static middleware interception, proper XML with 117 URLs, no admin pages
 - [x] Build sitemap auto-regeneration: added in-memory cache with invalidation on publish/unpublish/create/update/delete blog operations

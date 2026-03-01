@@ -140,7 +140,7 @@ export function registerSeoRoutes(app: Express) {
 Allow: /
 
 # Sitemaps
-Sitemap: ${SITE_URL}/api/sitemap.xml
+Sitemap: ${SITE_URL}/api/sitemap
 
 # Disallow admin pages
 Disallow: /admin
@@ -152,8 +152,9 @@ Disallow: /api/
   });
 
   // Serve sitemap under /api/ prefix to bypass platform CDN auto-generation
-  // The platform intercepts /sitemap.xml at CDN level, but /api/* routes reach Express
-  app.get("/api/sitemap.xml", async (_req: Request, res: Response) => {
+  // Uses /api/sitemap (no .xml extension) because the CDN/static middleware
+  // intercepts paths with file extensions before they reach Express routes
+  app.get("/api/sitemap", async (_req: Request, res: Response) => {
     try {
       const sitemap = await generateSitemapXml();
       res.set("Content-Type", "application/xml; charset=utf-8");
