@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://dentasmart.ai/sitemap.xml
+Sitemap: https://dentasmart.ai/api/sitemap.xml
 
 # Disallow admin pages
 Disallow: /admin

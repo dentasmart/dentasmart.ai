@@ -22,6 +22,7 @@ import {
 } from "./blogDb";
 import { SignJWT, jwtVerify } from "jose";
 import { storagePut } from "./storage";
+import { invalidateSitemapCache } from "./seo";
 
 const ADMIN_COOKIE_NAME = "blog_admin_session";
 const JWT_SECRET_KEY = process.env.JWT_SECRET || "dentasmart-blog-admin-secret";
@@ -182,6 +183,11 @@ export const blogRouter = router({
         publishedAt: input.status === "published" ? new Date() : undefined,
       });
 
+      // Invalidate sitemap cache if post was created as published
+      if (input.status === "published") {
+        invalidateSitemapCache();
+      }
+
       return { id, slug };
     }),
 
@@ -242,6 +248,12 @@ export const blogRouter = router({
       }
 
       await updateBlogPost(id, data);
+
+      // Invalidate sitemap cache if status changed (publish/unpublish/slug change)
+      if (data.status || data.slug) {
+        invalidateSitemapCache();
+      }
+
       return { success: true };
     }),
 
@@ -249,6 +261,7 @@ export const blogRouter = router({
     .input(z.object({ id: z.number() }))
     .mutation(async ({ input }) => {
       await deleteBlogPost(input.id);
+      invalidateSitemapCache();
       return { success: true };
     }),
 
@@ -262,6 +275,7 @@ export const blogRouter = router({
         status: "published",
         publishedAt: post.publishedAt || new Date(),
       });
+      invalidateSitemapCache();
       return { success: true };
     }),
 
@@ -269,6 +283,7 @@ export const blogRouter = router({
     .input(z.object({ id: z.number() }))
     .mutation(async ({ input }) => {
       await updateBlogPost(input.id, { status: "unpublished" });
+      invalidateSitemapCache();
       return { success: true };
     }),
 

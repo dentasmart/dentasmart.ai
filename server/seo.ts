@@ -3,7 +3,7 @@ import { listBlogPosts } from "./blogDb";
 
 const SITE_URL = "https://dentasmart.ai";
 
-// All static routes for the sitemap
+// All static routes for the sitemap (NO admin routes)
 const staticRoutes = [
   { path: "/", priority: "1.0", changefreq: "weekly" },
   { path: "/how-it-works", priority: "0.9", changefreq: "monthly" },
@@ -65,23 +65,27 @@ const staticRoutes = [
   { path: "/guides/dental-visit-guide", priority: "0.8", changefreq: "monthly" },
 ];
 
-function generateRobotsTxt(): string {
-  return `User-agent: *
-Allow: /
+// Sitemap cache: regenerated on demand and invalidated when blog content changes
+let cachedSitemap: string | null = null;
+let cacheTimestamp: number = 0;
+const CACHE_TTL_MS = 60 * 60 * 1000; // 1 hour max cache
 
-# Sitemaps
-Sitemap: ${SITE_URL}/sitemap.xml
-
-# Disallow admin pages
-Disallow: /admin
-Disallow: /admin/*
-
-# Disallow API endpoints
-Disallow: /api/
-`;
+/**
+ * Invalidate the sitemap cache. Call this whenever blog posts are
+ * created, updated, published, unpublished, or deleted.
+ */
+export function invalidateSitemapCache(): void {
+  cachedSitemap = null;
+  cacheTimestamp = 0;
+  console.log("[Sitemap] Cache invalidated — next request will regenerate");
 }
 
-async function generateSitemapXml(): Promise<string> {
+export async function generateSitemapXml(): Promise<string> {
+  // Return cached version if still valid
+  if (cachedSitemap && Date.now() - cacheTimestamp < CACHE_TTL_MS) {
+    return cachedSitemap;
+  }
+
   let blogUrls = "";
 
   try {
@@ -115,25 +119,57 @@ async function generateSitemapXml(): Promise<string> {
     )
     .join("");
 
-  return `<?xml version="1.0" encoding="UTF-8"?>
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${staticUrls}
 ${blogUrls}
 </urlset>`;
+
+  // Cache the result
+  cachedSitemap = xml;
+  cacheTimestamp = Date.now();
+
+  return xml;
 }
 
 export function registerSeoRoutes(app: Express) {
   // robots.txt
   app.get("/robots.txt", (_req: Request, res: Response) => {
     res.type("text/plain");
-    res.send(generateRobotsTxt());
+    res.send(`User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: ${SITE_URL}/api/sitemap.xml
+
+# Disallow admin pages
+Disallow: /admin
+Disallow: /admin/*
+
+# Disallow API endpoints
+Disallow: /api/
+`);
   });
 
-  // sitemap.xml
+  // Serve sitemap under /api/ prefix to bypass platform CDN auto-generation
+  // The platform intercepts /sitemap.xml at CDN level, but /api/* routes reach Express
+  app.get("/api/sitemap.xml", async (_req: Request, res: Response) => {
+    try {
+      const sitemap = await generateSitemapXml();
+      res.set("Content-Type", "application/xml; charset=utf-8");
+      res.set("Cache-Control", "public, max-age=3600, s-maxage=3600");
+      res.send(sitemap);
+    } catch (e) {
+      console.error("Sitemap generation error:", e);
+      res.status(500).send("Error generating sitemap");
+    }
+  });
+
+  // Keep the original /sitemap.xml route for local development
   app.get("/sitemap.xml", async (_req: Request, res: Response) => {
     try {
       const sitemap = await generateSitemapXml();
-      res.type("application/xml");
+      res.set("Content-Type", "application/xml; charset=utf-8");
       res.send(sitemap);
     } catch (e) {
       console.error("Sitemap generation error:", e);
