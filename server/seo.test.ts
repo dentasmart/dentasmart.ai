@@ -49,11 +49,11 @@ describe("SEO Routes", () => {
       expect(res.text).toContain("Allow: /");
     });
 
-    it("should reference the sitemap at /api/sitemap to bypass platform CDN", async () => {
+    it("should reference the sitemap at /sitemap.xml", async () => {
       const app = createTestApp();
       const res = await request(app).get("/robots.txt");
 
-      expect(res.text).toContain("Sitemap: https://dentasmart.ai/api/sitemap");
+      expect(res.text).toContain("Sitemap: https://dentasmart.ai/sitemap.xml");
     });
 
     it("should disallow admin and API paths", async () => {
@@ -65,10 +65,10 @@ describe("SEO Routes", () => {
     });
   });
 
-  describe("GET /api/sitemap (production route)", () => {
+  describe("GET /sitemap.xml", () => {
     it("should return sitemap with correct content type", async () => {
       const app = createTestApp();
-      const res = await request(app).get("/api/sitemap");
+      const res = await request(app).get("/sitemap.xml");
 
       expect(res.status).toBe(200);
       expect(res.headers["content-type"]).toContain("application/xml");
@@ -76,7 +76,7 @@ describe("SEO Routes", () => {
 
     it("should contain XML declaration and urlset", async () => {
       const app = createTestApp();
-      const res = await request(app).get("/api/sitemap");
+      const res = await request(app).get("/sitemap.xml");
 
       expect(res.text).toContain('<?xml version="1.0" encoding="UTF-8"?>');
       expect(res.text).toContain("<urlset");
@@ -85,7 +85,7 @@ describe("SEO Routes", () => {
 
     it("should include all key static routes", async () => {
       const app = createTestApp();
-      const res = await request(app).get("/api/sitemap");
+      const res = await request(app).get("/sitemap.xml");
 
       const keyRoutes = [
         "https://dentasmart.ai/",
@@ -108,7 +108,7 @@ describe("SEO Routes", () => {
 
     it("should include compare pages", async () => {
       const app = createTestApp();
-      const res = await request(app).get("/api/sitemap");
+      const res = await request(app).get("/sitemap.xml");
 
       expect(res.text).toContain("dentasmart-vs-chatgpt-dental");
       expect(res.text).toContain("dentasmart-vs-teledentistry");
@@ -117,7 +117,7 @@ describe("SEO Routes", () => {
 
     it("should include blog post URLs from database using slugs", async () => {
       const app = createTestApp();
-      const res = await request(app).get("/api/sitemap");
+      const res = await request(app).get("/sitemap.xml");
 
       expect(res.text).toContain("https://dentasmart.ai/oral-health-hub/test-post");
       expect(res.text).toContain("https://dentasmart.ai/oral-health-hub/another-post");
@@ -125,7 +125,7 @@ describe("SEO Routes", () => {
 
     it("should include priority and changefreq for static routes", async () => {
       const app = createTestApp();
-      const res = await request(app).get("/api/sitemap");
+      const res = await request(app).get("/sitemap.xml");
 
       expect(res.text).toContain("<priority>1.0</priority>");
       expect(res.text).toContain("<changefreq>weekly</changefreq>");
@@ -134,28 +134,19 @@ describe("SEO Routes", () => {
 
     it("should NOT include any admin URLs", async () => {
       const app = createTestApp();
-      const res = await request(app).get("/api/sitemap");
+      const res = await request(app).get("/sitemap.xml");
 
       expect(res.text).not.toContain("/admin");
     });
   });
 
-  describe("GET /sitemap.xml (dev fallback)", () => {
-    it("should also serve sitemap at /sitemap.xml for local development", async () => {
-      const app = createTestApp();
-      const res = await request(app).get("/sitemap.xml");
 
-      expect(res.status).toBe(200);
-      expect(res.headers["content-type"]).toContain("application/xml");
-      expect(res.text).toContain("https://dentasmart.ai/oral-health-hub/test-post");
-    });
-  });
 });
 
 describe("Conditions/Symptoms/Guides in Sitemap", () => {
   it("should include all 15 condition pages in sitemap", async () => {
     const app = createTestApp();
-    const res = await request(app).get("/api/sitemap");
+    const res = await request(app).get("/sitemap.xml");
 
     const conditions = [
       "toothache", "cavities", "gum-disease", "wisdom-teeth-pain", "teeth-whitening",
@@ -173,7 +164,7 @@ describe("Conditions/Symptoms/Guides in Sitemap", () => {
 
   it("should include all 10 symptom pages in sitemap", async () => {
     const app = createTestApp();
-    const res = await request(app).get("/api/sitemap");
+    const res = await request(app).get("/sitemap.xml");
 
     const symptoms = [
       "tooth-pain-when-biting", "bleeding-gums", "tooth-sensitivity", "jaw-pain", "bad-breath",
@@ -190,7 +181,7 @@ describe("Conditions/Symptoms/Guides in Sitemap", () => {
 
   it("should include all 3 guide pages in sitemap", async () => {
     const app = createTestApp();
-    const res = await request(app).get("/api/sitemap");
+    const res = await request(app).get("/sitemap.xml");
 
     const guides = ["brushing-guide", "flossing-guide", "dental-visit-guide"];
 

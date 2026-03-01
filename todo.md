@@ -443,3 +443,8 @@
 # Sitemap Platform Override Fix - Mar 1, 2026
 - [x] Fix production sitemap: moved sitemap to /api/sitemap (no .xml extension) to bypass platform CDN and static middleware interception, proper XML with 117 URLs, no admin pages
 - [x] Build sitemap auto-regeneration: added in-memory cache with invalidation on publish/unpublish/create/update/delete blog operations
+
+# Final Sitemap Fix - Mar 1, 2026
+- [x] Generate complete static sitemap.xml in client/public with all 117 pages (static + blog posts from DB)
+- [x] Fix robots.txt to point to https://dentasmart.ai/sitemap.xml
+- [x] Remove /api/sitemap route, keep /sitemap.xml for local dev
