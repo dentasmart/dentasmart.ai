@@ -1,8 +1,9 @@
 User-agent: *
 Allow: /
 
-# Sitemaps
-Sitemap: https://dentasmart.ai/sitemap.xml
+# Sitemaps — primary is /sitemap-custom.xml (bypasses platform CDN override)
+Sitemap: https://dentasmart.ai/sitemap-custom.xml
+Sitemap: https://dentasmart.ai/api/sitemap
 
 # Disallow admin pages
 Disallow: /admin

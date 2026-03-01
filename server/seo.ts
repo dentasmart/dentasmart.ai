@@ -132,15 +132,31 @@ ${blogUrls}
   return xml;
 }
 
+// Shared sitemap handler with proper cache headers for CDN/edge
+const serveSitemap = async (_req: Request, res: Response) => {
+  try {
+    const sitemap = await generateSitemapXml();
+    res.set("Content-Type", "application/xml; charset=utf-8");
+    // Phase 3: Cache headers — short edge cache, no stale content
+    res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
+    res.send(sitemap);
+  } catch (e) {
+    console.error("Sitemap generation error:", e);
+    res.status(500).send("Error generating sitemap");
+  }
+};
+
 export function registerSeoRoutes(app: Express) {
-  // robots.txt
+  // robots.txt — points to both sitemap URLs for maximum discoverability
   app.get("/robots.txt", (_req: Request, res: Response) => {
     res.type("text/plain");
+    res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
     res.send(`User-agent: *
 Allow: /
 
-# Sitemaps
-Sitemap: ${SITE_URL}/sitemap.xml
+# Sitemaps — primary is /sitemap-custom.xml (bypasses platform CDN override)
+Sitemap: ${SITE_URL}/sitemap-custom.xml
+Sitemap: ${SITE_URL}/api/sitemap
 
 # Disallow admin pages
 Disallow: /admin
@@ -151,22 +167,12 @@ Disallow: /api/
 `);
   });
 
-  // Sitemap handler shared by both routes
-  const serveSitemap = async (_req: Request, res: Response) => {
-    try {
-      const sitemap = await generateSitemapXml();
-      res.set("Content-Type", "application/xml; charset=utf-8");
-      res.set("Cache-Control", "public, max-age=3600");
-      res.send(sitemap);
-    } catch (e) {
-      console.error("Sitemap generation error:", e);
-      res.status(500).send("Error generating sitemap");
-    }
-  };
+  // PRIMARY: /sitemap-custom.xml — custom path unlikely to be overridden by platform
+  app.get("/sitemap-custom.xml", serveSitemap);
 
-  // /api/sitemap — production route (bypasses platform CDN that intercepts /sitemap.xml)
+  // FALLBACK 1: /api/sitemap — proven to reach Express in production
   app.get("/api/sitemap", serveSitemap);
 
-  // /sitemap.xml — works in local dev (platform CDN overrides this in production)
+  // FALLBACK 2: /sitemap.xml — works in local dev (platform CDN overrides this in production)
   app.get("/sitemap.xml", serveSitemap);
 }

@@ -454,3 +454,11 @@
 - [x] Remove admin routes from platform sitemap detection - moved admin paths to ADMIN_ROUTES constants
 - [x] Serve full 117-URL sitemap at /api/sitemap (bypasses CDN, reaches Express) - submit this URL in Google Search Console
 - [x] Fix robots.txt - static robots.txt in client/public points to /sitemap.xml
+
+# Sitemap Final Fix (Phased Plan) - Mar 1, 2026
+- [x] Phase 0: Confirmed CDN (Cloudflare) intercepts /sitemap.xml and /robots.txt, /api/* reaches Express
+- [x] Phase 1-2: Registered /sitemap-custom.xml Express route with 117 public URLs, no admin pages
+- [x] Phase 2: Updated robots.txt to reference /sitemap-custom.xml and /api/sitemap
+- [x] Phase 3: Added cache headers (public, max-age=0, s-maxage=300, must-revalidate)
+- [ ] Phase 4: Validate /sitemap-custom.xml in production after publish
+- [ ] Phase 5: Submit /sitemap-custom.xml in Google Search Console
