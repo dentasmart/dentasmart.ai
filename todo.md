@@ -435,3 +435,7 @@
 - [x] Add Open Graph and Twitter Card meta tags to SEO component (already existed, created OG image and uploaded to CDN)
 - [x] Create dynamic server-side sitemap that auto-includes new blog posts (117 URLs, fixed slug bug, removed static files)
 - [x] Fix hero section padding on condition/symptom/guide pages (back links hidden under nav) - changed pt-32/md:pt-24 to pt-36/md:pt-36
+
+# Sitemap XML Fix - Mar 1, 2026
+- [x] Fix sitemap.xml rendering as plain text instead of proper XML - placed static sitemap.xml in client/public/ to override platform auto-generated sitemap
+- [x] Remove all /admin URLs from sitemap.xml - filtered out all admin routes, 117 clean URLs remain
