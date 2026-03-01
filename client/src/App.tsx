@@ -24,6 +24,7 @@ import AdminLogin from "@/pages/AdminLogin";
 import AdminDashboard from "@/pages/AdminDashboard";
 import AdminBlogEditor from "@/pages/AdminBlogEditor";
 import { lazy, Suspense } from "react";
+import { ADMIN_ROUTES } from "./adminRoutes";
 
 // Lazy-loaded new pages
 const Download = lazy(() => import("./pages/Download"));
@@ -93,13 +94,13 @@ function Router() {
         <Route path="/compare/:slug" component={ComparePage} />
         <Route path="/find-a-dentist" component={FindADentist} />
 
-        {/* Admin */}
-        <Route path="/admin/login" component={AdminLogin} />
-        <Route path="/admin" component={AdminDashboard} />
-        <Route path="/admin/new" component={AdminBlogEditor} />
-        <Route path="/admin/edit/:id" component={AdminBlogEditor} />
-        <Route path="/admin/seo-analytics-setup" component={AdminSeoSetup} />
-        <Route path="/admin/categories" component={AdminCategories} />
+        {/* Admin routes - paths defined via constants to exclude from platform sitemap */}
+        <Route path={ADMIN_ROUTES.login} component={AdminLogin} />
+        <Route path={ADMIN_ROUTES.dashboard} component={AdminDashboard} />
+        <Route path={ADMIN_ROUTES.newPost} component={AdminBlogEditor} />
+        <Route path={ADMIN_ROUTES.editPost} component={AdminBlogEditor} />
+        <Route path={ADMIN_ROUTES.seoSetup} component={AdminSeoSetup} />
+        <Route path={ADMIN_ROUTES.categories} component={AdminCategories} />
 
         <Route path={"/404"} component={NotFound} />
         <Route component={NotFound} />

@@ -448,3 +448,9 @@
 - [x] Generate complete static sitemap.xml in client/public with all 117 pages (static + blog posts from DB)
 - [x] Fix robots.txt to point to https://dentasmart.ai/sitemap.xml
 - [x] Remove /api/sitemap route, keep /sitemap.xml for local dev
+
+# Platform Sitemap Fix - Mar 1, 2026
+- [x] Investigate how platform auto-generates sitemap from App.tsx routes - confirmed it scans Route path string literals
+- [x] Remove admin routes from platform sitemap detection - moved admin paths to ADMIN_ROUTES constants, referenced via variables
+- [ ] Add all dynamic pages (blog, conditions, symptoms, guides) to platform sitemap - not possible via platform scanner, relies on internal links
+- [x] Fix robots.txt - static robots.txt in client/public points to /sitemap.xml
