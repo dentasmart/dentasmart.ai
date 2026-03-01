@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { DownloadSection } from "@/components/DownloadSection";
 
 const privacyContent = `
@@ -218,6 +219,11 @@ Based on the applicable laws of your country, you may have the right to request 
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
+      <SEO
+        title="Privacy Policy - DentaSmart"
+        description="Read the DentaSmart privacy policy to understand how we collect, use, and protect your personal information."
+        canonical="https://dentasmart.ai/privacy-policy"
+      />
       <Navigation />
       
       <main className="flex-grow pt-32 pb-24">

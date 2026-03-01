@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import Navigation from "@/components/Navigation";
 import SEO from "@/components/SEO";
 import Footer from "@/components/Footer";
+import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
 import { useState, useMemo } from "react";
 import { trpc } from "@/lib/trpc";
 
@@ -123,6 +124,18 @@ export default function OralHealthHub() {
       <SEO 
         title="Oral Health Hub" 
         description="Clear answers to your dental questions. We break down the confusing world of dentistry and insurance into simple, honest guides."
+        canonical="https://dentasmart.ai/oral-health-hub"
+        jsonLd={[
+          breadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Oral Health Hub", url: "/oral-health-hub" },
+          ]),
+          webPageSchema({
+            name: "Oral Health Hub",
+            description: "Clear answers to your dental questions. We break down the confusing world of dentistry and insurance into simple, honest guides.",
+            url: "/oral-health-hub",
+          }),
+        ]}
       />
       <Navigation />
       

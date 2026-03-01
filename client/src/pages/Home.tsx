@@ -35,6 +35,7 @@ export default function Home() {
       <SEO 
         title="Your Personal AI Dental Guide" 
         description="Get instant clarity about your oral health. Upload a photo and get AI-powered insights, personalized plans, and reminders in minutes."
+        canonical="https://dentasmart.ai/"
       />
       <Navigation />
 
@@ -223,7 +224,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-border/50">
             {[
               { value: "50K+", label: "Scans Analyzed" },
-              { value: "100%", label: "Detection Accuracy" },
+              { value: "High", label: "Confidence AI Insights" },
               { value: "24/7", label: "Din Support" }
             ].map((stat, idx) => (
               <motion.div 
@@ -243,6 +244,9 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+          <p className="text-center text-sm text-stone-500 mt-6 max-w-2xl mx-auto">
+            Educational guidance to help you understand your oral health and have better conversations with a licensed dentist.
+          </p>
         </div>
       </section>
 
@@ -420,6 +424,62 @@ export default function Home() {
                 Read more stories
               </Button>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Common Concerns People Check */}
+      <section className="py-12 bg-white">
+        <div className="container px-4 mx-auto max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-normal text-black mb-4">
+              Common concerns people check
+            </h2>
+            <p className="text-xl text-stone-700 font-light mb-10 max-w-2xl">
+              Millions of people search for these topics every month. Get clear, honest answers.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { title: "Toothache", desc: "Understand what is causing your tooth pain and when to see a dentist.", href: "/conditions/toothache" },
+              { title: "Bleeding Gums", desc: "Find out why your gums bleed and what it could mean for your health.", href: "/symptoms/bleeding-gums" },
+              { title: "Tooth Sensitivity", desc: "Learn why hot or cold triggers sharp pain and how to manage it.", href: "/conditions/sensitive-teeth" },
+              { title: "Gum Recession", desc: "Discover why gums pull back and what you can do to protect them.", href: "/conditions/gum-disease" },
+              { title: "Pain When Biting", desc: "Sharp pain when you chew? Here is what it usually means.", href: "/symptoms/tooth-pain-when-biting" },
+              { title: "Bad Breath", desc: "Persistent bad breath often has a treatable cause. Learn more.", href: "/symptoms/bad-breath" },
+              { title: "Cracked Tooth", desc: "A crack can worsen fast. Know the signs and your options.", href: "/conditions/cracked-tooth" },
+              { title: "Swollen Gums", desc: "Swelling around one tooth or many? Here is what to look for.", href: "/symptoms/swollen-gums" },
+              { title: "Wisdom Tooth Pain", desc: "Find out if your wisdom teeth need attention or can wait.", href: "/conditions/wisdom-teeth-pain" },
+              { title: "Cavity Symptoms", desc: "Cavities can hide for months. Learn how to spot them early.", href: "/conditions/cavities" },
+              { title: "Jaw Pain", desc: "Jaw clicking, locking, or aching? Understand the common causes.", href: "/symptoms/jaw-pain" },
+              { title: "Dental Abscess", desc: "An abscess is serious. Know the warning signs and next steps.", href: "/conditions/dental-abscess" }
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.05, duration: 0.4 }}
+              >
+                <Link href={item.href}>
+                  <div className="group p-6 rounded-2xl border border-stone-100 hover:border-primary/30 hover:shadow-lg transition-all duration-300 bg-white h-full">
+                    <h3 className="text-lg font-medium text-black mb-2 group-hover:text-primary transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-stone-600 mb-4 leading-relaxed">{item.desc}</p>
+                    <span className="text-sm font-medium text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
+                      Get your Oral Health Score <ArrowRight className="w-4 h-4" />
+                    </span>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

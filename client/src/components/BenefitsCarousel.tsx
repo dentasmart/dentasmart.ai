@@ -6,45 +6,51 @@ import { ChevronLeft, ChevronRight, Plus, X } from 'lucide-react';
 const benefits = [
   {
     id: 1,
-    title: "Oral Health Score",
+    tag: "Oral Health Score",
+    title: "Oral Health Score and Priorities",
     desc: "Know what needs attention now vs later.",
     detail: "Get a clear, objective score of your oral health based on AI analysis of your photos and X-rays. Understand exactly where you stand without the guesswork.",
     image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/kqbtmhnnWjXBFwxN.jpg"
   },
   {
     id: 2,
-    title: "Track Your Oral Health Daily",
-    desc: "Monitor changes and improvements over time.",
-    detail: "Keep a digital log of your oral health journey. See how your habits impact your score and get motivated by visualizing your progress.",
+    tag: "Photo & X-Ray Analysis",
+    title: "Plain-English Explanation of Photos and X-Rays",
+    desc: "See what your dentist sees, in words you understand.",
+    detail: "Upload a photo or X-ray and get a clear, jargon-free breakdown of what is happening in your mouth. No more confusion after appointments.",
     image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/vWIVfyPBobntLGIz.jpg"
   },
   {
     id: 3,
-    title: "AI Oral Health Guide - Din",
-    desc: "Ask questions anytime, 24/7.",
-    detail: "Din is your personal AI dental guide, ready to answer your questions, explain procedures, and provide reassurance whenever you need it.",
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/anhNbpYEsjYAENrG.jpg"
+    tag: "Second Opinion",
+    title: "Second Opinion Clarity Before You Say Yes",
+    desc: "Sanity check before you commit.",
+    detail: "Not sure about a diagnosis? Get an unbiased AI second review of your X-rays and treatment plans to move forward with confidence.",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/qxBXHmKeIMzYHljf.jpg"
   },
   {
     id: 4,
-    title: "Personalized Care Plans",
+    tag: "Prevention Plan",
+    title: "Personal Prevention Plan and Reminders",
     desc: "A roadmap tailored just for you.",
     detail: "Receive customized actionable steps to improve your oral hygiene. From product recommendations to daily habits, get a plan that fits your lifestyle.",
     image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/vMkUwiRFfsZCpBey.jpg"
   },
   {
     id: 5,
-    title: "Smart Dental Savings",
-    desc: "Reduce surprise bills and unnecessary work.",
-    detail: "Understand the fair costs of treatments in your area. DentaSmart helps you identify potential savings and avoid overpaying for dental care.",
+    tag: "Track Changes",
+    title: "Track Changes Over Time",
+    desc: "Monitor changes and improvements over time.",
+    detail: "Keep a digital log of your oral health journey. See how your habits impact your score and get motivated by visualizing your progress.",
     image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/aCHSoYIkHQxoISFY.jpg"
   },
   {
     id: 6,
-    title: "Second Review Access",
-    desc: "Sanity check before you commit.",
-    detail: "Not sure about a diagnosis? Get an unbiased AI second review of your X-rays and treatment plans to move forward with confidence.",
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/qxBXHmKeIMzYHljf.jpg"
+    tag: "AI Guide",
+    title: "Ask Din Questions Anytime (Educational)",
+    desc: "Ask questions anytime, 24/7.",
+    detail: "Din is your personal AI dental guide, ready to answer your questions, explain procedures in plain English, and provide reassurance whenever you need it.",
+    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/anhNbpYEsjYAENrG.jpg"
   }
 ];
 
@@ -178,7 +184,7 @@ export function BenefitsCarousel() {
               <div className="absolute inset-0 p-8 flex flex-col justify-end text-white">
                 <motion.div layout="position" className="mb-auto pt-4">
                   <span className="inline-block px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-medium tracking-wider uppercase mb-4 border border-white/10">
-                    Benefit {item.id}
+                    {item.tag}
                   </span>
                 </motion.div>
 

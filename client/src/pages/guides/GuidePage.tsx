@@ -5,10 +5,12 @@ import { DownloadSection } from "@/components/DownloadSection";
 import { BlogCTABanner } from "@/components/BlogCTABanner";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowLeft, CheckCircle, ChevronDown, ChevronUp, Shield, Lightbulb, XCircle, ArrowRight as ArrowRightIcon } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle, ChevronDown, ChevronUp, Shield, Lightbulb, XCircle, MessageCircleQuestion } from "lucide-react";
 import { Link, useParams } from "wouter";
 import { useState } from "react";
 import { guidesData } from "@/data/guides";
+import { aeoGuides } from "@/data/aeoContent";
+import { breadcrumbSchema, howToSchema, faqPageSchema } from "@/lib/schema";
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
@@ -33,6 +35,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 export default function GuidePage() {
   const { slug } = useParams<{ slug: string }>();
   const guide = slug ? guidesData[slug] : null;
+  const aeo = slug ? aeoGuides[slug] : null;
 
   if (!guide) {
     return (
@@ -62,6 +65,19 @@ export default function GuidePage() {
         description={guide.metaDescription}
         canonical={`https://dentasmart.ai/guides/${guide.slug}`}
         keywords={[guide.primaryKeyword, ...guide.secondaryKeywords].join(", ")}
+        jsonLd={[
+          breadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Guides", url: "/guides" },
+            { name: guide.title, url: `/guides/${guide.slug}` },
+          ]),
+          howToSchema({
+            name: guide.title,
+            description: guide.metaDescription,
+            steps: guide.steps.map(s => ({ title: s.title, description: s.content })),
+          }),
+          faqPageSchema(guide.faqs),
+        ]}
       />
       <Navigation />
 
@@ -94,6 +110,18 @@ export default function GuidePage() {
           </motion.div>
         </div>
       </section>
+
+      {/* In One Sentence - GEO citable micro-block */}
+      {aeo && (
+        <section className="py-4 bg-stone-50 border-b border-stone-200">
+          <div className="container px-4 mx-auto max-w-3xl">
+            <p className="text-stone-700 font-light leading-relaxed italic">
+              <span className="font-medium text-stone-900 not-italic">In one sentence:</span>{" "}
+              {aeo.inOneSentence}
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* Introduction */}
       <section className="py-8 bg-white">
@@ -149,7 +177,7 @@ export default function GuidePage() {
                   <span className="font-medium text-black">{item.mistake}</span>
                 </div>
                 <div className="flex items-start gap-3 ml-8">
-                  <ArrowRightIcon className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                  <ArrowRight className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
                   <span className="text-stone-600 font-light">{item.correction}</span>
                 </div>
               </div>
@@ -157,6 +185,26 @@ export default function GuidePage() {
           </div>
         </div>
       </section>
+
+      {/* Questions to Ask Your Dentist */}
+      {aeo && (
+        <section className="py-8 bg-white">
+          <div className="container px-4 mx-auto max-w-3xl">
+            <div className="flex items-center gap-3 mb-6">
+              <MessageCircleQuestion className="w-6 h-6 text-primary" />
+              <h2 className="text-2xl font-medium text-black">Questions to Ask Your Dentist</h2>
+            </div>
+            <div className="space-y-3">
+              {aeo.dentistQuestions.map((q, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  <ArrowRight className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                  <p className="text-stone-700 font-light">{q}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Key Takeaways */}
       <section className="py-8 bg-stone-50">
@@ -254,43 +302,7 @@ export default function GuidePage() {
       <Footer />
       <BlogCTABanner />
 
-      {/* HowTo Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "HowTo",
-            name: guide.title,
-            description: guide.metaDescription,
-            step: guide.steps.map((step, idx) => ({
-              "@type": "HowToStep",
-              position: idx + 1,
-              name: step.title,
-              text: step.content,
-            })),
-          }),
-        }}
-      />
 
-      {/* FAQPage Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: guide.faqs.map((faq) => ({
-              "@type": "Question",
-              name: faq.question,
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: faq.answer,
-              },
-            })),
-          }),
-        }}
-      />
     </div>
   );
 }

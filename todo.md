@@ -391,3 +391,41 @@
 - [x] Fix Team page hero image cut off on mobile
 - [x] Fix Blogs (OralHealthHub) page hero image cut off on mobile
 - [x] Fix Features page hero image cut off on mobile
+
+# SEO/GEO/AEO Optimization - Mar 1, 2026
+## Phase 0: Urgent Check
+- [x] Verify robots.txt returns HTTP 200 and is accessible
+- [x] Verify sitemap.xml returns HTTP 200 and is accessible
+- [x] Fix any blocking issues if found (none needed, both return 200)
+
+## Phase 1: Homepage Trust Fix
+- [x] Remove "100% Detection Accuracy" claim from homepage stats
+- [x] Replace with "High-confidence AI insights / Designed with clinical guidance"
+- [x] Add trust note under stats block
+
+## Phase 2: On-Page SEO
+- [x] Replace "Benefit 1, Benefit 2..." labels with keyword-rich headings
+- [x] Add "Common concerns people check" section with 12 internal links to condition/symptom pages
+
+## Phase 3: AEO Template Upgrade
+- [x] Add standardized AEO blocks to condition page template (In One Sentence, What To Do Today, Questions to Ask)
+- [x] Add standardized AEO blocks to symptom page template (In One Sentence, Questions to Ask)
+- [x] Add standardized AEO blocks to guide page template (In One Sentence, Questions to Ask)
+- [x] Create aeoContent.ts data file with content for all 30 pages (15 conditions, 10 symptoms, 5 guides)
+
+## Phase 4: GEO Optimization
+- [x] Create reusable JSON-LD schema utilities in client/src/lib/schema.ts (breadcrumb, webPage, medicalWebPage, article, faqPage, howTo)
+- [x] Add schema to homepage (already has Organization + WebSite + SoftwareApplication)
+- [x] Add schema to condition/symptom/guide pages (BreadcrumbList + MedicalWebPage/HowTo + FAQPage)
+- [x] Add schema to blog hub articles (BreadcrumbList + Article) and hub listing page (BreadcrumbList + WebPage)
+
+## Phase 5: Technical SEO
+- [x] Add rel canonical tags to every page (26 pages now have canonical tags)
+- [x] Ensure robots.txt includes Sitemap directive and admin Disallow rules
+- [x] Rebuild sitemap.xml with 87 canonical URLs (removed admin pages, added all content)
+- [x] Enforce HTTPS and consistent hostname (all canonical URLs use https://dentasmart.ai)
+
+## Phase 6: QA & Reporting
+- [x] Run QA checklist verification (no TypeScript errors, no LSP errors, dev server running)
+- [x] Run tests (54 tests passing across 4 test files)
+- [x] Produce before/after change summary

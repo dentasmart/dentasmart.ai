@@ -13,6 +13,7 @@ import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import { motion } from "framer-motion";
 import { BlogCTABanner } from "@/components/BlogCTABanner";
+import { breadcrumbSchema, articleSchema } from "@/lib/schema";
 
 export default function Article() {
   const [match, params] = useRoute("/oral-health-hub/:id");
@@ -77,6 +78,34 @@ export default function Article() {
       <SEO 
         title={article.metaTitle || article.title} 
         description={article.metaDescription || ""}
+        canonical={`https://dentasmart.ai/oral-health-hub/${article.slug}`}
+        ogType="article"
+        article={{
+          publishedTime: article.publishedAt ? new Date(article.publishedAt).toISOString() : undefined,
+          modifiedTime: article.updatedAt ? new Date(article.updatedAt).toISOString() : undefined,
+          author: "DentaSmart",
+          section: (() => {
+            const catId = (article as any).categoryId;
+            const catInfo = catId ? categoryMap.get(catId) : null;
+            return catInfo?.name || article.category || undefined;
+          })(),
+        }}
+        jsonLd={[
+          breadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Oral Health Hub", url: "/oral-health-hub" },
+            { name: article.title, url: `/oral-health-hub/${article.slug}` },
+          ]),
+          articleSchema({
+            headline: article.title,
+            description: article.metaDescription || "",
+            url: `/oral-health-hub/${article.slug}`,
+            datePublished: article.publishedAt ? new Date(article.publishedAt).toISOString() : undefined,
+            dateModified: article.updatedAt ? new Date(article.updatedAt).toISOString() : undefined,
+            author: "DentaSmart",
+            image: article.featuredImage || undefined,
+          }),
+        ]}
       />
       <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
         <Navigation />

@@ -5,10 +5,12 @@ import { DownloadSection } from "@/components/DownloadSection";
 import { BlogCTABanner } from "@/components/BlogCTABanner";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, AlertTriangle, CheckCircle, ChevronDown, ChevronUp, Shield } from "lucide-react";
+import { ArrowLeft, ArrowRight, AlertTriangle, CheckCircle, ChevronDown, ChevronUp, Shield, MessageCircleQuestion } from "lucide-react";
 import { Link, useParams } from "wouter";
 import { useState } from "react";
 import { symptomsData } from "@/data/symptoms";
+import { aeoSymptoms } from "@/data/aeoContent";
+import { breadcrumbSchema, medicalWebPageSchema, faqPageSchema } from "@/lib/schema";
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
@@ -33,6 +35,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 export default function SymptomPage() {
   const { slug } = useParams<{ slug: string }>();
   const symptom = slug ? symptomsData[slug] : null;
+  const aeo = slug ? aeoSymptoms[slug] : null;
 
   if (!symptom) {
     return (
@@ -62,6 +65,22 @@ export default function SymptomPage() {
         description={symptom.metaDescription}
         canonical={`https://dentasmart.ai/symptoms/${symptom.slug}`}
         keywords={[symptom.primaryKeyword, ...symptom.secondaryKeywords].join(", ")}
+        jsonLd={[
+          breadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Symptoms", url: "/symptoms" },
+            { name: symptom.title, url: `/symptoms/${symptom.slug}` },
+          ]),
+          medicalWebPageSchema({
+            name: symptom.title,
+            description: symptom.metaDescription,
+            url: `/symptoms/${symptom.slug}`,
+            lastReviewed: symptom.lastReviewed,
+            reviewedBy: symptom.reviewedBy,
+            reviewedByCredentials: symptom.reviewedByCredentials,
+          }),
+          faqPageSchema(symptom.faqs),
+        ]}
       />
       <Navigation />
 
@@ -94,6 +113,18 @@ export default function SymptomPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* In One Sentence - GEO citable micro-block */}
+      {aeo && (
+        <section className="py-4 bg-stone-50 border-b border-stone-200">
+          <div className="container px-4 mx-auto max-w-3xl">
+            <p className="text-stone-700 font-light leading-relaxed italic">
+              <span className="font-medium text-stone-900 not-italic">In one sentence:</span>{" "}
+              {aeo.inOneSentence}
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* Direct Answer Box */}
       <section className="py-8 bg-primary/5 border-b border-primary/10">
@@ -180,8 +211,28 @@ export default function SymptomPage() {
         </div>
       </section>
 
+      {/* Questions to Ask Your Dentist */}
+      {aeo && (
+        <section className="py-8 bg-white">
+          <div className="container px-4 mx-auto max-w-3xl">
+            <div className="flex items-center gap-3 mb-6">
+              <MessageCircleQuestion className="w-6 h-6 text-primary" />
+              <h2 className="text-2xl font-medium text-black">Questions to Ask Your Dentist</h2>
+            </div>
+            <div className="space-y-3">
+              {aeo.dentistQuestions.map((q, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  <ArrowRight className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                  <p className="text-stone-700 font-light">{q}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Key Takeaways */}
-      <section className="py-8 bg-white">
+      <section className="py-8 bg-stone-50">
         <div className="container px-4 mx-auto max-w-3xl">
           <h2 className="text-2xl font-medium text-black mb-6">Key Takeaways</h2>
           <div className="space-y-3">
@@ -276,49 +327,7 @@ export default function SymptomPage() {
       <Footer />
       <BlogCTABanner />
 
-      {/* FAQPage Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: symptom.faqs.map((faq) => ({
-              "@type": "Question",
-              name: faq.question,
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: faq.answer,
-              },
-            })),
-          }),
-        }}
-      />
 
-      {/* MedicalWebPage Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "MedicalWebPage",
-            name: symptom.title,
-            description: symptom.metaDescription,
-            url: `https://dentasmart.ai/symptoms/${symptom.slug}`,
-            lastReviewed: symptom.lastReviewed,
-            reviewedBy: {
-              "@type": "Person",
-              name: symptom.reviewedBy,
-              jobTitle: symptom.reviewedByCredentials,
-            },
-            publisher: {
-              "@type": "Organization",
-              name: "DentaSmart",
-              url: "https://dentasmart.ai",
-            },
-          }),
-        }}
-      />
     </div>
   );
 }

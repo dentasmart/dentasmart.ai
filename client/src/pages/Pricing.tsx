@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { BenefitsCarousel } from "@/components/BenefitsCarousel";
 import { useState } from "react";
@@ -20,6 +21,11 @@ export default function Pricing() {
 
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
+      <SEO
+        title="Transparent Dental Care Pricing - DentaSmart"
+        description="Explore DentaSmart's affordable and transparent pricing for individual and family dental care plans. Get peace of mind with monthly monitoring and second review options."
+        canonical="https://dentasmart.ai/pricing"
+      />
       <Navigation />
 
       {/* Hero Section - Calm & Balanced with Family Image */}

@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Linkedin, Users, Target, Lightbulb } from "lucide-react";
 import { MedicalAdvisoryBoard } from "@/components/MedicalAdvisoryBoard";
@@ -9,6 +10,11 @@ import { motion } from "framer-motion";
 export default function Team() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
+      <SEO
+        title="Meet the DentaSmart Team - Experts in AI-Powered Dental Care"
+        description="Our team of dentists, engineers, and innovators are dedicated to making dental care simple, transparent, and accessible. Learn more about the experts behind DentaSmart."
+        canonical="https://dentasmart.ai/team"
+      />
       <Navigation />
 
       {/* Hero Section - Clean & Professional */}

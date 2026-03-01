@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { BenefitsCarousel } from "@/components/BenefitsCarousel";
@@ -107,6 +108,11 @@ export default function FAQs() {
 
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
+      <SEO
+        title="Frequently Asked Questions - DentaSmart"
+        description="Find answers to common questions about DentaSmart. Learn about getting started, photos and X-rays, accuracy and safety, privacy, pricing, and your relationship with your dentist."
+        canonical="https://dentasmart.ai/faqs"
+      />
       <Navigation />
 
       {/* Hero Section - Calm & Clear with Image */}

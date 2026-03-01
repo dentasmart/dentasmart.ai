@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { DownloadSection } from "@/components/DownloadSection";
 
 const termsContent = `
@@ -205,6 +206,11 @@ support@dentasmart.ai
 export default function TermsOfService() {
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
+      <SEO
+        title="Terms of Service - DentaSmart"
+        description="Read the Terms of Service for DentaSmart. Understand the legal terms and conditions for using our website and services."
+        canonical="https://dentasmart.ai/terms-of-service"
+      />
       <Navigation />
       
       <main className="flex-grow pt-32 pb-24">

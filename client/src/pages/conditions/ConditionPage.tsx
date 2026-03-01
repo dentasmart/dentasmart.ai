@@ -5,10 +5,12 @@ import { DownloadSection } from "@/components/DownloadSection";
 import { BlogCTABanner } from "@/components/BlogCTABanner";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, AlertTriangle, CheckCircle, ChevronDown, ChevronUp, Shield } from "lucide-react";
+import { ArrowLeft, ArrowRight, AlertTriangle, CheckCircle, ChevronDown, ChevronUp, Shield, MessageCircleQuestion, ClipboardList } from "lucide-react";
 import { Link, useParams } from "wouter";
 import { useState } from "react";
 import { conditionsData } from "@/data/conditions";
+import { aeoConditions } from "@/data/aeoContent";
+import { breadcrumbSchema, medicalWebPageSchema, faqPageSchema } from "@/lib/schema";
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
@@ -33,6 +35,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 export default function ConditionPage() {
   const { slug } = useParams<{ slug: string }>();
   const condition = slug ? conditionsData[slug] : null;
+  const aeo = slug ? aeoConditions[slug] : null;
 
   if (!condition) {
     return (
@@ -62,6 +65,22 @@ export default function ConditionPage() {
         description={condition.metaDescription}
         canonical={`https://dentasmart.ai/conditions/${condition.slug}`}
         keywords={[condition.primaryKeyword, ...condition.secondaryKeywords].join(", ")}
+        jsonLd={[
+          breadcrumbSchema([
+            { name: "Home", url: "/" },
+            { name: "Conditions", url: "/conditions" },
+            { name: condition.title, url: `/conditions/${condition.slug}` },
+          ]),
+          medicalWebPageSchema({
+            name: condition.title,
+            description: condition.metaDescription,
+            url: `/conditions/${condition.slug}`,
+            lastReviewed: condition.lastReviewed,
+            reviewedBy: condition.reviewedBy,
+            reviewedByCredentials: condition.reviewedByCredentials,
+          }),
+          faqPageSchema(condition.faqs),
+        ]}
       />
       <Navigation />
 
@@ -94,6 +113,18 @@ export default function ConditionPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* In One Sentence - GEO citable micro-block */}
+      {aeo && (
+        <section className="py-4 bg-stone-50 border-b border-stone-200">
+          <div className="container px-4 mx-auto max-w-3xl">
+            <p className="text-stone-700 font-light leading-relaxed italic">
+              <span className="font-medium text-stone-900 not-italic">In one sentence:</span>{" "}
+              {aeo.inOneSentence}
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* Direct Answer Box (for GEO/AI snippets) */}
       <section className="py-8 bg-primary/5 border-b border-primary/10">
@@ -180,6 +211,48 @@ export default function ConditionPage() {
           </div>
         </div>
       </section>
+
+      {/* What to Do Today */}
+      {aeo && (
+        <section className="py-8 bg-white">
+          <div className="container px-4 mx-auto max-w-3xl">
+            <div className="flex items-center gap-3 mb-6">
+              <ClipboardList className="w-6 h-6 text-primary" />
+              <h2 className="text-2xl font-medium text-black">What to Do Today</h2>
+            </div>
+            <div className="space-y-3">
+              {aeo.whatToDoToday.map((step, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-sm font-medium text-primary">{idx + 1}</span>
+                  </div>
+                  <p className="text-stone-700 font-light">{step}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Questions to Ask Your Dentist */}
+      {aeo && (
+        <section className="py-8 bg-stone-50">
+          <div className="container px-4 mx-auto max-w-3xl">
+            <div className="flex items-center gap-3 mb-6">
+              <MessageCircleQuestion className="w-6 h-6 text-primary" />
+              <h2 className="text-2xl font-medium text-black">Questions to Ask Your Dentist</h2>
+            </div>
+            <div className="space-y-3">
+              {aeo.dentistQuestions.map((q, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  <ArrowRight className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                  <p className="text-stone-700 font-light">{q}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Key Takeaways */}
       <section className="py-8 bg-white">
@@ -277,49 +350,7 @@ export default function ConditionPage() {
       <Footer />
       <BlogCTABanner />
 
-      {/* FAQPage Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: condition.faqs.map((faq) => ({
-              "@type": "Question",
-              name: faq.question,
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: faq.answer,
-              },
-            })),
-          }),
-        }}
-      />
 
-      {/* MedicalWebPage Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "MedicalWebPage",
-            name: condition.title,
-            description: condition.metaDescription,
-            url: `https://dentasmart.ai/conditions/${condition.slug}`,
-            lastReviewed: condition.lastReviewed,
-            reviewedBy: {
-              "@type": "Person",
-              name: condition.reviewedBy,
-              jobTitle: condition.reviewedByCredentials,
-            },
-            publisher: {
-              "@type": "Organization",
-              name: "DentaSmart",
-              url: "https://dentasmart.ai",
-            },
-          }),
-        }}
-      />
     </div>
   );
 }

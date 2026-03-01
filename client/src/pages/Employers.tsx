@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { BenefitsCarousel } from "@/components/BenefitsCarousel";
 import { TrendingDown, Users, ShieldCheck } from "lucide-react";
@@ -15,6 +16,11 @@ export default function Employers() {
 
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
+      <SEO
+        title="DentaSmart for Employers - Reduce Dental Costs & Boost Employee Wellness"
+        description="Help your employees take control of their dental health with AI-powered insights. Reduce emergency dental costs and improve workplace wellness."
+        canonical="https://dentasmart.ai/employers"
+      />
       <DemoRequestModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
       <Navigation />
 

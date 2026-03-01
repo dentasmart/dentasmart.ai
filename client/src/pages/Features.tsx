@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { DownloadSection } from "@/components/DownloadSection";
 import { BenefitsCarousel } from "@/components/BenefitsCarousel";
 import { Lock, Check } from "lucide-react";
@@ -84,6 +85,11 @@ export default function Features() {
 
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
+      <SEO
+        title="DentaSmart Features - Understand Your Oral Health"
+        description="Explore DentaSmart's powerful features, including AI-powered X-ray analysis, personalized oral health recommendations, and progress tracking. Take control of your dental health today."
+        canonical="https://dentasmart.ai/features"
+      />
       <Navigation />
 
       {/* Hero Section - Full Background Image with Overlay */}

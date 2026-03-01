@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import HowItWorksHero from "@/components/HowItWorksHero";
 import { DownloadSection } from "@/components/DownloadSection";
@@ -11,6 +12,11 @@ import { Link } from "wouter";
 export default function HowItWorks() {
   return (
     <div className="min-h-screen flex flex-col bg-white font-sans text-foreground selection:bg-primary/20">
+      <SEO
+        title="How DentaSmart Works - AI Dental Analysis in 4 Simple Steps"
+        description="Learn how DentaSmart's AI-powered platform analyzes your dental photos to provide an oral health score, identify issues, and create a personalized care plan."
+        canonical="https://dentasmart.ai/how-it-works"
+      />
       <Navigation />
 
       {/* Hero Section (New StoryBrand) */}

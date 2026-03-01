@@ -57,6 +57,7 @@ export default function Stories() {
       <SEO 
         title="Real Stories, Real Savings - DentaSmart" 
         description="Read how DentaSmart has helped thousands of people save money and gain confidence in their dental care."
+        canonical="https://dentasmart.ai/stories"
       />
       <Navigation />
 
