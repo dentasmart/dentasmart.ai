@@ -462,3 +462,11 @@
 - [x] Phase 3: Added cache headers (public, max-age=0, s-maxage=300, must-revalidate)
 - [ ] Phase 4: Validate /sitemap-custom.xml in production after publish
 - [ ] Phase 5: Submit /sitemap-custom.xml in Google Search Console
+
+# Sitemap Fix: Explicit Routes Approach - Mar 1, 2026
+- [x] Add all 118 pages as explicit static string literal routes in App.tsx for platform sitemap auto-generation
+- [x] Keep admin routes using ADMIN_ROUTES constant (hidden from platform scanner)
+- [x] Keep dynamic catch-all routes for new content not yet in explicit list
+- [x] Verify 118 static paths detected (no admin, no /404)
+- [x] All 61 tests passing
+- [ ] Checkpoint, publish, and validate production sitemap at https://dentasmart.ai/sitemap.xml

@@ -59,42 +59,147 @@ function Router() {
   return (
     <Suspense fallback={<PageLoader />}>
       <Switch>
-        <Route path={"/"} component={Home} />
-        <Route path={"/how-it-works"} component={HowItWorks} />
-        <Route path={"/features"} component={Features} />
-        <Route path={"/pricing"} component={Pricing} />
-        <Route path={"/employers"} component={Employers} />
+        {/* ===== STATIC PAGES ===== */}
+        <Route path="/" component={Home} />
+        <Route path="/how-it-works" component={HowItWorks} />
+        <Route path="/features" component={Features} />
+        <Route path="/pricing" component={Pricing} />
+        <Route path="/employers" component={Employers} />
         <Route path="/team" component={Team} />
         <Route path="/oral-health-hub" component={OralHealthHub} />
-        <Route path="/oral-health-hub/:id" component={Article} />
         <Route path="/faqs" component={FAQs} />
         <Route path="/privacy-policy" component={PrivacyPolicy} />
         <Route path="/terms-of-service" component={TermsOfService} />
         <Route path="/stories" component={Stories} />
-
-        {/* Conversion pages */}
         <Route path="/download" component={Download} />
         <Route path="/instant-scan" component={InstantScan} />
         <Route path="/photo-guide" component={PhotoGuide} />
-
-        {/* Hub category pages */}
         <Route path="/hub" component={OralHealthHub} />
-        <Route path="/hub/:category" component={HubCategory} />
-
-        {/* Conditions, Symptoms, Guides (SEO content pages) */}
         <Route path="/conditions" component={ConditionsIndex} />
-        <Route path="/conditions/:slug" component={ConditionPage} />
         <Route path="/symptoms" component={SymptomsIndex} />
-        <Route path="/symptoms/:slug" component={SymptomPage} />
         <Route path="/guides" component={GuidesIndex} />
-        <Route path="/guides/:slug" component={GuidePage} />
-
-        {/* GEO pages */}
         <Route path="/answers" component={Answers} />
-        <Route path="/compare/:slug" component={ComparePage} />
         <Route path="/find-a-dentist" component={FindADentist} />
 
-        {/* Admin routes - paths defined via constants to exclude from platform sitemap */}
+        {/* ===== EXPLICIT CONDITION PAGES (for sitemap detection) ===== */}
+        <Route path="/conditions/toothache" component={ConditionPage} />
+        <Route path="/conditions/cavities" component={ConditionPage} />
+        <Route path="/conditions/gum-disease" component={ConditionPage} />
+        <Route path="/conditions/wisdom-teeth-pain" component={ConditionPage} />
+        <Route path="/conditions/teeth-whitening" component={ConditionPage} />
+        <Route path="/conditions/sensitive-teeth" component={ConditionPage} />
+        <Route path="/conditions/cracked-tooth" component={ConditionPage} />
+        <Route path="/conditions/dental-abscess" component={ConditionPage} />
+        <Route path="/conditions/root-canal" component={ConditionPage} />
+        <Route path="/conditions/dental-crown" component={ConditionPage} />
+        <Route path="/conditions/teeth-grinding" component={ConditionPage} />
+        <Route path="/conditions/dental-implants" component={ConditionPage} />
+        <Route path="/conditions/dry-socket" component={ConditionPage} />
+        <Route path="/conditions/oral-thrush" component={ConditionPage} />
+        <Route path="/conditions/tmj-disorder" component={ConditionPage} />
+
+        {/* ===== EXPLICIT SYMPTOM PAGES (for sitemap detection) ===== */}
+        <Route path="/symptoms/tooth-pain-when-biting" component={SymptomPage} />
+        <Route path="/symptoms/bleeding-gums" component={SymptomPage} />
+        <Route path="/symptoms/tooth-sensitivity" component={SymptomPage} />
+        <Route path="/symptoms/jaw-pain" component={SymptomPage} />
+        <Route path="/symptoms/bad-breath" component={SymptomPage} />
+        <Route path="/symptoms/swollen-gums" component={SymptomPage} />
+        <Route path="/symptoms/loose-tooth" component={SymptomPage} />
+        <Route path="/symptoms/dry-mouth" component={SymptomPage} />
+        <Route path="/symptoms/tooth-discoloration" component={SymptomPage} />
+        <Route path="/symptoms/mouth-sores" component={SymptomPage} />
+
+        {/* ===== EXPLICIT GUIDE PAGES (for sitemap detection) ===== */}
+        <Route path="/guides/brushing-guide" component={GuidePage} />
+        <Route path="/guides/flossing-guide" component={GuidePage} />
+        <Route path="/guides/dental-visit-guide" component={GuidePage} />
+
+        {/* ===== EXPLICIT COMPARE PAGES (for sitemap detection) ===== */}
+        <Route path="/compare/dentasmart-vs-chatgpt-dental" component={ComparePage} />
+        <Route path="/compare/dentasmart-vs-teledentistry" component={ComparePage} />
+        <Route path="/compare/dentasmart-vs-dental-insurance" component={ComparePage} />
+
+        {/* ===== EXPLICIT HUB CATEGORY PAGES (for sitemap detection) ===== */}
+        <Route path="/hub/understanding-dental-conditions" component={HubCategory} />
+        <Route path="/hub/treatment-guides" component={HubCategory} />
+        <Route path="/hub/prevention-tips" component={HubCategory} />
+        <Route path="/hub/dental-technology" component={HubCategory} />
+        <Route path="/hub/cost-and-insurance" component={HubCategory} />
+
+        {/* ===== EXPLICIT BLOG POST PAGES (for sitemap detection) ===== */}
+        <Route path="/oral-health-hub/dental-emergency-what-to-do" component={Article} />
+        <Route path="/oral-health-hub/pregnancy-dental-health" component={Article} />
+        <Route path="/oral-health-hub/brushing-teeth-prevent-dementia" component={Article} />
+        <Route path="/oral-health-hub/electric-vs-manual-toothbrush" component={Article} />
+        <Route path="/oral-health-hub/at-what-age-should-my-child-first-see-a-dentist" component={Article} />
+        <Route path="/oral-health-hub/how-do-i-know-its-time-for-dental-implants" component={Article} />
+        <Route path="/oral-health-hub/gums-hurt-when-flossing" component={Article} />
+        <Route path="/oral-health-hub/swollen-gums-around-one-tooth" component={Article} />
+        <Route path="/oral-health-hub/black-line-on-tooth" component={Article} />
+        <Route path="/oral-health-hub/gum-boil" component={Article} />
+        <Route path="/oral-health-hub/mouth-ulcer-not-healing" component={Article} />
+        <Route path="/oral-health-hub/loose-tooth-adults" component={Article} />
+        <Route path="/oral-health-hub/filling-feels-high-pain-biting" component={Article} />
+        <Route path="/oral-health-hub/tooth-hurts-cold-water" component={Article} />
+        <Route path="/oral-health-hub/crown-pain-sensitivity" component={Article} />
+        <Route path="/oral-health-hub/bone-loss-dental-xray" component={Article} />
+        <Route path="/oral-health-hub/teeth-grinding-bruxism" component={Article} />
+        <Route path="/oral-health-hub/jaw-pain-tmj" component={Article} />
+        <Route path="/oral-health-hub/canker-sore-vs-cold-sore" component={Article} />
+        <Route path="/oral-health-hub/white-spots-on-teeth" component={Article} />
+        <Route path="/oral-health-hub/root-canal-symptoms" component={Article} />
+        <Route path="/oral-health-hub/bad-breath-halitosis" component={Article} />
+        <Route path="/oral-health-hub/wisdom-tooth-pain" component={Article} />
+        <Route path="/oral-health-hub/tooth-abscess-infection" component={Article} />
+        <Route path="/oral-health-hub/cracked-tooth-symptoms" component={Article} />
+        <Route path="/oral-health-hub/cavity-symptoms-tooth-decay" component={Article} />
+        <Route path="/oral-health-hub/gum-recession" component={Article} />
+        <Route path="/oral-health-hub/bleeding-gums" component={Article} />
+        <Route path="/oral-health-hub/tooth-sensitivity-cold-hot" component={Article} />
+        <Route path="/oral-health-hub/pain-when-biting-or-chewing" component={Article} />
+        <Route path="/oral-health-hub/tooth-pain-toothache" component={Article} />
+        <Route path="/oral-health-hub/how-can-ai-detect-a-cavity-in-my-dental-xray" component={Article} />
+        <Route path="/oral-health-hub/maximize-benefits" component={Article} />
+        <Route path="/oral-health-hub/employer-dental-plans" component={Article} />
+        <Route path="/oral-health-hub/no-insurance-options" component={Article} />
+        <Route path="/oral-health-hub/cosmetic-vs-necessary" component={Article} />
+        <Route path="/oral-health-hub/pre-authorization" component={Article} />
+        <Route path="/oral-health-hub/waiting-periods" component={Article} />
+        <Route path="/oral-health-hub/in-network-confusion" component={Article} />
+        <Route path="/oral-health-hub/insurance-limitations" component={Article} />
+        <Route path="/oral-health-hub/denied-claims" component={Article} />
+        <Route path="/oral-health-hub/misleading-insurance" component={Article} />
+        <Route path="/oral-health-hub/enamel-erosion" component={Article} />
+        <Route path="/oral-health-hub/missing-teeth" component={Article} />
+        <Route path="/oral-health-hub/cracked-tooth" component={Article} />
+        <Route path="/oral-health-hub/bad-breath" component={Article} />
+        <Route path="/oral-health-hub/stained-teeth" component={Article} />
+        <Route path="/oral-health-hub/teeth-grinding" component={Article} />
+        <Route path="/oral-health-hub/wisdom-teeth-confusion" component={Article} />
+        <Route path="/oral-health-hub/tooth-sensitivity" component={Article} />
+        <Route path="/oral-health-hub/silent-gum-disease" component={Article} />
+        <Route path="/oral-health-hub/undetected-cavities" component={Article} />
+        <Route path="/oral-health-hub/choosing-right-dentist" component={Article} />
+        <Route path="/oral-health-hub/communication-gap" component={Article} />
+        <Route path="/oral-health-hub/preventive-care-gap" component={Article} />
+        <Route path="/oral-health-hub/overtreatment-concerns" component={Article} />
+        <Route path="/oral-health-hub/fear-of-dentist" component={Article} />
+        <Route path="/oral-health-hub/cost-transparency" component={Article} />
+        <Route path="/oral-health-hub/second-opinions" component={Article} />
+        <Route path="/oral-health-hub/questioning-recommendations" component={Article} />
+        <Route path="/oral-health-hub/rushed-decisions" component={Article} />
+        <Route path="/oral-health-hub/unclear-diagnoses" component={Article} />
+
+        {/* ===== DYNAMIC CATCH-ALL ROUTES (for new content not yet in explicit list) ===== */}
+        <Route path="/oral-health-hub/:id" component={Article} />
+        <Route path="/conditions/:slug" component={ConditionPage} />
+        <Route path="/symptoms/:slug" component={SymptomPage} />
+        <Route path="/guides/:slug" component={GuidePage} />
+        <Route path="/hub/:category" component={HubCategory} />
+        <Route path="/compare/:slug" component={ComparePage} />
+
+        {/* ===== ADMIN ROUTES (paths via constants to exclude from platform sitemap) ===== */}
         <Route path={ADMIN_ROUTES.login} component={AdminLogin} />
         <Route path={ADMIN_ROUTES.dashboard} component={AdminDashboard} />
         <Route path={ADMIN_ROUTES.newPost} component={AdminBlogEditor} />
@@ -102,7 +207,7 @@ function Router() {
         <Route path={ADMIN_ROUTES.seoSetup} component={AdminSeoSetup} />
         <Route path={ADMIN_ROUTES.categories} component={AdminCategories} />
 
-        <Route path={"/404"} component={NotFound} />
+        <Route path="/404" component={NotFound} />
         <Route component={NotFound} />
       </Switch>
     </Suspense>
