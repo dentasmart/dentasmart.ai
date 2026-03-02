@@ -20,11 +20,8 @@ import FAQs from "@/pages/FAQs";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
 import Stories from "@/pages/Stories";
-import AdminLogin from "@/pages/AdminLogin";
-import AdminDashboard from "@/pages/AdminDashboard";
-import AdminBlogEditor from "@/pages/AdminBlogEditor";
 import { lazy, Suspense } from "react";
-import { ADMIN_ROUTES } from "./adminRoutes";
+import AdminRouter from "@/components/AdminRouter";
 
 // Lazy-loaded new pages
 const Download = lazy(() => import("./pages/Download"));
@@ -34,8 +31,7 @@ const Answers = lazy(() => import("./pages/Answers"));
 const ComparePage = lazy(() => import("./pages/ComparePage"));
 const FindADentist = lazy(() => import("./pages/FindADentist"));
 const HubCategory = lazy(() => import("./pages/HubCategory"));
-const AdminSeoSetup = lazy(() => import("./pages/AdminSeoSetup"));
-const AdminCategories = lazy(() => import("./pages/AdminCategories"));
+
 
 // SEO content pages
 const ConditionsIndex = lazy(() => import("./pages/conditions/ConditionsIndex"));
@@ -199,14 +195,6 @@ function Router() {
         <Route path="/hub/:category" component={HubCategory} />
         <Route path="/compare/:slug" component={ComparePage} />
 
-        {/* ===== ADMIN ROUTES (paths via constants to exclude from platform sitemap) ===== */}
-        <Route path={ADMIN_ROUTES.login} component={AdminLogin} />
-        <Route path={ADMIN_ROUTES.dashboard} component={AdminDashboard} />
-        <Route path={ADMIN_ROUTES.newPost} component={AdminBlogEditor} />
-        <Route path={ADMIN_ROUTES.editPost} component={AdminBlogEditor} />
-        <Route path={ADMIN_ROUTES.seoSetup} component={AdminSeoSetup} />
-        <Route path={ADMIN_ROUTES.categories} component={AdminCategories} />
-
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />
       </Switch>
@@ -229,6 +217,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <ScrollToTop />
+          <AdminRouter />
           <Router />
         </TooltipProvider>
       </ThemeProvider>

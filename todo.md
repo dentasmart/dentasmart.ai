@@ -470,3 +470,9 @@
 - [x] Verify 118 static paths detected (no admin, no /404)
 - [x] All 61 tests passing
 - [ ] Checkpoint, publish, and validate production sitemap at https://dentasmart.ai/sitemap.xml
+
+# Sitemap Fix: Remove Admin Routes & XML Format - Mar 2, 2026
+- [x] Fix admin routes still appearing in platform-generated sitemap (ADMIN_ROUTES constant didn't work)
+- [x] Investigate alternative method: moved admin routes to separate AdminRouter component with runtime-constructed paths
+- [x] Verified proper XML formatting of sitemap (was correct, browser just renders without styling)
+- [ ] Checkpoint, publish, validate
