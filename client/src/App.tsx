@@ -21,7 +21,7 @@ import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import TermsOfService from "@/pages/TermsOfService";
 import Stories from "@/pages/Stories";
 import { lazy, Suspense } from "react";
-import AdminRouter from "@/components/AdminRouter";
+import AdminRouter, { useIsAdminRoute } from "@/components/AdminRouter";
 
 // Lazy-loaded new pages
 const Download = lazy(() => import("./pages/Download"));
@@ -202,6 +202,18 @@ function Router() {
   );
 }
 
+function AppContent() {
+  const isAdmin = useIsAdminRoute();
+
+  return (
+    <>
+      <Toaster />
+      <ScrollToTop />
+      {isAdmin ? <AdminRouter /> : <Router />}
+    </>
+  );
+}
+
 function App() {
   useEffect(() => {
     // Initialize GA4 if measurement ID is configured
@@ -215,10 +227,7 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
-          <Toaster />
-          <ScrollToTop />
-          <AdminRouter />
-          <Router />
+          <AppContent />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

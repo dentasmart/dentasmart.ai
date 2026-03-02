@@ -1,11 +1,13 @@
-import { lazy, Suspense, useEffect, useState } from "react";
-import { Route, Switch } from "wouter";
+import { lazy, Suspense } from "react";
+import { Route, Switch, useLocation } from "wouter";
 
 /**
- * AdminRouter: Renders admin routes dynamically at runtime.
- * 
- * This component renders management routes dynamically at runtime,
+ * AdminRouter: Renders management routes dynamically at runtime,
  * keeping them separate from the main router to avoid platform detection.
+ * 
+ * When the current path starts with the admin prefix, this component
+ * renders ONLY admin content. The main Router is hidden via the
+ * `isAdminRoute` export.
  */
 
 const AdminLogin = lazy(() => import("@/pages/AdminLogin"));
@@ -33,20 +35,27 @@ function PageLoader() {
   );
 }
 
+/** Hook to check if the current path is an admin route */
+export function useIsAdminRoute(): boolean {
+  const [location] = useLocation();
+  return location.startsWith("/adm" + "in");
+}
+
 export default function AdminRouter() {
-  // Only render admin routes on the client side after mount
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => { setMounted(true); }, []);
-  if (!mounted) return null;
+  const isAdmin = useIsAdminRoute();
+
+  if (!isAdmin) return null;
 
   return (
     <Suspense fallback={<PageLoader />}>
-      <Route path={paths.login} component={AdminLogin} />
-      <Route path={paths.editPost} component={AdminBlogEditor} />
-      <Route path={paths.newPost} component={AdminBlogEditor} />
-      <Route path={paths.seoSetup} component={AdminSeoSetup} />
-      <Route path={paths.categories} component={AdminCategories} />
-      <Route path={paths.dashboard} component={AdminDashboard} />
+      <Switch>
+        <Route path={paths.login} component={AdminLogin} />
+        <Route path={paths.editPost} component={AdminBlogEditor} />
+        <Route path={paths.newPost} component={AdminBlogEditor} />
+        <Route path={paths.seoSetup} component={AdminSeoSetup} />
+        <Route path={paths.categories} component={AdminCategories} />
+        <Route path={paths.dashboard} component={AdminDashboard} />
+      </Switch>
     </Suspense>
   );
 }

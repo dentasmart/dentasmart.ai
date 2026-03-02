@@ -469,10 +469,15 @@
 - [x] Keep dynamic catch-all routes for new content not yet in explicit list
 - [x] Verify 118 static paths detected (no admin, no /404)
 - [x] All 61 tests passing
-- [ ] Checkpoint, publish, and validate production sitemap at https://dentasmart.ai/sitemap.xml
+- [x] Checkpoint, publish, and validate production sitemap at https://dentasmart.ai/sitemap.xml
 
 # Sitemap Fix: Remove Admin Routes & XML Format - Mar 2, 2026
 - [x] Fix admin routes still appearing in platform-generated sitemap (ADMIN_ROUTES constant didn't work)
 - [x] Investigate alternative method: moved admin routes to separate AdminRouter component with runtime-constructed paths
 - [x] Verified proper XML formatting of sitemap (was correct, browser just renders without styling)
-- [ ] Checkpoint, publish, validate
+- [x] Checkpoint, publish, validate — confirmed 118 public URLs, 0 admin routes, proper XML format
+
+# Bug Fix: Admin Portal Broken - Mar 2, 2026
+- [x] Fix admin pages showing public Navigation, Footer, and 404 content underneath admin content
+- [x] AdminRouter renders exclusively when on admin paths using useIsAdminRoute hook
+- [x] Verified admin dashboard, login all work correctly (clean layout, no public nav/footer/404)
