@@ -60,10 +60,10 @@ export default function GuidesIndex() {
                     {guide.steps.length} Steps
                   </div>
                   <h2 className="text-xl font-medium text-black mb-2">{guide.primaryKeyword.split(' ').map((w: string) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}</h2>
-                  <p className="text-stone-600 font-light text-sm line-clamp-3 mb-4">
+                  <p className="text-stone-600 font-light text-base leading-relaxed line-clamp-3 mb-4">
                     {guide.heroSubheading}
                   </p>
-                  <span className="inline-flex items-center gap-1 text-primary text-sm font-medium">
+                  <span className="inline-flex items-center gap-2 text-primary text-base font-medium">
                     Read guide <ArrowRight className="w-3 h-3" />
                   </span>
                 </motion.div>

@@ -6,7 +6,7 @@ import { BlogCTABanner } from "@/components/BlogCTABanner";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, AlertTriangle, CheckCircle, ChevronDown, ChevronUp, Shield, MessageCircleQuestion, ClipboardList } from "lucide-react";
-import { Link, useParams } from "wouter";
+import { Link, useRoute } from "wouter";
 import { useState } from "react";
 import { conditionsData } from "@/data/conditions";
 import { aeoConditions } from "@/data/aeoContent";
@@ -33,7 +33,8 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 }
 
 export default function ConditionPage() {
-  const { slug } = useParams<{ slug: string }>();
+  const [, params] = useRoute("/conditions/:slug");
+  const slug = params?.slug || "";
   const condition = slug ? conditionsData[slug] : null;
   const aeo = slug ? aeoConditions[slug] : null;
 

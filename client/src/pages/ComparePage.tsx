@@ -6,7 +6,7 @@ import { trackEvent } from "@/lib/analytics";
 import { motion } from "framer-motion";
 import { CheckCircle, XCircle, ArrowRight } from "lucide-react";
 import { useEffect } from "react";
-import { useParams } from "wouter";
+import { useRoute } from "wouter";
 
 interface CompareData {
   title: string;
@@ -85,7 +85,8 @@ const compareData: Record<string, CompareData> = {
 };
 
 export default function ComparePage() {
-  const { slug } = useParams<{ slug: string }>();
+  const [, params] = useRoute("/compare/:slug");
+  const slug = params?.slug || "";
   const data = slug ? compareData[slug] : null;
 
   useEffect(() => {

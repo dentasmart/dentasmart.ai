@@ -481,3 +481,13 @@
 - [x] Fix admin pages showing public Navigation, Footer, and 404 content underneath admin content
 - [x] AdminRouter renders exclusively when on admin paths using useIsAdminRoute hook
 - [x] Verified admin dashboard, login all work correctly (clean layout, no public nav/footer/404)
+
+# Bug Fix: Symptom/Condition/Guide Detail Pages + Content Rewrite - Mar 3, 2026
+- [x] Fix symptom detail pages showing "Symptom Not Found" — changed useParams() to useRoute() since explicit static routes don't have :slug param
+- [x] Fix condition detail pages — same useRoute() fix applied
+- [x] Fix guide detail pages — same useRoute() fix applied
+- [x] Fix compare pages — same useRoute() fix applied
+- [x] Increase font sizes on listing pages (/symptoms, /conditions, /guides) — text-sm to text-base
+- [x] Rewrite all 10 symptom entries to avoid AI-detectable writing patterns (conversational, varied sentences, contractions, 8th grade level)
+- [x] Rewrite all 15 condition entries to avoid AI-detectable writing patterns
+- [x] Rewrite all 3 guide entries to avoid AI-detectable writing patterns

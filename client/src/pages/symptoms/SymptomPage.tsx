@@ -6,7 +6,7 @@ import { BlogCTABanner } from "@/components/BlogCTABanner";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, AlertTriangle, CheckCircle, ChevronDown, ChevronUp, Shield, MessageCircleQuestion } from "lucide-react";
-import { Link, useParams } from "wouter";
+import { Link, useRoute } from "wouter";
 import { useState } from "react";
 import { symptomsData } from "@/data/symptoms";
 import { aeoSymptoms } from "@/data/aeoContent";
@@ -33,7 +33,8 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 }
 
 export default function SymptomPage() {
-  const { slug } = useParams<{ slug: string }>();
+  const [, params] = useRoute("/symptoms/:slug");
+  const slug = params?.slug || "";
   const symptom = slug ? symptomsData[slug] : null;
   const aeo = slug ? aeoSymptoms[slug] : null;
 

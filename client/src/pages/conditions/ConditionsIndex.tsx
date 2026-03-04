@@ -57,10 +57,10 @@ export default function ConditionsIndex() {
                   className="bg-stone-50 rounded-2xl p-6 border border-stone-100 hover:border-primary/30 hover:shadow-md transition-all cursor-pointer h-full"
                 >
                   <h2 className="text-xl font-medium text-black mb-2">{condition.primaryKeyword.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}</h2>
-                  <p className="text-stone-600 font-light text-sm line-clamp-3 mb-4">
+                  <p className="text-stone-600 font-light text-base leading-relaxed line-clamp-3 mb-4">
                     {condition.heroSubheading}
                   </p>
-                  <span className="inline-flex items-center gap-1 text-primary text-sm font-medium">
+                  <span className="inline-flex items-center gap-2 text-primary text-base font-medium">
                     Learn more <ArrowRight className="w-3 h-3" />
                   </span>
                 </motion.div>
