@@ -555,3 +555,28 @@
 - [x] Remove social proof row (avatar circles + "Trusted by 50,000+ users" + star rating) from hero section — only 2 reviews, pushes hero text under nav
 - [x] Fix CTA buttons overlapping — "Get My Oral Health Score" and "Try Free Symptom Check" overlap each other
 - [x] Fix "Try Free Symptom Check" CTA linking to /symptom-quiz which gives 404 — page not built yet, redirect to download section
+
+# Symptom Quiz Page - Mar 15, 2026
+- [ ] Create SymptomQuiz.tsx page component with 8 interactive questions
+- [ ] Build step-by-step quiz UI with progress bar and animations
+- [ ] Create personalized results page based on answers (risk level, recommendations, matched conditions)
+- [ ] Add email capture form before showing full results
+- [ ] Create backend tRPC endpoint to save quiz submissions and email leads
+- [ ] Add quiz_submissions database table for lead capture
+- [ ] Wire /symptom-quiz route in App.tsx as explicit static route
+- [ ] Update homepage "Try Free Symptom Check" CTA to link to /symptom-quiz
+- [ ] Add quiz CTA to symptom pages and blog posts
+- [ ] Add SEO metadata and JSON-LD schema to quiz page
+- [ ] Write vitest tests for quiz submission endpoint
+
+# Admin Leads Management - Mar 15, 2026
+- [x] Create unified leads view in admin that shows all lead sources
+- [x] Show quiz submissions with risk level, matched conditions, and answers
+- [x] Show Android waitlist signups
+- [x] Add lead source categorization (quiz, android-waitlist, general)
+- [x] Add filtering by source, date range, risk level
+- [x] Add search by email
+- [x] Add CSV export for CRM import
+- [x] Add lead count summary cards (total, by source, by risk level)
+- [x] Create backend tRPC endpoints for leads listing, filtering, and export
+- [x] Write vitest tests for leads endpoints

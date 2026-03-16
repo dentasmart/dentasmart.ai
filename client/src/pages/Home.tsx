@@ -79,19 +79,15 @@ export default function Home() {
                 >
                   Get My Oral Health Score
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-8 py-7 text-lg font-medium transition-all duration-300 cursor-pointer relative z-20"
-                  onClick={() => {
-                    const element = document.getElementById('download-cta');
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                >
-                  Try Free Symptom Check
-                </Button>
+                <Link href="/symptom-quiz">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-8 py-7 text-lg font-medium transition-all duration-300 cursor-pointer relative z-20"
+                  >
+                    Try Free Symptom Check
+                  </Button>
+                </Link>
               </div>
             </motion.div>
 

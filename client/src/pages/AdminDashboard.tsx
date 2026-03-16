@@ -45,6 +45,7 @@ import {
   ChevronRight,
   ExternalLink,
   FolderTree,
+  Users,
 } from "lucide-react";
 import { toast } from "sonner";
 
@@ -306,6 +307,14 @@ export default function AdminDashboard() {
           >
             <FolderTree className="w-4 h-4 mr-2" />
             Categories
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => setLocation("/admin/leads")}
+            className="cursor-pointer border-stone-200"
+          >
+            <Users className="w-4 h-4 mr-2" />
+            Leads
           </Button>
           <Button
             onClick={() => setLocation("/admin/new")}

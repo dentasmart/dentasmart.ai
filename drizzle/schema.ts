@@ -136,3 +136,19 @@ export const blogCategories = mysqlTable("blog_categories", {
 
 export type BlogCategory = typeof blogCategories.$inferSelect;
 export type InsertBlogCategory = typeof blogCategories.$inferInsert;
+
+/**
+ * Quiz submissions table for symptom quiz lead capture.
+ * Stores email, answers, risk level, and matched conditions.
+ */
+export const quizSubmissions = mysqlTable("quiz_submissions", {
+  id: int("id").autoincrement().primaryKey(),
+  email: varchar("email", { length: 320 }),
+  answers: json("answers").notNull(), // Record<string, string>
+  riskLevel: mysqlEnum("riskLevel", ["low", "moderate", "high"]).notNull(),
+  matchedConditions: json("matchedConditions"), // string[]
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type QuizSubmission = typeof quizSubmissions.$inferSelect;
+export type InsertQuizSubmission = typeof quizSubmissions.$inferInsert;

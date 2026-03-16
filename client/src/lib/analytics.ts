@@ -29,6 +29,9 @@ export type AnalyticsEvent =
   | "answers_page_view"
   | "sticky_cta_click"
   | "demo_request_submit"
+  | "symptom_quiz_start"
+  | "symptom_quiz_complete"
+  | "symptom_quiz_email_submit"
   | "page_view";
 
 export interface EventParams {

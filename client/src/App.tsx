@@ -31,6 +31,7 @@ const Answers = lazy(() => import("./pages/Answers"));
 const ComparePage = lazy(() => import("./pages/ComparePage"));
 const FindADentist = lazy(() => import("./pages/FindADentist"));
 const HubCategory = lazy(() => import("./pages/HubCategory"));
+const SymptomQuiz = lazy(() => import("./pages/SymptomQuiz"));
 
 
 // SEO content pages
@@ -79,6 +80,7 @@ function Router() {
         <Route path="/guides" component={GuidesIndex} />
         <Route path="/answers" component={Answers} />
         <Route path="/find-a-dentist" component={FindADentist} />
+        <Route path="/symptom-quiz" component={SymptomQuiz} />
 
         {/* ===== EXPLICIT CONDITION PAGES (for sitemap detection) ===== */}
         <Route path="/conditions/toothache" component={ConditionPage} />
