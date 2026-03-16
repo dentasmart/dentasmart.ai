@@ -12,6 +12,7 @@ export const quizRouter = router({
   submit: publicProcedure
     .input(
       z.object({
+        name: z.string().optional(),
         email: z.string().email().optional().or(z.literal("")),
         answers: z.record(z.string(), z.string()),
         riskLevel: z.enum(["low", "moderate", "high"]),
@@ -27,6 +28,7 @@ export const quizRouter = router({
 
       // Save to database
       await db.insert(quizSubmissions).values({
+        name: input.name && input.name.trim() !== "" ? input.name.trim() : null,
         email: input.email && input.email.trim() !== "" ? input.email.trim() : null,
         answers: input.answers,
         riskLevel: input.riskLevel,

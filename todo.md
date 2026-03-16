@@ -557,17 +557,17 @@
 - [x] Fix "Try Free Symptom Check" CTA linking to /symptom-quiz which gives 404 — page not built yet, redirect to download section
 
 # Symptom Quiz Page - Mar 15, 2026
-- [ ] Create SymptomQuiz.tsx page component with 8 interactive questions
-- [ ] Build step-by-step quiz UI with progress bar and animations
-- [ ] Create personalized results page based on answers (risk level, recommendations, matched conditions)
-- [ ] Add email capture form before showing full results
-- [ ] Create backend tRPC endpoint to save quiz submissions and email leads
-- [ ] Add quiz_submissions database table for lead capture
-- [ ] Wire /symptom-quiz route in App.tsx as explicit static route
-- [ ] Update homepage "Try Free Symptom Check" CTA to link to /symptom-quiz
+- [x] Create SymptomQuiz.tsx page component with 8 interactive questions
+- [x] Build step-by-step quiz UI with progress bar and animations
+- [x] Create personalized results page based on answers (risk level, recommendations, matched conditions)
+- [x] Add email capture form before showing full results
+- [x] Create backend tRPC endpoint to save quiz submissions and email leads
+- [x] Add quiz_submissions database table for lead capture
+- [x] Wire /symptom-quiz route in App.tsx as explicit static route
+- [x] Update homepage "Try Free Symptom Check" CTA to link to /symptom-quiz
 - [ ] Add quiz CTA to symptom pages and blog posts
 - [ ] Add SEO metadata and JSON-LD schema to quiz page
-- [ ] Write vitest tests for quiz submission endpoint
+- [x] Write vitest tests for quiz submission endpoint
 
 # Admin Leads Management - Mar 15, 2026
 - [x] Create unified leads view in admin that shows all lead sources
@@ -580,3 +580,15 @@
 - [x] Add lead count summary cards (total, by source, by risk level)
 - [x] Create backend tRPC endpoints for leads listing, filtering, and export
 - [x] Write vitest tests for leads endpoints
+
+# Leads Fixes - Mar 15, 2026
+- [x] Add name field to symptom quiz email capture form
+- [x] Add name column to quiz_submissions schema
+- [x] Update quiz submit endpoint to accept name
+- [x] Display name in Admin Leads table and detail dialog
+- [x] Fix Android waitlist leads not appearing (forms were only console.log, now wired to API)
+- [x] Create waitlist.joinAndroid tRPC endpoint with duplicate email check
+- [x] Wire AndroidEarlyAccess.tsx and AndroidEarlyAccessModal.tsx to call API
+- [x] Update CSV export to include name column
+- [x] Update leads search to also search by name
+- [x] Write vitest tests for waitlist endpoint

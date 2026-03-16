@@ -255,7 +255,7 @@ export default function AdminLeads() {
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400" />
             <Input
-              placeholder="Search by email..."
+              placeholder="Search by name or email..."
               value={search}
               onChange={(e) => {
                 setSearch(e.target.value);
@@ -320,8 +320,9 @@ export default function AdminLeads() {
               <Table>
                 <TableHeader>
                   <TableRow className="bg-stone-50/50">
+                    <TableHead className="font-semibold text-stone-700">Name</TableHead>
                     <TableHead className="font-semibold text-stone-700">Email</TableHead>
-                    <TableHead className="font-semibold text-stone-700">Source</TableHead>
+                    <TableHead className="font-semibold text-stone-700 hidden sm:table-cell">Source</TableHead>
                     <TableHead className="font-semibold text-stone-700 hidden md:table-cell">Risk Level</TableHead>
                     <TableHead className="font-semibold text-stone-700 hidden lg:table-cell">Conditions</TableHead>
                     <TableHead className="font-semibold text-stone-700 hidden md:table-cell">Date</TableHead>
@@ -334,15 +335,20 @@ export default function AdminLeads() {
                       <TableCell>
                         <div>
                           <p className="font-medium text-stone-900 group-hover:text-primary transition-colors">
-                            {lead.email || <span className="text-stone-400 italic">No email provided</span>}
+                            {lead.name || <span className="text-stone-400 italic">-</span>}
                           </p>
-                          <div className="md:hidden mt-1 flex gap-1 flex-wrap">
+                          <div className="sm:hidden mt-1 flex gap-1 flex-wrap">
                             {getSourceBadge(lead.source)}
                             {getRiskBadge(lead.riskLevel)}
                           </div>
                         </div>
                       </TableCell>
-                      <TableCell>{getSourceBadge(lead.source)}</TableCell>
+                      <TableCell>
+                        <p className="text-stone-700 text-sm">
+                          {lead.email || <span className="text-stone-400 italic">No email</span>}
+                        </p>
+                      </TableCell>
+                      <TableCell className="hidden sm:table-cell">{getSourceBadge(lead.source)}</TableCell>
                       <TableCell className="hidden md:table-cell">{getRiskBadge(lead.riskLevel)}</TableCell>
                       <TableCell className="hidden lg:table-cell">
                         {lead.matchedConditions && lead.matchedConditions.length > 0 ? (
@@ -437,15 +443,21 @@ export default function AdminLeads() {
           </DialogHeader>
           {selectedLead && (
             <div className="space-y-4">
-              {/* Email & Source */}
+              {/* Name, Email & Source */}
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-stone-500">Email</p>
+                  <p className="text-sm text-stone-500">Name</p>
                   <p className="font-medium text-stone-900">
-                    {selectedLead.email || <span className="text-stone-400 italic">Not provided</span>}
+                    {selectedLead.name || <span className="text-stone-400 italic">Not provided</span>}
                   </p>
                 </div>
                 {getSourceBadge(selectedLead.source)}
+              </div>
+              <div>
+                <p className="text-sm text-stone-500">Email</p>
+                <p className="font-medium text-stone-900">
+                  {selectedLead.email || <span className="text-stone-400 italic">Not provided</span>}
+                </p>
               </div>
 
               {/* Risk Level */}

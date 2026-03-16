@@ -66,6 +66,7 @@ export default function SymptomQuiz() {
   const [currentStep, setCurrentStep] = useState(0); // 0 = intro, 1-8 = questions, 9 = email, 10 = results
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [emailError, setEmailError] = useState("");
   const [result, setResult] = useState<QuizResult | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -126,6 +127,7 @@ export default function SymptomQuiz() {
     // Submit to backend
     try {
       await submitQuiz.mutateAsync({
+        name: name.trim() || undefined,
         email: email.trim(),
         answers,
         riskLevel: quizResult.level,
@@ -217,6 +219,8 @@ export default function SymptomQuiz() {
               transition={{ duration: 0.3 }}
             >
               <EmailCapture
+                name={name}
+                setName={setName}
                 email={email}
                 setEmail={setEmail}
                 emailError={emailError}
@@ -450,6 +454,8 @@ function QuestionStep({
 
 /* ─── Email Capture ──────────────────────────────────────────────────── */
 function EmailCapture({
+  name,
+  setName,
   email,
   setEmail,
   emailError,
@@ -458,6 +464,8 @@ function EmailCapture({
   isLoading,
   onBack,
 }: {
+  name: string;
+  setName: (v: string) => void;
   email: string;
   setEmail: (v: string) => void;
   emailError: string;
@@ -492,6 +500,15 @@ function EmailCapture({
           </div>
 
           <div className="space-y-4">
+            <div>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Your name"
+                className="w-full px-5 py-4 rounded-xl border-2 text-base transition-colors outline-none border-stone-200 focus:border-primary"
+              />
+            </div>
             <div>
               <input
                 type="email"

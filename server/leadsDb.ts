@@ -1,4 +1,4 @@
-import { eq, desc, sql, and, like, gte, lte } from "drizzle-orm";
+import { eq, desc, sql, and, like, gte, lte, or } from "drizzle-orm";
 import { getDb } from "./db";
 import { quizSubmissions, androidWaitlist } from "../drizzle/schema";
 
@@ -8,6 +8,7 @@ export type LeadRiskLevel = "low" | "moderate" | "high" | null;
 export interface UnifiedLead {
   id: number;
   source: LeadSource;
+  name: string | null;
   email: string | null;
   riskLevel: LeadRiskLevel;
   matchedConditions: string[];
@@ -44,7 +45,12 @@ export async function getLeads(filter: LeadsFilter): Promise<{ leads: UnifiedLea
   // Build conditions for quiz submissions
   const quizConditions: any[] = [];
   if (filter.search) {
-    quizConditions.push(like(quizSubmissions.email, `%${filter.search}%`));
+    quizConditions.push(
+      or(
+        like(quizSubmissions.email, `%${filter.search}%`),
+        like(quizSubmissions.name, `%${filter.search}%`)
+      )
+    );
   }
   if (filter.riskLevel) {
     quizConditions.push(eq(quizSubmissions.riskLevel, filter.riskLevel));
@@ -59,7 +65,12 @@ export async function getLeads(filter: LeadsFilter): Promise<{ leads: UnifiedLea
   // Build conditions for android waitlist
   const androidConditions: any[] = [];
   if (filter.search) {
-    androidConditions.push(like(androidWaitlist.email, `%${filter.search}%`));
+    androidConditions.push(
+      or(
+        like(androidWaitlist.email, `%${filter.search}%`),
+        like(androidWaitlist.name, `%${filter.search}%`)
+      )
+    );
   }
   if (filter.dateFrom) {
     androidConditions.push(gte(androidWaitlist.createdAt, filter.dateFrom));
@@ -94,6 +105,7 @@ export async function getLeads(filter: LeadsFilter): Promise<{ leads: UnifiedLea
       ...quizRows.map((r) => ({
         id: r.id,
         source: "quiz" as LeadSource,
+        name: r.name,
         email: r.email,
         riskLevel: r.riskLevel as LeadRiskLevel,
         matchedConditions: (r.matchedConditions as string[]) || [],
@@ -103,6 +115,7 @@ export async function getLeads(filter: LeadsFilter): Promise<{ leads: UnifiedLea
       ...androidRows.map((r) => ({
         id: r.id,
         source: "android-waitlist" as LeadSource,
+        name: r.name,
         email: r.email,
         riskLevel: null as LeadRiskLevel,
         matchedConditions: [],
@@ -130,6 +143,7 @@ export async function getLeads(filter: LeadsFilter): Promise<{ leads: UnifiedLea
     leads = quizRows.map((r) => ({
       id: r.id,
       source: "quiz" as LeadSource,
+      name: r.name,
       email: r.email,
       riskLevel: r.riskLevel as LeadRiskLevel,
       matchedConditions: (r.matchedConditions as string[]) || [],
@@ -150,6 +164,7 @@ export async function getLeads(filter: LeadsFilter): Promise<{ leads: UnifiedLea
     leads = androidRows.map((r) => ({
       id: r.id,
       source: "android-waitlist" as LeadSource,
+      name: r.name,
       email: r.email,
       riskLevel: null as LeadRiskLevel,
       matchedConditions: [],
@@ -202,8 +217,18 @@ export async function getAllLeadsForExport(filter: Omit<LeadsFilter, "page" | "l
   const androidConditions: any[] = [];
 
   if (filter.search) {
-    quizConditions.push(like(quizSubmissions.email, `%${filter.search}%`));
-    androidConditions.push(like(androidWaitlist.email, `%${filter.search}%`));
+    quizConditions.push(
+      or(
+        like(quizSubmissions.email, `%${filter.search}%`),
+        like(quizSubmissions.name, `%${filter.search}%`)
+      )
+    );
+    androidConditions.push(
+      or(
+        like(androidWaitlist.email, `%${filter.search}%`),
+        like(androidWaitlist.name, `%${filter.search}%`)
+      )
+    );
   }
   if (filter.riskLevel) {
     quizConditions.push(eq(quizSubmissions.riskLevel, filter.riskLevel));
@@ -229,6 +254,7 @@ export async function getAllLeadsForExport(filter: Omit<LeadsFilter, "page" | "l
       ...quizRows.map((r) => ({
         id: r.id,
         source: "quiz" as LeadSource,
+        name: r.name,
         email: r.email,
         riskLevel: r.riskLevel as LeadRiskLevel,
         matchedConditions: (r.matchedConditions as string[]) || [],
@@ -245,6 +271,7 @@ export async function getAllLeadsForExport(filter: Omit<LeadsFilter, "page" | "l
       ...androidRows.map((r) => ({
         id: r.id,
         source: "android-waitlist" as LeadSource,
+        name: r.name,
         email: r.email,
         riskLevel: null as LeadRiskLevel,
         matchedConditions: [],

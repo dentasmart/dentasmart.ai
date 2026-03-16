@@ -1,18 +1,36 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check, Loader2 } from "lucide-react";
+import { trpc } from "@/lib/trpc";
+import { trackEvent } from "@/lib/analytics";
+import { toast } from "sonner";
 
 export function AndroidEarlyAccess() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const joinWaitlist = trpc.waitlist.joinAndroid.useMutation();
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email && name) {
-      // In a real app, this would send data to the backend
-      console.log("Submitting early access request:", { name, email });
+    if (!email || !name) return;
+
+    try {
+      const result = await joinWaitlist.mutateAsync({
+        name: name.trim(),
+        email: email.trim(),
+      });
+
+      if (result.alreadyExists) {
+        toast.info("You're already on the list! We'll notify you when the Android version is ready.");
+      }
+
+      trackEvent("android_waitlist_submit", { source: "homepage_section" });
       setSubmitted(true);
+    } catch (err) {
+      toast.error("Something went wrong. Please try again.");
+      console.error("Waitlist submission failed:", err);
     }
   };
 
@@ -67,9 +85,17 @@ export function AndroidEarlyAccess() {
               />
               <button
                 type="submit"
-                className="w-full px-8 py-4 rounded-2xl bg-white text-primary font-medium text-lg hover:bg-teal-50 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-200"
+                disabled={joinWaitlist.isPending}
+                className="w-full px-8 py-4 rounded-2xl bg-white text-primary font-medium text-lg hover:bg-teal-50 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                Get Early Access
+                {joinWaitlist.isPending ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Joining...
+                  </>
+                ) : (
+                  "Get Early Access"
+                )}
               </button>
             </form>
           )}

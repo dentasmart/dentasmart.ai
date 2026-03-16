@@ -96,6 +96,7 @@ export type InsertBlogPost = typeof blogPosts.$inferInsert;
  */
 export const androidWaitlist = mysqlTable("android_waitlist", {
   id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 200 }),
   email: varchar("email", { length: 320 }).notNull().unique(),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
 });
@@ -143,6 +144,7 @@ export type InsertBlogCategory = typeof blogCategories.$inferInsert;
  */
 export const quizSubmissions = mysqlTable("quiz_submissions", {
   id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 200 }),
   email: varchar("email", { length: 320 }),
   answers: json("answers").notNull(), // Record<string, string>
   riskLevel: mysqlEnum("riskLevel", ["low", "moderate", "high"]).notNull(),

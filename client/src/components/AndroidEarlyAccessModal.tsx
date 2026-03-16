@@ -4,6 +4,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { trpc } from "@/lib/trpc";
+import { trackEvent } from "@/lib/analytics";
+import { Loader2 } from "lucide-react";
 
 interface AndroidEarlyAccessModalProps {
   isOpen: boolean;
@@ -13,23 +16,32 @@ interface AndroidEarlyAccessModalProps {
 export function AndroidEarlyAccessModal({ isOpen, onClose }: AndroidEarlyAccessModalProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const joinWaitlist = trpc.waitlist.joinAndroid.useMutation();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    try {
+      const result = await joinWaitlist.mutateAsync({
+        name: name.trim(),
+        email: email.trim(),
+      });
 
-    // In a real app, this would send to support@DentaSmart.ai
-    console.log(`Sending to support@DentaSmart.ai: Name: ${name}, Email: ${email}`);
+      if (result.alreadyExists) {
+        toast.info("You're already on the list! We'll notify you when the Android app is ready.");
+      } else {
+        toast.success("Thanks for joining! We'll notify you when the Android app is ready.");
+      }
 
-    toast.success("Thanks for joining! We'll notify you when the Android app is ready.");
-    setIsSubmitting(false);
-    onClose();
-    setName("");
-    setEmail("");
+      trackEvent("android_waitlist_submit", { source: "modal" });
+      onClose();
+      setName("");
+      setEmail("");
+    } catch (err) {
+      toast.error("Something went wrong. Please try again.");
+      console.error("Waitlist submission failed:", err);
+    }
   };
 
   return (
@@ -64,8 +76,15 @@ export function AndroidEarlyAccessModal({ isOpen, onClose }: AndroidEarlyAccessM
             />
           </div>
           <DialogFooter>
-            <Button type="submit" disabled={isSubmitting} className="w-full">
-              {isSubmitting ? "Joining..." : "Join Waitlist"}
+            <Button type="submit" disabled={joinWaitlist.isPending} className="w-full">
+              {joinWaitlist.isPending ? (
+                <>
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  Joining...
+                </>
+              ) : (
+                "Join Waitlist"
+              )}
             </Button>
           </DialogFooter>
         </form>

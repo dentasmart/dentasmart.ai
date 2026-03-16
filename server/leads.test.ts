@@ -3,7 +3,8 @@ import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
 
 /**
- * Tests for quiz.submit (public) and leads router (admin-protected).
+ * Tests for quiz.submit (public), waitlist.joinAndroid (public),
+ * and leads router (admin-protected).
  * We mock the database layer to avoid needing a real DB connection.
  */
 
@@ -62,8 +63,10 @@ function createPublicContext(): TrpcContext {
   };
 }
 
+/* ─── Quiz Submit ──────────────────────────────────────────────────── */
+
 describe("quiz.submit", () => {
-  it("accepts a valid quiz submission without email", async () => {
+  it("accepts a valid quiz submission without email or name", async () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);
 
@@ -76,15 +79,29 @@ describe("quiz.submit", () => {
     expect(result).toEqual({ success: true });
   });
 
-  it("accepts a valid quiz submission with email", async () => {
+  it("accepts a valid quiz submission with name and email", async () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);
 
     const result = await caller.quiz.submit({
+      name: "John Doe",
       email: "test@example.com",
       answers: { pain: "severe", bleeding: "yes", sensitivity: "hot_cold" },
       riskLevel: "high",
       matchedConditions: ["Periodontitis", "Dental Abscess"],
+    });
+
+    expect(result).toEqual({ success: true });
+  });
+
+  it("accepts a submission with name but no email", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    const result = await caller.quiz.submit({
+      name: "Jane Smith",
+      answers: { pain: "no" },
+      riskLevel: "low",
     });
 
     expect(result).toEqual({ success: true });
@@ -129,6 +146,61 @@ describe("quiz.submit", () => {
   });
 });
 
+/* ─── Waitlist Join Android ────────────────────────────────────────── */
+
+describe("waitlist.joinAndroid", () => {
+  it("accepts a valid waitlist signup with name and email", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    const result = await caller.waitlist.joinAndroid({
+      name: "John Doe",
+      email: "john@example.com",
+    });
+
+    // DB is null (mocked), so it returns success without saving
+    expect(result).toEqual({ success: true, alreadyExists: false });
+  });
+
+  it("rejects a signup without name", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    await expect(
+      caller.waitlist.joinAndroid({
+        name: "",
+        email: "john@example.com",
+      })
+    ).rejects.toThrow();
+  });
+
+  it("rejects a signup with invalid email", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    await expect(
+      caller.waitlist.joinAndroid({
+        name: "John Doe",
+        email: "not-an-email",
+      })
+    ).rejects.toThrow();
+  });
+
+  it("rejects a signup without email", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    await expect(
+      caller.waitlist.joinAndroid({
+        name: "John Doe",
+        email: "",
+      })
+    ).rejects.toThrow();
+  });
+});
+
+/* ─── Leads List (Admin) ──────────────────────────────────────────── */
+
 describe("leads.list", () => {
   it("rejects unauthenticated requests", async () => {
     const ctx = createPublicContext();
@@ -140,6 +212,8 @@ describe("leads.list", () => {
   });
 });
 
+/* ─── Leads Stats (Admin) ─────────────────────────────────────────── */
+
 describe("leads.stats", () => {
   it("rejects unauthenticated requests", async () => {
     const ctx = createPublicContext();
@@ -148,6 +222,8 @@ describe("leads.stats", () => {
     await expect(caller.leads.stats()).rejects.toThrow("Admin authentication required");
   });
 });
+
+/* ─── Leads Export CSV (Admin) ─────────────────────────────────────── */
 
 describe("leads.exportCsv", () => {
   it("rejects unauthenticated requests", async () => {

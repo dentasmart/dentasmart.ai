@@ -104,8 +104,9 @@ export const leadsRouter = router({
       });
 
       // Build CSV
-      const headers = ["Email", "Source", "Risk Level", "Matched Conditions", "Date"];
+      const headers = ["Name", "Email", "Source", "Risk Level", "Matched Conditions", "Date"];
       const rows = leads.map((lead) => [
+        lead.name || "",
         lead.email || "",
         lead.source,
         lead.riskLevel || "N/A",
