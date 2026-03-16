@@ -550,3 +550,8 @@
 - [ ] Add schema markup (FAQ, Article, MedicalWebPage) to all new pages
 - [ ] Add canonical tags to all new pages
 - [ ] Internal linking between all hubs and related content
+
+# Homepage Hero Fixes - Mar 15, 2026
+- [x] Remove social proof row (avatar circles + "Trusted by 50,000+ users" + star rating) from hero section — only 2 reviews, pushes hero text under nav
+- [x] Fix CTA buttons overlapping — "Get My Oral Health Score" and "Try Free Symptom Check" overlap each other
+- [x] Fix "Try Free Symptom Check" CTA linking to /symptom-quiz which gives 404 — page not built yet, redirect to download section
