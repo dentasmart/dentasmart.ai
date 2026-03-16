@@ -1222,5 +1222,140 @@ export const conditionsData: Record<string, ConditionData> = {
     reviewedByCredentials: "General Dentist at DentaSmart",
     lastReviewed: "2026-02-21",
   },
+  "periodontitis": {
+  slug: "periodontitis",
+  title: "Periodontitis: Causes, Symptoms, and Treatment",
+  metaTitle: "Periodontitis | DentaSmart.ai",
+  metaDescription: "Learn about periodontitis, an advanced form of gum disease. Find out about the causes, symptoms, and treatment options available to protect your smile.",
+  primaryKeyword: "periodontitis",
+  secondaryKeywords: ["gum disease", "periodontal disease", "bleeding gums", "loose teeth"],
+  heroHeading: "Worried About Your Gums? Let's Talk About Periodontitis.",
+  heroSubheading: "It's more than just a little bleeding. Advanced gum disease can be serious, but it's treatable. We can help.",
+  directAnswer: "Periodontitis is a serious gum infection that damages the soft tissue and, without treatment, can destroy the bone that supports your teeth. It can cause teeth to loosen or lead to tooth loss. It's usually the result of poor oral hygiene.",
+  detailedExplanation: [
+    "Ever wonder what happens when gum inflammation gets out of hand? That's where periodontitis comes in. It’s the advanced stage of gum disease, a serious infection that doesn't just stay in your gums. It goes deeper, attacking the bone that holds your teeth in place. Think of it as a silent threat to your smile. You might not even know you have it until it's pretty far along.",
+    "So, how does this all start? It usually begins with plaque, that sticky film of bacteria that’s always forming on your teeth. If you don't clean it off well, it hardens into tartar. Tartar is tough to get rid of with just a toothbrush and floss. The longer it stays, the more it irritates your gums, causing gingivitis – the early, reversible stage of gum disease.",
+    "But if gingivitis isn't treated, it can progress to periodontitis. The gums pull away from the teeth, forming pockets. These pockets get infected, and the infection starts to break down the bone and connective tissue that keep your teeth anchored. It’s a slow process, but it can have some major consequences.",
+    "The thing is, your body is trying to fight the infection. Your immune system sends out its defenders, but the combination of the bacteria and your body's own response can end up doing more harm than good. This ongoing inflammation is what ultimately leads to the destruction of your jawbone. The bottom line? Don't ignore bleeding gums. It could be the first sign of a bigger problem."
+  ],
+  causes: [
+    { title: "Plaque Buildup", description: "It all starts here. When that sticky film of bacteria isn't cleaned off your teeth regularly, it sets the stage for trouble." },
+    { title: "Smoking", description: "Smoking weakens your body's ability to fight infection, making it a major risk factor for gum disease. It also makes treatment less effective." },
+    { title: "Hormonal Changes", description: "Changes in hormones, like those during pregnancy or menopause, can make gums more sensitive and more susceptible to gum disease." },
+    { title: "Genetics", description: "Some people are just more prone to gum disease. Thanks, Mom and Dad! If it runs in your family, you need to be extra vigilant." },
+    { title: "Poor Nutrition", description: "A diet lacking in important nutrients can make it harder for your body to fight off infection, including periodontitis." },
+    { title: "Certain Medications", description: "Some drugs can reduce saliva flow, which helps protect your teeth and gums. Less saliva means a higher risk of plaque and tartar." }
+  ],
+  symptoms: [
+    { text: "Gums that bleed easily", severity: "mild" },
+    { text: "Swollen, red, or tender gums", severity: "moderate" },
+    { text: "Persistent bad breath", severity: "mild" },
+    { text: "Gums pulling away from your teeth", severity: "moderate" },
+    { text: "Pus between your teeth and gums", severity: "severe" },
+    { text: "Loose or separating teeth", severity: "severe" },
+    { text: "A change in the way your teeth fit together when you bite", severity: "severe" }
+  ],
+  whenToSeeDentist: [
+    "If your gums are bleeding when you brush or floss.",
+    "If you have persistent bad breath that won't go away.",
+    "If your gums are swollen, red, or tender to the touch.",
+    "If you notice your teeth are starting to look longer (a sign of receding gums).",
+    "If you have any loose teeth or notice a change in your bite.",
+    "Basically, if you notice anything unusual with your gums or teeth, it's time to make an appointment. Better safe than sorry!"
+  ],
+  keyTakeaways: [
+    "Periodontitis is advanced gum disease that can lead to tooth loss.",
+    "It's caused by plaque buildup and can be made worse by things like smoking and genetics.",
+    "Don't ignore bleeding gums – it's an early warning sign.",
+    "Treatment is available and can stop the disease from getting worse.",
+    "Good oral hygiene is your best defense against periodontitis."
+  ],
+  faqs: [
+    { question: "Can periodontitis be cured?", answer: "Here's the deal: periodontitis can't be fully cured, but it can be managed. Treatment can stop it from progressing and help you keep your teeth. It requires ongoing care from your dentist and a solid home-care routine." },
+    { question: "Is periodontitis contagious?", answer: "Not in the way a cold is, but the bacteria that cause it can be passed through saliva. So, it's best not to share toothbrushes or utensils if you have gum disease." },
+    { question: "What happens if I don't treat periodontitis?", answer: "If left untreated, periodontitis can lead to tooth loss. The infection can also spread to other parts of your body, and it's been linked to other health problems like heart disease and diabetes." },
+    { question: "How can I prevent periodontitis?", answer: "The best way to prevent it is with good old-fashioned brushing and flossing. Seriously. Brush twice a day, floss once a day, and see your dentist for regular checkups and cleanings. It's that simple." }
+  ],
+  relatedConditions: [
+    { slug: "gum-disease", title: "Gum Disease" },
+    { slug: "dental-abscess", title: "Dental Abscess" },
+    { slug: "dental-implants", title: "Dental Implants" }
+  ],
+  relatedSymptoms: [
+    { slug: "bleeding-gums", title: "Bleeding Gums" },
+    { slug: "loose-tooth", title: "Loose Tooth" },
+    { slug: "bad-breath", title: "Bad Breath" },
+    { slug: "gum-inflammation", title: "Gum Inflammation" },
+    { slug: "gum-tenderness", title: "Gum Tenderness" }
+  ],
+  relatedGuides: [
+    { slug: "brushing-guide", title: "Brushing Guide" },
+    { slug: "flossing-guide", title: "Flossing Guide" }
+  ],
+  reviewedBy: "Dr. Sarah Chen, DDS",
+  reviewedByCredentials: "Board-Certified Periodontist",
+  lastReviewed: "2026-03-15"
+},
+  "gingivitis-vs-periodontitis": {
+  slug: "gingivitis-vs-periodontitis",
+  title: "Gingivitis vs. Periodontitis: What's the Difference?",
+  metaTitle: "Gingivitis vs. Periodontitis | DentaSmart",
+  metaDescription: "Learn the key differences between gingivitis and periodontitis. Understand the signs of early and advanced gum disease to protect your smile.",
+  primaryKeyword: "gingivitis vs periodontitis",
+  secondaryKeywords: ["periodontitis vs gingivitis", "difference between gingivitis and periodontitis", "early gum disease"],
+  heroHeading: "Gingivitis or Periodontitis? Know the Signs.",
+  heroSubheading: "Don't let confusion about gum disease cost you your smile. We'll help you understand the difference and what to do next.",
+  directAnswer: "Gingivitis is the mild, reversible first stage of gum disease caused by plaque buildup. Periodontitis is the serious, irreversible stage where the infection spreads below the gumline, destroying tissue and bone. The key difference is that periodontitis causes permanent damage, while gingivitis does not.",
+  detailedExplanation: [
+    "Ever wonder if your bleeding gums are a big deal? Well, they could be. It often starts with something called gingivitis. Think of it as a warning sign from your gums. It’s super common, and it’s your body’s way of saying, 'Hey, there’s too much plaque down here!' The good news? Gingivitis is totally reversible with better brushing and flossing. No permanent harm done. Yet.",
+    "But here's the deal: if you ignore that warning, things can get much worse. The infection can dig in deeper, moving from your gums to the bone that holds your teeth in place. This is periodontitis, and it's a whole different ballgame. It's not just about irritated gums anymore. It's about a serious infection that can lead to tooth loss. And unlike gingivitis, the damage from periodontitis is for keeps.",
+    "So, what's the dividing line? It's all about the structures that support your teeth. With gingivitis, the inflammation is just in the gums. With periodontitis, the infection has gone past the gums and is actively destroying the ligaments and bone. A dentist can tell the difference by measuring the small pockets between your teeth and gums. Small pockets usually mean gingivitis. Deeper pockets? That's a classic sign of periodontitis.",
+    "The bottom line is you can't afford to wait and see. What looks like a little blood in the sink could be the first step toward a much bigger problem. Getting a handle on it early is the key to keeping your teeth for life. That's where we come in—to give you the straight facts so you can take action."
+  ],
+  causes: [
+    { title: "Plaque Buildup", description: "This is the main culprit. When the sticky film of bacteria (plaque) isn't removed daily, it irritates your gums, leading to gingivitis. If it stays there, it hardens into tartar, which makes things even worse." },
+    { title: "Smoking & Tobacco Use", description: "Smoking is a big one. It weakens your body's ability to fight infection, making it easier for gum disease to take hold and harder for your gums to heal. It's a major risk factor for periodontitis." },
+    { title: "Hormonal Changes", description: "Life changes like pregnancy, puberty, and menopause can make gums more sensitive and prone to inflammation. It's not your fault, but it means you have to be extra careful with your oral hygiene." },
+    { title: "Poor Nutrition", description: "Your body needs the right vitamins and minerals to fight off infection. A diet low in nutrients (especially Vitamin C) can make it harder for your gums to stay healthy. It's all connected." },
+    { title: "Genetics", description: "Sometimes, it's just in the family. Some people are simply more genetically prone to developing gum disease than others, even if they have good habits. Sound familiar? It means you need to be even more vigilant." }
+  ],
+  symptoms: [
+    { text: "Gums that bleed easily when you brush or floss", severity: "mild" },
+    { text: "Red, swollen, or tender gums", severity: "mild" },
+    { text: "Persistent bad breath or a bad taste in your mouth", severity: "moderate" },
+    { text: "Gums that have pulled away from your teeth (recession)", severity: "moderate" },
+    { text: "Pus between your teeth and gums", severity: "severe" },
+    { text: "Loose or separating teeth", severity: "severe" },
+    { text: "A change in the way your teeth fit together when you bite", severity: "severe" }
+  ],
+  whenToSeeDentist: [
+    "If your gums bleed every time you brush.",
+    "If your gums are puffy, sore, or bright red.",
+    "If you have bad breath that just won't go away.",
+    "If you notice your teeth looking longer (a sign of gum recession).",
+    "If your teeth feel loose or have shifted.",
+    "Honestly, if you suspect anything is wrong, just book a visit. It's always better to be safe."
+  ],
+  keyTakeaways: [
+    "Gingivitis is reversible; periodontitis involves permanent damage.",
+    "The main cause of both is plaque buildup from not brushing and flossing well enough.",
+    "Don't ignore bleeding gums—it's the most common early warning sign.",
+    "Periodontitis can lead to tooth loss if you don't get it treated.",
+    "You can't fix periodontitis on your own; you need professional dental care.",
+    "Seeing your dentist regularly is the best way to catch gum disease early."
+  ],
+  faqs: [
+    { question: "Can you have gingivitis and periodontitis at the same time?", answer: "Not really. Think of it as a progression. You have gingivitis first, and if it's not treated, it can turn *into* periodontitis. Once you have periodontitis, the gingivitis is kind of a given—the inflammation is still there, but now there's bone loss, too." },
+    { question: "Is periodontitis painful?", answer: "Here's the tricky part—it often isn't, especially in the early stages. That's why it's so sneaky. You might not feel any pain until the disease is very advanced and the damage is severe. This is why regular dental checkups are so important." },
+    { question: "Can I reverse periodontitis?", answer: "Unfortunately, you can't reverse the damage it causes to your bone and ligaments. However, with professional treatment and excellent home care, you can stop it from getting worse and manage the condition to keep your teeth healthy for the long run." },
+    { question: "How is periodontitis treated?", answer: "Treatment depends on how far it has progressed. It usually starts with a deep cleaning called scaling and root planing to remove tartar from below the gumline. In more advanced cases, surgery might be needed to clean the roots of the teeth and repair the bone." }
+  ],
+  relatedConditions: [{ slug: "gum-disease", title: "Gum Disease" }, { slug: "periodontitis", title: "Periodontitis" }, { slug: "dental-abscess", title: "Dental Abscess" }],
+  relatedSymptoms: [{ slug: "bleeding-gums", title: "Bleeding Gums" }, { slug: "swollen-gums", title: "Swollen Gums" }, { slug: "gum-inflammation", title: "Gum Inflammation" }, { slug: "gum-tenderness", title: "Gum Tenderness" }, { slug: "bad-breath", title: "Bad Breath" }],
+  relatedGuides: [{ slug: "brushing-guide", title: "Brushing Guide" }, { slug: "flossing-guide", title: "Flossing Guide" }],
+  reviewedBy: "Dr. Sarah Chen, DDS",
+  reviewedByCredentials: "Board-Certified Periodontist",
+  lastReviewed: "2026-03-15"
+},
 };
 export const conditionsList = Object.values(conditionsData);

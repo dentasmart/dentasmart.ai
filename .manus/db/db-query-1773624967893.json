@@ -1,0 +1,28 @@
+{
+  "query": "SELECT id, name, slug, parentId FROM blog_categories WHERE parentId IS NULL ORDER BY name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT id, name, slug, parentId FROM blog_categories WHERE parentId IS NULL ORDER BY name;",
+  "rows": [
+    {
+      "id": "38",
+      "name": "Dental Issues",
+      "slug": "dental-issues",
+      "parentId": "NULL"
+    },
+    {
+      "id": "39",
+      "name": "Dentist Challenges",
+      "slug": "dentist-challenges",
+      "parentId": "NULL"
+    },
+    {
+      "id": "40",
+      "name": "Insurance Problems",
+      "slug": "insurance-problems",
+      "parentId": "NULL"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tslug\tparentId\n38\tDental Issues\tdental-issues\tNULL\n39\tDentist Challenges\tdentist-challenges\tNULL\n40\tInsurance Problems\tinsurance-problems\tNULL\n",
+  "stderr": "",
+  "execution_time_ms": 51
+}

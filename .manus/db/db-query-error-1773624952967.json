@@ -1,0 +1,8 @@
+{
+  "query": "SELECT id, name, slug, parent_id FROM blog_categories ORDER BY parent_id IS NULL DESC, parent_id, name;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT id, name, slug, parent_id FROM blog_categories ORDER BY parent_id IS NULL DESC, parent_id, name;",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 1: Unknown column 'parent_id' in 'field list'"
+  ]
+}

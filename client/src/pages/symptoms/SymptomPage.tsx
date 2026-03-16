@@ -100,7 +100,7 @@ export default function SymptomPage() {
               </span>
             </Link>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white mb-4 leading-tight text-left">
-              {symptom.heroHeading}
+              {symptom.heroHeading || symptom.title}
             </h1>
             <p className="text-xl text-stone-300 font-light leading-relaxed max-w-2xl text-left">
               {symptom.heroSubheading}
@@ -132,7 +132,7 @@ export default function SymptomPage() {
         <div className="container px-4 mx-auto max-w-3xl">
           <div className="bg-white rounded-2xl p-6 border border-primary/20 shadow-sm">
             <h2 className="text-lg font-medium text-primary mb-3">Quick Answer</h2>
-            <p className="text-stone-700 font-light leading-relaxed">{symptom.directAnswer}</p>
+            <p className="text-stone-700 font-light leading-relaxed">{symptom.directAnswer || symptom.detailedExplanation?.[0]?.substring(0, 300) + '...'}</p>
           </div>
         </div>
       </section>
@@ -307,20 +307,21 @@ export default function SymptomPage() {
       {/* CTA */}
       <section className="py-8 bg-primary text-white">
         <div className="container px-4 mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-normal mb-3 text-white">Worried about this symptom?</h2>
+          <h2 className="text-3xl font-normal mb-3 text-white">{symptom.ctaHeading || "Worried about this symptom?"}</h2>
           <p className="text-white/80 font-light mb-6">Upload a photo and get instant AI insights to help you understand what is going on.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/instant-scan">
+            <Link href="/download">
               <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
-                Try Instant Scan
+                {symptom.ctaButton || "Get My Oral Health Score"}
               </Button>
             </Link>
-            <Link href="/download">
+            <Link href="/symptom-quiz">
               <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
-                Download the App
+                Try Free Symptom Check
               </Button>
             </Link>
           </div>
+          <p className="text-white/60 text-sm mt-4">Trusted by 50,000+ users &middot; 4.8/5 rating</p>
         </div>
       </section>
 

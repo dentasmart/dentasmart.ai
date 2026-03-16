@@ -1,0 +1,129 @@
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import { ArrowRight, ShieldCheck } from "lucide-react";
+import { Link } from "wouter";
+import { guidesList } from "@/data/guides";
+
+const preventionGuides = guidesList.filter(g => g.category === "prevention");
+
+export default function PreventionHub() {
+  return (
+    <div className="min-h-screen flex flex-col bg-background font-sans text-black">
+      <SEO
+        title="Dental Prevention Guide | Protect Your Teeth & Save Money | DentaSmart"
+        description="Prevent cavities, gum disease, and expensive dental work with science-backed daily routines. Guides for every life stage."
+        canonical="https://dentasmart.ai/hub/prevention"
+        keywords="prevent cavities, gum disease prevention, oral health routine, teeth whitening natural"
+      />
+      <Navigation />
+
+      {/* Hero */}
+      <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-gradient-to-br from-primary/90 via-primary to-teal-500">
+        <div className="container relative z-10 px-4 mx-auto max-w-5xl pt-32 pb-12 md:pt-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm px-4 py-2 rounded-full text-white/90 text-sm font-medium mb-6">
+              <ShieldCheck className="w-4 h-4" /> Prevention Hub
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white mb-4 leading-tight text-left">
+              The Best Dental Work Is the Kind You Never Need
+            </h1>
+            <p className="text-xl text-white/80 font-light leading-relaxed max-w-2xl text-left">
+              A few minutes of daily care can save you thousands in dental bills. These guides show you exactly what to do and when.
+            </p>
+            <div className="mt-6">
+              <Link href="/download">
+                <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
+                  Get Your Prevention Plan
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Guides Grid */}
+      <section className="py-12 bg-white">
+        <div className="container px-4 mx-auto max-w-5xl">
+          <h2 className="text-2xl font-medium text-black mb-8">Prevention Guides</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {preventionGuides.map((guide, idx) => (
+              <Link key={guide.slug} href={`/guides/${guide.slug}`}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1, duration: 0.5 }}
+                  className="bg-stone-50 rounded-2xl p-6 border border-stone-100 hover:border-primary/30 hover:shadow-md transition-all cursor-pointer h-full"
+                >
+                  <div className="text-xs uppercase tracking-wider text-primary font-medium mb-3">
+                    {guide.steps.length} Steps
+                  </div>
+                  <h3 className="text-xl font-medium text-black mb-2">{guide.title}</h3>
+                  <p className="text-stone-600 font-light text-base leading-relaxed line-clamp-3 mb-4">
+                    {guide.heroSubheading}
+                  </p>
+                  <span className="inline-flex items-center gap-2 text-primary text-base font-medium">
+                    Read guide <ArrowRight className="w-3 h-3" />
+                  </span>
+                </motion.div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Related Hubs */}
+      <section className="py-8 bg-stone-50">
+        <div className="container px-4 mx-auto max-w-5xl">
+          <h2 className="text-xl font-medium text-black mb-4">Related Resource Hubs</h2>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/hub/affordability">
+              <span className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-sm">
+                Affordability Hub <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
+            <Link href="/hub/second-opinion">
+              <span className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-sm">
+                Second Opinion Hub <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
+            <Link href="/symptoms">
+              <span className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-sm">
+                Symptom Guide <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-8 bg-stone-900 text-white">
+        <div className="container px-4 mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-normal mb-3 text-white">Prevention starts with knowing where you stand</h2>
+          <p className="text-stone-300 font-light mb-6">Get your personalized oral health score and a prevention plan tailored to your mouth.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/download">
+              <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
+                Download the App
+              </Button>
+            </Link>
+            <Link href="/guides">
+              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
+                Browse All Guides
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
+}

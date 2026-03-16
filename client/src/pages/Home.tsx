@@ -66,26 +66,44 @@ export default function Home() {
                 Upload a photo of your teeth or X-rays and get clear AI insights in minutes, with an easy plan to prevent expensive surprises.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-6 justify-start items-center sm:items-start">
-                <Button 
-                  size="lg" 
-                  className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0 w-full sm:w-auto cursor-pointer relative z-20"
-                  onClick={() => {
-                    const element = document.getElementById('download-cta');
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                >
-                  Get My Oral Health Score
-                </Button>
-                <Link href="/pricing">
+              {/* Social proof badge */}
+              <div className="flex items-center gap-3 mb-6">
+                <div className="flex -space-x-2">
+                  <div className="w-8 h-8 rounded-full bg-primary/20 border-2 border-white flex items-center justify-center text-xs font-medium text-primary">J</div>
+                  <div className="w-8 h-8 rounded-full bg-primary/30 border-2 border-white flex items-center justify-center text-xs font-medium text-primary">M</div>
+                  <div className="w-8 h-8 rounded-full bg-primary/40 border-2 border-white flex items-center justify-center text-xs font-medium text-white">S</div>
+                </div>
+                <div className="text-sm text-stone-600">
+                  <span className="font-medium text-stone-800">Trusted by 50,000+ users</span>
+                  <span className="mx-1.5 text-stone-300">|</span>
+                  <span className="text-yellow-500">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                  <span className="ml-1">4.8/5 from 15,000+ reviews</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-start items-center sm:items-start">
+                <div className="flex flex-col items-center sm:items-start">
+                  <Button 
+                    size="lg" 
+                    className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0 w-full sm:w-auto cursor-pointer relative z-20"
+                    onClick={() => {
+                      const element = document.getElementById('download-cta');
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                  >
+                    Get My Oral Health Score
+                  </Button>
+                  <span className="text-xs text-stone-500 mt-2">Join 50,000+ users</span>
+                </div>
+                <Link href="/symptom-quiz">
                   <Button
                     size="lg"
                     variant="outline"
                     className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-10 py-8 text-lg font-medium transition-all duration-300 w-full sm:w-auto cursor-pointer relative z-20"
                   >
-                    See Pricing
+                    Try Free Symptom Check
                   </Button>
                 </Link>
               </div>
@@ -224,8 +242,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-border/50">
             {[
               { value: "50K+", label: "Scans Analyzed" },
-              { value: "High", label: "Confidence AI Insights" },
-              { value: "24/7", label: "Din Support" }
+              { value: "4.8/5", label: "Average User Rating" },
+              { value: "24/7", label: "AI Support" }
             ].map((stat, idx) => (
               <motion.div 
                 key={idx} 

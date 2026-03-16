@@ -40,6 +40,9 @@ const SymptomsIndex = lazy(() => import("./pages/symptoms/SymptomsIndex"));
 const SymptomPage = lazy(() => import("./pages/symptoms/SymptomPage"));
 const GuidesIndex = lazy(() => import("./pages/guides/GuidesIndex"));
 const GuidePage = lazy(() => import("./pages/guides/GuidePage"));
+const AffordabilityHub = lazy(() => import("./pages/guides/AffordabilityHub"));
+const SecondOpinionHub = lazy(() => import("./pages/guides/SecondOpinionHub"));
+const PreventionHub = lazy(() => import("./pages/guides/PreventionHub"));
 
 function PageLoader() {
   return (
@@ -92,6 +95,8 @@ function Router() {
         <Route path="/conditions/dental-implants" component={ConditionPage} />
         <Route path="/conditions/dry-socket" component={ConditionPage} />
         <Route path="/conditions/oral-thrush" component={ConditionPage} />
+        <Route path="/conditions/periodontitis" component={ConditionPage} />
+        <Route path="/conditions/gingivitis-vs-periodontitis" component={ConditionPage} />
         <Route path="/conditions/tmj-disorder" component={ConditionPage} />
 
         {/* ===== EXPLICIT SYMPTOM PAGES (for sitemap detection) ===== */}
@@ -105,11 +110,58 @@ function Router() {
         <Route path="/symptoms/dry-mouth" component={SymptomPage} />
         <Route path="/symptoms/tooth-discoloration" component={SymptomPage} />
         <Route path="/symptoms/mouth-sores" component={SymptomPage} />
+        <Route path="/symptoms/gum-bleeding-after-brushing" component={SymptomPage} />
+        <Route path="/symptoms/mouth-ulcers" component={SymptomPage} />
+        <Route path="/symptoms/canker-sores" component={SymptomPage} />
+        <Route path="/symptoms/tongue-pain" component={SymptomPage} />
+        <Route path="/symptoms/cheek-biting" component={SymptomPage} />
+        <Route path="/symptoms/teeth-grinding" component={SymptomPage} />
+        <Route path="/symptoms/jaw-clicking" component={SymptomPage} />
+        <Route path="/symptoms/gum-itching" component={SymptomPage} />
+        <Route path="/symptoms/tooth-staining" component={SymptomPage} />
+        <Route path="/symptoms/enamel-erosion" component={SymptomPage} />
+        <Route path="/symptoms/root-exposure" component={SymptomPage} />
+        <Route path="/symptoms/gum-inflammation" component={SymptomPage} />
+        <Route path="/symptoms/persistent-metallic-taste" component={SymptomPage} />
+        <Route path="/symptoms/swollen-lymph-nodes-dental" component={SymptomPage} />
+        <Route path="/symptoms/facial-swelling" component={SymptomPage} />
+        <Route path="/symptoms/tooth-migration" component={SymptomPage} />
+        <Route path="/symptoms/bite-changes" component={SymptomPage} />
+        <Route path="/symptoms/mouth-numbness" component={SymptomPage} />
+        <Route path="/symptoms/gum-tenderness" component={SymptomPage} />
+        <Route path="/symptoms/tmj-disorder" component={SymptomPage} />
+        <Route path="/symptoms/periodontal-disease" component={SymptomPage} />
+        <Route path="/symptoms/gingivitis" component={SymptomPage} />
+        <Route path="/symptoms/dental-caries" component={SymptomPage} />
+        <Route path="/symptoms/enamel-hypersensitivity" component={SymptomPage} />
+        <Route path="/symptoms/oral-thrush" component={SymptomPage} />
+        <Route path="/symptoms/aphthous-ulcers" component={SymptomPage} />
+        <Route path="/symptoms/leukoplakia" component={SymptomPage} />
+        <Route path="/symptoms/oral-lichen-planus" component={SymptomPage} />
+
+        {/* ===== HUB LANDING PAGES ===== */}
+        <Route path="/hub/affordability" component={AffordabilityHub} />
+        <Route path="/hub/second-opinion" component={SecondOpinionHub} />
+        <Route path="/hub/prevention" component={PreventionHub} />
 
         {/* ===== EXPLICIT GUIDE PAGES (for sitemap detection) ===== */}
         <Route path="/guides/brushing-guide" component={GuidePage} />
         <Route path="/guides/flossing-guide" component={GuidePage} />
         <Route path="/guides/dental-visit-guide" component={GuidePage} />
+        <Route path="/guides/affordable-dental-care" component={GuidePage} />
+        <Route path="/guides/dental-insurance-alternatives" component={GuidePage} />
+        <Route path="/guides/diy-dental-care" component={GuidePage} />
+        <Route path="/guides/preventing-expensive-dental-problems" component={GuidePage} />
+        <Route path="/guides/dental-emergencies-on-a-budget" component={GuidePage} />
+        <Route path="/guides/when-to-get-dental-second-opinion" component={GuidePage} />
+        <Route path="/guides/do-you-need-root-canal" component={GuidePage} />
+        <Route path="/guides/crowns-vs-fillings" component={GuidePage} />
+        <Route path="/guides/implants-vs-bridges" component={GuidePage} />
+        <Route path="/guides/complete-oral-health-routine" component={GuidePage} />
+        <Route path="/guides/how-to-prevent-cavities" component={GuidePage} />
+        <Route path="/guides/gum-disease-prevention" component={GuidePage} />
+        <Route path="/guides/natural-teeth-whitening" component={GuidePage} />
+        <Route path="/guides/oral-health-life-stages" component={GuidePage} />
 
         {/* ===== EXPLICIT COMPARE PAGES (for sitemap detection) ===== */}
         <Route path="/compare/dentasmart-vs-chatgpt-dental" component={ComparePage} />
@@ -186,6 +238,9 @@ function Router() {
         <Route path="/oral-health-hub/questioning-recommendations" component={Article} />
         <Route path="/oral-health-hub/rushed-decisions" component={Article} />
         <Route path="/oral-health-hub/unclear-diagnoses" component={Article} />
+        <Route path="/oral-health-hub/why-your-dentist-might-be-recommending-unnecessary-procedures" component={Article} />
+        <Route path="/oral-health-hub/the-hidden-cost-of-ignoring-dental-problems" component={Article} />
+        <Route path="/oral-health-hub/10-questions-to-ask-your-dentist-before-any-procedure" component={Article} />
 
         {/* ===== DYNAMIC CATCH-ALL ROUTES (for new content not yet in explicit list) ===== */}
         <Route path="/oral-health-hub/:id" component={Article} />

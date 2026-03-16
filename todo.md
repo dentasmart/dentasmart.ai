@@ -491,3 +491,62 @@
 - [x] Rewrite all 10 symptom entries to avoid AI-detectable writing patterns (conversational, varied sentences, contractions, 8th grade level)
 - [x] Rewrite all 15 condition entries to avoid AI-detectable writing patterns
 - [x] Rewrite all 3 guide entries to avoid AI-detectable writing patterns
+
+# Major Content & Conversion Expansion - Mar 15, 2026
+
+## Phase 1: Update CTAs & Social Proof
+- [x] Update 10 symptom page CTAs to be context-specific (e.g., "Diagnose Your Toothache Now")
+- [x] Add social proof near homepage hero CTA ("Trusted by 50,000+ users", "4.8/5 stars from 15,000+ reviews")
+- [x] Add subtext "Join 50,000+ users" under primary CTA
+- [x] Add "Try Free Symptom Check" secondary CTA button on homepage
+
+## Phase 2: Affordability Hub (/affordability/)
+- [ ] Create /affordability/ hub index page
+- [ ] Create guide: How to Find Affordable Dental Care
+- [ ] Create guide: Dental Insurance Alternatives: Your Complete Guide
+- [ ] Create guide: DIY Dental Care: What You Can Safely Do at Home
+- [ ] Create guide: Preventing Expensive Dental Problems: A Prevention Roadmap
+- [ ] Create guide: Dental Emergencies on a Budget
+
+## Phase 3: Expand Symptom Pages (28 new)
+- [ ] Create 18 medium-priority symptom pages (gum-bleeding-after-brushing, mouth-ulcers, canker-sores, tongue-pain, cheek-biting, jaw-clicking, gum-itching, tooth-staining, enamel-erosion, root-exposure, gum-inflammation, persistent-metallic-taste, swollen-lymph-nodes, facial-swelling, tooth-migration, bite-changes, mouth-numbness, gum-tenderness)
+- [ ] Create 10 lower-priority symptom/condition pages (gingivitis, periodontitis, periodontal-disease, dental-caries, enamel-hypersensitivity, aphthous-ulcers, traumatic-ulcers, leukoplakia, erythroplakia, oral-lichen-planus)
+- [ ] Optimize existing 10 symptom pages with context-specific CTAs and improved internal linking
+
+## Phase 4: Second Opinion Hub (/second-opinion/)
+- [ ] Create /second-opinion/ hub index page
+- [ ] Create guide: When to Get a Dental Second Opinion
+- [ ] Create guide: Root Canal: Do You Really Need It?
+- [ ] Create guide: Crowns vs. Fillings: Which is Right for You?
+- [ ] Create guide: Implants vs. Bridges: Comparing Your Options
+
+## Phase 5: Prevention Hub (/prevention/)
+- [ ] Create /prevention/ hub index page
+- [ ] Create guide: The Complete Oral Health Routine
+- [ ] Create guide: How to Prevent Cavities: Science-Backed Tips
+- [ ] Create guide: Gum Disease Prevention: A Complete Guide
+- [ ] Create guide: Natural Teeth Whitening Methods
+- [ ] Create guide: Oral Health for Different Life Stages
+
+## Phase 6: New Condition Guides
+- [ ] Create condition: Periodontitis (separate from existing gum-disease)
+- [ ] Create condition: Gingivitis vs Periodontitis comparison guide
+- [ ] Optimize existing dental-abscess, tmj-disorder, teeth-grinding pages
+
+## Phase 7: Blog Posts (3 new via CMS)
+- [x] Publish: Why Your Dentist Might Be Recommending Unnecessary Procedures
+- [x] Publish: The Hidden Cost of Ignoring Dental Problems
+- [x] Publish: 10 Questions to Ask Your Dentist Before Any Procedure
+
+## Phase 8: Web Symptom Quiz
+- [ ] Build 5-10 question symptom quiz component
+- [ ] Create /symptom-quiz route and page
+- [ ] Add quiz CTA to homepage hero, symptom pages, and blog posts
+- [ ] Add email capture for quiz results
+
+## SEO/AEO/GEO Updates
+- [ ] Add all new pages to App.tsx as explicit static routes
+- [ ] Update sitemap.xml with all new URLs
+- [ ] Add schema markup (FAQ, Article, MedicalWebPage) to all new pages
+- [ ] Add canonical tags to all new pages
+- [ ] Internal linking between all hubs and related content
