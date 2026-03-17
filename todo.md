@@ -592,3 +592,11 @@
 - [x] Update CSV export to include name column
 - [x] Update leads search to also search by name
 - [x] Write vitest tests for waitlist endpoint
+
+# Blog Editor Bugs - Mar 17, 2026
+- [x] Bug 1: Content reverts to earlier version on tab/window switch (even after saving draft)
+  - Fixed: Disabled refetchOnWindowFocus on getById query, added hasPopulated ref to prevent re-populating form on refetch
+- [x] Bug 2: StoryBrand section content not syncing to Rich Text Editor — sometimes only heading shows, content body missing
+  - Fixed: Auto-generates bodyHtml from StoryBrand sections when switching to WYSIWYG tab
+- [x] Bug 3: Unexpected page refresh/navigation losing work — window refreshes to previous page or blog list
+  - Fixed: Auth redirect only fires on initial check (not transient refetch failures), added beforeunload warning for unsaved changes, added confirm dialog on Back button

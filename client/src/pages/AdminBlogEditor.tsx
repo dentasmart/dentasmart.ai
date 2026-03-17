@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef, useCallback } from "react";
 import { useLocation, useRoute } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
@@ -48,13 +48,26 @@ export default function AdminBlogEditor() {
   const isNew = !!matchNew;
   const editId = editParams?.id ? parseInt(editParams.id) : null;
 
-  // Auth check
-  const { data: admin, isLoading: authLoading } = trpc.blog.adminMe.useQuery();
+  // Auth check — disable refetch on window focus to prevent unexpected redirects (Bug 3)
+  const { data: admin, isLoading: authLoading } = trpc.blog.adminMe.useQuery(undefined, {
+    refetchOnWindowFocus: false,
+    staleTime: 5 * 60 * 1000, // 5 minutes
+  });
 
-  // Load existing post if editing
+  // Track whether form has been populated from server data (Bug 1 fix)
+  const hasPopulated = useRef(false);
+  // Track whether user has unsaved changes (Bug 3 fix)
+  const [isDirty, setIsDirty] = useState(false);
+
+  // Load existing post if editing — disable refetch on window focus to prevent overwriting edits (Bug 1)
   const { data: existingPost, isLoading: postLoading } = trpc.blog.getById.useQuery(
     { id: editId! },
-    { enabled: !!editId }
+    {
+      enabled: !!editId,
+      refetchOnWindowFocus: false,
+      refetchOnMount: true,
+      staleTime: Infinity, // Never auto-refetch — user controls when to reload
+    }
   );
 
   // Category state (declared before useMemo that depends on them)
@@ -108,9 +121,10 @@ export default function AdminBlogEditor() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  // Populate form when editing
+  // Populate form when editing — only once on initial load (Bug 1 fix)
   useEffect(() => {
-    if (existingPost) {
+    if (existingPost && !hasPopulated.current) {
+      hasPopulated.current = true;
       setTitle(existingPost.title || "");
       setSlug(existingPost.slug || "");
       setSlugManuallyEdited(true);
@@ -168,8 +182,16 @@ export default function AdminBlogEditor() {
 
       // Always default to Rich Text Editor tab for reviewing content
       setActiveTab("wysiwyg");
+      // Reset dirty flag after initial population
+      setTimeout(() => setIsDirty(false), 0);
     }
   }, [existingPost]);
+
+  // Reset hasPopulated when navigating to a different post
+  useEffect(() => {
+    hasPopulated.current = false;
+    setIsDirty(false);
+  }, [editId]);
 
   // Auto-generate slug from title
   useEffect(() => {
@@ -225,6 +247,7 @@ export default function AdminBlogEditor() {
   // Mutations
   const createMutation = trpc.blog.create.useMutation({
     onSuccess: (data) => {
+      setIsDirty(false);
       showSuccess("Article created successfully!");
       setLocation(`/admin/edit/${data.id}`);
     },
@@ -236,6 +259,7 @@ export default function AdminBlogEditor() {
 
   const updateMutation = trpc.blog.update.useMutation({
     onSuccess: () => {
+      setIsDirty(false);
       showSuccess("Article saved successfully!");
     },
     onError: (err) => {
@@ -266,12 +290,32 @@ export default function AdminBlogEditor() {
     },
   });
 
-  // Redirect if not authenticated
+  // Track initial auth check completion (Bug 3 fix)
+  const authCheckedOnce = useRef(false);
+
+  // Redirect if not authenticated — only on initial check, not on transient refetch failures
   useEffect(() => {
-    if (!authLoading && !admin) {
-      setLocation("/admin/login");
+    if (!authLoading) {
+      if (!admin && !authCheckedOnce.current) {
+        // First auth check failed — user is not logged in
+        setLocation("/admin/login");
+      }
+      authCheckedOnce.current = true;
     }
   }, [admin, authLoading, setLocation]);
+
+  // Bug 3 fix: Warn user about unsaved changes before leaving/refreshing
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (isDirty) {
+        e.preventDefault();
+        // Modern browsers show a generic message regardless of returnValue
+        e.returnValue = "You have unsaved changes. Are you sure you want to leave?";
+      }
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+  }, [isDirty]);
 
   if (authLoading || (editId && postLoading)) {
     return (
@@ -364,7 +408,16 @@ export default function AdminBlogEditor() {
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => setLocation("/admin")}
+                onClick={() => {
+                  if (isDirty) {
+                    if (window.confirm("You have unsaved changes. Are you sure you want to leave?")) {
+                      setIsDirty(false);
+                      setLocation("/admin");
+                    }
+                  } else {
+                    setLocation("/admin");
+                  }
+                }}
                 className="text-stone-500 hover:text-stone-700 cursor-pointer"
               >
                 <ArrowLeft className="w-4 h-4 mr-1" />
@@ -462,7 +515,7 @@ export default function AdminBlogEditor() {
               <Label className="text-sm font-semibold text-stone-700 mb-2 block">Article Title</Label>
               <Input
                 value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={(e) => { setTitle(e.target.value); setIsDirty(true); }}
                 placeholder="Enter a compelling title..."
                 className="text-lg font-medium border-stone-200 bg-stone-50 focus:bg-white py-5"
               />
@@ -470,7 +523,39 @@ export default function AdminBlogEditor() {
 
             {/* Content Tabs */}
             <div className="bg-white rounded-xl border border-stone-200 p-6">
-              <Tabs value={activeTab} onValueChange={setActiveTab}>
+              <Tabs value={activeTab} onValueChange={(newTab) => {
+                // Bug 2 fix: When switching to WYSIWYG, auto-generate bodyHtml from StoryBrand sections
+                // if the user has been editing in StoryBrand mode
+                if (newTab === "wysiwyg" && activeTab === "structured") {
+                  const sections: string[] = [];
+                  if (problemHeading || problemContent) {
+                    sections.push(`<h2>${problemHeading || "The Problem"}</h2>`);
+                    if (problemContent) sections.push(`<p>${problemContent}</p>`);
+                  }
+                  if (empathyHeading || empathyContent) {
+                    sections.push(`<h3>${empathyHeading || "Why This Feels Frustrating"}</h3>`);
+                    if (empathyContent) sections.push(`<blockquote><p>${empathyContent}</p></blockquote>`);
+                  }
+                  if (solutionHeading || solutionContent) {
+                    sections.push(`<h2>${solutionHeading || "The Simple Truth"}</h2>`);
+                    if (solutionContent) sections.push(`<p>${solutionContent}</p>`);
+                  }
+                  if (changeHeading || changeContent) {
+                    sections.push(`<h3>${changeHeading || "What Should Happen Instead"}</h3>`);
+                    if (changeContent) sections.push(`<p>${changeContent}</p>`);
+                  }
+                  if (resultHeading || resultContent) {
+                    sections.push(`<h2>${resultHeading || "How DentaSmart Helps"}</h2>`);
+                    if (resultContent) sections.push(`<p>${resultContent}</p>`);
+                  }
+                  const generatedHtml = sections.join("\n");
+                  // Only update if StoryBrand sections have content
+                  if (generatedHtml.trim()) {
+                    setBodyHtml(generatedHtml);
+                  }
+                }
+                setActiveTab(newTab);
+              }}>
                 <TabsList className="mb-4">
                   <TabsTrigger value="structured" className="cursor-pointer">StoryBrand Sections</TabsTrigger>
                   <TabsTrigger value="wysiwyg" className="cursor-pointer">Rich Text Editor</TabsTrigger>
@@ -539,7 +624,7 @@ export default function AdminBlogEditor() {
                   </p>
                   <BlogEditor
                     content={bodyHtml}
-                    onChange={setBodyHtml}
+                    onChange={(html) => { setBodyHtml(html); setIsDirty(true); }}
                     placeholder="Write your article content here..."
                   />
                 </TabsContent>
