@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
@@ -45,6 +45,8 @@ export function WaitlistSuccessModal({
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="p-0 overflow-hidden border-0 max-w-md w-full rounded-3xl shadow-2xl bg-white">
+        {/* Visually hidden title for screen reader accessibility */}
+        <DialogTitle className="sr-only">Android Waitlist Confirmation</DialogTitle>
         {/* Close button */}
         <button
           onClick={onClose}
