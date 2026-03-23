@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Check, Loader2 } from "lucide-react";
+import { Check, Loader2, CheckCircle2 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { trackEvent } from "@/lib/analytics";
 import { toast } from "sonner";
@@ -8,26 +8,39 @@ import { toast } from "sonner";
 export function AndroidEarlyAccess() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [successName, setSuccessName] = useState("");
+  const [successEmail, setSuccessEmail] = useState("");
 
   const joinWaitlist = trpc.waitlist.joinAndroid.useMutation();
+
+  // Auto-close success screen after 5 seconds
+  useEffect(() => {
+    if (showSuccess) {
+      const timer = setTimeout(() => {
+        setShowSuccess(false);
+        setEmail("");
+        setName("");
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [showSuccess]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !name) return;
 
     try {
-      const result = await joinWaitlist.mutateAsync({
+      await joinWaitlist.mutateAsync({
         name: name.trim(),
         email: email.trim(),
       });
 
-      if (result.alreadyExists) {
-        toast.info("You're already on the list! We'll notify you when the Android version is ready.");
-      }
-
+      // Show success screen
+      setSuccessName(name.trim());
+      setSuccessEmail(email.trim());
+      setShowSuccess(true);
       trackEvent("android_waitlist_submit", { source: "homepage_section" });
-      setSubmitted(true);
     } catch (err) {
       toast.error("Something went wrong. Please try again.");
       console.error("Waitlist submission failed:", err);
@@ -51,19 +64,36 @@ export function AndroidEarlyAccess() {
             Join thousands of people who've stopped worrying about their teeth and started taking action. Get early access to your Personal AI Oral Health Guide.
           </p>
 
-          {submitted ? (
+          {showSuccess ? (
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8 max-w-md mx-auto"
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col items-center justify-center gap-6 max-w-md mx-auto"
             >
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                <Check className="w-8 h-8 text-primary" strokeWidth={3} />
-              </div>
-              <h3 className="text-2xl font-medium text-white mb-2">You're on the list!</h3>
-              <p className="text-white/90">
-                Thanks, {name}. We'll notify you at <span className="font-medium text-white">{email}</span> as soon as the Android version is ready.
-              </p>
+              <motion.div
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="relative"
+              >
+                <div className="absolute inset-0 bg-white/20 rounded-full blur-xl animate-pulse" />
+                <CheckCircle2 className="w-20 h-20 text-white relative z-10" strokeWidth={1.5} />
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="text-center space-y-3"
+              >
+                <h3 className="text-3xl font-bold text-white">You're In!</h3>
+                <p className="text-white/90 text-lg">
+                  Thanks {successName}! We'll notify you at{" "}
+                  <span className="font-medium text-white">{successEmail}</span> as soon as the Android version is ready.
+                </p>
+                <p className="text-white/60 text-sm pt-2">Redirecting in 5 seconds...</p>
+              </motion.div>
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-xl mx-auto">
