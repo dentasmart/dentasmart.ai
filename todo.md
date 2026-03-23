@@ -613,3 +613,8 @@
 - [x] Add app store links in success modal (iOS App Store + Google Play)
 - [x] Auto-close after 10 seconds with animated countdown indicator
 - [x] Apply to both AndroidEarlyAccess section and AndroidEarlyAccessModal
+
+# Android Waitlist - Email & Modal Fixes - Mar 23, 2026
+- [ ] Remove Play Store button from WaitlistSuccessModal (user already signed up for Android, redundant)
+- [ ] Send confirmation email to user on Android waitlist signup
+- [ ] Email should be branded, include user's name, and confirm they'll be notified when Android launches

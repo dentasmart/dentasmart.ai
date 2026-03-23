@@ -8,7 +8,7 @@ interface WaitlistSuccessModalProps {
   isOpen: boolean;
   onClose: () => void;
   name: string;
-  email: string;
+  email?: string;
   autoCloseSecs?: number;
 }
 
@@ -112,51 +112,27 @@ export function WaitlistSuccessModal({
           transition={{ delay: 0.4 }}
           className="px-8 pt-6 pb-8 -mt-6 relative z-10 bg-white rounded-t-3xl"
         >
-          {/* Confirmation detail */}
-          <div className="bg-gray-50 rounded-2xl px-5 py-4 mb-6 text-center">
-            <p className="text-xs text-gray-500 mb-1">Confirmation sent to</p>
-            <p className="text-sm font-semibold text-gray-800 truncate">{email}</p>
-          </div>
-
           {/* What's next */}
           <div className="space-y-3 mb-6">
             <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 text-center">
               While you wait — try DentaSmart on iOS
             </p>
-            <div className="flex gap-3">
-              <a
-                href={IOS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1"
-              >
-                <div className="flex items-center justify-center gap-2 bg-black text-white rounded-xl py-3 px-4 hover:bg-gray-900 transition-colors">
-                  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white flex-shrink-0">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                  </svg>
-                  <div className="text-left">
-                    <p className="text-[10px] text-white/70 leading-none">Download on the</p>
-                    <p className="text-sm font-semibold leading-tight">App Store</p>
-                  </div>
+            <a
+              href={IOS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block"
+            >
+              <div className="flex items-center justify-center gap-3 bg-black text-white rounded-xl py-3.5 px-6 hover:bg-gray-900 transition-colors">
+                <svg viewBox="0 0 24 24" className="w-6 h-6 fill-white flex-shrink-0">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+                <div className="text-left">
+                  <p className="text-[10px] text-white/70 leading-none">Download on the</p>
+                  <p className="text-base font-semibold leading-tight">App Store</p>
                 </div>
-              </a>
-              <a
-                href={ANDROID_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1"
-              >
-                <div className="flex items-center justify-center gap-2 border-2 border-[#0ABFBC] text-[#0ABFBC] rounded-xl py-3 px-4 hover:bg-[#0ABFBC]/5 transition-colors">
-                  <svg viewBox="0 0 24 24" className="w-5 h-5 fill-[#0ABFBC] flex-shrink-0">
-                    <path d="M17.523 15.341l1.505-2.608a.3.3 0 0 0-.109-.41l-1.527-.882a5.86 5.86 0 0 0-.601-1.04l.611-1.726a.3.3 0 0 0-.19-.383l-1.67-.497a5.9 5.9 0 0 0-.958-.554l-.17-1.786a.3.3 0 0 0-.3-.272h-1.73a.3.3 0 0 0-.3.272l-.17 1.786a5.9 5.9 0 0 0-.958.554l-1.67.497a.3.3 0 0 0-.19.383l.611 1.726a5.86 5.86 0 0 0-.601 1.04l-1.527.882a.3.3 0 0 0-.109.41l1.505 2.608a.3.3 0 0 0 .41.109l1.527-.882c.319.228.66.424 1.02.584l.17 1.786a.3.3 0 0 0 .3.272h1.73a.3.3 0 0 0 .3-.272l.17-1.786c.36-.16.701-.356 1.02-.584l1.527.882a.3.3 0 0 0 .41-.109zM12 14a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
-                  </svg>
-                  <div className="text-left">
-                    <p className="text-[10px] text-[#0ABFBC]/70 leading-none">Early Access on</p>
-                    <p className="text-sm font-semibold leading-tight">Play Store</p>
-                  </div>
-                </div>
-              </a>
-            </div>
+              </div>
+            </a>
           </div>
 
           {/* Auto-close countdown */}
