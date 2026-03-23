@@ -566,7 +566,7 @@
 - [x] Wire /symptom-quiz route in App.tsx as explicit static route
 - [x] Update homepage "Try Free Symptom Check" CTA to link to /symptom-quiz
 - [ ] Add quiz CTA to symptom pages and blog posts
-- [ ] Add SEO metadata and JSON-LD schema to quiz page
+- [x] Add SEO metadata and JSON-LD schema to quiz page
 - [x] Write vitest tests for quiz submission endpoint
 
 # Admin Leads Management - Mar 15, 2026
@@ -618,3 +618,15 @@
 - [ ] Remove Play Store button from WaitlistSuccessModal (user already signed up for Android, redundant)
 - [ ] Send confirmation email to user on Android waitlist signup
 - [ ] Email should be branded, include user's name, and confirm they'll be notified when Android launches
+
+# Symptom Quiz SEO - Mar 23, 2026
+- [x] Add SEO meta title targeting "dental symptom checker", "tooth pain quiz", "do I need a dentist quiz"
+- [x] Add meta description (155 chars) with primary keyword and CTA
+- [x] Add canonical URL tag for /symptom-quiz
+- [x] Add Open Graph tags (og:title, og:description, og:image, og:url, og:type)
+- [x] Add Twitter Card tags
+- [x] Add JSON-LD Quiz schema with all 8 questions and answer options
+- [x] Add JSON-LD FAQPage schema with common dental symptom questions
+- [x] Add JSON-LD WebApplication schema for DentaSmart app
+- [x] Add JSON-LD BreadcrumbList schema
+- [x] Ensure H1 tag matches primary keyword intent

@@ -20,19 +20,258 @@ import {
 } from "lucide-react";
 import { Link } from "wouter";
 
+// ─── JSON-LD Structured Data ─────────────────────────────────────────────────
+
+// 1. Quiz schema with all 8 questions and answer options
 const quizJsonLd = {
   "@context": "https://schema.org",
   "@type": "Quiz",
-  name: "DentaSmart Oral Health Symptom Quiz",
+  name: "Free Dental Symptom Checker — Oral Health Quiz",
   description:
-    "Take a 2-minute quiz to understand your oral health risks and get personalized recommendations from DentaSmart AI.",
+    "Answer 8 questions about your dental symptoms and habits to get a personalized oral health risk assessment with AI-powered recommendations.",
   url: "https://dentasmart.ai/symptom-quiz",
+  educationalLevel: "beginner",
+  timeRequired: "PT2M",
+  provider: {
+    "@type": "Organization",
+    name: "DentaSmart",
+    url: "https://dentasmart.ai",
+    logo: "https://dentasmart.ai/images/logo.png",
+  },
+  hasPart: [
+    {
+      "@type": "Question",
+      name: "Are you experiencing any tooth or mouth pain?",
+      acceptedAnswer: [
+        { "@type": "Answer", text: "No pain at all" },
+        { "@type": "Answer", text: "Mild discomfort that comes and goes" },
+        { "@type": "Answer", text: "Moderate pain when eating or drinking" },
+        { "@type": "Answer", text: "Severe or constant pain" },
+      ],
+    },
+    {
+      "@type": "Question",
+      name: "Do your gums bleed when you brush or floss?",
+      acceptedAnswer: [
+        { "@type": "Answer", text: "Never" },
+        { "@type": "Answer", text: "Rarely, only when I floss hard" },
+        { "@type": "Answer", text: "Sometimes when brushing" },
+        { "@type": "Answer", text: "Frequently or every time" },
+      ],
+    },
+    {
+      "@type": "Question",
+      name: "Do hot or cold foods or drinks cause discomfort?",
+      acceptedAnswer: [
+        { "@type": "Answer", text: "No sensitivity at all" },
+        { "@type": "Answer", text: "Only with very cold things like ice cream" },
+        { "@type": "Answer", text: "Both hot and cold cause discomfort" },
+        { "@type": "Answer", text: "Lingering pain after hot or cold" },
+      ],
+    },
+    {
+      "@type": "Question",
+      name: "Have you noticed any changes in how your teeth or gums look?",
+      acceptedAnswer: [
+        { "@type": "Answer", text: "Everything looks normal" },
+        { "@type": "Answer", text: "Some staining or discoloration" },
+        { "@type": "Answer", text: "Swollen, red, or receding gums" },
+        { "@type": "Answer", text: "Dark spots, chips, or a loose tooth" },
+      ],
+    },
+    {
+      "@type": "Question",
+      name: "Which of these habits apply to you?",
+      acceptedAnswer: [
+        { "@type": "Answer", text: "I brush twice daily and floss regularly" },
+        { "@type": "Answer", text: "I brush daily but rarely floss" },
+        { "@type": "Answer", text: "I often skip brushing or use tobacco" },
+        { "@type": "Answer", text: "I grind my teeth or clench my jaw" },
+      ],
+    },
+    {
+      "@type": "Question",
+      name: "When was your last dental visit?",
+      acceptedAnswer: [
+        { "@type": "Answer", text: "Within the last 6 months" },
+        { "@type": "Answer", text: "6 to 12 months ago" },
+        { "@type": "Answer", text: "1 to 2 years ago" },
+        { "@type": "Answer", text: "More than 2 years or I can't remember" },
+      ],
+    },
+    {
+      "@type": "Question",
+      name: "How would you describe your main concern right now?",
+      acceptedAnswer: [
+        { "@type": "Answer", text: "Just curious about my oral health" },
+        { "@type": "Answer", text: "I want to prevent future problems" },
+        { "@type": "Answer", text: "I have a specific symptom I'm worried about" },
+        { "@type": "Answer", text: "I'm in pain and need help now" },
+      ],
+    },
+    {
+      "@type": "Question",
+      name: "Do you currently have dental insurance?",
+      acceptedAnswer: [
+        { "@type": "Answer", text: "Yes, I have dental insurance" },
+        { "@type": "Answer", text: "No, I don't have dental insurance" },
+        { "@type": "Answer", text: "I'm not sure what my plan covers" },
+        { "@type": "Answer", text: "I have insurance but it feels limited" },
+      ],
+    },
+  ],
+};
+
+// 2. FAQPage schema — targets "People Also Ask" and voice search
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How do I know if my tooth pain is serious?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Tooth pain that is severe, constant, or accompanied by swelling, fever, or a bad taste in your mouth may indicate an infection or abscess and needs prompt dental attention. Mild, occasional sensitivity is less urgent but still worth monitoring. DentaSmart's free symptom quiz can help you assess your risk level in under 2 minutes.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What are the early signs of gum disease?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Early signs of gum disease (gingivitis) include gums that bleed when you brush or floss, red or swollen gums, persistent bad breath, and gums that appear to be pulling away from your teeth. If caught early, gum disease is reversible with proper brushing, flossing, and a professional cleaning.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Should I see a dentist if I have tooth sensitivity?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes, tooth sensitivity that is new, worsening, or accompanied by pain that lingers after exposure to hot or cold should be evaluated by a dentist. It can signal a cavity, cracked tooth, or exposed root. Mild sensitivity to very cold items alone is common and may be managed with a sensitivity toothpaste.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How often should I visit the dentist?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Most dental professionals recommend a checkup and cleaning every 6 months. If you have a history of gum disease, cavities, or other oral health issues, your dentist may recommend more frequent visits. Regular checkups catch problems early when they are easier and less expensive to treat.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What does a dental symptom checker do?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "A dental symptom checker asks you questions about your pain, gum health, sensitivity, and habits to estimate your oral health risk level. DentaSmart's free quiz takes about 2 minutes and gives you a personalized risk assessment — low, moderate, or high — along with matched conditions and specific next steps. It does not replace a professional dental diagnosis.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Can I check my dental symptoms online for free?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. DentaSmart offers a free online dental symptom checker quiz at dentasmart.ai/symptom-quiz. Answer 8 questions about your symptoms and habits to receive a personalized oral health risk assessment with AI-powered recommendations — no account or credit card required.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "What causes sudden tooth pain?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Sudden tooth pain can be caused by a cavity reaching the nerve, a cracked tooth, an exposed root, a dental abscess, or a lost filling. If the pain is severe or accompanied by swelling, you should see a dentist as soon as possible. Use DentaSmart's symptom quiz to assess your risk and get guidance on next steps.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Do I need a dentist if my teeth don't hurt?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. Many dental problems — including cavities, early gum disease, and oral cancer — have no pain in their early stages. Regular checkups every 6 months allow your dentist to catch and treat issues before they become painful and expensive. Prevention is always cheaper than treatment.",
+      },
+    },
+  ],
+};
+
+// 3. WebApplication schema — reinforces app download intent
+const webAppJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "DentaSmart — AI Oral Health Guide",
+  url: "https://dentasmart.ai/symptom-quiz",
+  applicationCategory: "HealthApplication",
+  operatingSystem: "Web, iOS, Android",
+  description:
+    "Free dental symptom checker and AI-powered oral health assessment. Answer 8 questions to get your personalized risk score and next steps.",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+  featureList: [
+    "Free dental symptom checker",
+    "Personalized oral health risk assessment",
+    "AI-powered condition matching",
+    "Tailored next-step recommendations",
+    "No account required",
+  ],
   provider: {
     "@type": "Organization",
     name: "DentaSmart",
     url: "https://dentasmart.ai",
   },
 };
+
+// 4. BreadcrumbList schema
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://dentasmart.ai",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Dental Symptom Checker",
+      item: "https://dentasmart.ai/symptom-quiz",
+    },
+  ],
+};
+
+// 5. MedicalWebPage schema — signals health content to Google
+const medicalPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "MedicalWebPage",
+  name: "Free Dental Symptom Checker — Oral Health Quiz",
+  url: "https://dentasmart.ai/symptom-quiz",
+  description:
+    "A free online dental symptom checker. Answer 8 questions about tooth pain, gum health, sensitivity, and habits to get a personalized oral health risk assessment.",
+  medicalAudience: {
+    "@type": "MedicalAudience",
+    audienceType: "Patient",
+  },
+  about: [
+    { "@type": "MedicalCondition", name: "Toothache" },
+    { "@type": "MedicalCondition", name: "Gum Disease" },
+    { "@type": "MedicalCondition", name: "Tooth Sensitivity" },
+    { "@type": "MedicalCondition", name: "Dental Abscess" },
+    { "@type": "MedicalCondition", name: "Cavities" },
+  ],
+  lastReviewed: "2026-03-23",
+  publisher: {
+    "@type": "Organization",
+    name: "DentaSmart",
+    url: "https://dentasmart.ai",
+  },
+};
+
+// Combined JSON-LD array
+const allJsonLd = [quizJsonLd, faqJsonLd, webAppJsonLd, breadcrumbJsonLd, medicalPageJsonLd];
 
 // Risk level color and icon mapping
 const riskConfig = {
@@ -153,11 +392,12 @@ export default function SymptomQuiz() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
-        title="Free Oral Health Symptom Quiz | DentaSmart"
-        description="Take a free 2-minute quiz to check your oral health. Get personalized risk assessment and AI-powered recommendations for your dental symptoms."
+        title="Free Dental Symptom Checker — Do I Need a Dentist? | DentaSmart"
+        description="Not sure if your tooth pain or gum symptoms need a dentist? Take our free 2-minute dental symptom quiz and get a personalized oral health risk score."
         canonical="https://dentasmart.ai/symptom-quiz"
-        keywords="dental symptom quiz, oral health assessment, tooth pain quiz, gum disease check, free dental check, dental symptoms"
-        jsonLd={quizJsonLd}
+        keywords="dental symptom checker, tooth pain quiz, do I need a dentist quiz, dental symptoms checker, oral health quiz, gum disease quiz, tooth sensitivity quiz, free dental assessment, online dental check"
+        ogType="website"
+        jsonLd={allJsonLd}
       />
       <Navigation />
 
@@ -268,16 +508,16 @@ function IntroSection({ onStart }: { onStart: () => void }) {
           >
             <div className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-2 text-sm font-medium mb-6">
               <Sparkles className="w-4 h-4" />
-              Free 2-Minute Assessment
+              Free Dental Symptom Checker
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-6 leading-tight">
-              Not sure what's going on <br />
-              <span className="italic text-primary">with your teeth?</span>
+              Do your dental symptoms <br />
+              <span className="italic text-primary">need a dentist?</span>
             </h1>
             <p className="text-xl text-stone-600 mb-8 font-light leading-relaxed max-w-lg">
-              Answer 8 quick questions about your symptoms and habits. We'll give
-              you a personalized risk assessment with clear next steps — no
-              account required.
+              Answer 8 quick questions about your tooth pain, gum health, and
+              habits. Get a free personalized oral health risk score with clear
+              next steps — no account required.
             </p>
 
             <div className="space-y-4 mb-10">
