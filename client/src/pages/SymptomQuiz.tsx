@@ -22,7 +22,8 @@ import { Link } from "wouter";
 
 // ─── JSON-LD Structured Data ─────────────────────────────────────────────────
 
-// 1. Quiz schema with all 8 questions and answer options
+// 1. Quiz schema — Google requires acceptedAnswer to be a SINGLE Answer object (not an array).
+// We use the most informative answer option as the canonical accepted answer for each question.
 const quizJsonLd = {
   "@context": "https://schema.org",
   "@type": "Quiz",
@@ -36,88 +37,89 @@ const quizJsonLd = {
     "@type": "Organization",
     name: "DentaSmart",
     url: "https://dentasmart.ai",
-    logo: "https://dentasmart.ai/images/logo.png",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://dentasmart.ai/images/logo.png",
+    },
   },
   hasPart: [
     {
       "@type": "Question",
       name: "Are you experiencing any tooth or mouth pain?",
-      acceptedAnswer: [
+      suggestedAnswer: [
         { "@type": "Answer", text: "No pain at all" },
         { "@type": "Answer", text: "Mild discomfort that comes and goes" },
         { "@type": "Answer", text: "Moderate pain when eating or drinking" },
-        { "@type": "Answer", text: "Severe or constant pain" },
       ],
+      acceptedAnswer: { "@type": "Answer", text: "Severe or constant pain may indicate an infection or abscess and should be evaluated by a dentist promptly." },
     },
     {
       "@type": "Question",
       name: "Do your gums bleed when you brush or floss?",
-      acceptedAnswer: [
+      suggestedAnswer: [
         { "@type": "Answer", text: "Never" },
         { "@type": "Answer", text: "Rarely, only when I floss hard" },
-        { "@type": "Answer", text: "Sometimes when brushing" },
-        { "@type": "Answer", text: "Frequently or every time" },
       ],
+      acceptedAnswer: { "@type": "Answer", text: "Gums that bleed frequently when brushing or flossing are a common early sign of gum disease (gingivitis) and should be checked by a dentist." },
     },
     {
       "@type": "Question",
       name: "Do hot or cold foods or drinks cause discomfort?",
-      acceptedAnswer: [
+      suggestedAnswer: [
         { "@type": "Answer", text: "No sensitivity at all" },
         { "@type": "Answer", text: "Only with very cold things like ice cream" },
         { "@type": "Answer", text: "Both hot and cold cause discomfort" },
-        { "@type": "Answer", text: "Lingering pain after hot or cold" },
       ],
+      acceptedAnswer: { "@type": "Answer", text: "Lingering pain after exposure to hot or cold can indicate nerve involvement and should be evaluated by a dentist." },
     },
     {
       "@type": "Question",
       name: "Have you noticed any changes in how your teeth or gums look?",
-      acceptedAnswer: [
+      suggestedAnswer: [
         { "@type": "Answer", text: "Everything looks normal" },
         { "@type": "Answer", text: "Some staining or discoloration" },
         { "@type": "Answer", text: "Swollen, red, or receding gums" },
-        { "@type": "Answer", text: "Dark spots, chips, or a loose tooth" },
       ],
+      acceptedAnswer: { "@type": "Answer", text: "Dark spots on teeth, chips, or a loose tooth are signs of decay or structural damage that require professional dental evaluation." },
     },
     {
       "@type": "Question",
       name: "Which of these habits apply to you?",
-      acceptedAnswer: [
+      suggestedAnswer: [
         { "@type": "Answer", text: "I brush twice daily and floss regularly" },
         { "@type": "Answer", text: "I brush daily but rarely floss" },
-        { "@type": "Answer", text: "I often skip brushing or use tobacco" },
-        { "@type": "Answer", text: "I grind my teeth or clench my jaw" },
       ],
+      acceptedAnswer: { "@type": "Answer", text: "Brushing twice daily and flossing once daily is the gold standard for preventing cavities and gum disease." },
     },
     {
       "@type": "Question",
       name: "When was your last dental visit?",
-      acceptedAnswer: [
+      suggestedAnswer: [
         { "@type": "Answer", text: "Within the last 6 months" },
         { "@type": "Answer", text: "6 to 12 months ago" },
         { "@type": "Answer", text: "1 to 2 years ago" },
-        { "@type": "Answer", text: "More than 2 years or I can't remember" },
       ],
+      acceptedAnswer: { "@type": "Answer", text: "Dental professionals recommend a checkup and cleaning every 6 months to catch problems early before they become painful or expensive." },
     },
     {
       "@type": "Question",
       name: "How would you describe your main concern right now?",
-      acceptedAnswer: [
+      suggestedAnswer: [
         { "@type": "Answer", text: "Just curious about my oral health" },
         { "@type": "Answer", text: "I want to prevent future problems" },
         { "@type": "Answer", text: "I have a specific symptom I'm worried about" },
-        { "@type": "Answer", text: "I'm in pain and need help now" },
       ],
+      acceptedAnswer: { "@type": "Answer", text: "If you are in pain, you should contact a dentist as soon as possible. DentaSmart's symptom checker can help you assess urgency while you arrange an appointment." },
     },
     {
       "@type": "Question",
       name: "Do you currently have dental insurance?",
-      acceptedAnswer: [
+      suggestedAnswer: [
         { "@type": "Answer", text: "Yes, I have dental insurance" },
-        { "@type": "Answer", text: "No, I don't have dental insurance" },
         { "@type": "Answer", text: "I'm not sure what my plan covers" },
         { "@type": "Answer", text: "I have insurance but it feels limited" },
       ],
+      acceptedAnswer: { "@type": "Answer", text: "If you do not have dental insurance, community health centers, dental schools, and discount plans can provide affordable care. DentaSmart can help you understand what treatment you may need before you visit." },
     },
   ],
 };
@@ -194,7 +196,7 @@ const faqJsonLd = {
   ],
 };
 
-// 3. WebApplication schema — reinforces app download intent
+// 3. WebApplication schema — featureList must be a plain string (comma-separated), not an array.
 const webAppJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
@@ -209,14 +211,8 @@ const webAppJsonLd = {
     price: "0",
     priceCurrency: "USD",
   },
-  featureList: [
-    "Free dental symptom checker",
-    "Personalized oral health risk assessment",
-    "AI-powered condition matching",
-    "Tailored next-step recommendations",
-    "No account required",
-  ],
-  provider: {
+  featureList: "Free dental symptom checker, Personalized oral health risk assessment, AI-powered condition matching, Tailored next-step recommendations, No account required",
+  author: {
     "@type": "Organization",
     name: "DentaSmart",
     url: "https://dentasmart.ai",
@@ -243,7 +239,7 @@ const breadcrumbJsonLd = {
   ],
 };
 
-// 5. MedicalWebPage schema — signals health content to Google
+// 5. MedicalWebPage schema — use audience property (not medicalAudience.audienceType which is not a Google-supported field).
 const medicalPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
@@ -251,9 +247,9 @@ const medicalPageJsonLd = {
   url: "https://dentasmart.ai/symptom-quiz",
   description:
     "A free online dental symptom checker. Answer 8 questions about tooth pain, gum health, sensitivity, and habits to get a personalized oral health risk assessment.",
-  medicalAudience: {
+  audience: {
     "@type": "MedicalAudience",
-    audienceType: "Patient",
+    name: "Patients",
   },
   about: [
     { "@type": "MedicalCondition", name: "Toothache" },

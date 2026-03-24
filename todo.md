@@ -630,3 +630,12 @@
 - [x] Add JSON-LD WebApplication schema for DentaSmart app
 - [x] Add JSON-LD BreadcrumbList schema
 - [x] Ensure H1 tag matches primary keyword intent
+
+## JSON-LD Schema Fixes (Rich Results Validation)
+- [x] Fix aggregateRating in SEO.tsx: add ratingCount (missing required field)
+- [x] Fix aggregateRating in Download.tsx: already has ratingCount — verify no other issues
+- [x] Fix Quiz schema in SymptomQuiz.tsx: acceptedAnswer on Question must be singular Answer object not array
+- [x] Fix FAQPage schema in SymptomQuiz.tsx: verify acceptedAnswer.text is plain string not HTML
+- [x] Fix FAQPage schema in Answers.tsx: verify mainEntity is not empty on initial render
+- [x] Fix Article schema in schema.ts: add image as required field fallback
+- [x] Fix SoftwareApplication in SEO.tsx: add url field
