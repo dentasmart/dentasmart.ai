@@ -1,0 +1,15 @@
+{
+  "query": "SELECT id, title, slug FROM blog_posts WHERE slug LIKE '/%' OR slug LIKE '%//%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT id, title, slug FROM blog_posts WHERE slug LIKE '/%' OR slug LIKE '%//%';",
+  "rows": [
+    {
+      "id": "990001",
+      "title": "Why Am I Grinding My Teeth at Night - And Do I Need a Mouthguard or Retainer?",
+      "slug": "/teeth-grinding-at-night-mouthguard-retainer"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\ttitle\tslug\n990001\tWhy Am I Grinding My Teeth at Night - And Do I Need a Mouthguard or Retainer?\t/teeth-grinding-at-night-mouthguard-retainer\n",
+  "stderr": "",
+  "execution_time_ms": 51
+}

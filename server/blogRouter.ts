@@ -86,6 +86,20 @@ function generateSlug(title: string): string {
     .substring(0, 200);
 }
 
+// Sanitize a user-supplied slug: strip leading/trailing slashes and whitespace,
+// then apply the same normalisation as generateSlug so it is always URL-safe.
+function sanitizeSlug(slug: string): string {
+  return slug
+    .trim()
+    .replace(/^\/+|\/+$/g, "")   // strip leading/trailing slashes
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "")
+    .substring(0, 200);
+}
+
 export const blogRouter = router({
   // ============ Admin Auth ============
   adminLogin: publicProcedure
@@ -166,7 +180,8 @@ export const blogRouter = router({
       status: z.enum(["draft", "published", "unpublished"]).optional(),
     }))
     .mutation(async ({ input }) => {
-      let slug = input.slug || generateSlug(input.title);
+      // Sanitize slug: strip leading slashes and normalise (prevents /slug → 404)
+      let slug = input.slug ? sanitizeSlug(input.slug) : generateSlug(input.title);
 
       // Ensure slug is unique
       let counter = 0;
@@ -233,8 +248,12 @@ export const blogRouter = router({
     .mutation(async ({ input }) => {
       const { id, ...data } = input;
 
-      // Check slug uniqueness if slug is being changed
+      // Sanitize and check slug uniqueness if slug is being changed
       if (data.slug) {
+        data.slug = sanitizeSlug(data.slug);
+        if (!data.slug) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: "Slug cannot be empty after sanitization" });
+        }
         const exists = await slugExists(data.slug, id);
         if (exists) {
           throw new TRPCError({ code: "CONFLICT", message: "This URL slug is already in use" });

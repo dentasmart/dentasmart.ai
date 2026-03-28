@@ -221,12 +221,12 @@ export default function AdminDashboard() {
               <span className="text-sm text-stone-500 hidden sm:block">
                 Welcome, <span className="font-medium text-stone-700">{admin.displayName || admin.username}</span>
               </span>
-              <Link href="/" target="_blank">
+              <a href="/" target="_blank" rel="noopener noreferrer">
                 <Button variant="ghost" size="sm" className="text-stone-500 hover:text-stone-700 cursor-pointer">
                   <ExternalLink className="w-4 h-4 mr-1" />
                   <span className="hidden sm:inline">View Site</span>
                 </Button>
-              </Link>
+              </a>
               <Button
                 variant="ghost"
                 size="sm"
@@ -416,7 +416,11 @@ export default function AdminDashboard() {
                             </Button>
                           )}
                           {post.status === "published" && (
-                            <Link href={`/oral-health-hub/${post.slug}`} target="_blank">
+                            <a
+                              href={`/oral-health-hub/${post.slug}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               <Button
                                 variant="ghost"
                                 size="sm"
@@ -425,7 +429,7 @@ export default function AdminDashboard() {
                               >
                                 <ExternalLink className="w-4 h-4" />
                               </Button>
-                            </Link>
+                            </a>
                           )}
                           <AlertDialog>
                             <AlertDialogTrigger asChild>

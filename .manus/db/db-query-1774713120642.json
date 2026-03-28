@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE blog_posts SET slug = 'teeth-grinding-at-night-mouthguard-retainer' WHERE slug = '/teeth-grinding-at-night-mouthguard-retainer'; SELECT id, title, slug FROM blog_posts WHERE slug LIKE '/%' OR slug LIKE '%//%' OR slug LIKE '% %';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute UPDATE blog_posts SET slug = 'teeth-grinding-at-night-mouthguard-retainer' WHERE slug = '/teeth-grinding-at-night-mouthguard-retainer'; SELECT id, title, slug FROM blog_posts WHERE slug LIKE '/%' OR slug LIKE '%//%' OR slug LIKE '% %';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 61
+}

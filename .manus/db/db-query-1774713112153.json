@@ -1,0 +1,9 @@
+{
+  "query": "UPDATE blog_posts SET slug = 'tonsil-stones-what-are-they-how-to-remove' WHERE slug = '/tonsil-stones-what-are-they-how-to-remove'; UPDATE blog_posts SET slug = 'what-to-do-after-tooth-extraction' WHERE slug = '/what-to-do-after-tooth-extraction';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute UPDATE blog_posts SET slug = 'tonsil-stones-what-are-they-how-to-remove' WHERE slug = '/tonsil-stones-what-are-they-how-to-remove'; UPDATE blog_posts SET slug = 'what-to-do-after-tooth-extraction' WHERE slug = '/what-to-do-after-tooth-extraction';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 72
+}

@@ -639,3 +639,12 @@
 - [x] Fix FAQPage schema in Answers.tsx: verify mainEntity is not empty on initial render
 - [x] Fix Article schema in schema.ts: add image as required field fallback
 - [x] Fix SoftwareApplication in SEO.tsx: add url field
+
+## Blog Publish 404 Bug Fix
+- [x] Audit blog publish mutation and post-publish redirect in admin panel
+- [x] Audit article slug routing in App.tsx and Article.tsx
+- [x] Fix 3 DB slugs with leading slashes (tonsil-stones, tooth-extraction, teeth-grinding)
+- [x] Add sanitizeSlug() to blogRouter.ts create + update mutations to prevent future bad slugs
+- [x] Fix AdminDashboard View live link: replaced wouter <Link target=_blank> with plain <a target=_blank>
+- [x] Fix AdminDashboard View Site link: replaced wouter <Link target=_blank> with plain <a target=_blank>
+- [x] Verify all 3 fixed article URLs return HTTP 200 on dentasmart.ai

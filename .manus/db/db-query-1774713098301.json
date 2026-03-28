@@ -1,0 +1,334 @@
+{
+  "query": "DESCRIBE blog_posts; SELECT id, title, slug, status FROM blog_posts ORDER BY id DESC LIMIT 10;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute DESCRIBE blog_posts; SELECT id, title, slug, status FROM blog_posts ORDER BY id DESC LIMIT 10;",
+  "rows": [
+    {
+      "Field": "id",
+      "Type": "int",
+      "Null": "NO",
+      "Key": "PRI",
+      "Default": "NULL",
+      "Extra": "auto_increment"
+    },
+    {
+      "Field": "title",
+      "Type": "varchar(500)",
+      "Null": "NO",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "slug",
+      "Type": "varchar(500)",
+      "Null": "NO",
+      "Key": "UNI",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "category",
+      "Type": "enum('Dentist Problems','Dental Problems','Insurance Problems','Symptoms','Gums','Cavities','X-Rays','Costs')",
+      "Null": "NO",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "readTime",
+      "Type": "varchar(50)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "3 min read",
+      "Extra": ""
+    },
+    {
+      "Field": "problemHeading",
+      "Type": "varchar(500)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "problemContent",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "empathyHeading",
+      "Type": "varchar(500)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "empathyContent",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "solutionHeading",
+      "Type": "varchar(500)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "solutionContent",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "changeHeading",
+      "Type": "varchar(500)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "changeContent",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "resultHeading",
+      "Type": "varchar(500)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "resultContent",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "bodyHtml",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "metaTitle",
+      "Type": "varchar(200)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "metaDescription",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "metaKeywords",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "ogTitle",
+      "Type": "varchar(200)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "ogDescription",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "ogImage",
+      "Type": "varchar(1000)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "canonicalUrl",
+      "Type": "varchar(1000)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "status",
+      "Type": "enum('draft','published','unpublished')",
+      "Null": "NO",
+      "Key": "",
+      "Default": "draft",
+      "Extra": ""
+    },
+    {
+      "Field": "featuredImage",
+      "Type": "varchar(1000)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "publishedAt",
+      "Type": "timestamp",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "createdAt",
+      "Type": "timestamp",
+      "Null": "NO",
+      "Key": "",
+      "Default": "CURRENT_TIMESTAMP",
+      "Extra": ""
+    },
+    {
+      "Field": "updatedAt",
+      "Type": "timestamp",
+      "Null": "NO",
+      "Key": "",
+      "Default": "CURRENT_TIMESTAMP",
+      "Extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+    },
+    {
+      "Field": "primaryKeyword",
+      "Type": "varchar(200)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "secondaryKeywords",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "atAGlanceAnswer",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "keyTakeaways",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "whenUrgent",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "faqs",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "relatedPosts",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "reviewedByName",
+      "Type": "varchar(200)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "reviewedByCredentials",
+      "Type": "varchar(500)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "categoryId",
+      "Type": "int",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "subcategoryId",
+      "Type": "int",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    }
+  ],
+  "messages": [
+    "id\ttitle\tslug\tstatus",
+    "1500001\tHow Often Should You Really Go to the Dentist? The 6-Month Rule Explained\thow-often-should-you-go-to-the-dentist\tpublished",
+    "1470002\tWhy Are My Teeth So Sensitive - And Will Tooth Sensitivity Go Away?\twhy-are-my-teeth-so-sensitive-and-will-tooth-sensitivity-go-away\tpublished",
+    "1470001\tWhat Are Tonsil Stones  - And Could They Be Causing Your Bad Breath?\t/tonsil-stones-what-are-they-how-to-remove\tpublished",
+    "1440001\tWhat Should You Do After a Tooth Extraction - And What Should You Avoid?\t/what-to-do-after-tooth-extraction\tpublished",
+    "1320001\tHow to Overcome Dental Anxiety and Fear of the Dentist\tdental-anxiety-fear-of-dentist\tpublished",
+    "1260001\tHow Much Does a Dentist Visit Cost Without Insurance? A 2026 Guide\tdentist-cost-without-insurance\tpublished",
+    "1200003\t10 Questions to Ask Your Dentist Before Any Procedure\t10-questions-to-ask-your-dentist-before-any-procedure\tpublished",
+    "1200002\tThe Hidden Cost of Ignoring Dental Problems\tthe-hidden-cost-of-ignoring-dental-problems\tpublished",
+    "1200001\tWhy Your Dentist Might Be Recommending Unnecessary Procedures\twhy-your-dentist-might-be-recommending-unnecessary-procedures\tpublished",
+    "1170003\tHow Can You Remove Plaque at Home - And Are You Doing It the Right Way?\thow-to-remove-plaque-at-home\tpublished"
+  ],
+  "stdout": "Field\tType\tNull\tKey\tDefault\tExtra\nid\tint\tNO\tPRI\tNULL\tauto_increment\ntitle\tvarchar(500)\tNO\t\tNULL\t\nslug\tvarchar(500)\tNO\tUNI\tNULL\t\ncategory\tenum('Dentist Problems','Dental Problems','Insurance Problems','Symptoms','Gums','Cavities','X-Rays','Costs')\tNO\t\tNULL\t\nreadTime\tvarchar(50)\tYES\t\t3 min read\t\nproblemHeading\tvarchar(500)\tYES\t\tNULL\t\nproblemContent\ttext\tYES\t\tNULL\t\nempathyHeading\tvarchar(500)\tYES\t\tNULL\t\nempathyContent\ttext\tYES\t\tNULL\t\nsolutionHeading\tvarchar(500)\tYES\t\tNULL\t\nsolutionContent\ttext\tYES\t\tNULL\t\nchangeHeading\tvarchar(500)\tYES\t\tNULL\t\nchangeContent\ttext\tYES\t\tNULL\t\nresultHeading\tvarchar(500)\tYES\t\tNULL\t\nresultContent\ttext\tYES\t\tNULL\t\nbodyHtml\ttext\tYES\t\tNULL\t\nmetaTitle\tvarchar(200)\tYES\t\tNULL\t\nmetaDescription\ttext\tYES\t\tNULL\t\nmetaKeywords\ttext\tYES\t\tNULL\t\nogTitle\tvarchar(200)\tYES\t\tNULL\t\nogDescription\ttext\tYES\t\tNULL\t\nogImage\tvarchar(1000)\tYES\t\tNULL\t\ncanonicalUrl\tvarchar(1000)\tYES\t\tNULL\t\nstatus\tenum('draft','published','unpublished')\tNO\t\tdraft\t\nfeaturedImage\tvarchar(1000)\tYES\t\tNULL\t\npublishedAt\ttimestamp\tYES\t\tNULL\t\ncreatedAt\ttimestamp\tNO\t\tCURRENT_TIMESTAMP\t\nupdatedAt\ttimestamp\tNO\t\tCURRENT_TIMESTAMP\tDEFAULT_GENERATED on update CURRENT_TIMESTAMP\nprimaryKeyword\tvarchar(200)\tYES\t\tNULL\t\nsecondaryKeywords\ttext\tYES\t\tNULL\t\natAGlanceAnswer\ttext\tYES\t\tNULL\t\nkeyTakeaways\ttext\tYES\t\tNULL\t\nwhenUrgent\ttext\tYES\t\tNULL\t\nfaqs\ttext\tYES\t\tNULL\t\nrelatedPosts\ttext\tYES\t\tNULL\t\nreviewedByName\tvarchar(200)\tYES\t\tNULL\t\nreviewedByCredentials\tvarchar(500)\tYES\t\tNULL\t\ncategoryId\tint\tYES\t\tNULL\t\nsubcategoryId\tint\tYES\t\tNULL\t\nid\ttitle\tslug\tstatus\n1500001\tHow Often Should You Really Go to the Dentist? The 6-Month Rule Explained\thow-often-should-you-go-to-the-dentist\tpublished\n1470002\tWhy Are My Teeth So Sensitive - And Will Tooth Sensitivity Go Away?\twhy-are-my-teeth-so-sensitive-and-will-tooth-sensitivity-go-away\tpublished\n1470001\tWhat Are Tonsil Stones  - And Could They Be Causing Your Bad Breath?\t/tonsil-stones-what-are-they-how-to-remove\tpublished\n1440001\tWhat Should You Do After a Tooth Extraction - And What Should You Avoid?\t/what-to-do-after-tooth-extraction\tpublished\n1320001\tHow to Overcome Dental Anxiety and Fear of the Dentist\tdental-anxiety-fear-of-dentist\tpublished\n1260001\tHow Much Does a Dentist Visit Cost Without Insurance? A 2026 Guide\tdentist-cost-without-insurance\tpublished\n1200003\t10 Questions to Ask Your Dentist Before Any Procedure\t10-questions-to-ask-your-dentist-before-any-procedure\tpublished\n1200002\tThe Hidden Cost of Ignoring Dental Problems\tthe-hidden-cost-of-ignoring-dental-problems\tpublished\n1200001\tWhy Your Dentist Might Be Recommending Unnecessary Procedures\twhy-your-dentist-might-be-recommending-unnecessary-procedures\tpublished\n1170003\tHow Can You Remove Plaque at Home - And Are You Doing It the Right Way?\thow-to-remove-plaque-at-home\tpublished\n",
+  "stderr": "",
+  "execution_time_ms": 70
+}
