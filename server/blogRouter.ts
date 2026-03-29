@@ -19,6 +19,7 @@ import {
   updateCategory,
   deleteCategory,
   categorySlugExists,
+  getSlugAuditResults,
 } from "./blogDb";
 import { SignJWT, jwtVerify } from "jose";
 import { storagePut } from "./storage";
@@ -420,6 +421,41 @@ export const blogRouter = router({
       } catch (err: any) {
         throw new TRPCError({ code: "BAD_REQUEST", message: err.message });
       }
+    }),
+
+  // ============ Slug Audit (Admin) ============
+  auditSlugs: adminBlogProcedure.query(async () => {
+    return await getSlugAuditResults();
+  }),
+
+  fixSlug: adminBlogProcedure
+    .input(z.object({
+      id: z.number(),
+      newSlug: z.string().min(1),
+    }))
+    .mutation(async ({ input }) => {
+      const clean = input.newSlug
+        .trim()
+        .replace(/^\/+|\/+$/g, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, "")
+        .replace(/\s+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "")
+        .substring(0, 200);
+
+      if (!clean) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Slug is empty after sanitization" });
+      }
+
+      const exists = await slugExists(clean, input.id);
+      if (exists) {
+        throw new TRPCError({ code: "CONFLICT", message: "This slug is already used by another post" });
+      }
+
+      await updateBlogPost(input.id, { slug: clean });
+      invalidateSitemapCache();
+      return { success: true, slug: clean };
     }),
 
   // Image upload for blog editor

@@ -292,3 +292,119 @@ export async function seedAdminUser() {
     console.error("[Blog] Failed to seed admin user:", error);
   }
 }
+
+// ============ Slug Audit ============
+
+export type SlugAuditIssue =
+  | "leading_slash"
+  | "trailing_slash"
+  | "empty"
+  | "invalid_chars"
+  | "too_long"
+  | "duplicate";
+
+export interface SlugAuditResult {
+  id: number;
+  title: string;
+  slug: string;
+  status: string;
+  issues: SlugAuditIssue[];
+  suggestedSlug: string | null;
+}
+
+/**
+ * Validate a single slug and return the list of issues found.
+ * Does NOT hit the database — purely string-based checks.
+ */
+function validateSlug(slug: string): SlugAuditIssue[] {
+  const issues: SlugAuditIssue[] = [];
+  if (!slug || slug.trim() === "") {
+    issues.push("empty");
+    return issues;
+  }
+  if (slug.startsWith("/")) issues.push("leading_slash");
+  if (slug.endsWith("/")) issues.push("trailing_slash");
+  if (slug.length > 200) issues.push("too_long");
+  // Allow only lowercase letters, digits, and hyphens
+  if (/[^a-z0-9-]/.test(slug)) issues.push("invalid_chars");
+  return issues;
+}
+
+/**
+ * Sanitize a slug the same way the router does, returning the corrected value.
+ * Returns null if the slug cannot be salvaged (e.g. empty after stripping).
+ */
+function sanitizeSlugForAudit(slug: string): string | null {
+  const cleaned = slug
+    .trim()
+    .replace(/^\/+|\/+$/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "")
+    .substring(0, 200);
+  return cleaned || null;
+}
+
+/**
+ * Run a full slug audit across all blog posts.
+ * Checks for: empty slugs, leading/trailing slashes, invalid characters,
+ * slugs that are too long, and duplicate slugs within the published set.
+ * Returns one result per post that has at least one issue.
+ */
+export async function getSlugAuditResults(): Promise<{
+  issues: SlugAuditResult[];
+  totalChecked: number;
+  totalIssues: number;
+}> {
+  const db = await getDb();
+  if (!db) return { issues: [], totalChecked: 0, totalIssues: 0 };
+
+  // Fetch all posts (all statuses) — bad slugs in drafts will also cause 404s when published
+  const posts = await db
+    .select({
+      id: blogPosts.id,
+      title: blogPosts.title,
+      slug: blogPosts.slug,
+      status: blogPosts.status,
+    })
+    .from(blogPosts)
+    .orderBy(asc(blogPosts.id));
+
+  // Build a frequency map to detect duplicates
+  const slugCount = new Map<string, number>();
+  for (const post of posts) {
+    const key = post.slug?.trim().toLowerCase() ?? "";
+    slugCount.set(key, (slugCount.get(key) ?? 0) + 1);
+  }
+
+  const issueResults: SlugAuditResult[] = [];
+
+  for (const post of posts) {
+    const issues = validateSlug(post.slug ?? "");
+
+    // Check for duplicates
+    const key = post.slug?.trim().toLowerCase() ?? "";
+    if ((slugCount.get(key) ?? 0) > 1) {
+      issues.push("duplicate");
+    }
+
+    if (issues.length > 0) {
+      issueResults.push({
+        id: post.id,
+        title: post.title,
+        slug: post.slug ?? "",
+        status: post.status,
+        issues,
+        suggestedSlug: sanitizeSlugForAudit(post.slug ?? ""),
+      });
+    }
+  }
+
+  return {
+    issues: issueResults,
+    totalChecked: posts.length,
+    totalIssues: issueResults.length,
+  };
+}

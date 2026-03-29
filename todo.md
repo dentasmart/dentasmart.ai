@@ -648,3 +648,11 @@
 - [x] Fix AdminDashboard View live link: replaced wouter <Link target=_blank> with plain <a target=_blank>
 - [x] Fix AdminDashboard View Site link: replaced wouter <Link target=_blank> with plain <a target=_blank>
 - [x] Verify all 3 fixed article URLs return HTTP 200 on dentasmart.ai
+
+## Broken-Link Audit for Sitemap Generator - Mar 29, 2026
+- [x] Add `auditSlugs` tRPC procedure to blogRouter: validate every published slug (non-empty, no leading slash, URL-safe chars, unique)
+- [x] Add `getSlugAuditResults` DB helper in blogDb.ts
+- [x] Add "Link Audit" tab/panel to AdminDashboard showing per-post status badges (OK / Invalid Slug / Duplicate)
+- [x] Add one-click "Auto-fix" button that calls sanitizeSlug and saves corrected slug
+- [x] Integrate audit count into sitemap generator: log warning if any published posts have bad slugs
+- [x] Write vitest tests for the auditSlugs and fixSlug procedures (85 tests passing)
