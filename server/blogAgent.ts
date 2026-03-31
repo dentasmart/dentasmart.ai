@@ -48,6 +48,15 @@ export async function listAgentRuns(limit = 50) {
   return db.select().from(agentRuns).orderBy(desc(agentRuns.createdAt)).limit(limit);
 }
 
+/** Delete specific agent_runs by ID — used by tests to clean up after themselves */
+export async function cleanupTestRuns(ids: number[]) {
+  const db = await getDb();
+  if (!db) return;
+  for (const id of ids) {
+    await db.delete(agentRuns).where(eq(agentRuns.id, id));
+  }
+}
+
 // ─── Slug helpers ─────────────────────────────────────────────
 
 function generateSlug(title: string): string {

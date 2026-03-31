@@ -1,8 +1,8 @@
-import { describe, it, expect, vi, beforeAll } from "vitest";
+import { describe, it, expect, vi, beforeAll, afterAll } from "vitest";
 import { appRouter } from "./routers";
 import type { TrpcContext } from "./_core/context";
 import { seedAdminUser } from "./blogDb";
-import { createAgentRun, updateAgentRun, listAgentRuns } from "./blogAgent";
+import { createAgentRun, updateAgentRun, listAgentRuns, cleanupTestRuns } from "./blogAgent";
 
 // ─── Context helpers (same pattern as blog.test.ts) ──────────
 
@@ -39,6 +39,7 @@ function createAdminContext(cookieStr: string): TrpcContext {
 
 describe("Blog Agent", () => {
   let adminCookie = "";
+  const testRunIds: number[] = [];
 
   beforeAll(async () => {
     await seedAdminUser();
@@ -71,11 +72,13 @@ describe("Blog Agent", () => {
   describe("Agent DB Helpers", () => {
     it("should create an agent run record", async () => {
       const runId = await createAgentRun({ triggerType: "manual" });
+      testRunIds.push(runId);
       expect(runId).toBeGreaterThan(0);
     });
 
     it("should update an agent run record", async () => {
       const runId = await createAgentRun({ triggerType: "scheduled" });
+      testRunIds.push(runId);
       await updateAgentRun(runId, {
         status: "success",
         title: "Test Article Title",
@@ -94,8 +97,9 @@ describe("Blog Agent", () => {
 
     it("should list agent runs in descending order", async () => {
       // Create a couple of runs
-      await createAgentRun({ triggerType: "manual" });
-      await createAgentRun({ triggerType: "scheduled" });
+      const id1 = await createAgentRun({ triggerType: "manual" });
+      const id2 = await createAgentRun({ triggerType: "scheduled" });
+      testRunIds.push(id1, id2);
 
       const runs = await listAgentRuns(10);
       expect(runs.length).toBeGreaterThanOrEqual(2);
@@ -110,6 +114,7 @@ describe("Blog Agent", () => {
 
     it("should record failed runs with error message", async () => {
       const runId = await createAgentRun({ triggerType: "manual" });
+      testRunIds.push(runId);
       await updateAgentRun(runId, {
         status: "failed",
         error: "LLM timeout after 30s",
@@ -147,5 +152,12 @@ describe("Blog Agent", () => {
       const caller = appRouter.createCaller(ctx);
       await expect(caller.blog.agentTrigger()).rejects.toThrow();
     });
+  });
+
+  afterAll(async () => {
+    // Clean up all test-created agent_runs records
+    if (testRunIds.length > 0) {
+      await cleanupTestRuns(testRunIds);
+    }
   });
 });

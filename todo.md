@@ -674,3 +674,7 @@
 - [x] Auto-publish generated posts with HTML formatting, SEO fields, category matching, and internal linking
 - [x] Schedule task for Tue/Thu 9AM EST via Manus scheduler
 - [x] Write vitest tests for agent DB helpers and tRPC procedures (92 tests passing)
+
+## Cleanup Test Agent Runs - Mar 31, 2026
+- [x] Delete all test agent_runs records from production database (10 rows deleted)
+- [x] Update vitest tests to clean up agent_runs after each run (afterAll hook with cleanupTestRuns)
