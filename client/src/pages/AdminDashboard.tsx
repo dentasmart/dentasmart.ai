@@ -361,7 +361,7 @@ export default function AdminDashboard() {
             {totalPages > 1 && (
               <div className="flex items-center justify-between px-4 py-3 border-t border-stone-200">
                 <p className="text-sm text-stone-500">
-                  Showing {((page - 1) * limit) + 1}–{Math.min(page * limit, data?.total || 0)} of {data?.total || 0}
+                  Showing {((page - 1) * limit) + 1}-{Math.min(page * limit, data?.total || 0)} of {data?.total || 0}
                 </p>
                 <div className="flex items-center gap-2">
                   <Button

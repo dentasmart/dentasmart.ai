@@ -67,20 +67,20 @@ const compareData: Record<string, CompareData> = {
     metaTitle: "DentaSmart vs Dental Insurance - Do You Need Both?",
     metaDescription: "Compare DentaSmart's AI oral health monitoring with traditional dental insurance. Learn how DentaSmart helps you save money and catch problems early.",
     heroHeading: "DentaSmart vs Dental Insurance",
-    heroSubheading: "Insurance covers treatment after problems happen. DentaSmart helps you catch issues early — before they become expensive.",
+    heroSubheading: "Insurance covers treatment after problems happen. DentaSmart helps you catch issues early. Before they become expensive.",
     competitor: "Dental Insurance",
     competitorDesc: "Traditional dental insurance that covers a portion of dental procedures after deductibles and waiting periods, typically costing $30-60/month.",
     dentasmartDesc: "AI-powered oral health monitoring that helps you catch dental issues early and understand your treatment options before visiting the dentist.",
     rows: [
       { feature: "Monthly cost", dentasmart: "$4.99/month", competitor: "$30-60/month", dentasmartWins: true },
-      { feature: "Waiting period", dentasmart: "None — instant access", competitor: "6-12 months for major work", dentasmartWins: true },
+      { feature: "Waiting period", dentasmart: "None. Instant access", competitor: "6-12 months for major work", dentasmartWins: true },
       { feature: "Covers dental procedures", dentasmart: "No, monitoring tool", competitor: "Yes, partial coverage", dentasmartWins: false },
       { feature: "Early problem detection", dentasmart: "Yes, AI monitoring", competitor: "Only at scheduled visits", dentasmartWins: true },
       { feature: "Cost transparency", dentasmart: "Yes, shows estimated costs", competitor: "Complex benefit schedules", dentasmartWins: true },
       { feature: "Available without employer", dentasmart: "Yes, direct to consumer", competitor: "Often employer-tied", dentasmartWins: true },
       { feature: "Helps choose right dentist type", dentasmart: "Yes, recommends specialist type", competitor: "Limited to network", dentasmartWins: true },
     ],
-    verdict: "DentaSmart is not a replacement for dental insurance — it is a complement. Use DentaSmart to monitor your oral health daily and catch issues early. Use insurance when you need treatment. Together, they help you spend less and stay healthier.",
+    verdict: "DentaSmart is not a replacement for dental insurance. It is a complement. Use DentaSmart to monitor your oral health daily and catch issues early. Use insurance when you need treatment. Together, they help you spend less and stay healthier.",
   },
 };
 
@@ -122,7 +122,7 @@ export default function ComparePage() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-white to-primary/10" />
         </div>
-        <div className="container relative z-10 px-4 mx-auto max-w-5xl pt-32 md:pt-0 text-center">
+        <div className="container relative z-10 px-4 mx-auto max-w-5xl pt-40 md:pt-32 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

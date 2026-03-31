@@ -30,7 +30,7 @@ interface NavItem {
 
 interface AdminLayoutProps {
   children: ReactNode;
-  /** Active nav item id — used to highlight the current page */
+  /** Active nav item id. used to highlight the current page */
   activeId?: string;
   /** Optional badge count for link audit */
   auditIssueCount?: number;

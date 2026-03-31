@@ -38,7 +38,7 @@ export default function PhotoGuide() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-white to-primary/10" />
         </div>
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-32 md:pt-0">
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-40 md:pt-32">
           <div className="max-w-3xl">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

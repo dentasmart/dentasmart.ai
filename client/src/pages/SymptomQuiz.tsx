@@ -22,12 +22,12 @@ import { Link } from "wouter";
 
 // ─── JSON-LD Structured Data ─────────────────────────────────────────────────
 
-// 1. Quiz schema — Google requires acceptedAnswer to be a SINGLE Answer object (not an array).
+// 1. Quiz schema. Google requires acceptedAnswer to be a SINGLE Answer object (not an array).
 // We use the most informative answer option as the canonical accepted answer for each question.
 const quizJsonLd = {
   "@context": "https://schema.org",
   "@type": "Quiz",
-  name: "Free Dental Symptom Checker — Oral Health Quiz",
+  name: "Free Dental Symptom Checker. Oral Health Quiz",
   description:
     "Answer 8 questions about your dental symptoms and habits to get a personalized oral health risk assessment with AI-powered recommendations.",
   url: "https://dentasmart.ai/symptom-quiz",
@@ -124,7 +124,7 @@ const quizJsonLd = {
   ],
 };
 
-// 2. FAQPage schema — targets "People Also Ask" and voice search
+// 2. FAQPage schema. Targets "People Also Ask" and voice search
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -166,7 +166,7 @@ const faqJsonLd = {
       name: "What does a dental symptom checker do?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A dental symptom checker asks you questions about your pain, gum health, sensitivity, and habits to estimate your oral health risk level. DentaSmart's free quiz takes about 2 minutes and gives you a personalized risk assessment — low, moderate, or high — along with matched conditions and specific next steps. It does not replace a professional dental diagnosis.",
+        text: "A dental symptom checker asks you questions about your pain, gum health, sensitivity, and habits to estimate your oral health risk level. DentaSmart's free quiz takes about 2 minutes and gives you a personalized risk assessment. Low, moderate, or high. Along with matched conditions and specific next steps. It does not replace a professional dental diagnosis.",
       },
     },
     {
@@ -174,7 +174,7 @@ const faqJsonLd = {
       name: "Can I check my dental symptoms online for free?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. DentaSmart offers a free online dental symptom checker quiz at dentasmart.ai/symptom-quiz. Answer 8 questions about your symptoms and habits to receive a personalized oral health risk assessment with AI-powered recommendations — no account or credit card required.",
+        text: "Yes. DentaSmart offers a free online dental symptom checker quiz at dentasmart.ai/symptom-quiz. Answer 8 questions about your symptoms and habits to receive a personalized oral health risk assessment with AI-powered recommendations. No account or credit card required.",
       },
     },
     {
@@ -190,17 +190,17 @@ const faqJsonLd = {
       name: "Do I need a dentist if my teeth don't hurt?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Many dental problems — including cavities, early gum disease, and oral cancer — have no pain in their early stages. Regular checkups every 6 months allow your dentist to catch and treat issues before they become painful and expensive. Prevention is always cheaper than treatment.",
+        text: "Yes. Many dental problems. Including cavities, early gum disease, and oral cancer. Have no pain in their early stages. Regular checkups every 6 months allow your dentist to catch and treat issues before they become painful and expensive. Prevention is always cheaper than treatment.",
       },
     },
   ],
 };
 
-// 3. WebApplication schema — featureList must be a plain string (comma-separated), not an array.
+// 3. WebApplication schema. FeatureList must be a plain string (comma-separated), not an array.
 const webAppJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  name: "DentaSmart — AI Oral Health Guide",
+  name: "DentaSmart. AI Oral Health Guide",
   url: "https://dentasmart.ai/symptom-quiz",
   applicationCategory: "HealthApplication",
   operatingSystem: "Web, iOS, Android",
@@ -239,11 +239,11 @@ const breadcrumbJsonLd = {
   ],
 };
 
-// 5. MedicalWebPage schema — use audience property (not medicalAudience.audienceType which is not a Google-supported field).
+// 5. MedicalWebPage schema. Use audience property (not medicalAudience.audienceType which is not a Google-supported field).
 const medicalPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
-  name: "Free Dental Symptom Checker — Oral Health Quiz",
+  name: "Free Dental Symptom Checker. Oral Health Quiz",
   url: "https://dentasmart.ai/symptom-quiz",
   description:
     "A free online dental symptom checker. Answer 8 questions about tooth pain, gum health, sensitivity, and habits to get a personalized oral health risk assessment.",
@@ -369,7 +369,7 @@ export default function SymptomQuiz() {
         matchedConditions: quizResult.matchedConditions.map((c) => c.name),
       });
     } catch {
-      // Silently fail — don't block the user from seeing results
+      // Silently fail. Don't block the user from seeing results
       console.error("Failed to submit quiz");
     }
 
@@ -388,7 +388,7 @@ export default function SymptomQuiz() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
-        title="Free Dental Symptom Checker — Do I Need a Dentist? | DentaSmart"
+        title="Free Dental Symptom Checker. Do I Need a Dentist? | DentaSmart"
         description="Not sure if your tooth pain or gum symptoms need a dentist? Take our free 2-minute dental symptom quiz and get a personalized oral health risk score."
         canonical="https://dentasmart.ai/symptom-quiz"
         keywords="dental symptom checker, tooth pain quiz, do I need a dentist quiz, dental symptoms checker, oral health quiz, gum disease quiz, tooth sensitivity quiz, free dental assessment, online dental check"
@@ -494,7 +494,7 @@ function IntroSection({ onStart }: { onStart: () => void }) {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-white to-primary/10" />
       </div>
-      <div className="container relative z-10 px-4 mx-auto max-w-6xl pt-32 md:pt-0">
+      <div className="container relative z-10 px-4 mx-auto max-w-6xl pt-40 md:pt-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left: Text */}
           <motion.div
@@ -513,7 +513,7 @@ function IntroSection({ onStart }: { onStart: () => void }) {
             <p className="text-xl text-stone-600 mb-8 font-light leading-relaxed max-w-lg">
               Answer 8 quick questions about your tooth pain, gum health, and
               habits. Get a free personalized oral health risk score with clear
-              next steps — no account required.
+              next steps. No account required.
             </p>
 
             <div className="space-y-4 mb-10">
@@ -923,7 +923,7 @@ function ResultsSection({
           <p className="text-white/90 text-lg mb-8 leading-relaxed">
             Upload a photo of your teeth or X-rays and get an AI-powered
             analysis with your Oral Health Score, matched conditions, and a
-            personalized care plan — all in under 2 minutes.
+            personalized care plan. All in under 2 minutes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a

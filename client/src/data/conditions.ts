@@ -106,7 +106,7 @@ export const conditionsData: Record<string, ConditionData> = {
       {
         question: "Will a toothache just go away by itself?",
         answer:
-          "Not usually. The pain might fade for a bit, but the cavity or infection that's causing it is still there. Actually, if the pain suddenly stops, it could be a bad sign—it might mean the nerve has died, and that's a bigger problem.",
+          "Not usually. The pain might fade for a bit, but the cavity or infection that's causing it is still there. Actually, if the pain suddenly stops, it could be a bad sign: it might mean the nerve has died, and that's a bigger problem.",
       },
       {
         question: "What's the quickest way to make a toothache stop hurting?",
@@ -186,7 +186,7 @@ export const conditionsData: Record<string, ConditionData> = {
       {
         title: "Dry Mouth",
         description:
-          "Your spit is actually your friend—it helps rinse away food and calm down acid. If your mouth is dry because of a medical condition or medicine you're taking, your risk for cavities goes up.",
+          "Your spit is actually your friend. It helps rinse away food and calm down acid. If your mouth is dry because of a medical condition or medicine you're taking, your risk for cavities goes up.",
       },
       {
         title: "Old Fillings or Dental Work",
@@ -273,7 +273,7 @@ export const conditionsData: Record<string, ConditionData> = {
     heroSubheading:
       "Think of your gums as the foundation for your teeth. If they're not in good shape, your whole smile is at risk. Here’s what you need to know.",
     directAnswer:
-      "Gum disease is basically an infection in the tissues holding your teeth. It usually starts with gingivitis—that's when your gums get red, puffy, and bleed when you brush. If you don't deal with it, it can turn into periodontitis, which is way more serious and can lead to bone and tooth loss. The main culprit? Plaque buildup. The good news is you can totally reverse the early stages with good habits.",
+      "Gum disease is basically an infection in the tissues holding your teeth. It usually starts with gingivitis, which is when your gums get red, puffy, and bleed when you brush. If you don't deal with it, it can turn into periodontitis, which is way more serious and can lead to bone and tooth loss. The main culprit? Plaque buildup. The good news is you can totally reverse the early stages with good habits.",
     detailedExplanation: [
       "Did you know nearly half of all adults over 30 have some form of gum disease? It all starts with plaque, which is a sticky film of bacteria that loves to hang out along your gumline. If you don't brush and floss it away, it hardens into tartar. And tartar isn't something you can remove on your own; you'll need a dental pro for that.",
       "The first stage is called gingivitis. You might notice your gums are a bit red or swollen. Or maybe they bleed when you brush. The great thing is, at this point, no permanent damage has been done to the bone holding your teeth. Gingivitis is 100% reversible with better brushing and flossing, plus a professional cleaning.",
@@ -338,7 +338,7 @@ export const conditionsData: Record<string, ConditionData> = {
       {
         question: "Can I catch gum disease from someone?",
         answer:
-          "Well, the bacteria that cause it can be passed through saliva—so, kissing or sharing a fork. But just because you get the bacteria doesn't mean you'll get the disease. It really comes down to your own immune system and how well you take care of your teeth.",
+          "Well, the bacteria that cause it can be passed through saliva, so kissing or sharing a fork. But just because you get the bacteria doesn't mean you'll get the disease. It really comes down to your own immune system and how well you take care of your teeth.",
       },
       {
         question: "What's the cost for gum disease treatment?",
@@ -391,7 +391,7 @@ export const conditionsData: Record<string, ConditionData> = {
       "That pain in the back of your mouth? It's likely your wisdom teeth trying to come in. This usually happens between 17 and 25. When there's no room, they get 'impacted' and can cause pain, swelling, and even mess up other teeth. You don't always have to get them out, but if they're bugging you, a dentist should definitely take a look.",
     detailedExplanation: [
       "So, what's the deal with wisdom teeth? They're your third and final set of molars, and they usually show up fashionably late to the party, somewhere between 17 and 25. You might get all four, or you might get none. It varies! The trouble starts when your jaw is too crowded for them to come in straight.",
-      "If a wisdom tooth gets stuck and can't pop through the gums all the way, it's called 'impacted.' These troublemakers can grow in all sorts of weird directions—sideways, angled, you name it. And when they do, you'll know it. Think pain, a swollen jaw, and good luck opening your mouth all the way.",
+      "If a wisdom tooth gets stuck and can't pop through the gums all the way, it's called 'impacted.' These troublemakers can grow in all sorts of weird directions: sideways, angled, you name it. And when they do, you'll know it. Think pain, a swollen jaw, and good luck opening your mouth all the way.",
       "A really common issue is something called pericoronitis. It’s a fancy word for an infection in the gum flap over a tooth that's only partway out. Food and germs get stuck under there and cause a real stink (literally) and a lot of pain. Your dentist will probably give you antibiotics, and it's a big hint that the tooth might need to come out.",
       "But do you HAVE to get them removed? Not always. If your wisdom teeth come in straight, are healthy, and you can brush them properly, they can just hang out. Your dentist will keep an eye on them with X-rays. DentaSmart can even help you see what your dentist sees on those X-rays, so you're in the loop.",
     ],
@@ -499,7 +499,7 @@ export const conditionsData: Record<string, ConditionData> = {
       "Basically, teeth whitening uses a bleach (usually hydrogen or carbamide peroxide) to make your teeth lighter. Getting it done at the dentist is the fastest way to see big results. At-home stuff like strips and trays work too, they just take longer. Most of the time it's perfectly safe, but your teeth might feel a little sensitive for a bit.",
     detailedExplanation: [
       "It's just a fact of life. Teeth get darker as we get older. Things like coffee, tea, red wine, and smoking don't help either. Whitening treatments use peroxide to get into your tooth enamel and break up the stains. It's a simple chemical reaction.",
-      "Getting it done by a pro? They use stronger stuff (like 25-40% hydrogen peroxide) and sometimes special lights to speed things up. You can walk out with teeth 3-8 shades lighter in just one visit. It'll cost you, though—anywhere from $300 to $1,000.",
+      "Getting it done by a pro? They use stronger stuff (like 25-40% hydrogen peroxide) and sometimes special lights to speed things up. You can walk out with teeth 3-8 shades lighter in just one visit. It'll cost you, though, anywhere from $300 to $1,000.",
       "If you'd rather do it yourself, you've got options. Whitening strips have about 6-14% peroxide. Or your dentist can make you custom trays with a gel that's a bit stronger. Even whitening toothpastes can help a little, but they mostly just scrub off surface stains. With strips and trays, you should see a difference in a week or two if you stick with it.",
       "But is it for everyone? Not really. Whitening won't change the color of crowns, veneers, or fillings. And if you have sensitive teeth, gum problems, or thin enamel, you should definitely talk to your dentist first. Don't overdo it, or you could hurt your enamel. The DentaSmart app can be a cool way to see how your tooth shade changes over time.",
     ],
@@ -537,7 +537,7 @@ export const conditionsData: Record<string, ConditionData> = {
       { text: "Feeling a bit shy about your smile", severity: "mild" },
     ],
     whenToSeeDentist: [
-      "You want the fastest, most dramatic results—go pro.",
+      "You want the fastest, most dramatic results. Go pro.",
       "You have sensitive teeth and want to make sure you whiten safely.",
       "The stains seem to be inside your tooth (kind of grayish), which surface whitening won't fix.",
       "You have crowns, veneers, or big fillings on your front teeth.",
@@ -632,7 +632,7 @@ export const conditionsData: Record<string, ConditionData> = {
     faqs: [
       { question: "Will my sensitive teeth get better on their own?", answer: "Sometimes! If it's from something temporary like a teeth whitening session, it'll probably fade in a few weeks. But if it's from worn-down enamel or receding gums, it won't fix itself. You'll need to do something about it." },
       { question: "Does sensitivity mean I have a cavity?", answer: "It could. A cavity is basically a hole that exposes the sensitive part of your tooth. If the pain is just in one spot and seems to be getting worse, you should get it checked for decay. Better safe than sorry." },
-      { question: "Does that special toothpaste for sensitive teeth really work?", answer: "Yep, for a lot of people it does. It has ingredients that help block those tiny tubes in your dentin, so the nerve doesn't get zapped. You have to be patient, though—it can take 2 to 4 weeks of using it every day to notice a real difference." },
+      { question: "Does that special toothpaste for sensitive teeth really work?", answer: "Yep, for a lot of people it does. It has ingredients that help block those tiny tubes in your dentin, so the nerve doesn't get zapped. You have to be patient, though. It can take 2 to 4 weeks of using it every day to notice a real difference." },
       { question: "How can DentaSmart help with my sensitive teeth?", answer: "DentaSmart is a great tool for keeping track of your symptoms. You can see what triggers the pain and get a better idea of what might be causing it. It won't replace a trip to the dentist, but it gives you some solid info to bring to your appointment." }
     ],
     relatedConditions: [
@@ -727,7 +727,7 @@ export const conditionsData: Record<string, ConditionData> = {
     heroSubheading: "Seriously, this isn't something you can just ignore. Here’s what you need to know and, more importantly, what to do about it.",
     directAnswer: "A dental abscess is a nasty pocket of pus from a bacterial infection in your tooth or gums. It usually brings on a throbbing pain, swelling, maybe even a fever and a gross taste. The thing is, abscesses don't fix themselves. They can get worse and spread if you don't get them treated. It's a true dental emergency, so a dentist needs to drain it and you'll likely need antibiotics.",
     detailedExplanation: [
-      "So how does this happen? When bacteria sneak into a tooth (usually through a cavity, a crack, or your gums), your body goes on the attack. It sends in the troops—white blood cells—to fight the infection. This battle creates pus. If that pus gets trapped with nowhere to go, boom. You've got an abscess.",
+      "So how does this happen? When bacteria sneak into a tooth (usually through a cavity, a crack, or your gums), your body goes on the attack. It sends in the troops, white blood cells, to fight the infection. This battle creates pus. If that pus gets trapped with nowhere to go, boom. You've got an abscess.",
       "You'll hear about two main kinds. The first is a periapical abscess, which shows up at the tip of a tooth's root. That's usually because of a cavity or crack that went untreated. The other is a periodontal abscess, which is in the gums and often tied to gum disease. Both are bad news. And both mean you need to see a pro.",
       "The pain can be unreal. A constant, throbbing ache that some people say is the worst pain of their life. But here’s a weird thing that can happen: sometimes the pain just stops. Don't be fooled. That doesn't mean you're in the clear. It probably means the abscess burst, which feels better for a minute but is actually spreading the infection."
     ],
@@ -760,7 +760,7 @@ export const conditionsData: Record<string, ConditionData> = {
     ],
     faqs: [
       { question: "Can I just treat a dental abscess at home?", answer: "Nope. You really can't. Rinsing with salt water might feel a little better for a bit, but it won't kill the infection. A dentist has to drain the abscess and you'll probably need antibiotics. Waiting just gives the infection a chance to spread to your jaw or even into your bloodstream. Not good." },
-      { question: "How long do I have before an abscess gets dangerous?", answer: "It can get dangerous fast—we're talking days. If your face is swelling, you have a fever, or you're having trouble breathing, that's a sign the infection is spreading. You should head to an emergency room right away." },
+      { question: "How long do I have before an abscess gets dangerous?", answer: "It can get dangerous fast, sometimes within days. If your face is swelling, you have a fever, or you're having trouble breathing, that's a sign the infection is spreading. You should head to an emergency room right away." },
       { question: "Will antibiotics be enough to cure my abscess?", answer: "They're part of the solution, but not the whole fix. Antibiotics will help get the infection under control, but the source of the problem (the cavity or crack) is still there. The dentist has to drain the pus and fix the tooth. If they don't, the infection will just come right back." },
       { question: "Can DentaSmart tell me if I have an abscess?", answer: "DentaSmart can definitely help you spot the signs of an abscess and understand why it's so urgent. If our AI thinks you might have an infection, we'll tell you to see a dentist immediately. This is one of those times where you just can't wait." }
     ],
@@ -792,7 +792,7 @@ export const conditionsData: Record<string, ConditionData> = {
   heroSubheading: "Honestly, the toothache that sends you to the dentist is way worse. Let's walk through what a modern root canal is actually like.",
   directAnswer: "A root canal is just a deep cleaning inside your tooth. When the soft stuff inside (called pulp, which has nerves and blood vessels) gets infected, a dentist needs to get it out of there to save the tooth. They'll numb you up, take out the bad stuff, clean the area, and then seal it up. Most people say it feels about the same as getting a regular filling. Afterwards, you'll probably get a crown to keep the tooth strong.",
   detailedExplanation: [
-    "Your tooth isn't solid all the way through. There's a soft center called the pulp, which is where the nerves and blood vessels live. If that pulp gets infected—from a bad cavity, a crack in the tooth, or even an old injury—it's got to be dealt with. And a root canal is usually the best way to do that without pulling the whole tooth.",
+    "Your tooth isn't solid all the way through. There's a soft center called the pulp, which is where the nerves and blood vessels live. If that pulp gets infected. From a bad cavity, a crack in the tooth, or even an old injury. It's got to be dealt with. And a root canal is usually the best way to do that without pulling the whole tooth.",
     "So, what happens during the procedure? It's pretty simple, really. First, your dentist will make sure you're completely numb. Then they make a tiny opening in the tooth, clean out all the infected pulp from inside the root canals, and fill it with a safe, rubber-like material. That's it. It might take one visit, or maybe two for a tricky tooth.",
     "Let's clear this up: root canals don't cause pain, they get rid of it. The real pain is the infected tooth before the procedure. Once the source of the infection is gone, you feel better. Seriously, most people say it's no more uncomfortable than getting a standard filling."
   ],
@@ -916,7 +916,7 @@ export const conditionsData: Record<string, ConditionData> = {
     secondaryKeywords: ["bruxism treatment", "grinding teeth at night", "jaw clenching causes", "night guard for teeth"],
     heroHeading: "Teeth grinding is silent. The damage isn't.",
     heroSubheading: "Most people who grind their teeth have no idea they're doing it. But over time, that quiet wear and tear really adds up.",
-    directAnswer: "Teeth grinding, or bruxism, is when you clench or grind your teeth without meaning to, mostly while you're asleep. It's pretty common—affecting about 10-15% of adults—and can mess with your teeth, jaw, and even face muscles. The main ways to stop it are getting a custom night guard, managing stress, and figuring out what's causing it in the first place.",
+    directAnswer: "Teeth grinding, or bruxism, is when you clench or grind your teeth without meaning to, mostly while you're asleep. It's pretty common, affecting about 10-15% of adults, and can mess with your teeth, jaw, and even face muscles. The main ways to stop it are getting a custom night guard, managing stress, and figuring out what's causing it in the first place.",
     detailedExplanation: [
       "Ever heard of bruxism? It's the official name for teeth grinding, where you clench or grind your teeth without thinking about it, usually in your sleep. A lot of people don't even know they do it until their partner says something or their dentist spots the tell-tale signs on their teeth.",
       "So, what kicks it off? It's usually stress and anxiety. But it can also be linked to things like sleep apnea, a bite that's a little off, or even certain meds (like some antidepressants). Lifestyle choices matter too, so things like too much coffee or alcohol can make it worse. And since it all goes down while you're sleeping, the damage can pile up for a long time before you notice anything is wrong.",
@@ -947,7 +947,7 @@ export const conditionsData: Record<string, ConditionData> = {
     keyTakeaways: [
       "You probably won't know you're grinding your teeth since it happens when you're asleep. The damage is the first clue.",
       "Getting a custom night guard from your dentist is the best way to stop your teeth from getting worn down.",
-      "For a long-term fix, you have to get to the bottom of what's causing it—whether that's stress, a sleep problem, or something else."
+      "For a long-term fix, you have to get to the bottom of what's causing it. whether that's stress, a sleep problem, or something else."
     ],
     faqs: [
       { question: "How can I tell if I grind my teeth at night?", answer: "Waking up with a sore jaw or a headache is a big clue. Or maybe you've noticed your teeth look a bit worn down. Sometimes, the first person to notice is the one sleeping next to you! The DentaSmart app can also help you track changes to your teeth." },
@@ -983,7 +983,7 @@ export const conditionsData: Record<string, ConditionData> = {
     detailedExplanation: [
       "If you're missing teeth, dental implants are hands-down the most natural and durable way to replace them. What makes them so great? Unlike dentures or a bridge, an implant actually replaces the root of the tooth. This is a big deal because it keeps your jawbone strong and prevents that sunken-in look that can happen when a tooth is gone.",
       "The whole process does take a few months, so it's good to know what to expect. It starts with a minor surgery to place the titanium post in your jaw. Then you wait. For the next 3 to 6 months, your bone actually grows around the implant, making it super secure. This is called osseointegration. Once that's done, your dentist will put on a little connector piece (an abutment) and then your new, custom-matched crown.",
-      "And get this—the success rate for modern implants is over 95%. That's because they're made of titanium, which the body almost never rejects. If you brush, floss, and see your dentist for checkups, the implant itself should last your entire life. The crown on top might need to be replaced every 10-15 years from normal wear and tear, but the foundation is permanent.",
+      "And get this: the success rate for modern implants is over 95%. That's because they're made of titanium, which the body almost never rejects. If you brush, floss, and see your dentist for checkups, the implant itself should last your entire life. The crown on top might need to be replaced every 10-15 years from normal wear and tear, but the foundation is permanent.",
       "So, is everyone a good fit for implants? Not exactly. You'll need to have enough bone in your jaw for the implant to grip onto (though a bone graft can sometimes fix that). You also need healthy gums and to be in pretty good health overall. And, just a heads up, smoking can really hurt the chances of success. Your dentist will be able to tell you for sure if implants are a good option for you."
     ],
     causes: [
@@ -1077,7 +1077,7 @@ export const conditionsData: Record<string, ConditionData> = {
     faqs: [
       { question: "How long does dry socket last?", answer: "Once your dentist treats it, the pain gets way better in a day or two. The socket itself takes about a week to 10 days to heal up completely. If you don't get it treated, the pain can drag on for much longer. Don't do that to yourself." },
       { question: "Can a dry socket just heal on its own?", answer: "Well, technically, yes, it would eventually. But it would be a really, really painful and slow process. Just go to the dentist. The medicated dressing gives you quick relief and helps prevent infection. It's a no-brainer." },
-      { question: "How can I tell if it's dry socket or just normal pain?", answer: "Normal pain after an extraction is worst on day 1 or 2 and then starts to fade. Dry socket pain is the opposite—it shows up a few days later and gets much worse. If the pain is throbbing and spreading, or you can see bone, it's almost definitely a dry socket." }
+      { question: "How can I tell if it's dry socket or just normal pain?", answer: "Normal pain after an extraction is worst on day 1 or 2 and then starts to fade. Dry socket pain is the opposite: it shows up a few days later and gets much worse. If the pain is throbbing and spreading, or you can see bone, it's almost definitely a dry socket." }
     ],
     relatedConditions: [
       { slug: "wisdom-teeth-pain", title: "Wisdom Teeth Pain" },
@@ -1106,7 +1106,7 @@ export const conditionsData: Record<string, ConditionData> = {
     directAnswer: "Oral thrush is just a fungal infection that happens when a yeast called Candida gets a little out of control in your mouth. You'll probably see creamy white bumps on your tongue, cheeks, or gums. It pops up more often in babies, older folks, or anyone whose immune system is a bit weak. Taking antibiotics can also trigger it. The good news? It's usually easy to fix with antifungal medicine.",
     detailedExplanation: [
       "Everyone has a tiny bit of Candida yeast in their mouth and gut. It's totally normal. Your body's immune system and all the good bacteria usually keep it from growing too much. But sometimes, that balance gets thrown off, and the yeast takes over. That's when you get thrush.",
-      "So what throws off the balance? A few things. Antibiotics are a big one because they can wipe out the good bacteria that keep the yeast in line. Using a steroid inhaler for asthma can do it too. And if you have a weaker immune system, dry mouth, or dentures that don't fit right, you're more likely to get it. It's also why babies and the elderly get it more often—their immune systems just aren't as strong.",
+      "So what throws off the balance? A few things. Antibiotics are a big one because they can wipe out the good bacteria that keep the yeast in line. Using a steroid inhaler for asthma can do it too. And if you have a weaker immune system, dry mouth, or dentures that don't fit right, you're more likely to get it. It's also why babies and the elderly get it more often because their immune systems just aren't as strong.",
       "The classic sign of thrush is those white patches. If you wipe them away, the skin underneath will look red and sore. Some people also say it feels like they have cotton in their mouth, or they can't taste things properly. It can even make it tough to swallow and cause little cracks at the corners of your lips.",
       "Your doctor or dentist will likely prescribe an antifungal medicine to clear it up. For a really mild case, you might get by with just salt water rinses or eating probiotic yogurt. Oh, and if you use an asthma inhaler, make sure to rinse your mouth with water right after. If you keep getting thrush over and over, it might be a sign that something else is going on with your health, so you'll want to get that checked out."
     ],
@@ -1170,7 +1170,7 @@ export const conditionsData: Record<string, ConditionData> = {
     heroSubheading: "Millions of people deal with TMJ trouble. Figuring out what's going on is your first step toward feeling better.",
     directAnswer: "TMJ disorder (or TMD) is really just a catch-all term for problems with your jaw joint and the muscles that move it. You might notice jaw pain, weird clicking or popping sounds, a stiff jaw, or even headaches. The good news? Most TMJ issues don't last and get better with some simple self-care. Surgery is almost never the answer.",
     detailedExplanation: [
-      "Your jawbone connects to your skull on both sides of your face with the temporomandibular joint (TMJ). It's a fancy name for one of the busiest joints in your body—it lets you talk, chew, and yawn. When this joint or the muscles around it act up, that's what we call TMJ disorder, or TMD.",
+      "Your jawbone connects to your skull on both sides of your face with the temporomandibular joint (TMJ). It's a fancy name for one of the busiest joints in your body. It lets you talk, chew, and yawn. When this joint or the muscles around it act up, that's what we call TMJ disorder, or TMD.",
       "So what causes it? It can be a few things. Grinding your teeth at night (that's called bruxism), a direct hit to the jaw, arthritis, or even just stress making you clench your jaw all the time. For a lot of people, stress is the main trigger, even if the joint itself is perfectly fine.",
       "Symptoms can be all over the place. Sometimes it's just a mild click when you open your mouth (which is often no big deal). Other times, it's serious pain, your jaw might lock up, or you can barely eat. The pain can even spread to your ear, temple, or neck, which can be confusing.",
       "But don't worry, most TMJ problems get better with some easy at-home care. Think soft foods, warm compresses, and gentle jaw exercises. Learning to manage stress helps a ton, too. If you're a grinder, a custom night guard from your dentist can be a game-changer. Surgery? That's a last resort. We only even think about it after trying everything else."
@@ -1234,7 +1234,7 @@ export const conditionsData: Record<string, ConditionData> = {
   directAnswer: "Periodontitis is a serious gum infection that damages the soft tissue and, without treatment, can destroy the bone that supports your teeth. It can cause teeth to loosen or lead to tooth loss. It's usually the result of poor oral hygiene.",
   detailedExplanation: [
     "Ever wonder what happens when gum inflammation gets out of hand? That's where periodontitis comes in. It’s the advanced stage of gum disease, a serious infection that doesn't just stay in your gums. It goes deeper, attacking the bone that holds your teeth in place. Think of it as a silent threat to your smile. You might not even know you have it until it's pretty far along.",
-    "So, how does this all start? It usually begins with plaque, that sticky film of bacteria that’s always forming on your teeth. If you don't clean it off well, it hardens into tartar. Tartar is tough to get rid of with just a toothbrush and floss. The longer it stays, the more it irritates your gums, causing gingivitis – the early, reversible stage of gum disease.",
+    "So, how does this all start? It usually begins with plaque, that sticky film of bacteria that’s always forming on your teeth. If you don't clean it off well, it hardens into tartar. Tartar is tough to get rid of with just a toothbrush and floss. The longer it stays, the more it irritates your gums, causing gingivitis, the early, reversible stage of gum disease.",
     "But if gingivitis isn't treated, it can progress to periodontitis. The gums pull away from the teeth, forming pockets. These pockets get infected, and the infection starts to break down the bone and connective tissue that keep your teeth anchored. It’s a slow process, but it can have some major consequences.",
     "The thing is, your body is trying to fight the infection. Your immune system sends out its defenders, but the combination of the bacteria and your body's own response can end up doing more harm than good. This ongoing inflammation is what ultimately leads to the destruction of your jawbone. The bottom line? Don't ignore bleeding gums. It could be the first sign of a bigger problem."
   ],
@@ -1266,7 +1266,7 @@ export const conditionsData: Record<string, ConditionData> = {
   keyTakeaways: [
     "Periodontitis is advanced gum disease that can lead to tooth loss.",
     "It's caused by plaque buildup and can be made worse by things like smoking and genetics.",
-    "Don't ignore bleeding gums – it's an early warning sign.",
+    "Don't ignore bleeding gums. It's an early warning sign.",
     "Treatment is available and can stop the disease from getting worse.",
     "Good oral hygiene is your best defense against periodontitis."
   ],
@@ -1310,7 +1310,7 @@ export const conditionsData: Record<string, ConditionData> = {
     "Ever wonder if your bleeding gums are a big deal? Well, they could be. It often starts with something called gingivitis. Think of it as a warning sign from your gums. It’s super common, and it’s your body’s way of saying, 'Hey, there’s too much plaque down here!' The good news? Gingivitis is totally reversible with better brushing and flossing. No permanent harm done. Yet.",
     "But here's the deal: if you ignore that warning, things can get much worse. The infection can dig in deeper, moving from your gums to the bone that holds your teeth in place. This is periodontitis, and it's a whole different ballgame. It's not just about irritated gums anymore. It's about a serious infection that can lead to tooth loss. And unlike gingivitis, the damage from periodontitis is for keeps.",
     "So, what's the dividing line? It's all about the structures that support your teeth. With gingivitis, the inflammation is just in the gums. With periodontitis, the infection has gone past the gums and is actively destroying the ligaments and bone. A dentist can tell the difference by measuring the small pockets between your teeth and gums. Small pockets usually mean gingivitis. Deeper pockets? That's a classic sign of periodontitis.",
-    "The bottom line is you can't afford to wait and see. What looks like a little blood in the sink could be the first step toward a much bigger problem. Getting a handle on it early is the key to keeping your teeth for life. That's where we come in—to give you the straight facts so you can take action."
+    "The bottom line is you can't afford to wait and see. What looks like a little blood in the sink could be the first step toward a much bigger problem. Getting a handle on it early is the key to keeping your teeth for life. That's where we come in. to give you the straight facts so you can take action."
   ],
   causes: [
     { title: "Plaque Buildup", description: "This is the main culprit. When the sticky film of bacteria (plaque) isn't removed daily, it irritates your gums, leading to gingivitis. If it stays there, it hardens into tartar, which makes things even worse." },
@@ -1339,14 +1339,14 @@ export const conditionsData: Record<string, ConditionData> = {
   keyTakeaways: [
     "Gingivitis is reversible; periodontitis involves permanent damage.",
     "The main cause of both is plaque buildup from not brushing and flossing well enough.",
-    "Don't ignore bleeding gums—it's the most common early warning sign.",
+    "Don't ignore bleeding gums. It's the most common early warning sign.",
     "Periodontitis can lead to tooth loss if you don't get it treated.",
     "You can't fix periodontitis on your own; you need professional dental care.",
     "Seeing your dentist regularly is the best way to catch gum disease early."
   ],
   faqs: [
-    { question: "Can you have gingivitis and periodontitis at the same time?", answer: "Not really. Think of it as a progression. You have gingivitis first, and if it's not treated, it can turn *into* periodontitis. Once you have periodontitis, the gingivitis is kind of a given—the inflammation is still there, but now there's bone loss, too." },
-    { question: "Is periodontitis painful?", answer: "Here's the tricky part—it often isn't, especially in the early stages. That's why it's so sneaky. You might not feel any pain until the disease is very advanced and the damage is severe. This is why regular dental checkups are so important." },
+    { question: "Can you have gingivitis and periodontitis at the same time?", answer: "Not really. Think of it as a progression. You have gingivitis first, and if it's not treated, it can turn *into* periodontitis. Once you have periodontitis, the gingivitis is kind of a given. The inflammation is still there, but now there's bone loss, too." },
+    { question: "Is periodontitis painful?", answer: "Here's the tricky part: it often isn't, especially in the early stages. That's why it's so sneaky. You might not feel any pain until the disease is very advanced and the damage is severe. This is why regular dental checkups are so important." },
     { question: "Can I reverse periodontitis?", answer: "Unfortunately, you can't reverse the damage it causes to your bone and ligaments. However, with professional treatment and excellent home care, you can stop it from getting worse and manage the condition to keep your teeth healthy for the long run." },
     { question: "How is periodontitis treated?", answer: "Treatment depends on how far it has progressed. It usually starts with a deep cleaning called scaling and root planing to remove tartar from below the gumline. In more advanced cases, surgery might be needed to clean the roots of the teeth and repair the bone." }
   ],

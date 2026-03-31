@@ -36,7 +36,7 @@ export default function Employers() {
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/60 md:hidden" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl text-left pt-32 md:pt-0">
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl text-left pt-40 md:pt-32">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-7 xl:col-span-6">
           <motion.div

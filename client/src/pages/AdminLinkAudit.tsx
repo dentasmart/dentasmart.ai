@@ -155,7 +155,7 @@ export default function AdminLinkAudit() {
                           />
                         ) : (
                           <span className="text-xs font-mono text-green-700 bg-green-50 px-2 py-1 rounded">
-                            {item.suggestedSlug ?? "—"}
+                            {item.suggestedSlug ?? " - "}
                           </span>
                         )}
                       </TableCell>

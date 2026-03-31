@@ -52,7 +52,7 @@ export default function InstantScan() {
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent md:hidden" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-24 md:pt-16">
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-40 md:pt-32">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}

@@ -51,7 +51,7 @@ export function AndroidEarlyAccessModal({ isOpen, onClose }: AndroidEarlyAccessM
 
   return (
     <>
-      {/* Success modal — shown after submission */}
+      {/* Success modal. Shown after submission */}
       <WaitlistSuccessModal
         isOpen={showSuccess}
         onClose={handleSuccessClose}

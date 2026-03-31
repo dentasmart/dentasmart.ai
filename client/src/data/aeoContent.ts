@@ -1138,7 +1138,7 @@ export const aeoGuides: Record<string, AEOBlock> = {
     ]},
   "gingivitis-vs-periodontitis": {
   inOneSentence: "Gingivitis is mild, reversible gum irritation, while periodontitis is a serious infection that destroys the bone supporting your teeth.",
-  whatToDoToday: ["Schedule a dental checkup immediately.", "Improve your brushing and flossing technique—no excuses.", "Use an antiseptic mouthwash to help reduce bacteria."]
+  whatToDoToday: ["Schedule a dental checkup immediately.", "Improve your brushing and flossing technique, no excuses.", "Use an antiseptic mouthwash to help reduce bacteria."]
 ,
     dentistQuestions: [
       "What stage is my gum disease at right now?",

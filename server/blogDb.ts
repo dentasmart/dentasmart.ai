@@ -314,7 +314,7 @@ export interface SlugAuditResult {
 
 /**
  * Validate a single slug and return the list of issues found.
- * Does NOT hit the database — purely string-based checks.
+ * Does NOT hit the database. Purely string-based checks.
  */
 function validateSlug(slug: string): SlugAuditIssue[] {
   const issues: SlugAuditIssue[] = [];
@@ -361,7 +361,7 @@ export async function getSlugAuditResults(): Promise<{
   const db = await getDb();
   if (!db) return { issues: [], totalChecked: 0, totalIssues: 0 };
 
-  // Fetch all posts (all statuses) — bad slugs in drafts will also cause 404s when published
+  // Fetch all posts (all statuses). bad slugs in drafts will also cause 404s when published
   const posts = await db
     .select({
       id: blogPosts.id,

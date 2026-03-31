@@ -7,7 +7,7 @@ import { notifyOwner } from "./_core/notification";
 export const quizRouter = router({
   /**
    * Submit a quiz result with optional email for lead capture.
-   * Public endpoint — no auth required.
+   * Public endpoint. No auth required.
    */
   submit: publicProcedure
     .input(

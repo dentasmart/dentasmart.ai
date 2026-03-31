@@ -153,7 +153,7 @@ export default function AdminAIBlogAgent() {
             {[
               { step: "1", title: "Research", desc: "Identifies trending dental topics, keyword gaps, and competitor angles" },
               { step: "2", title: "Outline", desc: "Creates a tight outline with H2s, H3s, FAQ section, and CTA placement" },
-              { step: "3", title: "Write & Humanize", desc: "Drafts 1,500–2,000 words in a human voice, then removes AI-sounding patterns" },
+              { step: "3", title: "Write & Humanize", desc: "Drafts 1,500-2,000 words in a human voice, then removes AI-sounding patterns" },
               { step: "4", title: "SEO & Publish", desc: "Fills meta title, description, slug, OG tags, selects category, and publishes" },
             ].map((item) => (
               <div key={item.step} className="relative p-4 bg-stone-50 rounded-xl">
@@ -216,11 +216,11 @@ export default function AdminAIBlogAgent() {
                       })}
                     </TableCell>
                     <TableCell>
-                      <p className="font-medium text-stone-900 line-clamp-1 text-sm">{run.title || "—"}</p>
+                      <p className="font-medium text-stone-900 line-clamp-1 text-sm">{run.title || " - "}</p>
                     </TableCell>
                     <TableCell>
                       <span className="text-xs font-mono text-stone-500 bg-stone-50 px-2 py-1 rounded">
-                        {run.primaryKeyword || "—"}
+                        {run.primaryKeyword || " - "}
                       </span>
                     </TableCell>
                     <TableCell>{getStatusBadge(run.status)}</TableCell>

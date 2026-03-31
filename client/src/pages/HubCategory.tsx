@@ -129,7 +129,7 @@ export default function HubCategory() {
 
       {/* Hero */}
       <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900">
-        <div className="container relative z-10 px-4 mx-auto max-w-5xl pt-32 pb-16 md:pt-24">
+        <div className="container relative z-10 px-4 mx-auto max-w-5xl pt-40 pb-16 md:pt-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

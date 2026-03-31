@@ -1,9 +1,9 @@
 /**
- * AI Blog Agent — generates and publishes SEO-optimized blog posts
+ * AI Blog Agent. Generates and publishes SEO-optimized blog posts
  * using the built-in LLM helper. Each run:
  *   1. Picks a topic (keyword research via LLM)
  *   2. Creates an outline
- *   3. Writes the full article (1,500–2,000 words, human voice)
+ *   3. Writes the full article (1,500-2,000 words, human voice)
  *   4. Fills SEO fields
  *   5. Creates the blog post in the database and publishes it
  */
@@ -48,7 +48,7 @@ export async function listAgentRuns(limit = 50) {
   return db.select().from(agentRuns).orderBy(desc(agentRuns.createdAt)).limit(limit);
 }
 
-/** Delete specific agent_runs by ID — used by tests to clean up after themselves */
+/** Delete specific agent_runs by ID. used by tests to clean up after themselves */
 export async function cleanupTestRuns(ids: number[]) {
   const db = await getDb();
   if (!db) return;
@@ -181,7 +181,7 @@ Pick ONE new topic. Return JSON with these fields:
 
     // Step 2: Write the full article
     const internalLinksContext = publishedSlugs.slice(0, 20).map((p: { slug: string; title: string }) =>
-      `- /oral-health-hub/${p.slug} — "${p.title}"`
+      `- /oral-health-hub/${p.slug}. "${p.title}"`
     ).join("\n");
 
     const articleResult = await invokeLLM({
@@ -191,32 +191,32 @@ Pick ONE new topic. Return JSON with these fields:
           content: `You are an expert dental health writer for DentaSmart (dentasmart.ai), an AI-powered oral health app positioned as "Your Personal AI Oral Health Guide."
 
 WRITING RULES (must follow):
-- 1,500–2,000 words total
+- 1,500-2,000 words total
 - NO "Key Takeaways" section anywhere
-- Paragraphs: 2–4 sentences max; no giant blocks
+- Paragraphs: 2-4 sentences max; no giant blocks
 - Use concrete examples ("If cold water stings for 3 seconds…") and "what to do next" advice
 - Avoid medical certainty; use appropriate hedging + encourage dental evaluation
 - Include a "When to See a Dentist" checklist section
-- Include FAQ section (3–6 questions)
+- Include FAQ section (3-6 questions)
 - Reading level: 8th grade, conversational tone, human-sounding
-- Varied sentence length — mix short punchy sentences with longer ones
+- Varied sentence length. Mix short punchy sentences with longer ones
 - NO inflated, vague, overly-polished phrasing
 - NO generic transitions like "In conclusion" or "Let's dive in"
 - NO repetitive patterns like "It's not just X, it's Y"
 - Be helpful, not promotional or salesy
 
-INTERNAL LINKING (2–4 links required):
+INTERNAL LINKING (2-4 links required):
 Use descriptive anchor text (never "click here"). Only use these verified slugs:
 ${internalLinksContext}
 
 Format links as: <a href="/oral-health-hub/SLUG" style="color: #DC2626; text-decoration: underline;">anchor text</a>
 
-CTA (end of post — required):
+CTA (end of post. Required):
 - Bold lead-in question
-- 1–2 lines mentioning "Your Personal AI Oral Health Guide"
+- 1-2 lines mentioning "Your Personal AI Oral Health Guide"
 - Link: <a href="https://dentasmart.ai/download" style="color: #DC2626; text-decoration: underline; font-weight: bold;">Check your symptoms with DentaSmart AI</a>
 
-DISCLAIMER (very end — italicize):
+DISCLAIMER (very end. Italicize):
 <em>This article is for informational purposes only and does not replace professional dental advice. Always consult a qualified dentist for diagnosis and treatment.</em>
 
 OUTPUT FORMAT:
@@ -254,12 +254,12 @@ Primary keyword: ${topic.primaryKeyword}
 
 Generate JSON with:
 - metaTitle: ≤60 chars, includes primary keyword + benefit, optionally "| DentaSmart" if it fits
-- metaDescription: 145–160 chars, active voice, includes primary keyword naturally + gentle CTA
+- metaDescription: 145-160 chars, active voice, includes primary keyword naturally + gentle CTA
 - slug: short, keyword-rich, lowercase, hyphens only (no leading slash)
 - ogTitle: slightly more click-oriented version of meta title
 - ogDescription: compelling summary for social sharing
 - readTime: estimated read time like "7 min read"
-- atAGlanceAnswer: 80–120 word summary of the article
+- atAGlanceAnswer: 80-120 word summary of the article
 - faqs: JSON string of array of {question, answer} pairs (3-6 FAQs from the article)`
         }
       ],

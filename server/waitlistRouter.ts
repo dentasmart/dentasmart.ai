@@ -8,7 +8,7 @@ import { eq } from "drizzle-orm";
 export const waitlistRouter = router({
   /**
    * Join the Android early access waitlist.
-   * Public endpoint — no auth required.
+   * Public endpoint. No auth required.
    */
   joinAndroid: publicProcedure
     .input(

@@ -20,7 +20,7 @@ export default function GuidesIndex() {
 
       {/* Hero */}
       <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-gradient-to-br from-primary/90 via-primary to-primary/80">
-        <div className="container relative z-10 px-4 mx-auto max-w-5xl pt-32 pb-12 md:pt-24">
+        <div className="container relative z-10 px-4 mx-auto max-w-5xl pt-40 pb-12 md:pt-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

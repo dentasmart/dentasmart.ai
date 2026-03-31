@@ -10,7 +10,7 @@ export default function HowItWorksHero() {
         <div className="absolute bottom-20 left-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="container px-4 mx-auto max-w-7xl relative z-10 pt-32 md:pt-0">
+      <div className="container px-4 mx-auto max-w-7xl relative z-10 pt-40 md:pt-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Column: Text Content - Left Aligned */}

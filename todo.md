@@ -708,3 +708,19 @@
 - [x] Add legacy redirects from old /hub/ URLs to new /oral-health-hub/ URLs
 - [x] Add Resources dropdown to Navigation with links to all hubs, blogs, guides, and symptom checker
 - [x] Mobile Resources accordion in mobile menu
+
+## Humanized Writing & Em Dash Cleanup - Mar 31, 2026
+- [x] Research Wikipedia AI writing signs guidelines
+- [x] Create permanent humanized writing skill in /home/ubuntu/skills/
+- [x] Find all em dash (—) instances across website content files
+- [x] Replace em dashes with natural alternatives (commas, periods, rewording)
+- [x] Remove all en dashes (–) from user-facing content
+- [x] Fix capitalization after period replacements
+- [x] Fix awkward sentence breaks from em dash replacement
+
+## Hero Section Cutoff Fixes - Mar 31, 2026
+- [x] Fix hero cutoff on Oral Health Guides page (GuidesIndex.tsx)
+- [x] Fix hero cutoff on Symptom Quiz page (SymptomQuiz.tsx)
+- [x] Fix hero cutoff on Answers page (Answers.tsx)
+- [x] Audit ALL other pages for the same hero cutoff issue (16 pages fixed)
+- [x] Remove all em dashes and en dashes from user-facing content across entire codebase

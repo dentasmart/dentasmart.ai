@@ -48,7 +48,7 @@ export default function AdminBlogEditor() {
   const isNew = !!matchNew;
   const editId = editParams?.id ? parseInt(editParams.id) : null;
 
-  // Auth check — disable refetch on window focus to prevent unexpected redirects (Bug 3)
+  // Auth check. Disable refetch on window focus to prevent unexpected redirects (Bug 3)
   const { data: admin, isLoading: authLoading } = trpc.blog.adminMe.useQuery(undefined, {
     refetchOnWindowFocus: false,
     staleTime: 5 * 60 * 1000, // 5 minutes
@@ -59,14 +59,14 @@ export default function AdminBlogEditor() {
   // Track whether user has unsaved changes (Bug 3 fix)
   const [isDirty, setIsDirty] = useState(false);
 
-  // Load existing post if editing — disable refetch on window focus to prevent overwriting edits (Bug 1)
+  // Load existing post if editing. Disable refetch on window focus to prevent overwriting edits (Bug 1)
   const { data: existingPost, isLoading: postLoading } = trpc.blog.getById.useQuery(
     { id: editId! },
     {
       enabled: !!editId,
       refetchOnWindowFocus: false,
       refetchOnMount: true,
-      staleTime: Infinity, // Never auto-refetch — user controls when to reload
+      staleTime: Infinity, // Never auto-refetch. User controls when to reload
     }
   );
 
@@ -121,7 +121,7 @@ export default function AdminBlogEditor() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  // Populate form when editing — only once on initial load (Bug 1 fix)
+  // Populate form when editing. Only once on initial load (Bug 1 fix)
   useEffect(() => {
     if (existingPost && !hasPopulated.current) {
       hasPopulated.current = true;
@@ -293,11 +293,11 @@ export default function AdminBlogEditor() {
   // Track initial auth check completion (Bug 3 fix)
   const authCheckedOnce = useRef(false);
 
-  // Redirect if not authenticated — only on initial check, not on transient refetch failures
+  // Redirect if not authenticated. Only on initial check, not on transient refetch failures
   useEffect(() => {
     if (!authLoading) {
       if (!admin && !authCheckedOnce.current) {
-        // First auth check failed — user is not logged in
+        // First auth check failed. User is not logged in
         setLocation("/admin/login");
       }
       authCheckedOnce.current = true;

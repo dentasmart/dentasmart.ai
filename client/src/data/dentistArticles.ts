@@ -150,7 +150,7 @@ export const dentistArticles = [
     },
     solution: {
       heading: "The Simple Truth: Insurance is a Business, Not a Doctor",
-      content: "Dental insurance companies are businesses designed to manage costs, not maximize your health. Their rules—like waiting periods, downgrades, and frequency limits—are financial safeguards for them, not clinical guidelines for you. Unfortunately, many dental offices are so used to these constraints that they sometimes default to offering what is covered rather than what is ideal."
+      content: "Dental insurance companies are businesses designed to manage costs, not maximize your health. Their rules, like waiting periods, downgrades, and frequency limits, are financial safeguards for them, not clinical guidelines for you. Unfortunately, many dental offices are so used to these constraints that they sometimes default to offering what is covered rather than what is ideal."
     },
     change: {
       heading: "What Should Happen Instead",
@@ -173,7 +173,7 @@ export const dentistArticles = [
     },
     empathy: {
       heading: "Why This Is Costly",
-      content: "Reactive care is expensive—both in money and tooth structure. A small spot of decay that could have been remineralized turns into a filling. A filling eventually cracks and becomes a crown. A crown fails and becomes an implant. This 'tooth death spiral' is painful and pricey, and it feels inevitable when care is only reactive."
+      content: "Reactive care is expensive, both in money and tooth structure. A small spot of decay that could have been remineralized turns into a filling. A filling eventually cracks and becomes a crown. A crown fails and becomes an implant. This 'tooth death spiral' is painful and pricey, and it feels inevitable when care is only reactive."
     },
     solution: {
       heading: "The Simple Truth: Early Signs are Easy to Miss",
@@ -204,7 +204,7 @@ export const dentistArticles = [
     },
     solution: {
       heading: "The Simple Truth: The System Isn't Built for Second Reviews",
-      content: "Traditional dentistry is built on the relationship between one doctor and one patient. The system doesn't make it easy to share records or get a quick 'gut check' from another professional. It's designed to keep you in one chair. But in every other area of life, from car repairs to home renovations—we get multiple quotes. Your health deserves the same scrutiny."
+      content: "Traditional dentistry is built on the relationship between one doctor and one patient. The system doesn't make it easy to share records or get a quick 'gut check' from another professional. It's designed to keep you in one chair. But in every other area of life, from car repairs to home renovations, we get multiple quotes. Your health deserves the same scrutiny."
     },
     change: {
       heading: "What Should Happen Instead",

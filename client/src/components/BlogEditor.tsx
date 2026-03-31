@@ -247,7 +247,7 @@ export default function BlogEditor({ content, onChange, placeholder }: BlogEdito
           <button
             type="button"
             onClick={() => editor.chain().focus().toggleBlockquote().run()}
-            title="StoryBrand Callout — adds a teal sidebar highlight to the selected text"
+            title="StoryBrand Callout. Adds a teal sidebar highlight to the selected text"
             className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-xs font-medium transition-colors cursor-pointer ${
               editor.isActive("blockquote")
                 ? "bg-primary/15 text-primary border border-primary/30"

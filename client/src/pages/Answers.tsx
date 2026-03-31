@@ -18,9 +18,9 @@ const qaData: QA[] = [
   { q: "Why does my tooth hurt when I bite down?", a: "Pain when biting usually signals a cracked tooth, a failing filling, or an abscess forming at the root. DentaSmart can analyze an X-ray of the area and help you understand what might be happening before your dental visit.", category: "Symptoms" },
   { q: "What causes sensitivity to cold water?", a: "Cold sensitivity often comes from exposed dentin due to enamel wear, gum recession, or a small cavity. If it lasts more than a few seconds, it may indicate nerve involvement. Upload a photo to DentaSmart for a quick check.", category: "Symptoms" },
   { q: "Why are my gums bleeding when I brush?", a: "Bleeding gums are usually the first sign of gingivitis, caused by plaque buildup along the gumline. It can also indicate vitamin deficiencies or hormonal changes. Regular monitoring with DentaSmart helps you track gum health over time.", category: "Symptoms" },
-  { q: "What does a dental abscess look like?", a: "A dental abscess often appears as a swollen, pus-filled bump on the gums near the affected tooth. You may also notice redness, pain, and a bad taste in your mouth. This is a dental emergency — see a dentist immediately.", category: "Symptoms" },
+  { q: "What does a dental abscess look like?", a: "A dental abscess often appears as a swollen, pus-filled bump on the gums near the affected tooth. You may also notice redness, pain, and a bad taste in your mouth. This is a dental emergency. See a dentist immediately.", category: "Symptoms" },
   { q: "Why do I have bad breath even after brushing?", a: "Persistent bad breath (halitosis) can be caused by gum disease, tongue bacteria, dry mouth, or cavities. If brushing and flossing do not help, there may be an underlying dental issue that needs attention.", category: "Symptoms" },
-  { q: "What causes a white spot on my tooth?", a: "White spots on teeth are often early signs of enamel demineralization — the very first stage of a cavity. They can also result from fluorosis or orthodontic treatment. Early detection through DentaSmart can help you reverse the damage.", category: "Symptoms" },
+  { q: "What causes a white spot on my tooth?", a: "White spots on teeth are often early signs of enamel demineralization. The very first stage of a cavity. They can also result from fluorosis or orthodontic treatment. Early detection through DentaSmart can help you reverse the damage.", category: "Symptoms" },
   { q: "Why does my jaw click when I open my mouth?", a: "Jaw clicking is often related to TMJ (temporomandibular joint) disorder. It can be caused by teeth grinding, stress, or misalignment. If accompanied by pain or limited movement, consult a dentist.", category: "Symptoms" },
   { q: "What does it mean if my tooth is turning gray?", a: "A gray tooth usually indicates that the nerve inside has died, often from trauma or decay. This tooth may need a root canal to prevent infection. DentaSmart can help you assess the situation with an X-ray analysis.", category: "Symptoms" },
   { q: "Why do my teeth hurt when I eat sweets?", a: "Sensitivity to sweets typically means you have a cavity or worn enamel exposing the dentin layer. Sugar draws fluid through tiny tubes in the dentin, triggering nerve pain. Get a scan to check for early cavities.", category: "Symptoms" },
@@ -138,7 +138,7 @@ export default function Answers() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-white to-primary/10" />
         </div>
-        <div className="container relative z-10 px-4 mx-auto max-w-5xl pt-32 md:pt-0 text-center">
+        <div className="container relative z-10 px-4 mx-auto max-w-5xl pt-40 md:pt-32 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

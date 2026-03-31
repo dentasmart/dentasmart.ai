@@ -12,36 +12,36 @@ const affordabilityGuides = guidesList.filter(g => g.category === "affordability
 
 /* ─── Cost Data ─────────────────────────────────────────────── */
 const procedureCosts = [
-  { procedure: "Routine Dental Exam", withoutInsurance: "$50–$350", avgCost: "$203", withDentaSmart: "Know before you go" },
-  { procedure: "Teeth Cleaning", withoutInsurance: "$75–$200", avgCost: "$130", withDentaSmart: "Track when you're due" },
-  { procedure: "Dental X-rays", withoutInsurance: "$25–$250", avgCost: "$150", withDentaSmart: "AI analysis included" },
-  { procedure: "Cavity Filling", withoutInsurance: "$100–$1,050", avgCost: "$250", withDentaSmart: "Catch early, save more" },
-  { procedure: "Tooth Extraction", withoutInsurance: "$50–$500", avgCost: "$200", withDentaSmart: "Second opinion first" },
-  { procedure: "Root Canal", withoutInsurance: "$700–$1,500", avgCost: "$1,000", withDentaSmart: "Verify if needed" },
-  { procedure: "Dental Crown", withoutInsurance: "$800–$2,500", avgCost: "$1,200", withDentaSmart: "Compare options" },
-  { procedure: "Dental Implant", withoutInsurance: "$3,000–$6,000", avgCost: "$4,500", withDentaSmart: "Plan ahead" },
-  { procedure: "Braces", withoutInsurance: "$2,500–$7,000", avgCost: "$5,000", withDentaSmart: "Explore alternatives" },
+  { procedure: "Routine Dental Exam", withoutInsurance: "$50-$350", avgCost: "$203", withDentaSmart: "Know before you go" },
+  { procedure: "Teeth Cleaning", withoutInsurance: "$75-$200", avgCost: "$130", withDentaSmart: "Track when you're due" },
+  { procedure: "Dental X-rays", withoutInsurance: "$25-$250", avgCost: "$150", withDentaSmart: "AI analysis included" },
+  { procedure: "Cavity Filling", withoutInsurance: "$100-$1,050", avgCost: "$250", withDentaSmart: "Catch early, save more" },
+  { procedure: "Tooth Extraction", withoutInsurance: "$50-$500", avgCost: "$200", withDentaSmart: "Second opinion first" },
+  { procedure: "Root Canal", withoutInsurance: "$700-$1,500", avgCost: "$1,000", withDentaSmart: "Verify if needed" },
+  { procedure: "Dental Crown", withoutInsurance: "$800-$2,500", avgCost: "$1,200", withDentaSmart: "Compare options" },
+  { procedure: "Dental Implant", withoutInsurance: "$3,000-$6,000", avgCost: "$4,500", withDentaSmart: "Plan ahead" },
+  { procedure: "Braces", withoutInsurance: "$2,500-$7,000", avgCost: "$5,000", withDentaSmart: "Explore alternatives" },
 ];
 
 const savingsTips = [
   {
     icon: Search,
     title: "Get a Free AI Assessment First",
-    description: "Before spending a dime, upload a photo of your teeth to DentaSmart. Our AI identifies potential issues so you know what to ask about — and what you might not need.",
+    description: "Before spending a dime, upload a photo of your teeth to DentaSmart. Our AI identifies potential issues so you know what to ask about, and what you might not need.",
     cta: "Try Free Scan",
     href: "/download",
   },
   {
     icon: Shield,
     title: "Consider Dental Discount Plans",
-    description: "Not insurance — discount plans charge an annual fee ($80–$200) and give you 10–60% off dental procedures. No deductibles, no waiting periods, no claim forms.",
+    description: "These aren't insurance. Discount plans charge an annual fee ($80-$200) and give you 10-60% off dental procedures. No deductibles, no waiting periods, no claim forms.",
     cta: "Learn More",
     href: "/guides/dental-insurance-alternatives",
   },
   {
     icon: Heart,
     title: "Visit a Dental School",
-    description: "Dental schools offer supervised care at 30–50% less than private practices. Students are closely monitored by licensed faculty. Search for accredited programs near you.",
+    description: "Dental schools offer supervised care at 30-50% less than private practices. Students are closely monitored by licensed faculty. Search for accredited programs near you.",
     cta: null,
     href: null,
   },
@@ -62,14 +62,14 @@ const savingsTips = [
   {
     icon: Clock,
     title: "Use HSA or FSA Funds",
-    description: "Health Savings Accounts and Flexible Spending Accounts can be used for dental care. These pre-tax dollars effectively give you a 20–30% discount on every procedure.",
+    description: "Health Savings Accounts and Flexible Spending Accounts can be used for dental care. These pre-tax dollars effectively give you a 20-30% discount on every procedure.",
     cta: null,
     href: null,
   },
   {
     icon: Smartphone,
     title: "Get a Second Opinion with AI",
-    description: "Before agreeing to expensive treatment, get a DentaSmart second opinion. Upload your X-rays and our AI helps you understand what's really going on — so you can ask better questions.",
+    description: "Before agreeing to expensive treatment, get a DentaSmart second opinion. Upload your X-rays and our AI helps you understand what's really going on so you can ask better questions.",
     cta: "Get Second Opinion",
     href: "/download",
   },
@@ -79,35 +79,35 @@ const savingsTips = [
 const faqs = [
   {
     q: "How much does dental care cost without insurance?",
-    a: "Without insurance, a routine exam and cleaning costs $130–$350. Fillings range from $100–$1,050, root canals from $700–$1,500, and crowns from $800–$2,500. Costs vary significantly by location and provider. Using DentaSmart's free AI assessment before your visit helps you understand what to expect and avoid unnecessary procedures.",
+    a: "Without insurance, a routine exam and cleaning costs $130-$350. Fillings range from $100-$1,050, root canals from $700-$1,500, and crowns from $800-$2,500. Costs vary significantly by location and provider. Using DentaSmart's free AI assessment before your visit helps you understand what to expect and avoid unnecessary procedures.",
   },
   {
     q: "What are the best alternatives to dental insurance?",
-    a: "Dental discount plans ($80–$200/year) offer 10–60% savings with no deductibles or waiting periods. Community health centers provide sliding-scale fees based on income. Dental schools offer care at 30–50% less. HSA/FSA accounts let you pay with pre-tax dollars. DentaSmart helps you prioritize which treatments you actually need.",
+    a: "Dental discount plans ($80-$200/year) offer 10-60% savings with no deductibles or waiting periods. Community health centers provide sliding-scale fees based on income. Dental schools offer care at 30-50% less. HSA/FSA accounts let you pay with pre-tax dollars. DentaSmart helps you prioritize which treatments you actually need.",
   },
   {
     q: "How can I find affordable dental care near me?",
-    a: "Start with Federally Qualified Health Centers (FQHCs) — over 1,400 locations nationwide offer sliding-scale dental care. Search HRSA.gov for locations. Dental schools, nonprofit clinics like Dental Lifeline Network, and state Medicaid programs are also options. DentaSmart's AI can help you understand your needs before you visit.",
+    a: "Start with Federally Qualified Health Centers (FQHCs). Over 1,400 locations nationwide offer sliding-scale dental care. Search HRSA.gov for locations. Dental schools, nonprofit clinics like Dental Lifeline Network, and state Medicaid programs are also options. DentaSmart's AI can help you understand your needs before you visit.",
   },
   {
     q: "Is it worth going to the dentist without insurance?",
-    a: "Yes — preventive care costs far less than emergency treatment. A $130 cleaning can prevent a $1,000+ root canal. Skipping dental visits often leads to problems that become 5–10x more expensive to fix. DentaSmart helps you monitor your oral health between visits so you catch issues early when they're cheapest to treat.",
+    a: "Yes. Preventive care costs far less than emergency treatment. A $130 cleaning can prevent a $1,000+ root canal. Skipping dental visits often leads to problems that become 5-10x more expensive to fix. DentaSmart helps you monitor your oral health between visits so you catch issues early when they're cheapest to treat.",
   },
   {
     q: "How can I save money on dental work I already need?",
-    a: "Ask your dentist about payment plans — many offer interest-free financing. Get a second opinion before major procedures (DentaSmart's AI can help). Compare prices between providers. Ask about alternative treatments that may cost less. Use dental discount plans for immediate savings of 10–60% on procedures.",
+    a: "Ask your dentist about payment plans. Many offer interest-free financing. Get a second opinion before major procedures (DentaSmart's AI can help). Compare prices between providers. Ask about alternative treatments that may cost less. Use dental discount plans for immediate savings of 10-60% on procedures.",
   },
   {
     q: "What dental procedures are most expensive without insurance?",
-    a: "Dental implants ($3,000–$6,000 per tooth), braces ($2,500–$7,000), and full-mouth reconstruction ($15,000–$40,000+) are the most expensive. Root canals ($700–$1,500) and crowns ($800–$2,500) are common mid-range expenses. Prevention and early detection through tools like DentaSmart can help you avoid many of these costly procedures.",
+    a: "Dental implants ($3,000-$6,000 per tooth), braces ($2,500-$7,000), and full-mouth reconstruction ($15,000-$40,000+) are the most expensive. Root canals ($700-$1,500) and crowns ($800-$2,500) are common mid-range expenses. Prevention and early detection through tools like DentaSmart can help you avoid many of these costly procedures.",
   },
   {
     q: "Does DentaSmart replace going to the dentist?",
-    a: "No — DentaSmart is your AI oral health guide, not a replacement for professional dental care. It helps you understand your oral health, catch potential issues early, get AI-powered second opinions, and make informed decisions about treatment. Think of it as a knowledgeable friend who helps you navigate dental care more confidently and affordably.",
+    a: "No. DentaSmart is your AI oral health guide, not a replacement for professional dental care. It helps you understand your oral health, catch potential issues early, get AI-powered second opinions, and make informed decisions about treatment. Think of it as a knowledgeable friend who helps you handle dental care more confidently and affordably.",
   },
   {
     q: "How does DentaSmart help me save on dental care?",
-    a: "DentaSmart saves you money in three ways: (1) Prevention — AI monitoring helps catch issues early when they're cheapest to fix. (2) Clarity — understand what you actually need before committing to expensive treatment. (3) Second opinions — upload X-rays and get AI insights so you can ask better questions and avoid unnecessary procedures.",
+    a: "DentaSmart saves you money in three ways: (1) Prevention: AI monitoring helps catch issues early when they're cheapest to fix. (2) Clarity: understand what you actually need before committing to expensive treatment. (3) Second opinions: upload X-rays and get AI insights so you can ask better questions and avoid unnecessary procedures.",
   },
 ];
 
@@ -138,7 +138,7 @@ const breadcrumbJsonLd = {
 const webPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
-  name: "Affordable Dental Care Guide — How to Save on Dental Work",
+  name: "Affordable Dental Care Guide. How to Save on Dental Work",
   description: "Comprehensive guide to affordable dental care options for uninsured and cost-conscious patients. Includes procedure cost tables, savings tips, and free AI dental assessment.",
   url: "https://dentasmart.ai/oral-health-hub/affordability",
   inLanguage: "en-US",
@@ -166,7 +166,7 @@ export default function AffordabilityHub() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
-        title="Affordable Dental Care Guide — How to Save on Dental Work Without Insurance | DentaSmart"
+        title="Affordable Dental Care Guide. How to Save on Dental Work Without Insurance | DentaSmart"
         description="68.5 million Americans lack dental insurance. Find real options: procedure cost tables, 7 proven savings tips, discount plans, and a free AI dental assessment. Stop guessing about costs."
         canonical="https://dentasmart.ai/oral-health-hub/affordability"
         keywords="affordable dental care, dental care without insurance, how much does dental work cost, cheap dental care, dental savings plan, low cost dental care, dental care for uninsured, dental discount plans, free dental assessment, save money on dental care"
@@ -174,7 +174,7 @@ export default function AffordabilityHub() {
       />
       <Navigation />
 
-      {/* ═══ HERO — Brand-aligned light style ═══ */}
+      {/* ═══ HERO. Brand-aligned light style ═══ */}
       <section className="relative flex items-center overflow-hidden bg-gradient-to-br from-white via-accent/5 to-primary/5">
         {/* Subtle background accents */}
         <div className="absolute inset-0 z-0 opacity-30">
@@ -191,7 +191,7 @@ export default function AffordabilityHub() {
               <span className="italic text-primary">break the bank</span>.
             </h1>
             <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed max-w-2xl mb-8">
-              68.5 million Americans have no dental insurance. If you're one of them — or if you're just tired of surprise bills — this guide gives you real options, real costs, and a free way to understand your oral health before spending a dime.
+              68.5 million Americans have no dental insurance. If you're one of them. Or if you're just tired of surprise bills. This guide gives you real options, real costs, and a free way to understand your oral health before spending a dime.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/download">
@@ -244,10 +244,10 @@ export default function AffordabilityHub() {
                 <span className="italic text-primary">It's waiting too long.</span>
               </h2>
               <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed mb-4">
-                Most people avoid the dentist because of cost. But dental problems don't wait — they compound. A $130 cleaning you skip today can become a $1,000 root canal next year. A small cavity you ignore becomes a crown. A crown you delay becomes an extraction and an implant.
+                Most people avoid the dentist because of cost. But dental problems don't wait. They compound. A $130 cleaning you skip today can become a $1,000 root canal next year. A small cavity you ignore becomes a crown. A crown you delay becomes an extraction and an implant.
               </p>
               <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed">
-                The most affordable dental care is the kind that catches problems early. That's exactly what DentaSmart helps you do — for free.
+                The most affordable dental care is the kind that catches problems early. That's exactly what DentaSmart helps you do. for free.
               </p>
             </motion.div>
             <motion.div
@@ -262,10 +262,10 @@ export default function AffordabilityHub() {
                 </h3>
                 <div className="space-y-4">
                   {[
-                    { stage: "Early Cavity", cost: "$100–$250", time: "Caught in first 6 months", color: "bg-primary" },
-                    { stage: "Deep Filling", cost: "$250–$500", time: "Caught in 6–12 months", color: "bg-yellow-500" },
-                    { stage: "Root Canal + Crown", cost: "$1,700–$4,000", time: "After 1–2 years", color: "bg-orange-500" },
-                    { stage: "Extraction + Implant", cost: "$3,500–$6,500", time: "After 2+ years", color: "bg-red-500" },
+                    { stage: "Early Cavity", cost: "$100-$250", time: "Caught in first 6 months", color: "bg-primary" },
+                    { stage: "Deep Filling", cost: "$250-$500", time: "Caught in 6-12 months", color: "bg-yellow-500" },
+                    { stage: "Root Canal + Crown", cost: "$1,700-$4,000", time: "After 1-2 years", color: "bg-orange-500" },
+                    { stage: "Extraction + Implant", cost: "$3,500-$6,500", time: "After 2+ years", color: "bg-red-500" },
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-center gap-3 md:gap-4">
                       <div className={`w-3 h-3 rounded-full ${item.color} flex-shrink-0`} />
@@ -328,7 +328,7 @@ export default function AffordabilityHub() {
             </table>
           </motion.div>
           <p className="text-xs text-stone-500 mt-3 px-4 md:px-0">
-            Sources: ADA Health Policy Institute, CareCredit, Guardian Life, Aflac (2025–2026 data). Costs are national averages and may vary by region.
+            Sources: ADA Health Policy Institute, CareCredit, Guardian Life, Aflac (2025-2026 data). Costs are national averages and may vary by region.
           </p>
         </div>
       </section>
@@ -341,7 +341,7 @@ export default function AffordabilityHub() {
               How DentaSmart helps you spend <span className="italic text-primary">smarter</span>
             </h2>
             <p className="text-base md:text-lg text-stone-600 font-light max-w-3xl">
-              You don't need insurance to understand your oral health. DentaSmart gives you clarity before you commit to treatment — so every dollar you spend is informed.
+              You don't need insurance to understand your oral health. DentaSmart gives you clarity before you commit to treatment. So every dollar you spend is informed.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
@@ -354,7 +354,7 @@ export default function AffordabilityHub() {
               {
                 icon: Shield,
                 title: "Avoid Unnecessary Treatment",
-                desc: "Not every recommendation is essential. DentaSmart helps you understand what you actually need vs. what can wait — so you don't overspend.",
+                desc: "Not every recommendation is essential. DentaSmart helps you understand what you actually need vs. what can wait. So you don't overspend.",
               },
               {
                 icon: TrendingDown,
@@ -396,7 +396,7 @@ export default function AffordabilityHub() {
               7 proven ways to save on dental care
             </h2>
             <p className="text-base md:text-lg text-stone-600 font-light max-w-3xl">
-              Whether you're uninsured, underinsured, or just trying to be smarter about dental spending — these strategies work.
+              Whether you're uninsured, underinsured, or just trying to be smarter about dental spending. These strategies work.
             </p>
           </motion.div>
           <div className="space-y-3 md:space-y-4">
@@ -537,12 +537,12 @@ export default function AffordabilityHub() {
               Stop guessing. Start knowing.
             </h2>
             <p className="text-base md:text-lg text-stone-300 font-light mb-6 max-w-2xl mx-auto">
-              68.5 million Americans don't have dental insurance. DentaSmart gives every one of them a free way to understand their oral health — before spending a single dollar at the dentist.
+              68.5 million Americans don't have dental insurance. DentaSmart gives every one of them a free way to understand their oral health. Before spending a single dollar at the dentist.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/download">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
-                  Download DentaSmart — It's Free
+                  Download DentaSmart. It's Free
                 </Button>
               </Link>
               <Link href="/symptom-quiz">

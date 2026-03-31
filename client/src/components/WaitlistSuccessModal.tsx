@@ -115,7 +115,7 @@ export function WaitlistSuccessModal({
           {/* What's next */}
           <div className="space-y-3 mb-6">
             <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 text-center">
-              While you wait — try DentaSmart on iOS
+              While you wait. Try DentaSmart on iOS
             </p>
             <a
               href={IOS_URL}
