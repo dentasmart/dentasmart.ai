@@ -154,3 +154,24 @@ export const quizSubmissions = mysqlTable("quiz_submissions", {
 
 export type QuizSubmission = typeof quizSubmissions.$inferSelect;
 export type InsertQuizSubmission = typeof quizSubmissions.$inferInsert;
+
+/**
+ * AI Blog Agent run history.
+ * Tracks each automated or manual blog generation run.
+ */
+export const agentRuns = mysqlTable("agent_runs", {
+  id: int("id").autoincrement().primaryKey(),
+  status: mysqlEnum("status", ["running", "success", "draft", "failed"]).default("running").notNull(),
+  title: varchar("title", { length: 500 }),
+  slug: varchar("slug", { length: 500 }),
+  primaryKeyword: varchar("primaryKeyword", { length: 200 }),
+  postId: int("postId"),
+  error: text("error"),
+  triggerType: mysqlEnum("triggerType", ["manual", "scheduled"]).default("manual").notNull(),
+  durationMs: int("durationMs"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type AgentRun = typeof agentRuns.$inferSelect;
+export type InsertAgentRun = typeof agentRuns.$inferInsert;

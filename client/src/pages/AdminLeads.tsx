@@ -27,23 +27,20 @@ import {
 } from "@/components/ui/dialog";
 import {
   Search,
-  LogOut,
   Loader2,
   ChevronLeft,
   ChevronRight,
-  ExternalLink,
   Download,
   Users,
   Smartphone,
   ClipboardCheck,
   AlertTriangle,
   Mail,
-  ArrowLeft,
   Eye,
   Calendar,
 } from "lucide-react";
 import { toast } from "sonner";
-import { useEffect } from "react";
+import AdminLayout from "@/components/AdminLayout";
 
 export default function AdminLeads() {
   const [, setLocation] = useLocation();
@@ -53,12 +50,6 @@ export default function AdminLeads() {
   const [page, setPage] = useState(1);
   const [selectedLead, setSelectedLead] = useState<any>(null);
   const limit = 20;
-
-  // Auth check
-  const { data: admin, isLoading: authLoading } = trpc.blog.adminMe.useQuery();
-  const logoutMutation = trpc.blog.adminLogout.useMutation({
-    onSuccess: () => setLocation("/admin/login"),
-  });
 
   // Leads data
   const { data, isLoading } = trpc.leads.list.useQuery({
@@ -102,23 +93,6 @@ export default function AdminLeads() {
     }
   };
 
-  // Redirect if not authenticated
-  useEffect(() => {
-    if (!authLoading && !admin) {
-      setLocation("/admin/login");
-    }
-  }, [admin, authLoading, setLocation]);
-
-  if (authLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-stone-50">
-        <Loader2 className="w-8 h-8 animate-spin text-primary" />
-      </div>
-    );
-  }
-
-  if (!admin) return null;
-
   const totalPages = data ? Math.ceil(data.total / limit) : 0;
 
   const getSourceBadge = (s: string) => {
@@ -156,57 +130,10 @@ export default function AdminLeads() {
   };
 
   return (
-    <div className="min-h-screen bg-stone-50">
-      {/* Top Navigation - matches AdminDashboard */}
-      <header className="bg-white border-b border-stone-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-3">
-              <img src="/images/logo.png" alt="DentaSmart" className="h-8" />
-              <div className="hidden sm:block">
-                <span className="text-stone-300 mx-2">|</span>
-                <span className="text-sm font-medium text-stone-600">Leads Management</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-stone-500 hidden sm:block">
-                Welcome, <span className="font-medium text-stone-700">{admin.displayName || admin.username}</span>
-              </span>
-              <Link href="/" target="_blank">
-                <Button variant="ghost" size="sm" className="text-stone-500 hover:text-stone-700 cursor-pointer">
-                  <ExternalLink className="w-4 h-4 mr-1" />
-                  <span className="hidden sm:inline">View Site</span>
-                </Button>
-              </Link>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => logoutMutation.mutate()}
-                className="text-stone-500 hover:text-red-600 cursor-pointer"
-              >
-                <LogOut className="w-4 h-4 mr-1" />
-                <span className="hidden sm:inline">Logout</span>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Back to Articles + Title */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-4">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setLocation("/admin")}
-              className="text-stone-500 hover:text-stone-700 cursor-pointer"
-            >
-              <ArrowLeft className="w-4 h-4 mr-1" />
-              Articles
-            </Button>
-            <h1 className="text-2xl font-semibold text-stone-900">Leads Management</h1>
-          </div>
+    <AdminLayout activeId="leads">
+      {/* Title */}
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-2xl font-semibold text-stone-900">Leads Management</h1>
           <Button
             onClick={handleExport}
             disabled={exportQuery.isFetching}
@@ -433,7 +360,6 @@ export default function AdminLeads() {
             </>
           )}
         </div>
-      </main>
 
       {/* Lead Detail Dialog */}
       <Dialog open={!!selectedLead} onOpenChange={(open) => !open && setSelectedLead(null)}>
@@ -513,7 +439,7 @@ export default function AdminLeads() {
           )}
         </DialogContent>
       </Dialog>
-    </div>
+    </AdminLayout>
   );
 }
 

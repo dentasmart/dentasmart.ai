@@ -16,6 +16,8 @@ const AdminBlogEditor = lazy(() => import("@/pages/AdminBlogEditor"));
 const AdminSeoSetup = lazy(() => import("@/pages/AdminSeoSetup"));
 const AdminCategories = lazy(() => import("@/pages/AdminCategories"));
 const AdminLeads = lazy(() => import("@/pages/AdminLeads"));
+const AdminLinkAudit = lazy(() => import("@/pages/AdminLinkAudit"));
+const AdminAIBlogAgent = lazy(() => import("@/pages/AdminAIBlogAgent"));
 
 // Build paths at runtime to prevent any static analysis from detecting them
 const prefix = "/adm" + "in";
@@ -24,9 +26,11 @@ const paths = {
   dashboard: prefix,
   newPost: prefix + "/new",
   editPost: prefix + "/edit/:id",
-  seoSetup: prefix + "/seo-analytics-setup",
+  seoSetup: prefix + "/seo-analytics",
   categories: prefix + "/categories",
   leads: prefix + "/leads",
+  linkAudit: prefix + "/link-audit",
+  aiBlogAgent: prefix + "/ai-blog-agent",
 };
 
 function PageLoader() {
@@ -57,6 +61,8 @@ export default function AdminRouter() {
         <Route path={paths.seoSetup} component={AdminSeoSetup} />
         <Route path={paths.categories} component={AdminCategories} />
         <Route path={paths.leads} component={AdminLeads} />
+        <Route path={paths.linkAudit} component={AdminLinkAudit} />
+        <Route path={paths.aiBlogAgent} component={AdminAIBlogAgent} />
         <Route path={paths.dashboard} component={AdminDashboard} />
       </Switch>
     </Suspense>

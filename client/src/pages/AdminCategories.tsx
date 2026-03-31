@@ -33,18 +33,16 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import {
-  ArrowLeft,
   Plus,
   Edit,
   Trash2,
   FolderTree,
   ChevronRight,
   Loader2,
-  ExternalLink,
-  LogOut,
   Palette,
 } from "lucide-react";
 import { toast } from "sonner";
+import AdminLayout from "@/components/AdminLayout";
 
 const COLOR_OPTIONS = [
   { value: "stone", label: "Stone", bg: "bg-stone-100", text: "text-stone-700" },
@@ -98,12 +96,6 @@ export default function AdminCategories() {
   const [formData, setFormData] = useState<CategoryFormData>(defaultFormData);
   const [slugManuallyEdited, setSlugManuallyEdited] = useState(false);
 
-  // Auth check
-  const { data: admin, isLoading: authLoading } = trpc.blog.adminMe.useQuery();
-  const logoutMutation = trpc.blog.adminLogout.useMutation({
-    onSuccess: () => setLocation("/admin/login"),
-  });
-
   // Categories
   const { data: categories, isLoading, refetch } = trpc.blog.listCategories.useQuery();
   const utils = trpc.useUtils();
@@ -153,22 +145,6 @@ export default function AdminCategories() {
 
     return { parentCategories: parents, subcategoryMap: subMap };
   }, [categories]);
-
-  // Redirect if not authenticated
-  if (!authLoading && !admin) {
-    setLocation("/admin/login");
-    return null;
-  }
-
-  if (authLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-stone-50">
-        <Loader2 className="w-8 h-8 animate-spin text-primary" />
-      </div>
-    );
-  }
-
-  if (!admin) return null;
 
   function resetForm() {
     setFormData(defaultFormData);
@@ -224,73 +200,26 @@ export default function AdminCategories() {
   const isSaving = createMutation.isPending || updateMutation.isPending;
 
   return (
-    <div className="min-h-screen bg-stone-50">
-      {/* Top Navigation */}
-      <header className="bg-white border-b border-stone-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-3">
-              <img src="/images/logo.png" alt="DentaSmart" className="h-8" />
-              <div className="hidden sm:block">
-                <span className="text-stone-300 mx-2">|</span>
-                <span className="text-sm font-medium text-stone-600">Category Management</span>
-              </div>
-            </div>
-            <div className="flex items-center gap-4">
-              <span className="text-sm text-stone-500 hidden sm:block">
-                Welcome, <span className="font-medium text-stone-700">{admin.displayName || admin.username}</span>
-              </span>
-              <Link href="/" target="_blank">
-                <Button variant="ghost" size="sm" className="text-stone-500 hover:text-stone-700 cursor-pointer">
-                  <ExternalLink className="w-4 h-4 mr-1" />
-                  <span className="hidden sm:inline">View Site</span>
-                </Button>
-              </Link>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => logoutMutation.mutate()}
-                className="text-stone-500 hover:text-red-600 cursor-pointer"
-              >
-                <LogOut className="w-4 h-4 mr-1" />
-                <span className="hidden sm:inline">Logout</span>
-              </Button>
-            </div>
-          </div>
+    <AdminLayout activeId="categories">
+      {/* Title */}
+      <div className="flex items-center justify-between mb-8">
+        <div>
+          <h1 className="text-2xl font-semibold text-stone-900 flex items-center gap-2">
+            <FolderTree className="w-6 h-6 text-primary" />
+            Categories & Subcategories
+          </h1>
+          <p className="text-sm text-stone-500 mt-1">
+            Organize your blog content with parent categories and subcategories
+          </p>
         </div>
-      </header>
-
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Back + Title */}
-        <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-4">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setLocation("/admin")}
-              className="text-stone-500 hover:text-stone-700 cursor-pointer"
-            >
-              <ArrowLeft className="w-4 h-4 mr-1" />
-              Back to Articles
-            </Button>
-            <div>
-              <h1 className="text-2xl font-semibold text-stone-900 flex items-center gap-2">
-                <FolderTree className="w-6 h-6 text-primary" />
-                Categories & Subcategories
-              </h1>
-              <p className="text-sm text-stone-500 mt-1">
-                Organize your blog content with parent categories and subcategories
-              </p>
-            </div>
-          </div>
-          <Button
-            onClick={() => openCreateDialog(null)}
-            className="bg-primary hover:bg-primary/90 text-white cursor-pointer"
-          >
-            <Plus className="w-4 h-4 mr-2" />
-            New Category
-          </Button>
-        </div>
+        <Button
+          onClick={() => openCreateDialog(null)}
+          className="bg-primary hover:bg-primary/90 text-white cursor-pointer"
+        >
+          <Plus className="w-4 h-4 mr-2" />
+          New Category
+        </Button>
+      </div>
 
         {/* Categories Tree */}
         {isLoading ? (
@@ -460,7 +389,6 @@ export default function AdminCategories() {
             })}
           </div>
         )}
-      </main>
 
       {/* Create/Edit Dialog */}
       <Dialog open={dialogOpen} onOpenChange={(open) => { if (!open) { resetForm(); } setDialogOpen(open); }}>
@@ -587,6 +515,6 @@ export default function AdminCategories() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-    </div>
+    </AdminLayout>
   );
 }

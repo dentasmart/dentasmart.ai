@@ -24,6 +24,7 @@ import {
 import { SignJWT, jwtVerify } from "jose";
 import { storagePut } from "./storage";
 import { invalidateSitemapCache } from "./seo";
+import { runBlogAgent, listAgentRuns } from "./blogAgent";
 
 const ADMIN_COOKIE_NAME = "blog_admin_session";
 const JWT_SECRET_KEY = process.env.JWT_SECRET || "dentasmart-blog-admin-secret";
@@ -456,6 +457,19 @@ export const blogRouter = router({
       await updateBlogPost(input.id, { slug: clean });
       invalidateSitemapCache();
       return { success: true, slug: clean };
+    }),
+
+  // ─── AI Blog Agent procedures ─────────────────────────────
+
+  agentTrigger: adminBlogProcedure
+    .mutation(async () => {
+      const result = await runBlogAgent("manual");
+      return result;
+    }),
+
+  agentListRuns: adminBlogProcedure
+    .query(async () => {
+      return listAgentRuns();
     }),
 
   // Image upload for blog editor

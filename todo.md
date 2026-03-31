@@ -656,3 +656,21 @@
 - [x] Add one-click "Auto-fix" button that calls sanitizeSlug and saves corrected slug
 - [x] Integrate audit count into sitemap generator: log warning if any published posts have bad slugs
 - [x] Write vitest tests for the auditSlugs and fixSlug procedures (85 tests passing)
+
+## Admin Dashboard Sidebar Redesign - Mar 31, 2026
+- [x] Replace single-page tab layout with sidebar navigation (collapsible)
+- [x] Sidebar sections: Content (Articles, Categories, Leads), Tools (Link Audit, SEO & Analytics), AI Agents (AI Blog Agent)
+- [x] Each section renders as its own page with clean routing via AdminRouter
+- [x] Preserve all existing functionality (articles list, link audit, stats, categories, leads)
+- [x] Design for future AI agent tasks (scalable sidebar structure with section grouping)
+
+## AI Blog Agent - Mar 31, 2026
+- [x] Create agent_runs DB table (id, status, title, slug, primaryKeyword, postId, error, durationMs, triggerType, createdAt)
+- [x] Build LLM-powered blog generation pipeline: topic research → article writing → SEO pack → publish
+- [x] Create agentTrigger tRPC procedure (admin-only, triggers full pipeline)
+- [x] Create agentListRuns tRPC procedure (admin-only, returns run history)
+- [x] Build AI Blog Agent admin UI: run history table, manual trigger button, schedule info, how-it-works section
+- [x] Store blog writing instructions as system prompt (from user's attached document) in blogAgent.ts
+- [x] Auto-publish generated posts with HTML formatting, SEO fields, category matching, and internal linking
+- [x] Schedule task for Tue/Thu 9AM EST via Manus scheduler
+- [x] Write vitest tests for agent DB helpers and tRPC procedures (92 tests passing)
