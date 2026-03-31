@@ -678,3 +678,15 @@
 ## Cleanup Test Agent Runs - Mar 31, 2026
 - [x] Delete all test agent_runs records from production database (10 rows deleted)
 - [x] Update vitest tests to clean up agent_runs after each run (afterAll hook with cleanupTestRuns)
+
+## Affordability Hub Page - Mar 31, 2026
+- [x] Research target keywords and competitor content for affordable dental care
+- [x] Build /hub/affordability page with SEO-optimized content sections (StoryBrand framework)
+- [x] Add JSON-LD structured data (FAQPage, MedicalWebPage, BreadcrumbList)
+- [x] Add comprehensive meta tags targeting "affordable dental care", "dental care without insurance", etc.
+- [x] Include cost comparison table (9 procedures), escalation timeline, 7 savings tips, 8 FAQs
+- [x] Add strong CTAs converting to app download (hero, mid-page, bottom)
+- [x] Route already wired in App.tsx at /hub/affordability
+- [x] Internal links to /download, /hub/prevention, /hub/second-opinion, /symptom-quiz, /guides/*
+- [x] Add to sitemap: /hub/affordability + all 14 guide pages + hub landing pages + /symptom-quiz
+- [x] All SEO and sitemap tests passing (20/20)

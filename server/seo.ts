@@ -63,6 +63,26 @@ const staticRoutes = [
   { path: "/guides/brushing-guide", priority: "0.8", changefreq: "monthly" },
   { path: "/guides/flossing-guide", priority: "0.8", changefreq: "monthly" },
   { path: "/guides/dental-visit-guide", priority: "0.8", changefreq: "monthly" },
+  { path: "/guides/affordable-dental-care", priority: "0.8", changefreq: "monthly" },
+  { path: "/guides/dental-insurance-alternatives", priority: "0.8", changefreq: "monthly" },
+  { path: "/guides/diy-dental-care", priority: "0.8", changefreq: "monthly" },
+  { path: "/guides/preventing-expensive-dental-problems", priority: "0.8", changefreq: "monthly" },
+  { path: "/guides/dental-emergencies-on-a-budget", priority: "0.8", changefreq: "monthly" },
+  { path: "/guides/when-to-get-dental-second-opinion", priority: "0.8", changefreq: "monthly" },
+  { path: "/guides/do-you-need-root-canal", priority: "0.8", changefreq: "monthly" },
+  { path: "/guides/crowns-vs-fillings", priority: "0.8", changefreq: "monthly" },
+  { path: "/guides/implants-vs-bridges", priority: "0.8", changefreq: "monthly" },
+  { path: "/guides/complete-oral-health-routine", priority: "0.8", changefreq: "monthly" },
+  { path: "/guides/how-to-prevent-cavities", priority: "0.8", changefreq: "monthly" },
+  { path: "/guides/gum-disease-prevention", priority: "0.8", changefreq: "monthly" },
+  { path: "/guides/natural-teeth-whitening", priority: "0.8", changefreq: "monthly" },
+  { path: "/guides/oral-health-life-stages", priority: "0.8", changefreq: "monthly" },
+  // Hub landing pages
+  { path: "/hub/affordability", priority: "0.9", changefreq: "weekly" },
+  { path: "/hub/second-opinion", priority: "0.8", changefreq: "weekly" },
+  { path: "/hub/prevention", priority: "0.8", changefreq: "weekly" },
+  // Symptom Quiz
+  { path: "/symptom-quiz", priority: "0.9", changefreq: "weekly" },
 ];
 
 // Sitemap cache: regenerated on demand and invalidated when blog content changes
