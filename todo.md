@@ -690,3 +690,21 @@
 - [x] Internal links to /download, /hub/prevention, /hub/second-opinion, /symptom-quiz, /guides/*
 - [x] Add to sitemap: /hub/affordability + all 14 guide pages + hub landing pages + /symptom-quiz
 - [x] All SEO and sitemap tests passing (20/20)
+
+## Affordability Hub Fixes - Mar 31, 2026
+- [x] Fix hero to use DentaSmart brand colors (match home page style, not generic green gradient)
+- [x] Move URL from /hub/affordability to /oral-health-hub/affordability for consistency
+- [x] Update sitemap, App.tsx route, internal links, and navigation references
+- [x] Verify sitemap.xml is serving updated routes on live site
+- [x] Ensure page is accessible from main navigation (added Resources dropdown with all hub links)
+- [x] Fix badge cutoff: add sufficient top padding to hero to clear fixed nav bar
+- [x] Ensure fully responsive on mobile screens
+## Hub Pages Brand Consistency - Mar 31, 2026
+- [x] Update SecondOpinionHub hero to use DentaSmart brand colors (white bg + teal accents, not blue gradient)
+- [x] Update PreventionHub hero to use DentaSmart brand colors (white bg + teal accents, not teal gradient)
+- [x] Fix hero padding on SecondOpinionHub and PreventionHub (pt-40 to clear fixed nav)
+- [x] Update all cross-hub links from /hub/ to /oral-health-hub/ prefix
+- [x] Update canonical URLs in SecondOpinionHub and PreventionHub
+- [x] Add legacy redirects from old /hub/ URLs to new /oral-health-hub/ URLs
+- [x] Add Resources dropdown to Navigation with links to all hubs, blogs, guides, and symptom checker
+- [x] Mobile Resources accordion in mobile menu

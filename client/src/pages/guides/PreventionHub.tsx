@@ -15,31 +15,31 @@ export default function PreventionHub() {
       <SEO
         title="Dental Prevention Guide | Protect Your Teeth & Save Money | DentaSmart"
         description="Prevent cavities, gum disease, and expensive dental work with science-backed daily routines. Guides for every life stage."
-        canonical="https://dentasmart.ai/hub/prevention"
+        canonical="https://dentasmart.ai/oral-health-hub/prevention"
         keywords="prevent cavities, gum disease prevention, oral health routine, teeth whitening natural"
       />
       <Navigation />
 
       {/* Hero */}
-      <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-gradient-to-br from-primary/90 via-primary to-teal-500">
-        <div className="container relative z-10 px-4 mx-auto max-w-5xl pt-32 pb-12 md:pt-24">
+      <section className="relative flex items-center overflow-hidden bg-gradient-to-br from-white via-accent/5 to-primary/5">
+        <div className="container relative z-10 px-4 mx-auto max-w-5xl pt-40 pb-12 md:pt-36 md:pb-14">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm px-4 py-2 rounded-full text-white/90 text-sm font-medium mb-6">
+            <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full text-primary text-sm font-medium mb-6">
               <ShieldCheck className="w-4 h-4" /> Prevention Hub
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white mb-4 leading-tight text-left">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-4 leading-[1.1] text-left max-w-4xl">
               The Best Dental Work Is the Kind You Never Need
             </h1>
-            <p className="text-xl text-white/80 font-light leading-relaxed max-w-2xl text-left">
+            <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed max-w-2xl text-left">
               A few minutes of daily care can save you thousands in dental bills. These guides show you exactly what to do and when.
             </p>
             <div className="mt-6">
               <Link href="/download">
-                <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
+                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg">
                   Get Your Prevention Plan
                 </Button>
               </Link>
@@ -84,12 +84,12 @@ export default function PreventionHub() {
         <div className="container px-4 mx-auto max-w-5xl">
           <h2 className="text-xl font-medium text-black mb-4">Related Resource Hubs</h2>
           <div className="flex flex-wrap gap-3">
-            <Link href="/hub/affordability">
+            <Link href="/oral-health-hub/affordability">
               <span className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-sm">
                 Affordability Hub <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/hub/second-opinion">
+            <Link href="/oral-health-hub/second-opinion">
               <span className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-sm">
                 Second Opinion Hub <ArrowRight className="w-3 h-3" />
               </span>

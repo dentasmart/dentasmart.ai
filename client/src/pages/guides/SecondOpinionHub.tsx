@@ -15,31 +15,31 @@ export default function SecondOpinionHub() {
       <SEO
         title="Dental Second Opinion Guide | Compare Treatment Options | DentaSmart"
         description="Not sure about your dentist's recommendation? Get clarity on root canals, crowns vs fillings, implants vs bridges, and when to seek a second opinion."
-        canonical="https://dentasmart.ai/hub/second-opinion"
+        canonical="https://dentasmart.ai/oral-health-hub/second-opinion"
         keywords="dental second opinion, do I need a root canal, crowns vs fillings, implants vs bridges"
       />
       <Navigation />
 
       {/* Hero */}
-      <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-gradient-to-br from-blue-800 via-blue-700 to-indigo-700">
-        <div className="container relative z-10 px-4 mx-auto max-w-5xl pt-32 pb-12 md:pt-24">
+      <section className="relative flex items-center overflow-hidden bg-gradient-to-br from-white via-accent/5 to-primary/5">
+        <div className="container relative z-10 px-4 mx-auto max-w-5xl pt-40 pb-12 md:pt-36 md:pb-14">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm px-4 py-2 rounded-full text-white/90 text-sm font-medium mb-6">
+            <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full text-primary text-sm font-medium mb-6">
               <Scale className="w-4 h-4" /> Second Opinion Hub
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white mb-4 leading-tight text-left">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-4 leading-[1.1] text-left max-w-4xl">
               Your Dentist Said You Need What?
             </h1>
-            <p className="text-xl text-white/80 font-light leading-relaxed max-w-2xl text-left">
+            <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed max-w-2xl text-left">
               Before you commit to expensive dental work, get the full picture. These guides help you understand your options and ask the right questions.
             </p>
             <div className="mt-6">
               <Link href="/download">
-                <Button size="lg" className="bg-white text-blue-800 hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
+                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg">
                   Upload Your X-Rays for a Second Look
                 </Button>
               </Link>
@@ -60,16 +60,16 @@ export default function SecondOpinionHub() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1, duration: 0.5 }}
-                  className="bg-stone-50 rounded-2xl p-6 border border-stone-100 hover:border-blue-300 hover:shadow-md transition-all cursor-pointer h-full"
+                  className="bg-stone-50 rounded-2xl p-6 border border-stone-100 hover:border-primary/30 hover:shadow-md transition-all cursor-pointer h-full"
                 >
-                  <div className="text-xs uppercase tracking-wider text-blue-600 font-medium mb-3">
+                  <div className="text-xs uppercase tracking-wider text-primary font-medium mb-3">
                     {guide.steps.length} Steps
                   </div>
                   <h3 className="text-xl font-medium text-black mb-2">{guide.title}</h3>
                   <p className="text-stone-600 font-light text-base leading-relaxed line-clamp-3 mb-4">
                     {guide.heroSubheading}
                   </p>
-                  <span className="inline-flex items-center gap-2 text-blue-600 text-base font-medium">
+                  <span className="inline-flex items-center gap-2 text-primary text-base font-medium">
                     Read guide <ArrowRight className="w-3 h-3" />
                   </span>
                 </motion.div>
@@ -84,12 +84,12 @@ export default function SecondOpinionHub() {
         <div className="container px-4 mx-auto max-w-5xl">
           <h2 className="text-xl font-medium text-black mb-4">Related Resource Hubs</h2>
           <div className="flex flex-wrap gap-3">
-            <Link href="/hub/affordability">
+            <Link href="/oral-health-hub/affordability">
               <span className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-sm">
                 Affordability Hub <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/hub/prevention">
+            <Link href="/oral-health-hub/prevention">
               <span className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-sm">
                 Prevention Hub <ArrowRight className="w-3 h-3" />
               </span>

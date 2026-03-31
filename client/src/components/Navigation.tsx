@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { trackEvent } from "@/lib/analytics";
 
@@ -9,6 +9,9 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showStickyCta, setShowStickyCta] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
+  const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
+  const resourcesRef = useRef<HTMLDivElement>(null);
   const [location] = useLocation();
 
   // Handle scroll effect for transparent-to-solid transition
@@ -21,6 +24,17 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close resources dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (resourcesRef.current && !resourcesRef.current.contains(e.target as Node)) {
+        setResourcesOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const navItems = [
     { label: "Home", href: "/" },
     { label: "How It Works", href: "/how-it-works" },
@@ -28,14 +42,24 @@ export default function Navigation() {
     { label: "Pricing", href: "/pricing" },
     { label: "Employers", href: "/employers" },
     { label: "Team", href: "/team" },
-    { label: "Blogs", href: "/oral-health-hub" },
     { label: "FAQs", href: "/faqs" },
+  ];
+
+  const resourceItems = [
+    { label: "Blogs", href: "/oral-health-hub", description: "Expert dental health articles" },
+    { label: "Affordability Guide", href: "/oral-health-hub/affordability", description: "Save on dental care costs" },
+    { label: "Second Opinion Hub", href: "/oral-health-hub/second-opinion", description: "Verify treatment recommendations" },
+    { label: "Prevention Hub", href: "/oral-health-hub/prevention", description: "Protect your teeth daily" },
+    { label: "Symptom Checker", href: "/symptom-quiz", description: "Free AI dental assessment" },
+    { label: "Dental Guides", href: "/guides", description: "Step-by-step oral health guides" },
   ];
 
   const isActive = (href: string) => {
     if (href === "/") return location === "/";
     return location.startsWith(href);
   };
+
+  const isResourcesActive = resourceItems.some(item => isActive(item.href));
 
   return (
     <>
@@ -82,6 +106,52 @@ export default function Navigation() {
                 }`} />
               </Link>
             ))}
+
+            {/* Resources Dropdown */}
+            <div ref={resourcesRef} className="relative">
+              <button
+                onClick={() => setResourcesOpen(!resourcesOpen)}
+                className={`flex items-center gap-1 text-base font-medium tracking-wide transition-all duration-300 relative group cursor-pointer ${
+                  isResourcesActive
+                    ? "text-teal-900"
+                    : (scrolled ? "text-teal-600 hover:text-teal-800" : "text-teal-700 hover:text-teal-900")
+                }`}
+              >
+                Resources
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${resourcesOpen ? "rotate-180" : ""}`} />
+                <span className={`absolute -bottom-1 left-0 w-full h-px bg-stone-900 origin-left transition-transform duration-300 ${
+                  isResourcesActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-50"
+                }`} />
+              </button>
+
+              <AnimatePresence>
+                {resourcesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 8 }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full mt-3 right-0 w-72 bg-white rounded-xl shadow-xl border border-stone-200/60 overflow-hidden z-50"
+                  >
+                    <div className="py-2">
+                      {resourceItems.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          onClick={() => setResourcesOpen(false)}
+                          className={`block px-4 py-2.5 hover:bg-primary/5 transition-colors ${
+                            isActive(item.href) ? "bg-primary/5" : ""
+                          }`}
+                        >
+                          <div className="text-sm font-medium text-black">{item.label}</div>
+                          <div className="text-xs text-stone-500 mt-0.5">{item.description}</div>
+                        </Link>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </div>
 
           {/* Desktop CTA */}
@@ -162,7 +232,7 @@ export default function Navigation() {
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="fixed inset-0 z-40 bg-background flex flex-col pt-24 px-6 pb-8 lg:hidden"
           >
-            <div className="flex flex-col gap-6 flex-1 overflow-y-auto">
+            <div className="flex flex-col gap-4 flex-1 overflow-y-auto">
               {navItems.map((item, idx) => (
                 <motion.div
                   key={item.href}
@@ -181,6 +251,47 @@ export default function Navigation() {
                   </Link>
                 </motion.div>
               ))}
+
+              {/* Mobile Resources Accordion */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.1 + navItems.length * 0.05, duration: 0.4 }}
+              >
+                <button
+                  onClick={() => setMobileResourcesOpen(!mobileResourcesOpen)}
+                  className={`text-3xl font-light tracking-tight py-2 flex items-center gap-2 w-full text-left cursor-pointer ${
+                    isResourcesActive ? "text-primary font-medium" : "text-muted-foreground"
+                  }`}
+                >
+                  Resources
+                  <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${mobileResourcesOpen ? "rotate-180" : ""}`} />
+                </button>
+                <AnimatePresence>
+                  {mobileResourcesOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden pl-4"
+                    >
+                      {resourceItems.map((item) => (
+                        <Link
+                          key={item.href}
+                          href={item.href}
+                          className={`block py-2 text-xl font-light ${
+                            isActive(item.href) ? "text-primary" : "text-muted-foreground"
+                          }`}
+                          onClick={() => { setIsOpen(false); setMobileResourcesOpen(false); }}
+                        >
+                          {item.label}
+                        </Link>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             </div>
 
             <motion.div

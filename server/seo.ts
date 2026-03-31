@@ -78,9 +78,9 @@ const staticRoutes = [
   { path: "/guides/natural-teeth-whitening", priority: "0.8", changefreq: "monthly" },
   { path: "/guides/oral-health-life-stages", priority: "0.8", changefreq: "monthly" },
   // Hub landing pages
-  { path: "/hub/affordability", priority: "0.9", changefreq: "weekly" },
-  { path: "/hub/second-opinion", priority: "0.8", changefreq: "weekly" },
-  { path: "/hub/prevention", priority: "0.8", changefreq: "weekly" },
+  { path: "/oral-health-hub/affordability", priority: "0.9", changefreq: "weekly" },
+  { path: "/oral-health-hub/second-opinion", priority: "0.8", changefreq: "weekly" },
+  { path: "/oral-health-hub/prevention", priority: "0.8", changefreq: "weekly" },
   // Symptom Quiz
   { path: "/symptom-quiz", priority: "0.9", changefreq: "weekly" },
 ];

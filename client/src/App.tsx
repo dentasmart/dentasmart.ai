@@ -142,9 +142,13 @@ function Router() {
         <Route path="/symptoms/oral-lichen-planus" component={SymptomPage} />
 
         {/* ===== HUB LANDING PAGES ===== */}
-        <Route path="/hub/affordability" component={AffordabilityHub} />
-        <Route path="/hub/second-opinion" component={SecondOpinionHub} />
-        <Route path="/hub/prevention" component={PreventionHub} />
+        <Route path="/oral-health-hub/affordability" component={AffordabilityHub} />
+        <Route path="/oral-health-hub/second-opinion" component={SecondOpinionHub} />
+        <Route path="/oral-health-hub/prevention" component={PreventionHub} />
+        {/* Legacy redirects for old hub URLs */}
+        <Route path="/hub/affordability">{() => { window.location.replace('/oral-health-hub/affordability'); return null; }}</Route>
+        <Route path="/hub/second-opinion">{() => { window.location.replace('/oral-health-hub/second-opinion'); return null; }}</Route>
+        <Route path="/hub/prevention">{() => { window.location.replace('/oral-health-hub/prevention'); return null; }}</Route>
 
         {/* ===== EXPLICIT GUIDE PAGES (for sitemap detection) ===== */}
         <Route path="/guides/brushing-guide" component={GuidePage} />
