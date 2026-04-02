@@ -4,7 +4,7 @@ import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useCallback } from "react";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackAppDownload, getAppStoreUrl } from "@/lib/analytics";
 import { quizQuestions, calculateQuizResult, type QuizResult } from "@/lib/quizData";
 import { trpc } from "@/lib/trpc";
 import {
@@ -927,11 +927,11 @@ function ResultsSection({
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a
-              href="https://apps.apple.com/us/app/dentasmart/id6670311232"
+              href={getAppStoreUrl("symptom_quiz_results")}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() =>
-                trackEvent("download_ios_click", { source: "symptom_quiz_results" })
+                trackAppDownload("ios", "symptom_quiz_results")
               }
             >
               <Button

@@ -749,3 +749,15 @@
 - [x] Updated analytics.ts to read VITE_GA4_MEASUREMENT_ID from env var
 - [x] Added GA4 vitest test to validate configuration
 - [x] Verified GA4 shows as active on admin SEO page with correct measurement ID
+
+## Tracking & Analytics Enhancements - Apr 2, 2026
+- [x] Audit current analytics.ts to understand existing event tracking
+- [x] Add Meta Pixel (Facebook Pixel) integration with env var VITE_META_PIXEL_ID
+- [x] Add Google Ads conversion tracking with env var VITE_GOOGLE_ADS_ID
+- [x] Enhance iOS download click tracking (fire events to GA4 + Meta + Google Ads)
+- [x] Enhance Android waitlist tracking (fire events to GA4 + Meta + Google Ads)
+- [x] Add App Store campaign tokens (ct parameter) for download attribution
+- [x] Fix wrong App Store ID in WaitlistSuccessModal
+- [x] Update admin SEO & Analytics page with full tracking status dashboard
+- [x] Add clear guidance on where to view data (GA4, Meta Events Manager, Google Ads)
+- [x] Add links to App Store Connect for download attribution tracking

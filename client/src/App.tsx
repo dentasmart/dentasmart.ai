@@ -7,7 +7,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { usePageTracking } from "@/hooks/usePageTracking";
 import { useEffect } from "react";
-import { initGA4 } from "@/lib/analytics";
+import { initAllAnalytics } from "@/lib/analytics";
 import Home from "./pages/Home";
 import HowItWorks from "./pages/HowItWorks";
 import Features from "./pages/Features";
@@ -280,7 +280,7 @@ function AppContent() {
 function App() {
   useEffect(() => {
     // Initialize GA4 tracking (reads VITE_GA4_MEASUREMENT_ID from env)
-    initGA4();
+    initAllAnalytics();
   }, []);
 
   return (

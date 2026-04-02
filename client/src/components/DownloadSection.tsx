@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Smartphone } from "lucide-react";
 import { AndroidEarlyAccessModal } from "@/components/AndroidEarlyAccessModal";
+import { trackAppDownload, getAppStoreUrl } from "@/lib/analytics";
 
 export function DownloadSection() {
   const [isAndroidModalOpen, setIsAndroidModalOpen] = useState(false);
@@ -27,7 +28,13 @@ export function DownloadSection() {
               </svg>
             </div>
             <h3 className="text-xl font-medium text-black">iOS</h3>
-            <a href="https://apps.apple.com/us/app/dentasmart/id6670311232" target="_blank" rel="noopener noreferrer" className="w-full">
+            <a 
+              href={getAppStoreUrl("download_section")} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="w-full"
+              onClick={() => trackAppDownload("ios", "download_section")}
+            >
               <Button className="w-full bg-black text-white hover:bg-stone-800 rounded-full h-12">
                 Download on App Store
               </Button>
@@ -49,7 +56,10 @@ export function DownloadSection() {
             <h3 className="text-xl font-medium text-black">Android</h3>
             <Button 
               className="w-full bg-primary text-white hover:bg-primary/90 rounded-full h-12"
-              onClick={() => setIsAndroidModalOpen(true)}
+              onClick={() => {
+                trackAppDownload("android", "download_section");
+                setIsAndroidModalOpen(true);
+              }}
             >
               Join Early Access
             </Button>

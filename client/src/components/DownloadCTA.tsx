@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { useLocation } from "wouter";
+import { trackAppDownload, getAppStoreUrl } from "@/lib/analytics";
 
 export function DownloadCTA() {
   const [location, setLocation] = useLocation();
 
   const handleAndroidClick = (e: React.MouseEvent) => {
+    trackAppDownload("android", "download_cta");
     // If we are already on the home page, manually scroll
     if (location === "/") {
       e.preventDefault();
@@ -38,10 +40,11 @@ export function DownloadCTA() {
           {/* App Store Buttons */}
           <div className="flex gap-4 mb-10">
             <a 
-              href="https://apps.apple.com/us/app/dentasmart/id6670311232" 
+              href={getAppStoreUrl("download_cta")} 
               target="_blank" 
               rel="noopener noreferrer"
               className="hover:opacity-90 transition-opacity"
+              onClick={() => trackAppDownload("ios", "download_cta")}
             >
               <img 
                 src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" 

@@ -1,18 +1,20 @@
 /**
- * GA4 Analytics utility for DentaSmart
- * Provides type-safe event tracking across the site.
- * GA4 is initialized dynamically via initGA4() using the VITE_GA4_MEASUREMENT_ID env var.
+ * Analytics utility for DentaSmart
+ * Supports GA4, Meta Pixel, and Google Ads conversion tracking.
+ * All platforms fire from a single trackEvent() call.
  */
 
-// Extend Window to include gtag
+// ── Global type extensions ──────────────────────────────────────────────────
 declare global {
   interface Window {
     gtag?: (...args: any[]) => void;
     dataLayer?: any[];
+    fbq?: (...args: any[]) => void;
+    _fbq?: any;
   }
 }
 
-// ── Event names ──────────────────────────────────────────────────────────────
+// ── Event names ─────────────────────────────────────────────────────────────
 export type AnalyticsEvent =
   | "cta_get_score_click"
   | "download_ios_click"
@@ -32,48 +34,17 @@ export type AnalyticsEvent =
   | "symptom_quiz_start"
   | "symptom_quiz_complete"
   | "symptom_quiz_email_submit"
+  | "pricing_plan_select"
+  | "blog_read"
+  | "employer_demo_request"
   | "page_view";
 
 export interface EventParams {
   [key: string]: string | number | boolean | undefined;
 }
 
-// ── Core helpers ─────────────────────────────────────────────────────────────
+// ── Env var helpers ─────────────────────────────────────────────────────────
 
-/**
- * Send a custom event to GA4.
- * Silently no-ops if gtag is not loaded (e.g. no GA4 ID configured).
- */
-export function trackEvent(event: AnalyticsEvent, params?: EventParams): void {
-  try {
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", event, params);
-    }
-  } catch {
-    // Silently fail - analytics should never break the app
-  }
-}
-
-/**
- * Track a virtual page view (useful for SPA navigation).
- */
-export function trackPageView(path: string, title?: string): void {
-  try {
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "page_view", {
-        page_path: path,
-        page_title: title || document.title,
-      });
-    }
-  } catch {
-    // Silently fail
-  }
-}
-
-/**
- * Get the configured GA4 Measurement ID from the environment variable.
- * Returns null if not configured.
- */
 export function getGA4MeasurementId(): string | null {
   try {
     const id = (import.meta as any).env?.VITE_GA4_MEASUREMENT_ID;
@@ -83,37 +54,240 @@ export function getGA4MeasurementId(): string | null {
   }
 }
 
-/**
- * Initialize GA4 by injecting the gtag.js script.
- * Called once from App.tsx on mount.
- * Uses the VITE_GA4_MEASUREMENT_ID environment variable.
- */
+export function getMetaPixelId(): string | null {
+  try {
+    const id = (import.meta as any).env?.VITE_META_PIXEL_ID;
+    return id && /^\d+$/.test(id) ? id : null;
+  } catch {
+    return null;
+  }
+}
+
+export function getGoogleAdsId(): string | null {
+  try {
+    const id = (import.meta as any).env?.VITE_GOOGLE_ADS_ID;
+    return id && id.startsWith("AW-") ? id : null;
+  } catch {
+    return null;
+  }
+}
+
+export function getGoogleAdsConversionLabel(): string | null {
+  try {
+    const label = (import.meta as any).env?.VITE_GOOGLE_ADS_CONVERSION_LABEL;
+    return label || null;
+  } catch {
+    return null;
+  }
+}
+
+// ── GA4 initialization ──────────────────────────────────────────────────────
+
 export function initGA4(measurementId?: string): void {
   const id = measurementId || getGA4MeasurementId();
   if (!id || typeof window === "undefined") return;
 
-  // Avoid double-init
   if (document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${id}"]`)) {
-    // Already loaded, just make sure gtag is configured
     if (window.gtag) {
       window.gtag("config", id, { send_page_view: false });
     }
     return;
   }
 
-  // Initialize dataLayer and gtag first so events queue while script loads
   window.dataLayer = window.dataLayer || [];
   window.gtag = function (...args: any[]) {
     window.dataLayer!.push(args);
   };
   window.gtag("js", new Date());
-  window.gtag("config", id, {
-    send_page_view: false, // We handle page views manually for SPA
-  });
+  window.gtag("config", id, { send_page_view: false });
 
-  // Create and inject script tag
   const script = document.createElement("script");
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
   document.head.appendChild(script);
+
+  // Also configure Google Ads if present (shares the gtag.js script)
+  const adsId = getGoogleAdsId();
+  if (adsId && window.gtag) {
+    window.gtag("config", adsId);
+  }
+}
+
+// ── Meta Pixel initialization ───────────────────────────────────────────────
+
+export function initMetaPixel(): void {
+  const pixelId = getMetaPixelId();
+  if (!pixelId || typeof window === "undefined") return;
+
+  // Avoid double-init
+  if (window.fbq) return;
+
+  // Standard Meta Pixel base code
+  const f: any = window;
+  const b = document;
+  const e = "script";
+
+  if (f.fbq) return;
+  const n: any = (f.fbq = function (...args: any[]) {
+    if (n.callMethod) {
+      n.callMethod.apply(n, args);
+    } else {
+      n.queue.push(args);
+    }
+  });
+  if (!f._fbq) f._fbq = n;
+  n.push = n;
+  n.loaded = true;
+  n.version = "2.0";
+  n.queue = [];
+
+  const t = b.createElement(e) as HTMLScriptElement;
+  t.async = true;
+  t.src = "https://connect.facebook.net/en_US/fbevents.js";
+  const s = b.getElementsByTagName(e)[0];
+  s?.parentNode?.insertBefore(t, s);
+
+  window.fbq!("init", pixelId);
+  window.fbq!("track", "PageView");
+}
+
+// ── Cross-platform event mapping ────────────────────────────────────────────
+
+/**
+ * Maps DentaSmart events to Meta Pixel standard/custom events.
+ * Meta has specific standard events that improve ad optimization.
+ */
+function getMetaEventName(event: AnalyticsEvent): { name: string; isStandard: boolean } {
+  switch (event) {
+    case "download_ios_click":
+      return { name: "Lead", isStandard: true };
+    case "android_waitlist_submit":
+      return { name: "Lead", isStandard: true };
+    case "cta_get_score_click":
+      return { name: "InitiateCheckout", isStandard: true };
+    case "symptom_quiz_start":
+      return { name: "ViewContent", isStandard: true };
+    case "symptom_quiz_complete":
+      return { name: "CompleteRegistration", isStandard: true };
+    case "symptom_quiz_email_submit":
+      return { name: "Subscribe", isStandard: true };
+    case "demo_request_submit":
+    case "employer_demo_request":
+      return { name: "Contact", isStandard: true };
+    case "pricing_plan_select":
+      return { name: "AddToCart", isStandard: true };
+    default:
+      return { name: event, isStandard: false };
+  }
+}
+
+// ── Core tracking functions ─────────────────────────────────────────────────
+
+/**
+ * Send a custom event to all configured platforms (GA4 + Meta Pixel + Google Ads).
+ * Silently no-ops if a platform is not loaded.
+ */
+export function trackEvent(event: AnalyticsEvent, params?: EventParams): void {
+  try {
+    // GA4
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", event, params);
+    }
+
+    // Meta Pixel
+    if (typeof window !== "undefined" && window.fbq) {
+      const metaEvent = getMetaEventName(event);
+      const metaParams = params ? { ...params, content_name: event } : { content_name: event };
+      if (metaEvent.isStandard) {
+        window.fbq("track", metaEvent.name, metaParams);
+      } else {
+        window.fbq("trackCustom", metaEvent.name, metaParams);
+      }
+    }
+
+    // Google Ads conversion (fires on high-value events only)
+    if (typeof window !== "undefined" && window.gtag) {
+      const adsId = getGoogleAdsId();
+      const convLabel = getGoogleAdsConversionLabel();
+      if (adsId && convLabel) {
+        const conversionEvents: AnalyticsEvent[] = [
+          "download_ios_click",
+          "android_waitlist_submit",
+          "symptom_quiz_complete",
+          "demo_request_submit",
+          "employer_demo_request",
+        ];
+        if (conversionEvents.includes(event)) {
+          window.gtag("event", "conversion", {
+            send_to: `${adsId}/${convLabel}`,
+            event_callback: () => {},
+          });
+        }
+      }
+    }
+  } catch {
+    // Analytics should never break the app
+  }
+}
+
+/**
+ * Track a virtual page view for SPA navigation.
+ * Fires to GA4 and Meta Pixel.
+ */
+export function trackPageView(path: string, title?: string): void {
+  try {
+    // GA4 page view
+    if (typeof window !== "undefined" && window.gtag) {
+      window.gtag("event", "page_view", {
+        page_path: path,
+        page_title: title || document.title,
+      });
+    }
+
+    // Meta Pixel page view
+    if (typeof window !== "undefined" && window.fbq) {
+      window.fbq("track", "PageView");
+    }
+  } catch {
+    // Silently fail
+  }
+}
+
+/**
+ * Track an app download click with full attribution.
+ * Adds UTM parameters to the app store URL for campaign tracking.
+ */
+export function trackAppDownload(
+  platform: "ios" | "android",
+  source: string
+): void {
+  const event: AnalyticsEvent = platform === "ios" ? "download_ios_click" : "android_waitlist_submit";
+  trackEvent(event, {
+    platform,
+    source,
+    page_url: typeof window !== "undefined" ? window.location.pathname : "",
+  });
+}
+
+/**
+ * Build an App Store URL with UTM parameters for campaign tracking.
+ * These UTMs show up in App Store Connect and Google Play Console analytics.
+ */
+export function getAppStoreUrl(source: string): string {
+  const baseUrl = "https://apps.apple.com/us/app/dentasmart/id6670311232";
+  const params = new URLSearchParams({
+    pt: "126584659", // Provider Token (Apple)
+    ct: source, // Campaign Token - tracks which page drove the download
+    mt: "8", // Media Type (8 = mobile software)
+  });
+  return `${baseUrl}?${params.toString()}`;
+}
+
+/**
+ * Initialize all analytics platforms.
+ * Called once from App.tsx on mount.
+ */
+export function initAllAnalytics(): void {
+  initGA4();
+  initMetaPixel();
 }

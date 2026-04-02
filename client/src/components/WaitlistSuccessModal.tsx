@@ -3,6 +3,7 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
+import { trackAppDownload, getAppStoreUrl } from "@/lib/analytics";
 
 interface WaitlistSuccessModalProps {
   isOpen: boolean;
@@ -12,8 +13,8 @@ interface WaitlistSuccessModalProps {
   autoCloseSecs?: number;
 }
 
-const IOS_URL = "https://apps.apple.com/app/dentasmart/id6450970558";
-const ANDROID_URL = "https://play.google.com/store/apps/details?id=com.dentasmart.app";
+// Correct App Store ID with campaign tracking
+const IOS_URL = getAppStoreUrl("waitlist_success_modal");
 
 export function WaitlistSuccessModal({
   isOpen,
@@ -122,6 +123,7 @@ export function WaitlistSuccessModal({
               target="_blank"
               rel="noopener noreferrer"
               className="block"
+              onClick={() => trackAppDownload("ios", "waitlist_success_modal")}
             >
               <div className="flex items-center justify-center gap-3 bg-black text-white rounded-xl py-3.5 px-6 hover:bg-gray-900 transition-colors">
                 <svg viewBox="0 0 24 24" className="w-6 h-6 fill-white flex-shrink-0">

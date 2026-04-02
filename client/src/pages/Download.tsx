@@ -2,7 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { trackEvent } from "@/lib/analytics";
+import { trackEvent, trackAppDownload, getAppStoreUrl } from "@/lib/analytics";
 import { motion } from "framer-motion";
 import { Smartphone, Shield, Zap, Heart, Star, CheckCircle2, ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -86,10 +86,11 @@ export default function Download() {
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <a
-                  href="https://apps.apple.com/us/app/dentasmart/id6670311232"
+                  href={getAppStoreUrl("download_page")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => trackEvent("download_ios_click", { source: "download_page" })}
+                  className="w-full sm:w-auto"
+                  onClick={() => trackAppDownload("ios", "download_page")}
                 >
                   <Button size="lg" className="bg-black text-white hover:bg-stone-800 rounded-full px-8 py-7 text-lg w-full sm:w-auto cursor-pointer">
                     <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current mr-2">
@@ -230,10 +231,10 @@ export default function Download() {
             Join thousands of people who stopped guessing and started knowing.
           </p>
           <a
-            href="https://apps.apple.com/us/app/dentasmart/id6670311232"
+            href={getAppStoreUrl("download_page_bottom")}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackEvent("download_ios_click", { source: "download_page_bottom" })}
+            onClick={() => trackAppDownload("ios", "download_page_bottom")}
           >
             <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer">
               Download DentaSmart Free

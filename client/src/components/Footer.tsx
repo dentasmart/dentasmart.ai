@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import { trackAppDownload, getAppStoreUrl } from "@/lib/analytics";
 
 export default function Footer() {
   return (
@@ -70,7 +71,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <a href="https://apps.apple.com/us/app/dentasmart/id6670311232" target="_blank" rel="noopener noreferrer" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <a href={getAppStoreUrl("footer")} target="_blank" rel="noopener noreferrer" className="text-black hover:text-primary transition-colors font-light text-sm" onClick={() => trackAppDownload("ios", "footer")}>
                     Download App
                   </a>
                 </li>
