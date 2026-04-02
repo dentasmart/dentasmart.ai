@@ -741,3 +741,11 @@
 - [x] Cross-link from other hub pages
 - [x] Ensure humanized writing throughout (no em dashes, no AI patterns)
 - [x] Ensure responsive design and proper hero padding (pt-40)
+
+## GA4 Integration Fix - Apr 1, 2026
+- [x] Set VITE_GA4_MEASUREMENT_ID environment variable with user's GA4 ID (G-L1TFL7MQ6G)
+- [x] Fix admin dashboard - replaced broken Save button with active status display
+- [x] Removed hardcoded GA4 script from index.html, now loads dynamically via analytics.ts
+- [x] Updated analytics.ts to read VITE_GA4_MEASUREMENT_ID from env var
+- [x] Added GA4 vitest test to validate configuration
+- [x] Verified GA4 shows as active on admin SEO page with correct measurement ID

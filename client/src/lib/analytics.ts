@@ -1,7 +1,7 @@
 /**
  * GA4 Analytics utility for DentaSmart
  * Provides type-safe event tracking across the site.
- * GA4 is loaded via gtag.js in index.html; this module wraps window.gtag calls.
+ * GA4 is initialized dynamically via initGA4() using the VITE_GA4_MEASUREMENT_ID env var.
  */
 
 // Extend Window to include gtag
@@ -70,31 +70,38 @@ export function trackPageView(path: string, title?: string): void {
   }
 }
 
-/** Default GA4 Measurement ID for DentaSmart */
-const DEFAULT_GA4_ID = "G-G9VKVT0PDJ";
+/**
+ * Get the configured GA4 Measurement ID from the environment variable.
+ * Returns null if not configured.
+ */
+export function getGA4MeasurementId(): string | null {
+  try {
+    const id = (import.meta as any).env?.VITE_GA4_MEASUREMENT_ID;
+    return id && id.startsWith("G-") ? id : null;
+  } catch {
+    return null;
+  }
+}
 
 /**
  * Initialize GA4 by injecting the gtag.js script.
- * Called once from main.tsx or a layout component.
- * Uses the default DentaSmart GA4 ID if none is provided.
- * The gtag.js script is also loaded in index.html for immediate tracking.
+ * Called once from App.tsx on mount.
+ * Uses the VITE_GA4_MEASUREMENT_ID environment variable.
  */
 export function initGA4(measurementId?: string): void {
-  const id = measurementId || DEFAULT_GA4_ID;
+  const id = measurementId || getGA4MeasurementId();
   if (!id || typeof window === "undefined") return;
 
   // Avoid double-init
   if (document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${id}"]`)) {
+    // Already loaded, just make sure gtag is configured
+    if (window.gtag) {
+      window.gtag("config", id, { send_page_view: false });
+    }
     return;
   }
 
-  // Create script tag
-  const script = document.createElement("script");
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
-  document.head.appendChild(script);
-
-  // Initialize dataLayer and gtag
+  // Initialize dataLayer and gtag first so events queue while script loads
   window.dataLayer = window.dataLayer || [];
   window.gtag = function (...args: any[]) {
     window.dataLayer!.push(args);
@@ -103,4 +110,10 @@ export function initGA4(measurementId?: string): void {
   window.gtag("config", id, {
     send_page_view: false, // We handle page views manually for SPA
   });
+
+  // Create and inject script tag
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+  document.head.appendChild(script);
 }

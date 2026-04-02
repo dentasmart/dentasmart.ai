@@ -279,11 +279,8 @@ function AppContent() {
 
 function App() {
   useEffect(() => {
-    // Initialize GA4 if measurement ID is configured
-    const ga4Id = (import.meta as any).env?.VITE_GA4_MEASUREMENT_ID;
-    if (ga4Id) {
-      initGA4(ga4Id);
-    }
+    // Initialize GA4 tracking (reads VITE_GA4_MEASUREMENT_ID from env)
+    initGA4();
   }, []);
 
   return (
