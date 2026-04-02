@@ -50,6 +50,7 @@ export default function Navigation() {
     { label: "Affordability Guide", href: "/oral-health-hub/affordability", description: "Save on dental care costs" },
     { label: "Second Opinion Hub", href: "/oral-health-hub/second-opinion", description: "Verify treatment recommendations" },
     { label: "Prevention Hub", href: "/oral-health-hub/prevention", description: "Protect your teeth daily" },
+    { label: "Conditions Guide", href: "/oral-health-hub/conditions", description: "Understand common dental problems" },
     { label: "Symptom Checker", href: "/symptom-quiz", description: "Free AI dental assessment" },
     { label: "Dental Guides", href: "/guides", description: "Step-by-step oral health guides" },
   ];

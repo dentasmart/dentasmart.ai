@@ -81,6 +81,7 @@ const staticRoutes = [
   { path: "/oral-health-hub/affordability", priority: "0.9", changefreq: "weekly" },
   { path: "/oral-health-hub/second-opinion", priority: "0.8", changefreq: "weekly" },
   { path: "/oral-health-hub/prevention", priority: "0.8", changefreq: "weekly" },
+  { path: "/oral-health-hub/conditions", priority: "0.9", changefreq: "weekly" },
   // Symptom Quiz
   { path: "/symptom-quiz", priority: "0.9", changefreq: "weekly" },
 ];

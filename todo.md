@@ -724,3 +724,20 @@
 - [x] Fix hero cutoff on Answers page (Answers.tsx)
 - [x] Audit ALL other pages for the same hero cutoff issue (16 pages fixed)
 - [x] Remove all em dashes and en dashes from user-facing content across entire codebase
+
+## Conditions Hub Landing Page - Apr 1, 2026
+- [x] Research high-volume dental condition/symptom keywords
+- [x] Read existing hub pages (AffordabilityHub, PreventionHub, SecondOpinionHub) for design consistency
+- [x] Read humanized-writing skill for content guidelines
+- [x] Build ConditionsHub.tsx with StoryBrand structure (Problem, Guide, Plan, Success)
+- [x] Target keywords: tooth pain causes, gum disease stages, cavity symptoms, dental abscess, etc.
+- [x] Add JSON-LD structured data (MedicalWebPage, FAQPage, BreadcrumbList)
+- [x] Add comprehensive meta tags for condition/symptom keywords
+- [x] Include condition categories, symptom severity guide, when-to-see-dentist section, FAQs
+- [x] Add strong CTAs converting to app download and symptom quiz
+- [x] Wire route in App.tsx at /oral-health-hub/conditions
+- [x] Add to Navigation Resources dropdown
+- [x] Update sitemap.xml with new URL
+- [x] Cross-link from other hub pages
+- [x] Ensure humanized writing throughout (no em dashes, no AI patterns)
+- [x] Ensure responsive design and proper hero padding (pt-40)

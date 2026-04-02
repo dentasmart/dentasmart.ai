@@ -109,8 +109,13 @@ export default function Footer() {
               <h4 className="font-medium text-black mb-6 tracking-wide">Resources</h4>
               <ul className="space-y-4">
                 <li>
+                  <Link href="/oral-health-hub/conditions" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    Conditions Guide
+                  </Link>
+                </li>
+                <li>
                   <Link href="/conditions" className="text-black hover:text-primary transition-colors font-light text-sm">
-                    Dental Conditions
+                    Browse All Conditions
                   </Link>
                 </li>
                 <li>
