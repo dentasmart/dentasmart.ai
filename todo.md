@@ -761,3 +761,21 @@
 - [x] Update admin SEO & Analytics page with full tracking status dashboard
 - [x] Add clear guidance on where to view data (GA4, Meta Events Manager, Google Ads)
 - [x] Add links to App Store Connect for download attribution tracking
+
+## Symptoms Hub Landing Page - Apr 3, 2026
+- [x] Research high-volume dental symptom keywords
+- [x] Read existing hub pages for design/structure consistency
+- [x] Read humanized-writing skill for content guidelines
+- [x] Build SymptomsHub.tsx with StoryBrand structure (Problem, Guide, Plan, Success)
+- [x] Target keywords: why does my tooth hurt, bleeding gums causes, sensitive teeth, swollen gums, etc.
+- [x] Add JSON-LD structured data (MedicalWebPage, FAQPage, BreadcrumbList)
+- [x] Add comprehensive meta tags for symptom keywords
+- [x] Include symptom categories, urgency guide, self-care tips, when-to-see-dentist section, FAQs
+- [x] Add strong CTAs converting to app download and symptom quiz
+- [x] Wire route in App.tsx at /oral-health-hub/symptoms
+- [x] Add to Navigation Resources dropdown
+- [x] Update sitemap.xml with new URL
+- [x] Cross-link from other hub pages (Conditions, Affordability, Prevention, Second Opinion)
+- [x] Add to Footer Resources section
+- [x] Ensure humanized writing throughout (no em dashes, no AI patterns)
+- [x] Ensure responsive design and proper hero padding (pt-40)

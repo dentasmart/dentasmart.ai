@@ -45,6 +45,7 @@ const AffordabilityHub = lazy(() => import("./pages/guides/AffordabilityHub"));
 const SecondOpinionHub = lazy(() => import("./pages/guides/SecondOpinionHub"));
 const PreventionHub = lazy(() => import("./pages/guides/PreventionHub"));
 const ConditionsHub = lazy(() => import("./pages/guides/ConditionsHub"));
+const SymptomsHub = lazy(() => import("./pages/guides/SymptomsHub"));
 
 function PageLoader() {
   return (
@@ -147,6 +148,7 @@ function Router() {
         <Route path="/oral-health-hub/second-opinion" component={SecondOpinionHub} />
         <Route path="/oral-health-hub/prevention" component={PreventionHub} />
         <Route path="/oral-health-hub/conditions" component={ConditionsHub} />
+        <Route path="/oral-health-hub/symptoms" component={SymptomsHub} />
         {/* Legacy redirects for old hub URLs */}
         <Route path="/hub/affordability">{() => { window.location.replace('/oral-health-hub/affordability'); return null; }}</Route>
         <Route path="/hub/second-opinion">{() => { window.location.replace('/oral-health-hub/second-opinion'); return null; }}</Route>

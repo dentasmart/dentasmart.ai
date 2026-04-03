@@ -471,6 +471,11 @@ export default function ConditionsHub() {
                 Prevention Hub <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
+            <Link href="/oral-health-hub/symptoms">
+              <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
+                Symptoms Guide <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
             <Link href="/symptom-quiz">
               <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Free Symptom Checker <ArrowRight className="w-3 h-3" />

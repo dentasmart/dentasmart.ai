@@ -51,6 +51,7 @@ export default function Navigation() {
     { label: "Second Opinion Hub", href: "/oral-health-hub/second-opinion", description: "Verify treatment recommendations" },
     { label: "Prevention Hub", href: "/oral-health-hub/prevention", description: "Protect your teeth daily" },
     { label: "Conditions Guide", href: "/oral-health-hub/conditions", description: "Understand common dental problems" },
+    { label: "Symptoms Guide", href: "/oral-health-hub/symptoms", description: "What your symptoms mean" },
     { label: "Symptom Checker", href: "/symptom-quiz", description: "Free AI dental assessment" },
     { label: "Dental Guides", href: "/guides", description: "Step-by-step oral health guides" },
   ];

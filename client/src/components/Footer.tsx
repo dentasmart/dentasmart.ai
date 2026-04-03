@@ -120,8 +120,8 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/symptoms" className="text-black hover:text-primary transition-colors font-light text-sm">
-                    Symptom Guide
+                  <Link href="/oral-health-hub/symptoms" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    Symptoms Guide
                   </Link>
                 </li>
                 <li>
