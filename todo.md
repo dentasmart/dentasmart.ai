@@ -779,3 +779,9 @@
 - [x] Add to Footer Resources section
 - [x] Ensure humanized writing throughout (no em dashes, no AI patterns)
 - [x] Ensure responsive design and proper hero padding (pt-40)
+
+## GA4 Analytics Not Collecting Data - Apr 3, 2026
+- [x] Investigate why GA4 shows "Data collection isn't active" despite correct measurement ID
+- [x] Check how gtag.js script is loaded on the live site
+- [x] Fix GA4 implementation so data collection works on dentasmart.ai
+- [x] Verify GA4 tag fires correctly on the live site

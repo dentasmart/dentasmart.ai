@@ -87,26 +87,31 @@ export function initGA4(measurementId?: string): void {
   const id = measurementId || getGA4MeasurementId();
   if (!id || typeof window === "undefined") return;
 
-  if (document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${id}"]`)) {
-    if (window.gtag) {
-      window.gtag("config", id, { send_page_view: false });
+  // gtag.js is loaded directly from index.html <head> for reliable data collection.
+  // The inline script in index.html already calls gtag('config', id) with
+  // send_page_view: true (default), so the initial page view fires immediately
+  // before React even mounts. This function only needs to handle:
+  // 1. Ensuring dataLayer/gtag exist (fallback if index.html script hasn't run)
+  // 2. Configuring Google Ads if present
+
+  if (!window.dataLayer) {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function (...args: any[]) {
+      window.dataLayer!.push(args);
+    };
+    window.gtag("js", new Date());
+    window.gtag("config", id);
+
+    // Fallback: dynamically add script if not already present
+    if (!document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${id}"]`)) {
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
+      document.head.appendChild(script);
     }
-    return;
   }
 
-  window.dataLayer = window.dataLayer || [];
-  window.gtag = function (...args: any[]) {
-    window.dataLayer!.push(args);
-  };
-  window.gtag("js", new Date());
-  window.gtag("config", id, { send_page_view: false });
-
-  const script = document.createElement("script");
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
-  document.head.appendChild(script);
-
-  // Also configure Google Ads if present (shares the gtag.js script)
+  // Configure Google Ads if present (shares the gtag.js script)
   const adsId = getGoogleAdsId();
   if (adsId && window.gtag) {
     window.gtag("config", adsId);

@@ -15,16 +15,40 @@ describe("GA4 Configuration", () => {
     expect(ga4Id.length).toBeGreaterThan(3);
   });
 
-  it("should not have the old hardcoded GA4 ID in index.html", async () => {
+  it("should have gtag.js script in index.html using env var placeholder", async () => {
     const fs = await import("fs");
     const path = await import("path");
     const indexHtml = fs.readFileSync(
       path.resolve(__dirname, "../client/index.html"),
       "utf-8"
     );
-    // The old hardcoded ID should not appear in index.html
+    // gtag.js should be loaded directly in index.html for reliable data collection
+    expect(indexHtml).toContain("googletagmanager.com/gtag/js?id=%VITE_GA4_MEASUREMENT_ID%");
+    // The inline config script should use the env var placeholder (not a hardcoded ID)
+    expect(indexHtml).toContain("gtag('config', '%VITE_GA4_MEASUREMENT_ID%')");
+    // Should NOT have the old hardcoded ID
     expect(indexHtml).not.toContain("G-G9VKVT0PDJ");
-    // There should be no hardcoded gtag script in index.html
-    expect(indexHtml).not.toContain("googletagmanager.com/gtag/js?id=");
+  });
+
+  it("should have preconnect hints for Google Analytics domains", async () => {
+    const fs = await import("fs");
+    const path = await import("path");
+    const indexHtml = fs.readFileSync(
+      path.resolve(__dirname, "../client/index.html"),
+      "utf-8"
+    );
+    expect(indexHtml).toContain('preconnect" href="https://www.googletagmanager.com"');
+    expect(indexHtml).toContain('preconnect" href="https://www.google-analytics.com"');
+  });
+
+  it("should have send_page_view enabled (default) in index.html config", async () => {
+    const fs = await import("fs");
+    const path = await import("path");
+    const indexHtml = fs.readFileSync(
+      path.resolve(__dirname, "../client/index.html"),
+      "utf-8"
+    );
+    // The config call should NOT have send_page_view: false
+    expect(indexHtml).not.toContain("send_page_view");
   });
 });
