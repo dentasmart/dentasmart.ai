@@ -151,9 +151,14 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-primary/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-black text-sm font-light">
-            © 2026 DentaSmart. All rights reserved.
-          </p>
+          <div>
+            <p className="text-black text-sm font-light">
+              © 2026 DentaSmart. All rights reserved.
+            </p>
+            <p className="text-black/60 text-xs font-light mt-1">
+              DentaSmart provides educational guidance, not medical advice. Always consult a licensed dentist. Learn more at <a href="https://www.ada.org/resources/research/science-and-research-institute/oral-health-topics" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">ADA.org</a>.
+            </p>
+          </div>
           
           <div className="flex gap-6">
             <a 

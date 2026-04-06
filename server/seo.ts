@@ -4,87 +4,85 @@ import { listBlogPosts } from "./blogDb";
 const SITE_URL = "https://dentasmart.ai";
 
 // All static routes for the sitemap (NO admin routes)
+// Each route includes lastmod for better crawl efficiency
+const today = new Date().toISOString().split("T")[0];
+
 const staticRoutes = [
-  { path: "/", priority: "1.0", changefreq: "weekly" },
-  { path: "/how-it-works", priority: "0.9", changefreq: "monthly" },
-  { path: "/features", priority: "0.9", changefreq: "monthly" },
-  { path: "/pricing", priority: "0.9", changefreq: "monthly" },
-  { path: "/employers", priority: "0.8", changefreq: "monthly" },
-  { path: "/team", priority: "0.7", changefreq: "monthly" },
-  { path: "/faqs", priority: "0.8", changefreq: "monthly" },
-  { path: "/download", priority: "0.9", changefreq: "monthly" },
-  { path: "/instant-scan", priority: "0.9", changefreq: "monthly" },
-  { path: "/photo-guide", priority: "0.8", changefreq: "monthly" },
-  { path: "/oral-health-hub", priority: "0.8", changefreq: "weekly" },
-  { path: "/answers", priority: "0.8", changefreq: "monthly" },
-  { path: "/find-a-dentist", priority: "0.7", changefreq: "monthly" },
-  { path: "/compare/dentasmart-vs-chatgpt-dental", priority: "0.7", changefreq: "monthly" },
-  { path: "/compare/dentasmart-vs-teledentistry", priority: "0.7", changefreq: "monthly" },
-  { path: "/compare/dentasmart-vs-dental-insurance", priority: "0.7", changefreq: "monthly" },
-  { path: "/hub/understanding-dental-conditions", priority: "0.7", changefreq: "weekly" },
-  { path: "/hub/treatment-guides", priority: "0.7", changefreq: "weekly" },
-  { path: "/hub/prevention-tips", priority: "0.7", changefreq: "weekly" },
-  { path: "/hub/dental-technology", priority: "0.7", changefreq: "weekly" },
-  { path: "/hub/cost-and-insurance", priority: "0.7", changefreq: "weekly" },
-  { path: "/privacy-policy", priority: "0.3", changefreq: "yearly" },
-  { path: "/terms-of-service", priority: "0.3", changefreq: "yearly" },
-  { path: "/stories", priority: "0.6", changefreq: "monthly" },
+  { path: "/", priority: "1.0", changefreq: "weekly", lastmod: today },
+  { path: "/how-it-works", priority: "0.9", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/features", priority: "0.9", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/pricing", priority: "0.9", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/employers", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-01" },
+  { path: "/team", priority: "0.7", changefreq: "monthly", lastmod: "2026-03-01" },
+  { path: "/faqs", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/download", priority: "0.9", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/instant-scan", priority: "0.9", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/photo-guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-01" },
+  { path: "/oral-health-hub", priority: "0.8", changefreq: "weekly", lastmod: today },
+  { path: "/answers", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/find-a-dentist", priority: "0.7", changefreq: "monthly", lastmod: "2026-03-01" },
+  { path: "/compare/dentasmart-vs-chatgpt-dental", priority: "0.7", changefreq: "monthly", lastmod: "2026-03-01" },
+  { path: "/compare/dentasmart-vs-teledentistry", priority: "0.7", changefreq: "monthly", lastmod: "2026-03-01" },
+  { path: "/compare/dentasmart-vs-dental-insurance", priority: "0.7", changefreq: "monthly", lastmod: "2026-03-01" },
+  { path: "/privacy-policy", priority: "0.3", changefreq: "yearly", lastmod: "2026-01-01" },
+  { path: "/terms-of-service", priority: "0.3", changefreq: "yearly", lastmod: "2026-01-01" },
+  { path: "/stories", priority: "0.6", changefreq: "monthly", lastmod: "2026-03-01" },
   // Conditions pages
-  { path: "/conditions", priority: "0.8", changefreq: "weekly" },
-  { path: "/conditions/toothache", priority: "0.8", changefreq: "monthly" },
-  { path: "/conditions/cavities", priority: "0.8", changefreq: "monthly" },
-  { path: "/conditions/gum-disease", priority: "0.8", changefreq: "monthly" },
-  { path: "/conditions/wisdom-teeth-pain", priority: "0.8", changefreq: "monthly" },
-  { path: "/conditions/teeth-whitening", priority: "0.8", changefreq: "monthly" },
-  { path: "/conditions/sensitive-teeth", priority: "0.8", changefreq: "monthly" },
-  { path: "/conditions/cracked-tooth", priority: "0.8", changefreq: "monthly" },
-  { path: "/conditions/dental-abscess", priority: "0.8", changefreq: "monthly" },
-  { path: "/conditions/root-canal", priority: "0.8", changefreq: "monthly" },
-  { path: "/conditions/dental-crown", priority: "0.8", changefreq: "monthly" },
-  { path: "/conditions/teeth-grinding", priority: "0.8", changefreq: "monthly" },
-  { path: "/conditions/dental-implants", priority: "0.8", changefreq: "monthly" },
-  { path: "/conditions/dry-socket", priority: "0.8", changefreq: "monthly" },
-  { path: "/conditions/oral-thrush", priority: "0.8", changefreq: "monthly" },
-  { path: "/conditions/tmj-disorder", priority: "0.8", changefreq: "monthly" },
+  { path: "/conditions", priority: "0.8", changefreq: "weekly", lastmod: today },
+  { path: "/conditions/toothache", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/conditions/cavities", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/conditions/gum-disease", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/conditions/wisdom-teeth-pain", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/conditions/teeth-whitening", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/conditions/sensitive-teeth", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/conditions/cracked-tooth", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/conditions/dental-abscess", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/conditions/root-canal", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/conditions/dental-crown", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/conditions/teeth-grinding", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/conditions/dental-implants", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/conditions/dry-socket", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/conditions/oral-thrush", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/conditions/tmj-disorder", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
   // Symptoms pages
-  { path: "/symptoms", priority: "0.8", changefreq: "weekly" },
-  { path: "/symptoms/tooth-pain-when-biting", priority: "0.8", changefreq: "monthly" },
-  { path: "/symptoms/bleeding-gums", priority: "0.8", changefreq: "monthly" },
-  { path: "/symptoms/tooth-sensitivity", priority: "0.8", changefreq: "monthly" },
-  { path: "/symptoms/jaw-pain", priority: "0.8", changefreq: "monthly" },
-  { path: "/symptoms/bad-breath", priority: "0.8", changefreq: "monthly" },
-  { path: "/symptoms/swollen-gums", priority: "0.8", changefreq: "monthly" },
-  { path: "/symptoms/loose-tooth", priority: "0.8", changefreq: "monthly" },
-  { path: "/symptoms/dry-mouth", priority: "0.8", changefreq: "monthly" },
-  { path: "/symptoms/tooth-discoloration", priority: "0.8", changefreq: "monthly" },
-  { path: "/symptoms/mouth-sores", priority: "0.8", changefreq: "monthly" },
+  { path: "/symptoms", priority: "0.8", changefreq: "weekly", lastmod: today },
+  { path: "/symptoms/tooth-pain-when-biting", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/symptoms/bleeding-gums", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/symptoms/tooth-sensitivity", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/symptoms/jaw-pain", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/symptoms/bad-breath", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/symptoms/swollen-gums", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/symptoms/loose-tooth", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/symptoms/dry-mouth", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/symptoms/tooth-discoloration", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/symptoms/mouth-sores", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
   // Guides pages
-  { path: "/guides", priority: "0.8", changefreq: "weekly" },
-  { path: "/guides/brushing-guide", priority: "0.8", changefreq: "monthly" },
-  { path: "/guides/flossing-guide", priority: "0.8", changefreq: "monthly" },
-  { path: "/guides/dental-visit-guide", priority: "0.8", changefreq: "monthly" },
-  { path: "/guides/affordable-dental-care", priority: "0.8", changefreq: "monthly" },
-  { path: "/guides/dental-insurance-alternatives", priority: "0.8", changefreq: "monthly" },
-  { path: "/guides/diy-dental-care", priority: "0.8", changefreq: "monthly" },
-  { path: "/guides/preventing-expensive-dental-problems", priority: "0.8", changefreq: "monthly" },
-  { path: "/guides/dental-emergencies-on-a-budget", priority: "0.8", changefreq: "monthly" },
-  { path: "/guides/when-to-get-dental-second-opinion", priority: "0.8", changefreq: "monthly" },
-  { path: "/guides/do-you-need-root-canal", priority: "0.8", changefreq: "monthly" },
-  { path: "/guides/crowns-vs-fillings", priority: "0.8", changefreq: "monthly" },
-  { path: "/guides/implants-vs-bridges", priority: "0.8", changefreq: "monthly" },
-  { path: "/guides/complete-oral-health-routine", priority: "0.8", changefreq: "monthly" },
-  { path: "/guides/how-to-prevent-cavities", priority: "0.8", changefreq: "monthly" },
-  { path: "/guides/gum-disease-prevention", priority: "0.8", changefreq: "monthly" },
-  { path: "/guides/natural-teeth-whitening", priority: "0.8", changefreq: "monthly" },
-  { path: "/guides/oral-health-life-stages", priority: "0.8", changefreq: "monthly" },
+  { path: "/guides", priority: "0.8", changefreq: "weekly", lastmod: today },
+  { path: "/guides/brushing-guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/guides/flossing-guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/guides/dental-visit-guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/guides/affordable-dental-care", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/guides/dental-insurance-alternatives", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/guides/diy-dental-care", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/guides/preventing-expensive-dental-problems", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/guides/dental-emergencies-on-a-budget", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/guides/when-to-get-dental-second-opinion", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/guides/do-you-need-root-canal", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/guides/crowns-vs-fillings", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/guides/implants-vs-bridges", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/guides/complete-oral-health-routine", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/guides/how-to-prevent-cavities", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/guides/gum-disease-prevention", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/guides/natural-teeth-whitening", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/guides/oral-health-life-stages", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
   // Hub landing pages
-  { path: "/oral-health-hub/affordability", priority: "0.9", changefreq: "weekly" },
-  { path: "/oral-health-hub/second-opinion", priority: "0.8", changefreq: "weekly" },
-  { path: "/oral-health-hub/prevention", priority: "0.8", changefreq: "weekly" },
-  { path: "/oral-health-hub/conditions", priority: "0.9", changefreq: "weekly" },
-  { path: "/oral-health-hub/symptoms", priority: "0.9", changefreq: "weekly" },
+  { path: "/oral-health-hub/affordability", priority: "0.9", changefreq: "weekly", lastmod: today },
+  { path: "/oral-health-hub/second-opinion", priority: "0.8", changefreq: "weekly", lastmod: today },
+  { path: "/oral-health-hub/prevention", priority: "0.8", changefreq: "weekly", lastmod: today },
+  { path: "/oral-health-hub/conditions", priority: "0.9", changefreq: "weekly", lastmod: today },
+  { path: "/oral-health-hub/symptoms", priority: "0.9", changefreq: "weekly", lastmod: today },
   // Symptom Quiz
-  { path: "/symptom-quiz", priority: "0.9", changefreq: "weekly" },
+  { path: "/symptom-quiz", priority: "0.9", changefreq: "weekly", lastmod: today },
 ];
 
 // Sitemap cache: regenerated on demand and invalidated when blog content changes
@@ -135,6 +133,7 @@ export async function generateSitemapXml(): Promise<string> {
       (r) => `
   <url>
     <loc>${SITE_URL}${r.path}</loc>
+    <lastmod>${r.lastmod}</lastmod>
     <changefreq>${r.changefreq}</changefreq>
     <priority>${r.priority}</priority>
   </url>`
@@ -159,7 +158,7 @@ const serveSitemap = async (_req: Request, res: Response) => {
   try {
     const sitemap = await generateSitemapXml();
     res.set("Content-Type", "application/xml; charset=utf-8");
-    // Phase 3: Cache headers. Short edge cache, no stale content
+    // Cache headers: short edge cache, no stale content
     res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
     res.send(sitemap);
   } catch (e) {
@@ -169,32 +168,88 @@ const serveSitemap = async (_req: Request, res: Response) => {
 };
 
 export function registerSeoRoutes(app: Express) {
-  // robots.txt. Points to both sitemap URLs for maximum discoverability
+  // robots.txt - Fixed: Allow /api/sitemap explicitly before Disallow /api/
+  // Also references all three sitemap URLs for maximum discoverability
   app.get("/robots.txt", (_req: Request, res: Response) => {
     res.type("text/plain");
     res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
     res.send(`User-agent: *
 Allow: /
 
-# Sitemaps. Primary is /sitemap-custom.xml (bypasses platform CDN override)
+# Sitemaps
+Sitemap: ${SITE_URL}/sitemap.xml
 Sitemap: ${SITE_URL}/sitemap-custom.xml
-Sitemap: ${SITE_URL}/api/sitemap
+
+# Allow sitemap API endpoint explicitly (before Disallow /api/)
+Allow: /api/sitemap
 
 # Disallow admin pages
 Disallow: /admin
 Disallow: /admin/*
 
-# Disallow API endpoints
+# Disallow API endpoints (except sitemap above)
 Disallow: /api/
 `);
   });
 
-  // PRIMARY: /sitemap-custom.xml. Custom path unlikely to be overridden by platform
+  // llms.txt - Information for AI/LLM crawlers about the site
+  app.get("/llms.txt", (_req: Request, res: Response) => {
+    res.type("text/plain");
+    res.set("Cache-Control", "public, max-age=0, s-maxage=3600, must-revalidate");
+    res.send(`# DentaSmart - Your Personal AI Oral Health Guide
+> AI-powered dental health analysis and personalized oral care guidance.
+
+DentaSmart helps people understand their oral health through AI-powered photo analysis, personalized care plans, and clear dental education content.
+
+## Main Pages
+- [Home](${SITE_URL}/)
+- [How It Works](${SITE_URL}/how-it-works)
+- [Features](${SITE_URL}/features)
+- [Pricing](${SITE_URL}/pricing)
+- [Download](${SITE_URL}/download)
+- [Instant Scan](${SITE_URL}/instant-scan)
+- [Symptom Quiz](${SITE_URL}/symptom-quiz)
+- [FAQs](${SITE_URL}/faqs)
+
+## Oral Health Resources
+- [Oral Health Hub](${SITE_URL}/oral-health-hub)
+- [Dental Conditions](${SITE_URL}/conditions)
+- [Dental Symptoms](${SITE_URL}/symptoms)
+- [Oral Health Guides](${SITE_URL}/guides)
+- [Dental Answers](${SITE_URL}/answers)
+
+## Hub Pages
+- [Affordability Guide](${SITE_URL}/oral-health-hub/affordability)
+- [Second Opinion Guide](${SITE_URL}/oral-health-hub/second-opinion)
+- [Prevention Guide](${SITE_URL}/oral-health-hub/prevention)
+- [Conditions Guide](${SITE_URL}/oral-health-hub/conditions)
+- [Symptoms Guide](${SITE_URL}/oral-health-hub/symptoms)
+
+## Comparisons
+- [DentaSmart vs ChatGPT for Dental](${SITE_URL}/compare/dentasmart-vs-chatgpt-dental)
+- [DentaSmart vs Teledentistry](${SITE_URL}/compare/dentasmart-vs-teledentistry)
+- [DentaSmart vs Dental Insurance](${SITE_URL}/compare/dentasmart-vs-dental-insurance)
+
+## Company
+- [Team](${SITE_URL}/team)
+- [For Employers](${SITE_URL}/employers)
+- [Privacy Policy](${SITE_URL}/privacy-policy)
+- [Terms of Service](${SITE_URL}/terms-of-service)
+
+## Contact
+- Website: ${SITE_URL}
+- Instagram: https://www.instagram.com/dentasmart.ai
+- LinkedIn: https://www.linkedin.com/company/dentasmart
+`);
+  });
+
+  // PRIMARY: /sitemap-custom.xml - Custom path unlikely to be overridden by platform
   app.get("/sitemap-custom.xml", serveSitemap);
 
-  // FALLBACK 1: /api/sitemap. Proven to reach Express in production
+  // /api/sitemap - API route that works through Express
   app.get("/api/sitemap", serveSitemap);
 
-  // FALLBACK 2: /sitemap.xml. Works in local dev (platform CDN overrides this in production)
+  // /sitemap.xml - Standard path (platform CDN may override in production,
+  // but we register it anyway for dev and as a fallback)
   app.get("/sitemap.xml", serveSitemap);
 }

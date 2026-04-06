@@ -56,11 +56,18 @@ describe("SEO Routes", () => {
       expect(res.text).toContain("Sitemap: https://dentasmart.ai/sitemap-custom.xml");
     });
 
-    it("should reference /api/sitemap as fallback sitemap", async () => {
+    it("should allow /api/sitemap explicitly for crawlers", async () => {
       const app = createTestApp();
       const res = await request(app).get("/robots.txt");
 
-      expect(res.text).toContain("Sitemap: https://dentasmart.ai/api/sitemap");
+      expect(res.text).toContain("Allow: /api/sitemap");
+    });
+
+    it("should reference /sitemap.xml as primary sitemap", async () => {
+      const app = createTestApp();
+      const res = await request(app).get("/robots.txt");
+
+      expect(res.text).toContain("Sitemap: https://dentasmart.ai/sitemap.xml");
     });
 
     it("should disallow admin and API paths", async () => {

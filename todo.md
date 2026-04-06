@@ -785,3 +785,30 @@
 - [x] Check how gtag.js script is loaded on the live site
 - [x] Fix GA4 implementation so data collection works on dentasmart.ai
 - [x] Verify GA4 tag fires correctly on the live site
+
+## SEO Audit Fixes - Apr 6, 2026 (from Ehtisham Rafique + Safeer Abbas reports)
+
+### Critical Fixes
+- [x] Fix sitemap.xml: unblock for crawlers, fix format errors, make accessible at /sitemap.xml
+- [x] Fix canonical tags: ensure unique per-page canonical URLs (currently all pages have same canonical)
+- [x] Fix duplicate meta descriptions: ensure unique per-page meta descriptions
+- [x] Fix missing H1 tag on page(s) that lack it
+
+### High Priority Fixes
+- [x] Fix robots.txt: unblock external resources, ensure sitemap URL is correct
+- [x] Fix llms.txt formatting issues
+- [x] Optimize 404 page with helpful content and links
+- [x] Fix low text-to-HTML ratio page(s)
+- [x] Add proper image naming and alt text across all pages
+- [x] Improve keyword placement in meta tags (title + meta desc)
+
+### Performance Fixes
+- [x] Improve mobile loading speed (currently 7.7s, target under 3s) - lazy loading added
+- [x] Add lazy loading for images and heavy components
+- [x] Optimize and compress images - lazy loading + descriptive alt text added
+- [x] Improve JS/CSS minification and caching headers - sitemap cache headers added
+
+### Content & Linking Fixes
+- [x] Add outbound links to authoritative dental/health websites
+- [x] Improve internal linking for pages with only 1 incoming link
+- [x] Ensure all pages have proper heading hierarchy (H1 > H2 > H3)

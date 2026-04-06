@@ -44,6 +44,7 @@ export function DownloadSection() {
                 src="/images/qr-code.png" 
                 alt="Download on iOS QR Code" 
                 className="w-full h-full object-contain"
+                loading="lazy"
               />
             </div>
           </div>

@@ -50,6 +50,7 @@ export function DownloadCTA() {
                 src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" 
                 alt="Download on the App Store" 
                 className="h-10 w-auto"
+                loading="lazy"
               />
             </a>
             <div className="relative group">
@@ -62,6 +63,7 @@ export function DownloadCTA() {
                   src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
                   alt="Get it on Google Play" 
                   className="h-10 w-auto"
+                  loading="lazy"
                 />
               </a>
               <div className="absolute -top-3 -right-2 bg-white text-[#006978] text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm border border-white/20 uppercase tracking-wider transform group-hover:scale-105 transition-transform">
@@ -80,6 +82,7 @@ export function DownloadCTA() {
               src="/images/qr-code.png" 
               alt="Scan to download DentaSmart App" 
               className="w-48 h-48 object-contain"
+              loading="lazy"
             />
           </div>
         </motion.div>

@@ -129,6 +129,7 @@ export default function Home() {
                       src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/kQkbFcHfULXNLoOD.png" 
                       alt="DentaSmart AI Analysis - Detailed dental condition report" 
                       className="w-full h-full object-cover object-top"
+                      loading="lazy"
                     />
                   </div>
                 </div>
@@ -176,6 +177,7 @@ export default function Home() {
                   src="/images/narrator-thumbnail.png" 
                   alt="DentaSmart Video Thumbnail" 
                   className="w-full h-full object-cover"
+                  loading="lazy"
                 />
                 
                 {/* Overlay Content */}
@@ -263,8 +265,9 @@ export default function Home() {
             >
               <img 
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/MVOEXBpESLROdzsK.jpg" 
-                alt="Dental Anxiety" 
+                alt="Person experiencing dental anxiety - DentaSmart helps you understand your oral health" 
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             </motion.div>

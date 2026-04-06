@@ -145,6 +145,7 @@ export function UserChallengesCarousel({
                   className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${
                     isExpanded ? 'blur-sm scale-105' : ''
                   }`}
+                  loading="lazy"
                 />
                 <div className={`absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/80 transition-opacity duration-500 ${
                   isExpanded ? 'opacity-90 bg-black/40' : 'opacity-60 group-hover:opacity-70'

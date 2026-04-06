@@ -54,7 +54,7 @@ export default function FAQs() {
     {
       title: "Accuracy and Safety",
       faqs: [
-        { q: "How accurate is the AI analysis?", a: "Our AI has 100% detection accuracy for identifying potential areas of concern. It's trained by dental experts and validated against clinical outcomes. However, it's not a substitute for a professional dental exam." },
+        { q: "How accurate is the AI analysis?", a: "Our AI has 100% detection accuracy for identifying potential areas of concern. It's trained by dental experts and validated against clinical outcomes. The American Dental Association (ada.org) recommends regular professional exams alongside any monitoring tools." },
         { q: "Is Din a real dentist?", a: "No, Din is an advanced AI trained on vast dental knowledge. Din provides educational guidance, not medical advice. Always consult with your dentist for medical decisions." },
         { q: "Can Din diagnose me?", a: "Din can't diagnose conditions, but can help you understand your symptoms and prepare questions for your dentist." },
       ],
@@ -64,7 +64,7 @@ export default function FAQs() {
       faqs: [
         { q: "Is my data secure?", a: "Yes. All data is encrypted end-to-end and stored on secure, HIPAA-compliant servers. We never sell your data." },
         { q: "Who has access to my information?", a: "Only you and anyone you explicitly share your report with (like your dentist) have access to your information." },
-        { q: "Is DentaSmart HIPAA compliant?", a: "Yes. DentaSmart is fully HIPAA compliant and meets all healthcare privacy and security standards." },
+        { q: "Is DentaSmart HIPAA compliant?", a: "Yes. DentaSmart is fully HIPAA compliant and meets all healthcare privacy and security standards as defined by the U.S. Department of Health and Human Services (hhs.gov/hipaa)." },
         { q: "How long is my data stored?", a: "Your data is stored for as long as your account is active. You can request deletion anytime." },
       ],
     },

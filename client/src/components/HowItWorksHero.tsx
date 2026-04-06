@@ -57,6 +57,7 @@ export default function HowItWorksHero() {
                     src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/lBzNqmERojJqlfJE.jpeg" 
                     alt="DentaSmart X-Ray Analysis - AI-powered dental X-ray findings with highlighted areas" 
                     className="w-full h-full object-cover object-top"
+                    loading="lazy"
                   />
                 </div>
               </div>
@@ -77,6 +78,7 @@ export default function HowItWorksHero() {
                     src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/XlgHEMbZpBAbEXnM.jpeg" 
                     alt="DentaSmart Initial Care Plan - Treatment recommendations with costs and timelines" 
                     className="w-full h-full object-cover object-top"
+                    loading="lazy"
                   />
                 </div>
               </div>
