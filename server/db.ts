@@ -1,6 +1,6 @@
-import { eq } from "drizzle-orm";
+import { eq, sql, and, gte, lte, desc, count } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users } from "../drizzle/schema";
+import { InsertUser, users, conversionEvents, type InsertConversionEvent } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -89,4 +89,121 @@ export async function getUserByOpenId(openId: string) {
   return result.length > 0 ? result[0] : undefined;
 }
 
-// TODO: add feature queries here as your schema grows.
+// ── Conversion Events ──────────────────────────────────────────────────────
+
+export async function insertConversionEvent(event: InsertConversionEvent) {
+  const db = await getDb();
+  if (!db) return null;
+  const result = await db.insert(conversionEvents).values(event);
+  return result;
+}
+
+export async function getConversionStats(startDate: Date, endDate: Date) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const results = await db
+    .select({
+      eventName: conversionEvents.eventName,
+      eventCategory: conversionEvents.eventCategory,
+      count: count(),
+    })
+    .from(conversionEvents)
+    .where(
+      and(
+        gte(conversionEvents.createdAt, startDate),
+        lte(conversionEvents.createdAt, endDate)
+      )
+    )
+    .groupBy(conversionEvents.eventName, conversionEvents.eventCategory);
+  
+  return results;
+}
+
+export async function getTopConversionPages(startDate: Date, endDate: Date, eventCategory?: string) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const conditions = [
+    gte(conversionEvents.createdAt, startDate),
+    lte(conversionEvents.createdAt, endDate),
+  ];
+  if (eventCategory) {
+    conditions.push(eq(conversionEvents.eventCategory, eventCategory as any));
+  }
+  
+  const results = await db
+    .select({
+      sourcePage: conversionEvents.sourcePage,
+      eventName: conversionEvents.eventName,
+      count: count(),
+    })
+    .from(conversionEvents)
+    .where(and(...conditions))
+    .groupBy(conversionEvents.sourcePage, conversionEvents.eventName)
+    .orderBy(desc(count()))
+    .limit(50);
+  
+  return results;
+}
+
+export async function getDailyConversionTrend(startDate: Date, endDate: Date, eventCategory?: string) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const conditions = [
+    gte(conversionEvents.createdAt, startDate),
+    lte(conversionEvents.createdAt, endDate),
+  ];
+  if (eventCategory) {
+    conditions.push(eq(conversionEvents.eventCategory, eventCategory as any));
+  }
+  
+  const results = await db
+    .select({
+      date: sql<string>`DATE(${conversionEvents.createdAt})`.as('date'),
+      eventName: conversionEvents.eventName,
+      count: count(),
+    })
+    .from(conversionEvents)
+    .where(and(...conditions))
+    .groupBy(sql`DATE(${conversionEvents.createdAt})`, conversionEvents.eventName)
+    .orderBy(sql`DATE(${conversionEvents.createdAt})`);
+  
+  return results;
+}
+
+export async function getDeviceBreakdown(startDate: Date, endDate: Date) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const results = await db
+    .select({
+      deviceType: conversionEvents.deviceType,
+      eventCategory: conversionEvents.eventCategory,
+      count: count(),
+    })
+    .from(conversionEvents)
+    .where(
+      and(
+        gte(conversionEvents.createdAt, startDate),
+        lte(conversionEvents.createdAt, endDate)
+      )
+    )
+    .groupBy(conversionEvents.deviceType, conversionEvents.eventCategory);
+  
+  return results;
+}
+
+export async function getRecentConversionEvents(limit: number = 50) {
+  const db = await getDb();
+  if (!db) return [];
+  
+  const results = await db
+    .select()
+    .from(conversionEvents)
+    .orderBy(desc(conversionEvents.createdAt))
+    .limit(limit);
+  
+  return results;
+}

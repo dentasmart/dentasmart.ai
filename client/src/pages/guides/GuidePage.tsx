@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { DownloadSection } from "@/components/DownloadSection";
 import { BlogCTABanner } from "@/components/BlogCTABanner";
+import MidContentCTA from "@/components/MidContentCTA";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, CheckCircle, ChevronDown, ChevronUp, Shield, Lightbulb, XCircle, MessageCircleQuestion } from "lucide-react";
@@ -206,6 +207,18 @@ export default function GuidePage() {
           </div>
         </section>
       )}
+
+      {/* Mid-Content CTA */}
+      <section className="py-4 bg-white">
+        <div className="container px-4 mx-auto max-w-3xl">
+          <MidContentCTA
+            variant="card"
+            headline="Ready to take the next step?"
+            description="Get a free AI oral health assessment in 60 seconds. Just snap a photo of your teeth."
+            trackingLabel="guide_page_mid_cta"
+          />
+        </div>
+      </section>
 
       {/* Key Takeaways */}
       <section className="py-8 bg-stone-50">

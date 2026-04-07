@@ -18,6 +18,7 @@ declare global {
 export type AnalyticsEvent =
   | "cta_get_score_click"
   | "download_ios_click"
+  | "download_android_click"
   | "android_waitlist_submit"
   | "download_page_view"
   | "instant_scan_page_view"
@@ -30,6 +31,10 @@ export type AnalyticsEvent =
   | "find_dentist_page_view"
   | "answers_page_view"
   | "sticky_cta_click"
+  | "exit_intent_cta_click"
+  | "exit_intent_shown"
+  | "exit_intent_click"
+  | "mid_content_cta_click"
   | "demo_request_submit"
   | "symptom_quiz_start"
   | "symptom_quiz_complete"
@@ -37,6 +42,9 @@ export type AnalyticsEvent =
   | "pricing_plan_select"
   | "blog_read"
   | "employer_demo_request"
+  | "scroll_depth_50"
+  | "scroll_depth_75"
+  | "scroll_depth_100"
   | "page_view";
 
 export interface EventParams {
@@ -217,6 +225,7 @@ export function trackEvent(event: AnalyticsEvent, params?: EventParams): void {
       if (adsId && convLabel) {
         const conversionEvents: AnalyticsEvent[] = [
           "download_ios_click",
+          "download_android_click",
           "android_waitlist_submit",
           "symptom_quiz_complete",
           "demo_request_submit",
@@ -230,6 +239,9 @@ export function trackEvent(event: AnalyticsEvent, params?: EventParams): void {
         }
       }
     }
+
+    // Server-side tracking (fires for all events to build our own analytics)
+    trackEventServer(event, params);
   } catch {
     // Analytics should never break the app
   }
@@ -286,6 +298,79 @@ export function getAppStoreUrl(source: string): string {
     mt: "8", // Media Type (8 = mobile software)
   });
   return `${baseUrl}?${params.toString()}`;
+}
+
+// ── Server-side tracking ───────────────────────────────────────────────────
+
+let _sessionId: string | null = null;
+
+function getSessionId(): string {
+  if (_sessionId) return _sessionId;
+  // Try to read from sessionStorage, or create a new one
+  try {
+    _sessionId = sessionStorage.getItem('ds_session_id');
+    if (!_sessionId) {
+      _sessionId = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+      sessionStorage.setItem('ds_session_id', _sessionId);
+    }
+  } catch {
+    _sessionId = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+  }
+  return _sessionId;
+}
+
+function getDeviceType(): "desktop" | "tablet" | "mobile" {
+  if (typeof window === "undefined") return "desktop";
+  const w = window.innerWidth;
+  if (w < 768) return "mobile";
+  if (w < 1024) return "tablet";
+  return "desktop";
+}
+
+function getUTMParams(): { utmSource?: string; utmMedium?: string; utmCampaign?: string } {
+  if (typeof window === "undefined") return {};
+  const params = new URLSearchParams(window.location.search);
+  return {
+    utmSource: params.get('utm_source') || undefined,
+    utmMedium: params.get('utm_medium') || undefined,
+    utmCampaign: params.get('utm_campaign') || undefined,
+  };
+}
+
+/**
+ * Send event to our server-side tracking database.
+ * Uses navigator.sendBeacon for reliable delivery (survives page unload).
+ * Falls back to fetch if sendBeacon is not available.
+ */
+export function trackEventServer(event: AnalyticsEvent, params?: EventParams): void {
+  try {
+    if (typeof window === "undefined") return;
+    
+    const utm = getUTMParams();
+    const payload = {
+      eventName: event,
+      sourcePage: window.location.pathname,
+      sourcePageTitle: document.title,
+      referrer: document.referrer || undefined,
+      utmSource: utm.utmSource,
+      utmMedium: utm.utmMedium,
+      utmCampaign: utm.utmCampaign,
+      deviceType: getDeviceType(),
+      sessionId: getSessionId(),
+      metadata: params ? { ...params } : undefined,
+    };
+
+    // Use fetch with keepalive for reliable delivery
+    fetch('/api/trpc/analytics.trackEvent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ json: payload }),
+      keepalive: true,
+      credentials: 'include',
+    }).catch(() => { /* silently fail */ });
+  } catch {
+    // Server tracking should never break the app
+  }
 }
 
 /**

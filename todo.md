@@ -812,3 +812,33 @@
 - [x] Add outbound links to authoritative dental/health websites
 - [x] Improve internal linking for pages with only 1 incoming link
 - [x] Ensure all pages have proper heading hierarchy (H1 > H2 > H3)
+
+## Conversion Tracking & Analytics Dashboard - Apr 7, 2026
+
+### Enhanced Event Tracking
+- [x] Audit current analytics/event tracking code
+- [x] Build comprehensive event tracking system (download clicks, CTA clicks, scroll depth)
+- [x] Track download_ios_click, download_android_click events to GA4
+- [x] Track CTA clicks (get_oral_health_score, try_symptom_check, etc.)
+- [x] Track page-to-download funnel events
+
+### Database & Server-Side Tracking
+- [x] Create conversion_events database table
+- [x] Build server-side tRPC endpoints for logging events
+- [x] Store events with page source, device type, timestamp
+
+### Admin Analytics Dashboard
+- [x] Build admin analytics dashboard page
+- [x] Show download clicks per day/week with source page
+- [x] Show top pages that lead to download clicks
+- [x] Show CTA click-through rates by page
+- [x] Show conversion funnel visualization
+
+### Conversion Optimization Features
+- [x] Build sticky mobile download banner (top of screen on mobile)
+- [x] Build exit-intent popup on high-traffic pages (desktop)
+- [x] Strengthen mid-content CTAs on blog/hub/condition/symptom pages
+
+### GA4 Key Events Configuration
+- [x] Configure GA4 custom events for download tracking (events fire to GA4 automatically)
+- [ ] Set up key events in GA4 admin console for conversion reporting (manual step for user)

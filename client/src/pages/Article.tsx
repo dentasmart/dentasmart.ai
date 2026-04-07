@@ -13,6 +13,7 @@ import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import { motion } from "framer-motion";
 import { BlogCTABanner } from "@/components/BlogCTABanner";
+import MidContentCTA from "@/components/MidContentCTA";
 import { breadcrumbSchema, articleSchema } from "@/lib/schema";
 
 export default function Article() {
@@ -242,6 +243,18 @@ export default function Article() {
                 <p className="text-lg text-stone-600">This article has no content yet.</p>
               )}
             </motion.div>
+          </div>
+        </section>
+
+        {/* Mid-Content CTA */}
+        <section className="py-4 bg-white">
+          <div className="container px-4 mx-auto max-w-3xl">
+            <MidContentCTA
+              variant="card"
+              headline="Want clarity about your own mouth?"
+              description="Snap a photo of your teeth and get your free AI oral health score in 60 seconds. No insurance needed."
+              trackingLabel="article_mid_cta"
+            />
           </div>
         </section>
 

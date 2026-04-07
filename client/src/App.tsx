@@ -22,6 +22,8 @@ import TermsOfService from "@/pages/TermsOfService";
 import Stories from "@/pages/Stories";
 import { lazy, Suspense } from "react";
 import AdminRouter, { useIsAdminRoute } from "@/components/AdminRouter";
+import StickyDownloadBanner from "@/components/StickyDownloadBanner";
+import ExitIntentPopup from "@/components/ExitIntentPopup";
 
 // Lazy-loaded new pages
 const Download = lazy(() => import("./pages/Download"));
@@ -274,7 +276,13 @@ function AppContent() {
     <>
       <Toaster />
       <ScrollToTop />
-      {isAdmin ? <AdminRouter /> : <Router />}
+      {isAdmin ? <AdminRouter /> : (
+        <>
+          <Router />
+          <StickyDownloadBanner />
+          <ExitIntentPopup />
+        </>
+      )}
     </>
   );
 }

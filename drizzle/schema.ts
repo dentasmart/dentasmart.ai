@@ -175,3 +175,44 @@ export const agentRuns = mysqlTable("agent_runs", {
 
 export type AgentRun = typeof agentRuns.$inferSelect;
 export type InsertAgentRun = typeof agentRuns.$inferInsert;
+
+/**
+ * Conversion events table for tracking user interactions.
+ * Stores download clicks, CTA clicks, page views, and funnel events
+ * with full attribution (source page, device, referrer, UTM params).
+ */
+export const conversionEvents = mysqlTable("conversion_events", {
+  id: int("id").autoincrement().primaryKey(),
+  
+  // Event identification
+  eventName: varchar("eventName", { length: 100 }).notNull(), // e.g. download_ios_click, cta_get_score_click
+  eventCategory: mysqlEnum("eventCategory", [
+    "download", "cta_click", "page_view", "quiz", "lead", "engagement"
+  ]).notNull(),
+  
+  // Attribution
+  sourcePage: varchar("sourcePage", { length: 500 }).notNull(), // URL path where event fired
+  sourcePageTitle: varchar("sourcePageTitle", { length: 500 }),
+  referrer: varchar("referrer", { length: 1000 }),
+  
+  // UTM tracking
+  utmSource: varchar("utmSource", { length: 200 }),
+  utmMedium: varchar("utmMedium", { length: 200 }),
+  utmCampaign: varchar("utmCampaign", { length: 200 }),
+  
+  // Device info
+  deviceType: mysqlEnum("deviceType", ["desktop", "tablet", "mobile"]).default("desktop"),
+  userAgent: varchar("userAgent", { length: 500 }),
+  
+  // Session tracking
+  sessionId: varchar("sessionId", { length: 100 }),
+  
+  // Extra event-specific data (JSON)
+  metadata: json("metadata"),
+  
+  // Timestamp
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type ConversionEvent = typeof conversionEvents.$inferSelect;
+export type InsertConversionEvent = typeof conversionEvents.$inferInsert;

@@ -1,11 +1,20 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { X } from "lucide-react";
+import { X, ArrowRight } from "lucide-react";
+import { trackEvent, getAppStoreUrl } from "@/lib/analytics";
+import { useLocation } from "wouter";
 
+/**
+ * BlogCTABanner: Floating bottom banner that appears at 25% scroll on blog/content pages.
+ * - Tracks mid_content_cta_click events
+ * - Links directly to app store (not scroll-to-download which may not exist on all pages)
+ * - Dismissible per session
+ */
 export function BlogCTABanner() {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
+  const [location] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,11 +23,12 @@ export function BlogCTABanner() {
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
-      
-      // Calculate scroll percentage
-      const scrollPercentage = (scrollPosition / (documentHeight - windowHeight)) * 100;
 
-      // Show at 25% scroll or at the end (90%+)
+      // Calculate scroll percentage
+      const scrollPercentage =
+        (scrollPosition / (documentHeight - windowHeight)) * 100;
+
+      // Show at 25% scroll
       if (scrollPercentage > 25) {
         setIsVisible(true);
       } else {
@@ -32,6 +42,14 @@ export function BlogCTABanner() {
 
   if (isDismissed) return null;
 
+  const handleCTAClick = () => {
+    trackEvent("mid_content_cta_click", {
+      source: location,
+      label: "blog_floating_banner",
+    });
+    window.open(getAppStoreUrl("blog_cta_banner"), "_blank", "noopener");
+  };
+
   return (
     <AnimatePresence>
       {isVisible && (
@@ -44,24 +62,30 @@ export function BlogCTABanner() {
         >
           <div className="container mx-auto max-w-4xl">
             <div className="bg-stone-900 text-white rounded-2xl shadow-2xl p-4 md:p-6 flex flex-col md:flex-row items-center justify-between gap-4 relative border border-stone-800">
-              <button 
+              <button
                 onClick={() => setIsDismissed(true)}
-                className="absolute top-2 right-2 md:top-4 md:right-4 text-stone-400 hover:text-white transition-colors"
+                className="absolute top-2 right-2 md:top-4 md:right-4 text-stone-400 hover:text-white transition-colors cursor-pointer"
                 aria-label="Close banner"
               >
                 <X className="w-5 h-5" />
               </button>
-              
+
               <div className="text-center md:text-left pr-8">
-                <h3 className="text-lg md:text-xl font-medium mb-1 text-white">Want clarity about your own mouth?</h3>
-                <p className="text-stone-400 text-sm hidden md:block">Get instant AI insights from your photos.</p>
+                <h3 className="text-lg md:text-xl font-medium mb-1 text-white">
+                  Want clarity about your own mouth?
+                </h3>
+                <p className="text-stone-400 text-sm hidden md:block">
+                  Snap a photo and get your free AI oral health score in 60
+                  seconds.
+                </p>
               </div>
-              
-              <Button 
-                onClick={() => document.getElementById('download-cta')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-6 text-base font-medium shadow-lg whitespace-nowrap w-full md:w-auto"
+
+              <Button
+                onClick={handleCTAClick}
+                className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-6 text-base font-medium shadow-lg whitespace-nowrap w-full md:w-auto cursor-pointer"
               >
                 Get My Oral Health Score
+                <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
           </div>

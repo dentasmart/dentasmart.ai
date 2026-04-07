@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { DownloadSection } from "@/components/DownloadSection";
 import { BlogCTABanner } from "@/components/BlogCTABanner";
+import MidContentCTA from "@/components/MidContentCTA";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, AlertTriangle, CheckCircle, ChevronDown, ChevronUp, Shield, MessageCircleQuestion } from "lucide-react";
@@ -209,6 +210,18 @@ export default function SymptomPage() {
               ))}
             </ul>
           </div>
+        </div>
+      </section>
+
+      {/* Mid-Content CTA */}
+      <section className="py-4 bg-white">
+        <div className="container px-4 mx-auto max-w-3xl">
+          <MidContentCTA
+            variant="card"
+            headline="Worried about this symptom?"
+            description="Upload a photo and get a free AI assessment in 60 seconds. Know what to tell your dentist before you go."
+            trackingLabel="symptom_page_mid_cta"
+          />
         </div>
       </section>
 
