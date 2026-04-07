@@ -250,3 +250,55 @@ describe("Conditions/Symptoms/Guides in Sitemap", () => {
     expect(res.text).toContain("https://dentasmart.ai/guides</loc>");
   });
 });
+
+describe("Dental Cost Pages in Sitemap", () => {
+  it("should include the dental costs hub in sitemap", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/sitemap-custom.xml");
+
+    expect(res.text).toContain("https://dentasmart.ai/dental-costs</loc>");
+  });
+
+  it("should include all 10 dental cost pages in sitemap", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/sitemap-custom.xml");
+
+    const costPages = [
+      "root-canal-cost",
+      "dental-implant-cost",
+      "braces-cost",
+      "veneers-cost",
+      "wisdom-teeth-removal-cost",
+      "teeth-whitening-cost",
+      "dental-crown-cost",
+      "tooth-extraction-cost",
+      "dental-cleaning-cost",
+      "dentures-cost",
+    ];
+
+    for (const page of costPages) {
+      expect(res.text).toContain(`https://dentasmart.ai/dental-costs/${page}`);
+    }
+  });
+
+  it("should have high priority for dental cost pages", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/sitemap-custom.xml");
+
+    // Dental cost hub should have 0.9 priority
+    const hubMatch = res.text.match(
+      /dental-costs<\/loc>[\s\S]*?<priority>([\d.]+)<\/priority>/
+    );
+    expect(hubMatch).toBeTruthy();
+    expect(parseFloat(hubMatch![1])).toBeGreaterThanOrEqual(0.9);
+  });
+
+  it("should include dental cost pages in llms.txt", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/llms.txt");
+
+    expect(res.text).toContain("Dental Cost Guides");
+    expect(res.text).toContain("/dental-costs/root-canal-cost");
+    expect(res.text).toContain("/dental-costs/dentures-cost");
+  });
+});

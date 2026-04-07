@@ -49,7 +49,7 @@ export default function Footer() {
           <div className="hidden lg:block lg:col-span-1"></div>
 
           {/* Navigation Links - Spans 6 columns */}
-          <div className="lg:col-span-6 grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="lg:col-span-6 grid grid-cols-2 md:grid-cols-4 gap-8">
             
             {/* Product */}
             <div>
@@ -105,6 +105,43 @@ export default function Footer() {
               </ul>
             </div>
 
+            {/* Dental Costs */}
+            <div>
+              <h4 className="font-medium text-black mb-6 tracking-wide">Dental Costs</h4>
+              <ul className="space-y-4">
+                <li>
+                  <Link href="/dental-costs" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    Cost Guide Hub
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/dental-costs/root-canal-cost" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    Root Canal Cost
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/dental-costs/dental-implant-cost" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    Dental Implant Cost
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/dental-costs/braces-cost" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    Braces Cost
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/dental-costs/dental-crown-cost" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    Dental Crown Cost
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/dental-costs/dentures-cost" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    Dentures Cost
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
             {/* Resources */}
             <div>
               <h4 className="font-medium text-black mb-6 tracking-wide">Resources</h4>
@@ -112,11 +149,6 @@ export default function Footer() {
                 <li>
                   <Link href="/oral-health-hub/conditions" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Conditions Guide
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/conditions" className="text-black hover:text-primary transition-colors font-light text-sm">
-                    Browse All Conditions
                   </Link>
                 </li>
                 <li>

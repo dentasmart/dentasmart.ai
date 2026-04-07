@@ -49,6 +49,19 @@ const PreventionHub = lazy(() => import("./pages/guides/PreventionHub"));
 const ConditionsHub = lazy(() => import("./pages/guides/ConditionsHub"));
 const SymptomsHub = lazy(() => import("./pages/guides/SymptomsHub"));
 
+// Dental Cost Pages
+const DentalCostsHub = lazy(() => import("./pages/dental-costs/DentalCostsHub"));
+const RootCanalCostPage = lazy(() => import("./pages/dental-costs/RootCanalCost"));
+const DentalImplantCostPage = lazy(() => import("./pages/dental-costs/DentalImplantCost"));
+const BracesCostPage = lazy(() => import("./pages/dental-costs/BracesCost"));
+const VeneersCostPage = lazy(() => import("./pages/dental-costs/VeneersCost"));
+const WisdomTeethCostPage = lazy(() => import("./pages/dental-costs/WisdomTeethCost"));
+const TeethWhiteningCostPage = lazy(() => import("./pages/dental-costs/TeethWhiteningCost"));
+const DentalCrownCostPage = lazy(() => import("./pages/dental-costs/DentalCrownCost"));
+const ToothExtractionCostPage = lazy(() => import("./pages/dental-costs/ToothExtractionCost"));
+const DentalCleaningCostPage = lazy(() => import("./pages/dental-costs/DentalCleaningCost"));
+const DenturesCostPage = lazy(() => import("./pages/dental-costs/DenturesCost"));
+
 function PageLoader() {
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -253,6 +266,19 @@ function Router() {
         <Route path="/oral-health-hub/why-your-dentist-might-be-recommending-unnecessary-procedures" component={Article} />
         <Route path="/oral-health-hub/the-hidden-cost-of-ignoring-dental-problems" component={Article} />
         <Route path="/oral-health-hub/10-questions-to-ask-your-dentist-before-any-procedure" component={Article} />
+
+        {/* ===== DENTAL COST PAGES ===== */}
+        <Route path="/dental-costs" component={DentalCostsHub} />
+        <Route path="/dental-costs/root-canal-cost" component={RootCanalCostPage} />
+        <Route path="/dental-costs/dental-implant-cost" component={DentalImplantCostPage} />
+        <Route path="/dental-costs/braces-cost" component={BracesCostPage} />
+        <Route path="/dental-costs/veneers-cost" component={VeneersCostPage} />
+        <Route path="/dental-costs/wisdom-teeth-removal-cost" component={WisdomTeethCostPage} />
+        <Route path="/dental-costs/teeth-whitening-cost" component={TeethWhiteningCostPage} />
+        <Route path="/dental-costs/dental-crown-cost" component={DentalCrownCostPage} />
+        <Route path="/dental-costs/tooth-extraction-cost" component={ToothExtractionCostPage} />
+        <Route path="/dental-costs/dental-cleaning-cost" component={DentalCleaningCostPage} />
+        <Route path="/dental-costs/dentures-cost" component={DenturesCostPage} />
 
         {/* ===== DYNAMIC CATCH-ALL ROUTES (for new content not yet in explicit list) ===== */}
         <Route path="/oral-health-hub/:id" component={Article} />

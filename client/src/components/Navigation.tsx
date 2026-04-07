@@ -54,6 +54,7 @@ export default function Navigation() {
     { label: "Symptoms Guide", href: "/oral-health-hub/symptoms", description: "What your symptoms mean" },
     { label: "Symptom Checker", href: "/symptom-quiz", description: "Free AI dental assessment" },
     { label: "Dental Guides", href: "/guides", description: "Step-by-step oral health guides" },
+    { label: "Dental Costs", href: "/dental-costs", description: "Know what dental procedures really cost" },
   ];
 
   const isActive = (href: string) => {

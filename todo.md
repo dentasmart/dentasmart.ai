@@ -842,3 +842,27 @@
 ### GA4 Key Events Configuration
 - [x] Configure GA4 custom events for download tracking (events fire to GA4 automatically)
 - [ ] Set up key events in GA4 admin console for conversion reporting (manual step for user)
+
+## Dental Cost Pages - Apr 7, 2026
+- [x] Read existing hub page patterns for design consistency
+- [x] Read humanized-writing skill for content guidelines
+- [x] Build reusable CostPage template component
+- [x] Build Dental Costs Hub page at /dental-costs
+- [x] Build Root Canal Cost page at /dental-costs/root-canal-cost
+- [x] Build Dental Implant Cost page at /dental-costs/dental-implant-cost
+- [x] Build Braces Cost page at /dental-costs/braces-cost
+- [x] Build Veneers Cost page at /dental-costs/veneers-cost
+- [x] Build Wisdom Teeth Removal Cost page at /dental-costs/wisdom-teeth-removal-cost
+- [x] Build Teeth Whitening Cost page at /dental-costs/teeth-whitening-cost
+- [x] Build Dental Crown Cost page at /dental-costs/dental-crown-cost
+- [x] Build Tooth Extraction Cost page at /dental-costs/tooth-extraction-cost
+- [x] Build Dental Cleaning Cost page at /dental-costs/dental-cleaning-cost
+- [x] Build Dentures Cost page at /dental-costs/dentures-cost
+- [x] Wire all routes in App.tsx
+- [x] Add to Navigation Resources dropdown
+- [x] Add to Footer
+- [x] Update sitemap with all new URLs
+- [ ] Cross-link from other hub pages (Affordability, Conditions, etc.)
+- [ ] Add JSON-LD structured data to all cost pages
+- [x] Ensure humanized writing throughout (no em dashes, no AI patterns)
+- [x] Ensure responsive design and proper hero padding

@@ -60,6 +60,19 @@ export const HUB_CATEGORY_SLUGS = [
   "cost-and-insurance",
 ] as const;
 
+export const DENTAL_COST_SLUGS = [
+  "root-canal-cost",
+  "dental-implant-cost",
+  "braces-cost",
+  "veneers-cost",
+  "wisdom-teeth-removal-cost",
+  "teeth-whitening-cost",
+  "dental-crown-cost",
+  "tooth-extraction-cost",
+  "dental-cleaning-cost",
+  "dentures-cost",
+] as const;
+
 export const BLOG_POST_SLUGS = [
   "dental-emergency-what-to-do",
   "pregnancy-dental-health",

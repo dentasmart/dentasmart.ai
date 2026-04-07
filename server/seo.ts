@@ -83,6 +83,18 @@ const staticRoutes = [
   { path: "/oral-health-hub/symptoms", priority: "0.9", changefreq: "weekly", lastmod: today },
   // Symptom Quiz
   { path: "/symptom-quiz", priority: "0.9", changefreq: "weekly", lastmod: today },
+  // Dental Cost Pages
+  { path: "/dental-costs", priority: "0.9", changefreq: "weekly", lastmod: today },
+  { path: "/dental-costs/root-canal-cost", priority: "0.9", changefreq: "monthly", lastmod: today },
+  { path: "/dental-costs/dental-implant-cost", priority: "0.9", changefreq: "monthly", lastmod: today },
+  { path: "/dental-costs/braces-cost", priority: "0.9", changefreq: "monthly", lastmod: today },
+  { path: "/dental-costs/veneers-cost", priority: "0.9", changefreq: "monthly", lastmod: today },
+  { path: "/dental-costs/wisdom-teeth-removal-cost", priority: "0.9", changefreq: "monthly", lastmod: today },
+  { path: "/dental-costs/teeth-whitening-cost", priority: "0.9", changefreq: "monthly", lastmod: today },
+  { path: "/dental-costs/dental-crown-cost", priority: "0.9", changefreq: "monthly", lastmod: today },
+  { path: "/dental-costs/tooth-extraction-cost", priority: "0.9", changefreq: "monthly", lastmod: today },
+  { path: "/dental-costs/dental-cleaning-cost", priority: "0.9", changefreq: "monthly", lastmod: today },
+  { path: "/dental-costs/dentures-cost", priority: "0.9", changefreq: "monthly", lastmod: today },
 ];
 
 // Sitemap cache: regenerated on demand and invalidated when blog content changes
@@ -224,6 +236,19 @@ DentaSmart helps people understand their oral health through AI-powered photo an
 - [Prevention Guide](${SITE_URL}/oral-health-hub/prevention)
 - [Conditions Guide](${SITE_URL}/oral-health-hub/conditions)
 - [Symptoms Guide](${SITE_URL}/oral-health-hub/symptoms)
+
+## Dental Cost Guides
+- [Dental Costs Hub](${SITE_URL}/dental-costs)
+- [Root Canal Cost](${SITE_URL}/dental-costs/root-canal-cost)
+- [Dental Implant Cost](${SITE_URL}/dental-costs/dental-implant-cost)
+- [Braces Cost](${SITE_URL}/dental-costs/braces-cost)
+- [Veneers Cost](${SITE_URL}/dental-costs/veneers-cost)
+- [Wisdom Teeth Removal Cost](${SITE_URL}/dental-costs/wisdom-teeth-removal-cost)
+- [Teeth Whitening Cost](${SITE_URL}/dental-costs/teeth-whitening-cost)
+- [Dental Crown Cost](${SITE_URL}/dental-costs/dental-crown-cost)
+- [Tooth Extraction Cost](${SITE_URL}/dental-costs/tooth-extraction-cost)
+- [Dental Cleaning Cost](${SITE_URL}/dental-costs/dental-cleaning-cost)
+- [Dentures Cost](${SITE_URL}/dental-costs/dentures-cost)
 
 ## Comparisons
 - [DentaSmart vs ChatGPT for Dental](${SITE_URL}/compare/dentasmart-vs-chatgpt-dental)
