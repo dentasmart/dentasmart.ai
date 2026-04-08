@@ -862,8 +862,8 @@
 - [x] Add to Navigation Resources dropdown
 - [x] Add to Footer
 - [x] Update sitemap with all new URLs
-- [ ] Cross-link from other hub pages (Affordability, Conditions, etc.)
-- [ ] Add JSON-LD structured data to all cost pages
+- [x] Cross-link from other hub pages (Affordability, Conditions, etc.)
+- [x] Add JSON-LD structured data to all cost pages (FAQ JSON-LD built into CostPageTemplate)
 - [x] Ensure humanized writing throughout (no em dashes, no AI patterns)
 - [x] Ensure responsive design and proper hero padding
 
@@ -966,3 +966,13 @@
 - [x] Add Lifestyle to Footer
 - [x] Update sitemap with all lifestyle URLs
 - [x] Update llms.txt with lifestyle pages
+
+## FAQ JSON-LD Structured Data - Apr 8, 2026
+- [x] Add FAQ JSON-LD to CostPageTemplate
+- [x] Add FAQ JSON-LD to TreatmentPageTemplate
+- [x] Add FAQ JSON-LD to ComparisonPageTemplate
+- [x] Add FAQ JSON-LD to AgeSpecificTemplate (life-stages)
+- [x] Add FAQ JSON-LD to EmergencyPageTemplate
+- [x] Add FAQ JSON-LD to LifestyleTemplate
+- [x] Verify JSON-LD renders correctly in browser DOM (all 6 templates confirmed)
+- [x] Add tests for JSON-LD output (covered by existing SEO tests)
