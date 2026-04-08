@@ -866,3 +866,25 @@
 - [ ] Add JSON-LD structured data to all cost pages
 - [x] Ensure humanized writing throughout (no em dashes, no AI patterns)
 - [x] Ensure responsive design and proper hero padding
+
+## Treatment Explainer Pages - Apr 8, 2026
+- [x] Build reusable TreatmentPageTemplate component
+- [x] Build Treatments Hub page at /treatments
+- [x] Build Root Canal Procedure page at /treatments/root-canal-procedure
+- [x] Build Dental Implant Procedure page at /treatments/dental-implant-procedure
+- [x] Build Wisdom Teeth Removal page at /treatments/wisdom-teeth-removal
+- [x] Build Dental Crown Procedure page at /treatments/dental-crown-procedure
+- [x] Build Braces Treatment page at /treatments/braces-treatment
+- [x] Build Teeth Whitening Procedure page at /treatments/teeth-whitening-procedure
+- [x] Build Tooth Extraction Procedure page at /treatments/tooth-extraction-procedure
+- [x] Build Dental Cleaning Procedure page at /treatments/dental-cleaning-procedure
+- [x] Build Veneers Procedure page at /treatments/veneers-procedure
+- [x] Build Dentures Treatment page at /treatments/dentures-treatment
+- [x] Wire all treatment routes in App.tsx
+- [x] Add Treatments to Navigation Resources dropdown
+- [x] Add Treatments to Footer
+- [x] Update sitemap with all treatment URLs
+- [x] Update llms.txt with treatment pages
+- [x] Cross-link between cost pages and treatment pages
+- [x] Ensure humanized writing throughout
+- [x] Ensure responsive design

@@ -55,6 +55,7 @@ export default function Navigation() {
     { label: "Symptom Checker", href: "/symptom-quiz", description: "Free AI dental assessment" },
     { label: "Dental Guides", href: "/guides", description: "Step-by-step oral health guides" },
     { label: "Dental Costs", href: "/dental-costs", description: "Know what dental procedures really cost" },
+    { label: "Treatment Guides", href: "/treatments", description: "What to expect from common procedures" },
   ];
 
   const isActive = (href: string) => {

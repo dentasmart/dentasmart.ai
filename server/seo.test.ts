@@ -302,3 +302,55 @@ describe("Dental Cost Pages in Sitemap", () => {
     expect(res.text).toContain("/dental-costs/dentures-cost");
   });
 });
+
+describe("Treatment Explainer Pages SEO", () => {
+  it("should include treatments hub in sitemap", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/sitemap-custom.xml");
+
+    expect(res.text).toContain("https://dentasmart.ai/treatments</loc>");
+  });
+
+  it("should include all 10 treatment pages in sitemap", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/sitemap-custom.xml");
+
+    const treatmentPages = [
+      "root-canal-procedure",
+      "dental-implant-procedure",
+      "wisdom-teeth-removal",
+      "dental-crown-procedure",
+      "braces-treatment",
+      "teeth-whitening-procedure",
+      "tooth-extraction-procedure",
+      "dental-cleaning-procedure",
+      "veneers-procedure",
+      "dentures-treatment",
+    ];
+
+    for (const page of treatmentPages) {
+      expect(res.text).toContain(`https://dentasmart.ai/treatments/${page}`);
+    }
+  });
+
+  it("should have high priority for treatment pages", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/sitemap-custom.xml");
+
+    // Treatments hub should have 0.9 priority
+    const hubMatch = res.text.match(
+      /treatments<\/loc>[\s\S]*?<priority>([\d.]+)<\/priority>/
+    );
+    expect(hubMatch).toBeTruthy();
+    expect(parseFloat(hubMatch![1])).toBeGreaterThanOrEqual(0.9);
+  });
+
+  it("should include treatment pages in llms.txt", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/llms.txt");
+
+    expect(res.text).toContain("Treatment Guides");
+    expect(res.text).toContain("/treatments/root-canal-procedure");
+    expect(res.text).toContain("/treatments/dentures-treatment");
+  });
+});

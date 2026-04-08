@@ -95,6 +95,18 @@ const staticRoutes = [
   { path: "/dental-costs/tooth-extraction-cost", priority: "0.9", changefreq: "monthly", lastmod: today },
   { path: "/dental-costs/dental-cleaning-cost", priority: "0.9", changefreq: "monthly", lastmod: today },
   { path: "/dental-costs/dentures-cost", priority: "0.9", changefreq: "monthly", lastmod: today },
+  // Treatment Explainer Pages
+  { path: "/treatments", priority: "0.9", changefreq: "weekly", lastmod: today },
+  { path: "/treatments/root-canal-procedure", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/treatments/dental-implant-procedure", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/treatments/wisdom-teeth-removal", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/treatments/dental-crown-procedure", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/treatments/braces-treatment", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/treatments/teeth-whitening-procedure", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/treatments/tooth-extraction-procedure", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/treatments/dental-cleaning-procedure", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/treatments/veneers-procedure", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/treatments/dentures-treatment", priority: "0.85", changefreq: "monthly", lastmod: today },
 ];
 
 // Sitemap cache: regenerated on demand and invalidated when blog content changes
@@ -249,6 +261,19 @@ DentaSmart helps people understand their oral health through AI-powered photo an
 - [Tooth Extraction Cost](${SITE_URL}/dental-costs/tooth-extraction-cost)
 - [Dental Cleaning Cost](${SITE_URL}/dental-costs/dental-cleaning-cost)
 - [Dentures Cost](${SITE_URL}/dental-costs/dentures-cost)
+
+## Treatment Guides
+- [Treatment Guides Hub](${SITE_URL}/treatments)
+- [Root Canal Procedure](${SITE_URL}/treatments/root-canal-procedure)
+- [Dental Implant Procedure](${SITE_URL}/treatments/dental-implant-procedure)
+- [Wisdom Teeth Removal](${SITE_URL}/treatments/wisdom-teeth-removal)
+- [Dental Crown Procedure](${SITE_URL}/treatments/dental-crown-procedure)
+- [Braces Treatment](${SITE_URL}/treatments/braces-treatment)
+- [Teeth Whitening Procedure](${SITE_URL}/treatments/teeth-whitening-procedure)
+- [Tooth Extraction Procedure](${SITE_URL}/treatments/tooth-extraction-procedure)
+- [Dental Cleaning Procedure](${SITE_URL}/treatments/dental-cleaning-procedure)
+- [Veneers Procedure](${SITE_URL}/treatments/veneers-procedure)
+- [Dentures Treatment](${SITE_URL}/treatments/dentures-treatment)
 
 ## Comparisons
 - [DentaSmart vs ChatGPT for Dental](${SITE_URL}/compare/dentasmart-vs-chatgpt-dental)

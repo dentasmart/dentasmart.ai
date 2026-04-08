@@ -62,6 +62,19 @@ const ToothExtractionCostPage = lazy(() => import("./pages/dental-costs/ToothExt
 const DentalCleaningCostPage = lazy(() => import("./pages/dental-costs/DentalCleaningCost"));
 const DenturesCostPage = lazy(() => import("./pages/dental-costs/DenturesCost"));
 
+// Treatment Explainer Pages
+const TreatmentsHub = lazy(() => import("./pages/treatments/TreatmentsHub"));
+const RootCanalProcedure = lazy(() => import("./pages/treatments/RootCanalProcedure"));
+const DentalImplantProcedure = lazy(() => import("./pages/treatments/DentalImplantProcedure"));
+const WisdomTeethRemoval = lazy(() => import("./pages/treatments/WisdomTeethRemoval"));
+const DentalCrownProcedure = lazy(() => import("./pages/treatments/DentalCrownProcedure"));
+const BracesTreatment = lazy(() => import("./pages/treatments/BracesTreatment"));
+const TeethWhiteningProcedure = lazy(() => import("./pages/treatments/TeethWhiteningProcedure"));
+const ToothExtractionProcedure = lazy(() => import("./pages/treatments/ToothExtractionProcedure"));
+const DentalCleaningProcedure = lazy(() => import("./pages/treatments/DentalCleaningProcedure"));
+const VeneersProcedure = lazy(() => import("./pages/treatments/VeneersProcedure"));
+const DenturesTreatment = lazy(() => import("./pages/treatments/DenturesTreatment"));
+
 function PageLoader() {
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -279,6 +292,19 @@ function Router() {
         <Route path="/dental-costs/tooth-extraction-cost" component={ToothExtractionCostPage} />
         <Route path="/dental-costs/dental-cleaning-cost" component={DentalCleaningCostPage} />
         <Route path="/dental-costs/dentures-cost" component={DenturesCostPage} />
+
+        {/* ===== TREATMENT EXPLAINER PAGES ===== */}
+        <Route path="/treatments" component={TreatmentsHub} />
+        <Route path="/treatments/root-canal-procedure" component={RootCanalProcedure} />
+        <Route path="/treatments/dental-implant-procedure" component={DentalImplantProcedure} />
+        <Route path="/treatments/wisdom-teeth-removal" component={WisdomTeethRemoval} />
+        <Route path="/treatments/dental-crown-procedure" component={DentalCrownProcedure} />
+        <Route path="/treatments/braces-treatment" component={BracesTreatment} />
+        <Route path="/treatments/teeth-whitening-procedure" component={TeethWhiteningProcedure} />
+        <Route path="/treatments/tooth-extraction-procedure" component={ToothExtractionProcedure} />
+        <Route path="/treatments/dental-cleaning-procedure" component={DentalCleaningProcedure} />
+        <Route path="/treatments/veneers-procedure" component={VeneersProcedure} />
+        <Route path="/treatments/dentures-treatment" component={DenturesTreatment} />
 
         {/* ===== DYNAMIC CATCH-ALL ROUTES (for new content not yet in explicit list) ===== */}
         <Route path="/oral-health-hub/:id" component={Article} />

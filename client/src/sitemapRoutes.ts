@@ -73,6 +73,19 @@ export const DENTAL_COST_SLUGS = [
   "dentures-cost",
 ] as const;
 
+export const TREATMENT_SLUGS = [
+  "root-canal-procedure",
+  "dental-implant-procedure",
+  "wisdom-teeth-removal",
+  "dental-crown-procedure",
+  "braces-treatment",
+  "teeth-whitening-procedure",
+  "tooth-extraction-procedure",
+  "dental-cleaning-procedure",
+  "veneers-procedure",
+  "dentures-treatment",
+] as const;
+
 export const BLOG_POST_SLUGS = [
   "dental-emergency-what-to-do",
   "pregnancy-dental-health",
