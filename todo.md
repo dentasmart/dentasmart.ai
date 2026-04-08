@@ -915,3 +915,12 @@
 - [x] Cross-link comparison pages to cost and treatment pages
 - [x] Ensure humanized writing throughout
 - [x] Ensure responsive design
+
+## Navigation Architecture Redesign - Apr 8, 2026
+- [x] Remove FAQs from top menu bar
+- [x] Redesign Resources dropdown into scalable mega-menu with grouped categories
+- [x] Plan navigation structure for Priority 4-6 future hubs
+- [x] Update desktop navigation with mega-menu
+- [x] Update mobile navigation with grouped accordion structure
+- [x] Ensure responsive design across all breakpoints
+- [x] Verify all links work correctly
