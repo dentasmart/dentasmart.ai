@@ -475,3 +475,42 @@ describe("Dental Emergencies Pages SEO", () => {
     expect(res.text).toContain("/dental-emergencies/dental-abscess");
   });
 });
+
+describe("Lifestyle Pages SEO", () => {
+  it("should include all 5 lifestyle pages in sitemap", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/sitemap-custom.xml");
+
+    const lifestyleSlugs = [
+      "smoking-and-oral-health",
+      "diabetes-and-dental-care",
+      "diet-and-teeth",
+      "sports-mouthguards",
+      "oral-piercing-risks",
+    ];
+
+    for (const slug of lifestyleSlugs) {
+      expect(res.text).toContain(`/lifestyle/${slug}`);
+    }
+  });
+
+  it("should have lifestyle hub with priority >= 0.9", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/sitemap-custom.xml");
+
+    const hubMatch = res.text.match(
+      /\/lifestyle<\/loc>[\s\S]*?<priority>([\d.]+)<\/priority>/
+    );
+    expect(hubMatch).toBeTruthy();
+    expect(parseFloat(hubMatch![1])).toBeGreaterThanOrEqual(0.9);
+  });
+
+  it("should include lifestyle pages in llms.txt", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/llms.txt");
+
+    expect(res.text).toContain("Lifestyle & Oral Health");
+    expect(res.text).toContain("/lifestyle/smoking-and-oral-health");
+    expect(res.text).toContain("/lifestyle/oral-piercing-risks");
+  });
+});

@@ -128,6 +128,13 @@ const staticRoutes = [
   { path: "/dental-emergencies/broken-tooth", priority: "0.85", changefreq: "monthly", lastmod: today },
   { path: "/dental-emergencies/severe-toothache", priority: "0.85", changefreq: "monthly", lastmod: today },
   { path: "/dental-emergencies/dental-abscess", priority: "0.85", changefreq: "monthly", lastmod: today },
+  // Lifestyle pages
+  { path: "/lifestyle", priority: "0.9", changefreq: "monthly", lastmod: today },
+  { path: "/lifestyle/smoking-and-oral-health", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/lifestyle/diabetes-and-dental-care", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/lifestyle/diet-and-teeth", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/lifestyle/sports-mouthguards", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/lifestyle/oral-piercing-risks", priority: "0.85", changefreq: "monthly", lastmod: today },
 ];
 
 // Sitemap cache: regenerated on demand and invalidated when blog content changes
@@ -319,6 +326,14 @@ DentaSmart helps people understand their oral health through AI-powered photo an
 - [Broken Tooth](${SITE_URL}/dental-emergencies/broken-tooth)
 - [Severe Toothache](${SITE_URL}/dental-emergencies/severe-toothache)
 - [Dental Abscess](${SITE_URL}/dental-emergencies/dental-abscess)
+
+## Lifestyle & Oral Health
+- [Lifestyle Hub](${SITE_URL}/lifestyle)
+- [Smoking & Oral Health](${SITE_URL}/lifestyle/smoking-and-oral-health)
+- [Diabetes & Dental Care](${SITE_URL}/lifestyle/diabetes-and-dental-care)
+- [Diet & Your Teeth](${SITE_URL}/lifestyle/diet-and-teeth)
+- [Sports Mouthguards](${SITE_URL}/lifestyle/sports-mouthguards)
+- [Oral Piercing Risks](${SITE_URL}/lifestyle/oral-piercing-risks)
 
 ## Product Comparisons
 - [DentaSmart vs ChatGPT for Dental](${SITE_URL}/compare/dentasmart-vs-chatgpt-dental)

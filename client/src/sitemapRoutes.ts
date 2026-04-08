@@ -110,6 +110,14 @@ export const EMERGENCY_SLUGS = [
   "dental-abscess",
 ] as const;
 
+export const LIFESTYLE_SLUGS = [
+  "smoking-and-oral-health",
+  "diabetes-and-dental-care",
+  "diet-and-teeth",
+  "sports-mouthguards",
+  "oral-piercing-risks",
+] as const;
+
 export const BLOG_POST_SLUGS = [
   "dental-emergency-what-to-do",
   "pregnancy-dental-health",

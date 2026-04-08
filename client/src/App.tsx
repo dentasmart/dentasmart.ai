@@ -86,6 +86,14 @@ const BrokenTooth = lazy(() => import("./pages/dental-emergencies/BrokenTooth"))
 const SevereToothache = lazy(() => import("./pages/dental-emergencies/SevereToothache"));
 const DentalAbscess = lazy(() => import("./pages/dental-emergencies/DentalAbscess"));
 
+// Lifestyle Pages
+const LifestyleHub = lazy(() => import("./pages/lifestyle/LifestyleHub"));
+const SmokingAndOralHealth = lazy(() => import("./pages/lifestyle/SmokingAndOralHealth"));
+const DiabetesAndDentalCare = lazy(() => import("./pages/lifestyle/DiabetesAndDentalCare"));
+const DietAndTeeth = lazy(() => import("./pages/lifestyle/DietAndTeeth"));
+const SportsMouthguards = lazy(() => import("./pages/lifestyle/SportsMouthguards"));
+const OralPiercingRisks = lazy(() => import("./pages/lifestyle/OralPiercingRisks"));
+
 // Treatment Explainer Pages
 const TreatmentsHub = lazy(() => import("./pages/treatments/TreatmentsHub"));
 const RootCanalProcedure = lazy(() => import("./pages/treatments/RootCanalProcedure"));
@@ -345,6 +353,14 @@ function Router() {
         <Route path="/dental-emergencies/broken-tooth" component={BrokenTooth} />
         <Route path="/dental-emergencies/severe-toothache" component={SevereToothache} />
         <Route path="/dental-emergencies/dental-abscess" component={DentalAbscess} />
+
+        {/* ===== LIFESTYLE PAGES ===== */}
+        <Route path="/lifestyle" component={LifestyleHub} />
+        <Route path="/lifestyle/smoking-and-oral-health" component={SmokingAndOralHealth} />
+        <Route path="/lifestyle/diabetes-and-dental-care" component={DiabetesAndDentalCare} />
+        <Route path="/lifestyle/diet-and-teeth" component={DietAndTeeth} />
+        <Route path="/lifestyle/sports-mouthguards" component={SportsMouthguards} />
+        <Route path="/lifestyle/oral-piercing-risks" component={OralPiercingRisks} />
 
         {/* ===== COMPARISON PAGES ===== */}
         <Route path="/comparisons" component={ComparisonsHub} />

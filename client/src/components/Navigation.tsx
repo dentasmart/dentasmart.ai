@@ -37,6 +37,7 @@ const megaMenuCategories = [
     bgColor: "bg-sky-50",
     items: [
       { label: "Prevention Hub", href: "/oral-health-hub/prevention", description: "Protect your teeth daily" },
+      { label: "Lifestyle & Oral Health", href: "/lifestyle", description: "How daily habits affect your teeth" },
       { label: "Dental Guides", href: "/guides", description: "Step-by-step oral health guides" },
       { label: "Blog", href: "/oral-health-hub", description: "Expert dental health articles" },
     ],

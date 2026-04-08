@@ -952,3 +952,17 @@
 - [x] Add Dental Emergencies to Footer
 - [x] Update sitemap with all dental-emergencies URLs
 - [x] Update llms.txt with dental-emergencies pages
+
+## Priority 6: Lifestyle Content - Apr 8, 2026
+- [x] Build LifestyleTemplate component
+- [x] Build Lifestyle Hub at /lifestyle
+- [x] Build Smoking & Oral Health page at /lifestyle/smoking-and-oral-health
+- [x] Build Diabetes & Dental Care page at /lifestyle/diabetes-and-dental-care
+- [x] Build Diet & Teeth page at /lifestyle/diet-and-teeth
+- [x] Build Sports Mouthguards page at /lifestyle/sports-mouthguards
+- [x] Build Oral Piercing Risks page at /lifestyle/oral-piercing-risks
+- [x] Wire all lifestyle routes in App.tsx
+- [x] Add Lifestyle to mega-menu navigation
+- [x] Add Lifestyle to Footer
+- [x] Update sitemap with all lifestyle URLs
+- [x] Update llms.txt with lifestyle pages
