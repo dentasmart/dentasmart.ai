@@ -494,6 +494,16 @@ export default function SymptomsHub() {
                 Conditions Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
+            <Link href="/dental-costs">
+              <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
+                Cost Guide <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
+            <Link href="/treatments">
+              <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
+                Treatment Guide <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
             <Link href="/oral-health-hub/affordability">
               <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Affordability Guide <ArrowRight className="w-3 h-3" />

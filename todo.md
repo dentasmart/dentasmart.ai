@@ -888,3 +888,30 @@
 - [x] Cross-link between cost pages and treatment pages
 - [x] Ensure humanized writing throughout
 - [x] Ensure responsive design
+
+## Cross-Linking Hub Pages - Apr 8, 2026
+- [x] Add treatment and cost page links to Conditions Guide hub
+- [x] Add treatment and cost page links to Affordability Guide hub
+- [x] Add treatment and cost page links to Symptoms Guide hub
+- [x] Add treatment and cost page links to Prevention Hub
+- [x] Add treatment and cost page links to Second Opinion Hub
+- [x] Make procedure names in Affordability Hub cost table link to detailed cost pages
+- [x] Treatment pages already cross-link to cost pages (built into template)
+- [x] Cost pages already cross-link to treatment pages (built into template)
+
+## Priority 3: Comparison/Decision Pages - Apr 8, 2026
+- [x] Build reusable ComparisonPageTemplate component
+- [x] Build Comparisons Hub page at /comparisons
+- [x] Build Braces vs Invisalign page at /comparisons/braces-vs-invisalign
+- [x] Build Dental Implants vs Dentures page at /comparisons/dental-implants-vs-dentures
+- [x] Build Crown vs Veneer page at /comparisons/crown-vs-veneer
+- [x] Build Electric vs Manual Toothbrush page at /comparisons/electric-vs-manual-toothbrush
+- [x] Build Fluoride vs Fluoride-Free Toothpaste page at /comparisons/fluoride-vs-fluoride-free-toothpaste
+- [x] Wire all comparison routes in App.tsx
+- [x] Add Comparisons to Navigation Resources dropdown
+- [x] Add Comparisons to Footer
+- [x] Update sitemap with all comparison URLs
+- [x] Update llms.txt with comparison pages
+- [x] Cross-link comparison pages to cost and treatment pages
+- [x] Ensure humanized writing throughout
+- [x] Ensure responsive design

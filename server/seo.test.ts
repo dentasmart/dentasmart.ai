@@ -354,3 +354,46 @@ describe("Treatment Explainer Pages SEO", () => {
     expect(res.text).toContain("/treatments/dentures-treatment");
   });
 });
+
+describe("Comparison Pages SEO", () => {
+  it("should include all comparison pages in sitemap", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/sitemap-custom.xml");
+
+    expect(res.status).toBe(200);
+    expect(res.text).toContain("https://dentasmart.ai/comparisons");
+
+    const comparisonPages = [
+      "braces-vs-invisalign",
+      "dental-implants-vs-dentures",
+      "crown-vs-veneer",
+      "electric-vs-manual-toothbrush",
+      "fluoride-vs-fluoride-free-toothpaste",
+    ];
+
+    for (const page of comparisonPages) {
+      expect(res.text).toContain(`https://dentasmart.ai/comparisons/${page}`);
+    }
+  });
+
+  it("should have high priority for comparison pages", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/sitemap-custom.xml");
+
+    // Comparisons hub should have 0.9 priority
+    const hubMatch = res.text.match(
+      /comparisons<\/loc>[\s\S]*?<priority>([\d.]+)<\/priority>/
+    );
+    expect(hubMatch).toBeTruthy();
+    expect(parseFloat(hubMatch![1])).toBeGreaterThanOrEqual(0.9);
+  });
+
+  it("should include comparison pages in llms.txt", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/llms.txt");
+
+    expect(res.text).toContain("Dental Comparison Guides");
+    expect(res.text).toContain("/comparisons/braces-vs-invisalign");
+    expect(res.text).toContain("/comparisons/fluoride-vs-fluoride-free-toothpaste");
+  });
+});

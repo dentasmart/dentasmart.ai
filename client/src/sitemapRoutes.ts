@@ -73,6 +73,14 @@ export const DENTAL_COST_SLUGS = [
   "dentures-cost",
 ] as const;
 
+export const COMPARISON_SLUGS = [
+  "braces-vs-invisalign",
+  "dental-implants-vs-dentures",
+  "crown-vs-veneer",
+  "electric-vs-manual-toothbrush",
+  "fluoride-vs-fluoride-free-toothpaste",
+] as const;
+
 export const TREATMENT_SLUGS = [
   "root-canal-procedure",
   "dental-implant-procedure",

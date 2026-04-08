@@ -62,6 +62,14 @@ const ToothExtractionCostPage = lazy(() => import("./pages/dental-costs/ToothExt
 const DentalCleaningCostPage = lazy(() => import("./pages/dental-costs/DentalCleaningCost"));
 const DenturesCostPage = lazy(() => import("./pages/dental-costs/DenturesCost"));
 
+// Comparison Pages
+const ComparisonsHub = lazy(() => import("./pages/comparisons/ComparisonsHub"));
+const BracesVsInvisalign = lazy(() => import("./pages/comparisons/BracesVsInvisalign"));
+const DentalImplantsVsDentures = lazy(() => import("./pages/comparisons/DentalImplantsVsDentures"));
+const CrownVsVeneer = lazy(() => import("./pages/comparisons/CrownVsVeneer"));
+const ElectricVsManualToothbrush = lazy(() => import("./pages/comparisons/ElectricVsManualToothbrush"));
+const FluorideVsFluorideFree = lazy(() => import("./pages/comparisons/FluorideVsFluorideFree"));
+
 // Treatment Explainer Pages
 const TreatmentsHub = lazy(() => import("./pages/treatments/TreatmentsHub"));
 const RootCanalProcedure = lazy(() => import("./pages/treatments/RootCanalProcedure"));
@@ -305,6 +313,14 @@ function Router() {
         <Route path="/treatments/dental-cleaning-procedure" component={DentalCleaningProcedure} />
         <Route path="/treatments/veneers-procedure" component={VeneersProcedure} />
         <Route path="/treatments/dentures-treatment" component={DenturesTreatment} />
+
+        {/* ===== COMPARISON PAGES ===== */}
+        <Route path="/comparisons" component={ComparisonsHub} />
+        <Route path="/comparisons/braces-vs-invisalign" component={BracesVsInvisalign} />
+        <Route path="/comparisons/dental-implants-vs-dentures" component={DentalImplantsVsDentures} />
+        <Route path="/comparisons/crown-vs-veneer" component={CrownVsVeneer} />
+        <Route path="/comparisons/electric-vs-manual-toothbrush" component={ElectricVsManualToothbrush} />
+        <Route path="/comparisons/fluoride-vs-fluoride-free-toothpaste" component={FluorideVsFluorideFree} />
 
         {/* ===== DYNAMIC CATCH-ALL ROUTES (for new content not yet in explicit list) ===== */}
         <Route path="/oral-health-hub/:id" component={Article} />

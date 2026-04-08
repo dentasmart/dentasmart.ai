@@ -56,6 +56,7 @@ export default function Navigation() {
     { label: "Dental Guides", href: "/guides", description: "Step-by-step oral health guides" },
     { label: "Dental Costs", href: "/dental-costs", description: "Know what dental procedures really cost" },
     { label: "Treatment Guides", href: "/treatments", description: "What to expect from common procedures" },
+    { label: "Comparison Guides", href: "/comparisons", description: "Side-by-side dental decision guides" },
   ];
 
   const isActive = (href: string) => {

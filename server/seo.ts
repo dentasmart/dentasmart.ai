@@ -107,6 +107,13 @@ const staticRoutes = [
   { path: "/treatments/dental-cleaning-procedure", priority: "0.85", changefreq: "monthly", lastmod: today },
   { path: "/treatments/veneers-procedure", priority: "0.85", changefreq: "monthly", lastmod: today },
   { path: "/treatments/dentures-treatment", priority: "0.85", changefreq: "monthly", lastmod: today },
+  // Comparison Pages
+  { path: "/comparisons", priority: "0.9", changefreq: "weekly", lastmod: today },
+  { path: "/comparisons/braces-vs-invisalign", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/comparisons/dental-implants-vs-dentures", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/comparisons/crown-vs-veneer", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/comparisons/electric-vs-manual-toothbrush", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/comparisons/fluoride-vs-fluoride-free-toothpaste", priority: "0.85", changefreq: "monthly", lastmod: today },
 ];
 
 // Sitemap cache: regenerated on demand and invalidated when blog content changes
@@ -275,7 +282,15 @@ DentaSmart helps people understand their oral health through AI-powered photo an
 - [Veneers Procedure](${SITE_URL}/treatments/veneers-procedure)
 - [Dentures Treatment](${SITE_URL}/treatments/dentures-treatment)
 
-## Comparisons
+## Dental Comparison Guides
+- [Comparison Guides Hub](${SITE_URL}/comparisons)
+- [Braces vs Invisalign](${SITE_URL}/comparisons/braces-vs-invisalign)
+- [Dental Implants vs Dentures](${SITE_URL}/comparisons/dental-implants-vs-dentures)
+- [Crown vs Veneer](${SITE_URL}/comparisons/crown-vs-veneer)
+- [Electric vs Manual Toothbrush](${SITE_URL}/comparisons/electric-vs-manual-toothbrush)
+- [Fluoride vs Fluoride-Free Toothpaste](${SITE_URL}/comparisons/fluoride-vs-fluoride-free-toothpaste)
+
+## Product Comparisons
 - [DentaSmart vs ChatGPT for Dental](${SITE_URL}/compare/dentasmart-vs-chatgpt-dental)
 - [DentaSmart vs Teledentistry](${SITE_URL}/compare/dentasmart-vs-teledentistry)
 - [DentaSmart vs Dental Insurance](${SITE_URL}/compare/dentasmart-vs-dental-insurance)

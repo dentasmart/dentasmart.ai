@@ -12,15 +12,15 @@ const affordabilityGuides = guidesList.filter(g => g.category === "affordability
 
 /* ─── Cost Data ─────────────────────────────────────────────── */
 const procedureCosts = [
-  { procedure: "Routine Dental Exam", withoutInsurance: "$50-$350", avgCost: "$203", withDentaSmart: "Know before you go" },
-  { procedure: "Teeth Cleaning", withoutInsurance: "$75-$200", avgCost: "$130", withDentaSmart: "Track when you're due" },
-  { procedure: "Dental X-rays", withoutInsurance: "$25-$250", avgCost: "$150", withDentaSmart: "AI analysis included" },
-  { procedure: "Cavity Filling", withoutInsurance: "$100-$1,050", avgCost: "$250", withDentaSmart: "Catch early, save more" },
-  { procedure: "Tooth Extraction", withoutInsurance: "$50-$500", avgCost: "$200", withDentaSmart: "Second opinion first" },
-  { procedure: "Root Canal", withoutInsurance: "$700-$1,500", avgCost: "$1,000", withDentaSmart: "Verify if needed" },
-  { procedure: "Dental Crown", withoutInsurance: "$800-$2,500", avgCost: "$1,200", withDentaSmart: "Compare options" },
-  { procedure: "Dental Implant", withoutInsurance: "$3,000-$6,000", avgCost: "$4,500", withDentaSmart: "Plan ahead" },
-  { procedure: "Braces", withoutInsurance: "$2,500-$7,000", avgCost: "$5,000", withDentaSmart: "Explore alternatives" },
+  { procedure: "Routine Dental Exam", withoutInsurance: "$50-$350", avgCost: "$203", withDentaSmart: "Know before you go", costLink: null, treatmentLink: null },
+  { procedure: "Teeth Cleaning", withoutInsurance: "$75-$200", avgCost: "$130", withDentaSmart: "Track when you're due", costLink: "/dental-costs/dental-cleaning-cost", treatmentLink: "/treatments/dental-cleaning-procedure" },
+  { procedure: "Dental X-rays", withoutInsurance: "$25-$250", avgCost: "$150", withDentaSmart: "AI analysis included", costLink: null, treatmentLink: null },
+  { procedure: "Cavity Filling", withoutInsurance: "$100-$1,050", avgCost: "$250", withDentaSmart: "Catch early, save more", costLink: null, treatmentLink: null },
+  { procedure: "Tooth Extraction", withoutInsurance: "$50-$500", avgCost: "$200", withDentaSmart: "Second opinion first", costLink: "/dental-costs/tooth-extraction-cost", treatmentLink: "/treatments/tooth-extraction-procedure" },
+  { procedure: "Root Canal", withoutInsurance: "$700-$1,500", avgCost: "$1,000", withDentaSmart: "Verify if needed", costLink: "/dental-costs/root-canal-cost", treatmentLink: "/treatments/root-canal-procedure" },
+  { procedure: "Dental Crown", withoutInsurance: "$800-$2,500", avgCost: "$1,200", withDentaSmart: "Compare options", costLink: "/dental-costs/dental-crown-cost", treatmentLink: "/treatments/dental-crown-procedure" },
+  { procedure: "Dental Implant", withoutInsurance: "$3,000-$6,000", avgCost: "$4,500", withDentaSmart: "Plan ahead", costLink: "/dental-costs/dental-implant-cost", treatmentLink: "/treatments/dental-implant-procedure" },
+  { procedure: "Braces", withoutInsurance: "$2,500-$7,000", avgCost: "$5,000", withDentaSmart: "Explore alternatives", costLink: "/dental-costs/braces-cost", treatmentLink: "/treatments/braces-treatment" },
 ];
 
 const savingsTips = [
@@ -318,10 +318,26 @@ export default function AffordabilityHub() {
               <tbody>
                 {procedureCosts.map((row, idx) => (
                   <tr key={idx} className={`border-t border-stone-100 ${idx % 2 === 0 ? "bg-white" : "bg-stone-50/50"}`}>
-                    <td className="py-2.5 px-3 md:py-3 md:px-4 font-medium text-black text-xs md:text-sm">{row.procedure}</td>
+                    <td className="py-2.5 px-3 md:py-3 md:px-4 font-medium text-xs md:text-sm">
+                      {row.costLink ? (
+                        <Link href={row.costLink}>
+                          <span className="text-primary hover:underline cursor-pointer">{row.procedure}</span>
+                        </Link>
+                      ) : (
+                        <span className="text-black">{row.procedure}</span>
+                      )}
+                    </td>
                     <td className="py-2.5 px-3 md:py-3 md:px-4 text-stone-700 text-xs md:text-sm">{row.withoutInsurance}</td>
                     <td className="py-2.5 px-3 md:py-3 md:px-4 text-stone-700 text-xs md:text-sm hidden md:table-cell">{row.avgCost}</td>
-                    <td className="py-2.5 px-3 md:py-3 md:px-4 text-primary text-xs md:text-sm font-medium">{row.withDentaSmart}</td>
+                    <td className="py-2.5 px-3 md:py-3 md:px-4 text-xs md:text-sm">
+                      {row.treatmentLink ? (
+                        <Link href={row.treatmentLink}>
+                          <span className="text-primary hover:underline cursor-pointer font-medium">{row.withDentaSmart}</span>
+                        </Link>
+                      ) : (
+                        <span className="text-primary font-medium">{row.withDentaSmart}</span>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -505,6 +521,16 @@ export default function AffordabilityHub() {
         <div className="container px-4 mx-auto max-w-6xl">
           <h2 className="text-lg font-medium text-black mb-3">Related Resource Hubs</h2>
           <div className="flex flex-wrap gap-2 md:gap-3">
+            <Link href="/dental-costs">
+              <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
+                Cost Guide <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
+            <Link href="/treatments">
+              <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
+                Treatment Guide <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
             <Link href="/oral-health-hub/second-opinion">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Second Opinion Hub <ArrowRight className="w-3 h-3" />
@@ -523,6 +549,16 @@ export default function AffordabilityHub() {
             <Link href="/oral-health-hub/symptoms">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Symptoms Guide <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
+            <Link href="/dental-costs">
+              <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
+                Cost Guide <ArrowRight className="w-3 h-3" />
+              </span>
+            </Link>
+            <Link href="/treatments">
+              <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
+                Treatment Guides <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
             <Link href="/symptom-quiz">
