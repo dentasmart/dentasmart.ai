@@ -15,6 +15,7 @@ const megaMenuCategories = [
     items: [
       { label: "Conditions Guide", href: "/oral-health-hub/conditions", description: "Common dental problems explained" },
       { label: "Symptoms Guide", href: "/oral-health-hub/symptoms", description: "What your symptoms mean" },
+      { label: "Life Stages", href: "/life-stages", description: "Dental care by age group" },
       { label: "Symptom Checker", href: "/symptom-quiz", description: "Free AI dental assessment" },
     ],
   },
@@ -46,6 +47,7 @@ const megaMenuCategories = [
     color: "text-amber-500",
     bgColor: "bg-amber-50",
     items: [
+      { label: "Dental Emergencies", href: "/dental-emergencies", description: "What to do right now" },
       { label: "Affordability Guide", href: "/oral-health-hub/affordability", description: "Save on dental care costs" },
       { label: "Second Opinion Hub", href: "/oral-health-hub/second-opinion", description: "Verify treatment recommendations" },
       { label: "FAQs", href: "/faqs", description: "Common questions answered" },

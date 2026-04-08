@@ -397,3 +397,81 @@ describe("Comparison Pages SEO", () => {
     expect(res.text).toContain("/comparisons/fluoride-vs-fluoride-free-toothpaste");
   });
 });
+
+describe("Life Stages Pages SEO", () => {
+  it("should include all life stage pages in sitemap", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/sitemap-custom.xml");
+
+    const lifeStagePages = [
+      "baby-teething-guide",
+      "childrens-dental-health",
+      "teen-braces-guide",
+      "pregnancy-dental-care",
+      "senior-dental-care",
+    ];
+
+    for (const page of lifeStagePages) {
+      expect(res.text).toContain(`https://dentasmart.ai/life-stages/${page}`);
+    }
+  });
+
+  it("should have high priority for life stages hub", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/sitemap-custom.xml");
+
+    const hubMatch = res.text.match(
+      /\/life-stages<\/loc>[\s\S]*?<priority>([\d.]+)<\/priority>/
+    );
+    expect(hubMatch).toBeTruthy();
+    expect(parseFloat(hubMatch![1])).toBeGreaterThanOrEqual(0.9);
+  });
+
+  it("should include life stages in llms.txt", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/llms.txt");
+
+    expect(res.text).toContain("Life Stages Dental Care");
+    expect(res.text).toContain("/life-stages/baby-teething-guide");
+    expect(res.text).toContain("/life-stages/senior-dental-care");
+  });
+});
+
+describe("Dental Emergencies Pages SEO", () => {
+  it("should include all emergency pages in sitemap", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/sitemap-custom.xml");
+
+    const emergencyPages = [
+      "knocked-out-tooth",
+      "dental-emergency-guide",
+      "broken-tooth",
+      "severe-toothache",
+      "dental-abscess",
+    ];
+
+    for (const page of emergencyPages) {
+      expect(res.text).toContain(`https://dentasmart.ai/dental-emergencies/${page}`);
+    }
+  });
+
+  it("should have high priority for emergencies hub", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/sitemap-custom.xml");
+
+    const hubMatch = res.text.match(
+      /dental-emergencies<\/loc>[\s\S]*?<priority>([\d.]+)<\/priority>/
+    );
+    expect(hubMatch).toBeTruthy();
+    expect(parseFloat(hubMatch![1])).toBeGreaterThanOrEqual(0.9);
+  });
+
+  it("should include emergencies in llms.txt", async () => {
+    const app = createTestApp();
+    const res = await request(app).get("/llms.txt");
+
+    expect(res.text).toContain("Dental Emergencies");
+    expect(res.text).toContain("/dental-emergencies/knocked-out-tooth");
+    expect(res.text).toContain("/dental-emergencies/dental-abscess");
+  });
+});

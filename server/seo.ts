@@ -114,6 +114,20 @@ const staticRoutes = [
   { path: "/comparisons/crown-vs-veneer", priority: "0.85", changefreq: "monthly", lastmod: today },
   { path: "/comparisons/electric-vs-manual-toothbrush", priority: "0.85", changefreq: "monthly", lastmod: today },
   { path: "/comparisons/fluoride-vs-fluoride-free-toothpaste", priority: "0.85", changefreq: "monthly", lastmod: today },
+  // Life Stages pages
+  { path: "/life-stages", priority: "0.9", changefreq: "monthly", lastmod: today },
+  { path: "/life-stages/baby-teething-guide", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/life-stages/childrens-dental-health", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/life-stages/teen-braces-guide", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/life-stages/pregnancy-dental-care", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/life-stages/senior-dental-care", priority: "0.85", changefreq: "monthly", lastmod: today },
+  // Dental Emergency pages
+  { path: "/dental-emergencies", priority: "0.9", changefreq: "monthly", lastmod: today },
+  { path: "/dental-emergencies/knocked-out-tooth", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/dental-emergencies/dental-emergency-guide", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/dental-emergencies/broken-tooth", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/dental-emergencies/severe-toothache", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/dental-emergencies/dental-abscess", priority: "0.85", changefreq: "monthly", lastmod: today },
 ];
 
 // Sitemap cache: regenerated on demand and invalidated when blog content changes
@@ -289,6 +303,22 @@ DentaSmart helps people understand their oral health through AI-powered photo an
 - [Crown vs Veneer](${SITE_URL}/comparisons/crown-vs-veneer)
 - [Electric vs Manual Toothbrush](${SITE_URL}/comparisons/electric-vs-manual-toothbrush)
 - [Fluoride vs Fluoride-Free Toothpaste](${SITE_URL}/comparisons/fluoride-vs-fluoride-free-toothpaste)
+
+## Life Stages Dental Care
+- [Life Stages Hub](${SITE_URL}/life-stages)
+- [Baby Teething Guide](${SITE_URL}/life-stages/baby-teething-guide)
+- [Children's Dental Health](${SITE_URL}/life-stages/childrens-dental-health)
+- [Teen Braces Guide](${SITE_URL}/life-stages/teen-braces-guide)
+- [Pregnancy Dental Care](${SITE_URL}/life-stages/pregnancy-dental-care)
+- [Senior Dental Care](${SITE_URL}/life-stages/senior-dental-care)
+
+## Dental Emergencies
+- [Dental Emergencies Hub](${SITE_URL}/dental-emergencies)
+- [Knocked Out Tooth](${SITE_URL}/dental-emergencies/knocked-out-tooth)
+- [Dental Emergency Guide](${SITE_URL}/dental-emergencies/dental-emergency-guide)
+- [Broken Tooth](${SITE_URL}/dental-emergencies/broken-tooth)
+- [Severe Toothache](${SITE_URL}/dental-emergencies/severe-toothache)
+- [Dental Abscess](${SITE_URL}/dental-emergencies/dental-abscess)
 
 ## Product Comparisons
 - [DentaSmart vs ChatGPT for Dental](${SITE_URL}/compare/dentasmart-vs-chatgpt-dental)

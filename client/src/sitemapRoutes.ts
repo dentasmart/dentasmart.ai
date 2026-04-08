@@ -94,6 +94,22 @@ export const TREATMENT_SLUGS = [
   "dentures-treatment",
 ] as const;
 
+export const LIFE_STAGE_SLUGS = [
+  "baby-teething-guide",
+  "childrens-dental-health",
+  "teen-braces-guide",
+  "pregnancy-dental-care",
+  "senior-dental-care",
+] as const;
+
+export const EMERGENCY_SLUGS = [
+  "knocked-out-tooth",
+  "dental-emergency-guide",
+  "broken-tooth",
+  "severe-toothache",
+  "dental-abscess",
+] as const;
+
 export const BLOG_POST_SLUGS = [
   "dental-emergency-what-to-do",
   "pregnancy-dental-health",

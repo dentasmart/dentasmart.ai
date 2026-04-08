@@ -70,6 +70,22 @@ const CrownVsVeneer = lazy(() => import("./pages/comparisons/CrownVsVeneer"));
 const ElectricVsManualToothbrush = lazy(() => import("./pages/comparisons/ElectricVsManualToothbrush"));
 const FluorideVsFluorideFree = lazy(() => import("./pages/comparisons/FluorideVsFluorideFree"));
 
+// Life Stages Pages
+const LifeStagesHub = lazy(() => import("./pages/life-stages/LifeStagesHub"));
+const BabyTeethingGuide = lazy(() => import("./pages/life-stages/BabyTeethingGuide"));
+const ChildrensDentalHealth = lazy(() => import("./pages/life-stages/ChildrensDentalHealth"));
+const TeenBracesGuide = lazy(() => import("./pages/life-stages/TeenBracesGuide"));
+const PregnancyDentalCare = lazy(() => import("./pages/life-stages/PregnancyDentalCare"));
+const SeniorDentalCare = lazy(() => import("./pages/life-stages/SeniorDentalCare"));
+
+// Dental Emergency Pages
+const DentalEmergenciesHub = lazy(() => import("./pages/dental-emergencies/DentalEmergenciesHub"));
+const KnockedOutTooth = lazy(() => import("./pages/dental-emergencies/KnockedOutTooth"));
+const DentalEmergencyGuide = lazy(() => import("./pages/dental-emergencies/DentalEmergencyGuide"));
+const BrokenTooth = lazy(() => import("./pages/dental-emergencies/BrokenTooth"));
+const SevereToothache = lazy(() => import("./pages/dental-emergencies/SevereToothache"));
+const DentalAbscess = lazy(() => import("./pages/dental-emergencies/DentalAbscess"));
+
 // Treatment Explainer Pages
 const TreatmentsHub = lazy(() => import("./pages/treatments/TreatmentsHub"));
 const RootCanalProcedure = lazy(() => import("./pages/treatments/RootCanalProcedure"));
@@ -313,6 +329,22 @@ function Router() {
         <Route path="/treatments/dental-cleaning-procedure" component={DentalCleaningProcedure} />
         <Route path="/treatments/veneers-procedure" component={VeneersProcedure} />
         <Route path="/treatments/dentures-treatment" component={DenturesTreatment} />
+
+        {/* ===== LIFE STAGES PAGES ===== */}
+        <Route path="/life-stages" component={LifeStagesHub} />
+        <Route path="/life-stages/baby-teething-guide" component={BabyTeethingGuide} />
+        <Route path="/life-stages/childrens-dental-health" component={ChildrensDentalHealth} />
+        <Route path="/life-stages/teen-braces-guide" component={TeenBracesGuide} />
+        <Route path="/life-stages/pregnancy-dental-care" component={PregnancyDentalCare} />
+        <Route path="/life-stages/senior-dental-care" component={SeniorDentalCare} />
+
+        {/* ===== DENTAL EMERGENCY PAGES ===== */}
+        <Route path="/dental-emergencies" component={DentalEmergenciesHub} />
+        <Route path="/dental-emergencies/knocked-out-tooth" component={KnockedOutTooth} />
+        <Route path="/dental-emergencies/dental-emergency-guide" component={DentalEmergencyGuide} />
+        <Route path="/dental-emergencies/broken-tooth" component={BrokenTooth} />
+        <Route path="/dental-emergencies/severe-toothache" component={SevereToothache} />
+        <Route path="/dental-emergencies/dental-abscess" component={DentalAbscess} />
 
         {/* ===== COMPARISON PAGES ===== */}
         <Route path="/comparisons" component={ComparisonsHub} />
