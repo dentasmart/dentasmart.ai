@@ -1009,3 +1009,11 @@
 - [ ] Connect Google Search Console (user must do)
 - [ ] Create/verify Google Business Profile (user must do)
 - [ ] Begin link building campaign (user must do - will provide guidance)
+
+## Features Page & Second Review Rename - Apr 9, 2026
+- [x] Remove Medical Advisory Board section from Features page
+- [x] Replace all "Second Review" with "Second Opinion" in content text
+- [x] Replace all "Second Review" references in URLs and routes (no URL/route slugs used "second-review")
+- [x] Replace all "Second Review" in navigation links and menus
+- [x] Replace all "second-review" slugs with "second-opinion" in data files
+- [x] Verify no broken links after rename (grep confirms zero remaining references)

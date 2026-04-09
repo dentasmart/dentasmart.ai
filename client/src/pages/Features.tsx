@@ -4,7 +4,6 @@ import SEO from "@/components/SEO";
 import { DownloadSection } from "@/components/DownloadSection";
 import { BenefitsCarousel } from "@/components/BenefitsCarousel";
 import { Lock, Check } from "lucide-react";
-import { MedicalAdvisoryBoard } from "@/components/MedicalAdvisoryBoard";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
@@ -209,8 +208,6 @@ export default function Features() {
         <BenefitsCarousel />
       </section>
 
-      {/* Medical Advisory Board */}
-      <MedicalAdvisoryBoard />
 
       {/* Security Section - Clean & Trustworthy */}
       <section className="py-12 bg-white">

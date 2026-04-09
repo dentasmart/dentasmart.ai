@@ -190,7 +190,7 @@ export const dentistArticles = [
   },
   {
     id: "second-opinion-difficulty",
-    title: "Why Is Getting a Second Review So Hard?",
+    title: "Why Is Getting a Second Opinion So Hard?",
     category: "Dentist Problems",
     readTime: "3 min read",
     metaDescription: "Need a second opinion on dental work? Learn why it's often awkward and expensive, and find an easier way to get clarity.",
@@ -203,7 +203,7 @@ export const dentistArticles = [
       content: "Without a second view, doubt remains. You might go ahead with a major procedure while still feeling unsure. Or, you might delay necessary treatment because you don't trust the diagnosis. This paralysis is dangerous for your health. You shouldn't have to choose between social awkwardness and your peace of mind."
     },
     solution: {
-      heading: "The Simple Truth: The System Isn't Built for Second Reviews",
+      heading: "The Simple Truth: The System Isn't Built for Second Opinions",
       content: "Traditional dentistry is built on the relationship between one doctor and one patient. The system doesn't make it easy to share records or get a quick 'gut check' from another professional. It's designed to keep you in one chair. But in every other area of life, from car repairs to home renovations, we get multiple quotes. Your health deserves the same scrutiny."
     },
     change: {

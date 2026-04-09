@@ -25,7 +25,7 @@ const benefits = [
     tag: "Second Opinion",
     title: "Second Opinion Clarity Before You Say Yes",
     desc: "Sanity check before you commit.",
-    detail: "Not sure about a diagnosis? Get an unbiased AI second review of your X-rays and treatment plans to move forward with confidence.",
+    detail: "Not sure about a diagnosis? Get an unbiased AI second opinion on your X-rays and treatment plans to move forward with confidence.",
     image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/qxBXHmKeIMzYHljf.jpg"
   },
   {
