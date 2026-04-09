@@ -152,14 +152,13 @@ export function BenefitsCarousel() {
             >
               {/* Background Image */}
               <div className="absolute inset-0 w-full h-full">
-                <img 
-                  src={item.image} 
-                  alt={item.title}
-                  className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${
-                    isExpanded ? 'blur-sm scale-105' : ''
-                  }`}
-                  loading="lazy"
-                />
+                <img loading="lazy" src={item.image} 
+ alt={item.title}
+ className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${
+ isExpanded ? 'blur-sm scale-105' : ''
+ }`}
+ 
+ />
                 <div className={`absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/80 transition-opacity duration-500 ${
                   isExpanded ? 'opacity-90 bg-black/40' : 'opacity-60 group-hover:opacity-70'
                 }`} />

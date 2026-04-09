@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import ExternalSources from "@/components/ExternalSources";
 import SEO from "@/components/SEO";
 import MidContentCTA from "@/components/MidContentCTA";
 import { Button } from "@/components/ui/button";
@@ -379,6 +380,7 @@ export default function EmergencyPageTemplate({ data }: { data: EmergencyPageDat
               </details>
             ))}
           </div>
+          <ExternalSources category="emergency" />
         </div>
       </section>
 

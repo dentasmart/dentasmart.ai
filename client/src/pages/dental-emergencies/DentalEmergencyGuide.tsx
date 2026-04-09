@@ -6,8 +6,8 @@ const data: EmergencyPageData = {
   heroTitle: 'Is It a Real Dental Emergency?',
   heroHighlight: 'How to Know When to Act Fast',
   heroDescription: "Figuring out if you need immediate dental care can be stressful. This guide helps you decide between the ER and a dentist, and tells you what to do while you wait for help.",
-  metaTitle: 'Dental Emergency Guide: When to See a Dentist or Go to the ER',
-  metaDescription: 'Learn how to identify a true dental emergency, what steps to take immediately, and whether to visit a dentist or an emergency room. Your guide to fast, effective care.',
+  metaTitle: 'Dental Emergency: Dentist or ER? | DentaSmart',
+  metaDescription: 'Learn how to identify a true dental emergency, what steps to take immediately, and whether to visit a dentist or the ER. Your guide to fast dental care.',
   keywords: 'dental emergency, when to go to er for tooth pain, emergency dentist, urgent dental care, dental emergency guide',
   urgencyBanner: 'In pain? Unsure what to do? Call us for immediate guidance.',
 

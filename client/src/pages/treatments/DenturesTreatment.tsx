@@ -7,7 +7,7 @@ const data: TreatmentPageData = {
   heroHighlight: "Dentures",
   heroDescription: "Dentures are a custom-made solution to replace missing teeth. They help you eat, speak, and smile with confidence again. Let's walk through how they work.",
   metaTitle: "Dentures Procedure: What to Expect | DentaSmart",
-  metaDescription: "Learn about the dentures process, from consultation to fitting. Understand the timeline, risks, recovery, and what to expect. Your guide to getting new dentures.",
+  metaDescription: "Getting dentures? Learn about the full process from fitting to adjustment, types of dentures available, how to care for them, and tips for a comfortable fit.",
   keywords: "dentures, false teeth, getting dentures, denture process, partial dentures, full dentures",
   statsStrip: [
     { value: "90%", label: "of people with no teeth who get dentures report an improved quality of life." },

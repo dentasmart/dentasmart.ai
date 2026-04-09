@@ -7,7 +7,7 @@ const data: ComparisonPageData = {
   heroTitle: "Braces vs. Invisalign:",
   heroHighlight: "Which is Right for Your Smile?",
   heroDescription: "Deciding between traditional braces and modern clear aligners is a big step. We break down the costs, treatment time, and lifestyle factors to help you choose confidently.",
-  metaTitle: "Braces vs. Invisalign: Cost, Treatment, & Pros and Cons (2026)",
+  metaTitle: "Braces vs Invisalign: Cost & Results | DentaSmart",
   metaDescription: "An expert comparison of braces and Invisalign. See how they stack up on cost, treatment time, effectiveness, and lifestyle impact to find your best fit.",
   keywords: "braces vs invisalign, braces vs invisalign cost, invisalign vs braces for adults, clear aligners vs braces",
   statsStrip: [

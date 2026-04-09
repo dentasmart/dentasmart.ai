@@ -31,7 +31,7 @@ export default function InstantScan() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
-        title="Instant AI Dental Scan - Get Results in 60 Seconds"
+        title="Free AI Dental Scan in 60 Seconds"
         description="Upload a photo of your teeth or dental X-ray and get instant AI-powered analysis. Detect cavities, gum disease, and more in under 60 seconds. Free first scan."
         canonical="https://dentasmart.ai/instant-scan"
         keywords="instant dental scan, AI dental analysis, teeth photo scan, dental X-ray analysis, oral health check online"

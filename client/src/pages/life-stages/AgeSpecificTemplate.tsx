@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import ExternalSources from "@/components/ExternalSources";
 import SEO from "@/components/SEO";
 import MidContentCTA from "@/components/MidContentCTA";
 import { Button } from "@/components/ui/button";
@@ -338,6 +339,7 @@ export default function AgeSpecificTemplate({ data }: { data: AgeSpecificPageDat
               </details>
             ))}
           </div>
+          <ExternalSources category="life-stage" />
         </div>
       </section>
 

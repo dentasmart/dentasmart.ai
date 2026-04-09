@@ -40,12 +40,11 @@ export function DownloadSection() {
               </Button>
             </a>
             <div className="w-32 h-32 bg-white p-2 rounded-xl shadow-sm border border-stone-100">
-              <img 
-                src="/images/qr-code.png" 
-                alt="Download on iOS QR Code" 
-                className="w-full h-full object-contain"
-                loading="lazy"
-              />
+              <img loading="lazy" src="/images/qr-code.png" 
+ alt="Download on iOS QR Code" 
+ className="w-full h-full object-contain"
+ 
+ />
             </div>
           </div>
 

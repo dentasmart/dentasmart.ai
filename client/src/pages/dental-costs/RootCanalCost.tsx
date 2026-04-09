@@ -7,7 +7,7 @@ const data: CostPageData = {
   heroHighlight: "Root Canal",
   heroDescription: "That throbbing toothache might be more than just a cavity. A root canal can save your natural tooth from extraction when the inner pulp gets infected. It sounds scary, but it's a common procedure to get you out of pain and back to smiling.",
   metaTitle: "Root Canal Cost | DentaSmart",
-  metaDescription: "How much does a root canal cost in 2026? Expect to pay between $700 and $1,500. Learn about the factors that affect the price and how to save.",
+  metaDescription: "How much does a root canal cost in 2026? Expect to pay $700 to $1,500 per tooth. Learn what affects the price, insurance coverage, and how to save money.",
   keywords: "root canal cost, root canal price, dental insurance, endodontist cost, tooth infection treatment",
   statsStrip: [
     { value: "95%", label: "Success rate of root canal treatments" },

@@ -95,7 +95,7 @@ export default function LifestyleHub() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
-        title="Lifestyle & Oral Health | How Daily Habits Affect Your Teeth"
+        title="Lifestyle & Oral Health Guide"
         description="Learn how smoking, diabetes, diet, sports, and piercings affect your oral health. Practical tips to protect your teeth based on your lifestyle."
         canonical={canonicalUrl}
         keywords="lifestyle oral health, smoking teeth, diabetes gum disease, diet dental health, sports mouthguard, oral piercing risks"

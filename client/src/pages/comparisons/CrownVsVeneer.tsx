@@ -8,7 +8,7 @@ const data: ComparisonPageData = {
   heroHighlight: "Which is Right for Your Smile?",
   heroDescription: "Crowns and veneers both restore teeth, but they work very differently. We will help you understand the key differences in cost, durability, and purpose to make a confident choice.",
   metaTitle: "Crown vs Veneer: Cost, Durability & Which is Better for You",
-  metaDescription: "Confused about dental crowns vs veneers? See a side-by-side comparison of cost, durability, tooth preparation, and when each is the right choice for your dental needs.",
+  metaDescription: "Dental crown vs veneer: which one do you actually need? Compare costs, durability, recovery time, and learn when your dentist recommends each option for you.",
   keywords: "crown vs veneer, dental crown vs veneer, crown vs veneer cost, when to get a crown vs veneer, veneer vs crown",
   statsStrip: [
     { value: "$800 - $2,500", label: "Cost Per Tooth" },

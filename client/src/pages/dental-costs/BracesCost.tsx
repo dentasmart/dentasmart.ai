@@ -7,9 +7,9 @@ const data: CostPageData = {
   heroHighlight: "in 2026?",
   heroDescription:
     "Braces cost between $2,500 and $7,000 for most people. The price depends on the type you choose, how long you need them, and where you live. Here is a full breakdown so you know what to expect before your first orthodontist visit.",
-  metaTitle: "How Much Do Braces Cost in 2026? Full Price Guide | DentaSmart",
+  metaTitle: "How Much Do Braces Cost in 2026? | DentaSmart",
   metaDescription:
-    "Braces cost $2,500-$7,000 in 2026. Compare metal, ceramic, lingual, and Invisalign prices. See insurance coverage, payment plans, and 6 ways to save.",
+    "How much do braces cost in 2026? Expect to pay between $3,000 and $7,000. See a full breakdown by type, insurance coverage options, and ways to save money.",
   keywords:
     "how much do braces cost, braces cost without insurance, invisalign cost, metal braces price, ceramic braces cost, orthodontic treatment cost 2026, braces payment plan, affordable braces",
   statsStrip: [

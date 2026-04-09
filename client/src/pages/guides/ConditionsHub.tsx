@@ -161,7 +161,7 @@ export default function ConditionsHub() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
-        title="Dental Conditions Explained: Symptoms, Causes & What to Do | DentaSmart"
+        title="Dental Conditions: Symptoms & Causes | DentaSmart"
         description="Understand 16+ dental conditions from toothaches to TMJ. Clear explanations of symptoms, causes, and when to see a dentist. Free AI oral health assessment included."
         canonical="https://dentasmart.ai/oral-health-hub/conditions"
         keywords="dental conditions, tooth pain causes, gum disease stages, toothache, cavities, gingivitis, TMJ, dental abscess, wisdom teeth, teeth grinding, sensitive teeth, oral thrush, root canal, dental crown, dental implants"

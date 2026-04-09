@@ -6,8 +6,8 @@ const data: LifestylePageData = {
   heroTitle: "Protect Your Winning Smile",
   heroHighlight: "Don't Let a Dental Injury Take You Out of the Game",
   heroDescription: "You train hard and play hard. But one hit to the mouth can cause serious, expensive damage. A simple mouthguard is the key to keeping your teeth safe while you focus on victory.",
-  metaTitle: "Sports Mouthguards: A Guide to Protecting Your Teeth | DentaSmart",
-  metaDescription: "Learn why athletes need mouthguards, how to choose the right one (stock, boil-and-bite, custom), and get tips on cost, care, and injury prevention.",
+  metaTitle: "Sports Mouthguards: Protection Guide | DentaSmart",
+  metaDescription: "Over 5 million teeth are knocked out in sports each year. Learn which mouthguard type is best, how much they cost, and why every athlete needs one to play safe.",
   keywords: "sports mouthguard, dental injury, athletic mouthguard, custom mouthguard, boil and bite, sports dentistry",
   statsStrip: [
     { value: "60X More Likely", label: "To Damage Teeth Without a Mouthguard" },

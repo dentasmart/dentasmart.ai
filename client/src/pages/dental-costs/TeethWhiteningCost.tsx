@@ -7,7 +7,7 @@ const data: CostPageData = {
   heroHighlight: "a Brighter Smile",
   heroDescription: "Everyone wants a dazzling white smile, but what does it actually cost? From professional treatments to at-home kits, we break down the real prices of teeth whitening. Understanding the options helps you choose the best path to a confident, brighter you.",
   metaTitle: "Teeth Whitening Cost in 2026 | DentaSmart",
-  metaDescription: "Curious about teeth whitening costs in 2026? Our guide covers prices for professional treatments ($400-$1200) and at-home kits ($20-$400). Find the best option for your budget.",
+  metaDescription: "How much does teeth whitening cost in 2026? Professional whitening runs $300 to $1,000. Compare in-office, at-home kits, and over-the-counter options.",
   keywords: "teeth whitening cost, professional teeth whitening cost, zoom whitening cost, how much is teeth whitening, dental whitening price",
   statsStrip: [
     { value: "$650", label: "Average In-Office Treatment" },

@@ -172,7 +172,7 @@ export default function HubCategory() {
                     className="bg-stone-50 rounded-2xl p-6 border border-stone-100 hover:border-primary/30 hover:shadow-md transition-all cursor-pointer h-full"
                   >
                     {article.featuredImage && (
-                      <img src={article.featuredImage} alt={article.title} className="w-full h-40 object-cover rounded-xl mb-4" />
+                      <img loading="lazy" src={article.featuredImage} alt={article.title} className="w-full h-40 object-cover rounded-xl mb-4" />
                     )}
                     <span className="text-xs uppercase tracking-wider text-primary font-medium">{article.category}</span>
                     <h3 className="text-lg font-medium text-black mb-2 mt-1">{article.title}</h3>

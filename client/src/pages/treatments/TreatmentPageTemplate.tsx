@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import ExternalSources from "@/components/ExternalSources";
 import SEO from "@/components/SEO";
 import MidContentCTA from "@/components/MidContentCTA";
 import { Button } from "@/components/ui/button";
@@ -461,6 +462,7 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
               </motion.details>
             ))}
           </div>
+          <ExternalSources />
         </div>
       </section>
 

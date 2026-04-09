@@ -7,7 +7,7 @@ const data: LifestylePageData = {
   heroHighlight: "Oral Health",
   heroDescription: "Lighting up does more than affect your lungs. It directly harms your teeth, gums, and overall mouth health. We're here to show you the risks and help you protect your smile.",
   metaTitle: "Smoking & Oral Health Risks | DentaSmart",
-  metaDescription: "Learn how smoking and tobacco use damage teeth and gums, increasing risks for oral cancer, gum disease, and implant failure. Get tips to protect your oral health.",
+  metaDescription: "Smoking doubles your risk of gum disease and is the top cause of oral cancer. Learn how tobacco damages your mouth and what happens when you quit smoking.",
   keywords: "smoking oral health, tobacco use teeth, gum disease risk, oral cancer from smoking, stained teeth, dental implant failure",
   statsStrip: [
     { value: "4x Higher Risk", label: "of gum disease for smokers" },

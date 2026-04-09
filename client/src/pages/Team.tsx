@@ -20,8 +20,7 @@ export default function Team() {
       {/* Hero Section - Clean & Professional */}
       <section className="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/aCeHxvEyoAWpKkct.jpg" 
+          <img loading="lazy" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/aCeHxvEyoAWpKkct.jpg" 
             alt="DentaSmart Team" 
             className="w-full h-full object-cover object-[50%_20%] md:object-center"
           />
@@ -127,7 +126,7 @@ export default function Team() {
               className="bg-white p-8 rounded-3xl shadow-sm border border-border/50 hover:shadow-md transition-all duration-300 group"
             >
               <div className="w-24 h-24 rounded-full mb-6 overflow-hidden group-hover:scale-110 transition-transform duration-300 border-2 border-primary/10">
-                <img src="/images/team/qasim_mueen.png" alt="Qasim Mueen" className="w-full h-full object-cover" />
+                <img loading="lazy" src="/images/team/qasim_mueen.png" alt="Qasim Mueen" className="w-full h-full object-cover" />
               </div>
               <h3 className="text-2xl font-medium text-black mb-1">Qasim Mueen</h3>
               <p className="text-primary font-medium mb-4 text-sm uppercase tracking-wider">Founder & CEO</p>
@@ -149,7 +148,7 @@ export default function Team() {
               className="bg-white p-8 rounded-3xl shadow-sm border border-border/50 hover:shadow-md transition-all duration-300 group"
             >
               <div className="w-24 h-24 rounded-full mb-6 overflow-hidden group-hover:scale-110 transition-transform duration-300 border-2 border-primary/10">
-                <img src="/images/team/kashif_mueen.png" alt="Kashif Mueen" className="w-full h-full object-cover" />
+                <img loading="lazy" src="/images/team/kashif_mueen.png" alt="Kashif Mueen" className="w-full h-full object-cover" />
               </div>
               <h3 className="text-2xl font-medium text-black mb-1">Kashif Mueen</h3>
               <p className="text-primary font-medium mb-4 text-sm uppercase tracking-wider">Co-founder & CTO</p>
@@ -171,7 +170,7 @@ export default function Team() {
               className="bg-white p-8 rounded-3xl shadow-sm border border-border/50 hover:shadow-md transition-all duration-300 group"
             >
               <div className="w-24 h-24 rounded-full mb-6 overflow-hidden group-hover:scale-110 transition-transform duration-300 border-2 border-primary/10">
-                <img src="/images/team/saba_ahmed.png" alt="Dr. Saba Ahmed" className="w-full h-full object-cover" />
+                <img loading="lazy" src="/images/team/saba_ahmed.png" alt="Dr. Saba Ahmed" className="w-full h-full object-cover" />
               </div>
               <h3 className="text-2xl font-medium text-black mb-1">Dr. Saba Ahmed</h3>
               <p className="text-primary font-medium mb-4 text-sm uppercase tracking-wider">Product Lead</p>
@@ -210,7 +209,7 @@ export default function Team() {
             >
               <div className="flex items-center gap-6 mb-6">
                 <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-primary/10 flex-shrink-0">
-                  <img src="/images/team/tyrette_hamilton.png" alt="Tyrette Hamilton" className="w-full h-full object-cover" />
+                  <img loading="lazy" src="/images/team/tyrette_hamilton.png" alt="Tyrette Hamilton" className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-medium text-black mb-1">Tyrette Hamilton</h3>
@@ -236,7 +235,7 @@ export default function Team() {
             >
               <div className="flex items-center gap-6 mb-6">
                 <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-primary/10 flex-shrink-0">
-                  <img src="/images/team/peter_fuentes.png" alt="Peter Fuentes, DMD" className="w-full h-full object-cover" />
+                  <img loading="lazy" src="/images/team/peter_fuentes.png" alt="Peter Fuentes, DMD" className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-medium text-black mb-1">Peter Fuentes, DMD</h3>

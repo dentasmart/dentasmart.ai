@@ -7,7 +7,7 @@ const data: TreatmentPageData = {
   heroHighlight: "Dental Crown Procedure",
   heroDescription: "A dental crown is a custom-made cap that covers a tooth to restore its shape, size, strength, and appearance. Think of it as a new, protective outer layer for a damaged tooth.",
   metaTitle: "Dental Crown Procedure: What to Expect | DentaSmart",
-  metaDescription: "Learn everything about the dental crown procedure, from the step-by-step process to recovery and costs. Find out if a dental crown is the right solution for you.",
+  metaDescription: "Getting a dental crown? Learn the full procedure step by step, how long it takes, what materials are used, recovery tips, and how to make your crown last.",
   keywords: "dental crown, dental crown procedure, tooth cap, dental restoration",
   statsStrip: [
     { value: "10-15 Years", label: "Average Lifespan" },

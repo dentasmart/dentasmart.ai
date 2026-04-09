@@ -7,7 +7,7 @@ const data: TreatmentPageData = {
   heroHighlight: "Dental Implant",
   heroDescription: "Missing a tooth? A dental implant is the closest thing to getting your natural tooth back. It's a permanent solution that looks and feels real.",
   metaTitle: "Dental Implant Procedure: What to Expect | DentaSmart",
-  metaDescription: "Get a clear, step-by-step guide to the dental implant procedure. Understand the timeline, risks, recovery, and what to expect from start to finish.",
+  metaDescription: "Getting a dental implant? Learn the full procedure from consultation to final crown, recovery timeline, success rates, and what to expect at every stage.",
   keywords: "dental implant procedure, tooth implant process, dental implant steps, what to expect dental implant",
   statsStrip: [
     { value: "95-98%", label: "Success Rate" },

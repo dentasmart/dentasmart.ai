@@ -7,7 +7,7 @@ const data: AgeSpecificPageData = {
   heroHighlight: "Navigating Teen Braces",
   heroDescription: "Getting braces is a big step. This guide helps you understand your options, from traditional braces to Invisalign, and how to care for your teeth during treatment.",
   metaTitle: "Teen Braces Guide: Types, Cost, and Care | DentaSmart",
-  metaDescription: "A complete guide for teens and parents on getting braces. Learn about metal vs. clear braces, Invisalign, oral hygiene, costs, and what to expect.",
+  metaDescription: "Is your teen ready for braces? Learn about the best age to start, types of braces, costs, insurance coverage, and how to help your teenager through treatment.",
   keywords: "teen braces, invisalign for teens, braces cost, braces care, orthodontic treatment, straight teeth, teen dental health",
   statsStrip: [
     { value: "~4 Million", label: "People in the U.S. wear braces" },

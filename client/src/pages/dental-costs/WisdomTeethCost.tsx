@@ -7,7 +7,7 @@ const data: CostPageData = {
   heroHighlight: "actually cost?",
   heroDescription: "Wisdom teeth removal costs $200 to $1,100 per tooth depending on how impacted they are. Most people need all four out, which means the total bill runs $800 to $4,400. Here is a full breakdown so you know what to expect before your oral surgery consultation.",
   metaTitle: "Wisdom Teeth Removal Cost 2026 | DentaSmart",
-  metaDescription: "Wisdom teeth removal costs $200-$1,100 per tooth in 2026. Compare simple vs surgical extraction prices, insurance coverage, and 5 ways to save.",
+  metaDescription: "How much does wisdom teeth removal cost in 2026? Expect $200 to $600 per tooth. Learn what affects the price, insurance coverage, and how to save money.",
   keywords: "wisdom teeth removal cost, wisdom tooth extraction cost, oral surgery cost, impacted wisdom teeth cost, how much to remove wisdom teeth, wisdom teeth removal without insurance",
 
   statsStrip: [

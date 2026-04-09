@@ -122,7 +122,7 @@ export default function Answers() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
-        title="Dental Health Answers - 50 Common Questions Explained Simply"
+        title="50 Common Dental Questions Answered"
         description="Get clear, simple answers to the most common dental health questions. From tooth pain to X-rays, cavities to costs. No jargon, just facts."
         canonical="https://dentasmart.ai/answers"
       />

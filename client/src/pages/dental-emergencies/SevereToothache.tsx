@@ -7,7 +7,7 @@ const data: EmergencyPageData = {
   heroHighlight: "That Won't Go Away",
   heroDescription: "Don't ignore a severe toothache. Learn what to do right now for pain relief, what home remedies work, and the warning signs that mean you need urgent dental care.",
   metaTitle: "Severe Toothache: Immediate Steps & When to See a Dentist",
-  metaDescription: "A severe toothache needs attention. Follow our guide for immediate pain relief, home remedies, and how to know if it's a dental emergency. Learn the steps to take.",
+  metaDescription: "Severe toothache keeping you up at night? Learn what causes intense tooth pain, when to see a dentist urgently, and reliable ways to manage pain at home.",
   keywords: "severe toothache, tooth pain relief, dental emergency, toothache what to do, abscessed tooth, tooth infection signs",
   urgencyBanner: "In severe pain? Call our 24/7 dental line for immediate guidance.",
 

@@ -8,7 +8,7 @@ const data: EmergencyPageData = {
   heroHighlight: "Act Fast to Stop It Spreading",
   heroDescription: "A dental abscess is a pocket of pus caused by a bacterial infection. It can spread to your jaw, neck, or brain if left untreated. Do not ignore this pain.",
   metaTitle: "Dental Abscess: Symptoms, Risks & Emergency Treatment",
-  metaDescription: "Learn the signs of a dental abscess, why it is a medical emergency, and what to do right now. Find out when to go to the ER and treatment options.",
+  metaDescription: "A dental abscess will not go away on its own. Learn the warning signs, what to do before you can see a dentist, and why fast treatment prevents serious harm.",
   keywords: "dental abscess, tooth infection, swollen jaw, tooth abscess, emergency dentist, root canal, tooth extraction, sepsis from tooth",
   urgencyBanner: "Swelling in your face, neck, or trouble breathing? Go to the nearest ER immediately.",
   statsStrip: [

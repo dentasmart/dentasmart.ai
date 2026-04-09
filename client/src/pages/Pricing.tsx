@@ -31,8 +31,7 @@ export default function Pricing() {
       {/* Hero Section - Calm & Balanced with Family Image */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/oaONyntFCCtQKvAL.jpg" 
+          <img loading="lazy" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/oaONyntFCCtQKvAL.jpg" 
             alt="Happy family smiling with healthy teeth" 
             className="w-full h-full object-cover object-center"
           />

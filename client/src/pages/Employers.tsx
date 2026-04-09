@@ -17,7 +17,7 @@ export default function Employers() {
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
       <SEO
-        title="DentaSmart for Employers - Reduce Dental Costs & Boost Employee Wellness"
+        title="DentaSmart for Employers: Cut Dental Costs"
         description="Help your employees take control of their dental health with AI-powered insights. Reduce emergency dental costs and improve workplace wellness."
         canonical="https://dentasmart.ai/employers"
       />
@@ -27,8 +27,7 @@ export default function Employers() {
       {/* Hero Section - Professional & Modern */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/GXvgxLOgMTanohTM.jpg" 
+          <img loading="lazy" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/GXvgxLOgMTanohTM.jpg" 
             alt="Corporate Wellness" 
             className="w-full h-full object-cover object-top md:object-center"
           />

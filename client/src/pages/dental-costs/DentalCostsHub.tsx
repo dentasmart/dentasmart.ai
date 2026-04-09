@@ -104,7 +104,7 @@ export default function DentalCostsHub() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
-        title="How Much Does Dental Work Cost in 2026? Complete Price Guide | DentaSmart"
+        title="Dental Costs in 2026: Price Guide | DentaSmart"
         description="See what every dental procedure actually costs in 2026, with and without insurance. Root canals, implants, braces, crowns, and more. Plus 7 ways to save. Free AI dental assessment included."
         canonical="https://dentasmart.ai/dental-costs"
         keywords="how much does dental work cost, dental procedure costs, dentist prices without insurance, dental costs 2026, root canal cost, dental implant cost, braces cost, dental crown cost, teeth whitening cost, dental cleaning cost"

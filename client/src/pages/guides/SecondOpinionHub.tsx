@@ -13,7 +13,7 @@ export default function SecondOpinionHub() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
-        title="Dental Second Opinion Guide | Compare Treatment Options | DentaSmart"
+        title="Dental Second Opinion Guide | DentaSmart"
         description="Not sure about your dentist's recommendation? Get clarity on root canals, crowns vs fillings, implants vs bridges, and when to seek a second opinion."
         canonical="https://dentasmart.ai/oral-health-hub/second-opinion"
         keywords="dental second opinion, do I need a root canal, crowns vs fillings, implants vs bridges"

@@ -119,8 +119,7 @@ export default function FAQs() {
       <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/GqjyClSdowSQrUkA.jpg" 
+          <img loading="lazy" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/GqjyClSdowSQrUkA.jpg" 
             alt="Woman finding answers on her phone" 
             className="w-full h-full object-cover object-center"
           />

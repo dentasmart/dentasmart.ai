@@ -7,7 +7,7 @@ const data: TreatmentPageData = {
   heroHighlight: "Dental Cleaning",
   heroDescription: "A professional dental cleaning is one of the simplest ways to keep your smile healthy and bright. We'll gently remove plaque and tartar buildup that your toothbrush can't reach, leaving your teeth feeling smooth and fresh.",
   metaTitle: "Dental Cleaning Procedure: What to Expect | DentaSmart",
-  metaDescription: "Learn about the step-by-step dental cleaning process, from plaque removal to polishing. Understand the risks, recovery, and what a professional cleaning involves.",
+  metaDescription: "What happens during a dental cleaning? Learn the step-by-step process, how long it takes, what deep cleaning involves, and why regular cleanings matter.",
   keywords: "dental cleaning, teeth cleaning, dental hygiene, professional teeth cleaning, dental checkup",
 
   statsStrip: [

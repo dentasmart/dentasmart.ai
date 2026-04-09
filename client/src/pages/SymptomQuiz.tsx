@@ -388,7 +388,7 @@ export default function SymptomQuiz() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
-        title="Free Dental Symptom Checker. Do I Need a Dentist? | DentaSmart"
+        title="Free Dental Symptom Checker | DentaSmart"
         description="Not sure if your tooth pain or gum symptoms need a dentist? Take our free 2-minute dental symptom quiz and get a personalized oral health risk score."
         canonical="https://dentasmart.ai/symptom-quiz"
         keywords="dental symptom checker, tooth pain quiz, do I need a dentist quiz, dental symptoms checker, oral health quiz, gum disease quiz, tooth sensitivity quiz, free dental assessment, online dental check"

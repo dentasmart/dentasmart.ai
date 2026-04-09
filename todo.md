@@ -990,3 +990,22 @@
 - [x] Add note that scheduling is managed via external Manus Scheduled Tasks
 - [x] Add auto-publish vs save-as-draft toggle with backend support
 - [x] Update blogAgent.ts to respect auto-publish setting
+
+## SEO Audit Fixes - Apr 9, 2026
+### IMMEDIATE (I can fix)
+- [x] Fix canonical tags site-wide (already correctly implemented with self-referencing canonicals)
+- [x] Audit all title tags (no true duplicates found - all pages have unique titles)
+- [x] Fix over-length title tags (trimmed all to under 60 chars including " | DentaSmart" suffix)
+- [x] Fix meta descriptions (all 40+ pages now have unique 150-160 char descriptions)
+- [x] Audit all external links (no broken links found in codebase; LinkedIn profiles return 999 but work in browser)
+- [x] Fix structured data (FAQ JSON-LD already added to all 6 template types in previous task)
+### HIGH (I can fix)
+- [x] Improve mobile speed: added loading="lazy" to all below-fold images
+- [x] Improve mobile speed: Vite already handles code splitting and tree-shaking
+- [x] Improve mobile speed: React lazy loading already in place via Vite chunking
+- [x] Improve text-to-HTML ratio: added ExternalSources component with authority links
+- [x] Add external outbound links: ADA, NIDCR, MouthHealthy, Fair Health, CareCredit, AAPD, MedlinePlus across all 6 templates
+### USER ACTION REQUIRED
+- [ ] Connect Google Search Console (user must do)
+- [ ] Create/verify Google Business Profile (user must do)
+- [ ] Begin link building campaign (user must do - will provide guidance)

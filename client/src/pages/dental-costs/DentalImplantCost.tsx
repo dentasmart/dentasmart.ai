@@ -6,7 +6,7 @@ const data: CostPageData = {
   heroTitle: 'What\'s the Real Cost of a',
   heroHighlight: 'Dental Implant?',
   heroDescription: 'A dental implant is a permanent solution for a missing tooth. It looks and feels like a real tooth, but the price can be confusing. We\'ll break down the real costs so you know what to expect.',
-  metaTitle: 'Dental Implant Cost 2026: Full Breakdown | DentaSmart',
+  metaTitle: 'Dental Implant Cost 2026: Breakdown | DentaSmart',
   metaDescription: 'How much does a dental implant cost in 2026? Get a full breakdown of costs, from $3,000 to $6,000. Learn about factors that affect the price and how to save.',
   keywords: 'dental implant cost, cost of dental implant, single tooth implant cost, full mouth dental implants cost',
   statsStrip: [

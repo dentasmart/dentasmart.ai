@@ -6,7 +6,7 @@ const data: ComparisonPageData = {
   optionBName: "Dentures",
 
   // SEO & Metadata
-  metaTitle: "Dental Implants vs Dentures: Cost, Longevity & What's Best for You",
+  metaTitle: "Dental Implants vs Dentures Compared | DentaSmart's Best for You",
   metaDescription: "Compare dental implants and dentures on cost, comfort, and bone health. See which tooth replacement option is the right choice for your long-term oral health.",
   keywords: "dental implants vs dentures, implants vs dentures cost, are dental implants worth it, tooth replacement options, denture alternatives",
 

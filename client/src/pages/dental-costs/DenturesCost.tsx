@@ -7,7 +7,7 @@ const data: CostPageData = {
   heroHighlight: "Dentures Really Cost?",
   heroDescription: "Dentures are a popular way to replace missing teeth and bring back your smile. The price can swing widely depending on what you need. We will break down the real costs to help you understand what to expect.",
   metaTitle: "Dentures Cost in 2026 | DentaSmart",
-  metaDescription: "Discover the real cost of dentures in 2026. Our guide breaks down prices for full, partial, and implant-supported dentures, helping you budget effectively. Learn more.",
+  metaDescription: "How much do dentures cost in 2026? Prices range from $600 to $8,000 depending on the type. See a full cost breakdown and ways to make them affordable.",
   keywords: "dentures cost, cost of dentures, full dentures cost, partial dentures cost, affordable dentures",
   statsStrip: [
     { value: "$1,800", label: "Average Full Set" },

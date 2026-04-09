@@ -249,7 +249,7 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
             </table>
           </motion.div>
           <p className="text-xs text-stone-500 mt-3 px-4 md:px-0">
-            Sources: ADA Health Policy Institute, CareCredit, Fair Health Consumer (2025-2026 data). Costs vary by region and provider.
+            Sources: <a href="https://www.ada.org/resources/research/health-policy-institute" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">ADA Health Policy Institute</a>, <a href="https://www.carecredit.com/dentistry/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">CareCredit</a>, <a href="https://www.fairhealthconsumer.org/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Fair Health Consumer</a> (2025-2026 data). Costs vary by region and provider.
           </p>
         </div>
       </section>

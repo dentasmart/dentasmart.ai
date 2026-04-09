@@ -7,7 +7,7 @@ const data: TreatmentPageData = {
   heroHighlight: "Dental Veneers",
   heroDescription: "Veneers are thin, custom-made shells that cover the front of your teeth to improve their appearance. Think of them like a new face for your teeth to fix chips, gaps, or discoloration.",
   metaTitle: "Veneers Procedure: What to Expect, Risks, and Recovery",
-  metaDescription: "Learn about the dental veneers procedure, from the initial consultation to the final placement. Understand the risks, recovery, and what to expect.",
+  metaDescription: "Getting dental veneers? Learn the full procedure from consultation to bonding, types of veneers, recovery expectations, and how to make them last longer.",
   keywords: "dental veneers, veneers procedure, cosmetic dentistry, smile makeover, porcelain veneers",
   statsStrip: [
     { value: "95%", label: "Success Rate at 10 Years" },

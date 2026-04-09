@@ -8,7 +8,7 @@ const data: AgeSpecificPageData = {
   heroHighlight: "from the First Tooth",
   heroDescription: "Your baby's first tooth is a big moment! This guide helps you understand teething, how to care for new teeth, and when to see a dentist. We'll make it simple and stress-free.",
   metaTitle: "Baby Teething Guide: Ages 0-3 | DentaSmart",
-  metaDescription: "A friendly guide to your baby's teething timeline, first dental visit, and how to care for their new teeth. Learn about bottle tooth decay, thumb sucking, and more.",
+  metaDescription: "Baby teething can start as early as 4 months. Learn the signs, safe remedies for sore gums, what to avoid, and when to schedule your baby's first dentist visit.",
   keywords: "baby teething, teething timeline, first dental visit, baby dental care, bottle tooth decay, thumb sucking, infant oral health",
   statsStrip: [
     { value: "6-12", label: "Months for First Tooth" },

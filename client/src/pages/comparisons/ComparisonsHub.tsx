@@ -110,7 +110,7 @@ export default function ComparisonsHub() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
-        title="Dental Treatment Comparisons: Side-by-Side Guides | DentaSmart"
+        title="Dental Treatment Comparisons | DentaSmart"
         description="Compare dental treatments side by side. Braces vs Invisalign, implants vs dentures, crowns vs veneers, and more. Honest comparisons with real costs to help you decide."
         canonical="https://dentasmart.ai/comparisons"
         keywords="braces vs invisalign, dental implants vs dentures, crown vs veneer, electric vs manual toothbrush, fluoride vs fluoride free, dental treatment comparison"

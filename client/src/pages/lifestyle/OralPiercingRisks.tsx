@@ -6,7 +6,7 @@ const data: LifestylePageData = {
   heroTitle: "That Cool Piercing",
   heroHighlight: "Could Cost You Your Smile",
   heroDescription: "Tongue, lip, and cheek piercings look cool, but they can cause serious dental problems. We will help you understand the risks so you can protect your oral health.",
-  metaTitle: "Oral Piercing Risks: How They Damage Teeth & Gums | DentaSmart",
+  metaTitle: "Oral Piercing Risks for Your Teeth | DentaSmart",
   metaDescription: "Learn how tongue, lip, and cheek piercings can lead to chipped teeth, gum recession, infections, and nerve damage. Protect your smile with DentaSmart.",
   keywords: "oral piercing risks, tongue piercing teeth damage, lip piercing gum recession, chipped tooth from piercing, dental problems from piercings",
   statsStrip: [

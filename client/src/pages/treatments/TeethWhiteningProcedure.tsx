@@ -7,7 +7,7 @@ const data: TreatmentPageData = {
   heroHighlight: "Teeth Whitening",
   heroDescription: "Thinking about brightening your smile? This guide walks you through the entire teeth whitening process, from the first talk with your dentist to seeing the final results.",
   metaTitle: "Teeth Whitening Procedure: What to Expect | DentaSmart",
-  metaDescription: "Learn everything about the teeth whitening procedure. Our guide covers the steps, risks, recovery, and what results you can realistically expect.",
+  metaDescription: "Want whiter teeth? Compare professional in-office whitening, custom take-home trays, and over-the-counter options. Learn what works and what to avoid.",
   keywords: "teeth whitening procedure, professional teeth whitening, dental whitening steps",
   statsStrip: [
     { value: "82.5%", label: "of people see a noticeable difference after one treatment" },

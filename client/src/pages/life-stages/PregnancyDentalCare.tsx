@@ -7,7 +7,7 @@ const data: AgeSpecificPageData = {
   heroHighlight: "Two",
   heroDescription: "Your oral health is more important than ever when you're expecting. We'll guide you through the unique dental needs of pregnancy, from morning sickness to your baby's development.",
   metaTitle: "Dental Care During Pregnancy | DentaSmart",
-  metaDescription: "Learn how to manage pregnancy gingivitis, morning sickness, and other dental concerns. Get tips for safe dental treatments and a healthy smile for you and your baby.",
+  metaDescription: "Pregnancy hormones increase your risk of gum disease and cavities. Learn which dental treatments are safe, what to avoid, and how to protect your oral health.",
   keywords: "pregnancy dental care, pregnancy gingivitis, dental x-rays pregnancy, morning sickness teeth",
   statsStrip: [
     { value: "Up to 75%", label: "Of pregnant women have gingivitis" },

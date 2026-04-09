@@ -7,7 +7,7 @@ const data: CostPageData = {
   heroHighlight: "Dental Cleaning Cost?",
   heroDescription: "A professional dental cleaning is one of the most common and important procedures for maintaining good oral health. But how much should you expect to pay? We break down the costs so you can smile brighter.",
   metaTitle: "Dental Cleaning Cost | DentaSmart",
-  metaDescription: "How much does a dental cleaning cost in 2025-2026? See a full breakdown of prices for routine cleanings, deep cleanings, and what factors impact your final bill.",
+  metaDescription: "How much does a dental cleaning cost in 2026? Most people pay $75 to $200 without insurance. See what affects the price and how to save on your cleanings.",
   keywords: "dental cleaning cost, teeth cleaning cost, how much is a dental cleaning, deep cleaning cost",
   statsStrip: [
     { value: "$75-$200", label: "Typical Range for a Routine Cleaning" },

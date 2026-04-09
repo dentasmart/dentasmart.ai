@@ -9,7 +9,7 @@ const data: CostPageData = {
     "Veneers can transform your smile by fixing chips, stains, and gaps. They are thin shells placed over your teeth. Understanding the cost is the first step to deciding if they are right for you.",
   metaTitle: "Veneers Cost in 2025-2026 | DentaSmart",
   metaDescription:
-    "How much do dental veneers cost? See 2025-2026 prices, from $800 to $2,500 per tooth. Learn about cost factors, insurance, and how to save money on your new smile.",
+    "How much do veneers cost in 2026? Porcelain veneers run $925 to $2,500 per tooth. See the full price breakdown, insurance coverage options, and ways to save.",
   keywords:
     "veneers cost, porcelain veneers price, cost of veneers, dental veneers cost, how much are veneers",
   statsStrip: [

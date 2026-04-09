@@ -8,7 +8,7 @@ const data: ComparisonPageData = {
   heroHighlight: "Toothbrush",
   heroDescription: "You brush twice a day, but are you using the right tool for the job? We break down the real differences between electric and manual toothbrushes to help you find your perfect match.",
   metaTitle: "Electric vs. Manual Toothbrush: Which Is Better for You?",
-  metaDescription: "An expert comparison of electric and manual toothbrushes, looking at plaque removal, cost, gum health, and more to help you decide.",
+  metaDescription: "Electric vs manual toothbrush: does it really matter? Compare cleaning power, cost, ease of use, and what dentists actually recommend for better results.",
   keywords: "electric vs manual toothbrush, is electric toothbrush better, electric toothbrush benefits, manual vs electric toothbrush",
   statsStrip: [
     { value: "21% More", label: "Plaque Removal" },

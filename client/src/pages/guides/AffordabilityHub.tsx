@@ -166,7 +166,7 @@ export default function AffordabilityHub() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
-        title="Affordable Dental Care Guide. How to Save on Dental Work Without Insurance | DentaSmart"
+        title="Affordable Dental Care Without Insurance | DentaSmart"
         description="68.5 million Americans lack dental insurance. Find real options: procedure cost tables, 7 proven savings tips, discount plans, and a free AI dental assessment. Stop guessing about costs."
         canonical="https://dentasmart.ai/oral-health-hub/affordability"
         keywords="affordable dental care, dental care without insurance, how much does dental work cost, cheap dental care, dental savings plan, low cost dental care, dental care for uninsured, dental discount plans, free dental assessment, save money on dental care"

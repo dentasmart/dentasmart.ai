@@ -6,7 +6,7 @@ const data: TreatmentPageData = {
   heroTitle: "Straighten Your Smile with",
   heroHighlight: "Braces",
   heroDescription: "Braces are a time-tested way to correct crooked or crowded teeth, fix bite issues, and improve your overall oral health. Let's walk through what you can expect.",
-  metaTitle: "Braces 101: The Complete Guide to Your Orthodontic Treatment | DentaSmart",
+  metaTitle: "Braces Treatment: What to Expect | DentaSmart",
   metaDescription: "Thinking about braces? Learn about the step-by-step process, what they feel like, potential risks, and how to care for them. Get all your questions answered.",
   keywords: "braces, orthodontic treatment, teeth straightening, crooked teeth, braces process",
 

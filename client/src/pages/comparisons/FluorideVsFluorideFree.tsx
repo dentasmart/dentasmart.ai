@@ -7,8 +7,8 @@ const data: ComparisonPageData = {
   heroTitle: "Fluoride vs. Fluoride-Free Toothpaste:",
   heroHighlight: "Which is right for your smile?",
   heroDescription: "You brush your teeth every day, but are you using the right toothpaste? We break down the science behind fluoride and fluoride-free options to help you decide.",
-  metaTitle: "Fluoride vs. Fluoride-Free Toothpaste: An Honest Comparison | DentaSmart",
-  metaDescription: "Is fluoride toothpaste safe? Is fluoride-free effective? Get the facts on cavity prevention, safety, and natural alternatives like hydroxyapatite.",
+  metaTitle: "Fluoride vs Fluoride-Free Toothpaste | DentaSmart",
+  metaDescription: "Fluoride vs fluoride-free toothpaste: which is safer and more effective? Compare cavity protection, ingredients, and what dentists recommend for your teeth.",
   keywords: "fluoride vs fluoride free toothpaste, is fluoride toothpaste safe, fluoride free toothpaste effectiveness, hydroxyapatite toothpaste",
   statsStrip: [
     { value: "40%", label: "Cavity Reduction with Fluoride" },

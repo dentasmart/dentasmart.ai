@@ -6,8 +6,8 @@ const data: EmergencyPageData = {
   heroTitle: "First Aid for a",
   heroHighlight: "Broken Tooth",
   heroDescription: "A chipped or fractured tooth is a dental emergency. Follow these instructions for pain relief and to save your tooth.",
-  metaTitle: "Broken Tooth First Aid | What To Do For a Chipped or Cracked Tooth",
-  metaDescription: "Your guide for a broken, chipped, or fractured tooth. Learn immediate first aid steps, pain management, and when to see a dentist urgently.",
+  metaTitle: "Broken Tooth: What to Do Right Now | DentaSmart",
+  metaDescription: "Broke a tooth? Here is what to do right now, step by step. Learn when it is a real emergency, what a dentist can do, and how much treatment typically costs.",
   keywords: "broken tooth, chipped tooth, cracked tooth, fractured tooth, dental emergency, toothache",
   urgencyBanner: "A broken tooth needs immediate care. Call us now for guidance.",
   statsStrip: [

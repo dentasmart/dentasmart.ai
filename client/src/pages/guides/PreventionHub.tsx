@@ -13,7 +13,7 @@ export default function PreventionHub() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
-        title="Dental Prevention Guide | Protect Your Teeth & Save Money | DentaSmart"
+        title="Dental Prevention: Protect Your Teeth | DentaSmart"
         description="Prevent cavities, gum disease, and expensive dental work with science-backed daily routines. Guides for every life stage."
         canonical="https://dentasmart.ai/oral-health-hub/prevention"
         keywords="prevent cavities, gum disease prevention, oral health routine, teeth whitening natural"

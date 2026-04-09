@@ -7,7 +7,7 @@ const data: TreatmentPageData = {
   heroHighlight: "Tooth Extraction",
   heroDescription: "Sometimes a tooth can't be saved. We'll walk you through why an extraction might be needed and what the process is like, from start to finish.",
   metaTitle: "Tooth Extraction Procedure: A Simple Guide | DentaSmart",
-  metaDescription: "Learn about the tooth extraction process, from why it's needed to step-by-step recovery. Get clear answers and feel prepared.",
+  metaDescription: "Need a tooth pulled? Learn the full extraction process step by step, recovery timeline, pain management tips, and aftercare instructions for a smooth recovery.",
   keywords: "tooth extraction, dental extraction, tooth removal, extraction procedure, oral surgery",
   statsStrip: [
     { value: "10 Million", label: "Extractions performed annually in the U.S." },

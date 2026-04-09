@@ -127,7 +127,7 @@ export default function SymptomsHub() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
-        title="Dental Symptoms Guide: What Your Mouth Is Telling You | DentaSmart"
+        title="Dental Symptoms: What Your Mouth Says | DentaSmart"
         description="Tooth pain, bleeding gums, bad breath, jaw pain? Find out what your symptoms mean, when to see a dentist, and what you can do at home. Free symptom checker included."
         canonical="https://dentasmart.ai/oral-health-hub/symptoms"
         keywords="dental symptoms, why does my tooth hurt, bleeding gums causes, tooth pain when biting, sensitive teeth, jaw pain, bad breath causes, swollen gums, mouth sores, TMJ symptoms"

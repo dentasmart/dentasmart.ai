@@ -46,12 +46,11 @@ export function DownloadCTA() {
               className="hover:opacity-90 transition-opacity"
               onClick={() => trackAppDownload("ios", "download_cta")}
             >
-              <img 
-                src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" 
-                alt="Download on the App Store" 
-                className="h-10 w-auto"
-                loading="lazy"
-              />
+              <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" 
+ alt="Download on the App Store" 
+ className="h-10 w-auto"
+ 
+ />
             </a>
             <div className="relative group">
               <a 
@@ -59,12 +58,11 @@ export function DownloadCTA() {
                 className="hover:opacity-90 transition-opacity block"
                 onClick={handleAndroidClick}
               >
-                <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
-                  alt="Get it on Google Play" 
-                  className="h-10 w-auto"
-                  loading="lazy"
-                />
+                <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" 
+ alt="Get it on Google Play" 
+ className="h-10 w-auto"
+ 
+ />
               </a>
               <div className="absolute -top-3 -right-2 bg-white text-[#006978] text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm border border-white/20 uppercase tracking-wider transform group-hover:scale-105 transition-transform">
                 Coming Soon
@@ -78,12 +76,11 @@ export function DownloadCTA() {
 
           {/* QR Code */}
           <div className="bg-white p-2 rounded-lg shadow-lg">
-            <img 
-              src="/images/qr-code.png" 
-              alt="Scan to download DentaSmart App" 
-              className="w-48 h-48 object-contain"
-              loading="lazy"
-            />
+            <img loading="lazy" src="/images/qr-code.png" 
+ alt="Scan to download DentaSmart App" 
+ className="w-48 h-48 object-contain"
+ 
+ />
           </div>
         </motion.div>
       </div>

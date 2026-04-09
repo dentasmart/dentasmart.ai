@@ -7,7 +7,7 @@ const data: AgeSpecificPageData = {
   heroHighlight: "Guidance for Ages 3 to 12",
   heroDescription: "Build a strong foundation for your child's lifelong oral health. We'll guide you through cavity prevention, losing baby teeth, and knowing when it's time for that first ortho check.",
   metaTitle: "Children's Dental Health Guide (Ages 3-12) | DentaSmart",
-  metaDescription: "Your complete guide to children's dental health for ages 3-12. Learn about cavity prevention, sealants, fluoride, losing baby teeth, and orthodontics.",
+  metaDescription: "A complete guide to children's dental health for ages 3 to 12. Learn about cavity prevention, dental sealants, fluoride, and when to see an orthodontist.",
   keywords: "childrens dental health, cavity prevention, dental sealants, fluoride treatment, losing baby teeth, pediatric dentist, kids oral hygiene",
   statsStrip: [
     { value: "Over 50%", label: "of kids will have a cavity in a baby tooth" },

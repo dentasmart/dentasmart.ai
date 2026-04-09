@@ -96,8 +96,7 @@ export default function Features() {
       <section className="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/ZwswpLjHnfyByaVR.jpg" 
+          <img loading="lazy" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/ZwswpLjHnfyByaVR.jpg" 
             alt="Woman smiling while checking dental health on phone" 
             className="w-full h-full object-cover object-[50%_30%] md:object-center"
           />
@@ -185,8 +184,7 @@ export default function Features() {
                       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] sm:w-[100px] h-[22px] sm:h-[28px] bg-stone-900 rounded-b-2xl z-20" />
                       {/* Screen Content */}
                       <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
-                        <img 
-                          src={feature.image} 
+                        <img loading="lazy" src={feature.image} 
                           alt={feature.title} 
                           className="w-full h-full object-cover object-top"
                         />
@@ -194,8 +192,7 @@ export default function Features() {
                     </div>
                   </div>
                 ) : (
-                  <img 
-                    src={feature.image} 
+                  <img loading="lazy" src={feature.image} 
                     alt={feature.title} 
                     className="absolute inset-0 w-full h-full object-contain bg-white hover:scale-105 transition-transform duration-700"
                   />

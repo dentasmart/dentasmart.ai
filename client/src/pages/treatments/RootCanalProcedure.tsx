@@ -7,7 +7,7 @@ const data: TreatmentPageData = {
   heroHighlight: "Root Canal",
   heroDescription: "A root canal isn't the scary procedure it's made out to be. It's a treatment to save a tooth that's badly infected or decayed, relieving your pain and getting your smile back to normal.",
   metaTitle: "Root Canal Procedure: A Step-by-Step Guide | DentaSmart",
-  metaDescription: "Learn everything about the root canal procedure, from the signs you might need one to the step-by-step treatment process and recovery. Get the facts from DentaSmart.",
+  metaDescription: "Getting a root canal? Learn the step-by-step procedure, what to expect during and after treatment, recovery tips, and why it saves your natural tooth.",
   keywords: "root canal, root canal procedure, endodontic treatment, tooth infection, dental pain",
   statsStrip: [
     { value: ">95%", label: "Success Rate" },

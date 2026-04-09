@@ -15,7 +15,7 @@ export default function PhotoGuide() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
-        title="How to Take the Best Dental Photo for AI Analysis"
+        title="How to Take a Dental Photo for AI Scan"
         description="Learn how to take clear dental photos for accurate AI analysis. Follow our simple guide for the best results with DentaSmart's oral health scanner."
         canonical="https://dentasmart.ai/photo-guide"
         keywords="dental photo guide, how to photograph teeth, dental X-ray photo tips, best dental photo for AI, DentaSmart photo tips"

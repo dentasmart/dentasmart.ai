@@ -142,8 +142,7 @@ export default function OralHealthHub() {
       {/* Hero Section */}
       <section className="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img 
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/QUJzfPwTjdiBdwFs.jpg" 
+          <img loading="lazy" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/QUJzfPwTjdiBdwFs.jpg" 
             alt="Dentist explaining treatment to patient" 
             className="w-full h-full object-cover object-[50%_20%] md:object-right"
           />

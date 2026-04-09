@@ -7,7 +7,7 @@ const data: LifestylePageData = {
   heroHighlight: "Your Smile's Future",
   heroDescription: "What you eat and drink has a huge impact on your oral health. Let's explore how simple dietary changes can protect your teeth for years to come, keeping your smile bright and healthy.",
   metaTitle: "Diet & Oral Health: How Food Affects Your Teeth | DentaSmart",
-  metaDescription: "Discover how your diet impacts your teeth. Learn about sugar, acid erosion, and foods that strengthen enamel to prevent cavities and gum disease.",
+  metaDescription: "What you eat directly affects your teeth. Learn which foods strengthen enamel, which ones cause cavities, and simple diet changes to protect your oral health.",
   keywords: "diet and oral health, food for teeth, sugar and cavities, acid erosion, healthy teeth diet, DentaSmart",
 
   statsStrip: [
