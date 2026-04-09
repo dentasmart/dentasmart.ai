@@ -1017,3 +1017,8 @@
 - [x] Replace all "Second Review" in navigation links and menus
 - [x] Replace all "second-review" slugs with "second-opinion" in data files
 - [x] Verify no broken links after rename (grep confirms zero remaining references)
+
+## Second Opinion Terminology - Blog Agent & Database - Apr 9, 2026
+- [x] Update blog agent system prompts to use "Second Opinion" instead of "Second Review" (all 3 prompts updated)
+- [x] Audit all published blog posts in database for "Second Review" mentions (0 found - database already clean)
+- [x] Bulk-update blog post content in database from "Second Review" to "Second Opinion" (no updates needed)

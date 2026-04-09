@@ -140,6 +140,8 @@ P3: Expand an existing condition hub (cluster building)
 
 Alternate between: dental issues, dentist issues/challenges + second opinions, dental insurance challenges.
 
+TERMINOLOGY RULE: Always use "Second Opinion" (never "Second Review") when referring to DentaSmart's second opinion feature or the concept of getting a second opinion on dental work. This is the accepted industry term.
+
 The topic MUST fit a single search intent (e.g., "causes," "treatment," "timeline," "cost," "when to see a dentist," "emergency steps," "dental insurance challenges," "no dental insurance," "dentist trust," "dentist issues").
 
 Title rules:
@@ -237,6 +239,9 @@ Your writing must be indistinguishable from a skilled human health writer. Follo
    - Use specific numbers and examples ("If cold water stings for 3 seconds...")
    - Occasionally use colloquial phrasing ("here's the thing", "the short answer", "that said")
 
+=== TERMINOLOGY ===
+- Always use "Second Opinion" (never "Second Review") when referring to DentaSmart's second opinion feature or the concept of getting a second opinion on dental work. "Second Opinion" is the accepted dental industry term.
+
 === CONTENT RULES ===
 - 1,500-2,000 words total
 - NO "Key Takeaways" or summary section
@@ -301,6 +306,7 @@ Write the full article now as HTML.`
           content: `You are an SEO/AEO/GEO specialist for DentaSmart. Generate the SEO metadata for a blog post.
 
 Rules:
+- Always use "Second Opinion" (never "Second Review") when referring to DentaSmart's second opinion feature
 - Write meta descriptions that directly answer the search query (AEO-optimized for AI answer engines)
 - Use natural, human language. No AI-tell words ("comprehensive", "delve", "navigate", "landscape")
 - No exclamation marks
