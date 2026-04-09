@@ -9,7 +9,7 @@
  */
 
 import { invokeLLM } from "./_core/llm";
-import { getDb } from "./db";
+import { getDb, getSetting } from "./db";
 import { agentRuns, blogPosts, blogCategories } from "../drizzle/schema";
 import { eq, desc, sql } from "drizzle-orm";
 import { invalidateSitemapCache } from "./seo";
@@ -115,6 +115,10 @@ async function getPublishedSlugs(): Promise<{ slug: string; title: string }[]> {
 export async function runBlogAgent(triggerType: "manual" | "scheduled" = "manual") {
   const startTime = Date.now();
   const runId = await createAgentRun({ triggerType });
+
+  // Check auto-publish setting
+  const autoPublishSetting = await getSetting("blog_agent_auto_publish");
+  const shouldPublish = autoPublishSetting !== "false"; // default true
 
   try {
     // Step 1: Topic selection
@@ -391,15 +395,17 @@ Generate JSON with:
       faqs: seo.faqs,
       categoryId: parentCat?.id ?? null,
       subcategoryId: subCat?.id ?? null,
-      status: "published",
-      publishedAt: new Date(),
+      status: shouldPublish ? "published" : "draft",
+      publishedAt: shouldPublish ? new Date() : null,
     }).$returningId();
 
-    invalidateSitemapCache();
+    if (shouldPublish) {
+      invalidateSitemapCache();
+    }
 
     const durationMs = Date.now() - startTime;
     await updateAgentRun(runId, {
-      status: "success",
+      status: shouldPublish ? "success" : "draft",
       slug: finalSlug,
       postId: insertResult.id,
       durationMs,

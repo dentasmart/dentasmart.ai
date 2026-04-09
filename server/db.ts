@@ -1,6 +1,6 @@
 import { eq, sql, and, gte, lte, desc, count } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
-import { InsertUser, users, conversionEvents, type InsertConversionEvent } from "../drizzle/schema";
+import { InsertUser, users, conversionEvents, type InsertConversionEvent, siteSettings } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -206,4 +206,20 @@ export async function getRecentConversionEvents(limit: number = 50) {
     .limit(limit);
   
   return results;
+}
+
+// ── Site Settings ──────────────────────────────────────────────────────
+
+export async function getSetting(key: string): Promise<string | null> {
+  const db = await getDb();
+  if (!db) return null;
+  const rows = await db.select().from(siteSettings).where(eq(siteSettings.settingKey, key)).limit(1);
+  return rows.length > 0 ? rows[0].settingValue : null;
+}
+
+export async function setSetting(key: string, value: string): Promise<void> {
+  const db = await getDb();
+  if (!db) return;
+  await db.insert(siteSettings).values({ settingKey: key, settingValue: value })
+    .onDuplicateKeyUpdate({ set: { settingValue: value } });
 }

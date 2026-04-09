@@ -983,3 +983,10 @@
 - [x] Add comprehensive anti-AI-writing guidelines (Wikipedia signs of AI writing)
 - [x] Update blog formatting structure for scannability (short paragraphs, strategic bold, blockquotes)
 - [x] Verify tests still pass after prompt updates (127/128, same pre-existing failure)
+
+## Admin AI Blog Agent UI Fix - Apr 9, 2026
+- [x] Remove hardcoded "Tuesday & Thursday at 9:00 AM EST" schedule text
+- [x] Remove "Auto-publish enabled" badge
+- [x] Add note that scheduling is managed via external Manus Scheduled Tasks
+- [x] Add auto-publish vs save-as-draft toggle with backend support
+- [x] Update blogAgent.ts to respect auto-publish setting

@@ -57,6 +57,13 @@
       "when": 1775584256975,
       "tag": "0007_handy_talos",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1775757468162,
+      "tag": "0008_tan_skreet",
+      "breakpoints": true
     }
   ]
 }

@@ -216,3 +216,17 @@ export const conversionEvents = mysqlTable("conversion_events", {
 
 export type ConversionEvent = typeof conversionEvents.$inferSelect;
 export type InsertConversionEvent = typeof conversionEvents.$inferInsert;
+
+/**
+ * Site settings table for key-value configuration.
+ * Used for admin-configurable settings like blog agent auto-publish.
+ */
+export const siteSettings = mysqlTable("site_settings", {
+  id: int("id").autoincrement().primaryKey(),
+  settingKey: varchar("settingKey", { length: 100 }).notNull().unique(),
+  settingValue: text("settingValue").notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type SiteSetting = typeof siteSettings.$inferSelect;
+export type InsertSiteSetting = typeof siteSettings.$inferInsert;

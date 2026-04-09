@@ -25,6 +25,7 @@ import { SignJWT, jwtVerify } from "jose";
 import { storagePut } from "./storage";
 import { invalidateSitemapCache } from "./seo";
 import { runBlogAgent, listAgentRuns } from "./blogAgent";
+import { getSetting, setSetting } from "./db";
 
 const ADMIN_COOKIE_NAME = "blog_admin_session";
 const JWT_SECRET_KEY = process.env.JWT_SECRET || "dentasmart-blog-admin-secret";
@@ -470,6 +471,19 @@ export const blogRouter = router({
   agentListRuns: adminBlogProcedure
     .query(async () => {
       return listAgentRuns();
+    }),
+
+  agentGetAutoPublish: adminBlogProcedure
+    .query(async () => {
+      const val = await getSetting("blog_agent_auto_publish");
+      return { autoPublish: val !== "false" }; // default true
+    }),
+
+  agentSetAutoPublish: adminBlogProcedure
+    .input(z.object({ autoPublish: z.boolean() }))
+    .mutation(async ({ input }) => {
+      await setSetting("blog_agent_auto_publish", input.autoPublish ? "true" : "false");
+      return { success: true, autoPublish: input.autoPublish };
     }),
 
   // Image upload for blog editor

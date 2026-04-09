@@ -1,7 +1,8 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Switch } from "@/components/ui/switch";
 import {
   Table,
   TableBody,
@@ -20,9 +21,8 @@ import {
   FileText,
   ExternalLink,
   RefreshCw,
-  AlertTriangle,
-  Calendar,
-  Sparkles,
+  Settings2,
+  Info,
 } from "lucide-react";
 import { toast } from "sonner";
 import AdminLayout from "@/components/AdminLayout";
@@ -32,6 +32,19 @@ export default function AdminAIBlogAgent() {
 
   // Fetch run history
   const { data: runs, isLoading: runsLoading, refetch: refetchRuns } = trpc.blog.agentListRuns.useQuery();
+
+  // Fetch auto-publish setting
+  const { data: autoPublishData, isLoading: settingsLoading } = trpc.blog.agentGetAutoPublish.useQuery();
+
+  // Set auto-publish mutation
+  const setAutoPublishMutation = trpc.blog.agentSetAutoPublish.useMutation({
+    onSuccess: (result) => {
+      toast.success(result.autoPublish ? "Auto-publish enabled. New posts go live immediately." : "Auto-publish disabled. New posts will be saved as drafts.");
+    },
+    onError: (err) => {
+      toast.error(`Failed to update setting: ${err.message}`);
+    },
+  });
 
   // Manual trigger mutation
   const triggerMutation = trpc.blog.agentTrigger.useMutation({
@@ -88,6 +101,8 @@ export default function AdminAIBlogAgent() {
     }
   };
 
+  const autoPublish = autoPublishData?.autoPublish ?? true;
+
   return (
     <AdminLayout activeId="ai-blog-agent">
       <div className="space-y-6">
@@ -99,7 +114,7 @@ export default function AdminAIBlogAgent() {
               AI Blog Agent
             </h1>
             <p className="text-sm text-stone-500 mt-1">
-              Automatically generates and publishes SEO-optimized blog posts for the Oral Health Hub.
+              Generates SEO-optimized blog posts for the Oral Health Hub.
             </p>
           </div>
           <Button
@@ -110,7 +125,7 @@ export default function AdminAIBlogAgent() {
             {isGenerating ? (
               <>
                 <Loader2 className="w-4 h-4 animate-spin" />
-                Generating…
+                Generating...
               </>
             ) : (
               <>
@@ -121,25 +136,48 @@ export default function AdminAIBlogAgent() {
           </Button>
         </div>
 
-        {/* Schedule Info Card */}
+        {/* Settings Card */}
         <div className="bg-white rounded-xl border border-stone-200 shadow-sm p-6">
           <div className="flex items-start gap-4">
             <div className="p-3 bg-primary/10 rounded-xl">
-              <Calendar className="w-6 h-6 text-primary" />
+              <Settings2 className="w-6 h-6 text-primary" />
             </div>
-            <div className="flex-1">
-              <h2 className="text-base font-semibold text-stone-900 mb-1">Automated Schedule</h2>
-              <p className="text-sm text-stone-600 mb-3">
-                The AI Blog Agent runs automatically on a configured schedule. Each run researches a topic, writes a full article following DentaSmart's content standards, fills all SEO fields, and publishes it.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <div className="flex items-center gap-2 bg-stone-50 rounded-lg px-3 py-2">
-                  <Clock className="w-4 h-4 text-stone-400" />
-                  <span className="text-sm text-stone-700 font-medium">Tuesday & Thursday at 9:00 AM EST</span>
+            <div className="flex-1 space-y-4">
+              <div>
+                <h2 className="text-base font-semibold text-stone-900 mb-1">Agent Settings</h2>
+                <p className="text-sm text-stone-600">
+                  Configure how the AI Blog Agent behaves when generating new posts.
+                </p>
+              </div>
+
+              {/* Auto-publish toggle */}
+              <div className="flex items-center justify-between bg-stone-50 rounded-lg px-4 py-3">
+                <div className="flex-1">
+                  <p className="text-sm font-medium text-stone-900">Auto-publish</p>
+                  <p className="text-xs text-stone-500 mt-0.5">
+                    {autoPublish
+                      ? "New posts go live immediately after generation."
+                      : "New posts are saved as drafts for your review before publishing."}
+                  </p>
                 </div>
-                <div className="flex items-center gap-2 bg-stone-50 rounded-lg px-3 py-2">
-                  <Sparkles className="w-4 h-4 text-stone-400" />
-                  <span className="text-sm text-stone-700 font-medium">Auto-publish enabled</span>
+                <Switch
+                  checked={autoPublish}
+                  disabled={settingsLoading || setAutoPublishMutation.isPending}
+                  onCheckedChange={(checked) => {
+                    setAutoPublishMutation.mutate({ autoPublish: checked });
+                  }}
+                  className="cursor-pointer"
+                />
+              </div>
+
+              {/* Scheduling info */}
+              <div className="flex items-start gap-2.5 bg-blue-50 rounded-lg px-4 py-3">
+                <Info className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="text-sm text-blue-800 font-medium">Scheduling is managed externally</p>
+                  <p className="text-xs text-blue-600 mt-0.5">
+                    Automated runs are triggered by Manus Scheduled Tasks. To change the schedule (day, time, frequency), update it in your Manus Scheduled Tasks settings.
+                  </p>
                 </div>
               </div>
             </div>
@@ -153,8 +191,8 @@ export default function AdminAIBlogAgent() {
             {[
               { step: "1", title: "Research", desc: "Identifies trending dental topics, keyword gaps, and competitor angles" },
               { step: "2", title: "Outline", desc: "Creates a tight outline with H2s, H3s, FAQ section, and CTA placement" },
-              { step: "3", title: "Write & Humanize", desc: "Drafts 1,500-2,000 words in a human voice, then removes AI-sounding patterns" },
-              { step: "4", title: "SEO & Publish", desc: "Fills meta title, description, slug, OG tags, selects category, and publishes" },
+              { step: "3", title: "Write & Humanize", desc: "Drafts 1,500-2,000 words in a human voice with SEO/AEO/GEO formatting" },
+              { step: "4", title: "SEO & Save", desc: "Fills meta title, description, slug, OG tags, selects category, and saves" },
             ].map((item) => (
               <div key={item.step} className="relative p-4 bg-stone-50 rounded-xl">
                 <div className="text-3xl font-bold text-primary/20 absolute top-2 right-3">{item.step}</div>
@@ -184,7 +222,7 @@ export default function AdminAIBlogAgent() {
           {runsLoading ? (
             <div className="flex items-center justify-center py-16">
               <Loader2 className="w-6 h-6 animate-spin text-primary" />
-              <span className="ml-2 text-stone-500 text-sm">Loading history…</span>
+              <span className="ml-2 text-stone-500 text-sm">Loading history...</span>
             </div>
           ) : !runs || runs.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-16 gap-3">
