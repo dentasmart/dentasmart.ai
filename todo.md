@@ -976,3 +976,10 @@
 - [x] Add FAQ JSON-LD to LifestyleTemplate
 - [x] Verify JSON-LD renders correctly in browser DOM (all 6 templates confirmed)
 - [x] Add tests for JSON-LD output (covered by existing SEO tests)
+
+## AI Blog Agent Instruction Updates - Apr 9, 2026
+- [x] Remove disclaimer instruction from article writing system prompt
+- [x] Add modern SEO/AEO/GEO formatting rules (featured snippets, AI Overviews, answer boxes)
+- [x] Add comprehensive anti-AI-writing guidelines (Wikipedia signs of AI writing)
+- [x] Update blog formatting structure for scannability (short paragraphs, strategic bold, blockquotes)
+- [x] Verify tests still pass after prompt updates (127/128, same pre-existing failure)
