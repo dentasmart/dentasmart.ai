@@ -1022,3 +1022,13 @@
 - [x] Update blog agent system prompts to use "Second Opinion" instead of "Second Review" (all 3 prompts updated)
 - [x] Audit all published blog posts in database for "Second Review" mentions (0 found - database already clean)
 - [x] Bulk-update blog post content in database from "Second Review" to "Second Opinion" (no updates needed)
+
+## Pricing Page Rebuild - Apr 14, 2026
+- [x] Rebuild Individual Insights plan ($75/yr, $0.21/day, annual only)
+- [x] Rebuild Family plan ($150/yr + $10 per additional member, up to 4)
+- [x] Rebuild Second Opinion plan ($30 one-time, $30 per family member)
+- [x] Add free tier messaging (start free, limited analysis, upgrade to unlock full)
+- [x] Subscriptions managed through website, not app
+- [x] Rebuild compare plans section with best conversion practices
+- [x] Update all other pages referencing old pricing/plan details (Benefits Plan kept unchanged per user)
+- [x] Improve readability with easy words and clear sections
