@@ -85,7 +85,7 @@ export default function StickyDownloadBanner() {
               Get Your Oral Health Score
             </p>
             <p className="text-xs text-stone-500 leading-tight mt-0.5">
-              Free AI scan in 60 seconds
+              Free AI scan in 10 minutes
             </p>
           </div>
 

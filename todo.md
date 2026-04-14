@@ -1052,3 +1052,8 @@
 - [x] Wire WaitlistPopup (Benefits carousel) to save to DB via tRPC
 - [x] Add benefits-waitlist as new lead source in leadsDb.ts
 - [x] Add vitest tests for benefits waitlist, delete, and Excel export
+
+## Content Fix: Time Claims - Apr 14, 2026
+- [x] Find all instances of "60 seconds" / "seconds" time claims across codebase
+- [x] Replace all incorrect time claims with "10 minutes" (15 files updated)
+- [x] Verify no remaining inaccurate time references (grep confirmed zero matches)

@@ -23,7 +23,7 @@ interface MidContentCTAProps {
  */
 export default function MidContentCTA({
   headline = "Want clarity about your own mouth?",
-  description = "Snap a photo of your teeth and get your free AI oral health score in 60 seconds. No insurance needed.",
+  description = "Snap a photo of your teeth and get your free AI oral health score in 10 minutes. No insurance needed.",
   buttonText = "Get My Oral Health Score",
   variant = "inline",
   trackingLabel = "mid_content_cta",

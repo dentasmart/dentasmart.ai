@@ -219,7 +219,7 @@ export default function SymptomPage() {
           <MidContentCTA
             variant="card"
             headline="Worried about this symptom?"
-            description="Upload a photo and get a free AI assessment in 60 seconds. Know what to tell your dentist before you go."
+            description="Upload a photo and get a free AI assessment in 10 minutes. Know what to tell your dentist before you go."
             trackingLabel="symptom_page_mid_cta"
           />
         </div>

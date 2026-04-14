@@ -214,7 +214,7 @@ export default function GuidePage() {
           <MidContentCTA
             variant="card"
             headline="Ready to take the next step?"
-            description="Get a free AI oral health assessment in 60 seconds. Just snap a photo of your teeth."
+            description="Get a free AI oral health assessment in 10 minutes. Just snap a photo of your teeth."
             trackingLabel="guide_page_mid_cta"
           />
         </div>

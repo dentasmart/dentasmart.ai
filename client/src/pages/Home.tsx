@@ -333,7 +333,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {[
               { step: "01", title: "Upload a Photo", desc: "Take a quick picture of your teeth or upload X-rays." },
-              { step: "02", title: "Get Instant Insights", desc: "Our AI analyzes your oral health in seconds." },
+              { step: "02", title: "Get Instant Insights", desc: "Our AI analyzes your oral health in minutes." },
               { step: "03", title: "Take Control", desc: "Follow a clear, personalized plan to better health." }
             ].map((item, idx) => (
               <motion.div 

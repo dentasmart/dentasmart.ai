@@ -171,7 +171,7 @@ export default function Download() {
         <div className="container px-4 mx-auto max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: Zap, title: "Instant AI Analysis", desc: "Upload a photo and get insights in under 60 seconds. No waiting for appointments." },
+              { icon: Zap, title: "Instant AI Analysis", desc: "Upload a photo and get insights in under 10 minutes. No waiting for appointments." },
               { icon: Shield, title: "Private & Secure", desc: "Your dental data stays encrypted and is never shared with third parties." },
               { icon: Heart, title: "Personalized Plans", desc: "Get a clear care plan tailored to your specific needs with cost estimates." },
             ].map((item, idx) => (

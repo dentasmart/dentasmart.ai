@@ -120,7 +120,7 @@ export default function ExitIntentPopup() {
 
           <p className="text-stone-600 mb-6 leading-relaxed">
             Get a <span className="font-semibold text-primary">free AI oral health score</span> in
-            60 seconds. Just snap a photo of your teeth and find out what your
+            10 minutes. Just snap a photo of your teeth and find out what your
             dentist might not tell you.
           </p>
 

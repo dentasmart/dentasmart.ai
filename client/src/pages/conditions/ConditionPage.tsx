@@ -220,7 +220,7 @@ export default function ConditionPage() {
           <MidContentCTA
             variant="card"
             headline="Concerned about this condition?"
-            description="Upload a photo of your teeth and get a free AI assessment in 60 seconds. No insurance needed."
+            description="Upload a photo of your teeth and get a free AI assessment in 10 minutes. No insurance needed."
             trackingLabel="condition_page_mid_cta"
           />
         </div>

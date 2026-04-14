@@ -242,7 +242,7 @@ export default function TreatmentsHub() {
               Not sure what treatment you need?
             </h2>
             <p className="text-base md:text-lg text-stone-600 font-light mb-6 max-w-2xl mx-auto">
-              Upload a photo of your teeth and get a free AI assessment in 60 seconds. DentaSmart helps you understand what is going on so you can make informed decisions about your care.
+              Upload a photo of your teeth and get a free AI assessment in 10 minutes. DentaSmart helps you understand what is going on so you can make informed decisions about your care.
             </p>
             <Link href="/download">
               <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg">

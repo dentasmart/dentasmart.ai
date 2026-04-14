@@ -55,7 +55,7 @@ const compareData: Record<string, CompareData> = {
       { feature: "Available 24/7", dentasmart: "Yes, instant access", competitor: "Limited hours", dentasmartWins: true },
       { feature: "No appointment needed", dentasmart: "Yes, upload anytime", competitor: "Requires scheduling", dentasmartWins: true },
       { feature: "Cost per consultation", dentasmart: "$4.99/month unlimited", competitor: "$50-150 per visit", dentasmartWins: true },
-      { feature: "Results speed", dentasmart: "Under 60 seconds", competitor: "15-30 minute wait", dentasmartWins: true },
+      { feature: "Results speed", dentasmart: "Under 10 minutes", competitor: "15-30 minute wait", dentasmartWins: true },
       { feature: "Image analysis", dentasmart: "AI-powered X-ray & photo analysis", competitor: "Visual assessment only", dentasmartWins: true },
       { feature: "Prescriptions", dentasmart: "No, not a replacement for dentist", competitor: "Yes, licensed provider", dentasmartWins: false },
       { feature: "Progress tracking", dentasmart: "Yes, historical scores", competitor: "Varies by provider", dentasmartWins: true },

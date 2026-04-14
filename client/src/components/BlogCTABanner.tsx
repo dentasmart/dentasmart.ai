@@ -75,8 +75,8 @@ export function BlogCTABanner() {
                   Want clarity about your own mouth?
                 </h3>
                 <p className="text-stone-400 text-sm hidden md:block">
-                  Snap a photo and get your free AI oral health score in 60
-                  seconds.
+                  Snap a photo and get your free AI oral health score in
+                  10 minutes.
                 </p>
               </div>
 

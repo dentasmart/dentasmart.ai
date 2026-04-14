@@ -277,7 +277,7 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
       {/* ═══ MID-CONTENT CTA ═══ */}
       <MidContentCTA
         headline={`Nervous about getting a ${data.procedureName.toLowerCase()}?`}
-        description="Upload a photo of your teeth and get a free AI assessment in 60 seconds. Understand your situation before you sit in the chair."
+        description="Upload a photo of your teeth and get a free AI assessment in 10 minutes. Understand your situation before you sit in the chair."
         trackingLabel={`treatment_page_${data.slug}`}
         variant="card"
       />

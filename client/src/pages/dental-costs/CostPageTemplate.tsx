@@ -257,7 +257,7 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
       {/* ═══ MID-CONTENT CTA ═══ */}
       <MidContentCTA 
         headline={`Wondering if you really need a ${data.procedureName.toLowerCase()}?`}
-        description="Upload a photo of your teeth and get a free AI assessment in 60 seconds. Know what you need before you spend."
+        description="Upload a photo of your teeth and get a free AI assessment in 10 minutes. Know what you need before you spend."
         trackingLabel={`cost_page_${data.slug}`}
         variant="card"
       />

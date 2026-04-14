@@ -269,7 +269,7 @@ export default function DentalCostsHub() {
                 Most people overpay for dental work because they walk in blind. They don't know what's wrong, what it should cost, or whether they even need the treatment being recommended.
               </p>
               <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed">
-                DentaSmart changes that. Upload a photo of your teeth and get a free AI assessment in 60 seconds. You'll know what to expect before you spend a single dollar.
+                DentaSmart changes that. Upload a photo of your teeth and get a free AI assessment in 10 minutes. You'll know what to expect before you spend a single dollar.
               </p>
             </motion.div>
             <motion.div

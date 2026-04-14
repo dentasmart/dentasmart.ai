@@ -252,7 +252,7 @@ export default function Article() {
             <MidContentCTA
               variant="card"
               headline="Want clarity about your own mouth?"
-              description="Snap a photo of your teeth and get your free AI oral health score in 60 seconds. No insurance needed."
+              description="Snap a photo of your teeth and get your free AI oral health score in 10 minutes. No insurance needed."
               trackingLabel="article_mid_cta"
             />
           </div>

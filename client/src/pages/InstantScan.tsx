@@ -8,8 +8,8 @@ import { Camera, ArrowRight, CheckCircle, Clock, Shield } from "lucide-react";
 import { useEffect } from "react";
 
 const scanTypes = [
-  { title: "Teeth Photo Scan", desc: "Take a photo of your front teeth, top, and bottom. Our AI detects cavities, discoloration, gum recession, and more.", time: "~30 seconds" },
-  { title: "X-Ray Analysis", desc: "Upload a dental X-ray (panoramic or periapical). Get detailed findings including bone loss, root issues, and hidden decay.", time: "~60 seconds" },
+  { title: "Teeth Photo Scan", desc: "Take a photo of your front teeth, top, and bottom. Our AI detects cavities, discoloration, gum recession, and more.", time: "~5 minutes" },
+  { title: "X-Ray Analysis", desc: "Upload a dental X-ray (panoramic or periapical). Get detailed findings including bone loss, root issues, and hidden decay.", time: "~10 minutes" },
 ];
 
 const whatYouGet = [
@@ -31,8 +31,8 @@ export default function InstantScan() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
-        title="Free AI Dental Scan in 60 Seconds"
-        description="Upload a photo of your teeth or dental X-ray and get instant AI-powered analysis. Detect cavities, gum disease, and more in under 60 seconds. Free first scan."
+        title="Free AI Dental Scan in 10 Minutes"
+        description="Upload a photo of your teeth or dental X-ray and get AI-powered analysis. Detect cavities, gum disease, and more in under 10 minutes. Free first scan."
         canonical="https://dentasmart.ai/instant-scan"
         keywords="instant dental scan, AI dental analysis, teeth photo scan, dental X-ray analysis, oral health check online"
       />
@@ -64,13 +64,13 @@ export default function InstantScan() {
                 See what your dentist sees<br /><span className="italic text-primary">before your visit</span>.
               </h1>
               <p className="text-lg text-stone-600 mb-6 font-light leading-relaxed">
-                Upload a photo of your teeth or X-rays. Our AI analyzes it in seconds and gives you a clear, jargon-free report so you know exactly what is going on.
+                Upload a photo of your teeth or X-rays. Our AI analyzes it in minutes and gives you a clear, jargon-free report so you know exactly what is going on.
               </p>
 
               <div className="space-y-3 mb-6">
                 {[
                   "No appointment needed",
-                  "Results in under 60 seconds",
+                  "Results in under 10 minutes",
                   "Plain-language explanations",
                   "Personalized care plan included",
                 ].map((item, idx) => (
@@ -93,7 +93,7 @@ export default function InstantScan() {
                 Start My Free Scan
               </Button>
               <div className="flex items-center gap-6 text-sm text-stone-500 mt-6">
-                <span className="flex items-center gap-1"><Clock className="w-4 h-4 text-primary" /> Results in 60 seconds</span>
+                <span className="flex items-center gap-1"><Clock className="w-4 h-4 text-primary" /> Results in 10 minutes</span>
                 <span className="flex items-center gap-1"><Shield className="w-4 h-4 text-primary" /> 100% private</span>
               </div>
             </motion.div>
