@@ -1032,3 +1032,6 @@
 - [x] Rebuild compare plans section with best conversion practices
 - [x] Update all other pages referencing old pricing/plan details (Benefits Plan kept unchanged per user)
 - [x] Improve readability with easy words and clear sections
+
+## Compare Plans Table Fix - Apr 14, 2026
+- [x] Fix "Compare with your dentist's treatment plan" to show checkmark for all 3 plans (Second Opinion is included in all plans)

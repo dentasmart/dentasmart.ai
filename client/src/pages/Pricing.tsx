@@ -461,7 +461,7 @@ export default function Pricing() {
                     { feature: "Patient-friendly & dentist-ready reports", insights: true, secondOpinion: true, benefits: true },
                     { feature: "Personalized recommendations", insights: true, secondOpinion: true, benefits: true },
                     { feature: "Treatment options with pros, cons & costs", insights: true, secondOpinion: true, benefits: true },
-                    { feature: "Compare with your dentist's treatment plan", insights: false, secondOpinion: true, benefits: false },
+                    { feature: "Compare with your dentist's treatment plan", insights: true, secondOpinion: true, benefits: true },
                     { feature: "Preventive & initial care guidance", insights: true, secondOpinion: false, benefits: true },
                     { feature: "Recommended dentist type", insights: true, secondOpinion: false, benefits: true },
                     { feature: "Oral rehabilitation recommendations", insights: true, secondOpinion: false, benefits: true },
