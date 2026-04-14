@@ -130,7 +130,7 @@ export default function Pricing() {
       </section>
 
       {/* Pricing Cards */}
-      <section className="pb-12 pt-4 bg-white">
+      <section className="pb-6 pt-4 bg-white">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
@@ -417,14 +417,14 @@ export default function Pricing() {
       <WaitlistPopup isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
 
       {/* Benefits Carousel */}
-      <section className="py-8 bg-white overflow-hidden">
+      <section className="py-4 bg-white overflow-hidden">
         <BenefitsCarousel />
       </section>
 
       {/* Compare Plans */}
-      <section className="py-10 bg-white">
+      <section className="py-6 bg-white">
         <div className="container px-4 mx-auto max-w-5xl">
-          <div className="text-center mb-10">
+          <div className="text-center mb-6">
             <h2 className="text-4xl md:text-5xl font-light text-black mb-4">
               Compare plans
             </h2>
@@ -511,9 +511,9 @@ export default function Pricing() {
       </section>
 
       {/* How Subscriptions Work */}
-      <section className="py-10 bg-stone-50">
+      <section className="py-6 bg-stone-50">
         <div className="container px-4 mx-auto max-w-4xl">
-          <div className="text-center mb-8">
+          <div className="text-center mb-5">
             <h2 className="text-3xl md:text-4xl font-light text-black mb-3">
               How it works
             </h2>
@@ -557,9 +557,9 @@ export default function Pricing() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-10 bg-white">
+      <section className="py-6 bg-white">
         <div className="container px-4 mx-auto max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-light text-black mb-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-light text-black mb-6 text-center">
             Common questions
           </h2>
           <div className="space-y-4">

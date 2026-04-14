@@ -1060,3 +1060,6 @@
 
 ## Content Fix: FAQs Time Consistency - Apr 14, 2026
 - [x] Change 'within minutes' to '10 minutes' on FAQs page
+
+## UI Fix: Pricing Page Padding - Apr 14, 2026
+- [x] Reduce excessive vertical padding on pricing page sections (Compare plans, What you get, How it works, FAQ, Pricing cards, Benefits carousel)
