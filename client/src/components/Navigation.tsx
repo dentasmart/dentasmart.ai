@@ -150,7 +150,7 @@ export default function Navigation() {
             <p className={`text-[10px] md:text-xs font-medium tracking-wide transition-colors duration-300 ${
               scrolled || isOpen ? "text-teal-700" : "text-teal-800"
             }`}>
-              Your AI Oral Health Guide
+              Your AI Dentist in Your Pocket
             </p>
           </Link>
 

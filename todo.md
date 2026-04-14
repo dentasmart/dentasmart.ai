@@ -1035,3 +1035,7 @@
 
 ## Compare Plans Table Fix - Apr 14, 2026
 - [x] Fix "Compare with your dentist's treatment plan" to show checkmark for all 3 plans (Second Opinion is included in all plans)
+
+## Tagline Update - Apr 14, 2026
+- [x] Change tagline under logo in Navigation to "Your AI Dentist in Your Pocket"
+- [x] Change tagline under logo in Footer to "Your AI Dentist in Your Pocket"
