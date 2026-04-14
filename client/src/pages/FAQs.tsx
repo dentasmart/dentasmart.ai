@@ -38,7 +38,7 @@ export default function FAQs() {
     {
       title: "Getting Started",
       faqs: [
-        { q: "How do I get started with DentaSmart?", a: "Download the app from the App Store (Android coming soon), create an account, and take your first mouth photos or upload X-rays. You'll get your first report within minutes." },
+        { q: "How do I get started with DentaSmart?", a: "Download the app from the App Store (Android coming soon), create an account, and take your first mouth photos or upload X-rays. You'll get your first report within 10 minutes." },
         { q: "Is there a free trial?", a: "Yes. Download the app and try DentaSmart free for 7 days. No credit card required." },
         { q: "What phones does DentaSmart work on?", a: "DentaSmart works on iOS 14+ and Android 10+. Download from the App Store (Android coming soon)." },
       ],

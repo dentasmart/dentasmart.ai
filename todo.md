@@ -1057,3 +1057,6 @@
 - [x] Find all instances of "60 seconds" / "seconds" time claims across codebase
 - [x] Replace all incorrect time claims with "10 minutes" (15 files updated)
 - [x] Verify no remaining inaccurate time references (grep confirmed zero matches)
+
+## Content Fix: FAQs Time Consistency - Apr 14, 2026
+- [x] Change 'within minutes' to '10 minutes' on FAQs page
