@@ -64,6 +64,13 @@
       "when": 1775757468162,
       "tag": "0008_tan_skreet",
       "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1776196616809,
+      "tag": "0009_chief_bushwacker",
+      "breakpoints": true
     }
   ]
 }

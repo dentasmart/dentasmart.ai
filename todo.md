@@ -1039,3 +1039,16 @@
 ## Tagline Update - Apr 14, 2026
 - [x] Change tagline under logo in Navigation to "Your AI Dentist in Your Pocket"
 - [x] Change tagline under logo in Footer to "Your AI Dentist in Your Pocket"
+
+## Admin Leads CRM - Apr 14, 2026
+- [x] Trace Join Waitlist flow and identify current data storage
+- [x] Create/update Leads database table with source tracking (benefits_waitlist table)
+- [x] Build backend tRPC procedures for leads CRUD, pagination, filtering (list, stats, delete, exportCsv, exportExcel)
+- [x] Build Admin Leads page with checkboxes for bulk select & delete
+- [x] Add pagination (50/100 per page) with configurable dropdown
+- [x] Add source filter (quiz, android-waitlist, benefits-waitlist)
+- [x] Add filtered Excel download (exports visible/filtered leads based on active filters)
+- [x] Add Leads link to admin sidebar navigation (already existed)
+- [x] Wire WaitlistPopup (Benefits carousel) to save to DB via tRPC
+- [x] Add benefits-waitlist as new lead source in leadsDb.ts
+- [x] Add vitest tests for benefits waitlist, delete, and Excel export

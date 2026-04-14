@@ -36,13 +36,15 @@ vi.mock("./blogDb", () => ({
 vi.mock("./leadsDb", () => ({
   getLeads: vi.fn().mockResolvedValue({ leads: [], total: 0 }),
   getLeadsStats: vi.fn().mockResolvedValue({
-    total: 5,
+    total: 8,
     quizLeads: 3,
     androidWaitlist: 2,
+    benefitsWaitlist: 3,
     highRisk: 1,
-    withEmail: 4,
+    withEmail: 7,
   }),
   getAllLeadsForExport: vi.fn().mockResolvedValue([]),
+  deleteLeads: vi.fn().mockResolvedValue(2),
 }));
 
 vi.mock("./_core/notification", () => ({
@@ -231,5 +233,94 @@ describe("leads.exportCsv", () => {
     const caller = appRouter.createCaller(ctx);
 
     await expect(caller.leads.exportCsv({})).rejects.toThrow("Admin authentication required");
+  });
+});
+
+/* ─── Leads Export Excel (Admin) ──────────────────────────────────── */
+
+describe("leads.exportExcel", () => {
+  it("rejects unauthenticated requests", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    await expect(caller.leads.exportExcel({})).rejects.toThrow("Admin authentication required");
+  });
+});
+
+/* ─── Leads Delete (Admin) ────────────────────────────────────────── */
+
+describe("leads.delete", () => {
+  it("rejects unauthenticated requests", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    await expect(
+      caller.leads.delete({
+        items: [{ source: "quiz", id: 1 }],
+      })
+    ).rejects.toThrow("Admin authentication required");
+  });
+
+  it("rejects empty items array", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    await expect(
+      caller.leads.delete({ items: [] })
+    ).rejects.toThrow();
+  });
+});
+
+/* ─── Waitlist Join Benefits ─────────────────────────────────────── */
+
+describe("waitlist.joinBenefits", () => {
+  it("accepts a valid benefits waitlist signup", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    const result = await caller.waitlist.joinBenefits({
+      name: "Jane Doe",
+      email: "jane@example.com",
+    });
+
+    expect(result).toEqual({ success: true, alreadyExists: false });
+  });
+
+  it("accepts benefits signup with phone and message", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    const result = await caller.waitlist.joinBenefits({
+      name: "Jane Doe",
+      email: "jane@example.com",
+      phone: "555-1234",
+      message: "Interested in family plan",
+    });
+
+    expect(result).toEqual({ success: true, alreadyExists: false });
+  });
+
+  it("rejects benefits signup without name", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    await expect(
+      caller.waitlist.joinBenefits({
+        name: "",
+        email: "jane@example.com",
+      })
+    ).rejects.toThrow();
+  });
+
+  it("rejects benefits signup with invalid email", async () => {
+    const ctx = createPublicContext();
+    const caller = appRouter.createCaller(ctx);
+
+    await expect(
+      caller.waitlist.joinBenefits({
+        name: "Jane Doe",
+        email: "not-an-email",
+      })
+    ).rejects.toThrow();
   });
 });

@@ -104,6 +104,21 @@ export const androidWaitlist = mysqlTable("android_waitlist", {
 export type AndroidWaitlistEntry = typeof androidWaitlist.$inferSelect;
 
 /**
+ * Benefits plan waitlist for email capture.
+ * Captures leads from the "Join Waitlist" popup on the Pricing page.
+ */
+export const benefitsWaitlist = mysqlTable("benefits_waitlist", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 200 }),
+  email: varchar("email", { length: 320 }).notNull().unique(),
+  phone: varchar("phone", { length: 50 }),
+  message: text("message"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type BenefitsWaitlistEntry = typeof benefitsWaitlist.$inferSelect;
+
+/**
  * Admin users table for blog management authentication.
  * Separate from OAuth users - uses username/password auth.
  */
