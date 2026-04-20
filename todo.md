@@ -1083,11 +1083,16 @@
 - [x] Fix /guides/when-to-get-second-opinion — redirect to /guides/when-to-get-dental-second-opinion
 - [x] Fix structured data on /symptom-quiz — changed WebApplication to SoftwareApplication with aggregateRating
 ### Warnings
-- [ ] Add meta descriptions to 13 blog posts missing them (DB content — needs admin blog editor)
+- [x] Added meta descriptions to all 13 blog posts (done via DB script)
 - [x] Shortened 2 code-based guide titles (crowns-vs-fillings, dental-insurance-alternatives)
-- [ ] Shorten 9 blog post title tags (DB content — needs admin blog editor)
+- [x] Shortened all 47 long blog post title tags (done via DB script, 0 remaining over 70 chars)
 - [ ] Fix broken external link on /oral-health-hub/why-are-my-teeth-yellow (DB content — needs admin blog editor)
 ### Notices
 - [x] Added client-side redirects for old 404 URLs in App.tsx
 - [x] Fixed 6 orphaned sitemap pages — added internal links in Footer (answers, photo-guide, find-a-dentist, 3 DentaSmart comparison pages)
 - [x] llms.txt already has correct H1 — Semrush false positive (expects HTML h1, file uses Markdown #)
+
+## Blog SEO Fixes (DB Content) - Apr 20, 2026
+- [x] Fixed 13 blog posts missing meta descriptions (all 150-160 chars, SEO-optimized)
+- [x] Shortened all 47 blog post titles to under 57 chars (0 posts with rendered title > 70 chars remaining)
+- [x] Fixed 2 posts using 'DentaSmart.ai' suffix instead of 'DentaSmart' for consistency
