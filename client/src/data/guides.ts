@@ -374,7 +374,7 @@ export const guidesData: Record<string, GuideData> = {
   "dental-insurance-alternatives": {
   "slug": "dental-insurance-alternatives",
   "title": "Dental Insurance Alternatives: Your Complete Guide",
-  "metaTitle": "Dental Insurance Alternatives: A Complete Guide to Affordable Care",
+  "metaTitle": "Dental Insurance Alternatives | DentaSmart",
   "metaDescription": "Tired of expensive dental insurance? Explore affordable alternatives like discount plans, dental schools, and payment options to get the quality care you deserve.",
   "primaryKeyword": "dental insurance alternatives",
   "secondaryKeywords": ["dental discount plans", "affordable dental care"],
@@ -1058,7 +1058,7 @@ export const guidesData: Record<string, GuideData> = {
   "crowns-vs-fillings": {
   slug: "crowns-vs-fillings",
   title: "Crowns vs. Fillings: Which is Right for You?",
-  metaTitle: "Crown vs. Filling: Expert Guide to Choosing the Right Dental Treatment",
+"metaTitle": "Crown vs. Filling: How to Choose | DentaSmart",
   metaDescription: "Confused about whether you need a dental crown or a filling? Our guide breaks down the costs, longevity, and pros and cons to help you make an informed decision.",
   primaryKeyword: "crown vs filling",
   secondaryKeywords: ["dental crown necessity", "filling vs crown", "tooth restoration options", "dental treatment decisions"],

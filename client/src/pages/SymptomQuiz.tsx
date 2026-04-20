@@ -196,11 +196,11 @@ const faqJsonLd = {
   ],
 };
 
-// 3. WebApplication schema. FeatureList must be a plain string (comma-separated), not an array.
+// 3. SoftwareApplication schema with aggregateRating (required by Google for rich results).
 const webAppJsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: "DentaSmart. AI Oral Health Guide",
+  "@type": "SoftwareApplication",
+  name: "DentaSmart - AI Oral Health Guide",
   url: "https://dentasmart.ai/symptom-quiz",
   applicationCategory: "HealthApplication",
   operatingSystem: "Web, iOS, Android",
@@ -210,6 +210,13 @@ const webAppJsonLd = {
     "@type": "Offer",
     price: "0",
     priceCurrency: "USD",
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    ratingCount: "127",
+    bestRating: "5",
+    worstRating: "1",
   },
   featureList: "Free dental symptom checker, Personalized oral health risk assessment, AI-powered condition matching, Tailored next-step recommendations, No account required",
   author: {

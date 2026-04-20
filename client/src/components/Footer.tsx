@@ -171,6 +171,21 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/comparisons/dentasmart-vs-chatgpt-dental" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    DentaSmart vs ChatGPT
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/comparisons/dentasmart-vs-teledentistry" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    DentaSmart vs Teledentistry
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/comparisons/dentasmart-vs-dental-insurance" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    DentaSmart vs Insurance
+                  </Link>
+                </li>
+                <li>
                   <Link href="/life-stages" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Life Stages
                   </Link>
@@ -188,6 +203,21 @@ export default function Footer() {
                 <li>
                   <Link href="/faqs" className="text-black hover:text-primary transition-colors font-light text-sm">
                     FAQs
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/answers" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    Dental Answers
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/photo-guide" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    Photo Guide
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/find-a-dentist" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    Find a Dentist
                   </Link>
                 </li>
                 <li>

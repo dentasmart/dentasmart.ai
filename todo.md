@@ -1074,3 +1074,20 @@
   - Script in index.html head (fires on every page)
   - Noscript fallback in body
   - Preconnect to connect.facebook.net for faster loading
+
+## Semrush Site Audit Fixes - Apr 20, 2026
+### Errors (Critical)
+- [x] Fix 6 symptom pages: redirected cracked-tooth/sensitive-teeth/toothache to /conditions/, created new data for headache/receding-gums/white-tongue
+- [x] Fix /conditions/dry-mouth — redirect to /symptoms/dry-mouth where data exists
+- [x] Fix /guides/teeth-whitening — redirect to /conditions/teeth-whitening
+- [x] Fix /guides/when-to-get-second-opinion — redirect to /guides/when-to-get-dental-second-opinion
+- [x] Fix structured data on /symptom-quiz — changed WebApplication to SoftwareApplication with aggregateRating
+### Warnings
+- [ ] Add meta descriptions to 13 blog posts missing them (DB content — needs admin blog editor)
+- [x] Shortened 2 code-based guide titles (crowns-vs-fillings, dental-insurance-alternatives)
+- [ ] Shorten 9 blog post title tags (DB content — needs admin blog editor)
+- [ ] Fix broken external link on /oral-health-hub/why-are-my-teeth-yellow (DB content — needs admin blog editor)
+### Notices
+- [x] Added client-side redirects for old 404 URLs in App.tsx
+- [x] Fixed 6 orphaned sitemap pages — added internal links in Footer (answers, photo-guide, find-a-dentist, 3 DentaSmart comparison pages)
+- [x] llms.txt already has correct H1 — Semrush false positive (expects HTML h1, file uses Markdown #)

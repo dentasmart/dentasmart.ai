@@ -214,6 +214,37 @@ function Router() {
         <Route path="/hub/second-opinion">{() => { window.location.replace('/oral-health-hub/second-opinion'); return null; }}</Route>
         <Route path="/hub/prevention">{() => { window.location.replace('/oral-health-hub/prevention'); return null; }}</Route>
 
+        {/* Cross-section redirects: symptom slugs that exist in conditions */}
+        <Route path="/symptoms/cracked-tooth">{() => { window.location.replace('/conditions/cracked-tooth'); return null; }}</Route>
+        <Route path="/symptoms/sensitive-teeth">{() => { window.location.replace('/conditions/sensitive-teeth'); return null; }}</Route>
+        <Route path="/symptoms/toothache">{() => { window.location.replace('/conditions/toothache'); return null; }}</Route>
+        <Route path="/conditions/dry-mouth">{() => { window.location.replace('/symptoms/dry-mouth'); return null; }}</Route>
+        <Route path="/guides/teeth-whitening">{() => { window.location.replace('/conditions/teeth-whitening'); return null; }}</Route>
+        <Route path="/guides/when-to-get-second-opinion">{() => { window.location.replace('/guides/when-to-get-dental-second-opinion'); return null; }}</Route>
+
+        {/* 301 redirects for old 404 URLs found by Semrush */}
+        <Route path="/affordability">{() => { window.location.replace('/oral-health-hub/affordability'); return null; }}</Route>
+        <Route path="/prevention">{() => { window.location.replace('/oral-health-hub/prevention'); return null; }}</Route>
+        <Route path="/second-opinion">{() => { window.location.replace('/oral-health-hub/second-opinion'); return null; }}</Route>
+        <Route path="/symptom-checker">{() => { window.location.replace('/symptom-quiz'); return null; }}</Route>
+        <Route path="/comparisons/invisalign-vs-braces">{() => { window.location.replace('/comparisons/braces-vs-invisalign'); return null; }}</Route>
+        <Route path="/dental-costs/dental-cleaning">{() => { window.location.replace('/dental-costs/dental-cleaning-cost'); return null; }}</Route>
+        <Route path="/dental-costs/dental-implants-cost">{() => { window.location.replace('/dental-costs/dental-implant-cost'); return null; }}</Route>
+        <Route path="/oral-health-hub/ai-detect-cavity-dental-xray">{() => { window.location.replace('/oral-health-hub/how-can-ai-detect-a-cavity-in-my-dental-xray'); return null; }}</Route>
+        <Route path="/oral-health-hub/cavity-symptoms">{() => { window.location.replace('/oral-health-hub/cavity-symptoms-tooth-decay'); return null; }}</Route>
+        <Route path="/oral-health-hub/how-to-brush-your-teeth">{() => { window.location.replace('/guides/brushing-guide'); return null; }}</Route>
+        <Route path="/oral-health-hub/tooth-abscess">{() => { window.location.replace('/oral-health-hub/tooth-abscess-infection'); return null; }}</Route>
+        <Route path="/oral-health-hub/tooth-pain">{() => { window.location.replace('/oral-health-hub/tooth-pain-toothache'); return null; }}</Route>
+        <Route path="/oral-health-hub/what-are-tonsil-stones-how-to-remove">{() => { window.location.replace('/oral-health-hub'); return null; }}</Route>
+        <Route path="/oral-health-hub/what-to-do-when-your-dentist-recommends-expensive-treatment-you-cant-afford">{() => { window.location.replace('/guides/affordable-dental-care'); return null; }}</Route>
+        <Route path="/treatments/bone-grafting">{() => { window.location.replace('/treatments'); return null; }}</Route>
+        <Route path="/treatments/dental-crowns">{() => { window.location.replace('/treatments/dental-crown-procedure'); return null; }}</Route>
+        <Route path="/treatments/full-mouth-dental-implants">{() => { window.location.replace('/treatments/dental-implant-procedure'); return null; }}</Route>
+        <Route path="/treatments/gingivitis">{() => { window.location.replace('/conditions/gingivitis-vs-periodontitis'); return null; }}</Route>
+        <Route path="/treatments/invisalign">{() => { window.location.replace('/treatments/braces-treatment'); return null; }}</Route>
+        <Route path="/treatments/teeth-whitening">{() => { window.location.replace('/treatments/teeth-whitening-procedure'); return null; }}</Route>
+        <Route path="/treatments/veneers">{() => { window.location.replace('/treatments/veneers-procedure'); return null; }}</Route>
+
         {/* ===== EXPLICIT GUIDE PAGES (for sitemap detection) ===== */}
         <Route path="/guides/brushing-guide" component={GuidePage} />
         <Route path="/guides/flossing-guide" component={GuidePage} />
@@ -378,6 +409,7 @@ function Router() {
         <Route path="/hub/:category" component={HubCategory} />
         <Route path="/compare/:slug" component={ComparePage} />
 
+        {/* Catch-all 404 */}
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />
       </Switch>

@@ -2655,6 +2655,218 @@ export const symptomsData: Record<string, SymptomData> = {
     ctaHeading: "Concerned About Mouth Sores?",
     ctaButton: "Find a DentaSmart Dentist"
 },
+
+  "headache": {
+    slug: "headache",
+    title: "Dental Headaches: When Your Teeth Are the Reason Your Head Hurts",
+    metaTitle: "Dental Headaches: Could Your Teeth Be Causing Head Pain? | DentaSmart",
+    metaDescription: "Headaches can actually come from dental problems like teeth grinding, TMJ, or an infected tooth. Learn how to tell if your teeth are causing your headaches and what to do.",
+    primaryKeyword: "dental headache",
+    secondaryKeywords: ["headache from teeth", "tooth pain headache", "TMJ headache", "teeth grinding headache", "can a toothache cause a headache"],
+    heroHeading: "Could Your Teeth Be Causing That Headache?",
+    heroSubheading: "Not all headaches start in your head. Sometimes the real problem is hiding in your mouth. Let's figure out if your teeth are to blame.",
+    directAnswer: "Yes, dental problems can absolutely cause headaches. The most common culprits are teeth grinding (bruxism), TMJ disorder, an infected or abscessed tooth, and bite misalignment. The muscles in your jaw connect to your temples and the sides of your head, so when they're strained or inflamed, you feel it as a headache. If you get frequent headaches, especially in the morning or around your temples, your teeth might be the hidden cause.",
+    detailedExplanation: [
+      "Here's something most people don't realize: the muscles you use to chew are some of the strongest in your body. When those muscles are overworked, like from grinding your teeth at night, they get tight and sore. That tension radiates up into your temples and the sides of your head, giving you what feels like a regular tension headache. But it's actually a dental headache.",
+      "TMJ disorder is another big one. Your temporomandibular joint (the hinge that connects your jaw to your skull) sits right next to your ear. When that joint is inflamed or misaligned, it can cause pain that spreads across your face, head, and even down your neck. People with TMJ often get headaches they mistake for migraines.",
+      "Then there's the infection route. A tooth abscess or deep cavity can cause referred pain, meaning the infection is in your tooth but the pain shows up in your head. This is especially common with upper teeth, since they're close to your sinuses. An infected upper molar can mimic a sinus headache almost perfectly.",
+      "So how do you know if your headache is dental? Look for patterns. Does it happen in the morning (grinding)? Is it worse when you chew or open your mouth wide (TMJ)? Does it come with tooth pain or sensitivity (infection)? If any of these sound familiar, it's worth getting your teeth checked."
+    ],
+    possibleCauses: [
+      { title: "Teeth Grinding (Bruxism)", description: "Clenching or grinding your teeth, especially at night, strains the jaw muscles and causes tension headaches.", urgency: "medium" },
+      { title: "TMJ Disorder", description: "Problems with the jaw joint cause pain that radiates to the temples, forehead, and behind the eyes.", urgency: "medium" },
+      { title: "Tooth Infection or Abscess", description: "An infected tooth can cause referred pain that feels like a headache, especially with upper teeth near the sinuses.", urgency: "high" },
+      { title: "Bite Misalignment", description: "When your teeth don't line up properly, your jaw muscles work overtime to compensate, leading to chronic headaches.", urgency: "low" },
+      { title: "Wisdom Teeth", description: "Impacted or erupting wisdom teeth can cause jaw tension and headaches as surrounding tissues become inflamed.", urgency: "medium" },
+      { title: "Dental Work Aftermath", description: "A new filling or crown that's slightly too high can throw off your bite and trigger headaches within days.", urgency: "low" }
+    ],
+    selfCareSteps: [
+      "Apply a warm compress to your jaw muscles for 15-20 minutes to relax tension.",
+      "Take ibuprofen for both the headache and any jaw inflammation.",
+      "Avoid hard, chewy, or crunchy foods that make your jaw work harder.",
+      "Try to notice if you're clenching during the day and consciously relax your jaw.",
+      "Gently massage your temples and the muscles along your jawline.",
+      "Upload a photo to DentaSmart to check if a visible dental issue might be the cause."
+    ],
+    whenToSeeDentist: [
+      "You wake up with headaches most mornings (sign of nighttime grinding).",
+      "Your jaw clicks, pops, or locks when you open your mouth.",
+      "You have a toothache along with the headache.",
+      "The headaches are getting more frequent or more intense.",
+      "You notice your teeth are wearing down, chipping, or feeling loose.",
+      "Over-the-counter pain relievers aren't helping anymore."
+    ],
+    keyTakeaways: [
+      "Dental problems like grinding, TMJ, and infections are surprisingly common causes of headaches.",
+      "Morning headaches around the temples are a classic sign of nighttime teeth grinding.",
+      "Upper tooth infections can mimic sinus headaches almost perfectly.",
+      "A dentist can often diagnose and treat the root cause, ending the headache cycle."
+    ],
+    faqs: [
+      { question: "Can a toothache really cause a headache?", answer: "Absolutely. The nerves in your teeth connect to the trigeminal nerve, which is the main nerve responsible for sensation in your face and head. When a tooth is infected or inflamed, that pain can travel along the nerve and show up as a headache." },
+      { question: "How do I know if my headache is from grinding my teeth?", answer: "The biggest clue is timing. If you wake up with a dull headache around your temples, and your jaw feels sore or tight, you're probably grinding at night. Your dentist can confirm by looking for wear patterns on your teeth." },
+      { question: "Will a mouthguard help with dental headaches?", answer: "If grinding is the cause, a custom night guard from your dentist can make a huge difference. It protects your teeth and relaxes the jaw muscles. Over-the-counter guards work too, but custom ones fit better and last longer." }
+    ],
+    relatedConditions: [
+      { slug: "tmj-disorder", title: "TMJ Disorder" },
+      { slug: "teeth-grinding", title: "Teeth Grinding" }
+    ],
+    relatedSymptoms: [
+      { slug: "jaw-pain", title: "Jaw Pain" },
+      { slug: "jaw-clicking", title: "Jaw Clicking" },
+      { slug: "teeth-grinding", title: "Teeth Grinding" }
+    ],
+    relatedGuides: [
+      { slug: "dental-visit-guide", title: "What to Expect at a Dental Visit" }
+    ],
+    reviewedBy: "Areeba Aslam",
+    reviewedByCredentials: "General Dentist at DentaSmart",
+    lastReviewed: "2026-04-20",
+    ctaHeading: "Think your teeth might be causing headaches?",
+    ctaButton: "Check My Symptoms"
+  },
+
+  "receding-gums": {
+    slug: "receding-gums",
+    title: "Receding Gums: Why Your Gums Are Pulling Back and What to Do",
+    metaTitle: "Receding Gums: Causes, Symptoms & Treatment | DentaSmart",
+    metaDescription: "Noticing your gums pulling back from your teeth? Receding gums can lead to sensitivity and tooth loss if ignored. Learn the causes, home care tips, and when to see a dentist.",
+    primaryKeyword: "receding gums",
+    secondaryKeywords: ["gum recession", "gums pulling back", "gum recession treatment", "receding gum line", "can receding gums grow back"],
+    heroHeading: "Why Are My Gums Pulling Back?",
+    heroSubheading: "If your teeth look longer than they used to, or you can see the root, your gums are receding. Here's what's going on and what you can do about it.",
+    directAnswer: "Receding gums happen when the gum tissue around your teeth wears away or pulls back, exposing more of the tooth or even the root. The most common causes are aggressive brushing, gum disease, genetics, and grinding your teeth. It's a gradual process, so many people don't notice until their teeth look longer or feel more sensitive. Left untreated, gum recession can lead to root decay, increased sensitivity, and eventually tooth loss.",
+    detailedExplanation: [
+      "Gum recession is one of those things that sneaks up on you. It happens so slowly that most people don't notice until they look in the mirror one day and think, 'Huh, my teeth look longer.' That's because the gum tissue has gradually pulled away, exposing parts of the tooth that are normally hidden.",
+      "The number one cause? Believe it or not, it's often brushing too hard. A lot of people think scrubbing harder means cleaner teeth, but it actually wears away the delicate gum tissue over time. Using a hard-bristled toothbrush makes it even worse. Switch to a soft brush and use gentle, circular motions.",
+      "Gum disease (periodontitis) is the other major cause. When plaque and tartar build up below the gum line, they cause an infection that destroys the gum tissue and the bone supporting your teeth. This is why regular dental cleanings are so important. Once the bone is gone, it doesn't come back on its own.",
+      "Other factors include genetics (some people are just more prone to thin gums), teeth grinding (which puts excessive force on the gums), smoking (which reduces blood flow to the gums), hormonal changes, and even tongue or lip piercings that rub against the gums. The good news is that mild recession can be managed, and more advanced cases can be treated with grafting procedures."
+    ],
+    possibleCauses: [
+      { title: "Aggressive Brushing", description: "Brushing too hard or using a hard-bristled toothbrush wears away gum tissue over time.", urgency: "low" },
+      { title: "Gum Disease", description: "Bacterial infection destroys gum tissue and the bone that supports your teeth.", urgency: "high" },
+      { title: "Genetics", description: "Some people are born with thinner or weaker gum tissue that's more prone to recession.", urgency: "low" },
+      { title: "Teeth Grinding", description: "Chronic grinding puts excessive force on teeth and gums, causing them to recede.", urgency: "medium" },
+      { title: "Smoking or Tobacco Use", description: "Tobacco reduces blood flow to the gums, making them more vulnerable to recession.", urgency: "medium" },
+      { title: "Misaligned Teeth", description: "Crooked teeth or a bad bite can put uneven pressure on certain areas, causing localized recession.", urgency: "low" }
+    ],
+    selfCareSteps: [
+      "Switch to a soft-bristled toothbrush and use gentle, circular motions instead of scrubbing.",
+      "Use a toothpaste designed for sensitive teeth to help with any root exposure.",
+      "Floss daily but gently. Don't snap the floss into your gums.",
+      "Rinse with an antimicrobial mouthwash to help control bacteria.",
+      "If you grind your teeth, ask your dentist about a night guard.",
+      "Upload a photo to DentaSmart to get an initial assessment of your gum health."
+    ],
+    whenToSeeDentist: [
+      "You can see the roots of your teeth or they look noticeably longer.",
+      "Your teeth are becoming more sensitive to hot, cold, or sweet foods.",
+      "Your gums bleed when you brush or floss.",
+      "You notice gaps forming between your teeth at the gum line.",
+      "A tooth feels loose or wobbly.",
+      "You have persistent bad breath that won't go away."
+    ],
+    keyTakeaways: [
+      "Receding gums are usually caused by brushing too hard, gum disease, or grinding your teeth.",
+      "Once gums recede, they don't grow back on their own, but treatment can stop it from getting worse.",
+      "Switching to a soft toothbrush and gentle technique is the single most impactful change you can make.",
+      "Early detection is key. DentaSmart can help you spot gum recession before it becomes serious."
+    ],
+    faqs: [
+      { question: "Can receding gums grow back?", answer: "Unfortunately, no. Gum tissue doesn't regenerate on its own once it's gone. However, a dentist can perform gum grafting to cover exposed roots and restore the gum line. The most important thing is to stop the recession from getting worse." },
+      { question: "Is gum recession serious?", answer: "It can be if left untreated. Exposed roots are more vulnerable to decay, sensitivity increases, and in severe cases, teeth can become loose and fall out. But if you catch it early and address the cause, you can prevent all of that." },
+      { question: "How much does gum grafting cost?", answer: "Gum grafting typically costs between $600 and $1,200 per tooth, depending on the technique and your location. Some dental insurance plans cover part of the cost if it's medically necessary. Ask your dentist about options." }
+    ],
+    relatedConditions: [
+      { slug: "gum-disease", title: "Gum Disease" },
+      { slug: "periodontitis", title: "Periodontitis" }
+    ],
+    relatedSymptoms: [
+      { slug: "bleeding-gums", title: "Bleeding Gums" },
+      { slug: "gum-inflammation", title: "Gum Inflammation" },
+      { slug: "root-exposure", title: "Root Exposure" }
+    ],
+    relatedGuides: [
+      { slug: "brushing-guide", title: "How to Brush Your Teeth" },
+      { slug: "gum-disease-prevention", title: "Gum Disease Prevention" }
+    ],
+    reviewedBy: "Areeba Aslam",
+    reviewedByCredentials: "General Dentist at DentaSmart",
+    lastReviewed: "2026-04-20",
+    ctaHeading: "Worried about your receding gums?",
+    ctaButton: "Check My Gum Health"
+  },
+
+  "white-tongue": {
+    slug: "white-tongue",
+    title: "White Tongue: What Those White Patches Mean and What to Do",
+    metaTitle: "White Tongue: Causes, Treatment & When to Worry | DentaSmart",
+    metaDescription: "A white coating on your tongue is usually harmless but can signal oral thrush, dehydration, or other conditions. Learn what causes white tongue and when to see a doctor.",
+    primaryKeyword: "white tongue",
+    secondaryKeywords: ["white coating on tongue", "white patches tongue", "why is my tongue white", "white tongue causes", "white tongue treatment"],
+    heroHeading: "Why Is My Tongue White?",
+    heroSubheading: "Looked in the mirror and noticed a white coating on your tongue? It's more common than you think. Here's what could be causing it and when to be concerned.",
+    directAnswer: "A white tongue is usually caused by a buildup of dead cells, bacteria, and debris between the tiny bumps (papillae) on your tongue's surface. The most common causes are poor oral hygiene, dehydration, dry mouth, smoking, and mouth breathing. In some cases, it can indicate oral thrush (a yeast infection), leukoplakia, or oral lichen planus. Most of the time it's harmless and clears up with better oral hygiene, but persistent white patches that don't go away should be checked by a dentist or doctor.",
+    detailedExplanation: [
+      "Your tongue is covered in tiny finger-like projections called papillae. Normally, they're pinkish and barely noticeable. But when dead cells, bacteria, and food particles get trapped between them, the papillae can swell up and appear white. Think of it like a shaggy carpet that needs vacuuming. That's the most common and least worrisome cause of a white tongue.",
+      "Dehydration and dry mouth are huge contributors. When you don't produce enough saliva, your mouth can't naturally rinse away debris. This is why many people notice a white tongue first thing in the morning, after sleeping with their mouth open, or when they're not drinking enough water. Medications that cause dry mouth can make it worse.",
+      "Oral thrush is a yeast infection caused by Candida fungus. It creates creamy white patches that can appear on the tongue, inner cheeks, roof of the mouth, and gums. It's more common in babies, elderly people, those with weakened immune systems, and people who use inhaled corticosteroids for asthma. The patches can sometimes be scraped off, leaving a red, sore surface underneath.",
+      "Leukoplakia is another possibility. These are thick, white patches that can't be scraped off. They're most common in smokers and tobacco users. While usually benign, leukoplakia is considered a precancerous condition in some cases, so it should always be evaluated by a professional. Oral lichen planus, which causes white lacy patterns, is yet another possibility that's worth getting checked."
+    ],
+    possibleCauses: [
+      { title: "Poor Oral Hygiene", description: "Not brushing your tongue allows dead cells, bacteria, and food to accumulate between papillae.", urgency: "low" },
+      { title: "Dehydration / Dry Mouth", description: "Insufficient saliva means your mouth can't naturally wash away debris from the tongue surface.", urgency: "low" },
+      { title: "Oral Thrush", description: "A yeast infection that creates creamy white patches on the tongue and inner mouth.", urgency: "medium" },
+      { title: "Smoking / Tobacco Use", description: "Tobacco irritates the tongue and promotes bacterial buildup, causing white discoloration.", urgency: "medium" },
+      { title: "Leukoplakia", description: "Thick white patches that can't be scraped off. Usually benign but can be precancerous.", urgency: "high" },
+      { title: "Oral Lichen Planus", description: "An immune condition causing white, lacy patterns on the tongue and inner cheeks.", urgency: "medium" }
+    ],
+    selfCareSteps: [
+      "Gently brush your tongue every time you brush your teeth, or use a tongue scraper.",
+      "Drink plenty of water throughout the day to stay hydrated.",
+      "Cut back on alcohol and tobacco, which both contribute to white tongue.",
+      "Use an alcohol-free mouthwash to avoid drying out your mouth further.",
+      "Eat a balanced diet with probiotics (like yogurt) to maintain healthy oral bacteria.",
+      "Upload a photo to DentaSmart to get an initial assessment of your tongue."
+    ],
+    whenToSeeDentist: [
+      "The white patches don't go away after 2 weeks of improved oral hygiene.",
+      "The patches are painful, red, or bleeding.",
+      "You have difficulty eating or swallowing.",
+      "You have a weakened immune system or are on immunosuppressive medications.",
+      "The white patches are thick, hard, and can't be scraped off (possible leukoplakia).",
+      "You notice any lumps, sores, or changes that don't heal."
+    ],
+    keyTakeaways: [
+      "A white tongue is usually harmless and caused by poor hygiene, dehydration, or dry mouth.",
+      "Brushing your tongue daily and staying hydrated will clear most cases within a week or two.",
+      "Persistent white patches that don't go away could indicate oral thrush or leukoplakia and need professional evaluation.",
+      "DentaSmart can help you assess whether your white tongue needs professional attention."
+    ],
+    faqs: [
+      { question: "Is a white tongue a sign of something serious?", answer: "Usually not. Most white tongues are caused by simple things like not brushing your tongue, dehydration, or dry mouth. However, if the white patches persist for more than two weeks, are painful, or can't be scraped off, you should see a dentist to rule out conditions like oral thrush or leukoplakia." },
+      { question: "How do I clean a white tongue?", answer: "Use a soft toothbrush or a tongue scraper to gently clean your tongue from back to front every time you brush your teeth. Rinse with water or an alcohol-free mouthwash afterward. Do this twice a day and you should see improvement within a few days." },
+      { question: "Can a white tongue cause bad breath?", answer: "Yes, absolutely. The bacteria and debris that cause the white coating are the same things that produce bad breath. Cleaning your tongue regularly is one of the most effective ways to fight halitosis." }
+    ],
+    relatedConditions: [
+      { slug: "oral-thrush", title: "Oral Thrush" },
+      { slug: "teeth-whitening", title: "Teeth Whitening" }
+    ],
+    relatedSymptoms: [
+      { slug: "bad-breath", title: "Bad Breath" },
+      { slug: "dry-mouth", title: "Dry Mouth" },
+      { slug: "mouth-sores", title: "Mouth Sores" }
+    ],
+    relatedGuides: [
+      { slug: "brushing-guide", title: "How to Brush Your Teeth" },
+      { slug: "complete-oral-health-routine", title: "Complete Oral Health Routine" }
+    ],
+    reviewedBy: "Areeba Aslam",
+    reviewedByCredentials: "General Dentist at DentaSmart",
+    lastReviewed: "2026-04-20",
+    ctaHeading: "Concerned about your white tongue?",
+    ctaButton: "Check My Symptoms"
+  },
 };
 
 export const symptomsList = Object.values(symptomsData);
