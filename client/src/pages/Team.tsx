@@ -245,7 +245,7 @@ export default function Team() {
               <p className="text-stone-700 font-normal leading-relaxed mb-8">
                 Current Chief Dental Officer of MetLife (20M lives). Former CDO of Liberty Dental. 20+ years of industry leadership.
               </p>
-              <a href="https://www.linkedin.com/in/peter-fuentes-dmd-42861613/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-black hover:text-primary transition-colors">
+              <a href="https://www.linkedin.com/in/drpetefuentes/" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-black hover:text-primary transition-colors">
                 <Linkedin className="w-5 h-5 mr-2" />
                 <span className="text-sm font-medium">LinkedIn</span>
               </a>
