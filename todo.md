@@ -1105,3 +1105,10 @@
 - [x] Add fbq('track', 'Lead') on Android waitlist join
 - [x] Add fbq('track', 'Lead') on Benefits waitlist join
 - [x] Add fbq('track', 'InitiateCheckout') on pricing page CTA clicks (Benefits Plan $75, Second Opinion $30, Family Plan $150)
+
+## Meta Pixel: CompleteRegistration Event - Apr 20, 2026
+- [x] Add fbq('track', 'CompleteRegistration') on App Store / Google Play download link clicks
+  - Updated analytics.ts: download_ios_click and download_android_click now map to CompleteRegistration
+  - Fixed trackAppDownload to use download_android_click (was incorrectly using android_waitlist_submit)
+  - Corrected symptom_quiz_complete mapping from CompleteRegistration to Lead
+  - All 8 files with download links automatically fire CompleteRegistration via trackAppDownload()

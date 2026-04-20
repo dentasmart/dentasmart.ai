@@ -173,7 +173,9 @@ export function initMetaPixel(): void {
 function getMetaEventName(event: AnalyticsEvent): { name: string; isStandard: boolean } {
   switch (event) {
     case "download_ios_click":
-      return { name: "Lead", isStandard: true };
+      return { name: "CompleteRegistration", isStandard: true };
+    case "download_android_click":
+      return { name: "CompleteRegistration", isStandard: true };
     case "android_waitlist_submit":
       return { name: "Lead", isStandard: true };
     case "cta_get_score_click":
@@ -181,7 +183,7 @@ function getMetaEventName(event: AnalyticsEvent): { name: string; isStandard: bo
     case "symptom_quiz_start":
       return { name: "ViewContent", isStandard: true };
     case "symptom_quiz_complete":
-      return { name: "CompleteRegistration", isStandard: true };
+      return { name: "Lead", isStandard: true };
     case "symptom_quiz_email_submit":
       return { name: "Subscribe", isStandard: true };
     case "demo_request_submit":
@@ -278,7 +280,7 @@ export function trackAppDownload(
   platform: "ios" | "android",
   source: string
 ): void {
-  const event: AnalyticsEvent = platform === "ios" ? "download_ios_click" : "android_waitlist_submit";
+  const event: AnalyticsEvent = platform === "ios" ? "download_ios_click" : "download_android_click";
   trackEvent(event, {
     platform,
     source,
