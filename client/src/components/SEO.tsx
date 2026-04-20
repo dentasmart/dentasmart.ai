@@ -33,7 +33,11 @@ export default function SEO({
   article,
 }: SEOProps) {
   const fullTitle = title.includes("DentaSmart") ? title : `${title} | DentaSmart`;
-  const canonicalUrl = canonical || `${SITE_URL}${typeof window !== "undefined" ? window.location.pathname : ""}`;
+  // Normalize canonical: strip trailing slash (except root "/"), remove query params & hash
+  const rawCanonical = canonical || `${SITE_URL}${typeof window !== "undefined" ? window.location.pathname : ""}`;
+  const canonicalUrl = rawCanonical.endsWith("/") && rawCanonical !== `${SITE_URL}/`
+    ? rawCanonical.slice(0, -1)
+    : rawCanonical;
   const image = ogImage || DEFAULT_OG_IMAGE;
 
   // Build default Organization JSON-LD

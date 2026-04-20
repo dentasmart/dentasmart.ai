@@ -1063,3 +1063,14 @@
 
 ## UI Fix: Pricing Page Padding - Apr 14, 2026
 - [x] Reduce excessive vertical padding on pricing page sections (Compare plans, What you get, How it works, FAQ, Pricing cards, Benefits carousel)
+
+## SEO & Tracking Fixes - Apr 20, 2026
+- [x] Fix canonical tag issues across all pages (ensure dentasmart.ai domain)
+  - Added default canonical in index.html as SSR fallback
+  - Added trailing slash normalization in SEO.tsx
+  - All 44 pages already had correct canonical props
+- [x] Add Meta Pixel (Facebook) tracking code globally to all pages
+  - Pixel ID: 1627400051800292
+  - Script in index.html head (fires on every page)
+  - Noscript fallback in body
+  - Preconnect to connect.facebook.net for faster loading
