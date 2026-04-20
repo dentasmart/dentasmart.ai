@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { trpc } from "@/lib/trpc";
 import { toast } from "sonner";
+import { trackPixelLead } from "@/lib/fbpixel";
 
 interface WaitlistPopupProps {
   isOpen: boolean;
@@ -23,6 +24,7 @@ export function WaitlistPopup({ isOpen, onClose }: WaitlistPopupProps) {
   const joinBenefits = trpc.waitlist.joinBenefits.useMutation({
     onSuccess: (data) => {
       setIsSubmitted(true);
+      trackPixelLead({ content_name: "Benefits Waitlist", content_category: "waitlist_signup" });
       if (data.alreadyExists) {
         toast.info("You're already on the waitlist! We'll be in touch soon.");
       }

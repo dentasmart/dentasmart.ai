@@ -1099,3 +1099,9 @@
 
 ## Blog Fix: Broken ADA Link - Apr 20, 2026
 - [x] Fixed broken ADA external link in 'why-are-my-teeth-yellow' blog post (old: /whitening → new: /teeth-whitening)
+
+## Meta Pixel Custom Events - Apr 20, 2026
+- [x] Add fbq('track', 'Lead') on symptom quiz submission
+- [x] Add fbq('track', 'Lead') on Android waitlist join
+- [x] Add fbq('track', 'Lead') on Benefits waitlist join
+- [x] Add fbq('track', 'InitiateCheckout') on pricing page CTA clicks (Benefits Plan $75, Second Opinion $30, Family Plan $150)

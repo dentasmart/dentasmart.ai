@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
 import { trackEvent } from "@/lib/analytics";
+import { trackPixelLead } from "@/lib/fbpixel";
 import { Loader2 } from "lucide-react";
 import { WaitlistSuccessModal } from "./WaitlistSuccessModal";
 
@@ -36,6 +37,7 @@ export function AndroidEarlyAccessModal({ isOpen, onClose }: AndroidEarlyAccessM
       setSubmittedEmail(email.trim());
       setShowSuccess(true);
       trackEvent("android_waitlist_submit", { source: "modal" });
+      trackPixelLead({ content_name: "Android Waitlist", content_category: "waitlist_signup" });
     } catch (err) {
       toast.error("Something went wrong. Please try again.");
       console.error("Waitlist submission failed:", err);

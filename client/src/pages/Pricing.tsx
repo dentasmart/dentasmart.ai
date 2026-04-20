@@ -9,6 +9,7 @@ import { ValueComparisonTable } from "@/components/ValueComparisonTable";
 import { DownloadSection } from "@/components/DownloadSection";
 import { motion } from "framer-motion";
 import { WaitlistPopup } from "@/components/WaitlistPopup";
+import { trackPixelInitiateCheckout } from "@/lib/fbpixel";
 
 export default function Pricing() {
   const [planType, setPlanType] = useState<"individual" | "family">("individual");
@@ -247,9 +248,12 @@ export default function Pricing() {
 
               <Button 
                 className="w-full bg-primary hover:bg-primary/90 text-white rounded-full py-6 text-lg font-medium transition-all duration-300 shadow-lg cursor-pointer"
-                onClick={() => window.location.href = '/#download-cta'}
-              >
-                Start Free, Upgrade Anytime
+                  onClick={() => {
+                    trackPixelInitiateCheckout({ content_name: "Benefits Plan", content_category: "pricing", value: 75, currency: "USD" });
+                    window.location.href = '/#download-cta';
+                  }}
+                >
+                  Start Free, Upgrade Anytime
               </Button>
               <p className="text-xs text-stone-400 text-center mt-3">Subscriptions managed through dentasmart.ai</p>
             </motion.div>
@@ -340,9 +344,12 @@ export default function Pricing() {
               <Button 
                 variant="outline" 
                 className="w-full border-primary/20 text-primary hover:bg-blue-50 rounded-full py-6 text-lg font-medium transition-all duration-300 cursor-pointer"
-                onClick={() => window.location.href = '/#download-cta'}
-              >
-                Get Second Opinion
+                  onClick={() => {
+                    trackPixelInitiateCheckout({ content_name: "Second Opinion", content_category: "pricing", value: 30, currency: "USD" });
+                    window.location.href = '/#download-cta';
+                  }}
+                >
+                  Get Second Opinion
               </Button>
               <p className="text-xs text-stone-400 text-center mt-3">Subscriptions managed through dentasmart.ai</p>
             </motion.div>
@@ -404,9 +411,12 @@ export default function Pricing() {
 
               <Button 
                 className="w-full bg-white text-primary hover:bg-blue-50 rounded-full py-6 text-lg font-medium transition-all duration-300 shadow-lg cursor-pointer"
-                onClick={() => setIsWaitlistOpen(true)}
-              >
-                Join Waitlist
+                  onClick={() => {
+                    trackPixelInitiateCheckout({ content_name: "Family Plan", content_category: "pricing", value: 150, currency: "USD" });
+                    setIsWaitlistOpen(true);
+                  }}
+                >
+                  Join Waitlist
               </Button>
             </motion.div>
 

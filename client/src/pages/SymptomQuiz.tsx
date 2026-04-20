@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useCallback } from "react";
 import { trackEvent, trackAppDownload, getAppStoreUrl } from "@/lib/analytics";
+import { trackPixelLead } from "@/lib/fbpixel";
 import { quizQuestions, calculateQuizResult, type QuizResult } from "@/lib/quizData";
 import { trpc } from "@/lib/trpc";
 import {
@@ -383,6 +384,7 @@ export default function SymptomQuiz() {
     setSubmitted(true);
     setCurrentStep(totalQuestions + 2); // Go to results
     trackEvent("cta_get_score_click", { source: "symptom_quiz_complete" });
+    trackPixelLead({ content_name: "Symptom Quiz", content_category: "quiz_submission" });
   }, [email, answers, submitQuiz, totalQuestions]);
 
   const handleSkipEmail = useCallback(() => {
