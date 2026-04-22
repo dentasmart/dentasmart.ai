@@ -159,7 +159,8 @@ const data: CostPageData = {
       slug: "tooth-extraction-cost",
       price: "$150 - $500"
     }
-  ]
+  ],
+  relatedTreatmentPage: { name: "Dental Crown Procedure", slug: "dental-crown-procedure" },
 };
 
 export default function DentalCrownCostPage() {

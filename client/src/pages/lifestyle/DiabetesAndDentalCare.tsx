@@ -44,7 +44,7 @@ const data: LifestylePageData = {
     { title: "Tell Your Dentist", description: "Always inform your dental team that you have diabetes and share your latest A1c results. This helps them provide the best care for you." },
     { title: "Time Your Appointments", description: "Schedule your dental visits in the morning after you have eaten a good breakfast to help keep your blood sugar stable during the appointment." },
     { title: "Stay Hydrated", description: "Sip water all day long. You can also try chewing sugar-free gum or using an artificial saliva substitute to help with dry mouth." },
-    { title: "Choose Tooth-Friendly Foods", description: "Eat a balanced diet rich in vegetables, fruits, and whole grains. These foods are not only good for your blood sugar but also for your teeth." },
+    { title: "Choose Tooth-Friendly Foods", description: "Eat a balanced diet rich in vegetables, fruits, and whole grains. These foods are good for your blood sugar and great for your teeth too." },
     { title: "Use a Soft Brush", description: "Your gums might be sensitive. A soft-bristled toothbrush cleans effectively without causing irritation." },
   ],
   warningSignsTitle: "When to See a Dentist Right Away",

@@ -17,7 +17,7 @@ const data: EmergencyPageData = {
   ],
   whatHappenedTitle: "Your Tooth is Broken.",
   whatHappenedHighlight: "What does that mean?",
-  whatHappenedDescription: "A broken tooth can range from a small chip to a severe split. The type of break determines how urgent it is. A minor chip might just be a cosmetic issue. A deep fracture, however, can expose the nerve and lead to pain or infection. It’s crucial to know what to do right away.",
+  whatHappenedDescription: "A broken tooth can range from a small chip to a severe split. The type of break determines how urgent it is. A minor chip might just be a cosmetic issue. A deep fracture, however, can expose the nerve and lead to pain or infection. It's important to know what to do right away.",
   whatHappenedDescription2: "The break could be a small chip, a larger fracture, a crack that runs down the tooth, or a full split. Each type requires different care, but the first steps are always the same: stay calm and manage the situation.",
   immediateSteps: [
     {

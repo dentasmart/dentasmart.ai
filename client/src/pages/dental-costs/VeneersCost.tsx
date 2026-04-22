@@ -178,6 +178,7 @@ const data: CostPageData = {
       price: "$100 - $200",
     },
   ],
+  relatedTreatmentPage: { name: "Veneers Procedure", slug: "veneers-procedure" },
 };
 
 export default function VeneersCostPage() {

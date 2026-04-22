@@ -55,6 +55,7 @@ const data: CostPageData = {
     { name: "Tooth Extraction", slug: "tooth-extraction-cost", price: "$150 - $500" },
     { name: "Dental Cleaning", slug: "dental-cleaning-cost", price: "$100 - $200" },
   ],
+  relatedTreatmentPage: { name: "Root Canal Procedure", slug: "root-canal-procedure" },
 };
 
 const RootCanalCostPage = () => {

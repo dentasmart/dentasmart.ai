@@ -91,7 +91,7 @@ const data: TreatmentPageData = {
     },
     {
       title: "Maintain Good Oral Hygiene",
-      description: "Continue to brush twice a day and floss daily. This not only keeps your teeth healthy but also helps prevent new stains from forming.",
+      description: "Continue to brush twice a day and floss daily. This keeps your teeth healthy and helps prevent new stains from forming.",
     },
   ],
   faqs: [

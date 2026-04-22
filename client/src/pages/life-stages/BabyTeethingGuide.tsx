@@ -4,7 +4,7 @@ import AgeSpecificTemplate, { AgeSpecificPageData } from "./AgeSpecificTemplate"
 const data: AgeSpecificPageData = {
   slug: "baby-teething-guide",
   ageGroup: "Babies & Toddlers (0-3)",
-  heroTitle: "Navigating Your Baby's Smile",
+  heroTitle: "Your Baby's First Smile",
   heroHighlight: "from the First Tooth",
   heroDescription: "Your baby's first tooth is a big moment! This guide helps you understand teething, how to care for new teeth, and when to see a dentist. We'll make it simple and stress-free.",
   metaTitle: "Baby Teething Guide: Ages 0-3 | DentaSmart",

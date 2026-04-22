@@ -152,7 +152,11 @@ export default function GuidePage() {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-medium text-black mb-2">{step.title}</h3>
-                    <p className="text-stone-600 font-light leading-relaxed">{step.content}</p>
+                    <div className="space-y-3">
+                      {step.content.split('\n\n').map((para, pIdx) => (
+                        <p key={pIdx} className="text-stone-600 font-light leading-relaxed">{para}</p>
+                      ))}
+                    </div>
                     {step.tip && (
                       <div className="mt-3 flex items-start gap-2 bg-primary/5 rounded-lg p-3">
                         <Lightbulb className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />

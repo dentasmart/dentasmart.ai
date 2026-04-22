@@ -55,6 +55,7 @@ const data: CostPageData = {
     { name: 'Dentures Cost', slug: 'dentures-cost', price: '$1,500 - $4,000' },
     { name: 'Tooth Extraction Cost', slug: 'tooth-extraction-cost', price: '$150 - $500' },
   ],
+  relatedTreatmentPage: { name: "Dental Implant Procedure", slug: "dental-implant-procedure" },
 };
 
 const DentalImplantCostPage = () => {

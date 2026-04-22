@@ -1112,3 +1112,21 @@
   - Fixed trackAppDownload to use download_android_click (was incorrectly using android_waitlist_submit)
   - Corrected symptom_quiz_complete mapping from CompleteRegistration to Lead
   - All 8 files with download links automatically fire CompleteRegistration via trackAppDownload()
+
+## Semrush Audit: Implement Section 5 Recommendations - Apr 22, 2026
+
+### Internal Cross-Linking (26 under-linked pages)
+- [x] Identify all 26 pages with only one incoming internal link
+- [x] Add cross-links from related pages (cost<->treatment, condition<->guide, blog<->blog)
+- [x] Add "Related Reading" sections or contextual links within blog posts
+
+### Content Optimization (43 flagged pages)
+- [x] Break up long paragraphs on flagged guide/symptom/blog pages
+- [x] Fix heading hierarchy issues
+- [x] Ensure proper H1>H2>H3 structure without skipping levels
+
+### AI Writing Pattern Cleanup
+- [x] Remove all em dashes from site content
+- [x] Remove AI-typical phrases: "delve", "it's important to note", "in today's world", "navigate", "landscape", "comprehensive", "crucial", "foster", "moreover", "furthermore", "in conclusion", "harness", "realm", "pivotal", "robust"
+- [x] Ensure natural, conversational tone at 8th-grade reading level
+- [ ] Regenerate .docx report with all updates (in progress)

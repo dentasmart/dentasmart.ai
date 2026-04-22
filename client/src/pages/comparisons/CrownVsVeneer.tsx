@@ -66,10 +66,11 @@ s underlying structural problems or just improve its appearance? A crown is a fu
     { q: "How much do crowns and veneers cost?", a: "A veneer typically costs between $800 and $2,000 per tooth. A crown is slightly more, usually ranging from $1,000 to $2,500. Prices vary based on your location, the dentist's experience, and the material used.", },
   ],
   relatedPages: [
+    { name: "Braces vs Invisalign", href: "/comparisons/braces-vs-invisalign", tagline: "Compare two popular teeth straightening options." },
+    { name: "Implants vs Dentures", href: "/comparisons/dental-implants-vs-dentures", tagline: "Permanent vs removable tooth replacement." },
     { name: "Dental Crown Cost", href: "/dental-costs/dental-crown-cost", tagline: "Understand the factors that determine price." },
-    { name: "Dental Veneers", href: "/treatments/veneers", tagline: "A deep dive into the procedure and benefits." },
-    { name: "Symptom Quiz", href: "/symptom-quiz", tagline: "Find out what your dental symptoms could mean." },
-    { name: "Invisalign vs Braces", href: "/comparisons/invisalign-vs-braces", tagline: "Compare two popular teeth straightening options." },
+    { name: "Veneers Procedure", href: "/treatments/veneers-procedure", tagline: "What to expect from the veneers process." },
+    { name: "Veneers Cost Guide", href: "/dental-costs/veneers-cost", tagline: "Full breakdown of veneers pricing." },
   ],
 };
 

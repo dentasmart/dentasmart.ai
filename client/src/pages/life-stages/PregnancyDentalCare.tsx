@@ -14,7 +14,7 @@ const data: AgeSpecificPageData = {
     { value: "100% Safe", label: "Dental cleanings & exams during pregnancy" },
     { value: "6 Weeks", label: "Baby's teeth start developing in the womb" },
   ],
-  overviewTitle: "Navigating Your Dental Health",
+  overviewTitle: "Your Dental Health",
   overviewHighlight: "During Pregnancy",
   overviewDescription: "Pregnancy brings a wave of changes to your body, and your mouth is no exception. Hormonal shifts can make your gums more sensitive and prone to inflammation, a condition known as pregnancy gingivitis. It's common, but it needs your attention.",
   overviewDescription2: "Beyond your own health, your dental habits now can affect your baby. Good nutrition and care help your little one's teeth develop strong from the very start. This guide will help you maintain a healthy smile throughout your pregnancy journey.",
@@ -28,7 +28,7 @@ const data: AgeSpecificPageData = {
   ],
   milestones: [
     { age: "1st Trimester", title: "Hormonal Changes Begin", description: "Rising hormone levels can increase blood flow to your gums, making them tender and swollen. This is the start of pregnancy gingivitis for many." },
-    { age: "6 Weeks", title: "Baby's Tooth Buds Form", description: "Your baby's primary teeth are already beginning to develop under their gums. Your nutrition plays a key role now." },
+    { age: "6 Weeks", title: "Baby's Tooth Buds Form", description: "Your baby's primary teeth are already beginning to develop under their gums. Your nutrition matters a lot right now." },
     { age: "2nd Trimester", title: "Optimal Time for Dental Work", description: "This is the safest and most comfortable time for necessary dental procedures like fillings or crowns. Morning sickness has often subsided." },
     { age: "3rd Trimester", title: "Baby's Teeth Harden", description: "The enamel on your baby's teeth is now forming. Continue to focus on a diet rich in calcium, vitamin D, and phosphorus." },
     { age: "Postpartum", title: "Schedule a Checkup", description: "After your baby arrives, schedule a dental visit for yourself to ensure your gums have returned to a healthy state." },
@@ -59,7 +59,7 @@ const data: AgeSpecificPageData = {
   relatedLifeStagePages: [
     { name: "Baby Teething Guide", slug: "baby-teething-guide", tagline: "Soothing your baby's teething journey." },
     { name: "Children's Dental Health", slug: "childrens-dental-health", tagline: "Building a foundation for a lifetime of smiles." },
-    { name: "Teen Braces Guide", slug: "teen-braces-guide", tagline: "Navigating the world of orthodontics." },
+    { name: "Teen Braces Guide", slug: "teen-braces-guide", tagline: "Understanding the world of orthodontics." },
   ],
   relatedCostPage: { name: "Dental Cleaning Cost", slug: "dental-cleaning-cost" },
   relatedTreatmentPage: { name: "Dental Cleaning Procedure", slug: "dental-cleaning-procedure" },

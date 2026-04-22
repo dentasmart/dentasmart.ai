@@ -196,7 +196,7 @@ export default function Pricing() {
                     {[
                       "Oral health score and progress tracking",
                       "Early risk insights and trend monitoring",
-                      "Comprehensive report with clear findings and next steps",
+                      "Full report with clear findings and next steps",
                       "Patient-friendly and dentist-ready report versions",
                     ].map((f, i) => (
                       <li key={i} className="flex items-start text-black font-light text-sm">
@@ -293,7 +293,7 @@ export default function Pricing() {
                   <ul className="space-y-2.5">
                     {[
                       "One-time mouth scan and X-ray analysis",
-                      "Comprehensive second opinion report",
+                      "Full second opinion report",
                       "Comparison of DentaSmart findings with your dentist's treatment plan",
                       "X-ray and mouth image review",
                       "Oral health score with key insights",
@@ -467,7 +467,7 @@ export default function Pricing() {
                     { feature: "Quick Check, Detailed Checkup & Second Opinion", insights: true, secondOpinion: "Second Opinion only", benefits: true },
                     { feature: "Oral health score & progress tracking", insights: true, secondOpinion: "Score only", benefits: true },
                     { feature: "Early risk insights & trend monitoring", insights: true, secondOpinion: false, benefits: true },
-                    { feature: "Comprehensive report with findings & next steps", insights: true, secondOpinion: true, benefits: true },
+                    { feature: "Full report with findings & next steps", insights: true, secondOpinion: true, benefits: true },
                     { feature: "Patient-friendly & dentist-ready reports", insights: true, secondOpinion: true, benefits: true },
                     { feature: "Personalized recommendations", insights: true, secondOpinion: true, benefits: true },
                     { feature: "Treatment options with pros, cons & costs", insights: true, secondOpinion: true, benefits: true },

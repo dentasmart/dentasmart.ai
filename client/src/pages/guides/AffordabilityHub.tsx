@@ -139,7 +139,7 @@ const webPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
   name: "Affordable Dental Care Guide. How to Save on Dental Work",
-  description: "Comprehensive guide to affordable dental care options for uninsured and cost-conscious patients. Includes procedure cost tables, savings tips, and free AI dental assessment.",
+  description: "Complete guide to affordable dental care options for uninsured and cost-conscious patients. Includes procedure cost tables, savings tips, and free AI dental assessment.",
   url: "https://dentasmart.ai/oral-health-hub/affordability",
   inLanguage: "en-US",
   isPartOf: {
@@ -486,7 +486,7 @@ export default function AffordabilityHub() {
           <div className="container px-4 mx-auto max-w-6xl">
             <motion.div {...fadeUp} className="mb-6">
               <h2 className="text-2xl font-medium text-black">In-Depth Affordability Guides</h2>
-              <p className="text-stone-600 font-light mt-1 text-sm md:text-base">Step-by-step guides to help you navigate dental costs.</p>
+              <p className="text-stone-600 font-light mt-1 text-sm md:text-base">Step-by-step guides to help you understand and manage dental costs.</p>
             </motion.div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
               {affordabilityGuides.map((guide, idx) => (

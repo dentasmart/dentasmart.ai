@@ -153,10 +153,11 @@ const data: ComparisonPageData = {
 
   // Related Pages
   relatedPages: [
-    { name: "Dental Implant Cost Guide", href: "/dental-costs/dental-implants-cost", tagline: "A full breakdown of implant expenses." },
-    { name: "Full Mouth Dental Implants", href: "/treatments/full-mouth-dental-implants", tagline: "Learn about replacing all your teeth." },
-    { name: "Bone Grafting for Implants", href: "/treatments/bone-grafting", tagline: "Find out if you need a bone graft." },
-    { name: "Symptom Quiz", href: "/symptom-quiz", tagline: "Find the right treatment for you." },
+    { name: "Crown vs Veneer", href: "/comparisons/crown-vs-veneer", tagline: "Which restoration fits your needs?" },
+    { name: "Braces vs Invisalign", href: "/comparisons/braces-vs-invisalign", tagline: "Compare two popular straightening options." },
+    { name: "Dental Implant Cost", href: "/dental-costs/dental-implant-cost", tagline: "A full breakdown of implant expenses." },
+    { name: "Dental Implant Procedure", href: "/treatments/dental-implant-procedure", tagline: "What to expect from the implant process." },
+    { name: "Dentures Cost Guide", href: "/dental-costs/dentures-cost", tagline: "What dentures cost in 2026." },
   ],
 };
 

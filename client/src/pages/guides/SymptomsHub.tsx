@@ -205,9 +205,9 @@ export default function SymptomsHub() {
               className="hidden lg:block"
             >
               <div className="bg-stone-50 rounded-2xl p-5 border border-stone-100">
-                <h3 className="text-base font-medium text-black mb-3 flex items-center gap-2 text-left">
+                <p className="text-base font-medium text-black mb-3 flex items-center gap-2 text-left">
                   <AlertTriangle className="w-4 h-4 text-amber-500" /> Quick: How urgent is it?
-                </h3>
+                </p>
                 {urgencyLevels.map((level, idx) => (
                   <div key={idx} className={`${level.bgColor} rounded-xl p-3 mb-2 last:mb-0`}>
                     <div className="flex items-center gap-2 mb-1.5">

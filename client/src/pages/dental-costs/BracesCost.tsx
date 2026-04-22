@@ -154,6 +154,7 @@ const data: CostPageData = {
     { name: "Dental Cleaning", slug: "dental-cleaning-cost", price: "$75-$200" },
     { name: "Dental Crown", slug: "dental-crown-cost", price: "$800-$2,500" },
   ],
+  relatedTreatmentPage: { name: "Braces Treatment", slug: "braces-treatment" },
 };
 
 export default function BracesCost() {

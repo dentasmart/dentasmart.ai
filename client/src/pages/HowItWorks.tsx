@@ -165,7 +165,7 @@ export default function HowItWorks() {
               What you get in your report
             </h2>
             <p className="text-xl text-muted-foreground font-normal">
-              Comprehensive insights, simplified for you.
+              Clear insights, simplified for you.
             </p>
           </div>
           

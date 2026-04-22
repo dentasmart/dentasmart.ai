@@ -44,7 +44,7 @@ const data: EmergencyPageData = {
       step: "4",
       title: "Call a Dentist",
       description: "This is the most important step. A severe toothache will not go away on its own. Call a dental office, explain your symptoms, and schedule an emergency appointment.",
-      timing: "Crucial Step"
+      timing: "Key Step"
     },
   ],
 

@@ -77,10 +77,11 @@ const data: ComparisonPageData = {
     { q: "Should my child use fluoride toothpaste?", a: "Yes, the ADA recommends it. Use a tiny smear the size of a grain of rice for children under 3, and a pea-sized amount for children ages 3 to 6. Supervise brushing to make sure they spit it out." },
   ],
   relatedPages: [
-    { name: "Dental Crowns", href: "/treatments/dental-crowns", tagline: "Cap and protect a damaged tooth." },
-    { name: "Teeth Whitening", href: "/treatments/teeth-whitening", tagline: "Brighten your smile safely and effectively." },
-    { name: "Symptom Quiz", href: "/symptom-quiz", tagline: "Figure out what your dental symptoms mean." },
-    { name: "Invisalign vs. Braces", href: "/comparisons/invisalign-vs-braces", tagline: "The clear choice for straightening teeth?" },
+    { name: "Electric vs Manual Toothbrush", href: "/comparisons/electric-vs-manual-toothbrush", tagline: "Which brush cleans better?" },
+    { name: "Implants vs Dentures", href: "/comparisons/dental-implants-vs-dentures", tagline: "Permanent vs removable replacement." },
+    { name: "Braces vs Invisalign", href: "/comparisons/braces-vs-invisalign", tagline: "Compare two popular straightening options." },
+    { name: "Cavity Prevention Guide", href: "/guides/how-to-prevent-cavities", tagline: "Stop decay before it starts." },
+    { name: "Dental Cleaning Procedure", href: "/treatments/dental-cleaning-procedure", tagline: "What happens during a professional cleaning." },
   ],
 };
 

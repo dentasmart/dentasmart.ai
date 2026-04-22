@@ -78,10 +78,11 @@ const data: ComparisonPageData = {
     { q: "Is it easier to keep teeth clean with braces or Invisalign?", a: "Invisalign makes oral hygiene much simpler. You just pop the aligners out and brush and floss your teeth as you normally would. Cleaning around the brackets and wires of braces requires more time and special tools to be effective." },
   ],
   relatedPages: [
-    { name: "Dental Implant Costs", href: "/dental-costs/dental-implant-cost", tagline: "Understanding the investment in a new smile." },
-    { name: "Invisalign Treatment Guide", href: "/treatments/invisalign", tagline: "Everything you need to know about clear aligners." },
+    { name: "Crown vs Veneer", href: "/comparisons/crown-vs-veneer", tagline: "Which restoration fits your needs?" },
+    { name: "Implants vs Dentures", href: "/comparisons/dental-implants-vs-dentures", tagline: "Permanent vs removable tooth replacement." },
+    { name: "Braces Cost Guide", href: "/dental-costs/braces-cost", tagline: "What braces really cost in 2026." },
+    { name: "Braces Treatment Guide", href: "/treatments/braces-treatment", tagline: "What to expect during orthodontic treatment." },
     { name: "Symptom Quiz", href: "/symptom-quiz", tagline: "Check your symptoms with our AI-powered tool." },
-    { name: "Find a Dentist Near You", href: "/download", tagline: "Use our AI to find the perfect dentist for your needs." },
   ],
 };
 

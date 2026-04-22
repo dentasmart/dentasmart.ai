@@ -51,6 +51,7 @@ export interface CostPageData {
   savingsWithDentaSmart: { title: string; description: string }[];
   faqs: FAQ[];
   relatedCostPages: { name: string; slug: string; price: string }[];
+  relatedTreatmentPage?: { name: string; slug: string };
 }
 
 /* ─── Animation ─────────────────────────────────────────── */
@@ -197,7 +198,7 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
                       <div className="w-3 h-3 rounded-full bg-primary mt-1.5 flex-shrink-0" />
                       <div className="flex-1 min-w-0">
                         <span className="font-medium text-black text-sm md:text-base">{item.factor}</span>
-                        <span className="text-stone-500 text-sm"> — {item.impact}</span>
+                        <span className="text-stone-500 text-sm"> &middot; {item.impact}</span>
                         <p className="text-xs text-stone-500 mt-0.5">{item.tip}</p>
                       </div>
                     </div>
@@ -396,6 +397,13 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
         <div className="container px-4 mx-auto max-w-6xl">
           <h2 className="text-lg font-medium text-black mb-3">Related Resource Hubs</h2>
           <div className="flex flex-wrap gap-2 md:gap-3">
+            {data.relatedTreatmentPage && (
+              <Link href={`/treatments/${data.relatedTreatmentPage.slug}`}>
+                <span className="inline-flex items-center gap-2 bg-primary/5 px-3 md:px-4 py-2 rounded-full border border-primary/20 text-primary font-medium hover:bg-primary/10 transition-colors cursor-pointer text-xs md:text-sm">
+                  {data.relatedTreatmentPage.name} Guide <ArrowRight className="w-3 h-3" />
+                </span>
+              </Link>
+            )}
             <Link href="/dental-costs">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 All Dental Costs <ArrowRight className="w-3 h-3" />

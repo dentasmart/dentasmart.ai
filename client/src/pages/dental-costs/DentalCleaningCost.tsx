@@ -54,7 +54,8 @@ const data: CostPageData = {
     { name: "Root Canal", slug: "root-canal-cost", price: "$700 - $2,000" },
     { name: "Dental Crown", slug: "dental-crown-cost", price: "$800 - $2,500" },
     { name: "Tooth Extraction", slug: "tooth-extraction-cost", price: "$150 - $600" }
-  ]
+  ],
+  relatedTreatmentPage: { name: "Dental Cleaning Procedure", slug: "dental-cleaning-procedure" },
 };
 
 export default function DentalCleaningCostPage() {

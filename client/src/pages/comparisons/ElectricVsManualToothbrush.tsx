@@ -93,11 +93,11 @@ const data: ComparisonPageData = {
     },
   ],
   relatedPages: [
-    { name: "Dental Cleaning Costs", href: "/dental-costs/dental-cleaning", tagline: "How much should you pay?" },
-    { name: "Gingivitis Treatment", href: "/treatments/gingivitis", tagline: "Stopping gum disease early." },
-    { name: "Braces vs. Invisalign", href: "/comparisons/braces-vs-invisalign", tagline: "The clear choice for your smile." },
-    { name: "How to Brush Your Teeth Properly", href: "/oral-health-hub/how-to-brush-your-teeth", tagline: "Master the basics." },
-    { name: "Symptom Quiz", href: "/symptom-quiz", tagline: "Check your oral health." },
+    { name: "Fluoride vs Fluoride-Free", href: "/comparisons/fluoride-vs-fluoride-free-toothpaste", tagline: "Which toothpaste is right for you?" },
+    { name: "Crown vs Veneer", href: "/comparisons/crown-vs-veneer", tagline: "Which restoration fits your needs?" },
+    { name: "Braces vs Invisalign", href: "/comparisons/braces-vs-invisalign", tagline: "Compare two popular straightening options." },
+    { name: "Dental Cleaning Cost", href: "/dental-costs/dental-cleaning-cost", tagline: "How much should you pay?" },
+    { name: "Brushing Guide", href: "/guides/brushing-guide", tagline: "Master the basics of proper brushing." },
   ],
 };
 

@@ -60,7 +60,7 @@ const data: AgeSpecificPageData = {
   ],
   relatedLifeStagePages: [
     { name: "Baby Teething Guide", slug: "baby-teething-guide", tagline: "Soothing your baby's gums." },
-    { name: "Teen Braces Guide", slug: "teen-braces-guide", tagline: "Navigating orthodontic care." },
+    { name: "Teen Braces Guide", slug: "teen-braces-guide", tagline: "Understanding orthodontic care." },
     { name: "Pregnancy & Dental Care", slug: "pregnancy-dental-care", tagline: "Oral health for expecting mothers." },
   ],
   relatedCostPage: { name: "Braces Cost", slug: "braces-cost" },

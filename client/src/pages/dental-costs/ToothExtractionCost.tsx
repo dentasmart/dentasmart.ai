@@ -55,6 +55,7 @@ const data: CostPageData = {
     { name: "Dental Implant Cost", slug: "dental-implant-cost", price: "$3,000 - $6,000" },
     { name: "Dental Cleaning Cost", slug: "dental-cleaning-cost", price: "$75 - $200" },
   ],
+  relatedTreatmentPage: { name: "Tooth Extraction Procedure", slug: "tooth-extraction-procedure" },
 };
 
 export default function ToothExtractionCostPage() {
