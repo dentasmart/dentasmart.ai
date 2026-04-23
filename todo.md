@@ -1129,4 +1129,9 @@
 - [x] Remove all em dashes from site content
 - [x] Remove AI-typical phrases: "delve", "it's important to note", "in today's world", "navigate", "landscape", "comprehensive", "crucial", "foster", "moreover", "furthermore", "in conclusion", "harness", "realm", "pivotal", "robust"
 - [x] Ensure natural, conversational tone at 8th-grade reading level
-- [ ] Regenerate .docx report with all updates (in progress)
+- [x] Regenerate .docx report with all updates
+
+## Pricing Page URL Updates - Apr 23, 2026
+- [x] Update Insight Individual (Yearly) button URL to https://subscription.dentasmart.ai/create-saas-account?plan=insights_individual_yearly
+- [x] Update Insight Family (Yearly) button URL to https://subscription.dentasmart.ai/create-saas-account?plan=insights_family_yearly
+- [x] Update Second Opinion button URL to https://subscription.dentasmart.ai/create-saas-account?plan=second_review

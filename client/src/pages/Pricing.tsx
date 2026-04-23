@@ -250,7 +250,7 @@ export default function Pricing() {
                 className="w-full bg-primary hover:bg-primary/90 text-white rounded-full py-6 text-lg font-medium transition-all duration-300 shadow-lg cursor-pointer"
                   onClick={() => {
                     trackPixelInitiateCheckout({ content_name: "Benefits Plan", content_category: "pricing", value: 75, currency: "USD" });
-                    window.location.href = '/#download-cta';
+                    window.location.href = planType === 'family' ? 'https://subscription.dentasmart.ai/create-saas-account?plan=insights_family_yearly' : 'https://subscription.dentasmart.ai/create-saas-account?plan=insights_individual_yearly';
                   }}
                 >
                   Start Free, Upgrade Anytime
@@ -346,7 +346,7 @@ export default function Pricing() {
                 className="w-full border-primary/20 text-primary hover:bg-blue-50 rounded-full py-6 text-lg font-medium transition-all duration-300 cursor-pointer"
                   onClick={() => {
                     trackPixelInitiateCheckout({ content_name: "Second Opinion", content_category: "pricing", value: 30, currency: "USD" });
-                    window.location.href = '/#download-cta';
+                    window.location.href = 'https://subscription.dentasmart.ai/create-saas-account?plan=second_review';
                   }}
                 >
                   Get Second Opinion
