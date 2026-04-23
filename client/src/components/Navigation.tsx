@@ -274,7 +274,17 @@ export default function Navigation() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3">
+            <Button
+              size="sm"
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary/5 rounded-full px-6 py-5 text-sm font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
+              onClick={() => {
+                window.location.href = 'https://subscription.dentasmart.ai/login';
+              }}
+            >
+              Login
+            </Button>
             <Button
               size="sm"
               className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-5 text-sm font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
@@ -468,8 +478,18 @@ export default function Navigation() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.4 }}
-              className="mt-auto pt-6 border-t border-stone-200"
+              className="mt-auto pt-6 border-t border-stone-200 space-y-3"
             >
+              <Button
+                variant="outline"
+                className="w-full border-primary text-primary hover:bg-primary/5 rounded-full py-6 text-lg font-medium cursor-pointer"
+                onClick={() => {
+                  setIsOpen(false);
+                  window.location.href = 'https://subscription.dentasmart.ai/login';
+                }}
+              >
+                Login
+              </Button>
               <Button
                 className="w-full bg-primary text-white rounded-full py-6 text-lg font-medium hover:bg-primary/90 cursor-pointer"
                 onClick={() => {
@@ -484,7 +504,7 @@ export default function Navigation() {
                   }
                 }}
               >
-                Download the App
+                Download App
               </Button>
               <p className="text-center text-stone-400 text-sm mt-6 font-light">
                 © 2025 DentaSmart. All rights reserved.

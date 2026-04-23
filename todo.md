@@ -1135,3 +1135,8 @@
 - [x] Update Insight Individual (Yearly) button URL to https://subscription.dentasmart.ai/create-saas-account?plan=insights_individual_yearly
 - [x] Update Insight Family (Yearly) button URL to https://subscription.dentasmart.ai/create-saas-account?plan=insights_family_yearly
 - [x] Update Second Opinion button URL to https://subscription.dentasmart.ai/create-saas-account?plan=second_review
+
+## Navigation Updates - Apr 23, 2026
+- [x] Add Login button to top nav (links to https://subscription.dentasmart.ai/login)
+- [x] Ensure Login button is visible on mobile like Download App button
+- [x] Fix "Download the App" text on mobile to "Download App" (consistent with desktop)
