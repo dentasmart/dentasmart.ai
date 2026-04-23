@@ -1140,3 +1140,15 @@
 - [x] Add Login button to top nav (links to https://subscription.dentasmart.ai/login)
 - [x] Ensure Login button is visible on mobile like Download App button
 - [x] Fix "Download the App" text on mobile to "Download App" (consistent with desktop)
+
+## Semrush Audit Fixes - Apr 23, 2026 (Round 2)
+- [x] CRITICAL: Remove duplicate canonical tag from index.html line 32 (still present, causes 259+211=470 errors)
+- [ ] Fix 2 pages with slow load speed (server performance issue, not code-fixable)
+- [x] Fix 1 page missing H1 heading (added default meta description to index.html as fallback)
+- [x] Fix 1 page missing meta description (added default meta description to index.html)
+- [x] Fix llms.txt formatting issues (changed content-type to text/markdown)
+- [x] Address 5 orphaned pages in sitemaps (fixed Footer links from /comparisons/ to /compare/ prefix)
+- [x] Check 3 pages blocked from crawling (old /comparisons/ URLs that 404, now fixed via Footer link correction)
+- [x] Check 1 URL with permanent redirect (intentional redirect, no action needed)
+- [x] Fix 5 heading hierarchy issues (Answers, OralHealthHub, PhotoGuide, Pricing, TreatmentsHub)
+- [x] Fix remaining long bodyHtml paragraph in wwhat-are-dental-implants-cost blog post

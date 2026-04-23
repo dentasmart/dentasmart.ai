@@ -180,7 +180,7 @@ export default function TreatmentsHub() {
                 <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-medium text-black mb-2">{item.title}</h3>
+                <h2 className="text-xl font-medium text-black mb-2">{item.title}</h2>
                 <p className="text-stone-600 font-light leading-relaxed text-sm">{item.desc}</p>
               </motion.div>
             ))}

@@ -166,22 +166,22 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/comparisons" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/compare" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Comparison Guides
                   </Link>
                 </li>
                 <li>
-                  <Link href="/comparisons/dentasmart-vs-chatgpt-dental" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/compare/dentasmart-vs-chatgpt-dental" className="text-black hover:text-primary transition-colors font-light text-sm">
                     DentaSmart vs ChatGPT
                   </Link>
                 </li>
                 <li>
-                  <Link href="/comparisons/dentasmart-vs-teledentistry" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/compare/dentasmart-vs-teledentistry" className="text-black hover:text-primary transition-colors font-light text-sm">
                     DentaSmart vs Teledentistry
                   </Link>
                 </li>
                 <li>
-                  <Link href="/comparisons/dentasmart-vs-dental-insurance" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/compare/dentasmart-vs-dental-insurance" className="text-black hover:text-primary transition-colors font-light text-sm">
                     DentaSmart vs Insurance
                   </Link>
                 </li>

@@ -149,7 +149,7 @@ export default function Pricing() {
               <div className="mb-6">
                 <div className="flex items-center gap-2 mb-2">
                   <Shield className="w-5 h-5 text-primary" />
-                  <h3 className="text-2xl font-medium text-black">Individual Insights</h3>
+                  <h2 className="text-2xl font-medium text-black">Individual Insights</h2>
                 </div>
                 <p className="text-primary text-xs font-bold uppercase tracking-widest">Monthly Monitoring</p>
               </div>
@@ -269,7 +269,7 @@ export default function Pricing() {
               <div className="mb-6">
                 <div className="flex items-center gap-2 mb-2">
                   <Sparkles className="w-5 h-5 text-primary" />
-                  <h3 className="text-2xl font-medium text-black">Second Opinion</h3>
+                  <h2 className="text-2xl font-medium text-black">Second Opinion</h2>
                 </div>
                 <p className="text-black text-xs font-bold uppercase tracking-widest">One-Time</p>
               </div>
@@ -368,7 +368,7 @@ export default function Pricing() {
               <div className="mb-6">
                 <div className="flex items-center gap-2 mb-2">
                   <Users className="w-5 h-5 text-white" />
-                  <h3 className="text-2xl font-medium text-white">Benefits</h3>
+                  <h2 className="text-2xl font-medium text-white">Benefits</h2>
                 </div>
                 <p className="text-white text-xs font-bold uppercase tracking-widest">Dental Benefits Membership</p>
               </div>

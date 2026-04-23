@@ -246,7 +246,7 @@ Disallow: /api/
 
   // llms.txt - Information for AI/LLM crawlers about the site
   app.get("/llms.txt", (_req: Request, res: Response) => {
-    res.type("text/plain");
+    res.type("text/markdown");
     res.set("Cache-Control", "public, max-age=0, s-maxage=3600, must-revalidate");
     res.send(`# DentaSmart - Your Personal AI Oral Health Guide
 > AI-powered dental health analysis and personalized oral care guidance.

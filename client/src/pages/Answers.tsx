@@ -205,7 +205,7 @@ export default function Answers() {
                     }}
                     className="w-full flex items-center justify-between p-5 text-left hover:bg-stone-50 transition-colors cursor-pointer"
                   >
-                    <h3 className="font-medium text-black pr-4">{qa.q}</h3>
+                    <h2 className="font-medium text-black pr-4 text-base">{qa.q}</h2>
                     {isExpanded ? (
                       <ChevronUp className="w-5 h-5 text-stone-400 flex-shrink-0" />
                     ) : (
