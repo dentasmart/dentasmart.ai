@@ -12,8 +12,9 @@ import { DownloadSection } from "@/components/DownloadSection";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import { motion } from "framer-motion";
-import { BlogCTABanner } from "@/components/BlogCTABanner";
 import MidContentCTA from "@/components/MidContentCTA";
+import NextStepsBox from "@/components/NextStepsBox";
+import OralHealthScoreTeaser from "@/components/OralHealthScoreTeaser";
 import { breadcrumbSchema, articleSchema } from "@/lib/schema";
 
 export default function Article() {
@@ -246,15 +247,27 @@ export default function Article() {
           </div>
         </section>
 
-        {/* Mid-Content CTA */}
+        {/* Contextual Mid-Content CTA (auto-adapts to page content) */}
         <section className="py-4 bg-white">
           <div className="container px-4 mx-auto max-w-3xl">
             <MidContentCTA
-              variant="card"
-              headline="Want clarity about your own mouth?"
-              description="Snap a photo of your teeth and get your free AI oral health score in 10 minutes. No insurance needed."
+              variant="interactive"
               trackingLabel="article_mid_cta"
             />
+          </div>
+        </section>
+
+        {/* Next Steps Box */}
+        <section className="py-2 bg-white">
+          <div className="container px-4 mx-auto max-w-3xl">
+            <NextStepsBox />
+          </div>
+        </section>
+
+        {/* Oral Health Score Teaser */}
+        <section className="py-4 bg-white">
+          <div className="container px-4 mx-auto max-w-3xl">
+            <OralHealthScoreTeaser />
           </div>
         </section>
 
@@ -334,7 +347,6 @@ export default function Article() {
         )}
 
         <DownloadSection />
-        <BlogCTABanner />
         <Footer />
       </div>
     </>

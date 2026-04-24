@@ -2,8 +2,8 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { DownloadSection } from "@/components/DownloadSection";
-import { BlogCTABanner } from "@/components/BlogCTABanner";
 import MidContentCTA from "@/components/MidContentCTA";
+import NextStepsBox from "@/components/NextStepsBox";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, AlertTriangle, CheckCircle, ChevronDown, ChevronUp, Shield, MessageCircleQuestion } from "lucide-react";
@@ -217,11 +217,10 @@ export default function SymptomPage() {
       <section className="py-4 bg-white">
         <div className="container px-4 mx-auto max-w-3xl">
           <MidContentCTA
-            variant="card"
-            headline="Worried about this symptom?"
-            description="Upload a photo and get a free AI assessment in 10 minutes. Know what to tell your dentist before you go."
+            variant="interactive"
             trackingLabel="symptom_page_mid_cta"
           />
+          <NextStepsBox forceContentType="symptom" />
         </div>
       </section>
 
@@ -340,7 +339,7 @@ export default function SymptomPage() {
 
       <DownloadSection />
       <Footer />
-      <BlogCTABanner />
+
 
 
     </div>

@@ -2,8 +2,8 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { DownloadSection } from "@/components/DownloadSection";
-import { BlogCTABanner } from "@/components/BlogCTABanner";
 import MidContentCTA from "@/components/MidContentCTA";
+import NextStepsBox from "@/components/NextStepsBox";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, AlertTriangle, CheckCircle, ChevronDown, ChevronUp, Shield, MessageCircleQuestion, ClipboardList } from "lucide-react";
@@ -218,11 +218,10 @@ export default function ConditionPage() {
       <section className="py-4 bg-white">
         <div className="container px-4 mx-auto max-w-3xl">
           <MidContentCTA
-            variant="card"
-            headline="Concerned about this condition?"
-            description="Upload a photo of your teeth and get a free AI assessment in 10 minutes. No insurance needed."
+            variant="interactive"
             trackingLabel="condition_page_mid_cta"
           />
+          <NextStepsBox forceContentType="condition" />
         </div>
       </section>
 
@@ -362,7 +361,7 @@ export default function ConditionPage() {
 
       <DownloadSection />
       <Footer />
-      <BlogCTABanner />
+
 
 
     </div>

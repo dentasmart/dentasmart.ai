@@ -2,8 +2,8 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { DownloadSection } from "@/components/DownloadSection";
-import { BlogCTABanner } from "@/components/BlogCTABanner";
 import MidContentCTA from "@/components/MidContentCTA";
+import NextStepsBox from "@/components/NextStepsBox";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, CheckCircle, ChevronDown, ChevronUp, Shield, Lightbulb, XCircle, MessageCircleQuestion } from "lucide-react";
@@ -216,11 +216,10 @@ export default function GuidePage() {
       <section className="py-4 bg-white">
         <div className="container px-4 mx-auto max-w-3xl">
           <MidContentCTA
-            variant="card"
-            headline="Ready to take the next step?"
-            description="Get a free AI oral health assessment in 10 minutes. Just snap a photo of your teeth."
+            variant="interactive"
             trackingLabel="guide_page_mid_cta"
           />
+          <NextStepsBox forceContentType="guide" />
         </div>
       </section>
 
@@ -318,7 +317,7 @@ export default function GuidePage() {
 
       <DownloadSection />
       <Footer />
-      <BlogCTABanner />
+
 
 
     </div>

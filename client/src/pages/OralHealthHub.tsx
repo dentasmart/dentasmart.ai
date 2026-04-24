@@ -253,6 +253,54 @@ export default function OralHealthHub() {
         </div>
       </section>
 
+      {/* Quick Access Paths - Bridges informational users to action */}
+      <section className="py-10 bg-white border-b border-stone-100">
+        <div className="container px-4 mx-auto max-w-7xl">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {[
+              {
+                emoji: "\uD83E\uDE77",
+                title: "Something hurts?",
+                desc: "Take the 60-second symptom quiz",
+                href: "/symptom-quiz",
+                color: "bg-red-50 border-red-100 hover:border-red-200",
+              },
+              {
+                emoji: "\uD83D\uDCF7",
+                title: "Check your teeth",
+                desc: "Upload a photo for free AI analysis",
+                href: "/download",
+                color: "bg-blue-50 border-blue-100 hover:border-blue-200",
+              },
+              {
+                emoji: "\uD83D\uDCB0",
+                title: "Treatment costs",
+                desc: "Know what to expect before you go",
+                href: "/dental-costs",
+                color: "bg-amber-50 border-amber-100 hover:border-amber-200",
+              },
+              {
+                emoji: "\uD83E\uDD14",
+                title: "Second opinion?",
+                desc: "Get an AI assessment in minutes",
+                href: "/oral-health-hub/second-opinion",
+                color: "bg-green-50 border-green-100 hover:border-green-200",
+              },
+            ].map((path) => (
+              <Link key={path.href} href={path.href}>
+                <div className={`rounded-xl border p-5 transition-all duration-200 cursor-pointer hover:shadow-md ${path.color} group`}>
+                  <span className="text-2xl mb-2 block">{path.emoji}</span>
+                  <h3 className="font-semibold text-stone-900 text-sm mb-1 group-hover:text-primary transition-colors">
+                    {path.title}
+                  </h3>
+                  <p className="text-xs text-stone-500">{path.desc}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Articles Grid */}
       <section className="py-20 bg-stone-50 min-h-[600px]">
         <div className="container px-4 mx-auto max-w-7xl">

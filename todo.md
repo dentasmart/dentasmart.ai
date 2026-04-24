@@ -1157,3 +1157,37 @@
 - [x] Diagnose why react-helmet-async is applying one blog post URL as canonical for ALL pages
 - [x] Fix the canonical tag system so each page gets its own correct canonical URL
 - [x] Verify fix on dev server across multiple pages (home, features, employers, blog posts)
+
+## Phase CRO: Conversion Rate Optimization Overhaul
+
+### CTA Redesign (Target: 0.1% → 2-3% CTR)
+- [x] Redesign StickyDownloadBanner: context-aware copy based on page type, show on desktop too as slide-in, benefit-driven CTA text
+- [x] Redesign MidContentCTA: contextual variants per content type (symptom, cost, treatment, guide), add social proof inline, use "If you're [doing X]" copy pattern
+- [x] Remove BlogCTABanner (redundant with redesigned sticky) and replace with smarter scroll-triggered slide-in (ScrollProgressCTA)
+- [x] Add new InlineSymptomCTA component: embedded mini symptom-checker prompt within articles ("Experiencing this? Check your symptoms →") — implemented via MidContentCTA interactive variant
+- [x] Add new CostCalculatorCTA component: inline cost estimate teaser for dental cost pages — implemented via MidContentCTA contextual cost variant
+
+### Bridge Strategy (Informational → Transactional)
+- [x] Create SymptomCheckerWidget: lightweight 3-question inline widget — implemented via MidContentCTA interactive variant with animated quiz preview
+- [x] Create OralHealthScoreTeaser: interactive visual score preview (animated ring/gauge) that shows partial result + prompts app download for full report
+- [x] Add progressive engagement tracking: read_25%, read_50%, interact_widget, start_quiz → download — implemented via ScrollProgressCTA
+
+### Exit-Intent Popup Overhaul (Target: 1.6% → 6-10%)
+- [x] Implement 3 rotating exit-intent variations with A/B tracking:
+  - Variation A: "Symptom Checker" - "Not sure what's going on? Take our 60-second symptom quiz" → links to /symptom-quiz
+  - Variation B: "Cost Saver" - "Could you be overpaying for dental care? Get a free cost estimate" → links to app
+  - Variation C: "Second Opinion" - "Wondering if you really need that procedure? Get a free AI second opinion" → links to app
+- [x] Add page-context awareness: show relevant variation based on content category (symptom pages → Variation A, cost pages → Variation B, treatment pages → Variation C)
+- [x] Improve exit-intent UX: add countdown urgency, stronger social proof, two-step opt-in
+
+### Content-to-Conversion Path Redesign
+- [x] Add "What To Do Next" action box at end of every article: contextual next steps (quiz, app scan, related article) — NextStepsBox component
+- [x] Add inline "Try It Now" interactive elements within article content — implemented via MidContentCTA interactive variant
+- [x] Redesign article flow: Problem → Empathy → Solution → Interactive Bridge → App CTA — articles now have MidContentCTA + NextStepsBox + OralHealthScoreTeaser
+- [x] Add breadcrumb-style progress indicator showing user's journey — implemented via ScrollProgressCTA progressive messaging
+
+### Technical UI/UX Improvements
+- [x] Add scroll-depth tracking with progressive CTAs: different CTA at 25%, 50%, 75% scroll — ScrollProgressCTA component
+- [x] Improve hub_category_view engagement: add Quick Access Paths section with 4 action cards (Something hurts?, Check your teeth, Treatment costs, Second opinion?)
+- [x] Add micro-interaction feedback: pulse animation on CTAs after scroll pause, subtle glow on interactive elements — implemented in ScrollProgressCTA and OralHealthScoreTeaser
+- [x] Implement smart CTA deduplication: prevent multiple CTAs from showing simultaneously (sticky + floating + exit) — ScrollProgressCTA hides when exit popup is visible

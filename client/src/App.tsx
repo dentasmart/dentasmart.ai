@@ -24,6 +24,7 @@ import { lazy, Suspense } from "react";
 import AdminRouter, { useIsAdminRoute } from "@/components/AdminRouter";
 import StickyDownloadBanner from "@/components/StickyDownloadBanner";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
+import { ScrollProgressCTA } from "@/components/ScrollProgressCTA";
 
 // Lazy-loaded new pages
 const Download = lazy(() => import("./pages/Download"));
@@ -429,6 +430,7 @@ function AppContent() {
           <Router />
           <StickyDownloadBanner />
           <ExitIntentPopup />
+          <ScrollProgressCTA />
         </>
       )}
     </>
