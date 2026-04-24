@@ -1152,3 +1152,8 @@
 - [x] Check 1 URL with permanent redirect (intentional redirect, no action needed)
 - [x] Fix 5 heading hierarchy issues (Answers, OralHealthHub, PhotoGuide, Pricing, TreatmentsHub)
 - [x] Fix remaining long bodyHtml paragraph in wwhat-are-dental-implants-cost blog post
+
+## CRITICAL: Canonical Tag Fix - Apr 24, 2026
+- [x] Diagnose why react-helmet-async is applying one blog post URL as canonical for ALL pages
+- [x] Fix the canonical tag system so each page gets its own correct canonical URL
+- [x] Verify fix on dev server across multiple pages (home, features, employers, blog posts)

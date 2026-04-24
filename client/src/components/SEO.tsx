@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'wouter';
 
 const SITE_URL = "https://dentasmart.ai";
 const DEFAULT_OG_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663137878519/bguxPMV2uwRUGpkQABmyXT/og-image_914b065d.png";
@@ -32,9 +33,12 @@ export default function SEO({
   jsonLd,
   article,
 }: SEOProps) {
+  // Use wouter's useLocation for reliable route-based canonical URLs in SPA
+  const [location] = useLocation();
+
   const fullTitle = title.includes("DentaSmart") ? title : `${title} | DentaSmart`;
-  // Normalize canonical: strip trailing slash (except root "/"), remove query params & hash
-  const rawCanonical = canonical || `${SITE_URL}${typeof window !== "undefined" ? window.location.pathname : ""}`;
+  // Normalize canonical: use the explicit canonical prop if provided, otherwise build from current route
+  const rawCanonical = canonical || `${SITE_URL}${location}`;
   const canonicalUrl = rawCanonical.endsWith("/") && rawCanonical !== `${SITE_URL}/`
     ? rawCanonical.slice(0, -1)
     : rawCanonical;
