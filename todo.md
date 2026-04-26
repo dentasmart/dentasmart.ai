@@ -1191,3 +1191,6 @@
 - [x] Improve hub_category_view engagement: add Quick Access Paths section with 4 action cards (Something hurts?, Check your teeth, Treatment costs, Second opinion?)
 - [x] Add micro-interaction feedback: pulse animation on CTAs after scroll pause, subtle glow on interactive elements — implemented in ScrollProgressCTA and OralHealthScoreTeaser
 - [x] Implement smart CTA deduplication: prevent multiple CTAs from showing simultaneously (sticky + floating + exit) — ScrollProgressCTA hides when exit popup is visible
+
+## Bug Fix: llms.txt 404 on Live Site
+- [x] Fix llms.txt returning 404 on dentasmart.ai/llms.txt — added static fallback in client/public/llms.txt

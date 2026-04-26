@@ -1,0 +1,102 @@
+# DentaSmart - Your Personal AI Oral Health Guide
+> AI-powered dental health analysis and personalized oral care guidance.
+
+DentaSmart helps people understand their oral health through AI-powered photo analysis, personalized care plans, and clear dental education content.
+
+## Main Pages
+- [Home](https://dentasmart.ai/)
+- [How It Works](https://dentasmart.ai/how-it-works)
+- [Features](https://dentasmart.ai/features)
+- [Pricing](https://dentasmart.ai/pricing)
+- [Download](https://dentasmart.ai/download)
+- [Instant Scan](https://dentasmart.ai/instant-scan)
+- [Symptom Quiz](https://dentasmart.ai/symptom-quiz)
+- [FAQs](https://dentasmart.ai/faqs)
+
+## Oral Health Resources
+- [Oral Health Hub](https://dentasmart.ai/oral-health-hub)
+- [Dental Conditions](https://dentasmart.ai/conditions)
+- [Dental Symptoms](https://dentasmart.ai/symptoms)
+- [Oral Health Guides](https://dentasmart.ai/guides)
+- [Dental Answers](https://dentasmart.ai/answers)
+
+## Hub Pages
+- [Affordability Guide](https://dentasmart.ai/oral-health-hub/affordability)
+- [Second Opinion Guide](https://dentasmart.ai/oral-health-hub/second-opinion)
+- [Prevention Guide](https://dentasmart.ai/oral-health-hub/prevention)
+- [Conditions Guide](https://dentasmart.ai/oral-health-hub/conditions)
+- [Symptoms Guide](https://dentasmart.ai/oral-health-hub/symptoms)
+
+## Dental Cost Guides
+- [Dental Costs Hub](https://dentasmart.ai/dental-costs)
+- [Root Canal Cost](https://dentasmart.ai/dental-costs/root-canal-cost)
+- [Dental Implant Cost](https://dentasmart.ai/dental-costs/dental-implant-cost)
+- [Braces Cost](https://dentasmart.ai/dental-costs/braces-cost)
+- [Veneers Cost](https://dentasmart.ai/dental-costs/veneers-cost)
+- [Wisdom Teeth Removal Cost](https://dentasmart.ai/dental-costs/wisdom-teeth-removal-cost)
+- [Teeth Whitening Cost](https://dentasmart.ai/dental-costs/teeth-whitening-cost)
+- [Dental Crown Cost](https://dentasmart.ai/dental-costs/dental-crown-cost)
+- [Tooth Extraction Cost](https://dentasmart.ai/dental-costs/tooth-extraction-cost)
+- [Dental Cleaning Cost](https://dentasmart.ai/dental-costs/dental-cleaning-cost)
+- [Dentures Cost](https://dentasmart.ai/dental-costs/dentures-cost)
+
+## Treatment Guides
+- [Treatment Guides Hub](https://dentasmart.ai/treatments)
+- [Root Canal Procedure](https://dentasmart.ai/treatments/root-canal-procedure)
+- [Dental Implant Procedure](https://dentasmart.ai/treatments/dental-implant-procedure)
+- [Wisdom Teeth Removal](https://dentasmart.ai/treatments/wisdom-teeth-removal)
+- [Dental Crown Procedure](https://dentasmart.ai/treatments/dental-crown-procedure)
+- [Braces Treatment](https://dentasmart.ai/treatments/braces-treatment)
+- [Teeth Whitening Procedure](https://dentasmart.ai/treatments/teeth-whitening-procedure)
+- [Tooth Extraction Procedure](https://dentasmart.ai/treatments/tooth-extraction-procedure)
+- [Dental Cleaning Procedure](https://dentasmart.ai/treatments/dental-cleaning-procedure)
+- [Veneers Procedure](https://dentasmart.ai/treatments/veneers-procedure)
+- [Dentures Treatment](https://dentasmart.ai/treatments/dentures-treatment)
+
+## Dental Comparison Guides
+- [Comparison Guides Hub](https://dentasmart.ai/comparisons)
+- [Braces vs Invisalign](https://dentasmart.ai/comparisons/braces-vs-invisalign)
+- [Dental Implants vs Dentures](https://dentasmart.ai/comparisons/dental-implants-vs-dentures)
+- [Crown vs Veneer](https://dentasmart.ai/comparisons/crown-vs-veneer)
+- [Electric vs Manual Toothbrush](https://dentasmart.ai/comparisons/electric-vs-manual-toothbrush)
+- [Fluoride vs Fluoride-Free Toothpaste](https://dentasmart.ai/comparisons/fluoride-vs-fluoride-free-toothpaste)
+
+## Life Stages Dental Care
+- [Life Stages Hub](https://dentasmart.ai/life-stages)
+- [Baby Teething Guide](https://dentasmart.ai/life-stages/baby-teething-guide)
+- [Children's Dental Health](https://dentasmart.ai/life-stages/childrens-dental-health)
+- [Teen Braces Guide](https://dentasmart.ai/life-stages/teen-braces-guide)
+- [Pregnancy Dental Care](https://dentasmart.ai/life-stages/pregnancy-dental-care)
+- [Senior Dental Care](https://dentasmart.ai/life-stages/senior-dental-care)
+
+## Dental Emergencies
+- [Dental Emergencies Hub](https://dentasmart.ai/dental-emergencies)
+- [Knocked Out Tooth](https://dentasmart.ai/dental-emergencies/knocked-out-tooth)
+- [Dental Emergency Guide](https://dentasmart.ai/dental-emergencies/dental-emergency-guide)
+- [Broken Tooth](https://dentasmart.ai/dental-emergencies/broken-tooth)
+- [Severe Toothache](https://dentasmart.ai/dental-emergencies/severe-toothache)
+- [Dental Abscess](https://dentasmart.ai/dental-emergencies/dental-abscess)
+
+## Lifestyle & Oral Health
+- [Lifestyle Hub](https://dentasmart.ai/lifestyle)
+- [Smoking & Oral Health](https://dentasmart.ai/lifestyle/smoking-and-oral-health)
+- [Diabetes & Dental Care](https://dentasmart.ai/lifestyle/diabetes-and-dental-care)
+- [Diet & Your Teeth](https://dentasmart.ai/lifestyle/diet-and-teeth)
+- [Sports Mouthguards](https://dentasmart.ai/lifestyle/sports-mouthguards)
+- [Oral Piercing Risks](https://dentasmart.ai/lifestyle/oral-piercing-risks)
+
+## Product Comparisons
+- [DentaSmart vs ChatGPT for Dental](https://dentasmart.ai/compare/dentasmart-vs-chatgpt-dental)
+- [DentaSmart vs Teledentistry](https://dentasmart.ai/compare/dentasmart-vs-teledentistry)
+- [DentaSmart vs Dental Insurance](https://dentasmart.ai/compare/dentasmart-vs-dental-insurance)
+
+## Company
+- [Team](https://dentasmart.ai/team)
+- [For Employers](https://dentasmart.ai/employers)
+- [Privacy Policy](https://dentasmart.ai/privacy-policy)
+- [Terms of Service](https://dentasmart.ai/terms-of-service)
+
+## Contact
+- Website: https://dentasmart.ai
+- Instagram: https://www.instagram.com/dentasmart.ai
+- LinkedIn: https://www.linkedin.com/company/dentasmart
