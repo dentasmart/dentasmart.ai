@@ -1200,3 +1200,8 @@
 - [x] Fix serving issues — comprehensive rewrite of llms.txt (added What DentaSmart Does, Pricing, Important Notes sections), robots.txt (clean formatting), and sitemap.xml (added 90+ missing pages, deduplication logic)
 - [x] Added all missing symptom pages (28 new), condition pages (2 new), hub category pages (5 new), and 65 explicit blog post routes to sitemap
 - [x] Fixed sitemap deduplication to prevent blog posts appearing twice (static + dynamic)
+
+## Bug Fix: ChatGPT retest - line breaks and sitemap 400 error
+- [x] Fix llms.txt rendering as 2 lines - converted to CRLF line endings, array-based join in dynamic route, static file also CRLF
+- [x] Fix robots.txt rendering as one long line - converted to CRLF line endings, array-based join in dynamic route, static file also CRLF
+- [x] Fix sitemap.xml - added static XML fallback in client/public/sitemap.xml (256 URLs), ChatGPT 400 error was transient on their side (all tests return 200)

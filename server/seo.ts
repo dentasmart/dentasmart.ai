@@ -330,152 +330,159 @@ export function registerSeoRoutes(app: Express) {
   app.get("/robots.txt", (_req: Request, res: Response) => {
     res.type("text/plain");
     res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
-    res.send(`User-agent: *
-Allow: /
-
-Sitemap: ${SITE_URL}/sitemap.xml
-
-Allow: /api/sitemap
-
-Disallow: /admin
-Disallow: /admin/
-
-Disallow: /api/
-`);
+    const lines = [
+      "User-agent: *",
+      "Allow: /",
+      "",
+      `Sitemap: ${SITE_URL}/sitemap.xml`,
+      "",
+      "Allow: /api/sitemap",
+      "",
+      "Disallow: /admin",
+      "Disallow: /admin/",
+      "",
+      "Disallow: /api/",
+      ""
+    ];
+    res.send(lines.join("\r\n"));
   });
 
   // llms.txt - Information for AI/LLM crawlers about the site
   app.get("/llms.txt", (_req: Request, res: Response) => {
-    res.type("text/markdown");
+    res.type("text/plain");
     res.set("Cache-Control", "public, max-age=0, s-maxage=3600, must-revalidate");
-    res.send(`# DentaSmart - Your Personal AI Oral Health Guide
-> AI-powered dental health analysis and personalized oral care guidance.
-
-DentaSmart helps people understand their oral health through AI-powered photo analysis, personalized care plans, and clear dental education content.
-
-## Main Pages
-- [Home](${SITE_URL}/)
-- [How It Works](${SITE_URL}/how-it-works)
-- [Features](${SITE_URL}/features)
-- [Pricing](${SITE_URL}/pricing)
-- [Download](${SITE_URL}/download)
-- [Instant Scan](${SITE_URL}/instant-scan)
-- [Symptom Quiz](${SITE_URL}/symptom-quiz)
-- [FAQs](${SITE_URL}/faqs)
-
-## Oral Health Resources
-- [Oral Health Hub](${SITE_URL}/oral-health-hub)
-- [Dental Conditions](${SITE_URL}/conditions)
-- [Dental Symptoms](${SITE_URL}/symptoms)
-- [Oral Health Guides](${SITE_URL}/guides)
-- [Dental Answers](${SITE_URL}/answers)
-
-## Hub Pages
-- [Affordability Guide](${SITE_URL}/oral-health-hub/affordability)
-- [Second Opinion Guide](${SITE_URL}/oral-health-hub/second-opinion)
-- [Prevention Guide](${SITE_URL}/oral-health-hub/prevention)
-- [Conditions Guide](${SITE_URL}/oral-health-hub/conditions)
-- [Symptoms Guide](${SITE_URL}/oral-health-hub/symptoms)
-
-## Dental Cost Guides
-- [Dental Costs Hub](${SITE_URL}/dental-costs)
-- [Root Canal Cost](${SITE_URL}/dental-costs/root-canal-cost)
-- [Dental Implant Cost](${SITE_URL}/dental-costs/dental-implant-cost)
-- [Braces Cost](${SITE_URL}/dental-costs/braces-cost)
-- [Veneers Cost](${SITE_URL}/dental-costs/veneers-cost)
-- [Wisdom Teeth Removal Cost](${SITE_URL}/dental-costs/wisdom-teeth-removal-cost)
-- [Teeth Whitening Cost](${SITE_URL}/dental-costs/teeth-whitening-cost)
-- [Dental Crown Cost](${SITE_URL}/dental-costs/dental-crown-cost)
-- [Tooth Extraction Cost](${SITE_URL}/dental-costs/tooth-extraction-cost)
-- [Dental Cleaning Cost](${SITE_URL}/dental-costs/dental-cleaning-cost)
-- [Dentures Cost](${SITE_URL}/dental-costs/dentures-cost)
-
-## Treatment Guides
-- [Treatment Guides Hub](${SITE_URL}/treatments)
-- [Root Canal Procedure](${SITE_URL}/treatments/root-canal-procedure)
-- [Dental Implant Procedure](${SITE_URL}/treatments/dental-implant-procedure)
-- [Wisdom Teeth Removal](${SITE_URL}/treatments/wisdom-teeth-removal)
-- [Dental Crown Procedure](${SITE_URL}/treatments/dental-crown-procedure)
-- [Braces Treatment](${SITE_URL}/treatments/braces-treatment)
-- [Teeth Whitening Procedure](${SITE_URL}/treatments/teeth-whitening-procedure)
-- [Tooth Extraction Procedure](${SITE_URL}/treatments/tooth-extraction-procedure)
-- [Dental Cleaning Procedure](${SITE_URL}/treatments/dental-cleaning-procedure)
-- [Veneers Procedure](${SITE_URL}/treatments/veneers-procedure)
-- [Dentures Treatment](${SITE_URL}/treatments/dentures-treatment)
-
-## Dental Comparison Guides
-- [Comparison Guides Hub](${SITE_URL}/comparisons)
-- [Braces vs Invisalign](${SITE_URL}/comparisons/braces-vs-invisalign)
-- [Dental Implants vs Dentures](${SITE_URL}/comparisons/dental-implants-vs-dentures)
-- [Crown vs Veneer](${SITE_URL}/comparisons/crown-vs-veneer)
-- [Electric vs Manual Toothbrush](${SITE_URL}/comparisons/electric-vs-manual-toothbrush)
-- [Fluoride vs Fluoride-Free Toothpaste](${SITE_URL}/comparisons/fluoride-vs-fluoride-free-toothpaste)
-
-## Life Stages Dental Care
-- [Life Stages Hub](${SITE_URL}/life-stages)
-- [Baby Teething Guide](${SITE_URL}/life-stages/baby-teething-guide)
-- [Children's Dental Health](${SITE_URL}/life-stages/childrens-dental-health)
-- [Teen Braces Guide](${SITE_URL}/life-stages/teen-braces-guide)
-- [Pregnancy Dental Care](${SITE_URL}/life-stages/pregnancy-dental-care)
-- [Senior Dental Care](${SITE_URL}/life-stages/senior-dental-care)
-
-## Dental Emergencies
-- [Dental Emergencies Hub](${SITE_URL}/dental-emergencies)
-- [Knocked Out Tooth](${SITE_URL}/dental-emergencies/knocked-out-tooth)
-- [Dental Emergency Guide](${SITE_URL}/dental-emergencies/dental-emergency-guide)
-- [Broken Tooth](${SITE_URL}/dental-emergencies/broken-tooth)
-- [Severe Toothache](${SITE_URL}/dental-emergencies/severe-toothache)
-- [Dental Abscess](${SITE_URL}/dental-emergencies/dental-abscess)
-
-## Lifestyle & Oral Health
-- [Lifestyle Hub](${SITE_URL}/lifestyle)
-- [Smoking & Oral Health](${SITE_URL}/lifestyle/smoking-and-oral-health)
-- [Diabetes & Dental Care](${SITE_URL}/lifestyle/diabetes-and-dental-care)
-- [Diet & Your Teeth](${SITE_URL}/lifestyle/diet-and-teeth)
-- [Sports Mouthguards](${SITE_URL}/lifestyle/sports-mouthguards)
-- [Oral Piercing Risks](${SITE_URL}/lifestyle/oral-piercing-risks)
-
-## Product Comparisons
-- [DentaSmart vs ChatGPT for Dental](${SITE_URL}/compare/dentasmart-vs-chatgpt-dental)
-- [DentaSmart vs Teledentistry](${SITE_URL}/compare/dentasmart-vs-teledentistry)
-- [DentaSmart vs Dental Insurance](${SITE_URL}/compare/dentasmart-vs-dental-insurance)
-
-## Company
-- [Team](${SITE_URL}/team)
-- [For Employers](${SITE_URL}/employers)
-- [Privacy Policy](${SITE_URL}/privacy-policy)
-- [Terms of Service](${SITE_URL}/terms-of-service)
-
-## What DentaSmart Does
-DentaSmart is an AI-powered oral health app that helps users:
-1. Upload a photo of their teeth or dental X-rays
-2. Receive AI-powered analysis identifying potential issues
-3. Get a personalized Oral Health Score (0-100)
-4. Understand treatment options with cost estimates
-5. Track oral health over time with reminders
-6. Get a second opinion before expensive dental procedures
-
-## Pricing
-- Free: Basic symptom quiz and educational content
-- Starter ($4.99/month): 1 AI scan per month, basic tracking
-- Pro ($9.99/month): Unlimited scans, full analysis, care plans
-- Family ($14.99/month): Up to 5 family members, all Pro features
-
-## App Availability
-- iOS: Live on App Store
-- Android: Early Access (waitlist available)
-
-## Contact
-- Website: ${SITE_URL}
-- Instagram: https://www.instagram.com/dentasmart.ai
-- LinkedIn: https://www.linkedin.com/company/dentasmart
-
-## Important Notes
-- DentaSmart is NOT a replacement for professional dental care
-- AI analysis is for educational and informational purposes only
-- Users should always consult a licensed dentist for diagnosis and treatment
-- The app helps users understand their oral health and make informed decisions
-`);
+    const NL = "\r\n";
+    const content = [
+      "# DentaSmart - Your Personal AI Oral Health Guide",
+      "> AI-powered dental health analysis and personalized oral care guidance.",
+      "",
+      "DentaSmart helps people understand their oral health through AI-powered photo analysis, personalized care plans, and clear dental education content.",
+      "",
+      "## Main Pages",
+      `- [Home](${SITE_URL}/)`,
+      `- [How It Works](${SITE_URL}/how-it-works)`,
+      `- [Features](${SITE_URL}/features)`,
+      `- [Pricing](${SITE_URL}/pricing)`,
+      `- [Download](${SITE_URL}/download)`,
+      `- [Instant Scan](${SITE_URL}/instant-scan)`,
+      `- [Symptom Quiz](${SITE_URL}/symptom-quiz)`,
+      `- [FAQs](${SITE_URL}/faqs)`,
+      "",
+      "## Oral Health Resources",
+      `- [Oral Health Hub](${SITE_URL}/oral-health-hub)`,
+      `- [Dental Conditions](${SITE_URL}/conditions)`,
+      `- [Dental Symptoms](${SITE_URL}/symptoms)`,
+      `- [Oral Health Guides](${SITE_URL}/guides)`,
+      `- [Dental Answers](${SITE_URL}/answers)`,
+      "",
+      "## Hub Pages",
+      `- [Affordability Guide](${SITE_URL}/oral-health-hub/affordability)`,
+      `- [Second Opinion Guide](${SITE_URL}/oral-health-hub/second-opinion)`,
+      `- [Prevention Guide](${SITE_URL}/oral-health-hub/prevention)`,
+      `- [Conditions Guide](${SITE_URL}/oral-health-hub/conditions)`,
+      `- [Symptoms Guide](${SITE_URL}/oral-health-hub/symptoms)`,
+      "",
+      "## Dental Cost Guides",
+      `- [Dental Costs Hub](${SITE_URL}/dental-costs)`,
+      `- [Root Canal Cost](${SITE_URL}/dental-costs/root-canal-cost)`,
+      `- [Dental Implant Cost](${SITE_URL}/dental-costs/dental-implant-cost)`,
+      `- [Braces Cost](${SITE_URL}/dental-costs/braces-cost)`,
+      `- [Veneers Cost](${SITE_URL}/dental-costs/veneers-cost)`,
+      `- [Wisdom Teeth Removal Cost](${SITE_URL}/dental-costs/wisdom-teeth-removal-cost)`,
+      `- [Teeth Whitening Cost](${SITE_URL}/dental-costs/teeth-whitening-cost)`,
+      `- [Dental Crown Cost](${SITE_URL}/dental-costs/dental-crown-cost)`,
+      `- [Tooth Extraction Cost](${SITE_URL}/dental-costs/tooth-extraction-cost)`,
+      `- [Dental Cleaning Cost](${SITE_URL}/dental-costs/dental-cleaning-cost)`,
+      `- [Dentures Cost](${SITE_URL}/dental-costs/dentures-cost)`,
+      "",
+      "## Treatment Guides",
+      `- [Treatment Guides Hub](${SITE_URL}/treatments)`,
+      `- [Root Canal Procedure](${SITE_URL}/treatments/root-canal-procedure)`,
+      `- [Dental Implant Procedure](${SITE_URL}/treatments/dental-implant-procedure)`,
+      `- [Wisdom Teeth Removal](${SITE_URL}/treatments/wisdom-teeth-removal)`,
+      `- [Dental Crown Procedure](${SITE_URL}/treatments/dental-crown-procedure)`,
+      `- [Braces Treatment](${SITE_URL}/treatments/braces-treatment)`,
+      `- [Teeth Whitening Procedure](${SITE_URL}/treatments/teeth-whitening-procedure)`,
+      `- [Tooth Extraction Procedure](${SITE_URL}/treatments/tooth-extraction-procedure)`,
+      `- [Dental Cleaning Procedure](${SITE_URL}/treatments/dental-cleaning-procedure)`,
+      `- [Veneers Procedure](${SITE_URL}/treatments/veneers-procedure)`,
+      `- [Dentures Treatment](${SITE_URL}/treatments/dentures-treatment)`,
+      "",
+      "## Dental Comparison Guides",
+      `- [Comparison Guides Hub](${SITE_URL}/comparisons)`,
+      `- [Braces vs Invisalign](${SITE_URL}/comparisons/braces-vs-invisalign)`,
+      `- [Dental Implants vs Dentures](${SITE_URL}/comparisons/dental-implants-vs-dentures)`,
+      `- [Crown vs Veneer](${SITE_URL}/comparisons/crown-vs-veneer)`,
+      `- [Electric vs Manual Toothbrush](${SITE_URL}/comparisons/electric-vs-manual-toothbrush)`,
+      `- [Fluoride vs Fluoride-Free Toothpaste](${SITE_URL}/comparisons/fluoride-vs-fluoride-free-toothpaste)`,
+      "",
+      "## Life Stages Dental Care",
+      `- [Life Stages Hub](${SITE_URL}/life-stages)`,
+      `- [Baby Teething Guide](${SITE_URL}/life-stages/baby-teething-guide)`,
+      `- [Children's Dental Health](${SITE_URL}/life-stages/childrens-dental-health)`,
+      `- [Teen Braces Guide](${SITE_URL}/life-stages/teen-braces-guide)`,
+      `- [Pregnancy Dental Care](${SITE_URL}/life-stages/pregnancy-dental-care)`,
+      `- [Senior Dental Care](${SITE_URL}/life-stages/senior-dental-care)`,
+      "",
+      "## Dental Emergencies",
+      `- [Dental Emergencies Hub](${SITE_URL}/dental-emergencies)`,
+      `- [Knocked Out Tooth](${SITE_URL}/dental-emergencies/knocked-out-tooth)`,
+      `- [Dental Emergency Guide](${SITE_URL}/dental-emergencies/dental-emergency-guide)`,
+      `- [Broken Tooth](${SITE_URL}/dental-emergencies/broken-tooth)`,
+      `- [Severe Toothache](${SITE_URL}/dental-emergencies/severe-toothache)`,
+      `- [Dental Abscess](${SITE_URL}/dental-emergencies/dental-abscess)`,
+      "",
+      "## Lifestyle & Oral Health",
+      `- [Lifestyle Hub](${SITE_URL}/lifestyle)`,
+      `- [Smoking & Oral Health](${SITE_URL}/lifestyle/smoking-and-oral-health)`,
+      `- [Diabetes & Dental Care](${SITE_URL}/lifestyle/diabetes-and-dental-care)`,
+      `- [Diet & Your Teeth](${SITE_URL}/lifestyle/diet-and-teeth)`,
+      `- [Sports Mouthguards](${SITE_URL}/lifestyle/sports-mouthguards)`,
+      `- [Oral Piercing Risks](${SITE_URL}/lifestyle/oral-piercing-risks)`,
+      "",
+      "## Product Comparisons",
+      `- [DentaSmart vs ChatGPT for Dental](${SITE_URL}/compare/dentasmart-vs-chatgpt-dental)`,
+      `- [DentaSmart vs Teledentistry](${SITE_URL}/compare/dentasmart-vs-teledentistry)`,
+      `- [DentaSmart vs Dental Insurance](${SITE_URL}/compare/dentasmart-vs-dental-insurance)`,
+      "",
+      "## Company",
+      `- [Team](${SITE_URL}/team)`,
+      `- [For Employers](${SITE_URL}/employers)`,
+      `- [Privacy Policy](${SITE_URL}/privacy-policy)`,
+      `- [Terms of Service](${SITE_URL}/terms-of-service)`,
+      "",
+      "## What DentaSmart Does",
+      "DentaSmart is an AI-powered oral health app that helps users:",
+      "1. Upload a photo of their teeth or dental X-rays",
+      "2. Receive AI-powered analysis identifying potential issues",
+      "3. Get a personalized Oral Health Score (0-100)",
+      "4. Understand treatment options with cost estimates",
+      "5. Track oral health over time with reminders",
+      "6. Get a second opinion before expensive dental procedures",
+      "",
+      "## Pricing",
+      "- Free: Basic symptom quiz and educational content",
+      "- Starter ($4.99/month): 1 AI scan per month, basic tracking",
+      "- Pro ($9.99/month): Unlimited scans, full analysis, care plans",
+      "- Family ($14.99/month): Up to 5 family members, all Pro features",
+      "",
+      "## App Availability",
+      "- iOS: Live on App Store",
+      "- Android: Early Access (waitlist available)",
+      "",
+      "## Contact",
+      `- Website: ${SITE_URL}`,
+      "- Instagram: https://www.instagram.com/dentasmart.ai",
+      "- LinkedIn: https://www.linkedin.com/company/dentasmart",
+      "",
+      "## Important Notes",
+      "- DentaSmart is NOT a replacement for professional dental care",
+      "- AI analysis is for educational and informational purposes only",
+      "- Users should always consult a licensed dentist for diagnosis and treatment",
+      "- The app helps users understand their oral health and make informed decisions",
+      ""
+    ];
+    res.send(content.join(NL));
   });
 
   // PRIMARY: /sitemap-custom.xml - Custom path unlikely to be overridden by platform
