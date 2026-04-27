@@ -1205,3 +1205,9 @@
 - [x] Fix llms.txt rendering as 2 lines - converted to CRLF line endings, array-based join in dynamic route, static file also CRLF
 - [x] Fix robots.txt rendering as one long line - converted to CRLF line endings, array-based join in dynamic route, static file also CRLF
 - [x] Fix sitemap.xml - added static XML fallback in client/public/sitemap.xml (256 URLs), ChatGPT 400 error was transient on their side (all tests return 200)
+
+## Bug Fix: Duplicate meta descriptions (SemRush)
+- [x] Audit all pages for duplicate meta descriptions — root cause: SPA serves same index.html default meta to all pages before JS hydrates
+- [x] Created server/metaTags.ts with URL-to-meta mapping for 200+ static pages + database blog post lookup with 5-min caching
+- [x] Implemented server-side meta tag injection in vite.ts — both dev (setupVite) and production (serveStatic) now inject unique title + description into raw HTML
+- [x] 15 vitest tests passing for meta tag resolution and injection

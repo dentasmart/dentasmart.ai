@@ -5,6 +5,7 @@ import { nanoid } from "nanoid";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
+import { resolveMetaTags, injectMetaTags } from "../metaTags";
 
 export async function setupVite(app: Express, server: Server) {
   const serverOptions = {
@@ -38,6 +39,13 @@ export async function setupVite(app: Express, server: Server) {
         `src="/src/main.tsx"`,
         `src="/src/main.tsx?v=${nanoid()}"`
       );
+
+      // Inject page-specific meta tags before Vite transforms
+      const meta = await resolveMetaTags(url);
+      if (meta) {
+        template = injectMetaTags(template, meta);
+      }
+
       const page = await vite.transformIndexHtml(url, template);
       res.status(200).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
@@ -61,7 +69,19 @@ export function serveStatic(app: Express) {
   app.use(express.static(distPath));
 
   // fall through to index.html if the file doesn't exist
-  app.use("*", (_req, res) => {
-    res.sendFile(path.resolve(distPath, "index.html"));
+  // Inject page-specific meta tags so crawlers see unique titles/descriptions
+  app.use("*", async (_req, res) => {
+    const indexPath = path.resolve(distPath, "index.html");
+    try {
+      let html = await fs.promises.readFile(indexPath, "utf-8");
+      const meta = await resolveMetaTags(_req.originalUrl);
+      if (meta) {
+        html = injectMetaTags(html, meta);
+      }
+      res.status(200).set({ "Content-Type": "text/html" }).send(html);
+    } catch {
+      // Fallback to sendFile if read fails
+      res.sendFile(indexPath);
+    }
   });
 }
