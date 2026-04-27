@@ -49,11 +49,11 @@ describe("SEO Routes", () => {
       expect(res.text).toContain("Allow: /");
     });
 
-    it("should reference /sitemap-custom.xml as primary sitemap", async () => {
+    it("should reference /sitemap.xml as primary sitemap", async () => {
       const app = createTestApp();
       const res = await request(app).get("/robots.txt");
 
-      expect(res.text).toContain("Sitemap: https://dentasmart.ai/sitemap-custom.xml");
+      expect(res.text).toContain("Sitemap: https://dentasmart.ai/sitemap.xml");
     });
 
     it("should allow /api/sitemap explicitly for crawlers", async () => {

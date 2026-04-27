@@ -43,6 +43,8 @@ const staticRoutes = [
   { path: "/conditions/dental-implants", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
   { path: "/conditions/dry-socket", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
   { path: "/conditions/oral-thrush", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/conditions/periodontitis", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/conditions/gingivitis-vs-periodontitis", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
   { path: "/conditions/tmj-disorder", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
   // Symptoms pages
   { path: "/symptoms", priority: "0.8", changefreq: "weekly", lastmod: today },
@@ -56,6 +58,34 @@ const staticRoutes = [
   { path: "/symptoms/dry-mouth", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
   { path: "/symptoms/tooth-discoloration", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
   { path: "/symptoms/mouth-sores", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/symptoms/gum-bleeding-after-brushing", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/mouth-ulcers", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/canker-sores", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/tongue-pain", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/cheek-biting", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/teeth-grinding", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/jaw-clicking", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/gum-itching", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/tooth-staining", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/enamel-erosion", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/root-exposure", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/gum-inflammation", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/persistent-metallic-taste", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/swollen-lymph-nodes-dental", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/facial-swelling", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/tooth-migration", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/bite-changes", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/mouth-numbness", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/gum-tenderness", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/tmj-disorder", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/periodontal-disease", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/gingivitis", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/dental-caries", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/enamel-hypersensitivity", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/oral-thrush", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/aphthous-ulcers", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/leukoplakia", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/symptoms/oral-lichen-planus", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
   // Guides pages
   { path: "/guides", priority: "0.8", changefreq: "weekly", lastmod: today },
   { path: "/guides/brushing-guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
@@ -81,6 +111,12 @@ const staticRoutes = [
   { path: "/oral-health-hub/prevention", priority: "0.8", changefreq: "weekly", lastmod: today },
   { path: "/oral-health-hub/conditions", priority: "0.9", changefreq: "weekly", lastmod: today },
   { path: "/oral-health-hub/symptoms", priority: "0.9", changefreq: "weekly", lastmod: today },
+  // Hub category pages
+  { path: "/hub/understanding-dental-conditions", priority: "0.7", changefreq: "weekly", lastmod: today },
+  { path: "/hub/treatment-guides", priority: "0.7", changefreq: "weekly", lastmod: today },
+  { path: "/hub/prevention-tips", priority: "0.7", changefreq: "weekly", lastmod: today },
+  { path: "/hub/dental-technology", priority: "0.7", changefreq: "weekly", lastmod: today },
+  { path: "/hub/cost-and-insurance", priority: "0.7", changefreq: "weekly", lastmod: today },
   // Symptom Quiz
   { path: "/symptom-quiz", priority: "0.9", changefreq: "weekly", lastmod: today },
   // Dental Cost Pages
@@ -135,6 +171,72 @@ const staticRoutes = [
   { path: "/lifestyle/diet-and-teeth", priority: "0.85", changefreq: "monthly", lastmod: today },
   { path: "/lifestyle/sports-mouthguards", priority: "0.85", changefreq: "monthly", lastmod: today },
   { path: "/lifestyle/oral-piercing-risks", priority: "0.85", changefreq: "monthly", lastmod: today },
+  // Explicit blog/article pages (hardcoded routes)
+  { path: "/oral-health-hub/dental-emergency-what-to-do", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/pregnancy-dental-health", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/brushing-teeth-prevent-dementia", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/electric-vs-manual-toothbrush", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/at-what-age-should-my-child-first-see-a-dentist", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/how-do-i-know-its-time-for-dental-implants", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/gums-hurt-when-flossing", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/swollen-gums-around-one-tooth", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/black-line-on-tooth", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/gum-boil", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/mouth-ulcer-not-healing", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/loose-tooth-adults", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/filling-feels-high-pain-biting", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/tooth-hurts-cold-water", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/crown-pain-sensitivity", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/bone-loss-dental-xray", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/teeth-grinding-bruxism", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/jaw-pain-tmj", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/canker-sore-vs-cold-sore", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/white-spots-on-teeth", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/root-canal-symptoms", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/bad-breath-halitosis", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/wisdom-tooth-pain", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/tooth-abscess-infection", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/cracked-tooth-symptoms", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/cavity-symptoms-tooth-decay", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/gum-recession", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/bleeding-gums", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/tooth-sensitivity-cold-hot", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/pain-when-biting-or-chewing", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/tooth-pain-toothache", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/how-can-ai-detect-a-cavity-in-my-dental-xray", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/maximize-benefits", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/employer-dental-plans", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/no-insurance-options", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/cosmetic-vs-necessary", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/pre-authorization", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/waiting-periods", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/in-network-confusion", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/insurance-limitations", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/denied-claims", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/misleading-insurance", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/enamel-erosion", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/missing-teeth", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/cracked-tooth", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/bad-breath", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/stained-teeth", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/teeth-grinding", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/wisdom-teeth-confusion", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/tooth-sensitivity", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/silent-gum-disease", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/undetected-cavities", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/choosing-right-dentist", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/communication-gap", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/preventive-care-gap", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/overtreatment-concerns", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/fear-of-dentist", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/cost-transparency", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/second-opinions", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/questioning-recommendations", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/rushed-decisions", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/unclear-diagnoses", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/why-your-dentist-might-be-recommending-unnecessary-procedures", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/the-hidden-cost-of-ignoring-dental-problems", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
+  { path: "/oral-health-hub/10-questions-to-ask-your-dentist-before-any-procedure", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
 ];
 
 // Sitemap cache: regenerated on demand and invalidated when blog content changes
@@ -159,6 +261,7 @@ export async function generateSitemapXml(): Promise<string> {
   }
 
   let blogUrls = "";
+  const dynamicBlogSlugs = new Set<string>();
 
   try {
     const result = await listBlogPosts({ publishedOnly: true, limit: 1000 });
@@ -174,6 +277,7 @@ export async function generateSitemapXml(): Promise<string> {
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>`;
+      dynamicBlogSlugs.add(`/oral-health-hub/${post.slug}`);
     }
   } catch (e) {
     // If blog fetch fails, continue with static routes only
@@ -181,6 +285,7 @@ export async function generateSitemapXml(): Promise<string> {
   }
 
   const staticUrls = staticRoutes
+    .filter((r) => !dynamicBlogSlugs.has(r.path))
     .map(
       (r) => `
   <url>
@@ -228,18 +333,13 @@ export function registerSeoRoutes(app: Express) {
     res.send(`User-agent: *
 Allow: /
 
-# Sitemaps
 Sitemap: ${SITE_URL}/sitemap.xml
-Sitemap: ${SITE_URL}/sitemap-custom.xml
 
-# Allow sitemap API endpoint explicitly (before Disallow /api/)
 Allow: /api/sitemap
 
-# Disallow admin pages
 Disallow: /admin
-Disallow: /admin/*
+Disallow: /admin/
 
-# Disallow API endpoints (except sitemap above)
 Disallow: /api/
 `);
   });
@@ -346,10 +446,35 @@ DentaSmart helps people understand their oral health through AI-powered photo an
 - [Privacy Policy](${SITE_URL}/privacy-policy)
 - [Terms of Service](${SITE_URL}/terms-of-service)
 
+## What DentaSmart Does
+DentaSmart is an AI-powered oral health app that helps users:
+1. Upload a photo of their teeth or dental X-rays
+2. Receive AI-powered analysis identifying potential issues
+3. Get a personalized Oral Health Score (0-100)
+4. Understand treatment options with cost estimates
+5. Track oral health over time with reminders
+6. Get a second opinion before expensive dental procedures
+
+## Pricing
+- Free: Basic symptom quiz and educational content
+- Starter ($4.99/month): 1 AI scan per month, basic tracking
+- Pro ($9.99/month): Unlimited scans, full analysis, care plans
+- Family ($14.99/month): Up to 5 family members, all Pro features
+
+## App Availability
+- iOS: Live on App Store
+- Android: Early Access (waitlist available)
+
 ## Contact
 - Website: ${SITE_URL}
 - Instagram: https://www.instagram.com/dentasmart.ai
 - LinkedIn: https://www.linkedin.com/company/dentasmart
+
+## Important Notes
+- DentaSmart is NOT a replacement for professional dental care
+- AI analysis is for educational and informational purposes only
+- Users should always consult a licensed dentist for diagnosis and treatment
+- The app helps users understand their oral health and make informed decisions
 `);
   });
 

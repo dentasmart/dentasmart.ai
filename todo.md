@@ -1194,3 +1194,9 @@
 
 ## Bug Fix: llms.txt 404 on Live Site
 - [x] Fix llms.txt returning 404 on dentasmart.ai/llms.txt — added static fallback in client/public/llms.txt
+
+## Bug Fix: ChatGPT cannot access llms.txt, robots.txt, sitemap.xml on live site
+- [x] Diagnose HTTP response headers and content types for all three files — all return 200 with correct content types
+- [x] Fix serving issues — comprehensive rewrite of llms.txt (added What DentaSmart Does, Pricing, Important Notes sections), robots.txt (clean formatting), and sitemap.xml (added 90+ missing pages, deduplication logic)
+- [x] Added all missing symptom pages (28 new), condition pages (2 new), hub category pages (5 new), and 65 explicit blog post routes to sitemap
+- [x] Fixed sitemap deduplication to prevent blog posts appearing twice (static + dynamic)
