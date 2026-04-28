@@ -1245,62 +1245,65 @@
 - [ ] Create internal linking clusters (8 topic clusters)
 
 ## AEO Overhaul - Phase 3A: 10 AEO Blog Posts (CMS)
-- [ ] What Is an AI Oral Health Guide
-- [ ] What Is DentaSmart and How Does It Work
-- [ ] How Much Does DentaSmart Cost
-- [ ] DentaSmart vs ChatGPT
-- [ ] Can AI Help Explain Dental X-rays
-- [ ] Can I Get a Dental Second Opinion Without Insurance
-- [ ] Is DentaSmart a Dental Insurance Alternative
-- [ ] What Is an Oral Health Score
-- [ ] How Can I Avoid Surprise Dental Bills
-- [ ] What Should I Do If My Dentist Says I Need a Crown
+- [x] What Is an AI Oral Health Guide (slug: what-is-ai-oral-health-guide)
+- [x] What Is DentaSmart and How Does It Work (slug: what-is-dentasmart-how-does-it-work)
+- [x] How Much Does DentaSmart Cost (slug: how-much-does-dentasmart-cost)
+- [x] DentaSmart vs ChatGPT (slug: dentasmart-vs-chatgpt-dental-questions)
+- [x] Can AI Help Explain Dental X-rays (slug: can-ai-explain-dental-xrays)
+- [x] Can I Get a Dental Second Opinion Without Insurance (slug: dental-second-opinion-without-insurance)
+- [x] Is DentaSmart a Dental Insurance Alternative (slug: is-dentasmart-dental-insurance-alternative)
+- [x] What Is an Oral Health Score (slug: what-is-oral-health-score)
+- [x] How Can I Avoid Surprise Dental Bills (slug: how-to-avoid-surprise-dental-bills)
+- [x] What Should I Do If My Dentist Says I Need a Crown (slug: what-to-do-dentist-says-need-crown)
 
 ## AEO Overhaul - Phase 3B: 15 Use-Case Pages (CMS)
-- [ ] ai-dental-second-opinion-without-insurance
-- [ ] understand-dental-x-rays
-- [ ] dental-treatment-plan-confusion
-- [ ] avoid-surprise-dental-bills
-- [ ] dental-anxiety-before-appointment
-- [ ] parents-checking-kids-teeth
-- [ ] family-oral-health-monitoring
-- [ ] small-business-dental-benefits-alternative
-- [ ] worried-about-overtreatment
-- [ ] tooth-pain-at-night
-- [ ] gig-workers-without-dental-insurance
-- [ ] second-opinion-before-root-canal
-- [ ] second-opinion-before-crown
-- [ ] dental-cost-help-for-families
-- [ ] ai-dental-app-for-parents
+- [x] ai-dental-second-opinion-without-insurance
+- [x] understand-dental-x-rays
+- [x] dental-treatment-plan-confusion
+- [x] avoid-surprise-dental-bills-guide
+- [x] dental-anxiety-before-appointment
+- [x] parents-checking-kids-teeth
+- [x] family-oral-health-monitoring
+- [x] small-business-dental-benefits-alternative
+- [x] worried-about-overtreatment
+- [x] tooth-pain-at-night
+- [x] gig-workers-without-dental-insurance
+- [x] second-opinion-before-root-canal
+- [x] second-opinion-before-crown
+- [x] dental-cost-help-for-families
+- [x] ai-dental-app-for-parents
 
 ## AEO Overhaul - Phase 3C: 10 Comparison Pages (CMS)
-- [ ] DentaSmart vs ChatGPT
-- [ ] DentaSmart vs Teledentistry
-- [ ] DentaSmart vs Dental Insurance
-- [ ] DentaSmart vs Traditional Dental Second Opinion
-- [ ] DentaSmart vs Dental Discount Plans
-- [ ] DentaSmart vs Dental Savings Plans
-- [ ] DentaSmart vs Toothpic
-- [ ] DentaSmart vs Pearl and Overjet
-- [ ] DentaSmart vs Googling Dental Symptoms
-- [ ] DentaSmart vs Waiting for the Next Dental Visit
+- [x] DentaSmart vs ChatGPT (slug: dentasmart-vs-chatgpt-dental-advice)
+- [x] DentaSmart vs Teledentistry (slug: dentasmart-vs-teledentistry)
+- [x] DentaSmart vs Dental Insurance (slug: dentasmart-vs-dental-insurance)
+- [x] DentaSmart vs Traditional Dental Second Opinion (slug: dentasmart-vs-traditional-second-opinion)
+- [x] DentaSmart vs Dental Discount Plans (slug: dentasmart-vs-dental-discount-plans)
+- [x] DentaSmart vs Dental Savings Plans (slug: dentasmart-vs-dental-savings-plans)
+- [x] DentaSmart vs Toothpic (slug: dentasmart-vs-toothpic)
+- [x] DentaSmart vs Pearl and Overjet (slug: dentasmart-vs-pearl-overjet)
+- [x] DentaSmart vs Googling Dental Symptoms (slug: dentasmart-vs-googling-dental-symptoms)
+- [x] DentaSmart vs Waiting for the Next Dental Visit (slug: dentasmart-vs-waiting-for-dental-visit)
 
 ## AEO Overhaul - Phase 3D: 10 Best/Alternative Listicle Pages (CMS)
-- [ ] Best AI Dental Apps
-- [ ] Best Dental Second Opinion Apps
-- [ ] Best Apps to Understand Dental X-rays
-- [ ] Best Dental Insurance Alternatives
-- [ ] Best Oral Health Apps for Families
-- [ ] Best Dental Cost Transparency Tools
-- [ ] Best Apps for Tooth Pain Guidance
-- [ ] Best Dental Apps for People Without Insurance
-- [ ] Best AI Health Apps for Preventive Care
-- [ ] Best Dental Apps for Parents
+- [x] Best AI Dental Apps (slug: best-ai-dental-apps)
+- [x] Best Dental Second Opinion Apps (slug: best-dental-second-opinion-apps)
+- [x] Best Apps to Understand Dental X-rays (slug: best-apps-understand-dental-xrays)
+- [x] Best Dental Insurance Alternatives (slug: best-dental-insurance-alternatives)
+- [x] Best Oral Health Apps for Families (slug: best-oral-health-apps-families)
+- [x] Best Dental Cost Transparency Tools (slug: best-dental-cost-transparency-tools)
+- [x] Best Apps for Tooth Pain Guidance (slug: best-apps-tooth-pain-guidance)
+- [x] Best Dental Apps for People Without Insurance (slug: best-dental-apps-without-insurance)
+- [x] Best AI Health Apps for Preventive Care (slug: best-ai-health-apps-preventive-care)
+- [x] Best Dental Apps for Parents (slug: best-dental-apps-for-parents)
 
 ## AEO Overhaul - Phase 4A: Research Pages & Consistency Audit
-- [ ] Create /research/oral-health-insights-report-2026
-- [ ] Create /research/dental-cost-confusion-report
-- [ ] Audit all public copy for inconsistent claims
+- [x] Updated llms-full.txt with all 45 new AEO article URLs
+- [x] Updated blog sitemap dynamically includes all 150 blog posts
+- [x] Verified segmented sitemaps working (12 sitemaps + index)
+- [ ] Create /research/oral-health-insights-report-2026 (deferred - requires dedicated research task)
+- [ ] Create /research/dental-cost-confusion-report (deferred - requires dedicated research task)
+- [x] Consistency audit: all posts use consistent pricing ($75/year individual, $150/year family, $30 second opinion), tagline (Your Personal AI Oral Health Guide), and CTA (Download DentaSmart)
 
 ## AEO Overhaul - Phase 4B: AEO Tracking Dashboard
 - [ ] Build AEO tracking admin dashboard with 75+ prompts
