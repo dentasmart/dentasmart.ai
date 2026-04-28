@@ -10,6 +10,9 @@ import { DownloadSection } from "@/components/DownloadSection";
 import { motion } from "framer-motion";
 import { WaitlistPopup } from "@/components/WaitlistPopup";
 import { trackPixelInitiateCheckout } from "@/lib/fbpixel";
+import QuickAnswerBlock from "@/components/QuickAnswerBlock";
+import FAQSchema from "@/components/FAQSchema";
+import { ProductServiceSchema, BreadcrumbSchema } from "@/components/StructuredData";
 
 export default function Pricing() {
   const [planType, setPlanType] = useState<"individual" | "family">("individual");
@@ -27,6 +30,19 @@ export default function Pricing() {
         canonical="https://dentasmart.ai/pricing"
       />
       <Navigation />
+      <ProductServiceSchema />
+      <BreadcrumbSchema items={[
+        { name: "Home", url: "/" },
+        { name: "Pricing", url: "/pricing" }
+      ]} />
+      <FAQSchema faqs={[
+        { question: "How much does DentaSmart cost?", answer: "DentaSmart Individual Insights costs $75 per year ($0.21/day) for unlimited AI scans, Oral Health Score, personalized care plans, and 24/7 AI guide access. Family Insights costs $150 per year for up to 5 family members. A one-time Second Opinion report costs $30." },
+        { question: "Can I try DentaSmart before paying?", answer: "Yes. Download the app and scan your teeth for free. You will see a preview of your results. When you are ready for the full analysis, upgrade through dentasmart.ai." },
+        { question: "What is the difference between Individual Insights and Second Opinion?", answer: "Individual Insights gives you year-round monitoring with unlimited scans, progress tracking, and ongoing guidance. Second Opinion is a one-time deep analysis where you upload your dentist's treatment plan and get an independent comparison." },
+        { question: "Can I add family members?", answer: "Yes. The Family plan is $150/year and includes you plus up to 4 family members. Additional members are $10/year each. For Second Opinion, each family member is $30." },
+        { question: "Are the results reviewed by real dentists?", answer: "Yes. Every analysis is reviewed and approved by licensed dentists before it reaches you." },
+        { question: "How do I manage my subscription?", answer: "All subscriptions are managed through dentasmart.ai, not through the app stores. This keeps things simple and gives you full control over your plan." }
+      ]} />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -563,6 +579,18 @@ export default function Pricing() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Quick Answer Block for AEO */}
+      <section className="py-6 bg-white">
+        <div className="container px-4 mx-auto max-w-3xl">
+          <QuickAnswerBlock
+            question="How much does DentaSmart cost?"
+            answer="DentaSmart Individual Insights costs $75 per year ($0.21/day) and includes unlimited AI scans, an Oral Health Score, personalized care plans, and 24/7 AI guide access. Family Insights costs $150 per year ($0.41/day) for up to 5 family members. A one-time Second Opinion report costs $30. All subscriptions are managed through dentasmart.ai."
+            sourceUrl="https://dentasmart.ai/pricing"
+            sourceLabel="DentaSmart Pricing"
+          />
         </div>
       </section>
 

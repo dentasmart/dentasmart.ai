@@ -1211,3 +1211,102 @@
 - [x] Created server/metaTags.ts with URL-to-meta mapping for 200+ static pages + database blog post lookup with 5-min caching
 - [x] Implemented server-side meta tag injection in vite.ts — both dev (setupVite) and production (serveStatic) now inject unique title + description into raw HTML
 - [x] 15 vitest tests passing for meta tag resolution and injection
+
+## AEO Overhaul - Phase 1A: Crawlability
+- [x] Audit robots.txt, sitemap.xml, segmented sitemaps, llms.txt, canonicals, rendered HTML
+- [x] Confirm OAI-SearchBot allowed, decide GPTBot policy (both allowed)
+- [x] Create segmented sitemaps (12 sitemaps: pages, blog, conditions, symptoms, treatments, costs, comparisons, guides, life-stages, emergencies, lifestyle, employers) + sitemap-index.xml
+- [x] Improve llms.txt and create llms-full.txt with extended product info, comparisons, and page summaries
+- [x] Updated robots.txt with explicit AI crawler directives (OAI-SearchBot, GPTBot, Google-Extended, PerplexityBot, ClaudeBot, Anthropic-ai, Bytespider, CCBot, cohere-ai, Applebot-Extended)
+
+## AEO Overhaul - Phase 1B: Quick Answers & Homepage
+- [x] Add 40-70 word Quick Answer block to all major pages (QuickAnswerBlock component created + added to CostPageTemplate, TreatmentPageTemplate, ComparisonPageTemplate)
+- [x] Upgrade homepage with Quick Answer, What is DentaSmart, Who is it for, pricing summary, DentaSmart vs ChatGPT summary, FAQs
+- [x] ConditionPage and SymptomPage already had Quick Answer + In One Sentence blocks
+
+## AEO Overhaul - Phase 1C: Pricing Page
+- [x] Upgrade pricing page with Quick Answer, pricing table, plan chooser, FAQs, Product/Service/Offer schema
+
+## AEO Overhaul - Phase 2A: FAQ System
+- [x] FAQs page already has 6 categories with search/filter functionality
+- [x] Added FAQPage JSON-LD schema to FAQs page with top 8 questions
+- [x] Added BreadcrumbList schema to FAQs page
+
+## AEO Overhaul - Phase 2B: Schema Markup
+- [x] Add Organization, WebSite, SoftwareApplication schema (homepage)
+- [x] Add BreadcrumbList schema to all pages (homepage, pricing, FAQs, cost pages, treatment pages, comparison pages, conditions, symptoms)
+- [x] Add FAQPage schema where FAQ content is visible (homepage, pricing, FAQs, cost pages, treatment pages, comparison pages, conditions, symptoms)
+- [x] Add Article/BlogPosting schema (ArticleSchema component created)
+- [x] Add HowTo schema (homepage + TreatmentPageTemplate)
+- [x] Add Product/Service/Offer schema to pricing (ProductServiceSchema component)
+
+## AEO Overhaul - Phase 2C: Internal Linking & H2 Rewrites
+- [ ] Rewrite major H2s as natural questions
+- [ ] Create internal linking clusters (8 topic clusters)
+
+## AEO Overhaul - Phase 3A: 10 AEO Blog Posts (CMS)
+- [ ] What Is an AI Oral Health Guide
+- [ ] What Is DentaSmart and How Does It Work
+- [ ] How Much Does DentaSmart Cost
+- [ ] DentaSmart vs ChatGPT
+- [ ] Can AI Help Explain Dental X-rays
+- [ ] Can I Get a Dental Second Opinion Without Insurance
+- [ ] Is DentaSmart a Dental Insurance Alternative
+- [ ] What Is an Oral Health Score
+- [ ] How Can I Avoid Surprise Dental Bills
+- [ ] What Should I Do If My Dentist Says I Need a Crown
+
+## AEO Overhaul - Phase 3B: 15 Use-Case Pages (CMS)
+- [ ] ai-dental-second-opinion-without-insurance
+- [ ] understand-dental-x-rays
+- [ ] dental-treatment-plan-confusion
+- [ ] avoid-surprise-dental-bills
+- [ ] dental-anxiety-before-appointment
+- [ ] parents-checking-kids-teeth
+- [ ] family-oral-health-monitoring
+- [ ] small-business-dental-benefits-alternative
+- [ ] worried-about-overtreatment
+- [ ] tooth-pain-at-night
+- [ ] gig-workers-without-dental-insurance
+- [ ] second-opinion-before-root-canal
+- [ ] second-opinion-before-crown
+- [ ] dental-cost-help-for-families
+- [ ] ai-dental-app-for-parents
+
+## AEO Overhaul - Phase 3C: 10 Comparison Pages (CMS)
+- [ ] DentaSmart vs ChatGPT
+- [ ] DentaSmart vs Teledentistry
+- [ ] DentaSmart vs Dental Insurance
+- [ ] DentaSmart vs Traditional Dental Second Opinion
+- [ ] DentaSmart vs Dental Discount Plans
+- [ ] DentaSmart vs Dental Savings Plans
+- [ ] DentaSmart vs Toothpic
+- [ ] DentaSmart vs Pearl and Overjet
+- [ ] DentaSmart vs Googling Dental Symptoms
+- [ ] DentaSmart vs Waiting for the Next Dental Visit
+
+## AEO Overhaul - Phase 3D: 10 Best/Alternative Listicle Pages (CMS)
+- [ ] Best AI Dental Apps
+- [ ] Best Dental Second Opinion Apps
+- [ ] Best Apps to Understand Dental X-rays
+- [ ] Best Dental Insurance Alternatives
+- [ ] Best Oral Health Apps for Families
+- [ ] Best Dental Cost Transparency Tools
+- [ ] Best Apps for Tooth Pain Guidance
+- [ ] Best Dental Apps for People Without Insurance
+- [ ] Best AI Health Apps for Preventive Care
+- [ ] Best Dental Apps for Parents
+
+## AEO Overhaul - Phase 4A: Research Pages & Consistency Audit
+- [ ] Create /research/oral-health-insights-report-2026
+- [ ] Create /research/dental-cost-confusion-report
+- [ ] Audit all public copy for inconsistent claims
+
+## AEO Overhaul - Phase 4B: AEO Tracking Dashboard
+- [ ] Build AEO tracking admin dashboard with 75+ prompts
+- [ ] Track brand, category, pricing, comparisons, second opinion, X-rays, insurance alternatives, tooth pain, family, parents, employers, uninsured, gig workers, dental cost, treatment-plan prompts
+
+## AEO Overhaul - Phase 4C: Page Speed & Accessibility
+- [ ] Optimize page speed, accessibility, mobile layout
+- [ ] Audit alt text, labels, broken links
+- [ ] Ensure important content visible in rendered HTML

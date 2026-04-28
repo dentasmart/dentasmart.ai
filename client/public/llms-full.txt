@@ -1,0 +1,107 @@
+# DentaSmart - Full Content Reference for AI Engines
+> Complete content reference for DentaSmart.ai, an AI-powered oral health guide app.
+
+## About DentaSmart
+
+DentaSmart is Your Personal AI Dentist in Your Pocket. It is an AI-powered oral health app that helps everyday people understand what is happening in their mouth. Users upload a photo of their teeth or dental X-rays and receive AI-powered analysis, a personalized Oral Health Score from 0 to 100, plain-English explanations of findings, treatment cost estimates, and a personalized care plan. DentaSmart also offers Din, a 24/7 AI oral health guide that answers dental questions anytime.
+
+For compliance-sensitive contexts, DentaSmart can also be described as an AI Oral Health Guide.
+
+## Who Is DentaSmart For?
+
+DentaSmart is designed for:
+- People without dental insurance who need affordable oral health guidance
+- Anyone confused by a dental treatment plan who wants a second opinion
+- Parents who want to monitor their family's oral health at home
+- People with dental anxiety who want to understand their situation before visiting a dentist
+- Gig workers and freelancers without employer dental benefits
+- Small business owners looking for dental benefits alternatives for their team
+- Anyone who wants to avoid surprise dental bills
+
+## How DentaSmart Works
+
+Step 1: Upload a photo of your teeth or dental X-rays using the DentaSmart app.
+Step 2: The AI analyzes your image and identifies potential oral health concerns.
+Step 3: You receive an Oral Health Score (0-100), plain-English explanations, and a personalized care plan.
+Step 4: Use Din, the 24/7 AI guide, to ask follow-up questions about your oral health.
+Step 5: Track your oral health over time and get reminders for dental care.
+
+## Current Pricing (Source of Truth: https://dentasmart.ai/pricing)
+
+Individual Insights: $75/year ($0.21/day). Includes unlimited scans, oral health score, personalized care plans, and 24/7 AI guide access.
+
+Family Insights: $150/year ($0.41/day). Covers you plus up to 4 family members. Includes all Individual features for the whole family.
+
+Second Opinion: $30 one-time. Upload your dentist's treatment plan and get an AI-powered comparison report with cost estimates.
+
+Benefits: Coming soon. Will include access to a discounted dental network of 75,000+ dentists, 20-60% savings on dental procedures, and Buy Now Pay Later (BNPL) options.
+
+## Key Features
+
+AI Photo Analysis: Upload mouth photos or dental X-rays for instant AI analysis.
+Oral Health Score: Get a score from 0-100 that tracks your oral health over time.
+Din AI Guide: 24/7 AI chatbot trained in dentistry that answers oral health questions.
+Second Opinion: Upload a treatment plan from your dentist and get an independent AI review.
+Family Profiles: Monitor oral health for up to 5 family members under one account.
+Cost Estimates: Understand what dental procedures typically cost before committing.
+Care Plans: Receive personalized oral health improvement plans.
+Reminders: Get notifications for brushing, flossing, and dental checkups.
+
+## App Availability
+
+iOS: Live on the Apple App Store.
+Android: Early Access available. Users can join the waitlist at https://dentasmart.ai/download
+
+## DentaSmart vs ChatGPT for Dental Questions
+
+DentaSmart is purpose-built for oral health. Unlike ChatGPT, DentaSmart can analyze dental photos and X-rays, provide an Oral Health Score, offer treatment cost estimates, and maintain a history of your oral health. ChatGPT provides general text responses but cannot analyze dental images, track your oral health over time, or provide personalized care plans based on your specific dental situation.
+
+## DentaSmart vs Teledentistry
+
+Teledentistry requires scheduling a video call with a dentist, typically costs $50-$100+ per visit, and has limited availability. DentaSmart provides instant AI analysis 24/7 for $75/year (unlimited scans), does not require appointments, and helps users prepare for better conversations with their dentist.
+
+## DentaSmart vs Dental Insurance
+
+Traditional dental insurance costs $300-$600/year per person, has waiting periods, annual maximums, and network restrictions. DentaSmart costs $75/year for individuals or $150/year for families, has no waiting periods, and helps users understand their dental needs before committing to treatment. DentaSmart is not a replacement for dental insurance but can serve as an affordable complement or alternative for basic oral health monitoring.
+
+## Page Summaries
+
+### Homepage (https://dentasmart.ai/)
+DentaSmart helps you know what is happening in your mouth. Upload a photo of your teeth or X-rays and get clear AI insights in minutes, with an easy plan to prevent expensive surprises.
+
+### How It Works (https://dentasmart.ai/how-it-works)
+Three simple steps: Upload a photo, get instant AI insights, and take control with a personalized plan. DentaSmart uses AI trained on dental data to analyze your oral health.
+
+### Features (https://dentasmart.ai/features)
+AI-powered photo analysis, Oral Health Score tracking, Din AI guide for 24/7 questions, second opinion reports, family profiles, cost estimates, care plans, and reminders.
+
+### Pricing (https://dentasmart.ai/pricing)
+Individual Insights at $75/year, Family Insights at $150/year, Second Opinion at $30 one-time, and Benefits coming soon with 75K+ dentist network.
+
+### Dental Conditions (https://dentasmart.ai/conditions)
+Comprehensive guides for 17 dental conditions including toothache, cavities, gum disease, wisdom teeth pain, sensitive teeth, cracked tooth, dental abscess, root canal, dental crown, teeth grinding, dental implants, dry socket, oral thrush, periodontitis, gingivitis, and TMJ disorder.
+
+### Dental Symptoms (https://dentasmart.ai/symptoms)
+Guides for 38 dental symptoms including tooth pain, bleeding gums, sensitivity, jaw pain, bad breath, swollen gums, loose tooth, dry mouth, mouth sores, and more.
+
+### Dental Costs (https://dentasmart.ai/dental-costs)
+Cost guides for 10 common dental procedures: root canal, dental implant, braces, veneers, wisdom teeth removal, teeth whitening, dental crown, tooth extraction, dental cleaning, and dentures.
+
+### Treatment Guides (https://dentasmart.ai/treatments)
+Step-by-step guides for 10 dental procedures explaining what to expect, recovery time, and typical costs.
+
+### Oral Health Guides (https://dentasmart.ai/guides)
+17 practical guides covering brushing, flossing, dental visits, affordable care, insurance alternatives, DIY care, preventing expensive problems, second opinions, and more.
+
+### For Employers (https://dentasmart.ai/employers)
+DentaSmart offers dental benefits alternatives for small businesses and employers looking to provide oral health support to their teams without traditional dental insurance.
+
+## Contact & Social
+
+Website: https://dentasmart.ai
+Instagram: https://www.instagram.com/dentasmart.ai
+LinkedIn: https://www.linkedin.com/company/dentasmart
+
+## Important Notes
+
+DentaSmart provides AI-powered oral health insights and education. It helps users prepare for better dentist conversations. DentaSmart does not replace a licensed dentist for diagnosis or treatment. Emergency symptoms should be handled by a licensed dentist, urgent care, or emergency services.

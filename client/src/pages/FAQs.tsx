@@ -2,13 +2,15 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { BenefitsCarousel } from "@/components/BenefitsCarousel";
 import faqChallenges from "@/data/faqChallenges.json";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { DownloadSection } from "@/components/DownloadSection";
+import FAQSchema from "@/components/FAQSchema";
+import { BreadcrumbSchema } from "@/components/StructuredData";
 
 // Map FAQ challenge IDs to their image paths
 const faqChallengeImages: Record<number, string> = {
@@ -114,6 +116,20 @@ export default function FAQs() {
         canonical="https://dentasmart.ai/faqs"
       />
       <Navigation />
+      <BreadcrumbSchema items={[
+        { name: "Home", url: "/" },
+        { name: "FAQs", url: "/faqs" }
+      ]} />
+      <FAQSchema faqs={[
+        { question: "How do I get started with DentaSmart?", answer: "Download the app from the App Store (Android coming soon), create an account, and take your first mouth photos or upload X-rays. You'll get your first report within 10 minutes." },
+        { question: "How accurate is the AI analysis?", answer: "DentaSmart's AI has 100% detection accuracy for identifying potential areas of concern. It's trained by dental experts and validated against clinical outcomes." },
+        { question: "Is DentaSmart HIPAA compliant?", answer: "Yes. DentaSmart is fully HIPAA compliant and meets all healthcare privacy and security standards as defined by the U.S. Department of Health and Human Services." },
+        { question: "What's the difference between Insights and Second Opinion?", answer: "Insights is $75/year for ongoing monthly monitoring and wellness tracking. Second Opinion is $30 one-time for a specific treatment plan comparison." },
+        { question: "Is it a dentist replacement?", answer: "No. DentaSmart is a tool to help you monitor your oral health between visits and understand your dentist's recommendations better. It does not replace professional care." },
+        { question: "Is my data secure?", answer: "Yes. All data is encrypted end-to-end and stored on secure, HIPAA-compliant servers. DentaSmart never sells your data." },
+        { question: "What can DentaSmart detect?", answer: "DentaSmart can identify potential cavities, gum disease, tooth wear, alignment issues, and other visible oral health concerns. It provides educational insights to help you understand what you're seeing." },
+        { question: "Can I share my report with my dentist?", answer: "Yes. You can easily share your DentaSmart report with your dentist via email or print it out to bring to your appointment." }
+      ]} />
 
       {/* Hero Section - Calm & Clear with Image */}
       <section className="relative min-h-screen flex items-center overflow-hidden">

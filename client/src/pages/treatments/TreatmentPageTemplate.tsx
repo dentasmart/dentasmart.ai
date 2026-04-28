@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import ExternalSources from "@/components/ExternalSources";
 import SEO from "@/components/SEO";
 import MidContentCTA from "@/components/MidContentCTA";
+import QuickAnswerBlock from "@/components/QuickAnswerBlock";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Stethoscope, Clock, CheckCircle, AlertTriangle, ShieldCheck, Smartphone, TrendingDown } from "lucide-react";
@@ -158,6 +159,18 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
               </a>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ═══ QUICK ANSWER (AEO) ═══ */}
+      <section className="py-6 bg-white border-b border-stone-100">
+        <div className="container px-4 mx-auto max-w-4xl">
+          <QuickAnswerBlock
+            question={`What is ${data.procedureName.toLowerCase()} treatment?`}
+            answer={data.metaDescription}
+            sourceUrl={canonicalUrl}
+            sourceLabel={`DentaSmart ${data.procedureName} Guide`}
+          />
         </div>
       </section>
 

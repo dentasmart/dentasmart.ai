@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import ExternalSources from "@/components/ExternalSources";
 import SEO from "@/components/SEO";
 import MidContentCTA from "@/components/MidContentCTA";
+import QuickAnswerBlock from "@/components/QuickAnswerBlock";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Scale, CheckCircle, XCircle, MinusCircle, Smartphone } from "lucide-react";
@@ -142,6 +143,18 @@ export default function ComparisonPageTemplate({ data }: { data: ComparisonPageD
               </a>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ═══ QUICK ANSWER (AEO) ═══ */}
+      <section className="py-6 bg-white border-b border-stone-100">
+        <div className="container px-4 mx-auto max-w-4xl">
+          <QuickAnswerBlock
+            question={`${data.optionAName} vs ${data.optionBName}: Which is better?`}
+            answer={data.metaDescription}
+            sourceUrl={`https://dentasmart.ai/comparisons/${data.slug}`}
+            sourceLabel={`DentaSmart ${data.optionAName} vs ${data.optionBName} Guide`}
+          />
         </div>
       </section>
 

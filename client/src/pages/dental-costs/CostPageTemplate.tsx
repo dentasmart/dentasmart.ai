@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import MidContentCTA from "@/components/MidContentCTA";
+import QuickAnswerBlock from "@/components/QuickAnswerBlock";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, DollarSign, AlertTriangle, CheckCircle, Clock, TrendingDown, Smartphone } from "lucide-react";
@@ -140,6 +141,18 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
               </a>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ═══ QUICK ANSWER (AEO) ═══ */}
+      <section className="py-6 bg-white border-b border-stone-100">
+        <div className="container px-4 mx-auto max-w-4xl">
+          <QuickAnswerBlock
+            question={`How much does a ${data.procedureName.toLowerCase()} cost?`}
+            answer={data.metaDescription}
+            sourceUrl={canonicalUrl}
+            sourceLabel={`DentaSmart ${data.procedureName} Cost Guide`}
+          />
         </div>
       </section>
 
