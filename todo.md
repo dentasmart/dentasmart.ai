@@ -1315,10 +1315,12 @@
 - [ ] Ensure important content visible in rendered HTML
 
 ## AEO Tracking Dashboard Implementation
-- [ ] Sync code to GitHub
-- [ ] Create admin-only AEO Tracking Dashboard page
-- [ ] Build 75+ AI prompts organized by category (brand, pricing, comparisons, use-cases, etc.)
-- [ ] Add prompt testing UI with copy-to-clipboard
-- [ ] Add tracking status columns (cited/not cited/partial)
-- [ ] Add date tracking for last checked
-- [ ] Wire up admin route in App.tsx
+- [x] Sync code to GitHub
+- [x] Create admin-only AEO Tracking Dashboard page (AdminAEODashboard.tsx)
+- [x] Build 82 AI prompts organized by 15 categories (brand, pricing, comparisons, second opinion, X-ray, insurance, tooth pain, family, employers, uninsured, dental costs, treatment plans, prevention, app/tech, trust/safety)
+- [x] Add prompt testing UI with copy-to-clipboard and expected answer display
+- [x] Add tracking status columns (Cited/Not Cited/Partial/Untested) with dropdown selectors
+- [x] Add date tracking for last checked with localStorage persistence
+- [x] Wire up admin route in AdminRouter.tsx + sidebar nav in AdminLayout.tsx
+- [x] Add Export CSV, Reset All, search/filter, Quick Test Links, and notes per prompt
+- [x] Save checkpoint and sync to GitHub

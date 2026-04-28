@@ -18,6 +18,7 @@ import {
   PanelLeftClose,
   PanelLeft,
   TrendingUp,
+  Sparkles,
 } from "lucide-react";
 
 interface NavItem {
@@ -64,6 +65,7 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
     if (location.includes("/admin/ai-blog-agent")) return "ai-blog-agent";
     if (location.includes("/admin/seo-analytics")) return "seo-analytics";
     if (location.includes("/admin/conversion-analytics")) return "conversion-analytics";
+    if (location.includes("/admin/aeo-dashboard")) return "aeo-dashboard";
     if (location.includes("/admin/edit") || location.includes("/admin/new")) return "articles";
     return "articles";
   }, [activeId, location]);
@@ -117,6 +119,13 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
       label: "Conversions",
       icon: <TrendingUp className="w-5 h-5" />,
       path: "/admin/conversion-analytics",
+      section: "Tools",
+    },
+    {
+      id: "aeo-dashboard",
+      label: "AEO Tracking",
+      icon: <Sparkles className="w-5 h-5" />,
+      path: "/admin/aeo-dashboard",
       section: "Tools",
     },
   ];
