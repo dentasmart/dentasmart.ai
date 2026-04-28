@@ -1313,3 +1313,12 @@
 - [ ] Optimize page speed, accessibility, mobile layout
 - [ ] Audit alt text, labels, broken links
 - [ ] Ensure important content visible in rendered HTML
+
+## AEO Tracking Dashboard Implementation
+- [ ] Sync code to GitHub
+- [ ] Create admin-only AEO Tracking Dashboard page
+- [ ] Build 75+ AI prompts organized by category (brand, pricing, comparisons, use-cases, etc.)
+- [ ] Add prompt testing UI with copy-to-clipboard
+- [ ] Add tracking status columns (cited/not cited/partial)
+- [ ] Add date tracking for last checked
+- [ ] Wire up admin route in App.tsx
