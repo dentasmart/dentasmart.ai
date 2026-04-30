@@ -20,11 +20,12 @@ DentaSmart is designed for:
 
 ## How DentaSmart Works
 
-Step 1: Upload a photo of your teeth or dental X-rays using the DentaSmart app.
-Step 2: The AI analyzes your image and identifies potential oral health concerns.
-Step 3: You receive an Oral Health Score (0-100), plain-English explanations, and a personalized care plan.
-Step 4: Use Din, the 24/7 AI guide, to ask follow-up questions about your oral health.
-Step 5: Track your oral health over time and get reminders for dental care.
+Step 1: Complete guided Self-Examination (Bite Pressure Test, Cold Sensitivity Test, Visual Inspection) to help the AI understand your symptoms.
+Step 2: Upload photos of your teeth or dental X-rays. Or use Quick Check for fast instant analysis.
+Step 3: The AI analyzes your images with color-coded findings overlay and identifies potential oral health concerns.
+Step 4: Receive two reports: a plain-English 'For You' version with your Oral Health Score (0-100), and a clinical 'For Dentist' version with tooth-by-tooth findings. Both downloadable as PDF.
+Step 5: Use Din, the 24/7 AI guide, to ask follow-up questions about your oral health.
+Step 6: Track your oral health over time and get reminders for dental care.
 
 ## Current Pricing (Source of Truth: https://dentasmart.ai/pricing)
 
@@ -38,7 +39,10 @@ Benefits: Coming soon. Will include access to a discounted dental network of 75,
 
 ## Key Features
 
-AI Photo Analysis: Upload mouth photos or dental X-rays for instant AI analysis.
+Quick Check: Fast AI analysis of X-rays or mouth photos with color-coded findings overlay. Available free (limited scans) and unlimited on Insights plan.
+Guided Self-Examination: Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection before photo upload to improve AI accuracy. Included in all plans.
+Dual Reports: Two report formats - a plain-English 'For You' version and a clinical 'For Dentist' version with tooth-by-tooth findings, differentials, and urgency levels. Both downloadable as PDF and shareable.
+AI Photo Analysis: Upload mouth photos or dental X-rays for instant AI analysis with visual findings.
 Oral Health Score: Get a score from 0-100 that tracks your oral health over time.
 Din AI Guide: 24/7 AI chatbot trained in dentistry that answers oral health questions.
 Second Opinion: Upload a treatment plan from your dentist and get an independent AI review.
@@ -73,7 +77,7 @@ DentaSmart helps you know what is happening in your mouth. Upload a photo of you
 Three simple steps: Upload a photo, get instant AI insights, and take control with a personalized plan. DentaSmart uses AI trained on dental data to analyze your oral health.
 
 ### Features (https://dentasmart.ai/features)
-AI-powered photo analysis, Oral Health Score tracking, Din AI guide for 24/7 questions, second opinion reports, family profiles, cost estimates, care plans, and reminders.
+Quick Check for fast X-ray/photo analysis, guided Self-Examination tests (Bite Pressure, Cold Sensitivity, Visual Inspection), dual report formats (patient + dentist PDF), AI-powered photo analysis, Oral Health Score tracking, Din AI guide for 24/7 questions, second opinion reports, family profiles, cost estimates, care plans, and reminders.
 
 ### Pricing (https://dentasmart.ai/pricing)
 Individual Insights at $75/year, Family Insights at $150/year, Second Opinion at $30 one-time, and Benefits coming soon with 75K+ dentist network.

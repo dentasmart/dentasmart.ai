@@ -87,6 +87,16 @@ export default function FAQs() {
         { q: "Is it a dentist replacement?", a: "No. DentaSmart is a tool to help you monitor your oral health between visits and understand your dentist's recommendations better. It does not replace professional care." },
       ],
     },
+    {
+      title: "New Features",
+      faqs: [
+        { q: "What is Quick Check?", a: "Quick Check is a fast AI analysis feature that lets you upload a dental X-ray or mouth photo and get instant findings with color-coded overlays. It's available with limited scans on the free tier and unlimited on the Insights plan." },
+        { q: "What are the Self-Examination tests?", a: "Before uploading photos, DentaSmart guides you through simple self-examination tests — Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection with a mirror. These help the AI understand your symptoms better and deliver more accurate results. Included in all plans." },
+        { q: "What's the difference between the two report formats?", a: "DentaSmart generates two reports: a 'For You' version in plain language with your health score and priority actions, and a 'For Dentist' version with clinical terminology, tooth-by-tooth findings, and differential diagnoses. Both are downloadable as PDF and shareable." },
+        { q: "Can I share the dentist report directly?", a: "Yes. Both report versions can be downloaded as PDF and shared via email or printed to bring to your dental appointment." },
+        { q: "Is Quick Check different from a full AI Checkup?", a: "Yes. Quick Check is a faster, lighter analysis for quick answers. A full AI Checkup includes the guided self-examination, comprehensive history collection, and a more detailed report with treatment recommendations." },
+      ],
+    },
   ];
 
   // Flatten FAQs for search

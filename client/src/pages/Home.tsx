@@ -48,10 +48,10 @@ export default function Home() {
         name="How to Use DentaSmart for AI Oral Health Analysis"
         description="Upload a photo of your teeth or dental X-rays and get AI-powered insights, an Oral Health Score, and a personalized care plan in minutes."
         steps={[
-          { name: "Upload a Photo", text: "Open the DentaSmart app and take a photo of your teeth or upload dental X-rays.", url: "/download" },
-          { name: "Get AI Analysis", text: "The AI analyzes your image and identifies potential oral health concerns in minutes.", url: "/how-it-works" },
-          { name: "Review Your Oral Health Score", text: "Receive a personalized Oral Health Score from 0 to 100 with plain-English explanations.", url: "/features" },
-          { name: "Follow Your Care Plan", text: "Get a personalized care plan and use Din, the 24/7 AI guide, for follow-up questions.", url: "/features" }
+          { name: "Complete Self-Examination", text: "Answer guided questions including Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection to help the AI understand your symptoms.", url: "/features" },
+          { name: "Upload Photos or X-Rays", text: "Take a photo of your teeth or upload dental X-rays. Or use Quick Check for instant analysis.", url: "/download" },
+          { name: "Get AI Analysis", text: "The AI analyzes your images with color-coded overlays and identifies potential oral health concerns in minutes.", url: "/how-it-works" },
+          { name: "Review Dual Reports", text: "Receive two reports: a plain-English version for you with your Oral Health Score, and a clinical version for your dentist. Both downloadable as PDF.", url: "/features" }
         ]}
       />
       <FAQSchema faqs={[
@@ -358,9 +358,9 @@ export default function Home() {
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {[
-              { step: "01", title: "Upload a Photo", desc: "Take a quick picture of your teeth or upload X-rays." },
-              { step: "02", title: "Get Instant Insights", desc: "Our AI analyzes your oral health in minutes." },
-              { step: "03", title: "Take Control", desc: "Follow a clear, personalized plan to better health." }
+              { step: "01", title: "Quick Check or Full Checkup", desc: "Answer guided self-examination questions, then upload photos or X-rays." },
+              { step: "02", title: "Get Instant Insights", desc: "AI analyzes your images with color-coded findings in minutes." },
+              { step: "03", title: "Two Reports, Full Clarity", desc: "Get a plain-English report for you and a clinical version for your dentist." }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}

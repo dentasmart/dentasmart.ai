@@ -10,6 +10,39 @@ import { Button } from "@/components/ui/button";
 export default function Features() {
   const features: { title: string; description: string; points: string[]; image: string; isPhone?: boolean }[] = [
     {
+      title: "Quick Check: Instant X-Ray & Photo Analysis",
+      description: "Don't wait weeks for answers about that spot on your X-ray.\n\nQuick Check gives you fast, AI-powered analysis of your dental X-rays and mouth photos in minutes. Upload an image, and our AI highlights findings with color-coded overlays and plain-language explanations. It's the fastest way to understand what's happening in your mouth.",
+      points: [
+        "Instant Results: Get AI findings in minutes, not days.",
+        "Free to Try: Limited Quick Checks available on the free tier.",
+        "Visual Clarity: Color-coded overlays show exactly what the AI detected."
+      ],
+      image: "/manus-storage/quick-check-xray_0e827efc.png",
+      isPhone: true
+    },
+    {
+      title: "Guided Self-Examination for Better Accuracy",
+      description: "The more your AI knows, the better it can help you.\n\nBefore your photo upload, DentaSmart guides you through simple self-examination tests — like a Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection with a mirror. These quick checks help the AI understand your symptoms better and deliver more accurate, personalized insights.",
+      points: [
+        "Bite Pressure Test: Helps confirm tenderness and pain patterns.",
+        "Cold Sensitivity Test: Identifies nerve-related issues early.",
+        "Visual Inspection: Guides you to describe what you see accurately."
+      ],
+      image: "/manus-storage/self-examination_c897255b.png",
+      isPhone: true
+    },
+    {
+      title: "Two Reports: One for You, One for Your Dentist",
+      description: "Finally, a report that speaks your language — and your dentist's.\n\nDentaSmart generates two versions of your AI report. The 'For You' version uses plain language with a clear health score and priority actions. The 'For Dentist' version includes clinical terminology, tooth-by-tooth findings, and differential diagnoses. Both are downloadable as PDF and shareable instantly.",
+      points: [
+        "Patient Report: Simple score, clear priorities, and next steps you understand.",
+        "Dentist Report: Clinical detail with conditions, differentials, and urgency levels.",
+        "Share Instantly: Download PDF or share directly with your dental provider."
+      ],
+      image: "/manus-storage/dual-report-dentist_5dcf6f0b.png",
+      isPhone: true
+    },
+    {
       title: "Stop Wondering What Your X-Rays Mean",
       description: "You shouldn't have to nod along pretending to understand complex dental jargon.\n\nOur AI X-ray Analysis acts as your personal translator, instantly highlighting areas of concern in simple, clear language. Finally, you can see exactly what your dentist sees and feel confident in your treatment plan.",
       points: [

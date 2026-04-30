@@ -43,7 +43,7 @@ export default function HowItWorks() {
               </div>
               <h3 className="text-2xl font-medium text-foreground mb-4">Capture</h3>
               <p className="text-muted-foreground font-normal leading-relaxed max-w-xs">
-                Take 2 mouth photos or upload X-rays.
+                Answer guided self-examination questions, take 2 mouth photos or upload X-rays.
               </p>
             </motion.div>
 
@@ -79,7 +79,7 @@ export default function HowItWorks() {
               </div>
               <h3 className="text-2xl font-medium text-foreground mb-4">Understand</h3>
               <p className="text-muted-foreground font-normal leading-relaxed max-w-xs">
-                Plain-English report with an Oral Health Score.
+                Two reports: a plain-English version for you and a clinical version for your dentist. Both downloadable as PDF.
               </p>
             </motion.div>
 
@@ -162,10 +162,10 @@ export default function HowItWorks() {
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-normal text-foreground mb-6">
-              What you get in your report
+              What you get in your reports
             </h2>
             <p className="text-xl text-muted-foreground font-normal">
-              Clear insights, simplified for you.
+              Two versions: a simple one for you and a detailed one for your dentist. Both downloadable as PDF.
             </p>
           </div>
           
@@ -215,6 +215,11 @@ export default function HowItWorks() {
                 icon: MessageSquare, 
                 title: "Talking Points", 
                 desc: "Specific questions to ask your dentist so you walk in prepared." 
+              },
+              { 
+                icon: FileText, 
+                title: "Dentist Report", 
+                desc: "A clinical version with tooth-by-tooth findings, differentials, and urgency levels your dentist can act on." 
               }
             ].map((feature, idx) => (
               <motion.div 

@@ -103,7 +103,7 @@ export default function Pricing() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Sparkles className="w-5 h-5 text-primary flex-shrink-0" />
             <p className="text-stone-700 text-base">
-              <span className="font-semibold text-black">Start free.</span> Download the app, scan your teeth, and see a preview of your results. Upgrade anytime to unlock your full analysis.
+              <span className="font-semibold text-black">Start free.</span> Download the app and try Quick Check with limited scans. Guided self-examination and dual reports (patient + dentist versions) included in all plans.
             </p>
           </div>
         </div>
@@ -196,6 +196,7 @@ export default function Pricing() {
                     {[
                       "Unlimited yearly mouth scans and X-ray analysis",
                       "Includes Quick Check, Detailed Checkup and Second Opinion",
+                      "Guided Self-Examination (Bite Pressure, Cold Sensitivity, Visual Inspection)",
                       "X-ray and mouth image analysis",
                     ].map((f, i) => (
                       <li key={i} className="flex items-start text-black font-light text-sm">
@@ -309,6 +310,7 @@ export default function Pricing() {
                   <ul className="space-y-2.5">
                     {[
                       "One-time mouth scan and X-ray analysis",
+                      "Guided Self-Examination for better accuracy",
                       "Full second opinion report",
                       "Comparison of DentaSmart findings with your dentist's treatment plan",
                       "X-ray and mouth image review",
@@ -480,7 +482,10 @@ export default function Pricing() {
                 <tbody className="divide-y divide-blue-100">
                   {[
                     { feature: "Mouth scans & X-ray analysis", insights: "Unlimited yearly", secondOpinion: "One-time", benefits: "Unlimited yearly" },
-                    { feature: "Quick Check, Detailed Checkup & Second Opinion", insights: true, secondOpinion: "Second Opinion only", benefits: true },
+                    { feature: "Quick Check (fast scan)", insights: "Unlimited", secondOpinion: "One-time", benefits: "Unlimited" },
+                    { feature: "Detailed Checkup & Second Opinion", insights: true, secondOpinion: "Second Opinion only", benefits: true },
+                    { feature: "Guided Self-Examination tests", insights: true, secondOpinion: true, benefits: true },
+                    { feature: "Dual Reports (Patient + Dentist PDF)", insights: true, secondOpinion: true, benefits: true },
                     { feature: "Oral health score & progress tracking", insights: true, secondOpinion: "Score only", benefits: true },
                     { feature: "Early risk insights & trend monitoring", insights: true, secondOpinion: false, benefits: true },
                     { feature: "Full report with findings & next steps", insights: true, secondOpinion: true, benefits: true },

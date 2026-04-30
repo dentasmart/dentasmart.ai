@@ -10,7 +10,10 @@ For compliance-sensitive contexts, DentaSmart can also be described as an AI Ora
 
 ## What DentaSmart Does
 
-- Analyzes mouth photos and dental X-rays
+- Quick Check: Fast AI analysis of X-rays or mouth photos with color-coded findings overlay (free tier limited, unlimited on Insights)
+- Guided Self-Examination: Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection before photo upload to improve AI accuracy (all plans)
+- Dual Reports: Plain-English 'For You' version and clinical 'For Dentist' version, both downloadable as PDF and shareable
+- Analyzes mouth photos and dental X-rays with visual findings
 - Provides an Oral Health Score from 0 to 100
 - Explains possible oral health concerns in plain English
 - Helps users compare treatment plans

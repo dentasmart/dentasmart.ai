@@ -1324,3 +1324,15 @@
 - [x] Wire up admin route in AdminRouter.tsx + sidebar nav in AdminLayout.tsx
 - [x] Add Export CSV, Reset All, search/filter, Quick Test Links, and notes per prompt
 - [x] Save checkpoint and sync to GitHub
+
+## New Release Features (Apr 2026)
+- [x] Add Quick Check feature to Features page (fast X-ray/mouth image analysis, free tier limited, Insights plan unlimited)
+- [x] Add Self-Examination questions to Features page (Bite Pressure, Cold Sensitivity, Visual Inspection - before photo upload)
+- [x] Add Dual Report formats to Features page (For You patient version + For Dentist clinical version, both PDF downloadable/shareable)
+- [x] Update Pricing page to reflect Quick Check in free tier and Insights plan
+- [x] Update How It Works page with Self-Examination step and dual reports
+- [x] Add FAQs for Quick Check, Self-Examination, and Dual Reports (5 new FAQs in new category)
+- [x] Upload and use 3 app screenshots on Features page
+- [x] Update Home page 3-step section and HowToSchema
+- [x] Update llms.txt and llms-full.txt with new features
+- [x] Update seo.ts dynamic llms-full.txt builder with new features
