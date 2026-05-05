@@ -788,6 +788,42 @@ const staticMeta: Record<string, MetaInfo> = {
     description:
       "Experiencing dental symptoms? Browse our symptom guides to understand what might be causing your discomfort and when to see a dentist.",
   },
+  // ─── Additional pages missing from original map ───────────────────
+  "/symptoms/headache": {
+    title: "Dental Headaches: Are Your Teeth Causing Head Pain?",
+    description:
+      "Headaches can actually come from dental problems like teeth grinding, TMJ, or an infected tooth. Learn how to tell if your teeth are causing your headaches and what to do.",
+  },
+  "/hub": {
+    title: "Oral Health Hub | DentaSmart",
+    description:
+      "Browse dental health articles, guides, and resources organized by topic. From symptoms to costs, get clear answers about your oral health.",
+  },
+  "/hub/symptoms": {
+    title: "Dental Symptoms Explained | DentaSmart Oral Health Hub",
+    description:
+      "Understand what your dental symptoms mean. From tooth pain to sensitivity, get clear answers about common oral health issues.",
+  },
+  "/hub/gums": {
+    title: "Gum Health Guide | DentaSmart Oral Health Hub",
+    description:
+      "Learn about gum health, bleeding gums, gum recession, and gum disease. Simple explanations and steps to protect your gums.",
+  },
+  "/hub/cavities": {
+    title: "Cavity & Tooth Decay Guide | DentaSmart Oral Health Hub",
+    description:
+      "Everything you need to know about cavities, tooth decay, and dental fillings. Spot the signs early and protect your teeth.",
+  },
+  "/hub/xrays": {
+    title: "Dental X-Ray Guide | DentaSmart Oral Health Hub",
+    description:
+      "Understand your dental X-rays. Learn what dentists look for, what findings mean, and how AI can help you read your own X-rays.",
+  },
+  "/hub/costs": {
+    title: "Dental Costs & Savings Guide | DentaSmart Oral Health Hub",
+    description:
+      "Understand dental treatment costs, insurance options, and ways to save money. Make informed decisions about your oral health spending.",
+  },
 };
 
 // ─── Dynamic meta resolution ─────────────────────────────────────────

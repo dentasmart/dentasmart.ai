@@ -193,9 +193,28 @@ Pick ONE new topic. Return JSON with these fields:
     await updateAgentRun(runId, { title: topic.title, primaryKeyword: topic.primaryKeyword });
 
     // Step 2: Write the full article
-    const internalLinksContext = publishedSlugs.slice(0, 20).map((p: { slug: string; title: string }) =>
+    const blogLinksContext = publishedSlugs.slice(0, 20).map((p: { slug: string; title: string }) =>
       `- /oral-health-hub/${p.slug}. "${p.title}"`
     ).join("\n");
+
+    // Static content pages for cross-linking (improves internal linking & reduces orphaned pages)
+    const staticPagesContext = [
+      '- /conditions/cavities. "Cavities: Causes, Prevention & Treatment"',
+      '- /conditions/gum-disease. "Gum Disease: Signs, Stages & Treatment"',
+      '- /conditions/toothaches. "Toothache Guide: Causes & Relief"',
+      '- /symptoms/tooth-sensitivity. "Tooth Sensitivity: Causes & Solutions"',
+      '- /symptoms/bleeding-gums. "Bleeding Gums: What It Means"',
+      '- /dental-costs/root-canal-cost. "Root Canal Cost Guide"',
+      '- /dental-costs/dental-crown-cost. "Dental Crown Cost Guide"',
+      '- /dental-costs/dental-implant-cost. "Dental Implant Cost Guide"',
+      '- /treatments/root-canal. "Root Canal Treatment Guide"',
+      '- /treatments/dental-crowns. "Dental Crowns: What to Expect"',
+      '- /dental-emergencies. "Dental Emergency Guide"',
+      '- /symptom-quiz. "Free AI Symptom Checker"',
+      '- /download. "Download DentaSmart App"',
+    ].join("\n");
+
+    const internalLinksContext = `${blogLinksContext}\n\nStatic content pages (prefer these for relevant topics):\n${staticPagesContext}`;
 
     const articleResult = await invokeLLM({
       messages: [
@@ -268,7 +287,8 @@ INTERNAL LINKING (2-4 links required):
 Use descriptive anchor text (never "click here"). Only use these verified slugs:
 ${internalLinksContext}
 
-Format links as: <a href="/oral-health-hub/SLUG" style="color: #DC2626; text-decoration: underline;">anchor text</a>
+Format links as: <a href="/PATH" style="color: #DC2626; text-decoration: underline;">anchor text</a>
+Use the exact path from the list above (e.g., /oral-health-hub/SLUG for blog posts, /conditions/SLUG for conditions, etc.)
 
 CTA (end of post, woven naturally into the closing paragraph):
 - Bold lead-in question
@@ -297,6 +317,8 @@ Write the full article now as HTML.`
     let articleHtml = articleResult.choices[0].message.content as string;
     // Clean up any markdown code fences the LLM might wrap around HTML
     articleHtml = articleHtml.replace(/^```html?\n?/i, "").replace(/\n?```$/i, "").trim();
+    // Fix escaped quotes in href attributes (LLM sometimes outputs \" instead of ")
+    articleHtml = articleHtml.replace(/\\"/g, '"');
 
     // Step 3: Generate SEO pack
     const seoResult = await invokeLLM({

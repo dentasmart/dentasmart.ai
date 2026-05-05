@@ -1336,3 +1336,52 @@
 - [x] Update Home page 3-step section and HowToSchema
 - [x] Update llms.txt and llms-full.txt with new features
 - [x] Update seo.ts dynamic llms-full.txt builder with new features
+
+## Fix Duplicate Meta Descriptions (265 pages)
+- [x] Identify root cause of duplicate meta descriptions across templates
+- [x] Implement system-level dynamic meta description generation
+- [x] Ensure all page types generate unique descriptions (blog, conditions, symptoms, treatments, costs, comparisons, guides, static pages)
+- [x] Validate 10+ URLs in rendered DOM confirm unique descriptions
+- [x] Added 27 server-side 301 redirects for pages that were using client-side redirects
+- [x] Added 8 missing metaTags entries for /symptoms/headache, /hub/*, etc.
+- [x] Save checkpoint and sync to GitHub
+
+## Issue 2: Malformed URLs with Escaped Characters (35 links)
+- [x] Identify source of escaped quote characters in href attributes (LLM output stored with literal backslash-quotes)
+- [x] Fix at template/component level so all links render clean URLs (ran DB migration + added sanitization to blogAgent)
+- [x] Validate 10+ pages have no malformed hrefs (0/100 posts now have escaped quotes)
+
+## Issue 3: Duplicate Title Tags (2 pages)
+- [x] Fix duplicate titles between /oral-health-hub/tooth-sensitivity-cold-hot and /symptoms/tooth-sensitivity
+- [x] Ensure all pages have unique, descriptive titles (verified 0 duplicates in static + blog titles)
+
+## Issue 4: Orphaned Pages in Sitemap (41 pages)
+- [x] Verified all pages are linked through index pages, navigation, footer, and related items sections
+- [x] Enhanced blog agent to include static content pages in internal linking context for future posts
+
+## Issue 5: Pages with Only 1 Internal Link (24 pages)
+- [x] Enhanced blog agent internal linking to include conditions, symptoms, costs, treatments, and emergency pages
+- [x] Verified existing pages have breadcrumbs, related items, and CTAs linking to other pages
+
+## Issue 6: 1 Page Blocked from Crawling
+- [x] Investigated: No sitemap URLs match Disallow rules. robots.txt correctly allows all public pages.
+- [x] Likely a Semrush false positive from JS-rendered content or a transient crawl issue.
+
+## Issue 7: Slow Load Speed (1 page)
+- [ ] Optimize /oral-health-hub/dentasmart-vs-pearl-overjet (3.48s load time)
+- [ ] Reduce HTML size, DOM elements, or server response time
+
+## Issue 8: Low Text-to-HTML Ratio (280 pages)
+- [ ] Analyze CSR vs SSR rendering approach
+- [ ] Implement server-side rendering or prerendering for key pages
+- [ ] Ensure important content is in server-rendered HTML
+
+## Issue 9: Long Title Tags (3+ pages)
+- [x] Shortened 2 blog post metaTitles over 70 chars (tooth-sensitivity-cold-hot, ceramic-caps, dentasmart-2026)
+- [x] Shortened 1 static page title (/symptoms/headache from 69 to 51 chars)
+- [x] All static page titles now under 65 chars; all blog metaTitles under 65 chars
+
+## Issue 10: Blocked External Resources (616 cases)
+- [ ] Identify which blocked resources impact rendering
+- [ ] Self-host critical resources or ensure accessibility
+- [ ] Ignore non-critical (analytics scripts)

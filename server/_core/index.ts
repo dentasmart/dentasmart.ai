@@ -39,18 +39,51 @@ async function startServer() {
   registerStorageProxy(app);
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
-  // 301 Redirects for old hub URLs to new structured routes
-  const hubRedirects: Record<string, string> = {
-    // Old hub articles that now have dedicated condition pages
+
+  // ─── Server-side 301 Redirects ─────────────────────────────────────
+  // Converts client-side redirects to proper server-side 301s so crawlers
+  // see the redirect header before JS runs (fixes duplicate meta descriptions).
+  const serverRedirects: Record<string, string> = {
+    // Old hub articles that now have dedicated pages
     "/oral-health-hub/oral-health-score-explained": "/conditions/toothache",
     "/oral-health-hub/dental-benefits-utilization-guide": "/conditions/gum-disease",
-    // Hub category redirects to new index pages
+    // Hub category redirects
     "/hub/understanding-dental-conditions": "/conditions",
-    "/hub/treatment-guides": "/guides",
-    "/hub/prevention-tips": "/guides/brushing-guide",
+    "/hub/treatment-guides": "/treatments",
+    "/hub/prevention-tips": "/oral-health-hub/prevention",
+    "/hub/dental-technology": "/features",
+    "/hub/cost-and-insurance": "/dental-costs",
+    "/hub/affordability": "/oral-health-hub/affordability",
+    "/hub/second-opinion": "/oral-health-hub/second-opinion",
+    "/hub/prevention": "/oral-health-hub/prevention",
+    // Short-path redirects
+    "/affordability": "/oral-health-hub/affordability",
+    "/prevention": "/oral-health-hub/prevention",
+    "/second-opinion": "/oral-health-hub/second-opinion",
+    "/symptom-checker": "/symptom-quiz",
+    // Symptom aliases → conditions
+    "/symptoms/toothache": "/conditions/toothache",
+    "/symptoms/cracked-tooth": "/conditions/cracked-tooth",
+    "/symptoms/sensitive-teeth": "/conditions/sensitive-teeth",
+    // Treatment aliases
+    "/treatments/veneers": "/treatments/veneers-procedure",
+    "/treatments/invisalign": "/treatments/braces-treatment",
+    "/treatments/teeth-whitening": "/treatments/teeth-whitening-procedure",
+    "/treatments/dental-crowns": "/treatments/dental-crown-procedure",
+    "/treatments/bone-grafting": "/treatments",
+    "/treatments/full-mouth-dental-implants": "/treatments/dental-implant-procedure",
+    "/treatments/gingivitis": "/conditions/gum-disease",
+    // Cost aliases
+    "/dental-costs/dental-cleaning": "/dental-costs/dental-cleaning-cost",
+    "/dental-costs/dental-implants-cost": "/dental-costs/dental-implant-cost",
+    // Comparison aliases
+    "/comparisons/invisalign-vs-braces": "/compare/braces-vs-invisalign",
+    // Guide aliases
+    "/guides/teeth-whitening": "/conditions/teeth-whitening",
+    "/guides/when-to-get-second-opinion": "/guides/when-to-get-dental-second-opinion",
   };
   app.use((req, res, next) => {
-    const redirect = hubRedirects[req.path];
+    const redirect = serverRedirects[req.path];
     if (redirect) {
       return res.redirect(301, redirect);
     }
