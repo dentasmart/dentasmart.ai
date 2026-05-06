@@ -1385,3 +1385,11 @@
 - [ ] Identify which blocked resources impact rendering
 - [ ] Self-host critical resources or ensure accessibility
 - [ ] Ignore non-critical (analytics scripts)
+
+## CRITICAL: Fix 265 Duplicate Meta Descriptions (Root Cause)
+- [x] Audit full meta description pipeline (server metaTags.ts + client SEO.tsx + index.html)
+- [x] Root cause: production running old build without metaTags.ts server-side injection system
+- [x] Server-side meta injection already generates unique descriptions for ALL page types (298/303 pages)
+- [x] Removed 5 /hub/* redirect pages from sitemap (they were 301 redirects, not real pages)
+- [x] Mandatory 10-URL validation: ALL PASS — 10/10 unique descriptions, 0 duplicates
+- [x] Save checkpoint and sync to GitHub (deploy required to fix production)

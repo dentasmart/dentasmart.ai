@@ -34,12 +34,7 @@ const corePages = [
   { path: "/oral-health-hub/prevention", priority: "0.8", changefreq: "weekly", lastmod: today },
   { path: "/oral-health-hub/conditions", priority: "0.9", changefreq: "weekly", lastmod: today },
   { path: "/oral-health-hub/symptoms", priority: "0.9", changefreq: "weekly", lastmod: today },
-  // Hub category pages
-  { path: "/hub/understanding-dental-conditions", priority: "0.7", changefreq: "weekly", lastmod: today },
-  { path: "/hub/treatment-guides", priority: "0.7", changefreq: "weekly", lastmod: today },
-  { path: "/hub/prevention-tips", priority: "0.7", changefreq: "weekly", lastmod: today },
-  { path: "/hub/dental-technology", priority: "0.7", changefreq: "weekly", lastmod: today },
-  { path: "/hub/cost-and-insurance", priority: "0.7", changefreq: "weekly", lastmod: today },
+  // Note: /hub/* paths are 301 redirects and intentionally excluded from sitemap
 ];
 
 const employerPages = [
