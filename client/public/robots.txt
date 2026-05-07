@@ -1,9 +1,13 @@
 # DentaSmart.ai Robots.txt
-# Last updated: 2026-04-28
+# Last updated: 2026-05-07
 
 # Default: Allow all crawlers
 User-agent: *
 Allow: /
+Allow: /api/sitemap
+Disallow: /admin
+Disallow: /admin/
+Disallow: /api/
 
 # AI Search Crawlers - Explicitly Allowed
 User-agent: OAI-SearchBot
@@ -39,12 +43,3 @@ Allow: /
 # Sitemaps
 Sitemap: https://dentasmart.ai/sitemap.xml
 Sitemap: https://dentasmart.ai/sitemap-index.xml
-
-# Allow sitemap API endpoint
-Allow: /api/sitemap
-
-# Block admin and API routes
-Disallow: /admin
-Disallow: /admin/
-
-Disallow: /api/

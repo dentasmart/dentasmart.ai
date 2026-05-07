@@ -1455,3 +1455,45 @@
 - [x] LCP image now prioritized for early loading
 - [x] Lazy loading applied to below-the-fold images
 - [x] Measure page weight: hero image loads immediately, secondary images deferred
+
+## SEO Architecture Fix (May 2026) — Critical
+
+### Issue: Multiple Canonical URLs (278 pages)
+- [x] Remove client-side canonical generation (SEO.tsx / react-helmet-async)
+- [x] Ensure server-side injects exactly ONE canonical per page in raw HTML
+- [x] Validate: View Source shows exactly one <link rel="canonical"> per page
+
+### Issue: Incorrect Pages in Sitemap (213 pages)
+- [x] Rebuild sitemap from canonical, indexable, 200-status URLs only
+- [x] Remove redirected URLs, non-indexable pages, app/admin URLs
+- [x] Validate every sitemap URL returns 200 and has self-referencing canonical
+
+### Issue: Low Text-to-HTML Ratio (279 pages)
+- [x] Implement server-side content injection for all public pages
+- [x] Each page must have H1, intro paragraph, H2 sections, internal links in raw HTML
+- [x] Raw HTML must contain actual page copy before JavaScript runs
+
+### Fix: Metadata in Raw HTML
+- [x] Unique title, meta description, canonical, OG tags in raw HTML source
+- [x] Remove dependency on React Helmet / client-side meta injection
+- [x] Validate with curl that metadata is present without JS
+
+### Fix: Schema Markup (JSON-LD)
+- [x] Add Organization, WebSite, SoftwareApplication schema to homepage
+- [x] Add BreadcrumbList schema to all nested pages
+- [x] Add MedicalWebPage schema to condition/symptom/treatment/emergency pages
+- [x] Ensure schema is in raw HTML, not injected by JS
+
+### Fix: Robots.txt
+- [x] Clean robots.txt allowing public pages, blocking /admin/, /api/
+- [x] Ensure CSS/JS/images are not blocked
+- [x] Fixed Allow/Disallow ordering for /api/sitemap
+
+### Fix: Redirects
+- [x] One-hop redirects only, no chains or loops (verified: no /hub/ URLs in sitemap)
+- [x] Sitemap and canonicals must not reference redirected URLs
+
+### Validation
+- [x] curl 18 pages across all content types: all pass (unique title, description, one canonical, SSR content, schema)
+- [x] 28 vitest unit tests pass for SEO architecture (metaTags, ssrContent, schemaMarkup)
+- [x] All sitemap URLs are canonical indexable pages (no redirects)

@@ -1,13 +1,23 @@
+/**
+ * SEO Component — JSON-LD Schema Injection Only
+ *
+ * IMPORTANT: Title, meta description, canonical URL, OG tags, and Twitter tags
+ * are ALL injected server-side by server/metaTags.ts BEFORE the HTML reaches the browser.
+ * This prevents duplicate meta tags that confuse SEMrush and Google crawlers.
+ *
+ * This component ONLY handles JSON-LD structured data injection via react-helmet-async,
+ * because JSON-LD is additive (multiple scripts are valid) and doesn't cause duplication issues.
+ *
+ * DO NOT add <title>, <meta>, or <link rel="canonical"> here — they belong in server/metaTags.ts.
+ */
 import { Helmet } from 'react-helmet-async';
-import { useLocation } from 'wouter';
 
 const SITE_URL = "https://dentasmart.ai";
-const DEFAULT_OG_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663137878519/bguxPMV2uwRUGpkQABmyXT/og-image_914b065d.png";
 
 interface SEOProps {
-  title: string;
-  description: string;
-  canonical?: string;
+  title?: string; // Kept for backward compatibility but NOT rendered
+  description?: string; // Kept for backward compatibility but NOT rendered
+  canonical?: string; // Kept for backward compatibility but NOT rendered
   ogImage?: string;
   ogType?: string;
   keywords?: string;
@@ -23,27 +33,8 @@ interface SEOProps {
 }
 
 export default function SEO({
-  title,
-  description,
-  canonical,
-  ogImage,
-  ogType = "website",
-  keywords,
-  noindex = false,
   jsonLd,
-  article,
 }: SEOProps) {
-  // Use wouter's useLocation for reliable route-based canonical URLs in SPA
-  const [location] = useLocation();
-
-  const fullTitle = title.includes("DentaSmart") ? title : `${title} | DentaSmart`;
-  // Normalize canonical: use the explicit canonical prop if provided, otherwise build from current route
-  const rawCanonical = canonical || `${SITE_URL}${location}`;
-  const canonicalUrl = rawCanonical.endsWith("/") && rawCanonical !== `${SITE_URL}/`
-    ? rawCanonical.slice(0, -1)
-    : rawCanonical;
-  const image = ogImage || DEFAULT_OG_IMAGE;
-
   // Build default Organization JSON-LD
   const orgJsonLd = {
     "@context": "https://schema.org",
@@ -103,37 +94,10 @@ export default function SEO({
     }
   }
 
+  // Only render JSON-LD — no meta tags, no canonical, no title
+  // Those are handled exclusively by server/metaTags.ts
   return (
     <Helmet>
-      <title>{fullTitle}</title>
-      <meta name="description" content={description} />
-      {keywords && <meta name="keywords" content={keywords} />}
-      {noindex && <meta name="robots" content="noindex, nofollow" />}
-      <link rel="canonical" href={canonicalUrl} />
-
-      {/* Open Graph */}
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
-      <meta property="og:type" content={ogType} />
-      <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:image" content={image} />
-      <meta property="og:site_name" content="DentaSmart" />
-      <meta property="og:locale" content="en_US" />
-
-      {/* Article-specific OG tags */}
-      {article?.publishedTime && <meta property="article:published_time" content={article.publishedTime} />}
-      {article?.modifiedTime && <meta property="article:modified_time" content={article.modifiedTime} />}
-      {article?.author && <meta property="article:author" content={article.author} />}
-      {article?.section && <meta property="article:section" content={article.section} />}
-      {article?.tags?.map((tag, i) => <meta key={i} property="article:tag" content={tag} />)}
-
-      {/* Twitter Card */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
-
-      {/* JSON-LD Structured Data */}
       {jsonLdScripts.map((ld, i) => (
         <script key={i} type="application/ld+json">
           {JSON.stringify(ld)}

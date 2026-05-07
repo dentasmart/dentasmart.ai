@@ -6,6 +6,37 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
 import { resolveMetaTags, injectMetaTags } from "../metaTags";
+import { resolveSSRContent } from "../ssrContent";
+import { resolveSchemaMarkup } from "../schemaMarkup";
+
+/**
+ * Inject SSR content block into HTML.
+ * This adds real, visible text content that crawlers can index.
+ * When React hydrates, the #ssr-content div is hidden via JS.
+ */
+function injectSSRContent(html: string, ssrHtml: string): string {
+  // Insert SSR content BEFORE the <div id="root"></div>
+  // The SSR content is visible to crawlers but hidden once JS runs
+  const ssrBlock = `<div id="ssr-content" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">${ssrHtml}</div>`;
+  html = html.replace(
+    '<div id="root"></div>',
+    `${ssrBlock}\n    <div id="root"></div>`
+  );
+  return html;
+}
+
+/**
+ * Inject JSON-LD schema markup into the <head> section.
+ */
+function injectSchemaMarkup(html: string, schemas: object[]): string {
+  if (!schemas || schemas.length === 0) return html;
+  const scripts = schemas
+    .map(s => `<script type="application/ld+json">${JSON.stringify(s)}</script>`)
+    .join('\n    ');
+  // Insert before </head>
+  html = html.replace('</head>', `    ${scripts}\n  </head>`);
+  return html;
+}
 
 export async function setupVite(app: Express, server: Server) {
   const serverOptions = {
@@ -46,6 +77,18 @@ export async function setupVite(app: Express, server: Server) {
         template = injectMetaTags(template, meta);
       }
 
+      // Inject SSR content for crawlers (text-to-HTML ratio fix)
+      const ssrContent = await resolveSSRContent(url);
+      if (ssrContent) {
+        template = injectSSRContent(template, ssrContent.html);
+      }
+
+      // Inject JSON-LD schema markup
+      const schemas = await resolveSchemaMarkup(url);
+      if (schemas && schemas.length > 0) {
+        template = injectSchemaMarkup(template, schemas);
+      }
+
       const page = await vite.transformIndexHtml(url, template);
       res.status(200).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
@@ -66,10 +109,20 @@ export function serveStatic(app: Express) {
     );
   }
 
-  app.use(express.static(distPath));
+  // Static assets with aggressive caching
+  app.use(express.static(distPath, {
+    maxAge: '1y',
+    immutable: true,
+    setHeaders: (res, filePath) => {
+      // HTML files should not be cached aggressively
+      if (filePath.endsWith('.html')) {
+        res.setHeader('Cache-Control', 'public, max-age=300, must-revalidate');
+      }
+    }
+  }));
 
   // fall through to index.html if the file doesn't exist
-  // Inject page-specific meta tags so crawlers see unique titles/descriptions
+  // Inject page-specific meta tags + SSR content + schema so crawlers see unique content
   app.use("*", async (_req, res) => {
     const indexPath = path.resolve(distPath, "index.html");
     try {
@@ -78,10 +131,29 @@ export function serveStatic(app: Express) {
       if (meta) {
         html = injectMetaTags(html, meta);
       }
-      res.status(200).set({ "Content-Type": "text/html" }).send(html);
+
+      // Inject SSR content for crawlers
+      const ssrContent = await resolveSSRContent(_req.originalUrl);
+      if (ssrContent) {
+        html = injectSSRContent(html, ssrContent.html);
+      }
+
+      // Inject JSON-LD schema markup
+      const schemas = await resolveSchemaMarkup(_req.originalUrl);
+      if (schemas && schemas.length > 0) {
+        html = injectSchemaMarkup(html, schemas);
+      }
+
+      // Set proper cache headers for HTML pages
+      res.status(200).set({
+        "Content-Type": "text/html",
+        "Cache-Control": "public, max-age=300, must-revalidate",
+        "Vary": "Accept-Encoding",
+      }).send(html);
     } catch {
       // Fallback to sendFile if read fails
-      res.sendFile(indexPath);
+      const indexPath2 = path.resolve(distPath, "index.html");
+      res.sendFile(indexPath2);
     }
   });
 }
