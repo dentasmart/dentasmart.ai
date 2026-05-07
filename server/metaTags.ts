@@ -15,6 +15,7 @@ import { listBlogPosts } from "./blogDb";
 interface MetaInfo {
   title: string;
   description: string;
+  canonical?: string;
 }
 
 // ─── Static page meta tags ───────────────────────────────────────────
@@ -853,15 +854,17 @@ async function refreshBlogMetaCache(): Promise<void> {
   }
 }
 
+const BASE_URL = "https://dentasmart.ai";
+
 /**
- * Resolve the correct <title> and <meta description> for a given URL path.
+ * Resolve the correct <title>, <meta description>, and canonical URL for a given URL path.
  * Returns null if no specific meta is found (will use index.html defaults).
  */
 export async function resolveMetaTags(urlPath: string): Promise<MetaInfo | null> {
   // 1. Check static pages first (instant, no DB)
   const cleanPath = urlPath.split("?")[0].split("#")[0].replace(/\/+$/, "") || "/";
   const staticHit = staticMeta[cleanPath];
-  if (staticHit) return staticHit;
+  if (staticHit) return { ...staticHit, canonical: `${BASE_URL}${cleanPath}` };
 
   // 2. Check blog posts (cached DB lookup)
   if (cleanPath.startsWith("/oral-health-hub/")) {
@@ -869,7 +872,7 @@ export async function resolveMetaTags(urlPath: string): Promise<MetaInfo | null>
       await refreshBlogMetaCache();
     }
     const blogHit = blogMetaCache.get(cleanPath);
-    if (blogHit) return blogHit;
+    if (blogHit) return { ...blogHit, canonical: `${BASE_URL}${cleanPath}` };
   }
 
   // 3. No match — return null (index.html defaults will be used)
@@ -878,19 +881,61 @@ export async function resolveMetaTags(urlPath: string): Promise<MetaInfo | null>
 
 /**
  * Inject resolved meta tags into the HTML template string.
- * Replaces the default <title> and <meta name="description"> in index.html.
+ * Replaces the default <title>, <meta name="description">, OG, Twitter, and canonical tags.
+ * This ensures search engines and social crawlers see unique metadata in the initial HTML.
  */
 export function injectMetaTags(html: string, meta: MetaInfo): string {
+  const title = escapeHtml(meta.title);
+  const desc = escapeHtml(meta.description);
+
   // Replace <title>...</title>
   html = html.replace(
     /<title>[^<]*<\/title>/,
-    `<title>${escapeHtml(meta.title)}</title>`
+    `<title>${title}</title>`
   );
 
   // Replace <meta name="description" content="...">
   html = html.replace(
     /<meta\s+name="description"\s+content="[^"]*"\s*\/?>/,
-    `<meta name="description" content="${escapeHtml(meta.description)}" />`
+    `<meta name="description" content="${desc}" />`
+  );
+
+  // Replace OG title
+  html = html.replace(
+    /<meta\s+property="og:title"\s+content="[^"]*"\s*\/>/,
+    `<meta property="og:title" content="${title}" />`
+  );
+
+  // Replace OG description
+  html = html.replace(
+    /<meta\s+property="og:description"\s+content="[^"]*"\s*\/>/,
+    `<meta property="og:description" content="${desc}" />`
+  );
+
+  // Replace OG URL (use canonical URL)
+  if (meta.canonical) {
+    const canonicalUrl = escapeHtml(meta.canonical);
+    html = html.replace(
+      /<meta\s+property="og:url"\s+content="[^"]*"\s*\/>/,
+      `<meta property="og:url" content="${canonicalUrl}" />`
+    );
+    // Replace canonical link
+    html = html.replace(
+      /<link\s+rel="canonical"\s+href="[^"]*"\s*\/>/,
+      `<link rel="canonical" href="${canonicalUrl}" />`
+    );
+  }
+
+  // Replace Twitter title
+  html = html.replace(
+    /<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/>/,
+    `<meta name="twitter:title" content="${title}" />`
+  );
+
+  // Replace Twitter description
+  html = html.replace(
+    /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/>/,
+    `<meta name="twitter:description" content="${desc}" />`
   );
 
   return html;
