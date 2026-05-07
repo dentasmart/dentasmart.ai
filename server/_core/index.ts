@@ -90,6 +90,23 @@ async function startServer() {
     next();
   });
 
+  // ─── HTTP Caching Headers ──────────────────────────────────────────
+  // Immutable cache for hashed static assets (JS/CSS/images with content hash)
+  app.use('/assets', (req, res, next) => {
+    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    next();
+  });
+  // Short cache for HTML pages (allows revalidation after 5 minutes)
+  app.use((req, res, next) => {
+    const isHtmlPage = !req.path.startsWith('/api') &&
+      !req.path.startsWith('/assets') &&
+      !req.path.match(/\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|webp|avif)$/);
+    if (isHtmlPage) {
+      res.setHeader('Cache-Control', 'public, max-age=300, stale-while-revalidate=3600');
+    }
+    next();
+  });
+
   // SEO routes (robots.txt, sitemap.xml)
   registerSeoRoutes(app);
   // tRPC API

@@ -23,6 +23,31 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    // Target modern browsers for smaller output
+    target: 'es2020',
+    // Increase chunk warning threshold (we have many lazy chunks by design)
+    chunkSizeWarningLimit: 600,
+    rollupOptions: {
+      output: {
+        // Manual chunk splitting for heavy vendor libraries
+        manualChunks(id) {
+          // Vendor: framer-motion (animation library)
+          if (id.includes('framer-motion')) return 'vendor-framer';
+          // Vendor: tiptap editor (only used in admin)
+          if (id.includes('@tiptap')) return 'vendor-tiptap';
+          // Vendor: recharts (only used in admin analytics)
+          if (id.includes('recharts') || id.includes('d3-')) return 'vendor-recharts';
+          // Vendor: React core
+          if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/')) return 'vendor-react';
+          // Vendor: tRPC + tanstack query
+          if (id.includes('@trpc') || id.includes('@tanstack')) return 'vendor-trpc';
+          // Vendor: radix-ui components
+          if (id.includes('@radix-ui')) return 'vendor-radix';
+          // Vendor: lucide icons
+          if (id.includes('lucide-react')) return 'vendor-lucide';
+        },
+      },
+    },
   },
   server: {
     host: true,

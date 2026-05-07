@@ -1,32 +1,31 @@
 import { Toaster } from "@/components/ui/sonner";
 import ScrollToTop from "@/components/ScrollToTop";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { usePageTracking } from "@/hooks/usePageTracking";
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { initAllAnalytics } from "@/lib/analytics";
-import Home from "./pages/Home";
-import HowItWorks from "./pages/HowItWorks";
-import Features from "./pages/Features";
-import Pricing from "./pages/Pricing";
-import Employers from "./pages/Employers";
-import Team from "@/pages/Team";
-import OralHealthHub from "@/pages/OralHealthHub";
-import Article from "@/pages/Article";
-import FAQs from "@/pages/FAQs";
-import PrivacyPolicy from "@/pages/PrivacyPolicy";
-import TermsOfService from "@/pages/TermsOfService";
-import Stories from "@/pages/Stories";
-import { lazy, Suspense } from "react";
 import AdminRouter, { useIsAdminRoute } from "@/components/AdminRouter";
 import StickyDownloadBanner from "@/components/StickyDownloadBanner";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
 import { ScrollProgressCTA } from "@/components/ScrollProgressCTA";
 
-// Lazy-loaded new pages
+// ── Core pages (lazy-loaded for bundle splitting) ──────────────────────────────
+const NotFound = lazy(() => import("@/pages/NotFound"));
+const Home = lazy(() => import("./pages/Home"));
+const HowItWorks = lazy(() => import("./pages/HowItWorks"));
+const Features = lazy(() => import("./pages/Features"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+const Employers = lazy(() => import("./pages/Employers"));
+const Team = lazy(() => import("@/pages/Team"));
+const OralHealthHub = lazy(() => import("@/pages/OralHealthHub"));
+const Article = lazy(() => import("@/pages/Article"));
+const FAQs = lazy(() => import("@/pages/FAQs"));
+const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("@/pages/TermsOfService"));
+const Stories = lazy(() => import("@/pages/Stories"));
 const Download = lazy(() => import("./pages/Download"));
 const InstantScan = lazy(() => import("./pages/InstantScan"));
 const PhotoGuide = lazy(() => import("./pages/PhotoGuide"));

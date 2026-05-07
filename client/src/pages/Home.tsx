@@ -131,7 +131,11 @@ export default function Home() {
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] sm:w-[100px] h-[22px] sm:h-[28px] bg-stone-900 rounded-b-2xl z-20" />
                   {/* Screen Content */}
                   <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
-                    <img loading="lazy" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/JQpBfeUURrCKTqFU.png" 
+                    <img
+                      loading="eager"
+                      fetchPriority="high"
+                      decoding="async"
+                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/JQpBfeUURrCKTqFU.png" 
                       alt="DentaSmart Oral Health Score - Your personalized dental health rating" 
                       className="w-full h-full object-cover object-top"
                     />
@@ -150,11 +154,13 @@ export default function Home() {
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] sm:w-[100px] h-[22px] sm:h-[28px] bg-stone-900 rounded-b-2xl z-20" />
                   {/* Screen Content */}
                   <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
-                    <img loading="lazy" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/kQkbFcHfULXNLoOD.png" 
- alt="DentaSmart AI Analysis - Detailed dental condition report" 
- className="w-full h-full object-cover object-top"
- 
- />
+                    <img
+                      loading="lazy"
+                      decoding="async"
+                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/kQkbFcHfULXNLoOD.png" 
+                      alt="DentaSmart AI Analysis - Detailed dental condition report" 
+                      className="w-full h-full object-cover object-top"
+                    />
                   </div>
                 </div>
                 {/* Label */}
