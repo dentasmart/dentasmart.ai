@@ -61,10 +61,12 @@ const conditionPages = [
   { path: "/conditions/periodontitis", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
   { path: "/conditions/gingivitis-vs-periodontitis", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
   { path: "/conditions/tmj-disorder", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  { path: "/conditions/tooth-sensitivity", priority: "0.8", changefreq: "monthly", lastmod: "2026-05-07" },
 ];
 
 const symptomPages = [
   { path: "/symptoms", priority: "0.8", changefreq: "weekly", lastmod: today },
+  { path: "/symptoms/tooth-pain", priority: "0.8", changefreq: "monthly", lastmod: "2026-05-07" },
   { path: "/symptoms/tooth-pain-when-biting", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
   { path: "/symptoms/bleeding-gums", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
   { path: "/symptoms/tooth-sensitivity", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
@@ -140,6 +142,7 @@ const comparisonPages = [
   { path: "/comparisons/crown-vs-veneer", priority: "0.85", changefreq: "monthly", lastmod: today },
   { path: "/comparisons/electric-vs-manual-toothbrush", priority: "0.85", changefreq: "monthly", lastmod: today },
   { path: "/comparisons/fluoride-vs-fluoride-free-toothpaste", priority: "0.85", changefreq: "monthly", lastmod: today },
+  { path: "/comparisons/veneers-vs-crowns", priority: "0.85", changefreq: "monthly", lastmod: today },
   // Product comparison pages
   { path: "/compare/dentasmart-vs-chatgpt-dental", priority: "0.7", changefreq: "monthly", lastmod: "2026-03-01" },
   { path: "/compare/dentasmart-vs-teledentistry", priority: "0.7", changefreq: "monthly", lastmod: "2026-03-01" },

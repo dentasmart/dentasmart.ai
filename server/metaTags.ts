@@ -216,6 +216,11 @@ const staticMeta: Record<string, MetaInfo> = {
     description:
       "Learn the key differences between gingivitis and periodontitis. Understand the signs of early and advanced gum disease to protect your smile.",
   },
+  "/conditions/tooth-sensitivity": {
+    title: "Tooth Sensitivity Guide | Causes, Relief & Prevention Tips",
+    description:
+      "Dealing with tooth sensitivity? Learn what triggers it, simple home remedies, and when you should visit a dentist for lasting relief.",
+  },
 
   // ─── Symptoms pages ────────────────────────────────────────────────
   "/symptoms": {
@@ -227,6 +232,11 @@ const staticMeta: Record<string, MetaInfo> = {
     title: "Tooth Pain When Biting | Causes & What to Do",
     description:
       "Got tooth pain when you bite or chew? It could be a few things. Here are the most common causes and what you should do next.",
+  },
+  "/symptoms/tooth-pain": {
+    title: "Tooth Pain | Common Causes, Home Relief & When to See a Dentist",
+    description:
+      "Experiencing tooth pain? Learn the most common causes from cavities to infections, quick relief options, and when it's time to see a dentist.",
   },
   "/symptoms/bleeding-gums": {
     title: "Bleeding Gums | Causes, Treatment & Prevention",
@@ -665,6 +675,11 @@ const staticMeta: Record<string, MetaInfo> = {
     title: "Fluoride vs Fluoride-Free Toothpaste | Which Is Better?",
     description:
       "Compare fluoride and fluoride-free toothpaste. Understand the science, benefits, risks, and which is right for you.",
+  },
+  "/comparisons/veneers-vs-crowns": {
+    title: "Veneers vs Crowns | Differences, Cost & Which Is Right for You",
+    description:
+      "Compare dental veneers and crowns side by side. Learn the differences in cost, durability, appearance, and which option suits your needs.",
   },
 
   // ─── Life Stages pages ─────────────────────────────────────────────
