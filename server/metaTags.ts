@@ -25,7 +25,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/": {
     title: "DentaSmart | Your Personal AI Oral Health Guide",
     description:
-      "Get instant clarity about your oral health. Upload a photo of your teeth and get AI-powered insights, personalized care plans, and clear dental education in minutes.",
+      "Dentasmart provides instant AI-powered dental insights. Upload your teeth photo for personalized care, clear education, and quick oral health clarity.",
   },
   "/how-it-works": {
     title: "How DentaSmart Works | AI Dental Analysis in 3 Steps",
@@ -35,7 +35,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/features": {
     title: "DentaSmart Features | AI Dental Scan, Oral Health Score & More",
     description:
-      "Explore DentaSmart features: AI-powered dental photo analysis, personalized Oral Health Score, treatment cost estimates, care reminders, and second opinion tools.",
+      "Discover DentaSmart features: AI-powered photo analysis, personalized Oral Health Score, cost estimates, care reminders, and second opinion tools.",
   },
   "/pricing": {
     title: "DentaSmart Pricing | Free, Starter, Pro & Family Plans",
@@ -134,7 +134,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/conditions/toothache": {
     title: "Toothache Guide | Causes, Relief & When to See a Dentist",
     description:
-      "Figuring out what's causing your toothache is the first step. We'll help you understand the reasons, find some relief at home, and know when it's time to see a dentist.",
+      "Your ultimate toothache guide to identify causes, find home relief, and know when to see a dentist for lasting comfort.",
   },
   "/conditions/cavities": {
     title: "Cavities Guide | Signs, Prevention & Treatment Options",
@@ -169,7 +169,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/conditions/dental-abscess": {
     title: "Dental Abscess | Symptoms, Causes & Emergency Treatment",
     description:
-      "Think you have a tooth abscess? Don't wait. Find out what causes this serious infection, what the symptoms feel like, and why you need to see a dentist right away.",
+      "Learn about dental abscess symptoms, causes, and why prompt dental care is essential to prevent serious infections. Act now for your oral health.",
   },
   "/conditions/root-canal": {
     title: "Root Canal Guide | What to Expect, Cost & Recovery",
@@ -194,7 +194,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/conditions/dry-socket": {
     title: "Dry Socket | Prevention, Symptoms & Treatment After Extraction",
     description:
-      "Worried about getting a dry socket after your tooth is pulled? Here's what you need to know about what causes it, how to prevent it, and what to do if it happens.",
+      "Learn everything about dry socket: causes, prevention tips, and treatment options to protect your healing after tooth extraction.",
   },
   "/conditions/oral-thrush": {
     title: "Oral Thrush Guide | Causes, Symptoms & Treatment",
@@ -261,7 +261,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/symptoms/swollen-gums": {
     title: "Swollen Gums | Causes, Home Remedies & When to See a Dentist",
     description:
-      "Puffy or swollen gums aren't normal. It could be simple, like how you're brushing, or a sign of infection. We'll show you the causes and when to call the dentist.",
+      "Swollen gums can indicate infection or irritation. Learn the causes and when to see a dentist to keep your gums healthy.",
   },
   "/symptoms/loose-tooth": {
     title: "Loose Tooth in Adults | Causes & What to Do",
@@ -271,7 +271,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/symptoms/dry-mouth": {
     title: "Dry Mouth (Xerostomia) | Causes, Risks & Relief",
     description:
-      "Dry mouth isn't just annoying. It can seriously up your risk for cavities and gum disease. Find out what causes it, how to fix it, and when to see a dentist.",
+      "Struggling with dry mouth (xerostomia)? Learn causes, remedies, and when to see a dentist to protect your oral health.",
   },
   "/symptoms/tooth-discoloration": {
     title: "Tooth Discoloration | Causes & Whitening Options",
@@ -286,7 +286,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/symptoms/gum-bleeding-after-brushing": {
     title: "Gums Bleeding After Brushing | Causes & Solutions",
     description:
-      "Seeing pink in the sink? Find out why your gums are bleeding after brushing and what you can do about it. Learn the common causes and when to see a dentist.",
+      "Gums bleeding after brushing? Discover causes, tips to stop it, and when to see a dentist for healthy, bleeding-free gums.",
   },
   "/symptoms/mouth-ulcers": {
     title: "Mouth Ulcers | Causes, Treatment & Home Remedies",
@@ -341,12 +341,12 @@ const staticMeta: Record<string, MetaInfo> = {
   "/symptoms/gum-inflammation": {
     title: "Gum Inflammation | Causes & Treatment Options",
     description:
-      "Dealing with gum inflammation? Learn about the common causes of inflamed gums and find out when it's time to see a dentist for your swollen, irritated gums.",
+      "Struggling with gum inflammation? Discover causes and signs that indicate when to see a dentist for swollen, irritated gums.",
   },
   "/symptoms/persistent-metallic-taste": {
     title: "Metallic Taste in Mouth | Causes & When to See a Dentist",
     description:
-      "Experiencing a persistent metallic taste in your mouth? Learn about the common causes, from medications to oral health issues, and find out when to see a dentist.",
+      "Discover causes of a metallic taste in mouth and learn when to see a dentist. Find relief from this common issue today.",
   },
   "/symptoms/swollen-lymph-nodes-dental": {
     title: "Swollen Lymph Nodes from Dental Issues | Causes & Treatment",
@@ -528,7 +528,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/guides/oral-health-life-stages": {
     title: "Oral Health by Life Stage | Baby to Senior Dental Care",
     description:
-      "From baby teeth to senior care, learn how to adapt your oral health routine for every stage of life. Practical tips for children, teens, adults, and pregnancy.",
+      "Discover expert tips to improve your oral health by life stage, from childhood to senior care. Perfect your routine at every age for a healthier smile.",
   },
 
   // ─── Dental Cost pages ─────────────────────────────────────────────
@@ -808,7 +808,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/symptoms/headache": {
     title: "Dental Headaches: Are Your Teeth Causing Head Pain?",
     description:
-      "Headaches can actually come from dental problems like teeth grinding, TMJ, or an infected tooth. Learn how to tell if your teeth are causing your headaches and what to do.",
+      "Dental headaches: are your teeth causing head pain? Discover common dental issues like grinding, TMJ, or infections that may be behind your headaches.",
   },
   "/hub": {
     title: "Oral Health Hub | DentaSmart",
@@ -839,6 +839,31 @@ const staticMeta: Record<string, MetaInfo> = {
     title: "Dental Costs & Savings Guide | DentaSmart Oral Health Hub",
     description:
       "Understand dental treatment costs, insurance options, and ways to save money. Make informed decisions about your oral health spending.",
+  },
+  "/oral-health-hub/black-line-on-tooth": {
+    title: "Black Line on Tooth | Causes & Treatment | DentaSmart",
+    description:
+      "Learn the causes, symptoms, and solutions for the black line on tooth. Expert tips from DentaSmart's Oral Health Hub to maintain your dental health.",
+  },
+  "/oral-health-hub/gum-boil": {
+    title: "Gum Boil | Causes & Treatment | DentaSmart",
+    description:
+      "Learn about gum boils, causes, symptoms, and treatments to maintain healthy gums. DentaSmart's Oral Health Hub provides expert dental insights.",
+  },
+  "/oral-health-hub/loose-tooth-adult": {
+    title: "Loose Tooth in Adults | Causes & What to Do | DentaSmart",
+    description:
+      "Worried about a loose tooth as an adult? Discover causes, treatment options, and when to see a dentist for loose teeth.",
+  },
+  "/oral-health-hub/mouth-ulcer-not-healing": {
+    title: "Mouth Ulcer Not Healing | When to Worry | DentaSmart",
+    description:
+      "Is your mouth ulcer not healing? Learn when a persistent sore needs attention and what conditions may cause slow healing.",
+  },
+  "/oral-health-hub/white-spots-on-teeth": {
+    title: "White Spots on Teeth | Causes & Removal | DentaSmart",
+    description:
+      "Notice white spots on your teeth? Find out what causes them, prevention tips, and effective treatment options available.",
   },
 };
 
