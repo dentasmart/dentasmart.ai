@@ -1497,3 +1497,14 @@
 - [x] curl 18 pages across all content types: all pass (unique title, description, one canonical, SSR content, schema)
 - [x] 28 vitest unit tests pass for SEO architecture (metaTags, ssrContent, schemaMarkup)
 - [x] All sitemap URLs are canonical indexable pages (no redirects)
+
+## Fix Duplicate Meta Tags in index.html (May 12, 2026)
+- [x] Remove 9 hardcoded default meta lines from client/index.html, replace with __PAGE_TITLE__, __PAGE_DESCRIPTION__, __PAGE_CANONICAL__ placeholders
+- [x] Update injectMetaTags() to use split/join placeholder replacement (replaces ALL occurrences)
+- [x] Add index:false to express.static so homepage falls through to catch-all handler
+- [x] Run production build and verify success (all placeholders in built HTML)
+- [x] Test local production server: 3 URLs show exactly 1 of each meta tag, unique per page
+- [x] Update metaTags.test.ts and seoArchitecture.test.ts for placeholder system (228/229 pass)
+- [ ] Commit to GitHub with clear message
+- [ ] Save checkpoint and publish
+- [ ] Validate live production raw HTML for /, /conditions/cavities, /symptoms/tooth-sensitivity

@@ -8,42 +8,70 @@ import { describe, it, expect } from "vitest";
 // Import the functions under test
 import { resolveMetaTags, injectMetaTags } from "./metaTags";
 
-// Sample HTML template matching the structure of index.html
+// Sample HTML template matching the placeholder-based structure of index.html
 const SAMPLE_HTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>DentaSmart | Your AI Dentist in Your Pocket</title>
-  <meta name="description" content="Get instant clarity about your oral health. Upload a photo of your teeth and get AI-powered insights, personalized care plans, and clear dental education in minutes." />
+  <title>__PAGE_TITLE__</title>
+  <meta name="description" content="__PAGE_DESCRIPTION__" />
+  <link rel="canonical" href="__PAGE_CANONICAL__" />
+  <meta property="og:title" content="__PAGE_TITLE__" />
+  <meta property="og:description" content="__PAGE_DESCRIPTION__" />
+  <meta property="og:url" content="__PAGE_CANONICAL__" />
+  <meta name="twitter:title" content="__PAGE_TITLE__" />
+  <meta name="twitter:description" content="__PAGE_DESCRIPTION__" />
 </head>
 <body><div id="root"></div></body>
 </html>`;
 
 describe("injectMetaTags", () => {
-  it("replaces the default title with a page-specific title", () => {
+  it("replaces __PAGE_TITLE__ in all locations", () => {
     const result = injectMetaTags(SAMPLE_HTML, {
       title: "Features | DentaSmart",
       description: "Explore features.",
+      canonical: "https://dentasmart.ai/features",
     });
     expect(result).toContain("<title>Features | DentaSmart</title>");
-    expect(result).not.toContain("Your AI Dentist in Your Pocket");
+    expect(result).toContain('og:title" content="Features | DentaSmart"');
+    expect(result).toContain('twitter:title" content="Features | DentaSmart"');
+    expect(result).not.toContain("__PAGE_TITLE__");
   });
 
-  it("replaces the default meta description with a page-specific one", () => {
+  it("replaces __PAGE_DESCRIPTION__ in all locations", () => {
     const result = injectMetaTags(SAMPLE_HTML, {
       title: "Test",
       description: "A unique description for this page.",
+      canonical: "https://dentasmart.ai/test",
     });
     expect(result).toContain(
-      '<meta name="description" content="A unique description for this page."'
+      'name="description" content="A unique description for this page."'
     );
-    expect(result).not.toContain("Get instant clarity about your oral health");
+    expect(result).toContain(
+      'og:description" content="A unique description for this page."'
+    );
+    expect(result).toContain(
+      'twitter:description" content="A unique description for this page."'
+    );
+    expect(result).not.toContain("__PAGE_DESCRIPTION__");
+  });
+
+  it("replaces __PAGE_CANONICAL__ in all locations", () => {
+    const result = injectMetaTags(SAMPLE_HTML, {
+      title: "Test",
+      description: "Test desc.",
+      canonical: "https://dentasmart.ai/conditions/cavities",
+    });
+    expect(result).toContain('href="https://dentasmart.ai/conditions/cavities"');
+    expect(result).toContain('og:url" content="https://dentasmart.ai/conditions/cavities"');
+    expect(result).not.toContain("__PAGE_CANONICAL__");
   });
 
   it("escapes HTML entities in title and description", () => {
     const result = injectMetaTags(SAMPLE_HTML, {
       title: 'Braces & Invisalign "Comparison"',
       description: "Compare <braces> & Invisalign options.",
+      canonical: "https://dentasmart.ai/test",
     });
     expect(result).toContain("Braces &amp; Invisalign &quot;Comparison&quot;");
     expect(result).toContain("Compare &lt;braces&gt; &amp; Invisalign options.");
@@ -53,10 +81,21 @@ describe("injectMetaTags", () => {
     const result = injectMetaTags(SAMPLE_HTML, {
       title: "New Title",
       description: "New desc.",
+      canonical: "https://dentasmart.ai/",
     });
     expect(result).toContain('<div id="root"></div>');
     expect(result).toContain("<!DOCTYPE html>");
     expect(result).toContain('<meta charset="UTF-8" />');
+  });
+
+  it("produces exactly one canonical tag", () => {
+    const result = injectMetaTags(SAMPLE_HTML, {
+      title: "Test",
+      description: "Test",
+      canonical: "https://dentasmart.ai/test",
+    });
+    const canonicalMatches = result.match(/rel="canonical"/g);
+    expect(canonicalMatches).toHaveLength(1);
   });
 });
 

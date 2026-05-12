@@ -928,56 +928,15 @@ export function injectMetaTags(html: string, meta: MetaInfo): string {
   const title = escapeHtml(meta.title);
   const desc = escapeHtml(meta.description);
 
-  // Replace <title>...</title>
-  html = html.replace(
-    /<title>[^<]*<\/title>/,
-    `<title>${title}</title>`
-  );
+  // Use split/join to replace ALL occurrences of each placeholder.
+  // This is simpler and more reliable than regex — it catches every instance.
+  html = html.split('__PAGE_TITLE__').join(title);
+  html = html.split('__PAGE_DESCRIPTION__').join(desc);
 
-  // Replace <meta name="description" content="...">
-  // Handles both self-closing (/>) and non-self-closing (>) variants produced by Vite build
-  html = html.replace(
-    /<meta\s+name="description"\s+content="[^"]*"\s*\/?>/,
-    `<meta name="description" content="${desc}" />`
-  );
-
-  // Replace OG title — matches both /> and > endings
-  html = html.replace(
-    /<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/,
-    `<meta property="og:title" content="${title}" />`
-  );
-
-  // Replace OG description — matches both /> and > endings
-  html = html.replace(
-    /<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/,
-    `<meta property="og:description" content="${desc}" />`
-  );
-
-  // Replace OG URL (use canonical URL) — matches both /> and > endings
   if (meta.canonical) {
     const canonicalUrl = escapeHtml(meta.canonical);
-    html = html.replace(
-      /<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/,
-      `<meta property="og:url" content="${canonicalUrl}" />`
-    );
-    // Replace canonical link — matches both /> and > endings
-    html = html.replace(
-      /<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/,
-      `<link rel="canonical" href="${canonicalUrl}" />`
-    );
+    html = html.split('__PAGE_CANONICAL__').join(canonicalUrl);
   }
-
-  // Replace Twitter title — matches both /> and > endings
-  html = html.replace(
-    /<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/,
-    `<meta name="twitter:title" content="${title}" />`
-  );
-
-  // Replace Twitter description — matches both /> and > endings
-  html = html.replace(
-    /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/,
-    `<meta name="twitter:description" content="${desc}" />`
-  );
 
   return html;
 }

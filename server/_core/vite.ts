@@ -109,10 +109,13 @@ export function serveStatic(app: Express) {
     );
   }
 
-  // Static assets with aggressive caching
+  // Static assets with aggressive caching.
+  // index: false prevents express.static from serving index.html for "/",
+  // so the catch-all below can inject page-specific meta tags.
   app.use(express.static(distPath, {
     maxAge: '1y',
     immutable: true,
+    index: false,
     setHeaders: (res, filePath) => {
       // HTML files should not be cached aggressively
       if (filePath.endsWith('.html')) {

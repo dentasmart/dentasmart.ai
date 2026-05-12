@@ -44,16 +44,16 @@ describe("SEO Architecture", () => {
       expect(home!.description).not.toBe(pricing!.description);
     });
 
-    it("injectMetaTags produces exactly one canonical in HTML", () => {
+    it("injectMetaTags replaces all __PAGE_*__ placeholders", () => {
       const template = `<html><head>
-    <title>Default</title>
-    <meta name="description" content="default" />
-    <meta property="og:title" content="default" />
-    <meta property="og:description" content="default" />
-    <meta property="og:url" content="https://dentasmart.ai/" />
-    <meta name="twitter:title" content="default" />
-    <meta name="twitter:description" content="default" />
-    <link rel="canonical" href="https://dentasmart.ai/" />
+    <title>__PAGE_TITLE__</title>
+    <meta name="description" content="__PAGE_DESCRIPTION__" />
+    <meta property="og:title" content="__PAGE_TITLE__" />
+    <meta property="og:description" content="__PAGE_DESCRIPTION__" />
+    <meta property="og:url" content="__PAGE_CANONICAL__" />
+    <meta name="twitter:title" content="__PAGE_TITLE__" />
+    <meta name="twitter:description" content="__PAGE_DESCRIPTION__" />
+    <link rel="canonical" href="__PAGE_CANONICAL__" />
   </head><body></body></html>`;
 
       const result = injectMetaTags(template, {
@@ -62,9 +62,23 @@ describe("SEO Architecture", () => {
         canonical: "https://dentasmart.ai/test-page",
       });
 
+      // No placeholders should remain
+      expect(result).not.toContain('__PAGE_TITLE__');
+      expect(result).not.toContain('__PAGE_DESCRIPTION__');
+      expect(result).not.toContain('__PAGE_CANONICAL__');
+
+      // Exactly one canonical
       const canonicalMatches = result.match(/rel="canonical"/g);
       expect(canonicalMatches).toHaveLength(1);
       expect(result).toContain('href="https://dentasmart.ai/test-page"');
+
+      // Title replaced in all 3 locations (title, og:title, twitter:title)
+      const titleMatches = result.match(/Test Page/g);
+      expect(titleMatches).toHaveLength(3);
+
+      // Description replaced in all 3 locations
+      const descMatches = result.match(/Test description/g);
+      expect(descMatches).toHaveLength(3);
     });
   });
 
