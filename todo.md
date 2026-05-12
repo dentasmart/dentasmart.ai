@@ -1505,6 +1505,7 @@
 - [x] Run production build and verify success (all placeholders in built HTML)
 - [x] Test local production server: 3 URLs show exactly 1 of each meta tag, unique per page
 - [x] Update metaTags.test.ts and seoArchitecture.test.ts for placeholder system (228/229 pass)
-- [ ] Commit to GitHub with clear message
-- [ ] Save checkpoint and publish
-- [ ] Validate live production raw HTML for /, /conditions/cavities, /symptoms/tooth-sensitivity
+- [x] Commit to GitHub with clear message
+- [x] Merged GitHub agent's regex fallback changes
+- [x] Save checkpoint and publish
+- [ ] Validate live production raw HTML for /, /conditions/cavities, /symptoms/tooth-sensitivity (after publish)
