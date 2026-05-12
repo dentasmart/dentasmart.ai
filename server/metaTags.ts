@@ -921,23 +921,79 @@ export async function resolveMetaTags(urlPath: string): Promise<MetaInfo | null>
 
 /**
  * Inject resolved meta tags into the HTML template string.
- * Replaces the default <title>, <meta name="description">, OG, Twitter, and canonical tags.
- * This ensures search engines and social crawlers see unique metadata in the initial HTML.
+ *
+ * Strategy: index.html uses unique placeholder strings (__PAGE_TITLE__, __PAGE_DESCRIPTION__,
+ * __PAGE_CANONICAL__) instead of real values. The server replaces these placeholders with
+ * per-page values using simple string replacement — completely immune to Vite build
+ * transformations that may change tag formats (e.g., /> vs >).
+ *
+ * Fallback: If placeholders are not found (e.g., old built index.html), falls back to
+ * regex-based replacement that handles both /> and > tag endings.
  */
 export function injectMetaTags(html: string, meta: MetaInfo): string {
   const title = escapeHtml(meta.title);
   const desc = escapeHtml(meta.description);
+  const canonicalUrl = meta.canonical ? escapeHtml(meta.canonical) : "https://dentasmart.ai/";
 
-  // Use split/join to replace ALL occurrences of each placeholder.
-  // This is simpler and more reliable than regex — it catches every instance.
-  html = html.split('__PAGE_TITLE__').join(title);
-  html = html.split('__PAGE_DESCRIPTION__').join(desc);
-
-  if (meta.canonical) {
-    const canonicalUrl = escapeHtml(meta.canonical);
-    html = html.split('__PAGE_CANONICAL__').join(canonicalUrl);
+  // ── Primary: placeholder-based replacement (format-agnostic) ──────────────
+  // These placeholders are set in client/index.html and survive Vite builds unchanged.
+  if (html.includes("__PAGE_TITLE__")) {
+    html = html.split("__PAGE_TITLE__").join(title);
+    html = html.split("__PAGE_DESCRIPTION__").join(desc);
+    html = html.split("__PAGE_CANONICAL__").join(canonicalUrl);
+    return html;
   }
 
+  // ── Fallback: regex-based replacement (handles old built index.html) ──────
+  // Handles both self-closing (/>) and non-self-closing (>) tag variants.
+
+  // Replace <title>...</title>
+  html = html.replace(
+    /<title>[^<]*<\/title>/,
+    `<title>${title}</title>`
+  );
+
+  // Replace <meta name="description" content="...">
+  html = html.replace(
+    /<meta\s+name="description"\s+content="[^"]*"\s*\/?>/,
+    `<meta name="description" content="${desc}" />`
+  );
+
+  // Replace OG title
+  html = html.replace(
+    /<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/,
+    `<meta property="og:title" content="${title}" />`
+  );
+
+  // Replace OG description
+  html = html.replace(
+    /<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/,
+    `<meta property="og:description" content="${desc}" />`
+  );
+
+  // Replace OG URL and canonical link
+  if (meta.canonical) {
+    html = html.replace(
+      /<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/,
+      `<meta property="og:url" content="${canonicalUrl}" />`
+    );
+    html = html.replace(
+      /<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/,
+      `<link rel="canonical" href="${canonicalUrl}" />`
+    );
+  }
+
+  // Replace Twitter title
+  html = html.replace(
+    /<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/,
+    `<meta name="twitter:title" content="${title}" />`
+  );
+
+  // Replace Twitter description
+  html = html.replace(
+    /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/,
+    `<meta name="twitter:description" content="${desc}" />`
+  );
   return html;
 }
 
