@@ -1509,3 +1509,11 @@
 - [x] Merged GitHub agent's regex fallback changes
 - [x] Save checkpoint and publish
 - [ ] Validate live production raw HTML for /, /conditions/cavities, /symptoms/tooth-sensitivity (after publish)
+
+## Phase 2 — Build-Time Prerendering
+- [ ] Restore __PAGE_TITLE__, __PAGE_DESCRIPTION__, __PAGE_CANONICAL__ placeholders in client/index.html
+- [ ] Create scripts/prerender.mjs (imports staticMeta + escapeHtml from server/metaTags.ts)
+- [ ] Modify package.json build script to append && node scripts/prerender.mjs
+- [ ] Verify build produces 100+ per-route index.html files with unique meta tags
+- [ ] Commit, push to GitHub, publish to production
+- [ ] Validate production curls show unique meta per route
