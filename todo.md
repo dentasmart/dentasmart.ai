@@ -1520,3 +1520,6 @@
 
 ## /how-it-works SEO Fix
 - [x] Fix: No keywords detected on /how-it-works page — add keyword-rich visible content
+
+## Google Search Console Verification
+- [x] Add google-site-verification meta tag to client/index.html
