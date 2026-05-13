@@ -1517,3 +1517,6 @@
 - [x] Verify build produces 100+ per-route index.html files with unique meta tags
 - [ ] Commit, push to GitHub, publish to production
 - [ ] Validate production curls show unique meta per route
+
+## /how-it-works SEO Fix
+- [x] Fix: No keywords detected on /how-it-works page — add keyword-rich visible content

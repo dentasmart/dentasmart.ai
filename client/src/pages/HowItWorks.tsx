@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import HowItWorksHero from "@/components/HowItWorksHero";
 import { DownloadSection } from "@/components/DownloadSection";
 import { BenefitsCarousel } from "@/components/BenefitsCarousel";
-import { Camera, Brain, FileText, MessageSquare, Activity, ShieldCheck, ClipboardList, Calendar, Bell, TrendingUp, HeartPulse } from "lucide-react";
+import { Camera, Brain, FileText, MessageSquare, Activity, ShieldCheck, ClipboardList, Calendar, Bell, TrendingUp, HeartPulse, CheckCircle2, Scan, Upload, Stethoscope } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 
@@ -21,6 +21,24 @@ export default function HowItWorks() {
 
       {/* Hero Section (New StoryBrand) */}
       <HowItWorksHero />
+
+      {/* Keyword-Rich Intro — Explains what DentaSmart does in crawlable prose */}
+      <section className="py-8 bg-stone-50 border-b border-stone-100">
+        <div className="container px-4 mx-auto max-w-4xl">
+          <h2 className="text-3xl md:text-4xl font-normal text-foreground mb-6 text-center">
+            How AI Dental Analysis Works
+          </h2>
+          <p className="text-lg text-stone-700 leading-relaxed mb-4">
+            DentaSmart uses artificial intelligence to analyze photos of your teeth and dental X-rays. Whether you are dealing with tooth pain, bleeding gums, a chipped tooth, or just want to check on your oral health between dental visits, the app gives you a clear starting point in minutes — no appointment needed.
+          </p>
+          <p className="text-lg text-stone-700 leading-relaxed mb-4">
+            Upload a mouth photo or an X-ray image, and the AI identifies potential issues like cavities, gum disease, plaque buildup, tooth decay, cracked teeth, and early signs of periodontitis. You receive an Oral Health Score from 0 to 100, a plain-English explanation of findings, and a personalized dental care plan you can follow at home or bring to your dentist.
+          </p>
+          <p className="text-lg text-stone-700 leading-relaxed">
+            DentaSmart is not a replacement for a licensed dentist. It is an educational tool that helps you understand what is happening in your mouth, prepare better questions for your dental visit, and catch potential problems before they become expensive emergencies.
+          </p>
+        </div>
+      </section>
 
       {/* 4-Step Visual Process (New StoryBrand) */}
       <section className="pt-6 pb-6 bg-white">
@@ -100,6 +118,71 @@ export default function HowItWorks() {
                 Follow a simple plan or bring the report to your dentist.
               </p>
             </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Detailed Step Breakdown — Keyword-rich long-form content */}
+      <section className="py-8 bg-white border-t border-stone-100">
+        <div className="container px-4 mx-auto max-w-5xl">
+          <h2 className="text-3xl md:text-4xl font-normal text-foreground mb-10 text-center">
+            Each Step Explained
+          </h2>
+
+          {/* Step 1 Detail */}
+          <div className="mb-10">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-medium text-sm flex-shrink-0">1</div>
+              <h3 className="text-2xl font-medium text-foreground">Complete a Guided Self-Examination</h3>
+            </div>
+            <p className="text-stone-700 leading-relaxed mb-3 ml-[52px]">
+              Before you take any photos, DentaSmart walks you through a quick self-examination. You will answer simple questions about your symptoms — things like tooth sensitivity to hot or cold, bleeding when brushing, jaw pain, bad breath, or visible discoloration. This context helps the AI provide more accurate and relevant insights.
+            </p>
+            <p className="text-stone-700 leading-relaxed ml-[52px]">
+              The self-exam includes a Bite Pressure Test, a Cold Sensitivity Test, and a Visual Inspection checklist. It takes about two minutes and gives the AI the clinical context it needs to go beyond what a photo alone can show.
+            </p>
+          </div>
+
+          {/* Step 2 Detail */}
+          <div className="mb-10">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-medium text-sm flex-shrink-0">2</div>
+              <h3 className="text-2xl font-medium text-foreground">Upload Dental Photos or X-Rays for AI Analysis</h3>
+            </div>
+            <p className="text-stone-700 leading-relaxed mb-3 ml-[52px]">
+              Take two photos of your teeth using your phone camera — one of your upper teeth and one of your lower teeth. If you have dental X-rays from a recent visit, you can upload those instead. DentaSmart accepts both intraoral photos and panoramic or bitewing X-ray images.
+            </p>
+            <p className="text-stone-700 leading-relaxed ml-[52px]">
+              The AI scans your images for signs of common dental problems including cavities, tooth decay, gum recession, tartar buildup, cracked or chipped teeth, misalignment, and early-stage periodontal disease. Color-coded overlays highlight exactly where each finding is located, so you can see what the AI detected on your own image.
+            </p>
+          </div>
+
+          {/* Step 3 Detail */}
+          <div className="mb-10">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-medium text-sm flex-shrink-0">3</div>
+              <h3 className="text-2xl font-medium text-foreground">Receive Your Oral Health Report in Plain English</h3>
+            </div>
+            <p className="text-stone-700 leading-relaxed mb-3 ml-[52px]">
+              Within minutes, you receive two reports. The first is written in plain English for you — no dental jargon, no confusing terminology. It explains what the AI found, how serious each issue might be, and what you can do about it. The second is a clinical report formatted for your dentist, with tooth-by-tooth findings, differential diagnoses, and urgency levels.
+            </p>
+            <p className="text-stone-700 leading-relaxed ml-[52px]">
+              Your report includes an Oral Health Score from 0 to 100 that reflects the overall condition of your teeth and gums. You also get estimated treatment costs, so you know what to expect before you walk into a dental office. Both reports are downloadable as PDF files you can save, print, or share.
+            </p>
+          </div>
+
+          {/* Step 4 Detail */}
+          <div className="mb-10">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-medium text-sm flex-shrink-0">4</div>
+              <h3 className="text-2xl font-medium text-foreground">Follow Your Personalized Dental Care Plan</h3>
+            </div>
+            <p className="text-stone-700 leading-relaxed mb-3 ml-[52px]">
+              Based on your results, DentaSmart creates a personalized care plan with clear next steps. This might include daily oral hygiene recommendations, product suggestions, reminders for follow-up scans, and guidance on which findings need professional dental attention and which ones you can monitor at home.
+            </p>
+            <p className="text-stone-700 leading-relaxed ml-[52px]">
+              You can also ask Din, your 24/7 AI oral health guide, any dental question at any time. Din is trained specifically for dental health conversations and can help you understand treatment options, dental insurance questions, what to expect during procedures, and how to maintain better oral hygiene habits between dental visits.
+            </p>
           </div>
         </div>
       </section>
@@ -237,6 +320,50 @@ export default function HowItWorks() {
                 <p className="text-muted-foreground font-normal leading-relaxed text-sm">
                   {feature.desc}
                 </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Who DentaSmart Is For — Keyword-rich audience section */}
+      <section className="py-8 bg-stone-50 border-t border-stone-100">
+        <div className="container px-4 mx-auto max-w-5xl">
+          <h2 className="text-3xl md:text-4xl font-normal text-foreground mb-8 text-center">
+            Who Uses DentaSmart
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                title: "People Without Dental Insurance",
+                desc: "If you do not have dental insurance, DentaSmart helps you understand your oral health before committing to an expensive dental visit. Get clarity on whether that toothache needs urgent care or can wait."
+              },
+              {
+                title: "Parents Monitoring Family Dental Health",
+                desc: "Track oral health for up to five family members under one account. Check your children's teeth for early signs of cavities, monitor braces progress, and stay on top of everyone's dental hygiene."
+              },
+              {
+                title: "People Seeking a Dental Second Opinion",
+                desc: "Upload your dentist's treatment plan and get an independent AI review. Compare recommended procedures, understand alternative options, and see estimated costs before you commit."
+              },
+              {
+                title: "Anyone with Dental Anxiety",
+                desc: "If dental visits make you anxious, DentaSmart gives you a way to understand your oral health from home. Know what to expect, prepare your questions, and walk into the dental office with confidence."
+              }
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1, duration: 0.5 }}
+                className="bg-white p-8 rounded-2xl border border-stone-100 shadow-sm"
+              >
+                <div className="flex items-start gap-3 mb-3">
+                  <CheckCircle2 className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" strokeWidth={1.5} />
+                  <h3 className="text-xl font-medium text-foreground">{item.title}</h3>
+                </div>
+                <p className="text-stone-600 leading-relaxed ml-9">{item.desc}</p>
               </motion.div>
             ))}
           </div>
