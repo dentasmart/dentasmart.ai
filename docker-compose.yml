@@ -1,0 +1,60 @@
+# ============================================================
+# DentaSmart — Docker Compose (local development stack)
+# ============================================================
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DATABASE_URL=mysql://${DB_USER:-dentasmart}:${DB_PASSWORD:-dentasmart_dev}@db:3306/${DB_NAME:-dentasmart}
+      - JWT_SECRET=${JWT_SECRET}
+      - OAUTH_SERVER_URL=${OAUTH_SERVER_URL}
+      - OWNER_OPEN_ID=${OWNER_OPEN_ID}
+      - BUILT_IN_FORGE_API_URL=${BUILT_IN_FORGE_API_URL}
+      - BUILT_IN_FORGE_API_KEY=${BUILT_IN_FORGE_API_KEY}
+      - VITE_APP_ID=${VITE_APP_ID}
+      - VITE_OAUTH_PORTAL_URL=${VITE_OAUTH_PORTAL_URL}
+      - VITE_FRONTEND_FORGE_API_KEY=${VITE_FRONTEND_FORGE_API_KEY}
+      - VITE_FRONTEND_FORGE_API_URL=${VITE_FRONTEND_FORGE_API_URL}
+      - VITE_GA4_MEASUREMENT_ID=${VITE_GA4_MEASUREMENT_ID}
+      - VITE_ANALYTICS_ENDPOINT=${VITE_ANALYTICS_ENDPOINT}
+      - VITE_ANALYTICS_WEBSITE_ID=${VITE_ANALYTICS_WEBSITE_ID}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - dentasmart-net
+    restart: unless-stopped
+
+  db:
+    image: mysql:8
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD:-rootpassword_dev}
+      - MYSQL_DATABASE=${DB_NAME:-dentasmart}
+      - MYSQL_USER=${DB_USER:-dentasmart}
+      - MYSQL_PASSWORD=${DB_PASSWORD:-dentasmart_dev}
+    ports:
+      - "${DB_PORT:-3306}:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - dentasmart-net
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  db-data:
+
+networks:
+  dentasmart-net:
+    driver: bridge
