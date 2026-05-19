@@ -40,20 +40,6 @@ async function startServer() {
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
 
-  // ─── Trailing Slash Normalization ────────────────────────────────────
-  // 301-redirect trailing-slash URLs to their canonical no-slash form.
-  // Excludes the homepage (/) which keeps its trailing slash.
-  app.use((req, res, next) => {
-    if (req.path.length > 1 && req.path.endsWith('/') && !req.path.startsWith('/api')) {
-      const normalized = req.path.slice(0, -1);
-      const query = req.originalUrl.includes('?')
-        ? req.originalUrl.slice(req.originalUrl.indexOf('?'))
-        : '';
-      return res.redirect(301, normalized + query);
-    }
-    next();
-  });
-
   // ─── Server-side 301 Redirects ─────────────────────────────────────
   // Converts client-side redirects to proper server-side 301s so crawlers
   // see the redirect header before JS runs (fixes duplicate meta descriptions).
