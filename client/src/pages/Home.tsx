@@ -131,14 +131,22 @@ export default function Home() {
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] sm:w-[100px] h-[22px] sm:h-[28px] bg-stone-900 rounded-b-2xl z-20" />
                   {/* Screen Content */}
                   <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
+                    <picture>
+                    <source
+                      type="image/webp"
+                      srcSet="/images/optimized/JQpBfeUURrCKTqFU-400.webp 400w, /images/optimized/JQpBfeUURrCKTqFU-800.webp 800w, /images/optimized/JQpBfeUURrCKTqFU-1600.webp 1600w"
+                      sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
+                    />
                     <img
-                      loading="eager"
-                      fetchPriority="high"
-                      decoding="async"
-                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/JQpBfeUURrCKTqFU.png" 
+                      src="/images/optimized/JQpBfeUURrCKTqFU-800.webp"
+                      decoding="async" 
                       alt="DentaSmart Oral Health Score - Your personalized dental health rating" 
                       className="w-full h-full object-cover object-top"
-                    />
+                      loading="eager"
+                      fetchPriority="high"
+                    
+                      width="738" height="1600"/>
+                  </picture>
                   </div>
                 </div>
                 {/* Label */}
@@ -154,13 +162,21 @@ export default function Home() {
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] sm:w-[100px] h-[22px] sm:h-[28px] bg-stone-900 rounded-b-2xl z-20" />
                   {/* Screen Content */}
                   <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
+                    <picture>
+                    <source
+                      type="image/webp"
+                      srcSet="/images/optimized/kQkbFcHfULXNLoOD-400.webp 400w, /images/optimized/kQkbFcHfULXNLoOD-800.webp 800w, /images/optimized/kQkbFcHfULXNLoOD-1600.webp 1600w"
+                      sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
+                    />
                     <img
-                      loading="lazy"
-                      decoding="async"
-                      src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/kQkbFcHfULXNLoOD.png" 
+                      src="/images/optimized/kQkbFcHfULXNLoOD-800.webp"
+                      decoding="async" 
                       alt="DentaSmart AI Analysis - Detailed dental condition report" 
                       className="w-full h-full object-cover object-top"
-                    />
+                      loading="lazy"
+                    
+                      width="738" height="1600"/>
+                  </picture>
                   </div>
                 </div>
                 {/* Label */}
@@ -203,11 +219,20 @@ export default function Home() {
                   }
                 }}
               >
-                <img loading="lazy" src="/images/narrator-thumbnail.png" 
- alt="DentaSmart Video Thumbnail" 
+                <picture>
+                    <source
+                      type="image/webp"
+                      srcSet="/images/optimized/narrator-thumbnail-400.webp 400w, /images/optimized/narrator-thumbnail-800.webp 800w, /images/optimized/narrator-thumbnail-1600.webp 1600w"
+                      sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
+                    />
+                    <img
+                      src="/images/optimized/narrator-thumbnail-800.webp"
+                      alt="DentaSmart Video Thumbnail" 
  className="w-full h-full object-cover"
- 
- />
+                      loading="lazy"
+                    
+                      width="1012" height="589"/>
+                  </picture>
                 
                 {/* Overlay Content */}
                 <div className="absolute inset-0 flex flex-col justify-between p-4 md:p-10 items-start">
@@ -292,11 +317,20 @@ export default function Home() {
               transition={{ duration: 0.8 }}
               className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl"
             >
-              <img loading="lazy" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/MVOEXBpESLROdzsK.jpg" 
- alt="Person experiencing dental anxiety - DentaSmart helps you understand your oral health" 
+              <picture>
+                    <source
+                      type="image/webp"
+                      srcSet="/images/optimized/MVOEXBpESLROdzsK-400.webp 400w, /images/optimized/MVOEXBpESLROdzsK-800.webp 800w, /images/optimized/MVOEXBpESLROdzsK-1600.webp 1600w"
+                      sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
+                    />
+                    <img
+                      src="/images/optimized/MVOEXBpESLROdzsK-800.webp"
+                      alt="Person experiencing dental anxiety - DentaSmart helps you understand your oral health" 
  className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
- 
- />
+                      loading="lazy"
+                    
+                      width="1536" height="2752"/>
+                  </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             </motion.div>
             

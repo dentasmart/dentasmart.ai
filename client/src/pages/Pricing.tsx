@@ -47,10 +47,20 @@ export default function Pricing() {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img loading="lazy" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/oaONyntFCCtQKvAL.jpg" 
-            alt="Happy family smiling with healthy teeth" 
+          <picture>
+                    <source
+                      type="image/webp"
+                      srcSet="/images/optimized/oaONyntFCCtQKvAL-400.webp 400w, /images/optimized/oaONyntFCCtQKvAL-800.webp 800w, /images/optimized/oaONyntFCCtQKvAL-1600.webp 1600w"
+                      sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
+                    />
+                    <img
+                      src="/images/optimized/oaONyntFCCtQKvAL-800.webp"
+                      alt="Happy family smiling with healthy teeth" 
             className="w-full h-full object-cover object-center"
-          />
+                      loading="lazy"
+                    
+                      width="1600" height="893"/>
+                  </picture>
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/30" />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/60 md:hidden" />
         </div>

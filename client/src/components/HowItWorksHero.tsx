@@ -53,12 +53,20 @@ export default function HowItWorksHero() {
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] sm:w-[100px] h-[22px] sm:h-[28px] bg-stone-900 rounded-b-2xl z-20" />
                 {/* Screen Content */}
                 <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
-                  <img 
-                    src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/lBzNqmERojJqlfJE.jpeg" 
-                    alt="DentaSmart X-Ray Analysis - AI-powered dental X-ray findings with highlighted areas" 
+                  <picture>
+                    <source
+                      type="image/webp"
+                      srcSet="/images/optimized/lBzNqmERojJqlfJE-400.webp 400w, /images/optimized/lBzNqmERojJqlfJE-800.webp 800w, /images/optimized/lBzNqmERojJqlfJE-1600.webp 1600w"
+                      sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
+                    />
+                    <img
+                      src="/images/optimized/lBzNqmERojJqlfJE-800.webp"
+                      alt="DentaSmart X-Ray Analysis - AI-powered dental X-ray findings with highlighted areas" 
                     className="w-full h-full object-cover object-top"
-                    loading="lazy"
-                  />
+                      loading="lazy"
+                    
+                      width="738" height="1600"/>
+                  </picture>
                 </div>
               </div>
               {/* Label */}
@@ -74,12 +82,20 @@ export default function HowItWorksHero() {
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] sm:w-[100px] h-[22px] sm:h-[28px] bg-stone-900 rounded-b-2xl z-20" />
                 {/* Screen Content */}
                 <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
-                  <img 
-                    src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/XlgHEMbZpBAbEXnM.jpeg" 
-                    alt="DentaSmart Initial Care Plan - Treatment recommendations with costs and timelines" 
+                  <picture>
+                    <source
+                      type="image/webp"
+                      srcSet="/images/optimized/XlgHEMbZpBAbEXnM-400.webp 400w, /images/optimized/XlgHEMbZpBAbEXnM-800.webp 800w, /images/optimized/XlgHEMbZpBAbEXnM-1600.webp 1600w"
+                      sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
+                    />
+                    <img
+                      src="/images/optimized/XlgHEMbZpBAbEXnM-800.webp"
+                      alt="DentaSmart Initial Care Plan - Treatment recommendations with costs and timelines" 
                     className="w-full h-full object-cover object-top"
-                    loading="lazy"
-                  />
+                      loading="lazy"
+                    
+                      width="945" height="2048"/>
+                  </picture>
                 </div>
               </div>
               {/* Label */}

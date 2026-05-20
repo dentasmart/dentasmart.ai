@@ -5,21 +5,21 @@ import defaultChallenges from '../data/userChallenges.json';
 
 // Default image mapping
 const defaultImages: Record<number, string> = {
-  1: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/kqbtmhnnWjXBFwxN.jpg',
-  2: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/vWIVfyPBobntLGIz.jpg',
-  3: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/anhNbpYEsjYAENrG.jpg',
-  4: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/vMkUwiRFfsZCpBey.jpg',
-  5: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/aCHSoYIkHQxoISFY.jpg',
-  6: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/qxBXHmKeIMzYHljf.jpg',
-  7: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/MonqdoKhyFBpISXD.jpg',
-  8: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/BkdckSOLLUMzPWAC.jpg',
-  9: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/zazpdkPwKVVuwMrq.jpg',
-  10: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/XZusOpUDOktZBHbT.jpg',
-  11: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/qohnbjBwaOkXXhcC.jpg',
-  12: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/WsZHNLHpfJioFYxr.jpg',
-  13: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/bcRFjqplGSaXwUpZ.jpg',
-  14: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/DGwZUVQlOgLZAvil.jpg',
-  15: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/oqHjapRifpwhrZqg.jpg',
+  1: '/images/optimized/kqbtmhnnWjXBFwxN-800.webp',
+  2: '/images/optimized/vWIVfyPBobntLGIz-800.webp',
+  3: '/images/optimized/anhNbpYEsjYAENrG-800.webp',
+  4: '/images/optimized/vMkUwiRFfsZCpBey-800.webp',
+  5: '/images/optimized/aCHSoYIkHQxoISFY-800.webp',
+  6: '/images/optimized/qxBXHmKeIMzYHljf-800.webp',
+  7: '/images/optimized/MonqdoKhyFBpISXD-800.webp',
+  8: '/images/optimized/BkdckSOLLUMzPWAC-800.webp',
+  9: '/images/optimized/zazpdkPwKVVuwMrq-800.webp',
+  10: '/images/optimized/XZusOpUDOktZBHbT-800.webp',
+  11: '/images/optimized/qohnbjBwaOkXXhcC-800.webp',
+  12: '/images/optimized/WsZHNLHpfJioFYxr-800.webp',
+  13: '/images/optimized/bcRFjqplGSaXwUpZ-800.webp',
+  14: '/images/optimized/DGwZUVQlOgLZAvil-800.webp',
+  15: '/images/optimized/oqHjapRifpwhrZqg-800.webp',
 };
 
 interface Challenge {

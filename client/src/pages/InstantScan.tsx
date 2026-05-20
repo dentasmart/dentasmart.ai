@@ -42,11 +42,20 @@ export default function InstantScan() {
       <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/dOrOUbRuSUXPRulY.jpg"
-            alt="Woman smiling with healthy teeth"
+          <picture>
+                    <source
+                      type="image/webp"
+                      srcSet="/images/optimized/dOrOUbRuSUXPRulY-400.webp 400w, /images/optimized/dOrOUbRuSUXPRulY-800.webp 800w, /images/optimized/dOrOUbRuSUXPRulY-1600.webp 1600w"
+                      sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
+                    />
+                    <img
+                      src="/images/optimized/dOrOUbRuSUXPRulY-800.webp"
+                      alt="Woman smiling with healthy teeth"
             className="w-full h-full object-cover object-center md:object-[70%_30%]"
-          />
+                      loading="lazy"
+                    
+                      width="1600" height="893"/>
+                  </picture>
           {/* Gradient Overlay for Text Readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-white/20 md:via-white/70" />
           <div className="absolute inset-0 bg-gradient-to-t from-white via-white/60 to-transparent md:hidden" />

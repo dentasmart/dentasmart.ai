@@ -14,21 +14,21 @@ import { BreadcrumbSchema } from "@/components/StructuredData";
 
 // Map FAQ challenge IDs to their image paths
 const faqChallengeImages: Record<number, string> = {
-  1: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/ortFUKlUXMHBiXYm.jpg',
-  2: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/qOeGvQuJnUqtvRvT.jpg',
-  3: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/llLRbXoCzeyMeAfn.jpg',
-  4: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/eugbQZohrtgtbTJx.jpg',
-  5: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/FpadAgriSErcKtgI.jpg',
-  6: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/dXXgcWAdPttMxeda.jpg',
-  7: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/EOTithFPkyVmOBis.jpg',
-  8: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/jXdMmoTEdbWUcSpb.jpg',
-  9: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/gGapYAFZQmpdrPCF.jpg',
-  10: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/ZTdIbrjtUSmXULHA.jpg',
-  11: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/FQmXcgOOtzipJgcp.jpg',
-  12: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/MvlpeGIipAfhvGbU.jpg',
-  13: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/QCxaOOzMPDUukYbC.jpg',
-  14: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/PriyWZEyjWTnjbVz.jpg',
-  15: 'https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/nlpGZGfIENeWYTMQ.jpg',
+  1: '/images/optimized/ortFUKlUXMHBiXYm-800.webp',
+  2: '/images/optimized/qOeGvQuJnUqtvRvT-800.webp',
+  3: '/images/optimized/llLRbXoCzeyMeAfn-800.webp',
+  4: '/images/optimized/eugbQZohrtgtbTJx-800.webp',
+  5: '/images/optimized/FpadAgriSErcKtgI-800.webp',
+  6: '/images/optimized/dXXgcWAdPttMxeda-800.webp',
+  7: '/images/optimized/EOTithFPkyVmOBis-800.webp',
+  8: '/images/optimized/jXdMmoTEdbWUcSpb-800.webp',
+  9: '/images/optimized/gGapYAFZQmpdrPCF-800.webp',
+  10: '/images/optimized/ZTdIbrjtUSmXULHA-800.webp',
+  11: '/images/optimized/FQmXcgOOtzipJgcp-800.webp',
+  12: '/images/optimized/MvlpeGIipAfhvGbU-800.webp',
+  13: '/images/optimized/QCxaOOzMPDUukYbC-800.webp',
+  14: '/images/optimized/PriyWZEyjWTnjbVz-800.webp',
+  15: '/images/optimized/nlpGZGfIENeWYTMQ-800.webp',
 };
 
 export default function FAQs() {
@@ -145,7 +145,7 @@ export default function FAQs() {
       <section className="relative min-h-screen flex items-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img loading="lazy" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/GqjyClSdowSQrUkA.jpg" 
+          <img loading="lazy" src="/images/optimized/GqjyClSdowSQrUkA-800.webp" 
             alt="Woman finding answers on her phone" 
             className="w-full h-full object-cover object-center"
           />

@@ -50,7 +50,7 @@ export default function Features() {
         "Plain English: No more confusing medical terms. Just clear explanations.",
         "Confidence: Walk into your appointment knowing exactly what to ask."
       ],
-      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/ZDzeChpbpgMeHJVN.png"
+      image: "/images/optimized/ZDzeChpbpgMeHJVN-800.webp"
     },
     {
       title: "Catch Issues Before They Become Emergencies",
@@ -60,7 +60,7 @@ export default function Features() {
         "Early Detection: Spot visual changes before they turn into painful problems.",
         "Easy Monitoring: Track your gum and tooth health from the comfort of home."
       ],
-      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/AfieCruvYKKqBoIa.png"
+      image: "/images/optimized/AfieCruvYKKqBoIa-800.webp"
     },
     {
       title: "Personalized Care That Actually Fits Your Life",
@@ -70,7 +70,7 @@ export default function Features() {
         "Simple Steps: Actionable tips that fit easily into your daily routine.",
         "Better Habits: Learn exactly what *your* mouth needs to stay healthy."
       ],
-      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/ChlTSVZDNZEOfine.png"
+      image: "/images/optimized/ChlTSVZDNZEOfine-800.webp"
     },
     {
       title: "See Your Progress, Stay Motivated",
@@ -80,7 +80,7 @@ export default function Features() {
         "Complete History: Keep all your scans and insights in one secure place.",
         "Stay on Track: A clear view of your journey keeps you focused on the long term."
       ],
-      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/QmtzzNkXnZNbJvtj.png"
+      image: "/images/optimized/QmtzzNkXnZNbJvtj-800.webp"
     },
     {
       title: "Know Your Risks Before They Become Reality",
@@ -90,7 +90,7 @@ export default function Features() {
         "Proactive Alerts: Get notified about patterns that need attention.",
         "Save Money: Prevention is always cheaper than a cure."
       ],
-      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/OmKqTEPOiEaBSwig.png"
+      image: "/images/optimized/OmKqTEPOiEaBSwig-800.webp"
     },
     {
       title: "A Simple Score for Total Clarity",
@@ -100,7 +100,7 @@ export default function Features() {
         "Real-Time Feedback: Watch your score rise as you take care of your teeth.",
         "Clear Goals: A simple target to aim for every day."
       ],
-      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/DawnQOxKtdjguhLp.jpeg",
+      image: "/images/optimized/DawnQOxKtdjguhLp-800.webp",
       isPhone: true
     },
     {
@@ -111,7 +111,7 @@ export default function Features() {
         "Friendly Support: A judgment-free zone for all your dental questions.",
         "Expert Knowledge: Instant access to reliable dental information."
       ],
-      image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/YSjOjqlpUabDbzAW.png"
+      image: "/images/optimized/YSjOjqlpUabDbzAW-800.webp"
     }
   ];
 
@@ -128,10 +128,19 @@ export default function Features() {
       <section className="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img loading="lazy" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/ZwswpLjHnfyByaVR.jpg" 
-            alt="Woman smiling while checking dental health on phone" 
+          <picture>
+                    <source
+                      type="image/webp"
+                      srcSet="/images/optimized/ZwswpLjHnfyByaVR-400.webp 400w, /images/optimized/ZwswpLjHnfyByaVR-800.webp 800w, /images/optimized/ZwswpLjHnfyByaVR-1600.webp 1600w"
+                      sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
+                    />
+                    <img
+                      src="/images/optimized/ZwswpLjHnfyByaVR-800.webp"
+                      alt="Woman smiling while checking dental health on phone" 
             className="w-full h-full object-cover object-[50%_30%] md:object-center"
-          />
+                      loading="lazy"
+                    />
+                  </picture>
           {/* Gradient Overlay for Text Readability */}
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/30" />
           <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/30 to-white/60 md:hidden" />

@@ -10,7 +10,7 @@ const benefits = [
     title: "Oral Health Score and Priorities",
     desc: "Know what needs attention now vs later.",
     detail: "Get a clear, objective score of your oral health based on AI analysis of your photos and X-rays. Understand exactly where you stand without the guesswork.",
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/kqbtmhnnWjXBFwxN.jpg"
+    image: "/images/optimized/kqbtmhnnWjXBFwxN-800.webp"
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const benefits = [
     title: "Plain-English Explanation of Photos and X-Rays",
     desc: "See what your dentist sees, in words you understand.",
     detail: "Upload a photo or X-ray and get a clear, jargon-free breakdown of what is happening in your mouth. No more confusion after appointments.",
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/vWIVfyPBobntLGIz.jpg"
+    image: "/images/optimized/vWIVfyPBobntLGIz-800.webp"
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ const benefits = [
     title: "Second Opinion Clarity Before You Say Yes",
     desc: "Sanity check before you commit.",
     detail: "Not sure about a diagnosis? Get an unbiased AI second opinion on your X-rays and treatment plans to move forward with confidence.",
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/qxBXHmKeIMzYHljf.jpg"
+    image: "/images/optimized/qxBXHmKeIMzYHljf-800.webp"
   },
   {
     id: 4,
@@ -34,7 +34,7 @@ const benefits = [
     title: "Personal Prevention Plan and Reminders",
     desc: "A roadmap tailored just for you.",
     detail: "Receive customized actionable steps to improve your oral hygiene. From product recommendations to daily habits, get a plan that fits your lifestyle.",
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/vMkUwiRFfsZCpBey.jpg"
+    image: "/images/optimized/vMkUwiRFfsZCpBey-800.webp"
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ const benefits = [
     title: "Track Changes Over Time",
     desc: "Monitor changes and improvements over time.",
     detail: "Keep a digital log of your oral health journey. See how your habits impact your score and get motivated by visualizing your progress.",
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/aCHSoYIkHQxoISFY.jpg"
+    image: "/images/optimized/aCHSoYIkHQxoISFY-800.webp"
   },
   {
     id: 6,
@@ -50,7 +50,7 @@ const benefits = [
     title: "Ask Din Questions Anytime (Educational)",
     desc: "Ask questions anytime, 24/7.",
     detail: "Din is your personal AI dental guide, ready to answer your questions, explain procedures in plain English, and provide reassurance whenever you need it.",
-    image: "https://files.manuscdn.com/user_upload_by_module/session_file/310519663137878519/anhNbpYEsjYAENrG.jpg"
+    image: "/images/optimized/anhNbpYEsjYAENrG-800.webp"
   }
 ];
 
