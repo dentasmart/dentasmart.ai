@@ -903,8 +903,10 @@ const BASE_URL = "https://dentasmart.ai";
 export async function resolveMetaTags(urlPath: string): Promise<MetaInfo | null> {
   // 1. Check static pages first (instant, no DB)
   const cleanPath = urlPath.split("?")[0].split("#")[0].replace(/\/+$/, "") || "/";
+  // Canonical uses trailing slash for non-root paths to match infrastructure behavior
+  const canonicalPath = cleanPath === "/" ? "/" : `${cleanPath}/`;
   const staticHit = staticMeta[cleanPath];
-  if (staticHit) return { ...staticHit, canonical: `${BASE_URL}${cleanPath}` };
+  if (staticHit) return { ...staticHit, canonical: `${BASE_URL}${canonicalPath}` };
 
   // 2. Check blog posts (cached DB lookup)
   if (cleanPath.startsWith("/oral-health-hub/")) {
@@ -912,7 +914,7 @@ export async function resolveMetaTags(urlPath: string): Promise<MetaInfo | null>
       await refreshBlogMetaCache();
     }
     const blogHit = blogMetaCache.get(cleanPath);
-    if (blogHit) return { ...blogHit, canonical: `${BASE_URL}${cleanPath}` };
+    if (blogHit) return { ...blogHit, canonical: `${BASE_URL}${canonicalPath}` };
   }
 
   // 3. No match — return null (index.html defaults will be used)

@@ -143,10 +143,6 @@ const comparisonPages = [
   { path: "/comparisons/electric-vs-manual-toothbrush", priority: "0.85", changefreq: "monthly", lastmod: today },
   { path: "/comparisons/fluoride-vs-fluoride-free-toothpaste", priority: "0.85", changefreq: "monthly", lastmod: today },
   { path: "/comparisons/veneers-vs-crowns", priority: "0.85", changefreq: "monthly", lastmod: today },
-  // Product comparison pages
-  { path: "/compare/dentasmart-vs-chatgpt-dental", priority: "0.7", changefreq: "monthly", lastmod: "2026-03-01" },
-  { path: "/compare/dentasmart-vs-teledentistry", priority: "0.7", changefreq: "monthly", lastmod: "2026-03-01" },
-  { path: "/compare/dentasmart-vs-dental-insurance", priority: "0.7", changefreq: "monthly", lastmod: "2026-03-01" },
 ];
 
 const guidePages = [
@@ -299,12 +295,16 @@ export function invalidateSitemapCache(): void {
 function routesToXml(routes: Array<{ path: string; priority: string; changefreq: string; lastmod: string }>): string {
   return routes
     .map(
-      (r) => `  <url>
-    <loc>${SITE_URL}${r.path}</loc>
+      (r) => {
+        // Trailing slash for non-root paths to match infrastructure behavior
+        const loc = r.path === "/" ? `${SITE_URL}/` : `${SITE_URL}${r.path}/`;
+        return `  <url>
+    <loc>${loc}</loc>
     <lastmod>${r.lastmod}</lastmod>
     <changefreq>${r.changefreq}</changefreq>
     <priority>${r.priority}</priority>
-  </url>`
+  </url>`;
+      }
     )
     .join("\n");
 }
@@ -335,7 +335,7 @@ export async function generateSitemapXml(): Promise<string> {
         ? new Date(post.updatedAt).toISOString().split("T")[0]
         : new Date().toISOString().split("T")[0];
       blogUrls += `\n  <url>
-    <loc>${SITE_URL}/oral-health-hub/${post.slug}</loc>
+    <loc>${SITE_URL}/oral-health-hub/${post.slug}/</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
@@ -349,12 +349,15 @@ export async function generateSitemapXml(): Promise<string> {
   const staticUrls = staticRoutes
     .filter((r) => !dynamicBlogSlugs.has(r.path))
     .map(
-      (r) => `  <url>
-    <loc>${SITE_URL}${r.path}</loc>
+      (r) => {
+        const loc = r.path === "/" ? `${SITE_URL}/` : `${SITE_URL}${r.path}/`;
+        return `  <url>
+    <loc>${loc}</loc>
     <lastmod>${r.lastmod}</lastmod>
     <changefreq>${r.changefreq}</changefreq>
     <priority>${r.priority}</priority>
-  </url>`
+  </url>`;
+      }
     )
     .join("\n");
 
