@@ -17,7 +17,7 @@ import { resolveSchemaMarkup } from "../schemaMarkup";
 function injectSSRContent(html: string, ssrHtml: string): string {
   // Insert SSR content BEFORE the <div id="root"></div>
   // The SSR content is visible to crawlers but hidden once JS runs
-  const ssrBlock = `<div id="ssr-content" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">${ssrHtml}</div>`;
+  const ssrBlock = `<noscript><div id="ssr-content" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">${ssrHtml}</div></noscript>`;
   html = html.replace(
     '<div id="root"></div>',
     `${ssrBlock}\n    <div id="root"></div>`
