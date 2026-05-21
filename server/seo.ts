@@ -805,7 +805,6 @@ function buildRobotsTxt(): string {
     "Allow: /",
     "",
     "# Sitemaps",
-    `Sitemap: ${SITE_URL}/sitemap.xml`,
     `Sitemap: ${SITE_URL}/sitemap-index.xml`,
     "",
     "# Allow sitemap API endpoint",
@@ -935,9 +934,15 @@ export function registerSeoRoutes(app: Express) {
   });
 
   // ============================================================
-  // Main sitemap routes
+  // Deprecated flat sitemap routes — 301 redirect to sitemap-index.xml
   // ============================================================
-  app.get("/sitemap-custom.xml", serveSitemap);
-  app.get("/api/sitemap", serveSitemap);
-  app.get("/sitemap.xml", serveSitemap);
+  app.get("/sitemap.xml", (_req: Request, res: Response) => {
+    res.redirect(301, "/sitemap-index.xml");
+  });
+  app.get("/sitemap-custom.xml", (_req: Request, res: Response) => {
+    res.redirect(301, "/sitemap-index.xml");
+  });
+  app.get("/api/sitemap", (_req: Request, res: Response) => {
+    res.redirect(301, "/sitemap-index.xml");
+  });
 }

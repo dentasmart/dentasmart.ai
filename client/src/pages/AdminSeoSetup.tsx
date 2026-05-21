@@ -338,7 +338,7 @@ export default function AdminSeoSetup() {
             <div className="space-y-3">
               {[
                 { label: "robots.txt", status: "Active", url: "/robots.txt" },
-                { label: "sitemap.xml", status: "Active", url: "/sitemap.xml" },
+                { label: "sitemap-index.xml", status: "Active", url: "/sitemap-index.xml" },
                 { label: "JSON-LD Structured Data", status: "Active", url: null },
                 { label: "Canonical URLs", status: "Active", url: null },
                 { label: "Open Graph Meta Tags", status: "Active", url: null },
