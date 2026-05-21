@@ -57,7 +57,7 @@ export default function OralHealthHub() {
   // Fetch published articles from database
   const { data, isLoading } = trpc.blog.list.useQuery({
     publishedOnly: true,
-    limit: 100,
+    limit: 200,
     category: selectedCategory !== "All" ? selectedCategory : undefined,
     search: searchQuery || undefined,
   });
