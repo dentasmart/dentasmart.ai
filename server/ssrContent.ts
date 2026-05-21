@@ -27,7 +27,7 @@ interface SSRContent {
 function generateHomepageContent(): string {
   return `
 <article>
-  <h2>DentaSmart — Your Personal AI Oral Health Guide</h2>
+  <h1>DentaSmart — Your Personal AI Oral Health Guide</h1>
   <p>Get instant clarity about your oral health. Upload a photo of your teeth or dental X-rays and receive AI-powered insights, a personalized Oral Health Score, and a clear care plan in minutes. DentaSmart helps you understand what is happening in your mouth so you can make confident decisions and prevent expensive surprises.</p>
   <h2>How DentaSmart Works</h2>
   <p>Take a photo of your teeth or upload your dental X-rays. Our AI analyzes your oral health in seconds, identifying potential issues and giving you a score from 0 to 100. Then follow a personalized plan to better health — all from your phone.</p>
@@ -83,7 +83,7 @@ function generateConditionContent(slug: string): string {
   return `
 <article>
   <nav aria-label="breadcrumb"><a href="/">Home</a> &gt; <a href="/conditions">Conditions</a> &gt; ${title.split(':')[0]}</nav>
-  <h2>${title}</h2>
+  <h1>${title}</h1>
   <p>Learn about ${readableSlug} — what causes it, how to recognize the symptoms, available treatment options, and when you should see a dentist. This guide provides clear, easy-to-understand information to help you make informed decisions about your oral health.</p>
   <h2>What Is ${title.split(':')[0]}?</h2>
   <p>${title.split(':')[0]} is a common dental condition that affects many people. Understanding the causes and symptoms can help you take action early and avoid more expensive treatments later.</p>
@@ -103,7 +103,7 @@ function generateSymptomContent(slug: string): string {
   return `
 <article>
   <nav aria-label="breadcrumb"><a href="/">Home</a> &gt; <a href="/symptoms">Symptoms</a> &gt; ${title}</nav>
-  <h2>${title}: Causes & What to Do</h2>
+  <h1>${title}: Causes & What to Do</h1>
   <p>Experiencing ${readableSlug}? This guide helps you understand the possible causes, when it is serious, and what steps you should take next. Get clear information so you can make confident decisions about your dental health.</p>
   <h2>What Causes ${title}?</h2>
   <p>There are several possible causes for ${readableSlug}. Some are minor and resolve on their own, while others may need professional attention. Understanding the difference helps you decide when to see a dentist.</p>
@@ -121,7 +121,7 @@ function generateCostContent(slug: string): string {
   return `
 <article>
   <nav aria-label="breadcrumb"><a href="/">Home</a> &gt; <a href="/dental-costs">Dental Costs</a> &gt; ${title} Cost</nav>
-  <h2>${title} Cost: Average Prices With & Without Insurance</h2>
+  <h1>${title} Cost: Average Prices With & Without Insurance</h1>
   <p>How much does a ${readableSlug} cost? This guide breaks down average prices, what affects the cost, insurance coverage options, and ways to save money on your ${readableSlug} treatment.</p>
   <h2>Average Cost Breakdown</h2>
   <p>The cost of a ${readableSlug} varies depending on your location, the complexity of the procedure, the materials used, and whether you have dental insurance. We provide typical price ranges to help you plan.</p>
@@ -141,7 +141,7 @@ function generateTreatmentContent(slug: string): string {
   return `
 <article>
   <nav aria-label="breadcrumb"><a href="/">Home</a> &gt; <a href="/treatments">Treatments</a> &gt; ${title}</nav>
-  <h2>${title} Procedure: Step-by-Step Guide & Recovery</h2>
+  <h1>${title} Procedure: Step-by-Step Guide & Recovery</h1>
   <p>Learn exactly what happens during a ${readableSlug} procedure, from your first consultation to full recovery. This guide covers what to expect, how long it takes, pain management, and aftercare tips.</p>
   <h2>What to Expect</h2>
   <p>A ${readableSlug} procedure typically involves several steps. Understanding the process beforehand can help reduce anxiety and prepare you for a smooth experience.</p>
@@ -158,7 +158,7 @@ function generateComparisonContent(slug: string): string {
   return `
 <article>
   <nav aria-label="breadcrumb"><a href="/">Home</a> &gt; <a href="/comparisons">Comparisons</a> &gt; ${readableSlug}</nav>
-  <h2>${readableSlug}: Complete Comparison Guide</h2>
+  <h1>${readableSlug}: Complete Comparison Guide</h1>
   <p>Trying to decide between dental treatment options? This side-by-side comparison covers cost, comfort, durability, treatment time, and results to help you make the right choice for your situation.</p>
   <h2>Key Differences</h2>
   <p>Understanding the key differences between these options helps you have a more informed conversation with your dentist and choose the treatment that best fits your needs and budget.</p>
@@ -175,7 +175,7 @@ function generateGuideContent(slug: string): string {
   return `
 <article>
   <nav aria-label="breadcrumb"><a href="/">Home</a> &gt; <a href="/guides">Guides</a> &gt; ${readableSlug}</nav>
-  <h2>${readableSlug}: Complete Oral Health Guide</h2>
+  <h1>${readableSlug}: Complete Oral Health Guide</h1>
   <p>This comprehensive guide covers everything you need to know about ${slug.replace(/-/g, ' ')}. Get practical, actionable advice for better oral health based on current dental best practices.</p>
   <h2>Why This Matters</h2>
   <p>Good oral health habits prevent expensive dental problems down the road. This guide gives you the knowledge to take control of your dental health today.</p>
@@ -192,7 +192,7 @@ function generateLifeStageContent(slug: string): string {
   return `
 <article>
   <nav aria-label="breadcrumb"><a href="/">Home</a> &gt; <a href="/life-stages">Life Stages</a> &gt; ${readableSlug}</nav>
-  <h2>${readableSlug}: Dental Care Guide</h2>
+  <h1>${readableSlug}: Dental Care Guide</h1>
   <p>Dental care needs change at every stage of life. This guide covers what you need to know about oral health for this life stage, including common concerns, preventive care, and when to see a dentist.</p>
   <h2>Key Dental Concerns</h2>
   <p>Understanding the unique dental challenges at this life stage helps you take proactive steps to maintain a healthy smile.</p>
@@ -207,7 +207,7 @@ function generateEmergencyContent(slug: string): string {
   return `
 <article>
   <nav aria-label="breadcrumb"><a href="/">Home</a> &gt; <a href="/dental-emergencies">Dental Emergencies</a> &gt; ${readableSlug}</nav>
-  <h2>${readableSlug}: Emergency Dental Care Guide</h2>
+  <h1>${readableSlug}: Emergency Dental Care Guide</h1>
   <p>A dental emergency requires quick action. This guide tells you exactly what to do, how to manage pain, and when you need to see a dentist immediately.</p>
   <h2>What to Do Right Now</h2>
   <p>If you are experiencing a dental emergency, follow these steps immediately while you arrange to see a dentist.</p>
@@ -222,7 +222,7 @@ function generateLifestyleContent(slug: string): string {
   return `
 <article>
   <nav aria-label="breadcrumb"><a href="/">Home</a> &gt; <a href="/lifestyle">Lifestyle & Oral Health</a> &gt; ${readableSlug}</nav>
-  <h2>${readableSlug}: How It Affects Your Oral Health</h2>
+  <h1>${readableSlug}: How It Affects Your Oral Health</h1>
   <p>Your lifestyle choices directly impact your dental health. This guide explains the connection between ${slug.replace(/-/g, ' ')} and oral health, with practical tips for protecting your smile.</p>
   <h2>The Connection</h2>
   <p>Understanding how ${slug.replace(/-/g, ' ')} affects your teeth and gums helps you make better choices for your overall health.</p>
@@ -236,7 +236,7 @@ function generateStaticPageContent(path: string): string | null {
   const pages: Record<string, string> = {
     "/how-it-works": `
 <article>
-  <h2>How DentaSmart Works: AI Dental Analysis in 3 Simple Steps</h2>
+  <h1>How DentaSmart Works: AI Dental Analysis in 3 Simple Steps</h1>
   <p>DentaSmart makes understanding your oral health simple. Upload a photo of your teeth or dental X-rays, get instant AI-powered analysis, and follow a personalized care plan. No appointments needed — get clarity about your dental health in minutes.</p>
   <h2>Step 1: Upload a Photo</h2>
   <p>Take a quick picture of your teeth or upload your dental X-rays. Our AI works with both mouth photos and X-ray images to give you comprehensive insights.</p>
@@ -248,7 +248,7 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/features": `
 <article>
-  <h2>DentaSmart Features: AI Dental Scan, Oral Health Score & More</h2>
+  <h1>DentaSmart Features: AI Dental Scan, Oral Health Score & More</h1>
   <p>DentaSmart gives you the tools to understand and manage your oral health from home. From AI-powered photo analysis to personalized care plans, here is everything DentaSmart offers.</p>
   <h2>AI Photo Analysis</h2>
   <p>Upload mouth photos or dental X-rays for instant AI analysis. Get color-coded findings overlay and clear explanations of what the AI detected.</p>
@@ -264,7 +264,7 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/pricing": `
 <article>
-  <h2>DentaSmart Pricing: Plans for Every Need</h2>
+  <h1>DentaSmart Pricing: Plans for Every Need</h1>
   <p>DentaSmart offers affordable plans for individuals and families. Get AI-powered dental analysis, personalized care plans, and 24/7 guidance for less than a dollar a day.</p>
   <h2>Individual Insights — $75/year</h2>
   <p>Unlimited AI scans, Oral Health Score tracking, personalized care plans, and 24/7 access to Din AI guide. That is just $0.21 per day for complete oral health clarity.</p>
@@ -276,7 +276,7 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/download": `
 <article>
-  <h2>Download DentaSmart: iOS App & Android Early Access</h2>
+  <h1>Download DentaSmart: iOS App & Android Early Access</h1>
   <p>Get DentaSmart on your phone and start understanding your oral health today. Available on iOS with Android early access.</p>
   <h2>iOS — Available Now</h2>
   <p>Download DentaSmart from the Apple App Store. Start with a free scan and see what AI can tell you about your dental health.</p>
@@ -286,7 +286,7 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/faqs": `
 <article>
-  <h2>DentaSmart FAQs: Common Questions Answered</h2>
+  <h1>DentaSmart FAQs: Common Questions Answered</h1>
   <p>Find answers to frequently asked questions about DentaSmart, including how AI analysis works, pricing, privacy, and app availability.</p>
   <h2>How does DentaSmart work?</h2>
   <p>Upload a photo of your teeth or dental X-rays. Our AI analyzes the image and provides insights about your oral health, including a score from 0 to 100 and a personalized care plan.</p>
@@ -298,7 +298,7 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/employers": `
 <article>
-  <h2>DentaSmart for Employers: AI Dental Benefits for Your Team</h2>
+  <h1>DentaSmart for Employers: AI Dental Benefits for Your Team</h1>
   <p>Offer DentaSmart as an employee benefit. Help your team understand their oral health, reduce dental emergencies, and lower dental costs — all without traditional dental insurance overhead.</p>
   <h2>Why Employers Choose DentaSmart</h2>
   <p>Traditional dental insurance is expensive and underutilized. DentaSmart provides affordable oral health support that employees actually use, leading to better outcomes and lower costs.</p>
@@ -308,25 +308,25 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/team": `
 <article>
-  <h2>Meet the DentaSmart Team</h2>
+  <h1>Meet the DentaSmart Team</h1>
   <p>DentaSmart is built by a team passionate about making oral health accessible to everyone. Our mission is to give people clarity about their dental health through AI-powered tools and education.</p>
   <p><a href="/how-it-works">How DentaSmart Works</a> | <a href="/features">Our Features</a> | <a href="/download">Download the App</a></p>
 </article>`,
     "/instant-scan": `
 <article>
-  <h2>Instant Dental Scan: Upload a Photo for AI Analysis</h2>
+  <h1>Instant Dental Scan: Upload a Photo for AI Analysis</h1>
   <p>Try DentaSmart's instant dental scan. Upload a photo of your teeth and get AI-powered insights about your oral health in seconds. No appointment needed.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/photo-guide">Photo Guide</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`,
     "/photo-guide": `
 <article>
-  <h2>Photo Guide: How to Take the Best Dental Photos</h2>
+  <h1>Photo Guide: How to Take the Best Dental Photos</h1>
   <p>Get the best results from DentaSmart's AI analysis by taking clear, well-lit photos of your teeth. Follow these simple tips for lighting, angles, and what to capture.</p>
   <p><a href="/instant-scan">Try Instant Scan</a> | <a href="/download">Download DentaSmart</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`,
     "/oral-health-hub": `
 <article>
-  <h2>Oral Health Hub: Dental Education & Guides</h2>
+  <h1>Oral Health Hub: Dental Education & Guides</h1>
   <p>Browse DentaSmart's Oral Health Hub for expert dental guides, symptom explanations, treatment information, cost breakdowns, and preventive care tips. Clear, accessible information to help you understand your oral health.</p>
   <nav>
     <ul>
@@ -342,31 +342,31 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/symptom-quiz": `
 <article>
-  <h2>Dental Symptom Quiz: Check Your Oral Health</h2>
+  <h1>Dental Symptom Quiz: Check Your Oral Health</h1>
   <p>Take DentaSmart's free dental symptom quiz. Answer a few questions about your symptoms and get personalized insights about your oral health. Understand what might be causing your discomfort and whether you should see a dentist.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/symptoms">Browse Symptoms</a> | <a href="/conditions">Dental Conditions</a></p>
 </article>`,
     "/find-a-dentist": `
 <article>
-  <h2>Find a Dentist Near You</h2>
+  <h1>Find a Dentist Near You</h1>
   <p>Find a trusted dentist near you with DentaSmart's dentist finder. Search by location, specialty, and insurance acceptance. Get the care you need from a provider you can trust.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/guides/dental-visit-guide">Dental Visit Guide</a></p>
 </article>`,
     "/answers": `
 <article>
-  <h2>Dental Answers: AI-Powered Dental Q&A</h2>
+  <h1>Dental Answers: AI-Powered Dental Q&A</h1>
   <p>Get instant answers to your dental questions with DentaSmart's AI-powered Q&A. Ask about symptoms, treatments, costs, and oral health. Get clear, reliable information anytime.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/oral-health-hub">Oral Health Hub</a> | <a href="/symptom-quiz">Symptom Quiz</a></p>
 </article>`,
     "/stories": `
 <article>
-  <h2>DentaSmart User Stories: Real People, Real Results</h2>
+  <h1>DentaSmart User Stories: Real People, Real Results</h1>
   <p>Read real stories from DentaSmart users who gained clarity about their oral health through AI-powered dental analysis. See how DentaSmart helped them make confident decisions about their dental care.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/how-it-works">How It Works</a> | <a href="/pricing">View Pricing</a></p>
 </article>`,
     "/conditions": `
 <article>
-  <h2>Dental Conditions Guide: Common Oral Health Issues</h2>
+  <h1>Dental Conditions Guide: Common Oral Health Issues</h1>
   <p>Learn about common dental conditions including toothaches, cavities, gum disease, wisdom teeth pain, and more. Get clear explanations and know when to see a dentist.</p>
   <nav>
     <ul>
@@ -387,7 +387,7 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/symptoms": `
 <article>
-  <h2>Dental Symptoms Checker: Identify Your Oral Health Issues</h2>
+  <h1>Dental Symptoms Checker: Identify Your Oral Health Issues</h1>
   <p>Browse common dental symptoms like tooth pain, bleeding gums, jaw pain, and more. Learn what they mean and when to see a dentist.</p>
   <nav>
     <ul>
@@ -405,7 +405,7 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/dental-costs": `
 <article>
-  <h2>Dental Costs Guide: How Much Do Dental Procedures Cost?</h2>
+  <h1>Dental Costs Guide: How Much Do Dental Procedures Cost?</h1>
   <p>Find out how much common dental procedures cost, from cleanings to implants. Compare prices with and without insurance and learn how to save.</p>
   <nav>
     <ul>
@@ -422,7 +422,7 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/treatments": `
 <article>
-  <h2>Dental Treatment Guides: What to Expect</h2>
+  <h1>Dental Treatment Guides: What to Expect</h1>
   <p>Learn about common dental treatments including root canals, implants, crowns, and more. Understand what to expect, recovery time, and costs.</p>
   <nav>
     <ul>
@@ -439,7 +439,7 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/comparisons": `
 <article>
-  <h2>Dental Comparisons: Side-by-Side Treatment Guides</h2>
+  <h1>Dental Comparisons: Side-by-Side Treatment Guides</h1>
   <p>Compare popular dental treatments side by side. Braces vs Invisalign, implants vs dentures, crowns vs veneers, and more. Make informed decisions about your dental care.</p>
   <nav>
     <ul>
@@ -453,7 +453,7 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/guides": `
 <article>
-  <h2>Oral Health Guides: Expert Dental Care Tips</h2>
+  <h1>Oral Health Guides: Expert Dental Care Tips</h1>
   <p>Browse DentaSmart's expert oral health guides covering brushing, flossing, dental visits, affordable care, second opinions, and more. Practical advice for better dental health.</p>
   <nav>
     <ul>
@@ -469,7 +469,7 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/life-stages": `
 <article>
-  <h2>Dental Care by Life Stage: Baby to Senior Guide</h2>
+  <h1>Dental Care by Life Stage: Baby to Senior Guide</h1>
   <p>Dental care needs change as you age. Browse our life-stage guides for babies, children, teens, pregnant women, and seniors.</p>
   <nav>
     <ul>
@@ -484,7 +484,7 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/dental-emergencies": `
 <article>
-  <h2>Dental Emergencies: What to Do & When to Get Help</h2>
+  <h1>Dental Emergencies: What to Do & When to Get Help</h1>
   <p>Know what to do in a dental emergency. Quick guides for knocked-out teeth, broken teeth, severe toothaches, and dental abscesses.</p>
   <nav>
     <ul>
@@ -499,7 +499,7 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/lifestyle": `
 <article>
-  <h2>Lifestyle & Oral Health: How Habits Affect Your Teeth</h2>
+  <h1>Lifestyle & Oral Health: How Habits Affect Your Teeth</h1>
   <p>Learn how lifestyle choices like smoking, diet, diabetes, and sports affect your oral health. Practical tips for protecting your smile.</p>
   <nav>
     <ul>
@@ -540,7 +540,7 @@ async function refreshBlogContentCache(): Promise<void> {
       newCache.set(path, `
 <article>
   <nav aria-label="breadcrumb"><a href="/">Home</a> &gt; <a href="/oral-health-hub">Oral Health Hub</a> &gt; ${title}</nav>
-  <h2>${title}</h2>
+  <h1>${title}</h1>
   <p>${excerpt || `Read about ${title} on DentaSmart's Oral Health Hub. Expert dental health information and guidance to help you understand your oral health.`}</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/oral-health-hub">Browse All Articles</a> | <a href="/symptom-quiz">Take the Symptom Quiz</a></p>
 </article>`);
@@ -640,7 +640,7 @@ export async function resolveSSRContent(urlPath: string): Promise<SSRContent | n
       return { html: `
 <article>
   <nav aria-label="breadcrumb"><a href="/">Home</a> &gt; <a href="/oral-health-hub">Oral Health Hub</a> &gt; ${readableTitle}</nav>
-  <h2>${readableTitle}</h2>
+  <h1>${readableTitle}</h1>
   <p>Read about ${readableTitle.toLowerCase()} on DentaSmart's Oral Health Hub. Expert dental health information and guidance to help you understand your oral health and make informed decisions.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/oral-health-hub">Browse All Articles</a> | <a href="/symptom-quiz">Take the Symptom Quiz</a></p>
 </article>` };
@@ -651,7 +651,7 @@ export async function resolveSSRContent(urlPath: string): Promise<SSRContent | n
   if (cleanPath === "/oral-health-hub/affordability") {
     return { html: `
 <article>
-  <h2>Affordable Dental Care Hub</h2>
+  <h1>Affordable Dental Care Hub</h1>
   <p>Explore resources for affordable dental care. Find tips on saving money, insurance alternatives, and low-cost dental options near you.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/dental-costs">Cost Guides</a> | <a href="/guides/affordable-dental-care">Affordable Care Guide</a></p>
 </article>` };
@@ -659,7 +659,7 @@ export async function resolveSSRContent(urlPath: string): Promise<SSRContent | n
   if (cleanPath === "/oral-health-hub/second-opinion") {
     return { html: `
 <article>
-  <h2>Dental Second Opinion Hub</h2>
+  <h1>Dental Second Opinion Hub</h1>
   <p>Not sure about your dental diagnosis? Browse our second opinion resources to understand your options and make informed decisions about your treatment.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/guides/when-to-get-dental-second-opinion">Second Opinion Guide</a></p>
 </article>` };
@@ -667,7 +667,7 @@ export async function resolveSSRContent(urlPath: string): Promise<SSRContent | n
   if (cleanPath === "/oral-health-hub/prevention") {
     return { html: `
 <article>
-  <h2>Dental Prevention Hub</h2>
+  <h1>Dental Prevention Hub</h1>
   <p>Prevention is the best dental care. Browse guides on brushing, flossing, diet, and habits that keep your teeth and gums healthy.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/guides">Oral Health Guides</a></p>
 </article>` };
