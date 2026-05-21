@@ -88,7 +88,12 @@ async function startServer() {
     "/oral-health-hub/cclear-aligners-vs-braces": "/oral-health-hub/clear-aligners-vs-braces",
   };
   app.use((req, res, next) => {
-    const redirect = serverRedirects[req.path];
+    const path = req.path;
+    const pathNoSlash = path.endsWith('/') && path.length > 1
+      ? path.slice(0, -1)
+      : path;
+
+    const redirect = serverRedirects[path] || serverRedirects[pathNoSlash];
     if (redirect) {
       return res.redirect(301, redirect);
     }
