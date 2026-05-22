@@ -766,14 +766,11 @@ function buildLlmsFullTxt(): string {
 // ============================================================
 function buildRobotsTxt(): string {
   const lines = [
-    "# DentaSmart.ai Robots.txt",
-    "# Last updated: " + today,
-    "",
-    "# Default: Allow all crawlers",
     "User-agent: *",
     "Allow: /",
+    "Disallow: /admin/",
+    "Disallow: /api/",
     "",
-    "# AI Search Crawlers - Explicitly Allowed",
     "User-agent: OAI-SearchBot",
     "Allow: /",
     "",
@@ -804,16 +801,7 @@ function buildRobotsTxt(): string {
     "User-agent: Applebot-Extended",
     "Allow: /",
     "",
-    "# Sitemaps",
     `Sitemap: ${SITE_URL}/sitemap-index.xml`,
-    "",
-    "# Allow sitemap API endpoint",
-    "Allow: /api/sitemap",
-    "",
-    "# Block admin and API routes",
-    "Disallow: /admin",
-    "Disallow: /admin/",
-    "Disallow: /api/",
     ""
   ];
   return lines.join(NL);
