@@ -820,7 +820,7 @@ export function registerSeoRoutes(app: Express) {
 
   // llms.txt
   app.get("/llms.txt", (_req: Request, res: Response) => {
-    res.type("text/markdown");
+    res.type("text/plain");
     res.set("Cache-Control", "public, max-age=0, s-maxage=3600, must-revalidate");
     res.send(buildLlmsTxt());
   });
