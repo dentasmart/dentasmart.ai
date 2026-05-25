@@ -85,6 +85,14 @@ async function startServer() {
     "/guides/when-to-get-second-opinion": "/guides/when-to-get-dental-second-opinion",
     // Legacy URL patterns
     "/index.php": "/",
+    "/employers.php": "/employers",
+    "/teams.php": "/team",
+    "/features.php": "/features",
+    "/privacy-policy.php": "/privacy-policy",
+    "/terms-and-condition.php": "/terms-of-service",
+    "/faqs.php": "/faqs",
+    "/how-it-works.php": "/how-it-works",
+    "/DentaSmart": "/",
     // Typo slug corrections
     "/oral-health-hub/wwhat-are-dental-implants-cost": "/oral-health-hub/what-are-dental-implants-cost",
     "/oral-health-hub/cclear-aligners-vs-braces": "/oral-health-hub/clear-aligners-vs-braces",
