@@ -110,6 +110,27 @@ async function startServer() {
     next();
   });
 
+  // ─── Blog Trailing-Slash Redirect ─────────────────────────────────────
+  // Redirect /oral-health-hub/[post] to /oral-health-hub/[post]/ for canonical consistency
+  // This ensures Google sees the trailing-slash version as the primary URL
+  app.use((req, res, next) => {
+    // Only handle GET requests
+    if (req.method !== 'GET') {
+      return next();
+    }
+    
+    // Match /oral-health-hub/[something] without trailing slash
+    const blogPostRegex = /^\/oral-health-hub\/[^/]+$/;
+    if (blogPostRegex.test(req.path)) {
+      // Preserve query string if present
+      const queryString = req.url.includes('?') ? req.url.split('?')[1] : '';
+      const redirectUrl = req.path + '/' + (queryString ? '?' + queryString : '');
+      return res.redirect(301, redirectUrl);
+    }
+    
+    next();
+  });
+
   // ─── HTTP Caching Headers ──────────────────────────────────────────
   // Immutable cache for hashed static assets (JS/CSS/images with content hash)
   app.use('/assets', (req, res, next) => {
