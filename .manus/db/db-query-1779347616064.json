@@ -1,0 +1,78 @@
+{
+  "query": "SELECT slug, status FROM blog_posts WHERE slug IN (\n  'mouth-ulcer-not-healing','overtreatment-concerns','pain-when-biting-or-chewing',\n  'pre-authorization','preventive-care-gap','rushed-decisions','silent-gum-disease',\n  'stained-teeth','teeth-grinding','teeth-grinding-bruxism','tooth-hurts-cold-water',\n  'tooth-sensitivity','unclear-diagnoses','undetected-cavities','waiting-periods',\n  'white-spots-on-teeth','wisdom-teeth-confusion'\n) ORDER BY slug;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT slug, status FROM blog_posts WHERE slug IN (\n  'mouth-ulcer-not-healing','overtreatment-concerns','pain-when-biting-or-chewing',\n  'pre-authorization','preventive-care-gap','rushed-decisions','silent-gum-disease',\n  'stained-teeth','teeth-grinding','teeth-grinding-bruxism','tooth-hurts-cold-water',\n  'tooth-sensitivity','unclear-diagnoses','undetected-cavities','waiting-periods',\n  'white-spots-on-teeth','wisdom-teeth-confusion'\n) ORDER BY slug;",
+  "rows": [
+    {
+      "slug": "mouth-ulcer-not-healing",
+      "status": "published"
+    },
+    {
+      "slug": "overtreatment-concerns",
+      "status": "published"
+    },
+    {
+      "slug": "pain-when-biting-or-chewing",
+      "status": "published"
+    },
+    {
+      "slug": "pre-authorization",
+      "status": "published"
+    },
+    {
+      "slug": "preventive-care-gap",
+      "status": "published"
+    },
+    {
+      "slug": "rushed-decisions",
+      "status": "published"
+    },
+    {
+      "slug": "silent-gum-disease",
+      "status": "published"
+    },
+    {
+      "slug": "stained-teeth",
+      "status": "published"
+    },
+    {
+      "slug": "teeth-grinding",
+      "status": "published"
+    },
+    {
+      "slug": "teeth-grinding-bruxism",
+      "status": "published"
+    },
+    {
+      "slug": "tooth-hurts-cold-water",
+      "status": "published"
+    },
+    {
+      "slug": "tooth-sensitivity",
+      "status": "published"
+    },
+    {
+      "slug": "unclear-diagnoses",
+      "status": "published"
+    },
+    {
+      "slug": "undetected-cavities",
+      "status": "published"
+    },
+    {
+      "slug": "waiting-periods",
+      "status": "published"
+    },
+    {
+      "slug": "white-spots-on-teeth",
+      "status": "published"
+    },
+    {
+      "slug": "wisdom-teeth-confusion",
+      "status": "published"
+    }
+  ],
+  "messages": [],
+  "stdout": "slug\tstatus\nmouth-ulcer-not-healing\tpublished\novertreatment-concerns\tpublished\npain-when-biting-or-chewing\tpublished\npre-authorization\tpublished\npreventive-care-gap\tpublished\nrushed-decisions\tpublished\nsilent-gum-disease\tpublished\nstained-teeth\tpublished\nteeth-grinding\tpublished\nteeth-grinding-bruxism\tpublished\ntooth-hurts-cold-water\tpublished\ntooth-sensitivity\tpublished\nunclear-diagnoses\tpublished\nundetected-cavities\tpublished\nwaiting-periods\tpublished\nwhite-spots-on-teeth\tpublished\nwisdom-teeth-confusion\tpublished\n",
+  "stderr": "",
+  "execution_time_ms": 265
+}

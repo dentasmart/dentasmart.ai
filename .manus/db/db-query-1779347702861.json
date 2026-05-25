@@ -1,0 +1,15 @@
+{
+  "query": "SELECT \n  SUM(CASE WHEN categoryId IS NOT NULL AND subcategoryId IS NOT NULL THEN 1 ELSE 0 END) as has_both,\n  SUM(CASE WHEN categoryId IS NOT NULL AND subcategoryId IS NULL THEN 1 ELSE 0 END) as cat_only,\n  SUM(CASE WHEN categoryId IS NULL THEN 1 ELSE 0 END) as no_category\nFROM blog_posts WHERE status='published';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT \n  SUM(CASE WHEN categoryId IS NOT NULL AND subcategoryId IS NOT NULL THEN 1 ELSE 0 END) as has_both,\n  SUM(CASE WHEN categoryId IS NOT NULL AND subcategoryId IS NULL THEN 1 ELSE 0 END) as cat_only,\n  SUM(CASE WHEN categoryId IS NULL THEN 1 ELSE 0 END) as no_category\nFROM blog_posts WHERE status='published';",
+  "rows": [
+    {
+      "has_both": "112",
+      "cat_only": "40",
+      "no_category": "1"
+    }
+  ],
+  "messages": [],
+  "stdout": "has_both\tcat_only\tno_category\n112\t40\t1\n",
+  "stderr": "",
+  "execution_time_ms": 256
+}

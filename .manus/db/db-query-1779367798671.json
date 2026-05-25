@@ -1,0 +1,25 @@
+{
+  "query": "SELECT slug FROM blog_posts WHERE slug LIKE 'dentasmart-vs%' LIMIT 5;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT slug FROM blog_posts WHERE slug LIKE 'dentasmart-vs%' LIMIT 5;",
+  "rows": [
+    {
+      "slug": "dentasmart-vs-chatgpt-dental-advice"
+    },
+    {
+      "slug": "dentasmart-vs-chatgpt-dental-questions"
+    },
+    {
+      "slug": "dentasmart-vs-dental-discount-plans"
+    },
+    {
+      "slug": "dentasmart-vs-dental-insurance"
+    },
+    {
+      "slug": "dentasmart-vs-dental-savings-plans"
+    }
+  ],
+  "messages": [],
+  "stdout": "slug\ndentasmart-vs-chatgpt-dental-advice\ndentasmart-vs-chatgpt-dental-questions\ndentasmart-vs-dental-discount-plans\ndentasmart-vs-dental-insurance\ndentasmart-vs-dental-savings-plans\n",
+  "stderr": "",
+  "execution_time_ms": 261
+}

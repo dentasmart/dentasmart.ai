@@ -1,0 +1,18 @@
+{
+  "query": "SELECT slug, status FROM blog_posts WHERE slug IN ('wwhat-are-dental-implants-cost', 'cclear-aligners-vs-braces');",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT slug, status FROM blog_posts WHERE slug IN ('wwhat-are-dental-implants-cost', 'cclear-aligners-vs-braces');",
+  "rows": [
+    {
+      "slug": "wwhat-are-dental-implants-cost",
+      "status": "published"
+    },
+    {
+      "slug": "cclear-aligners-vs-braces",
+      "status": "published"
+    }
+  ],
+  "messages": [],
+  "stdout": "slug\tstatus\nwwhat-are-dental-implants-cost\tpublished\ncclear-aligners-vs-braces\tpublished\n",
+  "stderr": "",
+  "execution_time_ms": 263
+}

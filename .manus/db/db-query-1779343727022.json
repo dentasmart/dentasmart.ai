@@ -1,0 +1,90 @@
+{
+  "query": "SELECT slug, CASE WHEN bodyHtml LIKE '%<h1%' THEN 'has_h1' ELSE 'no_h1' END as h1_status FROM blog_posts WHERE bodyHtml IS NOT NULL LIMIT 20;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT slug, CASE WHEN bodyHtml LIKE '%<h1%' THEN 'has_h1' ELSE 'no_h1' END as h1_status FROM blog_posts WHERE bodyHtml IS NOT NULL LIMIT 20;",
+  "rows": [
+    {
+      "slug": "unclear-diagnoses",
+      "h1_status": "no_h1"
+    },
+    {
+      "slug": "rushed-decisions",
+      "h1_status": "no_h1"
+    },
+    {
+      "slug": "questioning-recommendations",
+      "h1_status": "no_h1"
+    },
+    {
+      "slug": "second-opinions",
+      "h1_status": "no_h1"
+    },
+    {
+      "slug": "cost-transparency",
+      "h1_status": "no_h1"
+    },
+    {
+      "slug": "fear-of-dentist",
+      "h1_status": "no_h1"
+    },
+    {
+      "slug": "overtreatment-concerns",
+      "h1_status": "no_h1"
+    },
+    {
+      "slug": "preventive-care-gap",
+      "h1_status": "no_h1"
+    },
+    {
+      "slug": "communication-gap",
+      "h1_status": "no_h1"
+    },
+    {
+      "slug": "choosing-right-dentist",
+      "h1_status": "no_h1"
+    },
+    {
+      "slug": "undetected-cavities",
+      "h1_status": "no_h1"
+    },
+    {
+      "slug": "silent-gum-disease",
+      "h1_status": "no_h1"
+    },
+    {
+      "slug": "tooth-sensitivity",
+      "h1_status": "no_h1"
+    },
+    {
+      "slug": "wisdom-teeth-confusion",
+      "h1_status": "no_h1"
+    },
+    {
+      "slug": "teeth-grinding",
+      "h1_status": "no_h1"
+    },
+    {
+      "slug": "stained-teeth",
+      "h1_status": "no_h1"
+    },
+    {
+      "slug": "bad-breath",
+      "h1_status": "no_h1"
+    },
+    {
+      "slug": "cracked-tooth",
+      "h1_status": "no_h1"
+    },
+    {
+      "slug": "missing-teeth",
+      "h1_status": "no_h1"
+    },
+    {
+      "slug": "enamel-erosion",
+      "h1_status": "no_h1"
+    }
+  ],
+  "messages": [],
+  "stdout": "slug\th1_status\nunclear-diagnoses\tno_h1\nrushed-decisions\tno_h1\nquestioning-recommendations\tno_h1\nsecond-opinions\tno_h1\ncost-transparency\tno_h1\nfear-of-dentist\tno_h1\novertreatment-concerns\tno_h1\npreventive-care-gap\tno_h1\ncommunication-gap\tno_h1\nchoosing-right-dentist\tno_h1\nundetected-cavities\tno_h1\nsilent-gum-disease\tno_h1\ntooth-sensitivity\tno_h1\nwisdom-teeth-confusion\tno_h1\nteeth-grinding\tno_h1\nstained-teeth\tno_h1\nbad-breath\tno_h1\ncracked-tooth\tno_h1\nmissing-teeth\tno_h1\nenamel-erosion\tno_h1\n",
+  "stderr": "",
+  "execution_time_ms": 387
+}

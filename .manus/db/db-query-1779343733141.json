@@ -1,0 +1,15 @@
+{
+  "query": "SELECT COUNT(*) as total, SUM(CASE WHEN bodyHtml LIKE '%<h1%' THEN 1 ELSE 0 END) as has_h1, SUM(CASE WHEN bodyHtml LIKE '%<h1%' THEN 0 ELSE 1 END) as no_h1 FROM blog_posts WHERE bodyHtml IS NOT NULL;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT COUNT(*) as total, SUM(CASE WHEN bodyHtml LIKE '%<h1%' THEN 1 ELSE 0 END) as has_h1, SUM(CASE WHEN bodyHtml LIKE '%<h1%' THEN 0 ELSE 1 END) as no_h1 FROM blog_posts WHERE bodyHtml IS NOT NULL;",
+  "rows": [
+    {
+      "total": "153",
+      "has_h1": "0",
+      "no_h1": "153"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\thas_h1\tno_h1\n153\t0\t153\n",
+  "stderr": "",
+  "execution_time_ms": 280
+}

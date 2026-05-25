@@ -1,0 +1,475 @@
+{
+  "query": "SELECT COUNT(*) as total FROM blog_posts WHERE status = 'published';\nSELECT slug FROM blog_posts WHERE status = 'published' ORDER BY slug;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT COUNT(*) as total FROM blog_posts WHERE status = 'published';\nSELECT slug FROM blog_posts WHERE status = 'published' ORDER BY slug;",
+  "rows": [
+    {
+      "total": "153"
+    },
+    {
+      "total": "slug"
+    },
+    {
+      "total": "10-questions-to-ask-your-dentist-before-any-procedure"
+    },
+    {
+      "total": "ai-dental-app-for-parents"
+    },
+    {
+      "total": "ai-dental-second-opinion-without-insurance"
+    },
+    {
+      "total": "are-pop-on-veneers-safe-or-could-they-harm-your-teeth"
+    },
+    {
+      "total": "at-what-age-should-my-child-first-see-a-dentist"
+    },
+    {
+      "total": "avoid-surprise-dental-bills-guide"
+    },
+    {
+      "total": "bad-breath"
+    },
+    {
+      "total": "bad-breath-halitosis"
+    },
+    {
+      "total": "best-ai-dental-apps"
+    },
+    {
+      "total": "best-ai-health-apps-preventive-care"
+    },
+    {
+      "total": "best-apps-tooth-pain-guidance"
+    },
+    {
+      "total": "best-apps-understand-dental-xrays"
+    },
+    {
+      "total": "best-dental-apps-for-parents"
+    },
+    {
+      "total": "best-dental-apps-without-insurance"
+    },
+    {
+      "total": "best-dental-cost-transparency-tools"
+    },
+    {
+      "total": "best-dental-insurance-alternatives"
+    },
+    {
+      "total": "best-dental-second-opinion-apps"
+    },
+    {
+      "total": "best-oral-health-apps-families"
+    },
+    {
+      "total": "black-line-on-tooth"
+    },
+    {
+      "total": "bleeding-gums"
+    },
+    {
+      "total": "bone-loss-dental-xray"
+    },
+    {
+      "total": "braces-as-an-adult-is-it-too-late-to-straighten-your-teeth"
+    },
+    {
+      "total": "braces-with-baby-teeth"
+    },
+    {
+      "total": "brushing-teeth-prevent-dementia"
+    },
+    {
+      "total": "can-ai-explain-dental-xrays"
+    },
+    {
+      "total": "can-teeth-fall-out-suddenly"
+    },
+    {
+      "total": "canker-sore-vs-cold-sore"
+    },
+    {
+      "total": "cavity-symptoms-tooth-decay"
+    },
+    {
+      "total": "cclear-aligners-vs-braces"
+    },
+    {
+      "total": "check-teeth-with-ai-at-home"
+    },
+    {
+      "total": "choosing-right-dentist"
+    },
+    {
+      "total": "communication-gap"
+    },
+    {
+      "total": "cosmetic-vs-necessary"
+    },
+    {
+      "total": "cost-transparency"
+    },
+    {
+      "total": "cracked-tooth"
+    },
+    {
+      "total": "cracked-tooth-symptoms"
+    },
+    {
+      "total": "crown-pain-sensitivity"
+    },
+    {
+      "total": "denied-claims"
+    },
+    {
+      "total": "dental-anxiety-before-appointment"
+    },
+    {
+      "total": "dental-anxiety-fear-of-dentist"
+    },
+    {
+      "total": "dental-cost-help-for-families"
+    },
+    {
+      "total": "dental-crown-without-insurance-options"
+    },
+    {
+      "total": "dental-emergency-what-to-do"
+    },
+    {
+      "total": "dental-second-opinion-without-insurance"
+    },
+    {
+      "total": "dental-treatment-plan-confusion"
+    },
+    {
+      "total": "dentasmart-vs-chatgpt-dental-advice"
+    },
+    {
+      "total": "dentasmart-vs-chatgpt-dental-questions"
+    },
+    {
+      "total": "dentasmart-vs-dental-discount-plans"
+    },
+    {
+      "total": "dentasmart-vs-dental-insurance"
+    },
+    {
+      "total": "dentasmart-vs-dental-savings-plans"
+    },
+    {
+      "total": "dentasmart-vs-googling-dental-symptoms"
+    },
+    {
+      "total": "dentasmart-vs-pearl-overjet"
+    },
+    {
+      "total": "dentasmart-vs-teledentistry"
+    },
+    {
+      "total": "dentasmart-vs-toothpic"
+    },
+    {
+      "total": "dentasmart-vs-traditional-second-opinion"
+    },
+    {
+      "total": "dentasmart-vs-waiting-for-dental-visit"
+    },
+    {
+      "total": "dentist-cost-without-insurance"
+    },
+    {
+      "total": "dentist-says-filling-unnecessary-second-opinion"
+    },
+    {
+      "total": "dentist-unnecessary-crown-second-opinion"
+    },
+    {
+      "total": "do-cavities-go-away-on-their-own"
+    },
+    {
+      "total": "dry-mouth-causes-remedies"
+    },
+    {
+      "total": "dry-socket-after-tooth-extraction"
+    },
+    {
+      "total": "electric-vs-manual-toothbrush"
+    },
+    {
+      "total": "employer-dental-plans"
+    },
+    {
+      "total": "enamel-erosion"
+    },
+    {
+      "total": "expensive-dental-treatment-cant-afford"
+    },
+    {
+      "total": "family-oral-health-monitoring"
+    },
+    {
+      "total": "fear-of-dentist"
+    },
+    {
+      "total": "filling-feels-high-pain-biting"
+    },
+    {
+      "total": "filling-without-insurance-options"
+    },
+    {
+      "total": "gig-workers-without-dental-insurance"
+    },
+    {
+      "total": "gum-boil"
+    },
+    {
+      "total": "gum-recession"
+    },
+    {
+      "total": "gums-hurt-when-flossing"
+    },
+    {
+      "total": "how-can-ai-detect-a-cavity-in-my-dental-xray"
+    },
+    {
+      "total": "how-do-i-know-its-time-for-dental-implants"
+    },
+    {
+      "total": "how-much-does-dentasmart-cost"
+    },
+    {
+      "total": "how-often-should-you-go-to-the-dentist"
+    },
+    {
+      "total": "how-to-avoid-dry-socket-after-tooth-extraction"
+    },
+    {
+      "total": "how-to-avoid-surprise-dental-bills"
+    },
+    {
+      "total": "how-to-find-a-dentist-uninsured"
+    },
+    {
+      "total": "how-to-read-dental-xray-guide"
+    },
+    {
+      "total": "how-to-remove-plaque-at-home"
+    },
+    {
+      "total": "in-network-confusion"
+    },
+    {
+      "total": "insurance-limitations"
+    },
+    {
+      "total": "is-at-home-teeth-whitening-safe-or-is-it-damaging-your-enamel"
+    },
+    {
+      "total": "is-dental-insurance-worth-it-or-are-you-paying-for-something-you-may-never-use"
+    },
+    {
+      "total": "is-dentasmart-dental-insurance-alternative"
+    },
+    {
+      "total": "is-fluoride-good-or-bad-for-teeth"
+    },
+    {
+      "total": "is-teeth-whitening-safe"
+    },
+    {
+      "total": "jaw-and-ear-pain-one-side"
+    },
+    {
+      "total": "jaw-pain-tmj"
+    },
+    {
+      "total": "loose-tooth-adults"
+    },
+    {
+      "total": "maximize-benefits"
+    },
+    {
+      "total": "misleading-insurance"
+    },
+    {
+      "total": "missing-teeth"
+    },
+    {
+      "total": "mouth-ulcer-not-healing"
+    },
+    {
+      "total": "new-dentasmart-quick-check-self-examination-dual-reports-2026"
+    },
+    {
+      "total": "no-insurance-options"
+    },
+    {
+      "total": "overtreatment-concerns"
+    },
+    {
+      "total": "pain-when-biting-or-chewing"
+    },
+    {
+      "total": "parents-checking-kids-teeth"
+    },
+    {
+      "total": "periodontal-disease-what-to-do"
+    },
+    {
+      "total": "pre-authorization"
+    },
+    {
+      "total": "pregnancy-dental-health"
+    },
+    {
+      "total": "preventive-care-gap"
+    },
+    {
+      "total": "questioning-recommendations"
+    },
+    {
+      "total": "root-canal-no-insurance-affordable-options"
+    },
+    {
+      "total": "root-canal-symptoms"
+    },
+    {
+      "total": "rushed-decisions"
+    },
+    {
+      "total": "second-opinion-before-crown"
+    },
+    {
+      "total": "second-opinion-before-root-canal"
+    },
+    {
+      "total": "second-opinions"
+    },
+    {
+      "total": "silent-gum-disease"
+    },
+    {
+      "total": "small-business-dental-benefits-alternative"
+    },
+    {
+      "total": "stained-teeth"
+    },
+    {
+      "total": "swollen-gums-around-one-tooth"
+    },
+    {
+      "total": "teeth-grinding"
+    },
+    {
+      "total": "teeth-grinding-at-night-mouthguard-retainer"
+    },
+    {
+      "total": "teeth-grinding-bruxism"
+    },
+    {
+      "total": "the-hidden-cost-of-ignoring-dental-problems"
+    },
+    {
+      "total": "tonsil-stones-what-are-they-how-to-remove"
+    },
+    {
+      "total": "tooth-abscess-infection"
+    },
+    {
+      "total": "tooth-hurts-cold-water"
+    },
+    {
+      "total": "tooth-infection-spreading-to-body"
+    },
+    {
+      "total": "tooth-pain-at-night"
+    },
+    {
+      "total": "tooth-pain-toothache"
+    },
+    {
+      "total": "tooth-sensitivity"
+    },
+    {
+      "total": "tooth-sensitivity-cold-hot"
+    },
+    {
+      "total": "unclear-diagnoses"
+    },
+    {
+      "total": "understand-dental-x-rays"
+    },
+    {
+      "total": "undetected-cavities"
+    },
+    {
+      "total": "waiting-periods"
+    },
+    {
+      "total": "what-is-a-dental-crown"
+    },
+    {
+      "total": "what-is-ai-oral-health-guide"
+    },
+    {
+      "total": "what-is-dentasmart-how-does-it-work"
+    },
+    {
+      "total": "what-is-oral-health-score"
+    },
+    {
+      "total": "what-to-do-after-tooth-extraction"
+    },
+    {
+      "total": "what-to-do-dentist-says-need-crown"
+    },
+    {
+      "total": "when-do-kids-start-losing-teeth"
+    },
+    {
+      "total": "white-spots-on-teeth"
+    },
+    {
+      "total": "why-are-my-gums-turning-white-could-it-be-early-gum-disease"
+    },
+    {
+      "total": "why-are-my-teeth-so-sensitive-and-will-tooth-sensitivity-go-away"
+    },
+    {
+      "total": "why-are-my-teeth-yellow"
+    },
+    {
+      "total": "why-ceramic-teeth-caps-are-the-smile-upgrade-you-didnt-know-you-needed"
+    },
+    {
+      "total": "why-is-my-tongue-white-and-what-does-it-say-about-my-oral-health"
+    },
+    {
+      "total": "why-is-oral-health-important-and-how-can-you-monitor-it-at-home"
+    },
+    {
+      "total": "why-your-dentist-might-be-recommending-unnecessary-procedures"
+    },
+    {
+      "total": "wisdom-teeth-confusion"
+    },
+    {
+      "total": "wisdom-tooth-infection-symptoms"
+    },
+    {
+      "total": "wisdom-tooth-pain"
+    },
+    {
+      "total": "worried-about-overtreatment"
+    },
+    {
+      "total": "wwhat-are-dental-implants-cost"
+    }
+  ],
+  "messages": [],
+  "stdout": "total\n153\nslug\n10-questions-to-ask-your-dentist-before-any-procedure\nai-dental-app-for-parents\nai-dental-second-opinion-without-insurance\nare-pop-on-veneers-safe-or-could-they-harm-your-teeth\nat-what-age-should-my-child-first-see-a-dentist\navoid-surprise-dental-bills-guide\nbad-breath\nbad-breath-halitosis\nbest-ai-dental-apps\nbest-ai-health-apps-preventive-care\nbest-apps-tooth-pain-guidance\nbest-apps-understand-dental-xrays\nbest-dental-apps-for-parents\nbest-dental-apps-without-insurance\nbest-dental-cost-transparency-tools\nbest-dental-insurance-alternatives\nbest-dental-second-opinion-apps\nbest-oral-health-apps-families\nblack-line-on-tooth\nbleeding-gums\nbone-loss-dental-xray\nbraces-as-an-adult-is-it-too-late-to-straighten-your-teeth\nbraces-with-baby-teeth\nbrushing-teeth-prevent-dementia\ncan-ai-explain-dental-xrays\ncan-teeth-fall-out-suddenly\ncanker-sore-vs-cold-sore\ncavity-symptoms-tooth-decay\ncclear-aligners-vs-braces\ncheck-teeth-with-ai-at-home\nchoosing-right-dentist\ncommunication-gap\ncosmetic-vs-necessary\ncost-transparency\ncracked-tooth\ncracked-tooth-symptoms\ncrown-pain-sensitivity\ndenied-claims\ndental-anxiety-before-appointment\ndental-anxiety-fear-of-dentist\ndental-cost-help-for-families\ndental-crown-without-insurance-options\ndental-emergency-what-to-do\ndental-second-opinion-without-insurance\ndental-treatment-plan-confusion\ndentasmart-vs-chatgpt-dental-advice\ndentasmart-vs-chatgpt-dental-questions\ndentasmart-vs-dental-discount-plans\ndentasmart-vs-dental-insurance\ndentasmart-vs-dental-savings-plans\ndentasmart-vs-googling-dental-symptoms\ndentasmart-vs-pearl-overjet\ndentasmart-vs-teledentistry\ndentasmart-vs-toothpic\ndentasmart-vs-traditional-second-opinion\ndentasmart-vs-waiting-for-dental-visit\ndentist-cost-without-insurance\ndentist-says-filling-unnecessary-second-opinion\ndentist-unnecessary-crown-second-opinion\ndo-cavities-go-away-on-their-own\ndry-mouth-causes-remedies\ndry-socket-after-tooth-extraction\nelectric-vs-manual-toothbrush\nemployer-dental-plans\nenamel-erosion\nexpensive-dental-treatment-cant-afford\nfamily-oral-health-monitoring\nfear-of-dentist\nfilling-feels-high-pain-biting\nfilling-without-insurance-options\ngig-workers-without-dental-insurance\ngum-boil\ngum-recession\ngums-hurt-when-flossing\nhow-can-ai-detect-a-cavity-in-my-dental-xray\nhow-do-i-know-its-time-for-dental-implants\nhow-much-does-dentasmart-cost\nhow-often-should-you-go-to-the-dentist\nhow-to-avoid-dry-socket-after-tooth-extraction\nhow-to-avoid-surprise-dental-bills\nhow-to-find-a-dentist-uninsured\nhow-to-read-dental-xray-guide\nhow-to-remove-plaque-at-home\nin-network-confusion\ninsurance-limitations\nis-at-home-teeth-whitening-safe-or-is-it-damaging-your-enamel\nis-dental-insurance-worth-it-or-are-you-paying-for-something-you-may-never-use\nis-dentasmart-dental-insurance-alternative\nis-fluoride-good-or-bad-for-teeth\nis-teeth-whitening-safe\njaw-and-ear-pain-one-side\njaw-pain-tmj\nloose-tooth-adults\nmaximize-benefits\nmisleading-insurance\nmissing-teeth\nmouth-ulcer-not-healing\nnew-dentasmart-quick-check-self-examination-dual-reports-2026\nno-insurance-options\novertreatment-concerns\npain-when-biting-or-chewing\nparents-checking-kids-teeth\nperiodontal-disease-what-to-do\npre-authorization\npregnancy-dental-health\npreventive-care-gap\nquestioning-recommendations\nroot-canal-no-insurance-affordable-options\nroot-canal-symptoms\nrushed-decisions\nsecond-opinion-before-crown\nsecond-opinion-before-root-canal\nsecond-opinions\nsilent-gum-disease\nsmall-business-dental-benefits-alternative\nstained-teeth\nswollen-gums-around-one-tooth\nteeth-grinding\nteeth-grinding-at-night-mouthguard-retainer\nteeth-grinding-bruxism\nthe-hidden-cost-of-ignoring-dental-problems\ntonsil-stones-what-are-they-how-to-remove\ntooth-abscess-infection\ntooth-hurts-cold-water\ntooth-infection-spreading-to-body\ntooth-pain-at-night\ntooth-pain-toothache\ntooth-sensitivity\ntooth-sensitivity-cold-hot\nunclear-diagnoses\nunderstand-dental-x-rays\nundetected-cavities\nwaiting-periods\nwhat-is-a-dental-crown\nwhat-is-ai-oral-health-guide\nwhat-is-dentasmart-how-does-it-work\nwhat-is-oral-health-score\nwhat-to-do-after-tooth-extraction\nwhat-to-do-dentist-says-need-crown\nwhen-do-kids-start-losing-teeth\nwhite-spots-on-teeth\nwhy-are-my-gums-turning-white-could-it-be-early-gum-disease\nwhy-are-my-teeth-so-sensitive-and-will-tooth-sensitivity-go-away\nwhy-are-my-teeth-yellow\nwhy-ceramic-teeth-caps-are-the-smile-upgrade-you-didnt-know-you-needed\nwhy-is-my-tongue-white-and-what-does-it-say-about-my-oral-health\nwhy-is-oral-health-important-and-how-can-you-monitor-it-at-home\nwhy-your-dentist-might-be-recommending-unnecessary-procedures\nwisdom-teeth-confusion\nwisdom-tooth-infection-symptoms\nwisdom-tooth-pain\nworried-about-overtreatment\nwwhat-are-dental-implants-cost\n",
+  "stderr": "",
+  "execution_time_ms": 1179
+}

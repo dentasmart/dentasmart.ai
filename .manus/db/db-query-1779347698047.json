@@ -1,0 +1,28 @@
+{
+  "query": "SELECT c.id, c.name, c.parentId,\n  (SELECT COUNT(*) FROM blog_posts bp WHERE bp.categoryId = c.id AND bp.status='published') as direct_posts\nFROM blog_categories c\nWHERE c.parentId IS NULL\nORDER BY direct_posts DESC;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT c.id, c.name, c.parentId,\n  (SELECT COUNT(*) FROM blog_posts bp WHERE bp.categoryId = c.id AND bp.status='published') as direct_posts\nFROM blog_categories c\nWHERE c.parentId IS NULL\nORDER BY direct_posts DESC;",
+  "rows": [
+    {
+      "id": "38",
+      "name": "Dental Issues",
+      "parentId": "NULL",
+      "direct_posts": "86"
+    },
+    {
+      "id": "40",
+      "name": "Insurance Problems",
+      "parentId": "NULL",
+      "direct_posts": "23"
+    },
+    {
+      "id": "39",
+      "name": "Dentist Challenges",
+      "parentId": "NULL",
+      "direct_posts": "17"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tname\tparentId\tdirect_posts\n38\tDental Issues\tNULL\t86\n40\tInsurance Problems\tNULL\t23\n39\tDentist Challenges\tNULL\t17\n",
+  "stderr": "",
+  "execution_time_ms": 265
+}

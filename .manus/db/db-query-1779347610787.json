@@ -1,0 +1,158 @@
+{
+  "query": "SELECT slug, status FROM blog_posts WHERE slug IN (\n  'silent-gum-disease','denied-claims','misleading-insurance','missing-teeth','cracked-tooth',\n  'bad-breath','stained-teeth','teeth-grinding','wisdom-teeth-confusion','tooth-sensitivity',\n  'white-spots-on-teeth','undetected-cavities','communication-gap','preventive-care-gap',\n  'overtreatment-concerns','fear-of-dentist','rushed-decisions','unclear-diagnoses',\n  'mouth-ulcer-not-healing','jaw-pain-tmj','insurance-limitations','black-line-on-tooth',\n  'gum-boil','loose-tooth-adults','filling-feels-high-pain-biting','tooth-hurts-cold-water',\n  'gums-hurt-when-flossing','teeth-grinding-bruxism','canker-sore-vs-cold-sore',\n  'pain-when-biting-or-chewing','gum-recession','maximize-benefits','employer-dental-plans',\n  'cosmetic-vs-necessary','pre-authorization','waiting-periods','in-network-confusion'\n) ORDER BY slug;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT slug, status FROM blog_posts WHERE slug IN (\n  'silent-gum-disease','denied-claims','misleading-insurance','missing-teeth','cracked-tooth',\n  'bad-breath','stained-teeth','teeth-grinding','wisdom-teeth-confusion','tooth-sensitivity',\n  'white-spots-on-teeth','undetected-cavities','communication-gap','preventive-care-gap',\n  'overtreatment-concerns','fear-of-dentist','rushed-decisions','unclear-diagnoses',\n  'mouth-ulcer-not-healing','jaw-pain-tmj','insurance-limitations','black-line-on-tooth',\n  'gum-boil','loose-tooth-adults','filling-feels-high-pain-biting','tooth-hurts-cold-water',\n  'gums-hurt-when-flossing','teeth-grinding-bruxism','canker-sore-vs-cold-sore',\n  'pain-when-biting-or-chewing','gum-recession','maximize-benefits','employer-dental-plans',\n  'cosmetic-vs-necessary','pre-authorization','waiting-periods','in-network-confusion'\n) ORDER BY slug;",
+  "rows": [
+    {
+      "slug": "bad-breath",
+      "status": "published"
+    },
+    {
+      "slug": "black-line-on-tooth",
+      "status": "published"
+    },
+    {
+      "slug": "canker-sore-vs-cold-sore",
+      "status": "published"
+    },
+    {
+      "slug": "communication-gap",
+      "status": "published"
+    },
+    {
+      "slug": "cosmetic-vs-necessary",
+      "status": "published"
+    },
+    {
+      "slug": "cracked-tooth",
+      "status": "published"
+    },
+    {
+      "slug": "denied-claims",
+      "status": "published"
+    },
+    {
+      "slug": "employer-dental-plans",
+      "status": "published"
+    },
+    {
+      "slug": "fear-of-dentist",
+      "status": "published"
+    },
+    {
+      "slug": "filling-feels-high-pain-biting",
+      "status": "published"
+    },
+    {
+      "slug": "gum-boil",
+      "status": "published"
+    },
+    {
+      "slug": "gum-recession",
+      "status": "published"
+    },
+    {
+      "slug": "gums-hurt-when-flossing",
+      "status": "published"
+    },
+    {
+      "slug": "in-network-confusion",
+      "status": "published"
+    },
+    {
+      "slug": "insurance-limitations",
+      "status": "published"
+    },
+    {
+      "slug": "jaw-pain-tmj",
+      "status": "published"
+    },
+    {
+      "slug": "loose-tooth-adults",
+      "status": "published"
+    },
+    {
+      "slug": "maximize-benefits",
+      "status": "published"
+    },
+    {
+      "slug": "misleading-insurance",
+      "status": "published"
+    },
+    {
+      "slug": "missing-teeth",
+      "status": "published"
+    },
+    {
+      "slug": "mouth-ulcer-not-healing",
+      "status": "published"
+    },
+    {
+      "slug": "overtreatment-concerns",
+      "status": "published"
+    },
+    {
+      "slug": "pain-when-biting-or-chewing",
+      "status": "published"
+    },
+    {
+      "slug": "pre-authorization",
+      "status": "published"
+    },
+    {
+      "slug": "preventive-care-gap",
+      "status": "published"
+    },
+    {
+      "slug": "rushed-decisions",
+      "status": "published"
+    },
+    {
+      "slug": "silent-gum-disease",
+      "status": "published"
+    },
+    {
+      "slug": "stained-teeth",
+      "status": "published"
+    },
+    {
+      "slug": "teeth-grinding",
+      "status": "published"
+    },
+    {
+      "slug": "teeth-grinding-bruxism",
+      "status": "published"
+    },
+    {
+      "slug": "tooth-hurts-cold-water",
+      "status": "published"
+    },
+    {
+      "slug": "tooth-sensitivity",
+      "status": "published"
+    },
+    {
+      "slug": "unclear-diagnoses",
+      "status": "published"
+    },
+    {
+      "slug": "undetected-cavities",
+      "status": "published"
+    },
+    {
+      "slug": "waiting-periods",
+      "status": "published"
+    },
+    {
+      "slug": "white-spots-on-teeth",
+      "status": "published"
+    },
+    {
+      "slug": "wisdom-teeth-confusion",
+      "status": "published"
+    }
+  ],
+  "messages": [],
+  "stdout": "slug\tstatus\nbad-breath\tpublished\nblack-line-on-tooth\tpublished\ncanker-sore-vs-cold-sore\tpublished\ncommunication-gap\tpublished\ncosmetic-vs-necessary\tpublished\ncracked-tooth\tpublished\ndenied-claims\tpublished\nemployer-dental-plans\tpublished\nfear-of-dentist\tpublished\nfilling-feels-high-pain-biting\tpublished\ngum-boil\tpublished\ngum-recession\tpublished\ngums-hurt-when-flossing\tpublished\nin-network-confusion\tpublished\ninsurance-limitations\tpublished\njaw-pain-tmj\tpublished\nloose-tooth-adults\tpublished\nmaximize-benefits\tpublished\nmisleading-insurance\tpublished\nmissing-teeth\tpublished\nmouth-ulcer-not-healing\tpublished\novertreatment-concerns\tpublished\npain-when-biting-or-chewing\tpublished\npre-authorization\tpublished\npreventive-care-gap\tpublished\nrushed-decisions\tpublished\nsilent-gum-disease\tpublished\nstained-teeth\tpublished\nteeth-grinding\tpublished\nteeth-grinding-bruxism\tpublished\ntooth-hurts-cold-water\tpublished\ntooth-sensitivity\tpublished\nunclear-diagnoses\tpublished\nundetected-cavities\tpublished\nwaiting-periods\tpublished\nwhite-spots-on-teeth\tpublished\nwisdom-teeth-confusion\tpublished\n",
+  "stderr": "",
+  "execution_time_ms": 278
+}

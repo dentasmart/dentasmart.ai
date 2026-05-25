@@ -1,0 +1,121 @@
+{
+  "query": "SHOW COLUMNS FROM blog_categories;\nSELECT id, name, parentId FROM blog_categories ORDER BY parentId, id;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SHOW COLUMNS FROM blog_categories;\nSELECT id, name, parentId FROM blog_categories ORDER BY parentId, id;",
+  "rows": [
+    {
+      "Field": "id",
+      "Type": "int",
+      "Null": "NO",
+      "Key": "PRI",
+      "Default": "NULL",
+      "Extra": "auto_increment"
+    },
+    {
+      "Field": "name",
+      "Type": "varchar(200)",
+      "Null": "NO",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "slug",
+      "Type": "varchar(200)",
+      "Null": "NO",
+      "Key": "UNI",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "parentId",
+      "Type": "int",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "description",
+      "Type": "text",
+      "Null": "YES",
+      "Key": "",
+      "Default": "NULL",
+      "Extra": ""
+    },
+    {
+      "Field": "color",
+      "Type": "varchar(50)",
+      "Null": "YES",
+      "Key": "",
+      "Default": "stone",
+      "Extra": ""
+    },
+    {
+      "Field": "sortOrder",
+      "Type": "int",
+      "Null": "YES",
+      "Key": "",
+      "Default": "0",
+      "Extra": ""
+    },
+    {
+      "Field": "createdAt",
+      "Type": "timestamp",
+      "Null": "NO",
+      "Key": "",
+      "Default": "CURRENT_TIMESTAMP",
+      "Extra": ""
+    },
+    {
+      "Field": "updatedAt",
+      "Type": "timestamp",
+      "Null": "NO",
+      "Key": "",
+      "Default": "CURRENT_TIMESTAMP",
+      "Extra": "DEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+    }
+  ],
+  "messages": [
+    "id\tname\tparentId",
+    "38\tDental Issues\tNULL",
+    "39\tDentist Challenges\tNULL",
+    "40\tInsurance Problems\tNULL",
+    "41\tCavities & Tooth Decay\t38",
+    "42\tGum Disease\t38",
+    "43\tTooth Pain & Sensitivity\t38",
+    "44\tWisdom Teeth\t38",
+    "45\tCracked & Missing Teeth\t38",
+    "46\tTeeth Grinding (Bruxism)\t38",
+    "47\tBad Breath\t38",
+    "48\tStaining & Cosmetic\t38",
+    "49\tEnamel Erosion\t38",
+    "50\tChildren's Dental Health\t38",
+    "51\tOral Hygiene\t38",
+    "52\tX-Rays & Imaging\t38",
+    "30001\tOral Health & Overall Health\t38",
+    "270001\tTooth Extraction & Recovery\t38",
+    "300001\tBraces\t38",
+    "330001\tVeneer\t38",
+    "53\tFinding a Dentist\t39",
+    "54\tOvertreatment Concerns\t39",
+    "55\tCommunication Gaps\t39",
+    "56\tTreatment Decisions\t39",
+    "57\tSecond Opinions\t39",
+    "58\tPrevention Focus\t39",
+    "59\tDental Anxiety\t39",
+    "60\tPricing Transparency\t39",
+    "61\tCoverage & Benefits\t40",
+    "62\tClaims & Denials\t40",
+    "63\tAnnual Limits\t40",
+    "64\tIn-Network vs Out-of-Network\t40",
+    "65\tWaiting Periods\t40",
+    "66\tPre-Authorization\t40",
+    "67\tCosmetic vs Necessary\t40",
+    "68\tNo Insurance Options\t40",
+    "69\tEmployer Plans\t40",
+    "70\tMaximizing Benefits\t40"
+  ],
+  "stdout": "Field\tType\tNull\tKey\tDefault\tExtra\nid\tint\tNO\tPRI\tNULL\tauto_increment\nname\tvarchar(200)\tNO\t\tNULL\t\nslug\tvarchar(200)\tNO\tUNI\tNULL\t\nparentId\tint\tYES\t\tNULL\t\ndescription\ttext\tYES\t\tNULL\t\ncolor\tvarchar(50)\tYES\t\tstone\t\nsortOrder\tint\tYES\t\t0\t\ncreatedAt\ttimestamp\tNO\t\tCURRENT_TIMESTAMP\t\nupdatedAt\ttimestamp\tNO\t\tCURRENT_TIMESTAMP\tDEFAULT_GENERATED on update CURRENT_TIMESTAMP\nid\tname\tparentId\n38\tDental Issues\tNULL\n39\tDentist Challenges\tNULL\n40\tInsurance Problems\tNULL\n41\tCavities & Tooth Decay\t38\n42\tGum Disease\t38\n43\tTooth Pain & Sensitivity\t38\n44\tWisdom Teeth\t38\n45\tCracked & Missing Teeth\t38\n46\tTeeth Grinding (Bruxism)\t38\n47\tBad Breath\t38\n48\tStaining & Cosmetic\t38\n49\tEnamel Erosion\t38\n50\tChildren's Dental Health\t38\n51\tOral Hygiene\t38\n52\tX-Rays & Imaging\t38\n30001\tOral Health & Overall Health\t38\n270001\tTooth Extraction & Recovery\t38\n300001\tBraces\t38\n330001\tVeneer\t38\n53\tFinding a Dentist\t39\n54\tOvertreatment Concerns\t39\n55\tCommunication Gaps\t39\n56\tTreatment Decisions\t39\n57\tSecond Opinions\t39\n58\tPrevention Focus\t39\n59\tDental Anxiety\t39\n60\tPricing Transparency\t39\n61\tCoverage & Benefits\t40\n62\tClaims & Denials\t40\n63\tAnnual Limits\t40\n64\tIn-Network vs Out-of-Network\t40\n65\tWaiting Periods\t40\n66\tPre-Authorization\t40\n67\tCosmetic vs Necessary\t40\n68\tNo Insurance Options\t40\n69\tEmployer Plans\t40\n70\tMaximizing Benefits\t40\n",
+  "stderr": "",
+  "execution_time_ms": 283
+}

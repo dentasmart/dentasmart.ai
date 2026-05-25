@@ -1,0 +1,43 @@
+{
+  "query": "SHOW TABLES;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SHOW TABLES;",
+  "rows": [
+    {
+      "Tables_in_bguxPMV2uwRUGpkQABmyXT": "__drizzle_migrations"
+    },
+    {
+      "Tables_in_bguxPMV2uwRUGpkQABmyXT": "admin_users"
+    },
+    {
+      "Tables_in_bguxPMV2uwRUGpkQABmyXT": "agent_runs"
+    },
+    {
+      "Tables_in_bguxPMV2uwRUGpkQABmyXT": "android_waitlist"
+    },
+    {
+      "Tables_in_bguxPMV2uwRUGpkQABmyXT": "benefits_waitlist"
+    },
+    {
+      "Tables_in_bguxPMV2uwRUGpkQABmyXT": "blog_categories"
+    },
+    {
+      "Tables_in_bguxPMV2uwRUGpkQABmyXT": "blog_posts"
+    },
+    {
+      "Tables_in_bguxPMV2uwRUGpkQABmyXT": "conversion_events"
+    },
+    {
+      "Tables_in_bguxPMV2uwRUGpkQABmyXT": "quiz_submissions"
+    },
+    {
+      "Tables_in_bguxPMV2uwRUGpkQABmyXT": "site_settings"
+    },
+    {
+      "Tables_in_bguxPMV2uwRUGpkQABmyXT": "users"
+    }
+  ],
+  "messages": [],
+  "stdout": "Tables_in_bguxPMV2uwRUGpkQABmyXT\n__drizzle_migrations\nadmin_users\nagent_runs\nandroid_waitlist\nbenefits_waitlist\nblog_categories\nblog_posts\nconversion_events\nquiz_submissions\nsite_settings\nusers\n",
+  "stderr": "",
+  "execution_time_ms": 1541
+}

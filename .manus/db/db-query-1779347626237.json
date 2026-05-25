@@ -1,0 +1,25 @@
+{
+  "query": "SELECT COUNT(*) as published_total FROM blog_posts WHERE status = 'published';\nSHOW COLUMNS FROM blog_posts LIKE '%cat%';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT COUNT(*) as published_total FROM blog_posts WHERE status = 'published';\nSHOW COLUMNS FROM blog_posts LIKE '%cat%';",
+  "rows": [
+    {
+      "published_total": "153"
+    },
+    {
+      "published_total": "Field\tType\tNull\tKey\tDefault\tExtra"
+    },
+    {
+      "published_total": "category\tenum('Dentist Problems','Dental Problems','Insurance Problems','Symptoms','Gums','Cavities','X-Rays','Costs')\tNO\t\tNULL\t"
+    },
+    {
+      "published_total": "categoryId\tint\tYES\t\tNULL\t"
+    },
+    {
+      "published_total": "subcategoryId\tint\tYES\t\tNULL\t"
+    }
+  ],
+  "messages": [],
+  "stdout": "published_total\n153\nField\tType\tNull\tKey\tDefault\tExtra\ncategory\tenum('Dentist Problems','Dental Problems','Insurance Problems','Symptoms','Gums','Cavities','X-Rays','Costs')\tNO\t\tNULL\t\ncategoryId\tint\tYES\t\tNULL\t\nsubcategoryId\tint\tYES\t\tNULL\t\n",
+  "stderr": "",
+  "execution_time_ms": 275
+}

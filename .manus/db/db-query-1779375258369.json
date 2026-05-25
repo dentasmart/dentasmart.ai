@@ -1,0 +1,20 @@
+{
+  "query": "SELECT id, slug, title FROM blog_posts WHERE id IN (2490001, 2250001);",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT id, slug, title FROM blog_posts WHERE id IN (2490001, 2250001);",
+  "rows": [
+    {
+      "id": "2490001",
+      "slug": "wwhat-are-dental-implants-cost",
+      "title": "What Are Dental Implants And How Much Do They Really Cost?"
+    },
+    {
+      "id": "2250001",
+      "slug": "cclear-aligners-vs-braces",
+      "title": "Clear Aligners vs Braces! When Should You Choose Invisalign Instead?"
+    }
+  ],
+  "messages": [],
+  "stdout": "id\tslug\ttitle\n2490001\twwhat-are-dental-implants-cost\tWhat Are Dental Implants And How Much Do They Really Cost?\n2250001\tcclear-aligners-vs-braces\tClear Aligners vs Braces! When Should You Choose Invisalign Instead?\n",
+  "stderr": "",
+  "execution_time_ms": 262
+}

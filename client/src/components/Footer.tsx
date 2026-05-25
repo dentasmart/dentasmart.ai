@@ -6,54 +6,52 @@ export default function Footer() {
   return (
     <footer className="bg-[#E6F4F6] text-black py-12 border-t border-primary/10">
       <div className="container px-4 mx-auto">
-       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-8">
-          
-          {/* Brand & StoryBrand Overview - Spans 5 columns */}
-          <div className="lg:col-span-5 space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-8">
+
+          {/* Brand Block — left, spans 4 columns */}
+          <div className="lg:col-span-4 space-y-6">
             <div className="flex flex-col items-center gap-4 w-fit">
-              <img loading="lazy" src="/images/logo.png" 
-                alt="DentaSmart Logo" 
-                className="h-12 w-auto " 
+              <img loading="lazy" src="/images/logo.png"
+                alt="DentaSmart Logo"
+                className="h-12 w-auto"
               />
               <p className="text-xl font-light tracking-wide text-black">
                 Your AI Dentist in Your Pocket
               </p>
             </div>
-            
-            <div className="space-y-6 max-w-md">
-              <p className="text-black font-light leading-relaxed">
-                Most people feel anxious and confused about their dental health. 
-                We provide an AI guide that analyzes your mouth instantly and explains everything in plain English, 
+
+            <div className="space-y-4 max-w-sm">
+              <p className="text-black font-light leading-relaxed text-sm">
+                Most people feel anxious and confused about their dental health.
+                We provide an AI guide that analyzes your mouth instantly and explains everything in plain English,
                 so you can stop worrying and start making confident decisions about your care.
               </p>
-              
+
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-3 text-sm text-black font-light">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
                   <span>Understand your oral health</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-black font-light">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
                   <span>Avoid surprise costs</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-black font-light">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
                   <span>Feel confident at the dentist</span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Spacer - Spans 1 column */}
-          <div className="hidden lg:block lg:col-span-1"></div>
+          {/* Navigation — right, spans 8 columns
+              6 cols on xl (1280px+), 3 cols on md–lg (768–1279px), 2 cols on mobile */}
+          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-x-3 gap-y-8">
 
-          {/* Navigation Links - Spans 6 columns */}
-          <div className="lg:col-span-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-            
-            {/* Product */}
+            {/* Column 1: Product */}
             <div>
-              <h4 className="font-medium text-black mb-6 tracking-wide">Product</h4>
-              <ul className="space-y-4">
+              <h4 className="font-semibold text-black mb-5 tracking-wide text-base">Product</h4>
+              <ul className="space-y-3">
                 <li>
                   <Link href="/how-it-works" className="text-black hover:text-primary transition-colors font-light text-sm">
                     How It Works
@@ -77,10 +75,10 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Company */}
+            {/* Column 2: Company */}
             <div>
-              <h4 className="font-medium text-black mb-6 tracking-wide">Company</h4>
-              <ul className="space-y-4">
+              <h4 className="font-semibold text-black mb-5 tracking-wide text-base">Company</h4>
+              <ul className="space-y-3">
                 <li>
                   <Link href="/team" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Team
@@ -104,10 +102,10 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Dental Costs */}
+            {/* Column 3: Dental Costs */}
             <div>
-              <h4 className="font-medium text-black mb-6 tracking-wide">Dental Costs</h4>
-              <ul className="space-y-4">
+              <h4 className="font-semibold text-black mb-5 tracking-wide text-base">Dental Costs</h4>
+              <ul className="space-y-3">
                 <li>
                   <Link href="/dental-costs" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Cost Guide Hub
@@ -141,10 +139,32 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Resources */}
-            <div>
-              <h4 className="font-medium text-black mb-6 tracking-wide">Resources</h4>
-              <ul className="space-y-4">
+            {/* Column 4: Comparisons — xl:ml-4 adds visual separation from the Cost group */}
+            <div className="xl:ml-4">
+              <h4 className="font-semibold text-black mb-5 tracking-wide text-base">Comparisons</h4>
+              <ul className="space-y-3">
+                <li>
+                  <Link href="/compare/dentasmart-vs-chatgpt-dental" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    DentaSmart vs ChatGPT
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/compare/dentasmart-vs-teledentistry" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    DentaSmart vs Teledentistry
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/compare/dentasmart-vs-dental-insurance" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    DentaSmart vs Insurance
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 5: Guides — xl:ml-4 matches Comparisons visual rhythm */}
+            <div className="xl:ml-4">
+              <h4 className="font-semibold text-black mb-5 tracking-wide text-base">Guides</h4>
+              <ul className="space-y-3">
                 <li>
                   <Link href="/oral-health-hub/conditions" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Conditions Guide
@@ -171,21 +191,6 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/compare/dentasmart-vs-chatgpt-dental" className="text-black hover:text-primary transition-colors font-light text-sm">
-                    DentaSmart vs ChatGPT
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/compare/dentasmart-vs-teledentistry" className="text-black hover:text-primary transition-colors font-light text-sm">
-                    DentaSmart vs Teledentistry
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/compare/dentasmart-vs-dental-insurance" className="text-black hover:text-primary transition-colors font-light text-sm">
-                    DentaSmart vs Insurance
-                  </Link>
-                </li>
-                <li>
                   <Link href="/life-stages" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Life Stages
                   </Link>
@@ -197,9 +202,16 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link href="/lifestyle" className="text-black hover:text-primary transition-colors font-light text-sm">
-                    Lifestyle & Oral Health
+                    Lifestyle &amp; Oral Health
                   </Link>
                 </li>
+              </ul>
+            </div>
+
+            {/* Column 6: Help & Legal — xl:ml-4 matches Comparisons visual rhythm */}
+            <div className="xl:ml-4">
+              <h4 className="font-semibold text-black mb-5 tracking-wide text-base">Help &amp; Legal</h4>
+              <ul className="space-y-3">
                 <li>
                   <Link href="/faqs" className="text-black hover:text-primary transition-colors font-light text-sm">
                     FAQs
@@ -232,6 +244,7 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
+
           </div>
         </div>
 
@@ -245,40 +258,40 @@ export default function Footer() {
               DentaSmart provides educational guidance, not medical advice. Always consult a licensed dentist. Learn more at <a href="https://www.ada.org/resources/research/science-and-research-institute/oral-health-topics" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">ADA.org</a>.
             </p>
           </div>
-          
+
           <div className="flex gap-6">
-            <a 
-              href="https://www.linkedin.com/company/dentasmart-ai/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-black hover:text-primary transition-colors" 
+            <a
+              href="https://www.linkedin.com/company/dentasmart-ai/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-black hover:text-primary transition-colors"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-5 h-5" />
             </a>
-            <a 
-              href="https://www.instagram.com/dentasmart.ai/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-black hover:text-primary transition-colors" 
+            <a
+              href="https://www.instagram.com/dentasmart.ai/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-black hover:text-primary transition-colors"
               aria-label="Instagram"
             >
               <Instagram className="w-5 h-5" />
             </a>
-            <a 
-              href="https://www.youtube.com/@DentaSmartAi" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-black hover:text-primary transition-colors" 
+            <a
+              href="https://www.youtube.com/@DentaSmartAi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-black hover:text-primary transition-colors"
               aria-label="YouTube"
             >
               <Youtube className="w-5 h-5" />
             </a>
-            <a 
-              href="https://www.facebook.com/people/DentaSmart-AI/61578704828365/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-black hover:text-primary transition-colors" 
+            <a
+              href="https://www.facebook.com/people/DentaSmart-AI/61578704828365/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-black hover:text-primary transition-colors"
               aria-label="Facebook"
             >
               <Facebook className="w-5 h-5" />

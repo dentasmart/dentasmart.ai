@@ -1,0 +1,13 @@
+{
+  "query": "SELECT GROUP_CONCAT(slug ORDER BY slug SEPARATOR ', ') as all_slugs FROM blog_posts WHERE status = 'published';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 2hsF2FVjwdjfxpf.root --database bguxPMV2uwRUGpkQABmyXT --execute SELECT GROUP_CONCAT(slug ORDER BY slug SEPARATOR ', ') as all_slugs FROM blog_posts WHERE status = 'published';",
+  "rows": [
+    {
+      "all_slugs": "10-questions-to-ask-your-dentist-before-any-procedure, ai-dental-app-for-parents, ai-dental-second-opinion-without-insurance, are-pop-on-veneers-safe-or-could-they-harm-your-teeth, at-what-age-should-my-child-first-see-a-dentist, avoid-surprise-dental-bills-guide, bad-breath, bad-breath-halitosis, best-ai-dental-apps, best-ai-health-apps-preventive-care, best-apps-tooth-pain-guidance, best-apps-understand-dental-xrays, best-dental-apps-for-parents, best-dental-apps-without-insurance, best-dental-cost-transparency-tools, best-dental-insurance-alternatives, best-dental-second-opinion-apps, best-oral-health-apps-families, black-line-on-tooth, bleeding-gums, bone-loss-dental-xray, braces-as-an-adult-is-it-too-late-to-straighten-your-teeth, braces-with-baby-teeth, brushing-teeth-prevent-dementia, can-ai-explain-dental-xrays, can-teeth-fall-out-suddenly, canker-sore-vs-cold-sore, cavity-symptoms-tooth-decay, cclear-aligners-vs-braces, check-teeth-with-ai-at-home, choosing-right-dentist, communication-gap, cosmetic-"
+    }
+  ],
+  "messages": [],
+  "stdout": "all_slugs\n10-questions-to-ask-your-dentist-before-any-procedure, ai-dental-app-for-parents, ai-dental-second-opinion-without-insurance, are-pop-on-veneers-safe-or-could-they-harm-your-teeth, at-what-age-should-my-child-first-see-a-dentist, avoid-surprise-dental-bills-guide, bad-breath, bad-breath-halitosis, best-ai-dental-apps, best-ai-health-apps-preventive-care, best-apps-tooth-pain-guidance, best-apps-understand-dental-xrays, best-dental-apps-for-parents, best-dental-apps-without-insurance, best-dental-cost-transparency-tools, best-dental-insurance-alternatives, best-dental-second-opinion-apps, best-oral-health-apps-families, black-line-on-tooth, bleeding-gums, bone-loss-dental-xray, braces-as-an-adult-is-it-too-late-to-straighten-your-teeth, braces-with-baby-teeth, brushing-teeth-prevent-dementia, can-ai-explain-dental-xrays, can-teeth-fall-out-suddenly, canker-sore-vs-cold-sore, cavity-symptoms-tooth-decay, cclear-aligners-vs-braces, check-teeth-with-ai-at-home, choosing-right-dentist, communication-gap, cosmetic-\n",
+  "stderr": "",
+  "execution_time_ms": 412
+}
