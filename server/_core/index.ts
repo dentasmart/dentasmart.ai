@@ -83,6 +83,8 @@ async function startServer() {
     // Guide aliases
     "/guides/teeth-whitening": "/conditions/teeth-whitening",
     "/guides/when-to-get-second-opinion": "/guides/when-to-get-dental-second-opinion",
+    // Legacy URL patterns
+    "/index.php": "/",
     // Typo slug corrections
     "/oral-health-hub/wwhat-are-dental-implants-cost": "/oral-health-hub/what-are-dental-implants-cost",
     "/oral-health-hub/cclear-aligners-vs-braces": "/oral-health-hub/clear-aligners-vs-braces",
