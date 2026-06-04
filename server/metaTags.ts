@@ -107,6 +107,11 @@ const staticMeta: Record<string, MetaInfo> = {
     description:
       "Read DentaSmart's terms of service. Understand the terms and conditions for using our AI dental health platform.",
   },
+  "/account-deletion": {
+    title: "Delete Your DentaSmart Account",
+    description:
+      "Permanently delete your DentaSmart account and all associated personal data. Simple two-step deletion process.",
+  },
 
   // ─── Comparison pages ──────────────────────────────────────────────
   "/compare/dentasmart-vs-chatgpt-dental": {
