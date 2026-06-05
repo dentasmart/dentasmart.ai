@@ -46,6 +46,8 @@ async function startServer() {
   // Converts client-side redirects to proper server-side 301s so crawlers
   // see the redirect header before JS runs (fixes duplicate meta descriptions).
   const serverRedirects: Record<string, string> = {
+    // Article URL changes
+    "/oral-health-hub/best-ai-dental-apps": "/oral-health-hub/top-10-best-ai-dental-apps/",
     // Old hub articles that now have dedicated pages
     "/oral-health-hub/oral-health-score-explained": "/conditions/toothache",
     "/oral-health-hub/dental-benefits-utilization-guide": "/conditions/gum-disease",
