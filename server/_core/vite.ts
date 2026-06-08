@@ -50,6 +50,26 @@ export async function setupVite(app: Express, server: Server) {
     configFile: false,
     server: serverOptions,
     appType: "custom",
+    // Explicitly set cacheDir so middleware-mode restarts always use the same
+    // optimized-deps cache location and never create a parallel client/.vite cache.
+    cacheDir: path.resolve(import.meta.dirname, "../../node_modules/.vite"),
+    // Hard-pin React to the single root copy so both the dep-optimizer graph
+    // and the normal module graph resolve to the same file, preventing the
+    // "Invalid hook call" / duplicate-React error.
+    resolve: {
+      ...viteConfig.resolve,
+      dedupe: ["react", "react-dom"],
+      alias: {
+        ...(viteConfig.resolve?.alias as Record<string, string> ?? {}),
+        react: path.resolve(import.meta.dirname, "../../node_modules/react"),
+        "react-dom": path.resolve(import.meta.dirname, "../../node_modules/react-dom"),
+        "react-dom/client": path.resolve(import.meta.dirname, "../../node_modules/react-dom/client"),
+      },
+    },
+    optimizeDeps: {
+      ...viteConfig.optimizeDeps,
+      include: ["react", "react-dom", ...((viteConfig.optimizeDeps?.include as string[]) ?? [])],
+    },
   });
 
   app.use(vite.middlewares);

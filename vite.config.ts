@@ -16,6 +16,16 @@ export default defineConfig({
       "@shared": path.resolve(import.meta.dirname, "shared"),
       "@assets": path.resolve(import.meta.dirname, "attached_assets"),
     },
+    // Ensure only one copy of React is bundled — prevents "Invalid hook call" errors
+    // when packages like @tiptap/react resolve their own React peer dep
+    dedupe: ["react", "react-dom"],
+  },
+  optimizeDeps: {
+    // Force Vite to pre-bundle react and react-dom as a single shared chunk.
+    // Without this, Vite may create separate pre-bundled copies for packages
+    // that list react as a peer dep (e.g. @tiptap/react, @trpc/react-query),
+    // causing the "Invalid hook call" / "Cannot read properties of null" errors.
+    include: ["react", "react-dom"],
   },
   envDir: path.resolve(import.meta.dirname),
   root: path.resolve(import.meta.dirname, "client"),
