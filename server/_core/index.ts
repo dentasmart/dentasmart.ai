@@ -48,6 +48,9 @@ async function startServer() {
   const serverRedirects: Record<string, string> = {
     // Article URL changes
     "/oral-health-hub/best-ai-dental-apps": "/oral-health-hub/top-10-best-ai-dental-apps/",
+    // Comparison pages consolidated
+    "/comparisons/veneers-vs-crowns": "/comparisons/",
+    "/comparisons/veneers-vs-crowns/": "/comparisons/",
     // Old hub articles that now have dedicated pages
     "/oral-health-hub/oral-health-score-explained": "/conditions/toothache",
     "/oral-health-hub/dental-benefits-utilization-guide": "/conditions/gum-disease",
