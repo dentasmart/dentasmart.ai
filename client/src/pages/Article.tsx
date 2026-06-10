@@ -54,6 +54,53 @@ export default function Article() {
     }
   }, [article]);
 
+  // Effect 1 — Handle initial page load with a URL hash (e.g. /post-slug/#5)
+  // Waits for content to be fully rendered before scrolling.
+  useEffect(() => {
+    if (!article || isLoading) return;
+
+    const hash = window.location.hash;
+    if (!hash) return;
+
+    const timeoutId = setTimeout(() => {
+      const id = decodeURIComponent(hash.substring(1));
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 200);
+
+    return () => clearTimeout(timeoutId);
+  }, [article, isLoading]);
+
+  // Effect 2 — Intercept in-page anchor link clicks so Wouter doesn't swallow them.
+  // Only intercepts href="#..." links; all other links are unaffected.
+  useEffect(() => {
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const link = target.closest('a[href^="#"]') as HTMLAnchorElement | null;
+
+      if (!link) return;
+
+      const href = link.getAttribute('href');
+      if (!href || href === '#') return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const id = decodeURIComponent(href.substring(1));
+      const element = document.getElementById(id);
+
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.history.pushState(null, '', href);
+      }
+    };
+
+    document.addEventListener('click', handleAnchorClick);
+    return () => document.removeEventListener('click', handleAnchorClick);
+  }, []);
+
   if (!match) {
     return <NotFound />;
   }
