@@ -27,6 +27,8 @@ const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("@/pages/TermsOfService"));
 const AccountDeletion = lazy(() => import("@/pages/AccountDeletion"));
 const AccountDeleteConfirm = lazy(() => import("@/pages/AccountDeleteConfirm"));
+const Invite = lazy(() => import("@/pages/Invite"));
+const InviteSuccess = lazy(() => import("@/pages/InviteSuccess"));
 const Stories = lazy(() => import("@/pages/Stories"));
 const Download = lazy(() => import("./pages/Download"));
 const InstantScan = lazy(() => import("./pages/InstantScan"));
@@ -135,6 +137,8 @@ function Router() {
         <Route path="/privacy-policy" component={PrivacyPolicy} />
         <Route path="/terms-of-service" component={TermsOfService} />
         <Route path="/account-deletion" component={AccountDeletion} />
+        <Route path="/invite/success" component={InviteSuccess} />
+        <Route path="/invite" component={Invite} />
         <Route path="/account/delete/:token" component={AccountDeleteConfirm} />
         <Route path="/stories" component={Stories} />
         <Route path="/download" component={Download} />

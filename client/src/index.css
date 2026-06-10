@@ -608,3 +608,37 @@
 .editor-link-dialog {
   z-index: 100;
 }
+
+/* ─── react-phone-number-input custom styles ─────────────────────────────── */
+.phone-input-custom {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.phone-input-custom .PhoneInputCountry {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+.phone-input-custom .PhoneInputCountrySelect {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.875rem;
+  color: #57534e;
+  cursor: pointer;
+  padding: 0;
+}
+.phone-input-custom .PhoneInputInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 0.875rem;
+  color: #1c1917;
+  min-width: 0;
+}
+.phone-input-custom .PhoneInputInput::placeholder {
+  color: #a8a29e;
+}

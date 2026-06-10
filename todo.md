@@ -1530,3 +1530,8 @@
 - [x] feat(editor): add per-block HTML editing popover to bubble menu (Edit HTML button, code textarea, Save/Cancel, Escape key)
 - [x] feat(editor): validate per-block HTML (single block, allowed tags, disallow script/style/event handlers)
 - [x] feat(editor): replace block node via TipTap transaction on Save
+
+- [x] feat(invite): install react-phone-number-input for international phone field
+- [x] feat(invite): build /invite page — registration form with 7 fields, ref param pre-fill, API call to live-backend.dentasmart.ai/v1/register
+- [x] feat(invite): build /invite/success page — success card with animated checkmark, App Store link, direct-access guard
+- [x] feat(invite): wire /invite and /invite/success routes in App.tsx
