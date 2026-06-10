@@ -1,5 +1,6 @@
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
+import Heading from "@tiptap/extension-heading";
 import Link from "@tiptap/extension-link";
 import Image from "@tiptap/extension-image";
 import TextAlign from "@tiptap/extension-text-align";
@@ -170,9 +171,28 @@ export default function BlogEditor({
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
-        heading: { levels: [1, 2, 3, 4] },
+        heading: false, // Replaced by CustomHeading below
         codeBlock: false, // Replaced by CodeBlockLowlight
       }),
+      // CustomHeading: extends the built-in Heading extension to preserve
+      // the `id` attribute through TipTap's parse → model → serialise cycle.
+      // Without this, any id= typed in the HTML source view is silently
+      // discarded when ProseMirror ingests the HTML.
+      Heading.extend({
+        addAttributes() {
+          return {
+            ...this.parent?.(),
+            id: {
+              default: null,
+              parseHTML: (element: HTMLElement) => element.getAttribute("id") || null,
+              renderHTML: (attributes: Record<string, unknown>) => {
+                if (!attributes.id) return {};
+                return { id: attributes.id as string };
+              },
+            },
+          };
+        },
+      }).configure({ levels: [1, 2, 3, 4] }),
       Link.configure({
         openOnClick: false,
         HTMLAttributes: {
@@ -315,19 +335,32 @@ export default function BlogEditor({
   }, [editor, htmlSource, onChange]);
 
   // ─── TOC generator ────────────────────────────────────────────────────
+  // Generates slugified IDs from heading text, writes those IDs back onto
+  // the heading nodes in the ProseMirror document (so anchor links work),
+  // then inserts a <div class="toc-block"> with matching href="#id" links.
   const insertTOC = useCallback(() => {
     if (!editor) return;
-    const headings: { level: number; text: string; id: string }[] = [];
-    editor.state.doc.descendants((node) => {
+    const headings: { level: number; text: string; id: string; pos: number }[] = [];
+    editor.state.doc.descendants((node, pos) => {
       if (node.type.name === "heading") {
         const text = node.textContent;
         const id = text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-        headings.push({ level: node.attrs.level, text, id });
+        headings.push({ level: node.attrs.level, text, id, pos });
       }
     });
 
     if (headings.length === 0) return;
 
+    // Step 1: Write id attributes back onto each heading node
+    const { tr } = editor.state;
+    headings.forEach(({ id, pos }) => {
+      const node = editor.state.doc.nodeAt(pos);
+      if (!node) return;
+      tr.setNodeMarkup(pos, undefined, { ...node.attrs, id });
+    });
+    editor.view.dispatch(tr);
+
+    // Step 2: Insert the TOC block
     const tocHtml = `<div class="toc-block"><p><strong>Table of Contents</strong></p><ul>${headings
       .map((h) => `<li style="margin-left:${(h.level - 1) * 16}px"><a href="#${h.id}">${h.text}</a></li>`)
       .join("")}</ul></div>`;

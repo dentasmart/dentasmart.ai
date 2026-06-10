@@ -1523,3 +1523,10 @@
 
 ## Google Search Console Verification
 - [x] Add google-site-verification meta tag to client/index.html
+
+## BlogEditor Improvements - Jun 10, 2026
+- [x] feat(editor): extend Heading extension with CustomHeading to preserve id attributes (addAttributes + parseHTML + renderHTML)
+- [x] feat(editor): update TOC generator to write id attributes back onto heading nodes in the ProseMirror document
+- [x] feat(editor): add per-block HTML editing popover to bubble menu (Edit HTML button, code textarea, Save/Cancel, Escape key)
+- [x] feat(editor): validate per-block HTML (single block, allowed tags, disallow script/style/event handlers)
+- [x] feat(editor): replace block node via TipTap transaction on Save
