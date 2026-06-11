@@ -1551,3 +1551,24 @@
 - [x] feat(media-lib/phase2): implement media.backpopulateDimensions tRPC procedure for null-width rows
 - [x] feat(media-lib/phase2): build upload UI in AdminMediaLibrary (Upload button, drag-drop overlay, clipboard paste, per-file progress panel)
 - [x] feat(media-lib/phase2): run backpopulate --dry-run, get approval, then run live backpopulate on 11 existing images
+
+## Media Library Phase 3
+
+- [x] feat(media-lib/phase3/A): add storageDelete no-op stub to storage.ts with platform limitation comment
+- [x] feat(media-lib/phase3/A): fix media.delete to fetch row, call storageDelete for all 4 variants, then delete DB row
+- [x] feat(media-lib/phase3/A): add media.bulkDelete tRPC procedure (array of IDs, same pattern)
+- [x] feat(media-lib/phase3/B): replace single-select state with multi-select Set<number> + anchorId in AdminMediaLibrary
+- [x] feat(media-lib/phase3/B): hover checkboxes on grid tiles (show on hover or when any selected)
+- [x] feat(media-lib/phase3/B): click checkbox = toggle, click image = open detail panel
+- [x] feat(media-lib/phase3/B): shift+click range select, Cmd/Ctrl+click toggle, Cmd/Ctrl+A select all, Escape clear
+- [x] feat(media-lib/phase3/B): bulk actions bar (count, Delete Selected, Download Selected zip, Clear Selection)
+- [x] feat(media-lib/phase3/B): bulk delete confirmation modal with CDN warning and in-use count
+- [x] feat(media-lib/phase3/C): install react-image-crop
+- [x] feat(media-lib/phase3/C): add media.editImage tRPC procedure (crop/resize/rotate via Sharp, save-as-new or replace)
+- [x] feat(media-lib/phase3/C): crop modal with aspect presets (Free, 1:1, 16:9, 4:3, 3:2)
+- [x] feat(media-lib/phase3/C): resize modal with width/height inputs and aspect lock toggle
+- [x] feat(media-lib/phase3/C): rotate modal with 90° CCW / CW buttons
+- [x] feat(media-lib/phase3/D): add media.replaceWithNew tRPC procedure (upload new, REPLACE bodyHtml in posts, update row, log)
+- [x] feat(media-lib/phase3/D): add media_replacement_log table to schema for audit trail
+- [x] feat(media-lib/phase3/D): Replace with New Image button + modal in detail panel (old vs new preview, post count warning)
+- [x] feat(media-lib/phase3/D): replacement confirmation modal with CDN warning and "This will modify X published posts" message

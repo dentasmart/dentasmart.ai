@@ -22,11 +22,24 @@ const redirectToLoginIfUnauthorized = (error: unknown) => {
   window.location.href = getLoginUrl();
 };
 
+// Suppress logging for expected auth errors (admin cookie missing, Manus OAuth not logged in).
+// These are normal application states, not bugs.
+const isExpectedAuthError = (error: unknown): boolean => {
+  if (!(error instanceof TRPCClientError)) return false;
+  return (
+    error.message === UNAUTHED_ERR_MSG ||
+    error.message === "Admin authentication required" ||
+    error.data?.code === "UNAUTHORIZED"
+  );
+};
+
 queryClient.getQueryCache().subscribe(event => {
   if (event.type === "updated" && event.action.type === "error") {
     const error = event.query.state.error;
     redirectToLoginIfUnauthorized(error);
-    console.error("[API Query Error]", error);
+    if (!isExpectedAuthError(error)) {
+      console.error("[API Query Error]", error);
+    }
   }
 });
 
@@ -34,7 +47,9 @@ queryClient.getMutationCache().subscribe(event => {
   if (event.type === "updated" && event.action.type === "error") {
     const error = event.mutation.state.error;
     redirectToLoginIfUnauthorized(error);
-    console.error("[API Mutation Error]", error);
+    if (!isExpectedAuthError(error)) {
+      console.error("[API Mutation Error]", error);
+    }
   }
 });
 

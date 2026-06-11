@@ -307,3 +307,18 @@ export const mediaTagAssignments = mysqlTable("media_tag_assignments", {
 
 export type MediaTagAssignment = typeof mediaTagAssignments.$inferSelect;
 export type InsertMediaTagAssignment = typeof mediaTagAssignments.$inferInsert;
+
+/**
+ * Audit log for image replacements.
+ * Records every time an image URL is replaced across blog posts.
+ */
+export const mediaReplacementLog = mysqlTable("media_replacement_log", {
+  id: int("id").autoincrement().primaryKey(),
+  mediaItemId: int("mediaItemId").notNull(),
+  oldUrl: varchar("oldUrl", { length: 1000 }).notNull(),
+  newUrl: varchar("newUrl", { length: 1000 }).notNull(),
+  postsUpdated: int("postsUpdated").notNull().default(0),
+  replacedAt: timestamp("replacedAt").defaultNow().notNull(),
+});
+export type MediaReplacementLog = typeof mediaReplacementLog.$inferSelect;
+export type InsertMediaReplacementLog = typeof mediaReplacementLog.$inferInsert;

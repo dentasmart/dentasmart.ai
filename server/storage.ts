@@ -92,6 +92,32 @@ export async function storagePut(
   return { key, url };
 }
 
+/**
+ * PLATFORM LIMITATION: The Manus storage proxy (forge.manus.ai) does not expose
+ * a file-deletion endpoint. All known patterns (DELETE /v1/storage/delete,
+ * DELETE /v1/storage/file, POST /v1/storage/delete) return 404.
+ *
+ * This function is a best-effort no-op stub. It logs the intent but cannot
+ * actually remove files from the CDN. Orphaned files will persist at their
+ * direct CloudFront URLs after catalogue entries are deleted.
+ *
+ * If the storage proxy gains a delete API in the future, replace the body
+ * of this function with the appropriate fetch() call.
+ */
+export async function storageDelete(
+  relKey: string
+): Promise<{ key: string; deleted: boolean; note: string }> {
+  const key = normalizeKey(relKey);
+  console.warn(
+    `[storageDelete] Platform limitation: cannot delete key "${key}" — storage proxy has no delete API. File may remain accessible via CDN.`
+  );
+  return {
+    key,
+    deleted: false,
+    note: 'Storage proxy does not support file deletion. CDN file persists.',
+  };
+}
+
 export async function storageGet(relKey: string): Promise<{ key: string; url: string; }> {
   const { baseUrl, apiKey } = getStorageConfig();
   const key = normalizeKey(relKey);
