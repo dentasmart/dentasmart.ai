@@ -1572,3 +1572,19 @@
 - [x] feat(media-lib/phase3/D): add media_replacement_log table to schema for audit trail
 - [x] feat(media-lib/phase3/D): Replace with New Image button + modal in detail panel (old vs new preview, post count warning)
 - [x] feat(media-lib/phase3/D): replacement confirmation modal with CDN warning and "This will modify X published posts" message
+
+## Media Library Phase 4 — Blog Editor Integration
+
+- [x] feat(media-lib/phase4/A): change BlogEditor outer wrapper from overflow-hidden to overflow-visible
+- [x] feat(media-lib/phase4/A): make toolbar sticky (sticky top-14 z-40 bg-white shadow-sm)
+- [x] feat(media-lib/phase4/A): verify toolbar stays visible on scroll, all buttons clickable, no modal overlap
+- [x] feat(media-lib/phase4/B): add Library tab to ImageUploadModal (trpc.media.list, search, thumbnail grid, selection, alt override, Insert Selected)
+- [x] feat(media-lib/phase4/B): on library insert use mediumUrl as src, altText from media item (user-editable before insert)
+- [x] feat(media-lib/phase4/C): create ImageNodeView.tsx React NodeView wrapping <img> with onClick (action bar) and onDoubleClick (metadata modal)
+- [x] feat(media-lib/phase4/C): floating action bar above image: Edit Alt, Replace, Caption, Delete, View in Library
+- [x] feat(media-lib/phase4/C): action bar disappears on outside click or Escape
+- [x] feat(media-lib/phase4/C): double-click metadata modal: filename, dimensions, file size, alt (editable → trpc.media.update), upload date, usage count, link to library
+- [x] feat(media-lib/phase4/C): Replace button in action bar opens library modal to swap image in post
+- [x] feat(media-lib/phase4/E): keyboard shortcut Cmd/Ctrl+Shift+I → open image insertion modal
+- [x] feat(media-lib/phase4/E): Delete/Backspace when image node selected → remove image from post
+- [x] feat(media-lib/phase4/E): Escape → close image action bar

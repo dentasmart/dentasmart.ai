@@ -1,4 +1,4 @@
-import { useEditor, EditorContent } from "@tiptap/react";
+import { useEditor, EditorContent, ReactNodeViewRenderer } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Heading from "@tiptap/extension-heading";
 import Link from "@tiptap/extension-link";
@@ -65,10 +65,10 @@ import EditorLinkDialog from "./editor/EditorLinkDialog";
 import FindReplaceBar from "./editor/FindReplaceBar";
 import EditorFooter from "./editor/EditorFooter";
 import { createSlashCommandExtension } from "./editor/SlashCommandMenu";
+import ImageNodeView from "./editor/ImageNodeView";
 import { trpc } from "@/lib/trpc";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
-
 interface BlogEditorProps {
   content: string;
   onChange: (html: string) => void;
@@ -95,6 +95,7 @@ export default function BlogEditor({
   onAutoSave,
 }: BlogEditorProps) {
   const [showImageModal, setShowImageModal] = useState(false);
+  const [imageModalDefaultTab, setImageModalDefaultTab] = useState<"upload" | "url" | "library">("upload");
   const [showLinkDialog, setShowLinkDialog] = useState(false);
   const [showFindReplace, setShowFindReplace] = useState(false);
   const [htmlMode, setHtmlMode] = useState(false);
@@ -103,6 +104,10 @@ export default function BlogEditor({
   const [lastSaved, setLastSaved] = useState<Date | null>(null);
   const autoSaveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastSavedContent = useRef<string>("");
+  const editorWrapperRef = useRef<HTMLDivElement>(null);
+  // Pending replace callback: set when an image node requests a replace
+  const pendingReplaceRef = useRef<((url: string, alt?: string) => void) | null>(null);
+
   const uploadMutation = trpc.blog.uploadImage.useMutation();
 
   // ─── Upload helper for paste/drop ──────────────────────────────────────
@@ -140,13 +145,13 @@ export default function BlogEditor({
   const scheduleAutoSave = useCallback(
     (html: string) => {
       if (!onAutoSave) return;
-      if (postStatus !== "draft") return; // Only auto-save drafts
-      if (!postTitle?.trim()) return; // Skip if title is empty
+      if (postStatus !== "draft") return;
+      if (!postTitle?.trim()) return;
 
       if (autoSaveTimer.current) clearTimeout(autoSaveTimer.current);
 
       autoSaveTimer.current = setTimeout(async () => {
-        if (html === lastSavedContent.current) return; // No change
+        if (html === lastSavedContent.current) return;
         setAutoSaveStatus("saving");
         try {
           await onAutoSave(html);
@@ -155,14 +160,11 @@ export default function BlogEditor({
           setLastSaved(new Date());
         } catch {
           setAutoSaveStatus("error");
-          // Retry once after 10s
           setTimeout(() => {
-            if (autoSaveStatus !== "saving") {
-              setAutoSaveStatus("idle");
-            }
+            if (autoSaveStatus !== "saving") setAutoSaveStatus("idle");
           }, 10000);
         }
-      }, 30000); // 30s debounce
+      }, 30000);
     },
     [onAutoSave, postStatus, postTitle, autoSaveStatus]
   );
@@ -171,13 +173,10 @@ export default function BlogEditor({
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
-        heading: false, // Replaced by CustomHeading below
-        codeBlock: false, // Replaced by CodeBlockLowlight
+        heading: false,
+        codeBlock: false,
       }),
-      // CustomHeading: extends the built-in Heading extension to preserve
-      // the `id` attribute through TipTap's parse → model → serialise cycle.
-      // Without this, any id= typed in the HTML source view is silently
-      // discarded when ProseMirror ingests the HTML.
+      // CustomHeading: preserves `id` attribute through TipTap parse→model→serialise cycle
       Heading.extend({
         addAttributes() {
           return {
@@ -199,7 +198,12 @@ export default function BlogEditor({
           class: "text-primary underline hover:text-primary/80",
         },
       }),
-      Image.configure({
+      // Custom Image extension with NodeView for click interactions
+      Image.extend({
+        addNodeView() {
+          return ReactNodeViewRenderer(ImageNodeView);
+        },
+      }).configure({
         HTMLAttributes: {
           class: "rounded-lg max-w-full mx-auto",
         },
@@ -237,7 +241,10 @@ export default function BlogEditor({
         nocookie: true,
         HTMLAttributes: { class: "youtube-embed" },
       }),
-      createSlashCommandExtension(() => setShowImageModal(true)),
+      createSlashCommandExtension(() => {
+        setImageModalDefaultTab("upload");
+        setShowImageModal(true);
+      }),
     ],
     content,
     onUpdate: ({ editor }) => {
@@ -293,6 +300,40 @@ export default function BlogEditor({
     },
   });
 
+  // ─── Listen for image replace events from ImageNodeView ───────────────
+  useEffect(() => {
+    const wrapper = editorWrapperRef.current;
+    if (!wrapper) return;
+
+    const handleReplaceEvent = (e: Event) => {
+      const detail = (e as CustomEvent).detail as {
+        currentSrc: string;
+        onReplace: (url: string, alt?: string) => void;
+      };
+      pendingReplaceRef.current = detail.onReplace;
+      setImageModalDefaultTab("library");
+      setShowImageModal(true);
+    };
+
+    wrapper.addEventListener("editor:image-replace", handleReplaceEvent);
+    return () => wrapper.removeEventListener("editor:image-replace", handleReplaceEvent);
+  }, []);
+
+  // ─── Image insert handler ─────────────────────────────────────────────
+  const handleImageInsert = useCallback(
+    (url: string, alt?: string) => {
+      // If we have a pending replace callback (from ImageNodeView), use it
+      if (pendingReplaceRef.current) {
+        pendingReplaceRef.current(url, alt);
+        pendingReplaceRef.current = null;
+        return;
+      }
+      if (!editor) return;
+      editor.chain().focus().setImage({ src: url, alt: alt || "" }).run();
+    },
+    [editor]
+  );
+
   // ─── Keyboard shortcuts ────────────────────────────────────────────────
   useEffect(() => {
     if (!editor) return;
@@ -300,13 +341,21 @@ export default function BlogEditor({
       const isMac = navigator.platform.toUpperCase().includes("MAC");
       const mod = isMac ? e.metaKey : e.ctrlKey;
 
+      // ⌘K → link dialog
       if (mod && e.key === "k") {
         e.preventDefault();
         setShowLinkDialog(true);
       }
+      // ⌘F → find & replace
       if (mod && e.key === "f") {
         e.preventDefault();
         setShowFindReplace((v) => !v);
+      }
+      // ⌘+Shift+I → image insertion modal
+      if (mod && e.shiftKey && e.key === "I") {
+        e.preventDefault();
+        setImageModalDefaultTab("upload");
+        setShowImageModal(true);
       }
     };
     document.addEventListener("keydown", handleKeyDown);
@@ -335,9 +384,6 @@ export default function BlogEditor({
   }, [editor, htmlSource, onChange]);
 
   // ─── TOC generator ────────────────────────────────────────────────────
-  // Generates slugified IDs from heading text, writes those IDs back onto
-  // the heading nodes in the ProseMirror document (so anchor links work),
-  // then inserts a <div class="toc-block"> with matching href="#id" links.
   const insertTOC = useCallback(() => {
     if (!editor) return;
     const headings: { level: number; text: string; id: string; pos: number }[] = [];
@@ -351,7 +397,6 @@ export default function BlogEditor({
 
     if (headings.length === 0) return;
 
-    // Step 1: Write id attributes back onto each heading node
     const { tr } = editor.state;
     headings.forEach(({ id, pos }) => {
       const node = editor.state.doc.nodeAt(pos);
@@ -360,7 +405,6 @@ export default function BlogEditor({
     });
     editor.view.dispatch(tr);
 
-    // Step 2: Insert the TOC block
     const tocHtml = `<div class="toc-block"><p><strong>Table of Contents</strong></p><ul>${headings
       .map((h) => `<li style="margin-left:${(h.level - 1) * 16}px"><a href="#${h.id}">${h.text}</a></li>`)
       .join("")}</ul></div>`;
@@ -368,21 +412,12 @@ export default function BlogEditor({
     editor.chain().focus().insertContent(tocHtml).run();
   }, [editor]);
 
-  // ─── Image insert handler ─────────────────────────────────────────────
-  const handleImageInsert = useCallback(
-    (url: string, alt?: string) => {
-      if (!editor) return;
-      editor.chain().focus().setImage({ src: url, alt: alt || "" }).run();
-    },
-    [editor]
-  );
-
   if (!editor) return null;
 
   return (
-    <div className="border border-stone-200 rounded-xl overflow-hidden bg-white">
-      {/* ── Toolbar ─────────────────────────────────────────────────────── */}
-      <div className="border-b border-stone-200 bg-stone-50 p-2 flex flex-wrap gap-1">
+    <div className="border border-stone-200 rounded-xl bg-white" ref={editorWrapperRef}>
+      {/* ── Toolbar (sticky) ────────────────────────────────────────────── */}
+      <div className="border-b border-stone-200 bg-stone-50 p-2 flex flex-wrap gap-1 sticky top-14 z-40 rounded-t-xl shadow-sm">
 
         {/* Text formatting */}
         <div className="flex items-center gap-0.5 pr-2 border-r border-stone-200">
@@ -503,7 +538,13 @@ export default function BlogEditor({
           <ToolbarButton onClick={() => setShowLinkDialog(true)} active={editor.isActive("link")} title="Insert Link (⌘K)">
             <LinkIcon className="w-4 h-4" />
           </ToolbarButton>
-          <ToolbarButton onClick={() => setShowImageModal(true)} title="Insert Image">
+          <ToolbarButton
+            onClick={() => {
+              setImageModalDefaultTab("upload");
+              setShowImageModal(true);
+            }}
+            title="Insert Image (⌘⇧I)"
+          >
             <ImageIcon className="w-4 h-4" />
           </ToolbarButton>
           <ToolbarButton onClick={() => editor.chain().focus().setHorizontalRule().run()} title="Horizontal Rule">
@@ -582,8 +623,12 @@ export default function BlogEditor({
       {/* ── Modals ─────────────────────────────────────────────────────── */}
       <ImageUploadModal
         open={showImageModal}
-        onClose={() => setShowImageModal(false)}
+        onClose={() => {
+          setShowImageModal(false);
+          pendingReplaceRef.current = null;
+        }}
         onInsert={handleImageInsert}
+        defaultTab={imageModalDefaultTab}
       />
 
       <EditorLinkDialog
