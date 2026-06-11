@@ -1543,3 +1543,11 @@
 - [x] feat(media-lib/phase1): wire /admin/media route in AdminRouter.tsx and sidebar in AdminLayout.tsx
 - [x] feat(media-lib/phase1): write backfill script (--dry-run mode) to catalogue 11 existing images
 - [x] feat(media-lib/phase1): run live backfill after user approval
+
+- [x] feat(media-lib/phase2): extend media_items schema with thumbnailUrl, mediumUrl, webpUrl columns
+- [x] feat(media-lib/phase2): run pnpm db:push to migrate new columns
+- [x] feat(media-lib/phase2): implement media.upload tRPC procedure with Sharp processing (thumb/medium/webp)
+- [x] feat(media-lib/phase2): implement media.uploadMultiple tRPC procedure (batch, independent failures)
+- [x] feat(media-lib/phase2): implement media.backpopulateDimensions tRPC procedure for null-width rows
+- [x] feat(media-lib/phase2): build upload UI in AdminMediaLibrary (Upload button, drag-drop overlay, clipboard paste, per-file progress panel)
+- [x] feat(media-lib/phase2): run backpopulate --dry-run, get approval, then run live backpopulate on 11 existing images

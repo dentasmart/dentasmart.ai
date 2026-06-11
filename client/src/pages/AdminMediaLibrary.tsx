@@ -1,10 +1,9 @@
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Badge } from "@/components/ui/badge";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -30,6 +29,11 @@ import {
   X,
   Save,
   AlertCircle,
+  Upload,
+  CloudUpload,
+  CheckCircle2,
+  XCircle,
+  RefreshCw,
 } from "lucide-react";
 import { toast } from "sonner";
 import AdminLayout from "@/components/AdminLayout";
@@ -45,6 +49,9 @@ type MediaItem = {
   fileSizeBytes: number | null;
   width: number | null;
   height: number | null;
+  thumbnailUrl: string | null;
+  mediumUrl: string | null;
+  webpUrl: string | null;
   altText: string | null;
   caption: string | null;
   title: string | null;
@@ -57,6 +64,27 @@ type UsagePost = {
   postSlug: string;
   postTitle: string;
 };
+
+type UploadFileState = {
+  id: string;
+  file: File;
+  status: "pending" | "uploading" | "done" | "error";
+  error?: string;
+  result?: MediaItem;
+};
+
+// ─── Constants ───────────────────────────────────────────────────────────────
+
+const ALLOWED_TYPES = new Set([
+  "image/jpeg",
+  "image/png",
+  "image/webp",
+  "image/gif",
+  "image/svg+xml",
+  "application/pdf",
+]);
+const MAX_FILE_SIZE_MB = 10;
+const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
 
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
@@ -75,7 +103,127 @@ function formatDate(d: Date): string {
   });
 }
 
-// ─── Sub-components ──────────────────────────────────────────────────────────
+function fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result as string;
+      // Strip the data URL prefix (e.g. "data:image/jpeg;base64,")
+      resolve(result.split(",")[1]);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+function validateFile(file: File): string | null {
+  if (!ALLOWED_TYPES.has(file.type)) {
+    return `"${file.type}" is not supported. Accepted: JPEG, PNG, WebP, GIF, SVG, PDF.`;
+  }
+  if (file.size > MAX_FILE_SIZE_BYTES) {
+    return `File exceeds ${MAX_FILE_SIZE_MB} MB limit (${(file.size / 1024 / 1024).toFixed(1)} MB).`;
+  }
+  return null;
+}
+
+// ─── UploadProgressPanel ─────────────────────────────────────────────────────
+
+function UploadProgressPanel({
+  files,
+  onRemove,
+  onClose,
+}: {
+  files: UploadFileState[];
+  onRemove: (id: string) => void;
+  onClose: () => void;
+}) {
+  const done = files.filter((f) => f.status === "done").length;
+  const failed = files.filter((f) => f.status === "error").length;
+  const pending = files.filter((f) => f.status === "pending" || f.status === "uploading").length;
+
+  return (
+    <div className="fixed bottom-6 right-6 z-50 w-80 bg-white border border-stone-200 rounded-xl shadow-xl overflow-hidden">
+      {/* Header */}
+      <div className="flex items-center justify-between px-4 py-3 bg-stone-50 border-b border-stone-200">
+        <div className="flex items-center gap-2">
+          {pending > 0 ? (
+            <Loader2 className="w-4 h-4 animate-spin text-primary" />
+          ) : failed > 0 ? (
+            <XCircle className="w-4 h-4 text-red-500" />
+          ) : (
+            <CheckCircle2 className="w-4 h-4 text-green-500" />
+          )}
+          <span className="text-sm font-medium text-stone-800">
+            {pending > 0
+              ? `Uploading ${pending} file${pending !== 1 ? "s" : ""}…`
+              : `${done} uploaded${failed > 0 ? `, ${failed} failed` : ""}`}
+          </span>
+        </div>
+        {pending === 0 && (
+          <button
+            onClick={onClose}
+            className="text-stone-400 hover:text-stone-600 cursor-pointer"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        )}
+      </div>
+
+      {/* File list */}
+      <div className="max-h-60 overflow-y-auto divide-y divide-stone-100">
+        {files.map((f) => (
+          <div key={f.id} className="flex items-center gap-3 px-4 py-2.5">
+            {/* Status icon */}
+            <div className="flex-shrink-0">
+              {f.status === "uploading" || f.status === "pending" ? (
+                <Loader2 className="w-4 h-4 animate-spin text-primary" />
+              ) : f.status === "done" ? (
+                <CheckCircle2 className="w-4 h-4 text-green-500" />
+              ) : (
+                <XCircle className="w-4 h-4 text-red-500" />
+              )}
+            </div>
+
+            {/* Filename + error */}
+            <div className="flex-1 min-w-0">
+              <p className="text-xs font-medium text-stone-700 truncate">{f.file.name}</p>
+              {f.status === "error" && f.error && (
+                <p className="text-[10px] text-red-500 mt-0.5 truncate">{f.error}</p>
+              )}
+            </div>
+
+            {/* Remove button (only for done/error) */}
+            {(f.status === "done" || f.status === "error") && (
+              <button
+                onClick={() => onRemove(f.id)}
+                className="text-stone-300 hover:text-stone-500 cursor-pointer flex-shrink-0"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─── DragDropOverlay ─────────────────────────────────────────────────────────
+
+function DragDropOverlay({ visible }: { visible: boolean }) {
+  if (!visible) return null;
+  return (
+    <div className="fixed inset-0 z-40 bg-primary/10 backdrop-blur-[2px] flex items-center justify-center pointer-events-none">
+      <div className="bg-white border-2 border-dashed border-primary rounded-2xl px-16 py-12 flex flex-col items-center gap-3 shadow-2xl">
+        <CloudUpload className="w-12 h-12 text-primary" />
+        <p className="text-lg font-semibold text-primary">Drop files to upload</p>
+        <p className="text-sm text-stone-500">JPEG, PNG, WebP, GIF, SVG, PDF · Max {MAX_FILE_SIZE_MB} MB each</p>
+      </div>
+    </div>
+  );
+}
+
+// ─── MediaGrid ───────────────────────────────────────────────────────────────
 
 function MediaGrid({
   items,
@@ -99,7 +247,7 @@ function MediaGrid({
           }`}
         >
           <img
-            src={item.url}
+            src={item.thumbnailUrl || item.url}
             alt={item.altText || item.filename}
             className="w-full h-full object-cover"
             loading="lazy"
@@ -110,9 +258,7 @@ function MediaGrid({
           />
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors" />
           <div className="absolute bottom-0 left-0 right-0 p-1.5 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-            <p className="text-white text-[10px] truncate leading-tight">
-              {item.filename}
-            </p>
+            <p className="text-white text-[10px] truncate leading-tight">{item.filename}</p>
           </div>
           {selectedId === item.id && (
             <div className="absolute top-1.5 right-1.5 w-5 h-5 bg-primary rounded-full flex items-center justify-center">
@@ -124,6 +270,8 @@ function MediaGrid({
     </div>
   );
 }
+
+// ─── MediaListView ────────────────────────────────────────────────────────────
 
 function MediaListView({
   items,
@@ -148,7 +296,7 @@ function MediaListView({
         >
           <div className="w-12 h-12 rounded-md overflow-hidden border border-stone-200 flex-shrink-0 bg-stone-50">
             <img
-              src={item.url}
+              src={item.thumbnailUrl || item.url}
               alt={item.altText || item.filename}
               className="w-full h-full object-cover"
               loading="lazy"
@@ -175,6 +323,8 @@ function MediaListView({
   );
 }
 
+// ─── DetailPanel ─────────────────────────────────────────────────────────────
+
 function DetailPanel({
   item,
   onClose,
@@ -192,7 +342,6 @@ function DetailPanel({
   const [copied, setCopied] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
 
-  // Usage query
   const { data: usageData, isLoading: usageLoading } = trpc.media.checkUsage.useQuery(
     { id: item.id },
     { staleTime: 5 * 60 * 1000 }
@@ -258,6 +407,22 @@ function DetailPanel({
               className="w-full h-full object-contain"
             />
           </div>
+          {(item.thumbnailUrl || item.mediumUrl || item.webpUrl) && (
+            <div className="mt-2 flex gap-1.5 flex-wrap">
+              {item.thumbnailUrl && (
+                <a href={item.thumbnailUrl} target="_blank" rel="noopener noreferrer"
+                  className="text-[10px] text-primary hover:underline">Thumb</a>
+              )}
+              {item.mediumUrl && (
+                <a href={item.mediumUrl} target="_blank" rel="noopener noreferrer"
+                  className="text-[10px] text-primary hover:underline">Medium</a>
+              )}
+              {item.webpUrl && (
+                <a href={item.webpUrl} target="_blank" rel="noopener noreferrer"
+                  className="text-[10px] text-primary hover:underline">WebP</a>
+              )}
+            </div>
+          )}
         </div>
 
         {/* File metadata */}
@@ -302,12 +467,7 @@ function DetailPanel({
                 <Copy className="w-3.5 h-3.5" />
               )}
             </Button>
-            <a
-              href={item.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-shrink-0"
-            >
+            <a href={item.url} target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
               <Button variant="outline" size="sm" className="h-8 px-2 cursor-pointer">
                 <ExternalLink className="w-3.5 h-3.5" />
               </Button>
@@ -357,9 +517,7 @@ function DetailPanel({
 
         {/* Usage */}
         <div className="px-4 py-3 border-b border-stone-100">
-          <p className="text-xs font-semibold text-stone-600 mb-2 uppercase tracking-wide">
-            Used In
-          </p>
+          <p className="text-xs font-semibold text-stone-600 mb-2 uppercase tracking-wide">Used In</p>
           {usageLoading ? (
             <div className="flex items-center gap-2 text-xs text-stone-400">
               <Loader2 className="w-3 h-3 animate-spin" />
@@ -420,8 +578,7 @@ function DetailPanel({
               <AlertDialogTitle>Remove from library?</AlertDialogTitle>
               <AlertDialogDescription>
                 This removes <strong>{item.filename}</strong> from the media catalogue. The file
-                will remain on the CDN and any articles using it will be unaffected. This action
-                cannot be undone.
+                remains in storage and any posts using it are unaffected.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
@@ -451,15 +608,41 @@ export default function AdminMediaLibrary() {
   const [search, setSearch] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [selectedItem, setSelectedItem] = useState<MediaItem | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [uploadFiles, setUploadFiles] = useState<UploadFileState[]>([]);
+  const [showProgress, setShowProgress] = useState(false);
+  const [isBackpopulating, setIsBackpopulating] = useState(false);
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const dragCounterRef = useRef(0);
+
+  const utils = trpc.useUtils();
 
   const { data, isLoading, refetch } = trpc.media.list.useQuery(
     { search: debouncedSearch || undefined, limit: 100, offset: 0 },
     { staleTime: 30 * 1000 }
   );
 
+  const backpopulateMutation = trpc.media.backpopulateDimensions.useMutation({
+    onSuccess: (result) => {
+      setIsBackpopulating(false);
+      if (result.dryRun) return;
+      toast.success(
+        `Back-populated ${result.processed} image${result.processed !== 1 ? "s" : ""}` +
+          (result.failed > 0 ? ` (${result.failed} failed)` : "")
+      );
+      utils.media.list.invalidate();
+    },
+    onError: (err) => {
+      setIsBackpopulating(false);
+      toast.error(err.message);
+    },
+  });
+
   const items: MediaItem[] = (data?.items ?? []) as MediaItem[];
   const total = data?.total ?? 0;
+  const nullDimensionCount = items.filter((i) => i.width === null).length;
 
   const handleSearchChange = (value: string) => {
     setSearch(value);
@@ -476,16 +659,188 @@ export default function AdminMediaLibrary() {
     refetch();
   }, [refetch]);
 
+  // ── Upload logic ──────────────────────────────────────────────────────────
+
+  const processFiles = useCallback(
+    async (files: File[]) => {
+      const validFiles: UploadFileState[] = [];
+      for (const file of files) {
+        const error = validateFile(file);
+        validFiles.push({
+          id: `${Date.now()}-${Math.random()}`,
+          file,
+          status: error ? "error" : "pending",
+          error: error ?? undefined,
+        });
+      }
+
+      setUploadFiles((prev) => [...prev, ...validFiles]);
+      setShowProgress(true);
+
+      for (const entry of validFiles) {
+        if (entry.status === "error") continue;
+
+        // Mark as uploading
+        setUploadFiles((prev) =>
+          prev.map((f) => (f.id === entry.id ? { ...f, status: "uploading" } : f))
+        );
+
+        try {
+          const fileBase64 = await fileToBase64(entry.file);
+          const result = await utils.client.media.upload.mutate({
+            fileName: entry.file.name,
+            fileBase64,
+            mimeType: entry.file.type || "application/octet-stream",
+          });
+
+          setUploadFiles((prev) =>
+            prev.map((f) =>
+              f.id === entry.id
+                ? { ...f, status: "done", result: result as MediaItem }
+                : f
+            )
+          );
+        } catch (err) {
+          const message = err instanceof Error ? err.message : "Upload failed";
+          setUploadFiles((prev) =>
+            prev.map((f) =>
+              f.id === entry.id ? { ...f, status: "error", error: message } : f
+            )
+          );
+        }
+      }
+
+      // Refresh the list after all uploads complete
+      utils.media.list.invalidate();
+    },
+    [utils]
+  );
+
+  const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files ?? []);
+    if (files.length > 0) processFiles(files);
+    // Reset input so same file can be re-selected
+    e.target.value = "";
+  };
+
+  // ── Drag-and-drop ─────────────────────────────────────────────────────────
+
+  useEffect(() => {
+    const onDragEnter = (e: DragEvent) => {
+      e.preventDefault();
+      dragCounterRef.current++;
+      if (dragCounterRef.current === 1) setIsDragging(true);
+    };
+    const onDragLeave = (e: DragEvent) => {
+      e.preventDefault();
+      dragCounterRef.current--;
+      if (dragCounterRef.current === 0) setIsDragging(false);
+    };
+    const onDragOver = (e: DragEvent) => e.preventDefault();
+    const onDrop = (e: DragEvent) => {
+      e.preventDefault();
+      dragCounterRef.current = 0;
+      setIsDragging(false);
+      const files = Array.from(e.dataTransfer?.files ?? []);
+      if (files.length > 0) processFiles(files);
+    };
+
+    document.addEventListener("dragenter", onDragEnter);
+    document.addEventListener("dragleave", onDragLeave);
+    document.addEventListener("dragover", onDragOver);
+    document.addEventListener("drop", onDrop);
+    return () => {
+      document.removeEventListener("dragenter", onDragEnter);
+      document.removeEventListener("dragleave", onDragLeave);
+      document.removeEventListener("dragover", onDragOver);
+      document.removeEventListener("drop", onDrop);
+    };
+  }, [processFiles]);
+
+  // ── Clipboard paste ───────────────────────────────────────────────────────
+
+  useEffect(() => {
+    const onPaste = (e: ClipboardEvent) => {
+      const items = Array.from(e.clipboardData?.items ?? []);
+      const imageItems = items.filter((item) => item.type.startsWith("image/"));
+      if (imageItems.length === 0) return;
+
+      const files = imageItems
+        .map((item) => item.getAsFile())
+        .filter((f): f is File => f !== null);
+
+      if (files.length > 0) {
+        e.preventDefault();
+        processFiles(files);
+      }
+    };
+
+    document.addEventListener("paste", onPaste);
+    return () => document.removeEventListener("paste", onPaste);
+  }, [processFiles]);
+
+  // ── Back-populate ─────────────────────────────────────────────────────────
+
+  const handleBackpopulate = () => {
+    setIsBackpopulating(true);
+    backpopulateMutation.mutate({ dryRun: false });
+  };
+
   return (
     <AdminLayout activeId="media-library">
       <div className="flex flex-col h-full">
+        {/* Drag-drop overlay */}
+        <DragDropOverlay visible={isDragging} />
+
+        {/* Hidden file input */}
+        <input
+          ref={fileInputRef}
+          type="file"
+          multiple
+          accept="image/jpeg,image/png,image/webp,image/gif,image/svg+xml,application/pdf"
+          className="hidden"
+          onChange={handleFileInputChange}
+        />
+
         {/* Page header */}
         <div className="flex items-center justify-between mb-6">
           <div>
             <h1 className="text-2xl font-semibold text-stone-800">Media Library</h1>
             <p className="text-sm text-stone-500 mt-0.5">
               {total} image{total !== 1 ? "s" : ""} in the catalogue
+              {nullDimensionCount > 0 && (
+                <span className="ml-2 text-amber-600">
+                  · {nullDimensionCount} missing dimensions
+                </span>
+              )}
             </p>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {nullDimensionCount > 0 && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleBackpopulate}
+                disabled={isBackpopulating}
+                className="text-amber-700 border-amber-200 hover:bg-amber-50 cursor-pointer"
+              >
+                {isBackpopulating ? (
+                  <Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" />
+                ) : (
+                  <RefreshCw className="w-3.5 h-3.5 mr-1.5" />
+                )}
+                Fix Dimensions
+              </Button>
+            )}
+            <Button
+              onClick={() => fileInputRef.current?.click()}
+              className="bg-primary hover:bg-primary/90 text-white cursor-pointer"
+              size="sm"
+            >
+              <Upload className="w-4 h-4 mr-1.5" />
+              Upload
+            </Button>
           </div>
         </div>
 
@@ -543,15 +898,18 @@ export default function AdminMediaLibrary() {
                 Loading media...
               </div>
             ) : items.length === 0 ? (
-              <div className="flex flex-col items-center justify-center h-48 text-stone-400">
-                <ImageIcon className="w-12 h-12 mb-3 opacity-30" />
+              <div
+                className="flex flex-col items-center justify-center h-48 text-stone-400 border-2 border-dashed border-stone-200 rounded-lg cursor-pointer hover:border-primary/40 hover:bg-primary/5 transition-colors"
+                onClick={() => fileInputRef.current?.click()}
+              >
+                <CloudUpload className="w-12 h-12 mb-3 opacity-30" />
                 <p className="text-sm font-medium">
-                  {debouncedSearch ? "No images match your search" : "No images in the library yet"}
+                  {debouncedSearch ? "No images match your search" : "Drop files here or click to upload"}
                 </p>
                 <p className="text-xs mt-1 text-stone-400">
                   {debouncedSearch
                     ? "Try a different search term"
-                    : "Images uploaded in the blog editor will appear here"}
+                    : `JPEG, PNG, WebP, GIF, SVG, PDF · Max ${MAX_FILE_SIZE_MB} MB each`}
                 </p>
               </div>
             ) : viewMode === "grid" ? (
@@ -580,6 +938,18 @@ export default function AdminMediaLibrary() {
           )}
         </div>
       </div>
+
+      {/* Upload progress panel */}
+      {showProgress && uploadFiles.length > 0 && (
+        <UploadProgressPanel
+          files={uploadFiles}
+          onRemove={(id) => setUploadFiles((prev) => prev.filter((f) => f.id !== id))}
+          onClose={() => {
+            setShowProgress(false);
+            setUploadFiles([]);
+          }}
+        />
+      )}
     </AdminLayout>
   );
 }
