@@ -20,6 +20,7 @@ const AdminLinkAudit = lazy(() => import("@/pages/AdminLinkAudit"));
 const AdminAIBlogAgent = lazy(() => import("@/pages/AdminAIBlogAgent"));
 const AdminAnalytics = lazy(() => import("@/pages/AdminAnalytics"));
 const AdminAEODashboard = lazy(() => import("@/pages/AdminAEODashboard"));
+const AdminMediaLibrary = lazy(() => import("@/pages/AdminMediaLibrary"));
 
 // Build paths at runtime to prevent any static analysis from detecting them
 const prefix = "/adm" + "in";
@@ -35,6 +36,7 @@ const paths = {
   aiBlogAgent: prefix + "/ai-blog-agent",
   conversionAnalytics: prefix + "/conversion-analytics",
   aeoDashboard: prefix + "/aeo-dashboard",
+  mediaLibrary: prefix + "/media-library",
 };
 
 function PageLoader() {
@@ -69,6 +71,7 @@ export default function AdminRouter() {
         <Route path={paths.aiBlogAgent} component={AdminAIBlogAgent} />
         <Route path={paths.conversionAnalytics} component={AdminAnalytics} />
         <Route path={paths.aeoDashboard} component={AdminAEODashboard} />
+        <Route path={paths.mediaLibrary} component={AdminMediaLibrary} />
         <Route path={paths.dashboard} component={AdminDashboard} />
       </Switch>
     </Suspense>

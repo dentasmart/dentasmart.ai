@@ -19,6 +19,7 @@ import {
   PanelLeft,
   TrendingUp,
   Sparkles,
+  ImageIcon,
 } from "lucide-react";
 
 interface NavItem {
@@ -66,6 +67,7 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
     if (location.includes("/admin/seo-analytics")) return "seo-analytics";
     if (location.includes("/admin/conversion-analytics")) return "conversion-analytics";
     if (location.includes("/admin/aeo-dashboard")) return "aeo-dashboard";
+    if (location.includes("/admin/media-library")) return "media-library";
     if (location.includes("/admin/edit") || location.includes("/admin/new")) return "articles";
     return "articles";
   }, [activeId, location]);
@@ -90,6 +92,13 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
       label: "Leads",
       icon: <Users className="w-5 h-5" />,
       path: "/admin/leads",
+      section: "Content",
+    },
+    {
+      id: "media-library",
+      label: "Media Library",
+      icon: <ImageIcon className="w-5 h-5" />,
+      path: "/admin/media-library",
       section: "Content",
     },
     {

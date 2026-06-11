@@ -1535,3 +1535,11 @@
 - [x] feat(invite): build /invite page — registration form with 7 fields, ref param pre-fill, API call to live-backend.dentasmart.ai/v1/register
 - [x] feat(invite): build /invite/success page — success card with animated checkmark, App Store link, direct-access guard
 - [x] feat(invite): wire /invite and /invite/success routes in App.tsx
+
+- [x] feat(media-lib/phase1): add media_items, media_tags, media_tag_assignments tables to schema.ts
+- [x] feat(media-lib/phase1): run pnpm db:push to migrate new tables
+- [x] feat(media-lib/phase1): implement mediaRouter.ts with list, get, update, delete, usageCheck procedures
+- [x] feat(media-lib/phase1): build AdminMediaLibrary.tsx page (grid/list toggle, search, detail panel, metadata editing)
+- [x] feat(media-lib/phase1): wire /admin/media route in AdminRouter.tsx and sidebar in AdminLayout.tsx
+- [x] feat(media-lib/phase1): write backfill script (--dry-run mode) to catalogue 11 existing images
+- [x] feat(media-lib/phase1): run live backfill after user approval

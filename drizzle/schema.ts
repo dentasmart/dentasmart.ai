@@ -245,3 +245,60 @@ export const siteSettings = mysqlTable("site_settings", {
 
 export type SiteSetting = typeof siteSettings.$inferSelect;
 export type InsertSiteSetting = typeof siteSettings.$inferInsert;
+
+/**
+ * Media library: stores metadata for every image uploaded through the blog editor.
+ * The actual file bytes live in S3 (via Manus storage proxy); this table is the
+ * catalogue layer that makes images searchable, reusable, and auditable.
+ */
+export const mediaItems = mysqlTable("media_items", {
+  id: int("id").autoincrement().primaryKey(),
+
+  // Storage reference
+  url: varchar("url", { length: 1000 }).notNull(),
+  fileKey: varchar("fileKey", { length: 500 }).notNull(),
+
+  // File metadata
+  filename: varchar("filename", { length: 500 }).notNull(),
+  mimeType: varchar("mimeType", { length: 100 }).notNull().default("image/jpeg"),
+  fileSizeBytes: int("fileSizeBytes"),
+  width: int("width"),
+  height: int("height"),
+
+  // Editorial metadata
+  altText: varchar("altText", { length: 500 }),
+  caption: text("caption"),
+  title: varchar("title", { length: 500 }),
+
+  // Timestamps
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type MediaItem = typeof mediaItems.$inferSelect;
+export type InsertMediaItem = typeof mediaItems.$inferInsert;
+
+/**
+ * Tags for organising media items (e.g. "hero", "blog", "screenshot").
+ */
+export const mediaTags = mysqlTable("media_tags", {
+  id: int("id").autoincrement().primaryKey(),
+  name: varchar("name", { length: 100 }).notNull().unique(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type MediaTag = typeof mediaTags.$inferSelect;
+export type InsertMediaTag = typeof mediaTags.$inferInsert;
+
+/**
+ * Many-to-many join between media items and tags.
+ */
+export const mediaTagAssignments = mysqlTable("media_tag_assignments", {
+  id: int("id").autoincrement().primaryKey(),
+  mediaItemId: int("mediaItemId").notNull(),
+  mediaTagId: int("mediaTagId").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type MediaTagAssignment = typeof mediaTagAssignments.$inferSelect;
+export type InsertMediaTagAssignment = typeof mediaTagAssignments.$inferInsert;
