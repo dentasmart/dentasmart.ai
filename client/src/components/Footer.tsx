@@ -16,7 +16,7 @@ export default function Footer() {
                 className="h-12 w-auto"
               />
               <p className="text-xl font-light tracking-wide text-black">
-                Your AI Dentist in Your Pocket
+                Your Personal AI Dentist in Your Pocket
               </p>
             </div>
 

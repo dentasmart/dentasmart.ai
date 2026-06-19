@@ -23,7 +23,7 @@ interface MetaInfo {
 // have a matching entry here so crawlers see the same meta in raw HTML.
 const staticMeta: Record<string, MetaInfo> = {
   "/": {
-    title: "DentaSmart | Your Personal AI Oral Health Guide",
+    title: "DentaSmart | Your Personal AI Dentist in Your Pocket",
     description:
       "Dentasmart provides instant AI-powered dental insights. Upload your teeth photo for personalized care, clear education, and quick oral health clarity.",
   },

@@ -49,7 +49,7 @@ export function WebSiteSchema() {
     "@type": "WebSite",
     name: "DentaSmart",
     url: SITE_URL,
-    description: "Your Personal AI Oral Health Guide. Upload a photo of your teeth and get AI-powered insights, personalized care plans, and clear dental education.",
+    description: "Your Personal AI Dentist in Your Pocket. Upload a photo of your teeth and get AI-powered insights, personalized care plans, and clear dental education.",
     potentialAction: {
       "@type": "SearchAction",
       target: {
@@ -82,30 +82,39 @@ export function SoftwareApplicationSchema() {
     offers: [
       {
         "@type": "Offer",
-        name: "Individual Insights",
-        price: "75.00",
+        name: "Quick Check",
+        price: "19.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        description: "Unlimited scans, Oral Health Score, personalized care plans, 24/7 AI guide. $75/year."
-      },
-      {
-        "@type": "Offer",
-        name: "Family Insights",
-        price: "150.00",
-        priceCurrency: "USD",
-        priceValidUntil: "2027-12-31",
-        availability: "https://schema.org/InStock",
-        description: "All Individual features for you plus up to 4 family members. $150/year."
+        description: "Fast AI scan of your teeth or X-rays with instant findings overview. $19.99 one-time."
       },
       {
         "@type": "Offer",
         name: "Second Opinion",
-        price: "30.00",
+        price: "29.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        description: "Upload your dentist's treatment plan and get an AI-powered comparison report. $30 one-time."
+        description: "Upload your dentist's treatment plan and get an AI-powered comparison report. $29.99 one-time."
+      },
+      {
+        "@type": "Offer",
+        name: "Complete Oral Health Checkup",
+        price: "74.99",
+        priceCurrency: "USD",
+        priceValidUntil: "2027-12-31",
+        availability: "https://schema.org/InStock",
+        description: "Unlimited AI scans, Oral Health Score, personalized care plans, 24/7 AI guide Din. $74.99/year."
+      },
+      {
+        "@type": "Offer",
+        name: "Family Plan",
+        price: "149.99",
+        priceCurrency: "USD",
+        priceValidUntil: "2027-12-31",
+        availability: "https://schema.org/InStock",
+        description: "Complete Oral Health Checkup for up to 5 family members. $149.99/year."
       }
     ],
     aggregateRating: {
@@ -250,33 +259,43 @@ export function ProductServiceSchema() {
     offers: [
       {
         "@type": "Offer",
-        name: "Individual Insights",
-        price: "75.00",
+        name: "Quick Check",
+        price: "19.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
         url: `${SITE_URL}/pricing`,
-        description: "Unlimited AI scans, Oral Health Score, personalized care plans, 24/7 AI guide Din. $75/year ($0.21/day)."
-      },
-      {
-        "@type": "Offer",
-        name: "Family Insights",
-        price: "150.00",
-        priceCurrency: "USD",
-        priceValidUntil: "2027-12-31",
-        availability: "https://schema.org/InStock",
-        url: `${SITE_URL}/pricing`,
-        description: "All Individual features for you plus up to 4 family members. $150/year ($0.41/day)."
+        description: "Fast AI scan of your teeth or X-rays with instant findings overview. $19.99 one-time."
       },
       {
         "@type": "Offer",
         name: "Second Opinion",
-        price: "30.00",
+        price: "29.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
         url: `${SITE_URL}/pricing`,
-        description: "Upload your dentist's treatment plan and get an AI-powered comparison report. $30 one-time."
+        description: "Upload your dentist's treatment plan and get an AI-powered comparison report. $29.99 one-time."
+      },
+      {
+        "@type": "Offer",
+        name: "Complete Oral Health Checkup",
+        price: "74.99",
+        priceCurrency: "USD",
+        priceValidUntil: "2027-12-31",
+        availability: "https://schema.org/InStock",
+        url: `${SITE_URL}/pricing`,
+        description: "Unlimited AI scans, Oral Health Score, personalized care plans, 24/7 AI guide Din. $74.99/year ($0.21/day)."
+      },
+      {
+        "@type": "Offer",
+        name: "Family Plan",
+        price: "149.99",
+        priceCurrency: "USD",
+        priceValidUntil: "2027-12-31",
+        availability: "https://schema.org/InStock",
+        url: `${SITE_URL}/pricing`,
+        description: "Complete Oral Health Checkup for up to 5 family members. $149.99/year."
       }
     ]
   };

@@ -73,7 +73,7 @@ export default function FAQs() {
     {
       title: "Pricing",
       faqs: [
-        { q: "What's the difference between Insights and Second Opinion?", a: "Insights is $75/year for ongoing monthly monitoring and wellness tracking. Second Opinion is $30 one-time for a specific treatment plan comparison." },
+        { q: "What are DentaSmart's pricing options?", a: "Quick Check is $19.99 one-time for a fast AI scan. Second Opinion is $29.99 one-time for treatment plan comparison. Complete Oral Health Checkup is $74.99/year for unlimited scans and ongoing monitoring. Family Plan is $149.99/year for up to 5 members." },
         { q: "Can I cancel anytime?", a: "Yes. You can cancel your subscription anytime without penalties." },
         { q: "Do you offer family plans?", a: "Yes. All our plans offer family options to cover your loved ones. You can easily add family members during signup or from your account settings." },
         { q: "Is there a money-back guarantee?", a: "Yes. We offer a 30-day money-back guarantee on all plans." },
@@ -134,7 +134,7 @@ export default function FAQs() {
         { question: "How do I get started with DentaSmart?", answer: "Download the app from the App Store (Android coming soon), create an account, and take your first mouth photos or upload X-rays. You'll get your first report within 10 minutes." },
         { question: "How accurate is the AI analysis?", answer: "DentaSmart's AI has 100% detection accuracy for identifying potential areas of concern. It's trained by dental experts and validated against clinical outcomes." },
         { question: "Is DentaSmart HIPAA compliant?", answer: "Yes. DentaSmart is fully HIPAA compliant and meets all healthcare privacy and security standards as defined by the U.S. Department of Health and Human Services." },
-        { question: "What's the difference between Insights and Second Opinion?", answer: "Insights is $75/year for ongoing monthly monitoring and wellness tracking. Second Opinion is $30 one-time for a specific treatment plan comparison." },
+        { question: "What are DentaSmart's pricing options?", answer: "Quick Check is $19.99 one-time for a fast AI scan. Second Opinion is $29.99 one-time for treatment plan comparison. Complete Oral Health Checkup is $74.99/year for unlimited scans and ongoing monitoring. Family Plan is $149.99/year for up to 5 members." },
         { question: "Is it a dentist replacement?", answer: "No. DentaSmart is a tool to help you monitor your oral health between visits and understand your dentist's recommendations better. It does not replace professional care." },
         { question: "Is my data secure?", answer: "Yes. All data is encrypted end-to-end and stored on secure, HIPAA-compliant servers. DentaSmart never sells your data." },
         { question: "What can DentaSmart detect?", answer: "DentaSmart can identify potential cavities, gum disease, tooth wear, alignment issues, and other visible oral health concerns. It provides educational insights to help you understand what you're seeing." },

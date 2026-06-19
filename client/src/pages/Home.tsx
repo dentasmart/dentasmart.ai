@@ -39,7 +39,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO 
-        title="Your Personal AI Dental Guide" 
+        title="Your Personal AI Dentist in Your Pocket" 
         description="Get instant clarity about your oral health. Upload a photo and get AI-powered insights, personalized plans, and reminders in minutes."
         canonical="https://dentasmart.ai/"
       />
@@ -59,7 +59,7 @@ export default function Home() {
       />
       <FAQSchema faqs={[
         { question: "What is DentaSmart?", answer: "DentaSmart is an AI-powered oral health app that analyzes photos of your teeth or dental X-rays. It provides an Oral Health Score from 0 to 100, plain-English explanations of findings, treatment cost estimates, and a personalized care plan. It also includes Din, a 24/7 AI oral health guide." },
-        { question: "How much does DentaSmart cost?", answer: "DentaSmart Individual Insights costs $75 per year ($0.21/day) for unlimited scans. Family Insights costs $150 per year for up to 5 family members. A one-time Second Opinion report costs $30." },
+        { question: "How much does DentaSmart cost?", answer: "DentaSmart offers Quick Check at $19.99 (one-time fast scan), Second Opinion at $29.99 (one-time deep analysis), Complete Oral Health Checkup at $74.99/year (unlimited scans and monitoring), and Family plan at $149.99/year (up to 5 members). All subscriptions are managed through dentasmart.ai." },
         { question: "Is DentaSmart a replacement for a dentist?", answer: "No. DentaSmart provides AI-powered educational insights to help you understand your oral health and prepare for better conversations with a licensed dentist. It does not diagnose or treat dental conditions." },
         { question: "How does DentaSmart work?", answer: "Upload a photo of your teeth or dental X-rays. The AI analyzes the image, identifies potential concerns, and provides an Oral Health Score, plain-English explanations, and a personalized care plan within minutes." },
         { question: "Is DentaSmart available on Android?", answer: "DentaSmart is live on iOS. Android is in Early Access. You can join the Android waitlist at dentasmart.ai/download." },
@@ -613,7 +613,7 @@ export default function Home() {
             <div>
               <h2 className="text-3xl font-normal text-black mb-4">How Much Does DentaSmart Cost?</h2>
               <p className="text-lg text-stone-700 leading-relaxed">
-                DentaSmart Individual Insights costs $75 per year ($0.21/day) and includes unlimited AI scans, an Oral Health Score, personalized care plans, and 24/7 AI guide access. Family Insights costs $150 per year ($0.41/day) and covers you plus up to 4 family members. A one-time Second Opinion report costs $30.
+                DentaSmart offers four service tiers: Quick Check at $19.99 (one-time fast AI scan), Second Opinion at $29.99 (one-time treatment plan comparison), Complete Oral Health Checkup at $74.99/year (unlimited scans, Oral Health Score, care plans, and 24/7 AI guide), and Family Plan at $149.99/year (covers up to 5 family members with all Complete Checkup features).
               </p>
             </div>
 

@@ -27,7 +27,7 @@ interface SSRContent {
 function generateHomepageContent(): string {
   return `
 <article>
-  <h1>DentaSmart — Your Personal AI Oral Health Guide</h1>
+  <h1>DentaSmart — Your Personal AI Dentist in Your Pocket</h1>
   <p>Get instant clarity about your oral health. Upload a photo of your teeth or dental X-rays and receive AI-powered insights, a personalized Oral Health Score, and a clear care plan in minutes. DentaSmart helps you understand what is happening in your mouth so you can make confident decisions and prevent expensive surprises.</p>
   <h2>How DentaSmart Works</h2>
   <p>Take a photo of your teeth or upload your dental X-rays. Our AI analyzes your oral health in seconds, identifying potential issues and giving you a score from 0 to 100. Then follow a personalized plan to better health — all from your phone.</p>
@@ -266,11 +266,11 @@ function generateStaticPageContent(path: string): string | null {
 <article>
   <h1>DentaSmart Pricing: Plans for Every Need</h1>
   <p>DentaSmart offers affordable plans for individuals and families. Get AI-powered dental analysis, personalized care plans, and 24/7 guidance for less than a dollar a day.</p>
-  <h2>Individual Insights — $75/year</h2>
+  <h2>Quick Check — $19.99 one-time</h2>
   <p>Unlimited AI scans, Oral Health Score tracking, personalized care plans, and 24/7 access to Din AI guide. That is just $0.21 per day for complete oral health clarity.</p>
-  <h2>Family Insights — $150/year</h2>
+  <h2>Complete Oral Health Checkup — $74.99/year</h2>
   <p>Everything in Individual, plus coverage for up to 4 additional family members. Monitor your whole family's oral health for $0.41 per day.</p>
-  <h2>Second Opinion — $30 one-time</h2>
+  <h2>Second Opinion — $29.99 one-time</h2>
   <p>Upload your dentist's treatment plan and get an AI-powered comparison report with cost estimates and alternative options.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/features">See All Features</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`,
@@ -293,7 +293,7 @@ function generateStaticPageContent(path: string): string | null {
   <h2>Is DentaSmart a replacement for a dentist?</h2>
   <p>No. DentaSmart is an educational tool that helps you understand your oral health. Always consult a licensed dentist for diagnosis and treatment.</p>
   <h2>How much does DentaSmart cost?</h2>
-  <p>Individual Insights is $75/year, Family Insights is $150/year, and Second Opinion is $30 one-time. A free limited scan is available to try.</p>
+  <p>Quick Check is $19.99 one-time, Second Opinion is $29.99 one-time, Complete Oral Health Checkup is $74.99/year, and Family Plan is $149.99/year. A free limited scan is available to try.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/pricing">View Pricing</a> | <a href="/features">See All Features</a></p>
 </article>`,
     "/employers": `

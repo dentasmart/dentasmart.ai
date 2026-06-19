@@ -1609,3 +1609,21 @@
 - [x] img/benefits-carousel: Swap all 6 carousel images to actual product screenshots
 - [x] img/features-page: Add "Smart Reminders" feature with XZusOpUDOktZBHbT (Apple Watch)
 - [x] img/features-page: Add "Cost Transparency" feature with XlgHEMbZpBAbEXnM (treatment plan with costs)
+
+## Pricing Page Redesign & Tagline Update — Jun 2026
+
+- [x] pricing: Add Quick Check service at $19.99 one-time
+- [x] pricing: Update Second Opinion price to $29.99 one-time
+- [x] pricing: Rename "Individual Insights" to "Complete Oral Health Checkup" at $74.99/year
+- [x] pricing: Update Family plan to $149.99/year
+- [x] pricing: Rearrange cards in ascending price order (Quick Check → Second Opinion → Complete → Family) for better readability
+- [x] pricing: Apply pricing page best practices (highlight recommended plan, reduce decision fatigue, clear value hierarchy)
+- [x] pricing: Update comparison table with new service names and prices
+- [x] pricing: Update FAQ answers with new prices
+- [x] pricing: Update QuickAnswerBlock with new pricing info
+- [x] pricing: Update FAQSchema with new pricing info
+- [x] tagline: Update to "Your Personal AI Dentist in Your Pocket" across all pages
+- [x] tagline: Update in Navigation component
+- [x] tagline: Update in Footer component
+- [x] tagline: Update in any SEO/meta descriptions
+- [x] tagline: Update in blog articles stored in database

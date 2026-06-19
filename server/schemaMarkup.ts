@@ -43,7 +43,7 @@ function getWebSiteSchema(): object {
     "@type": "WebSite",
     name: "DentaSmart",
     url: SITE_URL,
-    description: "Your Personal AI Oral Health Guide. Upload a photo of your teeth and get AI-powered insights, personalized care plans, and clear dental education.",
+    description: "Your Personal AI Dentist in Your Pocket. Upload a photo of your teeth and get AI-powered insights, personalized care plans, and clear dental education.",
     potentialAction: {
       "@type": "SearchAction",
       target: {
@@ -69,16 +69,16 @@ function getSoftwareApplicationSchema(): object {
     offers: [
       {
         "@type": "Offer",
-        name: "Individual Insights",
-        price: "75.00",
+        name: "Quick Check",
+        price: "19.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock"
       },
       {
         "@type": "Offer",
-        name: "Family Insights",
-        price: "150.00",
+        name: "Family Plan",
+        price: "149.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock"
@@ -86,7 +86,7 @@ function getSoftwareApplicationSchema(): object {
       {
         "@type": "Offer",
         name: "Second Opinion",
-        price: "30.00",
+        price: "29.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock"
@@ -149,8 +149,8 @@ function getProductSchema(): object {
     offers: [
       {
         "@type": "Offer",
-        name: "Individual Insights",
-        price: "75.00",
+        name: "Quick Check",
+        price: "19.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
@@ -158,8 +158,8 @@ function getProductSchema(): object {
       },
       {
         "@type": "Offer",
-        name: "Family Insights",
-        price: "150.00",
+        name: "Family Plan",
+        price: "149.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
@@ -168,7 +168,7 @@ function getProductSchema(): object {
       {
         "@type": "Offer",
         name: "Second Opinion",
-        price: "30.00",
+        price: "29.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",

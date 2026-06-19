@@ -4,7 +4,7 @@
  * Usage:
  *   <FAQSchema faqs={[
  *     { question: "What is DentaSmart?", answer: "DentaSmart is..." },
- *     { question: "How much does it cost?", answer: "$75/year..." },
+ *     { question: "How much does it cost?", answer: "$74.99/year..." },
  *   ]} />
  */
 

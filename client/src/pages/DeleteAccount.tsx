@@ -52,7 +52,7 @@ export default function DeleteAccount() {
                   "Oral Health Score history",
                   "Personalized care plan recommendations",
                   "Chat history with the AI assistant",
-                  "Family member data (for Family Insights subscribers)",
+                  "Family member data (for Family Plan subscribers)",
                   "Reminder and notification preferences",
                   "Account credentials (login, password)",
                 ].map((item) => (
