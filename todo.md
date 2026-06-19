@@ -1648,3 +1648,13 @@
 - [x] aeo/robots: Verify robots.txt allows all AI crawlers (DONE - already configured)
 - [x] pricing/badge: Fix Best Value badge visibility on Family Plan card
 - [x] pricing/features: Verify guided self-exam and dual reports plan inclusion accuracy (both correct per KB)
+
+## AEO 2.1 Blog Post Upgrades (Existing Ranking Posts) - Jun 20, 2026
+
+- [x] aeo/blog-1260001: Added atAGlanceAnswer (77 words), faqs (5 Q&As), whenUrgent (6 red flags) to dentist-cost-without-insurance
+- [x] aeo/blog-1170003: Added atAGlanceAnswer (85 words), faqs (5 Q&As), whenUrgent (5 red flags), appended DentaSmart CTA to how-to-remove-plaque-at-home
+- [x] aeo/blog-2910001: Added whenUrgent (6 red flags) to filling-without-insurance-options
+- [x] aeo/blog-330007: Verified all AEO fields and CTA already present (bone-loss-dental-xray)
+- [x] aeo/blog-330008: Verified all AEO fields and CTA already present (gums-hurt-when-flossing)
+- [x] aeo/quality: Verified no em dashes in any new content
+- [x] aeo/quality: Verified no AI jargon in any new content
