@@ -112,6 +112,28 @@ export default function Features() {
         "Expert Knowledge: Instant access to reliable dental information."
       ],
       image: "/images/optimized/YSjOjqlpUabDbzAW-800.webp"
+    },
+    {
+      title: "Smart Reminders That Fit Your Life",
+      description: "Good habits don't happen by accident — they need gentle nudges.\n\nDentaSmart sends timely reminders to scan, brush, floss, and follow up on flagged issues. Whether it's your Apple Watch, phone notification, or email, you'll never miss a beat on your oral health journey.",
+      points: [
+        "Watch & Phone Alerts: Get nudges right on your wrist or lock screen.",
+        "Personalized Timing: Reminders adapt to your routine and scan history.",
+        "Follow-Up Prompts: Never forget to re-check a flagged area."
+      ],
+      image: "/images/optimized/XZusOpUDOktZBHbT-800.webp",
+      isPhone: true
+    },
+    {
+      title: "Cost Transparency Before You Commit",
+      description: "Surprise dental bills are the #1 reason people delay care.\n\nDentaSmart shows you estimated treatment costs upfront — before you sit in the chair. See what procedures might be needed, typical price ranges, and priority order so you can plan your budget and avoid sticker shock.",
+      points: [
+        "Price Estimates: See typical costs for recommended treatments.",
+        "Priority Order: Know what's urgent vs. what can wait.",
+        "Budget Planning: Plan ahead instead of reacting to surprise bills."
+      ],
+      image: "/images/optimized/XlgHEMbZpBAbEXnM-800.webp",
+      isPhone: true
     }
   ];
 

@@ -1600,3 +1600,12 @@
 - [x] conv/social-proof-stats: Update stats bar to "5.0 ★ App Store" instead of "4.8/5 Average User Rating"
 - [x] conv/trust-signals: Add "Your data is never sold", "Clinical Advisory Board", and "Not a replacement for your dentist" trust badges to the dark Guide section
 - [x] conv/testimonials: Add "App Store verified" label to Real Stories testimonial cards
+
+## Homepage & Features Page Image Update — Jun 2026
+
+- [x] img/home-hero: Swap left phone from JQpBfeUURrCKTqFU to DawnQOxKtdjguhLp (newer Oral Health Score with trend line, 83/100)
+- [x] img/home-hero: Swap right phone from kQkbFcHfULXNLoOD to lBzNqmERojJqlfJE (X-ray analysis with color overlays)
+- [x] img/home-hero: Update right phone label to "AI X-Ray Analysis"
+- [x] img/benefits-carousel: Swap all 6 carousel images to actual product screenshots
+- [x] img/features-page: Add "Smart Reminders" feature with XZusOpUDOktZBHbT (Apple Watch)
+- [x] img/features-page: Add "Cost Transparency" feature with XlgHEMbZpBAbEXnM (treatment plan with costs)

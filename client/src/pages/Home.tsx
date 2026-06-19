@@ -169,18 +169,18 @@ export default function Home() {
                     <picture>
                     <source
                       type="image/webp"
-                      srcSet="/images/optimized/JQpBfeUURrCKTqFU-400.webp 400w, /images/optimized/JQpBfeUURrCKTqFU-800.webp 800w, /images/optimized/JQpBfeUURrCKTqFU-1600.webp 1600w"
+                      srcSet="/images/optimized/DawnQOxKtdjguhLp-400.webp 400w, /images/optimized/DawnQOxKtdjguhLp-800.webp 800w, /images/optimized/DawnQOxKtdjguhLp-1600.webp 1600w"
                       sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
                     />
                     <img
-                      src="/images/optimized/JQpBfeUURrCKTqFU-800.webp"
+                      src="/images/optimized/DawnQOxKtdjguhLp-800.webp"
                       decoding="async" 
-                      alt="DentaSmart Oral Health Score - Your personalized dental health rating" 
+                      alt="DentaSmart Oral Health Score - Track your dental health over time with AI analysis" 
                       className="w-full h-full object-cover object-top"
                       loading="eager"
                       fetchPriority="high"
                     
-                      width="738" height="1600"/>
+                      width="800" height="1734"/>
                   </picture>
                   </div>
                 </div>
@@ -200,23 +200,23 @@ export default function Home() {
                     <picture>
                     <source
                       type="image/webp"
-                      srcSet="/images/optimized/kQkbFcHfULXNLoOD-400.webp 400w, /images/optimized/kQkbFcHfULXNLoOD-800.webp 800w, /images/optimized/kQkbFcHfULXNLoOD-1600.webp 1600w"
+                      srcSet="/images/optimized/lBzNqmERojJqlfJE-400.webp 400w, /images/optimized/lBzNqmERojJqlfJE-800.webp 800w, /images/optimized/lBzNqmERojJqlfJE-1600.webp 1600w"
                       sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
                     />
                     <img
-                      src="/images/optimized/kQkbFcHfULXNLoOD-800.webp"
+                      src="/images/optimized/lBzNqmERojJqlfJE-800.webp"
                       decoding="async" 
-                      alt="DentaSmart AI Analysis - Detailed dental condition report" 
+                      alt="DentaSmart AI X-Ray Analysis - Color-coded findings with plain-English explanations" 
                       className="w-full h-full object-cover object-top"
                       loading="lazy"
                     
-                      width="738" height="1600"/>
+                      width="945" height="2048"/>
                   </picture>
                   </div>
                 </div>
                 {/* Label */}
                 <div className="text-center mt-3 sm:mt-4">
-                  <span className="text-xs sm:text-sm font-medium text-stone-600 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">AI Analysis Report</span>
+                  <span className="text-xs sm:text-sm font-medium text-stone-600 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">AI X-Ray Analysis</span>
                 </div>
               </div>
             </motion.div>
