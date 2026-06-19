@@ -98,6 +98,12 @@ const DietAndTeeth = lazy(() => import("./pages/lifestyle/DietAndTeeth"));
 const SportsMouthguards = lazy(() => import("./pages/lifestyle/SportsMouthguards"));
 const OralPiercingRisks = lazy(() => import("./pages/lifestyle/OralPiercingRisks"));
 
+// AEO Category & Comparison Pages
+const FreeAiTeethScanner = lazy(() => import("./pages/FreeAiTeethScanner"));
+const BestAiDentalApps = lazy(() => import("./pages/BestAiDentalApps"));
+const VsDentalCom = lazy(() => import("./pages/VsDentalCom"));
+const VsDentistryOne = lazy(() => import("./pages/VsDentistryOne"));
+
 // Treatment Explainer Pages
 const TreatmentsHub = lazy(() => import("./pages/treatments/TreatmentsHub"));
 const RootCanalProcedure = lazy(() => import("./pages/treatments/RootCanalProcedure"));
@@ -143,6 +149,10 @@ function Router() {
         <Route path="/stories" component={Stories} />
         <Route path="/download" component={Download} />
         <Route path="/instant-scan" component={InstantScan} />
+        <Route path="/free-ai-teeth-scanner" component={FreeAiTeethScanner} />
+        <Route path="/best-ai-dental-apps" component={BestAiDentalApps} />
+        <Route path="/vs/dental-com" component={VsDentalCom} />
+        <Route path="/vs/dentistry-one" component={VsDentistryOne} />
         <Route path="/photo-guide" component={PhotoGuide} />
         <Route path="/hub" component={OralHealthHub} />
         <Route path="/conditions" component={ConditionsIndex} />

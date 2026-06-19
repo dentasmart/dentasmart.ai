@@ -106,7 +106,7 @@ export default function Pricing() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Sparkles className="w-5 h-5 text-primary flex-shrink-0" />
             <p className="text-stone-700 text-base">
-              <span className="font-semibold text-black">Start free.</span> Download the app and scan your teeth for free. Guided self-examination and dual reports (patient + dentist versions) included in all plans.
+              <span className="font-semibold text-black">Start free.</span> Download the app and scan your teeth at no cost. Every plan includes guided self-examination and two report formats (one for you, one for your dentist).
             </p>
           </div>
         </div>
@@ -152,9 +152,10 @@ export default function Pricing() {
               <div className="space-y-2.5 mb-6 flex-grow">
                 {[
                   "One mouth scan or X-ray analysis",
-                  "Instant AI findings overview",
+                  "Guided self-examination included",
                   "Oral health score",
                   "Key areas of concern highlighted",
+                  "Patient + dentist report versions",
                   "Basic care recommendations",
                 ].map((f, i) => (
                   <div key={i} className="flex items-start text-stone-700 font-light text-sm">
@@ -204,7 +205,7 @@ export default function Pricing() {
               <div className="space-y-2.5 mb-6 flex-grow">
                 {[
                   "Full mouth scan and X-ray analysis",
-                  "Guided Self-Examination",
+                  "Guided self-examination included",
                   "Compare with your dentist's plan",
                   "Independent second opinion report",
                   "Treatment options with cost estimates",
@@ -302,9 +303,9 @@ export default function Pricing() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 0.5 }}
-              className="bg-gradient-to-br from-primary to-teal-700 rounded-3xl p-6 md:p-8 text-white hover:shadow-2xl transition-all duration-500 flex flex-col relative overflow-hidden"
+              className="bg-gradient-to-br from-primary to-teal-700 rounded-3xl p-6 md:p-8 text-white hover:shadow-2xl transition-all duration-500 flex flex-col relative"
             >
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white/20 backdrop-blur-sm px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-white border border-white/30">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-primary shadow-md border border-stone-200">
                 Best Value
               </div>
               <div className="mb-5 mt-2">
@@ -401,7 +402,7 @@ export default function Pricing() {
                 <tbody className="divide-y divide-stone-100">
                   {[
                     { feature: "Mouth scans & X-ray analysis", quickCheck: "One-time", secondOpinion: "One-time", complete: "Unlimited", family: "Unlimited" },
-                    { feature: "Guided Self-Examination", quickCheck: false, secondOpinion: true, complete: true, family: true },
+                    { feature: "Guided self-examination", quickCheck: true, secondOpinion: true, complete: true, family: true },
                     { feature: "Oral health score", quickCheck: true, secondOpinion: true, complete: true, family: true },
                     { feature: "Progress tracking over time", quickCheck: false, secondOpinion: false, complete: true, family: true },
                     { feature: "Early risk insights & trends", quickCheck: false, secondOpinion: false, complete: true, family: true },
@@ -410,8 +411,8 @@ export default function Pricing() {
                     { feature: "Personalized recommendations", quickCheck: "Basic", secondOpinion: true, complete: true, family: true },
                     { feature: "Treatment options with cost estimates", quickCheck: false, secondOpinion: true, complete: true, family: true },
                     { feature: "Preventive & initial care guidance", quickCheck: false, secondOpinion: false, complete: true, family: true },
-                    { feature: "Patient + dentist report versions", quickCheck: false, secondOpinion: true, complete: true, family: true },
-                    { feature: "Printable PDF report", quickCheck: false, secondOpinion: true, complete: true, family: true },
+                    { feature: "Patient + dentist report versions", quickCheck: true, secondOpinion: true, complete: true, family: true },
+                    { feature: "Printable PDF report", quickCheck: true, secondOpinion: true, complete: true, family: true },
                     { feature: "Secure Dental History storage", quickCheck: false, secondOpinion: false, complete: true, family: true },
                     { feature: "24/7 Din AI guide", quickCheck: false, secondOpinion: false, complete: true, family: true },
                     { feature: "Reviewed by licensed dentists", quickCheck: true, secondOpinion: true, complete: true, family: true },

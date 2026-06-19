@@ -1638,3 +1638,13 @@
 - [x] pricing/second-opinion: Remove "24/7 AI guide" and "Access valid for 30 days" (not supported by knowledge base)
 - [x] pricing/comparison-table: Fix Din guide row (only available on Complete/Family) and remove access duration row
 - [x] reference: Store AI writing signs from Wikipedia for future use
+
+## AEO Implementation (June 20 Analysis)
+
+- [x] aeo/P0: Create /free-ai-teeth-scanner category page with direct answer block, SoftwareApplication schema, FAQ schema, cited stats
+- [x] aeo/P0: Create /best-ai-dental-apps listicle comparison page
+- [x] aeo/P0: Create /vs/dental-com comparison page
+- [x] aeo/P0: Create /vs/dentistry-one-smilescan comparison page
+- [x] aeo/robots: Verify robots.txt allows all AI crawlers (DONE - already configured)
+- [x] pricing/badge: Fix Best Value badge visibility on Family Plan card
+- [x] pricing/features: Verify guided self-exam and dual reports plan inclusion accuracy (both correct per KB)

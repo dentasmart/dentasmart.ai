@@ -45,6 +45,9 @@ export type AnalyticsEvent =
   | "scroll_depth_50"
   | "scroll_depth_75"
   | "scroll_depth_100"
+  | "free_ai_scanner_page_view"
+  | "best_ai_dental_apps_page_view"
+  | "vs_comparison_page_view"
   | "page_view";
 
 export interface EventParams {
