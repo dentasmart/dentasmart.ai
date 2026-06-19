@@ -1,6 +1,5 @@
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { BenefitsCarousel } from "@/components/BenefitsCarousel";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
@@ -40,7 +39,7 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO 
         title="Your Personal AI Dentist in Your Pocket" 
-        description="Get instant clarity about your oral health. Upload a photo and get AI-powered insights, personalized plans, and reminders in minutes."
+        description="Get instant clarity about your oral health. Upload a photo and get insights, personalized plans, and reminders in minutes."
         canonical="https://dentasmart.ai/"
       />
       <Navigation />
@@ -48,22 +47,22 @@ export default function Home() {
       <WebSiteSchema />
       <SoftwareApplicationSchema />
       <HowToSchema
-        name="How to Use DentaSmart for AI Oral Health Analysis"
-        description="Upload a photo of your teeth or dental X-rays and get AI-powered insights, an Oral Health Score, and a personalized care plan in minutes."
+        name="How to Use DentaSmart for Oral Health Analysis"
+        description="Upload a photo of your teeth or dental X-rays and get an Oral Health Score and a personalized care plan in minutes."
         steps={[
-          { name: "Complete Self-Examination", text: "Answer guided questions including Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection to help the AI understand your symptoms.", url: "/features" },
+          { name: "Complete Self-Examination", text: "Answer guided questions including Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection to help DentaSmart understand your symptoms.", url: "/features" },
           { name: "Upload Photos or X-Rays", text: "Take a photo of your teeth or upload dental X-rays. Or use Quick Check for instant analysis.", url: "/download" },
-          { name: "Get AI Analysis", text: "The AI analyzes your images with color-coded overlays and identifies potential oral health concerns in minutes.", url: "/how-it-works" },
+          { name: "Get Your Analysis", text: "DentaSmart analyzes your images with color-coded overlays and identifies potential oral health concerns in minutes.", url: "/how-it-works" },
           { name: "Review Dual Reports", text: "Receive two reports: a plain-English version for you with your Oral Health Score, and a clinical version for your dentist. Both downloadable as PDF.", url: "/features" }
         ]}
       />
       <FAQSchema faqs={[
-        { question: "What is DentaSmart?", answer: "DentaSmart is an AI-powered oral health app that analyzes photos of your teeth or dental X-rays. It provides an Oral Health Score from 0 to 100, plain-English explanations of findings, treatment cost estimates, and a personalized care plan. It also includes Din, a 24/7 AI oral health guide." },
+        { question: "What is DentaSmart?", answer: "DentaSmart is an oral health app that analyzes photos of your teeth or dental X-rays. It provides an Oral Health Score from 0 to 100, plain-English explanations of findings, treatment cost estimates, and a personalized care plan. It also includes Din, a 24/7 dental guide." },
         { question: "How much does DentaSmart cost?", answer: "DentaSmart offers Quick Check at $19.99 (one-time fast scan), Second Opinion at $29.99 (one-time deep analysis), Complete Oral Health Checkup at $74.99/year (unlimited scans and monitoring), and Family plan at $149.99/year (up to 5 members). All subscriptions are managed through dentasmart.ai." },
-        { question: "Is DentaSmart a replacement for a dentist?", answer: "No. DentaSmart provides AI-powered educational insights to help you understand your oral health and prepare for better conversations with a licensed dentist. It does not diagnose or treat dental conditions." },
-        { question: "How does DentaSmart work?", answer: "Upload a photo of your teeth or dental X-rays. The AI analyzes the image, identifies potential concerns, and provides an Oral Health Score, plain-English explanations, and a personalized care plan within minutes." },
+        { question: "Is DentaSmart a replacement for a dentist?", answer: "No. DentaSmart provides educational insights to help you understand your oral health and prepare for better conversations with a licensed dentist. It does not diagnose or treat dental conditions." },
+        { question: "How does DentaSmart work?", answer: "Upload a photo of your teeth or dental X-rays. DentaSmart analyzes the image, identifies potential concerns, and provides an Oral Health Score, plain-English explanations, and a personalized care plan within minutes." },
         { question: "Is DentaSmart available on Android?", answer: "DentaSmart is live on iOS. Android is in Early Access. You can join the Android waitlist at dentasmart.ai/download." },
-        { question: "What is the DentaSmart Oral Health Score?", answer: "The Oral Health Score is a number from 0 to 100 that reflects the overall health of your teeth and gums based on AI analysis of your dental photos or X-rays. It tracks changes over time." },
+        { question: "What is the DentaSmart Oral Health Score?", answer: "The Oral Health Score is a number from 0 to 100 that reflects the overall health of your teeth and gums based on analysis of your dental photos or X-rays. It tracks changes over time." },
         { question: "Who is DentaSmart for?", answer: "DentaSmart is for anyone who wants to understand their oral health better, including people without dental insurance, those seeking a second opinion on a treatment plan, parents monitoring family dental health, and people with dental anxiety." },
         { question: "Can DentaSmart analyze dental X-rays?", answer: "Yes. DentaSmart can analyze both photos of your teeth and dental X-rays to identify potential oral health concerns and provide insights." }
       ]} />
@@ -238,7 +237,7 @@ export default function Home() {
               See DentaSmart in Action
             </h2>
             <p className="text-xl text-stone-700 font-normal max-w-2xl mx-auto mb-6 leading-relaxed">
-              Watch our explainer video to learn how DentaSmart empowers you with AI-driven insights into your oral health.
+              Watch how DentaSmart helps you understand your oral health in minutes.
             </p>
             
             <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl bg-foreground group">
@@ -462,8 +461,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Benefits Section (Carousel) */}
-      <BenefitsCarousel />
+
 
       {/* Real Stories, Real Savings */}
       <section className="py-12 bg-stone-50">
@@ -518,7 +516,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="mt-8 pt-6 border-t border-stone-100 flex items-center justify-between">
-                  <span className="text-stone-500 text-sm">— {item.author}</span>
+                  <span className="text-stone-500 text-sm">{item.author}</span>
                   <span className="flex items-center gap-1 text-xs text-amber-600 font-medium">
                     <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
                     App Store verified
@@ -599,7 +597,7 @@ export default function Home() {
         <div className="container px-4 mx-auto max-w-4xl">
           <QuickAnswerBlock
             question="What is DentaSmart?"
-            answer="DentaSmart is an AI-powered oral health app that analyzes photos of your teeth or dental X-rays. It provides a personalized Oral Health Score from 0 to 100, plain-English explanations of findings, treatment cost estimates, and a personalized care plan. DentaSmart also includes Din, a 24/7 AI oral health guide that answers dental questions anytime."
+            answer="DentaSmart is an oral health app that analyzes photos of your teeth or dental X-rays. It provides a personalized Oral Health Score from 0 to 100, plain-English explanations of findings, treatment cost estimates, and a personalized care plan. DentaSmart also includes Din, a 24/7 dental guide that answers your questions anytime."
           />
 
           <div className="mt-10 space-y-8">
@@ -613,7 +611,7 @@ export default function Home() {
             <div>
               <h2 className="text-3xl font-normal text-black mb-4">How Much Does DentaSmart Cost?</h2>
               <p className="text-lg text-stone-700 leading-relaxed">
-                DentaSmart offers four service tiers: Quick Check at $19.99 (one-time fast AI scan), Second Opinion at $29.99 (one-time treatment plan comparison), Complete Oral Health Checkup at $74.99/year (unlimited scans, Oral Health Score, care plans, and 24/7 AI guide), and Family Plan at $149.99/year (covers up to 5 family members with all Complete Checkup features).
+                DentaSmart offers four service tiers: Quick Check at $19.99 (one-time fast scan), Second Opinion at $29.99 (one-time treatment plan comparison), Complete Oral Health Checkup at $74.99/year (unlimited scans, Oral Health Score, care plans, and 24/7 Din guide), and Family Plan at $149.99/year (covers up to 5 family members with all Complete Checkup features).
               </p>
             </div>
 
@@ -633,10 +631,10 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-normal text-black mb-8">Frequently Asked Questions About DentaSmart</h2>
           <div className="space-y-6">
             {[
-              { q: "Is DentaSmart a replacement for a dentist?", a: "No. DentaSmart provides AI-powered educational insights to help you understand your oral health and prepare for better conversations with a licensed dentist. It does not diagnose or treat dental conditions. Always consult a licensed dentist for diagnosis and treatment." },
-              { q: "How does DentaSmart work?", a: "Upload a photo of your teeth or dental X-rays using the DentaSmart app. The AI analyzes the image, identifies potential concerns, and provides an Oral Health Score, plain-English explanations, and a personalized care plan within minutes." },
+              { q: "Is DentaSmart a replacement for a dentist?", a: "No. DentaSmart provides educational insights to help you understand your oral health and prepare for better conversations with a licensed dentist. It does not diagnose or treat dental conditions. Always consult a licensed dentist for diagnosis and treatment." },
+              { q: "How does DentaSmart work?", a: "Upload a photo of your teeth or dental X-rays using the DentaSmart app. DentaSmart analyzes the image, identifies potential concerns, and provides an Oral Health Score, plain-English explanations, and a personalized care plan within minutes." },
               { q: "Is DentaSmart available on Android?", a: "DentaSmart is live on iOS. Android is in Early Access. You can join the Android waitlist at dentasmart.ai/download." },
-              { q: "What is the DentaSmart Oral Health Score?", a: "The Oral Health Score is a number from 0 to 100 that reflects the overall health of your teeth and gums based on AI analysis of your dental photos or X-rays. It tracks changes over time so you can see improvement." },
+              { q: "What is the DentaSmart Oral Health Score?", a: "The Oral Health Score is a number from 0 to 100 that reflects the overall health of your teeth and gums based on analysis of your dental photos or X-rays. It tracks changes over time so you can see improvement." },
               { q: "Can DentaSmart analyze dental X-rays?", a: "Yes. DentaSmart can analyze both photos of your teeth and dental X-rays to identify potential oral health concerns and provide insights." },
               { q: "Who is DentaSmart for?", a: "DentaSmart is for anyone who wants to understand their oral health better, including people without dental insurance, those seeking a second opinion on a treatment plan, parents monitoring family dental health, and people with dental anxiety." }
             ].map((faq, idx) => (

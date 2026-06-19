@@ -11,18 +11,18 @@ export default function Features() {
   const features: { title: string; description: string; points: string[]; image: string; isPhone?: boolean }[] = [
     {
       title: "Quick Check: Instant X-Ray & Photo Analysis",
-      description: "Don't wait weeks for answers about that spot on your X-ray.\n\nQuick Check gives you fast, AI-powered analysis of your dental X-rays and mouth photos in minutes. Upload an image, and our AI highlights findings with color-coded overlays and plain-language explanations. It's the fastest way to understand what's happening in your mouth.",
+      description: "Don't wait weeks for answers about that spot on your X-ray.\n\nQuick Check gives you fast analysis of your dental X-rays and mouth photos in minutes. Upload an image and get findings highlighted with color-coded overlays and plain-language explanations. It's the fastest way to understand what's happening in your mouth.",
       points: [
-        "Instant Results: Get AI findings in minutes, not days.",
+        "Instant Results: Get findings in minutes, not days.",
         "Free to Try: Limited Quick Checks available on the free tier.",
-        "Visual Clarity: Color-coded overlays show exactly what the AI detected."
+        "Visual Clarity: Color-coded overlays show exactly what was found."
       ],
       image: "/manus-storage/quick-check-xray_0e827efc.png",
       isPhone: true
     },
     {
       title: "Guided Self-Examination for Better Accuracy",
-      description: "The more your AI knows, the better it can help you.\n\nBefore your photo upload, DentaSmart guides you through simple self-examination tests — like a Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection with a mirror. These quick checks help the AI understand your symptoms better and deliver more accurate, personalized insights.",
+      description: "The more DentaSmart knows about your symptoms, the better your results.\n\nBefore your photo upload, DentaSmart guides you through simple self-examination tests (Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection with a mirror). These quick checks help the system understand your symptoms better and give you more accurate, personalized results.",
       points: [
         "Bite Pressure Test: Helps confirm tenderness and pain patterns.",
         "Cold Sensitivity Test: Identifies nerve-related issues early.",
@@ -33,7 +33,7 @@ export default function Features() {
     },
     {
       title: "Two Reports: One for You, One for Your Dentist",
-      description: "Finally, a report that speaks your language — and your dentist's.\n\nDentaSmart generates two versions of your AI report. The 'For You' version uses plain language with a clear health score and priority actions. The 'For Dentist' version includes clinical terminology, tooth-by-tooth findings, and differential diagnoses. Both are downloadable as PDF and shareable instantly.",
+      description: "Finally, a report that speaks your language and your dentist's.\n\nDentaSmart generates two versions of your report. The 'For You' version uses plain language with a clear health score and priority actions. The 'For Dentist' version includes clinical terminology, tooth-by-tooth findings, and differential diagnoses. Both are downloadable as PDF and shareable instantly.",
       points: [
         "Patient Report: Simple score, clear priorities, and next steps you understand.",
         "Dentist Report: Clinical detail with conditions, differentials, and urgency levels.",
@@ -44,7 +44,7 @@ export default function Features() {
     },
     {
       title: "Stop Wondering What Your X-Rays Mean",
-      description: "You shouldn't have to nod along pretending to understand complex dental jargon.\n\nOur AI X-ray Analysis acts as your personal translator, instantly highlighting areas of concern in simple, clear language. Finally, you can see exactly what your dentist sees and feel confident in your treatment plan.",
+      description: "You shouldn't have to nod along pretending to understand complex dental jargon.\n\nDentaSmart's X-ray analysis acts as your personal translator, instantly highlighting areas of concern in simple, clear language. Finally, you can see exactly what your dentist sees and feel confident in your treatment plan.",
       points: [
         "Instant Clarity: See color-coded overlays that make issues obvious.",
         "Plain English: No more confusing medical terms. Just clear explanations.",
@@ -54,7 +54,7 @@ export default function Features() {
     },
     {
       title: "Catch Issues Before They Become Emergencies",
-      description: "Waiting for your 6-month checkup can leave you vulnerable to silent problems.\n\nWith AI-Powered Mouth Image Insights, you can scan your smile anytime. Our technology spots subtle visual cues you might miss, giving you the peace of mind that comes from knowing you're catching potential issues early.",
+      description: "Waiting for your 6-month checkup can leave you vulnerable to silent problems.\n\nWith DentaSmart's mouth image analysis, you can scan your smile anytime. It spots subtle visual cues you might miss, giving you the peace of mind that comes from knowing you're catching potential issues early.",
       points: [
         "Peace of Mind: Check your oral health whenever you feel uncertain.",
         "Early Detection: Spot visual changes before they turn into painful problems.",
@@ -115,7 +115,7 @@ export default function Features() {
     },
     {
       title: "Smart Reminders That Fit Your Life",
-      description: "Good habits don't happen by accident — they need gentle nudges.\n\nDentaSmart sends timely reminders to scan, brush, floss, and follow up on flagged issues. Whether it's your Apple Watch, phone notification, or email, you'll never miss a beat on your oral health journey.",
+      description: "Good habits don't happen by accident. They need gentle nudges.\n\nDentaSmart sends timely reminders to scan, brush, floss, and follow up on flagged issues. Whether it's your Apple Watch, phone notification, or email, you'll never miss a beat on your oral health journey.",
       points: [
         "Watch & Phone Alerts: Get nudges right on your wrist or lock screen.",
         "Personalized Timing: Reminders adapt to your routine and scan history.",
@@ -126,7 +126,7 @@ export default function Features() {
     },
     {
       title: "Cost Transparency Before You Commit",
-      description: "Surprise dental bills are the #1 reason people delay care.\n\nDentaSmart shows you estimated treatment costs upfront — before you sit in the chair. See what procedures might be needed, typical price ranges, and priority order so you can plan your budget and avoid sticker shock.",
+      description: "Surprise dental bills are the #1 reason people delay care.\n\nDentaSmart shows you estimated treatment costs upfront, before you sit in the chair. See what procedures might be needed, typical price ranges, and priority order so you can plan your budget and avoid sticker shock.",
       points: [
         "Price Estimates: See typical costs for recommended treatments.",
         "Priority Order: Know what's urgent vs. what can wait.",
@@ -141,7 +141,7 @@ export default function Features() {
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
       <SEO
         title="DentaSmart Features - Understand Your Oral Health"
-        description="Explore DentaSmart's powerful features, including AI-powered X-ray analysis, personalized oral health recommendations, and progress tracking. Take control of your dental health today."
+        description="Explore DentaSmart's features: instant X-ray analysis, personalized oral health recommendations, progress tracking, and more. Take control of your dental health today."
         canonical="https://dentasmart.ai/features"
       />
       <Navigation />

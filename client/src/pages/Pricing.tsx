@@ -2,7 +2,6 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { BenefitsCarousel } from "@/components/BenefitsCarousel";
 import { useState } from "react";
 import { Check, X, Shield, Sparkles, Users, Clock, ArrowRight, Zap } from "lucide-react";
 import { DownloadSection } from "@/components/DownloadSection";
@@ -120,7 +119,7 @@ export default function Pricing() {
             <h2 className="text-3xl md:text-4xl font-light text-black mb-3">
               Choose the right plan for you
             </h2>
-            <p className="text-stone-500 text-lg max-w-2xl mx-auto">From a quick scan to year-round family coverage — pick what fits your needs.</p>
+            <p className="text-stone-500 text-lg max-w-2xl mx-auto">From a quick scan to year-round family coverage. Pick what fits your needs.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -156,9 +155,7 @@ export default function Pricing() {
                   "Instant AI findings overview",
                   "Oral health score",
                   "Key areas of concern highlighted",
-                  "Basic recommendations",
-                  "24/7 AI guide — Din support",
-                  "Access valid for 7 days",
+                  "Basic care recommendations",
                 ].map((f, i) => (
                   <div key={i} className="flex items-start text-stone-700 font-light text-sm">
                     <Check className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
@@ -213,8 +210,6 @@ export default function Pricing() {
                   "Treatment options with cost estimates",
                   "Patient + dentist report versions",
                   "Printable PDF report",
-                  "24/7 AI guide — Din support",
-                  "Access valid for 30 days",
                 ].map((f, i) => (
                   <div key={i} className="flex items-start text-stone-700 font-light text-sm">
                     <Check className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
@@ -259,7 +254,7 @@ export default function Pricing() {
                   <span className="text-stone-500 ml-2 text-sm">/year</span>
                 </div>
                 <p className="text-sm text-stone-500 mt-1">
-                  Just ${(74.99 / 365).toFixed(2)}/day — less than a coffee
+                  Just ${(74.99 / 365).toFixed(2)}/day (less than a coffee)
                 </p>
                 <p className="text-stone-600 mt-3 font-light leading-relaxed text-sm">
                   Year-round monitoring with unlimited scans. Track your oral health, catch problems early, and get personalized guidance.
@@ -278,7 +273,7 @@ export default function Pricing() {
                   "Preventive & initial care guidance",
                   "Patient + dentist report versions",
                   "Secure Dental History storage",
-                  "24/7 AI guide — Din support",
+                  "24/7 Din AI guide included",
                   "Reviewed by licensed dentists",
                   "Full year access",
                 ].map((f, i) => (
@@ -325,7 +320,7 @@ export default function Pricing() {
                   <span className="text-white/70 ml-2 text-sm">/year</span>
                 </div>
                 <p className="text-sm text-white/70 mt-1">
-                  Up to 5 family members — ${(149.99 / 5).toFixed(0)}/person/year
+                  Up to 5 family members, ${(149.99 / 5).toFixed(0)}/person/year
                 </p>
                 <p className="text-white/90 mt-3 font-light leading-relaxed text-sm">
                   Everything in Complete Oral Health Checkup for your whole family. Keep everyone on track with individual profiles and reports.
@@ -367,10 +362,7 @@ export default function Pricing() {
 
       <WaitlistPopup isOpen={isWaitlistOpen} onClose={() => setIsWaitlistOpen(false)} />
 
-      {/* Benefits Carousel */}
-      <section className="py-4 bg-white overflow-hidden">
-        <BenefitsCarousel />
-      </section>
+
 
       {/* Compare Plans */}
       <section className="py-6 bg-white">
@@ -421,10 +413,10 @@ export default function Pricing() {
                     { feature: "Patient + dentist report versions", quickCheck: false, secondOpinion: true, complete: true, family: true },
                     { feature: "Printable PDF report", quickCheck: false, secondOpinion: true, complete: true, family: true },
                     { feature: "Secure Dental History storage", quickCheck: false, secondOpinion: false, complete: true, family: true },
-                    { feature: "24/7 AI guide — Din support", quickCheck: true, secondOpinion: true, complete: true, family: true },
+                    { feature: "24/7 Din AI guide", quickCheck: false, secondOpinion: false, complete: true, family: true },
                     { feature: "Reviewed by licensed dentists", quickCheck: true, secondOpinion: true, complete: true, family: true },
                     { feature: "Family members", quickCheck: "1", secondOpinion: "1", complete: "1", family: "Up to 5" },
-                    { feature: "Access duration", quickCheck: "7 days", secondOpinion: "30 days", complete: "Full year", family: "Full year" },
+                    { feature: "Access duration", quickCheck: "One-time", secondOpinion: "One-time", complete: "Full year", family: "Full year" },
                   ].map((row, idx) => (
                     <tr key={idx} className="hover:bg-stone-50/50 transition-colors">
                       <td className="text-left py-3 px-4 font-medium text-stone-700 text-sm sticky left-0 bg-white z-10 border-r border-stone-100">{row.feature}</td>

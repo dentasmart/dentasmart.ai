@@ -1627,3 +1627,14 @@
 - [x] tagline: Update in Footer component
 - [x] tagline: Update in any SEO/meta descriptions
 - [x] tagline: Update in blog articles stored in database
+
+## Copy Humanization & AI Writing Fixes — Jun 2026
+
+- [x] copy/em-dashes: Remove all em dashes from Home, Features, and Pricing pages
+- [x] copy/ai-jargon: Replace "AI-powered", "AI-driven", "empowers" with natural alternatives
+- [x] copy/humanize: Rewrite robotic phrasing to sound like a person explaining to a friend
+- [x] section/benefits-carousel: Remove "What You Get" BenefitsCarousel from Home and Pricing (wrong captions, redundant)
+- [x] pricing/quick-check: Remove "24/7 AI guide" and "Access valid for 7 days" (not supported by knowledge base)
+- [x] pricing/second-opinion: Remove "24/7 AI guide" and "Access valid for 30 days" (not supported by knowledge base)
+- [x] pricing/comparison-table: Fix Din guide row (only available on Complete/Family) and remove access duration row
+- [x] reference: Store AI writing signs from Wikipedia for future use
