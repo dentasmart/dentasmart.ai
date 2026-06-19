@@ -1588,3 +1588,15 @@
 - [x] feat(media-lib/phase4/E): keyboard shortcut Cmd/Ctrl+Shift+I → open image insertion modal
 - [x] feat(media-lib/phase4/E): Delete/Backspace when image node selected → remove image from post
 - [x] feat(media-lib/phase4/E): Escape → close image action bar
+
+## Homepage Conversion Fixes — Jun 2026
+
+- [x] conv/hero-headline: Change H1 to "Understand your teeth before it costs you." with curiosity line as italic subhead
+- [x] conv/hero-subhead: Add proof tag "Trusted by 50K+ scans · 5.0 on the App Store" after existing subhead copy
+- [x] conv/hero-cta-primary: Replace "Get My Oral Health Score" with iOS App Store download button (getAppStoreUrl + trackAppDownload)
+- [x] conv/hero-cta-secondary: Replace second button with Android "Join Early Access" (opens AndroidEarlyAccessModal)
+- [x] conv/hero-cta-tertiary: Add "See pricing" small text link below the two download buttons
+- [x] conv/hero-proof-bar: Add inline proof bar below headline: ★★★★★ 5.0 App Store · 50K+ scans · Free to start
+- [x] conv/social-proof-stats: Update stats bar to "5.0 ★ App Store" instead of "4.8/5 Average User Rating"
+- [x] conv/trust-signals: Add "Your data is never sold", "Clinical Advisory Board", and "Not a replacement for your dentist" trust badges to the dark Guide section
+- [x] conv/testimonials: Add "App Store verified" label to Real Stories testimonial cards

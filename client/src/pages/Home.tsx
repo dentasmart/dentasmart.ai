@@ -4,7 +4,9 @@ import { BenefitsCarousel } from "@/components/BenefitsCarousel";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, Smartphone, Activity } from "lucide-react";
+import { ArrowRight, Shield, Smartphone, Activity, Star } from "lucide-react";
+import { AndroidEarlyAccessModal } from "@/components/AndroidEarlyAccessModal";
+import { trackAppDownload, getAppStoreUrl } from "@/lib/analytics";
 import { DownloadSection } from "@/components/DownloadSection";
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
@@ -17,6 +19,7 @@ import { OrganizationSchema, WebSiteSchema, SoftwareApplicationSchema, HowToSche
 
 export default function Home() {
   const [location] = useLocation();
+  const [isAndroidModalOpen, setIsAndroidModalOpen] = useState(false);
 
 
   useEffect(() => {
@@ -83,38 +86,70 @@ export default function Home() {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="text-left max-w-2xl lg:col-span-5"
             >
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
-                Know what's happening <br />
-                <span className="font-normal italic text-primary">in your mouth</span>.
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-4 leading-[1.1]">
+                Understand your teeth <br />
+                <span className="font-normal italic text-primary">before it costs you.</span>
               </h1>
+
+              {/* Proof bar — directly under headline */}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6">
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  ))}
+                  <span className="text-sm font-semibold text-stone-800 ml-1">5.0 on the App Store</span>
+                </div>
+                <span className="text-stone-300 hidden sm:inline">|</span>
+                <span className="text-sm text-stone-600">50K+ scans analyzed</span>
+                <span className="text-stone-300 hidden sm:inline">|</span>
+                <span className="text-sm text-stone-600">Free to start</span>
+              </div>
               
-              <p className="text-xl md:text-2xl text-stone-700 mb-10 font-normal leading-relaxed text-balance">
-                Upload a photo of your teeth or X-rays and get clear AI insights in minutes, with an easy plan to prevent expensive surprises.
+              <p className="text-xl md:text-2xl text-stone-700 mb-8 font-normal leading-relaxed text-balance">
+                Know what's happening in your mouth. Upload a photo of your teeth or X-rays and get clear AI insights in minutes, with an easy plan to prevent expensive surprises.
               </p>
 
+              {/* Primary: iOS download. Secondary: Android early access. */}
               <div className="flex flex-col sm:flex-row gap-4 justify-start items-stretch sm:items-start">
-                <Button 
-                  size="lg" 
-                  className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-7 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0 cursor-pointer relative z-20"
-                  onClick={() => {
-                    const element = document.getElementById('download-cta');
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                <a
+                  href={getAppStoreUrl("hero_cta")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackAppDownload("ios", "hero_cta")}
+                  className="relative z-20"
                 >
-                  Get My Oral Health Score
-                </Button>
-                <Link href="/symptom-quiz">
                   <Button
                     size="lg"
-                    variant="outline"
-                    className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-8 py-7 text-lg font-medium transition-all duration-300 cursor-pointer relative z-20"
+                    className="bg-black text-white hover:bg-stone-800 rounded-full px-8 py-7 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0 cursor-pointer w-full"
                   >
-                    Try Free Symptom Check
+                    <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current mr-2 flex-shrink-0">
+                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.21-1.96 1.07-3.11-1.05.05-2.31.74-3.03 1.59-.67.79-1.25 2.05-1.09 3.2 1.17.09 2.35-.84 3.05-1.68" />
+                    </svg>
+                    Scan your teeth — free
                   </Button>
+                </a>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-8 py-7 text-lg font-medium transition-all duration-300 cursor-pointer relative z-20"
+                  onClick={() => {
+                    trackAppDownload("android", "hero_cta");
+                    setIsAndroidModalOpen(true);
+                  }}
+                >
+                  <Smartphone className="w-5 h-5 mr-2 flex-shrink-0" />
+                  Android Early Access
+                </Button>
+              </div>
+              <div className="mt-3">
+                <Link href="/pricing" className="text-sm text-stone-500 hover:text-primary underline underline-offset-2 transition-colors">
+                  See pricing
                 </Link>
               </div>
+              <AndroidEarlyAccessModal
+                isOpen={isAndroidModalOpen}
+                onClose={() => setIsAndroidModalOpen(false)}
+              />
             </motion.div>
 
             {/* Right Column: iPhone Mockups */}
@@ -280,7 +315,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-border/50">
             {[
               { value: "50K+", label: "Scans Analyzed" },
-              { value: "4.8/5", label: "Average User Rating" },
+              { value: "5.0 ★", label: "App Store Rating" },
               { value: "24/7", label: "AI Support" }
             ].map((stat, idx) => (
               <motion.div 
@@ -381,12 +416,18 @@ export default function Home() {
               <span className="text-white font-normal">DentaSmart gives you a clear starting point so you can make confident decisions.</span>
             </p>
             
-            <div className="flex flex-wrap justify-center gap-4">
-              <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full border border-white/20 text-sm font-medium tracking-wide uppercase">
+            <div className="flex flex-wrap justify-center gap-3 mt-2">
+              <div className="bg-white/10 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/20 text-sm font-medium tracking-wide">
                 50K+ Scans Analyzed
               </div>
-              <div className="bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full border border-white/20 text-sm font-medium tracking-wide uppercase">
-                Advised by Clinical Leaders
+              <div className="bg-white/10 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/20 text-sm font-medium tracking-wide">
+                Clinical Advisory Board
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/20 text-sm font-medium tracking-wide">
+                🔒 Your data is never sold
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/20 text-sm font-medium tracking-wide">
+                Not a replacement for your dentist
               </div>
             </div>
           </motion.div>
@@ -476,8 +517,12 @@ export default function Home() {
                     <p className="text-stone-900 font-medium">"{item.outcome}"</p>
                   </div>
                 </div>
-                <div className="mt-8 pt-6 border-t border-stone-100 text-stone-500 text-sm">
-                  - {item.author}
+                <div className="mt-8 pt-6 border-t border-stone-100 flex items-center justify-between">
+                  <span className="text-stone-500 text-sm">— {item.author}</span>
+                  <span className="flex items-center gap-1 text-xs text-amber-600 font-medium">
+                    <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+                    App Store verified
+                  </span>
                 </div>
               </motion.div>
             ))}
