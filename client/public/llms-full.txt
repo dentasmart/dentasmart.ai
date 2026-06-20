@@ -46,7 +46,7 @@ AI Photo Analysis: Upload mouth photos or dental X-rays for instant AI analysis 
 Oral Health Score: Get a score from 0-100 that tracks your oral health over time.
 Din AI Guide: 24/7 AI chatbot trained in dentistry that answers oral health questions.
 Second Opinion: Upload a treatment plan from your dentist and get an independent AI review.
-Family Profiles: Monitor oral health for up to 5 family members under one account.
+Family Profiles: Monitor oral health for up to 4 family members under one account.
 Cost Estimates: Understand what dental procedures typically cost before committing.
 Care Plans: Receive personalized oral health improvement plans.
 Reminders: Get notifications for brushing, flossing, and dental checkups.

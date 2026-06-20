@@ -29,7 +29,7 @@ export default function Pricing() {
         { name: "Pricing", url: "/pricing" }
       ]} />
       <FAQSchema faqs={[
-        { question: "How much does DentaSmart cost?", answer: "DentaSmart offers four options: Quick Check at $19.99 (one-time fast scan), Second Opinion at $29.99 (one-time deep analysis), Complete Oral Health Checkup at $74.99/year (unlimited scans and monitoring), and Family plan at $149.99/year (up to 5 members). All subscriptions are managed through dentasmart.ai." },
+        { question: "How much does DentaSmart cost?", answer: "DentaSmart offers four options: Quick Check at $19.99 (one-time fast scan), Second Opinion at $29.99 (one-time deep analysis), Complete Oral Health Checkup at $74.99/year (unlimited scans and monitoring), and Family plan at $149.99/year (up to 4 members). All subscriptions are managed through dentasmart.ai." },
         { question: "Can I try DentaSmart before paying?", answer: "Yes. Download the app and scan your teeth for free. You will see a preview of your results. When you are ready for the full analysis, choose the plan that fits your needs through dentasmart.ai." },
         { question: "What is the difference between Quick Check and Complete Oral Health Checkup?", answer: "Quick Check is a one-time fast scan that gives you an instant overview of your oral health with key findings. Complete Oral Health Checkup gives you year-round unlimited scans, progress tracking, personalized recommendations, and ongoing AI guidance." },
         { question: "What does Second Opinion include?", answer: "Second Opinion is a one-time deep analysis where you upload your dentist's treatment plan and get an independent AI comparison with cost estimates, alternative options, and a printable report." },
@@ -321,7 +321,7 @@ export default function Pricing() {
                   <span className="text-white/70 ml-2 text-sm">/year</span>
                 </div>
                 <p className="text-sm text-white/70 mt-1">
-                  Up to 5 family members, ${(149.99 / 5).toFixed(0)}/person/year
+                  Up to 4 family members, ${(149.99 / 4).toFixed(0)}/person/year
                 </p>
                 <p className="text-white/90 mt-3 font-light leading-relaxed text-sm">
                   Everything in Complete Oral Health Checkup for your whole family. Keep everyone on track with individual profiles and reports.
@@ -331,7 +331,7 @@ export default function Pricing() {
               <div className="space-y-2.5 mb-6 flex-grow">
                 {[
                   "Everything in Complete Oral Health Checkup",
-                  "Up to 5 family members included",
+                  "Up to 4 family members included",
                   "Individual profiles & tracking per member",
                   "Separate reports for each family member",
                   "Family health dashboard",
@@ -416,7 +416,7 @@ export default function Pricing() {
                     { feature: "Secure Dental History storage", quickCheck: false, secondOpinion: false, complete: true, family: true },
                     { feature: "24/7 Din AI guide", quickCheck: false, secondOpinion: false, complete: true, family: true },
                     { feature: "Reviewed by licensed dentists", quickCheck: true, secondOpinion: true, complete: true, family: true },
-                    { feature: "Family members", quickCheck: "1", secondOpinion: "1", complete: "1", family: "Up to 5" },
+                    { feature: "Family members", quickCheck: "1", secondOpinion: "1", complete: "1", family: "Up to 4" },
                     { feature: "Access duration", quickCheck: "One-time", secondOpinion: "One-time", complete: "Full year", family: "Full year" },
                   ].map((row, idx) => (
                     <tr key={idx} className="hover:bg-stone-50/50 transition-colors">
@@ -509,7 +509,7 @@ export default function Pricing() {
         <div className="container px-4 mx-auto max-w-3xl">
           <QuickAnswerBlock
             question="How much does DentaSmart cost?"
-            answer="DentaSmart offers four plans: Quick Check at $19.99 (one-time fast scan), Second Opinion at $29.99 (one-time deep analysis), Complete Oral Health Checkup at $74.99/year (unlimited scans and year-round monitoring), and Family plan at $149.99/year (up to 5 members). All subscriptions are managed through dentasmart.ai."
+            answer="DentaSmart offers four plans: Quick Check at $19.99 (one-time fast scan), Second Opinion at $29.99 (one-time deep analysis), Complete Oral Health Checkup at $74.99/year (unlimited scans and year-round monitoring), and Family plan at $149.99/year (up to 4 members). All subscriptions are managed through dentasmart.ai."
             sourceUrl="https://dentasmart.ai/pricing"
             sourceLabel="DentaSmart Pricing"
           />
@@ -542,7 +542,7 @@ export default function Pricing() {
               },
               {
                 q: "What does the Family plan include?",
-                a: "The Family plan ($149.99/year) includes everything in the Complete Oral Health Checkup for up to 5 family members. Each member gets their own profile, individual tracking, and separate reports.",
+                a: "The Family plan ($149.99/year) includes everything in the Complete Oral Health Checkup for up to 4 family members. Each member gets their own profile, individual tracking, and separate reports.",
               },
               {
                 q: "Are the results reviewed by real dentists?",

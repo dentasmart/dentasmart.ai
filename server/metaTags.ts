@@ -38,9 +38,9 @@ const staticMeta: Record<string, MetaInfo> = {
       "Discover DentaSmart features: AI-powered photo analysis, personalized Oral Health Score, cost estimates, care reminders, and second opinion tools.",
   },
   "/pricing": {
-    title: "DentaSmart Pricing | Free, Starter, Pro & Family Plans",
+    title: "DentaSmart Pricing | Quick Check, Second Opinion, Complete & Family Plans",
     description:
-      "Compare DentaSmart plans: Free symptom quiz, Starter at $4.99/mo, Pro at $9.99/mo with unlimited scans, and Family at $14.99/mo for up to 5 members.",
+      "Compare DentaSmart plans: Quick Check $19.99, Second Opinion $29.99, Complete Oral Health Checkup $74.99/year, and Family $149.99/year for up to 4 members.",
   },
   "/employers": {
     title: "DentaSmart for Employers | AI Dental Benefits for Your Team",

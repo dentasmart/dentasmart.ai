@@ -1658,3 +1658,10 @@
 - [x] aeo/blog-330008: Verified all AEO fields and CTA already present (gums-hurt-when-flossing)
 - [x] aeo/quality: Verified no em dashes in any new content
 - [x] aeo/quality: Verified no AI jargon in any new content
+
+## Family Plan Member Count Fix - Jun 20, 2026
+
+- [x] Fix Family Plan from "5 members" to "4 members" across all site pages
+- [x] Fix Family Plan in knowledge base (llms.txt / llms-full.txt)
+- [x] Fix Family Plan in server-side SEO/meta content
+- [x] Fix Family Plan in database (blog posts mentioning 5 members) - confirmed none exist

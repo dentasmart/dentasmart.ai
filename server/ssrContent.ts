@@ -38,7 +38,7 @@ function generateHomepageContent(): string {
     <li>Clear treatment cost estimates before you commit</li>
     <li>24/7 AI dental guide (Din) for any oral health question</li>
     <li>Second opinion reports for treatment plans</li>
-    <li>Family profiles for up to 5 members</li>
+    <li>Family profiles for up to 4 members</li>
   </ul>
   <h2>Explore Dental Health Resources</h2>
   <nav>
@@ -259,7 +259,7 @@ function generateStaticPageContent(path: string): string | null {
   <h2>Second Opinion Reports</h2>
   <p>Upload your dentist's treatment plan and get an independent AI review with cost comparisons and alternative options.</p>
   <h2>Family Profiles</h2>
-  <p>Monitor oral health for up to 5 family members under one account. Track everyone's dental health in one place.</p>
+  <p>Monitor oral health for up to 4 family members under one account. Track everyone's dental health in one place.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/pricing">View Pricing</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`,
     "/pricing": `
@@ -269,7 +269,7 @@ function generateStaticPageContent(path: string): string | null {
   <h2>Quick Check — $19.99 one-time</h2>
   <p>Unlimited AI scans, Oral Health Score tracking, personalized care plans, and 24/7 access to Din AI guide. That is just $0.21 per day for complete oral health clarity.</p>
   <h2>Complete Oral Health Checkup — $74.99/year</h2>
-  <p>Everything in Individual, plus coverage for up to 4 additional family members. Monitor your whole family's oral health for $0.41 per day.</p>
+  <p>Everything in Individual, plus coverage for up to 3 additional family members. Monitor your whole family's oral health for $0.41 per day.</p>
   <h2>Second Opinion — $29.99 one-time</h2>
   <p>Upload your dentist's treatment plan and get an AI-powered comparison report with cost estimates and alternative options.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/features">See All Features</a> | <a href="/how-it-works">How It Works</a></p>

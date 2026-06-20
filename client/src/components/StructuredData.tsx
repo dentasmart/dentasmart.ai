@@ -114,7 +114,7 @@ export function SoftwareApplicationSchema() {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        description: "Complete Oral Health Checkup for up to 5 family members. $149.99/year."
+        description: "Complete Oral Health Checkup for up to 4 family members. $149.99/year."
       }
     ],
     aggregateRating: {
@@ -295,7 +295,7 @@ export function ProductServiceSchema() {
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
         url: `${SITE_URL}/pricing`,
-        description: "Complete Oral Health Checkup for up to 5 family members. $149.99/year."
+        description: "Complete Oral Health Checkup for up to 4 family members. $149.99/year."
       }
     ]
   };
