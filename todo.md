@@ -1665,3 +1665,8 @@
 - [x] Fix Family Plan in knowledge base (llms.txt / llms-full.txt)
 - [x] Fix Family Plan in server-side SEO/meta content
 - [x] Fix Family Plan in database (blog posts mentioning 5 members) - confirmed none exist
+
+## Bug Fixes - Jun 23, 2026
+
+- [x] bug/seo-panel: Auto-open SEO collapsible panel when editing existing post (useState(!!editId))
+- [x] bug/media-library: Register editor-uploaded images in media_items table after storagePut (best-effort, try/catch)

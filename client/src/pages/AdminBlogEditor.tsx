@@ -116,7 +116,7 @@ export default function AdminBlogEditor() {
   const [featuredImage, setFeaturedImage] = useState("");
 
   // UI state
-  const [seoOpen, setSeoOpen] = useState(false);
+  const [seoOpen, setSeoOpen] = useState(!!editId);
   const [activeTab, setActiveTab] = useState("structured");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);

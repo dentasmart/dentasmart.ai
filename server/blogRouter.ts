@@ -1,6 +1,7 @@
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { publicProcedure, router } from "./_core/trpc";
+import { mediaItems } from "../drizzle/schema";
 import {
   createBlogPost,
   updateBlogPost,
@@ -25,7 +26,7 @@ import { SignJWT, jwtVerify } from "jose";
 import { storagePut } from "./storage";
 import { invalidateSitemapCache } from "./seo";
 import { runBlogAgent, listAgentRuns } from "./blogAgent";
-import { getSetting, setSetting } from "./db";
+import { getDb, getSetting, setSetting } from "./db";
 
 const ADMIN_COOKIE_NAME = "blog_admin_session";
 const JWT_SECRET_KEY = process.env.JWT_SECRET || "dentasmart-blog-admin-secret";
@@ -500,6 +501,23 @@ export const blogRouter = router({
       const sanitizedName = fileName.replace(/[^a-zA-Z0-9.-]/g, "_");
       const fileKey = `blog-images/${randomSuffix}-${sanitizedName}`;
       const { url } = await storagePut(fileKey, buffer, mimeType);
+
+      // Register in media library (best-effort — never blocks the upload)
+      try {
+        const db = await getDb();
+        if (db) {
+          await db.insert(mediaItems).values({
+            url,
+            fileKey,
+            filename: input.fileName,
+            mimeType,
+            fileSizeBytes: buffer.length,
+          });
+        }
+      } catch {
+        // Silently swallow — media_items write failure must not fail the upload
+      }
+
       return { url };
     }),
 });
