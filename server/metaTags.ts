@@ -9,7 +9,7 @@
  * catch-all can inject the correct tags into the HTML template before sending.
  */
 
-import { listBlogPosts } from "./blogDb";
+import { listBlogPosts, getBlogPostBySlug } from "./blogDb";
 
 // ─── Types ───────────────────────────────────────────────────────────
 interface MetaInfo {
@@ -885,11 +885,15 @@ async function refreshBlogMetaCache(): Promise<void> {
     const newCache = new Map<string, MetaInfo>();
     for (const post of result.posts) {
       const path = `/oral-health-hub/${post.slug}`;
+      const canonical = ((post as any).canonicalUrl && (post as any).canonicalUrl.trim().length > 0)
+        ? (post as any).canonicalUrl
+        : `${BASE_URL}/oral-health-hub/${post.slug}/`;
       newCache.set(path, {
         title: (post as any).metaTitle || post.title || "DentaSmart | Oral Health Hub",
         description:
           (post as any).metaDescription ||
           `Read about ${post.title} on DentaSmart's Oral Health Hub. Expert dental health information and guidance.`,
+        canonical,
       });
     }
     blogMetaCache = newCache;
@@ -919,7 +923,23 @@ export async function resolveMetaTags(urlPath: string): Promise<MetaInfo | null>
       await refreshBlogMetaCache();
     }
     const blogHit = blogMetaCache.get(cleanPath);
-    if (blogHit) return { ...blogHit, canonical: `${BASE_URL}${canonicalPath}` };
+    if (blogHit) return { ...blogHit, canonical: blogHit.canonical ?? `${BASE_URL}${canonicalPath}` };
+
+    // Cache miss — fall back to direct DB lookup (handles cold start and stale cache)
+    const slug = cleanPath.replace("/oral-health-hub/", "");
+    if (slug) {
+      const post = await getBlogPostBySlug(slug);
+      if (post) {
+        const canonical = ((post as any).canonicalUrl && (post as any).canonicalUrl.trim().length > 0)
+          ? (post as any).canonicalUrl
+          : `${BASE_URL}/oral-health-hub/${post.slug}/`;
+        return {
+          title: (post as any).metaTitle || post.title || "DentaSmart | Oral Health Hub",
+          description: (post as any).metaDescription || "",
+          canonical,
+        };
+      }
+    }
   }
 
   // 3. No match — return null (index.html defaults will be used)

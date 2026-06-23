@@ -1670,3 +1670,5 @@
 
 - [x] bug/seo-panel: Auto-open SEO collapsible panel when editing existing post (useState(!!editId))
 - [x] bug/media-library: Register editor-uploaded images in media_items table after storagePut (best-effort, try/catch)
+- [x] bug/canonical: Use post.canonicalUrl from DB when building blogMetaCache (Fix 2)
+- [x] bug/canonical: Add direct DB fallback in resolveMetaTags on cache miss (Fix 1) — prevents homepage canonical on cold start
