@@ -1672,3 +1672,12 @@
 - [x] bug/media-library: Register editor-uploaded images in media_items table after storagePut (best-effort, try/catch)
 - [x] bug/canonical: Use post.canonicalUrl from DB when building blogMetaCache (Fix 2)
 - [x] bug/canonical: Add direct DB fallback in resolveMetaTags on cache miss (Fix 1) — prevents homepage canonical on cold start
+
+## InstantScan Page Improvements - Jun 30, 2026
+
+- [x] fix/instant-scan: Fix opacity-0 render bug on scroll-reveal animations (Two ways to scan, What you get cards)
+- [x] feat/instant-scan: Add "How your instant scan works" 3-step section
+- [x] feat/instant-scan: Add "What the AI looks for" 6-card grid section
+- [x] feat/instant-scan: Add "Common questions" FAQ section (crawlable Q&A)
+- [x] feat/instant-scan: Add internal links grid (12 condition/symptom pages)
+- [x] feat/instant-scan: Add FAQPage JSON-LD structured data to page head
