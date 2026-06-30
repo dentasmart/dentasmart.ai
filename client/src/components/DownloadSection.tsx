@@ -62,12 +62,12 @@ export function DownloadSection() {
                 Get it on Google Play
               </button>
             </a>
-            <div className="w-32 h-32 bg-white p-2 rounded-xl shadow-sm border border-stone-100 flex items-center justify-center">
+            <div className="w-32 h-32 bg-white p-2 rounded-xl shadow-sm border border-stone-100">
               <img
                 loading="lazy"
-                src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-                alt="Get it on Google Play"
-                className="w-full h-auto object-contain"
+                src="/manus-storage/android-qr_90de704f.png"
+                alt="Scan to download DentaSmart on Android"
+                className="w-full h-full object-contain"
               />
             </div>
           </div>

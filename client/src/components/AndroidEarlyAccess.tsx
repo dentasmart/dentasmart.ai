@@ -42,11 +42,13 @@ export function AndroidEarlyAccess() {
             onClick={() => trackAppDownload("android", "homepage_android_section")}
             className="inline-block"
           >
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-              alt="Get it on Google Play"
-              className="h-14 w-auto hover:opacity-90 transition-opacity drop-shadow-lg"
-            />
+            <div className="bg-white p-3 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow">
+              <img
+                src="/manus-storage/android-qr_90de704f.png"
+                alt="Scan to download DentaSmart on Android"
+                className="w-32 h-32 object-contain"
+              />
+            </div>
           </a>
 
           <p className="text-white/70 text-sm mt-6">
