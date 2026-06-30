@@ -1681,3 +1681,22 @@
 - [x] feat/instant-scan: Add "Common questions" FAQ section (crawlable Q&A)
 - [x] feat/instant-scan: Add internal links grid (12 condition/symptom pages)
 - [x] feat/instant-scan: Add FAQPage JSON-LD structured data to page head
+
+## Android App Now Live - Jun 30, 2026
+
+- [ ] feat/android-live: Update DownloadCTA.tsx - Google Play badge links to real Play Store URL
+- [ ] feat/android-live: Update DownloadSection.tsx - replace "Join Early Access" button with real Play Store link
+- [ ] feat/android-live: Replace AndroidEarlyAccess.tsx homepage section with "Download on Android" CTA (mirror iOS style)
+- [ ] feat/android-live: Update AndroidEarlyAccessModal.tsx - replace waitlist form with direct Play Store redirect
+- [ ] feat/android-live: Update Home.tsx - replace Android Early Access button with Play Store link; update FAQ answer
+- [ ] feat/android-live: Update Download.tsx - replace Android Early Access button with Play Store link; update meta description
+- [ ] feat/android-live: Update FAQs.tsx - replace "Android coming soon" with "available on Android" (3 occurrences)
+- [ ] feat/android-live: Update FreeAiTeethScanner.tsx - "Android (early access)" -> "Android"
+- [ ] feat/android-live: Update BestAiDentalApps.tsx - "iOS (Android early access)" -> "iOS & Android"
+- [ ] feat/android-live: Update AdminAEODashboard.tsx - expected AEO answer for Android question
+- [ ] feat/android-live: Update WaitlistSuccessModal.tsx - update copy since Android is now live
+- [ ] feat/android-live: Update server/metaTags.ts - download page title/description
+- [ ] feat/android-live: Update server/ssrContent.ts - Android Early Access text
+- [ ] feat/android-live: Update server/seo.ts - llms.txt Android lines
+- [ ] feat/android-live: Update client/public/llms-full.txt - Android waitlist language
+- [ ] feat/android-live: Update analytics.ts - trackAppDownload for Android now goes to Play Store

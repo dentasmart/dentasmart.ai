@@ -53,7 +53,7 @@ function generateHomepageContent(): string {
     </ul>
   </nav>
   <h2>Download DentaSmart</h2>
-  <p>Available on iOS (App Store) and Android (Early Access). Start with a free scan and see what DentaSmart can tell you about your oral health.</p>
+  <p>Available on iOS (App Store) and Android (Google Play). Start with a free scan and see what DentaSmart can tell you about your oral health.</p>
   <p><a href="/download">Download the App</a> | <a href="/pricing">View Pricing</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`;
 }
@@ -276,12 +276,12 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/download": `
 <article>
-  <h1>Download DentaSmart: iOS App & Android Early Access</h1>
-  <p>Get DentaSmart on your phone and start understanding your oral health today. Available on iOS with Android early access.</p>
+  <h1>Download DentaSmart: iOS & Android App</h1>
+  <p>Get DentaSmart on your phone and start understanding your oral health today. Available free on iOS and Android.</p>
   <h2>iOS — Available Now</h2>
   <p>Download DentaSmart from the Apple App Store. Start with a free scan and see what AI can tell you about your dental health.</p>
-  <h2>Android — Early Access</h2>
-  <p>Join the Android waitlist to be among the first to get DentaSmart on your Android device. We will notify you as soon as it is ready.</p>
+  <h2>Android — Available Now</h2>
+  <p>Download DentaSmart from Google Play. Available on Android 10 and above. Free to start.</p>
   <p><a href="/pricing">View Pricing</a> | <a href="/features">See All Features</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`,
     "/faqs": `

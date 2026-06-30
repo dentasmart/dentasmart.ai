@@ -54,7 +54,7 @@ Reminders: Get notifications for brushing, flossing, and dental checkups.
 ## App Availability
 
 iOS: Live on the Apple App Store.
-Android: Early Access available. Users can join the waitlist at https://dentasmart.ai/download
+Android: Live on Google Play. Download at https://play.google.com/store/apps/details?id=com.dentaSmart.app.android
 
 ## DentaSmart vs ChatGPT for Dental Questions
 

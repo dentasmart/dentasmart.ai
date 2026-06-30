@@ -58,9 +58,9 @@ const staticMeta: Record<string, MetaInfo> = {
       "Find answers to frequently asked questions about DentaSmart, including how AI analysis works, pricing, privacy, and app availability.",
   },
   "/download": {
-    title: "Download DentaSmart | iOS App & Android Waitlist",
+    title: "Download DentaSmart | iOS & Android App",
     description:
-      "Download DentaSmart for iOS or join the Android waitlist. Get AI-powered dental analysis, personalized care plans, and oral health tracking on your phone.",
+      "Download DentaSmart free on iOS or Android. Get AI-powered dental analysis, personalized care plans, and oral health tracking on your phone.",
   },
   "/instant-scan": {
     title: "Instant Dental Scan | Upload a Photo for AI Analysis",

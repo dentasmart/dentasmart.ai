@@ -1,107 +1,59 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Loader2 } from "lucide-react";
-import { trpc } from "@/lib/trpc";
-import { trackEvent } from "@/lib/analytics";
-import { toast } from "sonner";
-import { WaitlistSuccessModal } from "./WaitlistSuccessModal";
+import { trackAppDownload, getPlayStoreUrl } from "@/lib/analytics";
 
+/**
+ * Android download section — shown on the homepage.
+ * Android is now live on Google Play. This section mirrors the iOS CTA style.
+ */
 export function AndroidEarlyAccess() {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [showSuccess, setShowSuccess] = useState(false);
-  const [submittedName, setSubmittedName] = useState("");
-  const [submittedEmail, setSubmittedEmail] = useState("");
-
-  const joinWaitlist = trpc.waitlist.joinAndroid.useMutation();
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email || !name) return;
-
-    try {
-      await joinWaitlist.mutateAsync({
-        name: name.trim(),
-        email: email.trim(),
-      });
-
-      setSubmittedName(name.trim());
-      setSubmittedEmail(email.trim());
-      setShowSuccess(true);
-      trackEvent("android_waitlist_submit", { source: "homepage_section" });
-    } catch (err) {
-      toast.error("Something went wrong. Please try again.");
-      console.error("Waitlist submission failed:", err);
-    }
-  };
-
-  const handleSuccessClose = () => {
-    setShowSuccess(false);
-    setName("");
-    setEmail("");
-  };
-
   return (
-    <>
-      {/* Rich success modal */}
-      <WaitlistSuccessModal
-        isOpen={showSuccess}
-        onClose={handleSuccessClose}
-        name={submittedName}
-        email={submittedEmail}
-      />
+    <section id="android-download" className="py-24 bg-primary relative overflow-hidden">
+      {/* Subtle background pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-white" />
+        <div className="absolute bottom-10 right-10 w-48 h-48 rounded-full bg-white" />
+      </div>
 
-      <section id="android-waitlist" className="py-24 bg-primary relative overflow-hidden">
-        <div className="container px-4 mx-auto relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="max-w-2xl mx-auto"
+      <div className="container px-4 mx-auto relative z-10 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-2xl mx-auto"
+        >
+          <div className="inline-flex items-center gap-2 bg-white/20 text-white text-sm font-medium px-4 py-2 rounded-full mb-6">
+            <span className="w-2 h-2 rounded-full bg-green-300 animate-pulse" />
+            Now Live on Android
+          </div>
+
+          <h2 className="text-4xl md:text-5xl font-normal text-white mb-6 leading-tight">
+            DentaSmart is now on Google Play
+          </h2>
+
+          <p className="text-white/90 text-xl font-light mb-10 leading-relaxed">
+            Android users can now get their personal AI dentist in their pocket. Download the app and start your first free scan today.
+          </p>
+
+          <a
+            href={getPlayStoreUrl("homepage_android_section")}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackAppDownload("android", "homepage_android_section")}
+            className="inline-block"
           >
-            <h2 className="text-3xl md:text-4xl font-medium text-white mb-6 leading-tight">
-              Sign up now to get early access of the android version of Dentasmart
-            </h2>
-            <p className="text-white/90 text-lg md:text-xl mb-10 font-light leading-relaxed">
-              Join thousands of people who've stopped worrying about their teeth and started taking action. Get early access to Your Personal AI Dentist in Your Pocket.
-            </p>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+              alt="Get it on Google Play"
+              className="h-14 w-auto hover:opacity-90 transition-opacity drop-shadow-lg"
+            />
+          </a>
 
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-xl mx-auto">
-              <input
-                type="text"
-                placeholder="Enter your name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-                className="w-full px-6 py-4 rounded-2xl bg-teal-50 text-teal-900 placeholder:text-teal-900/50 border-0 focus:ring-2 focus:ring-white/50 transition-all text-lg outline-none"
-              />
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="w-full px-6 py-4 rounded-2xl bg-teal-50 text-teal-900 placeholder:text-teal-900/50 border-0 focus:ring-2 focus:ring-white/50 transition-all text-lg outline-none"
-              />
-              <button
-                type="submit"
-                disabled={joinWaitlist.isPending}
-                className="w-full px-8 py-4 rounded-2xl bg-white text-primary font-medium text-lg hover:bg-teal-50 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 duration-200 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-              >
-                {joinWaitlist.isPending ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    Joining...
-                  </>
-                ) : (
-                  "Get Early Access"
-                )}
-              </button>
-            </form>
-          </motion.div>
-        </div>
-      </section>
-    </>
+          <p className="text-white/70 text-sm mt-6">
+            Free to download. No credit card required to start.
+          </p>
+        </motion.div>
+      </div>
+    </section>
   );
 }

@@ -40,9 +40,9 @@ export default function FAQs() {
     {
       title: "Getting Started",
       faqs: [
-        { q: "How do I get started with DentaSmart?", a: "Download the app from the App Store (Android coming soon), create an account, and take your first mouth photos or upload X-rays. You'll get your first report within 10 minutes." },
+        { q: "How do I get started with DentaSmart?", a: "Download the app from the App Store or Google Play, create an account, and take your first mouth photos or upload X-rays. You'll get your first report within 10 minutes." },
         { q: "Is there a free trial?", a: "Yes. Download the app and try DentaSmart free for 7 days. No credit card required." },
-        { q: "What phones does DentaSmart work on?", a: "DentaSmart works on iOS 14+ and Android 10+. Download from the App Store (Android coming soon)." },
+        { q: "What phones does DentaSmart work on?", a: "DentaSmart works on iOS 14+ and Android 10+. Download from the App Store or Google Play." },
       ],
     },
     {
@@ -131,7 +131,7 @@ export default function FAQs() {
         { name: "FAQs", url: "/faqs" }
       ]} />
       <FAQSchema faqs={[
-        { question: "How do I get started with DentaSmart?", answer: "Download the app from the App Store (Android coming soon), create an account, and take your first mouth photos or upload X-rays. You'll get your first report within 10 minutes." },
+        { question: "How do I get started with DentaSmart?", answer: "Download the app from the App Store or Google Play, create an account, and take your first mouth photos or upload X-rays. You'll get your first report within 10 minutes." },
         { question: "How accurate is the AI analysis?", answer: "DentaSmart's AI has 100% detection accuracy for identifying potential areas of concern. It's trained by dental experts and validated against clinical outcomes." },
         { question: "Is DentaSmart HIPAA compliant?", answer: "Yes. DentaSmart is fully HIPAA compliant and meets all healthcare privacy and security standards as defined by the U.S. Department of Health and Human Services." },
         { question: "What are DentaSmart's pricing options?", answer: "Quick Check is $19.99 one-time for a fast AI scan. Second Opinion is $29.99 one-time for treatment plan comparison. Complete Oral Health Checkup is $74.99/year for unlimited scans and ongoing monitoring. Family Plan is $149.99/year for up to 5 members." },

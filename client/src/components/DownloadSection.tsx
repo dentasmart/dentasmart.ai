@@ -1,12 +1,6 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Smartphone } from "lucide-react";
-import { AndroidEarlyAccessModal } from "@/components/AndroidEarlyAccessModal";
-import { trackAppDownload, getAppStoreUrl } from "@/lib/analytics";
+import { trackAppDownload, getAppStoreUrl, getPlayStoreUrl } from "@/lib/analytics";
 
 export function DownloadSection() {
-  const [isAndroidModalOpen, setIsAndroidModalOpen] = useState(false);
-
   return (
     <section id="download-cta" className="py-24 bg-white">
       <div className="container px-4 mx-auto max-w-4xl">
@@ -28,49 +22,53 @@ export function DownloadSection() {
               </svg>
             </div>
             <h3 className="text-xl font-medium text-black">iOS</h3>
-            <a 
-              href={getAppStoreUrl("download_section")} 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href={getAppStoreUrl("download_section")}
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full"
               onClick={() => trackAppDownload("ios", "download_section")}
             >
-              <Button className="w-full bg-black text-white hover:bg-stone-800 rounded-full h-12">
+              <button className="w-full bg-black text-white hover:bg-stone-800 rounded-full h-12 font-medium transition-colors">
                 Download on App Store
-              </Button>
+              </button>
             </a>
             <div className="w-32 h-32 bg-white p-2 rounded-xl shadow-sm border border-stone-100">
-              <img loading="lazy" src="/images/qr-code.png" 
- alt="Download on iOS QR Code" 
- className="w-full h-full object-contain"
- 
- />
+              <img
+                loading="lazy"
+                src="/images/qr-code.png"
+                alt="Download on iOS QR Code"
+                className="w-full h-full object-contain"
+              />
             </div>
           </div>
 
           {/* Android Column */}
           <div className="flex flex-col items-center space-y-6 p-8 rounded-3xl bg-stone-50 border border-stone-100">
-            <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mb-2">
-              <Smartphone className="w-8 h-8" />
+            <div className="w-16 h-16 bg-[#3DDC84] text-white rounded-full flex items-center justify-center mb-2">
+              <svg viewBox="0 0 24 24" className="w-8 h-8 fill-current">
+                <path d="M17.523 15.341a.5.5 0 0 1-.5.5H6.977a.5.5 0 0 1-.5-.5V9.5h11.046v5.841zM7.5 18.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm9 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM3.184 7.857A.5.5 0 0 1 3.5 7h17a.5.5 0 0 1 .434.748l-1.5 2.75A.5.5 0 0 1 19 10.75H5a.5.5 0 0 1-.434-.252l-1.5-2.75a.5.5 0 0 1 .118-.891zM14.5 4.5l1.5-2.5M9.5 4.5 8 2" />
+              </svg>
             </div>
             <h3 className="text-xl font-medium text-black">Android</h3>
-            <Button 
-              className="w-full bg-primary text-white hover:bg-primary/90 rounded-full h-12"
-              onClick={() => {
-                trackAppDownload("android", "download_section");
-                setIsAndroidModalOpen(true);
-              }}
+            <a
+              href={getPlayStoreUrl("download_section")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full"
+              onClick={() => trackAppDownload("android", "download_section")}
             >
-              Join Early Access
-            </Button>
-            <AndroidEarlyAccessModal 
-              isOpen={isAndroidModalOpen} 
-              onClose={() => setIsAndroidModalOpen(false)} 
-            />
-            <div className="text-center px-4">
-              <p className="text-sm text-stone-600">
-                We're putting the finishing touches on our Android app. Join the waitlist to be notified first.
-              </p>
+              <button className="w-full bg-primary text-white hover:bg-primary/90 rounded-full h-12 font-medium transition-colors">
+                Get it on Google Play
+              </button>
+            </a>
+            <div className="w-32 h-32 bg-white p-2 rounded-xl shadow-sm border border-stone-100 flex items-center justify-center">
+              <img
+                loading="lazy"
+                src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                alt="Get it on Google Play"
+                className="w-full h-auto object-contain"
+              />
             </div>
           </div>
         </div>

@@ -4,8 +4,7 @@ import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Smartphone, Activity, Star } from "lucide-react";
-import { AndroidEarlyAccessModal } from "@/components/AndroidEarlyAccessModal";
-import { trackAppDownload, getAppStoreUrl } from "@/lib/analytics";
+import { trackAppDownload, getAppStoreUrl, getPlayStoreUrl } from "@/lib/analytics";
 import { DownloadSection } from "@/components/DownloadSection";
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
@@ -18,13 +17,12 @@ import { OrganizationSchema, WebSiteSchema, SoftwareApplicationSchema, HowToSche
 
 export default function Home() {
   const [location] = useLocation();
-  const [isAndroidModalOpen, setIsAndroidModalOpen] = useState(false);
 
 
   useEffect(() => {
     // Handle hash navigation manually to ensure scroll happens
     const hash = window.location.hash;
-    if (hash === "#android-waitlist" || hash === "#download-cta") {
+    if (hash === "#android-download" || hash === "#download-cta") {
       const id = hash.substring(1);
       const element = document.getElementById(id);
       if (element) {
@@ -61,7 +59,7 @@ export default function Home() {
         { question: "How much does DentaSmart cost?", answer: "DentaSmart offers Quick Check at $19.99 (one-time fast scan), Second Opinion at $29.99 (one-time deep analysis), Complete Oral Health Checkup at $74.99/year (unlimited scans and monitoring), and Family plan at $149.99/year (up to 5 members). All subscriptions are managed through dentasmart.ai." },
         { question: "Is DentaSmart a replacement for a dentist?", answer: "No. DentaSmart provides educational insights to help you understand your oral health and prepare for better conversations with a licensed dentist. It does not diagnose or treat dental conditions." },
         { question: "How does DentaSmart work?", answer: "Upload a photo of your teeth or dental X-rays. DentaSmart analyzes the image, identifies potential concerns, and provides an Oral Health Score, plain-English explanations, and a personalized care plan within minutes." },
-        { question: "Is DentaSmart available on Android?", answer: "DentaSmart is live on iOS. Android is in Early Access. You can join the Android waitlist at dentasmart.ai/download." },
+        { question: "Is DentaSmart available on Android?", answer: "Yes. DentaSmart is available on both iOS and Android. Download it free from the App Store or Google Play." },
         { question: "What is the DentaSmart Oral Health Score?", answer: "The Oral Health Score is a number from 0 to 100 that reflects the overall health of your teeth and gums based on analysis of your dental photos or X-rays. It tracks changes over time." },
         { question: "Who is DentaSmart for?", answer: "DentaSmart is for anyone who wants to understand their oral health better, including people without dental insurance, those seeking a second opinion on a treatment plan, parents monitoring family dental health, and people with dental anxiety." },
         { question: "Can DentaSmart analyze dental X-rays?", answer: "Yes. DentaSmart can analyze both photos of your teeth and dental X-rays to identify potential oral health concerns and provide insights." }
@@ -108,7 +106,7 @@ export default function Home() {
                 Know what's happening in your mouth. Upload a photo of your teeth or X-rays and get clear AI insights in minutes, with an easy plan to prevent expensive surprises.
               </p>
 
-              {/* Primary: iOS download. Secondary: Android early access. */}
+              {/* Primary: iOS download. Secondary: Android (now live on Google Play). */}
               <div className="flex flex-col sm:flex-row gap-4 justify-start items-stretch sm:items-start">
                 <a
                   href={getAppStoreUrl("hero_cta")}
@@ -127,28 +125,28 @@ export default function Home() {
                     Scan your teeth for free
                   </Button>
                 </a>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-8 py-7 text-lg font-medium transition-all duration-300 cursor-pointer relative z-20"
-                  onClick={() => {
-                    trackAppDownload("android", "hero_cta");
-                    setIsAndroidModalOpen(true);
-                  }}
+                <a
+                  href={getPlayStoreUrl("hero_cta")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackAppDownload("android", "hero_cta")}
+                  className="relative z-20"
                 >
-                  <Smartphone className="w-5 h-5 mr-2 flex-shrink-0" />
-                  Android Early Access
-                </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-8 py-7 text-lg font-medium transition-all duration-300 cursor-pointer w-full"
+                  >
+                    <Smartphone className="w-5 h-5 mr-2 flex-shrink-0" />
+                    Get on Android
+                  </Button>
+                </a>
               </div>
               <div className="mt-3">
                 <Link href="/pricing" className="text-sm text-stone-500 hover:text-primary underline underline-offset-2 transition-colors">
                   See pricing
                 </Link>
               </div>
-              <AndroidEarlyAccessModal
-                isOpen={isAndroidModalOpen}
-                onClose={() => setIsAndroidModalOpen(false)}
-              />
             </motion.div>
 
             {/* Right Column: iPhone Mockups */}
@@ -633,7 +631,7 @@ export default function Home() {
             {[
               { q: "Is DentaSmart a replacement for a dentist?", a: "No. DentaSmart provides educational insights to help you understand your oral health and prepare for better conversations with a licensed dentist. It does not diagnose or treat dental conditions. Always consult a licensed dentist for diagnosis and treatment." },
               { q: "How does DentaSmart work?", a: "Upload a photo of your teeth or dental X-rays using the DentaSmart app. DentaSmart analyzes the image, identifies potential concerns, and provides an Oral Health Score, plain-English explanations, and a personalized care plan within minutes." },
-              { q: "Is DentaSmart available on Android?", a: "DentaSmart is live on iOS. Android is in Early Access. You can join the Android waitlist at dentasmart.ai/download." },
+              { q: "Is DentaSmart available on Android?", a: "Yes. DentaSmart is available on both iOS and Android. Download it free from the App Store or Google Play." },
               { q: "What is the DentaSmart Oral Health Score?", a: "The Oral Health Score is a number from 0 to 100 that reflects the overall health of your teeth and gums based on analysis of your dental photos or X-rays. It tracks changes over time so you can see improvement." },
               { q: "Can DentaSmart analyze dental X-rays?", a: "Yes. DentaSmart can analyze both photos of your teeth and dental X-rays to identify potential oral health concerns and provide insights." },
               { q: "Who is DentaSmart for?", a: "DentaSmart is for anyone who wants to understand their oral health better, including people without dental insurance, those seeking a second opinion on a treatment plan, parents monitoring family dental health, and people with dental anxiety." }

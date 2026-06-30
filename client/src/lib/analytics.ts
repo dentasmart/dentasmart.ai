@@ -305,6 +305,20 @@ export function getAppStoreUrl(source: string): string {
   return `${baseUrl}?${params.toString()}`;
 }
 
+/**
+ * Build a Google Play Store URL with UTM parameters for campaign tracking.
+ * These UTMs show up in Google Play Console analytics.
+ */
+export function getPlayStoreUrl(source: string): string {
+  const baseUrl = "https://play.google.com/store/apps/details?id=com.dentaSmart.app.android";
+  const params = new URLSearchParams({
+    utm_source: "dentasmart_website",
+    utm_medium: "cta",
+    utm_campaign: source,
+  });
+  return `${baseUrl}&${params.toString()}`;
+}
+
 // ── Server-side tracking ───────────────────────────────────────────────────
 
 let _sessionId: string | null = null;

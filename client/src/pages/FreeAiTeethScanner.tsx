@@ -259,7 +259,7 @@ export default function FreeAiTeethScanner() {
           <h2 className="text-3xl font-medium text-black mb-8">How the Free AI Scan Works</h2>
           <div className="space-y-6">
             {[
-              { step: "1", title: "Download the app", desc: "DentaSmart is available on iOS (live) and Android (early access). No account required for your first scan." },
+              { step: "1", title: "Download the app", desc: "DentaSmart is available on iOS and Android. Download free from the App Store or Google Play. No account required for your first scan." },
               { step: "2", title: "Take a photo or upload an X-ray", desc: "Use your phone camera to photograph your teeth, or upload a dental X-ray image from your dentist. The app guides you through getting a clear shot." },
               { step: "3", title: "Get your results", desc: "In under 10 minutes, you receive an oral health score, a color-coded findings map, and a plain-language explanation of what the AI detected." },
               { step: "4", title: "Understand your next steps", desc: "The report includes a patient-friendly version you can read yourself and a dentist-ready version you can bring to your appointment." },

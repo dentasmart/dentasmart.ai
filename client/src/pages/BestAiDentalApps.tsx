@@ -52,7 +52,7 @@ const apps: AppEntry[] = [
   {
     name: "DentaSmart",
     tagline: "Full oral health monitoring with X-ray analysis and care plans",
-    platform: "iOS (Android early access)",
+    platform: "iOS & Android",
     xraySupport: true,
     healthScore: true,
     progressTracking: true,

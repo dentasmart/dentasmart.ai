@@ -2,17 +2,16 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { trackEvent, trackAppDownload, getAppStoreUrl } from "@/lib/analytics";
+import { trackEvent, trackAppDownload, getAppStoreUrl, getPlayStoreUrl } from "@/lib/analytics";
 import { motion } from "framer-motion";
 import { Smartphone, Shield, Zap, Heart, Star, CheckCircle2, ArrowRight } from "lucide-react";
-import { useState, useEffect } from "react";
-import { AndroidEarlyAccessModal } from "@/components/AndroidEarlyAccessModal";
+import { useEffect } from "react";
 
 const appJsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
   name: "DentaSmart",
-  operatingSystem: "iOS",
+  operatingSystem: "iOS, Android",
   applicationCategory: "HealthApplication",
   description: "AI-powered dental health analysis. Upload a photo and get instant insights with a personalized care plan.",
   url: "https://dentasmart.ai/download",
@@ -43,8 +42,6 @@ const reviews = [
 ];
 
 export default function Download() {
-  const [isAndroidModalOpen, setIsAndroidModalOpen] = useState(false);
-
   useEffect(() => {
     trackEvent("download_page_view");
   }, []);
@@ -53,7 +50,7 @@ export default function Download() {
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
         title="Download DentaSmart - Free AI Dental Health App"
-        description="Download DentaSmart on iOS or join the Android waitlist. Get instant AI-powered dental insights, oral health scores, and personalized care plans. Free to start."
+        description="Download DentaSmart on iOS or Android. Get instant AI-powered dental insights, oral health scores, and personalized care plans. Free to start."
         canonical="https://dentasmart.ai/download"
         keywords="download dentasmart, dental app, AI dental analysis, oral health score, dental X-ray analysis app"
         jsonLd={appJsonLd}
@@ -99,17 +96,18 @@ export default function Download() {
                     Download for iOS
                   </Button>
                 </a>
-                <Button
-                  size="lg"
-                  className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-7 text-lg cursor-pointer"
-                  onClick={() => {
-                    trackEvent("android_waitlist_submit", { source: "download_page" });
-                    setIsAndroidModalOpen(true);
-                  }}
+                <a
+                  href={getPlayStoreUrl("download_page")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto"
+                  onClick={() => trackAppDownload("android", "download_page")}
                 >
-                  <Smartphone className="w-6 h-6 mr-2" />
-                  Android Early Access
-                </Button>
+                  <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-7 text-lg w-full sm:w-auto cursor-pointer">
+                    <Smartphone className="w-6 h-6 mr-2" />
+                    Download for Android
+                  </Button>
+                </a>
               </div>
 
               <div className="flex items-center gap-6 text-sm text-stone-500">
@@ -244,7 +242,6 @@ export default function Download() {
         </div>
       </section>
 
-      <AndroidEarlyAccessModal isOpen={isAndroidModalOpen} onClose={() => setIsAndroidModalOpen(false)} />
       <Footer />
     </div>
   );
