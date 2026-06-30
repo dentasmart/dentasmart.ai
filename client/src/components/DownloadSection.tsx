@@ -65,7 +65,7 @@ export function DownloadSection() {
             <div className="w-32 h-32 bg-white p-2 rounded-xl shadow-sm border border-stone-100">
               <img
                 loading="lazy"
-                src="/manus-storage/android-qr_90de704f.png"
+                src="/manus-storage/android-qr-v2_111da553.png"
                 alt="Scan to download DentaSmart on Android"
                 className="w-full h-full object-contain"
               />

@@ -44,7 +44,7 @@ export function DownloadCTA() {
             >
               <img
                 loading="lazy"
-                src="/manus-storage/android-qr_90de704f.png"
+                src="/manus-storage/android-qr-v2_111da553.png"
                 alt="Scan to download DentaSmart on Android"
                 className="h-10 w-auto"
               />
