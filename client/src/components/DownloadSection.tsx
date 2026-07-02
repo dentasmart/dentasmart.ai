@@ -33,7 +33,7 @@ export function DownloadSection() {
                 Download on App Store
               </button>
             </a>
-            <div className="w-32 h-32 bg-white p-2 rounded-xl shadow-sm border border-stone-100">
+            <div className="w-36 h-36 bg-white rounded-xl shadow-sm border border-stone-100 flex items-center justify-center overflow-hidden">
               <img
                 loading="lazy"
                 src="/images/ios-qr-d286ca7b.png"
@@ -62,7 +62,7 @@ export function DownloadSection() {
                 Get it on Google Play
               </button>
             </a>
-            <div className="w-32 h-32 bg-white p-2 rounded-xl shadow-sm border border-stone-100">
+            <div className="w-36 h-36 bg-white rounded-xl shadow-sm border border-stone-100 flex items-center justify-center overflow-hidden">
               <img
                 loading="lazy"
                 src="/images/android-qr-842538bb.png"

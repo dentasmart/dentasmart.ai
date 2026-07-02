@@ -56,7 +56,7 @@ export function DownloadCTA() {
           </p>
 
           {/* QR Code */}
-          <div className="bg-white p-2 rounded-lg shadow-lg">
+          <div className="bg-white rounded-lg shadow-lg flex items-center justify-center overflow-hidden">
             <img
               loading="lazy"
               src="/images/ios-qr-d286ca7b.png"
