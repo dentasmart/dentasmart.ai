@@ -1700,3 +1700,7 @@
 - [ ] feat/android-live: Update server/seo.ts - llms.txt Android lines
 - [ ] feat/android-live: Update client/public/llms-full.txt - Android waitlist language
 - [ ] feat/android-live: Update analytics.ts - trackAppDownload for Android now goes to Play Store
+
+# Fix - Jul 2, 2026
+
+- [x] Fix broken Android QR code on live site — moved from /manus-storage/ (broken in production) to /images/android-qr-842538bb.png (client/public, same pattern as iOS QR). Updated all 3 components: DownloadSection.tsx, DownloadCTA.tsx, AndroidEarlyAccess.tsx.

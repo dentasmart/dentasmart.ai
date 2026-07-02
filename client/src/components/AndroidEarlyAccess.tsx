@@ -44,7 +44,7 @@ export function AndroidEarlyAccess() {
           >
             <div className="bg-white p-3 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow">
               <img
-                src="/manus-storage/android-qr-v2_111da553.png"
+                src="/images/android-qr-842538bb.png"
                 alt="Scan to download DentaSmart on Android"
                 className="w-32 h-32 object-contain"
               />
