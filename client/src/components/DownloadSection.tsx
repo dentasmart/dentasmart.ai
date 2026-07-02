@@ -36,7 +36,7 @@ export function DownloadSection() {
             <div className="w-32 h-32 bg-white p-2 rounded-xl shadow-sm border border-stone-100">
               <img
                 loading="lazy"
-                src="/images/qr-code.png"
+                src="/images/ios-qr-d286ca7b.png"
                 alt="Download on iOS QR Code"
                 className="w-full h-full object-contain"
               />

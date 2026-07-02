@@ -1704,3 +1704,4 @@
 # Fix - Jul 2, 2026
 
 - [x] Fix broken Android QR code on live site — moved from /manus-storage/ (broken in production) to /images/android-qr-842538bb.png (client/public, same pattern as iOS QR). Updated all 3 components: DownloadSection.tsx, DownloadCTA.tsx, AndroidEarlyAccess.tsx.
+- [x] Fix iOS QR code alignment — image had no quiet zone (0px margins), QR pattern was touching edges. Added 35px padding on all sides to match Android QR. Renamed to ios-qr-d286ca7b.png (content-hashed). Updated DownloadSection.tsx and DownloadCTA.tsx.

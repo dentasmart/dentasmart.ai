@@ -59,7 +59,7 @@ export function DownloadCTA() {
           <div className="bg-white p-2 rounded-lg shadow-lg">
             <img
               loading="lazy"
-              src="/images/qr-code.png"
+              src="/images/ios-qr-d286ca7b.png"
               alt="Scan to download DentaSmart App"
               className="w-48 h-48 object-contain"
             />
