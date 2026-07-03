@@ -57,9 +57,6 @@ COPY --from=builder /app/dist ./dist
 # Copy drizzle schema/migrations (needed at runtime for db:push if ever run)
 COPY --from=builder /app/drizzle ./drizzle
 
-# Copy environment file for runtime configuration
-COPY .env ./.env
-
 # Switch to non-root user
 USER appuser
 
