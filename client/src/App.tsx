@@ -103,6 +103,7 @@ const FreeAiTeethScanner = lazy(() => import("./pages/FreeAiTeethScanner"));
 const BestAiDentalApps = lazy(() => import("./pages/BestAiDentalApps"));
 const VsDentalCom = lazy(() => import("./pages/VsDentalCom"));
 const VsDentistryOne = lazy(() => import("./pages/VsDentistryOne"));
+const DentaSmartVsChatGPT = lazy(() => import("./pages/DentaSmartVsChatGPT"));
 
 // Treatment Explainer Pages
 const TreatmentsHub = lazy(() => import("./pages/treatments/TreatmentsHub"));
@@ -283,7 +284,7 @@ function Router() {
         <Route path="/guides/oral-health-life-stages" component={GuidePage} />
 
         {/* ===== EXPLICIT COMPARE PAGES (for sitemap detection) ===== */}
-        <Route path="/compare/dentasmart-vs-chatgpt-dental" component={ComparePage} />
+        <Route path="/compare/dentasmart-vs-chatgpt-dental" component={DentaSmartVsChatGPT} />
         <Route path="/compare/dentasmart-vs-teledentistry" component={ComparePage} />
         <Route path="/compare/dentasmart-vs-dental-insurance" component={ComparePage} />
 

@@ -115,9 +115,9 @@ const staticMeta: Record<string, MetaInfo> = {
 
   // ─── Comparison pages ──────────────────────────────────────────────
   "/compare/dentasmart-vs-chatgpt-dental": {
-    title: "DentaSmart vs ChatGPT for Dental Questions | Comparison",
+    title: "DentaSmart vs ChatGPT: Which AI Should You Trust With Your Teeth?",
     description:
-      "Compare DentaSmart and ChatGPT for dental health questions. See why a purpose-built dental AI outperforms general chatbots for oral health.",
+      "ChatGPT answers dental questions. DentaSmart helps you monitor, prevent, compare, track, and reduce the cost of oral-health decisions using your actual teeth, X-rays, and dental history.",
   },
   "/compare/dentasmart-vs-teledentistry": {
     title: "DentaSmart vs Teledentistry | Cost & Feature Comparison",

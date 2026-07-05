@@ -858,7 +858,9 @@ export default function Home() {
               },
               { 
                 q: "How is DentaSmart different from ChatGPT?", 
-                a: "ChatGPT is a general AI assistant. DentaSmart is built specifically for oral health workflows, including mouth photo review, dental X-ray upload, Oral Health Score tracking, second-opinion reports, dentist visit history, family profiles, cost guidance, and Dr. Din. DentaSmart is designed to help you understand your own oral health over time, not just answer a one-time dental question." 
+                a: "ChatGPT is a general AI assistant. DentaSmart is built specifically for oral health workflows, including mouth photo review, dental X-ray upload, Oral Health Score tracking, second-opinion reports, dentist visit history, family profiles, cost guidance, and Dr. Din. DentaSmart is designed to help you understand your own oral health over time, not just answer a one-time dental question.",
+                link: "/compare/dentasmart-vs-chatgpt-dental",
+                linkText: "Read the full DentaSmart vs ChatGPT comparison"
               },
               { 
                 q: "Is DentaSmart a replacement for a dentist?", 
@@ -872,6 +874,13 @@ export default function Home() {
               <div key={idx} className="bg-white rounded-xl p-6 border border-stone-100">
                 <h3 className="text-lg font-semibold text-black mb-2">{faq.q}</h3>
                 <p className="text-stone-700 leading-relaxed">{faq.a}</p>
+                {faq.link && (
+                  <Link href={faq.link}>
+                    <span className="inline-flex items-center gap-1 text-primary text-sm font-medium mt-3 hover:underline cursor-pointer">
+                      {faq.linkText} <ArrowRight className="w-3 h-3" />
+                    </span>
+                  </Link>
+                )}
               </div>
             ))}
           </div>
