@@ -230,7 +230,7 @@ export default function ExitIntentPopup() {
           <div className="flex items-center justify-center gap-3 mb-6 text-sm text-stone-500">
             <span className="flex items-center gap-1">
               <span className="text-yellow-500">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-              4.9
+              5.0
             </span>
             <span className="w-1 h-1 rounded-full bg-stone-300" />
             <span>{variation.socialProof}</span>
