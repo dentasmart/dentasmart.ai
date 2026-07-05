@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight, Camera, Sparkles } from "lucide-react";
-import { trackEvent, getAppStoreUrl } from "@/lib/analytics";
+import { trackEvent } from "@/lib/analytics";
 import { useLocation, Link } from "wouter";
 import { getPageContext } from "@/lib/pageContext";
 
@@ -89,7 +89,7 @@ export function ScrollProgressCTA() {
     if (context.ctaAction === "symptom-quiz" || context.ctaAction === "instant-scan") {
       return; // Internal navigation handled by Link
     }
-    window.open(getAppStoreUrl("scroll_progress_cta"), "_blank", "noopener");
+    window.location.href = "/download";
   };
 
   const isInternalLink = context.ctaAction === "symptom-quiz" || context.ctaAction === "instant-scan";

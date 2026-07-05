@@ -1,5 +1,5 @@
 import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
-import { trackEvent, getAppStoreUrl } from "@/lib/analytics";
+import { trackEvent } from "@/lib/analytics";
 import { useLocation, Link } from "wouter";
 import { getPageContext, type ContentType } from "@/lib/pageContext";
 
@@ -34,7 +34,7 @@ export default function NextStepsBox({ forceContentType, relatedLinks }: NextSte
     if (context.ctaAction !== "app-download") {
       return; // Internal link handled by Link
     }
-    window.open(getAppStoreUrl("next_steps_box"), "_blank", "noopener");
+    window.location.href = "/download";
   };
 
   const handleQuizClick = () => {

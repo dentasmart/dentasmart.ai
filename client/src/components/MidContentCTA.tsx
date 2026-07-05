@@ -1,6 +1,6 @@
 import { ArrowRight, Camera, Stethoscope, DollarSign, Shield, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { trackEvent, getAppStoreUrl } from "@/lib/analytics";
+import { trackEvent } from "@/lib/analytics";
 import { useLocation, Link } from "wouter";
 import { getPageContext, type ContentType } from "@/lib/pageContext";
 
@@ -72,7 +72,7 @@ export default function MidContentCTA({
       // Internal navigation — handled by Link wrapper
       return;
     }
-    window.open(getAppStoreUrl("mid_content_cta"), "_blank", "noopener");
+    window.location.href = "/download";
   };
 
   const isInternalLink = resolvedContext.ctaAction === "symptom-quiz" || resolvedContext.ctaAction === "instant-scan";

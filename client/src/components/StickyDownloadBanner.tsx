@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { X, ArrowRight } from "lucide-react";
-import { trackEvent, getAppStoreUrl } from "@/lib/analytics";
+import { trackEvent } from "@/lib/analytics";
 import { useLocation, Link } from "wouter";
 import { getPageContext } from "@/lib/pageContext";
 
@@ -97,7 +97,7 @@ export default function StickyDownloadBanner() {
       // Internal navigation handled by Link
       return;
     }
-    window.open(getAppStoreUrl("sticky_banner"), "_blank", "noopener");
+    window.location.href = "/download";
   };
 
   // ── Mobile: Full-width bottom bar ──

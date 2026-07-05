@@ -1740,3 +1740,15 @@
 - [x] Add repeated CTA block after Testimonials section
 - [x] Add repeated CTA block after FAQ section
 - [x] Verify symptom grid links route to real pages with scan CTAs
+
+## Popup CTA Update - Jul 6, 2026
+- [x] Update all popups/CTAs that link directly to Apple App Store to instead navigate to the Download section/page (both iOS and Android are now available)
+  - [x] ExitIntentPopup (cost + second-opinion variations)
+  - [x] StickyDownloadBanner
+  - [x] ScrollProgressCTA
+  - [x] BlogCTABanner
+  - [x] MidContentCTA
+  - [x] OralHealthScoreTeaser
+  - [x] NextStepsBox
+  - [x] WaitlistSuccessModal (updated copy from iOS-only to both platforms)
+  - [x] SymptomQuiz results CTA

@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { X, ArrowRight, Stethoscope, DollarSign, Shield, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { trackEvent, getAppStoreUrl } from "@/lib/analytics";
+import { trackEvent } from "@/lib/analytics";
 import { useLocation, Link } from "wouter";
 import { getPageContext, type ContentType } from "@/lib/pageContext";
 
@@ -178,7 +178,7 @@ export default function ExitIntentPopup() {
     } catch {}
 
     if (variation.action === "external") {
-      window.open(getAppStoreUrl(`exit_intent_${variation.id}`), "_blank", "noopener");
+      window.location.href = "/download";
     }
     setDismissed(true);
   };

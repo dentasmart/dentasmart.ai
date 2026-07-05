@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { X, ArrowRight } from "lucide-react";
-import { trackEvent, getAppStoreUrl } from "@/lib/analytics";
+import { trackEvent } from "@/lib/analytics";
 import { useLocation } from "wouter";
 
 /**
@@ -47,7 +47,7 @@ export function BlogCTABanner() {
       source: location,
       label: "blog_floating_banner",
     });
-    window.open(getAppStoreUrl("blog_cta_banner"), "_blank", "noopener");
+    window.location.href = "/download";
   };
 
   return (

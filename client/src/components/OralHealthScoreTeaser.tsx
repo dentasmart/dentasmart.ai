@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ArrowRight, Camera, Shield, CheckCircle2 } from "lucide-react";
-import { trackEvent, getAppStoreUrl } from "@/lib/analytics";
+import { trackEvent } from "@/lib/analytics";
 import { useLocation } from "wouter";
 
 /**
@@ -74,7 +74,7 @@ export default function OralHealthScoreTeaser() {
       source: location,
       label: "score_teaser_cta",
     });
-    window.open(getAppStoreUrl("score_teaser"), "_blank", "noopener");
+    window.location.href = "/download";
   };
 
   // SVG ring calculations
