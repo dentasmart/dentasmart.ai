@@ -184,7 +184,7 @@ export default function StickyDownloadBanner() {
           <div className="flex items-center gap-3 mb-3 text-xs text-stone-400">
             <span className="flex items-center gap-0.5">
               <span className="text-yellow-500">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-              4.9
+              5.0
             </span>
             <span className="w-1 h-1 rounded-full bg-stone-300" />
             <span>50K+ scans completed</span>

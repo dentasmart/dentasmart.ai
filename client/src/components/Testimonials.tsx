@@ -164,7 +164,7 @@ export default function Testimonials() {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             {[
-              { icon: "⭐", stat: "4.9/5", label: "App Store Rating" },
+              { icon: "⭐", stat: "5.0/5", label: "App Store Rating" },
               { icon: "👥", stat: "50K+", label: "Active Users" },
               { icon: "✓", stat: "100%", label: "Detection Accuracy" },
               { icon: "🏥", stat: "24/7", label: "Din Support" },

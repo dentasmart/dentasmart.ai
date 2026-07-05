@@ -158,7 +158,7 @@ export default function MidContentCTA({
             </p>
             {/* Inline social proof */}
             <p className="text-xs text-stone-400 mt-1.5">
-              <span className="text-yellow-500">&#9733;</span> 4.9 rating &middot; 50K+ scans &middot; Free to start
+              <span className="text-yellow-500">&#9733;</span> 5.0 rating &middot; 50K+ scans &middot; Free to start
             </p>
           </div>
           {isInternalLink ? (

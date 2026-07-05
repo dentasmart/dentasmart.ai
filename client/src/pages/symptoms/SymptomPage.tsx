@@ -333,7 +333,7 @@ export default function SymptomPage() {
               </Button>
             </Link>
           </div>
-          <p className="text-white/60 text-sm mt-4">Trusted by 50,000+ users &middot; 4.8/5 rating</p>
+          <p className="text-white/60 text-sm mt-4">Trusted by 50,000+ users &middot; 5.0/5 rating</p>
         </div>
       </section>
 
