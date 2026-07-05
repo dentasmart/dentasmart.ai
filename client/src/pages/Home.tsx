@@ -68,13 +68,13 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════════════
           HERO SECTION
       ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative h-[calc(100vh-80px)] max-h-[820px] flex items-center overflow-hidden bg-gradient-to-br from-white via-accent/5 to-primary/5">
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-white via-accent/5 to-primary/5 pt-28 md:pt-32 pb-10 md:pb-14">
         <div className="absolute inset-0 z-0 opacity-30">
           <div className="absolute top-20 right-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
           <div className="absolute bottom-20 left-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-16 md:pt-12">
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {/* Left Column: Text Content */}
