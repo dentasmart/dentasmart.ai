@@ -71,7 +71,7 @@ export default function Download() {
             >
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-2 text-sm font-medium mb-6">
                 <Star className="w-4 h-4 fill-current" />
-                4.8 Stars on the App Store
+                5 Stars on the App Store
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-6 leading-tight">
                 Take control of your <br />
