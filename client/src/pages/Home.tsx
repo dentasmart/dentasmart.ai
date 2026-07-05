@@ -68,13 +68,13 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════════════
           HERO SECTION
       ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-white via-accent/5 to-primary/5">
+      <section className="relative h-[calc(100vh-80px)] max-h-[820px] flex items-center overflow-hidden bg-gradient-to-br from-white via-accent/5 to-primary/5">
         <div className="absolute inset-0 z-0 opacity-30">
           <div className="absolute top-20 right-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
           <div className="absolute bottom-20 left-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
         </div>
 
-        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-40 md:pt-32">
+        <div className="container relative z-10 px-4 mx-auto max-w-7xl pt-16 md:pt-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {/* Left Column: Text Content */}
@@ -84,13 +84,13 @@ export default function Home() {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
               className="text-left max-w-2xl lg:col-span-5"
             >
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal tracking-tight text-black mb-4 leading-[1.1]">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-3 leading-[1.1]">
                 Understand your teeth <br />
                 <span className="font-normal italic text-primary">before it costs you.</span>
               </h1>
 
               {/* Proof bar */}
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6">
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-4">
                 <div className="flex items-center gap-1">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
@@ -103,11 +103,11 @@ export default function Home() {
                 <span className="text-sm text-stone-600">Free to start</span>
               </div>
               
-              <p className="text-xl md:text-2xl text-stone-700 mb-4 font-normal leading-relaxed text-balance">
+              <p className="text-lg md:text-xl text-stone-700 mb-3 font-normal leading-relaxed text-balance">
                 Upload mouth photos and/or dental X-rays and get clear AI-powered oral health insights, a personalized Oral Health Score, and treatment considerations.
               </p>
 
-              <p className="text-base text-stone-600 mb-8 leading-relaxed">
+              <p className="text-sm text-stone-600 mb-5 leading-relaxed">
                 Monitor your oral health. Prevent bigger problems. Get clarity before expensive decisions.
               </p>
 
@@ -115,7 +115,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-start items-stretch sm:items-start">
                 <Button
                   size="lg"
-                  className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-7 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0 cursor-pointer w-full sm:w-auto"
+                  className="bg-primary text-white hover:bg-primary/90 rounded-full px-6 py-5 text-base font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0 cursor-pointer w-full sm:w-auto"
                   onClick={scrollToDownload}
                 >
                   Start with a Quick Check
@@ -123,13 +123,13 @@ export default function Home() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-8 py-7 text-lg font-medium transition-all duration-300 cursor-pointer w-full sm:w-auto"
+                  className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-6 py-5 text-base font-medium transition-all duration-300 cursor-pointer w-full sm:w-auto"
                   onClick={scrollToDownload}
                 >
                   Get a Second Opinion
                 </Button>
               </div>
-              <p className="mt-4 text-sm text-stone-500">
+              <p className="mt-3 text-sm text-stone-500">
                 Free to start. Available on{" "}
                 <a href={getAppStoreUrl("hero_text")} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline" onClick={() => trackAppDownload("ios", "hero_text")}>iOS</a>
                 {" "}and{" "}
@@ -142,10 +142,10 @@ export default function Home() {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
-              className="lg:col-span-7 flex justify-center items-end gap-4 md:gap-6 lg:gap-8 pb-8 lg:pb-0"
+              className="lg:col-span-7 flex justify-center items-end gap-3 md:gap-5 lg:gap-6 pb-4 lg:pb-0"
             >
               {/* iPhone Mockup - Oral Health Score */}
-              <div className="relative flex-shrink-0 w-[180px] sm:w-[220px] md:w-[260px] lg:w-[280px]">
+              <div className="relative flex-shrink-0 w-[140px] sm:w-[170px] md:w-[200px] lg:w-[220px]">
                 <div className="relative rounded-[2.5rem] sm:rounded-[3rem] border-[6px] sm:border-[8px] border-stone-900 bg-stone-900 shadow-2xl overflow-hidden">
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] sm:w-[100px] h-[22px] sm:h-[28px] bg-stone-900 rounded-b-2xl z-20" />
                   <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
@@ -161,7 +161,7 @@ export default function Home() {
               </div>
 
               {/* iPhone Mockup - AI Analysis Report */}
-              <div className="relative flex-shrink-0 w-[180px] sm:w-[220px] md:w-[260px] lg:w-[280px] mt-12 sm:mt-16">
+              <div className="relative flex-shrink-0 w-[140px] sm:w-[170px] md:w-[200px] lg:w-[220px] mt-6 sm:mt-10">
                 <div className="relative rounded-[2.5rem] sm:rounded-[3rem] border-[6px] sm:border-[8px] border-stone-900 bg-stone-900 shadow-2xl overflow-hidden">
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] sm:w-[100px] h-[22px] sm:h-[28px] bg-stone-900 rounded-b-2xl z-20" />
                   <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
