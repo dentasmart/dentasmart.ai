@@ -1,12 +1,10 @@
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
-import { ArrowRight, Shield, Smartphone, Activity, Star } from "lucide-react";
+import { ArrowRight, Shield, Smartphone, Activity, Star, Users, Clock, DollarSign, Heart, MessageCircle, Camera, FileText, Search, CheckCircle } from "lucide-react";
 import { trackAppDownload, getAppStoreUrl, getPlayStoreUrl } from "@/lib/analytics";
 import { DownloadSection } from "@/components/DownloadSection";
-import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import SEO from "@/components/SEO";
 import { useEffect } from "react";
@@ -18,9 +16,7 @@ import { OrganizationSchema, WebSiteSchema, SoftwareApplicationSchema, HowToSche
 export default function Home() {
   const [location] = useLocation();
 
-
   useEffect(() => {
-    // Handle hash navigation manually to ensure scroll happens
     const hash = window.location.hash;
     if (hash === "#android-download" || hash === "#download-cta") {
       const id = hash.substring(1);
@@ -28,16 +24,23 @@ export default function Home() {
       if (element) {
         setTimeout(() => {
           element.scrollIntoView({ behavior: "smooth" });
-        }, 300); // Increased delay to ensure full page render
+        }, 300);
       }
     }
   }, [location]);
+
+  const scrollToDownload = () => {
+    const element = document.getElementById("download-cta");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO 
         title="Your Personal AI Dentist in Your Pocket" 
-        description="Get instant clarity about your oral health. Upload a photo and get insights, personalized plans, and reminders in minutes."
+        description="Upload mouth photos or dental X-rays and get clear AI-powered oral health insights, a personalized Oral Health Score, and treatment considerations."
         canonical="https://dentasmart.ai/"
       />
       <Navigation />
@@ -48,26 +51,24 @@ export default function Home() {
         name="How to Use DentaSmart for Oral Health Analysis"
         description="Upload a photo of your teeth or dental X-rays and get an Oral Health Score and a personalized care plan in minutes."
         steps={[
-          { name: "Complete Self-Examination", text: "Answer guided questions including Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection to help DentaSmart understand your symptoms.", url: "/features" },
-          { name: "Upload Photos or X-Rays", text: "Take a photo of your teeth or upload dental X-rays. Or use Quick Check for instant analysis.", url: "/download" },
-          { name: "Get Your Analysis", text: "DentaSmart analyzes your images with color-coded overlays and identifies potential oral health concerns in minutes.", url: "/how-it-works" },
-          { name: "Review Dual Reports", text: "Receive two reports: a plain-English version for you with your Oral Health Score, and a clinical version for your dentist. Both downloadable as PDF.", url: "/features" }
+          { name: "Upload Photos or X-Rays", text: "Take mouth photos, upload dental X-rays, or add symptoms, treatment plans, and dentist notes.", url: "/features" },
+          { name: "Get Clear Insights", text: "DentaSmart reviews the information and gives you clear insights, visual findings, an Oral Health Score, and possible next steps.", url: "/how-it-works" },
+          { name: "Act with Confidence", text: "Use your report to monitor your oral health, prepare for your dentist visit, compare treatment options, and ask better questions.", url: "/features" }
         ]}
       />
       <FAQSchema faqs={[
-        { question: "What is DentaSmart?", answer: "DentaSmart is an oral health app that analyzes photos of your teeth or dental X-rays. It provides an Oral Health Score from 0 to 100, plain-English explanations of findings, treatment cost estimates, and a personalized care plan. It also includes Din, a 24/7 dental guide." },
-        { question: "How much does DentaSmart cost?", answer: "DentaSmart offers Quick Check at $19.99 (one-time fast scan), Second Opinion at $29.99 (one-time deep analysis), Complete Oral Health Checkup at $74.99/year (unlimited scans and monitoring), and Family plan at $149.99/year (up to 5 members). All subscriptions are managed through dentasmart.ai." },
-        { question: "Is DentaSmart a replacement for a dentist?", answer: "No. DentaSmart provides educational insights to help you understand your oral health and prepare for better conversations with a licensed dentist. It does not diagnose or treat dental conditions." },
-        { question: "How does DentaSmart work?", answer: "Upload a photo of your teeth or dental X-rays. DentaSmart analyzes the image, identifies potential concerns, and provides an Oral Health Score, plain-English explanations, and a personalized care plan within minutes." },
-        { question: "Is DentaSmart available on Android?", answer: "Yes. DentaSmart is available on both iOS and Android. Download it free from the App Store or Google Play." },
-        { question: "What is the DentaSmart Oral Health Score?", answer: "The Oral Health Score is a number from 0 to 100 that reflects the overall health of your teeth and gums based on analysis of your dental photos or X-rays. It tracks changes over time." },
-        { question: "Who is DentaSmart for?", answer: "DentaSmart is for anyone who wants to understand their oral health better, including people without dental insurance, those seeking a second opinion on a treatment plan, parents monitoring family dental health, and people with dental anxiety." },
+        { question: "What is DentaSmart?", answer: "DentaSmart is Your Personal AI Dentist in Your Pocket. It helps you understand, monitor, and manage your oral health using mouth photos, dental X-rays, symptoms, treatment plans, and dental history. You get AI-powered educational insights, a personalized Oral Health Score, plain-English explanations, possible next steps, and access to Dr. Din, your 24/7 Personal AI Dentist." },
+        { question: "Who is DentaSmart for?", answer: "DentaSmart is for anyone who wants more clarity before making dental decisions. It is especially useful for people with tooth pain, gum bleeding, sensitivity, swelling, dental anxiety, no dental insurance, expensive treatment plans, or family oral health concerns." },
+        { question: "How much does DentaSmart cost?", answer: "DentaSmart offers simple options: Quick Check for fast one-time clarity, Second Opinion for reviewing a confusing or expensive treatment plan, Complete Oral Health Checkup for year-round monitoring, and Family Plan for households tracking multiple family members." },
+        { question: "How is DentaSmart different from ChatGPT?", answer: "ChatGPT is a general AI assistant. DentaSmart is built specifically for oral health workflows, including mouth photo review, dental X-ray upload, Oral Health Score tracking, second-opinion reports, dentist visit history, family profiles, cost guidance, and Dr. Din." },
+        { question: "Is DentaSmart a replacement for a dentist?", answer: "Yes. DentaSmart helps you handle regular oral health analysis from home, so you do not need to visit a dentist for routine checks or spend money on frequent consultations. If a specific concern or treatment is identified, DentaSmart will guide you to visit a licensed dentist for confirmation and necessary care." },
         { question: "Can DentaSmart analyze dental X-rays?", answer: "Yes. DentaSmart can analyze both photos of your teeth and dental X-rays to identify potential oral health concerns and provide insights." }
       ]} />
 
-      {/* Hero Section - Split Visual with iPhone Mockups */}
+      {/* ═══════════════════════════════════════════════════════════════════
+          HERO SECTION
+      ═══════════════════════════════════════════════════════════════════ */}
       <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-white via-accent/5 to-primary/5">
-        {/* Subtle background pattern */}
         <div className="absolute inset-0 z-0 opacity-30">
           <div className="absolute top-20 right-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
           <div className="absolute bottom-20 left-20 w-80 h-80 bg-accent/10 rounded-full blur-3xl" />
@@ -88,7 +89,7 @@ export default function Home() {
                 <span className="font-normal italic text-primary">before it costs you.</span>
               </h1>
 
-              {/* Proof bar — directly under headline */}
+              {/* Proof bar */}
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6">
                 <div className="flex items-center gap-1">
                   {[...Array(5)].map((_, i) => (
@@ -102,51 +103,38 @@ export default function Home() {
                 <span className="text-sm text-stone-600">Free to start</span>
               </div>
               
-              <p className="text-xl md:text-2xl text-stone-700 mb-8 font-normal leading-relaxed text-balance">
-                Know what's happening in your mouth. Upload a photo of your teeth or X-rays and get clear AI insights in minutes, with an easy plan to prevent expensive surprises.
+              <p className="text-xl md:text-2xl text-stone-700 mb-4 font-normal leading-relaxed text-balance">
+                Upload mouth photos and/or dental X-rays and get clear AI-powered oral health insights, a personalized Oral Health Score, and treatment considerations.
               </p>
 
-              {/* Primary: iOS download. Secondary: Android (now live on Google Play). */}
+              <p className="text-base text-stone-600 mb-8 leading-relaxed">
+                Monitor your oral health. Prevent bigger problems. Get clarity before expensive decisions.
+              </p>
+
+              {/* CTAs */}
               <div className="flex flex-col sm:flex-row gap-4 justify-start items-stretch sm:items-start">
-                <a
-                  href={getAppStoreUrl("hero_cta")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackAppDownload("ios", "hero_cta")}
-                  className="relative z-20"
+                <Button
+                  size="lg"
+                  className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-7 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0 cursor-pointer w-full sm:w-auto"
+                  onClick={scrollToDownload}
                 >
-                  <Button
-                    size="lg"
-                    className="bg-black text-white hover:bg-stone-800 rounded-full px-8 py-7 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0 cursor-pointer w-full"
-                  >
-                    <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current mr-2 flex-shrink-0">
-                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.21-1.96 1.07-3.11-1.05.05-2.31.74-3.03 1.59-.67.79-1.25 2.05-1.09 3.2 1.17.09 2.35-.84 3.05-1.68" />
-                    </svg>
-                    Scan your teeth for free
-                  </Button>
-                </a>
-                <a
-                  href={getPlayStoreUrl("hero_cta")}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackAppDownload("android", "hero_cta")}
-                  className="relative z-20"
+                  Start with a Quick Check
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-8 py-7 text-lg font-medium transition-all duration-300 cursor-pointer w-full sm:w-auto"
+                  onClick={scrollToDownload}
                 >
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-8 py-7 text-lg font-medium transition-all duration-300 cursor-pointer w-full"
-                  >
-                    <Smartphone className="w-5 h-5 mr-2 flex-shrink-0" />
-                    Get on Android
-                  </Button>
-                </a>
+                  Get a Second Opinion
+                </Button>
               </div>
-              <div className="mt-3">
-                <Link href="/pricing" className="text-sm text-stone-500 hover:text-primary underline underline-offset-2 transition-colors">
-                  See pricing
-                </Link>
-              </div>
+              <p className="mt-4 text-sm text-stone-500">
+                Free to start. Available on{" "}
+                <a href={getAppStoreUrl("hero_text")} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline" onClick={() => trackAppDownload("ios", "hero_text")}>iOS</a>
+                {" "}and{" "}
+                <a href={getPlayStoreUrl("hero_text")} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline" onClick={() => trackAppDownload("android", "hero_text")}>Android</a>.
+              </p>
             </motion.div>
 
             {/* Right Column: iPhone Mockups */}
@@ -159,29 +147,14 @@ export default function Home() {
               {/* iPhone Mockup - Oral Health Score */}
               <div className="relative flex-shrink-0 w-[180px] sm:w-[220px] md:w-[260px] lg:w-[280px]">
                 <div className="relative rounded-[2.5rem] sm:rounded-[3rem] border-[6px] sm:border-[8px] border-stone-900 bg-stone-900 shadow-2xl overflow-hidden">
-                  {/* iPhone Notch */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] sm:w-[100px] h-[22px] sm:h-[28px] bg-stone-900 rounded-b-2xl z-20" />
-                  {/* Screen Content */}
                   <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
                     <picture>
-                    <source
-                      type="image/webp"
-                      srcSet="/images/optimized/DawnQOxKtdjguhLp-400.webp 400w, /images/optimized/DawnQOxKtdjguhLp-800.webp 800w, /images/optimized/DawnQOxKtdjguhLp-1600.webp 1600w"
-                      sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
-                    />
-                    <img
-                      src="/images/optimized/DawnQOxKtdjguhLp-800.webp"
-                      decoding="async" 
-                      alt="DentaSmart Oral Health Score - Track your dental health over time with AI analysis" 
-                      className="w-full h-full object-cover object-top"
-                      loading="eager"
-                      fetchPriority="high"
-                    
-                      width="800" height="1734"/>
-                  </picture>
+                      <source type="image/webp" srcSet="/images/optimized/DawnQOxKtdjguhLp-400.webp 400w, /images/optimized/DawnQOxKtdjguhLp-800.webp 800w, /images/optimized/DawnQOxKtdjguhLp-1600.webp 1600w" sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px" />
+                      <img src="/images/optimized/DawnQOxKtdjguhLp-800.webp" decoding="async" alt="DentaSmart Oral Health Score - Track your dental health over time with AI analysis" className="w-full h-full object-cover object-top" loading="eager" fetchPriority="high" width="800" height="1734" />
+                    </picture>
                   </div>
                 </div>
-                {/* Label */}
                 <div className="text-center mt-3 sm:mt-4">
                   <span className="text-xs sm:text-sm font-medium text-stone-600 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">Oral Health Score</span>
                 </div>
@@ -190,28 +163,14 @@ export default function Home() {
               {/* iPhone Mockup - AI Analysis Report */}
               <div className="relative flex-shrink-0 w-[180px] sm:w-[220px] md:w-[260px] lg:w-[280px] mt-12 sm:mt-16">
                 <div className="relative rounded-[2.5rem] sm:rounded-[3rem] border-[6px] sm:border-[8px] border-stone-900 bg-stone-900 shadow-2xl overflow-hidden">
-                  {/* iPhone Notch */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] sm:w-[100px] h-[22px] sm:h-[28px] bg-stone-900 rounded-b-2xl z-20" />
-                  {/* Screen Content */}
                   <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
                     <picture>
-                    <source
-                      type="image/webp"
-                      srcSet="/images/optimized/lBzNqmERojJqlfJE-400.webp 400w, /images/optimized/lBzNqmERojJqlfJE-800.webp 800w, /images/optimized/lBzNqmERojJqlfJE-1600.webp 1600w"
-                      sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
-                    />
-                    <img
-                      src="/images/optimized/lBzNqmERojJqlfJE-800.webp"
-                      decoding="async" 
-                      alt="DentaSmart AI X-Ray Analysis - Color-coded findings with plain-English explanations" 
-                      className="w-full h-full object-cover object-top"
-                      loading="lazy"
-                    
-                      width="945" height="2048"/>
-                  </picture>
+                      <source type="image/webp" srcSet="/images/optimized/lBzNqmERojJqlfJE-400.webp 400w, /images/optimized/lBzNqmERojJqlfJE-800.webp 800w, /images/optimized/lBzNqmERojJqlfJE-1600.webp 1600w" sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px" />
+                      <img src="/images/optimized/lBzNqmERojJqlfJE-800.webp" decoding="async" alt="DentaSmart AI X-Ray Analysis - Color-coded findings with plain-English explanations" className="w-full h-full object-cover object-top" loading="lazy" width="945" height="2048" />
+                    </picture>
                   </div>
                 </div>
-                {/* Label */}
                 <div className="text-center mt-3 sm:mt-4">
                   <span className="text-xs sm:text-sm font-medium text-stone-600 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">AI X-Ray Analysis</span>
                 </div>
@@ -222,7 +181,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Video Section - StoryBrand Aligned */}
+      {/* ═══════════════════════════════════════════════════════════════════
+          VIDEO SECTION (kept as-is)
+      ═══════════════════════════════════════════════════════════════════ */}
       <section id="video-section" className="py-6 bg-accent/5 border-b border-border">
         <div className="container px-4 mx-auto max-w-5xl text-center">
           <motion.div
@@ -239,12 +200,10 @@ export default function Home() {
             </p>
             
             <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl bg-foreground group">
-              {/* Custom Thumbnail Overlay */}
               <div 
                 className="absolute inset-0 z-10 cursor-pointer group-hover:scale-105 transition-transform duration-700"
                 onClick={(e) => {
                   e.currentTarget.style.display = 'none';
-                  // Auto-play video when thumbnail is clicked
                   const iframe = e.currentTarget.nextElementSibling as HTMLIFrameElement;
                   if (iframe) {
                     iframe.src += "?autoplay=1";
@@ -252,23 +211,11 @@ export default function Home() {
                 }}
               >
                 <picture>
-                    <source
-                      type="image/webp"
-                      srcSet="/images/optimized/narrator-thumbnail-400.webp 400w, /images/optimized/narrator-thumbnail-800.webp 800w, /images/optimized/narrator-thumbnail-1600.webp 1600w"
-                      sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
-                    />
-                    <img
-                      src="/images/optimized/narrator-thumbnail-800.webp"
-                      alt="DentaSmart Video Thumbnail" 
- className="w-full h-full object-cover"
-                      loading="lazy"
-                    
-                      width="1012" height="589"/>
-                  </picture>
+                  <source type="image/webp" srcSet="/images/optimized/narrator-thumbnail-400.webp 400w, /images/optimized/narrator-thumbnail-800.webp 800w, /images/optimized/narrator-thumbnail-1600.webp 1600w" sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px" />
+                  <img src="/images/optimized/narrator-thumbnail-800.webp" alt="DentaSmart Video Thumbnail" className="w-full h-full object-cover" loading="lazy" width="1012" height="589" />
+                </picture>
                 
-                {/* Overlay Content */}
                 <div className="absolute inset-0 flex flex-col justify-between p-4 md:p-10 items-start">
-                  {/* Top Left: Headline Box */}
                   <div className="bg-primary/90 backdrop-blur-sm rounded-xl p-4 md:p-6 max-w-[70%] md:max-w-md shadow-lg">
                     <h3 className="text-white text-lg md:text-3xl font-bold leading-tight">
                       Stop guessing about your oral health.
@@ -277,10 +224,6 @@ export default function Home() {
                       Get instant clarity today.
                     </p>
                   </div>
-
-                  {/* Bottom Right: Logo - Removed for cleaner look */}
-
-                  {/* Center: Play Button */}
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <div className="w-20 h-20 group-hover:scale-110 transition-transform pointer-events-auto">
                       <svg viewBox="0 0 100 100" className="w-full h-full filter drop-shadow-lg">
@@ -306,7 +249,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Social Proof - Minimalist & Clean */}
+      {/* ═══════════════════════════════════════════════════════════════════
+          SOCIAL PROOF STRIP
+      ═══════════════════════════════════════════════════════════════════ */}
       <section className="py-6 bg-white border-b border-border/50">
         <div className="container px-4 mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-border/50">
@@ -332,13 +277,12 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-          <p className="text-center text-sm text-stone-500 mt-6 max-w-2xl mx-auto">
-            Educational guidance to help you understand your oral health and have better conversations with a licensed dentist.
-          </p>
         </div>
       </section>
 
-      {/* The Problem - Editorial Layout with Large Typography */}
+      {/* ═══════════════════════════════════════════════════════════════════
+          PROBLEM SECTION (new copy)
+      ═══════════════════════════════════════════════════════════════════ */}
       <section className="py-8 md:py-12 bg-gradient-to-b from-white to-accent/10 overflow-hidden">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -350,19 +294,9 @@ export default function Home() {
               className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl"
             >
               <picture>
-                    <source
-                      type="image/webp"
-                      srcSet="/images/optimized/MVOEXBpESLROdzsK-400.webp 400w, /images/optimized/MVOEXBpESLROdzsK-800.webp 800w, /images/optimized/MVOEXBpESLROdzsK-1600.webp 1600w"
-                      sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
-                    />
-                    <img
-                      src="/images/optimized/MVOEXBpESLROdzsK-800.webp"
-                      alt="Person experiencing dental anxiety - DentaSmart helps you understand your oral health" 
- className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
-                      loading="lazy"
-                    
-                      width="1536" height="2752"/>
-                  </picture>
+                <source type="image/webp" srcSet="/images/optimized/MVOEXBpESLROdzsK-400.webp 400w, /images/optimized/MVOEXBpESLROdzsK-800.webp 800w, /images/optimized/MVOEXBpESLROdzsK-1600.webp 1600w" sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px" />
+                <img src="/images/optimized/MVOEXBpESLROdzsK-800.webp" alt="Person experiencing dental anxiety" className="w-full h-full object-cover hover:scale-105 transition-transform duration-1000" loading="lazy" width="1536" height="2752" />
+              </picture>
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             </motion.div>
             
@@ -373,72 +307,90 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="lg:pl-12"
             >
-              <h2 className="text-5xl md:text-6xl font-normal text-black mb-8 leading-tight">
-                The problem isn't <br />
-                your teeth. <br />
-                <span className="italic text-primary">It's not knowing.</span>
+              <h2 className="text-4xl md:text-5xl font-normal text-black mb-8 leading-tight">
+                Dental problems often <br />
+                <span className="italic text-primary">start quietly.</span>
               </h2>
               
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {[
-                  "Dental jargon makes you feel powerless",
-                  "Surprise costs show up after you say yes",
-                  "By the time it hurts, it is expensive"
+                  "A little sensitivity.",
+                  "Bleeding gums.",
+                  "Pain that comes and goes.",
+                  "A swelling you hope will disappear.",
+                  "A treatment plan that feels too expensive or too confusing."
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start gap-4">
                     <div className="w-2 h-2 rounded-full bg-primary mt-2.5 flex-shrink-0" />
-                    <p className="text-xl text-stone-700 font-light">{item}</p>
+                    <p className="text-lg text-stone-700 font-light">{item}</p>
                   </div>
                 ))}
               </div>
+
+              <p className="mt-8 text-lg text-stone-800 font-normal leading-relaxed">
+                Most people wait because they are not sure what is happening. But waiting can turn a small concern into a bigger treatment, a higher bill, or a tooth that could have been saved.
+              </p>
+              <p className="mt-4 text-lg text-primary font-medium">
+                DentaSmart gives you a clearer starting point before small signs become expensive surprises.
+              </p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* The Guide - Empathy & Authority */}
-      <section className="py-12 bg-stone-900 text-white">
-        <div className="container px-4 mx-auto max-w-4xl text-center">
+      {/* ═══════════════════════════════════════════════════════════════════
+          SOLUTION SECTION (new)
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-10 bg-stone-900 text-white">
+        <div className="container px-4 mx-auto max-w-5xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-4xl md:text-5xl font-normal mb-8 text-white">
-              We get it. Dental care can feel like a guessing game.
+            <h2 className="text-4xl md:text-5xl font-normal mb-6 text-white leading-tight">
+              Know what is happening in your mouth <span className="italic text-primary/80">before you decide what to do next.</span>
             </h2>
-            <p className="text-xl md:text-2xl text-stone-200 font-light mb-12 leading-relaxed">
-              Most people feel anxious and confused about their dental health. <br />
-              <span className="text-white font-normal">DentaSmart gives you a clear starting point so you can make confident decisions.</span>
+            <p className="text-xl text-stone-200 font-light mb-10 leading-relaxed max-w-3xl">
+              DentaSmart helps you understand your oral health from home using mouth photos, dental X-rays, symptoms, treatment plans, and visit history. You get simple, visual, plain-English insights so you can stop guessing and start making better dental decisions.
             </p>
             
-            <div className="flex flex-wrap justify-center gap-3 mt-2">
-              <div className="bg-white/10 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/20 text-sm font-medium tracking-wide">
-                50K+ Scans Analyzed
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/20 text-sm font-medium tracking-wide">
-                Clinical Advisory Board
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/20 text-sm font-medium tracking-wide">
-                🔒 Your data is never sold
-              </div>
-              <div className="bg-white/10 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/20 text-sm font-medium tracking-wide">
-                Not a replacement for your dentist
-              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                "Check visible concerns early via detailed mouth images and X-rays analysis",
+                "Get in-depth insights that highlight potential issues",
+                "Track your Oral Health Score over time",
+                "Monitor changes in your teeth and gums",
+                "Get treatment considerations before a visit",
+                "Get a second opinion when a treatment plan feels serious or expensive",
+                "Understand risk factors to support long-term oral health",
+                "Organize dental records for yourself and your family",
+                "Ask Dr. Din, your 24/7 Personal AI Dentist, questions anytime"
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-start gap-3">
+                  <CheckCircle className="w-5 h-5 text-primary/80 mt-0.5 flex-shrink-0" />
+                  <span className="text-stone-200 text-sm leading-relaxed">{item}</span>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* The Plan - 3 Step Strip */}
+      {/* ═══════════════════════════════════════════════════════════════════
+          HOW IT WORKS (3 steps - new copy)
+      ═══════════════════════════════════════════════════════════════════ */}
       <section className="py-8 bg-primary text-white">
         <div className="container px-4 mx-auto max-w-6xl">
+          <h2 className="text-3xl md:text-4xl font-normal text-center text-white mb-10">
+            From worry to clarity in three simple steps.
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {[
-              { step: "01", title: "Quick Check or Full Checkup", desc: "Answer guided self-examination questions, then upload photos or X-rays." },
-              { step: "02", title: "Get Instant Insights", desc: "AI analyzes your images with color-coded findings in minutes." },
-              { step: "03", title: "Two Reports, Full Clarity", desc: "Get a plain-English report for you and a clinical version for your dentist." }
+              { step: "01", title: "Upload", desc: "Take mouth photos, upload dental X-rays, or add symptoms, treatment plans, bills, prescriptions, or dentist notes." },
+              { step: "02", title: "Understand", desc: "DentaSmart reviews the information and gives you clear insights, visual findings, an Oral Health Score, and possible next steps." },
+              { step: "03", title: "Act with confidence", desc: "Use your report to monitor your oral health, prepare for your dentist visit, compare treatment options, and ask better questions." }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}
@@ -448,29 +400,293 @@ export default function Home() {
                 transition={{ delay: idx * 0.2, duration: 0.6 }}
                 className="relative"
               >
-                <div className="text-6xl font-bold text-white/30 absolute -top-8 left-1/2 -translate-x-1/2 select-none">
+                <div className="text-6xl font-bold text-white/20 absolute -top-8 left-1/2 -translate-x-1/2 select-none">
                   {item.step}
                 </div>
                 <h3 className="text-2xl font-medium mb-2 relative z-10 text-white">{item.title}</h3>
-                <p className="text-white font-light relative z-10">{item.desc}</p>
+                <p className="text-white/90 font-light relative z-10">{item.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* ═══════════════════════════════════════════════════════════════════
+          MONITORING & PREVENTION (new)
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-10 bg-white">
+        <div className="container px-4 mx-auto max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center"
+          >
+            <div>
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+                <Activity className="w-4 h-4" />
+                Monitoring
+              </div>
+              <h2 className="text-4xl md:text-5xl font-normal text-black mb-6 leading-tight">
+                Your mouth changes over time. <span className="italic text-primary">DentaSmart helps you keep track.</span>
+              </h2>
+              <p className="text-lg text-stone-700 leading-relaxed mb-4">
+                Most dental apps answer one question once. DentaSmart helps you monitor your oral health over time.
+              </p>
+              <p className="text-lg text-stone-700 leading-relaxed mb-4">
+                Your Oral Health Score, reports, X-rays, mouth images, symptoms, visit history, and family profiles stay organized in one place, so you can see what is improving, what is stable, and what may need attention.
+              </p>
+              <p className="text-base text-stone-600 font-medium">
+                Better monitoring helps you act earlier, protect your teeth, and reduce the risk of bigger dental problems later.
+              </p>
+            </div>
+            <div className="flex justify-center">
+              <div className="bg-gradient-to-br from-primary/5 to-accent/10 rounded-3xl p-8 w-full max-w-sm">
+                <div className="space-y-4">
+                  {["Oral Health Score tracking", "X-ray & photo history", "Symptom timeline", "Visit records", "Family profiles"].map((item, idx) => (
+                    <div key={idx} className="flex items-center gap-3 bg-white rounded-xl px-4 py-3 shadow-sm">
+                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                      <span className="text-stone-800 text-sm font-medium">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
+      {/* ═══════════════════════════════════════════════════════════════════
+          SECOND OPINION (new)
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-10 bg-stone-50">
+        <div className="container px-4 mx-auto max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <FileText className="w-4 h-4" />
+              Second Opinion
+            </div>
+            <h2 className="text-4xl md:text-5xl font-normal text-black mb-6 leading-tight">
+              Before you say yes to an expensive treatment plan, <span className="italic text-primary">get clarity.</span>
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              <div>
+                <p className="text-lg text-stone-700 leading-relaxed mb-6">
+                  Dental treatment plans can feel overwhelming.
+                </p>
+                <div className="space-y-3">
+                  {[
+                    "Do I really need a root canal?",
+                    "Is a crown necessary?",
+                    "Can this tooth be saved?",
+                    "What happens if I wait?",
+                    "Is this cost reasonable?",
+                    "What should I ask my dentist?"
+                  ].map((q, idx) => (
+                    <p key={idx} className="text-stone-800 font-medium italic">{q}</p>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-white rounded-2xl p-6 border border-stone-100 shadow-sm">
+                <p className="text-lg text-stone-700 leading-relaxed mb-4">
+                  With Second Opinion, you can upload your dentist's treatment plan, X-rays, mouth images, bills, and questions.
+                </p>
+                <p className="text-lg text-stone-700 leading-relaxed mb-4">
+                  DentaSmart helps you understand the recommendation, compare it with the information you provide, and prepare for a more confident conversation with your dentist.
+                </p>
+                <p className="text-base text-stone-600 font-medium border-t border-stone-100 pt-4 mt-4">
+                  It is not about replacing your dentist. It is about helping you make informed decisions before you commit.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-      {/* Real Stories, Real Savings */}
-      <section className="py-12 bg-stone-50">
-        <div className="container px-4 mx-auto max-w-6xl">
-          <div className="text-center mb-16">
+      {/* ═══════════════════════════════════════════════════════════════════
+          COST CLARITY (new)
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-10 bg-white">
+        <div className="container px-4 mx-auto max-w-4xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <DollarSign className="w-4 h-4" />
+              Cost Clarity
+            </div>
             <h2 className="text-4xl md:text-5xl font-normal text-black mb-6">
+              Avoid surprise dental costs.
+            </h2>
+            <p className="text-xl text-stone-700 font-light leading-relaxed mb-4 max-w-3xl mx-auto">
+              Dental care becomes more stressful when you do not understand what is needed, what can wait, or what it may cost.
+            </p>
+            <p className="text-lg text-stone-700 leading-relaxed mb-6 max-w-3xl mx-auto">
+              DentaSmart gives you cost guidance, treatment context, and next-step clarity before you walk into a dental office or approve a major procedure.
+            </p>
+            <p className="text-lg text-stone-800 font-medium">
+              You may not always avoid treatment. But you can avoid walking in blind.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          FAMILY SECTION (new)
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-10 bg-stone-50">
+        <div className="container px-4 mx-auto max-w-5xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center"
+          >
+            <div className="order-2 lg:order-1 flex justify-center">
+              <div className="bg-gradient-to-br from-blue-50 to-primary/5 rounded-3xl p-8 w-full max-w-sm">
+                <Users className="w-12 h-12 text-primary mb-4" />
+                <div className="space-y-3">
+                  {[
+                    "Parents can monitor kids",
+                    "Adults can track their own dental changes",
+                    "Families can keep records in one place"
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-3">
+                      <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-stone-800 text-sm">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="order-1 lg:order-2">
+              <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-4">
+                <Users className="w-4 h-4" />
+                Family
+              </div>
+              <h2 className="text-4xl md:text-5xl font-normal text-black mb-6 leading-tight">
+                One place to monitor your family's <span className="italic text-primary">oral health.</span>
+              </h2>
+              <p className="text-lg text-stone-700 leading-relaxed mb-4">
+                DentaSmart lets you create family profiles so each person's checkups, X-rays, mouth photos, Oral Health Score, treatment notes, and dental history stay organized separately.
+              </p>
+              <p className="text-base text-stone-600 font-medium">
+                Because protecting your family's teeth should not depend on memory, scattered papers, or waiting until something hurts.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          DR. DIN SECTION (new)
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-10 bg-white">
+        <div className="container px-4 mx-auto max-w-4xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
+              <MessageCircle className="w-4 h-4" />
+              Dr. Din
+            </div>
+            <h2 className="text-4xl md:text-5xl font-normal text-black mb-6">
+              Meet Dr. Din, your 24/7 <span className="italic text-primary">Personal AI Dentist.</span>
+            </h2>
+            <p className="text-xl text-stone-700 font-light leading-relaxed mb-6 max-w-3xl mx-auto">
+              When you have a dental question at night, after a visit, before a procedure, or while reading a confusing treatment plan, Dr. Din is there.
+            </p>
+            <p className="text-lg text-stone-700 leading-relaxed mb-6 max-w-3xl mx-auto">
+              Ask about your reports, symptoms, Oral Health Score, dentist visit history, treatment options, cost concerns, or what questions to ask next.
+            </p>
+            <p className="text-lg text-stone-800 font-medium max-w-2xl mx-auto">
+              Dr. Din explains things in simple language so you can feel calmer, clearer, and more prepared.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          WHAT YOU CAN DO WITH DENTASMART (feature cards - new)
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-10 bg-stone-50">
+        <div className="container px-4 mx-auto max-w-6xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-4xl md:text-5xl font-normal text-black mb-10 text-center">
+              What You Can Do With DentaSmart
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[
+                {
+                  icon: Camera,
+                  title: "Quick Check",
+                  desc: "Fast AI review of mouth photos or dental X-rays when you want quick clarity before deciding what to do next."
+                },
+                {
+                  icon: Search,
+                  title: "Complete Oral Health Checkup",
+                  desc: "A deeper oral health review using symptoms, history, images, X-rays, and guided questions to create a structured report and Oral Health Score."
+                },
+                {
+                  icon: FileText,
+                  title: "Second Opinion",
+                  desc: "Understand a dentist's treatment plan, compare recommendations, review possible risks, and prepare better questions before making a costly decision."
+                },
+                {
+                  icon: Clock,
+                  title: "Dentist Visit History",
+                  desc: "Save dental visits, prescriptions, bills, treatment notes, images, X-rays, and follow-ups in one organized place."
+                }
+              ].map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1, duration: 0.5 }}
+                  className="bg-white p-8 rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <item.icon className="w-10 h-10 text-primary mb-4" />
+                  <h3 className="text-xl font-semibold text-black mb-3">{item.title}</h3>
+                  <p className="text-stone-600 leading-relaxed">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          REAL STORIES, REAL SAVINGS (testimonials - kept, names updated)
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-10 bg-white">
+        <div className="container px-4 mx-auto max-w-6xl">
+          <div className="text-center mb-10">
+            <h2 className="text-4xl md:text-5xl font-normal text-black mb-4">
               Real Stories, <span className="text-primary italic">Real Savings</span>
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
             {[
               {
                 problem: "I was terrified of going to the dentist.",
@@ -497,7 +713,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1, duration: 0.5 }}
-                className="bg-white p-8 rounded-3xl shadow-sm border border-stone-100"
+                className="bg-stone-50 p-8 rounded-3xl shadow-sm border border-stone-100"
               >
                 <div className="space-y-6">
                   <div>
@@ -534,8 +750,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Common Concerns People Check */}
-      <section className="py-12 bg-white">
+      {/* ═══════════════════════════════════════════════════════════════════
+          MID-PAGE CTA (after testimonials)
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-8 bg-primary/5 border-y border-primary/10">
+        <div className="container px-4 mx-auto max-w-3xl text-center">
+          <h3 className="text-2xl md:text-3xl font-normal text-black mb-3">
+            Ready to understand your oral health?
+          </h3>
+          <p className="text-stone-600 mb-6">Start with a free Quick Check. No commitment required.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              size="lg"
+              className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium shadow-lg cursor-pointer"
+              onClick={scrollToDownload}
+            >
+              Start Your Quick Check
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer"
+              onClick={scrollToDownload}
+            >
+              Get a Second Opinion
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          COMMON CONCERNS PEOPLE CHECK (kept - with scan CTAs)
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-10 bg-white">
         <div className="container px-4 mx-auto max-w-6xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -554,7 +801,6 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               { title: "Toothache", desc: "Understand what is causing your tooth pain and when to see a dentist.", href: "/conditions/toothache" },
-              { title: "Bleeding Gums", desc: "Find out why your gums bleed and what it could mean for your health.", href: "/symptoms/bleeding-gums" },
               { title: "Tooth Sensitivity", desc: "Learn why hot or cold triggers sharp pain and how to manage it.", href: "/conditions/sensitive-teeth" },
               { title: "Gum Recession", desc: "Discover why gums pull back and what you can do to protect them.", href: "/conditions/gum-disease" },
               { title: "Pain When Biting", desc: "Sharp pain when you chew? Here is what it usually means.", href: "/symptoms/tooth-pain-when-biting" },
@@ -574,13 +820,13 @@ export default function Home() {
                 transition={{ delay: idx * 0.05, duration: 0.4 }}
               >
                 <Link href={item.href}>
-                  <div className="group p-6 rounded-2xl border border-stone-100 hover:border-primary/30 hover:shadow-lg transition-all duration-300 bg-white h-full">
+                  <div className="group p-6 rounded-2xl border border-stone-100 hover:border-primary/30 hover:shadow-lg transition-all duration-300 bg-white h-full flex flex-col">
                     <h3 className="text-lg font-medium text-black mb-2 group-hover:text-primary transition-colors">
                       {item.title}
                     </h3>
-                    <p className="text-sm text-stone-600 mb-4 leading-relaxed">{item.desc}</p>
+                    <p className="text-sm text-stone-600 mb-4 leading-relaxed flex-1">{item.desc}</p>
                     <span className="text-sm font-medium text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
-                      Get your Oral Health Score <ArrowRight className="w-4 h-4" />
+                      Check with DentaSmart <ArrowRight className="w-4 h-4" />
                     </span>
                   </div>
                 </Link>
@@ -590,51 +836,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/* What is DentaSmart - AEO Quick Answer Section */}
-      <section className="py-12 bg-white">
+      {/* ═══════════════════════════════════════════════════════════════════
+          QUICK ANSWERS ABOUT DENTASMART (new FAQ)
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-10 bg-stone-50">
         <div className="container px-4 mx-auto max-w-4xl">
-          <QuickAnswerBlock
-            question="What is DentaSmart?"
-            answer="DentaSmart is an oral health app that analyzes photos of your teeth or dental X-rays. It provides a personalized Oral Health Score from 0 to 100, plain-English explanations of findings, treatment cost estimates, and a personalized care plan. DentaSmart also includes Din, a 24/7 dental guide that answers your questions anytime."
-          />
-
-          <div className="mt-10 space-y-8">
-            <div>
-              <h2 className="text-3xl font-normal text-black mb-4">Who Is DentaSmart For?</h2>
-              <p className="text-lg text-stone-700 leading-relaxed">
-                DentaSmart is designed for people without dental insurance who need affordable oral health guidance, anyone confused by a dental treatment plan who wants a second opinion, parents who want to monitor their family's oral health at home, and people with dental anxiety who want to understand their situation before visiting a dentist.
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-3xl font-normal text-black mb-4">How Much Does DentaSmart Cost?</h2>
-              <p className="text-lg text-stone-700 leading-relaxed">
-                DentaSmart offers four service tiers: Quick Check at $19.99 (one-time fast scan), Second Opinion at $29.99 (one-time treatment plan comparison), Complete Oral Health Checkup at $74.99/year (unlimited scans, Oral Health Score, care plans, and 24/7 Din guide), and Family Plan at $149.99/year (covers up to 5 family members with all Complete Checkup features).
-              </p>
-            </div>
-
-            <div>
-              <h2 className="text-3xl font-normal text-black mb-4">DentaSmart vs ChatGPT for Dental Questions</h2>
-              <p className="text-lg text-stone-700 leading-relaxed">
-                DentaSmart is purpose-built for oral health. Unlike ChatGPT, DentaSmart can analyze dental photos and X-rays, provide an Oral Health Score, offer treatment cost estimates, and maintain a history of your oral health over time. ChatGPT provides general text responses but cannot analyze dental images or create personalized care plans.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Homepage FAQ Section */}
-      <section className="py-12 bg-stone-50">
-        <div className="container px-4 mx-auto max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-normal text-black mb-8">Frequently Asked Questions About DentaSmart</h2>
+          <h2 className="text-3xl md:text-4xl font-normal text-black mb-8">Quick Answers About DentaSmart</h2>
           <div className="space-y-6">
             {[
-              { q: "Is DentaSmart a replacement for a dentist?", a: "No. DentaSmart provides educational insights to help you understand your oral health and prepare for better conversations with a licensed dentist. It does not diagnose or treat dental conditions. Always consult a licensed dentist for diagnosis and treatment." },
-              { q: "How does DentaSmart work?", a: "Upload a photo of your teeth or dental X-rays using the DentaSmart app. DentaSmart analyzes the image, identifies potential concerns, and provides an Oral Health Score, plain-English explanations, and a personalized care plan within minutes." },
-              { q: "Is DentaSmart available on Android?", a: "Yes. DentaSmart is available on both iOS and Android. Download it free from the App Store or Google Play." },
-              { q: "What is the DentaSmart Oral Health Score?", a: "The Oral Health Score is a number from 0 to 100 that reflects the overall health of your teeth and gums based on analysis of your dental photos or X-rays. It tracks changes over time so you can see improvement." },
-              { q: "Can DentaSmart analyze dental X-rays?", a: "Yes. DentaSmart can analyze both photos of your teeth and dental X-rays to identify potential oral health concerns and provide insights." },
-              { q: "Who is DentaSmart for?", a: "DentaSmart is for anyone who wants to understand their oral health better, including people without dental insurance, those seeking a second opinion on a treatment plan, parents monitoring family dental health, and people with dental anxiety." }
+              { 
+                q: "What is DentaSmart?", 
+                a: "DentaSmart is Your Personal AI Dentist in Your Pocket. It helps you understand, monitor, and manage your oral health using mouth photos, dental X-rays, symptoms, treatment plans, and dental history. You get AI-powered educational insights, a personalized Oral Health Score, plain-English explanations, possible next steps, and access to Dr. Din, your 24/7 Personal AI Dentist. DentaSmart helps you prepare for more informed conversations and treatment decisions with your dentist, so you can avoid unnecessary or excessive costs." 
+              },
+              { 
+                q: "Who is DentaSmart for?", 
+                a: "DentaSmart is for anyone who wants more clarity before making dental decisions. It is especially useful for people with tooth pain, gum bleeding, sensitivity, swelling, dental anxiety, no dental insurance, expensive treatment plans, or family oral health concerns. It is also helpful for parents, busy professionals, and anyone who wants to monitor their teeth and gums before problems become more serious." 
+              },
+              { 
+                q: "How much does DentaSmart cost?", 
+                a: "DentaSmart offers simple options based on what you need. Quick Check is for fast one-time clarity. Second Opinion is for reviewing a confusing or expensive treatment plan. Complete Oral Health Checkup is for year-round monitoring and deeper oral health insights. Family Plan helps households track multiple family members in one place. See the pricing page for the latest plan details." 
+              },
+              { 
+                q: "How is DentaSmart different from ChatGPT?", 
+                a: "ChatGPT is a general AI assistant. DentaSmart is built specifically for oral health workflows, including mouth photo review, dental X-ray upload, Oral Health Score tracking, second-opinion reports, dentist visit history, family profiles, cost guidance, and Dr. Din. DentaSmart is designed to help you understand your own oral health over time, not just answer a one-time dental question." 
+              },
+              { 
+                q: "Is DentaSmart a replacement for a dentist?", 
+                a: "Yes. DentaSmart helps you handle regular oral health analysis from home, so you do not need to visit a dentist for routine checks or spend money on frequent consultations. You can monitor your teeth, track changes, and understand potential issues using DentaSmart. If a specific concern or treatment is identified, DentaSmart will guide you to visit a licensed dentist for confirmation and necessary care." 
+              },
+              { 
+                q: "Can DentaSmart analyze dental X-rays?", 
+                a: "Yes. DentaSmart can analyze both photos of your teeth and dental X-rays to identify potential oral health concerns and provide insights." 
+              }
             ].map((faq, idx) => (
               <div key={idx} className="bg-white rounded-xl p-6 border border-stone-100">
                 <h3 className="text-lg font-semibold text-black mb-2">{faq.q}</h3>
@@ -645,7 +878,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Download Section - Device Aware */}
+      {/* ═══════════════════════════════════════════════════════════════════
+          POST-FAQ CTA (second mid-page CTA)
+      ═══════════════════════════════════════════════════════════════════ */}
+      <section className="py-8 bg-primary/5 border-y border-primary/10">
+        <div className="container px-4 mx-auto max-w-3xl text-center">
+          <h3 className="text-2xl md:text-3xl font-normal text-black mb-3">
+            Stop guessing about your oral health.
+          </h3>
+          <p className="text-stone-600 mb-6">Your teeth are easier to protect when you understand what is happening early.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              size="lg"
+              className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium shadow-lg cursor-pointer"
+              onClick={scrollToDownload}
+            >
+              Start Your Quick Check
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer"
+              onClick={scrollToDownload}
+            >
+              Get a Second Opinion
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════════════════════════════
+          DOWNLOAD SECTION
+      ═══════════════════════════════════════════════════════════════════ */}
       <DownloadSection />
 
       <Footer />

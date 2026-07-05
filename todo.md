@@ -1705,3 +1705,24 @@
 
 - [x] Fix broken Android QR code on live site — moved from /manus-storage/ (broken in production) to /images/android-qr-842538bb.png (client/public, same pattern as iOS QR). Updated all 3 components: DownloadSection.tsx, DownloadCTA.tsx, AndroidEarlyAccess.tsx.
 - [x] Fix iOS QR code alignment — image had no quiet zone (0px margins), QR pattern was touching edges. Added 35px padding on all sides to match Android QR. Renamed to ios-qr-d286ca7b.png (content-hashed). Updated DownloadSection.tsx and DownloadCTA.tsx.
+
+# Homepage Content Overhaul - Jul 5, 2026
+
+- [x] Update Hero section copy and CTAs (scroll to download)
+- [x] Update Problem section with new copy from content doc
+- [x] Replace Guide/Empathy section with new Solution section
+- [x] Update How It Works (3 steps) with new copy
+- [x] Add Monitoring and Prevention section (new)
+- [x] Add Second Opinion section (new)
+- [x] Add Cost Clarity section (new)
+- [x] Add Family section (new)
+- [x] Add Dr. Din section (new)
+- [x] Add "What You Can Do With DentaSmart" feature cards (new)
+- [x] Replace FAQ with new "Quick Answers About DentaSmart" content
+- [x] Update Final CTA section with new copy
+- [x] Keep Video section as-is
+- [x] Keep Testimonials section (update names to full first + last initial)
+- [x] Keep Common Concerns section as-is
+- [x] Add repeated CTA block after Testimonials section
+- [x] Add repeated CTA block after FAQ section
+- [x] Verify symptom grid links route to real pages with scan CTAs
