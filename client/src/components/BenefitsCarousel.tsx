@@ -46,10 +46,10 @@ const benefits = [
   },
   {
     id: 6,
-    tag: "AI Guide",
+    tag: "AI Dentist",
     title: "Ask Din Questions Anytime (Educational)",
     desc: "Ask questions anytime, 24/7.",
-    detail: "Din is your personal AI dental guide, ready to answer your questions, explain procedures in plain English, and provide reassurance whenever you need it.",
+    detail: "Din is your personal AI dentist, ready to answer your questions, explain procedures in plain English, and provide reassurance whenever you need it.",
     image: "/images/optimized/YSjOjqlpUabDbzAW-800.webp"
   }
 ];

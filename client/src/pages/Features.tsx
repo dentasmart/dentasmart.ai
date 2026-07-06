@@ -104,8 +104,8 @@ export default function Features() {
       isPhone: true
     },
     {
-      title: "Your 24/7 Personal AI Dental Guide",
-      description: "Questions about your teeth don't always happen during office hours.\n\nMeet Din, your AI dental guide. Whether it's 2 AM or 2 PM, Din is ready to answer your questions, explain your results, and offer supportive advice in plain language. You're never alone on your journey to better health.",
+      title: "Your 24/7 Personal AI Dentist",
+      description: "Questions about your teeth don't always happen during office hours.\n\nMeet Din, your personal AI dentist. Whether it's 2 AM or 2 PM, Din is ready to answer your questions, explain your results, and offer supportive advice in plain language. You're never alone on your journey to better health.",
       points: [
         "Always Available: Get answers the moment you need them.",
         "Friendly Support: A judgment-free zone for all your dental questions.",

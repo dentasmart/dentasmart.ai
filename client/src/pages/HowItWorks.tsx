@@ -181,7 +181,7 @@ export default function HowItWorks() {
               Based on your results, DentaSmart creates a personalized care plan with clear next steps. This might include daily oral hygiene recommendations, product suggestions, reminders for follow-up scans, and guidance on which findings need professional dental attention and which ones you can monitor at home.
             </p>
             <p className="text-stone-700 leading-relaxed ml-[52px]">
-              You can also ask Din, your 24/7 AI oral health guide, any dental question at any time. Din is trained specifically for dental health conversations and can help you understand treatment options, dental insurance questions, what to expect during procedures, and how to maintain better oral hygiene habits between dental visits.
+              You can also ask Din, your 24/7 personal AI dentist, any dental question at any time. Din is trained specifically for dental health conversations and can help you understand treatment options, dental insurance questions, what to expect during procedures, and how to maintain better oral hygiene habits between dental visits.
             </p>
           </div>
         </div>

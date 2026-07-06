@@ -20,7 +20,7 @@ function getOrganizationSchema(): object {
     name: "DentaSmart",
     url: SITE_URL,
     logo: `${SITE_URL}/images/logo.png`,
-    description: "DentaSmart is an AI-powered oral health app that helps people understand their dental health through photo analysis, personalized care plans, and a 24/7 AI guide.",
+    description: "DentaSmart is an AI-powered oral health app that helps people understand their dental health through photo analysis, personalized care plans, and a 24/7 AI dentist.",
     foundingDate: "2024",
     sameAs: [
       "https://www.instagram.com/dentasmart.ai",
@@ -77,16 +77,24 @@ function getSoftwareApplicationSchema(): object {
       },
       {
         "@type": "Offer",
-        name: "Family Plan",
-        price: "149.99",
+        name: "Second Opinion",
+        price: "29.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock"
       },
       {
         "@type": "Offer",
-        name: "Second Opinion",
-        price: "29.99",
+        name: "Complete Care (Individual)",
+        price: "74.99",
+        priceCurrency: "USD",
+        priceValidUntil: "2027-12-31",
+        availability: "https://schema.org/InStock"
+      },
+      {
+        "@type": "Offer",
+        name: "Complete Care (Family)",
+        price: "149.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock"
@@ -158,8 +166,8 @@ function getProductSchema(): object {
       },
       {
         "@type": "Offer",
-        name: "Family Plan",
-        price: "149.99",
+        name: "Second Opinion",
+        price: "29.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
@@ -167,8 +175,17 @@ function getProductSchema(): object {
       },
       {
         "@type": "Offer",
-        name: "Second Opinion",
-        price: "29.99",
+        name: "Complete Care (Individual)",
+        price: "74.99",
+        priceCurrency: "USD",
+        priceValidUntil: "2027-12-31",
+        availability: "https://schema.org/InStock",
+        url: `${SITE_URL}/pricing`
+      },
+      {
+        "@type": "Offer",
+        name: "Complete Care (Family)",
+        price: "149.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",

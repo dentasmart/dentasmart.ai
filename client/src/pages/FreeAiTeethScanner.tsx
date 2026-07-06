@@ -303,7 +303,7 @@ export default function FreeAiTeethScanner() {
                   { feature: "Personalized care plan", free: false, quick: true, complete: true },
                   { feature: "Unlimited scans", free: false, quick: false, complete: true },
                   { feature: "Progress tracking", free: false, quick: false, complete: true },
-                  { feature: "24/7 Din AI guide", free: false, quick: false, complete: true },
+                  { feature: "24/7 Din AI dentist", free: false, quick: false, complete: true },
                 ].map((row, i) => (
                   <tr key={i} className="hover:bg-stone-50">
                     <td className="py-3 px-4 text-stone-700 font-light text-sm">{row.feature}</td>

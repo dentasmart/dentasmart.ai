@@ -103,7 +103,7 @@ const faqs = [
   },
   {
     q: "Does DentaSmart replace going to the dentist?",
-    a: "No. DentaSmart is your AI oral health guide, not a replacement for professional dental care. It helps you understand your oral health, catch potential issues early, get AI-powered second opinions, and make informed decisions about treatment. Think of it as a knowledgeable friend who helps you handle dental care more confidently and affordably.",
+    a: "No. DentaSmart is your personal AI dentist, not a replacement for professional dental care. It helps you understand your oral health, catch potential issues early, get AI-powered second opinions, and make informed decisions about treatment. Think of it as a knowledgeable friend who helps you handle dental care more confidently and affordably.",
   },
   {
     q: "How does DentaSmart help me save on dental care?",

@@ -201,7 +201,7 @@ const faqJsonLd = {
 const webAppJsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "DentaSmart - AI Oral Health Guide",
+  name: "DentaSmart - Your Personal AI Dentist",
   url: "https://dentasmart.ai/symptom-quiz",
   applicationCategory: "HealthApplication",
   operatingSystem: "Web, iOS, Android",

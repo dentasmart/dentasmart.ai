@@ -19,7 +19,7 @@ export function OrganizationSchema() {
     name: "DentaSmart",
     url: SITE_URL,
     logo: `${SITE_URL}/images/logo.png`,
-    description: "DentaSmart is an AI-powered oral health app that helps people understand their dental health through photo analysis, personalized care plans, and a 24/7 AI guide.",
+    description: "DentaSmart is an AI-powered oral health app that helps people understand their dental health through photo analysis, personalized care plans, and a 24/7 AI dentist.",
     foundingDate: "2024",
     sameAs: [
       "https://www.instagram.com/dentasmart.ai",
@@ -100,21 +100,21 @@ export function SoftwareApplicationSchema() {
       },
       {
         "@type": "Offer",
-        name: "Complete Oral Health Checkup",
+        name: "Complete Care (Individual)",
         price: "74.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        description: "Unlimited AI scans, Oral Health Score, personalized care plans, 24/7 AI guide Din. $74.99/year."
+        description: "Unlimited Quick Check, Second Opinion, and Complete Oral Health Checkup services, 24/7 AI dentist Din. $74.99/year."
       },
       {
         "@type": "Offer",
-        name: "Family Plan",
+        name: "Complete Care (Family)",
         price: "149.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        description: "Complete Oral Health Checkup for up to 4 family members. $149.99/year."
+        description: "Complete Care for up to 4 family members with individual profiles and separate reports. $149.99/year."
       }
     ],
     aggregateRating: {
@@ -279,23 +279,23 @@ export function ProductServiceSchema() {
       },
       {
         "@type": "Offer",
-        name: "Complete Oral Health Checkup",
+        name: "Complete Care (Individual)",
         price: "74.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
         url: `${SITE_URL}/pricing`,
-        description: "Unlimited AI scans, Oral Health Score, personalized care plans, 24/7 AI guide Din. $74.99/year ($0.21/day)."
+        description: "Unlimited Quick Check, Second Opinion, and Complete Oral Health Checkup services, 24/7 AI dentist Din. $74.99/year ($0.21/day)."
       },
       {
         "@type": "Offer",
-        name: "Family Plan",
+        name: "Complete Care (Family)",
         price: "149.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
         url: `${SITE_URL}/pricing`,
-        description: "Complete Oral Health Checkup for up to 4 family members. $149.99/year."
+        description: "Complete Care for up to 4 family members with individual profiles and separate reports. $149.99/year."
       }
     ]
   };

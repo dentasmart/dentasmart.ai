@@ -1752,3 +1752,13 @@
   - [x] NextStepsBox
   - [x] WaitlistSuccessModal (updated copy from iOS-only to both platforms)
   - [x] SymptomQuiz results CTA
+
+## Pricing & Branding Updates - Jul 6, 2026
+- [x] Rename "Complete Oral Health Checkup" annual plan to "Complete Care Annual Plan"
+- [x] Bold included services in annual plan (Quick Check, Second Opinion, Complete Oral Health Checkup - all unlimited)
+- [x] Fix Family Plan to "Up to 4 family members" (including main user)
+- [x] Add $19.99/year per additional family member
+- [x] Remove "Family health dashboard" from family plan features
+- [x] Fix "Shared Dental History" to reflect individual management per family member
+- [x] Change all "AI Guide" / "AI Dental Guide" / "AI Oral Health Guide" to "AI Dentist" across all pages
+- [x] Update tagline to "Your Personal AI Dentist in Your Pocket" everywhere

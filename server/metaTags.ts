@@ -38,9 +38,9 @@ const staticMeta: Record<string, MetaInfo> = {
       "Discover DentaSmart features: AI-powered photo analysis, personalized Oral Health Score, cost estimates, care reminders, and second opinion tools.",
   },
   "/pricing": {
-    title: "DentaSmart Pricing | Quick Check, Second Opinion, Complete & Family Plans",
+    title: "DentaSmart Pricing | Quick Check, Second Opinion & Complete Care Plans",
     description:
-      "Compare DentaSmart plans: Quick Check $19.99, Second Opinion $29.99, Complete Oral Health Checkup $74.99/year, and Family $149.99/year for up to 4 members.",
+      "Compare DentaSmart plans: Quick Check $19.99, Second Opinion $29.99, Complete Care $74.99/year (individual) or $149.99/year (family up to 4 members).",
   },
   "/employers": {
     title: "DentaSmart for Employers | AI Dental Benefits for Your Team",
@@ -50,7 +50,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/team": {
     title: "Meet the DentaSmart Team | Our Mission & People",
     description:
-      "Meet the team behind DentaSmart. Learn about our mission to make oral health accessible and the people building your AI dental guide.",
+      "Meet the team behind DentaSmart. Learn about our mission to make oral health accessible and the people building your personal AI dentist.",
   },
   "/faqs": {
     title: "DentaSmart FAQs | Common Questions Answered",
