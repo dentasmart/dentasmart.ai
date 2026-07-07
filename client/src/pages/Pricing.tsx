@@ -180,7 +180,7 @@ export default function Pricing() {
 
               <div className="space-y-2.5 mb-6 flex-grow">
                 {[
-                  "One-time image review for one person",
+                  planType === "family" ? "One-time image review per family member" : "One-time image review for one person",
                   "Upload mouth photos and supported dental X-rays",
                   "Visible concerns and key insights",
                   "Oral Health Score",
@@ -235,7 +235,7 @@ export default function Pricing() {
 
               <div className="space-y-2.5 mb-6 flex-grow">
                 {[
-                  "One-time second opinion for one person or case",
+                  planType === "family" ? "One-time second opinion per family member" : "One-time second opinion for one person or case",
                   "Upload treatment plans, bills, reports, X-rays, and mouth photos",
                   "Compare dentist findings with DentaSmart insights",
                   "See what aligns, what differs, and what to ask next",
