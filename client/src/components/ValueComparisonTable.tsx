@@ -4,7 +4,7 @@ export function ValueComparisonTable() {
   const features = [
     { 
       name: "Annual Cost (Individual/Family)", 
-      denta: "$150 - $300", 
+      denta: "$74.99 - $149.99", 
       savings: "$100 - $200", 
       insurance: "$1,000 - $1,500+",
       highlight: true 

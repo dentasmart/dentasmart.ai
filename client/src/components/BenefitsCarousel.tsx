@@ -17,7 +17,7 @@ const benefits = [
     tag: "Photo & X-Ray Analysis",
     title: "Plain-English Explanation of Photos and X-Rays",
     desc: "See what your dentist sees, in words you understand.",
-    detail: "Upload a photo or X-ray and get a clear, jargon-free breakdown of what is happening in your mouth. No more confusion after appointments.",
+    detail: "Upload mouth photos or supported dental X-rays. DentaSmart reviews visible teeth, gums, and oral structures based on the images you provide and shows you visible concerns and key insights in plain English.",
     image: "/images/optimized/lBzNqmERojJqlfJE-800.webp"
   },
   {
@@ -25,15 +25,15 @@ const benefits = [
     tag: "Second Opinion",
     title: "Second Opinion Clarity Before You Say Yes",
     desc: "Sanity check before you commit.",
-    detail: "Not sure about a diagnosis? Get an unbiased AI second opinion on your X-rays and treatment plans to move forward with confidence.",
+    detail: "Upload your dentist's treatment plan, bill, or recommendation along with your X-rays and mouth photos. DentaSmart shows you what aligns, what differs, and what questions to bring back to your dentist.",
     image: "/images/optimized/XlgHEMbZpBAbEXnM-800.webp"
   },
   {
     id: 4,
-    tag: "Prevention Plan",
-    title: "Personal Prevention Plan and Reminders",
-    desc: "A roadmap tailored just for you.",
-    detail: "Receive customized actionable steps to improve your oral hygiene. From product recommendations to daily habits, get a plan that fits your lifestyle.",
+    tag: "Personalized Guidance",
+    title: "Personalized Guidance Based on Your History",
+    desc: "A plan built around your actual situation.",
+    detail: "Complete Care gives you personalized guidance based on your scans, symptoms, history, and previous reports. Covers preventive care, initial care, maintenance, and recommends the right type of dentist when relevant.",
     image: "/images/optimized/ChlTSVZDNZEOfine-800.webp"
   },
   {

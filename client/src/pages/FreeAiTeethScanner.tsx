@@ -37,7 +37,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 const faqs = [
   {
     question: "Is DentaSmart really free?",
-    answer: "Yes. You can download the app and run your first scan at no cost. The free scan includes a guided self-examination, an oral health score, and a basic findings overview. Paid plans start at $19.99 for a one-time Quick Check with a full report."
+    answer: "Yes. You can download the app and run your first scan at no cost. The free scan gives you an Oral Health Score and a basic overview. Paid plans start at $19.99 for a one-time Quick Check, which adds visible concerns, key insights, a patient-friendly report, and Dr. Din support for 30 days."
   },
   {
     question: "How accurate is an AI teeth scanner?",
@@ -294,16 +294,17 @@ export default function FreeAiTeethScanner() {
               </thead>
               <tbody className="divide-y divide-stone-100">
                 {[
-                  { feature: "Guided self-examination", free: true, quick: true, complete: true },
                   { feature: "Oral health score", free: true, quick: true, complete: true },
-                  { feature: "Basic findings overview", free: true, quick: true, complete: true },
-                  { feature: "Color-coded issue map", free: false, quick: true, complete: true },
-                  { feature: "Full detailed report", free: false, quick: true, complete: true },
-                  { feature: "Patient + dentist versions", free: false, quick: true, complete: true },
-                  { feature: "Personalized care plan", free: false, quick: true, complete: true },
+                  { feature: "Visible concerns & key insights", free: false, quick: true, complete: true },
+                  { feature: "Patient-friendly report (save/share)", free: false, quick: true, complete: true },
+                  { feature: "Dr. Din support", free: false, quick: true, complete: true },
+                  { feature: "Guided self-examination", free: false, quick: false, complete: true },
+                  { feature: "Complete detailed report", free: false, quick: false, complete: true },
+                  { feature: "Treatment options & cost estimates", free: false, quick: false, complete: true },
+                  { feature: "Personalized guidance & care plan", free: false, quick: false, complete: true },
                   { feature: "Unlimited scans", free: false, quick: false, complete: true },
-                  { feature: "Progress tracking", free: false, quick: false, complete: true },
-                  { feature: "24/7 Din AI dentist", free: false, quick: false, complete: true },
+                  { feature: "Progress tracking over time", free: false, quick: false, complete: true },
+                  { feature: "24/7 Dr. Din (always on)", free: false, quick: false, complete: true },
                 ].map((row, i) => (
                   <tr key={i} className="hover:bg-stone-50">
                     <td className="py-3 px-4 text-stone-700 font-light text-sm">{row.feature}</td>

@@ -265,13 +265,13 @@ function generateStaticPageContent(path: string): string | null {
     "/pricing": `
 <article>
   <h1>DentaSmart Pricing: Plans for Every Need</h1>
-  <p>DentaSmart offers affordable plans for individuals and families. Get AI-powered dental analysis, personalized care plans, and 24/7 guidance for less than a dollar a day.</p>
+  <p>DentaSmart offers three plans for individuals and families. Start free, then choose the level of clarity that fits your situation.</p>
   <h2>Quick Check — $19.99 one-time</h2>
-  <p>A fast AI scan of your teeth or X-rays. Get an instant overview with key findings in minutes.</p>
+  <p>A one-time AI review of your mouth photos and X-rays. See visible concerns, key insights, and your Oral Health Score. Save or share a patient-friendly report. Dr. Din is available for 30 days after your check. Best when you want a quick first look before deciding what to do next.</p>
   <h2>Second Opinion — $29.99 one-time</h2>
-  <p>Upload your dentist's treatment plan and get an AI-powered comparison report with cost estimates and alternative options.</p>
+  <p>A one-time second opinion for one case. Upload treatment plans, bills, reports, X-rays, and mouth photos. Compare dentist findings with DentaSmart insights. Get a plain-English report with treatment option context, estimated cost ranges, and questions to bring back to your dentist. Dr. Din support for 30 days.</p>
   <h2>Complete Care — $74.99/year (Individual) or $149.99/year (Family)</h2>
-  <p>Unlimited Quick Check, Second Opinion, and Complete Oral Health Checkup services. Year-round monitoring, progress tracking, personalized recommendations, and 24/7 access to Din AI dentist. Family plan includes up to 4 members with individual profiles and separate reports.</p>
+  <p>Year-round monitoring for one person or up to 4 family members. Includes unlimited mouth photo and X-ray reviews, complete reports with clear findings and next steps, Oral Health Score tracking over time, guided self-examination, early risk insights, personalized guidance based on your scans and history, treatment options with cost estimates and risks of delay, preventive and maintenance care guidance, recommended dentist type when relevant, and 24/7 Dr. Din support. Family plan includes separate profiles, reports, and dental history for each member.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/features">See All Features</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`,
     "/download": `
@@ -293,7 +293,7 @@ function generateStaticPageContent(path: string): string | null {
   <h2>Is DentaSmart a replacement for a dentist?</h2>
   <p>No. DentaSmart is an educational tool that helps you understand your oral health. Always consult a licensed dentist for diagnosis and treatment.</p>
   <h2>How much does DentaSmart cost?</h2>
-  <p>Quick Check is $19.99 one-time, Second Opinion is $29.99 one-time, Complete Care is $74.99/year (individual) or $149.99/year (family up to 4 members). A free limited scan is available to try.</p>
+  <p>Quick Check is $19.99 one-time (AI review of mouth photos and X-rays, Oral Health Score, patient-friendly report, Dr. Din 30 days). Second Opinion is $29.99 one-time (upload treatment plans, bills, X-rays, and mouth photos for a plain-English comparison, Dr. Din 30 days). Complete Care is $74.99/year for individuals or $149.99/year for families (up to 4 members). A free limited scan is available to try.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/pricing">View Pricing</a> | <a href="/features">See All Features</a></p>
 </article>`,
     "/employers": `

@@ -158,6 +158,7 @@ function getProductSchema(): object {
       {
         "@type": "Offer",
         name: "Quick Check",
+        description: "One-time AI review of mouth photos and X-rays. See visible concerns, key insights, and your Oral Health Score. Save or share a patient-friendly report. Dr. Din support for 30 days.",
         price: "19.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
@@ -167,6 +168,7 @@ function getProductSchema(): object {
       {
         "@type": "Offer",
         name: "Second Opinion",
+        description: "One-time second opinion for one case. Upload treatment plans, bills, X-rays, and mouth photos. Get a plain-English comparison, treatment option context, cost ranges, and questions to ask your dentist. Dr. Din support for 30 days.",
         price: "29.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
@@ -176,6 +178,7 @@ function getProductSchema(): object {
       {
         "@type": "Offer",
         name: "Complete Care (Individual)",
+        description: "Year-round monitoring for one person. Unlimited mouth photo and X-ray reviews, complete reports, Oral Health Score tracking, guided self-examination, personalized guidance, treatment options with cost estimates, and 24/7 Dr. Din support.",
         price: "74.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
@@ -185,6 +188,7 @@ function getProductSchema(): object {
       {
         "@type": "Offer",
         name: "Complete Care (Family)",
+        description: "Year-round monitoring for up to 4 family members. Separate profiles, reports, Oral Health Score tracking, and dental history for each person. Dr. Din support for family dental questions.",
         price: "149.99",
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",

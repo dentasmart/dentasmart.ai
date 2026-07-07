@@ -87,7 +87,7 @@ export function SoftwareApplicationSchema() {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        description: "Fast AI scan of your teeth or X-rays with instant findings overview. $19.99 one-time."
+        description: "One-time AI review of mouth photos and X-rays. See visible concerns, key insights, and your Oral Health Score. Save or share a patient-friendly report. Dr. Din support for 30 days. $19.99 one-time."
       },
       {
         "@type": "Offer",
@@ -96,7 +96,7 @@ export function SoftwareApplicationSchema() {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        description: "Upload your dentist's treatment plan and get an AI-powered comparison report. $29.99 one-time."
+        description: "One-time second opinion for one case. Upload treatment plans, bills, X-rays, and mouth photos. Get a plain-English comparison with treatment option context, cost ranges, and questions to ask your dentist. Dr. Din support for 30 days. $29.99 one-time."
       },
       {
         "@type": "Offer",
@@ -105,7 +105,7 @@ export function SoftwareApplicationSchema() {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        description: "Unlimited Quick Check, Second Opinion, and Complete Oral Health Checkup services, 24/7 AI dentist Din. $74.99/year."
+        description: "Year-round monitoring for one person. Unlimited mouth photo and X-ray reviews, complete reports, Oral Health Score tracking, guided self-examination, personalized guidance, treatment options with cost estimates and risks of delay, and 24/7 Dr. Din support. $74.99/year."
       },
       {
         "@type": "Offer",
@@ -114,7 +114,7 @@ export function SoftwareApplicationSchema() {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        description: "Complete Care for up to 4 family members with individual profiles and separate reports. $149.99/year."
+        description: "Year-round monitoring for up to 4 family members. Separate profiles, reports, Oral Health Score tracking, and dental history for each person. Dr. Din support for family dental questions. $149.99/year."
       }
     ],
     aggregateRating: {
@@ -265,7 +265,7 @@ export function ProductServiceSchema() {
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
         url: `${SITE_URL}/pricing`,
-        description: "Fast AI scan of your teeth or X-rays with instant findings overview. $19.99 one-time."
+        description: "One-time AI review of mouth photos and X-rays. See visible concerns, key insights, and your Oral Health Score. Save or share a patient-friendly report. Dr. Din support for 30 days. $19.99 one-time."
       },
       {
         "@type": "Offer",
@@ -275,7 +275,7 @@ export function ProductServiceSchema() {
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
         url: `${SITE_URL}/pricing`,
-        description: "Upload your dentist's treatment plan and get an AI-powered comparison report. $29.99 one-time."
+        description: "One-time second opinion for one case. Upload treatment plans, bills, X-rays, and mouth photos. Get a plain-English comparison with treatment option context, cost ranges, and questions to ask your dentist. Dr. Din support for 30 days. $29.99 one-time."
       },
       {
         "@type": "Offer",
@@ -285,7 +285,7 @@ export function ProductServiceSchema() {
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
         url: `${SITE_URL}/pricing`,
-        description: "Unlimited Quick Check, Second Opinion, and Complete Oral Health Checkup services, 24/7 AI dentist Din. $74.99/year ($0.21/day)."
+        description: "Year-round monitoring for one person. Unlimited mouth photo and X-ray reviews, complete reports, Oral Health Score tracking, guided self-examination, personalized guidance, treatment options with cost estimates and risks of delay, and 24/7 Dr. Din support. $74.99/year."
       },
       {
         "@type": "Offer",
@@ -295,7 +295,7 @@ export function ProductServiceSchema() {
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
         url: `${SITE_URL}/pricing`,
-        description: "Complete Care for up to 4 family members with individual profiles and separate reports. $149.99/year."
+        description: "Year-round monitoring for up to 4 family members. Separate profiles, reports, Oral Health Score tracking, and dental history for each person. Dr. Din support for family dental questions. $149.99/year."
       }
     ]
   };

@@ -11,18 +11,18 @@ export default function Features() {
   const features: { title: string; description: string; points: string[]; image: string; isPhone?: boolean }[] = [
     {
       title: "Quick Check: Instant X-Ray & Photo Analysis",
-      description: "Don't wait weeks for answers about that spot on your X-ray.\n\nQuick Check gives you fast analysis of your dental X-rays and mouth photos in minutes. Upload an image and get findings highlighted with color-coded overlays and plain-language explanations. It's the fastest way to understand what's happening in your mouth.",
+      description: "Don't wait weeks for answers about that spot on your X-ray.\n\nQuick Check is a one-time AI review of your mouth photos and X-rays. Upload your images and DentaSmart identifies visible concerns and key insights based on what it sees. You get your Oral Health Score and a patient-friendly report you can save or share. Dr. Din is available for 30 days after your check.",
       points: [
-        "Instant Results: Get findings in minutes, not days.",
-        "Free to Try: Limited Quick Checks available on the free tier.",
-        "Visual Clarity: Color-coded overlays show exactly what was found."
+        "Visible Concerns: See what the AI found in your images, in plain English.",
+        "Oral Health Score: Understand where you stand with a clear 0-100 score.",
+        "Shareable Report: Save or share a patient-friendly summary with your dentist."
       ],
       image: "/manus-storage/quick-check-xray_0e827efc.png",
       isPhone: true
     },
     {
       title: "Guided Self-Examination for Better Accuracy",
-      description: "The more DentaSmart knows about your symptoms, the better your results.\n\nBefore your photo upload, DentaSmart guides you through simple self-examination tests (Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection with a mirror). These quick checks help the system understand your symptoms better and give you more accurate, personalized results.",
+      description: "The more DentaSmart knows about your symptoms, the better your results.\n\nIncluded in Complete Care, the guided self-examination walks you through simple tests before your photo upload (Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection with a mirror). These quick checks help the system understand your symptoms better and give you more accurate, personalized results.",
       points: [
         "Bite Pressure Test: Helps confirm tenderness and pain patterns.",
         "Cold Sensitivity Test: Identifies nerve-related issues early.",

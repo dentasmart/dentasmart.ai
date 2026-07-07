@@ -1762,3 +1762,19 @@
 - [x] Fix "Shared Dental History" to reflect individual management per family member
 - [x] Change all "AI Guide" / "AI Dental Guide" / "AI Oral Health Guide" to "AI Dentist" across all pages
 - [x] Update tagline to "Your Personal AI Dentist in Your Pocket" everywhere
+
+## Plan Benefits Refinement — Jul 7, 2026
+- [x] Pricing.tsx: Update Quick Check features (no guided self-exam, no detailed report, only visible concerns/key insights/Oral Health Score, Dr. Din 30 days, save/share basic report)
+- [x] Pricing.tsx: Update Second Opinion features (upload treatment plans/bills/reports/X-rays/mouth photos, compare with DentaSmart insights, plain-English report, cost ranges, questions to ask, Dr. Din 30 days, secure storage)
+- [x] Pricing.tsx: Update Complete Care Individual features (guided self-exam only here, full report, progress tracking, early risk insights, treatment options, cost ranges, risks of delay, follow-up guidance, personalized guidance, preventive/initial/maintenance, recommended dentist type, Dr. Din 24/7, reviewed by licensed dentists)
+- [x] Pricing.tsx: Update Complete Care Family features (up to 4 profiles, separate reports/scores/history, Dr. Din for family questions, ~$0.41/day)
+- [x] Pricing.tsx: Update comparison table to reflect accurate feature matrix
+- [x] Pricing.tsx: Update FAQs to match new plan details
+- [x] Pricing.tsx: Update hero subtitle and section heading
+- [x] server/seo.ts: Update plan descriptions in llms.txt and SEO content
+- [x] server/ssrContent.ts: Update pricing section SSR content
+- [x] server/metaTags.ts: Update pricing meta description
+- [x] server/schemaMarkup.ts: Update structured data offers
+- [x] client/src/components/BenefitsCarousel.tsx: Update plan benefit references
+- [x] client/src/components/ValueComparisonTable.tsx: Update comparison table
+- [x] client/src/data/faqChallenges.json: No separate JSON file found — FAQ content updated directly in FAQs.tsx, FreeAiTeethScanner.tsx, Home.tsx, Features.tsx

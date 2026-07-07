@@ -73,9 +73,10 @@ export default function FAQs() {
     {
       title: "Pricing",
       faqs: [
-        { q: "What are DentaSmart's pricing options?", a: "Quick Check is $19.99 one-time for a fast AI scan. Second Opinion is $29.99 one-time for treatment plan comparison. Complete Oral Health Checkup is $74.99/year for unlimited scans and ongoing monitoring. Family Plan is $149.99/year for up to 5 members." },
+        { q: "What are DentaSmart's pricing options?", a: "Quick Check is $19.99 one-time — AI review of your mouth photos and X-rays, visible concerns, key insights, Oral Health Score, patient-friendly report, and Dr. Din for 30 days. Second Opinion is $29.99 one-time — upload treatment plans, bills, X-rays, and mouth photos, get a plain-English comparison with cost ranges and questions to ask your dentist, plus Dr. Din for 30 days. Complete Care is $74.99/year for individuals or $149.99/year for families (up to 4 members) — year-round monitoring, unlimited reviews, complete reports, guided self-examination, personalized guidance, and 24/7 Dr. Din." },
+        { q: "Do you offer family plans?", a: "Yes. The Complete Care Family plan is $149.99/year and covers up to 4 family members (including the main user). Each member gets their own profile, reports, Oral Health Score tracking, and dental history. Additional members beyond 4 are $19.99/year each." },
         { q: "Can I cancel anytime?", a: "Yes. You can cancel your subscription anytime without penalties." },
-        { q: "Do you offer family plans?", a: "Yes. All our plans offer family options to cover your loved ones. You can easily add family members during signup or from your account settings." },
+
         { q: "Is there a money-back guarantee?", a: "Yes. We offer a 30-day money-back guarantee on all plans." },
       ],
     },
@@ -90,11 +91,11 @@ export default function FAQs() {
     {
       title: "New Features",
       faqs: [
-        { q: "What is Quick Check?", a: "Quick Check is a fast AI analysis feature that lets you upload a dental X-ray or mouth photo and get instant findings with color-coded overlays. It's available with limited scans on the free tier and unlimited on the Insights plan." },
-        { q: "What are the Self-Examination tests?", a: "Before uploading photos, DentaSmart guides you through simple self-examination tests — Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection with a mirror. These help the AI understand your symptoms better and deliver more accurate results. Included in all plans." },
+        { q: "What is Quick Check?", a: "Quick Check ($19.99 one-time) is an AI review of your mouth photos and X-rays. DentaSmart identifies visible concerns and key insights based on the images you upload, gives you your Oral Health Score, and provides a patient-friendly report you can save or share. Dr. Din is available for 30 days after your check. It does not include guided self-examination or the detailed complete report — those are part of Complete Care." },
+        { q: "What are the Self-Examination tests?", a: "Before uploading photos in the Complete Oral Health Checkup service (part of Complete Care), DentaSmart guides you through simple self-examination tests — Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection with a mirror. These help the AI understand your symptoms better and deliver more accurate results. This feature is included in Complete Care only." },
         { q: "What's the difference between the two report formats?", a: "DentaSmart generates two reports: a 'For You' version in plain language with your health score and priority actions, and a 'For Dentist' version with clinical terminology, tooth-by-tooth findings, and differential diagnoses. Both are downloadable as PDF and shareable." },
         { q: "Can I share the dentist report directly?", a: "Yes. Both report versions can be downloaded as PDF and shared via email or printed to bring to your dental appointment." },
-        { q: "Is Quick Check different from a full AI Checkup?", a: "Yes. Quick Check is a faster, lighter analysis for quick answers. A full AI Checkup includes the guided self-examination, comprehensive history collection, and a more detailed report with treatment recommendations." },
+        { q: "Is Quick Check different from a Complete Oral Health Checkup?", a: "Yes. Quick Check is a one-time AI review of your images — it shows visible concerns, key insights, and your Oral Health Score, and generates a patient-friendly report. A Complete Oral Health Checkup (included in Complete Care) adds guided self-examination, comprehensive history collection, a detailed report with treatment options, cost estimates, risks of delay, preventive care guidance, and personalized follow-up recommendations." },
       ],
     },
   ];
@@ -134,7 +135,7 @@ export default function FAQs() {
         { question: "How do I get started with DentaSmart?", answer: "Download the app from the App Store or Google Play, create an account, and take your first mouth photos or upload X-rays. You'll get your first report within 10 minutes." },
         { question: "How accurate is the AI analysis?", answer: "DentaSmart's AI has 100% detection accuracy for identifying potential areas of concern. It's trained by dental experts and validated against clinical outcomes." },
         { question: "Is DentaSmart HIPAA compliant?", answer: "Yes. DentaSmart is fully HIPAA compliant and meets all healthcare privacy and security standards as defined by the U.S. Department of Health and Human Services." },
-        { question: "What are DentaSmart's pricing options?", answer: "Quick Check is $19.99 one-time for a fast AI scan. Second Opinion is $29.99 one-time for treatment plan comparison. Complete Oral Health Checkup is $74.99/year for unlimited scans and ongoing monitoring. Family Plan is $149.99/year for up to 5 members." },
+        { question: "What are DentaSmart's pricing options?", answer: "Quick Check is $19.99 one-time (AI review of mouth photos and X-rays, Oral Health Score, patient-friendly report, Dr. Din 30 days). Second Opinion is $29.99 one-time (upload treatment plans, bills, X-rays, and mouth photos for a plain-English comparison with cost ranges, Dr. Din 30 days). Complete Care is $74.99/year for individuals or $149.99/year for families up to 4 members (year-round monitoring, unlimited reviews, complete reports, guided self-examination, personalized guidance, 24/7 Dr. Din)." },
         { question: "Is it a dentist replacement?", answer: "No. DentaSmart is a tool to help you monitor your oral health between visits and understand your dentist's recommendations better. It does not replace professional care." },
         { question: "Is my data secure?", answer: "Yes. All data is encrypted end-to-end and stored on secure, HIPAA-compliant servers. DentaSmart never sells your data." },
         { question: "What can DentaSmart detect?", answer: "DentaSmart can identify potential cavities, gum disease, tooth wear, alignment issues, and other visible oral health concerns. It provides educational insights to help you understand what you're seeing." },

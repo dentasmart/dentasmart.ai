@@ -40,7 +40,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/pricing": {
     title: "DentaSmart Pricing | Quick Check, Second Opinion & Complete Care Plans",
     description:
-      "Compare DentaSmart plans: Quick Check $19.99, Second Opinion $29.99, Complete Care $74.99/year (individual) or $149.99/year (family up to 4 members).",
+      "DentaSmart offers three plans: Quick Check $19.99 (one-time AI image review), Second Opinion $29.99 (compare your dentist's plan), Complete Care $74.99/year individual or $149.99/year family. Start free.",
   },
   "/employers": {
     title: "DentaSmart for Employers | AI Dental Benefits for Your Team",
