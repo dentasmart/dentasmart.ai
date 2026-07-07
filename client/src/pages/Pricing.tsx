@@ -358,9 +358,9 @@ export default function Pricing() {
                     <div className="mb-3">
                       <p className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Each family member gets</p>
                       {[
-                        { text: "Quick Check (one-time per member)", bold: true },
-                        { text: "Second Opinion (one-time per member)", bold: true },
-                        { text: "Complete Oral Health Checkup (unlimited)", bold: true },
+                        { text: "Quick Check (unlimited per family member)", bold: true },
+                        { text: "Second Opinion (unlimited per family member)", bold: true },
+                        { text: "Complete Oral Health Checkup (unlimited per family member)", bold: true },
                       ].map((f, i) => (
                         <div key={i} className="flex items-start text-stone-700 text-sm mb-1.5">
                           <Check className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
@@ -374,11 +374,11 @@ export default function Pricing() {
                       {[
                         { text: "Up to 4 separate family profiles", bold: false },
                         { text: "One account holder manages all members", bold: false },
-                        { text: "Separate Oral Health Score, reports, and dental history per member", bold: false },
-                        { text: "Dr. Din support for family dental questions", bold: false },
-                        { text: "Share any member's report with a dentist", bold: false },
+                        { text: "Separate Oral Health Score, reports, and dental history per family member", bold: false },
+                        { text: "Dr. Din supports each family member's dental questions separately", bold: false },
+                        { text: "Share any family member's report with a dentist", bold: false },
                         { text: "Reviewed by licensed dentists", bold: false },
-                        { text: "Additional members: $19.99/year each", bold: false },
+                        { text: "Additional family members: $19.99/year each", bold: false },
                         { text: "Full year access", bold: false },
                       ].map((f, i) => (
                         <div key={i} className="flex items-start text-stone-700 font-light text-sm mb-1.5">
