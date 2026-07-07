@@ -314,46 +314,79 @@ export default function Pricing() {
               <div className="space-y-2.5 mb-6 flex-grow">
                 {planType === "individual" ? (
                   <>
-                    {[
-                      { text: "Unlimited yearly mouth photo and X-ray reviews", bold: true },
-                      { text: "Complete reports with clear findings and next steps", bold: true },
-                      { text: "Oral Health Score tracking over time", bold: true },
-                      { text: "Guided self-examination", bold: false },
-                      { text: "Early risk insights and trend monitoring", bold: false },
-                      { text: "Personalized guidance based on your scans, symptoms, history, and previous reports", bold: false },
-                      { text: "Treatment options with cost estimates and risks of delay", bold: false },
-                      { text: "Preventive, initial, and maintenance care guidance", bold: false },
-                      { text: "Recommended dentist type when relevant", bold: false },
-                      { text: "Patient-friendly and dentist-ready report versions", bold: false },
-                      { text: "Secure dental history storage", bold: false },
-                      { text: "Dr. Din available 24/7", bold: false },
-                      { text: "Reviewed by licensed dentists", bold: false },
-                      { text: "Full year access", bold: false },
-                    ].map((f, i) => (
-                      <div key={i} className="flex items-start text-stone-700 font-light text-sm">
-                        <Check className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                        <span className={f.bold ? "font-semibold text-black" : ""}>{f.text}</span>
-                      </div>
-                    ))}
+                    {/* Included services */}
+                    <div className="mb-3">
+                      <p className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Includes unlimited access to</p>
+                      {[
+                        { text: "Quick Check", bold: true },
+                        { text: "Second Opinion", bold: true },
+                        { text: "Complete Oral Health Checkup", bold: true },
+                      ].map((f, i) => (
+                        <div key={i} className="flex items-start text-stone-700 text-sm mb-1.5">
+                          <Check className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
+                          <span className="font-semibold text-black">{f.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                    {/* Complete Oral Health Checkup features */}
+                    <div className="border-t border-stone-100 pt-3">
+                      <p className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">What's in Complete Oral Health Checkup</p>
+                      {[
+                        { text: "Guided self-examination", bold: false },
+                        { text: "Oral Health Score tracking over time", bold: false },
+                        { text: "Early risk insights and trend monitoring", bold: false },
+                        { text: "Personalized guidance based on your scans, symptoms, history, and previous reports", bold: false },
+                        { text: "Treatment options with cost estimates and risks of delay", bold: false },
+                        { text: "Preventive, initial, and maintenance care guidance", bold: false },
+                        { text: "Recommended dentist type when relevant", bold: false },
+                        { text: "Patient-friendly and dentist-ready report versions", bold: false },
+                        { text: "Secure dental history storage", bold: false },
+                        { text: "Dr. Din available 24/7", bold: false },
+                        { text: "Reviewed by licensed dentists", bold: false },
+                        { text: "Full year access", bold: false },
+                      ].map((f, i) => (
+                        <div key={i} className="flex items-start text-stone-700 font-light text-sm mb-1.5">
+                          <Check className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
+                          <span>{f.text}</span>
+                        </div>
+                      ))}
+                    </div>
                   </>
                 ) : (
                   <>
-                    {[
-                      { text: "Up to 4 separate family profiles", bold: true },
-                      { text: "Year-round AI checkups and Oral Health Score tracking per member", bold: true },
-                      { text: "Separate reports and dental history for each person", bold: true },
-                      { text: "All Complete Care individual features for each member", bold: false },
-                      { text: "Dr. Din support for family dental questions", bold: false },
-                      { text: "Share reports with a dentist when needed", bold: false },
-                      { text: "Additional members: $19.99/year each", bold: false },
-                      { text: "Reviewed by licensed dentists", bold: false },
-                      { text: "Full year access", bold: false },
-                    ].map((f, i) => (
-                      <div key={i} className="flex items-start text-stone-700 font-light text-sm">
-                        <Check className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                        <span className={f.bold ? "font-semibold text-black" : ""}>{f.text}</span>
-                      </div>
-                    ))}
+                    {/* Included services per member */}
+                    <div className="mb-3">
+                      <p className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Each family member gets</p>
+                      {[
+                        { text: "Quick Check (one-time per member)", bold: true },
+                        { text: "Second Opinion (one-time per member)", bold: true },
+                        { text: "Complete Oral Health Checkup (unlimited)", bold: true },
+                      ].map((f, i) => (
+                        <div key={i} className="flex items-start text-stone-700 text-sm mb-1.5">
+                          <Check className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
+                          <span className="font-semibold text-black">{f.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                    {/* Family management and other features */}
+                    <div className="border-t border-stone-100 pt-3">
+                      <p className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Family management</p>
+                      {[
+                        { text: "Up to 4 separate family profiles", bold: false },
+                        { text: "One account holder manages all members", bold: false },
+                        { text: "Separate Oral Health Score, reports, and dental history per member", bold: false },
+                        { text: "Dr. Din support for family dental questions", bold: false },
+                        { text: "Share any member's report with a dentist", bold: false },
+                        { text: "Reviewed by licensed dentists", bold: false },
+                        { text: "Additional members: $19.99/year each", bold: false },
+                        { text: "Full year access", bold: false },
+                      ].map((f, i) => (
+                        <div key={i} className="flex items-start text-stone-700 font-light text-sm mb-1.5">
+                          <Check className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
+                          <span>{f.text}</span>
+                        </div>
+                      ))}
+                    </div>
                   </>
                 )}
               </div>
