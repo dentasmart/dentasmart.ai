@@ -135,6 +135,28 @@ export default function Home() {
                 {" "}and{" "}
                 <a href={getPlayStoreUrl("hero_text")} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline" onClick={() => trackAppDownload("android", "hero_text")}>Android</a>.
               </p>
+              <div className="flex flex-col sm:flex-row gap-3 mt-4">
+                <a
+                  href={getAppStoreUrl("hero")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackAppDownload("ios", "hero")}
+                >
+                  <button className="bg-black text-white hover:bg-stone-800 rounded-full px-6 h-11 font-medium text-sm transition-colors whitespace-nowrap">
+                    Download on App Store
+                  </button>
+                </a>
+                <a
+                  href={getPlayStoreUrl("hero")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackAppDownload("android", "hero")}
+                >
+                  <button className="bg-primary text-white hover:bg-primary/90 rounded-full px-6 h-11 font-medium text-sm transition-colors whitespace-nowrap">
+                    Get it on Google Play
+                  </button>
+                </a>
+              </div>
             </motion.div>
 
             {/* Right Column: iPhone Mockups */}
@@ -749,6 +771,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <DownloadSection source="post_stories" showAnchorId={false} />
 
       {/* ═══════════════════════════════════════════════════════════════════
           MID-PAGE CTA (after testimonials)

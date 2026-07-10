@@ -1,8 +1,14 @@
 import { trackAppDownload, getAppStoreUrl, getPlayStoreUrl } from "@/lib/analytics";
 
-export function DownloadSection() {
+export function DownloadSection({
+  source = "download_section",
+  showAnchorId = true,
+}: {
+  source?: string;
+  showAnchorId?: boolean;
+} = {}) {
   return (
-    <section id="download-cta" className="py-24 bg-white">
+    <section {...(showAnchorId ? { id: "download-cta" } : {})} className="py-24 bg-white">
       <div className="container px-4 mx-auto max-w-4xl">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-normal text-black mb-4">
@@ -23,11 +29,11 @@ export function DownloadSection() {
             </div>
             <h3 className="text-xl font-medium text-black">iOS</h3>
             <a
-              href={getAppStoreUrl("download_section")}
+              href={getAppStoreUrl(source)}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full"
-              onClick={() => trackAppDownload("ios", "download_section")}
+              onClick={() => trackAppDownload("ios", source)}
             >
               <button className="w-full bg-black text-white hover:bg-stone-800 rounded-full h-12 font-medium transition-colors">
                 Download on App Store
@@ -52,11 +58,11 @@ export function DownloadSection() {
             </div>
             <h3 className="text-xl font-medium text-black">Android</h3>
             <a
-              href={getPlayStoreUrl("download_section")}
+              href={getPlayStoreUrl(source)}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full"
-              onClick={() => trackAppDownload("android", "download_section")}
+              onClick={() => trackAppDownload("android", source)}
             >
               <button className="w-full bg-primary text-white hover:bg-primary/90 rounded-full h-12 font-medium transition-colors">
                 Get it on Google Play
