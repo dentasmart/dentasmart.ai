@@ -232,10 +232,12 @@ export default function Home() {
                   }
                 }}
               >
-                <picture>
-                  <source type="image/webp" srcSet="/images/optimized/narrator-thumbnail-400.webp 400w, /images/optimized/narrator-thumbnail-800.webp 800w, /images/optimized/narrator-thumbnail-1600.webp 1600w" sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px" />
-                  <img src="/images/optimized/narrator-thumbnail-800.webp" alt="DentaSmart Video Thumbnail" className="w-full h-full object-cover" loading="lazy" width="1012" height="589" />
-                </picture>
+                <img
+                  src="https://img.youtube.com/vi/O3wugign_Co/maxresdefault.jpg"
+                  alt="DentaSmart Video Thumbnail"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
                 
                 <div className="absolute inset-0 flex flex-col justify-between p-4 md:p-10 items-start">
                   <div className="bg-primary/90 backdrop-blur-sm rounded-xl p-4 md:p-6 max-w-[70%] md:max-w-md shadow-lg">
@@ -259,7 +261,7 @@ export default function Home() {
               <iframe 
                 width="100%" 
                 height="100%" 
-                src="https://www.youtube.com/embed/Y1aoiv81rZo" 
+                src="https://www.youtube.com/embed/O3wugign_Co" 
                 title="DentaSmart Explainer Video" 
                 frameBorder="0" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
