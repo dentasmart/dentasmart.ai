@@ -239,22 +239,12 @@ export default function Home() {
                   loading="lazy"
                 />
                 
-                <div className="absolute inset-0 flex flex-col justify-between p-4 md:p-10 items-start">
-                  <div className="bg-primary/90 backdrop-blur-sm rounded-xl p-4 md:p-6 max-w-[70%] md:max-w-md shadow-lg">
-                    <h3 className="text-white text-lg md:text-3xl font-bold leading-tight">
-                      Stop guessing about your oral health.
-                    </h3>
-                    <p className="text-white/90 mt-1 md:mt-2 text-sm md:text-lg font-medium">
-                      Get instant clarity today.
-                    </p>
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="w-20 h-20 group-hover:scale-110 transition-transform pointer-events-auto">
-                      <svg viewBox="0 0 100 100" className="w-full h-full filter drop-shadow-lg">
-                        <circle cx="50" cy="50" r="48" fill="#DC2626" stroke="white" strokeWidth="4" />
-                        <path d="M42 32 L68 50 L42 68 Z" fill="white" />
-                      </svg>
-                    </div>
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                  <div className="w-20 h-20 group-hover:scale-110 transition-transform pointer-events-auto">
+                    <svg viewBox="0 0 100 100" className="w-full h-full filter drop-shadow-lg">
+                      <circle cx="50" cy="50" r="48" fill="#DC2626" stroke="white" strokeWidth="4" />
+                      <path d="M42 32 L68 50 L42 68 Z" fill="white" />
+                    </svg>
                   </div>
                 </div>
               </div>
