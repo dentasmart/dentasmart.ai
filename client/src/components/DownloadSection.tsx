@@ -53,7 +53,7 @@ export function DownloadSection({
           <div className="flex flex-col items-center space-y-6 p-8 rounded-3xl bg-stone-50 border border-stone-100">
             <div className="w-16 h-16 bg-[#3DDC84] text-white rounded-full flex items-center justify-center mb-2">
               <svg viewBox="0 0 24 24" className="w-8 h-8 fill-current">
-                <path d="M17.523 15.341a.5.5 0 0 1-.5.5H6.977a.5.5 0 0 1-.5-.5V9.5h11.046v5.841zM7.5 18.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm9 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM3.184 7.857A.5.5 0 0 1 3.5 7h17a.5.5 0 0 1 .434.748l-1.5 2.75A.5.5 0 0 1 19 10.75H5a.5.5 0 0 1-.434-.252l-1.5-2.75a.5.5 0 0 1 .118-.891zM14.5 4.5l1.5-2.5M9.5 4.5 8 2" />
+                <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85a.637.637 0 0 0-.83.22l-1.88 3.24a11.463 11.463 0 0 0-8.94 0L5.65 5.67a.643.643 0 0 0-.87-.2c-.28.18-.37.54-.22.83L6.4 9.48A10.78 10.78 0 0 0 1 18h22a10.78 10.78 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/>
               </svg>
             </div>
             <h3 className="text-xl font-medium text-black">Android</h3>

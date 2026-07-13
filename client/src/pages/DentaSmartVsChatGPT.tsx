@@ -643,7 +643,7 @@ export default function DentaSmartVsChatGPT() {
             <div className="flex flex-col items-center space-y-4 p-6 rounded-2xl bg-white border border-stone-100">
               <div className="w-14 h-14 bg-[#3DDC84] text-white rounded-full flex items-center justify-center">
                 <svg viewBox="0 0 24 24" className="w-7 h-7 fill-current">
-                  <path d="M17.523 15.341a1 1 0 0 0 1-1V8.524a1 1 0 1 0-2 0v5.817a1 1 0 0 0 1 1m-11.046 0a1 1 0 0 0 1-1V8.524a1 1 0 1 0-2 0v5.817a1 1 0 0 0 1 1M14.7 3.2l1.1-1.7a.3.3 0 0 0-.5-.3l-1.1 1.8A5.9 5.9 0 0 0 12 2.5a5.9 5.9 0 0 0-2.2.5L8.7 1.2a.3.3 0 0 0-.5.3l1.1 1.7A4.5 4.5 0 0 0 7 7.5h10a4.5 4.5 0 0 0-2.3-4.3M10 5.5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m4 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1M7 8.5v7a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-7z" />
+                  <path d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85a.637.637 0 0 0-.83.22l-1.88 3.24a11.463 11.463 0 0 0-8.94 0L5.65 5.67a.643.643 0 0 0-.87-.2c-.28.18-.37.54-.22.83L6.4 9.48A10.78 10.78 0 0 0 1 18h22a10.78 10.78 0 0 0-5.4-8.52zM7 15.25a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm10 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5z"/>
                 </svg>
               </div>
               <h3 className="text-lg font-medium text-black">Android</h3>
