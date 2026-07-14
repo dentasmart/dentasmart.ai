@@ -103,6 +103,11 @@ async function startServer() {
     // Typo slug corrections
     "/oral-health-hub/wwhat-are-dental-implants-cost": "/oral-health-hub/what-are-dental-implants-cost",
     "/oral-health-hub/cclear-aligners-vs-braces": "/oral-health-hub/clear-aligners-vs-braces",
+    // Wisdom teeth article consolidation
+    "/oral-health-hub/wisdom-teeth-confusion": "/oral-health-hub/when-do-wisdom-teeth-come-in/",
+    "/oral-health-hub/wisdom-teeth-confusion/": "/oral-health-hub/when-do-wisdom-teeth-come-in/",
+    "/oral-health-hub/wisdom-tooth-infection-symptoms": "/oral-health-hub/when-do-wisdom-teeth-come-in/",
+    "/oral-health-hub/wisdom-tooth-infection-symptoms/": "/oral-health-hub/when-do-wisdom-teeth-come-in/",
   };
   app.use((req, res, next) => {
     const path = req.path;
