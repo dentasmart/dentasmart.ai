@@ -243,7 +243,6 @@ const blogPostPages = [
   { path: "/oral-health-hub/bad-breath", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
   { path: "/oral-health-hub/stained-teeth", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
   { path: "/oral-health-hub/teeth-grinding", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/oral-health-hub/wisdom-teeth-confusion", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
   { path: "/oral-health-hub/tooth-sensitivity", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
   { path: "/oral-health-hub/silent-gum-disease", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
   { path: "/oral-health-hub/undetected-cavities", priority: "0.7", changefreq: "monthly", lastmod: "2026-04-01" },
