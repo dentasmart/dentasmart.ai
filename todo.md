@@ -1787,4 +1787,17 @@
 - [x] Register /admin/pages route in AdminRouter.tsx
 - [x] Add "Pages" nav item to AdminLayout.tsx (under Content section)
 - [x] Create client/src/pages/AdminPages.tsx — summary cards + filterable table with ✓/✗ meta coverage columns
-- [ ] Save checkpoint and push to GitHub
+- [x] Save checkpoint and push to GitHub
+
+## Admin Pages — Canonical Fix + Editable Meta (Phase 1 follow-up)
+
+- [x] Fix canonical false-positive: hasCanonical = !!meta (not !!meta?.canonical) in pagesRouter.ts
+- [x] Add page_meta_overrides table to drizzle/schema.ts
+- [x] Run migration 0013_cold_catseye.sql — CREATE TABLE page_meta_overrides in TiDB
+- [x] Add override cache (1hr TTL), clearPageOverrideCache(), getPageOverride() to metaTags.ts
+- [x] Add resolution step 0 (DB override) to resolveMetaTags() in metaTags.ts
+- [x] Extend pagesRouter.ts: PageEntry gains overrideTitle/overrideDesc/overrideCanonical/hasOverride fields
+- [x] Add upsertPageMeta procedure (onDuplicateKeyUpdate with ?? null to allow field clearing)
+- [x] Add deletePageMeta procedure (reverts page to staticMeta defaults)
+- [x] Extend AdminPages.tsx: edit modal with source badges, SEO divergence notice, Revert button
+- [x] Save checkpoint and push to GitHub

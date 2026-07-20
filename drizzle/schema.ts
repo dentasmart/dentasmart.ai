@@ -322,3 +322,19 @@ export const mediaReplacementLog = mysqlTable("media_replacement_log", {
 });
 export type MediaReplacementLog = typeof mediaReplacementLog.$inferSelect;
 export type InsertMediaReplacementLog = typeof mediaReplacementLog.$inferInsert;
+
+/**
+ * Admin-managed meta overrides for static pages.
+ * Takes precedence over hardcoded staticMeta in metaTags.ts.
+ * Canonical is auto-computed from path if left null.
+ */
+export const pageMetaOverrides = mysqlTable("page_meta_overrides", {
+  id:        int("id").autoincrement().primaryKey(),
+  path:      varchar("path", { length: 500 }).notNull().unique(),
+  metaTitle: varchar("metaTitle", { length: 200 }),
+  metaDesc:  text("metaDesc"),
+  canonical: varchar("canonical", { length: 1000 }),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+export type PageMetaOverride = typeof pageMetaOverrides.$inferSelect;
+export type InsertPageMetaOverride = typeof pageMetaOverrides.$inferInsert;

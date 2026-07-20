@@ -1,6 +1,8 @@
 import { useState, useMemo } from "react";
 import { trpc } from "@/lib/trpc";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -16,8 +18,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import {
   LayoutGrid,
   Search,
@@ -27,6 +38,8 @@ import {
   XCircle,
   AlertTriangle,
   FileSearch,
+  Pencil,
+  Info,
 } from "lucide-react";
 import AdminLayout from "@/components/AdminLayout";
 import type { PageType } from "@shared/routes";
@@ -41,6 +54,10 @@ type PageEntry = {
   hasCanonical: boolean;
   metaTitle: string | null;
   metaDesc: string | null;
+  overrideTitle: string | null;
+  overrideDesc: string | null;
+  overrideCanonical: string | null;
+  hasOverride: boolean;
 };
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -119,7 +136,63 @@ export default function AdminPages() {
   const [typeFilter, setTypeFilter] = useState<"All" | PageType | "Orphaned">("All");
   const [missingOnly, setMissingOnly] = useState(false);
 
+  // Edit modal state
+  const [editOpen, setEditOpen] = useState(false);
+  const [editTarget, setEditTarget] = useState<PageEntry | null>(null);
+  const [editForm, setEditForm] = useState({
+    metaTitle: "",
+    metaDesc: "",
+    canonical: "",
+  });
+
+  const utils = trpc.useUtils();
   const { data: pages, isLoading } = trpc.pages.listPages.useQuery();
+
+  const upsertMeta = trpc.pages.upsertPageMeta.useMutation({
+    onSuccess: () => {
+      toast.success("Meta saved successfully");
+      setEditOpen(false);
+      setEditTarget(null);
+      utils.pages.listPages.invalidate();
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  const deleteMeta = trpc.pages.deletePageMeta.useMutation({
+    onSuccess: () => {
+      toast.success("Override removed — page reverted to default meta");
+      setEditOpen(false);
+      setEditTarget(null);
+      utils.pages.listPages.invalidate();
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  function openEditModal(page: PageEntry) {
+    setEditTarget(page);
+    setEditForm({
+      // Pre-populate from override first, then staticMeta
+      metaTitle: page.overrideTitle ?? page.metaTitle ?? "",
+      metaDesc: page.overrideDesc ?? page.metaDesc ?? "",
+      canonical: page.overrideCanonical ?? "",
+    });
+    setEditOpen(true);
+  }
+
+  function handleSave() {
+    if (!editTarget) return;
+    upsertMeta.mutate({
+      path: editTarget.path,
+      metaTitle: editForm.metaTitle.trim() || null,
+      metaDesc: editForm.metaDesc.trim() || null,
+      canonical: editForm.canonical.trim() || null,
+    });
+  }
+
+  function handleRevert() {
+    if (!editTarget) return;
+    deleteMeta.mutate({ path: editTarget.path });
+  }
 
   // ── Derived stats ──────────────────────────────────────────────────────────
   const stats = useMemo(() => {
@@ -153,6 +226,41 @@ export default function AdminPages() {
     });
   }, [pages, typeFilter, missingOnly, search]);
 
+  const isSaving = upsertMeta.isPending;
+  const isReverting = deleteMeta.isPending;
+
+  // Source badge for modal field labels
+  function SourceBadge({ field }: { field: "title" | "desc" | "canonical" }) {
+    if (!editTarget) return null;
+    const hasOverride =
+      field === "title" ? editTarget.overrideTitle !== null :
+      field === "desc"  ? editTarget.overrideDesc  !== null :
+                          editTarget.overrideCanonical !== null;
+    if (hasOverride) {
+      return (
+        <span className="ml-2 text-[10px] font-medium px-1.5 py-0.5 rounded bg-amber-100 text-amber-700">
+          DB override
+        </span>
+      );
+    }
+    const hasStatic =
+      field === "title" ? !!editTarget.metaTitle :
+      field === "desc"  ? !!editTarget.metaDesc  :
+                          false;
+    if (hasStatic) {
+      return (
+        <span className="ml-2 text-[10px] font-medium px-1.5 py-0.5 rounded bg-stone-100 text-stone-500">
+          From page file
+        </span>
+      );
+    }
+    return (
+      <span className="ml-2 text-[10px] font-medium px-1.5 py-0.5 rounded bg-red-50 text-red-500">
+        Not set
+      </span>
+    );
+  }
+
   return (
     <AdminLayout activeId="pages">
       {/* Header */}
@@ -162,7 +270,7 @@ export default function AdminPages() {
           Pages
         </h1>
         <p className="text-sm text-stone-500 mt-1">
-          All static pages and their SEO metadata coverage. Pages missing meta tags are flagged for action.
+          All static pages and their SEO metadata coverage. Click Edit to set or override meta tags per page.
         </p>
       </div>
 
@@ -280,8 +388,8 @@ export default function AdminPages() {
                   <TableHead className="font-semibold text-stone-700 text-center w-24">
                     Canonical
                   </TableHead>
-                  <TableHead className="font-semibold text-stone-700 w-16 text-right">
-                    View
+                  <TableHead className="font-semibold text-stone-700 w-20 text-right">
+                    Actions
                   </TableHead>
                 </TableRow>
               </TableHeader>
@@ -304,15 +412,22 @@ export default function AdminPages() {
                       {/* Title / Path */}
                       <TableCell>
                         <div className="flex flex-col gap-0.5">
-                          <span className="font-medium text-stone-800 text-sm leading-snug">
-                            {page.metaTitle
-                              ? page.metaTitle.length > 55
-                                ? page.metaTitle.slice(0, 55) + "…"
-                                : page.metaTitle
-                              : (
-                                <span className="text-stone-400 italic">{page.label}</span>
-                              )}
-                          </span>
+                          <div className="flex items-center gap-1.5 flex-wrap">
+                            <span className="font-medium text-stone-800 text-sm leading-snug">
+                              {(page.overrideTitle ?? page.metaTitle)
+                                ? (() => {
+                                    const t = page.overrideTitle ?? page.metaTitle!;
+                                    return t.length > 55 ? t.slice(0, 55) + "…" : t;
+                                  })()
+                                : <span className="text-stone-400 italic">{page.label}</span>
+                              }
+                            </span>
+                            {page.hasOverride && (
+                              <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 shrink-0">
+                                Overridden
+                              </span>
+                            )}
+                          </div>
                           <span className="text-xs text-stone-400 font-mono">{page.path}</span>
                         </div>
                       </TableCell>
@@ -346,17 +461,33 @@ export default function AdminPages() {
                         <MetaCheck has={page.hasCanonical} />
                       </TableCell>
 
-                      {/* View link */}
+                      {/* Actions */}
                       <TableCell className="text-right">
-                        <a
-                          href={page.path}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center justify-center p-1.5 rounded-lg text-stone-400 hover:text-primary hover:bg-primary/5 transition-colors"
-                          title={`Open ${page.path}`}
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                        </a>
+                        <div className="flex items-center justify-end gap-1">
+                          <button
+                            onClick={() => openEditModal(page)}
+                            className={`inline-flex items-center justify-center p-1.5 rounded-lg transition-colors cursor-pointer relative ${
+                              page.hasOverride
+                                ? "text-amber-600 hover:text-amber-700 hover:bg-amber-50"
+                                : "text-stone-400 hover:text-primary hover:bg-primary/5"
+                            }`}
+                            title="Edit meta tags"
+                          >
+                            <Pencil className="w-4 h-4" />
+                            {page.hasOverride && (
+                              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-amber-400" />
+                            )}
+                          </button>
+                          <a
+                            href={page.path}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center justify-center p-1.5 rounded-lg text-stone-400 hover:text-primary hover:bg-primary/5 transition-colors"
+                            title={`Open ${page.path}`}
+                          >
+                            <ExternalLink className="w-4 h-4" />
+                          </a>
+                        </div>
                       </TableCell>
                     </TableRow>
                   );
@@ -373,6 +504,125 @@ export default function AdminPages() {
           Showing {filtered.length} of {pages?.length ?? 0} pages
         </p>
       )}
+
+      {/* Edit Meta Modal */}
+      <Dialog
+        open={editOpen}
+        onOpenChange={(open) => {
+          if (!open) {
+            setEditOpen(false);
+            setEditTarget(null);
+          }
+        }}
+      >
+        <DialogContent className="sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle className="text-base">Edit Meta Tags</DialogTitle>
+            <DialogDescription className="font-mono text-xs text-stone-500 break-all">
+              {editTarget?.path}
+            </DialogDescription>
+          </DialogHeader>
+
+          {/* SEO divergence notice */}
+          <div className="flex gap-2.5 rounded-lg bg-blue-50 border border-blue-200 p-3 text-sm text-blue-800">
+            <Info className="w-4 h-4 shrink-0 mt-0.5" />
+            <p>
+              Changes affect what search engines see in raw HTML. The in-browser page title is
+              controlled by the page component and will not change until that is updated separately.
+            </p>
+          </div>
+
+          <div className="space-y-4 py-1">
+            {/* Meta Title */}
+            <div>
+              <Label className="text-sm font-medium text-stone-700 mb-1.5 flex items-center">
+                Meta Title
+                <SourceBadge field="title" />
+              </Label>
+              <Input
+                value={editForm.metaTitle}
+                onChange={(e) => setEditForm((f) => ({ ...f, metaTitle: e.target.value }))}
+                placeholder="e.g. Toothache Guide | Causes, Relief & When to See a Dentist"
+                className="border-stone-200"
+                maxLength={200}
+              />
+              <p className="text-xs text-stone-400 mt-1">
+                {editForm.metaTitle.length}/200 chars — recommended 50–60
+              </p>
+            </div>
+
+            {/* Meta Description */}
+            <div>
+              <Label className="text-sm font-medium text-stone-700 mb-1.5 flex items-center">
+                Meta Description
+                <SourceBadge field="desc" />
+              </Label>
+              <Textarea
+                value={editForm.metaDesc}
+                onChange={(e) => setEditForm((f) => ({ ...f, metaDesc: e.target.value }))}
+                placeholder="Brief description for search engine results..."
+                className="border-stone-200 min-h-[80px] resize-none"
+              />
+              <p className={`text-xs mt-1 ${editForm.metaDesc.length > 160 ? "text-amber-600" : "text-stone-400"}`}>
+                {editForm.metaDesc.length} chars — recommended under 160
+              </p>
+            </div>
+
+            {/* Canonical URL */}
+            <div>
+              <Label className="text-sm font-medium text-stone-700 mb-1.5 flex items-center">
+                Canonical URL
+                <SourceBadge field="canonical" />
+                <span className="ml-1.5 text-xs text-stone-400 font-normal">(optional)</span>
+              </Label>
+              <Input
+                value={editForm.canonical}
+                onChange={(e) => setEditForm((f) => ({ ...f, canonical: e.target.value }))}
+                placeholder={
+                  editTarget
+                    ? `Auto: https://dentasmart.ai${editTarget.path}/`
+                    : "https://dentasmart.ai/..."
+                }
+                className="border-stone-200 font-mono text-sm"
+                maxLength={1000}
+              />
+              <p className="text-xs text-stone-400 mt-1">
+                Leave blank to use the auto-computed canonical for this path.
+              </p>
+            </div>
+          </div>
+
+          <DialogFooter className="gap-2 flex-wrap">
+            <Button
+              variant="outline"
+              onClick={() => setEditOpen(false)}
+              className="cursor-pointer"
+              disabled={isSaving || isReverting}
+            >
+              Cancel
+            </Button>
+            {editTarget?.hasOverride && (
+              <Button
+                variant="outline"
+                onClick={handleRevert}
+                disabled={isSaving || isReverting}
+                className="border-amber-200 text-amber-700 hover:bg-amber-50 cursor-pointer"
+              >
+                {isReverting && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
+                Revert to default
+              </Button>
+            )}
+            <Button
+              onClick={handleSave}
+              disabled={isSaving || isReverting}
+              className="bg-primary hover:bg-primary/90 text-white cursor-pointer"
+            >
+              {isSaving && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
+              Save
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </AdminLayout>
   );
 }

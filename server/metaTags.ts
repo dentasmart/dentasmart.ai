@@ -10,6 +10,8 @@
  */
 
 import { listBlogPosts, getBlogPostBySlug } from "./blogDb";
+import { getDb } from "./db";
+import { pageMetaOverrides } from "../drizzle/schema";
 
 // ─── Types ───────────────────────────────────────────────────────────
 interface MetaInfo {
@@ -905,6 +907,44 @@ async function refreshBlogMetaCache(): Promise<void> {
 
 const BASE_URL = "https://dentasmart.ai";
 
+// ─── Page meta override cache ─────────────────────────────────────────────────
+// DB overrides take precedence over hardcoded staticMeta.
+// TTL is 1 hour — matching blogMetaCache. Primary invalidation is explicit
+// clearPageOverrideCache() called synchronously on every admin save.
+type OverrideEntry = { metaTitle: string | null; metaDesc: string | null; canonical: string | null };
+let pageOverrideCache: Map<string, OverrideEntry> = new Map();
+let pageOverrideCacheTime = 0;
+const PAGE_OVERRIDE_CACHE_TTL = 60 * 60 * 1000; // 1 hour
+
+async function refreshPageOverrideCache(): Promise<void> {
+  try {
+    const db = await getDb();
+    if (!db) return;
+    const rows = await db.select().from(pageMetaOverrides);
+    const newCache = new Map<string, OverrideEntry>();
+    for (const row of rows) {
+      newCache.set(row.path, {
+        metaTitle: row.metaTitle ?? null,
+        metaDesc:  row.metaDesc  ?? null,
+        canonical: row.canonical ?? null,
+      });
+    }
+    pageOverrideCache = newCache;
+    pageOverrideCacheTime = Date.now();
+  } catch (e) {
+    console.error("[MetaTags] Failed to refresh page override cache:", e);
+  }
+}
+
+/**
+ * Called by pagesRouter after every upsert/delete.
+ * Clears synchronously so the next resolveMetaTags call re-queries the DB immediately.
+ */
+export function clearPageOverrideCache(): void {
+  pageOverrideCache = new Map();
+  pageOverrideCacheTime = 0;
+}
+
 /**
  * Return a snapshot of all static meta entries.
  * Used by pagesRouter to audit SEO coverage across all static pages.
@@ -914,14 +954,39 @@ export function getStaticMetaSnapshot(): Record<string, MetaInfo> {
 }
 
 /**
+ * Returns the current DB override for a path, or null if none exists.
+ * Used by pagesRouter.listPages to pre-populate the edit modal.
+ */
+export async function getPageOverride(path: string): Promise<OverrideEntry | null> {
+  if (Date.now() - pageOverrideCacheTime > PAGE_OVERRIDE_CACHE_TTL) {
+    await refreshPageOverrideCache();
+  }
+  return pageOverrideCache.get(path) ?? null;
+}
+
+/**
  * Resolve the correct <title>, <meta description>, and canonical URL for a given URL path.
  * Returns null if no specific meta is found (will use index.html defaults).
  */
 export async function resolveMetaTags(urlPath: string): Promise<MetaInfo | null> {
-  // 1. Check static pages first (instant, no DB)
   const cleanPath = urlPath.split("?")[0].split("#")[0].replace(/\/+$/, "") || "/";
   // Canonical uses trailing slash for non-root paths to match infrastructure behavior
   const canonicalPath = cleanPath === "/" ? "/" : `${cleanPath}/`;
+
+  // 0. DB override — admin-managed, takes precedence over staticMeta
+  if (Date.now() - pageOverrideCacheTime > PAGE_OVERRIDE_CACHE_TTL) {
+    await refreshPageOverrideCache();
+  }
+  const override = pageOverrideCache.get(cleanPath);
+  if (override) {
+    return {
+      title:       override.metaTitle ?? staticMeta[cleanPath]?.title ?? "DentaSmart",
+      description: override.metaDesc  ?? staticMeta[cleanPath]?.description ?? "",
+      canonical:   override.canonical ?? `${BASE_URL}${canonicalPath}`,
+    };
+  }
+
+  // 1. Check static pages first (instant, no DB)
   const staticHit = staticMeta[cleanPath];
   if (staticHit) return { ...staticHit, canonical: `${BASE_URL}${canonicalPath}` };
 
