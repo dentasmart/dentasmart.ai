@@ -1825,3 +1825,11 @@
 - [x] TypeScript check: clean
 - [x] Verify after-counts: sitemap-symptoms=39 (-1), sitemap-comparisons=6 (-1), total=315 (-2 from 317) — matches expected
 - [x] Save checkpoint and push to GitHub
+
+## Duplicate Post Cleanup — dental-crown
+
+- [x] Unpublish dental-crown post (id 1170002) — content kept in DB, status set to unpublished
+- [x] Confirm post status = unpublished
+- [x] Confirm sitemap-blog count drops 171 → 170 and /oral-health-hub/dental-crown is absent
+- [x] Confirm 301 redirect /oral-health-hub/dental-crown → /oral-health-hub/what-is-a-dental-crown/ still active
+- [x] Save checkpoint and push to GitHub
