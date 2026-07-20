@@ -1778,3 +1778,13 @@
 - [x] client/src/components/BenefitsCarousel.tsx: Update plan benefit references
 - [x] client/src/components/ValueComparisonTable.tsx: Update comparison table
 - [x] client/src/data/faqChallenges.json: No separate JSON file found — FAQ content updated directly in FAQs.tsx, FreeAiTeethScanner.tsx, Home.tsx, Features.tsx
+
+# Admin Pages Section - Phase 1
+
+- [x] Create shared/routes.ts — metadata-only route manifest (path, label, type) for all non-admin, non-blog static routes
+- [x] Create server/pagesRouter.ts — admin-protected tRPC procedure that LEFT JOINs shared/routes.ts with staticMeta, includes orphaned meta entries
+- [x] Wire pagesRouter into server/routers.ts
+- [x] Register /admin/pages route in AdminRouter.tsx
+- [x] Add "Pages" nav item to AdminLayout.tsx (under Content section)
+- [x] Create client/src/pages/AdminPages.tsx — summary cards + filterable table with ✓/✗ meta coverage columns
+- [ ] Save checkpoint and push to GitHub

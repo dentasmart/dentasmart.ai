@@ -20,6 +20,7 @@ import {
   TrendingUp,
   Sparkles,
   ImageIcon,
+  LayoutGrid,
 } from "lucide-react";
 
 interface NavItem {
@@ -68,6 +69,7 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
     if (location.includes("/admin/conversion-analytics")) return "conversion-analytics";
     if (location.includes("/admin/aeo-dashboard")) return "aeo-dashboard";
     if (location.includes("/admin/media-library")) return "media-library";
+    if (location.includes("/admin/pages")) return "pages";
     if (location.includes("/admin/edit") || location.includes("/admin/new")) return "articles";
     return "articles";
   }, [activeId, location]);
@@ -99,6 +101,13 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
       label: "Media Library",
       icon: <ImageIcon className="w-5 h-5" />,
       path: "/admin/media-library",
+      section: "Content",
+    },
+    {
+      id: "pages",
+      label: "Pages",
+      icon: <LayoutGrid className="w-5 h-5" />,
+      path: "/admin/pages",
       section: "Content",
     },
     {

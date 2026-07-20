@@ -8,6 +8,7 @@ import { leadsRouter } from "./leadsRouter";
 import { waitlistRouter } from "./waitlistRouter";
 import { analyticsRouter } from "./analyticsRouter";
 import { mediaRouter } from "./mediaRouter";
+import { pagesRouter } from "./pagesRouter";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -29,6 +30,7 @@ export const appRouter = router({
   waitlist: waitlistRouter,
   analytics: analyticsRouter,
   media: mediaRouter,
+  pages: pagesRouter,
 });
 
 export type AppRouter = typeof appRouter;

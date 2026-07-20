@@ -906,6 +906,14 @@ async function refreshBlogMetaCache(): Promise<void> {
 const BASE_URL = "https://dentasmart.ai";
 
 /**
+ * Return a snapshot of all static meta entries.
+ * Used by pagesRouter to audit SEO coverage across all static pages.
+ */
+export function getStaticMetaSnapshot(): Record<string, MetaInfo> {
+  return staticMeta;
+}
+
+/**
  * Resolve the correct <title>, <meta description>, and canonical URL for a given URL path.
  * Returns null if no specific meta is found (will use index.html defaults).
  */
