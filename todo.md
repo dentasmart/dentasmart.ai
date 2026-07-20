@@ -1801,3 +1801,18 @@
 - [x] Add deletePageMeta procedure (reverts page to staticMeta defaults)
 - [x] Extend AdminPages.tsx: edit modal with source badges, SEO divergence notice, Revert button
 - [x] Save checkpoint and push to GitHub
+
+## Redirect Management — Phase 1
+
+- [x] Append redirects table to drizzle/schema.ts
+- [x] Generate migration 0014 SQL and append 49 seed INSERT rows
+- [x] Run drizzle-kit migrate and verify table + 49 rows in TiDB
+- [x] Create server/redirectDb.ts (getAllRedirects, upsertRedirect, deleteRedirect, incrementHit)
+- [x] Create server/redirectCache.ts (cacheLoaded flag, loadRedirectCache, clearRedirectCache, resolveRedirect — loads ALL rows, checks isEnabled at request time)
+- [x] Create server/redirectsRouter.ts (listRedirects, upsertRedirect with chain warning, deleteRedirect)
+- [x] Replace serverRedirects middleware in server/_core/index.ts (cache-backed, fallback only when cacheLoaded=false, query string preservation, per-entry status code, prefix guard, loop guard)
+- [x] Wire redirectsRouter into server/routers.ts
+- [x] Register /admin/redirects in AdminRouter.tsx
+- [x] Add Redirects nav item to AdminLayout.tsx
+- [x] Create client/src/pages/AdminRedirects.tsx (summary cards, filterable table, add/edit modal, enabled toggle, chain warning toast)
+- [x] TypeScript check, endpoint smoke tests, save checkpoint, push to GitHub

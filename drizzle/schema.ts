@@ -338,3 +338,23 @@ export const pageMetaOverrides = mysqlTable("page_meta_overrides", {
 });
 export type PageMetaOverride = typeof pageMetaOverrides.$inferSelect;
 export type InsertPageMetaOverride = typeof pageMetaOverrides.$inferInsert;
+
+/**
+ * DB-backed server-side redirects.
+ * Replaces the hardcoded serverRedirects dict in server/_core/index.ts.
+ * The dict is kept as a cold-start fallback — do not delete it.
+ */
+export const redirects = mysqlTable("redirects", {
+  id:         int("id").autoincrement().primaryKey(),
+  sourcePath: varchar("sourcePath", { length: 1000 }).notNull().unique(),
+  targetPath: varchar("targetPath", { length: 1000 }).notNull(),
+  statusCode: int("statusCode").notNull().default(301),
+  isEnabled:  boolean("isEnabled").notNull().default(true),
+  hitCount:   int("hitCount").notNull().default(0),
+  lastHitAt:  timestamp("lastHitAt"),
+  note:       text("note"),
+  createdAt:  timestamp("createdAt").defaultNow().notNull(),
+  updatedAt:  timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+export type Redirect = typeof redirects.$inferSelect;
+export type InsertRedirect = typeof redirects.$inferInsert;

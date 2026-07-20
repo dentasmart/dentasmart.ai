@@ -21,6 +21,7 @@ import {
   Sparkles,
   ImageIcon,
   LayoutGrid,
+  ArrowLeftRight,
 } from "lucide-react";
 
 interface NavItem {
@@ -70,6 +71,7 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
     if (location.includes("/admin/aeo-dashboard")) return "aeo-dashboard";
     if (location.includes("/admin/media-library")) return "media-library";
     if (location.includes("/admin/pages")) return "pages";
+    if (location.includes("/admin/redirects")) return "redirects";
     if (location.includes("/admin/edit") || location.includes("/admin/new")) return "articles";
     return "articles";
   }, [activeId, location]);
@@ -109,6 +111,13 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
       icon: <LayoutGrid className="w-5 h-5" />,
       path: "/admin/pages",
       section: "Content",
+    },
+    {
+      id: "redirects",
+      label: "Redirects",
+      icon: <ArrowLeftRight className="w-5 h-5" />,
+      path: "/admin/redirects",
+      section: "Tools",
     },
     {
       id: "link-audit",

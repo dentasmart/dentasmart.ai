@@ -10,6 +10,7 @@ import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { registerSeoRoutes } from "../seo";
+import { resolveRedirect } from "../redirectCache";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -42,9 +43,16 @@ async function startServer() {
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
 
-  // ─── Server-side 301 Redirects ─────────────────────────────────────
-  // Converts client-side redirects to proper server-side 301s so crawlers
-  // see the redirect header before JS runs (fixes duplicate meta descriptions).
+  // ─── Server-side Redirects (DB-backed) ───────────────────────────────
+  // Primary source: DB table `redirects`, cached in-process (1-hour TTL).
+  // Fallback: hardcoded serverRedirects dict below — used ONLY when the cache
+  // failed to load (cold start / DB unreachable). Do NOT delete the dict.
+  //
+  // IMPORTANT: Must be kept in sync with the DB. When adding redirects, use
+  // the admin panel at /admin/redirects. Only add to this dict as a last
+  // resort if the DB is unavailable.
+  //
+  // NOTE: Must be updated whenever App.tsx routes change.
   const serverRedirects: Record<string, string> = {
     // Article URL changes
     "/oral-health-hub/best-ai-dental-apps": "/oral-health-hub/top-10-best-ai-dental-apps/",
@@ -109,16 +117,58 @@ async function startServer() {
     "/oral-health-hub/wisdom-tooth-infection-symptoms": "/oral-health-hub/when-do-wisdom-teeth-come-in/",
     "/oral-health-hub/wisdom-tooth-infection-symptoms/": "/oral-health-hub/when-do-wisdom-teeth-come-in/",
   };
-  app.use((req, res, next) => {
+
+  app.use(async (req, res, next) => {
+    // Prefix guard: skip API and static asset requests immediately
+    if (req.path.startsWith('/api') || req.path.startsWith('/assets')) {
+      return next();
+    }
+
     const path = req.path;
     const pathNoSlash = path.endsWith('/') && path.length > 1
       ? path.slice(0, -1)
       : path;
 
-    const redirect = serverRedirects[path] || serverRedirects[pathNoSlash];
-    if (redirect) {
-      return res.redirect(301, redirect);
+    // Try DB cache first (checks both path and pathNoSlash)
+    const { entry, cacheIsLoaded } = await resolveRedirect(path).catch(() => ({ entry: null, cacheIsLoaded: false }));
+    const { entry: entryNoSlash } = (!entry && pathNoSlash !== path)
+      ? await resolveRedirect(pathNoSlash).catch(() => ({ entry: null, cacheIsLoaded: false }))
+      : { entry: null };
+
+    const matched = entry ?? entryNoSlash;
+
+    if (matched) {
+      if (!matched.isEnabled) {
+        // Disabled entry is a positive signal — do not redirect, do not fall through to dict
+        return next();
+      }
+      // Loop guard: skip if source === target (should never happen after save validation)
+      if (matched.targetPath === path || matched.targetPath === pathNoSlash) {
+        console.warn(`[redirects] Loop detected for path: ${path} → ${matched.targetPath}`);
+        return next();
+      }
+      // Preserve query string unless target already has one
+      const qs = req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : '';
+      const target = matched.targetPath.includes('?') ? matched.targetPath : matched.targetPath + qs;
+      // Fire-and-forget hit count increment
+      const { incrementHit } = await import('../redirectDb');
+      incrementHit(matched.id);
+      return res.redirect(matched.statusCode, target);
     }
+
+    // Cache loaded successfully but no match — do NOT fall through to dict
+    if (cacheIsLoaded) {
+      return next();
+    }
+
+    // Cache failed to load (cold start / DB unreachable) — fall back to hardcoded dict
+    const fallback = serverRedirects[path] || serverRedirects[pathNoSlash];
+    if (fallback) {
+      const qs = req.url.includes('?') ? req.url.slice(req.url.indexOf('?')) : '';
+      const target = fallback.includes('?') ? fallback : fallback + qs;
+      return res.redirect(301, target);
+    }
+
     next();
   });
 
