@@ -1816,3 +1816,12 @@
 - [x] Add Redirects nav item to AdminLayout.tsx
 - [x] Create client/src/pages/AdminRedirects.tsx (summary cards, filterable table, add/edit modal, enabled toggle, chain warning toast)
 - [x] TypeScript check, endpoint smoke tests, save checkpoint, push to GitHub
+
+## Sitemap Cleanup — Phase 1
+
+- [x] Remove /symptoms/tooth-pain from symptomPages in server/seo.ts (page does not exist — SPA catch-all 404)
+- [x] Remove /comparisons/veneers-vs-crowns from comparisonPages in server/seo.ts (redirect source, should not be indexed)
+- [x] Empty blogPostPages array in server/seo.ts (was dead code — sitemap-blog queries DB directly; legacy flat sitemap 301s to sitemap-index)
+- [x] TypeScript check: clean
+- [x] Verify after-counts: sitemap-symptoms=39 (-1), sitemap-comparisons=6 (-1), total=315 (-2 from 317) — matches expected
+- [x] Save checkpoint and push to GitHub
