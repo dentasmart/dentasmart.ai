@@ -234,10 +234,8 @@ function Router() {
         <Route path="/hub/prevention">{() => { window.location.replace('/oral-health-hub/prevention'); return null; }}</Route>
 
         {/* Cross-section redirects: symptom slugs that exist in conditions */}
-        <Route path="/symptoms/cracked-tooth">{() => { window.location.replace('/conditions/cracked-tooth'); return null; }}</Route>
-        <Route path="/symptoms/sensitive-teeth">{() => { window.location.replace('/conditions/sensitive-teeth'); return null; }}</Route>
-        <Route path="/symptoms/toothache">{() => { window.location.replace('/conditions/toothache'); return null; }}</Route>
-        <Route path="/conditions/dry-mouth">{() => { window.location.replace('/symptoms/dry-mouth'); return null; }}</Route>
+        {/* /symptoms/cracked-tooth, /symptoms/sensitive-teeth, /symptoms/toothache, /conditions/dry-mouth */}
+        {/* Dead JS removed — server-side 301s in redirects table now handle these paths */}
         <Route path="/guides/teeth-whitening">{() => { window.location.replace('/conditions/teeth-whitening'); return null; }}</Route>
         <Route path="/guides/when-to-get-second-opinion">{() => { window.location.replace('/guides/when-to-get-dental-second-opinion'); return null; }}</Route>
 

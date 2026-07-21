@@ -1860,3 +1860,15 @@
 ## Stale meta entries — flagged for cleanup (do not delete yet)
 - [ ] /symptoms/tooth-pain — has staticMeta entry but renders "Symptom Not Found" (slug not in symptomsData)
 - [ ] /symptoms/dental-headache — has staticMeta entry but renders "Symptom Not Found" (slug not in symptomsData)
+
+## Client-side redirect cleanup (corrected — Jul 2026)
+
+- [x] Add server 301: /conditions/dry-mouth → /symptoms/dry-mouth
+- [x] Add server 301: /conditions/tooth-sensitivity → /conditions/sensitive-teeth
+- [x] Remove dead window.location.replace() from App.tsx: /symptoms/cracked-tooth (line 237)
+- [x] Remove dead window.location.replace() from App.tsx: /symptoms/sensitive-teeth (line 238)
+- [x] Remove dead window.location.replace() from App.tsx: /symptoms/toothache (line 239)
+- [x] Remove dead window.location.replace() from App.tsx: /conditions/dry-mouth (line 240)
+- [x] Verify: set-based diff shows exactly -2 URLs, 0 added
+- [x] Verify: /conditions/cavities, /conditions/oral-thrush, /symptoms/loose-tooth, /symptoms/tooth-sensitivity still in sitemap
+- [x] Verify: 4 JS-removed routes still 301 via server
