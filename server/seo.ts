@@ -1,5 +1,7 @@
 import { Express, Request, Response } from "express";
 import { listBlogPosts } from "./blogDb";
+import { staticRoutes as allRoutes } from "../shared/routes";
+import { resolveRedirect } from "./redirectCache";
 
 const SITE_URL = "https://dentasmart.ai";
 const NL = "\r\n";
@@ -9,7 +11,82 @@ const NL = "\r\n";
 const today = new Date().toISOString().split("T")[0];
 
 // ============================================================
-// Route definitions organized by content type for segmented sitemaps
+// Per-type sitemap defaults (used when route has no per-route override)
+// ============================================================
+const TYPE_DEFAULTS: Record<string, { priority: string; changefreq: string }> = {
+  "Single Page":      { priority: "0.8",  changefreq: "monthly" },
+  "Index":            { priority: "0.8",  changefreq: "weekly" },
+  "Hub":              { priority: "0.8",  changefreq: "weekly" },
+  "Employer":         { priority: "0.7",  changefreq: "monthly" },
+  "Condition":        { priority: "0.8",  changefreq: "monthly" },
+  "Symptom":          { priority: "0.8",  changefreq: "monthly" },
+  "Treatment":        { priority: "0.85", changefreq: "monthly" },
+  "Dental Cost":      { priority: "0.9",  changefreq: "monthly" },
+  "Comparison":       { priority: "0.85", changefreq: "monthly" },
+  "Guide":            { priority: "0.8",  changefreq: "monthly" },
+  "Life Stage":       { priority: "0.85", changefreq: "monthly" },
+  "Lifestyle":        { priority: "0.85", changefreq: "monthly" },
+  "Dental Emergency": { priority: "0.85", changefreq: "monthly" },
+};
+
+/**
+ * Build a set of enabled redirect source paths from the redirect cache.
+ * If the cache fails to load, returns an empty set so sitemap generation
+ * continues without redirect filtering (never fails sitemap generation).
+ */
+async function getEnabledRedirectSources(): Promise<Set<string>> {
+  const sources = new Set<string>();
+  try {
+    // We only need to trigger a single load — the cache is shared in-process.
+    // Probe with a dummy path to warm the cache, then inspect via resolveRedirect
+    // for each candidate. This is safe: resolveRedirect returns { entry, cacheIsLoaded }.
+    // If cacheIsLoaded is false after the probe, skip filtering entirely.
+    const probe = await resolveRedirect("/__sitemap_probe__");
+    if (!probe.cacheIsLoaded) {
+      console.warn("[Sitemap] Redirect cache unavailable — skipping redirect filter");
+      return sources;
+    }
+    // Walk all routes that are candidates for the sitemap and check each path.
+    // We also check trailing-slash variants for blog paths.
+    for (const route of allRoutes) {
+      if (route.inSitemap === false) continue;
+      const { entry } = await resolveRedirect(route.path);
+      if (entry && entry.isEnabled) {
+        sources.add(route.path);
+      }
+    }
+  } catch (err) {
+    console.error("[Sitemap] Error building redirect source set:", (err as Error)?.message);
+  }
+  return sources;
+}
+
+/**
+ * Derive a sitemap entry array from shared/routes.ts for the given type(s),
+ * filtered by inSitemap !== false and not an enabled redirect source.
+ */
+function deriveRoutes(
+  routes: typeof allRoutes,
+  types: string[],
+  redirectSources: Set<string>
+): Array<{ path: string; priority: string; changefreq: string; lastmod: string }> {
+  return routes
+    .filter((r) => types.includes(r.type) && r.inSitemap !== false && !redirectSources.has(r.path))
+    .map((r) => {
+      const defaults = TYPE_DEFAULTS[r.type] ?? { priority: "0.7", changefreq: "monthly" };
+      return {
+        path: r.path,
+        priority: r.priority ?? defaults.priority,
+        changefreq: r.changefreq ?? defaults.changefreq,
+        lastmod: r.lastmod ?? today,
+      };
+    });
+}
+
+// ============================================================
+// LEGACY hardcoded arrays — kept for reference, replaced by deriveRoutes()
+// These are no longer used in segmented sitemap generation.
+// Remove in a future cleanup pass once Phase 2 is verified stable.
 // ============================================================
 
 const corePages = [
@@ -198,8 +275,9 @@ const blogPostPages: Array<{ path: string; priority: string; changefreq: string;
   // Empty — all blog URLs come from the DB via generateBlogSitemap()
 ];
 
-// Combined static routes for the main sitemap
-const staticRoutes = [
+// Combined static routes for the legacy main sitemap (generateSitemapXml)
+// NOTE: This is the old flat aggregate. Segmented sitemaps now use deriveRoutes().
+const legacyStaticRoutes = [
   ...corePages,
   ...employerPages,
   ...conditionPages,
@@ -281,10 +359,10 @@ export async function generateSitemapXml(): Promise<string> {
     console.error("Failed to fetch blog posts for sitemap:", e);
   }
 
-  const staticUrls = staticRoutes
+  const staticUrls = legacyStaticRoutes
     .filter((r) => !dynamicBlogSlugs.has(r.path))
     .map(
-      (r) => {
+      (r: { path: string; priority: string; changefreq: string; lastmod: string }) => {
         const loc = r.path === "/" ? `${SITE_URL}/` : `${SITE_URL}${r.path}/`;
         return `  <url>
     <loc>${loc}</loc>
@@ -315,14 +393,19 @@ async function generateBlogSitemap(): Promise<string> {
   let blogUrls: Array<{ path: string; priority: string; changefreq: string; lastmod: string }> = [];
   try {
     const result = await listBlogPosts({ publishedOnly: true, limit: 1000 });
-    blogUrls = result.posts.map((post) => ({
-      path: `/oral-health-hub/${post.slug}`,
-      priority: "0.7",
-      changefreq: "weekly",
-      lastmod: post.updatedAt
-        ? new Date(post.updatedAt).toISOString().split("T")[0]
-        : today,
-    }));
+    // Build redirect source set — if cache is unavailable, skip filtering (never fail sitemap)
+    const redirectSources = await getEnabledRedirectSources();
+    blogUrls = result.posts
+      .map((post) => ({
+        path: `/oral-health-hub/${post.slug}`,
+        priority: "0.7",
+        changefreq: "weekly",
+        lastmod: post.updatedAt
+          ? new Date(post.updatedAt).toISOString().split("T")[0]
+          : today,
+      }))
+      // Exclude any post whose canonical path is an enabled redirect source
+      .filter((entry) => !redirectSources.has(entry.path) && !redirectSources.has(entry.path + "/"));
   } catch (e) {
     console.error("Failed to fetch blog posts for blog sitemap:", e);
   }
@@ -782,10 +865,18 @@ export function registerSeoRoutes(app: Express) {
   // ============================================================
   // Segmented Sitemaps
   // ============================================================
-  app.get("/sitemap-pages.xml", (_req: Request, res: Response) => {
-    res.set("Content-Type", "application/xml; charset=utf-8");
-    res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
-    res.send(generateSegmentedSitemap(corePages));
+  // ── sitemap-pages: Single Page + Index + Hub + Employer ──────────────────
+  app.get("/sitemap-pages.xml", async (_req: Request, res: Response) => {
+    try {
+      res.set("Content-Type", "application/xml; charset=utf-8");
+      res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
+      const redirectSources = await getEnabledRedirectSources();
+      const routes = deriveRoutes(allRoutes, ["Single Page", "Index", "Hub"], redirectSources);
+      res.send(generateSegmentedSitemap(routes));
+    } catch (e) {
+      console.error("sitemap-pages error:", e);
+      res.status(500).send("Error generating sitemap-pages");
+    }
   });
 
   app.get("/sitemap-blog.xml", async (_req: Request, res: Response) => {
@@ -799,64 +890,94 @@ export function registerSeoRoutes(app: Express) {
     }
   });
 
-  app.get("/sitemap-conditions.xml", (_req: Request, res: Response) => {
-    res.set("Content-Type", "application/xml; charset=utf-8");
-    res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
-    res.send(generateSegmentedSitemap(conditionPages));
+  app.get("/sitemap-conditions.xml", async (_req: Request, res: Response) => {
+    try {
+      res.set("Content-Type", "application/xml; charset=utf-8");
+      res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
+      const redirectSources = await getEnabledRedirectSources();
+      res.send(generateSegmentedSitemap(deriveRoutes(allRoutes, ["Condition"], redirectSources)));
+    } catch (e) { console.error("sitemap-conditions error:", e); res.status(500).send("Error"); }
   });
 
-  app.get("/sitemap-symptoms.xml", (_req: Request, res: Response) => {
-    res.set("Content-Type", "application/xml; charset=utf-8");
-    res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
-    res.send(generateSegmentedSitemap(symptomPages));
+  app.get("/sitemap-symptoms.xml", async (_req: Request, res: Response) => {
+    try {
+      res.set("Content-Type", "application/xml; charset=utf-8");
+      res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
+      const redirectSources = await getEnabledRedirectSources();
+      res.send(generateSegmentedSitemap(deriveRoutes(allRoutes, ["Symptom"], redirectSources)));
+    } catch (e) { console.error("sitemap-symptoms error:", e); res.status(500).send("Error"); }
   });
 
-  app.get("/sitemap-treatments.xml", (_req: Request, res: Response) => {
-    res.set("Content-Type", "application/xml; charset=utf-8");
-    res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
-    res.send(generateSegmentedSitemap(treatmentPages));
+  app.get("/sitemap-treatments.xml", async (_req: Request, res: Response) => {
+    try {
+      res.set("Content-Type", "application/xml; charset=utf-8");
+      res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
+      const redirectSources = await getEnabledRedirectSources();
+      res.send(generateSegmentedSitemap(deriveRoutes(allRoutes, ["Treatment"], redirectSources)));
+    } catch (e) { console.error("sitemap-treatments error:", e); res.status(500).send("Error"); }
   });
 
-  app.get("/sitemap-costs.xml", (_req: Request, res: Response) => {
-    res.set("Content-Type", "application/xml; charset=utf-8");
-    res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
-    res.send(generateSegmentedSitemap(costPages));
+  app.get("/sitemap-costs.xml", async (_req: Request, res: Response) => {
+    try {
+      res.set("Content-Type", "application/xml; charset=utf-8");
+      res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
+      const redirectSources = await getEnabledRedirectSources();
+      res.send(generateSegmentedSitemap(deriveRoutes(allRoutes, ["Dental Cost"], redirectSources)));
+    } catch (e) { console.error("sitemap-costs error:", e); res.status(500).send("Error"); }
   });
 
-  app.get("/sitemap-comparisons.xml", (_req: Request, res: Response) => {
-    res.set("Content-Type", "application/xml; charset=utf-8");
-    res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
-    res.send(generateSegmentedSitemap(comparisonPages));
+  app.get("/sitemap-comparisons.xml", async (_req: Request, res: Response) => {
+    try {
+      res.set("Content-Type", "application/xml; charset=utf-8");
+      res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
+      const redirectSources = await getEnabledRedirectSources();
+      res.send(generateSegmentedSitemap(deriveRoutes(allRoutes, ["Comparison"], redirectSources)));
+    } catch (e) { console.error("sitemap-comparisons error:", e); res.status(500).send("Error"); }
   });
 
-  app.get("/sitemap-guides.xml", (_req: Request, res: Response) => {
-    res.set("Content-Type", "application/xml; charset=utf-8");
-    res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
-    res.send(generateSegmentedSitemap(guidePages));
+  app.get("/sitemap-guides.xml", async (_req: Request, res: Response) => {
+    try {
+      res.set("Content-Type", "application/xml; charset=utf-8");
+      res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
+      const redirectSources = await getEnabledRedirectSources();
+      res.send(generateSegmentedSitemap(deriveRoutes(allRoutes, ["Guide"], redirectSources)));
+    } catch (e) { console.error("sitemap-guides error:", e); res.status(500).send("Error"); }
   });
 
-  app.get("/sitemap-life-stages.xml", (_req: Request, res: Response) => {
-    res.set("Content-Type", "application/xml; charset=utf-8");
-    res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
-    res.send(generateSegmentedSitemap(lifeStagePages));
+  app.get("/sitemap-life-stages.xml", async (_req: Request, res: Response) => {
+    try {
+      res.set("Content-Type", "application/xml; charset=utf-8");
+      res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
+      const redirectSources = await getEnabledRedirectSources();
+      res.send(generateSegmentedSitemap(deriveRoutes(allRoutes, ["Life Stage"], redirectSources)));
+    } catch (e) { console.error("sitemap-life-stages error:", e); res.status(500).send("Error"); }
   });
 
-  app.get("/sitemap-emergencies.xml", (_req: Request, res: Response) => {
-    res.set("Content-Type", "application/xml; charset=utf-8");
-    res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
-    res.send(generateSegmentedSitemap(emergencyPages));
+  app.get("/sitemap-emergencies.xml", async (_req: Request, res: Response) => {
+    try {
+      res.set("Content-Type", "application/xml; charset=utf-8");
+      res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
+      const redirectSources = await getEnabledRedirectSources();
+      res.send(generateSegmentedSitemap(deriveRoutes(allRoutes, ["Dental Emergency"], redirectSources)));
+    } catch (e) { console.error("sitemap-emergencies error:", e); res.status(500).send("Error"); }
   });
 
-  app.get("/sitemap-lifestyle.xml", (_req: Request, res: Response) => {
-    res.set("Content-Type", "application/xml; charset=utf-8");
-    res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
-    res.send(generateSegmentedSitemap(lifestylePages));
+  app.get("/sitemap-lifestyle.xml", async (_req: Request, res: Response) => {
+    try {
+      res.set("Content-Type", "application/xml; charset=utf-8");
+      res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
+      const redirectSources = await getEnabledRedirectSources();
+      res.send(generateSegmentedSitemap(deriveRoutes(allRoutes, ["Lifestyle"], redirectSources)));
+    } catch (e) { console.error("sitemap-lifestyle error:", e); res.status(500).send("Error"); }
   });
 
-  app.get("/sitemap-employers.xml", (_req: Request, res: Response) => {
-    res.set("Content-Type", "application/xml; charset=utf-8");
-    res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
-    res.send(generateSegmentedSitemap(employerPages));
+  app.get("/sitemap-employers.xml", async (_req: Request, res: Response) => {
+    try {
+      res.set("Content-Type", "application/xml; charset=utf-8");
+      res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
+      const redirectSources = await getEnabledRedirectSources();
+      res.send(generateSegmentedSitemap(deriveRoutes(allRoutes, ["Employer"], redirectSources)));
+    } catch (e) { console.error("sitemap-employers error:", e); res.status(500).send("Error"); }
   });
 
   // ============================================================

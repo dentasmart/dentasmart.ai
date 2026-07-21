@@ -1833,3 +1833,11 @@
 - [x] Confirm sitemap-blog count drops 171 → 170 and /oral-health-hub/dental-crown is absent
 - [x] Confirm 301 redirect /oral-health-hub/dental-crown → /oral-health-hub/what-is-a-dental-crown/ still active
 - [x] Save checkpoint and push to GitHub
+
+## Sitemap Phase 2 — routes.ts as single source of truth
+
+- [x] Change 1: Add inSitemap/priority/changefreq/lastmod fields to RouteEntry; mark 13 exclusions; add 5 /oral-health-hub/* Hub routes
+- [x] Change 2: Replace hardcoded seo.ts arrays with routes.ts derivation + redirect-source filter
+- [x] Change 3: Add redirect-source exclusion to generateBlogSitemap()
+- [x] Verify: set-based diff — Phase 1 total 314, Phase 2 total 322, net +8 added, 0 removed, 9 index pages moved between sitemaps (no URL loss). No redirect sources in output.
+- [x] Save checkpoint and push to GitHub
