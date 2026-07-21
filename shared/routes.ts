@@ -16,7 +16,22 @@
  *
  * priority / changefreq / lastmod — per-route overrides. When omitted, the
  *   per-type defaults defined in server/seo.ts are used.
+ *
+ * ── Data-driven sections ─────────────────────────────────────────────────────
+ * Symptoms, Conditions, and Guides are derived automatically from their data
+ * files (client/src/data/{symptoms,conditions,guides}.ts). Adding a new entry
+ * to those files is sufficient — no manual update to this manifest is needed.
+ *
+ * Client-side redirect aliases (routes that exist in App.tsx but render no
+ * content and bounce via window.location.replace) are kept as hardcoded
+ * entries below with inSitemap: true until they are converted to server-side
+ * 301s. Once converted, the server-side redirect filter in seo.ts will exclude
+ * them automatically and the hardcoded entries can be removed.
  */
+
+import { symptomsData } from "../client/src/data/symptoms";
+import { conditionsData } from "../client/src/data/conditions";
+import { guidesData } from "../client/src/data/guides";
 
 export type PageType =
   | "Single Page"
@@ -47,7 +62,36 @@ export interface RouteEntry {
   lastmod?: string;
 }
 
-export const staticRoutes: RouteEntry[] = [
+// ── Derived route helpers ─────────────────────────────────────────────────────
+
+/**
+ * Build RouteEntry objects from a data-file Record whose keys are slugs.
+ * The label is derived from the entry's `title` field when present, otherwise
+ * the slug is title-cased. All entries use the supplied type/priority/changefreq.
+ */
+function deriveEntries<T extends { title?: string; slug?: string }>(
+  data: Record<string, T>,
+  prefix: string,
+  type: PageType,
+  priority: string,
+  changefreq: string,
+): RouteEntry[] {
+  return Object.entries(data).map(([slug, entry]) => ({
+    path: `${prefix}${slug}`,
+    label: entry.title ?? slug.replace(/-/g, " ").replace(/\b\w/g, c => c.toUpperCase()),
+    type,
+    priority,
+    changefreq,
+  }));
+}
+
+const derivedSymptoms = deriveEntries(symptomsData, "/symptoms/", "Symptom", "0.8", "monthly");
+const derivedConditions = deriveEntries(conditionsData, "/conditions/", "Condition", "0.8", "monthly");
+const derivedGuides = deriveEntries(guidesData, "/guides/", "Guide", "0.8", "monthly");
+
+// ── Static route manifest ─────────────────────────────────────────────────────
+
+const staticOnlyRoutes: RouteEntry[] = [
   // ── Single Pages ──────────────────────────────────────────────────────────
   { path: "/", label: "Home", type: "Single Page", priority: "1.0", changefreq: "weekly" },
   { path: "/how-it-works", label: "How It Works", type: "Single Page", priority: "0.9", changefreq: "monthly", lastmod: "2026-03-15" },
@@ -72,7 +116,7 @@ export const staticRoutes: RouteEntry[] = [
   { path: "/answers", label: "Answers", type: "Single Page", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
   { path: "/find-a-dentist", label: "Find a Dentist", type: "Single Page", priority: "0.7", changefreq: "monthly", lastmod: "2026-03-01" },
   { path: "/symptom-quiz", label: "Symptom Quiz", type: "Single Page", priority: "0.9", changefreq: "weekly" },
-  // Redirect aliases — excluded from sitemap (redirect fires before page renders)
+  // Redirect aliases — excluded from sitemap (server-side 301 pending)
   { path: "/symptom-checker", label: "Symptom Checker", type: "Single Page", inSitemap: false },
   { path: "/affordability", label: "Affordability", type: "Single Page", inSitemap: false },
   { path: "/prevention", label: "Prevention", type: "Single Page", inSitemap: false },
@@ -122,69 +166,22 @@ export const staticRoutes: RouteEntry[] = [
   // Redirect alias — excluded from sitemap
   { path: "/comparisons/invisalign-vs-braces", label: "Invisalign vs Braces (redirect alias)", type: "Comparison", inSitemap: false },
 
-  // ── Conditions ────────────────────────────────────────────────────────────
-  { path: "/conditions/cavities", label: "Cavities", type: "Condition", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/conditions/cracked-tooth", label: "Cracked Tooth", type: "Condition", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/conditions/dental-abscess", label: "Dental Abscess", type: "Condition", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/conditions/dental-crown", label: "Dental Crown", type: "Condition", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/conditions/dental-implants", label: "Dental Implants", type: "Condition", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/conditions/dry-mouth", label: "Dry Mouth", type: "Condition", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/conditions/dry-socket", label: "Dry Socket", type: "Condition", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/conditions/gingivitis-vs-periodontitis", label: "Gingivitis vs Periodontitis", type: "Condition", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/conditions/gum-disease", label: "Gum Disease", type: "Condition", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/conditions/oral-thrush", label: "Oral Thrush", type: "Condition", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/conditions/periodontitis", label: "Periodontitis", type: "Condition", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/conditions/root-canal", label: "Root Canal", type: "Condition", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/conditions/sensitive-teeth", label: "Sensitive Teeth", type: "Condition", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/conditions/teeth-grinding", label: "Teeth Grinding", type: "Condition", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/conditions/teeth-whitening", label: "Teeth Whitening", type: "Condition", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/conditions/tmj-disorder", label: "TMJ Disorder", type: "Condition", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/conditions/toothache", label: "Toothache", type: "Condition", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/conditions/wisdom-teeth-pain", label: "Wisdom Teeth Pain", type: "Condition", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/conditions/tooth-sensitivity", label: "Tooth Sensitivity", type: "Condition", priority: "0.8", changefreq: "monthly", lastmod: "2026-05-07" },
+  // ── Conditions — client-side redirect aliases (no content, pending server-side 301) ──
+  // These slugs are NOT in conditionsData. They render the "Not Found" component and
+  // bounce via window.location.replace(). Kept here so /admin/pages audit is accurate.
+  // Remove each entry once converted to a server-side 301 (filter in seo.ts handles exclusion).
+  { path: "/conditions/cavities", label: "Cavities (client redirect alias)", type: "Condition" },
+  { path: "/conditions/dry-mouth", label: "Dry Mouth (client redirect alias)", type: "Condition" },
+  { path: "/conditions/oral-thrush", label: "Oral Thrush (client redirect alias)", type: "Condition" },
+  { path: "/conditions/tooth-sensitivity", label: "Tooth Sensitivity (client redirect alias)", type: "Condition" },
 
-  // ── Symptoms ──────────────────────────────────────────────────────────────
-  { path: "/symptoms/aphthous-ulcers", label: "Aphthous Ulcers", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/bad-breath", label: "Bad Breath", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/symptoms/bite-changes", label: "Bite Changes", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/bleeding-gums", label: "Bleeding Gums", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/symptoms/canker-sores", label: "Canker Sores", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/cheek-biting", label: "Cheek Biting", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/cracked-tooth", label: "Cracked Tooth (Symptom)", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/symptoms/dental-caries", label: "Dental Caries", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/dry-mouth", label: "Dry Mouth (Symptom)", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/symptoms/enamel-erosion", label: "Enamel Erosion", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/enamel-hypersensitivity", label: "Enamel Hypersensitivity", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/facial-swelling", label: "Facial Swelling", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/gingivitis", label: "Gingivitis (Symptom)", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/gum-bleeding-after-brushing", label: "Gum Bleeding After Brushing", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/gum-inflammation", label: "Gum Inflammation", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/gum-itching", label: "Gum Itching", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/gum-tenderness", label: "Gum Tenderness", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/jaw-clicking", label: "Jaw Clicking", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/jaw-pain", label: "Jaw Pain", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/symptoms/leukoplakia", label: "Leukoplakia", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/loose-tooth", label: "Loose Tooth", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/symptoms/mouth-numbness", label: "Mouth Numbness", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/mouth-sores", label: "Mouth Sores", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/symptoms/mouth-ulcers", label: "Mouth Ulcers", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/oral-lichen-planus", label: "Oral Lichen Planus", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/oral-thrush", label: "Oral Thrush (Symptom)", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/periodontal-disease", label: "Periodontal Disease", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/persistent-metallic-taste", label: "Persistent Metallic Taste", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/root-exposure", label: "Root Exposure", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/sensitive-teeth", label: "Sensitive Teeth (Symptom)", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/symptoms/swollen-gums", label: "Swollen Gums", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/symptoms/swollen-lymph-nodes-dental", label: "Swollen Lymph Nodes (Dental)", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/teeth-grinding", label: "Teeth Grinding (Symptom)", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/tmj-disorder", label: "TMJ Disorder (Symptom)", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/tongue-pain", label: "Tongue Pain", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/tooth-discoloration", label: "Tooth Discoloration", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/symptoms/tooth-migration", label: "Tooth Migration", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/tooth-pain-when-biting", label: "Tooth Pain When Biting", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/symptoms/tooth-sensitivity", label: "Tooth Sensitivity", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/symptoms/tooth-staining", label: "Tooth Staining", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
-  { path: "/symptoms/toothache", label: "Toothache (Symptom)", type: "Symptom", priority: "0.8", changefreq: "monthly", lastmod: "2026-04-01" },
+  // ── Symptoms — client-side redirect aliases (no content, pending server-side 301) ──
+  // Same as above — not in symptomsData, bounce via window.location.replace().
+  { path: "/symptoms/cracked-tooth", label: "Cracked Tooth (client redirect alias)", type: "Symptom" },
+  { path: "/symptoms/loose-tooth", label: "Loose Tooth (client redirect alias)", type: "Symptom" },
+  { path: "/symptoms/sensitive-teeth", label: "Sensitive Teeth (client redirect alias)", type: "Symptom" },
+  { path: "/symptoms/tooth-sensitivity", label: "Tooth Sensitivity (client redirect alias)", type: "Symptom" },
+  { path: "/symptoms/toothache", label: "Toothache (client redirect alias)", type: "Symptom" },
 
   // ── Treatments ────────────────────────────────────────────────────────────
   { path: "/treatments/bone-grafting", label: "Bone Grafting", type: "Treatment", priority: "0.85", changefreq: "monthly" },
@@ -220,24 +217,7 @@ export const staticRoutes: RouteEntry[] = [
   { path: "/dental-costs/dental-cleaning", label: "Dental Cleaning Cost (redirect alias)", type: "Dental Cost", inSitemap: false },
   { path: "/dental-costs/dental-implants-cost", label: "Dental Implants Cost (redirect alias)", type: "Dental Cost", inSitemap: false },
 
-  // ── Guides ────────────────────────────────────────────────────────────────
-  { path: "/guides/affordable-dental-care", label: "Affordable Dental Care", type: "Guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/guides/brushing-guide", label: "Brushing Guide", type: "Guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/guides/complete-oral-health-routine", label: "Complete Oral Health Routine", type: "Guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/guides/crowns-vs-fillings", label: "Crowns vs Fillings", type: "Guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/guides/dental-emergencies-on-a-budget", label: "Dental Emergencies on a Budget", type: "Guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/guides/dental-insurance-alternatives", label: "Dental Insurance Alternatives", type: "Guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/guides/dental-visit-guide", label: "Dental Visit Guide", type: "Guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/guides/diy-dental-care", label: "DIY Dental Care", type: "Guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/guides/do-you-need-root-canal", label: "Do You Need a Root Canal?", type: "Guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/guides/flossing-guide", label: "Flossing Guide", type: "Guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/guides/gum-disease-prevention", label: "Gum Disease Prevention", type: "Guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/guides/how-to-prevent-cavities", label: "How to Prevent Cavities", type: "Guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/guides/implants-vs-bridges", label: "Implants vs Bridges", type: "Guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/guides/natural-teeth-whitening", label: "Natural Teeth Whitening", type: "Guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/guides/oral-health-life-stages", label: "Oral Health Life Stages", type: "Guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/guides/preventing-expensive-dental-problems", label: "Preventing Expensive Dental Problems", type: "Guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
-  { path: "/guides/when-to-get-dental-second-opinion", label: "When to Get a Dental Second Opinion", type: "Guide", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
+  // ── Guides — redirect aliases (no content, pending server-side 301) ───────
   // Redirect aliases — excluded from sitemap
   { path: "/guides/teeth-whitening", label: "Teeth Whitening Guide (redirect alias)", type: "Guide", inSitemap: false },
   { path: "/guides/when-to-get-second-opinion", label: "When to Get Second Opinion (redirect alias)", type: "Guide", inSitemap: false },
@@ -262,4 +242,18 @@ export const staticRoutes: RouteEntry[] = [
   { path: "/dental-emergencies/dental-emergency-guide", label: "Dental Emergency Guide", type: "Dental Emergency", priority: "0.85", changefreq: "monthly" },
   { path: "/dental-emergencies/knocked-out-tooth", label: "Knocked Out Tooth", type: "Dental Emergency", priority: "0.85", changefreq: "monthly" },
   { path: "/dental-emergencies/severe-toothache", label: "Severe Toothache", type: "Dental Emergency", priority: "0.85", changefreq: "monthly" },
+];
+
+/**
+ * Complete route manifest: static routes + data-derived symptom/condition/guide entries.
+ *
+ * Symptoms, conditions, and guides are derived from their data files at module
+ * load time. Any new entry added to those files automatically appears here —
+ * no manual update to this manifest required.
+ */
+export const staticRoutes: RouteEntry[] = [
+  ...staticOnlyRoutes,
+  ...derivedSymptoms,
+  ...derivedConditions,
+  ...derivedGuides,
 ];

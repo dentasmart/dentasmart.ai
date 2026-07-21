@@ -1841,3 +1841,22 @@
 - [x] Change 3: Add redirect-source exclusion to generateBlogSitemap()
 - [x] Verify: set-based diff — Phase 1 total 314, Phase 2 total 322, net +8 added, 0 removed, 9 index pages moved between sitemaps (no URL loss). No redirect sources in output.
 - [x] Save checkpoint and push to GitHub
+
+## Sitemap Fix 1 — Add 3 missing symptom slugs
+- [x] Add /symptoms/headache, /symptoms/receding-gums, /symptoms/white-tongue to shared/routes.ts
+- [x] Confirmed: all 3 present in sitemap-symptoms, gone from /admin/pages Orphaned list
+- [x] Confirmed: /symptoms/tooth-pain and /symptoms/dental-headache correctly absent (no content in symptomsData)
+- [x] Confirmed: /treatments/teeth-whitening correctly absent (enabled redirect source)
+- [x] sitemap-symptoms: 38 → 41 (+3), total: 322 → 325 (+3)
+
+## Sitemap Fix 2 — Derive symptoms/conditions/guides from data files
+- [x] Rewrite shared/routes.ts: import symptomsData, conditionsData, guidesData; derive RouteEntry arrays at module load time
+- [x] Keep 9 client-side redirect aliases as hardcoded entries (Option A — pending server-side 301 conversion)
+- [x] Keep 2 guide redirect aliases as hardcoded inSitemap:false entries
+- [x] TypeScript: clean (tsc --noEmit passes)
+- [x] Set-based diff vs Fix 1 baseline: 0 added, 0 removed, all 12 sitemaps unchanged (325 → 325)
+- [ ] Future: convert 9 client-side redirect aliases to server-side 301s (separate task)
+
+## Stale meta entries — flagged for cleanup (do not delete yet)
+- [ ] /symptoms/tooth-pain — has staticMeta entry but renders "Symptom Not Found" (slug not in symptomsData)
+- [ ] /symptoms/dental-headache — has staticMeta entry but renders "Symptom Not Found" (slug not in symptomsData)
