@@ -1961,3 +1961,9 @@
 - [x] Move categoryData to client/src/data/hubCategories.ts and derive /hub/* staticRoutes entries from its keys
 - [x] Fix redirect loop guard: normalise trailing slash on targetPath before comparing
 - [x] Reject self-redirects at save time in upsertRedirect (server-side validation, trailing-slash normalised)
+
+## /hub/xrays sitemap + trailing-slash normalisation (2026-07-22)
+- [x] resolveRedirect: try path then path+"/" as fallback (trailing-slash tolerant)
+- [x] DB fix: UPDATE redirects SET sourcePath='/hub/xrays' WHERE sourcePath='/hub/xrays/'
+- [x] upsertRedirect: normalise sourcePath (strip trailing slash except root) before saving
+- [x] DB fix: normalise /hub/symptoms target to https://dentasmart.ai (remove trailing slash)

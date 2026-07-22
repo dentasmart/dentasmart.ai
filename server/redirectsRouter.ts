@@ -39,11 +39,15 @@ export const redirectsRouter = router({
       })
     )
     .mutation(async ({ input }) => {
-      // Self-redirect guard — normalise trailing slashes on both sides so that
-      // /hub/costs → /hub/costs/ is caught at save time (not just at runtime).
+      // Normalise sourcePath: strip trailing slash (except root "/") so the
+      // middleware can always match it against the incoming request path.
+      // e.g. /hub/xrays/ → /hub/xrays
       const normPath = (p: string) =>
         p.endsWith('/') && p.length > 1 ? p.slice(0, -1) : p;
-      if (normPath(input.sourcePath) === normPath(input.targetPath)) {
+      const normalisedSource = normPath(input.sourcePath);
+
+      // Self-redirect guard — normalise both sides before comparing.
+      if (normalisedSource === normPath(input.targetPath)) {
         throw new TRPCError({
           code: "BAD_REQUEST",
           message: "Source and target paths cannot be the same (self-redirect)",
@@ -51,7 +55,7 @@ export const redirectsRouter = router({
       }
 
       await upsertRedirect({
-        sourcePath: input.sourcePath,
+        sourcePath: normalisedSource,  // normalised: trailing slash stripped
         targetPath: input.targetPath,
         statusCode: input.statusCode,
         isEnabled: input.isEnabled,

@@ -75,7 +75,10 @@ export async function resolveRedirect(path: string): Promise<{
     await loadRedirectCache();
   }
 
-  const entry = redirectCache.get(path) ?? null;
+  // Trailing-slash tolerant: try exact path first, then with trailing slash.
+  // This handles cases where a sourcePath was saved with a trailing slash
+  // (e.g. /hub/xrays/) but the incoming request path has none.
+  const entry = redirectCache.get(path) ?? redirectCache.get(path + "/") ?? null;
   return { entry, cacheIsLoaded: cacheLoaded };
 }
 
