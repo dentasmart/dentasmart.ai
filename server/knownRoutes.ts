@@ -64,7 +64,7 @@ async function getBlogSlugSet(): Promise<Set<string>> {
 const STATIC_EXTENSIONS = new Set([
   "js", "css", "png", "jpg", "jpeg", "gif", "svg", "ico",
   "woff", "woff2", "ttf", "eot", "otf", "webp", "avif",
-  "map", "json", "txt", "xml", "pdf", "mp4", "webm", "mp3",
+  "map", "json", "txt", "xml", "pdf", "mp4", "webm", "mp3", "webmanifest",
 ]);
 
 /**
@@ -83,14 +83,18 @@ export async function isKnownRoute(rawPath: string): Promise<boolean> {
   // 2. API / tRPC / OAuth — never log
   if (pathLower.startsWith("/api")) return true;
 
-  // 3. Static asset extensions (restricted allowlist)
+  // 3. Vite/build-tool internal paths — never valid in production, skip unconditionally
+  //    (/@vite, /@react-refresh, /@fs/..., /src/*, /node_modules/*)
+  if (pathLower.startsWith("/@") || pathLower.startsWith("/src/") || pathLower.startsWith("/node_modules/")) return true;
+
+  // 4. Static asset extensions (restricted allowlist)
   const ext = pathLower.split(".").pop() ?? "";
   if (STATIC_EXTENSIONS.has(ext)) return true;
 
-  // 4. Exact static path match (with or without trailing slash)
+  // 5. Exact static path match (with or without trailing slash)
   if (staticPathSet.has(path) || staticPathSet.has(path + "/")) return true;
 
-  // 5. Dynamic routes — valid slug check using data-file keys
+  // 6. Dynamic routes — valid slug check using data-file keys
   const parts = pathLower.split("/").filter(Boolean);
   if (parts.length === 2) {
     const [prefix, slug] = parts;
@@ -99,7 +103,7 @@ export async function isKnownRoute(rawPath: string): Promise<boolean> {
     if (prefix === "guides" && validGuideSlugs.has(slug)) return true;
   }
 
-  // 6. Blog posts — /oral-health-hub/:slug (with or without trailing slash)
+  // 7. Blog posts — /oral-health-hub/:slug (with or without trailing slash)
   if (parts.length === 2 && parts[0] === "oral-health-hub") {
     const slugSet = await getBlogSlugSet();
     if (slugSet.has(parts[1])) return true;
@@ -119,6 +123,9 @@ export function isKnownRouteSync(rawPath: string): boolean {
 
   if (pathLower.startsWith("/admin")) return true;
   if (pathLower.startsWith("/api")) return true;
+
+  // Vite/build-tool internal paths — skip unconditionally
+  if (pathLower.startsWith("/@") || pathLower.startsWith("/src/") || pathLower.startsWith("/node_modules/")) return true;
 
   const ext = pathLower.split(".").pop() ?? "";
   if (STATIC_EXTENSIONS.has(ext)) return true;

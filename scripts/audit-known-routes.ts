@@ -183,4 +183,5 @@ if (failures > 0) {
   process.exit(1);
 } else {
   console.log("\n✅ All checks passed — safe to deploy dry-run middleware.");
+  process.exit(0); // explicit exit so fetch sockets don't keep process alive
 }
