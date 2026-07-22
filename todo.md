@@ -1889,3 +1889,10 @@
 - [x] AdminPages.tsx: update TYPE_COLORS and StatCard for "Orphaned-Redirected" state
 - [x] AdminPages.tsx: "Orphaned Meta" card counts only "Orphaned" (needs action), separate display for "Orphaned-Redirected"
 - [x] AdminPages.tsx: "Stale — safe to delete" badge + delete button for "Orphaned-Redirected" rows
+
+## Sitemap duplicate <loc> fix (Jul 2026)
+
+- [x] shared/routes.ts: remove 4 hardcoded duplicate entries (/conditions/cavities, /conditions/oral-thrush, /symptoms/loose-tooth, /symptoms/tooth-sensitivity) that duplicated deriveEntries output
+- [x] shared/routes.ts: update comments to explain which slugs must NOT be hardcoded (those already in conditionsData/symptomsData)
+- [x] Verified: raw <loc> 326 → 322 (−4), unique URLs 322 → 322 (unchanged), /admin/pages Total Pages 190 → 186
+- [x] Standing change: verification script now reports both raw <loc> count AND unique URL set for every future sitemap change
