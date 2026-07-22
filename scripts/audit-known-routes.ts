@@ -8,6 +8,10 @@
  *  3. Every published blog slug from the DB → /oral-health-hub/:slug → must return true
  *  4. Cross-reference: every hardcoded /oral-health-hub/:slug in App.tsx must be
  *     PUBLISHED in the DB — if not, report whether it has an enabled redirect
+ *  5. Reverse check: every staticRoutes entry with inSitemap:true must have a
+ *     matching App.tsx route that renders real content (not a JS shim).
+ *     JS shims (window.location.replace) are flagged as WARN and must be
+ *     set to inSitemap:false.
  *
  * Run: npx tsx scripts/audit-known-routes.ts
  */
@@ -25,6 +29,7 @@ const projectRoot = resolve(__dirname, "..");
 
 // ── Import the isKnownRouteSync function ──────────────────────────────────────
 import { isKnownRouteSync } from "../server/knownRoutes";
+import { staticRoutes } from "../shared/routes";
 
 // ── Load DB data ──────────────────────────────────────────────────────────────
 const conn = await createConnection(process.env.DATABASE_URL!);
@@ -167,6 +172,70 @@ if (unpublishedCount === 0) {
   console.log("  → All App.tsx /oral-health-hub/:slug routes are published ✓");
 } else {
   console.log(`  → ${unpublishedCount} App.tsx hub routes are not published`);
+}
+
+// ── Check 5: Reverse check — staticRoutes inSitemap:true → App.tsx route ────────
+console.log("\n=== Check 5: Reverse check (staticRoutes → App.tsx) ===");
+
+// JS shims are App.tsx routes that call window.location.replace() — they render
+// no content and must be inSitemap:false. Detect them by matching the pattern in
+// App.tsx: <Route path="/...">{ () => { window.location.replace(...)  }}
+//
+// ⚠️  BEST-EFFORT: This regex matches the specific inline-arrow-function pattern
+// used for shims today. It will miss shims written differently (e.g. extracted
+// into a component, using useEffect, or using navigate()). A green Check 5 does
+// NOT guarantee that all inSitemap:true entries render real content — it only
+// catches shims that match the pattern above. Always verify new pages manually.
+// (Same limitation that caused the /conditions/cavities false positive.)
+const jsShimPaths = new Set(
+  [...appTsx.matchAll(/[<\s]Route[^>]*\bpath=["']([^"']+)["'][^>]*>\s*\{\s*\(\s*\)\s*=>\s*\{\s*window\.location\.replace/g)]
+    .map((m) => m[1])
+);
+
+// Dynamic route prefixes — these cover all slugs under a pattern
+const dynamicPrefixes = [
+  "/oral-health-hub/",
+  "/conditions/",
+  "/symptoms/",
+  "/guides/",
+  "/hub/",
+  "/compare/",
+];
+
+// Build a set of all static App.tsx paths (non-dynamic, non-admin)
+const appPathSet = new Set(appPaths);
+
+let reverseWarnings = 0;
+let reverseFailures = 0;
+
+for (const route of staticRoutes) {
+  if (route.inSitemap === false) continue; // explicitly excluded — skip
+
+  const p = route.path;
+
+  // Dynamic routes are covered by a :slug catch-all — not a soft 404
+  if (dynamicPrefixes.some((prefix) => p.startsWith(prefix))) continue;
+
+  // Check if the path exists in App.tsx at all
+  if (!appPathSet.has(p)) {
+    console.log(`  FAIL  ${p}  [in staticRoutes inSitemap:true but NO App.tsx route]`);
+    failedPaths.push(`${p} [staticRoutes→App.tsx reverse check: no route]`);
+    failures++;
+    reverseFailures++;
+    continue;
+  }
+
+  // Check if it's a JS shim (renders no content)
+  if (jsShimPaths.has(p)) {
+    console.log(`  WARN  ${p}  [JS shim — renders no content, should be inSitemap:false]`);
+    reverseWarnings++;
+  }
+}
+
+if (reverseFailures === 0 && reverseWarnings === 0) {
+  console.log("  → All inSitemap:true entries have real App.tsx routes ✓");
+} else {
+  console.log(`  → ${reverseFailures} failures, ${reverseWarnings} warnings`);
 }
 
 // ── Summary ───────────────────────────────────────────────────────────────────

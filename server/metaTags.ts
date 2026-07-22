@@ -240,11 +240,7 @@ const staticMeta: Record<string, MetaInfo> = {
     description:
       "Got tooth pain when you bite or chew? It could be a few things. Here are the most common causes and what you should do next.",
   },
-  "/symptoms/tooth-pain": {
-    title: "Tooth Pain | Common Causes, Home Relief & When to See a Dentist",
-    description:
-      "Experiencing tooth pain? Learn the most common causes from cavities to infections, quick relief options, and when it's time to see a dentist.",
-  },
+
   "/symptoms/bleeding-gums": {
     title: "Bleeding Gums | Causes, Treatment & Prevention",
     description:
@@ -430,11 +426,7 @@ const staticMeta: Record<string, MetaInfo> = {
     description:
       "Seeing white, lacy patterns in your mouth? It could be oral lichen planus. Learn about the causes, symptoms, and what you can do about this condition.",
   },
-  "/symptoms/dental-headache": {
-    title: "Dental Headaches | When Your Teeth Cause Head Pain",
-    description:
-      "Headaches can come from dental problems like teeth grinding, TMJ, or an infected tooth. Learn how to tell if your teeth are causing your headaches.",
-  },
+
   "/symptoms/receding-gums": {
     title: "Receding Gums | Causes, Treatment & Prevention",
     description:

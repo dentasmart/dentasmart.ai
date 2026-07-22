@@ -195,13 +195,13 @@ const staticOnlyRoutes: RouteEntry[] = [
   { path: "/oral-health-hub/wisdom-teeth-confusion", label: "Wisdom Teeth Confusion (JS redirect alias, server 301 exists)", type: "Hub", inSitemap: false },
 
   // ── Treatments ────────────────────────────────────────────────────────────
-  { path: "/treatments/bone-grafting", label: "Bone Grafting", type: "Treatment", priority: "0.85", changefreq: "monthly" },
+  { path: "/treatments/bone-grafting", label: "Bone Grafting (JS shim — redirects to /treatments)", type: "Treatment", priority: "0.85", changefreq: "monthly", inSitemap: false },
   { path: "/treatments/braces-treatment", label: "Braces Treatment", type: "Treatment", priority: "0.85", changefreq: "monthly" },
   { path: "/treatments/dental-cleaning-procedure", label: "Dental Cleaning Procedure", type: "Treatment", priority: "0.85", changefreq: "monthly" },
   { path: "/treatments/dental-crown-procedure", label: "Dental Crown Procedure", type: "Treatment", priority: "0.85", changefreq: "monthly" },
   { path: "/treatments/dental-implant-procedure", label: "Dental Implant Procedure", type: "Treatment", priority: "0.85", changefreq: "monthly" },
   { path: "/treatments/dentures-treatment", label: "Dentures Treatment", type: "Treatment", priority: "0.85", changefreq: "monthly" },
-  { path: "/treatments/full-mouth-dental-implants", label: "Full Mouth Dental Implants", type: "Treatment", priority: "0.85", changefreq: "monthly" },
+  { path: "/treatments/full-mouth-dental-implants", label: "Full Mouth Dental Implants (JS shim — redirects to /treatments/dental-implant-procedure)", type: "Treatment", priority: "0.85", changefreq: "monthly", inSitemap: false },
   { path: "/treatments/root-canal-procedure", label: "Root Canal Procedure", type: "Treatment", priority: "0.85", changefreq: "monthly" },
   { path: "/treatments/teeth-whitening-procedure", label: "Teeth Whitening Procedure", type: "Treatment", priority: "0.85", changefreq: "monthly" },
   { path: "/treatments/tooth-extraction-procedure", label: "Tooth Extraction Procedure", type: "Treatment", priority: "0.85", changefreq: "monthly" },
