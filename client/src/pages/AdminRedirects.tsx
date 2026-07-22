@@ -213,6 +213,8 @@ export default function AdminRedirects() {
   const upsertMutation = trpc.redirects.upsertRedirect.useMutation({
     onSuccess: (result) => {
       utils.redirects.listRedirects.invalidate();
+      // Part 4a+: creating/editing a redirect resolves 404-log entries for that path
+      utils.notFound.list.invalidate();
       setEditOpen(false);
       if (result.chainWarning) {
         toast.warning("Redirect saved", { description: result.chainWarning });
@@ -278,6 +280,8 @@ export default function AdminRedirects() {
       utils.redirects.listRedirects.invalidate();
       // Part 4a: deleting a redirect may promote an orphan from "redirected" to "needs action"
       utils.pages.listPages.invalidate();
+      // Part 4a+: deleting a redirect un-resolves any 404-log entries for that path
+      utils.notFound.list.invalidate();
       setDeleteTarget(null);
       toast.success("Redirect deleted");
     },

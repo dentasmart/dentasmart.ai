@@ -9,6 +9,7 @@ import {
   RefreshCw,
   ExternalLink,
   Info,
+  CheckCircle2,
 } from "lucide-react";
 import { toast } from "sonner";
 import { Link } from "wouter";
@@ -22,11 +23,17 @@ function formatDate(d: Date | null | undefined): string {
   });
 }
 
+type ShowFilter = "unresolved" | "resolved" | "all";
+
 export default function Admin404s() {
   const utils = trpc.useUtils();
   const [confirmClear, setConfirmClear] = useState(false);
+  const [showFilter, setShowFilter] = useState<ShowFilter>("unresolved");
 
-  const { data: entries = [], isLoading, refetch } = trpc.notFound.list.useQuery();
+  // Bug 1 fix: use invalidate() so the query re-fetches fresh data from the
+  // server.  refetch() on a query that is already stale can silently no-op
+  // when the cache entry is considered fresh by React Query.
+  const { data: entries = [], isLoading } = trpc.notFound.list.useQuery();
 
   const deleteMutation = trpc.notFound.delete.useMutation({
     onSuccess: () => {
@@ -45,9 +52,17 @@ export default function Admin404s() {
     onError: () => toast.error("Clear failed"),
   });
 
-  const dryRunCount = entries.filter((e) => e.isDryRun).length;
-  const enforceCount = entries.filter((e) => !e.isDryRun).length;
+  // ─── Derived stats ────────────────────────────────────────────────────────
+  const resolvedEntries = entries.filter((e) => e.hasRedirect);
+  const unresolvedEntries = entries.filter((e) => !e.hasRedirect);
   const totalHits = entries.reduce((sum, e) => sum + (e.hitCount ?? 0), 0);
+
+  const filteredEntries =
+    showFilter === "unresolved"
+      ? unresolvedEntries
+      : showFilter === "resolved"
+      ? resolvedEntries
+      : entries;
 
   return (
     <AdminLayout activeId="404s">
@@ -64,10 +79,11 @@ export default function Admin404s() {
             </p>
           </div>
           <div className="flex items-center gap-2">
+            {/* Bug 1 fix: invalidate instead of refetch */}
             <Button
               variant="outline"
               size="sm"
-              onClick={() => refetch()}
+              onClick={() => utils.notFound.list.invalidate()}
               disabled={isLoading}
             >
               <RefreshCw className={`w-4 h-4 mr-1 ${isLoading ? "animate-spin" : ""}`} />
@@ -117,31 +133,82 @@ export default function Admin404s() {
           </div>
         </div>
 
-        {/* Summary cards */}
-        <div className="grid grid-cols-3 gap-4">
-          <div className="rounded-lg border bg-card p-4">
+        {/* Summary cards — clickable to filter */}
+        <div className="grid grid-cols-4 gap-4">
+          {/* Total paths */}
+          <button
+            type="button"
+            onClick={() => setShowFilter("all")}
+            className={`rounded-lg border p-4 text-left transition-colors hover:bg-muted/30 ${
+              showFilter === "all" ? "ring-2 ring-primary border-primary" : "bg-card"
+            }`}
+          >
             <div className="text-2xl font-bold text-foreground">{entries.length}</div>
             <div className="text-xs text-muted-foreground uppercase tracking-wide mt-1">Unique Paths</div>
-          </div>
+          </button>
+
+          {/* Total hits */}
           <div className="rounded-lg border bg-card p-4">
             <div className="text-2xl font-bold text-foreground">{totalHits}</div>
             <div className="text-xs text-muted-foreground uppercase tracking-wide mt-1">Total Hits</div>
           </div>
-          <div className="rounded-lg border bg-card p-4">
-            <div className="text-2xl font-bold text-amber-600">{dryRunCount}</div>
-            <div className="text-xs text-muted-foreground uppercase tracking-wide mt-1">
-              Dry-run / {enforceCount} Enforce
-            </div>
-          </div>
+
+          {/* Unresolved — needs action */}
+          <button
+            type="button"
+            onClick={() => setShowFilter("unresolved")}
+            className={`rounded-lg border p-4 text-left transition-colors hover:bg-muted/30 ${
+              showFilter === "unresolved" ? "ring-2 ring-amber-500 border-amber-400" : "bg-card"
+            }`}
+          >
+            <div className="text-2xl font-bold text-amber-600">{unresolvedEntries.length}</div>
+            <div className="text-xs text-muted-foreground uppercase tracking-wide mt-1">Unresolved</div>
+          </button>
+
+          {/* Resolved — redirect exists */}
+          <button
+            type="button"
+            onClick={() => setShowFilter("resolved")}
+            className={`rounded-lg border p-4 text-left transition-colors hover:bg-muted/30 ${
+              showFilter === "resolved" ? "ring-2 ring-green-500 border-green-400" : "bg-card"
+            }`}
+          >
+            <div className="text-2xl font-bold text-green-600">{resolvedEntries.length}</div>
+            <div className="text-xs text-muted-foreground uppercase tracking-wide mt-1">Resolved</div>
+          </button>
         </div>
+
+        {/* Active filter banner */}
+        {showFilter !== "all" && (
+          <div className="flex items-center justify-between rounded-lg border bg-muted/30 px-4 py-2 text-sm">
+            <span className="text-muted-foreground">
+              Showing{" "}
+              <strong className="text-foreground">
+                {showFilter === "unresolved" ? "Unresolved" : "Resolved"} only
+              </strong>{" "}
+              ({filteredEntries.length} of {entries.length})
+            </span>
+            <button
+              type="button"
+              onClick={() => setShowFilter("all")}
+              className="text-primary hover:underline text-xs font-medium"
+            >
+              Show all
+            </button>
+          </div>
+        )}
 
         {/* Table */}
         <div className="rounded-lg border bg-card overflow-hidden">
           {isLoading ? (
             <div className="p-8 text-center text-muted-foreground text-sm">Loading…</div>
-          ) : entries.length === 0 ? (
+          ) : filteredEntries.length === 0 ? (
             <div className="p-8 text-center text-muted-foreground text-sm">
-              No unknown paths logged yet. Check back after some traffic.
+              {showFilter === "unresolved"
+                ? "No unresolved paths — all logged paths have redirects."
+                : showFilter === "resolved"
+                ? "No resolved paths yet. Create redirects for logged paths to resolve them."
+                : "No unknown paths logged yet. Check back after some traffic."}
             </div>
           ) : (
             <div className="overflow-x-auto">
@@ -152,13 +219,13 @@ export default function Admin404s() {
                     <th className="text-right px-4 py-3 font-medium text-muted-foreground w-16">Hits</th>
                     <th className="text-left px-4 py-3 font-medium text-muted-foreground w-28">First Seen</th>
                     <th className="text-left px-4 py-3 font-medium text-muted-foreground w-28">Last Seen</th>
-                    <th className="text-left px-4 py-3 font-medium text-muted-foreground w-24">Mode</th>
+                    <th className="text-left px-4 py-3 font-medium text-muted-foreground w-28">Status</th>
                     <th className="text-left px-4 py-3 font-medium text-muted-foreground">Last Referrer</th>
                     <th className="text-right px-4 py-3 font-medium text-muted-foreground w-28">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {entries.map((entry) => (
+                  {filteredEntries.map((entry) => (
                     <tr key={entry.id} className="border-b last:border-0 hover:bg-muted/20 transition-colors">
                       <td className="px-4 py-3 font-mono text-xs">
                         <div className="flex items-center gap-2">
@@ -177,7 +244,12 @@ export default function Admin404s() {
                       <td className="px-4 py-3 text-muted-foreground text-xs">{formatDate(entry.firstSeenAt)}</td>
                       <td className="px-4 py-3 text-muted-foreground text-xs">{formatDate(entry.lastSeenAt)}</td>
                       <td className="px-4 py-3">
-                        {entry.isDryRun ? (
+                        {entry.hasRedirect ? (
+                          <Badge className="bg-green-100 text-green-700 border-green-200 text-xs gap-1 hover:bg-green-100">
+                            <CheckCircle2 className="w-3 h-3" />
+                            Resolved
+                          </Badge>
+                        ) : entry.isDryRun ? (
                           <Badge variant="outline" className="text-amber-600 border-amber-300 text-xs">Dry Run</Badge>
                         ) : (
                           <Badge variant="destructive" className="text-xs">Enforce</Badge>
@@ -188,11 +260,13 @@ export default function Admin404s() {
                       </td>
                       <td className="px-4 py-3 text-right">
                         <div className="flex items-center justify-end gap-1">
-                          <Link href={`/admin/redirects?prefill=${encodeURIComponent(entry.path)}`}>
-                            <Button variant="outline" size="sm" className="text-xs h-7 px-2">
-                              + Redirect
-                            </Button>
-                          </Link>
+                          {!entry.hasRedirect && (
+                            <Link href={`/admin/redirects?prefill=${encodeURIComponent(entry.path)}`}>
+                              <Button variant="outline" size="sm" className="text-xs h-7 px-2">
+                                + Redirect
+                              </Button>
+                            </Link>
+                          )}
                           <Button
                             variant="ghost"
                             size="sm"
