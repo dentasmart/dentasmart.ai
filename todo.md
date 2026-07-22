@@ -1942,3 +1942,12 @@
 - [x] Admin404s.tsx: default table to Unresolved only, with toggle to show Resolved
 - [x] redirectsRouter.ts: invalidate notFound.list on upsertRedirect and deleteRedirect onSuccess (cross-invalidation)
 - [x] Admin404s.tsx: invalidate notFound.list instead of refetch() in Refresh button onClick
+
+## Bundled audit fixes (2026-07-22)
+- [x] Footer.tsx line 189: href="/compare" → "/comparisons"
+- [x] shared/routes.ts: set /treatments/bone-grafting inSitemap:false (priority/changefreq preserved)
+- [x] shared/routes.ts: set /treatments/full-mouth-dental-implants inSitemap:false (priority/changefreq preserved)
+- [x] server/metaTags.ts: delete /symptoms/tooth-pain entry
+- [x] server/metaTags.ts: delete /symptoms/dental-headache entry
+- [x] scripts/audit-known-routes.ts: add Check 5 reverse check with best-effort caveat comment
+- [x] Verify: TypeScript 0 errors; sitemap delta -2 <loc> (bone-grafting, full-mouth-dental-implants); Orphaned drops by 2 after deploy
