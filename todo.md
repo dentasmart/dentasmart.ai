@@ -1932,3 +1932,13 @@
 - [x] scripts/audit-known-routes.ts: completeness audit (744 PASS, 0 FAIL)
 - [x] server/not-found.test.ts: 18 Vitest tests (all passing)
 - [x] Sitemap: raw 322, unique 322 (unchanged)
+
+## Admin Panel: /admin/404s bug fixes (2026-07-22)
+- [x] Bug 1 — Refresh button: fix refetch() not working (switch to utils.notFound.list.invalidate())
+- [x] Bug 2 — hasRedirect flag: enrich listNotFound response with hasRedirect (cross-ref enabled redirect sources)
+- [x] notFoundRouter.ts: load enabled redirects in list query, set hasRedirect=true when sourcePath matches logged path
+- [x] Admin404s.tsx: show "Resolved" badge on rows where hasRedirect=true
+- [x] Admin404s.tsx: add Unresolved / Resolved summary cards (replace Dry-run/Enforce card)
+- [x] Admin404s.tsx: default table to Unresolved only, with toggle to show Resolved
+- [x] redirectsRouter.ts: invalidate notFound.list on upsertRedirect and deleteRedirect onSuccess (cross-invalidation)
+- [x] Admin404s.tsx: invalidate notFound.list instead of refetch() in Refresh button onClick
