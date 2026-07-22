@@ -1951,3 +1951,13 @@
 - [x] server/metaTags.ts: delete /symptoms/dental-headache entry
 - [x] scripts/audit-known-routes.ts: add Check 5 reverse check with best-effort caveat comment
 - [x] Verify: TypeScript 0 errors; sitemap delta -2 <loc> (bone-grafting, full-mouth-dental-implants); Orphaned drops by 2 after deploy
+
+## /hub/* pages missing from staticRoutes (2026-07-22)
+- [ ] Verify /hub/costs, /hub/gums, /hub/cavities, /hub/xrays, /hub/symptoms are real pages
+- [ ] Add all 5 to staticRoutes with correct type and inSitemap:true
+- [ ] Report sitemap delta with raw <loc> and unique counts
+
+## /hub/* derive + loop guard fixes (2026-07-22)
+- [x] Move categoryData to client/src/data/hubCategories.ts and derive /hub/* staticRoutes entries from its keys
+- [x] Fix redirect loop guard: normalise trailing slash on targetPath before comparing
+- [x] Reject self-redirects at save time in upsertRedirect (server-side validation, trailing-slash normalised)

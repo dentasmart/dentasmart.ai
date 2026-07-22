@@ -39,11 +39,14 @@ export const redirectsRouter = router({
       })
     )
     .mutation(async ({ input }) => {
-      // Self-redirect guard
-      if (input.sourcePath === input.targetPath) {
+      // Self-redirect guard — normalise trailing slashes on both sides so that
+      // /hub/costs → /hub/costs/ is caught at save time (not just at runtime).
+      const normPath = (p: string) =>
+        p.endsWith('/') && p.length > 1 ? p.slice(0, -1) : p;
+      if (normPath(input.sourcePath) === normPath(input.targetPath)) {
         throw new TRPCError({
           code: "BAD_REQUEST",
-          message: "Source and target paths cannot be the same",
+          message: "Source and target paths cannot be the same (self-redirect)",
         });
       }
 

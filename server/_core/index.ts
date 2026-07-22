@@ -144,8 +144,13 @@ async function startServer() {
         // Disabled entry is a positive signal — do not redirect, do not fall through to dict
         return next();
       }
-      // Loop guard: skip if source === target (should never happen after save validation)
-      if (matched.targetPath === path || matched.targetPath === pathNoSlash) {
+      // Loop guard: normalise trailing slash on BOTH sides before comparing.
+      // Without this, /hub/costs → /hub/costs/ would not be caught because
+      // targetPath "/hub/costs/" !== path "/hub/costs".
+      const targetNorm = matched.targetPath.endsWith('/') && matched.targetPath.length > 1
+        ? matched.targetPath.slice(0, -1)
+        : matched.targetPath;
+      if (targetNorm === path || targetNorm === pathNoSlash) {
         console.warn(`[redirects] Loop detected for path: ${path} → ${matched.targetPath}`);
         return next();
       }

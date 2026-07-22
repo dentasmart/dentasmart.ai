@@ -32,6 +32,7 @@
 import { symptomsData } from "../client/src/data/symptoms";
 import { conditionsData } from "../client/src/data/conditions";
 import { guidesData } from "../client/src/data/guides";
+import { hubCategoryData } from "../client/src/data/hubCategories";
 
 export type PageType =
   | "Single Page"
@@ -89,6 +90,16 @@ const derivedSymptoms = deriveEntries(symptomsData, "/symptoms/", "Symptom", "0.
 const derivedConditions = deriveEntries(conditionsData, "/conditions/", "Condition", "0.8", "monthly");
 const derivedGuides = deriveEntries(guidesData, "/guides/", "Guide", "0.8", "monthly");
 
+// /hub/:category pages — derived from hubCategoryData so adding a new category
+// automatically produces a staticRoute + sitemap entry without manual edits here.
+const derivedHubCategories: RouteEntry[] = Object.keys(hubCategoryData).map((slug) => ({
+  path: `/hub/${slug}`,
+  label: `Hub: ${hubCategoryData[slug].heading}`,
+  type: "Hub" as const,
+  priority: "0.8",
+  changefreq: "weekly" as const,
+}));
+
 // ── Static route manifest ─────────────────────────────────────────────────────
 
 const staticOnlyRoutes: RouteEntry[] = [
@@ -145,6 +156,7 @@ const staticOnlyRoutes: RouteEntry[] = [
   { path: "/oral-health-hub/conditions", label: "Hub: Conditions", type: "Hub", priority: "0.9", changefreq: "weekly" },
   { path: "/oral-health-hub/symptoms", label: "Hub: Symptoms", type: "Hub", priority: "0.9", changefreq: "weekly" },
   // /hub/* redirect aliases — excluded from sitemap
+  // NOTE: /hub/* content pages are derived from hubCategoryData in derivedHubCategories below.
   { path: "/hub/affordability", label: "Hub: Affordability (redirect alias)", type: "Hub", inSitemap: false },
   { path: "/hub/cost-and-insurance", label: "Hub: Cost & Insurance (redirect alias)", type: "Hub", inSitemap: false },
   { path: "/hub/dental-technology", label: "Hub: Dental Technology (redirect alias)", type: "Hub", inSitemap: false },
@@ -257,15 +269,16 @@ const staticOnlyRoutes: RouteEntry[] = [
 ];
 
 /**
- * Complete route manifest: static routes + data-derived symptom/condition/guide entries.
+ * Complete route manifest: static routes + data-derived entries.
  *
- * Symptoms, conditions, and guides are derived from their data files at module
- * load time. Any new entry added to those files automatically appears here —
- * no manual update to this manifest required.
+ * Symptoms, conditions, guides, and hub categories are derived from their data
+ * files at module load time. Any new entry added to those files automatically
+ * appears here — no manual update to this manifest required.
  */
 export const staticRoutes: RouteEntry[] = [
   ...staticOnlyRoutes,
   ...derivedSymptoms,
   ...derivedConditions,
   ...derivedGuides,
+  ...derivedHubCategories,
 ];
