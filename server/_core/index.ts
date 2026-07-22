@@ -11,6 +11,8 @@ import { createContext } from "./context";
 import { serveStatic, setupVite } from "./vite";
 import { registerSeoRoutes } from "../seo";
 import { resolveRedirect } from "../redirectCache";
+import { isKnownRoute } from "../knownRoutes";
+import { upsertNotFoundHit } from "../notFoundDb";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -220,6 +222,39 @@ async function startServer() {
       createContext,
     })
   );
+  // ─── 404 Detection Middleware ─────────────────────────────────────────
+  // DRY-RUN MODE: logs unknown paths to not_found_log without returning 404.
+  // To enable real 404 responses, set NOT_FOUND_MODE=enforce in Secrets.
+  // IMPORTANT: This middleware fires AFTER all redirects, SEO routes, and tRPC,
+  // so redirect sources never reach this point and are never logged.
+  app.use(async (req, res, next) => {
+    // Only intercept GET requests for HTML pages
+    if (req.method !== 'GET') return next();
+    // Skip API, assets, and storage paths (already handled above)
+    if (req.path.startsWith('/api') || req.path.startsWith('/assets') || req.path.startsWith('/storage')) {
+      return next();
+    }
+    try {
+      const known = await isKnownRoute(req.path);
+      if (!known) {
+        const referrer = req.headers.referer || req.headers.referrer || null;
+        const isDryRun = process.env.NOT_FOUND_MODE !== 'enforce';
+        // Fire-and-forget — never block the response
+        upsertNotFoundHit(req.path, referrer as string | null, isDryRun).catch(() => {});
+        if (!isDryRun) {
+          // Enforce mode: return 404 status but still serve index.html so React renders a 404 page
+          res.status(404);
+          // Fall through to setupVite/serveStatic which will serve index.html
+          return next();
+        }
+        // Dry-run: log only, continue with 200 as normal
+      }
+    } catch {
+      // Never block on errors in the 404 detector
+    }
+    next();
+  });
+
   // development mode uses Vite, production mode uses static files
   if (process.env.NODE_ENV === "development") {
     await setupVite(app, server);

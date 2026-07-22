@@ -181,6 +181,19 @@ const staticOnlyRoutes: RouteEntry[] = [
   { path: "/symptoms/sensitive-teeth", label: "Sensitive Teeth (client redirect alias)", type: "Symptom" },
   { path: "/symptoms/toothache", label: "Toothache (client redirect alias)", type: "Symptom" },
 
+  // ── Hub — JS redirect aliases (no content, pending server-side 301 conversion) ──
+  // These paths exist in App.tsx as window.location.replace() stubs.
+  // They are excluded from the sitemap but must be in staticRoutes so isKnownRoute()
+  // does not log them as 404s. Convert to server-side 301s to remove these entries.
+  { path: "/oral-health-hub/ai-detect-cavity-dental-xray", label: "AI Detect Cavity (JS redirect alias)", type: "Hub", inSitemap: false },
+  { path: "/oral-health-hub/cavity-symptoms", label: "Cavity Symptoms (JS redirect alias)", type: "Hub", inSitemap: false },
+  { path: "/oral-health-hub/how-to-brush-your-teeth", label: "How to Brush Your Teeth (JS redirect alias)", type: "Hub", inSitemap: false },
+  { path: "/oral-health-hub/tooth-abscess", label: "Tooth Abscess (JS redirect alias)", type: "Hub", inSitemap: false },
+  { path: "/oral-health-hub/tooth-pain", label: "Tooth Pain (JS redirect alias)", type: "Hub", inSitemap: false },
+  { path: "/oral-health-hub/what-are-tonsil-stones-how-to-remove", label: "Tonsil Stones (JS redirect alias)", type: "Hub", inSitemap: false },
+  { path: "/oral-health-hub/what-to-do-when-your-dentist-recommends-expensive-treatment-you-cant-afford", label: "Expensive Treatment (JS redirect alias)", type: "Hub", inSitemap: false },
+  { path: "/oral-health-hub/wisdom-teeth-confusion", label: "Wisdom Teeth Confusion (JS redirect alias, server 301 exists)", type: "Hub", inSitemap: false },
+
   // ── Treatments ────────────────────────────────────────────────────────────
   { path: "/treatments/bone-grafting", label: "Bone Grafting", type: "Treatment", priority: "0.85", changefreq: "monthly" },
   { path: "/treatments/braces-treatment", label: "Braces Treatment", type: "Treatment", priority: "0.85", changefreq: "monthly" },
@@ -195,6 +208,7 @@ const staticOnlyRoutes: RouteEntry[] = [
   { path: "/treatments/veneers-procedure", label: "Veneers Procedure", type: "Treatment", priority: "0.85", changefreq: "monthly" },
   { path: "/treatments/wisdom-teeth-removal", label: "Wisdom Teeth Removal", type: "Treatment", priority: "0.85", changefreq: "monthly" },
   // Redirect aliases — excluded from sitemap
+  { path: "/treatments/teeth-whitening", label: "Teeth Whitening (JS redirect alias, server 301 exists)", type: "Treatment", inSitemap: false },
   { path: "/treatments/dental-crowns", label: "Dental Crowns (redirect alias)", type: "Treatment", inSitemap: false },
   { path: "/treatments/gingivitis", label: "Gingivitis Treatment (redirect alias)", type: "Treatment", inSitemap: false },
   { path: "/treatments/invisalign", label: "Invisalign (redirect alias)", type: "Treatment", inSitemap: false },

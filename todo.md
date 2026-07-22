@@ -1896,3 +1896,39 @@
 - [x] shared/routes.ts: update comments to explain which slugs must NOT be hardcoded (those already in conditionsData/symptomsData)
 - [x] Verified: raw <loc> 326 → 322 (−4), unique URLs 322 → 322 (unchanged), /admin/pages Total Pages 190 → 186
 - [x] Standing change: verification script now reports both raw <loc> count AND unique URL set for every future sitemap change
+
+## Admin Panel: Part 3 — 404 tracking + soft-404 fix (dry-run first)
+
+- [ ] drizzle/schema.ts: add not_found_log table (path, hitCount, firstSeenAt, lastSeenAt, lastReferrer, isDryRun)
+- [ ] Run pnpm db:push to migrate not_found_log to production DB
+- [ ] server/notFoundDb.ts: upsertNotFound(path, referrer, isDryRun) helper using ON DUPLICATE KEY UPDATE
+- [ ] server/knownRoutes.ts: buildKnownRoutes() — derives exact static paths from staticRoutes + published blog slugs from DB; derives valid slug sets from Object.keys(symptomsData/conditionsData/guidesData) for dynamic route matching
+- [ ] server/_core/index.ts: add dry-run 404 middleware AFTER the SPA catch-all — checks path against knownRoutes, logs to not_found_log with isDryRun=true, does NOT return 404
+- [ ] Confirm redirect sources never reach the catch-all (middleware order verification)
+- [ ] server/notFoundRouter.ts: tRPC router with listNotFound (admin-only), clearNotFound, createRedirectFromNotFound
+- [ ] server/routers.ts: wire notFoundRouter into appRouter
+- [ ] client/src/pages/Admin404s.tsx: /admin/404s page — table of logged paths, hit count, first/last seen, referrer, "Create Redirect" button pre-filling the redirect form
+- [ ] client/src/components/AdminRouter.tsx: add /admin/404s route
+- [ ] client/src/components/AdminLayout.tsx: add 404s nav item
+- [ ] server/notFound.test.ts: Vitest tests — auth guard, upsert dedup, dry-run flag, known-route exclusion
+- [ ] Verify: redirect sources (e.g. /conditions/dry-mouth) do NOT appear in not_found_log
+- [ ] Verify: known valid paths (/conditions/cavities, /symptoms/loose-tooth) do NOT log
+- [ ] Verify: unknown path (/conditions/nonexistent) DOES log with isDryRun=true
+- [ ] Verify: server still returns 200 for all paths (dry-run mode, no real 404s)
+
+## Part 3 — 404 tracking + dry-run middleware (2026-07-22)
+
+- [x] drizzle/schema.ts: add not_found_log table (pathHash varchar(64) UNIQUE, path varchar(2000), hitCount, isDryRun, firstSeenAt, lastSeenAt, lastReferrer)
+- [x] DB: not_found_log table created in production via create-not-found-log.mjs script
+- [x] server/notFoundDb.ts: upsertNotFoundHit (SHA-256 hash + ON DUPLICATE KEY UPDATE), listNotFoundEntries, deleteNotFoundEntry, clearNotFoundLog, normalisePath
+- [x] server/knownRoutes.ts: isKnownRoute (async, DB blog slugs), isKnownRouteSync — built from staticRoutes + data-file slug sets + DB blog slugs (same sources as sitemap)
+- [x] shared/routes.ts: add 9 JS redirect alias entries (inSitemap: false) to fix audit false positives
+- [x] server/_core/index.ts: dry-run 404 middleware (after tRPC, before setupVite/serveStatic) — logs unknown paths, NOT_FOUND_MODE=enforce flips on real 404s
+- [x] server/notFoundRouter.ts: admin-only tRPC router (list, delete, clearAll)
+- [x] server/routers.ts: register notFoundRouter as notFound
+- [x] client/src/pages/Admin404s.tsx: /admin/404s page (summary cards, dry-run notice, table with path/hits/dates/mode/referrer/actions)
+- [x] client/src/components/AdminLayout.tsx: add 404 Log nav item (AlertTriangle icon, Tools section) and active mapping
+- [x] client/src/components/AdminRouter.tsx: lazy import Admin404s, add paths.notFound404s, register Route
+- [x] scripts/audit-known-routes.ts: completeness audit (744 PASS, 0 FAIL)
+- [x] server/not-found.test.ts: 18 Vitest tests (all passing)
+- [x] Sitemap: raw 322, unique 322 (unchanged)

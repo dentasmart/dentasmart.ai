@@ -22,6 +22,7 @@ import {
   ImageIcon,
   LayoutGrid,
   ArrowLeftRight,
+  AlertTriangle,
 } from "lucide-react";
 
 interface NavItem {
@@ -72,6 +73,7 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
     if (location.includes("/admin/media-library")) return "media-library";
     if (location.includes("/admin/pages")) return "pages";
     if (location.includes("/admin/redirects")) return "redirects";
+    if (location.includes("/admin/404s")) return "404s";
     if (location.includes("/admin/edit") || location.includes("/admin/new")) return "articles";
     return "articles";
   }, [activeId, location]);
@@ -117,6 +119,13 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
       label: "Redirects",
       icon: <ArrowLeftRight className="w-5 h-5" />,
       path: "/admin/redirects",
+      section: "Tools",
+    },
+    {
+      id: "404s",
+      label: "404 Log",
+      icon: <AlertTriangle className="w-5 h-5" />,
+      path: "/admin/404s",
       section: "Tools",
     },
     {

@@ -358,3 +358,26 @@ export const redirects = mysqlTable("redirects", {
 });
 export type Redirect = typeof redirects.$inferSelect;
 export type InsertRedirect = typeof redirects.$inferInsert;
+
+/**
+ * Not-found log: tracks paths that would 404 (dry-run) or do 404 (enforce).
+ *
+ * pathHash is a SHA-256 hex digest of the normalised path — used as the unique
+ * key to avoid InnoDB's 3072-byte key-length limit on long varchar columns.
+ * path stores the full URL for display purposes (no index needed).
+ *
+ * isDryRun=true  → logged but server still returned 200 (dry-run mode)
+ * isDryRun=false → logged and server returned 404 (enforce mode)
+ */
+export const notFoundLog = mysqlTable("not_found_log", {
+  id:           int("id").autoincrement().primaryKey(),
+  pathHash:     varchar("pathHash", { length: 64 }).notNull().unique(),  // SHA-256 hex
+  path:         varchar("path", { length: 2000 }).notNull(),
+  hitCount:     int("hitCount").default(1).notNull(),
+  isDryRun:     boolean("isDryRun").default(true).notNull(),
+  firstSeenAt:  timestamp("firstSeenAt").defaultNow().notNull(),
+  lastSeenAt:   timestamp("lastSeenAt").defaultNow().onUpdateNow().notNull(),
+  lastReferrer: varchar("lastReferrer", { length: 2000 }),
+});
+export type NotFoundLog = typeof notFoundLog.$inferSelect;
+export type InsertNotFoundLog = typeof notFoundLog.$inferInsert;
