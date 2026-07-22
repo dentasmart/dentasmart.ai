@@ -1,48 +1,12 @@
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import { publicProcedure, router } from "./_core/trpc";
-import { jwtVerify } from "jose";
+import { router } from "./_core/trpc";
+import { adminProcedure } from "./adminAuth";
 import { getDb } from "./db";
 import { mediaItems, blogPosts, mediaReplacementLog } from "../drizzle/schema";
 import { eq, like, desc, or, sql, isNull, inArray } from "drizzle-orm";
 import { storagePut, storageDelete } from "./storage";
 import sharp from "sharp";
-
-// ─── Admin auth (mirrors blogRouter) ─────────────────────────────────────────
-
-const ADMIN_COOKIE_NAME = "blog_admin_session";
-const JWT_SECRET_KEY = process.env.JWT_SECRET || "dentasmart-blog-admin-secret";
-
-async function verifyAdminToken(token: string) {
-  try {
-    const secret = new TextEncoder().encode(JWT_SECRET_KEY);
-    const { payload } = await jwtVerify(token, secret);
-    return payload as { adminId: number; username: string };
-  } catch {
-    return null;
-  }
-}
-
-async function getAdminFromContext(ctx: any) {
-  const cookies = ctx.req?.headers?.cookie || "";
-  const cookieMap = Object.fromEntries(
-    cookies.split(";").map((c: string) => {
-      const [key, ...val] = c.trim().split("=");
-      return [key, val.join("=")];
-    })
-  );
-  const token = cookieMap[ADMIN_COOKIE_NAME];
-  if (!token) return null;
-  return verifyAdminToken(token);
-}
-
-const adminMediaProcedure = publicProcedure.use(async ({ ctx, next }) => {
-  const admin = await getAdminFromContext(ctx);
-  if (!admin) {
-    throw new TRPCError({ code: "UNAUTHORIZED", message: "Admin authentication required" });
-  }
-  return next({ ctx: { ...ctx, admin } });
-});
 
 // ─── Usage cache (5-minute TTL) ──────────────────────────────────────────────
 
@@ -200,7 +164,7 @@ async function deleteStorageVariants(item: {
 
 export const mediaRouter = router({
   // ── List ──────────────────────────────────────────────────────────────────
-  list: adminMediaProcedure
+  list: adminProcedure
     .input(z.object({
       search: z.string().optional(),
       limit: z.number().min(1).max(200).default(100),
@@ -226,7 +190,7 @@ export const mediaRouter = router({
     }),
 
   // ── Get single item ────────────────────────────────────────────────────────
-  get: adminMediaProcedure
+  get: adminProcedure
     .input(z.object({ id: z.number() }))
     .query(async ({ input }) => {
       const db = await getDb();
@@ -240,7 +204,7 @@ export const mediaRouter = router({
     }),
 
   // ── Update metadata ────────────────────────────────────────────────────────
-  update: adminMediaProcedure
+  update: adminProcedure
     .input(z.object({
       id: z.number(),
       altText: z.string().max(500).optional(),
@@ -272,7 +236,7 @@ export const mediaRouter = router({
     }),
 
   // ── Delete single item ─────────────────────────────────────────────────────
-  delete: adminMediaProcedure
+  delete: adminProcedure
     .input(z.object({ id: z.number() }))
     .mutation(async ({ input }) => {
       const db = await getDb();
@@ -294,7 +258,7 @@ export const mediaRouter = router({
     }),
 
   // ── Bulk delete ────────────────────────────────────────────────────────────
-  bulkDelete: adminMediaProcedure
+  bulkDelete: adminProcedure
     .input(z.object({ ids: z.array(z.number()).min(1).max(100) }))
     .mutation(async ({ input }) => {
       const db = await getDb();
@@ -319,7 +283,7 @@ export const mediaRouter = router({
     }),
 
   // ── Check usage ────────────────────────────────────────────────────────────
-  checkUsage: adminMediaProcedure
+  checkUsage: adminProcedure
     .input(z.object({ id: z.number() }))
     .query(async ({ input }) => {
       const db = await getDb();
@@ -333,7 +297,7 @@ export const mediaRouter = router({
     }),
 
   // ── Check usage for multiple items ────────────────────────────────────────
-  checkBulkUsage: adminMediaProcedure
+  checkBulkUsage: adminProcedure
     .input(z.object({ ids: z.array(z.number()).min(1).max(100) }))
     .query(async ({ input }) => {
       const db = await getDb();
@@ -352,7 +316,7 @@ export const mediaRouter = router({
     }),
 
   // ── Register (called by blog editor upload flow) ───────────────────────────
-  register: adminMediaProcedure
+  register: adminProcedure
     .input(z.object({
       url: z.string().url(),
       fileKey: z.string(),
@@ -383,7 +347,7 @@ export const mediaRouter = router({
     }),
 
   // ── Upload single file ─────────────────────────────────────────────────────
-  upload: adminMediaProcedure
+  upload: adminProcedure
     .input(z.object({
       fileName: z.string(),
       fileBase64: z.string(),
@@ -427,7 +391,7 @@ export const mediaRouter = router({
     }),
 
   // ── Upload multiple files ──────────────────────────────────────────────────
-  uploadMultiple: adminMediaProcedure
+  uploadMultiple: adminProcedure
     .input(z.object({
       files: z.array(z.object({
         fileName: z.string(),
@@ -488,7 +452,7 @@ export const mediaRouter = router({
     }),
 
   // ── Back-populate dimensions ───────────────────────────────────────────────
-  backpopulateDimensions: adminMediaProcedure
+  backpopulateDimensions: adminProcedure
     .input(z.object({ dryRun: z.boolean().default(false) }))
     .mutation(async ({ input }) => {
       const db = await getDb();
@@ -540,7 +504,7 @@ export const mediaRouter = router({
     }),
 
   // ── Edit image (crop / resize / rotate) ───────────────────────────────────
-  editImage: adminMediaProcedure
+  editImage: adminProcedure
     .input(z.object({
       id: z.number(),
       saveAs: z.enum(["new", "replace"]),
@@ -640,7 +604,7 @@ export const mediaRouter = router({
     }),
 
   // ── Replace with new image (updates all posts) ────────────────────────────
-  replaceWithNew: adminMediaProcedure
+  replaceWithNew: adminProcedure
     .input(z.object({
       id: z.number(),
       fileName: z.string(),

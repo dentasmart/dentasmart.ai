@@ -22,62 +22,35 @@ import {
   categorySlugExists,
   getSlugAuditResults,
 } from "./blogDb";
-import { SignJWT, jwtVerify } from "jose";
+import { SignJWT } from "jose";
 import { storagePut } from "./storage";
 import { invalidateSitemapCache } from "./seo";
 import { runBlogAgent, listAgentRuns } from "./blogAgent";
 import { getDb, getSetting, setSetting } from "./db";
+import { adminProcedure, ADMIN_COOKIE_NAME, JWT_SECRET, verifyAdminToken, parseCookies } from "./adminAuth";
 
-const ADMIN_COOKIE_NAME = "blog_admin_session";
-const JWT_SECRET_KEY = process.env.JWT_SECRET || "dentasmart-blog-admin-secret";
-
-// Helper to create JWT token
+// Helper to create JWT token (blogRouter-only: signs new sessions on login)
 async function createAdminToken(adminId: number, username: string) {
-  const secret = new TextEncoder().encode(JWT_SECRET_KEY);
   const token = await new SignJWT({ adminId, username })
     .setProtectedHeader({ alg: "HS256" })
     .setExpirationTime("24h")
-    .sign(secret);
+    .sign(JWT_SECRET);
   return token;
 }
 
-// Helper to verify JWT token
-async function verifyAdminToken(token: string) {
-  try {
-    const secret = new TextEncoder().encode(JWT_SECRET_KEY);
-    const { payload } = await jwtVerify(token, secret);
-    return payload as { adminId: number; username: string };
-  } catch {
-    return null;
-  }
-}
-
-// Helper to get admin from context
+// Helper to get admin from context (used by adminMe only)
 async function getAdminFromContext(ctx: any) {
-  const cookies = ctx.req?.headers?.cookie || "";
-  const cookieMap = Object.fromEntries(
-    cookies.split(";").map((c: string) => {
-      const [key, ...val] = c.trim().split("=");
-      return [key, val.join("=")];
-    })
-  );
-  const token = cookieMap[ADMIN_COOKIE_NAME];
+  const cookieHeader = ctx.req?.headers?.cookie || "";
+  const cookies = parseCookies(cookieHeader);
+  const token = cookies[ADMIN_COOKIE_NAME];
   if (!token) return null;
-
   const payload = await verifyAdminToken(token);
   if (!payload) return null;
-
   return await getAdminById(payload.adminId);
 }
 
-// Middleware-like procedure for admin-only blog routes
-const adminBlogProcedure = publicProcedure.use(async ({ ctx, next }) => {
-  const admin = await getAdminFromContext(ctx);
-  if (!admin) {
-    throw new TRPCError({ code: "UNAUTHORIZED", message: "Admin authentication required" });
-  }
-  return next({ ctx: { ...ctx, admin } });
-});
+// Admin-only procedure for blog routes
+const adminBlogProcedure = adminProcedure;
 
 // Generate slug from title
 function generateSlug(title: string): string {

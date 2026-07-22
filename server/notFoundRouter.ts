@@ -1,23 +1,17 @@
 /**
  * tRPC router for the not_found_log admin panel.
- * All procedures are admin-only (protected + role check).
+ * All procedures are admin-only, authenticated via the blog_admin_session
+ * JWT cookie — same pattern as pagesRouter, redirectsRouter, and blogRouter.
  */
 
 import { z } from "zod";
-import { TRPCError } from "@trpc/server";
-import { protectedProcedure, router } from "./_core/trpc";
+import { router } from "./_core/trpc";
+import { adminProcedure } from "./adminAuth";
 import {
   listNotFoundEntries,
   deleteNotFoundEntry,
   clearNotFoundLog,
 } from "./notFoundDb";
-
-const adminProcedure = protectedProcedure.use(({ ctx, next }) => {
-  if (ctx.user.role !== "admin") {
-    throw new TRPCError({ code: "FORBIDDEN", message: "Admin only" });
-  }
-  return next({ ctx });
-});
 
 export const notFoundRouter = router({
   /** List all not-found log entries, ordered by hit count descending. */

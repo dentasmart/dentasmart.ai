@@ -11,59 +11,21 @@
  */
 
 import { TRPCError } from "@trpc/server";
-import { jwtVerify } from "jose";
 import { z } from "zod";
-import { publicProcedure, router } from "./_core/trpc";
+import { router } from "./_core/trpc";
+import { adminProcedure } from "./adminAuth";
 import { getAllRedirects, upsertRedirect, deleteRedirect } from "./redirectDb";
 import { clearRedirectCache } from "./redirectCache";
 
-// ─── Admin auth (mirrors pagesRouter / blogRouter) ───────────────────────────
-const ADMIN_COOKIE_NAME = "blog_admin_session";
-const JWT_SECRET = new TextEncoder().encode(
-  process.env.JWT_SECRET || "dentasmart-admin-secret-key-2024"
-);
-
-async function verifyAdminToken(token: string) {
-  try {
-    const { payload } = await jwtVerify(token, JWT_SECRET);
-    return payload as { adminId: number; username: string };
-  } catch {
-    return null;
-  }
-}
-
-function parseCookies(cookieHeader: string): Record<string, string> {
-  return Object.fromEntries(
-    cookieHeader.split(";").map((c) => {
-      const [key, ...val] = c.trim().split("=");
-      return [key, val.join("=")];
-    })
-  );
-}
-
-const adminRedirectsProcedure = publicProcedure.use(async ({ ctx, next }) => {
-  const cookieHeader = (ctx as any).req?.headers?.cookie ?? "";
-  const cookies = parseCookies(cookieHeader);
-  const token = cookies[ADMIN_COOKIE_NAME];
-  if (!token) {
-    throw new TRPCError({ code: "UNAUTHORIZED", message: "Admin authentication required" });
-  }
-  const payload = await verifyAdminToken(token);
-  if (!payload) {
-    throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid or expired admin session" });
-  }
-  return next({ ctx });
-});
-
 // ─── Router ──────────────────────────────────────────────────────────────────
 export const redirectsRouter = router({
-  listRedirects: adminRedirectsProcedure.query(async () => {
+  listRedirects: adminProcedure.query(async () => {
     const rows = await getAllRedirects();
     // Return newest first for the admin table
     return [...rows].reverse();
   }),
 
-  upsertRedirect: adminRedirectsProcedure
+  upsertRedirect: adminProcedure
     .input(
       z.object({
         id: z.number().optional(),
@@ -108,7 +70,7 @@ export const redirectsRouter = router({
       return { success: true, chainWarning };
     }),
 
-  deleteRedirect: adminRedirectsProcedure
+  deleteRedirect: adminProcedure
     .input(z.object({ id: z.number().int() }))
     .mutation(async ({ input }) => {
       await deleteRedirect(input.id);

@@ -10,10 +10,10 @@
  */
 
 import { TRPCError } from "@trpc/server";
-import { jwtVerify } from "jose";
 import { z } from "zod";
 import { eq } from "drizzle-orm";
-import { publicProcedure, router } from "./_core/trpc";
+import { router } from "./_core/trpc";
+import { adminProcedure } from "./adminAuth";
 import { staticRoutes, type PageType } from "@shared/routes";
 import { getStaticMetaSnapshot, getPageOverride, clearPageOverrideCache } from "./metaTags";
 import { getDb } from "./db";
@@ -33,43 +33,7 @@ async function getEnabledRedirectSources(): Promise<Set<string>> {
   return new Set(rows.map((r) => r.sourcePath.replace(/\/$/, "")));
 }
 
-// ─── Admin auth (mirrors blogRouter) ─────────────────────────────────────────
-const ADMIN_COOKIE_NAME = "blog_admin_session";
-const JWT_SECRET = new TextEncoder().encode(
-  process.env.JWT_SECRET || "dentasmart-admin-secret-key-2024"
-);
 
-async function verifyAdminToken(token: string) {
-  try {
-    const { payload } = await jwtVerify(token, JWT_SECRET);
-    return payload as { adminId: number; username: string };
-  } catch {
-    return null;
-  }
-}
-
-function parseCookies(cookieHeader: string): Record<string, string> {
-  return Object.fromEntries(
-    cookieHeader.split(";").map((c) => {
-      const [key, ...val] = c.trim().split("=");
-      return [key, val.join("=")];
-    })
-  );
-}
-
-const adminPagesProcedure = publicProcedure.use(async ({ ctx, next }) => {
-  const cookieHeader = (ctx as any).req?.headers?.cookie ?? "";
-  const cookies = parseCookies(cookieHeader);
-  const token = cookies[ADMIN_COOKIE_NAME];
-  if (!token) {
-    throw new TRPCError({ code: "UNAUTHORIZED", message: "Admin authentication required" });
-  }
-  const admin = await verifyAdminToken(token);
-  if (!admin) {
-    throw new TRPCError({ code: "UNAUTHORIZED", message: "Invalid admin session" });
-  }
-  return next({ ctx: { ...(ctx as any), admin } });
-});
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 export type OrphanState = "Orphaned" | "Orphaned-Redirected";
@@ -97,7 +61,7 @@ export const pagesRouter = router({
    * Source of truth: shared/routes.ts (LEFT JOIN staticMeta + DB overrides).
    * Orphaned staticMeta entries (no matching route) are appended at the end.
    */
-  listPages: adminPagesProcedure.query(async (): Promise<PageEntry[]> => {
+  listPages: adminProcedure.query(async (): Promise<PageEntry[]> => {
     const metaSnapshot = getStaticMetaSnapshot();
 
     const result: PageEntry[] = [];
@@ -164,7 +128,7 @@ export const pagesRouter = router({
    * not a no-op. The insert path uses ?? undefined so Drizzle omits unset columns.
    * Clears the override cache synchronously before returning.
    */
-  upsertPageMeta: adminPagesProcedure
+  upsertPageMeta: adminProcedure
     .input(
       z.object({
         path: z.string().min(1),
@@ -200,7 +164,7 @@ export const pagesRouter = router({
    * Delete a meta override, reverting the page to its staticMeta value.
    * Clears the override cache synchronously before returning.
    */
-  deletePageMeta: adminPagesProcedure
+  deletePageMeta: adminProcedure
     .input(z.object({ path: z.string().min(1) }))
     .mutation(async ({ input }) => {
       const db = await getDb();

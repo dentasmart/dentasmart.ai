@@ -1,50 +1,8 @@
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
-import { publicProcedure, router } from "./_core/trpc";
+import { router } from "./_core/trpc";
+import { adminProcedure } from "./adminAuth";
 import { getLeads, getLeadsStats, getAllLeadsForExport, deleteLeads } from "./leadsDb";
-import { getAdminById } from "./blogDb";
-import { jwtVerify } from "jose";
-
-const ADMIN_COOKIE_NAME = "blog_admin_session";
-const JWT_SECRET_KEY = process.env.JWT_SECRET || "dentasmart-blog-admin-secret";
-
-// Helper to verify JWT token
-async function verifyAdminToken(token: string) {
-  try {
-    const secret = new TextEncoder().encode(JWT_SECRET_KEY);
-    const { payload } = await jwtVerify(token, secret);
-    return payload as { adminId: number; username: string };
-  } catch {
-    return null;
-  }
-}
-
-// Helper to get admin from context
-async function getAdminFromContext(ctx: any) {
-  const cookies = ctx.req?.headers?.cookie || "";
-  const cookieMap = Object.fromEntries(
-    cookies.split(";").map((c: string) => {
-      const [key, ...val] = c.trim().split("=");
-      return [key, val.join("=")];
-    })
-  );
-  const token = cookieMap[ADMIN_COOKIE_NAME];
-  if (!token) return null;
-
-  const payload = await verifyAdminToken(token);
-  if (!payload) return null;
-
-  return await getAdminById(payload.adminId);
-}
-
-// Admin-only procedure for leads management
-const adminLeadsProcedure = publicProcedure.use(async ({ ctx, next }) => {
-  const admin = await getAdminFromContext(ctx);
-  if (!admin) {
-    throw new TRPCError({ code: "UNAUTHORIZED", message: "Admin authentication required" });
-  }
-  return next({ ctx: { ...ctx, admin } });
-});
 
 const leadSourceEnum = z.enum(["quiz", "android-waitlist", "benefits-waitlist"]);
 
@@ -52,7 +10,7 @@ export const leadsRouter = router({
   /**
    * Get paginated leads with filtering.
    */
-  list: adminLeadsProcedure
+  list: adminProcedure
     .input(
       z.object({
         source: leadSourceEnum.optional(),
@@ -79,14 +37,14 @@ export const leadsRouter = router({
   /**
    * Get aggregate lead stats.
    */
-  stats: adminLeadsProcedure.query(async () => {
+  stats: adminProcedure.query(async () => {
     return getLeadsStats();
   }),
 
   /**
    * Export all leads matching filter as CSV string.
    */
-  exportCsv: adminLeadsProcedure
+  exportCsv: adminProcedure
     .input(
       z.object({
         source: leadSourceEnum.optional(),
@@ -137,7 +95,7 @@ export const leadsRouter = router({
    * Export leads as Excel-compatible CSV (with BOM for Excel auto-detect).
    * Respects the same filters as the list view.
    */
-  exportExcel: adminLeadsProcedure
+  exportExcel: adminProcedure
     .input(
       z.object({
         source: leadSourceEnum.optional(),
@@ -194,7 +152,7 @@ export const leadsRouter = router({
   /**
    * Delete leads by source and IDs (bulk delete).
    */
-  delete: adminLeadsProcedure
+  delete: adminProcedure
     .input(
       z.object({
         items: z.array(
