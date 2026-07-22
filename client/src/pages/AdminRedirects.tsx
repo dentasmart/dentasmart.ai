@@ -78,11 +78,15 @@ function StatCard({
   value,
   icon,
   variant = "default",
+  onClick,
+  isActive,
 }: {
   label: string;
   value: number | string;
   icon: React.ReactNode;
   variant?: "default" | "warning" | "success";
+  onClick?: () => void;
+  isActive?: boolean;
 }) {
   const bg =
     variant === "warning"
@@ -96,15 +100,31 @@ function StatCard({
       : variant === "success"
         ? "text-green-700"
         : "text-foreground";
+  const activeCls = isActive ? "ring-2 ring-primary ring-offset-1 shadow-md" : "";
+  const interactiveCls = onClick
+    ? "cursor-pointer hover:shadow-md hover:border-primary/40 transition-all duration-150 select-none"
+    : "";
   return (
-    <div className={`rounded-xl border p-4 flex items-center gap-4 ${bg}`}>
+    <div
+      className={`rounded-xl border p-4 flex items-center gap-4 ${bg} ${activeCls} ${interactiveCls}`}
+      onClick={onClick}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={onClick ? (e) => { if (e.key === "Enter" || e.key === " ") onClick(); } : undefined}
+      aria-pressed={onClick ? isActive : undefined}
+    >
       <div className={`p-2 rounded-lg ${variant === "warning" ? "bg-amber-100" : variant === "success" ? "bg-green-100" : "bg-muted"}`}>
         {icon}
       </div>
-      <div>
+      <div className="flex-1">
         <div className={`text-2xl font-bold ${text}`}>{value}</div>
         <div className="text-sm text-muted-foreground">{label}</div>
       </div>
+      {isActive && (
+        <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-primary/10 text-primary shrink-0">
+          Filtered
+        </span>
+      )}
     </div>
   );
 }
@@ -122,10 +142,18 @@ export default function AdminRedirects() {
 
   const { data: rows = [], isLoading } = trpc.redirects.listRedirects.useQuery();
 
-  // ─── Filters ──────────────────────────────────────────────────────────────
+  // ─── Filters ───────────────────────────────────────────────────────────────────────────
   const [search, setSearch] = useState("");
   const [filterStatus, setFilterStatus] = useState<string>("all");
   const [filterEnabled, setFilterEnabled] = useState<string>("all");
+
+  // ─── Card filter (Part 1) ──────────────────────────────────────────────────────────
+  type RedirectCardFilter = "active" | "disabled" | null;
+  const [cardFilter, setCardFilter] = useState<RedirectCardFilter>(null);
+
+  function toggleCardFilter(f: RedirectCardFilter) {
+    setCardFilter((prev) => (prev === f ? null : f));
+  }
 
   const filtered = useMemo(() => {
     return rows.filter((r) => {
@@ -140,9 +168,13 @@ export default function AdminRedirects() {
       const matchEnabled =
         filterEnabled === "all" ||
         (filterEnabled === "enabled" ? r.isEnabled : !r.isEnabled);
-      return matchSearch && matchStatus && matchEnabled;
+      // Card filter overrides the enabled dropdown
+      const matchCard =
+        cardFilter === null ||
+        (cardFilter === "active" ? r.isEnabled : !r.isEnabled);
+      return matchSearch && matchStatus && matchEnabled && matchCard;
     });
-  }, [rows, search, filterStatus, filterEnabled]);
+  }, [rows, search, filterStatus, filterEnabled, cardFilter]);
 
   // ─── Summary stats ────────────────────────────────────────────────────────
   const totalHits = useMemo(
@@ -220,7 +252,11 @@ export default function AdminRedirects() {
 
   // ─── Toggle enabled ───────────────────────────────────────────────────────
   const toggleMutation = trpc.redirects.upsertRedirect.useMutation({
-    onSuccess: () => utils.redirects.listRedirects.invalidate(),
+    onSuccess: () => {
+      utils.redirects.listRedirects.invalidate();
+      // Part 4a: toggling enabled/disabled changes orphan classification in pages panel
+      utils.pages.listPages.invalidate();
+    },
     onError: (err) => toast.error(err.message),
   });
 
@@ -240,6 +276,8 @@ export default function AdminRedirects() {
   const deleteMutation = trpc.redirects.deleteRedirect.useMutation({
     onSuccess: () => {
       utils.redirects.listRedirects.invalidate();
+      // Part 4a: deleting a redirect may promote an orphan from "redirected" to "needs action"
+      utils.pages.listPages.invalidate();
       setDeleteTarget(null);
       toast.success("Redirect deleted");
     },
@@ -280,12 +318,16 @@ export default function AdminRedirects() {
             value={activeCount}
             icon={<CheckCircle className="w-5 h-5 text-green-600" />}
             variant="success"
+            onClick={() => toggleCardFilter("active")}
+            isActive={cardFilter === "active"}
           />
           <StatCard
             label="Disabled"
             value={disabledCount}
             icon={<XCircle className="w-5 h-5 text-amber-600" />}
             variant={disabledCount > 0 ? "warning" : "default"}
+            onClick={() => toggleCardFilter("disabled")}
+            isActive={cardFilter === "disabled"}
           />
           <StatCard
             label="Total Hits"
@@ -293,6 +335,21 @@ export default function AdminRedirects() {
             icon={<Activity className="w-5 h-5 text-muted-foreground" />}
           />
         </div>
+
+        {/* Active card filter banner */}
+        {cardFilter && (
+          <div className="flex items-center gap-2 px-3 py-2 bg-primary/5 border border-primary/20 rounded-lg text-sm text-primary">
+            <span className="font-medium">
+              Filtered by: {cardFilter === "active" ? "Active redirects" : "Disabled redirects"}
+            </span>
+            <button
+              onClick={() => setCardFilter(null)}
+              className="ml-auto text-xs underline cursor-pointer hover:no-underline"
+            >
+              Clear filter
+            </button>
+          </div>
+        )}
 
         {/* Filters */}
         <div className="flex flex-col sm:flex-row gap-3">

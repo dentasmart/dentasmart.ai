@@ -1872,3 +1872,20 @@
 - [x] Verify: set-based diff shows exactly -2 URLs, 0 added
 - [x] Verify: /conditions/cavities, /conditions/oral-thrush, /symptoms/loose-tooth, /symptoms/tooth-sensitivity still in sitemap
 - [x] Verify: 4 JS-removed routes still 301 via server
+
+## Admin Panel: Parts 1 + 4 (Jul 2026)
+
+### Part 1 — Clickable summary cards
+- [x] AdminPages.tsx: add cardFilter state, make StatCard clickable, wire to filtered useMemo
+- [x] AdminRedirects.tsx: add cardFilter state, make Active/Disabled cards clickable, wire to filtered useMemo
+
+### Part 4a — Cross-page cache invalidation
+- [x] AdminRedirects.tsx: invalidate pages.listPages on upsertMutation, toggleMutation, deleteMutation onSuccess
+- [x] AdminPages.tsx: invalidate redirects.listRedirects on upsertMeta, deleteMeta onSuccess
+
+### Part 4b — Three-state orphan classification
+- [x] pagesRouter.ts: load enabled redirect sources (getAllRedirects), normalise trailing slashes, classify orphaned entries as "Orphaned" vs "Orphaned-Redirected"
+- [x] pagesRouter.ts: extend PageEntry type with new orphan state field
+- [x] AdminPages.tsx: update TYPE_COLORS and StatCard for "Orphaned-Redirected" state
+- [x] AdminPages.tsx: "Orphaned Meta" card counts only "Orphaned" (needs action), separate display for "Orphaned-Redirected"
+- [x] AdminPages.tsx: "Stale — safe to delete" badge + delete button for "Orphaned-Redirected" rows

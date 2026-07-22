@@ -17,7 +17,21 @@ import { publicProcedure, router } from "./_core/trpc";
 import { staticRoutes, type PageType } from "@shared/routes";
 import { getStaticMetaSnapshot, getPageOverride, clearPageOverrideCache } from "./metaTags";
 import { getDb } from "./db";
-import { pageMetaOverrides } from "../drizzle/schema";
+import { pageMetaOverrides, redirects } from "../drizzle/schema";
+
+/**
+ * Part 4b helper: load the set of sourcePaths that have an enabled redirect.
+ * Normalises trailing slashes so /symptoms/tooth-pain/ matches /symptoms/tooth-pain.
+ */
+async function getEnabledRedirectSources(): Promise<Set<string>> {
+  const db = await getDb();
+  if (!db) return new Set();
+  const rows = await db
+    .select({ sourcePath: redirects.sourcePath })
+    .from(redirects)
+    .where(eq(redirects.isEnabled, true));
+  return new Set(rows.map((r) => r.sourcePath.replace(/\/$/, "")));
+}
 
 // ─── Admin auth (mirrors blogRouter) ─────────────────────────────────────────
 const ADMIN_COOKIE_NAME = "blog_admin_session";
@@ -58,10 +72,12 @@ const adminPagesProcedure = publicProcedure.use(async ({ ctx, next }) => {
 });
 
 // ─── Types ────────────────────────────────────────────────────────────────────
+export type OrphanState = "Orphaned" | "Orphaned-Redirected";
+
 export interface PageEntry {
   path: string;
   label: string;
-  type: PageType | "Orphaned";
+  type: PageType | OrphanState;
   hasMetaTitle: boolean;
   hasMetaDesc: boolean;
   hasCanonical: boolean;
@@ -112,14 +128,20 @@ export const pagesRouter = router({
 
     // 2. Orphaned staticMeta entries — in staticMeta but NOT in the manifest.
     //    Exclude /oral-health-hub/ entries (those are DB-driven blog posts).
+    //    Part 4b: classify as "Orphaned-Redirected" when an enabled redirect covers this path.
+    const enabledRedirectSources = await getEnabledRedirectSources();
     for (const [path, meta] of Object.entries(metaSnapshot)) {
       if (seenPaths.has(path)) continue;
       if (path.startsWith("/oral-health-hub/")) continue;
       const ov = await getPageOverride(path);
+      const normPath = path.replace(/\/$/, "");
+      const orphanType: OrphanState = enabledRedirectSources.has(normPath)
+        ? "Orphaned-Redirected"
+        : "Orphaned";
       result.push({
         path,
         label: meta.title ?? path,
-        type: "Orphaned",
+        type: orphanType,
         hasMetaTitle: !!meta.title,
         hasMetaDesc: !!meta.description,
         // Orphaned entries exist in staticMeta so they always receive a computed canonical.

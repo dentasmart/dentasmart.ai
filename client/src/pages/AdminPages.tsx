@@ -40,15 +40,18 @@ import {
   FileSearch,
   Pencil,
   Info,
+  Trash2,
 } from "lucide-react";
 import AdminLayout from "@/components/AdminLayout";
 import type { PageType } from "@shared/routes";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
+type OrphanState = "Orphaned" | "Orphaned-Redirected"; // mirrors server/pagesRouter.ts OrphanState
+
 type PageEntry = {
   path: string;
   label: string;
-  type: PageType | "Orphaned";
+  type: PageType | OrphanState;
   hasMetaTitle: boolean;
   hasMetaDesc: boolean;
   hasCanonical: boolean;
@@ -58,10 +61,20 @@ type PageEntry = {
   overrideDesc: string | null;
   overrideCanonical: string | null;
   hasOverride: boolean;
+  orphanState?: OrphanState;
 };
 
+// ─── Card filter type ─────────────────────────────────────────────────────────
+type CardFilter =
+  | "missingTitle"
+  | "missingDesc"
+  | "missingCanonical"
+  | "orphaned"
+  | "orphanedRedirected"
+  | null;
+
 // ─── Constants ────────────────────────────────────────────────────────────────
-const ALL_TYPES: Array<PageType | "Orphaned"> = [
+const ALL_TYPES: Array<PageType | OrphanState> = [
   "Single Page",
   "Index",
   "Condition",
@@ -75,6 +88,7 @@ const ALL_TYPES: Array<PageType | "Orphaned"> = [
   "Dental Emergency",
   "Hub",
   "Orphaned",
+  "Orphaned-Redirected",
 ];
 
 const TYPE_COLORS: Record<string, string> = {
@@ -91,6 +105,7 @@ const TYPE_COLORS: Record<string, string> = {
   "Dental Emergency": "bg-rose-100 text-rose-800",
   "Hub": "bg-sky-50 text-sky-700",
   "Orphaned": "bg-amber-100 text-amber-800",
+  "Orphaned-Redirected": "bg-emerald-50 text-emerald-700",
 };
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
@@ -99,25 +114,49 @@ function StatCard({
   value,
   icon,
   highlight,
+  onClick,
+  isActive,
 }: {
   label: string;
   value: number;
   icon: React.ReactNode;
   highlight?: "warning" | "danger";
+  onClick?: () => void;
+  isActive?: boolean;
 }) {
-  const bg =
-    highlight === "danger"
-      ? "bg-red-50 border-red-200"
-      : highlight === "warning"
-      ? "bg-amber-50 border-amber-200"
-      : "bg-white border-stone-200";
+  const base = highlight === "danger"
+    ? "bg-red-50 border-red-200"
+    : highlight === "warning"
+    ? "bg-amber-50 border-amber-200"
+    : "bg-white border-stone-200";
+
+  const activeCls = isActive
+    ? "ring-2 ring-primary ring-offset-1 shadow-md"
+    : "";
+
+  const interactiveCls = onClick
+    ? "cursor-pointer hover:shadow-md hover:border-primary/40 transition-all duration-150 select-none"
+    : "";
+
   return (
-    <div className={`rounded-xl border ${bg} p-4 flex items-center gap-3`}>
+    <div
+      className={`rounded-xl border ${base} ${activeCls} ${interactiveCls} p-4 flex items-center gap-3`}
+      onClick={onClick}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={onClick ? (e) => { if (e.key === "Enter" || e.key === " ") onClick(); } : undefined}
+      aria-pressed={onClick ? isActive : undefined}
+    >
       <div className="p-2 bg-stone-50 rounded-lg shrink-0">{icon}</div>
       <div>
         <p className="text-2xl font-semibold text-stone-900">{value}</p>
         <p className="text-xs text-stone-500">{label}</p>
       </div>
+      {isActive && (
+        <span className="ml-auto text-[10px] font-medium px-1.5 py-0.5 rounded bg-primary/10 text-primary shrink-0">
+          Filtered
+        </span>
+      )}
     </div>
   );
 }
@@ -133,8 +172,9 @@ function MetaCheck({ has }: { has: boolean }) {
 // ─── Main Component ───────────────────────────────────────────────────────────
 export default function AdminPages() {
   const [search, setSearch] = useState("");
-  const [typeFilter, setTypeFilter] = useState<"All" | PageType | "Orphaned">("All");
+  const [typeFilter, setTypeFilter] = useState<"All" | PageType | OrphanState>("All");
   const [missingOnly, setMissingOnly] = useState(false);
+  const [cardFilter, setCardFilter] = useState<CardFilter>(null);
 
   // Edit modal state
   const [editOpen, setEditOpen] = useState(false);
@@ -154,6 +194,8 @@ export default function AdminPages() {
       setEditOpen(false);
       setEditTarget(null);
       utils.pages.listPages.invalidate();
+      // Part 4a: keep redirects panel fresh when meta changes
+      utils.redirects.listRedirects.invalidate();
     },
     onError: (err) => toast.error(err.message),
   });
@@ -164,6 +206,18 @@ export default function AdminPages() {
       setEditOpen(false);
       setEditTarget(null);
       utils.pages.listPages.invalidate();
+      // Part 4a: keep redirects panel fresh
+      utils.redirects.listRedirects.invalidate();
+    },
+    onError: (err) => toast.error(err.message),
+  });
+
+  // Delete stale meta (for Orphaned-Redirected entries)
+  const deleteStaleOrphanMeta = trpc.pages.deletePageMeta.useMutation({
+    onSuccess: () => {
+      toast.success("Stale meta entry deleted");
+      utils.pages.listPages.invalidate();
+      utils.redirects.listRedirects.invalidate();
     },
     onError: (err) => toast.error(err.message),
   });
@@ -171,7 +225,6 @@ export default function AdminPages() {
   function openEditModal(page: PageEntry) {
     setEditTarget(page);
     setEditForm({
-      // Pre-populate from override first, then staticMeta
       metaTitle: page.overrideTitle ?? page.metaTitle ?? "",
       metaDesc: page.overrideDesc ?? page.metaDesc ?? "",
       canonical: page.overrideCanonical ?? "",
@@ -194,16 +247,24 @@ export default function AdminPages() {
     deleteMeta.mutate({ path: editTarget.path });
   }
 
+  // ── Card filter toggle ─────────────────────────────────────────────────────
+  function toggleCardFilter(f: CardFilter) {
+    setCardFilter((prev) => (prev === f ? null : f));
+  }
+
   // ── Derived stats ──────────────────────────────────────────────────────────
   const stats = useMemo(() => {
     if (!pages) return null;
-    const nonOrphaned = pages.filter((p) => p.type !== "Orphaned");
+    const nonOrphaned = pages.filter(
+      (p) => p.type !== "Orphaned" && p.type !== "Orphaned-Redirected"
+    );
     return {
       total: nonOrphaned.length,
       missingTitle: nonOrphaned.filter((p) => !p.hasMetaTitle).length,
       missingDesc: nonOrphaned.filter((p) => !p.hasMetaDesc).length,
       missingCanonical: nonOrphaned.filter((p) => !p.hasCanonical).length,
       orphaned: pages.filter((p) => p.type === "Orphaned").length,
+      orphanedRedirected: pages.filter((p) => p.type === "Orphaned-Redirected").length,
     };
   }, [pages]);
 
@@ -213,6 +274,11 @@ export default function AdminPages() {
     return pages.filter((p) => {
       if (typeFilter !== "All" && p.type !== typeFilter) return false;
       if (missingOnly && p.hasMetaTitle && p.hasMetaDesc && p.hasCanonical) return false;
+      if (cardFilter === "missingTitle" && p.hasMetaTitle) return false;
+      if (cardFilter === "missingDesc" && p.hasMetaDesc) return false;
+      if (cardFilter === "missingCanonical" && p.hasCanonical) return false;
+      if (cardFilter === "orphaned" && p.type !== "Orphaned") return false;
+      if (cardFilter === "orphanedRedirected" && p.type !== "Orphaned-Redirected") return false;
       if (search) {
         const q = search.toLowerCase();
         if (
@@ -224,12 +290,11 @@ export default function AdminPages() {
       }
       return true;
     });
-  }, [pages, typeFilter, missingOnly, search]);
+  }, [pages, typeFilter, missingOnly, cardFilter, search]);
 
   const isSaving = upsertMeta.isPending;
   const isReverting = deleteMeta.isPending;
 
-  // Source badge for modal field labels
   function SourceBadge({ field }: { field: "title" | "desc" | "canonical" }) {
     if (!editTarget) return null;
     const hasOverride =
@@ -270,19 +335,19 @@ export default function AdminPages() {
           Pages
         </h1>
         <p className="text-sm text-stone-500 mt-1">
-          All static pages and their SEO metadata coverage. Click Edit to set or override meta tags per page.
+          All static pages and their SEO metadata coverage. Click a card to filter the table. Click Edit to set or override meta tags per page.
         </p>
       </div>
 
       {/* Summary Cards */}
       {isLoading ? (
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
-          {Array.from({ length: 5 }).map((_, i) => (
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
+          {Array.from({ length: 6 }).map((_, i) => (
             <div key={i} className="bg-white rounded-xl border border-stone-200 p-4 h-20 animate-pulse" />
           ))}
         </div>
       ) : stats ? (
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
           <StatCard
             label="Total Pages"
             value={stats.total}
@@ -293,27 +358,62 @@ export default function AdminPages() {
             value={stats.missingTitle}
             icon={<XCircle className="w-5 h-5 text-red-500" />}
             highlight={stats.missingTitle > 0 ? "danger" : undefined}
+            onClick={() => toggleCardFilter("missingTitle")}
+            isActive={cardFilter === "missingTitle"}
           />
           <StatCard
             label="Missing Meta Desc"
             value={stats.missingDesc}
             icon={<XCircle className="w-5 h-5 text-orange-500" />}
             highlight={stats.missingDesc > 0 ? "warning" : undefined}
+            onClick={() => toggleCardFilter("missingDesc")}
+            isActive={cardFilter === "missingDesc"}
           />
           <StatCard
             label="Missing Canonical"
             value={stats.missingCanonical}
             icon={<AlertTriangle className="w-5 h-5 text-amber-500" />}
             highlight={stats.missingCanonical > 0 ? "warning" : undefined}
+            onClick={() => toggleCardFilter("missingCanonical")}
+            isActive={cardFilter === "missingCanonical"}
           />
           <StatCard
-            label="Orphaned Meta"
+            label="Orphaned — Needs Action"
             value={stats.orphaned}
             icon={<FileSearch className="w-5 h-5 text-amber-600" />}
             highlight={stats.orphaned > 0 ? "warning" : undefined}
+            onClick={() => toggleCardFilter("orphaned")}
+            isActive={cardFilter === "orphaned"}
+          />
+          <StatCard
+            label="Orphaned — Redirected"
+            value={stats.orphanedRedirected}
+            icon={<CheckCircle2 className="w-5 h-5 text-emerald-600" />}
+            onClick={() => toggleCardFilter("orphanedRedirected")}
+            isActive={cardFilter === "orphanedRedirected"}
           />
         </div>
       ) : null}
+
+      {/* Active card filter banner */}
+      {cardFilter && (
+        <div className="flex items-center gap-2 mb-4 px-3 py-2 bg-primary/5 border border-primary/20 rounded-lg text-sm text-primary">
+          <span className="font-medium">
+            Filtered by:{" "}
+            {cardFilter === "missingTitle" && "Missing Meta Title"}
+            {cardFilter === "missingDesc" && "Missing Meta Description"}
+            {cardFilter === "missingCanonical" && "Missing Canonical"}
+            {cardFilter === "orphaned" && "Orphaned — Needs Action"}
+            {cardFilter === "orphanedRedirected" && "Orphaned — Redirected (safe to delete)"}
+          </span>
+          <button
+            onClick={() => setCardFilter(null)}
+            className="ml-auto text-xs underline cursor-pointer hover:no-underline"
+          >
+            Clear filter
+          </button>
+        </div>
+      )}
 
       {/* Filters */}
       <div className="flex flex-col sm:flex-row gap-3 mb-5">
@@ -398,12 +498,15 @@ export default function AdminPages() {
                   const allGood =
                     page.hasMetaTitle && page.hasMetaDesc && page.hasCanonical;
                   const isOrphaned = page.type === "Orphaned";
+                  const isOrphanedRedirected = page.type === "Orphaned-Redirected";
                   return (
                     <TableRow
                       key={page.path}
                       className={`hover:bg-stone-50/50 ${
                         isOrphaned
                           ? "bg-amber-50/40"
+                          : isOrphanedRedirected
+                          ? "bg-emerald-50/30"
                           : !allGood
                           ? "bg-red-50/20"
                           : ""
@@ -412,7 +515,7 @@ export default function AdminPages() {
                       {/* Title / Path */}
                       <TableCell>
                         <div className="flex flex-col gap-0.5">
-                          <div className="flex items-center gap-1.5 flex-wrap">
+                          <div className="flex items-center gap-1.5">
                             <span className="font-medium text-stone-800 text-sm leading-snug">
                               {(page.overrideTitle ?? page.metaTitle)
                                 ? (() => {
@@ -427,6 +530,11 @@ export default function AdminPages() {
                                 Overridden
                               </span>
                             )}
+                            {isOrphanedRedirected && (
+                              <span className="text-[10px] font-medium px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700 shrink-0">
+                                Stale — safe to delete
+                              </span>
+                            )}
                           </div>
                           <span className="text-xs text-stone-400 font-mono">{page.path}</span>
                         </div>
@@ -439,7 +547,7 @@ export default function AdminPages() {
                             TYPE_COLORS[page.type] ?? "bg-stone-100 text-stone-600"
                           }`}
                         >
-                          {isOrphaned && (
+                          {(isOrphaned || isOrphanedRedirected) && (
                             <AlertTriangle className="w-3 h-3 mr-1 shrink-0" />
                           )}
                           {page.type}
@@ -478,6 +586,20 @@ export default function AdminPages() {
                               <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-amber-400" />
                             )}
                           </button>
+                          {isOrphanedRedirected && (
+                            <button
+                              onClick={() => deleteStaleOrphanMeta.mutate({ path: page.path })}
+                              disabled={deleteStaleOrphanMeta.isPending}
+                              className="inline-flex items-center justify-center p-1.5 rounded-lg text-stone-400 hover:text-red-500 hover:bg-red-50 transition-colors cursor-pointer"
+                              title="Delete stale meta entry"
+                            >
+                              {deleteStaleOrphanMeta.isPending ? (
+                                <Loader2 className="w-4 h-4 animate-spin" />
+                              ) : (
+                                <Trash2 className="w-4 h-4" />
+                              )}
+                            </button>
+                          )}
                           <a
                             href={page.path}
                             target="_blank"
