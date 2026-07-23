@@ -1,4 +1,5 @@
 import ComparisonPageTemplate, { ComparisonPageData } from "./ComparisonPageTemplate";
+import { Link } from "wouter";
 
 const data: ComparisonPageData = {
   slug: "braces-vs-invisalign",
@@ -19,6 +20,15 @@ const data: ComparisonPageData = {
   introHighlight: "What Works Best for Your Life?",
   introDescription: "Choosing how to straighten your teeth is about more than just the hardware. It is about finding a solution that fits your dental needs, your budget, and your daily routine. Braces are a powerful, fixed option that works for even the most complex cases.",
   introDescription2: "Invisalign offers a nearly invisible, flexible alternative that is very popular with adults. Let us look at the details to see which one makes the most sense for you.",
+  introNote: (
+    <>
+      Before braces go on, some patients need{" "}
+      <Link href="/oral-health-hub/spacers-for-teeth/" className="text-primary underline hover:text-primary/80">
+        spacers for teeth
+      </Link>{" "}
+      to create room between molars for the metal bands.
+    </>
+  ),
   comparisonTable: [
     { factor: "Average Cost", optionA: "$2,500 - $7,000", optionB: "$3,000 - $8,000", winner: "A" },
     { factor: "Treatment Time", optionA: "18 - 24 months", optionB: "12 - 18 months", winner: "B" },

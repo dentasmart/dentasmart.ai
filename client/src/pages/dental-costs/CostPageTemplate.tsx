@@ -46,6 +46,7 @@ export interface CostPageData {
   problemHighlight: string;
   problemDescription: string;
   problemDescription2?: string;
+  problemNote?: React.ReactNode;
   costBreakdown: CostRange[];
   costFactors: CostFactor[];
   insuranceTips: InsuranceTip[];
@@ -192,6 +193,11 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
               {data.problemDescription2 && (
                 <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed">
                   {data.problemDescription2}
+                </p>
+              )}
+              {data.problemNote && (
+                <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed mt-4">
+                  {data.problemNote}
                 </p>
               )}
             </motion.div>

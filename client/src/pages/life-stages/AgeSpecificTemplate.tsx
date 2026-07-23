@@ -44,6 +44,7 @@ export interface AgeSpecificPageData {
   overviewHighlight: string;
   overviewDescription: string;
   overviewDescription2?: string;
+  overviewNote?: React.ReactNode;
   keyTips: AgeGroupTip[];
   milestones: MilestoneItem[];
   milestonesNote?: string;
@@ -181,6 +182,11 @@ export default function AgeSpecificTemplate({ data }: { data: AgeSpecificPageDat
               {data.overviewDescription2 && (
                 <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed">
                   {data.overviewDescription2}
+                </p>
+              )}
+              {data.overviewNote && (
+                <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed mt-4">
+                  {data.overviewNote}
                 </p>
               )}
             </motion.div>

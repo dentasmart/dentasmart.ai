@@ -46,6 +46,7 @@ export interface TreatmentPageData {
   whyNeededHighlight: string;
   whyNeededDescription: string;
   whyNeededDescription2?: string;
+  whyNeededNote?: React.ReactNode;
   warningSignsTitle?: string;
   warningSigns?: string[];
   timelineSteps: TimelineStep[];
@@ -210,6 +211,11 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
               {data.whyNeededDescription2 && (
                 <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed">
                   {data.whyNeededDescription2}
+                </p>
+              )}
+              {data.whyNeededNote && (
+                <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed mt-4">
+                  {data.whyNeededNote}
                 </p>
               )}
             </motion.div>

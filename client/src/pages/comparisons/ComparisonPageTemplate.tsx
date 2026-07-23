@@ -48,6 +48,7 @@ export interface ComparisonPageData {
   introHighlight: string;
   introDescription: string;
   introDescription2?: string;
+  introNote?: React.ReactNode;
   comparisonTable: ComparisonRow[];
   optionAProsCons: ProConItem[];
   optionBProsCons: ProConItem[];
@@ -193,6 +194,11 @@ export default function ComparisonPageTemplate({ data }: { data: ComparisonPageD
             {data.introDescription2 && (
               <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed">
                 {data.introDescription2}
+              </p>
+            )}
+            {data.introNote && (
+              <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed mt-4">
+                {data.introNote}
               </p>
             )}
           </motion.div>

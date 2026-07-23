@@ -1,4 +1,5 @@
 import TreatmentPageTemplate, { TreatmentPageData } from "./TreatmentPageTemplate";
+import { Link } from "wouter";
 
 const data: TreatmentPageData = {
   slug: "braces-treatment",
@@ -20,6 +21,15 @@ const data: TreatmentPageData = {
   whyNeededHighlight: "Need Braces",
   whyNeededDescription: "If your teeth are crooked, crowded, or you have a noticeable overbite or underbite, braces can help. Straightening your teeth isn't just about looks. It also makes cleaning easier, which reduces your risk of cavities and gum disease.",
   whyNeededDescription2: "Correcting your bite can also relieve jaw pain and prevent uneven wear on your teeth over time. It's a long-term investment in your health and confidence.",
+  whyNeededNote: (
+    <>
+      Before your braces go on, your orthodontist may place{" "}
+      <Link href="/oral-health-hub/spacers-for-teeth/" className="text-primary underline hover:text-primary/80">
+        spacers for teeth
+      </Link>{" "}
+      to prepare your molars for the bands.
+    </>
+  ),
 
   warningSignsTitle: "Signs You Might Need Braces",
   warningSigns: [

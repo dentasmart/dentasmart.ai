@@ -1,4 +1,5 @@
 import AgeSpecificTemplate, { AgeSpecificPageData } from "./AgeSpecificTemplate";
+import { Link } from "wouter";
 
 const data: AgeSpecificPageData = {
   slug: "teen-braces-guide",
@@ -18,6 +19,15 @@ const data: AgeSpecificPageData = {
   overviewHighlight: "to a Confident Smile",
   overviewDescription: "Orthodontic treatment is more than just straightening teeth. It's about improving your overall oral health and boosting your confidence. For teens, this is a common journey, and today's options make it easier than ever. We'll walk you through the types of braces, what to expect, and how to manage life with them.",
   overviewDescription2: "From playing sports to eating your favorite foods, we've got you covered. Your orthodontist will create a personalized plan, but this guide provides the essential information you need to start the conversation and feel prepared for your treatment.",
+  overviewNote: (
+    <>
+      Your orthodontist may also fit{" "}
+      <Link href="/oral-health-hub/spacers-for-teeth/" className="text-primary underline hover:text-primary/80">
+        spacers for teeth
+      </Link>{" "}
+      a week before your braces go on to make room for the bands.
+    </>
+  ),
   keyTips: [
     { title: "Brush and Floss Daily", description: "Food gets trapped easily. Use special flossers or a water flosser to clean around brackets and wires." },
     { title: "Wear Your Mouthguard", description: "If you play sports, a custom orthodontic mouthguard is essential to protect your braces and your mouth." },

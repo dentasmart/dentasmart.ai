@@ -1,4 +1,5 @@
 import CostPageTemplate, { CostPageData } from "./CostPageTemplate";
+import { Link } from "wouter";
 
 const data: CostPageData = {
   slug: "braces-cost",
@@ -23,6 +24,15 @@ const data: CostPageData = {
     "You call three orthodontists and get three wildly different quotes. One says $3,200, another says $6,500, and the third wants $4,800 but includes retainers. It is nearly impossible to compare when every office bundles things differently.",
   problemDescription2:
     "On top of that, most dental insurance plans cap orthodontic coverage at $1,000 to $2,000, which barely dents the total. And if you are over 18, some plans do not cover braces at all. Knowing the real numbers upfront saves you from sticker shock and helps you negotiate.",
+  problemNote: (
+    <>
+      Some patients also need{" "}
+      <Link href="/oral-health-hub/spacers-for-teeth/" className="text-primary underline hover:text-primary/80">
+        spacers for teeth
+      </Link>{" "}
+      before braces are placed — a small but often overlooked cost to factor in.
+    </>
+  ),
   costBreakdown: [
     {
       type: "Traditional Metal Braces",
