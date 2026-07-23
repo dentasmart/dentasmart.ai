@@ -1967,3 +1967,14 @@
 - [x] DB fix: UPDATE redirects SET sourcePath='/hub/xrays' WHERE sourcePath='/hub/xrays/'
 - [x] upsertRedirect: normalise sourcePath (strip trailing slash except root) before saving
 - [x] DB fix: normalise /hub/symptoms target to https://dentasmart.ai (remove trailing slash)
+
+## Internal link: spacers for teeth (2026-07-23)
+
+- [x] ComparisonPageTemplate: add optional introNote?: React.ReactNode field and render after introDescription2
+- [x] TreatmentPageTemplate: add optional whyNeededNote?: React.ReactNode field and render after whyNeededDescription2
+- [x] CostPageTemplate: add optional problemNote?: React.ReactNode field and render after problemDescription2
+- [x] AgeSpecificTemplate: add optional overviewNote?: React.ReactNode field and render after overviewDescription2
+- [x] BracesVsInvisalign.tsx: add introNote with Link to /oral-health-hub/spacers-for-teeth/ (anchor: "spacers for teeth")
+- [x] BracesTreatment.tsx: add whyNeededNote with Link to /oral-health-hub/spacers-for-teeth/
+- [x] BracesCost.tsx: add problemNote with Link to /oral-health-hub/spacers-for-teeth/
+- [x] TeenBracesGuide.tsx: add overviewNote with Link to /oral-health-hub/spacers-for-teeth/
