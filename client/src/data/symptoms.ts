@@ -2023,7 +2023,7 @@ export const symptomsData: Record<string, SymptomData> = {
     reviewedByCredentials: "General Dentist at DentaSmart",
     lastReviewed: "2026-03-15",
     ctaHeading: "Concerned About Your Mouth Numbness?",
-    ctaButton: "Find a Dentist Near You"
+    ctaButton: "Find a Dentist Near You",
 },
   "gum-tenderness": {
     slug: "gum-tenderness",

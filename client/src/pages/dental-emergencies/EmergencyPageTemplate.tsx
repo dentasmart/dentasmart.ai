@@ -47,6 +47,7 @@ export interface EmergencyPageData {
   whatHappenedHighlight: string;
   whatHappenedDescription: string;
   whatHappenedDescription2?: string;
+  whatHappenedNote?: React.ReactNode;
   immediateSteps: ImmediateStep[];
   immediateStepsNote?: string;
   warningSignsTitle: string;
@@ -218,6 +219,11 @@ export default function EmergencyPageTemplate({ data }: { data: EmergencyPageDat
               {data.whatHappenedDescription2 && (
                 <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed">
                   {data.whatHappenedDescription2}
+                </p>
+              )}
+              {data.whatHappenedNote && (
+                <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed mt-4">
+                  {data.whatHappenedNote}
                 </p>
               )}
             </motion.div>

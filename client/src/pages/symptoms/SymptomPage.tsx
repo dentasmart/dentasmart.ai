@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, AlertTriangle, CheckCircle, ChevronDown, ChevronUp, Shield, MessageCircleQuestion } from "lucide-react";
 import { Link, useRoute } from "wouter";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { symptomsData } from "@/data/symptoms";
 import { aeoSymptoms } from "@/data/aeoContent";
 import { breadcrumbSchema, medicalWebPageSchema, faqPageSchema } from "@/lib/schema";
@@ -33,11 +33,85 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   );
 }
 
+const symptomNotes: Record<string, ReactNode> = {
+  "tooth-pain-when-biting": (
+    <>
+      If you are also dealing with{" "}
+      <Link href="/oral-health-hub/is-your-wisdom-tooth-pain-normal/" className="text-primary underline hover:text-primary/80">
+        wisdom tooth pain
+      </Link>
+      , it can sometimes mimic bite pain and make it harder to pinpoint the source. A deep
+      cavity that has been ignored can also lead to a full infection. Understanding what a{" "}
+      <Link href="/oral-health-hub/is-getting-a-tooth-filling-really-that-big-of-a-deal/" className="text-primary underline hover:text-primary/80">
+        tooth filling
+      </Link>{" "}
+      involves early on can help you avoid that outcome. In severe cases, untreated decay
+      is one of the main causes of{" "}
+      <Link href="/oral-health-hub/what-causes-rotten-teeth/" className="text-primary underline hover:text-primary/80">
+        rotten teeth
+      </Link>
+      , which are much harder and more expensive to fix.
+    </>
+  ),
+  "loose-tooth": (
+    <>
+      In children, loose teeth are normal. Adults sometimes worry about whether habits
+      like using a{" "}
+      <Link href="/oral-health-hub/will-my-baby-develop-pacifier-teeth/" className="text-primary underline hover:text-primary/80">
+        pacifier
+      </Link>{" "}
+      in early childhood affected their tooth alignment. If a{" "}
+      <Link href="/oral-health-hub/what-is-a-canine-tooth/" className="text-primary underline hover:text-primary/80">
+        canine tooth
+      </Link>{" "}
+      is the one feeling loose, that is worth flagging to your dentist quickly. Canines
+      are anchor teeth and losing one has a big impact on your bite. In some orthodontic
+      cases, your dentist may also place{" "}
+      <Link href="/oral-health-hub/spacers-for-teeth/" className="text-primary underline hover:text-primary/80">
+        spacers for teeth
+      </Link>{" "}
+      as part of preparing for treatment.
+    </>
+  ),
+  "mouth-numbness": (
+    <>
+      Numbness after a dental procedure is common, but it can also follow wisdom tooth
+      removal. If you are wondering{" "}
+      <Link href="/oral-health-hub/when-do-wisdom-teeth-come-in/" className="text-primary underline hover:text-primary/80">
+        when wisdom teeth come in
+      </Link>{" "}
+      or whether{" "}
+      <Link href="/oral-health-hub/is-your-wisdom-tooth-pain-normal/" className="text-primary underline hover:text-primary/80">
+        wisdom tooth pain
+      </Link>{" "}
+      is behind your symptoms, those are worth reading. After extraction, knowing{" "}
+      <Link href="/oral-health-hub/what-to-eat-after-wisdom-teeth-removal/" className="text-primary underline hover:text-primary/80">
+        what to eat after wisdom teeth removal
+      </Link>{" "}
+      and the best{" "}
+      <Link href="/oral-health-hub/best-foods-to-eat-after-wisdom-teeth-removal/" className="text-primary underline hover:text-primary/80">
+        foods to eat after wisdom teeth removal
+      </Link>{" "}
+      can speed up recovery. If you have noticed discolouration alongside numbness, it
+      may be worth checking what causes{" "}
+      <Link href="/oral-health-hub/what-causes-rotten-teeth/" className="text-primary underline hover:text-primary/80">
+        rotten teeth
+      </Link>
+      . For ongoing monitoring at home, the best{" "}
+      <Link href="/oral-health-hub/top-10-best-ai-dental-apps/" className="text-primary underline hover:text-primary/80">
+        AI dental apps
+      </Link>{" "}
+      can help you stay on top of your oral health between visits.
+    </>
+  ),
+};
+
 export default function SymptomPage() {
   const [, params] = useRoute("/symptoms/:slug");
   const slug = params?.slug || "";
   const symptom = slug ? symptomsData[slug] : null;
   const aeo = slug ? aeoSymptoms[slug] : null;
+  const note = symptomNotes[slug];
 
   if (!symptom) {
     return (
@@ -146,6 +220,9 @@ export default function SymptomPage() {
             {symptom.detailedExplanation.map((para, idx) => (
               <p key={idx} className="text-stone-700 font-light leading-relaxed">{para}</p>
             ))}
+            {note && (
+              <p className="text-stone-700 font-light leading-relaxed mt-4">{note}</p>
+            )}
           </div>
         </div>
       </section>

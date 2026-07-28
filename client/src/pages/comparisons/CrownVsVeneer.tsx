@@ -1,4 +1,5 @@
 import ComparisonPageTemplate, { ComparisonPageData } from "./ComparisonPageTemplate";
+import { Link } from "wouter";
 
 const data: ComparisonPageData = {
   slug: "crown-vs-veneer",
@@ -20,6 +21,11 @@ const data: ComparisonPageData = {
   introDescription: "Choosing between a crown and a veneer comes down to one main thing: are you trying to fix a tooth\
 s underlying structural problems or just improve its appearance? A crown is a full cap that covers the entire tooth, giving it new strength and shape. A veneer is a very thin shell that only covers the front surface to fix cosmetic issues.",
   introDescription2: "Think of it like this: a crown is like a helmet for your tooth, offering full protection and support. A veneer is more like a press-on nail, focused purely on looks. Both are great options, but they solve different problems.",
+  introNote: (
+    <>
+      If you're still learning the basics, our guide to <Link href="/oral-health-hub/what-is-a-dental-crown/" className="text-primary underline hover:text-primary/80">what is a dental crown</Link> is a good starting point. For cases where multiple teeth need work, <Link href="/oral-health-hub/dental-crowns-and-bridges/" className="text-primary underline hover:text-primary/80">dental crowns and bridges</Link> may be a more comprehensive solution. If you want something non-permanent, <Link href="/oral-health-hub/removable-veneers/" className="text-primary underline hover:text-primary/80">removable veneers</Link> are worth comparing. And for gaps from missing teeth specifically, <Link href="/oral-health-hub/dental-veneers-for-missing-teeth/" className="text-primary underline hover:text-primary/80">dental veneers for missing teeth</Link> explains when veneers can and can't help.
+    </>
+  ),
   comparisonTable: [
     { factor: "Purpose", optionA: "Restores a damaged, weak, or broken tooth's function and appearance", optionB: "Improves the appearance of a tooth with cosmetic issues like chips, gaps, or discoloration", winner: "tie" },
     { factor: "Tooth Preparation", optionA: "Requires significant removal of the tooth's natural structure on all sides", optionB: "Requires minimal removal of enamel from the front of the tooth only", winner: "B" },

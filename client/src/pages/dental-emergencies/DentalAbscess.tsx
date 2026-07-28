@@ -1,5 +1,6 @@
 import React from "react";
 import EmergencyPageTemplate, { EmergencyPageData } from "./EmergencyPageTemplate";
+import { Link } from "wouter";
 
 const data: EmergencyPageData = {
   slug: "dental-abscess",
@@ -20,6 +21,11 @@ const data: EmergencyPageData = {
   whatHappenedHighlight: "Dental Abscess?",
   whatHappenedDescription: "An abscess forms when bacteria infect the center of your tooth (the pulp) or the gums. This creates a painful pocket of pus. The infection will not go away on its own.",
   whatHappenedDescription2: "Without treatment, the infection can spread to your jawbone, surrounding tissues, and even your bloodstream, causing a life-threatening condition called sepsis.",
+  whatHappenedNote: (
+    <>
+      Most abscesses start with decay that was caught too late. Understanding what causes <Link href="/oral-health-hub/what-causes-rotten-teeth/" className="text-primary underline hover:text-primary/80">rotten teeth</Link> can help you spot the warning signs earlier. Interestingly, <Link href="/oral-health-hub/what-are-white-spots-on-teeth/" className="text-primary underline hover:text-primary/80">white spots on teeth</Link> are often the first visible sign of enamel breakdown before decay sets in. If you've been putting off a filling because you're unsure what's involved, our guide to <Link href="/oral-health-hub/is-getting-a-tooth-filling-really-that-big-of-a-deal/" className="text-primary underline hover:text-primary/80">tooth fillings</Link> explains why acting early is almost always the simpler and cheaper option.
+    </>
+  ),
   immediateSteps: [
     {
       step: "1",

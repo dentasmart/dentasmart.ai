@@ -1,4 +1,5 @@
 import CostPageTemplate, { CostPageData } from "./CostPageTemplate";
+import { Link } from "wouter";
 
 const data: CostPageData = {
   slug: "dentures-cost",
@@ -18,6 +19,11 @@ const data: CostPageData = {
   problemHighlight: "Behind a New Smile",
   problemDescription: "Getting dentures seems straightforward, but the final bill can be a surprise. The price tag is not just for the teeth themselves. It often includes initial consultations, tooth extractions, fittings, and future adjustments. Each step adds to the overall expense, making it hard to budget accurately from the start.",
   problemDescription2: "Beyond the initial fitting, dentures require ongoing care. Relining to refit the dentures as your gums change, repairs for accidental breaks, and specialized cleaning solutions are all part of the long-term cost. These are not one-time expenses, but they are necessary to keep your dentures comfortable and functional.",
+  problemNote: (
+    <>
+      Before committing to dentures, many patients explore alternatives. <Link href="/oral-health-hub/dental-veneers-for-missing-teeth/" className="text-primary underline hover:text-primary/80">Dental veneers for missing teeth</Link> can be a cosmetic option for certain gaps, while <Link href="/oral-health-hub/dental-crowns-and-bridges/" className="text-primary underline hover:text-primary/80">dental crowns and bridges</Link> offer a fixed solution that doesn't need to be removed. For a lower-cost, non-permanent route, <Link href="/oral-health-hub/removable-veneers/" className="text-primary underline hover:text-primary/80">removable veneers</Link> are worth understanding before you decide.
+    </>
+  ),
   costBreakdown: [
     { type: "Economy Full Dentures (Upper or Lower)", range: "$600 - $1,200", average: "$800", notes: "A basic, no-frills option. Often made from less expensive materials and with a more generic fit." },
     { type: "Conventional Full Dentures", range: "$1,500 - $3,500", average: "$2,500", notes: "A mid-range option with a better fit and more natural look. These are the most common type of dentures." },

@@ -1,4 +1,5 @@
 import CostPageTemplate, { CostPageData } from "./CostPageTemplate";
+import { Link } from "wouter";
 
 const data: CostPageData = {
   slug: "root-canal-cost",
@@ -18,6 +19,11 @@ const data: CostPageData = {
   problemHighlight: "Toothache",
   problemDescription: "When the soft pulp inside your tooth becomes infected, it can cause serious pain. This infection won't go away on its own. Ignoring it can lead to an abscess, bone loss, or even the need to have the tooth pulled entirely.",
   problemDescription2: "A root canal cleans out the infection, removes the damaged pulp, and seals the tooth to protect it. It's a way to save your natural tooth and stop the infection from spreading.",
+  problemNote: (
+    <>
+      Understanding what leads to a root canal can help you avoid one. <Link href="/oral-health-hub/what-causes-rotten-teeth/" className="text-primary underline hover:text-primary/80">Rotten teeth</Link> are often the end result of untreated decay that could have been caught earlier. After a root canal, most teeth need a protective cap — our guide to <Link href="/oral-health-hub/what-is-a-dental-crown/" className="text-primary underline hover:text-primary/80">what is a dental crown</Link> explains what that involves. If the infection started with a cavity that was ignored, learning about <Link href="/oral-health-hub/is-getting-a-tooth-filling-really-that-big-of-a-deal/" className="text-primary underline hover:text-primary/80">tooth fillings</Link> early on is one of the best ways to prevent needing more extensive treatment.
+    </>
+  ),
   costBreakdown: [
     { type: "Initial Consultation & X-Rays", range: "$100 - $350", average: "$225", notes: "To determine if a root canal is necessary." },
     { type: "Front Tooth Root Canal", range: "$700 - $1,200", average: "$950", notes: "Incisors and canines are easier to treat." },
