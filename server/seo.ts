@@ -2,6 +2,7 @@ import { Express, Request, Response } from "express";
 import { listBlogPosts } from "./blogDb";
 import { staticRoutes as allRoutes } from "../shared/routes";
 import { resolveRedirect } from "./redirectCache";
+import { company, pricing } from "../shared/facts";
 
 const SITE_URL = "https://dentasmart.ai";
 const NL = "\r\n";
@@ -290,10 +291,10 @@ function buildLlmsTxt(): string {
     `${SITE_URL}/pricing`,
     "",
     "Known public pricing:",
-    "- Quick Check: $19.99 one-time -- AI review of mouth photos and X-rays; see visible concerns, key insights, and Oral Health Score; save or share a patient-friendly report; Dr. Din support for 30 days",
-    "- Second Opinion: $29.99 one-time -- upload treatment plans, bills, reports, X-rays, and mouth photos; compare dentist findings with DentaSmart insights; plain-English report with cost ranges and questions to ask your dentist; Dr. Din support for 30 days",
-    "- Complete Care (Individual): $74.99/year -- unlimited mouth photo and X-ray reviews, complete reports, Oral Health Score tracking, guided self-examination, personalized guidance, treatment options with cost estimates and risks of delay, 24/7 Dr. Din support",
-    "- Complete Care (Family): $149.99/year -- up to 4 family members, separate profiles, reports, and dental history per member, Dr. Din for family questions, +$19.99/yr per additional member",
+    `- Quick Check: ${pricing.quickCheck.priceFormatted} one-time -- AI review of mouth photos and X-rays; see visible concerns, key insights, and Oral Health Score; save or share a patient-friendly report; Dr. Din support for 30 days`,
+    `- Second Opinion: ${pricing.secondOpinion.priceFormatted} one-time -- upload treatment plans, bills, reports, X-rays, and mouth photos; compare dentist findings with DentaSmart insights; plain-English report with cost ranges and questions to ask your dentist; Dr. Din support for 30 days`,
+    `- Complete Care (Individual): ${pricing.completeCareIndividual.priceFormatted}/year -- unlimited mouth photo and X-ray reviews, complete reports, Oral Health Score tracking, guided self-examination, personalized guidance, treatment options with cost estimates and risks of delay, 24/7 Dr. Din support`,
+    `- Complete Care (Family): ${pricing.completeCareFamily.priceFormatted}/year -- up to 4 family members, separate profiles, reports, and dental history per member, Dr. Din for family questions, +${pricing.additionalFamilyMember.priceFormatted}/yr per additional member`,
     "- Benefits: coming soon -- includes discounted dental network (75,000+ dentists), 20-60% savings, BNPL options",
     "",
     "## App Availability",
@@ -302,8 +303,8 @@ function buildLlmsTxt(): string {
     "",
     "## Contact",
     `- Website: ${SITE_URL}`,
-    "- Instagram: https://www.instagram.com/dentasmart.ai",
-    "- LinkedIn: https://www.linkedin.com/company/dentasmart",
+    `- Instagram: ${company.social.instagram}`,
+    `- LinkedIn: ${company.social.linkedin}`,
     "",
     "## Important Notes",
     "- DentaSmart is NOT a replacement for professional dental care",
@@ -481,8 +482,8 @@ function buildLlmsFullTxt(): string {
     "## Contact & Social",
     "",
     `Website: ${SITE_URL}`,
-    "Instagram: https://www.instagram.com/dentasmart.ai",
-    "LinkedIn: https://www.linkedin.com/company/dentasmart",
+    `Instagram: ${company.social.instagram}`,
+    `LinkedIn: ${company.social.linkedin}`,
     "",
     "## Important Notes",
     "",

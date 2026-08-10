@@ -4,6 +4,8 @@
  * All platforms fire from a single trackEvent() call.
  */
 
+import { app } from "@shared/facts";
+
 // ── Global type extensions ──────────────────────────────────────────────────
 declare global {
   interface Window {
@@ -291,12 +293,13 @@ export function trackAppDownload(
   });
 }
 
+
 /**
  * Build an App Store URL with UTM parameters for campaign tracking.
  * These UTMs show up in App Store Connect and Google Play Console analytics.
  */
 export function getAppStoreUrl(source: string): string {
-  const baseUrl = "https://apps.apple.com/us/app/dentasmart/id6670311232";
+  const baseUrl = app.iosUrl;
   const params = new URLSearchParams({
     pt: "126584659", // Provider Token (Apple)
     ct: source, // Campaign Token - tracks which page drove the download

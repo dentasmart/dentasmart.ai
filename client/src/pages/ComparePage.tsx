@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import { pricing } from "@shared/facts";
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/lib/analytics";
 import { motion } from "framer-motion";
@@ -54,7 +55,7 @@ const compareData: Record<string, CompareData> = {
     rows: [
       { feature: "Available 24/7", dentasmart: "Yes, instant access", competitor: "Limited hours", dentasmartWins: true },
       { feature: "No appointment needed", dentasmart: "Yes, upload anytime", competitor: "Requires scheduling", dentasmartWins: true },
-      { feature: "Cost per consultation", dentasmart: "$4.99/month unlimited", competitor: "$50-150 per visit", dentasmartWins: true },
+      { feature: "Cost per consultation", dentasmart: `${pricing.completeCareIndividual.priceFormatted}/year unlimited`, competitor: "$50-150 per visit", dentasmartWins: true },
       { feature: "Results speed", dentasmart: "Under 10 minutes", competitor: "15-30 minute wait", dentasmartWins: true },
       { feature: "Image analysis", dentasmart: "AI-powered X-ray & photo analysis", competitor: "Visual assessment only", dentasmartWins: true },
       { feature: "Prescriptions", dentasmart: "No, not a replacement for dentist", competitor: "Yes, licensed provider", dentasmartWins: false },
@@ -72,7 +73,7 @@ const compareData: Record<string, CompareData> = {
     competitorDesc: "Traditional dental insurance that covers a portion of dental procedures after deductibles and waiting periods, typically costing $30-60/month.",
     dentasmartDesc: "AI-powered oral health monitoring that helps you catch dental issues early and understand your treatment options before visiting the dentist.",
     rows: [
-      { feature: "Monthly cost", dentasmart: "$4.99/month", competitor: "$30-60/month", dentasmartWins: true },
+      { feature: "Cost", dentasmart: `${pricing.completeCareIndividual.priceFormatted}/year`, competitor: "$30-60/month", dentasmartWins: true },
       { feature: "Waiting period", dentasmart: "None. Instant access", competitor: "6-12 months for major work", dentasmartWins: true },
       { feature: "Covers dental procedures", dentasmart: "No, monitoring tool", competitor: "Yes, partial coverage", dentasmartWins: false },
       { feature: "Early problem detection", dentasmart: "Yes, AI monitoring", competitor: "Only at scheduled visits", dentasmartWins: true },

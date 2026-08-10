@@ -32,7 +32,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/how-it-works": {
     title: "How DentaSmart Works | AI Dental Analysis in 3 Steps",
     description:
-      "Upload a photo of your teeth, get AI-powered analysis in seconds, and follow a personalized care plan. See how DentaSmart makes dental health simple.",
+      "Upload a photo of your teeth, get AI-powered analysis in minutes, and follow a personalized care plan. See how DentaSmart makes dental health simple.",
   },
   "/features": {
     title: "DentaSmart Features | AI Dental Scan, Oral Health Score & More",
@@ -67,7 +67,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/instant-scan": {
     title: "Instant Dental Scan | Upload a Photo for AI Analysis",
     description:
-      "Try DentaSmart's instant dental scan. Upload a photo of your teeth and get AI-powered insights about your oral health in seconds.",
+      "Try DentaSmart's instant dental scan. Upload a photo of your teeth and get AI-powered insights about your oral health in minutes.",
   },
   "/photo-guide": {
     title: "Photo Guide | How to Take the Best Dental Photos",

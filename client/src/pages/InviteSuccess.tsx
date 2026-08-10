@@ -2,8 +2,9 @@ import { useEffect } from "react";
 import { useLocation } from "wouter";
 import { motion } from "framer-motion";
 import SEO from "@/components/SEO";
+import { app } from "@shared/facts";
 
-const APP_STORE_URL = "https://apps.apple.com/us/app/dentasmart/id6670311232";
+const APP_STORE_URL = app.iosUrl;
 
 export default function InviteSuccess() {
   const [, navigate] = useLocation();

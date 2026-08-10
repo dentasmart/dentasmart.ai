@@ -13,6 +13,7 @@
 const SITE_URL = "https://dentasmart.ai";
 
 import { getBlogPostBySlug } from "./blogDb";
+import { app, company, pricing } from "../shared/facts";
 
 // ─── Organization Schema (every page) ────────────────────────────────
 function getOrganizationSchema(): object {
@@ -23,11 +24,10 @@ function getOrganizationSchema(): object {
     url: SITE_URL,
     logo: `${SITE_URL}/images/logo.png`,
     description: "DentaSmart is an AI-powered oral health app that helps people understand their dental health through photo analysis, personalized care plans, and a 24/7 AI dentist.",
-    foundingDate: "2024",
     sameAs: [
-      "https://www.instagram.com/dentasmart.ai",
-      "https://www.linkedin.com/company/dentasmart",
-      "https://apps.apple.com/app/dentasmart/id6504609692"
+      company.social.instagram,
+      company.social.linkedin,
+      app.iosUrl,
     ],
     contactPoint: {
       "@type": "ContactPoint",
@@ -72,7 +72,7 @@ function getSoftwareApplicationSchema(): object {
       {
         "@type": "Offer",
         name: "Quick Check",
-        price: "19.99",
+        price: pricing.quickCheck.price.toString(),
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock"
@@ -80,7 +80,7 @@ function getSoftwareApplicationSchema(): object {
       {
         "@type": "Offer",
         name: "Second Opinion",
-        price: "29.99",
+        price: pricing.secondOpinion.price.toString(),
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock"
@@ -88,7 +88,7 @@ function getSoftwareApplicationSchema(): object {
       {
         "@type": "Offer",
         name: "Complete Care (Individual)",
-        price: "74.99",
+        price: pricing.completeCareIndividual.price.toString(),
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock"
@@ -96,19 +96,12 @@ function getSoftwareApplicationSchema(): object {
       {
         "@type": "Offer",
         name: "Complete Care (Family)",
-        price: "149.99",
+        price: pricing.completeCareFamily.price.toString(),
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock"
       }
-    ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5.0",
-      ratingCount: "120",
-      bestRating: "5",
-      worstRating: "1"
-    }
+    ]
   };
 }
 
@@ -161,7 +154,7 @@ function getProductSchema(): object {
         "@type": "Offer",
         name: "Quick Check",
         description: "One-time AI review of mouth photos and X-rays. See visible concerns, key insights, and your Oral Health Score. Save or share a patient-friendly report. Dr. Din support for 30 days.",
-        price: "19.99",
+        price: pricing.quickCheck.price.toString(),
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
@@ -171,7 +164,7 @@ function getProductSchema(): object {
         "@type": "Offer",
         name: "Second Opinion",
         description: "One-time second opinion for one case. Upload treatment plans, bills, X-rays, and mouth photos. Get a plain-English comparison, treatment option context, cost ranges, and questions to ask your dentist. Dr. Din support for 30 days.",
-        price: "29.99",
+        price: pricing.secondOpinion.price.toString(),
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
@@ -181,7 +174,7 @@ function getProductSchema(): object {
         "@type": "Offer",
         name: "Complete Care (Individual)",
         description: "Year-round monitoring for one person. Unlimited mouth photo and X-ray reviews, complete reports, Oral Health Score tracking, guided self-examination, personalized guidance, treatment options with cost estimates, and 24/7 Dr. Din support.",
-        price: "74.99",
+        price: pricing.completeCareIndividual.price.toString(),
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
@@ -191,7 +184,7 @@ function getProductSchema(): object {
         "@type": "Offer",
         name: "Complete Care (Family)",
         description: "Year-round monitoring for up to 4 family members. Separate profiles, reports, Oral Health Score tracking, and dental history for each person. Dr. Din support for family dental questions.",
-        price: "149.99",
+        price: pricing.completeCareFamily.price.toString(),
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
@@ -219,7 +212,7 @@ function getHowToSchema(): object {
         "@type": "HowToStep",
         position: 2,
         name: "Get Instant AI Insights",
-        text: "Our AI analyzes your oral health in seconds, providing a clear Oral Health Score and detailed findings."
+        text: "Our AI analyzes your oral health in minutes, providing a clear Oral Health Score and detailed findings."
       },
       {
         "@type": "HowToStep",

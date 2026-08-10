@@ -197,7 +197,7 @@ const faqJsonLd = {
   ],
 };
 
-// 3. SoftwareApplication schema with aggregateRating (required by Google for rich results).
+// 3. SoftwareApplication schema.
 const webAppJsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
@@ -211,13 +211,6 @@ const webAppJsonLd = {
     "@type": "Offer",
     price: "0",
     priceCurrency: "USD",
-  },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5.0",
-    ratingCount: "127",
-    bestRating: "5",
-    worstRating: "1",
   },
   featureList: "Free dental symptom checker, Personalized oral health risk assessment, AI-powered condition matching, Tailored next-step recommendations, No account required",
   author: {

@@ -20,12 +20,6 @@ const appJsonLd = {
     price: "0",
     priceCurrency: "USD",
   },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5.0",
-    ratingCount: "1200",
-    bestRating: "5",
-  },
 };
 
 const steps = [

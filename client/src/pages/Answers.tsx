@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import { pricing } from "@shared/facts";
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/lib/analytics";
 import { motion } from "framer-motion";
@@ -57,7 +58,7 @@ const qaData: QA[] = [
   // Costs & Insurance
   { q: "Why is dental care so expensive?", a: "Dental care costs reflect specialized training, equipment, materials, and overhead. Many procedures require precision work on a tiny scale. DentaSmart helps you understand costs upfront and prioritize treatments to manage expenses.", category: "Costs" },
   { q: "How can I save money on dental care?", a: "Catch problems early (when a $200 filling prevents a $1,500 root canal), compare prices between dentists, ask about payment plans, and use DentaSmart to monitor your oral health between visits.", category: "Costs" },
-  { q: "Is dental insurance worth it?", a: "It depends on your needs. Most dental insurance caps at $1,000-2,000/year with waiting periods for major work. If you only need cleanings, a discount plan may be cheaper. DentaSmart costs $4.99/month for unlimited monitoring.", category: "Costs" },
+  { q: "Is dental insurance worth it?", a: `It depends on your needs. Most dental insurance caps at $1,000-2,000/year with waiting periods for major work. If you only need cleanings, a discount plan may be cheaper. DentaSmart Complete Care costs ${pricing.completeCareIndividual.priceFormatted}/year for unlimited oral health monitoring.`, category: "Costs" },
   { q: "What dental work is most urgent?", a: "Infections (abscesses), uncontrolled bleeding, severe pain, and broken teeth with sharp edges are dental emergencies. DentaSmart helps you triage by understanding which issues need immediate attention versus routine care.", category: "Costs" },
   { q: "Can I negotiate dental prices?", a: "Yes. Many dentists offer cash-pay discounts (10-20%), payment plans, or will match competitor quotes. Ask before treatment. Knowing the typical cost range (which DentaSmart provides) gives you negotiating power.", category: "Costs" },
 

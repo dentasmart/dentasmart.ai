@@ -7,7 +7,8 @@ import SEO from "@/components/SEO";
 import { Loader2, Eye, EyeOff } from "lucide-react";
 
 const API_BASE = "https://live-backend.dentasmart.ai";
-const APP_STORE_URL = "https://apps.apple.com/us/app/dentasmart/id6670311232";
+import { app } from "@shared/facts";
+const APP_STORE_URL = app.iosUrl;
 
 // ─── helpers ────────────────────────────────────────────────────────────────
 

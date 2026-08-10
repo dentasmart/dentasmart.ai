@@ -11,6 +11,7 @@
  * DO NOT add <title>, <meta>, or <link rel="canonical"> here — they belong in server/metaTags.ts.
  */
 import { Helmet } from 'react-helmet-async';
+import { company } from "@shared/facts";
 
 const SITE_URL = "https://dentasmart.ai";
 
@@ -44,8 +45,8 @@ export default function SEO({
     logo: `${SITE_URL}/logo.png`,
     description: "AI-powered dental health analysis and personalized oral care guidance.",
     sameAs: [
-      "https://www.instagram.com/dentasmart.ai",
-      "https://www.linkedin.com/company/dentasmart",
+      company.social.instagram,
+      company.social.linkedin,
     ],
   };
 
@@ -74,13 +75,6 @@ export default function SEO({
       "@type": "Offer",
       price: "0",
       priceCurrency: "USD",
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5.0",
-      ratingCount: "1200",
-      bestRating: "5",
-      worstRating: "1",
     },
   };
 

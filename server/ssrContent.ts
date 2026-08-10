@@ -30,7 +30,7 @@ function generateHomepageContent(): string {
   <h1>DentaSmart — Your Personal AI Dentist in Your Pocket</h1>
   <p>Get instant clarity about your oral health. Upload a photo of your teeth or dental X-rays and receive AI-powered insights, a personalized Oral Health Score, and a clear care plan in minutes. DentaSmart helps you understand what is happening in your mouth so you can make confident decisions and prevent expensive surprises.</p>
   <h2>How DentaSmart Works</h2>
-  <p>Take a photo of your teeth or upload your dental X-rays. Our AI analyzes your oral health in seconds, identifying potential issues and giving you a score from 0 to 100. Then follow a personalized plan to better health — all from your phone.</p>
+  <p>Take a photo of your teeth or upload your dental X-rays. Our AI analyzes your oral health in minutes, identifying potential issues and giving you a score from 0 to 100. Then follow a personalized plan to better health — all from your phone.</p>
   <h2>Why People Choose DentaSmart</h2>
   <ul>
     <li>AI-powered dental photo analysis with instant results</li>
@@ -241,7 +241,7 @@ function generateStaticPageContent(path: string): string | null {
   <h2>Step 1: Upload a Photo</h2>
   <p>Take a quick picture of your teeth or upload your dental X-rays. Our AI works with both mouth photos and X-ray images to give you comprehensive insights.</p>
   <h2>Step 2: Get Instant AI Insights</h2>
-  <p>Our AI analyzes your image in seconds, identifying potential issues and providing a clear Oral Health Score from 0 to 100. You get both a plain-English report and a clinical version you can share with your dentist.</p>
+  <p>Our AI analyzes your image in minutes, identifying potential issues and providing a clear Oral Health Score from 0 to 100. You get both a plain-English report and a clinical version you can share with your dentist.</p>
   <h2>Step 3: Take Control</h2>
   <p>Follow your personalized care plan, track your progress over time, and ask Din (our 24/7 AI dentist) any dental questions. Know what to expect before your next dental visit.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/features">See All Features</a> | <a href="/pricing">View Pricing</a></p>
@@ -315,7 +315,7 @@ function generateStaticPageContent(path: string): string | null {
     "/instant-scan": `
 <article>
   <h1>Instant Dental Scan: Upload a Photo for AI Analysis</h1>
-  <p>Try DentaSmart's instant dental scan. Upload a photo of your teeth and get AI-powered insights about your oral health in seconds. No appointment needed.</p>
+  <p>Try DentaSmart's instant dental scan. Upload a photo of your teeth and get AI-powered insights about your oral health in minutes. No appointment needed.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/photo-guide">Photo Guide</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`,
     "/photo-guide": `

@@ -6,6 +6,7 @@
  */
 
 import { Helmet } from "react-helmet-async";
+import { app, company } from "@shared/facts";
 
 const SITE_URL = "https://dentasmart.ai";
 
@@ -20,11 +21,10 @@ export function OrganizationSchema() {
     url: SITE_URL,
     logo: `${SITE_URL}/images/logo.png`,
     description: "DentaSmart is an AI-powered oral health app that helps people understand their dental health through photo analysis, personalized care plans, and a 24/7 AI dentist.",
-    foundingDate: "2024",
     sameAs: [
-      "https://www.instagram.com/dentasmart.ai",
-      "https://www.linkedin.com/company/dentasmart",
-      "https://apps.apple.com/app/dentasmart/id6504609692"
+      company.social.instagram,
+      company.social.linkedin,
+      app.iosUrl,
     ],
     contactPoint: {
       "@type": "ContactPoint",
@@ -117,13 +117,6 @@ export function SoftwareApplicationSchema() {
         description: "Year-round monitoring for up to 4 family members. Separate profiles, reports, Oral Health Score tracking, and dental history for each person. Dr. Din support for family dental questions. $149.99/year."
       }
     ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5.0",
-      ratingCount: "120",
-      bestRating: "5",
-      worstRating: "1"
-    }
   };
   return (
     <Helmet>

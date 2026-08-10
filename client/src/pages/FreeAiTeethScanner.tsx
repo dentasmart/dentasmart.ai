@@ -74,13 +74,6 @@ const softwareAppSchema = {
     priceCurrency: "USD",
     description: "Free first scan included"
   },
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "5.0",
-    ratingCount: "127",
-    bestRating: "5",
-    worstRating: "1"
-  }
 };
 
 const faqSchema = {
