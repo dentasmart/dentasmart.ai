@@ -28,14 +28,14 @@ const data: ComparisonPageData = {
     { factor: "Virtual dentist consultation", optionA: "No (provides report to bring to your dentist)", optionB: "Yes, paid video consultation available", winner: "B" },
     { factor: "Report formats", optionA: "Patient version + dentist version (PDF)", optionB: "Single summary report", winner: "A" },
     { factor: "Free scan", optionA: "Yes, first scan free", optionB: "Yes, basic scan free", winner: "tie" },
-    { factor: "Platform", optionA: "iOS (Android early access)", optionB: "Web-based", winner: "B" },
+    { factor: "Platform", optionA: "iOS and Android apps", optionB: "Web-based", winner: "B" },
   ],
   optionAProsCons: [
     { text: "X-ray analysis catches hidden problems photos cannot show", type: "pro" },
     { text: "Numerical health score makes progress measurable", type: "pro" },
     { text: "Care plan with cost estimates helps you budget before visiting a dentist", type: "pro" },
     { text: "Dual reports let you share findings with your dentist easily", type: "pro" },
-    { text: "iOS only for now (Android waitlist open)", type: "con" },
+    { text: "Requires app download (iOS and Android)", type: "con" },
     { text: "Does not offer live video consultations", type: "con" },
   ],
   optionBProsCons: [

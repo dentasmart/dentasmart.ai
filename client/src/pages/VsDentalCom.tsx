@@ -28,14 +28,14 @@ const data: ComparisonPageData = {
     { factor: "Dual reports (patient + dentist)", optionA: "Yes, shareable PDF", optionB: "Basic summary only", winner: "A" },
     { factor: "Dentist referral network", optionA: "Find-a-dentist directory", optionB: "Yes, integrated booking", winner: "B" },
     { factor: "Free tier", optionA: "First scan free, then $19.99+ per report", optionB: "Free scan, then paid consultation", winner: "tie" },
-    { factor: "Platform", optionA: "iOS app (Android coming soon)", optionB: "Web-based (any browser)", winner: "B" },
+    { factor: "Platform", optionA: "iOS and Android apps", optionB: "Web-based (any browser)", winner: "B" },
   ],
   optionAProsCons: [
     { text: "Analyzes both photos and X-rays for a complete picture", type: "pro" },
     { text: "Oral health score makes it easy to track improvement", type: "pro" },
     { text: "Detailed care plan with cost estimates before you visit a dentist", type: "pro" },
     { text: "Guided self-examination walks you through each area of your mouth", type: "pro" },
-    { text: "Currently iOS only (Android in early access)", type: "con" },
+    { text: "Requires app download (iOS and Android)", type: "con" },
     { text: "Not a diagnostic tool and does not replace a dentist visit", type: "neutral" },
   ],
   optionBProsCons: [
@@ -71,7 +71,7 @@ const data: ComparisonPageData = {
     { q: "Can DentaSmart read my dental X-rays?", a: "Yes. You can upload panoramic or bitewing X-rays and DentaSmart will highlight findings like bone loss, hidden decay, root issues, and impacted teeth." },
     { q: "Which app is more accurate?", a: "Both use AI trained on dental images. DentaSmart covers more ground because it analyzes X-rays in addition to photos, which reveals issues invisible to the naked eye." },
     { q: "Do I still need to see a dentist?", a: "Yes. Neither app replaces a licensed dentist. Both are screening tools that help you understand your situation before or between dental visits." },
-    { q: "Does DentaSmart work on Android?", a: "DentaSmart is live on iOS with a 5.0 App Store rating. Android is in early access. You can join the waitlist on the DentaSmart website." },
+    { q: "Does DentaSmart work on Android?", a: "Yes. DentaSmart is available on both iOS (App Store) and Android (Google Play)." },
   ],
   relatedPages: [
     { name: "Free AI Teeth Scanner", href: "/free-ai-teeth-scanner", tagline: "Learn how AI teeth scanning works" },

@@ -12,6 +12,8 @@
 
 const SITE_URL = "https://dentasmart.ai";
 
+import { getBlogPostBySlug } from "./blogDb";
+
 // ─── Organization Schema (every page) ────────────────────────────────
 function getOrganizationSchema(): object {
   return {
@@ -343,6 +345,23 @@ export async function resolveSchemaMarkup(urlPath: string): Promise<object[]> {
   if (cleanPath.startsWith("/dental-costs/")) {
     const slug = cleanPath.replace("/dental-costs/", "");
     const title = slug.replace(/-cost$/, '').replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    // Cost pages have no verified clinical review date — omit lastReviewed
+    schemas.push({
+      "@context": "https://schema.org",
+      "@type": "MedicalWebPage",
+      name: `${title} Cost Guide`,
+      description: `Understand the cost of ${title.toLowerCase()} procedures, insurance coverage, and ways to save.`,
+      url: `${SITE_URL}${cleanPath}/`,
+      publisher: {
+        "@type": "Organization",
+        name: "DentaSmart",
+        url: SITE_URL,
+      },
+      medicalAudience: {
+        "@type": "PatientAudience",
+        audienceType: "Patient",
+      },
+    });
     schemas.push(getBreadcrumbSchema([
       { name: "Home", url: "/" },
       { name: "Dental Costs", url: "/dental-costs" },
@@ -486,6 +505,47 @@ export async function resolveSchemaMarkup(urlPath: string): Promise<object[]> {
   if (cleanPath.startsWith("/oral-health-hub/")) {
     const slug = cleanPath.replace("/oral-health-hub/", "");
     const title = slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    // BlogPosting schema — use actual DB data when available
+    const post = await getBlogPostBySlug(slug);
+    if (post && post.status === "published") {
+      const blogPosting: Record<string, unknown> = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: post.metaTitle || post.title,
+        description: post.metaDescription || "",
+        url: post.canonicalUrl || `${SITE_URL}/oral-health-hub/${post.slug}/`,
+        mainEntityOfPage: {
+          "@type": "WebPage",
+          "@id": `${SITE_URL}/oral-health-hub/${post.slug}/`,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: "DentaSmart",
+          url: SITE_URL,
+        },
+      };
+      if (post.featuredImage || post.ogImage) {
+        blogPosting.image = post.featuredImage || post.ogImage;
+      }
+      if (post.publishedAt) {
+        blogPosting.datePublished = new Date(post.publishedAt).toISOString();
+      }
+      if (post.updatedAt) {
+        blogPosting.dateModified = new Date(post.updatedAt).toISOString();
+      }
+      if (post.reviewedByName) {
+        blogPosting.author = {
+          "@type": "Person",
+          name: post.reviewedByName,
+        };
+      } else {
+        blogPosting.author = {
+          "@type": "Organization",
+          name: "DentaSmart",
+        };
+      }
+      schemas.push(blogPosting);
+    }
     schemas.push(getBreadcrumbSchema([
       { name: "Home", url: "/" },
       { name: "Oral Health Hub", url: "/oral-health-hub" },

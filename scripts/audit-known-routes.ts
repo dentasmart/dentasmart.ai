@@ -108,6 +108,7 @@ const sitemapSegments = [
   "sitemap-life-stages.xml",
   "sitemap-lifestyle.xml",
   "sitemap-emergencies.xml",
+  "sitemap-employers.xml",
   "sitemap-blog.xml",
 ];
 
