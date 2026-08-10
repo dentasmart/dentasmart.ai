@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.dentaSmart.app.android",
+      "sha256_cert_fingerprints": [
+        "26:CC:60:50:A8:2B:D7:4D:8B:46:15:7B:7B:93:BF:F9:88:E5:4A:E3:AA:22:74:94:5B:51:1F:97:E5:0D:93:1B"
+      ]
+    }
+  }
+]
