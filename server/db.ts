@@ -1,18 +1,30 @@
 import { eq, sql, and, gte, lte, desc, count } from "drizzle-orm";
+import mysql from "mysql2";
 import { drizzle } from "drizzle-orm/mysql2";
 import { InsertUser, users, conversionEvents, type InsertConversionEvent, siteSettings } from "../drizzle/schema";
 import { ENV } from './_core/env';
 
 let _db: ReturnType<typeof drizzle> | null = null;
+let _pool: ReturnType<typeof mysql.createPool> | null = null;
 
-// Lazily create the drizzle instance so local tooling can run without a DB.
+// Lazily create the drizzle instance with a properly configured connection pool.
+// enableKeepAlive prevents stale connections that cause DELETE/UPDATE failures
+// after idle periods (the pool sends TCP keepalive packets to detect dead connections).
 export async function getDb() {
   if (!_db && process.env.DATABASE_URL) {
     try {
-      _db = drizzle(process.env.DATABASE_URL);
+      _pool = mysql.createPool({
+        uri: process.env.DATABASE_URL,
+        waitForConnections: true,
+        connectionLimit: 10,
+        enableKeepAlive: true,
+        keepAliveInitialDelay: 10000, // 10 seconds
+      });
+      _db = drizzle({ client: _pool });
     } catch (error) {
       console.warn("[Database] Failed to connect:", error);
       _db = null;
+      _pool = null;
     }
   }
   return _db;
