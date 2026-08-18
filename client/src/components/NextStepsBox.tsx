@@ -166,7 +166,7 @@ function getSteps(contentType: ContentType): Step[] {
     case "treatment":
       return [
         {
-          text: "Upload a photo of your teeth to get a free AI second opinion on whether this treatment is right for you.",
+          text: "Upload a photo of your teeth to get an AI second opinion on whether this treatment is right for you.",
         },
         {
           text: "Compare this treatment with alternatives to find the best option for your situation.",

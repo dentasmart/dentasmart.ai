@@ -80,7 +80,7 @@ export function getPageContext(path: string): PageContext {
     return {
       contentType: "treatment",
       ctaHeadline: "Considering this treatment?",
-      ctaDescription: "Get a free AI second opinion to make sure it is the right choice for you. No insurance needed.",
+      ctaDescription: "Get an AI second opinion to make sure it is the right choice for you. No insurance needed.",
       ctaButtonText: "Get a Second Opinion",
       ctaAction: "app-download",
       ctaLink: "/download",
