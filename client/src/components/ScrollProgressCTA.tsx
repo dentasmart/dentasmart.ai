@@ -181,7 +181,7 @@ export function ScrollProgressCTA() {
                   ))}
                 </div>
                 <span className="text-xs text-stone-400">
-                  50K+ people checked their teeth
+                  Free &middot; No insurance needed
                 </span>
               </div>
 

@@ -56,9 +56,9 @@ const variations: PopupVariation[] = [
     badge: "AI Second Opinion",
     headline: "Wondering if you really need that procedure?",
     description:
-      "Upload a photo and get a free AI second opinion in minutes. Over 50,000 scans analyzed with 5-star accuracy.",
-    socialProof: "50,000+ scans analyzed with 5-star rating",
-    ctaText: "Get a Free Second Opinion",
+      "Upload your photos and get an AI second opinion in minutes. Available on iOS and Android.",
+    socialProof: "Free to start",
+    ctaText: "Get a Second Opinion",
     dismissText: "No thanks, I am confident in my diagnosis",
     action: "external",
     link: "",

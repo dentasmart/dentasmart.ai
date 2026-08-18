@@ -162,11 +162,9 @@ export default function Testimonials() {
           <h3 className="text-2xl font-display font-bold text-foreground mb-8 text-center">
             Why people trust DentaSmart
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
             {[
               { icon: "⭐", stat: "5.0/5", label: "App Store Rating" },
-              { icon: "👥", stat: "50K+", label: "Active Users" },
-              { icon: "✓", stat: "100%", label: "Detection Accuracy" },
               { icon: "🏥", stat: "24/7", label: "Din Support" },
             ].map((item, idx) => (
               <div key={idx}>

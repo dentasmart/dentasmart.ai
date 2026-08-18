@@ -112,7 +112,7 @@ export default function MidContentCTA({
               ))}
             </div>
             <span className="text-xs text-stone-500">
-              <span className="font-medium text-stone-700">50,000+</span> people have checked their oral health
+              Free &middot; Available on iOS and Android
             </span>
           </div>
 
@@ -158,7 +158,7 @@ export default function MidContentCTA({
             </p>
             {/* Inline social proof */}
             <p className="text-xs text-stone-400 mt-1.5">
-              <span className="text-yellow-500">&#9733;</span> 5.0 rating &middot; 50K+ scans &middot; Free to start
+              Free to start &middot; No insurance needed
             </p>
           </div>
           {isInternalLink ? (

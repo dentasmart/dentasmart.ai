@@ -12,7 +12,6 @@ const data: ComparisonPageData = {
   keywords: "dentasmart vs dental.com, dental.com smartscan review, best ai teeth scanner, dental.com vs dentasmart comparison",
   statsStrip: [
     { value: "5.0", label: "DentaSmart App Store Rating" },
-    { value: "50K+", label: "Scans Analyzed by DentaSmart" },
     { value: "$0", label: "First Scan Cost (Both)" },
   ],
   introTitle: "Two AI Scanners,",

@@ -63,7 +63,7 @@ export function WaitlistPopup({ isOpen, onClose }: WaitlistPopupProps) {
                 Stop Overpaying for Dental Care.
               </DialogTitle>
               <DialogDescription className="text-stone-600 text-base">
-                Join the waitlist to get exclusive access to our dental benefits membership and start saving 20-60% on procedures.
+                Join the waitlist to get exclusive access to our dental benefits membership and start saving on procedures.
               </DialogDescription>
             </DialogHeader>
 

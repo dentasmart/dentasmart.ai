@@ -56,7 +56,7 @@ export default function FAQs() {
     {
       title: "Accuracy and Safety",
       faqs: [
-        { q: "How accurate is the AI analysis?", a: "Our AI has 100% detection accuracy for identifying potential areas of concern. It's trained by dental experts and validated against clinical outcomes. The American Dental Association (ada.org) recommends regular professional exams alongside any monitoring tools." },
+        { q: "How accurate is the AI analysis?", a: "Our AI is trained by dental experts to identify potential areas of concern in your mouth photos and X-rays. The American Dental Association (ada.org) recommends regular professional exams alongside any monitoring tools." },
         { q: "Is Din a real dentist?", a: "No, Din is an advanced AI trained on vast dental knowledge. Din provides educational guidance, not medical advice. Always consult with your dentist for medical decisions." },
         { q: "Can Din diagnose me?", a: "Din can't diagnose conditions, but can help you understand your symptoms and prepare questions for your dentist." },
       ],
@@ -133,7 +133,7 @@ export default function FAQs() {
       ]} />
       <FAQSchema faqs={[
         { question: "How do I get started with DentaSmart?", answer: "Download the app from the App Store or Google Play, create an account, and take your first mouth photos or upload X-rays. You'll get your first report within 10 minutes." },
-        { question: "How accurate is the AI analysis?", answer: "DentaSmart's AI has 100% detection accuracy for identifying potential areas of concern. It's trained by dental experts and validated against clinical outcomes." },
+        { question: "How accurate is the AI analysis?", answer: "DentaSmart's AI is trained by dental experts to identify potential areas of concern in your mouth photos and X-rays." },
         { question: "Is DentaSmart HIPAA compliant?", answer: "Yes. DentaSmart is fully HIPAA compliant and meets all healthcare privacy and security standards as defined by the U.S. Department of Health and Human Services." },
         { question: "What are DentaSmart's pricing options?", answer: "Quick Check is $19.99 one-time (AI review of mouth photos and X-rays, Oral Health Score, patient-friendly report, Dr. Din 30 days). Second Opinion is $29.99 one-time (upload treatment plans, bills, X-rays, and mouth photos for a plain-English comparison with cost ranges, Dr. Din 30 days). Complete Care is $74.99/year for individuals or $149.99/year for families up to 4 members (year-round monitoring, unlimited reviews, complete reports, guided self-examination, personalized guidance, 24/7 Dr. Din)." },
         { question: "Is it a dentist replacement?", answer: "No. DentaSmart is a tool to help you monitor your oral health between visits and understand your dentist's recommendations better. It does not replace professional care." },

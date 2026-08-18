@@ -17,8 +17,8 @@ export function ValueComparisonTable() {
     },
     { 
       name: "Major Procedures", 
-      denta: "20-60% savings immediately", 
-      savings: "10-60% savings", 
+      denta: "Discounted rates (coming soon)",
+      savings: "10-60% savings",
       insurance: "50% coverage (waiting period)" 
     },
     { 

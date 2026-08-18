@@ -69,7 +69,7 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
                   See DentaSmart in Action
                 </DialogTitle>
                 <DialogDescription className="text-stone-600 text-base">
-                  Fill out the form below to schedule a personalized demo. We'll show you how to improve employee oral health while saving an estimated 75% on costs.
+                  Fill out the form below to schedule a personalized demo. We'll show you how to improve employee oral health and manage dental benefit costs.
                 </DialogDescription>
               </DialogHeader>
 

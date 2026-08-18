@@ -187,7 +187,7 @@ export default function StickyDownloadBanner() {
               5.0
             </span>
             <span className="w-1 h-1 rounded-full bg-stone-300" />
-            <span>50K+ scans completed</span>
+            <span>Free to start</span>
           </div>
 
           {context.ctaAction === "symptom-quiz" ? (

@@ -97,9 +97,7 @@ export default function Home() {
                   ))}
                   <span className="text-sm font-semibold text-stone-800 ml-1">5.0 on the App Store</span>
                 </div>
-                <span className="text-stone-300 hidden sm:inline">|</span>
-                <span className="text-sm text-stone-600">50K+ scans analyzed</span>
-                <span className="text-stone-300 hidden sm:inline">|</span>
+               <span className="text-stone-300 hidden sm:inline">|</span>
                 <span className="text-sm text-stone-600">Free to start</span>
               </div>
               
@@ -274,9 +272,9 @@ export default function Home() {
         <div className="container px-4 mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-border/50">
             {[
-              { value: "50K+", label: "Scans Analyzed" },
               { value: "5.0 ★", label: "App Store Rating" },
-              { value: "24/7", label: "AI Support" }
+              { value: "24/7", label: "AI Support" },
+              { value: "iOS + Android", label: "Available Now" }
             ].map((stat, idx) => (
               <motion.div 
                 key={idx} 

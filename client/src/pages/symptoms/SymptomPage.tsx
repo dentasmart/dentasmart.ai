@@ -410,7 +410,7 @@ export default function SymptomPage() {
               </Button>
             </Link>
           </div>
-          <p className="text-white/60 text-sm mt-4">Trusted by 50,000+ users &middot; 5.0/5 rating</p>
+          <p className="text-white/60 text-sm mt-4">Free to start &middot; No insurance needed</p>
         </div>
       </section>
 

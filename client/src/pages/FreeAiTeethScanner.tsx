@@ -181,7 +181,7 @@ export default function FreeAiTeethScanner() {
             </div>
             <div className="flex items-center gap-2">
               <Camera className="w-4 h-4 text-primary" />
-              <span>50,000+ scans completed</span>
+              <span>Free first scan included</span>
             </div>
             <div className="flex items-center gap-2">
               <Shield className="w-4 h-4 text-primary" />
