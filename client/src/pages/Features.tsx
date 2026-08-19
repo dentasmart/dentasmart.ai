@@ -289,7 +289,7 @@ export default function Features() {
             {[
               { title: "Privacy & Security", desc: "We take the privacy and security of your health information seriously." },
               { title: "Data Protection", desc: "We use safeguards designed to protect your information." },
-              { title: "You Own Your Data", desc: "Export or delete your information anytime, instantly." }
+              { title: "Your Data, Your Choices", desc: "Download your reports and request account deletion at any time." }
             ].map((item, idx) => (
               <motion.div 
                 key={idx} 

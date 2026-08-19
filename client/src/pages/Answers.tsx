@@ -71,7 +71,7 @@ const qaData: QA[] = [
 
   // DentaSmart Specific
   { q: "How accurate is DentaSmart's AI analysis?", a: "DentaSmart's AI has been trained on thousands of dental images and is advised by clinical dental professionals. It provides a reliable initial assessment, but it is not a replacement for a professional dental examination.", category: "DentaSmart" },
-  { q: "Is my dental data private with DentaSmart?", a: "Yes. Your dental photos and data are encrypted and stored securely. We never share your personal health information with third parties. You can delete your data at any time from the app.", category: "DentaSmart" },
+  { q: "Is my dental data private with DentaSmart?", a: "We take the privacy and security of your information seriously. You can request account deletion at any time. See our Privacy Policy for details on how information is handled.", category: "DentaSmart" },
   { q: "Can DentaSmart replace my dentist?", a: "No. DentaSmart is a monitoring and education tool that helps you understand your oral health between dental visits. It helps you prepare for appointments and catch issues early, but it does not replace professional care.", category: "DentaSmart" },
   { q: "What types of photos can I upload?", a: "You can upload photos of your teeth (front, sides), close-ups of specific concerns, and dental X-rays (bitewings, periapical, panoramic). Check our photo guide for tips on getting the clearest images.", category: "DentaSmart" },
   { q: "How is DentaSmart different from Googling symptoms?", a: "Google gives you a list of possibilities that can cause anxiety. DentaSmart analyzes YOUR actual teeth and gives you a personalized assessment with a clear score and action plan, not generic information.", category: "DentaSmart" },

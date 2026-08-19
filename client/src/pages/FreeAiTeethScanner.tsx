@@ -49,7 +49,7 @@ const faqs = [
   },
   {
     question: "Is my dental data private?",
-    answer: "DentaSmart does not sell your data. Photos are processed securely and are not shared with third parties. The app is designed with privacy-first principles and complies with standard data protection practices."
+    answer: "DentaSmart does not sell your data. We take the privacy and security of your information seriously. See our Privacy Policy for details on how your information is handled."
   },
   {
     question: "Do I need to visit a dentist after using DentaSmart?",

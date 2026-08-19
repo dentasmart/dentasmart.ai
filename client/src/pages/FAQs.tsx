@@ -65,9 +65,9 @@ export default function FAQs() {
       title: "Privacy",
       faqs: [
         { q: "Is my data secure?", a: "We use safeguards designed to protect your information. DentaSmart never sells your data." },
-        { q: "Who has access to my information?", a: "Only you and anyone you explicitly share your report with (like your dentist) have access to your information." },
+        { q: "Who has access to my information?", a: "You can choose when to share your DentaSmart reports with your dentist or others." },
         { q: "How do you protect my information?", a: "We take the privacy and security of your information seriously. Please review our Privacy Policy to understand how we collect, use, and handle information." },
-        { q: "How long is my data stored?", a: "Your data is stored for as long as your account is active. You can request deletion anytime." },
+        { q: "How long is my data stored?", a: "We retain information as described in our Privacy Policy. You can request account deletion at any time." },
       ],
     },
     {

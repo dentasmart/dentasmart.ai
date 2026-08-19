@@ -164,7 +164,7 @@ export default function Download() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { icon: Zap, title: "Instant AI Analysis", desc: "Upload a photo and get insights in under 10 minutes. No waiting for appointments." },
-              { icon: Shield, title: "Privacy & Security", desc: "We take the privacy and security of your dental data seriously. It is never shared with third parties." },
+              { icon: Shield, title: "Privacy & Security", desc: "We take the privacy and security of your dental data seriously. See our Privacy Policy for details on how information is handled." },
               { icon: Heart, title: "Personalized Plans", desc: "Get a clear care plan tailored to your specific needs with cost estimates." },
             ].map((item, idx) => (
               <motion.div
