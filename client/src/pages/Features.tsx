@@ -283,12 +283,12 @@ export default function Features() {
             Your Privacy is Our Priority
           </h2>
           <p className="text-xl text-stone-600 font-light leading-relaxed mb-12">
-            You trust us with your health data, and we take that responsibility seriously. We use bank-level encryption to ensure your information stays private, secure, and completely under your control.
+            You trust us with your health data, and we take that responsibility seriously. We take the privacy and security of your information seriously.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
             {[
-              { title: "HIPAA Compliant", desc: "We meet the highest standards for health data protection." },
-              { title: "Bank-Level Encryption", desc: "Your data is encrypted at rest and in transit." },
+              { title: "Privacy & Security", desc: "We take the privacy and security of your health information seriously." },
+              { title: "Data Protection", desc: "We use safeguards designed to protect your information." },
               { title: "You Own Your Data", desc: "Export or delete your information anytime, instantly." }
             ].map((item, idx) => (
               <motion.div 

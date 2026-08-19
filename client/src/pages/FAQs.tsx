@@ -64,9 +64,9 @@ export default function FAQs() {
     {
       title: "Privacy",
       faqs: [
-        { q: "Is my data secure?", a: "Yes. All data is encrypted end-to-end and stored on secure, HIPAA-compliant servers. We never sell your data." },
+        { q: "Is my data secure?", a: "We use safeguards designed to protect your information. DentaSmart never sells your data." },
         { q: "Who has access to my information?", a: "Only you and anyone you explicitly share your report with (like your dentist) have access to your information." },
-        { q: "Is DentaSmart HIPAA compliant?", a: "Yes. DentaSmart is fully HIPAA compliant and meets all healthcare privacy and security standards as defined by the U.S. Department of Health and Human Services (hhs.gov/hipaa)." },
+        { q: "How do you protect my information?", a: "We take the privacy and security of your information seriously. Please review our Privacy Policy to understand how we collect, use, and handle information." },
         { q: "How long is my data stored?", a: "Your data is stored for as long as your account is active. You can request deletion anytime." },
       ],
     },
@@ -134,10 +134,10 @@ export default function FAQs() {
       <FAQSchema faqs={[
         { question: "How do I get started with DentaSmart?", answer: "Download the app from the App Store or Google Play, create an account, and take your first mouth photos or upload X-rays. You'll get your first report within 10 minutes." },
         { question: "How accurate is the AI analysis?", answer: "DentaSmart's AI is trained by dental experts to identify potential areas of concern in your mouth photos and X-rays." },
-        { question: "Is DentaSmart HIPAA compliant?", answer: "Yes. DentaSmart is fully HIPAA compliant and meets all healthcare privacy and security standards as defined by the U.S. Department of Health and Human Services." },
+        { question: "How do you protect my information?", answer: "We take the privacy and security of your information seriously. Please review our Privacy Policy to understand how we collect, use, and handle information." },
         { question: "What are DentaSmart's pricing options?", answer: "Quick Check is $19.99 one-time (AI review of mouth photos and X-rays, Oral Health Score, patient-friendly report, Dr. Din 30 days). Second Opinion is $29.99 one-time (upload treatment plans, bills, X-rays, and mouth photos for a plain-English comparison with cost ranges, Dr. Din 30 days). Complete Care is $74.99/year for individuals or $149.99/year for families up to 4 members (year-round monitoring, unlimited reviews, complete reports, guided self-examination, personalized guidance, 24/7 Dr. Din)." },
         { question: "Is it a dentist replacement?", answer: "No. DentaSmart is a tool to help you monitor your oral health between visits and understand your dentist's recommendations better. It does not replace professional care." },
-        { question: "Is my data secure?", answer: "Yes. All data is encrypted end-to-end and stored on secure, HIPAA-compliant servers. DentaSmart never sells your data." },
+        { question: "Is my data secure?", answer: "We use safeguards designed to protect your information. DentaSmart never sells your data." },
         { question: "What can DentaSmart detect?", answer: "DentaSmart can identify potential cavities, gum disease, tooth wear, alignment issues, and other visible oral health concerns. It provides educational insights to help you understand what you're seeing." },
         { question: "Can I share my report with my dentist?", answer: "Yes. You can easily share your DentaSmart report with your dentist via email or print it out to bring to your appointment." }
       ]} />

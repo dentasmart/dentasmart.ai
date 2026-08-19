@@ -107,7 +107,7 @@ export default function Download() {
               <div className="flex items-center gap-6 text-sm text-stone-500">
                 <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-green-500" /> Free to start</span>
                 <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-green-500" /> No credit card</span>
-                <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-green-500" /> HIPAA compliant</span>
+                <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-green-500" /> Privacy &amp; Security</span>
               </div>
             </motion.div>
 
@@ -164,7 +164,7 @@ export default function Download() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               { icon: Zap, title: "Instant AI Analysis", desc: "Upload a photo and get insights in under 10 minutes. No waiting for appointments." },
-              { icon: Shield, title: "Private & Secure", desc: "Your dental data stays encrypted and is never shared with third parties." },
+              { icon: Shield, title: "Privacy & Security", desc: "We take the privacy and security of your dental data seriously. It is never shared with third parties." },
               { icon: Heart, title: "Personalized Plans", desc: "Get a clear care plan tailored to your specific needs with cost estimates." },
             ].map((item, idx) => (
               <motion.div
