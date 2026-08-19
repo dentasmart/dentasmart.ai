@@ -1,11 +1,5 @@
 [
   {
-    "id": 1,
-    "title": "Privacy & Security",
-    "challenge": "Is my data safe?",
-    "solution": "Your dental photos and health data are protected with bank-grade encryption and full HIPAA compliance. We never share your personal information without your explicit consent."
-  },
-  {
     "id": 2,
     "title": "Accuracy",
     "challenge": "Can a phone really see cavities?",

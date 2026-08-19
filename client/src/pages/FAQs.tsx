@@ -4,7 +4,6 @@ import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { useState, useMemo } from "react";
 import { BenefitsCarousel } from "@/components/BenefitsCarousel";
-import faqChallenges from "@/data/faqChallenges.json";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
