@@ -5,7 +5,7 @@ import { nanoid } from "nanoid";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
-import { resolveMetaTags, injectMetaTags } from "../metaTags";
+import { getNotFoundMeta, resolveMetaTags, injectMetaTags } from "../metaTags";
 import { resolveSSRContent } from "../ssrContent";
 import { resolveSchemaMarkup } from "../schemaMarkup";
 
@@ -14,7 +14,7 @@ import { resolveSchemaMarkup } from "../schemaMarkup";
  * This adds real, visible text content that crawlers can index.
  * When React hydrates, the #ssr-content div is hidden via JS.
  */
-function injectSSRContent(html: string, ssrHtml: string): string {
+export function injectSSRContent(html: string, ssrHtml: string): string {
   // Insert SSR content BEFORE the <div id="root"></div>
   // The SSR content is visible to crawlers but hidden once JS runs
   const ssrBlock = `<noscript><div id="ssr-content" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">${ssrHtml}</div></noscript>`;
@@ -28,7 +28,7 @@ function injectSSRContent(html: string, ssrHtml: string): string {
 /**
  * Inject JSON-LD schema markup into the <head> section.
  */
-function injectSchemaMarkup(html: string, schemas: object[]): string {
+export function injectSchemaMarkup(html: string, schemas: object[]): string {
   if (!schemas || schemas.length === 0) return html;
   const scripts = schemas
     .map(s => `<script type="application/ld+json">${JSON.stringify(s)}</script>`)
@@ -91,26 +91,10 @@ export async function setupVite(app: Express, server: Server) {
         `src="/src/main.tsx?v=${nanoid()}"`
       );
 
-      // Inject page-specific meta tags before Vite transforms
-      const meta = await resolveMetaTags(url);
-      if (meta) {
-        template = injectMetaTags(template, meta);
-      }
-
-      // Inject SSR content for crawlers (text-to-HTML ratio fix)
-      const ssrContent = await resolveSSRContent(url);
-      if (ssrContent) {
-        template = injectSSRContent(template, ssrContent.html);
-      }
-
-      // Inject JSON-LD schema markup
-      const schemas = await resolveSchemaMarkup(url);
-      if (schemas && schemas.length > 0) {
-        template = injectSchemaMarkup(template, schemas);
-      }
+      template = await renderHtmlForRequest(template, url, res.locals.confirmed404 === true);
 
       const page = await vite.transformIndexHtml(url, template);
-      res.status(200).set({ "Content-Type": "text/html" }).end(page);
+      res.status(getHtmlResponseStatus(res.statusCode)).set({ "Content-Type": "text/html" }).end(page);
     } catch (e) {
       vite.ssrFixStacktrace(e as Error);
       next(e);
@@ -150,25 +134,10 @@ export function serveStatic(app: Express) {
     const indexPath = path.resolve(distPath, "index.html");
     try {
       let html = await fs.promises.readFile(indexPath, "utf-8");
-      const meta = await resolveMetaTags(_req.originalUrl);
-      if (meta) {
-        html = injectMetaTags(html, meta);
-      }
-
-      // Inject SSR content for crawlers
-      const ssrContent = await resolveSSRContent(_req.originalUrl);
-      if (ssrContent) {
-        html = injectSSRContent(html, ssrContent.html);
-      }
-
-      // Inject JSON-LD schema markup
-      const schemas = await resolveSchemaMarkup(_req.originalUrl);
-      if (schemas && schemas.length > 0) {
-        html = injectSchemaMarkup(html, schemas);
-      }
+      html = await renderHtmlForRequest(html, _req.originalUrl, res.locals.confirmed404 === true);
 
       // Set proper cache headers for HTML pages
-      res.status(200).set({
+      res.status(getHtmlResponseStatus(res.statusCode)).set({
         "Content-Type": "text/html",
         "Cache-Control": "public, max-age=300, must-revalidate",
         "Vary": "Accept-Encoding",
@@ -179,4 +148,40 @@ export function serveStatic(app: Express) {
       res.sendFile(indexPath2);
     }
   });
+}
+
+/** Keeps confirmed 404 state intact while preserving 200 for ordinary HTML pages. */
+export function getHtmlResponseStatus(existingStatus: number): number {
+  return existingStatus === 404 ? 404 : 200;
+}
+
+/**
+ * Produces crawler-visible output for a valid route or a server-confirmed 404.
+ * Confirmed 404s deliberately bypass route-family SSR and JSON-LD generation.
+ */
+export async function renderHtmlForRequest(
+  html: string,
+  originalUrl: string,
+  confirmed404: boolean,
+): Promise<string> {
+  if (confirmed404) {
+    return injectMetaTags(html, getNotFoundMeta());
+  }
+
+  const meta = await resolveMetaTags(originalUrl);
+  if (meta) {
+    html = injectMetaTags(html, meta);
+  }
+
+  const ssrContent = await resolveSSRContent(originalUrl);
+  if (ssrContent) {
+    html = injectSSRContent(html, ssrContent.html);
+  }
+
+  const schemas = await resolveSchemaMarkup(originalUrl);
+  if (schemas && schemas.length > 0) {
+    html = injectSchemaMarkup(html, schemas);
+  }
+
+  return html;
 }

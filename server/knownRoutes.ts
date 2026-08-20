@@ -41,21 +41,34 @@ let blogSlugSet: Set<string> = new Set();
 let blogSlugLastLoaded = 0;
 const BLOG_SLUG_TTL_MS = 5 * 60 * 1000;
 
-async function getBlogSlugSet(): Promise<Set<string>> {
+export interface BlogSlugLookupResult {
+  slugs: Set<string>;
+  authoritative: boolean;
+}
+
+type BlogSlugLookup = () => Promise<BlogSlugLookupResult>;
+
+async function getBlogSlugLookup(): Promise<BlogSlugLookupResult> {
   const now = Date.now();
-  if (now - blogSlugLastLoaded < BLOG_SLUG_TTL_MS) return blogSlugSet;
+  if (now - blogSlugLastLoaded < BLOG_SLUG_TTL_MS) {
+    return { slugs: blogSlugSet, authoritative: true };
+  }
 
-  const db = await getDb();
-  if (!db) return blogSlugSet;
+  try {
+    const db = await getDb();
+    if (!db) return { slugs: blogSlugSet, authoritative: false };
 
-  const rows = await db
-    .select({ slug: blogPosts.slug })
-    .from(blogPosts)
-    .where(eq(blogPosts.status, "published"));
+    const rows = await db
+      .select({ slug: blogPosts.slug })
+      .from(blogPosts)
+      .where(eq(blogPosts.status, "published"));
 
-  blogSlugSet = new Set(rows.map((r) => r.slug));
-  blogSlugLastLoaded = now;
-  return blogSlugSet;
+    blogSlugSet = new Set(rows.map((r) => r.slug));
+    blogSlugLastLoaded = now;
+    return { slugs: blogSlugSet, authoritative: true };
+  } catch {
+    return { slugs: blogSlugSet, authoritative: false };
+  }
 }
 
 // ── Static asset extensions ───────────────────────────────────────────────────
@@ -71,7 +84,10 @@ const STATIC_EXTENSIONS = new Set([
  * Returns true if the given raw request path is a known valid route.
  * Unknown paths should be logged (dry-run) or 404'd (enforce mode).
  */
-export async function isKnownRoute(rawPath: string): Promise<boolean> {
+export async function isKnownRouteWithBlogLookup(
+  rawPath: string,
+  getBlogSlugs: BlogSlugLookup = getBlogSlugLookup,
+): Promise<boolean> {
   // Strip query string and normalise trailing slash
   const withoutQuery = rawPath.split("?")[0];
   const path = withoutQuery.replace(/\/+$/, "") || "/";
@@ -95,7 +111,7 @@ export async function isKnownRoute(rawPath: string): Promise<boolean> {
   if (staticPathSet.has(path) || staticPathSet.has(path + "/")) return true;
 
   // 6. Dynamic routes — valid slug check using data-file keys
-  const parts = pathLower.split("/").filter(Boolean);
+  const parts = path.split("/").filter(Boolean);
   if (parts.length === 2) {
     const [prefix, slug] = parts;
     if (prefix === "symptoms" && validSymptomSlugs.has(slug)) return true;
@@ -103,13 +119,25 @@ export async function isKnownRoute(rawPath: string): Promise<boolean> {
     if (prefix === "guides" && validGuideSlugs.has(slug)) return true;
   }
 
-  // 7. Blog posts — /oral-health-hub/:slug (with or without trailing slash)
+  // 7. Tokenized account deletion route — token validity belongs to the target
+  // service, but a non-empty token route must never be intercepted as a 404.
+  if (parts.length === 3 && parts[0] === "account" && parts[1] === "delete" && parts[2]) return true;
+
+  // 8. Blog posts — /oral-health-hub/:slug (with or without trailing slash)
   if (parts.length === 2 && parts[0] === "oral-health-hub") {
-    const slugSet = await getBlogSlugSet();
-    if (slugSet.has(parts[1])) return true;
+    const result = await getBlogSlugs();
+    // A missing database or failed lookup must fail open so a temporary outage
+    // cannot hard-404 every published article on a cold cache.
+    if (!result.authoritative) return true;
+    if (result.slugs.has(parts[1])) return true;
   }
 
   return false;
+}
+
+/** Returns true for a recognised path, or fails open for unavailable blog lookups. */
+export async function isKnownRoute(rawPath: string): Promise<boolean> {
+  return isKnownRouteWithBlogLookup(rawPath);
 }
 
 /**
@@ -132,13 +160,15 @@ export function isKnownRouteSync(rawPath: string): boolean {
 
   if (staticPathSet.has(path) || staticPathSet.has(path + "/")) return true;
 
-  const parts = pathLower.split("/").filter(Boolean);
+  const parts = path.split("/").filter(Boolean);
   if (parts.length === 2) {
     const [prefix, slug] = parts;
     if (prefix === "symptoms" && validSymptomSlugs.has(slug)) return true;
     if (prefix === "conditions" && validConditionSlugs.has(slug)) return true;
     if (prefix === "guides" && validGuideSlugs.has(slug)) return true;
   }
+
+  if (parts.length === 3 && parts[0] === "account" && parts[1] === "delete" && parts[2]) return true;
 
   // Blog slugs not checked in sync version — audit script handles separately
   return false;

@@ -1,6 +1,7 @@
 import "dotenv/config";
 import shrinkRay from "shrink-ray-current";
 import express from "express";
+import type { RequestHandler } from "express";
 import { createServer } from "http";
 import net from "net";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
@@ -13,6 +14,49 @@ import { registerSeoRoutes } from "../seo";
 import { resolveRedirect } from "../redirectCache";
 import { isKnownRoute } from "../knownRoutes";
 import { upsertNotFoundHit } from "../notFoundDb";
+
+export interface NotFoundMiddlewareDependencies {
+  isKnownRoute?: typeof isKnownRoute;
+  upsertNotFoundHit?: typeof upsertNotFoundHit;
+  getMode?: () => string | undefined;
+}
+
+/**
+ * Runs only after redirects, SEO endpoints, and tRPC registration. In enforce
+ * mode it marks one confirmed HTML 404 for later rendering layers to preserve.
+ */
+export function createNotFoundDetectionMiddleware(
+  dependencies: NotFoundMiddlewareDependencies = {},
+): RequestHandler {
+  const checkKnownRoute = dependencies.isKnownRoute ?? isKnownRoute;
+  const logNotFound = dependencies.upsertNotFoundHit ?? upsertNotFoundHit;
+  const getMode = dependencies.getMode ?? (() => process.env.NOT_FOUND_MODE);
+
+  return async (req, res, next) => {
+    if (req.method !== "GET") return next();
+    if (req.path.startsWith("/api") || req.path.startsWith("/assets") || req.path.startsWith("/storage")) {
+      return next();
+    }
+
+    try {
+      const known = await checkKnownRoute(req.path);
+      if (!known) {
+        const referrer = req.headers.referer || req.headers.referrer || null;
+        const isDryRun = getMode() !== "enforce";
+        // Fire-and-forget — logging is never allowed to block the response.
+        logNotFound(req.path, referrer as string | null, isDryRun).catch(() => {});
+        if (!isDryRun) {
+          res.locals.confirmed404 = true;
+          res.status(404);
+          return next();
+        }
+      }
+    } catch {
+      // Fail open if route recognition itself cannot complete.
+    }
+    next();
+  };
+}
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -232,33 +276,7 @@ async function startServer() {
   // To enable real 404 responses, set NOT_FOUND_MODE=enforce in Secrets.
   // IMPORTANT: This middleware fires AFTER all redirects, SEO routes, and tRPC,
   // so redirect sources never reach this point and are never logged.
-  app.use(async (req, res, next) => {
-    // Only intercept GET requests for HTML pages
-    if (req.method !== 'GET') return next();
-    // Skip API, assets, and storage paths (already handled above)
-    if (req.path.startsWith('/api') || req.path.startsWith('/assets') || req.path.startsWith('/storage')) {
-      return next();
-    }
-    try {
-      const known = await isKnownRoute(req.path);
-      if (!known) {
-        const referrer = req.headers.referer || req.headers.referrer || null;
-        const isDryRun = process.env.NOT_FOUND_MODE !== 'enforce';
-        // Fire-and-forget — never block the response
-        upsertNotFoundHit(req.path, referrer as string | null, isDryRun).catch(() => {});
-        if (!isDryRun) {
-          // Enforce mode: return 404 status but still serve index.html so React renders a 404 page
-          res.status(404);
-          // Fall through to setupVite/serveStatic which will serve index.html
-          return next();
-        }
-        // Dry-run: log only, continue with 200 as normal
-      }
-    } catch {
-      // Never block on errors in the 404 detector
-    }
-    next();
-  });
+  app.use(createNotFoundDetectionMiddleware());
 
   // development mode uses Vite, production mode uses static files
   if (process.env.NODE_ENV === "development") {
@@ -279,4 +297,6 @@ async function startServer() {
   });
 }
 
-startServer().catch(console.error);
+if (process.env.VITEST !== "true") {
+  startServer().catch(console.error);
+}

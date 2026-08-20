@@ -8,6 +8,7 @@ import { describe, it, expect } from "vitest";
 import { staticRoutes } from "../shared/routes";
 // Import the functions under test
 import {
+  getNotFoundMeta,
   getStaticMetaSnapshot,
   injectMetaTags,
   normalizeBlogCanonical,
@@ -102,6 +103,15 @@ describe("injectMetaTags", () => {
     });
     const canonicalMatches = result.match(/rel="canonical"/g);
     expect(canonicalMatches).toHaveLength(1);
+  });
+
+  it("emits server-visible noindex 404 metadata without canonical or og:url", () => {
+    const result = injectMetaTags(SAMPLE_HTML, getNotFoundMeta());
+    expect(result).toContain("<title>Page Not Found | DentaSmart</title>");
+    expect(result).toContain('name="robots" content="noindex, follow"');
+    expect(result).not.toContain('rel="canonical"');
+    expect(result).not.toContain('property="og:url"');
+    expect(result).not.toContain("__PAGE_CANONICAL__");
   });
 });
 

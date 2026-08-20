@@ -8,7 +8,7 @@
  */
 
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { isKnownRoute, isKnownRouteSync } from "./knownRoutes";
+import { isKnownRoute, isKnownRouteSync, isKnownRouteWithBlogLookup } from "./knownRoutes";
 import { normalisePath } from "./notFoundDb";
 
 // ── normalisePath ────────────────────────────────────────────────────────────
@@ -69,6 +69,13 @@ describe("isKnownRouteSync", () => {
     expect(isKnownRouteSync("/oral-health-hub/symptoms")).toBe(true);
   });
 
+  it("keeps valid static routes exact-case while preserving trailing-slash tolerance", () => {
+    expect(isKnownRouteSync("/pricing/")).toBe(true);
+    expect(isKnownRouteSync("/PRICING/")).toBe(false);
+    expect(isKnownRouteSync("/conditions/cavities/")).toBe(true);
+    expect(isKnownRouteSync("/conditions/CAVITIES/")).toBe(false);
+  });
+
   it("returns true for valid dynamic symptom slugs", () => {
     // loose-tooth is in symptomsData
     expect(isKnownRouteSync("/symptoms/loose-tooth")).toBe(true);
@@ -77,6 +84,11 @@ describe("isKnownRouteSync", () => {
 
   it("returns true for valid dynamic condition slugs", () => {
     expect(isKnownRouteSync("/conditions/gum-disease")).toBe(true);
+  });
+
+  it("recognizes a non-empty account deletion token route without accepting an empty token", () => {
+    expect(isKnownRouteSync("/account/delete/example-token")).toBe(true);
+    expect(isKnownRouteSync("/account/delete/")).toBe(false);
   });
 
   it("returns false for invalid dynamic slugs", () => {
@@ -114,5 +126,28 @@ describe("isKnownRoute (async)", () => {
 
   it("handles paths with query strings", async () => {
     expect(await isKnownRoute("/conditions/cavities?utm_source=google")).toBe(true);
+  });
+
+  it("keeps published blog slugs valid and treats authoritative misses as unknown", async () => {
+    const authoritativeLookup = async () => ({
+      slugs: new Set(["published-article"]),
+      authoritative: true,
+    });
+    expect(await isKnownRouteWithBlogLookup("/oral-health-hub/published-article", authoritativeLookup)).toBe(true);
+    expect(await isKnownRouteWithBlogLookup("/oral-health-hub/unknown-article", authoritativeLookup)).toBe(false);
+  });
+
+  it("fails open for blog routes when the source is unavailable, including a cold cache", async () => {
+    const unavailableLookup = async () => ({ slugs: new Set<string>(), authoritative: false });
+    expect(await isKnownRouteWithBlogLookup("/oral-health-hub/published-article", unavailableLookup)).toBe(true);
+    expect(await isKnownRouteWithBlogLookup("/oral-health-hub/unknown-article", unavailableLookup)).toBe(true);
+  });
+
+  it("retains a last-known-good published blog cache during source failure", async () => {
+    const staleLookup = async () => ({
+      slugs: new Set(["published-article"]),
+      authoritative: false,
+    });
+    expect(await isKnownRouteWithBlogLookup("/oral-health-hub/published-article", staleLookup)).toBe(true);
   });
 });

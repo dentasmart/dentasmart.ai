@@ -17,10 +17,23 @@ import { pageMetaOverrides } from "../drizzle/schema";
 interface MetaInfo {
   title: string;
   description: string;
-  canonical?: string;
+  /** null explicitly omits canonical and og:url for a confirmed 404 response. */
+  canonical?: string | null;
+  robots?: string;
 }
 
 const BASE_URL = "https://dentasmart.ai";
+
+export const NOT_FOUND_META: MetaInfo = {
+  title: "Page Not Found | DentaSmart",
+  description: "The page you requested could not be found.",
+  canonical: null,
+  robots: "noindex, follow",
+};
+
+export function getNotFoundMeta(): MetaInfo {
+  return { ...NOT_FOUND_META };
+}
 
 // ─── Static page meta tags ───────────────────────────────────────────
 // Every page that has a unique <SEO> component in the React tree should
@@ -1065,15 +1078,33 @@ export async function resolveMetaTags(urlPath: string): Promise<MetaInfo | null>
 export function injectMetaTags(html: string, meta: MetaInfo): string {
   const title = escapeHtml(meta.title);
   const desc = escapeHtml(meta.description);
+  const omitCanonical = meta.canonical === null;
   const canonicalUrl = meta.canonical ? escapeHtml(meta.canonical) : "https://dentasmart.ai/";
+
+  const injectRobots = (source: string) => {
+    if (!meta.robots) return source;
+    const robots = `<meta name="robots" content="${escapeHtml(meta.robots)}" />`;
+    if (/<meta\s+name="robots"\s+content="[^"]*"\s*\/?>/.test(source)) {
+      return source.replace(/<meta\s+name="robots"\s+content="[^"]*"\s*\/?>/, robots);
+    }
+    return source.replace("</head>", `    ${robots}\n  </head>`);
+  };
+
+  const omitCanonicalTags = (source: string) => source
+    .replace(/\s*<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, "")
+    .replace(/\s*<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/, "");
 
   // ── Primary: placeholder-based replacement (format-agnostic) ──────────────
   // These placeholders are set in client/index.html and survive Vite builds unchanged.
   if (html.includes("__PAGE_TITLE__")) {
     html = html.split("__PAGE_TITLE__").join(title);
     html = html.split("__PAGE_DESCRIPTION__").join(desc);
-    html = html.split("__PAGE_CANONICAL__").join(canonicalUrl);
-    return html;
+    if (omitCanonical) {
+      html = omitCanonicalTags(html);
+    } else {
+      html = html.split("__PAGE_CANONICAL__").join(canonicalUrl);
+    }
+    return injectRobots(html);
   }
 
   // ── Fallback: regex-based replacement (handles old built index.html) ──────
@@ -1104,7 +1135,9 @@ export function injectMetaTags(html: string, meta: MetaInfo): string {
   );
 
   // Replace OG URL and canonical link
-  if (meta.canonical) {
+  if (omitCanonical) {
+    html = omitCanonicalTags(html);
+  } else if (meta.canonical) {
     html = html.replace(
       /<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/,
       `<meta property="og:url" content="${canonicalUrl}" />`
@@ -1126,7 +1159,7 @@ export function injectMetaTags(html: string, meta: MetaInfo): string {
     /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/,
     `<meta name="twitter:description" content="${desc}" />`
   );
-  return html;
+  return injectRobots(html);
 }
 
 function escapeHtml(str: string): string {
