@@ -904,10 +904,14 @@ export function normalizeBlogCanonical(canonicalUrl: unknown, slug: string): str
   const rawCanonical = canonicalUrl.trim();
   try {
     const url = new URL(rawCanonical);
-    if (url.origin !== BASE_URL) {
+    const isDentaSmartCanonical =
+      url.protocol === "https:" &&
+      (url.hostname === "dentasmart.ai" || url.hostname === "www.dentasmart.ai");
+    if (!isDentaSmartCanonical) {
       return rawCanonical;
     }
 
+    url.hostname = "dentasmart.ai";
     url.pathname = `${url.pathname.replace(/\/+$/, "")}/`;
     return url.toString();
   } catch {

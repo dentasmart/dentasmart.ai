@@ -229,16 +229,30 @@ describe("resolveMetaTags", () => {
 });
 
 describe("normalizeBlogCanonical", () => {
-  it("adds a trailing slash to a same-origin canonical without one", () => {
+  it("preserves apex DentaSmart behavior by adding a trailing slash", () => {
     expect(normalizeBlogCanonical(
       "https://dentasmart.ai/oral-health-hub/example-post",
       "example-post",
     )).toBe("https://dentasmart.ai/oral-health-hub/example-post/");
   });
 
-  it("preserves a same-origin canonical that already has a trailing slash", () => {
+  it("preserves an already-slashed apex DentaSmart canonical", () => {
     expect(normalizeBlogCanonical(
       "https://dentasmart.ai/oral-health-hub/example-post/",
+      "example-post",
+    )).toBe("https://dentasmart.ai/oral-health-hub/example-post/");
+  });
+
+  it("normalizes a www DentaSmart canonical without a slash to apex with a trailing slash", () => {
+    expect(normalizeBlogCanonical(
+      "https://www.dentasmart.ai/oral-health-hub/example-post",
+      "example-post",
+    )).toBe("https://dentasmart.ai/oral-health-hub/example-post/");
+  });
+
+  it("normalizes an already-slashed www DentaSmart canonical to the apex host", () => {
+    expect(normalizeBlogCanonical(
+      "https://www.dentasmart.ai/oral-health-hub/example-post/",
       "example-post",
     )).toBe("https://dentasmart.ai/oral-health-hub/example-post/");
   });
