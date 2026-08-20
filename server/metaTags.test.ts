@@ -5,8 +5,14 @@ import { describe, it, expect } from "vitest";
  * We test the pure functions (resolveMetaTags, injectMetaTags) directly.
  */
 
+import { staticRoutes } from "../shared/routes";
 // Import the functions under test
-import { resolveMetaTags, injectMetaTags } from "./metaTags";
+import {
+  getStaticMetaSnapshot,
+  injectMetaTags,
+  normalizeBlogCanonical,
+  resolveMetaTags,
+} from "./metaTags";
 
 // Sample HTML template matching the placeholder-based structure of index.html
 const SAMPLE_HTML = `<!DOCTYPE html>
@@ -161,6 +167,25 @@ describe("resolveMetaTags", () => {
     expect(meta).toBeNull();
   });
 
+  it("resolves page-specific server metadata for every indexable static manifest route", async () => {
+    const indexableStaticRoutes = staticRoutes.filter((route) => route.inSitemap !== false);
+    const staticMeta = getStaticMetaSnapshot();
+
+    for (const route of indexableStaticRoutes) {
+      if (!staticMeta[route.path]) {
+        expect(route.label).toContain("redirect alias");
+        continue;
+      }
+
+      const meta = await resolveMetaTags(`${route.path}/`);
+      const canonicalPath = route.path === "/" ? "/" : `${route.path}/`;
+      expect(meta).not.toBeNull();
+      expect(meta!.title).not.toBe("DentaSmart");
+      expect(meta!.description.length).toBeGreaterThan(0);
+      expect(meta!.canonical).toBe(`https://dentasmart.ai${canonicalPath}`);
+    }
+  });
+
   it("returns unique descriptions for every static page", async () => {
     const paths = [
       "/",
@@ -200,5 +225,48 @@ describe("resolveMetaTags", () => {
     }
     // All descriptions should be unique
     expect(descriptions.size).toBe(paths.length);
+  });
+});
+
+describe("normalizeBlogCanonical", () => {
+  it("adds a trailing slash to a same-origin canonical without one", () => {
+    expect(normalizeBlogCanonical(
+      "https://dentasmart.ai/oral-health-hub/example-post",
+      "example-post",
+    )).toBe("https://dentasmart.ai/oral-health-hub/example-post/");
+  });
+
+  it("preserves a same-origin canonical that already has a trailing slash", () => {
+    expect(normalizeBlogCanonical(
+      "https://dentasmart.ai/oral-health-hub/example-post/",
+      "example-post",
+    )).toBe("https://dentasmart.ai/oral-health-hub/example-post/");
+  });
+
+  it("uses the slashed DentaSmart fallback when canonicalUrl is blank", () => {
+    expect(normalizeBlogCanonical("", "example-post"))
+      .toBe("https://dentasmart.ai/oral-health-hub/example-post/");
+  });
+
+  it("preserves an external canonical exactly", () => {
+    expect(normalizeBlogCanonical(
+      "https://partner.example/article",
+      "example-post",
+    )).toBe("https://partner.example/article");
+  });
+
+  it("keeps normalized canonical output aligned across canonical and og:url injection", () => {
+    const canonical = normalizeBlogCanonical(
+      "https://dentasmart.ai/oral-health-hub/example-post",
+      "example-post",
+    );
+    const result = injectMetaTags(SAMPLE_HTML, {
+      title: "Example Post",
+      description: "Example description.",
+      canonical,
+    });
+
+    expect(result).toContain(`href="${canonical}"`);
+    expect(result).toContain(`og:url" content="${canonical}"`);
   });
 });

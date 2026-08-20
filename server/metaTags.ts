@@ -20,6 +20,8 @@ interface MetaInfo {
   canonical?: string;
 }
 
+const BASE_URL = "https://dentasmart.ai";
+
 // ─── Static page meta tags ───────────────────────────────────────────
 // Every page that has a unique <SEO> component in the React tree should
 // have a matching entry here so crawlers see the same meta in raw HTML.
@@ -73,6 +75,26 @@ const staticMeta: Record<string, MetaInfo> = {
     title: "Photo Guide | How to Take the Best Dental Photos",
     description:
       "Learn how to take clear photos of your teeth for the best AI analysis results. Simple tips for lighting, angles, and what to capture.",
+  },
+  "/best-ai-dental-apps": {
+    title: "Best AI Dental Apps (2026): Honest Comparison",
+    description:
+      "We compared the top AI teeth scanning apps side by side. See which ones actually analyze X-rays, track your health over time, and give you useful reports.",
+  },
+  "/free-ai-teeth-scanner": {
+    title: "Free AI Teeth Scanner - Analyze Photos & X-Rays",
+    description:
+      "DentaSmart is a free AI teeth scanner that analyzes mouth photos and dental X-rays. Get an oral health score, spot potential issues, and understand your dental health in minutes.",
+  },
+  "/vs/dental-com": {
+    title: "DentaSmart vs Dental.com SmartScan (2026) | Honest Comparison",
+    description:
+      "A detailed comparison of DentaSmart and Dental.com SmartScan. See which AI teeth scanner offers better analysis, X-ray support, and value for your money.",
+  },
+  "/vs/dentistry-one": {
+    title: "DentaSmart vs Dentistry.One SmileScan (2026) | Full Comparison",
+    description:
+      "Compare DentaSmart and Dentistry.One SmileScan side by side. See which AI dental scanner offers better X-ray analysis, tracking, and value.",
   },
   "/oral-health-hub": {
     title: "Oral Health Hub | Dental Education & Guides | DentaSmart",
@@ -873,15 +895,33 @@ let blogMetaCache: Map<string, MetaInfo> = new Map();
 let blogMetaCacheTime = 0;
 const BLOG_META_CACHE_TTL = 60 * 60 * 1000; // 1 hour
 
+export function normalizeBlogCanonical(canonicalUrl: unknown, slug: string): string {
+  const fallback = `${BASE_URL}/oral-health-hub/${slug}/`;
+  if (typeof canonicalUrl !== "string" || canonicalUrl.trim().length === 0) {
+    return fallback;
+  }
+
+  const rawCanonical = canonicalUrl.trim();
+  try {
+    const url = new URL(rawCanonical);
+    if (url.origin !== BASE_URL) {
+      return rawCanonical;
+    }
+
+    url.pathname = `${url.pathname.replace(/\/+$/, "")}/`;
+    return url.toString();
+  } catch {
+    return rawCanonical;
+  }
+}
+
 async function refreshBlogMetaCache(): Promise<void> {
   try {
     const result = await listBlogPosts({ publishedOnly: true, limit: 1000 });
     const newCache = new Map<string, MetaInfo>();
     for (const post of result.posts) {
       const path = `/oral-health-hub/${post.slug}`;
-      const canonical = ((post as any).canonicalUrl && (post as any).canonicalUrl.trim().length > 0)
-        ? (post as any).canonicalUrl
-        : `${BASE_URL}/oral-health-hub/${post.slug}/`;
+      const canonical = normalizeBlogCanonical((post as any).canonicalUrl, post.slug);
       newCache.set(path, {
         title: (post as any).metaTitle || post.title || "DentaSmart | Oral Health Hub",
         description:
@@ -896,8 +936,6 @@ async function refreshBlogMetaCache(): Promise<void> {
     console.error("[MetaTags] Failed to refresh blog meta cache:", e);
   }
 }
-
-const BASE_URL = "https://dentasmart.ai";
 
 // ─── Page meta override cache ─────────────────────────────────────────────────
 // DB overrides take precedence over hardcoded staticMeta.
@@ -995,9 +1033,7 @@ export async function resolveMetaTags(urlPath: string): Promise<MetaInfo | null>
     if (slug) {
       const post = await getBlogPostBySlug(slug);
       if (post) {
-        const canonical = ((post as any).canonicalUrl && (post as any).canonicalUrl.trim().length > 0)
-          ? (post as any).canonicalUrl
-          : `${BASE_URL}/oral-health-hub/${post.slug}/`;
+        const canonical = normalizeBlogCanonical((post as any).canonicalUrl, post.slug);
         return {
           title: (post as any).metaTitle || post.title || "DentaSmart | Oral Health Hub",
           description: (post as any).metaDescription || "",
