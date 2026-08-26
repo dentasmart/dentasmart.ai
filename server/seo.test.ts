@@ -23,7 +23,7 @@ vi.mock("./blogDb", () => ({
   }),
 }));
 
-import { registerSeoRoutes } from "./seo";
+import { registerSeoRoutes, toFinalPublicUrl } from "./seo";
 
 function createTestApp() {
   const app = express();
@@ -32,6 +32,34 @@ function createTestApp() {
 }
 
 describe("SEO Routes", () => {
+  describe("llms final public URL normalization", () => {
+    it("normalizes DentaSmart pages to final trailing-slash URLs while preserving files and external URLs", () => {
+      expect(toFinalPublicUrl("https://dentasmart.ai/pricing")).toBe("https://dentasmart.ai/pricing/");
+      expect(toFinalPublicUrl("https://www.dentasmart.ai/guides/brushing-guide")).toBe("https://dentasmart.ai/guides/brushing-guide/");
+      expect(toFinalPublicUrl("https://dentasmart.ai/images/logo.png")).toBe("https://dentasmart.ai/images/logo.png");
+      expect(toFinalPublicUrl("https://partner.example/article")).toBe("https://partner.example/article");
+    });
+
+    it("preserves query strings and hashes while normalizing internal page paths", () => {
+      expect(toFinalPublicUrl("https://dentasmart.ai/pricing?utm_source=test")).toBe("https://dentasmart.ai/pricing/?utm_source=test");
+      expect(toFinalPublicUrl("https://dentasmart.ai/pricing#plans")).toBe("https://dentasmart.ai/pricing/#plans");
+      expect(toFinalPublicUrl("https://dentasmart.ai/pricing/")).toBe("https://dentasmart.ai/pricing/");
+    });
+
+    it("publishes only final internal URLs in both llms endpoints without changing external social links", async () => {
+      const app = createTestApp();
+      for (const endpoint of ["/llms.txt", "/llms-full.txt"]) {
+        const res = await request(app).get(endpoint);
+        const internalUrls = res.text.match(/https:\/\/dentasmart\.ai[^\s)\]}]+/g) ?? [];
+        expect(internalUrls.length).toBeGreaterThan(0);
+        for (const url of internalUrls) {
+          expect(url === "https://dentasmart.ai/" || /\.[a-z0-9]{1,10}$/i.test(url) || url.endsWith("/")).toBe(true);
+        }
+        expect(res.text).toContain("https://www.instagram.com/dentasmart");
+      }
+    });
+  });
+
   describe("GET /robots.txt", () => {
     it("should return robots.txt with correct content type", async () => {
       const app = createTestApp();

@@ -35,6 +35,28 @@ export function getNotFoundMeta(): MetaInfo {
   return { ...NOT_FOUND_META };
 }
 
+function getUtilityNoindexMeta(cleanPath: string): MetaInfo | null {
+  if (/^\/account\/delete\/[^/]+$/.test(cleanPath)) {
+    return {
+      title: "Confirm Account Deletion | DentaSmart",
+      description: "Confirm your DentaSmart account deletion request.",
+      canonical: null,
+      robots: "noindex, nofollow",
+    };
+  }
+
+  if (cleanPath === "/admin" || cleanPath.startsWith("/admin/")) {
+    return {
+      title: "DentaSmart Admin",
+      description: "DentaSmart administration.",
+      canonical: null,
+      robots: "noindex, nofollow",
+    };
+  }
+
+  return null;
+}
+
 // ─── Static page meta tags ───────────────────────────────────────────
 // Every page that has a unique <SEO> component in the React tree should
 // have a matching entry here so crawlers see the same meta in raw HTML.
@@ -1019,6 +1041,9 @@ export async function resolveMetaTags(urlPath: string): Promise<MetaInfo | null>
   const cleanPath = urlPath.split("?")[0].split("#")[0].replace(/\/+$/, "") || "/";
   // Canonical uses trailing slash for non-root paths to match infrastructure behavior
   const canonicalPath = cleanPath === "/" ? "/" : `${cleanPath}/`;
+
+  const utilityNoindexMeta = getUtilityNoindexMeta(cleanPath);
+  if (utilityNoindexMeta) return utilityNoindexMeta;
 
   // 0. DB override — admin-managed, takes precedence over staticMeta
   if (Date.now() - pageOverrideCacheTime > PAGE_OVERRIDE_CACHE_TTL) {

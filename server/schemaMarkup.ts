@@ -14,6 +14,7 @@ const SITE_URL = "https://dentasmart.ai";
 
 import { getBlogPostBySlug } from "./blogDb";
 import { app, company, pricing } from "../shared/facts";
+import { getVerifiedReviewMetadata, type VerifiedReviewMetadata } from "./reviewMetadata";
 
 // ─── Organization Schema (every page) ────────────────────────────────
 function getOrganizationSchema(): object {
@@ -120,8 +121,13 @@ function getBreadcrumbSchema(items: Array<{ name: string; url: string }>): objec
 }
 
 // ─── MedicalWebPage Schema (for conditions/symptoms/treatments) ──────
-function getMedicalWebPageSchema(title: string, description: string, url: string): object {
-  return {
+function getMedicalWebPageSchema(
+  title: string,
+  description: string,
+  url: string,
+  reviewMetadata?: VerifiedReviewMetadata,
+): object {
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
     name: title,
@@ -132,12 +138,20 @@ function getMedicalWebPageSchema(title: string, description: string, url: string
       name: "DentaSmart",
       url: SITE_URL
     },
-    lastReviewed: new Date().toISOString().split('T')[0],
     medicalAudience: {
       "@type": "PatientAudience",
       audienceType: "Patient"
     }
   };
+  if (reviewMetadata) {
+    schema.lastReviewed = reviewMetadata.lastReviewed;
+    schema.reviewedBy = {
+      "@type": "Person",
+      name: reviewMetadata.reviewedBy,
+      jobTitle: reviewMetadata.reviewedByCredentials,
+    };
+  }
+  return schema;
 }
 
 // ─── Product Schema (pricing page) ──────────────────────────────────
@@ -293,7 +307,8 @@ export async function resolveSchemaMarkup(urlPath: string): Promise<object[]> {
     schemas.push(getMedicalWebPageSchema(
       `${title} Guide`,
       `Learn about ${slug.replace(/-/g, ' ')} — causes, symptoms, treatment options, and when to see a dentist.`,
-      cleanPath
+      cleanPath,
+      getVerifiedReviewMetadata(cleanPath),
     ));
     schemas.push(getBreadcrumbSchema([
       { name: "Home", url: "/" },
@@ -317,7 +332,8 @@ export async function resolveSchemaMarkup(urlPath: string): Promise<object[]> {
     schemas.push(getMedicalWebPageSchema(
       `${title}: Causes & What to Do`,
       `Experiencing ${slug.replace(/-/g, ' ')}? Learn the possible causes and when to see a dentist.`,
-      cleanPath
+      cleanPath,
+      getVerifiedReviewMetadata(cleanPath),
     ));
     schemas.push(getBreadcrumbSchema([
       { name: "Home", url: "/" },

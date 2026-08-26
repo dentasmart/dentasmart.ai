@@ -176,6 +176,35 @@ ${entries}
 }
 // llms.txt content builder
 // ============================================================
+export function toFinalPublicUrl(rawUrl: string): string {
+  let url: URL;
+  try {
+    url = new URL(rawUrl);
+  } catch {
+    return rawUrl;
+  }
+
+  if (url.hostname !== "dentasmart.ai" && url.hostname !== "www.dentasmart.ai") {
+    return rawUrl;
+  }
+
+  url.protocol = "https:";
+  url.hostname = "dentasmart.ai";
+  url.pathname = url.pathname.replace(/\/{2,}/g, "/");
+
+  const finalSegment = url.pathname.split("/").filter(Boolean).at(-1) ?? "";
+  const isFileLike = /\.[a-z0-9]{1,10}$/i.test(finalSegment) || finalSegment === "images" || finalSegment === "assets";
+  if (!isFileLike && url.pathname !== "/" && !url.pathname.endsWith("/")) {
+    url.pathname += "/";
+  }
+
+  return url.toString();
+}
+
+function normalizeLlmsOutputUrls(content: string): string {
+  return content.replace(/https?:\/\/[^\s)\]}]+/g, toFinalPublicUrl);
+}
+
 function buildLlmsTxt(): string {
   const content = [
     "# DentaSmart - Your Personal AI Dentist in Your Pocket",
@@ -313,7 +342,7 @@ function buildLlmsTxt(): string {
     "- The app helps users understand their oral health and make informed decisions",
     ""
   ];
-  return content.join(NL);
+  return normalizeLlmsOutputUrls(content.join(NL));
 }
 
 // ============================================================
@@ -490,7 +519,7 @@ function buildLlmsFullTxt(): string {
     "DentaSmart provides AI-powered oral health insights and education. It helps users prepare for better dentist conversations. DentaSmart does not replace a licensed dentist for diagnosis or treatment. Emergency symptoms should be handled by a licensed dentist, urgent care, or emergency services.",
     ""
   ];
-  return content.join(NL);
+  return normalizeLlmsOutputUrls(content.join(NL));
 }
 
 // ============================================================

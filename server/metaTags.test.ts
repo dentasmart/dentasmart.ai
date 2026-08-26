@@ -72,6 +72,7 @@ describe("injectMetaTags", () => {
     expect(result).toContain('href="https://dentasmart.ai/conditions/cavities"');
     expect(result).toContain('og:url" content="https://dentasmart.ai/conditions/cavities"');
     expect(result).not.toContain("__PAGE_CANONICAL__");
+    expect(result).not.toContain('name="robots"');
   });
 
   it("escapes HTML entities in title and description", () => {
@@ -116,6 +117,22 @@ describe("injectMetaTags", () => {
 });
 
 describe("resolveMetaTags", () => {
+  it("returns server-visible noindex metadata for account deletion tokens only", async () => {
+    const meta = await resolveMetaTags("/account/delete/example-token");
+    expect(meta).toMatchObject({
+      canonical: null,
+      robots: "noindex, nofollow",
+    });
+  });
+
+  it("returns server-visible noindex metadata for admin paths only", async () => {
+    const meta = await resolveMetaTags("/admin/media-library");
+    expect(meta).toMatchObject({
+      canonical: null,
+      robots: "noindex, nofollow",
+    });
+  });
+
   it("returns meta for the homepage", async () => {
     const meta = await resolveMetaTags("/");
     expect(meta).not.toBeNull();
