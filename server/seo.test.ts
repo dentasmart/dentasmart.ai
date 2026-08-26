@@ -55,6 +55,10 @@ describe("SEO Routes", () => {
         for (const url of internalUrls) {
           expect(url === "https://dentasmart.ai/" || /\.[a-z0-9]{1,10}$/i.test(url) || url.endsWith("/")).toBe(true);
         }
+        expect(res.text).not.toContain("https://dentasmart.ai/oral-health-hub/best-ai-dental-apps/");
+        if (endpoint === "/llms-full.txt") {
+          expect(res.text).toContain("https://dentasmart.ai/oral-health-hub/top-10-best-ai-dental-apps/");
+        }
         expect(res.text).toContain("https://www.instagram.com/dentasmart");
       }
     });

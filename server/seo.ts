@@ -497,7 +497,7 @@ function buildLlmsFullTxt(): string {
     "DentaSmart vs Waiting for Dental Visit (https://dentasmart.ai/oral-health-hub/dentasmart-vs-waiting-for-dental-visit)",
     "",
     "### Listicle Pages",
-    "7 Best AI Dental Apps in 2026 (https://dentasmart.ai/oral-health-hub/best-ai-dental-apps)",
+    "7 Best AI Dental Apps in 2026 (https://dentasmart.ai/oral-health-hub/top-10-best-ai-dental-apps/)",
     "5 Best Dental Second Opinion Apps (https://dentasmart.ai/oral-health-hub/best-dental-second-opinion-apps)",
     "Best Apps to Understand Dental X-Rays (https://dentasmart.ai/oral-health-hub/best-apps-understand-dental-xrays)",
     "7 Best Dental Insurance Alternatives (https://dentasmart.ai/oral-health-hub/best-dental-insurance-alternatives)",
