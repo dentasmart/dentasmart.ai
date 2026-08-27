@@ -2,7 +2,7 @@ import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ChevronDown, ChevronRight, Stethoscope, DollarSign, ShieldCheck, HeartPulse, BookOpen, Scale, HelpCircle, Activity, Search } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion, type Transition } from "framer-motion";
 import { trackEvent } from "@/lib/analytics";
 
 // Mega-menu category structure - scalable for future hubs
@@ -58,6 +58,9 @@ const megaMenuCategories = [
 
 // Flatten all resource items for active state checking
 const allResourceItems = megaMenuCategories.flatMap(cat => cat.items);
+const DESKTOP_LEARN_MENU_ID = "desktop-learn-menu";
+const MOBILE_NAV_MENU_ID = "mobile-navigation-menu";
+const MOBILE_LEARN_MENU_ID = "mobile-learn-menu";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -68,7 +71,21 @@ export default function Navigation() {
   const [mobileExpandedCategory, setMobileExpandedCategory] = useState<string | null>(null);
   const megaMenuRef = useRef<HTMLDivElement>(null);
   const megaMenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const desktopLearnButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
+  const shouldReduceMotion = useReducedMotion();
   const [location] = useLocation();
+
+  const navTransition: Transition = shouldReduceMotion
+    ? { duration: 0 }
+    : { duration: 0.6, ease: [0.16, 1, 0.3, 1] };
+  const disclosureTransition: Transition = shouldReduceMotion
+    ? { duration: 0 }
+    : { duration: 0.2, ease: "easeOut" };
+  const mobileMenuTransition: Transition = shouldReduceMotion
+    ? { duration: 0 }
+    : { duration: 0.5, ease: [0.22, 1, 0.36, 1] };
+  const mobileItemTransition: Transition = shouldReduceMotion ? { duration: 0 } : { duration: 0.4 };
 
   // Handle scroll effect
   useEffect(() => {
@@ -95,7 +112,33 @@ export default function Navigation() {
   useEffect(() => {
     setIsOpen(false);
     setMegaMenuOpen(false);
+    setMobileLearnOpen(false);
+    setMobileExpandedCategory(null);
   }, [location]);
+
+  useEffect(() => {
+    if (!megaMenuOpen && !isOpen) return;
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+
+      if (megaMenuOpen) {
+        event.preventDefault();
+        setMegaMenuOpen(false);
+        desktopLearnButtonRef.current?.focus();
+        return;
+      }
+
+      event.preventDefault();
+      setIsOpen(false);
+      setMobileLearnOpen(false);
+      setMobileExpandedCategory(null);
+      mobileMenuButtonRef.current?.focus();
+    };
+
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [isOpen, megaMenuOpen]);
 
   const navItems = [
     { label: "Home", href: "/" },
@@ -130,9 +173,9 @@ export default function Navigation() {
   return (
     <>
       <motion.nav
-        initial={{ y: -100 }}
+        initial={shouldReduceMotion ? undefined : { y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        transition={navTransition}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled || isOpen
             ? "bg-white/95 backdrop-blur-xl border-b border-stone-200/50 py-2 shadow-sm"
@@ -181,7 +224,10 @@ export default function Navigation() {
               onMouseLeave={handleMegaMenuLeave}
             >
               <button
+                ref={desktopLearnButtonRef}
                 onClick={() => setMegaMenuOpen(!megaMenuOpen)}
+                aria-expanded={megaMenuOpen}
+                aria-controls={DESKTOP_LEARN_MENU_ID}
                 className={`flex items-center gap-1 text-[15px] font-medium tracking-wide transition-all duration-300 relative group cursor-pointer ${
                   isLearnActive
                     ? "text-teal-900"
@@ -199,10 +245,11 @@ export default function Navigation() {
               <AnimatePresence>
                 {megaMenuOpen && (
                   <motion.div
-                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                    id={DESKTOP_LEARN_MENU_ID}
+                    initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8, scale: 0.98 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    exit={shouldReduceMotion ? undefined : { opacity: 0, y: 8, scale: 0.98 }}
+                    transition={disclosureTransition}
                     className="absolute top-full mt-3 right-0 w-[680px] bg-white rounded-2xl shadow-2xl border border-stone-200/60 overflow-hidden z-50"
                   >
                     {/* Header */}
@@ -329,9 +376,12 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
+            ref={mobileMenuButtonRef}
             className={`lg:hidden p-2 z-50 relative transition-colors duration-300 ${scrolled || isOpen ? "text-teal-900" : "text-teal-900"}`}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
+            aria-expanded={isOpen}
+            aria-controls={MOBILE_NAV_MENU_ID}
           >
             <div className="w-6 h-6 flex flex-col justify-center items-center gap-1.5">
               <motion.span
@@ -355,19 +405,20 @@ export default function Navigation() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, clipPath: "circle(0% at 100% 0%)" }}
+            id={MOBILE_NAV_MENU_ID}
+            initial={shouldReduceMotion ? undefined : { opacity: 0, clipPath: "circle(0% at 100% 0%)" }}
             animate={{ opacity: 1, clipPath: "circle(150% at 100% 0%)" }}
-            exit={{ opacity: 0, clipPath: "circle(0% at 100% 0%)" }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            exit={shouldReduceMotion ? undefined : { opacity: 0, clipPath: "circle(0% at 100% 0%)" }}
+            transition={mobileMenuTransition}
             className="fixed inset-0 z-40 bg-background flex flex-col pt-24 px-6 pb-8 lg:hidden"
           >
             <div className="flex flex-col gap-3 flex-1 overflow-y-auto">
               {navItems.map((item, idx) => (
                 <motion.div
                   key={item.href}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={shouldReduceMotion ? undefined : { opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.1 + idx * 0.05, duration: 0.4 }}
+                  transition={shouldReduceMotion ? mobileItemTransition : { delay: 0.1 + idx * 0.05, ...mobileItemTransition }}
                 >
                   <Link
                     href={item.href}
@@ -383,13 +434,15 @@ export default function Navigation() {
 
               {/* Mobile Learn Section - Grouped Accordion */}
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
+                initial={shouldReduceMotion ? undefined : { opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.1 + navItems.length * 0.05, duration: 0.4 }}
+                transition={shouldReduceMotion ? mobileItemTransition : { delay: 0.1 + navItems.length * 0.05, ...mobileItemTransition }}
                 className="border-t border-stone-200 pt-3 mt-1"
               >
                 <button
                   onClick={() => setMobileLearnOpen(!mobileLearnOpen)}
+                  aria-expanded={mobileLearnOpen}
+                  aria-controls={MOBILE_LEARN_MENU_ID}
                   className={`text-2xl font-light tracking-tight py-2 flex items-center gap-2 w-full text-left cursor-pointer ${
                     isLearnActive ? "text-primary font-medium" : "text-muted-foreground"
                   }`}
@@ -401,10 +454,11 @@ export default function Navigation() {
                 <AnimatePresence>
                   {mobileLearnOpen && (
                     <motion.div
-                      initial={{ height: 0, opacity: 0 }}
+                      id={MOBILE_LEARN_MENU_ID}
+                      initial={shouldReduceMotion ? undefined : { height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                      exit={shouldReduceMotion ? undefined : { height: 0, opacity: 0 }}
+                      transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.3 }}
                       className="overflow-hidden"
                     >
                       <div className="pl-2 space-y-1 pb-2">
@@ -417,6 +471,8 @@ export default function Navigation() {
                             <div key={category.title}>
                               <button
                                 onClick={() => setMobileExpandedCategory(isCategoryOpen ? null : category.title)}
+                                aria-expanded={isCategoryOpen}
+                                aria-controls={`mobile-learn-category-${category.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
                                 className={`flex items-center gap-3 w-full text-left py-2.5 px-3 rounded-xl transition-colors cursor-pointer ${
                                   isCategoryOpen || hasCategoryActive ? "bg-stone-50" : ""
                                 }`}
@@ -437,10 +493,11 @@ export default function Navigation() {
                               <AnimatePresence>
                                 {isCategoryOpen && (
                                   <motion.div
-                                    initial={{ height: 0, opacity: 0 }}
+                                    id={`mobile-learn-category-${category.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`}
+                                    initial={shouldReduceMotion ? undefined : { height: 0, opacity: 0 }}
                                     animate={{ height: "auto", opacity: 1 }}
-                                    exit={{ height: 0, opacity: 0 }}
-                                    transition={{ duration: 0.2 }}
+                                    exit={shouldReduceMotion ? undefined : { height: 0, opacity: 0 }}
+                                    transition={disclosureTransition}
                                     className="overflow-hidden"
                                   >
                                     <div className="pl-12 space-y-0.5 pb-2">
@@ -475,9 +532,9 @@ export default function Navigation() {
             </div>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={shouldReduceMotion ? undefined : { opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.4 }}
+              transition={shouldReduceMotion ? mobileItemTransition : { delay: 0.5, ...mobileItemTransition }}
               className="mt-auto pt-6 border-t border-stone-200 space-y-3"
             >
               <Button

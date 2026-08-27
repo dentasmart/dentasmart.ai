@@ -134,6 +134,12 @@
 }
 
 @layer base {
+  :focus-visible {
+    outline: 2px solid var(--foreground) !important;
+    outline-offset: 3px !important;
+    box-shadow: 0 0 0 4px var(--ring) !important;
+  }
+
   * {
     @apply border-border outline-ring/50;
   }
@@ -208,6 +214,17 @@
   
   .brand-card {
     @apply bg-card border border-border/50 shadow-sm hover:shadow-md transition-all duration-500 rounded-2xl;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
