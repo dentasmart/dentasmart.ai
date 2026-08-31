@@ -1,0 +1,17 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "CGWX99R5NK.com.denta.smart.app.ios"
+        ],
+        "components": [
+          {
+            "/": "/app/*",
+            "comment": "Any DentaSmart Universal Link opens the app"
+          }
+        ]
+      }
+    ]
+  }
+}
