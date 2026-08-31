@@ -90,9 +90,9 @@ export default function MidContentCTA({
               {icon}
             </div>
             <div>
-              <h4 className="text-lg font-semibold text-stone-900 mb-1">
+              <p className="text-lg font-semibold text-stone-900 mb-1">
                 {finalHeadline}
-              </h4>
+              </p>
               <p className="text-stone-600 text-sm leading-relaxed">
                 {finalDescription}
               </p>
@@ -121,7 +121,7 @@ export default function MidContentCTA({
               <Link
                 href={resolvedContext.ctaLink}
                 onClick={handleClick}
-                className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-3 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15"
+                className="inline-flex min-h-11 items-center gap-2 bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-3 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15"
               >
                 {finalButtonText}
                 <ArrowRight className="w-4 h-4" />
@@ -129,7 +129,7 @@ export default function MidContentCTA({
             ) : (
               <button
                 onClick={handleClick}
-                className="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-3 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15"
+                className="inline-flex min-h-11 items-center gap-2 bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-3 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15"
               >
                 {finalButtonText}
                 <ArrowRight className="w-4 h-4" />
@@ -150,9 +150,9 @@ export default function MidContentCTA({
             {icon}
           </div>
           <div className="flex-1 text-center md:text-left">
-            <h4 className="text-lg font-semibold text-stone-900 mb-1">
+            <p className="text-lg font-semibold text-stone-900 mb-1">
               {finalHeadline}
-            </h4>
+            </p>
             <p className="text-stone-600 text-sm leading-relaxed">
               {finalDescription}
             </p>
@@ -165,7 +165,7 @@ export default function MidContentCTA({
             <Link
               href={resolvedContext.ctaLink}
               onClick={handleClick}
-              className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-3 text-sm font-semibold whitespace-nowrap cursor-pointer shadow-md shadow-primary/15 inline-flex items-center gap-1.5 transition-all hover:scale-[1.02]"
+              className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-3 text-sm font-semibold whitespace-nowrap cursor-pointer shadow-md shadow-primary/15 inline-flex min-h-11 items-center gap-1.5 transition-all hover:scale-[1.02]"
             >
               {finalButtonText}
               <ArrowRight className="w-4 h-4" />
@@ -173,7 +173,7 @@ export default function MidContentCTA({
           ) : (
             <Button
               onClick={handleClick}
-              className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-3 text-sm font-semibold whitespace-nowrap cursor-pointer shadow-md shadow-primary/15"
+              className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-3 text-sm font-semibold whitespace-nowrap cursor-pointer shadow-md shadow-primary/15 min-h-11"
             >
               {finalButtonText}
               <ArrowRight className="w-4 h-4 ml-1.5" />
@@ -201,7 +201,7 @@ export default function MidContentCTA({
           <Link
             href={resolvedContext.ctaLink}
             onClick={handleClick}
-            className="bg-primary hover:bg-primary/90 text-white rounded-full px-5 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer inline-flex items-center gap-1"
+            className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-5 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer inline-flex min-h-11 items-center gap-1"
           >
             {finalButtonText}
             <ArrowRight className="w-3.5 h-3.5" />
@@ -210,7 +210,7 @@ export default function MidContentCTA({
           <Button
             onClick={handleClick}
             size="sm"
-            className="bg-primary hover:bg-primary/90 text-white rounded-full px-5 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer"
+            className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-5 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer min-h-11"
           >
             {finalButtonText}
             <ArrowRight className="w-3.5 h-3.5 ml-1" />

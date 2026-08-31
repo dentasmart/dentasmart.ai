@@ -53,7 +53,8 @@ export default function Pricing() {
               src="/images/optimized/oaONyntFCCtQKvAL-800.webp"
               alt="Happy family smiling with healthy teeth"
               className="w-full h-full object-cover object-center"
-              loading="lazy"
+              loading="eager"
+              fetchPriority="high"
               width="1600" height="893" />
           </picture>
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/30" />
@@ -78,7 +79,7 @@ export default function Pricing() {
               <div className="flex flex-col sm:flex-row gap-4 justify-start">
                 <Button
                   size="lg"
-                  className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0 cursor-pointer"
+                  className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0 cursor-pointer"
                   onClick={() => {
                     const el = document.getElementById('pricing-plans');
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -129,7 +130,7 @@ export default function Pricing() {
                 onClick={() => setPlanType("individual")}
                 className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${
                   planType === "individual"
-                    ? "bg-primary text-white shadow-md"
+                    ? "bg-action text-action-foreground shadow-md"
                     : "text-stone-600 hover:text-stone-900"
                 }`}
               >
@@ -139,7 +140,7 @@ export default function Pricing() {
                 onClick={() => setPlanType("family")}
                 className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${
                   planType === "family"
-                    ? "bg-primary text-white shadow-md"
+                    ? "bg-action text-action-foreground shadow-md"
                     : "text-stone-600 hover:text-stone-900"
                 }`}
               >
@@ -392,7 +393,7 @@ export default function Pricing() {
               </div>
 
               <Button
-                className="w-full bg-primary hover:bg-primary/90 text-white rounded-full py-5 text-base font-medium transition-all duration-300 shadow-lg cursor-pointer"
+                className="w-full bg-action hover:bg-action-hover text-action-foreground rounded-full py-5 text-base font-medium transition-all duration-300 shadow-lg cursor-pointer"
                 onClick={() => {
                   if (planType === "individual") {
                     trackPixelInitiateCheckout({ content_name: "Complete Care Annual Plan", content_category: "pricing", value: 74.99, currency: "USD" });

@@ -127,7 +127,7 @@ export default function StickyDownloadBanner() {
               <Link
                 href={context.ctaLink}
                 onClick={handleClick}
-                className="bg-primary text-white text-sm font-semibold px-4 py-2.5 rounded-full hover:bg-primary/90 transition-colors flex-shrink-0 cursor-pointer inline-flex items-center gap-1"
+                className="bg-action text-action-foreground text-sm font-semibold px-4 py-2.5 rounded-full hover:bg-action-hover transition-colors flex-shrink-0 cursor-pointer inline-flex min-h-11 items-center gap-1"
               >
                 {context.ctaButtonText.split(" ").slice(0, 2).join(" ")}
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -135,7 +135,7 @@ export default function StickyDownloadBanner() {
             ) : (
               <button
                 onClick={handleClick}
-                className="bg-primary text-white text-sm font-semibold px-4 py-2.5 rounded-full hover:bg-primary/90 transition-colors flex-shrink-0 cursor-pointer inline-flex items-center gap-1"
+                className="bg-action text-action-foreground text-sm font-semibold px-4 py-2.5 rounded-full hover:bg-action-hover transition-colors flex-shrink-0 cursor-pointer inline-flex min-h-11 items-center gap-1"
               >
                 {context.ctaButtonText.split(" ").slice(0, 2).join(" ")}
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -143,7 +143,7 @@ export default function StickyDownloadBanner() {
             )}
             <button
               onClick={handleDismiss}
-              className="p-1 text-stone-400 hover:text-stone-600 transition-colors flex-shrink-0 cursor-pointer"
+              className="min-h-11 min-w-11 inline-flex items-center justify-center text-stone-400 hover:text-stone-600 transition-colors flex-shrink-0 cursor-pointer"
               aria-label="Dismiss"
             >
               <X className="w-4 h-4" />
@@ -165,16 +165,16 @@ export default function StickyDownloadBanner() {
           {/* Close */}
           <button
             onClick={handleDismiss}
-            className="absolute top-3 right-3 p-1 rounded-full hover:bg-stone-100 text-stone-400 hover:text-stone-600 transition-colors cursor-pointer"
+            className="absolute top-3 right-3 min-h-11 min-w-11 inline-flex items-center justify-center rounded-full hover:bg-stone-100 text-stone-400 hover:text-stone-600 transition-colors cursor-pointer"
             aria-label="Close"
           >
             <X className="w-4 h-4" />
           </button>
 
           <div className="pr-6">
-            <h4 className="text-base font-semibold text-stone-900 mb-1">
+            <p className="text-base font-semibold text-stone-900 mb-1">
               {context.ctaHeadline}
-            </h4>
+            </p>
             <p className="text-sm text-stone-500 leading-relaxed mb-3">
               {context.ctaDescription}
             </p>
@@ -194,7 +194,7 @@ export default function StickyDownloadBanner() {
             <Link
               href={context.ctaLink}
               onClick={handleClick}
-              className="w-full bg-primary text-white hover:bg-primary/90 rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15 inline-flex items-center justify-center gap-1.5"
+              className="w-full bg-action text-action-foreground hover:bg-action-hover rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15 inline-flex min-h-11 items-center justify-center gap-1.5"
             >
               {context.ctaButtonText}
               <ArrowRight className="w-4 h-4" />
@@ -202,7 +202,7 @@ export default function StickyDownloadBanner() {
           ) : (
             <button
               onClick={handleClick}
-              className="w-full bg-primary text-white hover:bg-primary/90 rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15 inline-flex items-center justify-center gap-1.5"
+              className="w-full bg-action text-action-foreground hover:bg-action-hover rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15 inline-flex min-h-11 items-center justify-center gap-1.5"
             >
               {context.ctaButtonText}
               <ArrowRight className="w-4 h-4" />

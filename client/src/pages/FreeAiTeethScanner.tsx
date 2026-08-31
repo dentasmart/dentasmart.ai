@@ -145,7 +145,7 @@ export default function FreeAiTeethScanner() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/download">
-                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
+                <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
                   Scan Your Teeth for Free
                 </Button>
               </Link>
@@ -316,7 +316,7 @@ export default function FreeAiTeethScanner() {
             </table>
           </div>
           <p className="text-sm text-stone-500 mt-4 font-light">
-            All plans include dual reports (patient-friendly and dentist-ready versions). <Link href="/pricing"><span className="text-primary hover:underline cursor-pointer">See full pricing details</span></Link>.
+            All plans include dual reports (patient-friendly and dentist-ready versions). <Link href="/pricing"><span className="text-action hover:underline cursor-pointer">See full pricing details</span></Link>.
           </p>
         </div>
       </section>
@@ -360,7 +360,7 @@ export default function FreeAiTeethScanner() {
             Scan your teeth for free and get a plain-language read in minutes. No appointment, no waiting room.
           </p>
           <Link href="/download">
-            <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-6 text-lg font-medium cursor-pointer shadow-lg">
+            <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-10 py-6 text-lg font-medium cursor-pointer shadow-lg">
               <Smartphone className="w-5 h-5 mr-2" />
               Get the Free App
             </Button>
@@ -377,7 +377,7 @@ export default function FreeAiTeethScanner() {
               <thead>
                 <tr className="border-b-2 border-stone-200">
                   <th className="py-3 px-4 text-stone-500 font-medium text-sm">Feature</th>
-                  <th className="py-3 px-4 text-center font-medium text-sm text-primary">DentaSmart</th>
+                  <th className="py-3 px-4 text-center font-medium text-sm text-action">DentaSmart</th>
                   <th className="py-3 px-4 text-center text-stone-500 font-medium text-sm">Dental.com SmartScan</th>
                   <th className="py-3 px-4 text-center text-stone-500 font-medium text-sm">Dentistry.one SmileScan</th>
                 </tr>
@@ -397,7 +397,7 @@ export default function FreeAiTeethScanner() {
                   <tr key={i} className="hover:bg-stone-50">
                     <td className="py-3 px-4 text-stone-700 font-light text-sm">{row.feature}</td>
                     <td className="py-3 px-4 text-center">
-                      {typeof row.ds === "boolean" ? (row.ds ? <CheckCircle className="w-4 h-4 text-primary mx-auto" /> : <span className="text-stone-300">-</span>) : <span className="text-primary font-medium text-sm">{row.ds}</span>}
+                      {typeof row.ds === "boolean" ? (row.ds ? <CheckCircle className="w-4 h-4 text-action mx-auto" /> : <span className="text-stone-300">-</span>) : <span className="text-action font-medium text-sm">{row.ds}</span>}
                     </td>
                     <td className="py-3 px-4 text-center">
                       {typeof row.dental === "boolean" ? (row.dental ? <CheckCircle className="w-4 h-4 text-stone-400 mx-auto" /> : <span className="text-stone-300">-</span>) : <span className="text-stone-600 text-sm">{row.dental}</span>}
@@ -411,7 +411,7 @@ export default function FreeAiTeethScanner() {
             </table>
           </div>
           <p className="text-sm text-stone-500 mt-4 font-light">
-            Comparison based on publicly available information as of June 2026. Features may change. <Link href="/best-ai-dental-apps"><span className="text-primary hover:underline cursor-pointer">Read the full comparison</span></Link>.
+            Comparison based on publicly available information as of June 2026. Features may change. <Link href="/best-ai-dental-apps"><span className="text-action hover:underline cursor-pointer">Read the full comparison</span></Link>.
           </p>
         </div>
       </section>

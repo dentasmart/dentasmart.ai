@@ -64,7 +64,7 @@ export function DownloadSection({
               className="w-full"
               onClick={() => trackAppDownload("android", source)}
             >
-              <button className="w-full bg-primary text-white hover:bg-primary/90 rounded-full h-12 font-medium transition-colors">
+              <button className="w-full bg-action text-action-foreground hover:bg-action-hover rounded-full h-12 font-medium transition-colors">
                 Get it on Google Play
               </button>
             </a>

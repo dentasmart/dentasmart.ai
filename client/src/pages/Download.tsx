@@ -97,7 +97,7 @@ export default function Download() {
                   className="w-full sm:w-auto"
                   onClick={() => trackAppDownload("android", "download_page")}
                 >
-                  <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-7 text-lg w-full sm:w-auto cursor-pointer">
+                  <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-7 text-lg w-full sm:w-auto cursor-pointer">
                     <Smartphone className="w-6 h-6 mr-2" />
                     Download for Android
                   </Button>
@@ -214,12 +214,12 @@ export default function Download() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-16 bg-primary text-white text-center">
+      <section className="py-16 bg-action text-action-foreground text-center">
         <div className="container px-4 mx-auto max-w-3xl">
-          <h2 className="text-3xl md:text-4xl font-normal text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-normal text-action-foreground mb-4">
             Ready to see what is really going on?
           </h2>
-          <p className="text-xl text-white/80 font-light mb-8">
+          <p className="text-xl text-action-foreground font-light mb-8">
             Join thousands of people who stopped guessing and started knowing.
           </p>
           <a
@@ -228,7 +228,7 @@ export default function Download() {
             rel="noopener noreferrer"
             onClick={() => trackAppDownload("ios", "download_page_bottom")}
           >
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer">
+            <Button size="lg" className="bg-white text-action hover:bg-white/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer">
               Download DentaSmart Free
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>

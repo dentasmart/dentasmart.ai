@@ -189,7 +189,7 @@ export default function ConditionsHub() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/download">
-                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
+                <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
                   Get Your Free AI Assessment
                 </Button>
               </Link>
@@ -204,7 +204,7 @@ export default function ConditionsHub() {
       </section>
 
       {/* ═══ THE PROBLEM: Statistics Strip ═══ */}
-      <section className="py-6 bg-primary text-white">
+      <section className="py-6 bg-action text-action-foreground">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-white/20">
             {[
@@ -220,8 +220,8 @@ export default function ConditionsHub() {
                 transition={{ delay: idx * 0.15, duration: 0.5 }}
                 className="py-3 md:py-0"
               >
-                <div className="text-3xl md:text-5xl font-normal tracking-tighter text-white">{stat.value}</div>
-                <div className="text-[10px] md:text-xs uppercase tracking-widest text-white/80 font-medium mt-1">{stat.label}</div>
+                <div className="text-3xl md:text-5xl font-normal tracking-tighter text-action-foreground">{stat.value}</div>
+                <div className="text-[10px] md:text-xs uppercase tracking-widest text-action-foreground font-medium mt-1">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -322,7 +322,7 @@ export default function ConditionsHub() {
           </div>
           <div className="mt-6 text-center">
             <Link href="/conditions">
-              <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
+              <Button size="lg" variant="outline" className="border-primary/30 text-action hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
                 View All {conditionsList.length} Conditions <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
@@ -377,7 +377,7 @@ export default function ConditionsHub() {
           </div>
           <div className="mt-6 text-center">
             <Link href="/download">
-              <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
+              <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                 Try Your Free AI Assessment <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>

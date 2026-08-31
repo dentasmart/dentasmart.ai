@@ -16,6 +16,9 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-action: var(--action);
+  --color-action-foreground: var(--action-foreground);
+  --color-action-hover: var(--action-hover);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -51,6 +54,9 @@
   
   --primary: #21B9C6;
   --primary-foreground: #ffffff;
+  --action: #007784;
+  --action-foreground: #ffffff;
+  --action-hover: #006B76;
   
   /* Backgrounds: Clean, modern, slightly warm/stone to keep Oura feel but branded */
   --background: #FFFFFF; 
@@ -108,6 +114,9 @@
   
   --primary: #21B9C6;
   --primary-foreground: #ffffff;
+  --action: #007784;
+  --action-foreground: #ffffff;
+  --action-hover: #006B76;
   
   --secondary: #333030;
   --secondary-foreground: #FFFFFF;

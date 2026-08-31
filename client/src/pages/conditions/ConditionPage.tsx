@@ -95,7 +95,7 @@ export default function ConditionPage() {
             transition={{ duration: 0.8 }}
           >
             <Link href="/conditions">
-              <span className="inline-flex items-center gap-2 text-primary hover:underline mb-4 cursor-pointer">
+              <span className="inline-flex items-center gap-2 text-action hover:underline mb-4 cursor-pointer">
                 <ArrowLeft className="w-4 h-4" />
                 All Conditions
               </span>
@@ -132,7 +132,7 @@ export default function ConditionPage() {
       <section className="py-8 bg-primary/5 border-b border-primary/10">
         <div className="container px-4 mx-auto max-w-3xl">
           <div className="bg-white rounded-2xl p-6 border border-primary/20 shadow-sm">
-            <h2 className="text-lg font-medium text-primary mb-3">Quick Answer</h2>
+            <h2 className="text-lg font-medium text-action mb-3">Quick Answer</h2>
             <p className="text-stone-700 font-light leading-relaxed">{condition.directAnswer}</p>
           </div>
         </div>
@@ -179,8 +179,8 @@ export default function ConditionPage() {
                 <div className="flex-1">
                   <span className="text-stone-700 font-light">{symptom.text}</span>
                   <span className={`ml-2 text-xs uppercase tracking-wider font-medium ${
-                    symptom.severity === "mild" ? "text-yellow-600" :
-                    symptom.severity === "moderate" ? "text-orange-600" : "text-red-600"
+                    symptom.severity === "mild" ? "text-yellow-800" :
+                    symptom.severity === "moderate" ? "text-orange-800" : "text-red-600"
                   }`}>
                     {symptom.severity}
                   </span>
@@ -230,14 +230,14 @@ export default function ConditionPage() {
         <section className="py-8 bg-white">
           <div className="container px-4 mx-auto max-w-3xl">
             <div className="flex items-center gap-3 mb-6">
-              <ClipboardList className="w-6 h-6 text-primary" />
+              <ClipboardList className="w-6 h-6 text-action" />
               <h2 className="text-2xl font-medium text-black">What to Do Today</h2>
             </div>
             <div className="space-y-3">
               {aeo.whatToDoToday.map((step, idx) => (
                 <div key={idx} className="flex items-start gap-3">
                   <div className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-sm font-medium text-primary">{idx + 1}</span>
+                    <span className="text-sm font-medium text-action">{idx + 1}</span>
                   </div>
                   <p className="text-stone-700 font-light">{step}</p>
                 </div>
@@ -252,13 +252,13 @@ export default function ConditionPage() {
         <section className="py-8 bg-stone-50">
           <div className="container px-4 mx-auto max-w-3xl">
             <div className="flex items-center gap-3 mb-6">
-              <MessageCircleQuestion className="w-6 h-6 text-primary" />
+              <MessageCircleQuestion className="w-6 h-6 text-action" />
               <h2 className="text-2xl font-medium text-black">Questions to Ask Your Dentist</h2>
             </div>
             <div className="space-y-3">
               {aeo.dentistQuestions.map((q, idx) => (
                 <div key={idx} className="flex items-start gap-3">
-                  <ArrowRight className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
+                  <ArrowRight className="w-4 h-4 text-action mt-1 flex-shrink-0" />
                   <p className="text-stone-700 font-light">{q}</p>
                 </div>
               ))}
@@ -274,7 +274,7 @@ export default function ConditionPage() {
           <div className="space-y-3">
             {condition.keyTakeaways.map((takeaway, idx) => (
               <div key={idx} className="flex items-start gap-3">
-                <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-action mt-0.5 flex-shrink-0" />
                 <p className="text-stone-700 font-light">{takeaway}</p>
               </div>
             ))}
@@ -301,11 +301,11 @@ export default function ConditionPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {condition.relatedConditions.length > 0 && (
               <div>
-                <h3 className="text-sm uppercase tracking-wider text-stone-400 font-medium mb-3">Conditions</h3>
+                <h3 className="text-sm uppercase tracking-wider text-stone-600 font-medium mb-3">Conditions</h3>
                 <div className="space-y-2">
                   {condition.relatedConditions.map((item) => (
                     <Link key={item.slug} href={`/conditions/${item.slug}`}>
-                      <span className="block text-primary hover:underline cursor-pointer font-light">{item.title}</span>
+                      <span className="block text-action hover:underline cursor-pointer font-light">{item.title}</span>
                     </Link>
                   ))}
                 </div>
@@ -313,11 +313,11 @@ export default function ConditionPage() {
             )}
             {condition.relatedSymptoms.length > 0 && (
               <div>
-                <h3 className="text-sm uppercase tracking-wider text-stone-400 font-medium mb-3">Symptoms</h3>
+                <h3 className="text-sm uppercase tracking-wider text-stone-600 font-medium mb-3">Symptoms</h3>
                 <div className="space-y-2">
                   {condition.relatedSymptoms.map((item) => (
                     <Link key={item.slug} href={`/symptoms/${item.slug}`}>
-                      <span className="block text-primary hover:underline cursor-pointer font-light">{item.title}</span>
+                      <span className="block text-action hover:underline cursor-pointer font-light">{item.title}</span>
                     </Link>
                   ))}
                 </div>
@@ -325,11 +325,11 @@ export default function ConditionPage() {
             )}
             {condition.relatedGuides.length > 0 && (
               <div>
-                <h3 className="text-sm uppercase tracking-wider text-stone-400 font-medium mb-3">Guides</h3>
+                <h3 className="text-sm uppercase tracking-wider text-stone-600 font-medium mb-3">Guides</h3>
                 <div className="space-y-2">
                   {condition.relatedGuides.map((item) => (
                     <Link key={item.slug} href={`/guides/${item.slug}`}>
-                      <span className="block text-primary hover:underline cursor-pointer font-light">{item.title}</span>
+                      <span className="block text-action hover:underline cursor-pointer font-light">{item.title}</span>
                     </Link>
                   ))}
                 </div>
@@ -340,13 +340,13 @@ export default function ConditionPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-8 bg-primary text-white">
+      <section className="py-8 bg-action text-action-foreground">
         <div className="container px-4 mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-normal mb-3 text-white">Want to check your own oral health?</h2>
-          <p className="text-white/80 font-light mb-6">Upload a photo and get instant AI insights in minutes.</p>
+          <h2 className="text-3xl font-normal mb-3 text-action-foreground">Want to check your own oral health?</h2>
+          <p className="text-action-foreground font-light mb-6">Upload a photo and get instant AI insights in minutes.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/instant-scan">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
+              <Button size="lg" className="bg-white text-action hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
                 Try Instant Scan
               </Button>
             </Link>

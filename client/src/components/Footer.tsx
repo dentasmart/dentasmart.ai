@@ -50,7 +50,7 @@ export default function Footer() {
 
             {/* Column 1: Product */}
             <div>
-              <h4 className="font-semibold text-black mb-5 tracking-wide text-base">Product</h4>
+              <p className="font-semibold text-black mb-5 tracking-wide text-base">Product</p>
               <ul className="space-y-3">
                 <li>
                   <Link href="/how-it-works" className="text-black hover:text-primary transition-colors font-light text-sm">
@@ -77,7 +77,7 @@ export default function Footer() {
 
             {/* Column 2: Company */}
             <div>
-              <h4 className="font-semibold text-black mb-5 tracking-wide text-base">Company</h4>
+              <p className="font-semibold text-black mb-5 tracking-wide text-base">Company</p>
               <ul className="space-y-3">
                 <li>
                   <Link href="/team" className="text-black hover:text-primary transition-colors font-light text-sm">
@@ -104,7 +104,7 @@ export default function Footer() {
 
             {/* Column 3: Dental Costs */}
             <div>
-              <h4 className="font-semibold text-black mb-5 tracking-wide text-base">Dental Costs</h4>
+              <p className="font-semibold text-black mb-5 tracking-wide text-base">Dental Costs</p>
               <ul className="space-y-3">
                 <li>
                   <Link href="/dental-costs" className="text-black hover:text-primary transition-colors font-light text-sm">
@@ -141,7 +141,7 @@ export default function Footer() {
 
             {/* Column 4: Comparisons — xl:ml-4 adds visual separation from the Cost group */}
             <div className="xl:ml-4">
-              <h4 className="font-semibold text-black mb-5 tracking-wide text-base">Comparisons</h4>
+              <p className="font-semibold text-black mb-5 tracking-wide text-base">Comparisons</p>
               <ul className="space-y-3">
                 <li>
                   <Link href="/compare/dentasmart-vs-chatgpt-dental" className="text-black hover:text-primary transition-colors font-light text-sm">
@@ -163,7 +163,7 @@ export default function Footer() {
 
             {/* Column 5: Guides — xl:ml-4 matches Comparisons visual rhythm */}
             <div className="xl:ml-4">
-              <h4 className="font-semibold text-black mb-5 tracking-wide text-base">Guides</h4>
+              <p className="font-semibold text-black mb-5 tracking-wide text-base">Guides</p>
               <ul className="space-y-3">
                 <li>
                   <Link href="/oral-health-hub/conditions" className="text-black hover:text-primary transition-colors font-light text-sm">
@@ -210,7 +210,7 @@ export default function Footer() {
 
             {/* Column 6: Help & Legal — xl:ml-4 matches Comparisons visual rhythm */}
             <div className="xl:ml-4">
-              <h4 className="font-semibold text-black mb-5 tracking-wide text-base">Help &amp; Legal</h4>
+              <p className="font-semibold text-black mb-5 tracking-wide text-base">Help &amp; Legal</p>
               <ul className="space-y-3">
                 <li>
                   <Link href="/faqs" className="text-black hover:text-primary transition-colors font-light text-sm">

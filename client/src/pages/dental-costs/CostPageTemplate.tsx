@@ -131,7 +131,7 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/download">
-                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
+                <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
                   Get Your Free AI Assessment
                 </Button>
               </Link>
@@ -346,7 +346,7 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
           </div>
           <div className="mt-6 text-center">
             <Link href="/download">
-              <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
+              <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                 Try DentaSmart Free <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
@@ -418,7 +418,7 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
           <div className="flex flex-wrap gap-2 md:gap-3">
             {data.relatedTreatmentPage && (
               <Link href={`/treatments/${data.relatedTreatmentPage.slug}`}>
-                <span className="inline-flex items-center gap-2 bg-primary/5 px-3 md:px-4 py-2 rounded-full border border-primary/20 text-primary font-medium hover:bg-primary/10 transition-colors cursor-pointer text-xs md:text-sm">
+                <span className="inline-flex items-center gap-2 bg-primary/5 px-3 md:px-4 py-2 rounded-full border border-primary/20 text-action font-medium hover:bg-primary/10 transition-colors cursor-pointer text-xs md:text-sm">
                   {data.relatedTreatmentPage.name} Guide <ArrowRight className="w-3 h-3" />
                 </span>
               </Link>

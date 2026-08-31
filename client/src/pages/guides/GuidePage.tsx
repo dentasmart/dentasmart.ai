@@ -257,11 +257,11 @@ export default function GuidePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {guide.relatedConditions.length > 0 && (
               <div>
-                <h3 className="text-sm uppercase tracking-wider text-stone-400 font-medium mb-3">Conditions</h3>
+                <h3 className="text-sm uppercase tracking-wider text-stone-600 font-medium mb-3">Conditions</h3>
                 <div className="space-y-2">
                   {guide.relatedConditions.map((item) => (
                     <Link key={item.slug} href={`/conditions/${item.slug}`}>
-                      <span className="block text-primary hover:underline cursor-pointer font-light">{item.title}</span>
+                      <span className="block text-action hover:underline cursor-pointer font-light">{item.title}</span>
                     </Link>
                   ))}
                 </div>
@@ -269,11 +269,11 @@ export default function GuidePage() {
             )}
             {guide.relatedSymptoms.length > 0 && (
               <div>
-                <h3 className="text-sm uppercase tracking-wider text-stone-400 font-medium mb-3">Symptoms</h3>
+                <h3 className="text-sm uppercase tracking-wider text-stone-600 font-medium mb-3">Symptoms</h3>
                 <div className="space-y-2">
                   {guide.relatedSymptoms.map((item) => (
                     <Link key={item.slug} href={`/symptoms/${item.slug}`}>
-                      <span className="block text-primary hover:underline cursor-pointer font-light">{item.title}</span>
+                      <span className="block text-action hover:underline cursor-pointer font-light">{item.title}</span>
                     </Link>
                   ))}
                 </div>
@@ -281,11 +281,11 @@ export default function GuidePage() {
             )}
             {guide.relatedGuides.length > 0 && (
               <div>
-                <h3 className="text-sm uppercase tracking-wider text-stone-400 font-medium mb-3">Guides</h3>
+                <h3 className="text-sm uppercase tracking-wider text-stone-600 font-medium mb-3">Guides</h3>
                 <div className="space-y-2">
                   {guide.relatedGuides.map((item) => (
                     <Link key={item.slug} href={`/guides/${item.slug}`}>
-                      <span className="block text-primary hover:underline cursor-pointer font-light">{item.title}</span>
+                      <span className="block text-action hover:underline cursor-pointer font-light">{item.title}</span>
                     </Link>
                   ))}
                 </div>
@@ -296,13 +296,13 @@ export default function GuidePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-8 bg-primary text-white">
+      <section className="py-8 bg-action text-action-foreground">
         <div className="container px-4 mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-normal mb-3 text-white">Ready to take control of your oral health?</h2>
-          <p className="text-white/80 font-light mb-6">DentaSmart helps you monitor your teeth and gums between dental visits.</p>
+          <h2 className="text-3xl font-normal mb-3 text-action-foreground">Ready to take control of your oral health?</h2>
+          <p className="text-action-foreground font-light mb-6">DentaSmart helps you monitor your teeth and gums between dental visits.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/instant-scan">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
+              <Button size="lg" className="bg-white text-action hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
                 Try Instant Scan
               </Button>
             </Link>

@@ -27,12 +27,12 @@ export default function QuickAnswerBlock({ question, answer, sourceUrl, sourceLa
       role="region"
       aria-label="Quick Answer"
     >
-      <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-1">Quick Answer</p>
+      <p className="text-sm font-semibold text-action uppercase tracking-wide mb-1">Quick Answer</p>
       <h2 className="text-lg font-semibold text-[#232020] mb-2">{question}</h2>
       <p className="text-[#232020] text-base leading-relaxed">{answer}</p>
       {sourceUrl && (
         <p className="text-xs text-gray-500 mt-2">
-          Source: <a href={sourceUrl} className="text-primary hover:underline">{sourceLabel || sourceUrl}</a>
+          Source: <a href={sourceUrl} className="text-action hover:underline">{sourceLabel || sourceUrl}</a>
         </p>
       )}
     </div>

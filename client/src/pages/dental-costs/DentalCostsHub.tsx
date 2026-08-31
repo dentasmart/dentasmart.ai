@@ -132,7 +132,7 @@ export default function DentalCostsHub() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/download">
-                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
+                <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
                   Get Your Free AI Assessment
                 </Button>
               </Link>
@@ -147,7 +147,7 @@ export default function DentalCostsHub() {
       </section>
 
       {/* ═══ STATS STRIP ═══ */}
-      <section className="py-6 bg-primary text-white">
+      <section className="py-6 bg-action text-action-foreground">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-white/20">
             {[
@@ -163,8 +163,8 @@ export default function DentalCostsHub() {
                 transition={{ delay: idx * 0.15, duration: 0.5 }}
                 className="py-3 md:py-0"
               >
-                <div className="text-3xl md:text-5xl font-normal tracking-tighter text-white">{stat.value}</div>
-                <div className="text-[10px] md:text-xs uppercase tracking-widest text-white/80 font-medium mt-1">{stat.label}</div>
+                <div className="text-3xl md:text-5xl font-normal tracking-tighter text-action-foreground">{stat.value}</div>
+                <div className="text-[10px] md:text-xs uppercase tracking-widest text-action-foreground font-medium mt-1">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -251,7 +251,7 @@ export default function DentalCostsHub() {
             </table>
           </motion.div>
           <p className="text-xs text-stone-500 mt-3 px-4 md:px-0">
-            Sources: <a href="https://www.ada.org/resources/research/health-policy-institute" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">ADA Health Policy Institute</a>, CareCredit, Fair Health Consumer (2025-2026 data). Costs vary by region and provider.
+            Sources: <a href="https://www.ada.org/resources/research/health-policy-institute" target="_blank" rel="noopener noreferrer" className="text-action underline underline-offset-2 hover:no-underline">ADA Health Policy Institute</a>, CareCredit, Fair Health Consumer (2025-2026 data). Costs vary by region and provider.
           </p>
         </div>
       </section>
@@ -354,7 +354,7 @@ export default function DentalCostsHub() {
           </div>
           <div className="mt-6 text-center">
             <Link href="/download">
-              <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
+              <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                 Try Your Free AI Assessment <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>

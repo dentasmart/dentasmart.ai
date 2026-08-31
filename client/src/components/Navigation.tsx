@@ -307,7 +307,7 @@ export default function Navigation() {
                       <Link href="/symptom-quiz" onClick={() => setMegaMenuOpen(false)}>
                         <Button
                           size="sm"
-                          className="bg-primary hover:bg-primary/90 text-white rounded-full px-5 text-xs font-medium cursor-pointer"
+                          className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-5 text-xs font-medium cursor-pointer"
                         >
                           Check Symptoms
                           <ChevronRight className="w-3.5 h-3.5 ml-1" />
@@ -334,7 +334,7 @@ export default function Navigation() {
             </Button>
             <Button
               size="sm"
-              className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-5 text-sm font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
+              className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-5 text-sm font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
               onClick={() => {
                 if (location === '/') {
                   const element = document.getElementById('download-cta');
@@ -548,7 +548,7 @@ export default function Navigation() {
                 Login
               </Button>
               <Button
-                className="w-full bg-primary text-white rounded-full py-6 text-lg font-medium hover:bg-primary/90 cursor-pointer"
+                className="w-full bg-action text-action-foreground rounded-full py-6 text-lg font-medium hover:bg-action-hover cursor-pointer"
                 onClick={() => {
                   setIsOpen(false);
                   if (location === '/') {

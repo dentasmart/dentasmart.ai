@@ -113,7 +113,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-start items-stretch sm:items-start">
                 <Button
                   size="lg"
-                  className="bg-primary text-white hover:bg-primary/90 rounded-full px-6 py-5 text-base font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0 cursor-pointer w-full sm:w-auto"
+                  className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-6 py-5 text-base font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0 cursor-pointer w-full sm:w-auto"
                   onClick={scrollToDownload}
                 >
                   Start with a Quick Check
@@ -148,7 +148,7 @@ export default function Home() {
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] sm:w-[100px] h-[22px] sm:h-[28px] bg-stone-900 rounded-b-2xl z-20" />
                   <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
                     <picture>
-                      <source type="image/webp" srcSet="/images/optimized/DawnQOxKtdjguhLp-400.webp 400w, /images/optimized/DawnQOxKtdjguhLp-800.webp 800w, /images/optimized/DawnQOxKtdjguhLp-1600.webp 1600w" sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px" />
+                      <source type="image/webp" srcSet="/images/optimized/DawnQOxKtdjguhLp-400.webp 400w, /images/optimized/DawnQOxKtdjguhLp-800.webp 800w, /images/optimized/DawnQOxKtdjguhLp-1600.webp 1600w" sizes="(max-width: 640px) 140px, (max-width: 1024px) 200px, 220px" />
                       <img src="/images/optimized/DawnQOxKtdjguhLp-800.webp" decoding="async" alt="DentaSmart Oral Health Score - Track your dental health over time with AI analysis" className="w-full h-full object-cover object-top" loading="eager" fetchPriority="high" width="800" height="1734" />
                     </picture>
                   </div>
@@ -164,8 +164,8 @@ export default function Home() {
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] sm:w-[100px] h-[22px] sm:h-[28px] bg-stone-900 rounded-b-2xl z-20" />
                   <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
                     <picture>
-                      <source type="image/webp" srcSet="/images/optimized/lBzNqmERojJqlfJE-400.webp 400w, /images/optimized/lBzNqmERojJqlfJE-800.webp 800w, /images/optimized/lBzNqmERojJqlfJE-1600.webp 1600w" sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px" />
-                      <img src="/images/optimized/lBzNqmERojJqlfJE-800.webp" decoding="async" alt="DentaSmart AI X-Ray Analysis - Color-coded findings with plain-English explanations" className="w-full h-full object-cover object-top" loading="lazy" width="945" height="2048" />
+                      <source type="image/webp" srcSet="/images/optimized/lBzNqmERojJqlfJE-400.webp 400w, /images/optimized/lBzNqmERojJqlfJE-800.webp 800w, /images/optimized/lBzNqmERojJqlfJE-1600.webp 1600w" sizes="(max-width: 640px) 140px, (max-width: 1024px) 200px, 220px" />
+                      <img src="/images/optimized/lBzNqmERojJqlfJE-800.webp" decoding="async" alt="DentaSmart AI X-Ray Analysis - Color-coded findings with plain-English explanations" className="w-full h-full object-cover object-top" loading="eager" width="945" height="2048" />
                     </picture>
                   </div>
                 </div>
@@ -182,21 +182,19 @@ export default function Home() {
                   href={getAppStoreUrl("hero")}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center justify-center bg-black text-white hover:bg-stone-800 rounded-full px-6 font-medium text-sm transition-colors whitespace-nowrap"
                   onClick={() => trackAppDownload("ios", "hero")}
                 >
-                  <button className="bg-black text-white hover:bg-stone-800 rounded-full px-6 h-11 font-medium text-sm transition-colors whitespace-nowrap">
-                    Download on App Store
-                  </button>
+                  Download on App Store
                 </a>
                 <a
                   href={getPlayStoreUrl("hero")}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="inline-flex min-h-11 items-center justify-center bg-action text-action-foreground hover:bg-action-hover rounded-full px-6 font-medium text-sm transition-colors whitespace-nowrap"
                   onClick={() => trackAppDownload("android", "hero")}
                 >
-                  <button className="bg-primary text-white hover:bg-primary/90 rounded-full px-6 h-11 font-medium text-sm transition-colors whitespace-nowrap">
-                    Get it on Google Play
-                  </button>
+                  Get it on Google Play
                 </a>
               </div>
             </div>
@@ -397,9 +395,9 @@ export default function Home() {
       {/* ═══════════════════════════════════════════════════════════════════
           HOW IT WORKS (3 steps - new copy)
       ═══════════════════════════════════════════════════════════════════ */}
-      <section className="py-8 bg-primary text-white">
+      <section className="py-8 bg-action text-action-foreground">
         <div className="container px-4 mx-auto max-w-6xl">
-          <h2 className="text-3xl md:text-4xl font-normal text-center text-white mb-10">
+          <h2 className="text-3xl md:text-4xl font-normal text-center text-action-foreground mb-10">
             From worry to clarity in three simple steps.
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
@@ -419,8 +417,8 @@ export default function Home() {
                 <div className="text-6xl font-bold text-white/20 absolute -top-8 left-1/2 -translate-x-1/2 select-none">
                   {item.step}
                 </div>
-                <h3 className="text-2xl font-medium mb-2 relative z-10 text-white">{item.title}</h3>
-                <p className="text-white/90 font-light relative z-10">{item.desc}</p>
+                <h3 className="text-2xl font-medium mb-2 relative z-10 text-action-foreground">{item.title}</h3>
+                <p className="text-action-foreground font-light relative z-10">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -698,7 +696,7 @@ export default function Home() {
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="text-center mb-10">
             <h2 className="text-4xl md:text-5xl font-normal text-black mb-4">
-              Real Stories, <span className="text-primary italic">Real Savings</span>
+              Real Stories, <span className="text-action italic">Real Savings</span>
             </h2>
           </div>
 
@@ -780,7 +778,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium shadow-lg cursor-pointer"
+              className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium shadow-lg cursor-pointer"
               onClick={scrollToDownload}
             >
               Start Your Quick Check
@@ -788,7 +786,7 @@ export default function Home() {
             <Button
               size="lg"
               variant="outline"
-              className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer"
+              className="border-action/30 text-action hover:bg-action/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer"
               onClick={scrollToDownload}
             >
               Get a Second Opinion
@@ -917,7 +915,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium shadow-lg cursor-pointer"
+              className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium shadow-lg cursor-pointer"
               onClick={scrollToDownload}
             >
               Start Your Quick Check
@@ -925,7 +923,7 @@ export default function Home() {
             <Button
               size="lg"
               variant="outline"
-              className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer"
+              className="border-action/30 text-action hover:bg-action/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer"
               onClick={scrollToDownload}
             >
               Get a Second Opinion

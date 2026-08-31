@@ -70,7 +70,7 @@ export default function NextStepsBox({ forceContentType, relatedLinks }: NextSte
                 <Link
                   href={step.link.href}
                   onClick={step.link.onClick}
-                  className="inline-flex items-center gap-1 text-primary text-sm font-medium mt-1 hover:underline cursor-pointer"
+                  className="inline-flex items-center gap-1 text-action text-sm font-medium mt-1 hover:underline cursor-pointer"
                 >
                   {step.link.label}
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -90,18 +90,18 @@ export default function NextStepsBox({ forceContentType, relatedLinks }: NextSte
               </p>
             </div>
             {context.ctaAction === "symptom-quiz" || context.ctaAction === "instant-scan" ? (
-              <Link
-                href={context.ctaLink}
-                onClick={handlePrimaryClick}
-                className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-3 text-sm font-semibold cursor-pointer shadow-md shadow-primary/15 inline-flex items-center gap-1.5 transition-all hover:scale-[1.02] whitespace-nowrap"
-              >
+                <Link
+                  href={context.ctaLink}
+                  onClick={handlePrimaryClick}
+                  className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-3 text-sm font-semibold cursor-pointer shadow-md shadow-primary/15 inline-flex items-center gap-1.5 transition-all hover:scale-[1.02] whitespace-nowrap"
+                >
                 {context.ctaButtonText}
                 <ArrowRight className="w-4 h-4" />
               </Link>
             ) : (
               <button
                 onClick={handlePrimaryClick}
-                className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-3 text-sm font-semibold cursor-pointer shadow-md shadow-primary/15 inline-flex items-center gap-1.5 transition-all hover:scale-[1.02] whitespace-nowrap"
+                className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-3 text-sm font-semibold cursor-pointer shadow-md shadow-primary/15 inline-flex items-center gap-1.5 transition-all hover:scale-[1.02] whitespace-nowrap"
               >
                 {context.ctaButtonText}
                 <ArrowRight className="w-4 h-4" />
