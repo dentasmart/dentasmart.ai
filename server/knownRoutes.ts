@@ -119,9 +119,10 @@ export async function isKnownRouteWithBlogLookup(
     if (prefix === "guides" && validGuideSlugs.has(slug)) return true;
   }
 
-  // 7. Tokenized account deletion route — token validity belongs to the target
-  // service, but a non-empty token route must never be intercepted as a 404.
+  // 7. Tokenized utility routes — token validity belongs to the target service,
+  // but a non-empty token route must never be intercepted as a 404.
   if (parts.length === 3 && parts[0] === "account" && parts[1] === "delete" && parts[2]) return true;
+  if (parts.length === 3 && parts[0] === "email" && parts[1] === "unsubscribe" && parts[2]) return true;
 
   // 8. Blog posts — /oral-health-hub/:slug (with or without trailing slash)
   if (parts.length === 2 && parts[0] === "oral-health-hub") {
@@ -169,6 +170,7 @@ export function isKnownRouteSync(rawPath: string): boolean {
   }
 
   if (parts.length === 3 && parts[0] === "account" && parts[1] === "delete" && parts[2]) return true;
+  if (parts.length === 3 && parts[0] === "email" && parts[1] === "unsubscribe" && parts[2]) return true;
 
   // Blog slugs not checked in sync version — audit script handles separately
   return false;

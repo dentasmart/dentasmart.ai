@@ -3,7 +3,7 @@
 
   <head>
     <!-- GA4: queue events immediately; actual script loaded after main bundle -->
-    <script>
+    <script data-dentasmart-tracking>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
@@ -38,8 +38,8 @@
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#2CBDB1" />
     <!-- Resource hints: preconnect to critical third-party origins -->
-    <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <link data-dentasmart-tracking rel="preconnect" href="https://www.googletagmanager.com" />
+    <link data-dentasmart-tracking rel="preconnect" href="https://www.google-analytics.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- Poppins font: preload woff2 for fastest render, then full stylesheet -->
@@ -47,7 +47,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
     <noscript><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" /></noscript>
     <!-- Meta Pixel: stub queues events immediately; actual script deferred to after load -->
-    <script>
+    <script data-dentasmart-tracking>
       window._fbPixelId = '1627400051800292';
       !function(f){
         if(f.fbq)return;
@@ -68,15 +68,15 @@
 
   <body>
     <!-- Meta Pixel noscript fallback (must be in body) -->
-    <noscript><img height="1" width="1" style="display:none"
+    <noscript data-dentasmart-tracking><img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=1627400051800292&ev=PageView&noscript=1"
     /></noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <!-- GA4 script: loaded after main bundle so it doesn't compete for bandwidth -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA4_MEASUREMENT_ID%"></script>
+    <script data-dentasmart-tracking async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA4_MEASUREMENT_ID%"></script>
     <!-- Umami analytics: deferred -->
-    <script
+    <script data-dentasmart-tracking
       defer
       src="%VITE_ANALYTICS_ENDPOINT%/umami"
       data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>

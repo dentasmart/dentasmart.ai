@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import ScrollToTop from "@/components/ScrollToTop";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { Route, Switch } from "wouter";
+import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { usePageTracking } from "@/hooks/usePageTracking";
@@ -11,6 +11,7 @@ import AdminRouter, { useIsAdminRoute } from "@/components/AdminRouter";
 import StickyDownloadBanner from "@/components/StickyDownloadBanner";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
 import { ScrollProgressCTA } from "@/components/ScrollProgressCTA";
+import { isEmailUnsubscribePath } from "@shared/privacyRoutes";
 
 // ── Core pages (lazy-loaded for bundle splitting) ──────────────────────────────
 const NotFound = lazy(() => import("@/pages/NotFound"));
@@ -27,6 +28,7 @@ const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("@/pages/TermsOfService"));
 const AccountDeletion = lazy(() => import("@/pages/AccountDeletion"));
 const AccountDeleteConfirm = lazy(() => import("@/pages/AccountDeleteConfirm"));
+const EmailUnsubscribe = lazy(() => import("@/pages/EmailUnsubscribe"));
 const Invite = lazy(() => import("@/pages/Invite"));
 const InviteSuccess = lazy(() => import("@/pages/InviteSuccess"));
 const Stories = lazy(() => import("@/pages/Stories"));
@@ -147,6 +149,7 @@ function Router() {
         <Route path="/invite/success" component={InviteSuccess} />
         <Route path="/invite" component={Invite} />
         <Route path="/account/delete/:token" component={AccountDeleteConfirm} />
+        <Route path="/email/unsubscribe/:token" component={EmailUnsubscribe} />
         <Route path="/stories" component={Stories} />
         <Route path="/download" component={Download} />
         <Route path="/instant-scan" component={InstantScan} />
@@ -436,6 +439,8 @@ function Router() {
 
 function AppContent() {
   const isAdmin = useIsAdminRoute();
+  const [location] = useLocation();
+  const isPrivateEmailRoute = isEmailUnsubscribePath(location);
 
   return (
     <>
@@ -444,9 +449,13 @@ function AppContent() {
       {isAdmin ? <AdminRouter /> : (
         <>
           <Router />
-          <StickyDownloadBanner />
-          <ExitIntentPopup />
-          <ScrollProgressCTA />
+          {!isPrivateEmailRoute && (
+            <>
+              <StickyDownloadBanner />
+              <ExitIntentPopup />
+              <ScrollProgressCTA />
+            </>
+          )}
         </>
       )}
     </>

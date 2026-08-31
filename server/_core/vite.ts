@@ -8,6 +8,7 @@ import viteConfig from "../../vite.config";
 import { getNotFoundMeta, resolveMetaTags, injectMetaTags } from "../metaTags";
 import { resolveSSRContent } from "../ssrContent";
 import { resolveSchemaMarkup } from "../schemaMarkup";
+import { isEmailUnsubscribePath } from "../../shared/privacyRoutes";
 
 const APPLE_APP_SITE_ASSOCIATION_PATH = path.join(
   ".well-known",
@@ -55,6 +56,18 @@ export function injectSchemaMarkup(html: string, schemas: object[]): string {
   // Insert before </head>
   html = html.replace('</head>', `    ${scripts}\n  </head>`);
   return html;
+}
+
+export function stripTrackingForEmailUnsubscribe(html: string): string {
+  const withoutTracking = html
+    .replace(/\s*<script\b[^>]*\bdata-dentasmart-tracking\b[^>]*>[\s\S]*?<\/script>/gi, "")
+    .replace(/\s*<noscript\b[^>]*\bdata-dentasmart-tracking\b[^>]*>[\s\S]*?<\/noscript>/gi, "")
+    .replace(/\s*<link\b[^>]*\bdata-dentasmart-tracking\b[^>]*\/?>/gi, "");
+
+  return withoutTracking.replace(
+    /<head>/i,
+    '<head>\n    <meta name="referrer" content="no-referrer" />',
+  );
 }
 
 export async function setupVite(app: Express, server: Server) {
@@ -178,6 +191,11 @@ export async function renderHtmlForRequest(
   originalUrl: string,
   confirmed404: boolean,
 ): Promise<string> {
+  const requestPath = originalUrl.split(/[?#]/, 1)[0];
+  if (isEmailUnsubscribePath(requestPath)) {
+    html = stripTrackingForEmailUnsubscribe(html);
+  }
+
   if (confirmed404) {
     return injectMetaTags(html, getNotFoundMeta());
   }

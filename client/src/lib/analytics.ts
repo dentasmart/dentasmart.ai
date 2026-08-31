@@ -5,6 +5,7 @@
  */
 
 import { app } from "@shared/facts";
+import { isEmailUnsubscribePath } from "@shared/privacyRoutes";
 
 // ── Global type extensions ──────────────────────────────────────────────────
 declare global {
@@ -56,6 +57,14 @@ export interface EventParams {
   [key: string]: string | number | boolean | undefined;
 }
 
+export function shouldDisableAnalyticsForPath(path: string): boolean {
+  return isEmailUnsubscribePath(path);
+}
+
+function isAnalyticsDisabledForCurrentPage(): boolean {
+  return typeof window !== "undefined" && shouldDisableAnalyticsForPath(window.location.pathname);
+}
+
 // ── Env var helpers ─────────────────────────────────────────────────────────
 
 export function getGA4MeasurementId(): string | null {
@@ -97,6 +106,7 @@ export function getGoogleAdsConversionLabel(): string | null {
 // ── GA4 initialization ──────────────────────────────────────────────────────
 
 export function initGA4(measurementId?: string): void {
+  if (isAnalyticsDisabledForCurrentPage()) return;
   const id = measurementId || getGA4MeasurementId();
   if (!id || typeof window === "undefined") return;
 
@@ -134,6 +144,7 @@ export function initGA4(measurementId?: string): void {
 // ── Meta Pixel initialization ───────────────────────────────────────────────
 
 export function initMetaPixel(): void {
+  if (isAnalyticsDisabledForCurrentPage()) return;
   const pixelId = getMetaPixelId();
   if (!pixelId || typeof window === "undefined") return;
 
@@ -209,6 +220,7 @@ function getMetaEventName(event: AnalyticsEvent): { name: string; isStandard: bo
  */
 export function trackEvent(event: AnalyticsEvent, params?: EventParams): void {
   try {
+    if (isAnalyticsDisabledForCurrentPage()) return;
     // GA4
     if (typeof window !== "undefined" && window.gtag) {
       window.gtag("event", event, params);
@@ -260,6 +272,7 @@ export function trackEvent(event: AnalyticsEvent, params?: EventParams): void {
  */
 export function trackPageView(path: string, title?: string): void {
   try {
+    if (shouldDisableAnalyticsForPath(path) || isAnalyticsDisabledForCurrentPage()) return;
     // GA4 page view
     if (typeof window !== "undefined" && window.gtag) {
       window.gtag("event", "page_view", {
@@ -367,6 +380,7 @@ function getUTMParams(): { utmSource?: string; utmMedium?: string; utmCampaign?:
 export function trackEventServer(event: AnalyticsEvent, params?: EventParams): void {
   try {
     if (typeof window === "undefined") return;
+    if (isAnalyticsDisabledForCurrentPage()) return;
     
     const utm = getUTMParams();
     const payload = {
@@ -400,6 +414,7 @@ export function trackEventServer(event: AnalyticsEvent, params?: EventParams): v
  * Called once from App.tsx on mount.
  */
 export function initAllAnalytics(): void {
+  if (isAnalyticsDisabledForCurrentPage()) return;
   initGA4();
   initMetaPixel();
 }

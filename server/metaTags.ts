@@ -36,6 +36,15 @@ export function getNotFoundMeta(): MetaInfo {
 }
 
 function getUtilityNoindexMeta(cleanPath: string): MetaInfo | null {
+  if (/^\/email\/unsubscribe\/[^/]+$/.test(cleanPath)) {
+    return {
+      title: "Email Unsubscribe | DentaSmart",
+      description: "Update your DentaSmart email preference.",
+      canonical: null,
+      robots: "noindex, nofollow",
+    };
+  }
+
   if (/^\/account\/delete\/[^/]+$/.test(cleanPath)) {
     return {
       title: "Confirm Account Deletion | DentaSmart",
