@@ -9,6 +9,25 @@ import { getNotFoundMeta, resolveMetaTags, injectMetaTags } from "../metaTags";
 import { resolveSSRContent } from "../ssrContent";
 import { resolveSchemaMarkup } from "../schemaMarkup";
 
+const APPLE_APP_SITE_ASSOCIATION_PATH = path.join(
+  ".well-known",
+  "apple-app-site-association",
+);
+
+export function setStaticHeaders(
+  res: { setHeader(name: string, value: string): void },
+  filePath: string,
+) {
+  if (filePath.endsWith(APPLE_APP_SITE_ASSOCIATION_PATH)) {
+    res.setHeader("Content-Type", "application/json; charset=utf-8");
+  }
+
+  // HTML files should not be cached aggressively
+  if (filePath.endsWith('.html')) {
+    res.setHeader('Cache-Control', 'public, max-age=300, must-revalidate');
+  }
+}
+
 /**
  * Inject SSR content block into HTML.
  * This adds real, visible text content that crawlers can index.
@@ -120,12 +139,7 @@ export function serveStatic(app: Express) {
     maxAge: '1y',
     immutable: true,
     index: false,
-    setHeaders: (res, filePath) => {
-      // HTML files should not be cached aggressively
-      if (filePath.endsWith('.html')) {
-        res.setHeader('Cache-Control', 'public, max-age=300, must-revalidate');
-      }
-    }
+    setHeaders: setStaticHeaders,
   }));
 
   // fall through to index.html if the file doesn't exist
