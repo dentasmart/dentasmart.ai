@@ -150,7 +150,7 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/download">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
-                  Get Your Free AI Assessment
+                  Download the App
                 </Button>
               </Link>
               <a href="#step-by-step">
@@ -295,8 +295,8 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
 
       {/* ═══ MID-CONTENT CTA ═══ */}
       <MidContentCTA
-        headline={`Nervous about getting a ${data.procedureName.toLowerCase()}?`}
-        description="Upload a photo of your teeth and get a free AI assessment in 10 minutes. Understand your situation before you sit in the chair."
+        headline={`Want more context about a ${data.procedureName.toLowerCase()}?`}
+        description="Review educational information, organize your treatment-plan questions, and ask a licensed dentist what applies to your case."
         trackingLabel={`treatment_page_${data.slug}`}
         variant="card"
       />
@@ -395,7 +395,7 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
                 <Smartphone className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-lg md:text-xl font-medium text-black mb-2">Understand Before You Go</h3>
-              <p className="text-stone-600 font-light leading-relaxed text-sm md:text-base">Upload a photo of your teeth and get a clear picture of what is going on. Walk into your appointment informed, not anxious.</p>
+              <p className="text-stone-600 font-light leading-relaxed text-sm md:text-base">Use supported information to review plain-language educational context and prepare questions for your appointment.</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -408,7 +408,7 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
                 <TrendingDown className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-lg md:text-xl font-medium text-black mb-2">Get a Second Opinion</h3>
-              <p className="text-stone-600 font-light leading-relaxed text-sm md:text-base">Not sure if you really need this procedure? Our AI can help you understand your options so you can have a better conversation with your dentist.</p>
+              <p className="text-stone-600 font-light leading-relaxed text-sm md:text-base">DentaSmart's paid Second Opinion service can organize supported treatment-plan information and questions. It does not provide a dentist's diagnosis or clinical recommendation.</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -425,9 +425,9 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
             </motion.div>
           </div>
           <div className="mt-6 text-center">
-            <Link href="/download">
+            <Link href="/pricing">
               <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
-                Try DentaSmart Free <ArrowRight className="w-4 h-4 ml-2" />
+                Explore DentaSmart Options <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
           </div>
@@ -553,12 +553,12 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
               Knowledge is the best preparation.
             </h2>
             <p className="text-base md:text-lg text-stone-300 font-light mb-6 max-w-2xl mx-auto">
-              DentaSmart gives you a free AI assessment so you understand what is going on in your mouth before you commit to any treatment. Walk in informed. Walk out confident.
+              Use DentaSmart to organize supported information and prepare questions for professional care. DentaSmart does not diagnose conditions or decide which treatment you need.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/download">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
-                  Download DentaSmart Free
+                  Download the App
                 </Button>
               </Link>
               <Link href="/symptom-quiz">

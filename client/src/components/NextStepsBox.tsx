@@ -31,10 +31,6 @@ export default function NextStepsBox({ forceContentType, relatedLinks }: NextSte
       content_type: contentType,
     });
 
-    if (context.ctaAction !== "app-download") {
-      return; // Internal link handled by Link
-    }
-    window.location.href = "/download";
   };
 
   const handleQuizClick = () => {
@@ -86,27 +82,17 @@ export default function NextStepsBox({ forceContentType, relatedLinks }: NextSte
             <div className="flex-1 text-center sm:text-left">
               <p className="text-stone-600 text-sm">
                 <CheckCircle2 className="w-4 h-4 inline-block text-primary mr-1.5 -mt-0.5" />
-                <span className="font-medium text-stone-800">Free to start.</span> No insurance or credit card needed.
+                <span className="font-medium text-stone-800">Choose the next step that fits your goal.</span> Prices and account requirements vary by service.
               </p>
             </div>
-            {context.ctaAction === "symptom-quiz" || context.ctaAction === "instant-scan" ? (
-                <Link
-                  href={context.ctaLink}
-                  onClick={handlePrimaryClick}
-                  className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-3 text-sm font-semibold cursor-pointer shadow-md shadow-primary/15 inline-flex items-center gap-1.5 transition-all hover:scale-[1.02] whitespace-nowrap"
-                >
-                {context.ctaButtonText}
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            ) : (
-              <button
-                onClick={handlePrimaryClick}
-                className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-3 text-sm font-semibold cursor-pointer shadow-md shadow-primary/15 inline-flex items-center gap-1.5 transition-all hover:scale-[1.02] whitespace-nowrap"
-              >
-                {context.ctaButtonText}
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            )}
+            <Link
+              href={context.ctaLink}
+              onClick={handlePrimaryClick}
+              className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-3 text-sm font-semibold cursor-pointer shadow-md shadow-primary/15 inline-flex items-center gap-1.5 transition-all hover:scale-[1.02] whitespace-nowrap"
+            >
+              {context.ctaButtonText}
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </div>
@@ -128,11 +114,11 @@ function getSteps(contentType: ContentType): Step[] {
     case "symptom":
       return [
         {
-          text: "Take the free 60-second symptom quiz to understand what your symptoms could mean.",
+          text: "Take the free symptom quiz to organize what you notice and review possible next steps.",
           link: { label: "Start Symptom Quiz", href: "/symptom-quiz" },
         },
         {
-          text: "Upload a photo of the affected area for a more detailed AI assessment.",
+          text: "Use a photo to organize what you notice and prepare questions for a dental professional.",
         },
         {
           text: "If symptoms are severe or worsening, see a dentist within 24-48 hours.",
@@ -144,7 +130,7 @@ function getSteps(contentType: ContentType): Step[] {
           text: "If you are in severe pain or have uncontrolled bleeding, call your dentist or go to urgent care now.",
         },
         {
-          text: "Upload a photo for an instant AI assessment to understand the severity.",
+          text: "Do not wait for an app result when pain, swelling, injury, or bleeding may need urgent professional care.",
         },
         {
           text: "Follow the first-aid steps above while you wait for professional care.",
@@ -153,7 +139,7 @@ function getSteps(contentType: ContentType): Step[] {
     case "cost":
       return [
         {
-          text: "Get a free AI scan to understand what you actually need before committing to expensive treatment.",
+          text: "Ask for an itemized treatment plan so you can compare procedure names, timing, and provider fees.",
         },
         {
           text: "Compare costs in your area using our dental cost guides.",
@@ -166,7 +152,7 @@ function getSteps(contentType: ContentType): Step[] {
     case "treatment":
       return [
         {
-          text: "Upload a photo of your teeth to get an AI second opinion on whether this treatment is right for you.",
+          text: "If you already have a treatment plan, DentaSmart Second Opinion can help you compare the plan and prepare questions. It does not decide which treatment is right for you.",
         },
         {
           text: "Compare this treatment with alternatives to find the best option for your situation.",
@@ -179,10 +165,10 @@ function getSteps(contentType: ContentType): Step[] {
     case "condition":
       return [
         {
-          text: "Upload a photo of your teeth to check if you might have this condition.",
+          text: "Use the guide to note your symptoms, duration, and warning signs before a professional evaluation.",
         },
         {
-          text: "Take the symptom quiz to understand your risk level.",
+          text: "Take the symptom quiz to organize your symptoms and review possible next steps.",
           link: { label: "Start Symptom Quiz", href: "/symptom-quiz" },
         },
         {
@@ -192,7 +178,7 @@ function getSteps(contentType: ContentType): Step[] {
     case "comparison":
       return [
         {
-          text: "Get a personalized recommendation based on your specific dental health by uploading a photo.",
+          text: "Compare the options based on your goals, likely tradeoffs, recovery, and questions for your dentist.",
         },
         {
           text: "Review the cost differences between these options.",
@@ -205,7 +191,7 @@ function getSteps(contentType: ContentType): Step[] {
     default:
       return [
         {
-          text: "Get your free AI oral health score by uploading a photo of your teeth.",
+          text: "Explore DentaSmart's Oral Health Score and report options if you want to organize a mouth photo.",
         },
         {
           text: "Take the symptom quiz if you have any dental concerns.",

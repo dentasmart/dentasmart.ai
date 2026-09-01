@@ -30,21 +30,22 @@ export default function ConditionsIndex() {
               Dental Conditions
             </h1>
             <p className="text-xl text-stone-300 font-light leading-relaxed max-w-2xl text-left">
-              Clear, simple explanations of common dental conditions. Understand what is happening in your mouth so you can make confident decisions about your care.
+              Clear explanations of common dental conditions, warning signs, and questions to discuss with a dentist. These guides do not provide a diagnosis.
             </p>
             <div className="mt-6">
-              <Link href="/instant-scan">
-                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
-                  Check Your Oral Health Now
-                </Button>
-              </Link>
+              <a
+                href="#conditions-list"
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-action px-8 py-3 text-base font-medium text-action-foreground transition-colors hover:bg-action-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              >
+                Browse Dental Conditions
+              </a>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Conditions Grid */}
-      <section className="py-12 bg-white">
+      <section id="conditions-list" className="py-12 bg-white">
         <div className="container px-4 mx-auto max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {conditionsList.map((condition, idx) => (
@@ -60,7 +61,7 @@ export default function ConditionsIndex() {
                   <p className="text-stone-600 font-light text-base leading-relaxed line-clamp-3 mb-4">
                     {condition.heroSubheading}
                   </p>
-                  <span className="inline-flex items-center gap-2 text-primary text-base font-medium">
+                  <span className="inline-flex items-center gap-2 text-action text-base font-medium">
                     Learn more <ArrowRight className="w-3 h-3" />
                   </span>
                 </motion.div>
@@ -71,14 +72,15 @@ export default function ConditionsIndex() {
       </section>
 
       {/* CTA */}
-      <section className="py-8 bg-primary text-white">
+      <section className="py-8 bg-action text-action-foreground">
         <div className="container px-4 mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-normal mb-3 text-white">Not sure what is going on?</h2>
-          <p className="text-white/80 font-light mb-6">Upload a photo and let DentaSmart help you understand your oral health.</p>
-          <Link href="/instant-scan">
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
-              Try Instant Scan
-            </Button>
+          <h2 className="text-3xl font-normal mb-3 text-action-foreground">Not sure how to describe a symptom?</h2>
+          <p className="text-action-foreground font-light mb-6">Use the free symptom quiz to organize what you notice, then contact a dentist for diagnosis and treatment advice.</p>
+          <Link
+            href="/symptom-quiz"
+            className="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-8 py-3 text-base font-medium text-action transition-colors hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            Start Free Symptom Quiz
           </Link>
         </div>
       </section>

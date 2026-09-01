@@ -11,7 +11,7 @@ import { getPageContext } from "@/lib/pageContext";
  * scroll depths.
  *
  * - 40% scroll: Soft nudge ("Enjoying this? Check your own teeth")
- * - 75% scroll: Stronger prompt with social proof
+ * - 75% scroll: Stronger prompt with context-specific decision support
  * - Dismissible per session
  * - Does not show on excluded pages
  * - Coordinates with StickyDownloadBanner (only shows on desktop where
@@ -86,13 +86,9 @@ export function ScrollProgressCTA() {
       content_type: context.contentType,
     });
 
-    if (context.ctaAction === "symptom-quiz" || context.ctaAction === "instant-scan") {
-      return; // Internal navigation handled by Link
-    }
-    window.location.href = "/download";
   };
 
-  const isInternalLink = context.ctaAction === "symptom-quiz" || context.ctaAction === "instant-scan";
+  const isFreeTool = context.ctaAction === "symptom-quiz";
 
   return (
     <AnimatePresence mode="wait">
@@ -122,22 +118,13 @@ export function ScrollProgressCTA() {
                 <p className="text-sm font-medium text-stone-800">
                   Want to check your own teeth?
                 </p>
-                {isInternalLink ? (
-                  <Link
-                    href={context.ctaLink}
-                    onClick={handleClick}
-                    className="text-xs text-action font-medium hover:underline cursor-pointer inline-flex min-h-11 items-center gap-0.5 mt-0.5"
-                  >
-                    Try it free <ArrowRight className="w-3 h-3" />
-                  </Link>
-                ) : (
-                  <button
-                    onClick={handleClick}
-                    className="text-xs text-action font-medium hover:underline cursor-pointer inline-flex min-h-11 items-center gap-0.5 mt-0.5"
-                  >
-                    Try it free <ArrowRight className="w-3 h-3" />
-                  </button>
-                )}
+                <Link
+                  href={context.ctaLink}
+                  onClick={handleClick}
+                  className="text-xs text-action font-medium hover:underline cursor-pointer inline-flex min-h-11 items-center gap-0.5 mt-0.5"
+                >
+                  {isFreeTool ? "Start free quiz" : "See options"} <ArrowRight className="w-3 h-3" />
+                </Link>
               </div>
             </div>
           </div>
@@ -157,7 +144,7 @@ export function ScrollProgressCTA() {
               <div className="flex items-center gap-2 mb-2">
                 <Sparkles className="w-4 h-4 text-action" />
                 <span className="text-xs font-semibold text-action uppercase tracking-wider">
-                  Free Assessment
+                  {isFreeTool ? "Free Symptom Quiz" : "DentaSmart Options"}
                 </span>
               </div>
 
@@ -168,41 +155,18 @@ export function ScrollProgressCTA() {
                 {context.ctaDescription}
               </p>
 
-              {/* Social proof */}
-              <div className="flex items-center gap-2 mb-3">
-                <div className="flex -space-x-1.5">
-                  {[1, 2, 3].map((i) => (
-                    <div
-                      key={i}
-                      className="w-6 h-6 rounded-full bg-stone-200 border-2 border-white flex items-center justify-center text-[9px] font-medium text-stone-500"
-                    >
-                      {String.fromCharCode(64 + i)}
-                    </div>
-                  ))}
-                </div>
-                <span className="text-xs text-stone-400">
-                  Free &middot; No insurance needed
-                </span>
-              </div>
+              <p className="mb-3 text-xs text-stone-500">
+                {isFreeTool ? "Free symptom quiz" : "Prices shown before purchase"}
+              </p>
 
-              {isInternalLink ? (
-                <Link
-                  href={context.ctaLink}
-                  onClick={handleClick}
-                  className="w-full bg-action hover:bg-action-hover text-action-foreground rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15 inline-flex min-h-11 items-center justify-center gap-1.5"
-                >
-                  {context.ctaButtonText}
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              ) : (
-                <button
-                  onClick={handleClick}
-                  className="w-full bg-action hover:bg-action-hover text-action-foreground rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15 inline-flex min-h-11 items-center justify-center gap-1.5"
-                >
-                  {context.ctaButtonText}
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              )}
+              <Link
+                href={context.ctaLink}
+                onClick={handleClick}
+                className="w-full bg-action hover:bg-action-hover text-action-foreground rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15 inline-flex min-h-11 items-center justify-center gap-1.5"
+              >
+                {context.ctaButtonText}
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         )}

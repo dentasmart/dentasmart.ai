@@ -15,7 +15,7 @@ interface PopupVariation {
   badge: string;
   headline: string;
   description: string;
-  socialProof: string;
+  supportingText: string;
   ctaText: string;
   dismissText: string;
   /** "internal" = Link to a page, "external" = app store */
@@ -30,8 +30,8 @@ const variations: PopupVariation[] = [
     badge: "60-Second Quiz",
     headline: "Not sure what is going on with your teeth?",
     description:
-      "Take our free symptom quiz. Answer 8 quick questions and get a personalized risk assessment with clear next steps.",
-    socialProof: "12,000+ people took this quiz last month",
+      "Take our free symptom quiz. Answer 8 quick questions and get a personalized summary with possible next steps. It does not provide a diagnosis.",
+    supportingText: "Educational guidance, not a diagnosis",
     ctaText: "Take the Free Quiz",
     dismissText: "No thanks, I will figure it out myself",
     action: "internal",
@@ -40,28 +40,28 @@ const variations: PopupVariation[] = [
   {
     id: "cost",
     icon: <DollarSign className="w-7 h-7 text-primary" />,
-    badge: "Free Analysis",
+    badge: "Plan Clarity",
     headline: "Could you be overpaying for dental care?",
     description:
-      "Get a free AI analysis of your teeth before spending money. Know what you actually need so you can make smart decisions.",
-    socialProof: "Users save an average of $400 on unnecessary treatments",
-    ctaText: "Get My Free Analysis",
+      "Compare DentaSmart's one-time checks and annual plans before making an expensive dental decision.",
+    supportingText: "Plans start at $19.99",
+    ctaText: "Compare Plans",
     dismissText: "No thanks, I trust my current plan",
-    action: "external",
-    link: "",
+    action: "internal",
+    link: "/pricing",
   },
   {
     id: "second-opinion",
     icon: <Shield className="w-7 h-7 text-primary" />,
-    badge: "AI Second Opinion",
+    badge: "Second Opinion",
     headline: "Wondering if you really need that procedure?",
     description:
-      "Upload your photos and get an AI second opinion in minutes. Available on iOS and Android.",
-    socialProof: "Free to start",
+      "Upload a treatment plan and supporting records for a plain-English comparison before you decide.",
+    supportingText: "$29.99 one-time",
     ctaText: "Get a Second Opinion",
-    dismissText: "No thanks, I am confident in my diagnosis",
-    action: "external",
-    link: "",
+    dismissText: "No thanks, I will decide another way",
+    action: "internal",
+    link: "/pricing#second-opinion",
   },
 ];
 
@@ -102,7 +102,7 @@ function selectVariation(contentType: ContentType): PopupVariation {
  * Changes from previous version:
  * - 3 rotating variations instead of 1 static popup
  * - Page-context awareness (symptom pages → quiz, cost pages → savings, etc.)
- * - Stronger social proof with specific numbers
+ * - Context-specific supporting text without unverified social proof
  * - Two-step opt-in feel (badge → headline → CTA)
  * - Reduced time threshold to 10 seconds (from 15)
  * - Tracks which variation was shown for A/B analysis
@@ -226,14 +226,9 @@ export default function ExitIntentPopup() {
             {variation.description}
           </p>
 
-          {/* Social proof */}
+          {/* Verified supporting context */}
           <div className="flex items-center justify-center gap-3 mb-6 text-sm text-stone-500">
-            <span className="flex items-center gap-1">
-              <span className="text-yellow-500">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-              5.0
-            </span>
-            <span className="w-1 h-1 rounded-full bg-stone-300" />
-            <span>{variation.socialProof}</span>
+            <span>{variation.supportingText}</span>
           </div>
 
           {/* CTA */}

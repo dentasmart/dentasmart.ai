@@ -20,6 +20,7 @@ declare global {
 // ── Event names ─────────────────────────────────────────────────────────────
 export type AnalyticsEvent =
   | "cta_get_score_click"
+  | "home_intent_click"
   | "download_ios_click"
   | "download_android_click"
   | "android_waitlist_submit"

@@ -6,6 +6,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { trpc } from "@/lib/trpc";
+import { trackEvent } from "@/lib/analytics";
 
 interface DemoRequestModalProps {
   isOpen: boolean;
@@ -15,6 +17,7 @@ interface DemoRequestModalProps {
 export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
@@ -23,25 +26,42 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
     notes: ""
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const joinBenefits = trpc.waitlist.joinBenefits.useMutation({
+    onSuccess: () => {
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      trackEvent("employer_demo_request", { source: "employers_page" });
+    },
+    onError: () => {
+      setIsSubmitting(false);
+      setSubmitError("We could not send your demo request. Please try again.");
+    },
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    const message = [
+      "Employer demo request",
+      `Total employees: ${formData.employeeCount.trim()}`,
+      formData.notes.trim() ? `Notes: ${formData.notes.trim()}` : "",
+    ].filter(Boolean).join("\n");
 
-    // In a real app, this would send data to sales@dentasmart.ai
-    console.log("Form submitted:", formData);
-    
-    setIsSubmitting(false);
-    setIsSuccess(true);
+    joinBenefits.mutate({
+      name: formData.fullName.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim() || undefined,
+      message,
+    });
   };
 
   const handleClose = () => {
     onClose();
-    // Reset form after closing animation
     setTimeout(() => {
       setIsSuccess(false);
+      setSubmitError(null);
       setFormData({
         fullName: "",
         email: "",
@@ -69,7 +89,7 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
                   See DentaSmart in Action
                 </DialogTitle>
                 <DialogDescription className="text-stone-600 text-base">
-                  Fill out the form below to schedule a personalized demo. We'll show you how to improve employee oral health and manage dental benefit costs.
+                  Fill out the form below to schedule a personalized demo. We will discuss service access, eligibility, implementation questions, support, privacy responsibilities, and success measures.
                 </DialogDescription>
               </DialogHeader>
 
@@ -136,23 +156,23 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
 
                 <div className="space-y-2">
                   <Label htmlFor="notes" className="text-stone-700 font-medium">
-                    Anything specific you'd like to see?
+                    Anything specific you would like to see?
                   </Label>
                   <Textarea
                     id="notes"
-                    placeholder="Tell us about your current challenges..."
+                    placeholder="Tell us about your current questions..."
                     className="bg-stone-50 border-stone-200 focus:border-primary focus:ring-primary/20 transition-all min-h-[100px] resize-none"
                     value={formData.notes}
                     onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                   />
                 </div>
 
-                <Button 
-                  type="submit" 
-                  disabled={isSubmitting}
-                  className="w-full bg-primary hover:bg-primary/90 text-white rounded-full py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 mt-2 cursor-pointer"
+                <Button
+                  type="submit"
+                  disabled={isSubmitting || joinBenefits.isPending}
+                  className="w-full bg-action hover:bg-action-hover text-action-foreground rounded-full py-6 text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300 mt-2 cursor-pointer"
                 >
-                  {isSubmitting ? (
+                  {isSubmitting || joinBenefits.isPending ? (
                     <>
                       <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                       Sending Request...
@@ -161,9 +181,16 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
                     "Schedule My Demo"
                   )}
                 </Button>
-                
+                {submitError && (
+                  <div role="alert" className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">
+                    <p>{submitError}</p>
+                    <Button type="button" variant="link" className="mt-1 h-auto p-0 text-red-800 underline" onClick={() => setSubmitError(null)}>
+                      Try Again
+                    </Button>
+                  </div>
+                )}
                 <p className="text-xs text-center text-stone-400 mt-4">
-                  We respect your privacy. Your information is sent securely to our sales team.
+                  We respect your privacy. Your information is shared with our sales team to respond to this request.
                 </p>
               </form>
             </motion.div>
@@ -179,10 +206,10 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
               </div>
               <h3 className="text-2xl font-medium text-stone-900 mb-4">Request Received!</h3>
               <p className="text-stone-600 mb-8 leading-relaxed">
-                Thanks for your interest, {formData.fullName.split(' ')[0]}. <br/>
+                Thanks for your interest, {formData.fullName.split(' ')[0]}. <br />
                 Our team will be in touch shortly to schedule your demo.
               </p>
-              <Button 
+              <Button
                 onClick={handleClose}
                 className="bg-stone-900 text-white hover:bg-stone-800 rounded-full px-8 py-6"
               >

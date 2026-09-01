@@ -160,23 +160,18 @@ export default function HubCategory() {
       {/* CTA */}
       <section className="py-16 bg-white">
         <div className="container px-4 mx-auto max-w-3xl text-center">
-          <h2 className="text-2xl font-medium text-black mb-4">Want personalized insights?</h2>
+          <h2 className="text-2xl font-medium text-black mb-4">Want to review DentaSmart options?</h2>
           <p className="text-stone-600 font-light mb-6">
-            Reading is great, but nothing beats seeing your own oral health data. Upload a photo and get your personalized report in minutes.
+            The app is free to download. Quick Check, Second Opinion, and Complete Care are paid services with different inputs and educational outputs.
           </p>
           <p className="text-xs text-stone-400 mb-4">
             Educational insights to help you understand your oral health and have better conversations with a licensed dentist.
           </p>
-          <Button
-            size="lg"
-            className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer"
-            onClick={() => {
-              trackEvent("cta_get_score_click", { source: `hub_${category}` });
-              window.location.href = "/download";
-            }}
-          >
-            Get My Oral Health Score
-            <ArrowRight className="w-5 h-5 ml-2" />
+          <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer">
+            <Link href="/pricing" onClick={() => trackEvent("cta_get_score_click", { source: `hub_${category}` })}>
+              Compare DentaSmart Services
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Link>
           </Button>
         </div>
       </section>

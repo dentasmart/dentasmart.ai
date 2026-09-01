@@ -44,7 +44,7 @@ export function getPageContext(path: string): PageContext {
     return {
       contentType: "symptom",
       ctaHeadline: "Experiencing this symptom?",
-      ctaDescription: "Take our free 60-second symptom quiz to find out what it could mean and what to do next.",
+      ctaDescription: "Take our free symptom quiz to organize what you notice and review possible next steps. It does not provide a diagnosis.",
       ctaButtonText: "Check My Symptoms",
       ctaAction: "symptom-quiz",
       ctaLink: "/symptom-quiz",
@@ -56,8 +56,8 @@ export function getPageContext(path: string): PageContext {
     return {
       contentType: "emergency",
       ctaHeadline: "Need help right now?",
-      ctaDescription: "Get an instant AI assessment of your dental emergency. Upload a photo for personalized guidance.",
-      ctaButtonText: "Get Instant Help",
+      ctaDescription: "Use DentaSmart to organize what you are experiencing and prepare for urgent dental care. It does not replace emergency treatment.",
+      ctaButtonText: "Check What to Do Next",
       ctaAction: "instant-scan",
       ctaLink: "/instant-scan",
     };
@@ -68,10 +68,10 @@ export function getPageContext(path: string): PageContext {
     return {
       contentType: "cost",
       ctaHeadline: "Worried about the cost?",
-      ctaDescription: "Get a free AI analysis of your dental health to understand what you actually need before spending money.",
-      ctaButtonText: "Get My Free Analysis",
+      ctaDescription: "Explore a one-time check or treatment-plan comparison before making an expensive dental decision.",
+      ctaButtonText: "Compare DentaSmart Plans",
       ctaAction: "app-download",
-      ctaLink: "/download",
+      ctaLink: "/pricing",
     };
   }
 
@@ -80,10 +80,10 @@ export function getPageContext(path: string): PageContext {
     return {
       contentType: "treatment",
       ctaHeadline: "Considering this treatment?",
-      ctaDescription: "Get an AI second opinion to make sure it is the right choice for you. No insurance needed.",
+      ctaDescription: "Use Second Opinion to compare the treatment information you received and prepare questions for your dentist.",
       ctaButtonText: "Get a Second Opinion",
       ctaAction: "app-download",
-      ctaLink: "/download",
+      ctaLink: "/pricing#second-opinion",
     };
   }
 
@@ -92,10 +92,10 @@ export function getPageContext(path: string): PageContext {
     return {
       contentType: "condition",
       ctaHeadline: "Think you might have this?",
-      ctaDescription: "Upload a photo of your teeth and get a free AI assessment in minutes. Know what is happening before your next dentist visit.",
-      ctaButtonText: "Check My Teeth Free",
+      ctaDescription: "Explore a Quick Check for educational insights you can use before your next dentist visit.",
+      ctaButtonText: "Explore Quick Check",
       ctaAction: "app-download",
-      ctaLink: "/download",
+      ctaLink: "/pricing#quick-check",
     };
   }
 
@@ -104,10 +104,10 @@ export function getPageContext(path: string): PageContext {
     return {
       contentType: "comparison",
       ctaHeadline: "Not sure which is right for you?",
-      ctaDescription: "Get a personalized recommendation based on your specific dental health. Our AI analyzes your unique situation.",
-      ctaButtonText: "Get My Recommendation",
+      ctaDescription: "Compare the options, then see which DentaSmart service matches the decision you are making.",
+      ctaButtonText: "See DentaSmart Plans",
       ctaAction: "app-download",
-      ctaLink: "/download",
+      ctaLink: "/pricing",
     };
   }
 
@@ -115,11 +115,11 @@ export function getPageContext(path: string): PageContext {
   if (p.startsWith("/life-stages/")) {
     return {
       contentType: "life-stage",
-      ctaHeadline: "Stay on top of your dental health",
-      ctaDescription: "Track your oral health over time with personalized AI insights and reminders. Free to start.",
-      ctaButtonText: "Start Tracking Free",
+      ctaHeadline: "Stay on top of your family's dental health",
+      ctaDescription: "Track oral health over time with separate profiles, reports, and history for up to four family members.",
+      ctaButtonText: "Explore Complete Care",
       ctaAction: "app-download",
-      ctaLink: "/download",
+      ctaLink: "/pricing#complete-care",
     };
   }
 
@@ -128,8 +128,8 @@ export function getPageContext(path: string): PageContext {
     return {
       contentType: "lifestyle",
       ctaHeadline: "See how your habits affect your teeth",
-      ctaDescription: "Get a free AI oral health score and personalized tips based on your lifestyle.",
-      ctaButtonText: "Get My Health Score",
+      ctaDescription: "Explore DentaSmart tools that help you monitor visible changes and organize your oral health history.",
+      ctaButtonText: "Explore DentaSmart",
       ctaAction: "app-download",
       ctaLink: "/download",
     };
@@ -140,10 +140,10 @@ export function getPageContext(path: string): PageContext {
     return {
       contentType: "guide",
       ctaHeadline: "Put this knowledge into action",
-      ctaDescription: "Get personalized guidance for your specific situation with a free AI oral health assessment.",
-      ctaButtonText: "Get Personalized Advice",
+      ctaDescription: "Explore DentaSmart services that can help you apply what you learned and prepare better questions.",
+      ctaButtonText: "See DentaSmart Plans",
       ctaAction: "app-download",
-      ctaLink: "/download",
+      ctaLink: "/pricing",
     };
   }
 
@@ -152,10 +152,10 @@ export function getPageContext(path: string): PageContext {
     return {
       contentType: "article",
       ctaHeadline: "Want to check your own oral health?",
-      ctaDescription: "Snap a photo of your teeth and get a free AI assessment in minutes. Find out what your dentist might not tell you.",
-      ctaButtonText: "Get My Free Score",
+      ctaDescription: "Explore a Quick Check for educational insights you can use in a more informed dental conversation.",
+      ctaButtonText: "Explore Quick Check",
       ctaAction: "app-download",
-      ctaLink: "/download",
+      ctaLink: "/pricing#quick-check",
     };
   }
 
@@ -164,10 +164,10 @@ export function getPageContext(path: string): PageContext {
     return {
       contentType: "homepage",
       ctaHeadline: "Know what is happening in your mouth",
-      ctaDescription: "Upload a photo and get AI-powered insights in minutes, with a clear plan to prevent expensive surprises.",
-      ctaButtonText: "Get My Oral Health Score",
+      ctaDescription: "Upload a supported photo for an educational report and clearer questions for your next dental decision.",
+      ctaButtonText: "Explore Quick Check",
       ctaAction: "app-download",
-      ctaLink: "/download",
+      ctaLink: "/pricing#quick-check",
     };
   }
 
@@ -175,9 +175,9 @@ export function getPageContext(path: string): PageContext {
   return {
     contentType: "general",
     ctaHeadline: "Your teeth deserve clarity",
-    ctaDescription: "Get a free AI oral health assessment. Upload a photo and know what is happening in minutes.",
-    ctaButtonText: "Try It Free",
+    ctaDescription: "Explore DentaSmart's one-time checks and annual monitoring plans.",
+    ctaButtonText: "See DentaSmart Plans",
     ctaAction: "app-download",
-    ctaLink: "/download",
+    ctaLink: "/pricing",
   };
 }

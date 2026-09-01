@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { ArrowRight, Camera, Shield, CheckCircle2 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
-import { useLocation } from "wouter";
+import { Link, useLocation } from "wouter";
 
 /**
  * OralHealthScoreTeaser: An interactive visual score preview widget.
@@ -74,7 +74,6 @@ export default function OralHealthScoreTeaser() {
       source: location,
       label: "score_teaser_cta",
     });
-    window.location.href = "/download";
   };
 
   // SVG ring calculations
@@ -145,15 +144,15 @@ export default function OralHealthScoreTeaser() {
                 What is your oral health score?
               </h3>
               <p className="text-stone-600 text-sm leading-relaxed mb-4">
-                The average American scores 68 out of 100. Most people do not know their score until something goes wrong. Find yours in under 2 minutes with a simple photo.
+                An Oral Health Score may be included with a selected paid service. It is an educational summary, not a diagnosis or clinical grade.
               </p>
 
               {/* Trust signals */}
               <div className="flex flex-wrap gap-3 mb-5">
                 {[
-                  { icon: Camera, text: "Just snap a photo" },
-                  { icon: Shield, text: "Private and secure" },
-                  { icon: CheckCircle2, text: "Results in 2 min" },
+                  { icon: Camera, text: "Supported photos and X-rays" },
+                  { icon: Shield, text: "Educational, not diagnostic" },
+                  { icon: CheckCircle2, text: "Timing varies by service" },
                 ].map(({ icon: Icon, text }, idx) => (
                   <div key={idx} className="flex items-center gap-1.5 text-xs text-stone-500">
                     <Icon className="w-3.5 h-3.5 text-primary" />
@@ -162,13 +161,14 @@ export default function OralHealthScoreTeaser() {
                 ))}
               </div>
 
-              <button
+              <Link
+                href="/pricing"
                 onClick={handleGetScore}
                 className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-3 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15 inline-flex items-center gap-2"
               >
-                Get My Real Score
+                Compare DentaSmart Services
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>

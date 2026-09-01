@@ -124,7 +124,7 @@ export default function LifestyleHub() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/download">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
-                  Get Your Free AI Assessment
+                  Download the App
                 </Button>
               </Link>
               <a href="#guides">

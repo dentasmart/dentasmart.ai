@@ -56,7 +56,7 @@ const faqs = [
   },
   {
     q: "Can DentaSmart help me choose between treatments?",
-    a: "Yes. Upload a photo of your teeth or your X-rays and DentaSmart's AI will assess your oral health and help you understand which options might work best for your situation. It is not a replacement for professional advice, but it gives you a solid starting point.",
+    a: "DentaSmart can help you organize supported information, understand common terms, and prepare questions about a treatment plan. It does not recommend a treatment or replace a licensed dentist's diagnosis and clinical advice.",
   },
   {
     q: "Do dentists always recommend the most expensive option?",
@@ -96,7 +96,6 @@ const webPageJsonLd = {
   inLanguage: "en-US",
   isPartOf: { "@type": "WebSite", name: "DentaSmart", url: "https://dentasmart.ai" },
   audience: { "@type": "MedicalAudience", name: "Patients" },
-  lastReviewed: "2026-04-08",
 };
 
 const fadeUp = {
@@ -137,29 +136,30 @@ export default function ComparisonsHub() {
               Dental decisions are stressful when you do not understand the tradeoffs. These side-by-side comparisons give you the facts so you can pick what is right for your mouth, your budget, and your life.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/download">
-                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
-                  Get Your Free AI Assessment
+              <a
+                href="#comparisons-grid"
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-action px-8 py-3 text-base font-medium text-action-foreground shadow-lg transition-all hover:scale-105 hover:bg-action-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring w-full sm:w-auto"
+              >
+                Browse Comparisons <ArrowRight className="w-4 h-4 ml-2" />
+              </a>
+              <Link href="/features">
+                <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
+                  See How DentaSmart Works
                 </Button>
               </Link>
-              <a href="#comparisons-grid">
-                <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
-                  Browse Comparisons <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </a>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* ═══ STATS STRIP ═══ */}
-      <section className="py-6 bg-primary text-white">
+      <section className="py-6 bg-action text-action-foreground">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-white/20">
             {[
-              { value: "5", label: "Side-by-Side Comparisons" },
-              { value: "170K+", label: "Monthly Searches for These Topics" },
-              { value: "100%", label: "Free, No Account Needed" },
+              { value: "5", label: "Side-by-Side Comparison Guides" },
+              { value: "Costs", label: "Typical Price and Tradeoff Context" },
+              { value: "Questions", label: "Prompts to Discuss With a Dentist" },
             ].map((stat, idx) => (
               <motion.div
                 key={idx}
@@ -170,7 +170,7 @@ export default function ComparisonsHub() {
                 className="py-3 md:py-0"
               >
                 <div className="text-3xl md:text-5xl font-normal tracking-tighter text-white">{stat.value}</div>
-                <div className="text-[10px] md:text-xs uppercase tracking-widest text-white/80 font-medium mt-1">{stat.label}</div>
+                <div className="text-[10px] md:text-xs uppercase tracking-widest text-action-foreground font-medium mt-1">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -240,28 +240,28 @@ export default function ComparisonsHub() {
         <div className="container px-4 mx-auto max-w-6xl">
           <motion.div {...fadeUp} className="mb-8">
             <h2 className="text-3xl md:text-4xl font-normal text-black mb-2">
-              How DentaSmart helps you <span className="italic text-primary">decide</span>
+              Use DentaSmart after you <span className="italic text-primary">compare</span>
             </h2>
             <p className="text-base md:text-lg text-stone-600 font-light max-w-3xl">
-              Comparison guides give you general knowledge. DentaSmart gives you personalized insights based on your actual teeth.
+              These guides explain general tradeoffs. DentaSmart can help you organize supported information and questions before professional care.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {[
               {
                 icon: Search,
-                title: "Assess Your Situation",
-                desc: "Upload a photo of your teeth and get AI-powered insights about what is going on. Understand your starting point before comparing options.",
+                title: "Organize Supported Information",
+                desc: "Use an applicable paid check or plan to add mouth photos, dental X-rays, or treatment-plan information where supported.",
               },
               {
                 icon: Shield,
-                title: "Understand What You Need",
-                desc: "Not every recommendation is right for every person. DentaSmart helps you understand what your teeth actually need so you can compare options that make sense for you.",
+                title: "Understand Common Terms",
+                desc: "Review educational explanations so you can follow the options and ask clearer questions about your care.",
               },
               {
                 icon: TrendingDown,
-                title: "Avoid Overspending",
-                desc: "Sometimes the cheaper option works just as well. Sometimes it does not. DentaSmart helps you understand the tradeoffs so every dollar you spend is informed.",
+                title: "Prepare for a Dentist Conversation",
+                desc: "Bring your questions to a licensed dentist, who must diagnose your condition and recommend treatment for your case.",
               },
             ].map((item, idx) => (
               <motion.div
@@ -281,9 +281,9 @@ export default function ComparisonsHub() {
             ))}
           </div>
           <div className="mt-6 text-center">
-            <Link href="/download">
-              <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
-                Try Your Free AI Assessment <ArrowRight className="w-4 h-4 ml-2" />
+            <Link href="/pricing">
+              <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
+                Compare DentaSmart Options <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
           </div>
@@ -360,20 +360,20 @@ export default function ComparisonsHub() {
         <div className="container px-4 mx-auto max-w-4xl text-center">
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-4xl font-normal mb-3 text-white">
-              Stop guessing. Start comparing.
+              Compare first, then choose your next step
             </h2>
             <p className="text-base md:text-lg text-stone-300 font-light mb-6 max-w-2xl mx-auto">
-              The best dental decision is an informed one. DentaSmart gives you the knowledge and the AI tools to make it.
+              Use these guides for general decision support, then compare DentaSmart's paid options or discuss your questions with a licensed dentist.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/download">
-                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
-                  Download DentaSmart Free
+              <Link href="/pricing">
+                <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
+                  View Pricing
                 </Button>
               </Link>
               <Link href="/symptom-quiz">
                 <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
-                  Try Free Symptom Check
+                  Start Free Symptom Quiz
                 </Button>
               </Link>
             </div>

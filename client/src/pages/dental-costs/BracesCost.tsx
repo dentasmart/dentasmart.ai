@@ -117,9 +117,9 @@ const data: CostPageData = {
   ],
   savingsWithDentaSmart: [
     {
-      title: "Know If You Actually Need Braces",
+      title: "Prepare Questions About Braces",
       description:
-        "Upload a photo of your teeth and get a free AI assessment. DentaSmart can help you understand if your alignment issue is cosmetic or functional, so you do not spend $5,000 on something you might not need.",
+        "Use supported information to prepare questions about alignment, goals, alternatives, and costs. An orthodontic professional must diagnose the issue and recommend whether treatment is appropriate.",
     },
     {
       title: "Understand Your Options Before the Consultation",

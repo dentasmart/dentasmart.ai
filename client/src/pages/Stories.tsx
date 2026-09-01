@@ -1,128 +1,73 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import { DownloadSection } from "@/components/DownloadSection";
+import { ArrowRight, Camera, FileSearch, History } from "lucide-react";
+
+const pathways = [
+  {
+    icon: Camera,
+    title: "Start with a Quick Check",
+    description: "Use supported mouth photos or dental X-rays for a one-time educational review and Oral Health Score.",
+    link: "/pricing#quick-check",
+    label: "Explore Quick Check",
+  },
+  {
+    icon: FileSearch,
+    title: "Organize a Treatment-Plan Review",
+    description: "Use Second Opinion to compare treatment-plan details, cost ranges, and questions to discuss with your dentist.",
+    link: "/pricing#second-opinion",
+    label: "Explore Second Opinion",
+  },
+  {
+    icon: History,
+    title: "Keep Records Together",
+    description: "Use Complete Care for ongoing reports, monitoring tools, reminders, and separate family profiles when needed.",
+    link: "/pricing#complete-care",
+    label: "Explore Complete Care",
+  },
+];
 
 export default function Stories() {
-  const stories = [
-    {
-      problem: "I was terrified of going to the dentist.",
-      change: "DentaSmart explained everything before I went.",
-      outcome: "I saved $500 and felt confident.",
-      author: "Sarah J.",
-      role: "DentaSmart User"
-    },
-    {
-      problem: "I didn't understand my treatment plan.",
-      change: "The AI broke down the jargon instantly.",
-      outcome: "I avoided an unnecessary procedure.",
-      author: "Michael T.",
-      role: "DentaSmart User"
-    },
-    {
-      problem: "I always worried about surprise bills.",
-      change: "I knew the costs upfront.",
-      outcome: "No more financial anxiety.",
-      author: "Elena R.",
-      role: "DentaSmart User"
-    },
-    {
-      problem: "I thought I needed a root canal.",
-      change: "DentaSmart suggested a second opinion.",
-      outcome: "It was just a deep cavity, saved my tooth.",
-      author: "David K.",
-      role: "DentaSmart User"
-    },
-    {
-      problem: "My insurance was confusing.",
-      change: "The app clarified my benefits.",
-      outcome: "I maximized my annual coverage.",
-      author: "Jennifer L.",
-      role: "DentaSmart User"
-    },
-    {
-      problem: "I ignored my gum bleeding.",
-      change: "The AI flagged it as early gum disease.",
-      outcome: "Reversed it with better hygiene.",
-      author: "Robert M.",
-      role: "DentaSmart User"
-    }
-  ];
-
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
-      <SEO 
-        title="Real Stories, Real Savings - DentaSmart" 
-        description="Read how DentaSmart has helped thousands of people save money and gain confidence in their dental care."
+      <SEO
+        title="Ways to Use DentaSmart"
+        description="Explore practical DentaSmart pathways for a one-time Quick Check, a treatment-plan Second Opinion, or ongoing Complete Care monitoring."
         canonical="https://dentasmart.ai/stories"
       />
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 md:pt-48 md:pb-24 bg-stone-50">
-        <div className="container px-4 mx-auto max-w-6xl text-center">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-normal tracking-tight text-black mb-8"
-          >
-            Real Stories, <br />
-            <span className="font-normal italic text-primary">Real Savings</span>
-          </motion.h1>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-xl md:text-2xl text-stone-700 font-light max-w-2xl mx-auto leading-relaxed"
-          >
-            See how DentaSmart is changing the way people experience dental care, one smile at a time.
-          </motion.p>
-        </div>
-      </section>
+      <main>
+        <section className="bg-stone-50 pb-16 pt-32 md:pb-24 md:pt-48">
+          <div className="container mx-auto max-w-4xl px-4 text-center">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-action">Choose by situation</p>
+            <h1 className="mb-6 text-4xl font-normal tracking-tight text-black md:text-6xl">
+              Find the DentaSmart path that fits your question
+            </h1>
+            <p className="mx-auto max-w-2xl text-lg leading-relaxed text-stone-700 md:text-xl">
+              These are product-use examples, not customer testimonials. DentaSmart provides educational guidance and does not diagnose conditions or replace a dentist.
+            </p>
+          </div>
+        </section>
 
-      {/* Stories Grid */}
-      <section className="py-24 bg-white">
-        <div className="container px-4 mx-auto max-w-6xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {stories.map((item, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1, duration: 0.5 }}
-                className="bg-stone-50 p-8 rounded-3xl hover:shadow-lg transition-shadow duration-300 border border-stone-100"
-              >
-                <div className="space-y-6">
-                  <div>
-                    <div className="text-xs uppercase tracking-wider text-stone-500 font-medium mb-1">The Problem</div>
-                    <p className="text-stone-900 font-medium">"{item.problem}"</p>
-                  </div>
-                  <div>
-                    <div className="text-xs uppercase tracking-wider text-primary font-medium mb-1">What Changed</div>
-                    <p className="text-stone-700">"{item.change}"</p>
-                  </div>
-                  <div>
-                    <div className="text-xs uppercase tracking-wider text-green-600 font-medium mb-1">The Outcome</div>
-                    <p className="text-stone-900 font-medium">"{item.outcome}"</p>
-                  </div>
+        <section className="bg-white py-16 md:py-24">
+          <div className="container mx-auto grid max-w-6xl grid-cols-1 gap-6 px-4 md:grid-cols-3">
+            {pathways.map(({ icon: Icon, title, description, link, label }) => (
+              <article key={title} className="flex flex-col rounded-3xl border border-stone-200 bg-stone-50 p-7">
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                  <Icon className="h-6 w-6" aria-hidden="true" />
                 </div>
-                <div className="mt-8 pt-6 border-t border-stone-200 text-stone-500 text-sm flex justify-between items-center">
-                  <span>- {item.author}</span>
-                  <span className="text-xs bg-white px-2 py-1 rounded-full border border-stone-200">{item.role}</span>
-                </div>
-              </motion.div>
+                <h2 className="mb-3 text-2xl font-medium text-black">{title}</h2>
+                <p className="mb-6 flex-1 leading-relaxed text-stone-600">{description}</p>
+                <Link href={link} className="inline-flex min-h-11 items-center font-medium text-action hover:underline">
+                  {label} <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
+                </Link>
+              </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <DownloadSection />
+        </section>
+      </main>
 
       <Footer />
     </div>

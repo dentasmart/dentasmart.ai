@@ -1,5 +1,4 @@
 import { ArrowRight, Camera, Stethoscope, DollarSign, Shield, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/lib/analytics";
 import { useLocation, Link } from "wouter";
 import { getPageContext, type ContentType } from "@/lib/pageContext";
@@ -68,14 +67,9 @@ export default function MidContentCTA({
       cta_text: finalButtonText,
     });
 
-    if (resolvedContext.ctaAction === "symptom-quiz" || resolvedContext.ctaAction === "instant-scan") {
-      // Internal navigation — handled by Link wrapper
-      return;
-    }
-    window.location.href = "/download";
   };
 
-  const isInternalLink = resolvedContext.ctaAction === "symptom-quiz" || resolvedContext.ctaAction === "instant-scan";
+  const isFreeQuiz = resolvedContext.ctaAction === "symptom-quiz";
 
   // ── Interactive variant: mini engagement prompt ──
   if (variant === "interactive") {
@@ -99,42 +93,21 @@ export default function MidContentCTA({
             </div>
           </div>
 
-          {/* Social proof bar */}
-          <div className="flex items-center gap-4 mb-4 pl-15">
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="w-7 h-7 rounded-full bg-stone-200 border-2 border-white flex items-center justify-center text-[10px] font-medium text-stone-500"
-                >
-                  {String.fromCharCode(64 + i)}
-                </div>
-              ))}
-            </div>
+          <div className="mb-4 pl-15">
             <span className="text-xs text-stone-500">
-              Free &middot; Available on iOS and Android
+              {isFreeQuiz ? "Free symptom quiz" : "Prices shown before purchase"}
             </span>
           </div>
 
           <div className="pl-15">
-            {isInternalLink ? (
-              <Link
-                href={resolvedContext.ctaLink}
-                onClick={handleClick}
-                className="inline-flex min-h-11 items-center gap-2 bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-3 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15"
-              >
-                {finalButtonText}
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            ) : (
-              <button
-                onClick={handleClick}
-                className="inline-flex min-h-11 items-center gap-2 bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-3 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15"
-              >
-                {finalButtonText}
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            )}
+            <Link
+              href={resolvedContext.ctaLink}
+              onClick={handleClick}
+              className="inline-flex min-h-11 items-center gap-2 bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-3 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15"
+            >
+              {finalButtonText}
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </div>
@@ -156,29 +129,19 @@ export default function MidContentCTA({
             <p className="text-stone-600 text-sm leading-relaxed">
               {finalDescription}
             </p>
-            {/* Inline social proof */}
+            {/* Purchase context */}
             <p className="text-xs text-stone-400 mt-1.5">
-              Free to start &middot; No insurance needed
+              {isFreeQuiz ? "Free symptom quiz" : "Prices shown before purchase"}
             </p>
           </div>
-          {isInternalLink ? (
-            <Link
-              href={resolvedContext.ctaLink}
-              onClick={handleClick}
-              className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-3 text-sm font-semibold whitespace-nowrap cursor-pointer shadow-md shadow-primary/15 inline-flex min-h-11 items-center gap-1.5 transition-all hover:scale-[1.02]"
-            >
-              {finalButtonText}
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          ) : (
-            <Button
-              onClick={handleClick}
-              className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-3 text-sm font-semibold whitespace-nowrap cursor-pointer shadow-md shadow-primary/15 min-h-11"
-            >
-              {finalButtonText}
-              <ArrowRight className="w-4 h-4 ml-1.5" />
-            </Button>
-          )}
+          <Link
+            href={resolvedContext.ctaLink}
+            onClick={handleClick}
+            className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-3 text-sm font-semibold whitespace-nowrap cursor-pointer shadow-md shadow-primary/15 inline-flex min-h-11 items-center gap-1.5 transition-all hover:scale-[1.02]"
+          >
+            {finalButtonText}
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
     );
@@ -197,25 +160,14 @@ export default function MidContentCTA({
             <span className="text-stone-500 font-normal">{finalDescription}</span>
           </p>
         </div>
-        {isInternalLink ? (
-          <Link
-            href={resolvedContext.ctaLink}
-            onClick={handleClick}
-            className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-5 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer inline-flex min-h-11 items-center gap-1"
-          >
-            {finalButtonText}
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-        ) : (
-          <Button
-            onClick={handleClick}
-            size="sm"
-            className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-5 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer min-h-11"
-          >
-            {finalButtonText}
-            <ArrowRight className="w-3.5 h-3.5 ml-1" />
-          </Button>
-        )}
+        <Link
+          href={resolvedContext.ctaLink}
+          onClick={handleClick}
+          className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-5 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer inline-flex min-h-11 items-center gap-1"
+        >
+          {finalButtonText}
+          <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
       </div>
     </div>
   );

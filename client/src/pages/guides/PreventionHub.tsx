@@ -35,7 +35,7 @@ export default function PreventionHub() {
               The Best Dental Work Is the Kind You Never Need
             </h1>
             <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed max-w-2xl text-left">
-              A few minutes of daily care can save you thousands in dental bills. These guides show you exactly what to do and when.
+              Daily care supports oral health and may reduce the chance that some problems become more complex. These guides explain general prevention steps and questions to discuss with a dentist.
             </p>
             <div className="mt-6">
               <Link href="/download">

@@ -73,9 +73,9 @@ export const hubCategoryData: Record<string, HubCategoryEntry> = {
     intro: "Dental care can be expensive, especially when problems are caught late. Understanding costs upfront helps you plan better and avoid surprises. We break down what common treatments cost and how to save.",
     dbCategory: "Costs",
     faqItems: [
-      { q: "How much does a root canal cost?", a: "A root canal typically costs $700 to $1,500 depending on the tooth. Front teeth are less expensive than molars. With insurance, your out of pocket cost may be $200 to $500." },
-      { q: "Is dental insurance worth it?", a: "It depends on your needs. If you only need cleanings, a discount plan may be cheaper. If you expect major work, insurance can save you thousands. DentaSmart helps you understand what you might need." },
-      { q: "How can I save money on dental care?", a: "Catch problems early (that is the biggest saver), compare prices between dentists, ask about payment plans, look into dental schools for discounted care, and use DentaSmart to understand your treatment options before committing." },
+      { q: "How much does a root canal cost?", a: "Root canal costs vary by the tooth involved, your location, the dental office, insurance terms, and the care you need. Ask your dentist for an estimate that explains the recommended treatment and your expected out-of-pocket cost." },
+      { q: "Is dental insurance worth it?", a: "It depends on your expected dental needs, plan terms, monthly premium, coverage limits, and provider network. Review the policy details and ask the insurer or dental office how a planned treatment may be covered. DentaSmart can help you organize questions for that conversation." },
+      { q: "How can I manage dental costs?", a: "Ask for a written treatment estimate, compare options when appropriate, discuss payment choices with the dental office, and review whether dental-school or community-clinic care is available in your area. Use DentaSmart to organize treatment questions before deciding." },
     ],
   },
 };

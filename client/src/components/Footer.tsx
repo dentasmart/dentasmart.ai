@@ -23,8 +23,8 @@ export default function Footer() {
             <div className="space-y-4 max-w-sm">
               <p className="text-black font-light leading-relaxed text-sm">
                 Most people feel anxious and confused about their dental health.
-                We provide an AI dentist that analyzes your mouth instantly and explains everything in plain English,
-                so you can stop worrying and start making confident decisions about your care.
+                DentaSmart provides educational oral health tools and plain-language explanations,
+                so you can organize questions and make more informed decisions with a dental professional.
               </p>
 
               <div className="flex flex-col gap-2">

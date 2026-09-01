@@ -26,14 +26,14 @@ const fadeLeft = {
 
 const scanTypes = [
   {
-    title: "Teeth Photo Scan",
-    desc: "Take a photo of your front teeth, top, and bottom. Our AI detects cavities, discoloration, gum recession, and more.",
-    time: "~5 minutes",
+    title: "Mouth Photos",
+    desc: "Use supported mouth photos for an educational review of visible areas. DentaSmart does not diagnose conditions from a photo.",
+    time: "Timing varies by image quality and service",
   },
   {
-    title: "X-Ray Analysis",
-    desc: "Upload a dental X-ray (panoramic or periapical). Get detailed findings including bone loss, root issues, and hidden decay.",
-    time: "~10 minutes",
+    title: "Dental X-rays",
+    desc: "Upload a supported dental X-ray for plain-language educational observations you can discuss with a dentist.",
+    time: "Professional interpretation is still required",
   },
 ];
 
@@ -45,62 +45,62 @@ const howItWorksSteps = [
   },
   {
     step: "02",
-    title: "Our AI analyzes it in minutes",
-    desc: "DentaSmart reviews your images for signs of cavities, gum recession, discoloration, plaque, bone loss, and more, then translates the findings into plain English you can actually understand.",
+    title: "DentaSmart reviews the information",
+    desc: "The selected service organizes supported observations and explains them in plain language. Processing time can vary by image quality and service.",
   },
   {
     step: "03",
-    title: "Get your score and care plan",
-    desc: "You receive an Oral Health Score, tooth-by-tooth findings, estimated cost ranges, and a personalized prevention plan, plus a dentist-ready report you can bring to your next visit.",
+    title: "Review your educational report",
+    desc: "Available outputs depend on the selected service and may include an Oral Health Score, plain-language report, and information you can share with a dental professional.",
   },
 ];
 
 const aiLooksFor = [
   {
-    title: "Cavities & early decay",
-    desc: "Spots discoloration and surface changes that can signal a cavity forming, so you can act before it needs a bigger procedure.",
+    title: "Visible tooth surfaces",
+    desc: "Highlights visible areas in supported photos that you may want to discuss with a dentist.",
   },
   {
-    title: "Gum recession & gum issues",
-    desc: "Flags receding gums and signs of inflammation that often go unnoticed until they become painful or costly.",
+    title: "Gum appearance",
+    desc: "Organizes visible gum observations without diagnosing the cause of redness, swelling, or recession.",
   },
   {
-    title: "Plaque & buildup",
-    desc: "Highlights visible plaque and tartar buildup so you know which areas your daily routine is missing.",
+    title: "Visible buildup",
+    desc: "Points out visible areas that may need closer daily care or professional evaluation.",
   },
   {
-    title: "Discoloration & staining",
-    desc: "Identifies staining and color changes and explains whether they are cosmetic or worth asking your dentist about.",
+    title: "Color changes",
+    desc: "Describes visible color differences in plain language so you can prepare questions for a dentist.",
   },
   {
-    title: "Bone loss (from X-rays)",
-    desc: "Reads panoramic and periapical X-rays for early signs of bone loss around the teeth that you cannot see in a mirror.",
+    title: "Supported X-ray context",
+    desc: "Provides educational observations from supported X-rays. A dentist must interpret images for diagnosis and treatment.",
   },
   {
-    title: "Root issues & hidden decay",
-    desc: "Surfaces root infections, impacted wisdom teeth, existing fillings, and decay hiding between teeth on your X-rays.",
+    title: "Questions for professional care",
+    desc: "Helps you organize what to ask about supported images without recommending a treatment.",
   },
 ];
 
 const whatYouGet = [
-  "Oral Health Score (0-100)",
-  "Tooth-by-tooth findings",
-  "Condition severity ratings",
-  "Recommended treatment types",
-  "Estimated cost ranges",
-  "Type of dentist to see",
-  "Personalized care timeline",
-  "Prevention recommendations",
+  "Oral Health Score when included",
+  "Educational visible observations",
+  "Plain-language report",
+  "Dentist-ready report when included",
+  "Cost context for supported information",
+  "Organized records for a dental visit",
+  "Dr Din access according to the selected service",
+  "Questions to discuss with a dentist",
 ];
 
 const faqs = [
   {
     q: "Is the dental scan really free?",
-    a: "Yes. Your first scan is free. Download the app, scan your teeth, and see a preview of your Oral Health Score and key findings at no cost. You only pay if you want the full report and personalized plan.",
+    a: "The DentaSmart app is free to download, with a limited scan preview available before you choose a plan. Quick Check and Second Opinion are paid one-time services, and Complete Care is an annual paid plan. Review the current price and included features before purchase.",
   },
   {
     q: "How long does an instant scan take?",
-    a: "A teeth photo scan takes about five minutes and an X-ray analysis takes about ten. There is no appointment and no waiting room, so you can do it from home whenever it is convenient.",
+    a: "Processing time can vary by image quality and the selected service. Do not wait for a report when symptoms are severe, worsening, or urgent; contact a dental or medical professional.",
   },
   {
     q: "What photos do I need to take?",
@@ -108,11 +108,11 @@ const faqs = [
   },
   {
     q: "How accurate is the AI analysis?",
-    a: "DentaSmart analyzes your images for common signs of cavities, gum issues, plaque, bone loss, and more, and every analysis is reviewed and approved by licensed dentists. It is designed to give you clarity and better questions for your dentist, not a final diagnosis.",
+    a: "DentaSmart does not publish a universal accuracy rate. Results can vary with image quality, the area shown, and the selected service. Use the output as educational information and ask a dentist to diagnose conditions or recommend treatment.",
   },
   {
     q: "Does this replace going to the dentist?",
-    a: "No. DentaSmart is your smart assistant before the visit. It helps you understand what is happening in your mouth, prepare for your appointment, and avoid surprise costs, but you should always see a licensed dentist for diagnosis and treatment.",
+    a: "No. DentaSmart helps you organize supported information and prepare questions for a dental visit. It does not diagnose conditions, provide hands-on care, or replace a licensed dentist's examination and treatment decisions.",
   },
   {
     q: "Is my data private?",
@@ -159,8 +159,8 @@ export default function InstantScan() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
-        title="Free AI Dental Scan in 10 Minutes"
-        description="Upload a photo of your teeth or dental X-ray and get AI-powered analysis. Detect cavities, gum disease, and more in under 10 minutes. Free first scan."
+        title="Dental Photo Review | DentaSmart Educational Guide"
+        description="Learn how DentaSmart uses supported mouth photos and dental X-rays for educational observations that do not replace professional diagnosis or care."
         canonical="https://dentasmart.ai/instant-scan"
         keywords="instant dental scan, AI dental analysis, teeth photo scan, dental X-ray analysis, oral health check online"
       />
@@ -207,15 +207,15 @@ export default function InstantScan() {
                 <span className="italic text-primary">before your visit</span>.
               </h1>
               <p className="text-lg text-stone-600 mb-6 font-light leading-relaxed">
-                Upload a photo of your teeth or X-rays. Our AI analyzes it in minutes and gives you a clear, jargon-free report so you know exactly what is going on.
+                Upload supported mouth photos or dental X-rays for an educational review through the service you choose. DentaSmart organizes plain-language observations and questions for professional care.
               </p>
 
               <div className="space-y-3 mb-6">
                 {[
-                  "No appointment needed",
-                  "Results in under 10 minutes",
+                  "App is free to download",
+                  "Paid service prices shown before purchase",
                   "Plain-language explanations",
-                  "Personalized care plan included",
+                  "Educational, not diagnostic",
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-center gap-3">
                     <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
@@ -224,23 +224,18 @@ export default function InstantScan() {
                 ))}
               </div>
 
-              <Button
-                size="lg"
-                className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-6 text-lg font-medium cursor-pointer shadow-xl"
-                onClick={() => {
-                  trackEvent("cta_get_score_click", { source: "instant_scan_page" });
-                  window.location.href = "/#download-cta";
-                }}
-              >
-                <Camera className="w-5 h-5 mr-2" />
-                Start My Free Scan
+              <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-6 text-lg font-medium cursor-pointer shadow-xl">
+                <Link href="/pricing" onClick={() => trackEvent("cta_get_score_click", { source: "instant_scan_page" })}>
+                  <Camera className="w-5 h-5 mr-2" />
+                  Compare DentaSmart Services
+                </Link>
               </Button>
               <div className="flex items-center gap-6 text-sm text-stone-500 mt-6">
                 <span className="flex items-center gap-1">
-                  <Clock className="w-4 h-4 text-primary" /> Results in 10 minutes
+                  <Clock className="w-4 h-4 text-primary" /> Timing varies by service
                 </span>
                 <span className="flex items-center gap-1">
-                  <Shield className="w-4 h-4 text-primary" /> 100% private
+                  <Shield className="w-4 h-4 text-primary" /> Professional care still matters
                 </span>
               </div>
             </motion.div>
@@ -253,7 +248,7 @@ export default function InstantScan() {
           always visible on first paint regardless of IntersectionObserver firing */}
       <section className="py-10 bg-white">
         <div className="container px-4 mx-auto max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-normal text-black mb-8 text-center">Two ways to scan</h2>
+          <h2 className="text-3xl md:text-4xl font-normal text-black mb-8 text-center">Two supported image types</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {scanTypes.map((scan, idx) => (
               <motion.div
@@ -275,11 +270,11 @@ export default function InstantScan() {
         </div>
       </section>
 
-      {/* How your instant scan works — 3 numbered steps */}
+      {/* How the educational review works: 3 numbered steps */}
       <section className="py-10 bg-primary text-white">
         <div className="container px-4 mx-auto max-w-5xl">
           <h2 className="text-3xl md:text-4xl font-normal text-white mb-10 text-center">
-            How your instant scan works
+            How a DentaSmart review works
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {howItWorksSteps.map((item, idx) => (
@@ -302,10 +297,10 @@ export default function InstantScan() {
         </div>
       </section>
 
-      {/* What the AI looks for — 6 cards */}
+      {/* What DentaSmart can help highlight: 6 cards */}
       <section className="py-10 bg-white">
         <div className="container px-4 mx-auto max-w-5xl">
-          <h2 className="text-3xl md:text-4xl font-normal text-black mb-4 text-center">What the AI looks for</h2>
+          <h2 className="text-3xl md:text-4xl font-normal text-black mb-4 text-center">What DentaSmart can help highlight</h2>
           <p className="text-stone-500 text-center mb-10 max-w-2xl mx-auto font-light">
             DentaSmart reviews your images for the most common oral health concerns and explains each finding in plain language.
           </p>
@@ -330,10 +325,10 @@ export default function InstantScan() {
         </div>
       </section>
 
-      {/* What you get in your report — BUG FIX: animate instead of whileInView */}
+      {/* What a selected service may include */}
       <section className="py-10 bg-stone-50">
         <div className="container px-4 mx-auto max-w-4xl">
-          <h2 className="text-3xl md:text-4xl font-normal text-black mb-8 text-center">What you get in your report</h2>
+          <h2 className="text-3xl md:text-4xl font-normal text-black mb-8 text-center">What a selected service may include</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {whatYouGet.map((item, idx) => (
               <motion.div
@@ -408,21 +403,16 @@ export default function InstantScan() {
       <section className="py-10 bg-primary text-white text-center">
         <div className="container px-4 mx-auto max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-normal text-white mb-4">
-            Stop wondering. Start knowing.
+            Start with clear service options
           </h2>
           <p className="text-xl text-white/80 font-light mb-8">
-            Your first scan is free. Get your Oral Health Score in under a minute.
+            The app is free to download. Quick Check, Second Opinion, and Complete Care are paid services with prices shown before purchase.
           </p>
-          <Button
-            size="lg"
-            className="bg-white text-primary hover:bg-white/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer"
-            onClick={() => {
-              trackEvent("cta_get_score_click", { source: "instant_scan_bottom" });
-              window.location.href = "/#download-cta";
-            }}
-          >
-            Get My Oral Health Score
-            <ArrowRight className="w-5 h-5 ml-2" />
+          <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer">
+            <Link href="/pricing" onClick={() => trackEvent("cta_get_score_click", { source: "instant_scan_bottom" })}>
+              Compare Services
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Link>
           </Button>
         </div>
       </section>

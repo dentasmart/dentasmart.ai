@@ -75,8 +75,7 @@ export function BlogCTABanner() {
                   Want clarity about your own mouth?
                 </h3>
                 <p className="text-stone-400 text-sm hidden md:block">
-                  Snap a photo and get your free AI oral health score in
-                  10 minutes.
+                  Download the app, then choose the check or plan that fits your goal. Paid services are shown before purchase.
                 </p>
               </div>
 
@@ -84,7 +83,7 @@ export function BlogCTABanner() {
                 onClick={handleCTAClick}
                 className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-6 text-base font-medium shadow-lg whitespace-nowrap w-full md:w-auto cursor-pointer"
               >
-                Get My Oral Health Score
+                Explore DentaSmart
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>

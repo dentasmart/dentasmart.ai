@@ -99,7 +99,6 @@ export default function ComparisonPageTemplate({ data }: { data: ComparisonPageD
     inLanguage: "en-US",
     isPartOf: { "@type": "WebSite", name: "DentaSmart", url: "https://dentasmart.ai" },
     audience: { "@type": "MedicalAudience", name: "Patients" },
-    lastReviewed: "2026-04-08",
   };
 
   return (
@@ -132,9 +131,9 @@ export default function ComparisonPageTemplate({ data }: { data: ComparisonPageD
               {data.heroDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/download">
-                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
-                  Get Your Free AI Assessment
+              <Link href="/pricing#quick-check">
+                <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
+                  Compare DentaSmart Options
                 </Button>
               </Link>
               <a href="#comparison-table">
@@ -151,7 +150,7 @@ export default function ComparisonPageTemplate({ data }: { data: ComparisonPageD
       <section className="py-6 bg-white border-b border-stone-100">
         <div className="container px-4 mx-auto max-w-4xl">
           <QuickAnswerBlock
-            question={`${data.optionAName} vs ${data.optionBName}: Which is better?`}
+            question={`${data.optionAName} vs ${data.optionBName}: How do they compare?`}
             answer={data.metaDescription}
             sourceUrl={`https://dentasmart.ai/comparisons/${data.slug}`}
             sourceLabel={`DentaSmart ${data.optionAName} vs ${data.optionBName} Guide`}
@@ -358,9 +357,9 @@ export default function ComparisonPageTemplate({ data }: { data: ComparisonPageD
             <p className="text-base md:text-lg text-stone-300 font-light leading-relaxed max-w-3xl mx-auto mb-6">
               {data.bottomLine}
             </p>
-            <Link href="/download">
-              <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
-                <Smartphone className="w-4 h-4 mr-2" /> Get Your Free AI Assessment
+            <Link href="/pricing#quick-check">
+              <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
+                <Smartphone className="w-4 h-4 mr-2" /> View DentaSmart Options
               </Button>
             </Link>
           </motion.div>
@@ -430,20 +429,20 @@ export default function ComparisonPageTemplate({ data }: { data: ComparisonPageD
         <div className="container px-4 mx-auto max-w-4xl text-center">
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-4xl font-normal text-black mb-3">
-              Still not sure? <span className="italic text-primary">Let AI help.</span>
+              Still deciding? <span className="italic text-primary">Choose your next step.</span>
             </h2>
             <p className="text-base md:text-lg text-stone-600 font-light mb-6 max-w-2xl mx-auto">
-              Upload a photo of your teeth and get a personalized AI assessment. It takes about 2 minutes and it is completely free.
+              Review DentaSmart's paid checks and plans, or use the symptom quiz to organize questions before professional care.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/download">
-                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
-                  Download DentaSmart Free
+              <Link href="/pricing">
+                <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
+                  View Pricing
                 </Button>
               </Link>
               <Link href="/symptom-quiz">
                 <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
-                  Try Free Symptom Check
+                  Start Symptom Quiz
                 </Button>
               </Link>
             </div>

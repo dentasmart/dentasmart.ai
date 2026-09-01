@@ -5,15 +5,15 @@ import { DownloadSection } from "@/components/DownloadSection";
 import { BenefitsCarousel } from "@/components/BenefitsCarousel";
 import { Lock, Check } from "lucide-react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
 
 export default function Features() {
   const features: { title: string; description: string; points: string[]; image: string; isPhone?: boolean }[] = [
     {
-      title: "Quick Check: Instant X-Ray & Photo Analysis",
-      description: "Don't wait weeks for answers about that spot on your X-ray.\n\nQuick Check is a one-time AI review of your mouth photos and X-rays. Upload your images and DentaSmart identifies visible concerns and key insights based on what it sees. You get your Oral Health Score and a patient-friendly report you can save or share. Dr. Din is available for 30 days after your check.",
+      title: "Quick Check: X-Ray and Photo Review",
+      description: "Use the images you already have to prepare for a more informed dental conversation.\n\nQuick Check is a one-time educational review of supported mouth photos and dental X-rays. DentaSmart highlights visible areas that may warrant attention and explains them in plain language. You get an Oral Health Score and a patient-friendly report you can save or share. Dr Din is available for 30 days after your check.",
       points: [
-        "Visible Concerns: See what the AI found in your images, in plain English.",
+        "Visible Areas: See what may warrant attention in your images, in plain English.",
         "Oral Health Score: Understand where you stand with a clear 0-100 score.",
         "Shareable Report: Save or share a patient-friendly summary with your dentist."
       ],
@@ -21,11 +21,11 @@ export default function Features() {
       isPhone: true
     },
     {
-      title: "Guided Self-Examination for Better Accuracy",
-      description: "The more DentaSmart knows about your symptoms, the better your results.\n\nIncluded in Complete Care, the guided self-examination walks you through simple tests before your photo upload (Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection with a mirror). These quick checks help the system understand your symptoms better and give you more accurate, personalized results.",
+      title: "Guided Self-Examination for More Context",
+      description: "Symptoms and observations can add useful context to an image.\n\nIncluded in Complete Care, the guided self-examination walks you through simple checks before your photo upload, including a Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection with a mirror. These checks help organize what you are experiencing alongside the images you provide.",
       points: [
-        "Bite Pressure Test: Helps confirm tenderness and pain patterns.",
-        "Cold Sensitivity Test: Identifies nerve-related issues early.",
+        "Bite Pressure Test: Records tenderness and pain patterns you notice.",
+        "Cold Sensitivity Test: Records where and when sensitivity occurs.",
         "Visual Inspection: Guides you to describe what you see accurately."
       ],
       image: "/manus-storage/self-examination_c897255b.png",
@@ -33,38 +33,38 @@ export default function Features() {
     },
     {
       title: "Two Reports: One for You, One for Your Dentist",
-      description: "Finally, a report that speaks your language and your dentist's.\n\nDentaSmart generates two versions of your report. The 'For You' version uses plain language with a clear health score and priority actions. The 'For Dentist' version includes clinical terminology, tooth-by-tooth findings, and differential diagnoses. Both are downloadable as PDF and shareable instantly.",
+      description: "Use a report written for you, then share a more detailed version with your dentist.\n\nDentaSmart generates two versions of your report. The 'For You' version uses plain language with an Oral Health Score and clear discussion points. The 'For Dentist' version includes clinical terminology and tooth-by-tooth observations. Both are downloadable as PDF and shareable.",
       points: [
         "Patient Report: Simple score, clear priorities, and next steps you understand.",
-        "Dentist Report: Clinical detail with conditions, differentials, and urgency levels.",
-        "Share Instantly: Download PDF or share directly with your dental provider."
+        "Dentist Report: Clinical detail with tooth-by-tooth observations and discussion points.",
+        "Share Your Report: Download a PDF to email, print, or bring to a dental visit."
       ],
       image: "/manus-storage/dual-report-dentist_5dcf6f0b.png",
       isPhone: true
     },
     {
       title: "Stop Wondering What Your X-Rays Mean",
-      description: "You shouldn't have to nod along pretending to understand complex dental jargon.\n\nDentaSmart's X-ray analysis acts as your personal translator, instantly highlighting areas of concern in simple, clear language. Finally, you can see exactly what your dentist sees and feel confident in your treatment plan.",
+      description: "You should not have to nod along when dental language feels confusing.\n\nDentaSmart highlights visible areas on supported X-rays and explains why they may be worth discussing. Use the visual context to prepare clearer questions for your dentist.",
       points: [
-        "Instant Clarity: See color-coded overlays that make issues obvious.",
+        "Visual Context: See color-coded overlays that make areas easier to discuss.",
         "Plain English: No more confusing medical terms. Just clear explanations.",
         "Confidence: Walk into your appointment knowing exactly what to ask."
       ],
       image: "/images/optimized/ZDzeChpbpgMeHJVN-800.webp"
     },
     {
-      title: "Catch Issues Before They Become Emergencies",
-      description: "Waiting for your 6-month checkup can leave you vulnerable to silent problems.\n\nWith DentaSmart's mouth image analysis, you can scan your smile anytime. It spots subtle visual cues you might miss, giving you the peace of mind that comes from knowing you're catching potential issues early.",
+      title: "Monitor Visible Changes Between Visits",
+      description: "A photo history can help you notice when something looks different.\n\nWith DentaSmart's mouth image tools, you can add new photos over time and compare them with earlier records. If you notice pain, swelling, bleeding, or another urgent change, contact a dental professional.",
       points: [
         "Peace of Mind: Check your oral health whenever you feel uncertain.",
-        "Early Detection: Spot visual changes before they turn into painful problems.",
+        "Change Tracking: Compare visible changes across your saved records.",
         "Easy Monitoring: Track your gum and tooth health from the comfort of home."
       ],
       image: "/images/optimized/AfieCruvYKKqBoIa-800.webp"
     },
     {
-      title: "Personalized Care That Actually Fits Your Life",
-      description: "Generic dental advice rarely leads to lasting results.\n\nGet Personalized Recommendations that adapt to your unique oral health profile. Instead of one-size-fits-all tips, you get actionable, tailored guidance that helps you improve your daily routine without feeling overwhelmed.",
+      title: "Guidance That Fits Your Routine",
+      description: "Generic reminders are easy to ignore.\n\nDentaSmart organizes educational guidance around the images, symptoms, history, and service you choose. Use it to build a manageable routine and prepare questions for professional care.",
       points: [
         "Tailored for You: Advice based on your specific scan results.",
         "Simple Steps: Actionable tips that fit easily into your daily routine.",
@@ -83,33 +83,33 @@ export default function Features() {
       image: "/images/optimized/QmtzzNkXnZNbJvtj-800.webp"
     },
     {
-      title: "Know Your Risks Before They Become Reality",
-      description: "Most dental problems are preventable if you know what to look for.\n\nProactive Risk Indicators work like a weather forecast for your mouth, alerting you to patterns that could lead to future trouble. Take control today so you don't have to deal with expensive repairs tomorrow.",
+      title: "Keep Risk Factors in View",
+      description: "Your records can help you keep recurring concerns and habits in view.\n\nDentaSmart organizes educational risk context from the information you provide. It does not predict outcomes or replace a professional examination.",
       points: [
-        "Future-Proofing: Identify risk factors before they cause damage.",
-        "Proactive Alerts: Get notified about patterns that need attention.",
-        "Save Money: Prevention is always cheaper than a cure."
+        "Risk Context: Review factors that may be worth discussing.",
+        "Follow-Up Prompts: Keep track of areas you plan to revisit.",
+        "Professional Boundary: Bring persistent or urgent concerns to a dentist."
       ],
       image: "/images/optimized/OmKqTEPOiEaBSwig-800.webp"
     },
     {
-      title: "A Simple Score for Total Clarity",
-      description: "Dental health shouldn't be a guessing game.\n\nYour Dynamic Oral Wellness Score gives you a single, easy-to-understand number between 0-100. It’s the quickest way to know exactly where you stand, so you can stop worrying and start smiling.",
+      title: "One Oral Health Score to Track Over Time",
+      description: "A consistent reference point can make progress easier to follow.\n\nYour Oral Health Score is a 0-100 educational summary based on information in DentaSmart. It helps you compare your own records over time; it is not a diagnosis or clinical grade.",
       points: [
-        "Instant Status: Know your oral health standing at a glance.",
-        "Real-Time Feedback: Watch your score rise as you take care of your teeth.",
-        "Clear Goals: A simple target to aim for every day."
+        "At-a-Glance Summary: Review one consistent educational measure.",
+        "History View: Compare your score with your earlier records.",
+        "Conversation Starter: Use changes to prepare questions for your dentist."
       ],
       image: "/images/optimized/DawnQOxKtdjguhLp-800.webp",
       isPhone: true
     },
     {
-      title: "Your 24/7 Personal AI Dentist",
-      description: "Questions about your teeth don't always happen during office hours.\n\nMeet Din, your personal AI dentist. Whether it's 2 AM or 2 PM, Din is ready to answer your questions, explain your results, and offer supportive advice in plain language. You're never alone on your journey to better health.",
+      title: "Your AI Oral Health Guide",
+      description: "Questions about dental terms do not always happen during office hours.\n\nMeet Dr Din, DentaSmart's AI oral health guide. Dr Din can explain DentaSmart reports, define common dental terms, and help you prepare questions in plain language. It does not diagnose conditions or replace professional care.",
       points: [
-        "Always Available: Get answers the moment you need them.",
-        "Friendly Support: A judgment-free zone for all your dental questions.",
-        "Expert Knowledge: Instant access to reliable dental information."
+        "Plain-Language Help: Review report language and common dental terms.",
+        "Question Preparation: Organize what to discuss with a dentist.",
+        "Educational Support: Get plain-language context for common dental topics."
       ],
       image: "/images/optimized/YSjOjqlpUabDbzAW-800.webp"
     },
@@ -125,11 +125,11 @@ export default function Features() {
       isPhone: true
     },
     {
-      title: "Cost Transparency Before You Commit",
-      description: "Surprise dental bills are the #1 reason people delay care.\n\nDentaSmart shows you estimated treatment costs upfront, before you sit in the chair. See what procedures might be needed, typical price ranges, and priority order so you can plan your budget and avoid sticker shock.",
+      title: "Cost Context Before You Commit",
+      description: "Dental estimates can be hard to compare.\n\nDentaSmart provides educational cost ranges for common services and helps you organize treatment-plan questions. These ranges are not provider quotes and can vary by location, case, and dentist.",
       points: [
-        "Price Estimates: See typical costs for recommended treatments.",
-        "Priority Order: Know what's urgent vs. what can wait.",
+        "Cost Ranges: Review typical price context for common services.",
+        "Plan Questions: Identify what to clarify before accepting treatment.",
         "Budget Planning: Plan ahead instead of reacting to surprise bills."
       ],
       image: "/images/optimized/XlgHEMbZpBAbEXnM-800.webp",
@@ -141,7 +141,7 @@ export default function Features() {
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
       <SEO
         title="DentaSmart Features - Understand Your Oral Health"
-        description="Explore DentaSmart's features: instant X-ray analysis, personalized oral health recommendations, progress tracking, and more. Take control of your dental health today."
+        description="Explore DentaSmart features for supported mouth photos and X-rays, plain-language reports, Oral Health Score tracking, and preparing questions for your dentist."
         canonical="https://dentasmart.ai/features"
       />
       <Navigation />
@@ -190,13 +190,12 @@ export default function Features() {
                 Clarity first. Confidence next.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-start">
-                <Button 
-                  size="lg" 
-                  className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0 cursor-pointer"
-                  onClick={() => document.getElementById('download-cta')?.scrollIntoView({ behavior: 'smooth' })}
+                <Link
+                  href="/pricing#quick-check"
+                  className="inline-flex min-h-12 items-center justify-center rounded-full border-0 bg-action px-8 text-lg font-medium text-action-foreground shadow-lg transition-all duration-300 hover:scale-105 hover:bg-action-hover"
                 >
-                  Get My Oral Health Score
-                </Button>
+                  Explore Quick Check
+                </Link>
                 
               </div>
             </motion.div>

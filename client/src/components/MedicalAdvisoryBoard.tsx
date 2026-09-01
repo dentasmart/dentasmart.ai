@@ -6,7 +6,7 @@ const advisors = [
     name: "Areeba Aslam",
     title: "General Dentist",
     credentials: "BDS",
-    bio: "Areeba brings clinical expertise in general dentistry and a passion for making oral health information accessible to everyone. She reviews all DentaSmart content to ensure accuracy and safety.",
+    bio: "Areeba brings experience in general dentistry and helps review identified educational condition and symptom content for clarity and safety.",
     role: "Lead Content Reviewer",
   },
   // More advisors can be added here as the team grows
@@ -21,7 +21,7 @@ export function MedicalAdvisoryBoard() {
           <h2 className="text-3xl font-normal text-black">Medical Advisory Board</h2>
         </div>
         <p className="text-stone-600 font-light leading-relaxed mb-8 max-w-2xl">
-          Every piece of health content on DentaSmart is reviewed by qualified dental professionals. Our advisory board ensures that the information you receive is accurate, safe, and up to date.
+          DentaSmart identifies the reviewer and review date on educational pages where a professional review is documented. This content-review role is separate from automated product results and does not create a dentist-patient relationship.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {advisors.map((advisor, idx) => (
@@ -64,7 +64,7 @@ export function MedicalAdvisoryBoard() {
             </div>
           </motion.div>
         </div>
-        <p className="text-stone-400 text-xs mt-6 font-light">
+        <p className="text-stone-600 text-xs mt-6 font-light">
           DentaSmart does not replace professional dental care. Our AI tools and content are designed to help you understand your oral health, not to diagnose or treat conditions. Always consult a qualified dentist for clinical decisions.
         </p>
       </div>

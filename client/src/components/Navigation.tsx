@@ -16,7 +16,7 @@ const megaMenuCategories = [
       { label: "Conditions Guide", href: "/oral-health-hub/conditions", description: "Common dental problems explained" },
       { label: "Symptoms Guide", href: "/oral-health-hub/symptoms", description: "What your symptoms mean" },
       { label: "Life Stages", href: "/life-stages", description: "Dental care by age group" },
-      { label: "Symptom Checker", href: "/symptom-quiz", description: "Free AI dental assessment" },
+      { label: "Symptom Checker", href: "/symptom-quiz", description: "Free educational symptom quiz" },
     ],
   },
   {
@@ -302,7 +302,7 @@ export default function Navigation() {
                     <div className="px-6 py-4 bg-gradient-to-r from-primary/5 to-teal-50 border-t border-stone-100 flex items-center justify-between">
                       <div>
                         <p className="text-sm font-medium text-stone-700">Not sure where to start?</p>
-                        <p className="text-xs text-stone-500">Try our free AI symptom checker</p>
+                        <p className="text-xs text-stone-500">Try the free symptom quiz</p>
                       </div>
                       <Link href="/symptom-quiz" onClick={() => setMegaMenuOpen(false)}>
                         <Button
@@ -359,7 +359,7 @@ export default function Navigation() {
                 exit={{ opacity: 0, y: -10 }}
                 className="hidden lg:flex items-center gap-3 absolute right-4 top-full mt-2 bg-primary/95 backdrop-blur-sm text-white rounded-full px-5 py-2.5 shadow-lg"
               >
-                <span className="text-sm font-medium">Get your free oral health score</span>
+                <span className="text-sm font-medium">Explore DentaSmart on your phone</span>
                 <Button
                   size="sm"
                   className="bg-white text-primary hover:bg-white/90 rounded-full px-4 py-1.5 text-xs font-medium cursor-pointer h-auto"
@@ -368,7 +368,7 @@ export default function Navigation() {
                     window.location.href = "/download";
                   }}
                 >
-                  Start Free
+                  Download App
                 </Button>
               </motion.div>
             )}
@@ -377,7 +377,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             ref={mobileMenuButtonRef}
-            className={`lg:hidden p-2 z-50 relative transition-colors duration-300 ${scrolled || isOpen ? "text-teal-900" : "text-teal-900"}`}
+            className={`lg:hidden min-h-11 min-w-11 p-2 z-50 relative transition-colors duration-300 ${scrolled || isOpen ? "text-teal-900" : "text-teal-900"}`}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
             aria-expanded={isOpen}

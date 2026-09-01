@@ -104,8 +104,8 @@ const data: CostPageData = {
 
   savingsWithDentaSmart: [
     {
-      title: "Know If You Actually Need Them Out",
-      description: "Not every wisdom tooth needs to come out. Upload a photo or X-ray and get a free AI assessment. DentaSmart helps you understand if removal is necessary or if monitoring is a better option.",
+      title: "Prepare Questions About Removal",
+      description: "Use supported information to prepare questions about symptoms, position, monitoring, and removal. A dentist or oral surgeon must examine you and recommend whether treatment is appropriate.",
     },
     {
       title: "Understand Your Case Before the Consult",

@@ -30,21 +30,22 @@ export default function SymptomsIndex() {
               Dental Symptoms
             </h1>
             <p className="text-xl text-stone-300 font-light leading-relaxed max-w-2xl text-left">
-              Something does not feel right? Find your symptom below and learn what it could mean, what to do at home, and when to see a dentist.
+              Something does not feel right? Find your symptom below, review common context and warning signs, and learn when professional care may be needed.
             </p>
             <div className="mt-6">
-              <Link href="/instant-scan">
-                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
-                  Check Your Symptoms Now
-                </Button>
-              </Link>
+              <a
+                href="#symptoms-list"
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-action px-8 py-3 text-base font-medium text-action-foreground transition-colors hover:bg-action-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              >
+                Browse Dental Symptoms
+              </a>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* Symptoms Grid */}
-      <section className="py-12 bg-white">
+      <section id="symptoms-list" className="py-12 bg-white">
         <div className="container px-4 mx-auto max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {symptomsList.map((symptom, idx) => (
@@ -60,7 +61,7 @@ export default function SymptomsIndex() {
                   <p className="text-stone-600 font-light text-base leading-relaxed line-clamp-3 mb-4">
                     {symptom.heroSubheading}
                   </p>
-                  <span className="inline-flex items-center gap-2 text-primary text-base font-medium">
+                  <span className="inline-flex items-center gap-2 text-action text-base font-medium">
                     Learn more <ArrowRight className="w-3 h-3" />
                   </span>
                 </motion.div>
@@ -71,14 +72,15 @@ export default function SymptomsIndex() {
       </section>
 
       {/* CTA */}
-      <section className="py-8 bg-primary text-white">
+      <section className="py-8 bg-action text-action-foreground">
         <div className="container px-4 mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-normal mb-3 text-white">Not sure what your symptom means?</h2>
-          <p className="text-white/80 font-light mb-6">Upload a photo and let DentaSmart help you understand what is going on.</p>
-          <Link href="/instant-scan">
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
-              Try Instant Scan
-            </Button>
+          <h2 className="text-3xl font-normal mb-3 text-action-foreground">Not sure how to describe a symptom?</h2>
+          <p className="text-action-foreground font-light mb-6">Use the free symptom quiz to organize what you notice. A dentist is still needed for diagnosis and treatment advice.</p>
+          <Link
+            href="/symptom-quiz"
+            className="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-8 py-3 text-base font-medium text-action transition-colors hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            Start Free Symptom Quiz
           </Link>
         </div>
       </section>

@@ -7,12 +7,13 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { useState } from "react";
-import { 
-  Camera, Shield, Clock, FileText, ChevronDown, ChevronUp, 
-  CheckCircle, Smartphone, Star, ArrowRight, AlertTriangle 
+import {
+  Camera, Shield, Clock, FileText, ChevronDown, ChevronUp,
+  CheckCircle, Smartphone, ArrowRight, AlertTriangle
 } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 import { useEffect } from "react";
+import { pricing } from "@shared/facts";
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
@@ -37,15 +38,15 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 const faqs = [
   {
     question: "Is DentaSmart really free?",
-    answer: "Yes. You can download the app and run your first scan at no cost. The free scan gives you an Oral Health Score and a basic overview. Paid plans start at $19.99 for a one-time Quick Check, which adds visible concerns, key insights, a patient-friendly report, and Dr. Din support for 30 days."
+    answer: `The DentaSmart app is free to download, with a limited scan preview available before you choose a plan. Checks and plans are separate paid services. Quick Check costs ${pricing.quickCheck.priceFormatted} one-time, Second Opinion costs ${pricing.secondOpinion.priceFormatted} one-time, and Complete Care starts at ${pricing.completeCareIndividual.priceFormatted} per year.`
   },
   {
     question: "How accurate is an AI teeth scanner?",
-    answer: "DentaSmart uses computer vision trained on thousands of clinical dental images. It identifies common issues like cavities, gum inflammation, calculus buildup, and cracks. According to a 2023 study in the Journal of Dental Research, AI detection models achieved 85-95% sensitivity for common dental conditions. However, no app replaces a licensed dentist for diagnosis or treatment."
+    answer: "An AI teeth scanner can help highlight areas that may deserve attention, but performance depends on the image, the area being reviewed, and the tool. DentaSmart does not diagnose conditions or replace a licensed dentist's examination."
   },
   {
     question: "What can DentaSmart detect from a photo?",
-    answer: "From a mouth photo, DentaSmart can flag visible signs of cavities, plaque and tartar buildup, gum recession, swelling or redness, cracks, and discoloration. From an X-ray, it can highlight bone loss, hidden decay between teeth, root issues, and impacted teeth."
+    answer: "From a mouth photo, DentaSmart can help highlight visible areas such as discoloration, buildup, gum changes, or damage. Its X-ray workflow can help organize areas to discuss with a dentist. These educational observations are not a diagnosis."
   },
   {
     question: "Is my dental data private?",
@@ -57,7 +58,7 @@ const faqs = [
   },
   {
     question: "How is DentaSmart different from other AI dental apps?",
-    answer: "DentaSmart analyzes both mouth photos and dental X-rays (most competitors only do one). It provides dual reports (patient-friendly and dentist-ready versions), a personalized oral health score with tracking over time, and a guided self-examination process. It is rated 5.0 on the App Store."
+    answer: "DentaSmart supports mouth-photo and dental X-ray workflows, provides an Oral Health Score, and creates plain-language reports. Compare any app by supported inputs, report detail, price, privacy information, and whether it clearly states its professional-care limits."
   }
 ];
 
@@ -67,12 +68,12 @@ const softwareAppSchema = {
   name: "DentaSmart",
   operatingSystem: "iOS, Android",
   applicationCategory: "HealthApplication",
-  description: "Free AI teeth scanner app that analyzes mouth photos and dental X-rays to identify potential dental issues, provide an oral health score, and generate plain-language reports.",
+  description: "Oral health app with mouth-photo and dental X-ray workflows, an Oral Health Score, and plain-language educational reports.",
   offers: {
     "@type": "Offer",
     price: "0",
     priceCurrency: "USD",
-    description: "Free first scan included"
+    description: "App download at no cost; optional paid checks and plans are available"
   },
 };
 
@@ -98,8 +99,8 @@ const breadcrumbSchema = {
 const webPageSchema = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  name: "Free AI Teeth Scanner - Scan Your Teeth from Home",
-  description: "DentaSmart is a free AI teeth scanner that analyzes mouth photos and dental X-rays. Get an oral health score, spot potential issues, and understand your dental health in minutes.",
+  name: "Free AI Teeth Scanner Guide - What to Compare Before You Choose",
+  description: "Learn what free AI teeth scanner searches mean, what these tools can and cannot do, and how DentaSmart's free app download differs from paid checks and plans.",
   url: "https://dentasmart.ai/free-ai-teeth-scanner",
   inLanguage: "en-US",
   isPartOf: { "@type": "WebSite", name: "DentaSmart", url: "https://dentasmart.ai" },
@@ -113,8 +114,8 @@ export default function FreeAiTeethScanner() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
-        title="Free AI Teeth Scanner - Analyze Photos & X-Rays"
-        description="DentaSmart is a free AI teeth scanner that analyzes mouth photos and dental X-rays. Get an oral health score, spot potential issues, and understand your dental health in minutes."
+        title="Free AI Teeth Scanner Guide - What to Compare"
+        description="Learn what AI teeth scanners can and cannot do. DentaSmart is free to download, while Quick Check, Second Opinion, and Complete Care are paid services."
         canonical="https://dentasmart.ai/free-ai-teeth-scanner"
         keywords="free AI teeth scanner, AI dental scan, online teeth checkup, AI X-ray analysis, dental photo analysis, free dental scan app"
         jsonLd={[softwareAppSchema, faqSchema, breadcrumbSchema, webPageSchema]}
@@ -134,19 +135,19 @@ export default function FreeAiTeethScanner() {
             transition={{ duration: 0.8 }}
           >
             <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full text-primary text-sm font-medium mb-6">
-              <Camera className="w-4 h-4" /> Free AI Scanner
+              <Camera className="w-4 h-4" /> Free to download
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-4 leading-[1.1] max-w-4xl">
-              Free AI Teeth Scanner:{" "}
-              <span className="italic text-primary">Understand Your Dental Health from Home</span>
+              Looking for a Free AI Teeth Scanner?{" "}
+              <span className="italic text-primary">Know What to Compare First</span>
             </h1>
             <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed max-w-2xl mb-8">
-              Take a photo of your teeth or upload a dental X-ray. DentaSmart analyzes it in minutes and tells you what it sees, in plain language you can actually understand.
+              DentaSmart is free to download on iOS and Android. Mouth-photo checks, treatment-plan comparisons, and annual plans are paid services shown before purchase.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/download">
                 <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
-                  Scan Your Teeth for Free
+                  Download DentaSmart
                 </Button>
               </Link>
               <a href="#how-it-works">
@@ -164,9 +165,7 @@ export default function FreeAiTeethScanner() {
         <div className="container px-4 mx-auto max-w-4xl">
           <QuickAnswerBlock
             question="What is a free AI teeth scanner?"
-            answer="A free AI teeth scanner is a mobile app that uses computer vision to analyze photos of your mouth or dental X-rays. DentaSmart is one such tool: you take a photo, the AI identifies potential issues like cavities, gum disease, or calculus buildup, and you receive a plain-language report with an oral health score. Your first scan is free. According to a 2023 study published in the Journal of Dental Research, AI dental imaging models can detect common conditions with 85-95% sensitivity."
-            sourceUrl="https://pubmed.ncbi.nlm.nih.gov/36825642/"
-            sourceLabel="Journal of Dental Research, 2023"
+            answer={`A free AI teeth scanner usually means an app or web tool with no-cost access. Check what is actually included before uploading an image. DentaSmart is free to download, but Quick Check starts at ${pricing.quickCheck.priceFormatted} one-time and other services have separate prices.`}
           />
         </div>
       </section>
@@ -176,12 +175,12 @@ export default function FreeAiTeethScanner() {
         <div className="container px-4 mx-auto max-w-4xl">
           <div className="flex flex-wrap justify-center gap-6 md:gap-10 text-sm text-stone-600">
             <div className="flex items-center gap-2">
-              <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-              <span>5.0 on the App Store</span>
+              <Smartphone className="w-4 h-4 text-primary" />
+              <span>Available on iOS and Android</span>
             </div>
             <div className="flex items-center gap-2">
               <Camera className="w-4 h-4 text-primary" />
-              <span>Free first scan included</span>
+              <span>Paid services shown before purchase</span>
             </div>
             <div className="flex items-center gap-2">
               <Shield className="w-4 h-4 text-primary" />
@@ -189,7 +188,7 @@ export default function FreeAiTeethScanner() {
             </div>
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4 text-primary" />
-              <span>Results in under 10 minutes</span>
+              <span>Processing time varies by image quality and service</span>
             </div>
           </div>
         </div>
@@ -198,7 +197,7 @@ export default function FreeAiTeethScanner() {
       {/* What DentaSmart Scans */}
       <section className="py-10 bg-white">
         <div className="container px-4 mx-auto max-w-4xl">
-          <h2 className="text-3xl font-medium text-black mb-8">What DentaSmart Can Detect</h2>
+          <h2 className="text-3xl font-medium text-black mb-8">What DentaSmart Can Help Highlight</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="bg-stone-50 rounded-2xl p-6 border border-stone-100">
               <h3 className="text-lg font-medium text-black mb-4 flex items-center gap-2">
@@ -207,7 +206,7 @@ export default function FreeAiTeethScanner() {
               </h3>
               <ul className="space-y-2.5">
                 {[
-                  "Visible cavities and decay",
+                  "Visible areas that may look different from nearby teeth",
                   "Plaque and tartar buildup",
                   "Gum redness or swelling",
                   "Gum recession",
@@ -230,10 +229,10 @@ export default function FreeAiTeethScanner() {
                 {[
                   "Hidden decay between teeth",
                   "Bone loss around roots",
-                  "Root infections or abscesses",
+                  "Areas near roots to discuss with a dentist",
                   "Impacted teeth",
                   "Calculus below the gumline",
-                  "Abnormal structures",
+                  "Structures that may need professional review",
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-stone-700 font-light">
                     <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
@@ -249,12 +248,12 @@ export default function FreeAiTeethScanner() {
       {/* How It Works */}
       <section id="how-it-works" className="py-10 bg-stone-50">
         <div className="container px-4 mx-auto max-w-4xl">
-          <h2 className="text-3xl font-medium text-black mb-8">How the Free AI Scan Works</h2>
+          <h2 className="text-3xl font-medium text-black mb-8">How DentaSmart Works</h2>
           <div className="space-y-6">
             {[
-              { step: "1", title: "Download the app", desc: "DentaSmart is available on iOS and Android. Download free from the App Store or Google Play. No account required for your first scan." },
+              { step: "1", title: "Download the app", desc: "DentaSmart is available on iOS and Android and is free to download." },
               { step: "2", title: "Take a photo or upload an X-ray", desc: "Use your phone camera to photograph your teeth, or upload a dental X-ray image from your dentist. The app guides you through getting a clear shot." },
-              { step: "3", title: "Get your results", desc: "In under 10 minutes, you receive an oral health score, a color-coded findings map, and a plain-language explanation of what the AI detected." },
+              { step: "3", title: "Review the educational output", desc: "Processing time can vary by image quality and the selected service. The selected service explains supported observations in plain language and does not provide a diagnosis." },
               { step: "4", title: "Understand your next steps", desc: "The report includes a patient-friendly version you can read yourself and a dentist-ready version you can bring to your appointment." },
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-4 bg-white rounded-xl p-5 border border-stone-200">
@@ -271,52 +270,25 @@ export default function FreeAiTeethScanner() {
         </div>
       </section>
 
-      {/* What You Get Free vs Paid */}
+      {/* Download and paid-service boundary */}
       <section className="py-10 bg-white">
         <div className="container px-4 mx-auto max-w-4xl">
-          <h2 className="text-3xl font-medium text-black mb-8">What is Included Free vs. Paid</h2>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="border-b-2 border-stone-200">
-                  <th className="py-3 px-4 text-stone-500 font-medium text-sm">Feature</th>
-                  <th className="py-3 px-4 text-center text-stone-500 font-medium text-sm">Free Scan</th>
-                  <th className="py-3 px-4 text-center text-stone-500 font-medium text-sm">Quick Check ($19.99)</th>
-                  <th className="py-3 px-4 text-center text-stone-500 font-medium text-sm">Complete ($74.99/yr)</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-stone-100">
-                {[
-                  { feature: "Oral health score", free: true, quick: true, complete: true },
-                  { feature: "Visible concerns & key insights", free: false, quick: true, complete: true },
-                  { feature: "Patient-friendly report (save/share)", free: false, quick: true, complete: true },
-                  { feature: "Dr. Din support", free: false, quick: true, complete: true },
-                  { feature: "Guided self-examination", free: false, quick: false, complete: true },
-                  { feature: "Complete detailed report", free: false, quick: false, complete: true },
-                  { feature: "Treatment options & cost estimates", free: false, quick: false, complete: true },
-                  { feature: "Personalized guidance & care plan", free: false, quick: false, complete: true },
-                  { feature: "Unlimited scans", free: false, quick: false, complete: true },
-                  { feature: "Progress tracking over time", free: false, quick: false, complete: true },
-                  { feature: "24/7 Dr. Din (always on)", free: false, quick: false, complete: true },
-                ].map((row, i) => (
-                  <tr key={i} className="hover:bg-stone-50">
-                    <td className="py-3 px-4 text-stone-700 font-light text-sm">{row.feature}</td>
-                    <td className="py-3 px-4 text-center">
-                      {row.free ? <CheckCircle className="w-4 h-4 text-primary mx-auto" /> : <span className="text-stone-300">-</span>}
-                    </td>
-                    <td className="py-3 px-4 text-center">
-                      {row.quick ? <CheckCircle className="w-4 h-4 text-primary mx-auto" /> : <span className="text-stone-300">-</span>}
-                    </td>
-                    <td className="py-3 px-4 text-center">
-                      {row.complete ? <CheckCircle className="w-4 h-4 text-primary mx-auto" /> : <span className="text-stone-300">-</span>}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <h2 className="text-3xl font-medium text-black mb-8">Free Download vs. Paid Services</h2>
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+            {[
+              { title: "App download", price: "$0", detail: "Install DentaSmart from the App Store or Google Play." },
+              { title: pricing.quickCheck.name, price: `${pricing.quickCheck.priceFormatted} ${pricing.quickCheck.billingLabel}`, detail: "A paid one-time mouth-photo check." },
+              { title: pricing.completeCareIndividual.name, price: `From ${pricing.completeCareIndividual.priceFormatted}${pricing.completeCareIndividual.billingLabel}`, detail: "An annual individual plan; family pricing is listed separately." },
+            ].map((option) => (
+              <article key={option.title} className="rounded-2xl border border-stone-200 bg-stone-50 p-6">
+                <h3 className="font-medium text-black">{option.title}</h3>
+                <p className="my-2 text-2xl font-medium text-action">{option.price}</p>
+                <p className="text-sm leading-relaxed text-stone-600">{option.detail}</p>
+              </article>
+            ))}
           </div>
           <p className="text-sm text-stone-500 mt-4 font-light">
-            All plans include dual reports (patient-friendly and dentist-ready versions). <Link href="/pricing"><span className="text-action hover:underline cursor-pointer">See full pricing details</span></Link>.
+            <Link href="/pricing" className="text-action hover:underline cursor-pointer">See current prices and service details</Link> before choosing.
           </p>
         </div>
       </section>
@@ -357,58 +329,33 @@ export default function FreeAiTeethScanner() {
         <div className="container px-4 mx-auto max-w-4xl text-center">
           <h2 className="text-2xl font-medium text-black mb-3">Not sure what is going on with your teeth?</h2>
           <p className="text-stone-600 font-light mb-6 max-w-xl mx-auto">
-            Scan your teeth for free and get a plain-language read in minutes. No appointment, no waiting room.
+            Download the app, then choose the paid check or plan that fits your goal. The service price is shown before purchase.
           </p>
           <Link href="/download">
             <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-10 py-6 text-lg font-medium cursor-pointer shadow-lg">
               <Smartphone className="w-5 h-5 mr-2" />
-              Get the Free App
+              Download DentaSmart
             </Button>
           </Link>
         </div>
       </section>
 
-      {/* How DentaSmart Compares */}
+      {/* Choosing an AI teeth scanner */}
       <section className="py-10 bg-white">
         <div className="container px-4 mx-auto max-w-4xl">
-          <h2 className="text-3xl font-medium text-black mb-8">How DentaSmart Compares to Other AI Dental Tools</h2>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="border-b-2 border-stone-200">
-                  <th className="py-3 px-4 text-stone-500 font-medium text-sm">Feature</th>
-                  <th className="py-3 px-4 text-center font-medium text-sm text-action">DentaSmart</th>
-                  <th className="py-3 px-4 text-center text-stone-500 font-medium text-sm">Dental.com SmartScan</th>
-                  <th className="py-3 px-4 text-center text-stone-500 font-medium text-sm">Dentistry.one SmileScan</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-stone-100">
-                {[
-                  { feature: "Mouth photo analysis", ds: true, dental: true, dentistry: true },
-                  { feature: "X-ray analysis", ds: true, dental: false, dentistry: false },
-                  { feature: "Free first scan", ds: true, dental: true, dentistry: true },
-                  { feature: "Oral health score", ds: true, dental: false, dentistry: true },
-                  { feature: "Dual reports (patient + dentist)", ds: true, dental: false, dentistry: false },
-                  { feature: "Guided self-examination", ds: true, dental: false, dentistry: false },
-                  { feature: "Progress tracking over time", ds: true, dental: false, dentistry: false },
-                  { feature: "24/7 AI chat guide", ds: true, dental: false, dentistry: false },
-                  { feature: "App Store rating", ds: "5.0", dental: "4.2", dentistry: "N/A" },
-                ].map((row, i) => (
-                  <tr key={i} className="hover:bg-stone-50">
-                    <td className="py-3 px-4 text-stone-700 font-light text-sm">{row.feature}</td>
-                    <td className="py-3 px-4 text-center">
-                      {typeof row.ds === "boolean" ? (row.ds ? <CheckCircle className="w-4 h-4 text-action mx-auto" /> : <span className="text-stone-300">-</span>) : <span className="text-action font-medium text-sm">{row.ds}</span>}
-                    </td>
-                    <td className="py-3 px-4 text-center">
-                      {typeof row.dental === "boolean" ? (row.dental ? <CheckCircle className="w-4 h-4 text-stone-400 mx-auto" /> : <span className="text-stone-300">-</span>) : <span className="text-stone-600 text-sm">{row.dental}</span>}
-                    </td>
-                    <td className="py-3 px-4 text-center">
-                      {typeof row.dentistry === "boolean" ? (row.dentistry ? <CheckCircle className="w-4 h-4 text-stone-400 mx-auto" /> : <span className="text-stone-300">-</span>) : <span className="text-stone-600 text-sm">{row.dentistry}</span>}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <h2 className="text-3xl font-medium text-black mb-8">What to Compare Before You Choose</h2>
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+            {[
+              { title: "Supported inputs", detail: "Check whether the service accepts mouth photos, X-rays, or both, and whether your image type is supported." },
+              { title: "Output and limitations", detail: "Look for plain-language reports, clear uncertainty, and an explicit statement that the tool does not diagnose." },
+              { title: "Full price", detail: "Separate a free app download from paid checks, subscriptions, and optional services." },
+              { title: "Privacy and follow-up", detail: "Review the privacy policy and understand when the service tells you to seek professional care." },
+            ].map((item) => (
+              <article key={item.title} className="rounded-2xl border border-stone-200 bg-stone-50 p-6">
+                <h3 className="mb-2 font-medium text-black">{item.title}</h3>
+                <p className="text-sm leading-relaxed text-stone-600">{item.detail}</p>
+              </article>
+            ))}
           </div>
           <p className="text-sm text-stone-500 mt-4 font-light">
             Comparison based on publicly available information as of June 2026. Features may change. <Link href="/best-ai-dental-apps"><span className="text-action hover:underline cursor-pointer">Read the full comparison</span></Link>.

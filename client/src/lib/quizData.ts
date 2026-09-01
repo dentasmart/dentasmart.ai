@@ -31,7 +31,7 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "pain",
     question: "Are you experiencing any tooth or mouth pain?",
-    subtitle: "Pain is your body's way of telling you something needs attention.",
+    subtitle: "Describe what you notice. The quiz cannot diagnose the cause.",
     options: [
       { label: "No pain at all", value: "none", riskWeight: 0, tags: [] },
       { label: "Mild discomfort that comes and goes", value: "mild", riskWeight: 1, tags: ["sensitivity"] },
@@ -42,7 +42,7 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "bleeding",
     question: "Do your gums bleed when you brush or floss?",
-    subtitle: "Bleeding gums are one of the earliest signs of gum problems.",
+    subtitle: "Record how often bleeding occurs. A dentist can evaluate the cause.",
     options: [
       { label: "Never", value: "never", riskWeight: 0, tags: [] },
       { label: "Rarely, only when I floss hard", value: "rarely", riskWeight: 1, tags: ["gum-disease"] },
@@ -53,7 +53,7 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "sensitivity",
     question: "Do hot or cold foods/drinks cause discomfort?",
-    subtitle: "Sensitivity can point to enamel wear, cavities, or exposed roots.",
+    subtitle: "Sensitivity can have several causes that require professional evaluation.",
     options: [
       { label: "No sensitivity at all", value: "none", riskWeight: 0, tags: [] },
       { label: "Only with very cold things like ice cream", value: "cold-only", riskWeight: 1, tags: ["sensitive-teeth"] },
@@ -64,7 +64,7 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "appearance",
     question: "Have you noticed any changes in how your teeth or gums look?",
-    subtitle: "Visual changes often signal developing issues worth checking.",
+    subtitle: "Record visible changes so you can describe them to a dental professional.",
     options: [
       { label: "Everything looks normal", value: "normal", riskWeight: 0, tags: [] },
       { label: "Some staining or discoloration", value: "staining", riskWeight: 1, tags: ["teeth-whitening", "tooth-discoloration"] },
@@ -86,7 +86,7 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "dental-history",
     question: "When was your last dental visit?",
-    subtitle: "Regular checkups catch problems early, before they get expensive.",
+    subtitle: "Visit timing depends on your history, symptoms, age, and risk factors.",
     options: [
       { label: "Within the last 6 months", value: "recent", riskWeight: 0, tags: [] },
       { label: "6 to 12 months ago", value: "moderate", riskWeight: 1, tags: [] },
@@ -97,7 +97,7 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "urgency",
     question: "How would you describe your main concern right now?",
-    subtitle: "Understanding your priority helps us give better guidance.",
+    subtitle: "This helps organize the summary but does not determine urgency.",
     options: [
       { label: "Just curious about my oral health", value: "curious", riskWeight: 0, tags: [] },
       { label: "I want to prevent future problems", value: "prevention", riskWeight: 0, tags: [] },
@@ -108,7 +108,7 @@ export const quizQuestions: QuizQuestion[] = [
   {
     id: "insurance",
     question: "Do you currently have dental insurance?",
-    subtitle: "This helps us tailor cost-saving recommendations for you.",
+    subtitle: "This helps us show general affordability resources when relevant.",
     options: [
       { label: "Yes, I have dental insurance", value: "insured", riskWeight: 0, tags: [] },
       { label: "No, I don't have dental insurance", value: "uninsured", riskWeight: 0, tags: [] },
@@ -178,12 +178,12 @@ export function calculateQuizResult(answers: Record<string, string>): QuizResult
   if (riskPercent >= 0.45 || isUrgent) {
     return {
       level: "high",
-      title: "Your Oral Health Needs Attention",
+      title: "Your Answers Include Warning Signs",
       summary:
-        "Based on your answers, there are signs that something in your mouth may need professional attention soon. The good news is that catching problems early almost always means simpler, cheaper treatment.",
+        "Your answers include symptoms that may need prompt professional evaluation. This quiz cannot diagnose the cause or determine urgency.",
       recommendations: [
-        "Get a professional dental evaluation within the next 1-2 weeks",
-        "Use DentaSmart to scan your teeth and get an AI-powered second opinion before your visit",
+        "Contact a dental professional promptly and describe your symptoms",
+        "Seek urgent dental or medical care for severe pain, facial swelling, uncontrolled bleeding, trauma, fever, or trouble breathing or swallowing",
         "Document your symptoms (when they started, what triggers them) to share with your dentist",
         ...(insuranceStatus === "uninsured"
           ? ["Check our guide on finding affordable dental care without insurance"]
@@ -191,40 +191,40 @@ export function calculateQuizResult(answers: Record<string, string>): QuizResult
       ],
       matchedConditions,
       urgency: isUrgent
-        ? "We recommend seeing a dentist as soon as possible. If you're in severe pain, consider an emergency dental visit."
-        : "Schedule a dental appointment within the next 1-2 weeks.",
+        ? "Contact a dental professional now. Trouble breathing or swallowing, severe facial swelling, or uncontrolled bleeding needs emergency medical care."
+        : "Arrange a dental appointment promptly, especially if symptoms persist or worsen.",
     };
   }
 
   if (riskPercent >= 0.2) {
     return {
       level: "moderate",
-      title: "A Few Things Worth Watching",
+      title: "Your Answers Include Symptoms to Review",
       summary:
-        "Your answers suggest some areas that could use a closer look. Nothing alarming, but staying on top of these now can save you from bigger problems (and bigger bills) down the road.",
+        "Your answers include symptoms or habits worth discussing with a dental professional. This quiz cannot rule out a condition or confirm that a symptom is harmless.",
       recommendations: [
-        "Schedule a dental checkup if it's been more than 6 months",
-        "Use DentaSmart to monitor your oral health between visits",
+        "Arrange a dental checkup if symptoms persist, worsen, or concern you",
+        "Use DentaSmart to organize educational information between visits",
         "Focus on consistent brushing (2 min, twice daily) and daily flossing",
         "Consider a sensitivity toothpaste if hot/cold foods bother you",
       ],
       matchedConditions,
-      urgency: "No rush, but a checkup within the next month would be a smart move.",
+      urgency: "Contact a dental professional sooner if symptoms worsen or urgent warning signs appear.",
     };
   }
 
   return {
     level: "low",
-    title: "Your Oral Health Looks Good",
+    title: "No High-Weight Warning Pattern Reported",
     summary:
-      "Great news! Based on your answers, your oral health seems to be in solid shape. Keep doing what you're doing, and use DentaSmart to stay on track between dental visits.",
+      "Your answers did not include the quiz's higher-weight warning pattern. This does not rule out dental problems or replace routine professional care.",
     recommendations: [
       "Keep up your brushing and flossing routine",
-      "Use DentaSmart to track your oral health score over time",
-      "Schedule your next dental checkup within 6 months",
-      "Consider whitening or cosmetic improvements if appearance is a concern",
+      "Use DentaSmart to organize educational information between visits",
+      "Follow the examination schedule recommended by your dentist",
+      "Contact a dentist if new, persistent, or worsening symptoms appear",
     ],
     matchedConditions,
-    urgency: "No immediate concerns. Keep up the good work!",
+    urgency: "This quiz cannot confirm that no concern is present. Seek professional advice when you are unsure.",
   };
 }

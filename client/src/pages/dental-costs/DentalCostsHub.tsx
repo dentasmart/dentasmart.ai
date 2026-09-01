@@ -40,23 +40,23 @@ const faqs = [
   },
   {
     q: "What is the most expensive dental procedure?",
-    a: "Full mouth reconstruction is the most expensive dental procedure, costing $15,000 to $40,000 or more. Single dental implants run $3,000-$6,000 each. Full arch implant-supported dentures (All-on-4) cost $12,000-$25,000 per arch. Braces and orthodontic treatment range from $2,500 to $7,000.",
+    a: "Complex full-mouth treatment can be among the most expensive dental care, but the total depends on the procedures, materials, location, and provider. Ask for an itemized treatment plan and compare qualified providers before deciding.",
   },
   {
     q: "Does dental insurance cover everything?",
-    a: "No. Most dental insurance plans cover 100% of preventive care (exams, cleanings, X-rays), 80% of basic procedures (fillings, extractions), and only 50% of major procedures (crowns, bridges, implants). Annual maximums are typically $1,000-$2,000, which means you pay out of pocket for anything beyond that limit.",
+    a: "No. Coverage, deductibles, waiting periods, exclusions, and annual limits vary by plan. Review your plan documents and ask your insurer and dental office for a written estimate of your expected share.",
   },
   {
     q: "How can I save money on dental work?",
-    a: "The best ways to save: get preventive care to avoid expensive problems, ask about payment plans, compare prices between providers, use dental discount plans ($80-$200/year for 10-60% off), visit dental schools for 30-50% lower costs, and use HSA/FSA pre-tax dollars. DentaSmart's free AI assessment helps you understand what you actually need before committing to treatment.",
+    a: "Ask for a written treatment plan, compare prices between providers, review payment options, and check whether dental schools or discount plans are available in your area. DentaSmart's educational tools can help you organize questions, but a licensed dentist must diagnose conditions and recommend treatment.",
   },
   {
     q: "Are dental costs different by state?",
-    a: "Yes, significantly. Dental costs in New York City, San Francisco, and Los Angeles can be 50-100% higher than in rural areas or smaller cities. The same root canal might cost $700 in a small town and $1,500 in Manhattan. Cost of living, rent, and local competition all affect dental pricing.",
+    a: "Yes. Prices can vary by state, city, provider, treatment complexity, materials, and local operating costs. Request itemized estimates from qualified providers in your area for a useful comparison.",
   },
   {
     q: "Is it cheaper to go to a dental school?",
-    a: "Yes. Dental schools typically charge 30-50% less than private practices. The work is done by supervised students under licensed faculty. Appointments take longer, but the quality is closely monitored. Search for ADA-accredited dental schools near you for the biggest savings.",
+    a: "Dental schools may offer lower-cost care in some areas, with students working under faculty supervision. Availability, eligibility, appointment length, and fees vary, so contact an accredited program directly for current details.",
   },
 ];
 
@@ -90,7 +90,6 @@ const webPageJsonLd = {
   isPartOf: { "@type": "WebSite", name: "DentaSmart", url: "https://dentasmart.ai" },
   about: [{ "@type": "MedicalCondition", name: "Dental Care Costs" }],
   audience: { "@type": "MedicalAudience", name: "Patients" },
-  lastReviewed: "2026-04-07",
 };
 
 const fadeUp = {
@@ -105,7 +104,7 @@ export default function DentalCostsHub() {
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
         title="Dental Costs in 2026: Price Guide | DentaSmart"
-        description="See what every dental procedure actually costs in 2026, with and without insurance. Root canals, implants, braces, crowns, and more. Plus 7 ways to save. Free AI dental assessment included."
+        description="Compare typical 2026 dental procedure costs with and without insurance, including root canals, implants, braces, crowns, and more."
         canonical="https://dentasmart.ai/dental-costs"
         keywords="how much does dental work cost, dental procedure costs, dentist prices without insurance, dental costs 2026, root canal cost, dental implant cost, braces cost, dental crown cost, teeth whitening cost, dental cleaning cost"
         jsonLd={[faqJsonLd, breadcrumbJsonLd, webPageJsonLd]}
@@ -131,16 +130,17 @@ export default function DentalCostsHub() {
               Nobody should walk into a dentist's office without knowing what to expect. Here are real prices for every common dental procedure in 2026, with and without insurance, plus ways to save.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/download">
-                <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
-                  Get Your Free AI Assessment
+              <a
+                href="#cost-table"
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-action px-8 py-3 text-base font-medium text-action-foreground shadow-lg transition-all hover:scale-105 hover:bg-action-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring w-full sm:w-auto"
+              >
+                See All Costs
+              </a>
+              <Link href="/pricing">
+                <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
+                  Explore DentaSmart Options <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
-              <a href="#cost-table">
-                <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
-                  See All Costs <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </a>
             </div>
           </motion.div>
         </div>
@@ -262,14 +262,14 @@ export default function DentalCostsHub() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
             <motion.div {...fadeUp}>
               <h2 className="text-3xl md:text-4xl font-normal text-black mb-4 leading-tight">
-                The biggest dental expense isn't the procedure. <br />
-                <span className="italic text-primary">It's not knowing what you need.</span>
+                A dental estimate can be hard to compare. <br />
+                <span className="italic text-primary">Clear questions help.</span>
               </h2>
               <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed mb-4">
-                Most people overpay for dental work because they walk in blind. They don't know what's wrong, what it should cost, or whether they even need the treatment being recommended.
+                Treatment prices vary by provider, location, insurance, and the details of your case. Ask for a written plan so you can compare the procedure, price, alternatives, and timing.
               </p>
               <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed">
-                DentaSmart changes that. Upload a photo of your teeth and get a free AI assessment in 10 minutes. You'll know what to expect before you spend a single dollar.
+                This guide helps you understand common price ranges. DentaSmart can also help you organize supported information and questions, but a dentist must diagnose your condition and recommend care.
               </p>
             </motion.div>
             <motion.div
@@ -280,14 +280,14 @@ export default function DentalCostsHub() {
             >
               <div className="bg-stone-50 rounded-2xl p-5 md:p-6 border border-stone-100">
                 <h3 className="text-lg font-medium text-black mb-4 flex items-center gap-2">
-                  <AlertTriangle className="w-5 h-5 text-amber-500" /> What Waiting Costs You
+                  <AlertTriangle className="w-5 h-5 text-amber-500" /> Questions to Ask About an Estimate
                 </h3>
                 <div className="space-y-4">
                   {[
-                    { stage: "Preventive cleaning", cost: "$130", time: "Every 6 months", color: "bg-primary" },
-                    { stage: "Small cavity filling", cost: "$150-$250", time: "Caught early", color: "bg-primary" },
-                    { stage: "Root canal + crown", cost: "$1,700-$4,000", time: "Delayed 1-2 years", color: "bg-orange-500" },
-                    { stage: "Extraction + implant", cost: "$3,500-$6,500", time: "Delayed 2+ years", color: "bg-red-500" },
+                    { stage: "What is included?", cost: "Ask for details", time: "Procedure, imaging, follow-up", color: "bg-primary" },
+                    { stage: "Are there alternatives?", cost: "Compare options", time: "Benefits, limits, total cost", color: "bg-primary" },
+                    { stage: "How urgent is it?", cost: "Ask your dentist", time: "Clinical timing and risks", color: "bg-orange-500" },
+                    { stage: "What will insurance pay?", cost: "Verify coverage", time: "Deductible, limits, exclusions", color: "bg-red-500" },
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-center gap-3 md:gap-4">
                       <div className={`w-3 h-3 rounded-full ${item.color} flex-shrink-0`} />
@@ -302,7 +302,7 @@ export default function DentalCostsHub() {
                   ))}
                 </div>
                 <div className="mt-4 pt-4 border-t border-stone-200 text-center">
-                  <p className="text-sm text-stone-600 font-light">Early detection saves <span className="font-medium text-primary">$3,000+</span> per tooth</p>
+                  <p className="text-sm text-stone-600 font-light">Get the plan and total estimate <span className="font-medium text-primary">in writing</span> before you decide.</p>
                 </div>
               </div>
             </motion.div>
@@ -315,25 +315,25 @@ export default function DentalCostsHub() {
         <div className="container px-4 mx-auto max-w-6xl">
           <motion.div {...fadeUp} className="mb-8">
             <h2 className="text-3xl md:text-4xl font-normal text-black mb-2">
-              How DentaSmart helps you <span className="italic text-primary">spend smarter</span>
+              How DentaSmart supports a <span className="italic text-primary">better-informed decision</span>
             </h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {[
               {
                 icon: Search,
-                title: "Know Before You Go",
-                desc: "Upload a photo of your teeth and get AI-powered insights in minutes. Understand what's happening before you walk into a dental office and get quoted.",
+                title: "Review Common Price Ranges",
+                desc: "Use these cost guides to understand typical ranges and the factors that can change your estimate.",
               },
               {
                 icon: Shield,
-                title: "Skip Unnecessary Treatment",
-                desc: "Not every recommendation is essential. DentaSmart helps you understand what you actually need vs. what can wait. So you don't overspend on things that aren't urgent.",
+                title: "Prepare Better Questions",
+                desc: "With an applicable DentaSmart check or plan, organize supported information and terms to discuss with your dentist.",
               },
               {
                 icon: TrendingDown,
-                title: "Catch Problems Early",
-                desc: "A $130 cleaning prevents a $1,000 root canal. DentaSmart's AI monitoring helps you stay ahead of expensive surprises by catching issues when they're still cheap to fix.",
+                title: "Compare the Full Plan",
+                desc: "Ask about alternatives, clinical timing, follow-up care, insurance coverage, and the total expected cost.",
               },
             ].map((item, idx) => (
               <motion.div
@@ -353,9 +353,9 @@ export default function DentalCostsHub() {
             ))}
           </div>
           <div className="mt-6 text-center">
-            <Link href="/download">
+            <Link href="/pricing">
               <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
-                Try Your Free AI Assessment <ArrowRight className="w-4 h-4 ml-2" />
+                Explore DentaSmart Options <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
           </div>
@@ -437,20 +437,20 @@ export default function DentalCostsHub() {
         <div className="container px-4 mx-auto max-w-4xl text-center">
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-4xl font-normal mb-3 text-white">
-              Stop guessing about dental costs.
+              Compare costs before you decide
             </h2>
             <p className="text-base md:text-lg text-stone-300 font-light mb-6 max-w-2xl mx-auto">
-              DentaSmart gives you a free AI assessment so you know what's going on in your mouth before you spend anything at the dentist. Know your options. Save your money.
+              Review common price ranges, ask for a written treatment plan, and compare DentaSmart's paid options if you want help organizing supported information.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/download">
-                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
-                  Download DentaSmart Free
+              <Link href="/pricing">
+                <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
+                  View Pricing
                 </Button>
               </Link>
               <Link href="/symptom-quiz">
                 <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
-                  Try Free Symptom Check
+                  Start Free Symptom Quiz
                 </Button>
               </Link>
             </div>

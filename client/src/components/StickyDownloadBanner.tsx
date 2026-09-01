@@ -29,6 +29,7 @@ export default function StickyDownloadBanner() {
   const isExcluded = excludedPaths.some((p) => location.startsWith(p));
 
   const context = getPageContext(location);
+  const isFreeQuiz = context.ctaAction === "symptom-quiz";
 
   useEffect(() => {
     // Check if already dismissed this session
@@ -93,11 +94,6 @@ export default function StickyDownloadBanner() {
       cta_text: context.ctaButtonText,
     });
 
-    if (context.ctaAction === "symptom-quiz") {
-      // Internal navigation handled by Link
-      return;
-    }
-    window.location.href = "/download";
   };
 
   // ── Mobile: Full-width bottom bar ──
@@ -120,27 +116,17 @@ export default function StickyDownloadBanner() {
                 {context.ctaHeadline}
               </p>
               <p className="text-xs text-stone-500 leading-tight mt-0.5">
-                Free. No insurance needed.
+                {isFreeQuiz ? "Free symptom quiz" : "Prices shown before purchase"}
               </p>
             </div>
-            {context.ctaAction === "symptom-quiz" ? (
-              <Link
-                href={context.ctaLink}
-                onClick={handleClick}
-                className="bg-action text-action-foreground text-sm font-semibold px-4 py-2.5 rounded-full hover:bg-action-hover transition-colors flex-shrink-0 cursor-pointer inline-flex min-h-11 items-center gap-1"
-              >
-                {context.ctaButtonText.split(" ").slice(0, 2).join(" ")}
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            ) : (
-              <button
-                onClick={handleClick}
-                className="bg-action text-action-foreground text-sm font-semibold px-4 py-2.5 rounded-full hover:bg-action-hover transition-colors flex-shrink-0 cursor-pointer inline-flex min-h-11 items-center gap-1"
-              >
-                {context.ctaButtonText.split(" ").slice(0, 2).join(" ")}
-                <ArrowRight className="w-3.5 h-3.5" />
-              </button>
-            )}
+            <Link
+              href={context.ctaLink}
+              onClick={handleClick}
+              className="bg-action text-action-foreground text-sm font-semibold px-4 py-2.5 rounded-full hover:bg-action-hover transition-colors flex-shrink-0 cursor-pointer inline-flex min-h-11 items-center gap-1"
+            >
+              {context.ctaButtonText.split(" ").slice(0, 2).join(" ")}
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
             <button
               onClick={handleDismiss}
               className="min-h-11 min-w-11 inline-flex items-center justify-center text-stone-400 hover:text-stone-600 transition-colors flex-shrink-0 cursor-pointer"
@@ -180,34 +166,19 @@ export default function StickyDownloadBanner() {
             </p>
           </div>
 
-          {/* Social proof */}
+          {/* Purchase context */}
           <div className="flex items-center gap-3 mb-3 text-xs text-stone-400">
-            <span className="flex items-center gap-0.5">
-              <span className="text-yellow-500">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-              5.0
-            </span>
-            <span className="w-1 h-1 rounded-full bg-stone-300" />
-            <span>Free to start</span>
+            <span>{isFreeQuiz ? "Free symptom quiz" : "Prices shown before purchase"}</span>
           </div>
 
-          {context.ctaAction === "symptom-quiz" ? (
-            <Link
-              href={context.ctaLink}
-              onClick={handleClick}
-              className="w-full bg-action text-action-foreground hover:bg-action-hover rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15 inline-flex min-h-11 items-center justify-center gap-1.5"
-            >
-              {context.ctaButtonText}
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          ) : (
-            <button
-              onClick={handleClick}
-              className="w-full bg-action text-action-foreground hover:bg-action-hover rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15 inline-flex min-h-11 items-center justify-center gap-1.5"
-            >
-              {context.ctaButtonText}
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          )}
+          <Link
+            href={context.ctaLink}
+            onClick={handleClick}
+            className="w-full bg-action text-action-foreground hover:bg-action-hover rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15 inline-flex min-h-11 items-center justify-center gap-1.5"
+          >
+            {context.ctaButtonText}
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
     </div>

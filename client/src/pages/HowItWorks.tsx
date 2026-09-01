@@ -14,7 +14,7 @@ export default function HowItWorks() {
     <div className="min-h-screen flex flex-col bg-white font-sans text-foreground selection:bg-primary/20">
       <SEO
         title="How DentaSmart Works - AI Dental Analysis in 4 Simple Steps"
-        description="Learn how DentaSmart's AI-powered platform analyzes your dental photos to provide an oral health score, identify issues, and create a personalized care plan."
+        description="Learn how DentaSmart reviews supported dental photos, X-rays, symptoms, and treatment documents to provide educational reports and questions for your dentist."
         canonical="https://dentasmart.ai/how-it-works"
       />
       <Navigation />
@@ -29,10 +29,10 @@ export default function HowItWorks() {
             How AI Dental Analysis Works
           </h2>
           <p className="text-lg text-stone-700 leading-relaxed mb-4">
-            DentaSmart uses artificial intelligence to analyze photos of your teeth and dental X-rays. Whether you are dealing with tooth pain, bleeding gums, a chipped tooth, or just want to check on your oral health between dental visits, the app gives you a clear starting point in minutes — no appointment needed.
+            DentaSmart uses artificial intelligence to review supported photos of your teeth, dental X-rays, symptoms, and treatment documents. Whether you are dealing with tooth pain, bleeding gums, a chipped tooth, or want to organize questions before a dental visit, the app gives you an educational starting point.
           </p>
           <p className="text-lg text-stone-700 leading-relaxed mb-4">
-            Upload a mouth photo or an X-ray image, and the AI identifies potential issues like cavities, gum disease, plaque buildup, tooth decay, cracked teeth, and early signs of periodontitis. You receive an Oral Health Score from 0 to 100, a plain-English explanation of findings, and a personalized dental care plan you can follow at home or bring to your dentist.
+            Upload supported information, and DentaSmart highlights visible areas or details that may be worth discussing. Depending on the service you choose, you can receive an Oral Health Score, plain-English explanations, cost context, and questions to bring to your dentist.
           </p>
           <p className="text-lg text-stone-700 leading-relaxed">
             DentaSmart is not a replacement for a licensed dentist. It is an educational tool that helps you understand what is happening in your mouth, prepare better questions for your dental visit, and catch potential problems before they become expensive emergencies.
@@ -61,7 +61,7 @@ export default function HowItWorks() {
               </div>
               <h3 className="text-2xl font-medium text-foreground mb-4">Capture</h3>
               <p className="text-muted-foreground font-normal leading-relaxed max-w-xs">
-                Answer guided self-examination questions, take 2 mouth photos or upload X-rays.
+                Add the supported photos, X-rays, symptoms, or treatment documents needed for your chosen service.
               </p>
             </motion.div>
 
@@ -79,7 +79,7 @@ export default function HowItWorks() {
               </div>
               <h3 className="text-2xl font-medium text-foreground mb-4">Analyze</h3>
               <p className="text-muted-foreground font-normal leading-relaxed max-w-xs">
-                AI highlights what to watch and why it matters.
+                DentaSmart organizes the information and highlights details that may warrant attention.
               </p>
             </motion.div>
 
@@ -97,7 +97,7 @@ export default function HowItWorks() {
               </div>
               <h3 className="text-2xl font-medium text-foreground mb-4">Understand</h3>
               <p className="text-muted-foreground font-normal leading-relaxed max-w-xs">
-                Two reports: a plain-English version for you and a clinical version for your dentist. Both downloadable as PDF.
+                Review plain-English educational insights and, when included, a more detailed report you can share with your dentist.
               </p>
             </motion.div>
 
@@ -115,7 +115,7 @@ export default function HowItWorks() {
               </div>
               <h3 className="text-2xl font-medium text-foreground mb-4">Act</h3>
               <p className="text-muted-foreground font-normal leading-relaxed max-w-xs">
-                Follow a simple plan or bring the report to your dentist.
+                Use the report to monitor your records and prepare questions for professional care.
               </p>
             </motion.div>
           </div>
@@ -133,13 +133,13 @@ export default function HowItWorks() {
           <div className="mb-10">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-medium text-sm flex-shrink-0">1</div>
-              <h3 className="text-2xl font-medium text-foreground">Complete a Guided Self-Examination</h3>
+              <h3 className="text-2xl font-medium text-foreground">Add the Information for Your Service</h3>
             </div>
             <p className="text-stone-700 leading-relaxed mb-3 ml-[52px]">
-              Before you take any photos, DentaSmart walks you through a quick self-examination. You will answer simple questions about your symptoms — things like tooth sensitivity to hot or cold, bleeding when brushing, jaw pain, bad breath, or visible discoloration. This context helps the AI provide more accurate and relevant insights.
+              DentaSmart asks for the information needed for the service you choose. Quick Check can use supported mouth photos and dental X-rays. Second Opinion can use a treatment plan, bills, and X-rays. Complete Care includes guided self-examination and ongoing monitoring tools.
             </p>
             <p className="text-stone-700 leading-relaxed ml-[52px]">
-              The self-exam includes a Bite Pressure Test, a Cold Sensitivity Test, and a Visual Inspection checklist. It takes about two minutes and gives the AI the clinical context it needs to go beyond what a photo alone can show.
+              When guided self-examination is included, it can record observations from a Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection checklist. These observations add context but do not replace a clinical examination.
             </p>
           </div>
 
@@ -147,13 +147,13 @@ export default function HowItWorks() {
           <div className="mb-10">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-medium text-sm flex-shrink-0">2</div>
-              <h3 className="text-2xl font-medium text-foreground">Upload Dental Photos or X-Rays for AI Analysis</h3>
+              <h3 className="text-2xl font-medium text-foreground">DentaSmart Reviews the Submitted Information</h3>
             </div>
             <p className="text-stone-700 leading-relaxed mb-3 ml-[52px]">
-              Take two photos of your teeth using your phone camera — one of your upper teeth and one of your lower teeth. If you have dental X-rays from a recent visit, you can upload those instead. DentaSmart accepts both intraoral photos and panoramic or bitewing X-ray images.
+              Follow the in-app instructions for supported photos or documents. If you have dental X-rays from a recent visit, you can add them when the selected service supports them.
             </p>
             <p className="text-stone-700 leading-relaxed ml-[52px]">
-              The AI scans your images for signs of common dental problems including cavities, tooth decay, gum recession, tartar buildup, cracked or chipped teeth, misalignment, and early-stage periodontal disease. Color-coded overlays highlight exactly where each finding is located, so you can see what the AI detected on your own image.
+              DentaSmart can highlight visible areas and organize observations from the information you submit. Color-coded overlays and plain-language notes are educational aids, not a diagnosis or a substitute for a dentist's examination.
             </p>
           </div>
 
@@ -161,13 +161,13 @@ export default function HowItWorks() {
           <div className="mb-10">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-medium text-sm flex-shrink-0">3</div>
-              <h3 className="text-2xl font-medium text-foreground">Receive Your Oral Health Report in Plain English</h3>
+              <h3 className="text-2xl font-medium text-foreground">Review Your Educational Report</h3>
             </div>
             <p className="text-stone-700 leading-relaxed mb-3 ml-[52px]">
-              Within minutes, you receive two reports. The first is written in plain English for you — no dental jargon, no confusing terminology. It explains what the AI found, how serious each issue might be, and what you can do about it. The second is a clinical report formatted for your dentist, with tooth-by-tooth findings, differential diagnoses, and urgency levels.
+              Your report uses plain language to organize the information DentaSmart reviewed. Depending on the selected service, it may include an Oral Health Score, visible observations, cost context, treatment-plan comparison points, and questions to discuss with your dentist.
             </p>
             <p className="text-stone-700 leading-relaxed ml-[52px]">
-              Your report includes an Oral Health Score from 0 to 100 that reflects the overall condition of your teeth and gums. You also get estimated treatment costs, so you know what to expect before you walk into a dental office. Both reports are downloadable as PDF files you can save, print, or share.
+              Reports are designed to support understanding and preparation. When a downloadable PDF is included, you can save, print, or share it. Cost ranges are educational estimates, not provider quotes.
             </p>
           </div>
 
@@ -175,13 +175,13 @@ export default function HowItWorks() {
           <div className="mb-10">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-medium text-sm flex-shrink-0">4</div>
-              <h3 className="text-2xl font-medium text-foreground">Follow Your Personalized Dental Care Plan</h3>
+              <h3 className="text-2xl font-medium text-foreground">Prepare Questions and Monitor Your Records</h3>
             </div>
             <p className="text-stone-700 leading-relaxed mb-3 ml-[52px]">
-              Based on your results, DentaSmart creates a personalized care plan with clear next steps. This might include daily oral hygiene recommendations, product suggestions, reminders for follow-up scans, and guidance on which findings need professional dental attention and which ones you can monitor at home.
+              Use the report to prepare questions, organize cost considerations, and keep your records in one place. If you have pain, swelling, bleeding, trauma, or another urgent concern, contact a dental professional rather than relying on the app.
             </p>
             <p className="text-stone-700 leading-relaxed ml-[52px]">
-              You can also ask Din, your 24/7 personal AI dentist, any dental question at any time. Din is trained specifically for dental health conversations and can help you understand treatment options, dental insurance questions, what to expect during procedures, and how to maintain better oral hygiene habits between dental visits.
+              You can also ask Dr Din, DentaSmart's AI oral health guide, to explain report language and common dental terms. Dr Din provides educational guidance and does not diagnose conditions or replace professional care.
             </p>
           </div>
         </div>
@@ -206,17 +206,17 @@ export default function HowItWorks() {
               { 
                 icon: Activity, 
                 title: "Oral Health Score", 
-                desc: "A clear 0-100 rating of your dental wellness." 
+                desc: "A 0-100 educational summary you can compare with your earlier DentaSmart records."
               },
               { 
                 icon: ShieldCheck, 
                 title: "Top findings with severity", 
-                desc: "Know exactly what needs attention now vs later." 
+                desc: "See which observations may be worth discussing sooner or monitoring over time."
               },
               { 
                 icon: ClipboardList, 
                 title: "Action plan and reminders", 
-                desc: "Simple steps to improve your health daily." 
+                desc: "Questions, reminders, and educational guidance based on the service you choose."
               }
             ].map((feature, idx) => (
               <motion.div 
@@ -248,7 +248,7 @@ export default function HowItWorks() {
               What you get in your reports
             </h2>
             <p className="text-xl text-muted-foreground font-normal">
-              Two versions: a simple one for you and a detailed one for your dentist. Both downloadable as PDF.
+              Report contents and downloadable formats depend on the service you choose.
             </p>
           </div>
           
@@ -257,7 +257,7 @@ export default function HowItWorks() {
               { 
                 icon: Activity, 
                 title: "Visual Findings", 
-                desc: "We highlight exactly where the problem is on your image. No guessing." 
+                desc: "DentaSmart can mark visible areas on supported images to make them easier to discuss."
               },
               { 
                 icon: FileText, 
@@ -267,17 +267,17 @@ export default function HowItWorks() {
               { 
                 icon: ShieldCheck, 
                 title: "Action Plan", 
-                desc: "Clear next steps: Watch it, treat it, or get a second opinion." 
+                desc: "Educational next steps and questions to help you prepare for a dental conversation."
               },
               { 
                 icon: ClipboardList, 
-                title: "Care Plan", 
-                desc: "A personalized roadmap for your treatments and daily hygiene routine." 
+                title: "Discussion Plan",
+                desc: "A structured list of observations and questions for your next dental conversation."
               },
               { 
                 icon: Calendar, 
                 title: "Timelines", 
-                desc: "Know exactly when to schedule appointments and follow-ups." 
+                desc: "Keep track of dates and follow-up reminders you choose to record."
               },
               { 
                 icon: Bell, 
@@ -286,13 +286,13 @@ export default function HowItWorks() {
               },
               { 
                 icon: TrendingUp, 
-                title: "Risk Assessment", 
-                desc: "Understand your long-term risks for cavities, gum disease, and more." 
+                title: "Risk Context",
+                desc: "Review educational context for factors that may be worth discussing with a dentist."
               },
               { 
                 icon: HeartPulse, 
                 title: "Oral Health Score", 
-                desc: "A simple 0-100 score to track your overall dental wellness over time." 
+                desc: "A 0-100 educational summary for comparing your own records over time."
               },
               { 
                 icon: MessageSquare, 
@@ -302,7 +302,7 @@ export default function HowItWorks() {
               { 
                 icon: FileText, 
                 title: "Dentist Report", 
-                desc: "A clinical version with tooth-by-tooth findings, differentials, and urgency levels your dentist can act on." 
+                desc: "When included, a detailed version with tooth-by-tooth observations and discussion points."
               }
             ].map((feature, idx) => (
               <motion.div 
@@ -340,11 +340,11 @@ export default function HowItWorks() {
               },
               {
                 title: "Parents Monitoring Family Dental Health",
-                desc: "Track oral health for up to five family members under one account. Check your children's teeth for early signs of cavities, monitor braces progress, and stay on top of everyone's dental hygiene."
+                desc: "Track records for up to four family members under one account. Organize each person's photos, reports, and oral hygiene reminders in one place."
               },
               {
                 title: "People Seeking a Dental Second Opinion",
-                desc: "Upload your dentist's treatment plan and get an independent AI review. Compare recommended procedures, understand alternative options, and see estimated costs before you commit."
+                desc: "Upload a treatment plan for an educational AI comparison. Organize procedures, cost ranges, and questions to discuss with your dentist before you decide."
               },
               {
                 title: "Anyone with Dental Anxiety",

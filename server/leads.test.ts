@@ -274,30 +274,30 @@ describe("leads.delete", () => {
 /* ─── Waitlist Join Benefits ─────────────────────────────────────── */
 
 describe("waitlist.joinBenefits", () => {
-  it("accepts a valid benefits waitlist signup", async () => {
+  it("rejects a valid benefits request when persistence is unavailable", async () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);
 
-    const result = await caller.waitlist.joinBenefits({
-      name: "Jane Doe",
-      email: "jane@example.com",
-    });
-
-    expect(result).toEqual({ success: true, alreadyExists: false });
+    await expect(
+      caller.waitlist.joinBenefits({
+        name: "Jane Doe",
+        email: "jane@example.com",
+      })
+    ).rejects.toThrow("The benefits request service is temporarily unavailable. Please try again.");
   });
 
-  it("accepts benefits signup with phone and message", async () => {
+  it("does not report success for a benefits request with phone and message when persistence is unavailable", async () => {
     const ctx = createPublicContext();
     const caller = appRouter.createCaller(ctx);
 
-    const result = await caller.waitlist.joinBenefits({
-      name: "Jane Doe",
-      email: "jane@example.com",
-      phone: "555-1234",
-      message: "Interested in family plan",
-    });
-
-    expect(result).toEqual({ success: true, alreadyExists: false });
+    await expect(
+      caller.waitlist.joinBenefits({
+        name: "Jane Doe",
+        email: "jane@example.com",
+        phone: "555-1234",
+        message: "Interested in family plan",
+      })
+    ).rejects.toThrow("The benefits request service is temporarily unavailable. Please try again.");
   });
 
   it("rejects benefits signup without name", async () => {

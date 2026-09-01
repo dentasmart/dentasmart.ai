@@ -28,15 +28,15 @@ function generateHomepageContent(): string {
   return `
 <article>
   <h1>DentaSmart — Your Personal AI Dentist in Your Pocket</h1>
-  <p>Get instant clarity about your oral health. Upload a photo of your teeth or dental X-rays and receive AI-powered insights, a personalized Oral Health Score, and a clear care plan in minutes. DentaSmart helps you understand what is happening in your mouth so you can make confident decisions and prevent expensive surprises.</p>
+  <p>Upload supported mouth photos or dental X-rays and receive educational insights, an Oral Health Score when included, and plain-language information. DentaSmart helps you organize questions for a dental professional and does not provide a diagnosis.</p>
   <h2>How DentaSmart Works</h2>
-  <p>Take a photo of your teeth or upload your dental X-rays. Our AI analyzes your oral health in minutes, identifying potential issues and giving you a score from 0 to 100. Then follow a personalized plan to better health — all from your phone.</p>
+  <p>Add supported photos, X-rays, symptoms, or treatment documents. DentaSmart organizes the information, provides an educational report and Oral Health Score when included, and helps you prepare questions for professional care.</p>
   <h2>Why People Choose DentaSmart</h2>
   <ul>
-    <li>AI-powered dental photo analysis with instant results</li>
+    <li>Educational review of supported dental photos and X-rays</li>
     <li>Personalized Oral Health Score tracking over time</li>
-    <li>Clear treatment cost estimates before you commit</li>
-    <li>24/7 AI dentist (Din) for any oral health question</li>
+    <li>Plain-language cost context for supported treatment information</li>
+    <li>Dr Din AI guidance for report language and common dental terms</li>
     <li>Second opinion reports for treatment plans</li>
     <li>Family profiles for up to 4 members</li>
   </ul>
@@ -53,7 +53,7 @@ function generateHomepageContent(): string {
     </ul>
   </nav>
   <h2>Download DentaSmart</h2>
-  <p>Available on iOS (App Store) and Android (Google Play). Start with a free scan and see what DentaSmart can tell you about your oral health.</p>
+  <p>The DentaSmart app is free to download on iOS and Android, with a limited free scan preview available before you choose a plan. Quick Check, Second Opinion, and Complete Care are paid services with prices shown before purchase.</p>
   <p><a href="/download">Download the App</a> | <a href="/pricing">View Pricing</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`;
 }
@@ -86,13 +86,13 @@ function generateConditionContent(slug: string): string {
   <h1>${title}</h1>
   <p>Learn about ${readableSlug} — what causes it, how to recognize the symptoms, available treatment options, and when you should see a dentist. This guide provides clear, easy-to-understand information to help you make informed decisions about your oral health.</p>
   <h2>What Is ${title.split(':')[0]}?</h2>
-  <p>${title.split(':')[0]} is a common dental condition that affects many people. Understanding the causes and symptoms can help you take action early and avoid more expensive treatments later.</p>
+  <p>Dental conditions can affect people differently. This general guide can help you recognize common topics to discuss with a dentist, but it cannot determine what is causing your symptoms.</p>
   <h2>Common Symptoms</h2>
-  <p>If you are experiencing symptoms related to ${readableSlug}, it is important to understand what they mean. Early detection often leads to simpler, more affordable treatment options.</p>
+  <p>Symptoms related to ${readableSlug} can have different causes and levels of urgency. A dentist can assess your situation, and severe or worsening symptoms may need prompt professional care.</p>
   <h2>Treatment Options</h2>
-  <p>Treatment for ${readableSlug} varies depending on severity. Your dentist can recommend the best approach based on your specific situation. DentaSmart can help you understand your options before your appointment.</p>
-  <h2>Get AI-Powered Insights</h2>
-  <p>Upload a photo of your teeth to DentaSmart and get instant AI analysis. Understand your oral health better and know what questions to ask your dentist.</p>
+  <p>Treatment for ${readableSlug} varies by the cause and your specific situation. A dentist can evaluate your needs and recommend appropriate care. DentaSmart can help you organize educational information before your appointment.</p>
+  <h2>Review Educational Information</h2>
+  <p>Use DentaSmart to review supported photos and organize educational observations before discussing concerns with a dentist. DentaSmart does not diagnose conditions.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/conditions">Browse All Conditions</a> | <a href="/symptom-quiz">Take the Symptom Quiz</a></p>
 </article>`;
 }
@@ -110,7 +110,7 @@ function generateSymptomContent(slug: string): string {
   <h2>When to See a Dentist</h2>
   <p>If your ${readableSlug} persists for more than a few days, is severe, or is accompanied by other symptoms like swelling or fever, you should see a dentist promptly.</p>
   <h2>How DentaSmart Can Help</h2>
-  <p>Upload a photo of your teeth to get instant AI-powered insights about what might be causing your symptoms. DentaSmart helps you understand your situation before your dental appointment.</p>
+  <p>Use DentaSmart's educational tools to organize supported information and prepare questions before a dental appointment. A licensed dentist must diagnose the cause of symptoms.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/symptoms">Browse All Symptoms</a> | <a href="/symptom-quiz">Take the Symptom Quiz</a></p>
 </article>`;
 }
@@ -130,7 +130,7 @@ function generateCostContent(slug: string): string {
   <h2>Ways to Save</h2>
   <p>There are several strategies to reduce the cost of your ${readableSlug}, including dental schools, payment plans, discount plans, and comparing quotes from multiple providers.</p>
   <h2>Get a Cost Estimate</h2>
-  <p>DentaSmart provides AI-powered cost estimates for dental procedures. Upload your treatment plan and understand what you should expect to pay.</p>
+  <p>DentaSmart can organize supported treatment information and provide educational cost context. Confirm treatment needs and actual prices with a licensed dental professional.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/dental-costs">Browse All Cost Guides</a> | <a href="/pricing">DentaSmart Pricing</a></p>
 </article>`;
 }
@@ -165,7 +165,7 @@ function generateComparisonContent(slug: string): string {
   <h2>Cost Comparison</h2>
   <p>Cost is often a major factor in dental treatment decisions. We compare typical prices for each option with and without insurance coverage.</p>
   <h2>Which Is Right for You?</h2>
-  <p>The best choice depends on your specific dental situation, budget, and preferences. DentaSmart can help you understand your options with AI-powered analysis.</p>
+  <p>The best choice depends on your dental situation, budget, and preferences. DentaSmart can help you organize educational comparison questions, while a licensed dentist must recommend treatment.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/comparisons">Browse All Comparisons</a> | <a href="/dental-costs">Cost Guides</a></p>
 </article>`;
 }
@@ -182,7 +182,7 @@ function generateGuideContent(slug: string): string {
   <h2>Practical Tips</h2>
   <p>Follow these evidence-based recommendations to improve your oral health routine and prevent common dental issues.</p>
   <h2>Get Personalized Guidance</h2>
-  <p>DentaSmart provides AI-powered personalized care plans based on your specific oral health situation. Upload a photo and get started.</p>
+  <p>DentaSmart provides educational reports and tracking tools for supported information. Use them to organize questions and records for professional care.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/guides">Browse All Guides</a> | <a href="/oral-health-hub">Oral Health Hub</a></p>
 </article>`;
 }
@@ -236,28 +236,30 @@ function generateStaticPageContent(path: string): string | null {
   const pages: Record<string, string> = {
     "/how-it-works": `
 <article>
-  <h1>How DentaSmart Works: AI Dental Analysis in 3 Simple Steps</h1>
-  <p>DentaSmart makes understanding your oral health simple. Upload a photo of your teeth or dental X-rays, get instant AI-powered analysis, and follow a personalized care plan. No appointments needed — get clarity about your dental health in minutes.</p>
-  <h2>Step 1: Upload a Photo</h2>
-  <p>Take a quick picture of your teeth or upload your dental X-rays. Our AI works with both mouth photos and X-ray images to give you comprehensive insights.</p>
-  <h2>Step 2: Get Instant AI Insights</h2>
-  <p>Our AI analyzes your image in minutes, identifying potential issues and providing a clear Oral Health Score from 0 to 100. You get both a plain-English report and a clinical version you can share with your dentist.</p>
-  <h2>Step 3: Take Control</h2>
-  <p>Follow your personalized care plan, track your progress over time, and ask Din (our 24/7 AI dentist) any dental questions. Know what to expect before your next dental visit.</p>
+  <h1>How DentaSmart Works in 4 Simple Steps</h1>
+  <p>DentaSmart helps you organize supported dental information, review educational insights, and prepare questions for professional care. It does not diagnose conditions or replace a dentist.</p>
+  <h2>Step 1: Add Your Information</h2>
+  <p>Add the supported photos, X-rays, symptoms, or treatment documents needed for the service you choose.</p>
+  <h2>Step 2: DentaSmart Reviews the Information</h2>
+  <p>DentaSmart organizes the submitted information and highlights details that may be worth discussing.</p>
+  <h2>Step 3: Review Your Educational Report</h2>
+  <p>Review the plain-language insights and report contents included with your selected service.</p>
+  <h2>Step 4: Prepare Questions and Monitor Records</h2>
+  <p>Use the report to prepare questions for a dentist and keep relevant records organized over time.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/features">See All Features</a> | <a href="/pricing">View Pricing</a></p>
 </article>`,
     "/features": `
 <article>
-  <h1>DentaSmart Features: AI Dental Scan, Oral Health Score & More</h1>
-  <p>DentaSmart gives you the tools to understand and manage your oral health from home. From AI-powered photo analysis to personalized care plans, here is everything DentaSmart offers.</p>
-  <h2>AI Photo Analysis</h2>
-  <p>Upload mouth photos or dental X-rays for instant AI analysis. Get color-coded findings overlay and clear explanations of what the AI detected.</p>
+  <h1>DentaSmart Features: Oral Health Reports and Tracking</h1>
+  <p>DentaSmart provides educational tools for supported mouth photos, dental X-rays, symptoms, and treatment documents. Use the reports to organize questions for a dental professional.</p>
+  <h2>Photo and X-Ray Review</h2>
+  <p>Upload supported mouth photos or dental X-rays. DentaSmart can highlight visible areas and explain why they may be worth discussing.</p>
   <h2>Oral Health Score</h2>
-  <p>Receive a personalized score from 0 to 100 that tracks your oral health over time. See how your habits and treatments affect your dental health.</p>
-  <h2>Din AI Dentist</h2>
-  <p>Ask any dental question, any time. Din is your 24/7 personal AI dentist trained specifically for dental health conversations.</p>
+  <p>Review a 0-100 educational summary and compare it with your earlier DentaSmart records over time.</p>
+  <h2>Dr Din AI Oral Health Guide</h2>
+  <p>Ask Dr Din to explain report language and common dental terms. It does not diagnose conditions or replace professional care.</p>
   <h2>Second Opinion Reports</h2>
-  <p>Upload your dentist's treatment plan and get an independent AI review with cost comparisons and alternative options.</p>
+  <p>Upload a treatment plan for an educational comparison with cost ranges and questions to discuss with your dentist.</p>
   <h2>Family Profiles</h2>
   <p>Monitor oral health for up to 4 family members under one account. Track everyone's dental health in one place.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/pricing">View Pricing</a> | <a href="/how-it-works">How It Works</a></p>
@@ -265,64 +267,64 @@ function generateStaticPageContent(path: string): string | null {
     "/pricing": `
 <article>
   <h1>DentaSmart Pricing: Plans for Every Need</h1>
-  <p>DentaSmart offers three plans for individuals and families. Start free, then choose the level of clarity that fits your situation.</p>
+  <p>The DentaSmart app is free to download, and a limited free scan preview is available before you choose a plan. Choose a paid one-time check or annual monitoring plan based on the decision you are making.</p>
   <h2>Quick Check — $19.99 one-time</h2>
-  <p>A one-time AI review of your mouth photos and X-rays. See visible concerns, key insights, and your Oral Health Score. Save or share a patient-friendly report. Dr. Din is available for 30 days after your check. Best when you want a quick first look before deciding what to do next.</p>
+  <p>A $19.99 one-time educational review of supported mouth photos and X-rays with visible observations, an Oral Health Score, a patient-friendly report, and Dr Din access for 30 days. It does not provide a diagnosis.</p>
   <h2>Second Opinion — $29.99 one-time</h2>
-  <p>A one-time second opinion for one case. Upload treatment plans, bills, reports, X-rays, and mouth photos. Compare dentist findings with DentaSmart insights. Get a plain-English report with treatment option context, estimated cost ranges, and questions to bring back to your dentist. Dr. Din support for 30 days.</p>
+  <p>A $29.99 one-time educational comparison for one case using supported treatment plans, bills, X-rays, and mouth photos, with cost context, questions for a licensed dentist, and Dr Din access for 30 days.</p>
   <h2>Complete Care — $74.99/year (Individual) or $149.99/year (Family)</h2>
-  <p>Year-round monitoring for one person or up to 4 family members. Includes unlimited mouth photo and X-ray reviews, complete reports with clear findings and next steps, Oral Health Score tracking over time, guided self-examination, early risk insights, personalized guidance based on your scans and history, treatment options with cost estimates and risks of delay, preventive and maintenance care guidance, recommended dentist type when relevant, and 24/7 Dr. Din support. Family plan includes separate profiles, reports, and dental history for each member.</p>
+  <p>Complete Care is $74.99/year for one person or $149.99/year for up to 4 family members. It includes year-round educational monitoring, supported photo and X-ray reviews, reports, Oral Health Score tracking, guided self-examination, record organization, and Dr Din access. It does not replace professional diagnosis or treatment.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/features">See All Features</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`,
     "/download": `
 <article>
   <h1>Download DentaSmart: iOS & Android App</h1>
-  <p>Get DentaSmart on your phone and start understanding your oral health today. Available free on iOS and Android.</p>
+  <p>Download the DentaSmart app on iOS or Android. The app is free to download, with a limited scan preview available before you choose a plan. Quick Check, Second Opinion, and Complete Care are paid services.</p>
   <h2>iOS — Available Now</h2>
-  <p>Download DentaSmart from the Apple App Store. Start with a free scan and see what AI can tell you about your dental health.</p>
+  <p>Download DentaSmart from the Apple App Store, then review the paid service options before purchase.</p>
   <h2>Android — Available Now</h2>
-  <p>Download DentaSmart from Google Play. Available on Android 10 and above. Free to start.</p>
+  <p>Download DentaSmart from Google Play, then review the paid service options before purchase.</p>
   <p><a href="/pricing">View Pricing</a> | <a href="/features">See All Features</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`,
     "/faqs": `
 <article>
   <h1>DentaSmart FAQs: Common Questions Answered</h1>
-  <p>Find answers to frequently asked questions about DentaSmart, including how AI analysis works, pricing, privacy, and app availability.</p>
+  <p>Find answers to frequently asked questions about DentaSmart, including educational reports, pricing, privacy, professional-care boundaries, and app availability.</p>
   <h2>How does DentaSmart work?</h2>
-  <p>Upload a photo of your teeth or dental X-rays. Our AI analyzes the image and provides insights about your oral health, including a score from 0 to 100 and a personalized care plan.</p>
+  <p>Add supported mouth photos or dental X-rays. DentaSmart can provide educational observations, an Oral Health Score when included, and plain-language information to discuss with a dental professional.</p>
   <h2>Is DentaSmart a replacement for a dentist?</h2>
   <p>No. DentaSmart is an educational tool that helps you understand your oral health. Always consult a licensed dentist for diagnosis and treatment.</p>
   <h2>How much does DentaSmart cost?</h2>
-  <p>Quick Check is $19.99 one-time (AI review of mouth photos and X-rays, Oral Health Score, patient-friendly report, Dr. Din 30 days). Second Opinion is $29.99 one-time (upload treatment plans, bills, X-rays, and mouth photos for a plain-English comparison, Dr. Din 30 days). Complete Care is $74.99/year for individuals or $149.99/year for families (up to 4 members). A free limited scan is available to try.</p>
+  <p>Quick Check is $19.99 one-time. Second Opinion is $29.99 one-time. Complete Care is $74.99/year for individuals or $149.99/year for families of up to 4 members. The app is free to download, with a limited scan preview available; these services are paid.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/pricing">View Pricing</a> | <a href="/features">See All Features</a></p>
 </article>`,
     "/employers": `
 <article>
-  <h1>DentaSmart for Employers: AI Dental Benefits for Your Team</h1>
-  <p>Offer DentaSmart as an employee benefit. Help your team understand their oral health, reduce dental emergencies, and lower dental costs — all without traditional dental insurance overhead.</p>
-  <h2>Why Employers Choose DentaSmart</h2>
-  <p>Traditional dental insurance is expensive and underutilized. DentaSmart provides affordable oral health support that employees actually use, leading to better outcomes and lower costs.</p>
-  <h2>What Your Team Gets</h2>
-  <p>AI-powered dental analysis, personalized care plans, 24/7 AI guidance, and cost transparency tools. Help your employees make informed dental decisions.</p>
-  <p><a href="/pricing">View Pricing</a> | <a href="/features">See All Features</a> | <a href="/download">Download DentaSmart</a></p>
+  <h1>DentaSmart for Employers: Oral Health Education and Decision Support</h1>
+  <p>Explore DentaSmart as an educational oral health resource that can help employees organize information and prepare questions for professional care. DentaSmart is not dental insurance.</p>
+  <h2>Plan a Responsible Pilot</h2>
+  <p>Confirm eligibility, employer pricing, implementation timing, support, privacy responsibilities, professional-care boundaries, and success measures during discovery.</p>
+  <h2>What Employees Can Use</h2>
+  <p>Depending on the agreed service access, employees can use plain-language reports, treatment-plan comparison tools, Oral Health Score history, and record organization features.</p>
+  <p><a href="/team">Meet the Team</a> | <a href="/features">See Product Features</a> | <a href="/pricing">View Consumer Pricing</a></p>
 </article>`,
     "/team": `
 <article>
   <h1>Meet the DentaSmart Team</h1>
-  <p>DentaSmart is built by a team passionate about making oral health accessible to everyone. Our mission is to give people clarity about their dental health through AI-powered tools and education.</p>
+  <p>DentaSmart is built by product, technology, and dental professionals working to make oral health information easier to understand. Leadership, strategic advisory, and content-review roles are identified separately.</p>
   <p><a href="/how-it-works">How DentaSmart Works</a> | <a href="/features">Our Features</a> | <a href="/download">Download the App</a></p>
 </article>`,
     "/instant-scan": `
 <article>
-  <h1>Instant Dental Scan: Upload a Photo for AI Analysis</h1>
-  <p>Try DentaSmart's instant dental scan. Upload a photo of your teeth and get AI-powered insights about your oral health in minutes. No appointment needed.</p>
-  <p><a href="/download">Download DentaSmart</a> | <a href="/photo-guide">Photo Guide</a> | <a href="/how-it-works">How It Works</a></p>
+  <h1>Dental Photo Review: Upload Supported Images</h1>
+  <p>Upload supported mouth photos or dental X-rays for educational observations through a selected DentaSmart service. DentaSmart does not diagnose conditions or replace a dental examination.</p>
+  <p><a href="/download">Download DentaSmart</a> | <a href="/pricing">View Service Pricing</a> | <a href="/photo-guide">Photo Guide</a></p>
 </article>`,
     "/photo-guide": `
 <article>
   <h1>Photo Guide: How to Take the Best Dental Photos</h1>
-  <p>Get the best results from DentaSmart's AI analysis by taking clear, well-lit photos of your teeth. Follow these simple tips for lighting, angles, and what to capture.</p>
-  <p><a href="/instant-scan">Try Instant Scan</a> | <a href="/download">Download DentaSmart</a> | <a href="/how-it-works">How It Works</a></p>
+  <p>Learn how to take clear, well-lit mouth photos for supported DentaSmart services. Follow practical tips for lighting, angles, and what to capture.</p>
+  <p><a href="/pricing">View Service Pricing</a> | <a href="/download">Download DentaSmart</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`,
     "/oral-health-hub": `
 <article>
@@ -343,7 +345,7 @@ function generateStaticPageContent(path: string): string | null {
     "/symptom-quiz": `
 <article>
   <h1>Dental Symptom Quiz: Check Your Oral Health</h1>
-  <p>Take DentaSmart's free dental symptom quiz. Answer a few questions about your symptoms and get personalized insights about your oral health. Understand what might be causing your discomfort and whether you should see a dentist.</p>
+  <p>Use DentaSmart's free dental symptom quiz to organize what you are experiencing and review general educational guidance. It does not diagnose the cause of discomfort. Seek professional care for severe, worsening, or urgent symptoms.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/symptoms">Browse Symptoms</a> | <a href="/conditions">Dental Conditions</a></p>
 </article>`,
     "/find-a-dentist": `
@@ -354,14 +356,14 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/answers": `
 <article>
-  <h1>Dental Answers: AI-Powered Dental Q&A</h1>
-  <p>Get instant answers to your dental questions with DentaSmart's AI-powered Q&A. Ask about symptoms, treatments, costs, and oral health. Get clear, reliable information anytime.</p>
+  <h1>Dental Answers: Educational Dental Q&amp;A</h1>
+  <p>Review general educational information about dental symptoms, treatments, costs, and oral health. DentaSmart does not diagnose conditions or replace advice from a dental professional.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/oral-health-hub">Oral Health Hub</a> | <a href="/symptom-quiz">Symptom Quiz</a></p>
 </article>`,
     "/stories": `
 <article>
-  <h1>DentaSmart User Stories: Real People, Real Results</h1>
-  <p>Read real stories from DentaSmart users who gained clarity about their oral health through AI-powered dental analysis. See how DentaSmart helped them make confident decisions about their dental care.</p>
+  <h1>Ways to Use DentaSmart</h1>
+  <p>Explore product-use examples for a one-time Quick Check, a treatment-plan Second Opinion, or ongoing Complete Care monitoring. These examples are not customer testimonials. DentaSmart provides educational guidance and does not diagnose conditions or replace a dentist.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/how-it-works">How It Works</a> | <a href="/pricing">View Pricing</a></p>
 </article>`,
     "/conditions": `

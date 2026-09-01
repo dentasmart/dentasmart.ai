@@ -31,7 +31,7 @@ export default function HowItWorksHero() {
             <div className="flex flex-col sm:flex-row gap-4 justify-start">
               <Button 
                 size="lg" 
-                className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0 cursor-pointer"
+                className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0 cursor-pointer"
                 onClick={() => document.getElementById('download-cta')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Get My Oral Health Score

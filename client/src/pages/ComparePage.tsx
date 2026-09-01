@@ -7,7 +7,7 @@ import { trackEvent } from "@/lib/analytics";
 import { motion } from "framer-motion";
 import { CheckCircle, XCircle, ArrowRight } from "lucide-react";
 import { useEffect } from "react";
-import { useRoute } from "wouter";
+import { Link, useRoute } from "wouter";
 
 interface CompareData {
   title: string;
@@ -25,63 +25,63 @@ interface CompareData {
 const compareData: Record<string, CompareData> = {
   "dentasmart-vs-chatgpt-dental": {
     title: "DentaSmart vs ChatGPT for Dental Questions",
-    metaTitle: "DentaSmart vs ChatGPT for Dental Advice - Which Is Better?",
-    metaDescription: "Compare DentaSmart's AI dental analysis with ChatGPT for dental questions. See why purpose-built dental AI outperforms general chatbots for oral health.",
+    metaTitle: "DentaSmart vs ChatGPT for Dental Questions | Comparison Guide",
+    metaDescription: "Compare a purpose-built DentaSmart educational workflow with a general AI chatbot, including records, pricing, and professional-care boundaries.",
     heroHeading: "DentaSmart vs ChatGPT",
-    heroSubheading: "General AI gives general answers. DentaSmart gives you a personalized oral health report based on your actual teeth.",
+    heroSubheading: "Compare a general AI chatbot with DentaSmart's educational oral health workflow.",
     competitor: "ChatGPT",
-    competitorDesc: "General-purpose AI chatbot that can answer dental questions based on training data, but cannot analyze images or provide personalized assessments.",
-    dentasmartDesc: "Purpose-built dental AI that analyzes your photos and X-rays to give you a personalized oral health score and care plan.",
+    competitorDesc: "General-purpose AI chatbot. Verify its current image, memory, privacy, and pricing features directly with the provider.",
+    dentasmartDesc: "Purpose-built educational tools that organize supported mouth photos and X-rays into plain-language context. DentaSmart does not diagnose conditions.",
     rows: [
       { feature: "Analyzes your dental photos", dentasmart: "Yes, AI image analysis", competitor: "No image analysis", dentasmartWins: true },
       { feature: "Reads dental X-rays", dentasmart: "Yes, trained on dental X-rays", competitor: "Cannot process X-rays", dentasmartWins: true },
       { feature: "Personalized oral health score", dentasmart: "Yes, 0-100 score", competitor: "No scoring system", dentasmartWins: true },
-      { feature: "Care plan with cost estimates", dentasmart: "Yes, treatment costs included", competitor: "Generic advice only", dentasmartWins: true },
+      { feature: "Educational cost context", dentasmart: "Available for supported information; not a provider quote", competitor: "Verify current feature", dentasmartWins: true },
       { feature: "Tracks progress over time", dentasmart: "Yes, historical tracking", competitor: "No memory between chats", dentasmartWins: true },
       { feature: "General dental Q&A", dentasmart: "Yes, via Din AI assistant", competitor: "Yes, broad knowledge", dentasmartWins: false },
-      { feature: "Reviewed by dental professionals", dentasmart: "Yes, clinically advised", competitor: "No clinical review", dentasmartWins: true },
+      { feature: "Professional-care boundary", dentasmart: "Does not diagnose or replace a dentist", competitor: "Verify current provider guidance", dentasmartWins: true },
     ],
-    verdict: "ChatGPT is great for general questions, but it cannot look at your teeth. DentaSmart analyzes your actual dental images and gives you a personalized report, something no general chatbot can do.",
+    verdict: "Use a general chatbot for broad explanations. Use DentaSmart when you want a purpose-built educational workflow for supported oral health records. Neither replaces a dentist's diagnosis or treatment decision.",
   },
   "dentasmart-vs-teledentistry": {
     title: "DentaSmart vs Teledentistry",
-    metaTitle: "DentaSmart vs Teledentistry - Compare AI Dental Analysis vs Video Calls",
-    metaDescription: "Compare DentaSmart's instant AI dental analysis with traditional teledentistry video calls. See which option gives you faster, more affordable dental clarity.",
+    metaTitle: "DentaSmart vs Teledentistry | Educational Comparison Guide",
+    metaDescription: "Compare DentaSmart's educational tools with remote professional care, including access, records, pricing, and clinical boundaries.",
     heroHeading: "DentaSmart vs Teledentistry",
-    heroSubheading: "Teledentistry means waiting for an appointment. DentaSmart gives you instant clarity, no scheduling, no waiting room.",
+    heroSubheading: "Compare educational tools with a remote appointment from a licensed dental professional.",
     competitor: "Teledentistry",
     competitorDesc: "Video call with a licensed dentist who can visually assess your concerns and provide recommendations, but requires scheduling and fees per visit.",
-    dentasmartDesc: "Instant AI analysis of your dental photos and X-rays, available 24/7 with no appointment needed.",
+    dentasmartDesc: "Educational review of supported mouth photos and X-rays. DentaSmart does not provide a professional diagnosis or prescription.",
     rows: [
-      { feature: "Available 24/7", dentasmart: "Yes, instant access", competitor: "Limited hours", dentasmartWins: true },
+      { feature: "Access model", dentasmart: "Use the app according to the selected service", competitor: "Appointment or provider access varies", dentasmartWins: true },
       { feature: "No appointment needed", dentasmart: "Yes, upload anytime", competitor: "Requires scheduling", dentasmartWins: true },
-      { feature: "Cost per consultation", dentasmart: `${pricing.completeCareIndividual.priceFormatted}/year unlimited`, competitor: "$50-150 per visit", dentasmartWins: true },
-      { feature: "Results speed", dentasmart: "Under 10 minutes", competitor: "15-30 minute wait", dentasmartWins: true },
+      { feature: "Complete Care Individual", dentasmart: `${pricing.completeCareIndividual.priceFormatted}/year`, competitor: "Verify current provider price", dentasmartWins: true },
+      { feature: "Processing or appointment timing", dentasmart: "Varies by image quality and selected service", competitor: "Varies by provider", dentasmartWins: true },
       { feature: "Image analysis", dentasmart: "AI-powered X-ray & photo analysis", competitor: "Visual assessment only", dentasmartWins: true },
-      { feature: "Prescriptions", dentasmart: "No, not a replacement for dentist", competitor: "Yes, licensed provider", dentasmartWins: false },
+      { feature: "Diagnosis and prescriptions", dentasmart: "No, DentaSmart is educational", competitor: "Ask the licensed provider what is available", dentasmartWins: false },
       { feature: "Progress tracking", dentasmart: "Yes, historical scores", competitor: "Varies by provider", dentasmartWins: true },
     ],
-    verdict: "Teledentistry is valuable when you need a prescription or professional diagnosis. But for everyday monitoring and quick clarity about your oral health, DentaSmart is faster, cheaper, and always available.",
+    verdict: "DentaSmart can organize educational information between visits. A licensed dental professional is required for diagnosis, prescriptions, and treatment recommendations.",
   },
   "dentasmart-vs-dental-insurance": {
     title: "DentaSmart vs Dental Insurance",
     metaTitle: "DentaSmart vs Dental Insurance - Do You Need Both?",
-    metaDescription: "Compare DentaSmart's AI oral health monitoring with traditional dental insurance. Learn how DentaSmart helps you save money and catch problems early.",
+    metaDescription: "Compare DentaSmart's educational oral health tools with dental insurance. They serve different purposes and DentaSmart is not insurance.",
     heroHeading: "DentaSmart vs Dental Insurance",
-    heroSubheading: "Insurance covers treatment after problems happen. DentaSmart helps you catch issues early. Before they become expensive.",
+    heroSubheading: "Dental insurance and DentaSmart serve different purposes. Review both before deciding what fits your needs.",
     competitor: "Dental Insurance",
     competitorDesc: "Traditional dental insurance that covers a portion of dental procedures after deductibles and waiting periods, typically costing $30-60/month.",
-    dentasmartDesc: "AI-powered oral health monitoring that helps you catch dental issues early and understand your treatment options before visiting the dentist.",
+    dentasmartDesc: "Educational oral health tools that help organize supported records and treatment questions. DentaSmart is not insurance and does not diagnose conditions.",
     rows: [
       { feature: "Cost", dentasmart: `${pricing.completeCareIndividual.priceFormatted}/year`, competitor: "$30-60/month", dentasmartWins: true },
-      { feature: "Waiting period", dentasmart: "None. Instant access", competitor: "6-12 months for major work", dentasmartWins: true },
+      { feature: "Waiting period", dentasmart: "Not an insurance benefit", competitor: "Verify current plan terms", dentasmartWins: true },
       { feature: "Covers dental procedures", dentasmart: "No, monitoring tool", competitor: "Yes, partial coverage", dentasmartWins: false },
-      { feature: "Early problem detection", dentasmart: "Yes, AI monitoring", competitor: "Only at scheduled visits", dentasmartWins: true },
-      { feature: "Cost transparency", dentasmart: "Yes, shows estimated costs", competitor: "Complex benefit schedules", dentasmartWins: true },
+      { feature: "Educational monitoring", dentasmart: "Organizes supported records over time", competitor: "Coverage does not replace examinations", dentasmartWins: true },
+      { feature: "Cost context", dentasmart: "Educational ranges are not provider quotes", competitor: "Review current benefit schedules", dentasmartWins: true },
       { feature: "Available without employer", dentasmart: "Yes, direct to consumer", competitor: "Often employer-tied", dentasmartWins: true },
-      { feature: "Helps choose right dentist type", dentasmart: "Yes, recommends specialist type", competitor: "Limited to network", dentasmartWins: true },
+      { feature: "Professional-care questions", dentasmart: "Helps organize questions; does not recommend treatment", competitor: "Network rules vary by plan", dentasmartWins: true },
     ],
-    verdict: "DentaSmart is not a replacement for dental insurance. It is a complement. Use DentaSmart to monitor your oral health daily and catch issues early. Use insurance when you need treatment. Together, they help you spend less and stay healthier.",
+    verdict: "DentaSmart is not dental insurance and does not replace professional care. Review current insurance terms separately and use DentaSmart for educational organization of supported information.",
   },
 };
 
@@ -188,16 +188,11 @@ export default function ComparePage() {
           </div>
 
           <div className="text-center mt-12">
-            <Button
-              size="lg"
-              className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer"
-              onClick={() => {
-                trackEvent("cta_get_score_click", { source: `compare_${slug}` });
-                window.location.href = "/#download-cta";
-              }}
-            >
-              Try DentaSmart Free
-              <ArrowRight className="w-5 h-5 ml-2" />
+            <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer">
+              <Link href="/pricing" onClick={() => trackEvent("cta_get_score_click", { source: `compare_${slug}` })}>
+                Compare DentaSmart Services
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
             </Button>
           </div>
         </div>

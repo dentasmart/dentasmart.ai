@@ -15,7 +15,7 @@ export function DownloadSection({
             Download DentaSmart
           </h2>
           <p className="text-xl text-stone-600 font-light">
-            Start with a free scan today.
+            Free to download on iOS and Android. Quick Check and other DentaSmart services are paid.
           </p>
         </div>
 
@@ -32,12 +32,10 @@ export function DownloadSection({
               href={getAppStoreUrl(source)}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-black px-5 font-medium text-white transition-colors hover:bg-stone-800"
               onClick={() => trackAppDownload("ios", source)}
             >
-              <button className="w-full bg-black text-white hover:bg-stone-800 rounded-full h-12 font-medium transition-colors">
-                Download on App Store
-              </button>
+              Download on App Store
             </a>
             <div className="w-36 h-36 bg-white rounded-xl shadow-sm border border-stone-100 flex items-center justify-center overflow-hidden">
               <img
@@ -61,12 +59,10 @@ export function DownloadSection({
               href={getPlayStoreUrl(source)}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full"
+              className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-action px-5 font-medium text-action-foreground transition-colors hover:bg-action-hover"
               onClick={() => trackAppDownload("android", source)}
             >
-              <button className="w-full bg-action text-action-foreground hover:bg-action-hover rounded-full h-12 font-medium transition-colors">
-                Get it on Google Play
-              </button>
+              Get it on Google Play
             </a>
             <div className="w-36 h-36 bg-white rounded-xl shadow-sm border border-stone-100 flex items-center justify-center overflow-hidden">
               <img

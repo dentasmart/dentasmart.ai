@@ -8,6 +8,7 @@ import { DownloadSection } from "@/components/DownloadSection";
 import { motion } from "framer-motion";
 import { WaitlistPopup } from "@/components/WaitlistPopup";
 import { trackPixelInitiateCheckout } from "@/lib/fbpixel";
+import { trackEvent } from "@/lib/analytics";
 import QuickAnswerBlock from "@/components/QuickAnswerBlock";
 import FAQSchema from "@/components/FAQSchema";
 import { ProductServiceSchema, BreadcrumbSchema } from "@/components/StructuredData";
@@ -20,7 +21,7 @@ export default function Pricing() {
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
       <SEO
         title="Simple, Transparent Pricing"
-        description="DentaSmart offers three plans: Quick Check ($19.99 one-time), Second Opinion ($29.99 one-time), and Complete Care ($74.99/year individual or $149.99/year family). Start free, no commitment."
+        description="DentaSmart offers a limited free scan preview, Quick Check for $19.99 one-time, Second Opinion for $29.99 one-time, and Complete Care from $74.99 per year."
         canonical="https://dentasmart.ai/pricing"
       />
       <Navigation />
@@ -30,13 +31,12 @@ export default function Pricing() {
         { name: "Pricing", url: "/pricing" }
       ]} />
       <FAQSchema faqs={[
-        { question: "How much does DentaSmart cost?", answer: "DentaSmart offers three plans: Quick Check at $19.99 (one-time AI review of your mouth photos and X-rays), Second Opinion at $29.99 (one-time comparison of your dentist's treatment plan), and Complete Care at $74.99/year for individuals or $149.99/year for families (up to 4 members). All subscriptions are managed through dentasmart.ai." },
-        { question: "Can I try DentaSmart before paying?", answer: "Yes. Download the app and scan your teeth for free. You will see a preview of your results. When you are ready for the full analysis, choose the plan that fits your needs through dentasmart.ai." },
-        { question: "What does Quick Check include?", answer: "Quick Check ($19.99 one-time) gives you an AI review of your mouth photos and X-rays. You get visible concerns highlighted, key insights, and your Oral Health Score. You can save or share a patient-friendly report. Dr. Din is available for 30 days after your check." },
-        { question: "What is the difference between Quick Check and Complete Care?", answer: "Quick Check is a one-time AI review of your images that shows visible concerns, key insights, and your Oral Health Score. Complete Care gives you year-round unlimited access to all three services, including guided self-examination, complete detailed reports, progress tracking over time, personalized guidance, treatment options with cost estimates, and 24/7 Dr. Din support." },
+        { question: "How much does DentaSmart cost?", answer: "DentaSmart offers three plans: Quick Check at $19.99 (one-time educational review of supported mouth photos and X-rays), Second Opinion at $29.99 (one-time comparison of your dentist's treatment plan), and Complete Care at $74.99/year for individuals or $149.99/year for families (up to 4 members). All subscriptions are managed through dentasmart.ai." },
+        { question: "Can I download DentaSmart before paying?", answer: "Yes. The app is free to download, and a limited free scan preview is available before you choose a plan. Quick Check and Second Opinion are paid one-time services, and Complete Care is an annual paid plan." },
+        { question: "What does Quick Check include?", answer: "Quick Check ($19.99 one-time) provides an educational review of supported mouth photos and X-rays, visible observations, an Oral Health Score, a patient-friendly report, and Dr Din access for 30 days. It does not provide a diagnosis." },
+        { question: "What is the difference between Quick Check and Complete Care?", answer: "Quick Check is a one-time educational review for one case. Complete Care adds year-round monitoring, guided self-examination, reports, Oral Health Score tracking, record organization, and Dr Din access for one person or an eligible family group." },
         { question: "When should I choose Second Opinion?", answer: "Choose Second Opinion ($29.99) when your dentist has given you a treatment plan, bill, or recommendation and you want a plain-English comparison before you decide. You upload the documents along with your mouth photos and X-rays, and DentaSmart shows you what aligns, what differs, and what questions to ask your dentist." },
-        { question: "What does the Complete Care Family plan include?", answer: "The Complete Care Family plan ($149.99/year) covers up to 4 family members. Each person gets their own profile, reports, Oral Health Score tracking, and dental history. Dr. Din is available for family dental questions. Additional members can be added for $19.99/year each." },
-        { question: "Are the results reviewed by real dentists?", answer: "Yes. Every analysis is reviewed and approved by licensed dentists before it reaches you." },
+        { question: "What does the Complete Care Family plan include?", answer: "The Complete Care Family plan ($149.99/year) covers up to 4 family members. Each person gets a separate profile, reports, Oral Health Score tracking, and dental history, with Dr Din access. Additional members can be added for $19.99/year each." },
         { question: "How do I manage my subscription?", answer: "All subscriptions are managed through dentasmart.ai, not through the app stores. This keeps things simple and gives you full control over your plan." }
       ]} />
 
@@ -91,9 +91,9 @@ export default function Pricing() {
                   size="lg"
                   variant="outline"
                   className="bg-white/80 text-stone-700 hover:bg-white hover:text-primary border-stone-200 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 cursor-pointer"
-                  onClick={() => window.location.href = '/#download-cta'}
+                  onClick={() => window.location.href = '/download'}
                 >
-                  Try Free First
+                  Download the App
                 </Button>
               </div>
             </motion.div>
@@ -103,13 +103,13 @@ export default function Pricing() {
         </div>
       </section>
 
-      {/* Free Start Banner */}
+      {/* Download and payment boundary */}
       <section className="py-6 bg-gradient-to-r from-primary/5 to-teal-50 border-y border-primary/10">
         <div className="container px-4 mx-auto max-w-4xl text-center">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Sparkles className="w-5 h-5 text-primary flex-shrink-0" />
             <p className="text-stone-700 text-base">
-              <span className="font-semibold text-black">Start free.</span> Download the app and scan your teeth at no cost. See a preview before you choose a plan.
+              <span className="font-semibold text-black">Free to download.</span> A limited free scan preview is available before you choose a plan. Quick Check and Second Opinion are paid one-time services; Complete Care is an annual paid plan.
             </p>
           </div>
         </div>
@@ -156,11 +156,12 @@ export default function Pricing() {
 
             {/* Quick Check - $19.99 */}
             <motion.div
+              id="quick-check"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-white rounded-3xl p-6 md:p-8 border border-stone-200 hover:shadow-xl transition-all duration-500 flex flex-col"
+              className="scroll-mt-32 bg-white rounded-3xl p-6 md:p-8 border border-stone-200 hover:shadow-xl transition-all duration-500 flex flex-col"
             >
               <div className="mb-5">
                 <div className="flex items-center gap-2 mb-2">
@@ -186,9 +187,8 @@ export default function Pricing() {
                   "Visible concerns and key insights",
                   "Oral Health Score",
                   "Save or share a patient-friendly report",
-                  "Dr. Din support for 30 days",
+                  "Dr Din access for 30 days",
                   "Secure history storage",
-                  "Reviewed by licensed dentists",
                 ].map((f, i) => (
                   <div key={i} className="flex items-start text-stone-700 font-light text-sm">
                     <Check className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
@@ -201,6 +201,7 @@ export default function Pricing() {
                 variant="outline"
                 className="w-full border-stone-300 text-stone-700 hover:bg-stone-50 hover:border-primary hover:text-primary rounded-full py-5 text-base font-medium transition-all duration-300 cursor-pointer"
                 onClick={() => {
+                  trackEvent("pricing_plan_select", { plan: "quick_check", billing: "one_time", price: 19.99 });
                   trackPixelInitiateCheckout({ content_name: "Quick Check", content_category: "pricing", value: 19.99, currency: "USD" });
                   window.location.href = 'https://subscription.dentasmart.ai/create-saas-account?plan=quick_check';
                 }}
@@ -211,11 +212,12 @@ export default function Pricing() {
 
             {/* Second Opinion - $29.99 */}
             <motion.div
+              id="second-opinion"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.5 }}
-              className="bg-white rounded-3xl p-6 md:p-8 border border-stone-200 hover:shadow-xl transition-all duration-500 flex flex-col"
+              className="scroll-mt-32 bg-white rounded-3xl p-6 md:p-8 border border-stone-200 hover:shadow-xl transition-all duration-500 flex flex-col"
             >
               <div className="mb-5">
                 <div className="flex items-center gap-2 mb-2">
@@ -245,9 +247,8 @@ export default function Pricing() {
                   "Treatment option context with estimated cost ranges",
                   "Questions to bring back to your dentist",
                   "Shareable report",
-                  "Dr. Din support for 30 days",
+                  "Dr Din access for 30 days",
                   "Secure storage in your dental history",
-                  "Reviewed by licensed dentists",
                 ].map((f, i) => (
                   <div key={i} className="flex items-start text-stone-700 font-light text-sm">
                     <Check className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
@@ -260,6 +261,7 @@ export default function Pricing() {
                 variant="outline"
                 className="w-full border-stone-300 text-stone-700 hover:bg-stone-50 hover:border-primary hover:text-primary rounded-full py-5 text-base font-medium transition-all duration-300 cursor-pointer"
                 onClick={() => {
+                  trackEvent("pricing_plan_select", { plan: "second_opinion", billing: "one_time", price: 29.99 });
                   trackPixelInitiateCheckout({ content_name: "Second Opinion", content_category: "pricing", value: 29.99, currency: "USD" });
                   window.location.href = 'https://subscription.dentasmart.ai/create-saas-account?plan=second_review';
                 }}
@@ -270,11 +272,12 @@ export default function Pricing() {
 
             {/* Complete Care - Annual — MOST POPULAR */}
             <motion.div
+              id="complete-care"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="bg-primary/5 rounded-3xl p-6 md:p-8 border-2 border-primary hover:shadow-2xl transition-all duration-500 flex flex-col relative ring-1 ring-primary/20"
+              className="scroll-mt-32 bg-primary/5 rounded-3xl p-6 md:p-8 border-2 border-primary hover:shadow-2xl transition-all duration-500 flex flex-col relative ring-1 ring-primary/20"
             >
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-white shadow-lg">
                 Most Popular
@@ -306,7 +309,7 @@ export default function Pricing() {
                 )}
                 <p className="text-stone-600 mt-3 font-light leading-relaxed text-sm">
                   {planType === "individual"
-                    ? "Year-round monitoring, complete reports, Oral Health Score tracking, and Dr. Din support for one person."
+                    ? "Year-round monitoring, reports, Oral Health Score tracking, record organization, and Dr Din access for one person."
                     : "Protect up to 4 family members with separate profiles, reports, scores, and history."
                   }
                 </p>
@@ -331,19 +334,18 @@ export default function Pricing() {
                     </div>
                     {/* Complete Oral Health Checkup features */}
                     <div className="border-t border-stone-100 pt-3">
-                      <p className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">What's in Complete Oral Health Checkup</p>
+                      <p className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Complete Care features</p>
                       {[
                         { text: "Guided self-examination", bold: false },
                         { text: "Oral Health Score tracking over time", bold: false },
-                        { text: "Early risk insights and trend monitoring", bold: false },
-                        { text: "Personalized guidance based on your scans, symptoms, history, and previous reports", bold: false },
-                        { text: "Treatment options with cost estimates and risks of delay", bold: false },
-                        { text: "Preventive, initial, and maintenance care guidance", bold: false },
-                        { text: "Recommended dentist type when relevant", bold: false },
+                        { text: "Educational risk context and record trends", bold: false },
+                        { text: "Guidance based on supported records and reports", bold: false },
+                        { text: "Treatment and cost questions to discuss with a dentist", bold: false },
+                        { text: "Preventive and maintenance education", bold: false },
+                        { text: "Discussion prompts for choosing professional care", bold: false },
                         { text: "Patient-friendly and dentist-ready report versions", bold: false },
                         { text: "Secure dental history storage", bold: false },
-                        { text: "Dr. Din available 24/7", bold: false },
-                        { text: "Reviewed by licensed dentists", bold: false },
+                        { text: "Dr Din AI oral health guide access", bold: false },
                         { text: "Full year access", bold: false },
                       ].map((f, i) => (
                         <div key={i} className="flex items-start text-stone-700 font-light text-sm mb-1.5">
@@ -376,9 +378,8 @@ export default function Pricing() {
                         { text: "Up to 4 separate family profiles", bold: false },
                         { text: "One account holder manages all members", bold: false },
                         { text: "Separate Oral Health Score, reports, and dental history per family member", bold: false },
-                        { text: "Dr. Din supports each family member's dental questions separately", bold: false },
+                        { text: "Dr Din access for each family profile", bold: false },
                         { text: "Share any family member's report with a dentist", bold: false },
-                        { text: "Reviewed by licensed dentists", bold: false },
                         { text: "Additional family members: $19.99/year each", bold: false },
                         { text: "Full year access", bold: false },
                       ].map((f, i) => (
@@ -396,15 +397,17 @@ export default function Pricing() {
                 className="w-full bg-action hover:bg-action-hover text-action-foreground rounded-full py-5 text-base font-medium transition-all duration-300 shadow-lg cursor-pointer"
                 onClick={() => {
                   if (planType === "individual") {
+                    trackEvent("pricing_plan_select", { plan: "complete_care_individual", billing: "annual", price: 74.99 });
                     trackPixelInitiateCheckout({ content_name: "Complete Care Annual Plan", content_category: "pricing", value: 74.99, currency: "USD" });
                     window.location.href = 'https://subscription.dentasmart.ai/create-saas-account?plan=insights_individual_yearly';
                   } else {
+                    trackEvent("pricing_plan_select", { plan: "complete_care_family", billing: "annual", price: 149.99 });
                     trackPixelInitiateCheckout({ content_name: "Complete Care Family Plan", content_category: "pricing", value: 149.99, currency: "USD" });
                     window.location.href = 'https://subscription.dentasmart.ai/create-saas-account?plan=insights_family_yearly';
                   }
                 }}
               >
-                {planType === "individual" ? "Start Free, Upgrade Anytime" : "Get Family Plan"}
+                {planType === "individual" ? "Choose Individual Plan" : "Choose Family Plan"}
               </Button>
               <p className="text-xs text-stone-400 text-center mt-2">Subscriptions managed through dentasmart.ai</p>
             </motion.div>
@@ -455,18 +458,16 @@ export default function Pricing() {
                     { feature: "Patient-friendly report", quickCheck: true, secondOpinion: true, complete: true },
                     { feature: "Guided self-examination", quickCheck: false, secondOpinion: false, complete: true },
                     { feature: "Oral Health Score tracking over time", quickCheck: false, secondOpinion: false, complete: true },
-                    { feature: "Early risk insights and trends", quickCheck: false, secondOpinion: false, complete: true },
+                    { feature: "Educational risk context and record trends", quickCheck: false, secondOpinion: false, complete: true },
                     { feature: "Compare with dentist's plan", quickCheck: false, secondOpinion: true, complete: true },
                     { feature: "Second opinion report with plain-English explanations", quickCheck: false, secondOpinion: true, complete: true },
-                    { feature: "Personalized guidance (scans, symptoms, history)", quickCheck: false, secondOpinion: false, complete: true },
-                    { feature: "Treatment options with cost estimates", quickCheck: false, secondOpinion: true, complete: true },
-                    { feature: "Risks of delay", quickCheck: false, secondOpinion: false, complete: true },
-                    { feature: "Preventive, initial, and maintenance guidance", quickCheck: false, secondOpinion: false, complete: true },
-                    { feature: "Recommended dentist type", quickCheck: false, secondOpinion: false, complete: true },
+                    { feature: "Guidance based on supported records and reports", quickCheck: false, secondOpinion: false, complete: true },
+                    { feature: "Treatment and cost questions for a dentist", quickCheck: false, secondOpinion: true, complete: true },
+                    { feature: "Preventive and maintenance education", quickCheck: false, secondOpinion: false, complete: true },
+                    { feature: "Professional-care discussion prompts", quickCheck: false, secondOpinion: false, complete: true },
                     { feature: "Dentist-ready report version", quickCheck: false, secondOpinion: false, complete: true },
                     { feature: "Secure dental history storage", quickCheck: true, secondOpinion: true, complete: true },
-                    { feature: "Dr. Din support", quickCheck: "30 days", secondOpinion: "30 days", complete: "24/7" },
-                    { feature: "Reviewed by licensed dentists", quickCheck: true, secondOpinion: true, complete: true },
+                    { feature: "Dr Din access", quickCheck: "30 days", secondOpinion: "30 days", complete: "Included" },
                     ...(planType === "family" ? [
                       { feature: "Family members included", quickCheck: "1", secondOpinion: "1", complete: "Up to 4" },
                       { feature: "Separate profiles and history per member", quickCheck: false, secondOpinion: false, complete: true },
@@ -511,26 +512,31 @@ export default function Pricing() {
         <div className="container px-4 mx-auto max-w-4xl">
           <div className="text-center mb-5">
             <h2 className="text-3xl md:text-4xl font-light text-black mb-3">
-              How it works
+              How a DentaSmart service works
             </h2>
-            <p className="text-stone-500 text-lg">Three simple steps to better oral health</p>
+            <p className="text-stone-500 text-lg">Four steps to organize dental information and prepare for professional care</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
               {
                 step: "1",
-                title: "Download the app",
-                desc: "Get DentaSmart free on iOS or Android. Scan your teeth and see a preview of your results at no cost.",
+                title: "Add your information",
+                desc: "Download DentaSmart on iOS or Android, create your account, and add the supported information for the service you choose. The app is free to download, with a limited free scan preview before you choose a plan.",
               },
               {
                 step: "2",
-                title: "Choose your plan",
-                desc: "Pick Quick Check for a fast first look, Second Opinion to compare your dentist's plan, or Complete Care for year-round monitoring.",
+                title: "DentaSmart reviews",
+                desc: "Select Quick Check, Second Opinion, or Complete Care based on your situation. Paid-service prices and included features are shown before purchase.",
               },
               {
                 step: "3",
-                title: "Get your full results",
-                desc: "Unlock your complete analysis, save or share your report, and get guidance on what to do next. Share with your dentist anytime.",
+                title: "Review your educational report",
+                desc: "Review the plain-language report and educational observations included with your selected service. DentaSmart does not provide a diagnosis.",
+              },
+              {
+                step: "4",
+                title: "Prepare questions and monitor",
+                desc: "Use the report to prepare questions for a dentist and organize your oral health records over time when your selected service includes monitoring.",
               },
             ].map((item, idx) => (
               <motion.div
@@ -557,7 +563,7 @@ export default function Pricing() {
         <div className="container px-4 mx-auto max-w-3xl">
           <QuickAnswerBlock
             question="How much does DentaSmart cost?"
-            answer="DentaSmart offers three plans: Quick Check at $19.99 (one-time AI review of your mouth photos and X-rays), Second Opinion at $29.99 (one-time comparison of your dentist's treatment plan), and Complete Care at $74.99/year for individuals or $149.99/year for families (up to 4 members, additional members $19.99/year each). All subscriptions are managed through dentasmart.ai."
+            answer="DentaSmart offers three plans: Quick Check at $19.99 (one-time educational review of supported mouth photos and X-rays), Second Opinion at $29.99 (one-time comparison of your dentist's treatment plan), and Complete Care at $74.99/year for individuals or $149.99/year for families (up to 4 members, additional members $19.99/year each). All subscriptions are managed through dentasmart.ai."
             sourceUrl="https://dentasmart.ai/pricing"
             sourceLabel="DentaSmart Pricing"
           />
@@ -573,16 +579,16 @@ export default function Pricing() {
           <div className="space-y-4">
             {[
               {
-                q: "Can I try DentaSmart before paying?",
-                a: "Yes. Download the app and scan your teeth for free. You will see a preview of your results. When you are ready for the full analysis, choose the plan that fits your needs through dentasmart.ai.",
+                q: "Can I download DentaSmart before paying?",
+                a: "Yes. The app is free to download, and a limited free scan preview is available before you choose a plan. Quick Check and Second Opinion are paid one-time services, and Complete Care is an annual paid plan.",
               },
               {
                 q: "What does Quick Check include?",
-                a: "Quick Check ($19.99 one-time) gives you an AI review of your mouth photos and X-rays. You see visible concerns, key insights, and your Oral Health Score. You can save or share a patient-friendly report. Dr. Din is available for 30 days after your check.",
+                a: "Quick Check ($19.99 one-time) provides an educational review of supported mouth photos and X-rays, visible observations, an Oral Health Score, a patient-friendly report, and Dr Din access for 30 days. It does not provide a diagnosis.",
               },
               {
                 q: "What is the difference between Quick Check and Complete Care?",
-                a: "Quick Check is a one-time AI review that shows visible concerns, key insights, and your Oral Health Score. Complete Care gives you year-round unlimited access to all services, including guided self-examination, complete detailed reports, progress tracking over time, personalized guidance, treatment options with cost estimates, and 24/7 Dr. Din support.",
+                a: "Quick Check is a one-time educational review for one case. Complete Care adds year-round monitoring, guided self-examination, reports, Oral Health Score tracking, record organization, and Dr Din access for one person or an eligible family group.",
               },
               {
                 q: "When should I choose Second Opinion?",
@@ -594,11 +600,7 @@ export default function Pricing() {
               },
               {
                 q: "What does the Complete Care Family plan include?",
-                a: "The Complete Care Family plan ($149.99/year) covers up to 4 family members. Each person gets their own profile, reports, Oral Health Score tracking, and dental history. Dr. Din is available for family dental questions. Additional members can be added for $19.99/year each.",
-              },
-              {
-                q: "Are the results reviewed by real dentists?",
-                a: "Yes. Every analysis is reviewed and approved by licensed dentists before it reaches you.",
+                a: "The Complete Care Family plan ($149.99/year) covers up to 4 family members. Each person gets a separate profile, reports, Oral Health Score tracking, and dental history, with Dr Din access. Additional members can be added for $19.99/year each.",
               },
             ].map((item, idx) => (
               <details key={idx} className="group bg-stone-50 rounded-2xl border border-stone-200 overflow-hidden">

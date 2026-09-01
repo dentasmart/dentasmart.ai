@@ -98,7 +98,7 @@ export default function LifeStagesHub() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/download">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
-                  Get Your Free AI Assessment
+                  Download the App
                 </Button>
               </Link>
               <Link href="/symptom-quiz">
@@ -210,12 +210,12 @@ export default function LifeStagesHub() {
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-4xl font-normal mb-3 text-white">Every age deserves a healthy smile.</h2>
             <p className="text-base md:text-lg text-stone-300 font-light mb-6 max-w-2xl mx-auto">
-              DentaSmart gives you a free AI assessment so you can stay ahead of dental issues at every stage of life. Upload a photo and get clarity in minutes.
+              The app is free to download. Use DentaSmart for educational guidance and to prepare questions for professional care at each life stage.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/download">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
-                  Download DentaSmart Free
+                  Download the App
                 </Button>
               </Link>
               <Link href="/symptom-quiz">

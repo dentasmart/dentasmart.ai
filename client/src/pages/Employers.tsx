@@ -2,23 +2,26 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { BenefitsCarousel } from "@/components/BenefitsCarousel";
-import { TrendingDown, Users, ShieldCheck } from "lucide-react";
+import { BarChart3, FileText, Users } from "lucide-react";
 import { ValueComparisonTable } from "@/components/ValueComparisonTable";
-import { SavingsCalculator } from "@/components/SavingsCalculator";
-import { DownloadSection } from "@/components/DownloadSection";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { DemoRequestModal } from "@/components/DemoRequestModal";
+import { Link } from "wouter";
+import { trackEvent } from "@/lib/analytics";
 
 export default function Employers() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
+  const openDemo = (source: "hero" | "final_cta") => {
+    trackEvent("employer_demo_request", { source });
+    setIsDemoModalOpen(true);
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
       <SEO
-        title="DentaSmart for Employers: Cut Dental Costs"
-        description="Help your employees take control of their dental health with AI-powered insights. Reduce emergency dental costs and improve workplace wellness."
+        title="DentaSmart for Employers | Oral Health Education and Decision Support"
+        description="Explore DentaSmart as an educational oral health resource for employees. Employer pricing, eligibility, implementation, and success measures are confirmed during discovery."
         canonical="https://dentasmart.ai/employers"
       />
       <DemoRequestModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
@@ -54,17 +57,17 @@ export default function Employers() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-8 leading-[1.1]">
-              Give employees dental clarity <br />
-              <span className="font-normal italic text-primary">without the insurance headache</span>.
+              Help employees navigate dental questions <br />
+              <span className="font-normal italic text-primary">with clearer information</span>.
             </h1>
             <p className="text-xl md:text-2xl text-black font-normal max-w-3xl mr-auto mb-12 leading-relaxed">
-              A modern dental benefit that helps employees catch issues early and reduce unnecessary spend.
+              Explore an educational oral health service that can help employees organize information and prepare questions for professional care. DentaSmart is not dental insurance.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-start">
               <Button 
                 size="lg" 
-                className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0 cursor-pointer"
-                onClick={() => setIsDemoModalOpen(true)}
+                className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-10 py-8 text-xl font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0 cursor-pointer"
+                onClick={() => openDemo("hero")}
               >
                 Book a Demo
               </Button>
@@ -83,26 +86,26 @@ export default function Employers() {
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
-              The problem with traditional dental benefits
+              Questions employers are trying to solve
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
               { 
-                icon: TrendingDown, 
-                title: "Delayed Care", 
-                desc: "Employees delay care until it becomes expensive." 
+                icon: FileText,
+                title: "Confusing Information",
+                desc: "Employees may need plain-language context before deciding what to ask a dental professional."
               },
               { 
                 icon: Users, 
-                title: "Confusing Benefits", 
-                desc: "Benefits feel confusing and underused." 
+                title: "Different Employee Needs",
+                desc: "A useful program should explain who is eligible, which services are included, and where professional care begins."
               },
               { 
-                icon: ShieldCheck, 
-                title: "Surprise Bills", 
-                desc: "HR gets complaints about surprise bills." 
+                icon: BarChart3,
+                title: "Unclear Success Measures",
+                desc: "Employers need agreed pilot measures before making claims about engagement, utilization, or cost."
               }
             ].map((item, idx) => (
               <motion.div 
@@ -131,14 +134,14 @@ export default function Employers() {
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
-              A simple plan for better oral health
+              A responsible path to an employer pilot
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { step: "01", title: "Launch in days", desc: "Seamless onboarding for your entire team." },
-              { step: "02", title: "Employees scan monthly", desc: "Proactive monitoring catches issues early." },
-              { step: "03", title: "Reports drive decisions", desc: "Data-driven insights for smarter care choices." }
+              { step: "01", title: "Confirm the audience", desc: "Define eligibility, employee needs, and the DentaSmart services being considered." },
+              { step: "02", title: "Agree on the pilot", desc: "Confirm pricing, timing, onboarding, support, privacy responsibilities, and professional-care boundaries." },
+              { step: "03", title: "Measure what was agreed", desc: "Review only the engagement and program measures documented for the pilot." }
             ].map((item, idx) => (
               <div key={idx} className="bg-white p-8 rounded-3xl shadow-sm border border-stone-100 relative overflow-hidden">
                 <div className="text-8xl font-bold text-primary/10 absolute -top-4 -right-4 select-none">{item.step}</div>
@@ -152,9 +155,27 @@ export default function Employers() {
         </div>
       </section>
 
-      {/* Benefits Carousel */}
-      <section className="py-12 bg-stone-50 overflow-hidden">
-        <BenefitsCarousel />
+      <section className="bg-stone-50 py-16">
+        <div className="container mx-auto max-w-6xl px-4">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-4xl font-light text-stone-900 md:text-5xl">What employees can use</h2>
+            <p className="mx-auto max-w-3xl text-lg leading-relaxed text-stone-600">
+              Final service access depends on the employer agreement. These consumer tools are available in DentaSmart today.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {[
+              { title: "Plain-language reports", desc: "Educational explanations for supported photos, X-rays, and treatment documents." },
+              { title: "Decision preparation", desc: "Cost context and questions to bring to a dentist before accepting a treatment plan." },
+              { title: "Record organization", desc: "Oral Health Score history, reminders, and separate profiles when the selected service includes them." },
+            ].map((item) => (
+              <article key={item.title} className="rounded-3xl border border-stone-200 bg-white p-7">
+                <h3 className="mb-3 text-xl font-medium text-stone-900">{item.title}</h3>
+                <p className="leading-relaxed text-stone-600">{item.desc}</p>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Comparison Table - Clean & Modern */}
@@ -162,33 +183,34 @@ export default function Employers() {
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-light text-stone-900 mb-6">
-              Compare the value
+              Compare the role of each option
             </h2>
             <p className="text-xl text-stone-600 font-light max-w-3xl mx-auto">
-              See how DentaSmart Benefits stacks up against traditional carriers.
+              DentaSmart is an educational service, not a replacement for dental insurance or professional care.
             </p>
           </div>
 
           <ValueComparisonTable />
-          <p className="text-center text-sm text-stone-400 mt-8 font-light">
-            *Comparison based on average PPO plans from major carriers. Actual costs vary by location.
+          <p className="text-center text-sm text-stone-600 mt-8 font-light">
+            DentaSmart prices shown are published consumer prices. Employer terms and third-party plan details require separate verification.
           </p>
         </div>
       </section>
 
-      {/* Outcomes - Big Numbers */}
+      {/* Pilot measurement guardrails */}
       <section id="savings-calculator" className="py-12 bg-stone-50">
         <div className="container px-4 mx-auto max-w-5xl">
-
-          <div className="mb-16">
-            <SavingsCalculator />
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-4xl font-light text-stone-900 md:text-5xl">Define success before launch</h2>
+            <p className="mx-auto max-w-3xl text-lg leading-relaxed text-stone-600">
+              DentaSmart does not publish employer savings or health-outcome guarantees. A pilot should use measures agreed with each employer.
+            </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { value: "High", label: "Utilization vs Traditional" },
-              { value: "Better", label: "Employee Confidence" },
-              { value: "Fewer", label: "Surprise Escalations" }
+              { value: "Access", label: "Who can use each service" },
+              { value: "Engagement", label: "Which agreed actions are completed" },
+              { value: "Feedback", label: "What employees and program owners report" }
             ].map((stat, idx) => (
               <motion.div 
                 key={idx} 
@@ -210,23 +232,41 @@ export default function Employers() {
       <section className="py-16 bg-white border-t border-stone-100">
         <div className="container px-4 mx-auto max-w-4xl text-center">
           <h2 className="text-3xl md:text-4xl font-light text-stone-900 mb-8">
-            Trusted by industry leaders
+            Who informs DentaSmart
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="p-8 bg-stone-50 rounded-2xl">
-              <p className="text-lg text-stone-800 font-medium mb-2">"Built by AI and healthcare leaders."</p>
-              <p className="text-sm text-stone-500">Ensuring enterprise-grade reliability.</p>
+              <p className="text-lg text-stone-800 font-medium mb-2">Product and technology leadership</p>
+              <p className="text-sm text-stone-500">Responsible for DentaSmart's product, technology, and business direction.</p>
             </div>
             <div className="p-8 bg-stone-50 rounded-2xl">
-              <p className="text-lg text-stone-800 font-medium mb-2">"Advised by dental benefit experts."</p>
-              <p className="text-sm text-stone-500">Designed for real-world clinical impact.</p>
+              <p className="text-lg text-stone-800 font-medium mb-2">Strategic and dental perspectives</p>
+              <p className="text-sm text-stone-500">Advisor and reviewer roles are described on the Team page and do not guarantee employer outcomes.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
-      <DownloadSection />
+      <section className="bg-stone-900 py-16 text-white">
+        <div className="container mx-auto max-w-4xl px-4 text-center">
+          <h2 className="mb-4 text-3xl font-normal text-white md:text-4xl">Start with a discovery call</h2>
+          <p className="mx-auto mb-8 max-w-2xl text-lg leading-relaxed text-stone-200">
+            Confirm employer pricing, eligibility, implementation, privacy responsibilities, support, and pilot measures before making a program decision.
+          </p>
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button
+              size="lg"
+              className="min-h-12 rounded-full bg-action px-8 text-action-foreground hover:bg-action-hover"
+              onClick={() => openDemo("final_cta")}
+            >
+              Book a Demo
+            </Button>
+            <Link href="/team" className="inline-flex min-h-12 items-center px-4 font-medium text-white underline underline-offset-4">
+              Meet the Team
+            </Link>
+          </div>
+        </div>
+      </section>
 
       <Footer />
     </div>

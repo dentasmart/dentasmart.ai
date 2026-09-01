@@ -16,7 +16,7 @@ export function DownloadCTA() {
             Download DentaSmart Today
           </h2>
           <p className="text-white/90 text-lg font-light mb-8">
-            Join thousands of users who have transformed their dental health with DentaSmart.
+            Download the app, review the available services, and choose the level of support that fits your situation.
           </p>
 
           {/* App Store Buttons */}

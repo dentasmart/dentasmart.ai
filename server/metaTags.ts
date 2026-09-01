@@ -71,34 +71,34 @@ function getUtilityNoindexMeta(cleanPath: string): MetaInfo | null {
 // have a matching entry here so crawlers see the same meta in raw HTML.
 const staticMeta: Record<string, MetaInfo> = {
   "/": {
-    title: "DentaSmart | Your Personal AI Dentist in Your Pocket",
+    title: "DentaSmart | Your Personal AI Oral Health Guide",
     description:
-      "Dentasmart provides instant AI-powered dental insights. Upload your teeth photo for personalized care, clear education, and quick oral health clarity.",
+      "DentaSmart provides educational oral health insights from supported photos, X-rays, symptoms, and treatment documents to help you prepare for dental care.",
   },
   "/how-it-works": {
-    title: "How DentaSmart Works | AI Dental Analysis in 3 Steps",
+    title: "How DentaSmart Works | AI Oral Health Guide in 4 Steps",
     description:
-      "Upload a photo of your teeth, get AI-powered analysis in minutes, and follow a personalized care plan. See how DentaSmart makes dental health simple.",
+      "See how DentaSmart reviews supported dental information, organizes educational insights, and helps you prepare questions for professional care in four steps.",
   },
   "/features": {
-    title: "DentaSmart Features | AI Dental Scan, Oral Health Score & More",
+    title: "DentaSmart Features | Oral Health Reports and Tracking",
     description:
-      "Discover DentaSmart features: AI-powered photo analysis, personalized Oral Health Score, cost estimates, care reminders, and second opinion tools.",
+      "Explore DentaSmart features for supported dental photos and X-rays, plain-language reports, Oral Health Score tracking, cost context, and questions for your dentist.",
   },
   "/pricing": {
     title: "DentaSmart Pricing | Quick Check, Second Opinion & Complete Care Plans",
     description:
-      "DentaSmart offers three plans: Quick Check $19.99 (one-time AI image review), Second Opinion $29.99 (compare your dentist's plan), Complete Care $74.99/year individual or $149.99/year family. Start free.",
+      "DentaSmart offers a limited free scan preview, Quick Check for $19.99 one-time, Second Opinion for $29.99 one-time, Complete Care for $74.99/year individual, and $149.99/year family.",
   },
   "/employers": {
-    title: "DentaSmart for Employers | AI Dental Benefits for Your Team",
+    title: "DentaSmart for Employers | Oral Health Education and Decision Support",
     description:
-      "Offer DentaSmart as an employee benefit. Reduce dental emergencies, improve oral health literacy, and lower dental costs for your workforce.",
+      "Explore DentaSmart as an educational oral health resource for employees. Employer pricing, eligibility, implementation, and success measures are confirmed during discovery.",
   },
   "/team": {
-    title: "Meet the DentaSmart Team | Our Mission & People",
+    title: "Meet the DentaSmart Team and Advisors",
     description:
-      "Meet the team behind DentaSmart. Learn about our mission to make oral health accessible and the people building your personal AI dentist.",
+      "Meet the DentaSmart leadership team, strategic advisors, and named dental content reviewer, with clear roles and professional-care boundaries.",
   },
   "/faqs": {
     title: "DentaSmart FAQs | Common Questions Answered",
@@ -108,37 +108,37 @@ const staticMeta: Record<string, MetaInfo> = {
   "/download": {
     title: "Download DentaSmart | iOS & Android App",
     description:
-      "Download DentaSmart free on iOS or Android. Get AI-powered dental analysis, personalized care plans, and oral health tracking on your phone.",
+      "Download DentaSmart free on iOS or Android. Review the app first, then compare paid Quick Check, Second Opinion, and Complete Care options.",
   },
   "/instant-scan": {
-    title: "Instant Dental Scan | Upload a Photo for AI Analysis",
+    title: "Dental Photo Review | DentaSmart Educational Guide",
     description:
-      "Try DentaSmart's instant dental scan. Upload a photo of your teeth and get AI-powered insights about your oral health in minutes.",
+      "Learn how DentaSmart uses supported mouth photos and dental X-rays for educational observations that do not replace professional diagnosis or care.",
   },
   "/photo-guide": {
     title: "Photo Guide | How to Take the Best Dental Photos",
     description:
-      "Learn how to take clear photos of your teeth for the best AI analysis results. Simple tips for lighting, angles, and what to capture.",
+      "Learn how to take clear, well-lit mouth photos for supported DentaSmart services, with practical tips for lighting, angles, and what to capture.",
   },
   "/best-ai-dental-apps": {
-    title: "Best AI Dental Apps (2026): Honest Comparison",
+    title: "Best AI Dental Apps (2026): How to Compare Safely",
     description:
-      "We compared the top AI teeth scanning apps side by side. See which ones actually analyze X-rays, track your health over time, and give you useful reports.",
+      "Compare AI dental apps by input support, output clarity, pricing transparency, professional-care boundaries, privacy, and current platform availability.",
   },
   "/free-ai-teeth-scanner": {
-    title: "Free AI Teeth Scanner - Analyze Photos & X-Rays",
+    title: "Free AI Teeth Scanner Guide - What to Compare",
     description:
-      "DentaSmart is a free AI teeth scanner that analyzes mouth photos and dental X-rays. Get an oral health score, spot potential issues, and understand your dental health in minutes.",
+      "Learn what free AI teeth scanner searches mean, what these tools can and cannot do, and how DentaSmart's free download differs from paid checks and plans.",
   },
   "/vs/dental-com": {
-    title: "DentaSmart vs Dental.com SmartScan (2026) | Honest Comparison",
+    title: "DentaSmart vs Dental.com SmartScan (2026) | Comparison Guide",
     description:
-      "A detailed comparison of DentaSmart and Dental.com SmartScan. See which AI teeth scanner offers better analysis, X-ray support, and value for your money.",
+      "Compare verified DentaSmart facts with a framework for checking Dental.com SmartScan's current features, pricing, availability, and professional-care boundaries.",
   },
   "/vs/dentistry-one": {
-    title: "DentaSmart vs Dentistry.One SmileScan (2026) | Full Comparison",
+    title: "DentaSmart vs Dentistry.One SmileScan (2026) | Comparison Guide",
     description:
-      "Compare DentaSmart and Dentistry.One SmileScan side by side. See which AI dental scanner offers better X-ray analysis, tracking, and value.",
+      "Compare verified DentaSmart facts with a framework for checking Dentistry.One SmileScan's current features, pricing, availability, and professional-care boundaries.",
   },
   "/oral-health-hub": {
     title: "Oral Health Hub | Dental Education & Guides | DentaSmart",
@@ -146,9 +146,9 @@ const staticMeta: Record<string, MetaInfo> = {
       "Browse DentaSmart's Oral Health Hub for expert dental guides, symptom explanations, treatment information, and preventive care tips.",
   },
   "/answers": {
-    title: "Dental Answers | AI-Powered Dental Q&A | DentaSmart",
+    title: "Dental Answers | Educational Dental Q&A | DentaSmart",
     description:
-      "Get instant answers to your dental questions with DentaSmart's AI-powered Q&A. Ask about symptoms, treatments, costs, and oral health.",
+      "Review general educational information about dental symptoms, treatments, costs, and oral health. DentaSmart does not diagnose conditions.",
   },
   "/find-a-dentist": {
     title: "Find a Dentist Near You | DentaSmart Dentist Finder",
@@ -158,12 +158,12 @@ const staticMeta: Record<string, MetaInfo> = {
   "/symptom-quiz": {
     title: "Dental Symptom Quiz | Check Your Oral Health | DentaSmart",
     description:
-      "Take DentaSmart's free dental symptom quiz. Answer a few questions about your symptoms and get personalized insights about your oral health.",
+      "Use DentaSmart's free symptom quiz to organize what you notice and review general educational guidance. It does not diagnose or determine urgency.",
   },
   "/stories": {
-    title: "DentaSmart User Stories | Real People, Real Results",
+    title: "Ways to Use DentaSmart | Quick Check, Second Opinion and Monitoring",
     description:
-      "Read real stories from DentaSmart users who gained clarity about their oral health through AI-powered dental analysis.",
+      "Explore practical DentaSmart pathways for a one-time Quick Check, a treatment-plan Second Opinion, or ongoing Complete Care monitoring.",
   },
   "/privacy-policy": {
     title: "Privacy Policy | DentaSmart",
@@ -183,9 +183,9 @@ const staticMeta: Record<string, MetaInfo> = {
 
   // ─── Comparison pages ──────────────────────────────────────────────
   "/compare/dentasmart-vs-chatgpt-dental": {
-    title: "DentaSmart vs ChatGPT: Which AI Should You Trust With Your Teeth?",
+    title: "DentaSmart vs ChatGPT for Dental Questions | Comparison Guide",
     description:
-      "ChatGPT answers dental questions. DentaSmart helps you monitor, prevent, compare, track, and reduce the cost of oral-health decisions using your actual teeth, X-rays, and dental history.",
+      "Compare DentaSmart's purpose-built educational workflow with a general AI chatbot, including records, pricing, and professional-care boundaries.",
   },
   "/compare/dentasmart-vs-teledentistry": {
     title: "DentaSmart vs Teledentistry | Cost & Feature Comparison",

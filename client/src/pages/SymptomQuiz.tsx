@@ -30,10 +30,9 @@ const quizJsonLd = {
   "@type": "Quiz",
   name: "Free Dental Symptom Checker. Oral Health Quiz",
   description:
-    "Answer 8 questions about your dental symptoms and habits to get a personalized oral health risk assessment with AI-powered recommendations.",
+    "Answer 8 questions to organize dental symptoms and habits, then review an educational summary and topics to discuss with a dental professional.",
   url: "https://dentasmart.ai/symptom-quiz",
   educationalLevel: "beginner",
-  timeRequired: "PT2M",
   provider: {
     "@type": "Organization",
     name: "DentaSmart",
@@ -52,7 +51,7 @@ const quizJsonLd = {
         { "@type": "Answer", text: "Mild discomfort that comes and goes" },
         { "@type": "Answer", text: "Moderate pain when eating or drinking" },
       ],
-      acceptedAnswer: { "@type": "Answer", text: "Severe or constant pain may indicate an infection or abscess and should be evaluated by a dentist promptly." },
+      acceptedAnswer: { "@type": "Answer", text: "Severe or constant pain has several possible causes and should be evaluated promptly by a dental professional." },
     },
     {
       "@type": "Question",
@@ -61,7 +60,7 @@ const quizJsonLd = {
         { "@type": "Answer", text: "Never" },
         { "@type": "Answer", text: "Rarely, only when I floss hard" },
       ],
-      acceptedAnswer: { "@type": "Answer", text: "Gums that bleed frequently when brushing or flossing are a common early sign of gum disease (gingivitis) and should be checked by a dentist." },
+      acceptedAnswer: { "@type": "Answer", text: "Frequent gum bleeding can have several causes and should be discussed with a dentist." },
     },
     {
       "@type": "Question",
@@ -71,7 +70,7 @@ const quizJsonLd = {
         { "@type": "Answer", text: "Only with very cold things like ice cream" },
         { "@type": "Answer", text: "Both hot and cold cause discomfort" },
       ],
-      acceptedAnswer: { "@type": "Answer", text: "Lingering pain after exposure to hot or cold can indicate nerve involvement and should be evaluated by a dentist." },
+      acceptedAnswer: { "@type": "Answer", text: "Lingering pain after hot or cold exposure should be evaluated by a dentist because several conditions can cause it." },
     },
     {
       "@type": "Question",
@@ -81,7 +80,7 @@ const quizJsonLd = {
         { "@type": "Answer", text: "Some staining or discoloration" },
         { "@type": "Answer", text: "Swollen, red, or receding gums" },
       ],
-      acceptedAnswer: { "@type": "Answer", text: "Dark spots on teeth, chips, or a loose tooth are signs of decay or structural damage that require professional dental evaluation." },
+      acceptedAnswer: { "@type": "Answer", text: "Dark spots, chips, or a loose tooth need professional evaluation because appearance alone cannot confirm the cause." },
     },
     {
       "@type": "Question",
@@ -90,7 +89,7 @@ const quizJsonLd = {
         { "@type": "Answer", text: "I brush twice daily and floss regularly" },
         { "@type": "Answer", text: "I brush daily but rarely floss" },
       ],
-      acceptedAnswer: { "@type": "Answer", text: "Brushing twice daily and flossing once daily is the gold standard for preventing cavities and gum disease." },
+      acceptedAnswer: { "@type": "Answer", text: "Daily brushing and cleaning between teeth support oral health. Ask a dentist which routine and products fit your needs." },
     },
     {
       "@type": "Question",
@@ -100,7 +99,7 @@ const quizJsonLd = {
         { "@type": "Answer", text: "6 to 12 months ago" },
         { "@type": "Answer", text: "1 to 2 years ago" },
       ],
-      acceptedAnswer: { "@type": "Answer", text: "Dental professionals recommend a checkup and cleaning every 6 months to catch problems early before they become painful or expensive." },
+      acceptedAnswer: { "@type": "Answer", text: "Dental visit frequency depends on symptoms, history, age, and risk factors. Ask a dentist to recommend a schedule for you." },
     },
     {
       "@type": "Question",
@@ -110,7 +109,7 @@ const quizJsonLd = {
         { "@type": "Answer", text: "I want to prevent future problems" },
         { "@type": "Answer", text: "I have a specific symptom I'm worried about" },
       ],
-      acceptedAnswer: { "@type": "Answer", text: "If you are in pain, you should contact a dentist as soon as possible. DentaSmart's symptom checker can help you assess urgency while you arrange an appointment." },
+      acceptedAnswer: { "@type": "Answer", text: "Contact a dental professional for pain, swelling, bleeding, trauma, or worsening symptoms. The DentaSmart quiz cannot determine urgency or provide a diagnosis." },
     },
     {
       "@type": "Question",
@@ -120,7 +119,7 @@ const quizJsonLd = {
         { "@type": "Answer", text: "I'm not sure what my plan covers" },
         { "@type": "Answer", text: "I have insurance but it feels limited" },
       ],
-      acceptedAnswer: { "@type": "Answer", text: "If you do not have dental insurance, community health centers, dental schools, and discount plans can provide affordable care. DentaSmart can help you understand what treatment you may need before you visit." },
+      acceptedAnswer: { "@type": "Answer", text: "If you do not have dental insurance, ask community health centers, accredited dental schools, and local programs about current services and eligibility. A dentist must determine which treatment you need." },
     },
   ],
 };
@@ -135,7 +134,7 @@ const faqJsonLd = {
       name: "How do I know if my tooth pain is serious?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Tooth pain that is severe, constant, or accompanied by swelling, fever, or a bad taste in your mouth may indicate an infection or abscess and needs prompt dental attention. Mild, occasional sensitivity is less urgent but still worth monitoring. DentaSmart's free symptom quiz can help you assess your risk level in under 2 minutes.",
+        text: "Severe or constant tooth pain, facial swelling, fever, uncontrolled bleeding, trauma, or trouble breathing or swallowing needs prompt professional attention. DentaSmart's free symptom quiz can help you record what you notice, but it cannot determine urgency or diagnose the cause.",
       },
     },
     {
@@ -143,7 +142,7 @@ const faqJsonLd = {
       name: "What are the early signs of gum disease?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Early signs of gum disease (gingivitis) include gums that bleed when you brush or floss, red or swollen gums, persistent bad breath, and gums that appear to be pulling away from your teeth. If caught early, gum disease is reversible with proper brushing, flossing, and a professional cleaning.",
+        text: "Bleeding, redness, swelling, persistent bad breath, or changes in the gumline can have several causes. A dentist can examine your gums and recommend appropriate care.",
       },
     },
     {
@@ -151,7 +150,7 @@ const faqJsonLd = {
       name: "Should I see a dentist if I have tooth sensitivity?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes, tooth sensitivity that is new, worsening, or accompanied by pain that lingers after exposure to hot or cold should be evaluated by a dentist. It can signal a cavity, cracked tooth, or exposed root. Mild sensitivity to very cold items alone is common and may be managed with a sensitivity toothpaste.",
+        text: "New, worsening, or lingering tooth sensitivity should be evaluated by a dentist. Decay, a crack, exposed roots, whitening products, or other factors may cause it, and an examination is needed to tell which applies.",
       },
     },
     {
@@ -159,7 +158,7 @@ const faqJsonLd = {
       name: "How often should I visit the dentist?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Most dental professionals recommend a checkup and cleaning every 6 months. If you have a history of gum disease, cavities, or other oral health issues, your dentist may recommend more frequent visits. Regular checkups catch problems early when they are easier and less expensive to treat.",
+        text: "Dental visit frequency depends on symptoms, history, age, and risk factors. Your dentist can recommend an examination and cleaning schedule that fits your needs.",
       },
     },
     {
@@ -167,7 +166,7 @@ const faqJsonLd = {
       name: "What does a dental symptom checker do?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A dental symptom checker asks you questions about your pain, gum health, sensitivity, and habits to estimate your oral health risk level. DentaSmart's free quiz takes about 2 minutes and gives you a personalized risk assessment. Low, moderate, or high. Along with matched conditions and specific next steps. It does not replace a professional dental diagnosis.",
+        text: "A dental symptom checker asks questions about symptoms and habits, then organizes the answers into an educational summary and topic links. DentaSmart's free quiz does not diagnose conditions, determine urgency, or replace professional care.",
       },
     },
     {
@@ -175,7 +174,7 @@ const faqJsonLd = {
       name: "Can I check my dental symptoms online for free?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. DentaSmart offers a free online dental symptom checker quiz at dentasmart.ai/symptom-quiz. Answer 8 questions about your symptoms and habits to receive a personalized oral health risk assessment with AI-powered recommendations. No account or credit card required.",
+        text: "Yes. DentaSmart offers a free online symptom quiz at dentasmart.ai/symptom-quiz. Answer 8 questions to organize what you notice and review general educational guidance. No account or credit card is required for the quiz.",
       },
     },
     {
@@ -183,7 +182,7 @@ const faqJsonLd = {
       name: "What causes sudden tooth pain?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Sudden tooth pain can be caused by a cavity reaching the nerve, a cracked tooth, an exposed root, a dental abscess, or a lost filling. If the pain is severe or accompanied by swelling, you should see a dentist as soon as possible. Use DentaSmart's symptom quiz to assess your risk and get guidance on next steps.",
+        text: "Sudden tooth pain has several possible causes. Severe pain, swelling, fever, trauma, or worsening symptoms need prompt professional attention. Use DentaSmart's symptom quiz to record what you notice, not to diagnose the cause.",
       },
     },
     {
@@ -191,7 +190,7 @@ const faqJsonLd = {
       name: "Do I need a dentist if my teeth don't hurt?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Many dental problems. Including cavities, early gum disease, and oral cancer. Have no pain in their early stages. Regular checkups every 6 months allow your dentist to catch and treat issues before they become painful and expensive. Prevention is always cheaper than treatment.",
+        text: "Yes. Some dental problems may not cause pain at first. A dentist can recommend a checkup schedule based on your history, symptoms, age, and risk factors.",
       },
     },
   ],
@@ -201,18 +200,18 @@ const faqJsonLd = {
 const webAppJsonLd = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  name: "DentaSmart - Your Personal AI Dentist",
+  name: "DentaSmart Free Symptom Quiz",
   url: "https://dentasmart.ai/symptom-quiz",
   applicationCategory: "HealthApplication",
   operatingSystem: "Web, iOS, Android",
   description:
-    "Free dental symptom checker and AI-powered oral health assessment. Answer 8 questions to get your personalized risk score and next steps.",
+    "Free educational symptom quiz that organizes answers and links to general oral health information. It does not diagnose or determine urgency.",
   offers: {
     "@type": "Offer",
     price: "0",
     priceCurrency: "USD",
   },
-  featureList: "Free dental symptom checker, Personalized oral health risk assessment, AI-powered condition matching, Tailored next-step recommendations, No account required",
+  featureList: "Free symptom quiz, Educational answer summary, Related topic links, Professional-care reminders, No account required",
   author: {
     "@type": "Organization",
     name: "DentaSmart",
@@ -247,7 +246,7 @@ const medicalPageJsonLd = {
   name: "Free Dental Symptom Checker. Oral Health Quiz",
   url: "https://dentasmart.ai/symptom-quiz",
   description:
-    "A free online dental symptom checker. Answer 8 questions about tooth pain, gum health, sensitivity, and habits to get a personalized oral health risk assessment.",
+    "A free educational symptom quiz that helps people organize tooth pain, gum, sensitivity, and habit observations before professional care.",
   audience: {
     "@type": "MedicalAudience",
     name: "Patients",
@@ -259,7 +258,6 @@ const medicalPageJsonLd = {
     { "@type": "MedicalCondition", name: "Dental Abscess" },
     { "@type": "MedicalCondition", name: "Cavities" },
   ],
-  lastReviewed: "2026-03-23",
   publisher: {
     "@type": "Organization",
     name: "DentaSmart",
@@ -278,7 +276,7 @@ const riskConfig = {
     border: "border-emerald-200",
     icon: CheckCircle2,
     barColor: "bg-emerald-500",
-    label: "Low Risk",
+    label: "Lower-Weight Answer Pattern",
   },
   moderate: {
     color: "text-amber-600",
@@ -286,7 +284,7 @@ const riskConfig = {
     border: "border-amber-200",
     icon: Shield,
     barColor: "bg-amber-500",
-    label: "Moderate Risk",
+    label: "Mixed Answer Pattern",
   },
   high: {
     color: "text-red-600",
@@ -294,7 +292,7 @@ const riskConfig = {
     border: "border-red-200",
     icon: AlertTriangle,
     barColor: "bg-red-500",
-    label: "High Risk",
+    label: "Warning-Sign Answer Pattern",
   },
 };
 
@@ -391,7 +389,7 @@ export default function SymptomQuiz() {
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
         title="Free Dental Symptom Checker | DentaSmart"
-        description="Not sure if your tooth pain or gum symptoms need a dentist? Take our free 2-minute dental symptom quiz and get a personalized oral health risk score."
+        description="Use DentaSmart's free educational symptom quiz to organize what you notice and review general guidance. It does not diagnose or determine urgency."
         canonical="https://dentasmart.ai/symptom-quiz"
         keywords="dental symptom checker, tooth pain quiz, do I need a dentist quiz, dental symptoms checker, oral health quiz, gum disease quiz, tooth sensitivity quiz, free dental assessment, online dental check"
         ogType="website"
@@ -509,21 +507,21 @@ function IntroSection({ onStart }: { onStart: () => void }) {
               Free Dental Symptom Checker
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-6 leading-tight">
-              Do your dental symptoms <br />
-              <span className="italic text-primary">need a dentist?</span>
+              Organize your dental symptoms <br />
+              <span className="italic text-primary">before professional care.</span>
             </h1>
             <p className="text-xl text-stone-600 mb-8 font-light leading-relaxed max-w-lg">
-              Answer 8 quick questions about your tooth pain, gum health, and
-              habits. Get a free personalized oral health risk score with clear
-              next steps. No account required.
+              Answer 8 questions about tooth pain, gum health, sensitivity, and
+              habits. Review an educational summary and related topics. This quiz
+              does not diagnose or determine urgency.
             </p>
 
             <div className="space-y-4 mb-10">
               {[
-                "Takes less than 2 minutes",
-                "Personalized risk assessment",
-                "Matched conditions & recommendations",
-                "100% free, no strings attached",
+                "8 questions about what you notice",
+                "Educational answer summary",
+                "Related oral health topics",
+                "Free quiz with no account required",
               ].map((item, idx) => (
                 <div key={idx} className="flex items-center gap-3">
                   <CheckCircle2 className="w-5 h-5 text-primary flex-shrink-0" />
@@ -537,7 +535,7 @@ function IntroSection({ onStart }: { onStart: () => void }) {
               className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-xl cursor-pointer"
               onClick={onStart}
             >
-              Start My Free Assessment
+              Start Free Symptom Quiz
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </motion.div>
@@ -558,8 +556,8 @@ function IntroSection({ onStart }: { onStart: () => void }) {
                       <Shield className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <div className="font-medium text-black">Oral Health Score</div>
-                      <div className="text-sm text-stone-500">Personalized assessment</div>
+                      <div className="font-medium text-black">Symptom Summary</div>
+                      <div className="text-sm text-stone-500">Educational quiz result</div>
                     </div>
                   </div>
 
@@ -729,11 +727,11 @@ function EmailCapture({
               <Mail className="w-8 h-8 text-primary" />
             </div>
             <h2 className="text-2xl md:text-3xl font-normal text-black mb-3">
-              Your results are ready!
+              Your educational summary is ready
             </h2>
             <p className="text-stone-600 leading-relaxed">
-              Enter your email to get your personalized oral health assessment,
-              plus tips to save on dental care delivered to your inbox.
+              Enter your email to receive your quiz summary and general oral
+              health education, or continue without providing an email.
             </p>
           </div>
 
@@ -820,7 +818,7 @@ function ResultsSection({
   return (
     <section className="pt-32 pb-16">
       <div className="container px-4 mx-auto max-w-3xl">
-        {/* Risk Level Header */}
+        {/* Educational answer-pattern header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -854,7 +852,7 @@ function ResultsSection({
           </div>
         </motion.div>
 
-        {/* Matched Conditions */}
+        {/* Related education topics */}
         {result.matchedConditions.length > 0 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -863,7 +861,7 @@ function ResultsSection({
             className="bg-white rounded-3xl shadow-lg border border-stone-100 p-8 mb-8"
           >
             <h2 className="text-xl font-medium text-black mb-5">
-              Conditions to Watch For
+              Topics You May Want to Review
             </h2>
             <div className="space-y-4">
               {result.matchedConditions.map((condition, idx) => (
@@ -888,7 +886,7 @@ function ResultsSection({
           </motion.div>
         )}
 
-        {/* Recommendations */}
+        {/* General next steps */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -896,7 +894,7 @@ function ResultsSection({
           className="bg-white rounded-3xl shadow-lg border border-stone-100 p-8 mb-8"
         >
           <h2 className="text-xl font-medium text-black mb-5">
-            What We Recommend
+            General Next Steps
           </h2>
           <div className="space-y-4">
             {result.recommendations.map((rec, idx) => (
@@ -923,9 +921,9 @@ function ResultsSection({
             Get a deeper look with DentaSmart
           </h2>
           <p className="text-white/90 text-lg mb-8 leading-relaxed">
-            Upload a photo of your teeth or X-rays and get an AI-powered
-            analysis with your Oral Health Score, matched conditions, and a
-            personalized care plan. All in under 2 minutes.
+            Compare paid DentaSmart services for supported mouth photos, dental
+            X-rays, educational reports, and questions to discuss with a dentist.
+            Processing time and included outputs vary by service.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/download">

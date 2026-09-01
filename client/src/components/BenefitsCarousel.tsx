@@ -9,7 +9,7 @@ const benefits = [
     tag: "Oral Health Score",
     title: "Oral Health Score and Priorities",
     desc: "Know what needs attention now vs later.",
-    detail: "Get a clear, objective score of your oral health based on AI analysis of your photos and X-rays. Understand exactly where you stand without the guesswork.",
+    detail: "Review an educational score based on supported photos and X-rays, then use the highlighted priorities to prepare questions for a dental professional.",
     image: "/images/optimized/DawnQOxKtdjguhLp-800.webp"
   },
   {
@@ -33,7 +33,7 @@ const benefits = [
     tag: "Personalized Guidance",
     title: "Personalized Guidance Based on Your History",
     desc: "A plan built around your actual situation.",
-    detail: "Complete Care gives you personalized guidance based on your scans, symptoms, history, and previous reports. Covers preventive care, initial care, maintenance, and recommends the right type of dentist when relevant.",
+    detail: "Complete Care provides educational guidance based on supported photos, symptoms, history, and previous reports. It can help you organize preventive and maintenance questions and note which type of dental professional may be relevant.",
     image: "/images/optimized/ChlTSVZDNZEOfine-800.webp"
   },
   {
@@ -46,10 +46,10 @@ const benefits = [
   },
   {
     id: 6,
-    tag: "AI Dentist",
+    tag: "AI Oral Health Guide",
     title: "Ask Din Questions Anytime (Educational)",
     desc: "Ask questions anytime, 24/7.",
-    detail: "Din is your personal AI dentist, ready to answer your questions, explain procedures in plain English, and provide reassurance whenever you need it.",
+    detail: "Dr Din is DentaSmart's AI oral health guide. It can explain report language and common dental terms in plain English, but it is not a licensed dentist and does not diagnose conditions.",
     image: "/images/optimized/YSjOjqlpUabDbzAW-800.webp"
   }
 ];

@@ -20,7 +20,7 @@ export function OrganizationSchema() {
     name: "DentaSmart",
     url: SITE_URL,
     logo: `${SITE_URL}/images/logo.png`,
-    description: "DentaSmart is an AI-powered oral health app that helps people understand their dental health through photo analysis, personalized care plans, and a 24/7 AI dentist.",
+    description: "DentaSmart is an AI-powered educational oral health app that helps people organize supported photos, X-rays, symptoms, and treatment documents for clearer dental conversations.",
     sameAs: [
       company.social.instagram,
       company.social.linkedin,
@@ -49,7 +49,7 @@ export function WebSiteSchema() {
     "@type": "WebSite",
     name: "DentaSmart",
     url: SITE_URL,
-    description: "Your Personal AI Dentist in Your Pocket. Upload a photo of your teeth and get AI-powered insights, personalized care plans, and clear dental education.",
+    description: "Your Personal AI Dentist in Your Pocket. DentaSmart provides educational oral health reports, tracking tools, and plain-language explanations that do not replace professional diagnosis or care.",
     potentialAction: {
       "@type": "SearchAction",
       target: {
@@ -76,7 +76,7 @@ export function SoftwareApplicationSchema() {
     name: "DentaSmart",
     operatingSystem: "iOS, Android",
     applicationCategory: "HealthApplication",
-    description: "DentaSmart is an AI-powered oral health app. Upload a photo of your teeth or dental X-rays and get AI analysis, an Oral Health Score, personalized care plans, and 24/7 AI guidance from Din.",
+    description: "DentaSmart is an AI-powered educational oral health app for supported mouth photos, dental X-rays, symptoms, and treatment documents. It provides an Oral Health Score, plain-language reports, tracking tools, and AI guidance from Dr Din. It does not diagnose conditions or replace professional dental care.",
     url: SITE_URL,
     downloadUrl: `${SITE_URL}/download`,
     offers: [
@@ -87,7 +87,7 @@ export function SoftwareApplicationSchema() {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        description: "One-time AI review of mouth photos and X-rays. See visible concerns, key insights, and your Oral Health Score. Save or share a patient-friendly report. Dr. Din support for 30 days. $19.99 one-time."
+        description: "One-time educational review of supported mouth photos and X-rays with visible areas to discuss, an Oral Health Score, a patient-friendly report, and Dr Din access for 30 days. $19.99 one-time."
       },
       {
         "@type": "Offer",
@@ -96,7 +96,7 @@ export function SoftwareApplicationSchema() {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        description: "One-time second opinion for one case. Upload treatment plans, bills, X-rays, and mouth photos. Get a plain-English comparison with treatment option context, cost ranges, and questions to ask your dentist. Dr. Din support for 30 days. $29.99 one-time."
+        description: "One-time educational comparison for one case using supported treatment plans, bills, X-rays, and mouth photos, with cost context and questions to discuss with a licensed dentist. Dr Din access for 30 days. $29.99 one-time."
       },
       {
         "@type": "Offer",
@@ -105,7 +105,7 @@ export function SoftwareApplicationSchema() {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        description: "Year-round monitoring for one person. Unlimited mouth photo and X-ray reviews, complete reports, Oral Health Score tracking, guided self-examination, personalized guidance, treatment options with cost estimates and risks of delay, and 24/7 Dr. Din support. $74.99/year."
+        description: "Year-round educational monitoring for one person with supported photo and X-ray reviews, reports, Oral Health Score tracking, guided self-examination, record organization, and Dr Din access. $74.99/year."
       },
       {
         "@type": "Offer",
@@ -114,7 +114,7 @@ export function SoftwareApplicationSchema() {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        description: "Year-round monitoring for up to 4 family members. Separate profiles, reports, Oral Health Score tracking, and dental history for each person. Dr. Din support for family dental questions. $149.99/year."
+        description: "Year-round educational monitoring for up to 4 family members, with separate profiles, reports, Oral Health Score tracking, dental history, and Dr Din access. $149.99/year."
       }
     ],
   };
@@ -243,7 +243,7 @@ export function ProductServiceSchema() {
     "@context": "https://schema.org",
     "@type": "Product",
     name: "DentaSmart AI Oral Health App",
-    description: "AI-powered oral health analysis app with photo scanning, Oral Health Score, personalized care plans, second opinions, and 24/7 AI guidance.",
+    description: "AI-powered educational oral health app with supported photo and X-ray reviews, an Oral Health Score, plain-language reports, treatment-information comparisons, tracking tools, and AI guidance.",
     brand: {
       "@type": "Brand",
       name: "DentaSmart"
@@ -258,7 +258,7 @@ export function ProductServiceSchema() {
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
         url: `${SITE_URL}/pricing`,
-        description: "One-time AI review of mouth photos and X-rays. See visible concerns, key insights, and your Oral Health Score. Save or share a patient-friendly report. Dr. Din support for 30 days. $19.99 one-time."
+        description: "One-time educational review of supported mouth photos and X-rays with visible areas to discuss, an Oral Health Score, a patient-friendly report, and Dr Din access for 30 days. $19.99 one-time."
       },
       {
         "@type": "Offer",
@@ -268,7 +268,7 @@ export function ProductServiceSchema() {
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
         url: `${SITE_URL}/pricing`,
-        description: "One-time second opinion for one case. Upload treatment plans, bills, X-rays, and mouth photos. Get a plain-English comparison with treatment option context, cost ranges, and questions to ask your dentist. Dr. Din support for 30 days. $29.99 one-time."
+        description: "One-time educational comparison for one case using supported treatment plans, bills, X-rays, and mouth photos, with cost context and questions to discuss with a licensed dentist. Dr Din access for 30 days. $29.99 one-time."
       },
       {
         "@type": "Offer",
@@ -278,7 +278,7 @@ export function ProductServiceSchema() {
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
         url: `${SITE_URL}/pricing`,
-        description: "Year-round monitoring for one person. Unlimited mouth photo and X-ray reviews, complete reports, Oral Health Score tracking, guided self-examination, personalized guidance, treatment options with cost estimates and risks of delay, and 24/7 Dr. Din support. $74.99/year."
+        description: "Year-round educational monitoring for one person with supported photo and X-ray reviews, reports, Oral Health Score tracking, guided self-examination, record organization, and Dr Din access. $74.99/year."
       },
       {
         "@type": "Offer",
@@ -288,7 +288,7 @@ export function ProductServiceSchema() {
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
         url: `${SITE_URL}/pricing`,
-        description: "Year-round monitoring for up to 4 family members. Separate profiles, reports, Oral Health Score tracking, and dental history for each person. Dr. Din support for family dental questions. $149.99/year."
+        description: "Year-round educational monitoring for up to 4 family members, with separate profiles, reports, Oral Health Score tracking, dental history, and Dr Din access. $149.99/year."
       }
     ]
   };

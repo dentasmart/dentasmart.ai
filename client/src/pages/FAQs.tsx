@@ -39,8 +39,8 @@ export default function FAQs() {
     {
       title: "Getting Started",
       faqs: [
-        { q: "How do I get started with DentaSmart?", a: "Download the app from the App Store or Google Play, create an account, and take your first mouth photos or upload X-rays. You'll get your first report within 10 minutes." },
-        { q: "Is there a free trial?", a: "Yes. Download the app and try DentaSmart free for 7 days. No credit card required." },
+        { q: "How do I get started with DentaSmart?", a: "Download the app from the App Store or Google Play, create an account, and add the supported photos, X-rays, symptoms, or treatment documents needed for the service you choose. Report timing depends on the service and the information submitted." },
+        { q: "Is DentaSmart free to download?", a: "Yes. The app is free to download. Quick Check and Second Opinion are paid one-time services, and Complete Care is an annual paid plan." },
         { q: "What phones does DentaSmart work on?", a: "DentaSmart works on iOS 14+ and Android 10+. Download from the App Store or Google Play." },
       ],
     },
@@ -48,16 +48,16 @@ export default function FAQs() {
       title: "Photos and X-rays",
       faqs: [
         { q: "What if I don't have any X-rays?", a: "No problem. You can start with monthly mouth photos using your smartphone. Upload X-rays whenever you have them." },
-        { q: "How long does analysis take?", a: "Analysis is typically completed within 1-2 minutes of uploading your images or X-rays." },
-        { q: "What can DentaSmart detect?", a: "DentaSmart can identify potential cavities, gum disease, tooth wear, alignment issues, and other visible oral health concerns. It provides educational insights to help you understand what you're seeing." },
+        { q: "How long does analysis take?", a: "Processing time can vary by image quality and the selected service. If your symptoms are severe, worsening, or urgent, do not wait for a report; contact a dentist or emergency service." },
+        { q: "What can DentaSmart show me?", a: "DentaSmart can highlight visible areas that may warrant attention, such as possible signs of cavities, gum inflammation, tooth wear, or alignment concerns. These are educational insights, not a diagnosis." },
       ],
     },
     {
       title: "Accuracy and Safety",
       faqs: [
-        { q: "How accurate is the AI analysis?", a: "Our AI is trained by dental experts to identify potential areas of concern in your mouth photos and X-rays. The American Dental Association (ada.org) recommends regular professional exams alongside any monitoring tools." },
-        { q: "Is Din a real dentist?", a: "No, Din is an advanced AI trained on vast dental knowledge. Din provides educational guidance, not medical advice. Always consult with your dentist for medical decisions." },
-        { q: "Can Din diagnose me?", a: "Din can't diagnose conditions, but can help you understand your symptoms and prepare questions for your dentist." },
+        { q: "How should I use DentaSmart's AI results?", a: "Use DentaSmart's educational observations to organize questions and records for a dental visit. DentaSmart does not publish a universal accuracy rate, diagnose conditions, or replace a professional examination." },
+        { q: "Is Dr Din a real dentist?", a: "No. Dr Din is an AI oral health guide that can explain report language and common dental terms. It does not provide a diagnosis or replace professional dental care." },
+        { q: "Can Dr Din diagnose me?", a: "No. Dr Din can explain report language and common dental terms, but it cannot diagnose conditions or replace a dentist. Use it to prepare questions for professional care." },
       ],
     },
     {
@@ -72,11 +72,10 @@ export default function FAQs() {
     {
       title: "Pricing",
       faqs: [
-        { q: "What are DentaSmart's pricing options?", a: "Quick Check is $19.99 one-time — AI review of your mouth photos and X-rays, visible concerns, key insights, Oral Health Score, patient-friendly report, and Dr. Din for 30 days. Second Opinion is $29.99 one-time — upload treatment plans, bills, X-rays, and mouth photos, get a plain-English comparison with cost ranges and questions to ask your dentist, plus Dr. Din for 30 days. Complete Care is $74.99/year for individuals or $149.99/year for families (up to 4 members) — year-round monitoring, unlimited reviews, complete reports, guided self-examination, personalized guidance, and 24/7 Dr. Din." },
+        { q: "What are DentaSmart's pricing options?", a: "Quick Check is $19.99 one-time. Second Opinion is $29.99 one-time. Complete Care is $74.99/year for individuals or $149.99/year for families of up to 4 members. Additional family members beyond 4 are $19.99/year each. The app is free to download; these services are paid." },
         { q: "Do you offer family plans?", a: "Yes. The Complete Care Family plan is $149.99/year and covers up to 4 family members (including the main user). Each member gets their own profile, reports, Oral Health Score tracking, and dental history. Additional members beyond 4 are $19.99/year each." },
         { q: "Can I cancel anytime?", a: "Yes. You can cancel your subscription anytime without penalties." },
 
-        { q: "Is there a money-back guarantee?", a: "Yes. We offer a 30-day money-back guarantee on all plans." },
       ],
     },
     {
@@ -90,11 +89,11 @@ export default function FAQs() {
     {
       title: "New Features",
       faqs: [
-        { q: "What is Quick Check?", a: "Quick Check ($19.99 one-time) is an AI review of your mouth photos and X-rays. DentaSmart identifies visible concerns and key insights based on the images you upload, gives you your Oral Health Score, and provides a patient-friendly report you can save or share. Dr. Din is available for 30 days after your check. It does not include guided self-examination or the detailed complete report — those are part of Complete Care." },
-        { q: "What are the Self-Examination tests?", a: "Before uploading photos in the Complete Oral Health Checkup service (part of Complete Care), DentaSmart guides you through simple self-examination tests — Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection with a mirror. These help the AI understand your symptoms better and deliver more accurate results. This feature is included in Complete Care only." },
-        { q: "What's the difference between the two report formats?", a: "DentaSmart generates two reports: a 'For You' version in plain language with your health score and priority actions, and a 'For Dentist' version with clinical terminology, tooth-by-tooth findings, and differential diagnoses. Both are downloadable as PDF and shareable." },
+        { q: "What is Quick Check?", a: "Quick Check is a $19.99 one-time educational review of supported mouth photos and dental X-rays. When included, it provides visible observations, an Oral Health Score, a patient-friendly report, and Dr Din access for 30 days. It does not provide a diagnosis." },
+        { q: "What are the Self-Examination tests?", a: "When included with Complete Care, guided self-examination can help you record observations from a Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection checklist. These observations add context but do not replace a clinical examination." },
+        { q: "What's the difference between the two report formats?", a: "When both formats are included with a selected service, the 'For You' report explains information in plain language and the 'For Dentist' report organizes details for a professional conversation. Available reports can be downloaded and shared." },
         { q: "Can I share the dentist report directly?", a: "Yes. Both report versions can be downloaded as PDF and shared via email or printed to bring to your dental appointment." },
-        { q: "Is Quick Check different from a Complete Oral Health Checkup?", a: "Yes. Quick Check is a one-time AI review of your images — it shows visible concerns, key insights, and your Oral Health Score, and generates a patient-friendly report. A Complete Oral Health Checkup (included in Complete Care) adds guided self-examination, comprehensive history collection, a detailed report with treatment options, cost estimates, risks of delay, preventive care guidance, and personalized follow-up recommendations." },
+        { q: "Is Quick Check different from a Complete Oral Health Checkup?", a: "Yes. Quick Check is a $19.99 one-time educational review of supported mouth photos and dental X-rays. Complete Care adds year-round monitoring, guided self-examination, reports, Oral Health Score tracking, record organization, and Dr Din access. Neither service provides a diagnosis or replaces professional dental care." },
       ],
     },
   ];
@@ -103,6 +102,7 @@ export default function FAQs() {
   const allFaqs = faqCategories.flatMap(cat => 
     cat.faqs.map(faq => ({ ...faq, category: cat.title }))
   );
+  const schemaFaqs = allFaqs.map(({ q, a }) => ({ question: q, answer: a }));
 
   // Filter logic
   const filteredFaqs = allFaqs.filter(faq => {
@@ -130,16 +130,7 @@ export default function FAQs() {
         { name: "Home", url: "/" },
         { name: "FAQs", url: "/faqs" }
       ]} />
-      <FAQSchema faqs={[
-        { question: "How do I get started with DentaSmart?", answer: "Download the app from the App Store or Google Play, create an account, and take your first mouth photos or upload X-rays. You'll get your first report within 10 minutes." },
-        { question: "How accurate is the AI analysis?", answer: "DentaSmart's AI is trained by dental experts to identify potential areas of concern in your mouth photos and X-rays." },
-        { question: "How do you protect my information?", answer: "We take the privacy and security of your information seriously. Please review our Privacy Policy to understand how we collect, use, and handle information." },
-        { question: "What are DentaSmart's pricing options?", answer: "Quick Check is $19.99 one-time (AI review of mouth photos and X-rays, Oral Health Score, patient-friendly report, Dr. Din 30 days). Second Opinion is $29.99 one-time (upload treatment plans, bills, X-rays, and mouth photos for a plain-English comparison with cost ranges, Dr. Din 30 days). Complete Care is $74.99/year for individuals or $149.99/year for families up to 4 members (year-round monitoring, unlimited reviews, complete reports, guided self-examination, personalized guidance, 24/7 Dr. Din)." },
-        { question: "Is it a dentist replacement?", answer: "No. DentaSmart is a tool to help you monitor your oral health between visits and understand your dentist's recommendations better. It does not replace professional care." },
-        { question: "Is my data secure?", answer: "We use safeguards designed to protect your information. DentaSmart never sells your data." },
-        { question: "What can DentaSmart detect?", answer: "DentaSmart can identify potential cavities, gum disease, tooth wear, alignment issues, and other visible oral health concerns. It provides educational insights to help you understand what you're seeing." },
-        { question: "Can I share my report with my dentist?", answer: "Yes. You can easily share your DentaSmart report with your dentist via email or print it out to bring to your appointment." }
-      ]} />
+      <FAQSchema faqs={schemaFaqs} />
 
       {/* Hero Section - Calm & Clear with Image */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -187,9 +178,9 @@ export default function FAQs() {
               <div className="flex flex-wrap justify-start gap-3">
                 <Button
                   variant={selectedCategory === "All" ? "default" : "outline"}
-                  className={`rounded-full px-6 ${
+                  className={`min-h-11 rounded-full px-6 ${
                     selectedCategory === "All"
-                      ? "bg-primary text-white hover:bg-primary/90 border-primary shadow-md" 
+                      ? "bg-action text-action-foreground hover:bg-action-hover border-action shadow-md"
                       : "bg-white text-stone-600 border-stone-200 hover:bg-stone-50 hover:text-stone-900"
                   }`}
                   onClick={() => setSelectedCategory("All")}
@@ -200,9 +191,9 @@ export default function FAQs() {
                   <Button
                     key={cat.title}
                     variant={selectedCategory === cat.title ? "default" : "outline"}
-                    className={`rounded-full px-6 ${
+                    className={`min-h-11 rounded-full px-6 ${
                       selectedCategory === cat.title 
-                        ? "bg-primary text-white hover:bg-primary/90 border-primary shadow-md" 
+                        ? "bg-action text-action-foreground hover:bg-action-hover border-action shadow-md"
                         : "bg-white text-stone-600 border-stone-200 hover:bg-stone-50 hover:text-stone-900"
                     }`}
                     onClick={() => setSelectedCategory(cat.title)}

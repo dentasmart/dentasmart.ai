@@ -202,7 +202,7 @@ export default function OralHealthHub() {
                   variant={selectedCategory === cat.value ? "default" : "outline"}
                   className={`rounded-full px-6 cursor-pointer ${
                     selectedCategory === cat.value 
-                      ? "bg-primary text-white hover:bg-primary/90 border-primary shadow-md" 
+                      ? "bg-action text-action-foreground hover:bg-action-hover border-action shadow-md"
                       : "bg-white text-stone-600 border-stone-200 hover:bg-stone-50 hover:text-stone-900"
                   }`}
                   onClick={() => {
@@ -269,17 +269,17 @@ export default function OralHealthHub() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               {
-                emoji: "\uD83E\uDE77",
+                emoji: "🦷",
                 title: "Something hurts?",
-                desc: "Take the 60-second symptom quiz",
+                desc: "Take the free symptom quiz",
                 href: "/symptom-quiz",
                 color: "bg-red-50 border-red-100 hover:border-red-200",
               },
               {
-                emoji: "\uD83D\uDCF7",
+                emoji: "📷",
                 title: "Check your teeth",
-                desc: "Upload a photo for free AI analysis",
-                href: "/download",
+                desc: "Compare photo and X-ray check options",
+                href: "/pricing#quick-check",
                 color: "bg-blue-50 border-blue-100 hover:border-blue-200",
               },
               {
@@ -290,9 +290,9 @@ export default function OralHealthHub() {
                 color: "bg-amber-50 border-amber-100 hover:border-amber-200",
               },
               {
-                emoji: "\uD83E\uDD14",
+                emoji: "🤔",
                 title: "Second opinion?",
-                desc: "Get an AI assessment in minutes",
+                desc: "Review questions and decision support",
                 href: "/oral-health-hub/second-opinion",
                 color: "bg-green-50 border-green-100 hover:border-green-200",
               },
@@ -300,10 +300,10 @@ export default function OralHealthHub() {
               <Link key={path.href} href={path.href}>
                 <div className={`rounded-xl border p-5 transition-all duration-200 cursor-pointer hover:shadow-md ${path.color} group`}>
                   <span className="text-2xl mb-2 block">{path.emoji}</span>
-                  <h3 className="font-semibold text-stone-900 text-sm mb-1 group-hover:text-primary transition-colors">
+                  <p className="font-semibold text-stone-900 text-sm mb-1 group-hover:text-action transition-colors">
                     {path.title}
-                  </h3>
-                  <p className="text-xs text-stone-500">{path.desc}</p>
+                  </p>
+                  <p className="text-xs text-stone-600">{path.desc}</p>
                 </div>
               </Link>
             ))}
@@ -393,7 +393,7 @@ export default function OralHealthHub() {
               <p className="text-stone-600">Try adjusting your search or category filter.</p>
               <Button 
                 variant="link" 
-                className="mt-4 text-primary cursor-pointer"
+                className="mt-4 text-teal-700 hover:text-teal-800 cursor-pointer"
                 onClick={() => { setSearchQuery(""); setSelectedCategory("All"); setSelectedSubcategory(null); }}
               >
                 Clear all filters

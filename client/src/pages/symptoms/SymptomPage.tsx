@@ -397,11 +397,11 @@ export default function SymptomPage() {
       <section className="py-8 bg-primary text-white">
         <div className="container px-4 mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-normal mb-3 text-white">{symptom.ctaHeading || "Worried about this symptom?"}</h2>
-          <p className="text-white/80 font-light mb-6">Upload a photo and get instant AI insights to help you understand what is going on.</p>
+          <p className="text-white/80 font-light mb-6">Record what you notice, review educational guidance, and contact a dental professional for diagnosis or urgent concerns.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/download">
               <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
-                {symptom.ctaButton || "Get My Oral Health Score"}
+                {symptom.ctaButton || "Download the App"}
               </Button>
             </Link>
             <Link href="/symptom-quiz">
@@ -410,7 +410,7 @@ export default function SymptomPage() {
               </Button>
             </Link>
           </div>
-          <p className="text-white/60 text-sm mt-4">Free to start &middot; No insurance needed</p>
+          <p className="text-white/60 text-sm mt-4">App free to download &middot; Paid services shown before purchase</p>
         </div>
       </section>
 

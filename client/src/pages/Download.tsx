@@ -4,8 +4,9 @@ import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { trackEvent, trackAppDownload, getAppStoreUrl, getPlayStoreUrl } from "@/lib/analytics";
 import { motion } from "framer-motion";
-import { Smartphone, Shield, Zap, Heart, Star, CheckCircle2, ArrowRight } from "lucide-react";
+import { Smartphone, Shield, Zap, Heart, CheckCircle2, ArrowRight } from "lucide-react";
 import { useEffect } from "react";
+import { Link } from "wouter";
 
 const appJsonLd = {
   "@context": "https://schema.org",
@@ -13,7 +14,7 @@ const appJsonLd = {
   name: "DentaSmart",
   operatingSystem: "iOS, Android",
   applicationCategory: "HealthApplication",
-  description: "AI-powered dental health analysis. Upload a photo and get instant insights with a personalized care plan.",
+  description: "DentaSmart is free to download on iOS and Android. Paid services provide educational oral health insights, reports, and monitoring tools.",
   url: "https://dentasmart.ai/download",
   offers: {
     "@type": "Offer",
@@ -23,16 +24,10 @@ const appJsonLd = {
 };
 
 const steps = [
-  { num: "1", title: "Download the App", desc: "Get DentaSmart free on the App Store. Takes less than a minute." },
-  { num: "2", title: "Take a Photo", desc: "Snap a picture of your teeth or upload an existing X-ray." },
-  { num: "3", title: "Get Your Score", desc: "AI analyzes your oral health and gives you a clear score out of 100." },
-  { num: "4", title: "Follow Your Plan", desc: "Receive a personalized care plan with costs, timelines, and next steps." },
-];
-
-const reviews = [
-  { name: "Sarah M.", text: "Finally understand what my dentist has been telling me. The X-ray analysis is incredible.", rating: 5 },
-  { name: "James K.", text: "Saved me hundreds by knowing exactly what I needed before my appointment.", rating: 5 },
-  { name: "Maria L.", text: "The oral health score motivates me to take better care of my teeth every day.", rating: 5 },
+  { num: "1", title: "Download the App", desc: "Get DentaSmart on iOS or Android. The app is free to download." },
+  { num: "2", title: "Choose a Service", desc: "Select a one-time Quick Check, a Second Opinion, or annual Complete Care." },
+  { num: "3", title: "Add Your Information", desc: "Upload supported mouth photos, dental X-rays, or treatment documents for the service you chose." },
+  { num: "4", title: "Review Your Report", desc: "Read the educational insights and prepare questions for your dentist. DentaSmart does not provide a diagnosis." },
 ];
 
 export default function Download() {
@@ -43,8 +38,8 @@ export default function Download() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
-        title="Download DentaSmart - Free AI Dental Health App"
-        description="Download DentaSmart on iOS or Android. Get instant AI-powered dental insights, oral health scores, and personalized care plans. Free to start."
+        title="Download DentaSmart for iOS or Android"
+        description="Download the DentaSmart app on iOS or Android. The app is free to download; one-time checks and annual monitoring plans are paid."
         canonical="https://dentasmart.ai/download"
         keywords="download dentasmart, dental app, AI dental analysis, oral health score, dental X-ray analysis app"
         jsonLd={appJsonLd}
@@ -64,15 +59,15 @@ export default function Download() {
               transition={{ duration: 0.8 }}
             >
               <div className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-2 text-sm font-medium mb-6">
-                <Star className="w-4 h-4 fill-current" />
-                5 Stars on the App Store
+                <Smartphone className="w-4 h-4" />
+                Available on iOS and Android
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-6 leading-tight">
-                Take control of your <br />
-                <span className="italic text-primary">oral health</span> today.
+                Download DentaSmart <br />
+                <span className="italic text-primary">on your phone</span>.
               </h1>
               <p className="text-xl text-stone-600 mb-8 font-light leading-relaxed">
-                Download DentaSmart and get instant clarity about what is happening in your mouth. No more guessing, no more surprise bills.
+                The app is free to download. Choose a paid one-time check or annual plan when you are ready for a report or ongoing monitoring.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -80,35 +75,34 @@ export default function Download() {
                   href={getAppStoreUrl("download_page")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto"
+                  className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-black px-8 text-lg text-white transition-colors hover:bg-stone-800 sm:w-auto"
                   onClick={() => trackAppDownload("ios", "download_page")}
                 >
-                  <Button size="lg" className="bg-black text-white hover:bg-stone-800 rounded-full px-8 py-7 text-lg w-full sm:w-auto cursor-pointer">
-                    <svg viewBox="0 0 24 24" className="w-6 h-6 fill-current mr-2">
-                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.21-1.96 1.07-3.11-1.05.05-2.31.74-3.03 1.59-.67.79-1.25 2.05-1.09 3.2 1.17.09 2.35-.84 3.05-1.68" />
-                    </svg>
-                    Download for iOS
-                  </Button>
+                  <svg viewBox="0 0 24 24" className="mr-2 h-6 w-6 fill-current">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.21-1.96 1.07-3.11-1.05.05-2.31.74-3.03 1.59-.67.79-1.25 2.05-1.09 3.2 1.17.09 2.35-.84 3.05-1.68" />
+                  </svg>
+                  Download for iOS
                 </a>
                 <a
                   href={getPlayStoreUrl("download_page")}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full sm:w-auto"
+                  className="inline-flex min-h-14 w-full items-center justify-center rounded-full bg-action px-8 text-lg text-action-foreground transition-colors hover:bg-action-hover sm:w-auto"
                   onClick={() => trackAppDownload("android", "download_page")}
                 >
-                  <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-7 text-lg w-full sm:w-auto cursor-pointer">
-                    <Smartphone className="w-6 h-6 mr-2" />
-                    Download for Android
-                  </Button>
+                  <Smartphone className="mr-2 h-6 w-6" />
+                  Download for Android
                 </a>
               </div>
 
               <div className="flex items-center gap-6 text-sm text-stone-500">
-                <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-green-500" /> Free to start</span>
-                <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-green-500" /> No credit card</span>
+                <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-green-500" /> Free to download</span>
+                <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-green-500" /> No card to download</span>
                 <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-green-500" /> Privacy &amp; Security</span>
               </div>
+              <Link href="/pricing" className="mt-5 inline-flex min-h-11 items-center text-sm font-medium text-action hover:underline">
+                Compare paid services and plans <ArrowRight className="ml-1 h-4 w-4" />
+              </Link>
             </motion.div>
 
             <motion.div
@@ -163,9 +157,9 @@ export default function Download() {
         <div className="container px-4 mx-auto max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: Zap, title: "Instant AI Analysis", desc: "Upload a photo and get insights in under 10 minutes. No waiting for appointments." },
+              { icon: Zap, title: "Clear Educational Insights", desc: "Upload supported information and receive a report that helps you prepare for a dental conversation." },
               { icon: Shield, title: "Privacy & Security", desc: "We take the privacy and security of your dental data seriously. See our Privacy Policy for details on how information is handled." },
-              { icon: Heart, title: "Personalized Plans", desc: "Get a clear care plan tailored to your specific needs with cost estimates." },
+              { icon: Heart, title: "Organized Next Steps", desc: "Review questions, cost context, and monitoring tools based on the service you choose." },
             ].map((item, idx) => (
               <motion.div
                 key={idx}
@@ -186,41 +180,14 @@ export default function Download() {
         </div>
       </section>
 
-      {/* Reviews */}
-      <section className="py-16 bg-stone-50">
-        <div className="container px-4 mx-auto max-w-4xl">
-          <h2 className="text-3xl font-normal text-black mb-10 text-center">What users are saying</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {reviews.map((review, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.15 }}
-                className="bg-white rounded-2xl p-6 border border-stone-100"
-              >
-                <div className="flex gap-1 mb-3">
-                  {Array.from({ length: review.rating }).map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-stone-700 font-light mb-4 text-sm">&ldquo;{review.text}&rdquo;</p>
-                <p className="text-stone-500 text-sm font-medium">{review.name}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Bottom CTA */}
       <section className="py-16 bg-action text-action-foreground text-center">
         <div className="container px-4 mx-auto max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-normal text-action-foreground mb-4">
-            Ready to see what is really going on?
+            Choose the service that fits your next decision
           </h2>
           <p className="text-xl text-action-foreground font-light mb-8">
-            Join thousands of people who stopped guessing and started knowing.
+            Compare one-time checks and annual monitoring, or download the app first.
           </p>
           <a
             href={getAppStoreUrl("download_page_bottom")}

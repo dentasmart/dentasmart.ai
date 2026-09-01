@@ -19,7 +19,7 @@
 export const brand = {
   productName: "DentaSmart",
   tagline: "Your Personal AI Dentist in Your Pocket",
-  aiPersonaName: "Dr. Din",
+  aiPersonaName: "Dr Din",
 } as const;
 
 // ─── Pricing ──────────────────────────────────────────────────────────────────
@@ -68,6 +68,18 @@ export const pricing = {
     billing: "year",
     billingLabel: "/year each",
   },
+} as const;
+
+// ─── Product Terminology ───────────────────────────────────────────────────────
+
+export const productTerminology = {
+  dentaSmart: brand.productName,
+  quickCheck: pricing.quickCheck.name,
+  secondOpinion: pricing.secondOpinion.name,
+  completeCare: pricing.completeCareIndividual.name,
+  oralHealthScore: "Oral Health Score",
+  drDin: "Dr Din",
+  family: "Family",
 } as const;
 
 // ─── App ──────────────────────────────────────────────────────────────────────

@@ -452,12 +452,12 @@ export default function EmergencyPageTemplate({ data }: { data: EmergencyPageDat
               Don't wait when it hurts.
             </h2>
             <p className="text-base md:text-lg text-stone-300 font-light mb-6 max-w-2xl mx-auto">
-              DentaSmart gives you a free AI assessment so you can understand what is happening and what to do next. Get clarity in minutes, not days.
+              Seek professional care for severe pain, swelling, uncontrolled bleeding, trauma, fever, or trouble breathing or swallowing. DentaSmart provides education, not emergency diagnosis or triage.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/download">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
-                  Download DentaSmart Free
+                  Download the App
                 </Button>
               </Link>
               <Link href="/symptom-quiz">

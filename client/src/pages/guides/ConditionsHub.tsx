@@ -15,7 +15,6 @@ const conditionCategories = [
     icon: Zap,
     description: "Sharp, throbbing, or lingering pain when you eat, drink, or bite down.",
     keywords: "toothache, cracked tooth, sensitive teeth, tooth sensitivity",
-    volume: "400K+ monthly searches",
     conditions: ["toothache", "cracked-tooth", "sensitive-teeth"],
   },
   {
@@ -23,7 +22,6 @@ const conditionCategories = [
     icon: Heart,
     description: "Bleeding, swelling, redness, or gums pulling away from your teeth.",
     keywords: "gingivitis, gum disease, periodontitis, bleeding gums, gum recession",
-    volume: "1.2M+ monthly searches",
     conditions: ["gum-disease", "periodontitis", "gingivitis-vs-periodontitis"],
   },
   {
@@ -31,7 +29,6 @@ const conditionCategories = [
     icon: AlertCircle,
     description: "Swelling, pus, fever, or a bad taste that won't go away. These need fast attention.",
     keywords: "dental abscess, tooth infection, oral thrush, pericoronitis",
-    volume: "300K+ monthly searches",
     conditions: ["dental-abscess", "oral-thrush"],
   },
   {
@@ -39,7 +36,6 @@ const conditionCategories = [
     icon: Activity,
     description: "Clicking, locking, grinding, or pain in your jaw joint and muscles.",
     keywords: "TMJ disorder, bruxism, teeth grinding, jaw pain",
-    volume: "350K+ monthly searches",
     conditions: ["tmj-disorder", "teeth-grinding"],
   },
   {
@@ -47,7 +43,6 @@ const conditionCategories = [
     icon: Shield,
     description: "Chips, cracks, decay, or missing teeth that change how you eat and smile.",
     keywords: "cavities, tooth decay, root canal, dental crown, dental implants",
-    volume: "900K+ monthly searches",
     conditions: ["root-canal", "dental-crown", "dental-implants"],
   },
   {
@@ -55,32 +50,31 @@ const conditionCategories = [
     icon: Eye,
     description: "Pain, swelling, or complications from wisdom teeth coming in or being removed.",
     keywords: "wisdom teeth pain, dry socket, tooth extraction",
-    volume: "600K+ monthly searches",
     conditions: ["wisdom-teeth-pain", "dry-socket"],
   },
 ];
 
 /* ─── Warning Signs Data ──────────────────────────────────── */
 const warningSignsData = [
-  { sign: "Pain that wakes you up at night", urgency: "See a dentist within 24 hours", color: "bg-red-500" },
-  { sign: "Swelling in your face or jaw", urgency: "Same-day or emergency visit", color: "bg-red-500" },
-  { sign: "Bleeding gums every time you brush", urgency: "Schedule within 1-2 weeks", color: "bg-orange-500" },
-  { sign: "A tooth that feels loose", urgency: "See a dentist this week", color: "bg-orange-500" },
-  { sign: "Sensitivity to hot or cold that lingers", urgency: "Schedule within 2 weeks", color: "bg-yellow-500" },
-  { sign: "A sore or spot that hasn't healed in 2 weeks", urgency: "Get it checked soon", color: "bg-yellow-500" },
-  { sign: "Bad breath that won't go away", urgency: "Mention at your next visit", color: "bg-primary" },
-  { sign: "Clicking or popping in your jaw", urgency: "Mention at your next visit", color: "bg-primary" },
+  { sign: "Pain that wakes you up at night", urgency: "Seek prompt dental advice", color: "bg-red-500" },
+  { sign: "Swelling in your face or jaw", urgency: "Seek urgent or emergency dental care", color: "bg-red-500" },
+  { sign: "Bleeding gums every time you brush", urgency: "Arrange a dental visit", color: "bg-orange-500" },
+  { sign: "A tooth that feels loose", urgency: "Arrange a prompt dental visit", color: "bg-orange-500" },
+  { sign: "Sensitivity to hot or cold that lingers", urgency: "Arrange a dental visit", color: "bg-yellow-500" },
+  { sign: "A sore or spot that has not healed", urgency: "Seek professional evaluation", color: "bg-yellow-500" },
+  { sign: "Bad breath that won't go away", urgency: "Discuss it at a dental visit", color: "bg-primary" },
+  { sign: "Clicking or popping in your jaw", urgency: "Discuss it at a dental visit", color: "bg-primary" },
 ];
 
 /* ─── FAQ Data ──────────────────────────────────────────────── */
 const faqs = [
   {
     q: "What are the most common dental conditions?",
-    a: "Cavities (tooth decay) affect about 90% of adults at some point. Gum disease is the second most common, with nearly half of adults over 30 showing some signs. Tooth sensitivity, wisdom teeth problems, and TMJ issues round out the top five. Most of these are preventable or treatable when caught early.",
+    a: "Common topics include cavities, gum disease, tooth sensitivity, wisdom-tooth problems, and jaw-joint concerns. A dentist can determine which condition, if any, is present and recommend appropriate care.",
   },
   {
     q: "How do I know if my tooth pain is serious?",
-    a: "Pain that keeps you awake, gets worse over days, or comes with swelling or fever needs same-day attention. Sharp pain when biting could mean a crack or abscess. Sensitivity that fades in a few seconds is usually less urgent but still worth checking. When in doubt, DentaSmart's free assessment can help you figure out your next step.",
+    a: "Pain that keeps you awake, gets worse over days, or comes with swelling or fever needs prompt professional attention. Sharp pain when biting may signal a problem that needs a dentist's examination. You can use DentaSmart's free symptom quiz to organize what you notice, but it cannot determine urgency or provide a diagnosis.",
   },
   {
     q: "Can I treat dental problems at home?",
@@ -88,11 +82,11 @@ const faqs = [
   },
   {
     q: "What happens if I ignore a dental condition?",
-    a: "Dental problems almost always get worse and more expensive over time. A small cavity that costs $150 to fill can become a $1,000 root canal in a year. Untreated gum disease leads to bone loss and tooth loss. Early detection saves you pain, time, and money.",
+    a: "Some dental problems can progress when left untreated, but the course and cost vary by condition and person. A professional examination can clarify what is happening and whether treatment is needed.",
   },
   {
     q: "How does DentaSmart help me understand my dental condition?",
-    a: "Upload a photo of your teeth or your dental X-ray. DentaSmart's AI identifies potential issues and explains what it sees in plain language. You get a clear picture of what might be going on, what questions to ask your dentist, and whether you should be seen soon or can wait. It's free and takes about 2 minutes.",
+    a: "DentaSmart supports mouth photos and dental X-rays with applicable paid checks and plans. It can highlight areas that may deserve attention, explain supported observations in plain language, and help you prepare questions for a dentist. Its educational guidance is not a diagnosis or a substitute for professional care.",
   },
   {
     q: "Is DentaSmart a replacement for seeing a dentist?",
@@ -128,7 +122,7 @@ const webPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
   name: "Common Dental Conditions Explained in Plain Language",
-  description: "Understand 16+ dental conditions from cavities to TMJ. Clear explanations, warning signs, and when to see a dentist. Free AI oral health assessment included.",
+  description: "Understand 16+ dental conditions from cavities to TMJ. Review clear explanations, warning signs, and when to seek professional dental care.",
   url: "https://dentasmart.ai/oral-health-hub/conditions",
   inLanguage: "en-US",
   isPartOf: {
@@ -141,7 +135,6 @@ const webPageJsonLd = {
     { "@type": "MedicalCondition", name: "Oral Health" },
   ],
   audience: { "@type": "MedicalAudience", name: "Patients" },
-  lastReviewed: "2026-03-31",
 };
 
 const fadeUp = {
@@ -162,7 +155,7 @@ export default function ConditionsHub() {
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
         title="Dental Conditions: Symptoms & Causes | DentaSmart"
-        description="Understand 16+ dental conditions from toothaches to TMJ. Clear explanations of symptoms, causes, and when to see a dentist. Free AI oral health assessment included."
+        description="Understand 16+ dental conditions from toothaches to TMJ. Review symptoms, possible causes, warning signs, and when to seek professional dental care."
         canonical="https://dentasmart.ai/oral-health-hub/conditions"
         keywords="dental conditions, tooth pain causes, gum disease stages, toothache, cavities, gingivitis, TMJ, dental abscess, wisdom teeth, teeth grinding, sensitive teeth, oral thrush, root canal, dental crown, dental implants"
         jsonLd={[faqJsonLd, breadcrumbJsonLd, webPageJsonLd]}
@@ -182,15 +175,15 @@ export default function ConditionsHub() {
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-4 leading-[1.1] max-w-4xl text-left">
               Something wrong with your teeth?{" "}
-              <span className="italic text-primary">Let's figure it out.</span>
+              <span className="italic text-primary">Learn what to watch for.</span>
             </h1>
             <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed max-w-2xl mb-8 text-left">
               Over 3.5 billion people worldwide have some form of oral disease. If something feels off in your mouth, you're not alone. We explain 16+ common dental conditions in plain language so you know what's happening and what to do next.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/download">
+              <Link href="/symptom-quiz">
                 <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
-                  Get Your Free AI Assessment
+                  Check Your Symptoms
                 </Button>
               </Link>
               <a href="#conditions-grid">
@@ -266,7 +259,7 @@ export default function ConditionsHub() {
                   ))}
                 </div>
                 <div className="mt-4 pt-4 border-t border-stone-200 text-center">
-                  <p className="text-sm text-stone-600 font-light">Not sure how urgent it is? <span className="font-medium text-primary">DentaSmart can help you decide.</span></p>
+                  <p className="text-sm text-stone-600 font-light">Not sure how to describe it? <span className="font-medium text-primary">DentaSmart can help you organize what you notice.</span></p>
                 </div>
               </div>
             </motion.div>
@@ -300,7 +293,6 @@ export default function ConditionsHub() {
                 </div>
                 <h3 className="text-lg md:text-xl font-medium text-black mb-2 text-left">{cat.title}</h3>
                 <p className="text-stone-600 font-light text-sm leading-relaxed mb-3 text-left">{cat.description}</p>
-                <p className="text-xs text-stone-400 mb-4">{cat.volume}</p>
                 <div className="space-y-2">
                   {cat.conditions.map(slug => {
                     const condition = conditionsMap[slug];
@@ -335,18 +327,18 @@ export default function ConditionsHub() {
         <div className="container px-4 mx-auto max-w-6xl">
           <motion.div {...fadeUp} className="mb-8">
             <h2 className="text-3xl md:text-4xl font-normal text-black mb-2 text-left">
-              Understand your condition <span className="italic text-primary">before</span> your appointment
+              Prepare better questions <span className="italic text-primary">before</span> your appointment
             </h2>
             <p className="text-base md:text-lg text-stone-600 font-light max-w-3xl text-left">
-              Walking into a dental office without knowing what's wrong puts you at a disadvantage. DentaSmart gives you a head start.
+              Clear language can help you explain what you notice and understand the questions to ask. A dentist is still needed for diagnosis and treatment decisions.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {[
               {
                 icon: Search,
-                title: "Upload. Get Answers.",
-                desc: "Take a photo of your teeth or upload an X-ray. Our AI spots potential issues and tells you what it sees, in words you actually understand.",
+                title: "Upload Supported Information",
+                desc: "With an applicable paid check or plan, add mouth photos or dental X-rays. DentaSmart highlights supported observations in plain language.",
               },
               {
                 icon: Shield,
@@ -356,7 +348,7 @@ export default function ConditionsHub() {
               {
                 icon: Smartphone,
                 title: "Track Changes Over Time",
-                desc: "Take photos regularly and DentaSmart tracks what's changing. Catch problems early when they're simpler and cheaper to fix.",
+                desc: "Keep supported records in one place and compare your own information over time. Ask a dentist about any concern or change.",
               },
             ].map((item, idx) => (
               <motion.div
@@ -376,9 +368,9 @@ export default function ConditionsHub() {
             ))}
           </div>
           <div className="mt-6 text-center">
-            <Link href="/download">
+            <Link href="/pricing">
               <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
-                Try Your Free AI Assessment <ArrowRight className="w-4 h-4 ml-2" />
+                Explore DentaSmart Options <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
           </div>
@@ -515,20 +507,20 @@ export default function ConditionsHub() {
         <div className="container px-4 mx-auto max-w-4xl text-center">
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-4xl font-normal mb-3 text-white">
-              Stop wondering. Start knowing.
+              Choose a clear next step
             </h2>
             <p className="text-base md:text-lg text-stone-300 font-light mb-6 max-w-2xl mx-auto">
-              Upload a photo of your teeth and get a free AI assessment in about 2 minutes. No account needed. No strings attached.
+              Use the free symptom quiz to organize what you notice, or compare DentaSmart's paid checks and plans before you continue.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/download">
-                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
-                  Download DentaSmart Free
+              <Link href="/pricing">
+                <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
+                  View Pricing
                 </Button>
               </Link>
               <Link href="/symptom-quiz">
                 <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
-                  Try Free Symptom Check
+                  Start Free Symptom Quiz
                 </Button>
               </Link>
             </div>

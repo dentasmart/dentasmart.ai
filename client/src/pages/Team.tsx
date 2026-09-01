@@ -6,13 +6,14 @@ import { Linkedin, Users, Target, Lightbulb } from "lucide-react";
 import { MedicalAdvisoryBoard } from "@/components/MedicalAdvisoryBoard";
 import { DownloadSection } from "@/components/DownloadSection";
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 
 export default function Team() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
-        title="Meet the DentaSmart Team - Experts in AI-Powered Dental Care"
-        description="Our team of dentists, engineers, and innovators are dedicated to making dental care simple, transparent, and accessible. Learn more about the experts behind DentaSmart."
+        title="Meet the DentaSmart Team and Advisors"
+        description="Meet the DentaSmart leadership team, strategic advisors, and named dental content reviewer, with clear roles and professional-care boundaries."
         canonical="https://dentasmart.ai/team"
       />
       <Navigation />
@@ -55,7 +56,7 @@ export default function Team() {
             <div className="flex flex-col sm:flex-row gap-4 justify-start">
               <Button 
                 size="lg" 
-                className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0 cursor-pointer"
+                className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0 cursor-pointer"
                 onClick={() => document.getElementById('download-cta')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Get Your Oral Health Score
@@ -92,7 +93,7 @@ export default function Team() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {[
               { icon: Users, title: "Patient First", desc: "We build for the patient, ensuring clarity and empowerment in every feature." },
-              { icon: Target, title: "Clinical Accuracy", desc: "Our AI is grounded in rigorous dental science and validated by experts." },
+              { icon: Target, title: "Responsible Guidance", desc: "We state what DentaSmart can and cannot do so users know when professional care is needed." },
               { icon: Lightbulb, title: "Innovation", desc: "We push the boundaries of what's possible in digital health." }
             ].map((item, idx) => (
               <motion.div 
@@ -122,7 +123,7 @@ export default function Team() {
               Leadership Team
             </h2>
             <p className="text-xl text-stone-700 font-normal">
-              Visionary leaders driving innovation in AI-powered dental care.
+              Leaders responsible for DentaSmart's product, technology, and business direction.
             </p>
           </div>
 
@@ -240,7 +241,7 @@ export default function Team() {
               Advisory Board
             </h2>
             <p className="text-xl text-stone-700 font-normal">
-              Industry experts guiding our strategic vision.
+              Industry professionals who provide strategic perspective. Advisory roles do not mean that every product result receives a clinical review.
             </p>
           </div>
 
@@ -352,10 +353,10 @@ export default function Team() {
             <p className="text-xl text-stone-700 mb-10 leading-relaxed">
               We help users understand oral health and prepare for licensed dental care.
             </p>
-            <div className="flex justify-center gap-8 text-base font-medium text-primary">
-              <a href="/privacy-policy" className="hover:underline hover:text-primary/80 transition-colors">Privacy Policy</a>
+            <div className="flex justify-center gap-8 text-base font-medium text-action">
+              <Link href="/privacy-policy" className="hover:underline hover:text-action/80 transition-colors">Privacy Policy</Link>
               <span className="text-stone-300">|</span>
-              <a href="/terms-of-service" className="hover:underline hover:text-primary/80 transition-colors">Terms of Service</a>
+              <Link href="/terms-of-service" className="hover:underline hover:text-action/80 transition-colors">Terms of Service</Link>
             </div>
           </div>
         </div>

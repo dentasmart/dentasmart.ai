@@ -132,7 +132,7 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/download">
                 <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
-                  Get Your Free AI Assessment
+                  Download the App
                 </Button>
               </Link>
               <a href="#cost-breakdown">
@@ -276,8 +276,8 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
 
       {/* ═══ MID-CONTENT CTA ═══ */}
       <MidContentCTA 
-        headline={`Wondering if you really need a ${data.procedureName.toLowerCase()}?`}
-        description="Upload a photo of your teeth and get a free AI assessment in 10 minutes. Know what you need before you spend."
+        headline={`Want more context before a ${data.procedureName.toLowerCase()}?`}
+        description="Review educational cost context, organize treatment-plan questions, and ask a licensed dentist what applies to your case."
         trackingLabel={`cost_page_${data.slug}`}
         variant="card"
       />
@@ -321,7 +321,7 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
         <div className="container px-4 mx-auto max-w-6xl">
           <motion.div {...fadeUp} className="mb-8">
             <h2 className="text-3xl md:text-4xl font-normal text-black mb-2">
-              How DentaSmart helps you save on {data.procedureName.toLowerCase()} costs
+              How DentaSmart helps you review {data.procedureName.toLowerCase()} cost questions
             </h2>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
@@ -345,9 +345,9 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
             ))}
           </div>
           <div className="mt-6 text-center">
-            <Link href="/download">
+            <Link href="/pricing">
               <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
-                Try DentaSmart Free <ArrowRight className="w-4 h-4 ml-2" />
+                Explore DentaSmart Options <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
           </div>
@@ -457,15 +457,15 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
         <div className="container px-4 mx-auto max-w-4xl text-center">
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-4xl font-normal mb-3 text-white">
-              Don't pay more than you should.
+              Review your options before treatment.
             </h2>
             <p className="text-base md:text-lg text-stone-300 font-light mb-6 max-w-2xl mx-auto">
-              DentaSmart gives you a free AI assessment so you understand what you actually need before committing to expensive treatment. Know your options. Save your money.
+              Use DentaSmart to organize supported information, review educational cost context, and prepare questions for a licensed dentist. DentaSmart does not diagnose conditions or decide which treatment you need.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/download">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
-                  Download DentaSmart Free
+                  Download the App
                 </Button>
               </Link>
               <Link href="/symptom-quiz">

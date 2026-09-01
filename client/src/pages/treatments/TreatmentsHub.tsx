@@ -23,7 +23,7 @@ const treatmentPages = [
 const faqs = [
   {
     q: "How do I know which treatment I need?",
-    a: "The best way to know is to visit a dentist for a proper diagnosis. However, you can get a helpful starting point by using DentaSmart's free AI assessment. Upload a photo of your teeth and get instant insights about what might be going on, so you can have a more informed conversation with your dentist.",
+    a: "A licensed dentist must examine you, diagnose the condition, and recommend treatment for your case. These guides can help you understand common options and prepare questions before that conversation.",
   },
   {
     q: "Are dental procedures painful?",
@@ -35,11 +35,11 @@ const faqs = [
   },
   {
     q: "What if I cannot afford the treatment I need?",
-    a: "You have more options than you might think. Many dental offices offer payment plans. Dental schools provide quality care at 30-50% lower costs. Dental discount plans can save you 10-60%. HSA and FSA accounts let you pay with pre-tax dollars. Check our cost guide for each procedure to learn about specific savings strategies.",
+    a: "Ask for a written treatment plan, compare qualified providers, review insurance benefits, and ask whether payment plans, membership options, or accredited dental-school clinics are available. Fees and eligibility vary, so confirm current terms directly with each provider or program.",
   },
   {
     q: "Should I get a second opinion before treatment?",
-    a: "Absolutely. Getting a second opinion is always a smart move, especially for expensive or complex procedures. It is your right as a patient. DentaSmart can also help you understand your diagnosis and treatment options so you feel confident about your decision.",
+    a: "You can ask another licensed dentist to review a treatment recommendation, especially when the plan is complex or costly. DentaSmart's paid Second Opinion service can help organize supported treatment-plan information and questions, but it does not provide a dentist's diagnosis or clinical recommendation.",
   },
   {
     q: "How can I prepare for a dental procedure?",
@@ -120,29 +120,30 @@ export default function TreatmentsHub() {
               Step-by-step guides for the most common dental procedures. No jargon. No surprises. Just clear answers so you can walk in prepared and walk out confident.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/download">
-                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
-                  Get Your Free AI Assessment
+              <a
+                href="#treatments"
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-action px-8 py-3 text-base font-medium text-action-foreground shadow-lg transition-all hover:scale-105 hover:bg-action-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring w-full sm:w-auto"
+              >
+                Browse Treatments <ArrowRight className="w-4 h-4 ml-2" />
+              </a>
+              <Link href="/comparisons">
+                <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
+                  Compare Treatment Options
                 </Button>
               </Link>
-              <a href="#treatments">
-                <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
-                  Browse Treatments <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </a>
             </div>
           </motion.div>
         </div>
       </section>
 
       {/* ═══ STATS STRIP ═══ */}
-      <section className="py-6 bg-primary text-white">
+      <section className="py-6 bg-action text-action-foreground">
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-white/20">
             {[
               { value: "10", label: "Treatment Guides" },
-              { value: "50+", label: "Step-by-Step Breakdowns" },
-              { value: "100%", label: "Free to Read" },
+              { value: "Steps", label: "Preparation and Recovery Context" },
+              { value: "Free", label: "Guides Available Without an Account" },
             ].map((stat, idx) => (
               <motion.div
                 key={idx}
@@ -153,7 +154,7 @@ export default function TreatmentsHub() {
                 className="py-3 md:py-0"
               >
                 <div className="text-3xl md:text-5xl font-normal tracking-tighter text-white">{stat.value}</div>
-                <div className="text-[10px] md:text-xs uppercase tracking-widest text-white/80 font-medium mt-1">{stat.label}</div>
+                <div className="text-[10px] md:text-xs uppercase tracking-widest text-action-foreground font-medium mt-1">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -167,7 +168,7 @@ export default function TreatmentsHub() {
             {[
               { icon: <Search className="w-6 h-6 text-primary" />, title: "Know What's Coming", desc: "Understanding each step of your procedure removes the fear of the unknown. When you know what to expect, you can relax." },
               { icon: <Shield className="w-6 h-6 text-primary" />, title: "Ask Better Questions", desc: "When you understand the basics, you can have a real conversation with your dentist. You will know what to ask and what to look out for." },
-              { icon: <Clock className="w-6 h-6 text-primary" />, title: "Recover Faster", desc: "Knowing how to prepare and what to do after your procedure helps you heal faster and avoid complications." },
+              { icon: <Clock className="w-6 h-6 text-primary" />, title: "Plan Recovery Questions", desc: "Review common preparation and recovery topics, then follow the instructions from your treating dental professional." },
             ].map((item, idx) => (
               <motion.div
                 key={idx}
@@ -239,14 +240,14 @@ export default function TreatmentsHub() {
               <Smartphone className="w-8 h-8 text-primary" />
             </div>
             <h2 className="text-3xl md:text-4xl font-normal text-black mb-3">
-              Not sure what treatment you need?
+              Comparing treatment options?
             </h2>
             <p className="text-base md:text-lg text-stone-600 font-light mb-6 max-w-2xl mx-auto">
-              Upload a photo of your teeth and get a free AI assessment in 10 minutes. DentaSmart helps you understand what is going on so you can make informed decisions about your care.
+              Review side-by-side guides for common tradeoffs, then bring your questions to a licensed dentist who can diagnose your condition and recommend care.
             </p>
-            <Link href="/download">
-              <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg">
-                Get Your Free AI Assessment <ArrowRight className="w-4 h-4 ml-2" />
+            <Link href="/comparisons">
+              <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg">
+                Compare Treatment Guides <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
           </motion.div>
@@ -323,20 +324,20 @@ export default function TreatmentsHub() {
         <div className="container px-4 mx-auto max-w-4xl text-center">
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-4xl font-normal mb-3 text-white">
-              The best patient is an informed patient.
+              Prepare for a more informed conversation
             </h2>
             <p className="text-base md:text-lg text-stone-300 font-light mb-6 max-w-2xl mx-auto">
-              DentaSmart gives you a free AI assessment so you understand what is going on before you commit to any treatment. Knowledge is the best preparation.
+              Use these guides to understand common treatment steps, then compare DentaSmart's paid options or discuss your questions with a licensed dentist.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/download">
-                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
-                  Download DentaSmart Free
+              <Link href="/pricing">
+                <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
+                  View DentaSmart Options
                 </Button>
               </Link>
               <Link href="/symptom-quiz">
                 <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
-                  Try Free Symptom Check
+                  Start Free Symptom Quiz
                 </Button>
               </Link>
             </div>

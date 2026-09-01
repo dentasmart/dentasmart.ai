@@ -11,7 +11,7 @@
  * DO NOT add <title>, <meta>, or <link rel="canonical"> here — they belong in server/metaTags.ts.
  */
 import { Helmet } from 'react-helmet-async';
-import { company } from "@shared/facts";
+import { app, company, pricing, productTerminology } from "@shared/facts";
 
 const SITE_URL = "https://dentasmart.ai";
 
@@ -43,7 +43,7 @@ export default function SEO({
     name: "DentaSmart",
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
-    description: "AI-powered dental health analysis and personalized oral care guidance.",
+    description: "Educational oral health guidance that helps people organize supported information and prepare questions for professional dental care.",
     sameAs: [
       company.social.instagram,
       company.social.linkedin,
@@ -70,12 +70,40 @@ export default function SEO({
     name: "DentaSmart",
     operatingSystem: "iOS, Android",
     applicationCategory: "HealthApplication",
-    description: "AI-powered dental health analysis app. Upload a photo of your teeth or X-rays and get instant insights with a personalized care plan.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
+    description: "A free-to-download oral health education app with optional paid Quick Check, Second Opinion, and Complete Care services. It does not diagnose conditions or replace professional dental care.",
+    downloadUrl: [app.iosUrl, app.androidUrl],
+    offers: [
+      {
+        "@type": "Offer",
+        name: "DentaSmart app download",
+        price: "0",
+        priceCurrency: "USD",
+      },
+      {
+        "@type": "Offer",
+        name: productTerminology.quickCheck,
+        price: pricing.quickCheck.price.toFixed(2),
+        priceCurrency: "USD",
+      },
+      {
+        "@type": "Offer",
+        name: productTerminology.secondOpinion,
+        price: pricing.secondOpinion.price.toFixed(2),
+        priceCurrency: "USD",
+      },
+      {
+        "@type": "Offer",
+        name: `${productTerminology.completeCare} Individual`,
+        price: pricing.completeCareIndividual.price.toFixed(2),
+        priceCurrency: "USD",
+      },
+      {
+        "@type": "Offer",
+        name: `${productTerminology.completeCare} Family`,
+        price: pricing.completeCareFamily.price.toFixed(2),
+        priceCurrency: "USD",
+      },
+    ],
   };
 
   // Combine JSON-LD scripts

@@ -19,26 +19,26 @@ const fadeUp = {
 const comparisonRows = [
   { feature: "Built for oral health", dentasmart: "Yes. Designed around teeth, gums, X-rays, symptoms, treatment plans, reports, and dental history.", chatgpt: "General AI assistant that can answer dental questions among many other topics.", dentasmartWins: true },
   { feature: "Mouth photo analysis", dentasmart: "Yes. Part of the DentaSmart oral-health workflow with guided self-examination.", chatgpt: "Can accept images, but not built as a dental monitoring system.", dentasmartWins: true },
-  { feature: "Dental X-ray workflow", dentasmart: "Yes. Supports dental X-rays as part of Quick Check, Complete Checkup, and Second Opinion.", chatgpt: "Can accept images, but not purpose-built for dental X-ray review or oral-health tracking.", dentasmartWins: true },
-  { feature: "Oral Health Score", dentasmart: "Yes. Personalized 0-100 score with progress tracking over time.", chatgpt: "No dedicated oral-health scoring system.", dentasmartWins: true },
+  { feature: "Dental X-ray workflow", dentasmart: "Yes. Supports dental X-rays as part of Quick Check, Complete Care, and Second Opinion.", chatgpt: "Verify current image features directly with the provider.", dentasmartWins: true },
+  { feature: "Oral Health Score", dentasmart: "Yes. An educational 0-100 summary that can be compared with your own records over time.", chatgpt: "No dedicated oral-health scoring system.", dentasmartWins: true },
   { feature: "Monitoring over time", dentasmart: "Yes. Tracks reports, scores, symptoms, images, visits, and changes tooth by tooth.", chatgpt: "Memory can help personalization, but it is not a dental record or tooth-by-tooth timeline.", dentasmartWins: true },
-  { feature: "Second opinion", dentasmart: "Yes. Compares treatment plans, X-rays, images, bills, and your questions.", chatgpt: "Can explain general dental terms, but no structured second-opinion report.", dentasmartWins: true },
-  { feature: "Cost clarity", dentasmart: "Yes. Includes treatment cost context and helps reduce surprise dental expenses.", chatgpt: "General cost explanations only.", dentasmartWins: true },
+  { feature: "Second Opinion", dentasmart: "Yes. The paid service organizes supported treatment plans, X-rays, images, bills, and questions for discussion with a dentist.", chatgpt: "Can explain general dental terms, but no structured DentaSmart Second Opinion report.", dentasmartWins: true },
+  { feature: "Cost context", dentasmart: "Yes. Includes educational cost context that is not a provider quote or savings guarantee.", chatgpt: "General cost explanations only.", dentasmartWins: true },
   { feature: "Family oral-health tracking", dentasmart: "Yes. Separate family profiles and records for up to 4 members.", chatgpt: "Not designed for family dental profiles.", dentasmartWins: true },
   { feature: "Dentist visit history", dentasmart: "Yes. Stores visits, prescriptions, bills, notes, reports, images, and X-rays.", chatgpt: "Not built as a dental record system.", dentasmartWins: true },
-  { feature: "Dr. Din", dentasmart: "Yes. Your 24/7 Personal AI Dentist connected to your DentaSmart history.", chatgpt: "General chatbot without dental-specific context.", dentasmartWins: true },
-  { feature: "Best use", dentasmart: "Monitoring, prevention, second opinions, cost clarity, oral-health tracking, and family dental organization.", chatgpt: "General Q&A, definitions, and basic dental explanations.", dentasmartWins: false },
+  { feature: "Dr Din", dentasmart: "Yes. DentaSmart's AI oral health guide can explain report language and help prepare questions. It does not diagnose conditions.", chatgpt: "General chatbot without DentaSmart report context.", dentasmartWins: true },
+  { feature: "Best use", dentasmart: "Educational monitoring, paid Second Opinion organization, cost context, and family dental records.", chatgpt: "General Q&A and broad explanations. Verify current features directly.", dentasmartWins: false },
 ];
 
 const faqs = [
-  { question: "Can ChatGPT analyze dental images?", answer: "ChatGPT can accept image inputs and provide general observations. However, it is not purpose-built for dental image analysis, does not provide an Oral Health Score, and cannot track changes to your teeth over time. DentaSmart is designed specifically for dental photo and X-ray workflows with structured reports and longitudinal tracking." },
-  { question: "Does ChatGPT have memory for dental conversations?", answer: "ChatGPT has memory features that can help personalize conversations. However, it does not maintain a structured dental record, tooth-by-tooth timeline, or oral-health history. DentaSmart stores every scan, report, score, visit, and treatment plan as part of your ongoing oral-health profile." },
-  { question: "Is DentaSmart a replacement for a dentist?", answer: "DentaSmart helps you handle regular oral health analysis from home so you can monitor your teeth, track changes, and understand potential issues. If a specific concern or treatment is identified, DentaSmart will guide you to visit a dentist for confirmation and necessary care. Dentists perform the actual hands-on treatment: cleanings, fillings, crowns, root canals, extractions, implants, and emergency procedures." },
-  { question: "Can DentaSmart help me understand a treatment plan?", answer: "Yes. DentaSmart's Second Opinion feature lets you upload your treatment plan, X-rays, and images. It compares the recommendation against your oral-health data and provides context on cost, urgency, alternatives, and what questions to ask your dentist." },
-  { question: "How much does DentaSmart cost compared to ChatGPT?", answer: "ChatGPT Plus costs $20/month for general AI access across all topics. DentaSmart offers purpose-built dental plans: Quick Check for one-time clarity, Second Opinion for treatment plan review, Complete Oral Health Checkup for year-round monitoring, and Family Plan for households. See the pricing page for current details." },
+  { question: "Can ChatGPT analyze dental images?", answer: "Third-party image features can change, so verify ChatGPT's current capabilities and professional-care boundaries directly. DentaSmart supports specific mouth-photo and dental X-ray workflows for educational reports that do not diagnose conditions." },
+  { question: "Does ChatGPT have memory for dental conversations?", answer: "Third-party memory and privacy features can change, so review the provider's current terms. DentaSmart can organize supported reports, scores, visits, and treatment-plan information in an oral health record." },
+  { question: "Is DentaSmart a replacement for a dentist?", answer: "No. DentaSmart provides educational information, monitoring tools, and questions you can bring to a dental visit. It does not diagnose conditions, replace routine dental examinations, or provide hands-on treatment." },
+  { question: "Can DentaSmart help me understand a treatment plan?", answer: "Yes. DentaSmart's paid Second Opinion service can organize a supported treatment plan, X-rays, images, bills, and questions. It does not provide a dentist's diagnosis or clinical recommendation." },
+  { question: "How much does DentaSmart cost compared to ChatGPT?", answer: "Third-party pricing can change, so verify ChatGPT's current terms directly. DentaSmart offers Quick Check and Second Opinion as one-time paid services, plus Complete Care individual and family annual plans. See the pricing page for current details." },
   { question: "Can I use both DentaSmart and ChatGPT?", answer: "Absolutely. Use ChatGPT when you want general explanations about dental topics. Use DentaSmart when the question is about your mouth, your teeth, your X-rays, your treatment plan, or your family's oral health. They serve different purposes." },
-  { question: "Does DentaSmart track tooth longevity?", answer: "Yes. DentaSmart monitors each tooth over time, tracking changes in condition, treatments received, and risk factors. This helps you understand which teeth need attention and how to protect them before small issues become expensive treatments." },
-  { question: "What about proactive reminders?", answer: "DentaSmart sends personalized reminders based on your oral-health history, upcoming dental needs, and recommended check intervals. ChatGPT does not provide proactive health reminders or follow up on your dental status." },
+  { question: "Does DentaSmart organize tooth history?", answer: "DentaSmart can organize supported tooth records, treatments, images, and notes over time. These records are educational and do not determine which teeth need treatment." },
+  { question: "What about reminders?", answer: "DentaSmart can support reminders connected to your saved oral health information. A reminder is not a diagnosis, urgent-care determination, or professional treatment schedule." },
 ];
 
 export default function DentaSmartVsChatGPT() {
@@ -46,29 +46,23 @@ export default function DentaSmartVsChatGPT() {
     trackEvent("compare_page_view", { slug: "dentasmart-vs-chatgpt-dental" });
   }, []);
 
-  const scrollToDownload = () => {
-    const el = document.getElementById("download-cta");
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
-        title="DentaSmart vs ChatGPT: Which AI Should You Trust With Your Teeth?"
-        description="ChatGPT answers dental questions. DentaSmart helps you monitor, prevent, compare, track, and reduce the cost of oral-health decisions using your actual teeth, X-rays, and dental history."
+        title="DentaSmart vs ChatGPT for Dental Questions | Comparison Guide"
+        description="Compare DentaSmart's purpose-built educational workflow with a general AI chatbot, including records, pricing, and professional-care boundaries."
         canonical="https://dentasmart.ai/compare/dentasmart-vs-chatgpt-dental"
         keywords="dentasmart vs chatgpt, chatgpt dental advice, ai dental app, chatgpt for teeth, dentasmart comparison, ai oral health"
         jsonLd={[
           {
             "@context": "https://schema.org",
             "@type": "MedicalWebPage",
-            name: "DentaSmart vs ChatGPT: Which AI Should You Trust With Your Teeth?",
-            description: "A comprehensive comparison of DentaSmart and ChatGPT for dental and oral health use cases.",
+            name: "DentaSmart vs ChatGPT for Dental Questions",
+            description: "An educational comparison of DentaSmart's supported oral health workflow with a general AI chatbot.",
             url: "https://dentasmart.ai/compare/dentasmart-vs-chatgpt-dental",
             inLanguage: "en-US",
             isPartOf: { "@type": "WebSite", name: "DentaSmart", url: "https://dentasmart.ai" },
             audience: { "@type": "MedicalAudience", name: "Patients" },
-            lastReviewed: "2026-07-06",
           },
           {
             "@context": "https://schema.org",
@@ -93,34 +87,29 @@ export default function DentaSmartVsChatGPT() {
         </div>
         <div className="container relative z-10 px-4 mx-auto max-w-6xl pt-40 pb-12 md:pt-36 md:pb-16">
           <motion.div {...fadeUp}>
-            <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full text-primary text-sm font-medium mb-6">
+            <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full text-teal-700 text-sm font-medium mb-6">
               <Shield className="w-4 h-4" /> Product Comparison
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-4 leading-[1.1] max-w-5xl">
               DentaSmart vs ChatGPT:{" "}
-              <span className="italic text-primary">Which AI Should You Trust With Your Teeth?</span>
+              <span className="italic text-teal-700">How Purpose-Built and General AI Tools Differ</span>
             </h1>
             <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed max-w-3xl mb-4">
-              ChatGPT can answer dental questions. DentaSmart helps you monitor, prevent, compare, track, and reduce the cost of oral-health decisions using your actual teeth, X-rays, symptoms, reports, and treatment history.
+              ChatGPT can answer general questions. DentaSmart organizes supported oral health records and educational context. Neither tool replaces a licensed dentist's diagnosis or treatment decision.
             </p>
             <p className="text-sm text-stone-500 mb-8 font-medium">
               Your Personal AI Dentist in Your Pocket.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto"
-                onClick={scrollToDownload}
-              >
-                Start with a Quick Check
+              <Button asChild size="lg" className="bg-teal-700 text-white hover:bg-teal-800 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
+                <Link href="/pricing#quick-check" onClick={() => trackEvent("cta_get_score_click", { source: "vs_chatgpt_quick_check" })}>
+                  Start with a Quick Check
+                </Link>
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto"
-                onClick={scrollToDownload}
-              >
-                Get a Second Opinion
+              <Button asChild size="lg" variant="outline" className="border-teal-700 text-teal-700 hover:bg-teal-50 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
+                <Link href="/pricing#second-opinion" onClick={() => trackEvent("cta_get_score_click", { source: "vs_chatgpt_second_opinion" })}>
+                  Get a Second Opinion
+                </Link>
               </Button>
             </div>
           </motion.div>
@@ -140,7 +129,7 @@ export default function DentaSmartVsChatGPT() {
               <p className="text-lg md:text-xl text-stone-800 font-medium leading-relaxed mb-4">
                 Use ChatGPT when you want a general explanation.
               </p>
-              <p className="text-lg md:text-xl text-primary font-medium leading-relaxed">
+              <p className="text-lg md:text-xl text-teal-700 font-medium leading-relaxed">
                 Use DentaSmart when the question is about <span className="italic">your</span> mouth.
               </p>
             </div>
@@ -216,12 +205,10 @@ export default function DentaSmartVsChatGPT() {
 
           {/* CTA after table */}
           <div className="text-center mt-10">
-            <Button
-              size="lg"
-              className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg"
-              onClick={scrollToDownload}
-            >
-              Start with a Quick Check <ArrowRight className="w-4 h-4 ml-2" />
+            <Button asChild size="lg" className="bg-teal-700 text-white hover:bg-teal-800 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg">
+              <Link href="/pricing#quick-check" onClick={() => trackEvent("cta_get_score_click", { source: "vs_chatgpt_table_quick_check" })}>
+                Start with a Quick Check <ArrowRight className="w-4 h-4 ml-2" />
+              </Link>
             </Button>
           </div>
         </div>
@@ -321,7 +308,7 @@ export default function DentaSmartVsChatGPT() {
                   "Getting a second opinion before expensive dental work",
                   "Saving dental visit history",
                   "Tracking family oral health",
-                  "Asking Dr. Din about your reports, symptoms, score, and next steps",
+                  "Asking Dr Din about your reports, symptoms, score, and next steps",
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start gap-3">
                     <CheckCircle className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
@@ -534,31 +521,26 @@ export default function DentaSmartVsChatGPT() {
       {/* ═══════════════════════════════════════════════════════════════════
           FINAL CTA
       ═══════════════════════════════════════════════════════════════════ */}
-      <section className="py-14 bg-primary text-white">
+      <section className="py-14 bg-teal-800 text-white">
         <div className="container px-4 mx-auto max-w-4xl text-center">
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-4xl font-normal text-white mb-4 leading-tight">
-              Stop asking general questions about dental problems. Start understanding your own mouth.
+              Move from general answers to questions you can take to a dentist.
             </h2>
             <p className="text-base md:text-lg text-white/80 font-light leading-relaxed max-w-2xl mx-auto mb-4">
-              ChatGPT can answer a dental question. DentaSmart helps you monitor, prevent, compare, track, and reduce the cost of oral-health decisions.
+              DentaSmart organizes supported oral health information and educational reports. It does not diagnose conditions or replace professional care.
             </p>
-            <p className="text-white/90 font-medium mb-8">Start with a Quick Check today.</p>
+            <p className="text-white/90 font-medium mb-8">Compare the paid Quick Check and Second Opinion options.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                size="lg"
-                className="bg-white text-primary hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto"
-                onClick={scrollToDownload}
-              >
-                <Smartphone className="w-4 h-4 mr-2" /> Start with a Quick Check
+              <Button asChild size="lg" className="bg-white text-teal-700 hover:bg-stone-100 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
+                <Link href="/pricing#quick-check" onClick={() => trackEvent("cta_get_score_click", { source: "vs_chatgpt_final_quick_check" })}>
+                  <Smartphone className="w-4 h-4 mr-2" /> Start with a Quick Check
+                </Link>
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto"
-                onClick={scrollToDownload}
-              >
-                Get a Second Opinion
+              <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
+                <Link href="/pricing#second-opinion" onClick={() => trackEvent("cta_get_score_click", { source: "vs_chatgpt_final_second_opinion" })}>
+                  Get a Second Opinion
+                </Link>
               </Button>
             </div>
             <p className="mt-6 text-sm text-white/60">
@@ -614,7 +596,7 @@ export default function DentaSmartVsChatGPT() {
               Download DentaSmart
             </h2>
             <p className="text-lg text-stone-600 font-light">
-              Start with a free scan today.
+              The app is free to download. Paid services have separate prices.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

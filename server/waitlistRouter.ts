@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { TRPCError } from "@trpc/server";
 import { publicProcedure, router } from "./_core/trpc";
 import { getDb } from "./db";
 import { androidWaitlist, benefitsWaitlist } from "../drizzle/schema";
@@ -70,8 +71,10 @@ export const waitlistRouter = router({
     .mutation(async ({ input }) => {
       const db = await getDb();
       if (!db) {
-        console.warn("[Waitlist] Database not available, skipping save");
-        return { success: true, alreadyExists: false };
+        throw new TRPCError({
+          code: "SERVICE_UNAVAILABLE",
+          message: "The benefits request service is temporarily unavailable. Please try again.",
+        });
       }
 
       // Check for duplicate email
