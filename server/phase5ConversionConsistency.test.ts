@@ -228,6 +228,13 @@ describe("Phase 5 conversion and trust contracts", () => {
     expect(home.match(/inline-flex min-h-11 min-w-11 items-center justify-center/g)?.length).toBeGreaterThanOrEqual(2);
     expect(faqs.match(/className={`min-h-11 rounded-full px-6/g)).toHaveLength(2);
   });
+
+  it("keeps the lower iOS Download CTA as one tracked anchor control", () => {
+    const download = projectFile("client/src/pages/Download.tsx");
+
+    expect(download).toMatch(/<Button\s+asChild\s+size="lg"[\s\S]*?<a\s+href=\{getAppStoreUrl\("download_page_bottom"\)\}[\s\S]*?target="_blank"[\s\S]*?rel="noopener noreferrer"[\s\S]*?trackAppDownload\("ios", "download_page_bottom"\)[\s\S]*?Download DentaSmart Free[\s\S]*?<\/a>[\s\S]*?<\/Button>/);
+    expect(download).not.toMatch(/<a[\s\S]*?<Button[\s\S]*?Download DentaSmart Free[\s\S]*?<\/Button>[\s\S]*?<\/a>/);
+  });
 });
 
 describe("Phase 5 visible, metadata, and schema parity", () => {

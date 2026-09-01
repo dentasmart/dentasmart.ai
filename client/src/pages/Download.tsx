@@ -189,17 +189,21 @@ export default function Download() {
           <p className="text-xl text-action-foreground font-light mb-8">
             Compare one-time checks and annual monitoring, or download the app first.
           </p>
-          <a
-            href={getAppStoreUrl("download_page_bottom")}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackAppDownload("ios", "download_page_bottom")}
+          <Button
+            asChild
+            size="lg"
+            className="bg-white text-action hover:bg-white/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer"
           >
-            <Button size="lg" className="bg-white text-action hover:bg-white/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer">
+            <a
+              href={getAppStoreUrl("download_page_bottom")}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackAppDownload("ios", "download_page_bottom")}
+            >
               Download DentaSmart Free
               <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
-          </a>
+            </a>
+          </Button>
         </div>
       </section>
 
