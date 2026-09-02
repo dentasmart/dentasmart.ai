@@ -1,4 +1,6 @@
 import { ExternalLink } from "lucide-react";
+import type { ContentSourceRef } from "@shared/contentGovernance";
+import { isExternalEvidenceUrl } from "@shared/contentGovernance";
 
 interface Source {
   name: string;
@@ -38,8 +40,15 @@ const sourceMap: Record<SourceCategory, Source[]> = {
   "life-stage": lifeStageSources,
 };
 
-export default function ExternalSources({ category = "default" }: { category?: SourceCategory }) {
-  const sources = sourceMap[category];
+export default function ExternalSources({ category = "default", governedSources }: { category?: SourceCategory; governedSources?: readonly ContentSourceRef[] }) {
+  const sources = governedSources
+    ? governedSources
+      .filter((source) => source.publicDisplayAllowed !== false && isExternalEvidenceUrl(source.url))
+      .map((source) => ({ name: source.publisher ? `${source.title} (${source.publisher})` : source.title, url: source.url }))
+    : sourceMap[category];
+
+  if (sources.length === 0) return null;
+
   return (
     <div className="mt-6 pt-4 border-t border-stone-200">
       <p className="text-xs text-stone-500 mb-2 font-medium">Sources & References</p>

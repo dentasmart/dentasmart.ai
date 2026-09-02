@@ -33,6 +33,7 @@ export type AnalyticsEvent =
   | "story_open"
   | "compare_page_view"
   | "find_dentist_page_view"
+  | "symptom_professional_care_click"
   | "answers_page_view"
   | "sticky_cta_click"
   | "exit_intent_cta_click"
@@ -56,6 +57,19 @@ export type AnalyticsEvent =
 
 export interface EventParams {
   [key: string]: string | number | boolean | undefined;
+}
+
+type SymptomProfessionalCareEventContext = {
+  source: "symptom_page";
+  destination: "/download";
+};
+
+export function trackSymptomProfessionalCareClick(): void {
+  const context: SymptomProfessionalCareEventContext = {
+    source: "symptom_page",
+    destination: "/download",
+  };
+  trackEvent("symptom_professional_care_click", context);
 }
 
 export function shouldDisableAnalyticsForPath(path: string): boolean {

@@ -10,27 +10,23 @@ describe("MedicalWebPage review metadata", () => {
     vi.useRealTimers();
   });
 
-  it("maps a condition's verified source date and reviewer into JSON-LD", async () => {
+  it("omits legacy condition reviewer and date strings until public reviewer provenance is verified", async () => {
     const schema = findMedicalSchema(await resolveSchemaMarkup("/conditions/toothache"));
-    expect(schema).toMatchObject({
-      lastReviewed: "2026-02-21",
-      reviewedBy: {
-        "@type": "Person",
-        name: "Areeba Aslam",
-        jobTitle: "General Dentist at DentaSmart",
-      },
-    });
+    expect(schema).toBeDefined();
+    expect(schema).not.toHaveProperty("lastReviewed");
+    expect(schema).not.toHaveProperty("reviewedBy");
   });
 
-  it("maps a symptom's verified source date and reviewer into JSON-LD", async () => {
+  it("omits legacy symptom reviewer and date strings until public reviewer provenance is verified", async () => {
     const schema = findMedicalSchema(await resolveSchemaMarkup("/symptoms/mouth-numbness"));
-    expect(schema).toMatchObject({
-      lastReviewed: "2026-03-15",
-      reviewedBy: {
-        "@type": "Person",
-        name: "Areeba Aslam",
-      },
-    });
+    expect(schema).toBeDefined();
+    expect(schema).not.toHaveProperty("lastReviewed");
+    expect(schema).not.toHaveProperty("reviewedBy");
+  });
+
+  it("does not introduce a MedicalWebPage review claim for the representative guide route", async () => {
+    const schema = findMedicalSchema(await resolveSchemaMarkup("/guides/brushing-guide"));
+    expect(schema).toBeUndefined();
   });
 
   it("does not emit review metadata for unsupported route families", async () => {
@@ -59,7 +55,7 @@ describe("MedicalWebPage review metadata", () => {
     expect(schema).toBeUndefined();
   });
 
-  it("uses verified condition metadata independently of the runtime clock", async () => {
+  it("keeps legacy condition review strings absent independently of the runtime clock", async () => {
     vi.useFakeTimers();
     vi.setSystemTime(new Date("2031-01-01T00:00:00.000Z"));
     const firstSchema = findMedicalSchema(await resolveSchemaMarkup("/conditions/toothache"));
@@ -67,7 +63,7 @@ describe("MedicalWebPage review metadata", () => {
     vi.setSystemTime(new Date("2042-12-31T23:59:59.000Z"));
     const secondSchema = findMedicalSchema(await resolveSchemaMarkup("/conditions/toothache"));
 
-    expect(firstSchema).toMatchObject({ lastReviewed: "2026-02-21" });
-    expect(secondSchema).toMatchObject({ lastReviewed: "2026-02-21" });
+    expect(firstSchema).not.toHaveProperty("lastReviewed");
+    expect(secondSchema).not.toHaveProperty("lastReviewed");
   });
 });

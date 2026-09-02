@@ -30,7 +30,7 @@ const data: CostPageData = {
       <Link href="/oral-health-hub/spacers-for-teeth/" className="text-primary underline hover:text-primary/80">
         spacers for teeth
       </Link>{" "}
-      before braces are placed — a small but often overlooked cost to factor in.
+      before braces are placed, a small but often overlooked cost to factor in.
     </>
   ),
   costBreakdown: [

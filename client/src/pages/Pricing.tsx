@@ -300,7 +300,7 @@ export default function Pricing() {
                 </div>
                 {planType === "individual" ? (
                   <p className="text-sm text-stone-500 mt-1">
-                    About $0.21/day — less than a coffee
+                    About $0.21/day, less than a coffee
                   </p>
                 ) : (
                   <p className="text-sm text-stone-500 mt-1">
@@ -564,8 +564,6 @@ export default function Pricing() {
           <QuickAnswerBlock
             question="How much does DentaSmart cost?"
             answer="DentaSmart offers three plans: Quick Check at $19.99 (one-time educational review of supported mouth photos and X-rays), Second Opinion at $29.99 (one-time comparison of your dentist's treatment plan), and Complete Care at $74.99/year for individuals or $149.99/year for families (up to 4 members, additional members $19.99/year each). All subscriptions are managed through dentasmart.ai."
-            sourceUrl="https://dentasmart.ai/pricing"
-            sourceLabel="DentaSmart Pricing"
           />
         </div>
       </section>

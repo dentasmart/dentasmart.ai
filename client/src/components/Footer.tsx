@@ -247,6 +247,26 @@ export default function Footer() {
                     Terms of Service
                   </Link>
                 </li>
+                <li>
+                  <Link href="/editorial-policy" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    Editorial Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/corrections-policy" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    Corrections Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/ai-use-disclosure" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    AI Use Disclosure
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/product-facts" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    Product Facts
+                  </Link>
+                </li>
               </ul>
             </div>
 

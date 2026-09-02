@@ -1,5 +1,6 @@
 import { conditionsData } from "../client/src/data/conditions";
 import { symptomsData } from "../client/src/data/symptoms";
+import { publicReviewerProfiles } from "../shared/contentGovernance";
 
 export interface VerifiedReviewMetadata {
   lastReviewed: string;
@@ -11,17 +12,26 @@ function toVerifiedMetadata(record: {
   lastReviewed: string;
   reviewedBy: string;
   reviewedByCredentials: string;
-}): VerifiedReviewMetadata {
+}): VerifiedReviewMetadata | undefined {
+  const publicProfile = publicReviewerProfiles.find((profile) =>
+    profile.verificationStatus === "verified" &&
+    profile.publicDisplayAllowed &&
+    profile.displayName === record.reviewedBy &&
+    profile.credentials === record.reviewedByCredentials,
+  );
+
+  if (!publicProfile || !publicProfile.displayName || !publicProfile.credentials) return undefined;
+
   return {
     lastReviewed: record.lastReviewed,
-    reviewedBy: record.reviewedBy,
-    reviewedByCredentials: record.reviewedByCredentials,
+    reviewedBy: publicProfile.displayName,
+    reviewedByCredentials: publicProfile.credentials,
   };
 }
 
 /**
- * Returns review metadata only where existing condition or symptom source
- * records explicitly provide it. All other route families intentionally omit it.
+ * Returns review metadata only after a legacy source record matches a verified,
+ * publicly displayable reviewer profile. Until then, all review proof is omitted.
  */
 export function getVerifiedReviewMetadata(urlPath: string): VerifiedReviewMetadata | undefined {
   const cleanPath = urlPath.split("?")[0].split("#")[0].replace(/\/+$/, "");

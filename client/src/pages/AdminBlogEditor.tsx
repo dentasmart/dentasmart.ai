@@ -89,6 +89,8 @@ export default function AdminBlogEditor() {
   const [category, setCategory] = useState<"Dentist Problems" | "Dental Problems" | "Insurance Problems" | "Symptoms" | "Gums" | "Cavities" | "X-Rays" | "Costs">("Dental Problems");
   const [readTime, setReadTime] = useState("3 min read");
   const [status, setStatus] = useState<"draft" | "published" | "unpublished">("draft");
+  const [reviewedByName, setReviewedByName] = useState("");
+  const [reviewedByCredentials, setReviewedByCredentials] = useState("");
 
   // Structured content (StoryBrand sections)
   const [problemHeading, setProblemHeading] = useState("");
@@ -131,6 +133,8 @@ export default function AdminBlogEditor() {
       setCategory(existingPost.category);
       setReadTime(existingPost.readTime || "3 min read");
       setStatus(existingPost.status);
+      setReviewedByName(existingPost.reviewedByName || "");
+      setReviewedByCredentials(existingPost.reviewedByCredentials || "");
       setProblemHeading(existingPost.problemHeading || "");
       setProblemContent(existingPost.problemContent || "");
       setEmpathyHeading(existingPost.empathyHeading || "");
@@ -353,6 +357,8 @@ export default function AdminBlogEditor() {
     ogImage: ogImage || undefined,
     canonicalUrl: canonicalUrl || undefined,
     featuredImage: featuredImage || undefined,
+    reviewedByName: reviewedByName.trim() || undefined,
+    reviewedByCredentials: reviewedByCredentials.trim() || undefined,
     status,
   };
 
@@ -660,7 +666,7 @@ export default function AdminBlogEditor() {
                   {status === "published" ? "Published" : status === "draft" ? "Draft" : "Unpublished"}
                 </div>
                 <p className="text-xs text-stone-400 mt-1.5">
-                  {status === "draft" && "Use the buttons above to Save Draft or Publish."}
+                  {status === "draft" && "Use the buttons above to Save Draft or Publish. Publish is a manual release action, not clinical-review evidence."}
                   {status === "published" && "This article is live. Click Unpublish to take it offline."}
                   {status === "unpublished" && "This article is offline. Click Publish to make it live."}
                 </p>
@@ -716,6 +722,28 @@ export default function AdminBlogEditor() {
                   placeholder="e.g., 3 min read"
                   className="border-stone-200"
                 />
+              </div>
+
+              <div className="border-t border-stone-100 pt-4 space-y-3">
+                <div>
+                  <Label className="text-xs font-medium text-stone-500 mb-1 block">Reviewer name, optional</Label>
+                  <Input
+                    value={reviewedByName}
+                    onChange={(e) => setReviewedByName(e.target.value)}
+                    placeholder="Only enter verified public reviewer information"
+                    className="border-stone-200"
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs font-medium text-stone-500 mb-1 block">Reviewer credentials, optional</Label>
+                  <Input
+                    value={reviewedByCredentials}
+                    onChange={(e) => setReviewedByCredentials(e.target.value)}
+                    placeholder="Only enter credentials approved for public display"
+                    className="border-stone-200"
+                  />
+                </div>
+                <p className="text-xs text-stone-500 leading-relaxed">These fields store editorial context. Do not enter a reviewer unless identity, credentials, and public-display permission are verified. Publishing alone does not create a clinical-review label.</p>
               </div>
 
               <div>
@@ -854,7 +882,7 @@ export default function AdminBlogEditor() {
                 <li>Use the <strong>Rich Text Editor</strong> for free-form content</li>
                 <li>Fill in SEO fields for better search engine visibility</li>
                 <li>Save as <strong>Draft</strong> to continue editing later</li>
-                <li>Click <strong>Publish</strong> to make the article live</li>
+                <li>Click <strong>Publish</strong> to make the article live after manual review</li>
               </ul>
             </div>
           </div>

@@ -94,7 +94,6 @@ export default function LifestyleTemplate({ data }: { data: LifestylePageData })
     url: canonicalUrl,
     inLanguage: "en-US",
     isPartOf: { "@type": "WebSite", name: "DentaSmart", url: "https://dentasmart.ai" },
-    lastReviewed: "2026-04-08",
   };
 
   return (

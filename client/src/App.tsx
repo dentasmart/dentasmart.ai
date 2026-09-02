@@ -26,6 +26,10 @@ const Article = lazy(() => import("@/pages/Article"));
 const FAQs = lazy(() => import("@/pages/FAQs"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("@/pages/TermsOfService"));
+const EditorialPolicy = lazy(() => import("@/pages/EditorialPolicy"));
+const CorrectionsPolicy = lazy(() => import("@/pages/CorrectionsPolicy"));
+const AIUseDisclosure = lazy(() => import("@/pages/AIUseDisclosure"));
+const ProductFacts = lazy(() => import("@/pages/ProductFacts"));
 const AccountDeletion = lazy(() => import("@/pages/AccountDeletion"));
 const AccountDeleteConfirm = lazy(() => import("@/pages/AccountDeleteConfirm"));
 const EmailUnsubscribe = lazy(() => import("@/pages/EmailUnsubscribe"));
@@ -145,6 +149,10 @@ function Router() {
         <Route path="/faqs" component={FAQs} />
         <Route path="/privacy-policy" component={PrivacyPolicy} />
         <Route path="/terms-of-service" component={TermsOfService} />
+        <Route path="/editorial-policy" component={EditorialPolicy} />
+        <Route path="/corrections-policy" component={CorrectionsPolicy} />
+        <Route path="/ai-use-disclosure" component={AIUseDisclosure} />
+        <Route path="/product-facts" component={ProductFacts} />
         <Route path="/account-deletion" component={AccountDeletion} />
         <Route path="/invite/success" component={InviteSuccess} />
         <Route path="/invite" component={Invite} />

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+import { Link } from "wouter";
 
 interface WaitlistSuccessModalProps {
   isOpen: boolean;
@@ -46,7 +46,7 @@ export function WaitlistSuccessModal({
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="p-0 overflow-hidden border-0 max-w-md w-full rounded-3xl shadow-2xl bg-white">
         {/* Visually hidden title for screen reader accessibility */}
-        <DialogTitle className="sr-only">Android Waitlist Confirmation</DialogTitle>
+        <DialogTitle className="sr-only">DentaSmart Download</DialogTitle>
         {/* Close button */}
         <button
           onClick={onClose}
@@ -97,10 +97,10 @@ export function WaitlistSuccessModal({
             className="relative z-10"
           >
             <h2 className="text-2xl font-bold text-white mb-1">
-              You're on the list{name ? `, ${name.split(" ")[0]}` : ""}!
+              DentaSmart is ready{name ? `, ${name.split(" ")[0]}` : ""}!
             </h2>
             <p className="text-white/85 text-sm">
-              We'll notify you the moment DentaSmart hits Android.
+              Download the app on iOS or Android to get started.
             </p>
           </motion.div>
         </div>
@@ -117,7 +117,7 @@ export function WaitlistSuccessModal({
             <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 text-center">
               DentaSmart is available now
             </p>
-            <a
+            <Link
               href="/download"
               className="block"
               onClick={() => trackEvent("download_page_view", { source: "waitlist_success_modal" })}
@@ -131,7 +131,7 @@ export function WaitlistSuccessModal({
                   <p className="text-base font-semibold leading-tight">Download DentaSmart</p>
                 </div>
               </div>
-            </a>
+            </Link>
           </div>
 
           {/* Auto-close countdown */}

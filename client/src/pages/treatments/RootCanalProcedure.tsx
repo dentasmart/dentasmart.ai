@@ -1,4 +1,5 @@
 import TreatmentPageTemplate, { TreatmentPageData } from "./TreatmentPageTemplate";
+import { governanceSourceRegistry, type ContentGovernance } from "@shared/contentGovernance";
 
 const data: TreatmentPageData = {
   slug: "root-canal-procedure",
@@ -123,6 +124,27 @@ const data: TreatmentPageData = {
     { name: "Dental Cleaning", slug: "dental-cleaning-procedure", tagline: "The foundation of a healthy smile." },
   ],
   relatedCostPage: { name: "Root Canal Cost", slug: "root-canal-cost" },
+  governance: {
+    contentId: "treatment:root-canal-procedure",
+    contentVersion: "legacy",
+    riskClass: "health",
+    claimClasses: ["TREATMENT_INFORMATION", "CLINICAL_EDUCATION"],
+    directAnswer: {
+      question: "What is root canal treatment?",
+      answer: "A root canal is a dental procedure that treats tissue inside a tooth. A dentist can explain whether it is appropriate for your situation.",
+      intendedAudience: "People seeking general treatment information",
+      sourceRefIds: [governanceSourceRegistry["ada-oral-health"].id],
+    },
+    sourceRefs: [governanceSourceRegistry["ada-oral-health"]],
+    ctaPolicy: {
+      placement: "after_educational_context",
+      requiresProfessionalCareBoundary: true,
+    },
+    exceptions: [{
+      code: "legacy_source_mapping",
+      reason: "Existing category source is mapped as legacy-existing and is not a clinical approval.",
+    }],
+  } satisfies ContentGovernance,
 };
 
 export default function RootCanalProcedure() {

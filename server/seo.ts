@@ -38,13 +38,13 @@ const TYPE_DEFAULTS: Record<string, { priority: string; changefreq: string }> = 
 async function getEnabledRedirectSources(): Promise<Set<string>> {
   const sources = new Set<string>();
   try {
-    // We only need to trigger a single load — the cache is shared in-process.
+    // We only need to trigger a single load  -  the cache is shared in-process.
     // Probe with a dummy path to warm the cache, then inspect via resolveRedirect
     // for each candidate. This is safe: resolveRedirect returns { entry, cacheIsLoaded }.
     // If cacheIsLoaded is false after the probe, skip filtering entirely.
     const probe = await resolveRedirect("/__sitemap_probe__");
     if (!probe.cacheIsLoaded) {
-      console.warn("[Sitemap] Redirect cache unavailable — skipping redirect filter");
+      console.warn("[Sitemap] Redirect cache unavailable  -  skipping redirect filter");
       return sources;
     }
     // Walk all routes that are candidates for the sitemap and check each path.
@@ -85,7 +85,7 @@ function deriveRoutes(
 }
 
 export function invalidateSitemapCache(): void {
-  // Legacy cache removed — segmented sitemaps regenerate on each request.
+  // Legacy cache removed  -  segmented sitemaps regenerate on each request.
   // This function is kept as a no-op because blogRouter and blogAgent import it.
 }
 
@@ -121,7 +121,7 @@ async function generateBlogSitemap(): Promise<string> {
   let blogUrls: Array<{ path: string; priority: string; changefreq: string; lastmod: string }> = [];
   try {
     const result = await listBlogPosts({ publishedOnly: true, limit: 1000 });
-    // Build redirect source set — if cache is unavailable, skip filtering (never fail sitemap)
+    // Build redirect source set  -  if cache is unavailable, skip filtering (never fail sitemap)
     const redirectSources = await getEnabledRedirectSources();
     blogUrls = result.posts
       .map((post) => ({
@@ -723,7 +723,7 @@ export function registerSeoRoutes(app: Express) {
   });
 
   // ============================================================
-  // Deprecated flat sitemap routes — 301 redirect to sitemap-index.xml
+  // Deprecated flat sitemap routes  -  301 redirect to sitemap-index.xml
   // ============================================================
   app.get("/sitemap.xml", (_req: Request, res: Response) => {
     res.redirect(301, "/sitemap-index.xml");

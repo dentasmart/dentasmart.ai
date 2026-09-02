@@ -11,7 +11,7 @@
  *     Do NOT add component references here — this file is imported by server
  *     code and must remain free of any client-side imports.
  *
- * inSitemap: false  — route is excluded from all sitemaps (utility pages,
+ * inSitemap: false — route is excluded from all sitemaps (utility pages,
  *                     redirect aliases). Defaults to true when omitted.
  *
  * priority / changefreq / lastmod — per-route overrides. When omitted, the
@@ -113,6 +113,10 @@ const staticOnlyRoutes: RouteEntry[] = [
   { path: "/faqs", label: "FAQs", type: "Single Page", priority: "0.8", changefreq: "monthly", lastmod: "2026-03-15" },
   { path: "/privacy-policy", label: "Privacy Policy", type: "Single Page", priority: "0.3", changefreq: "yearly", lastmod: "2026-01-01" },
   { path: "/terms-of-service", label: "Terms of Service", type: "Single Page", priority: "0.3", changefreq: "yearly", lastmod: "2026-01-01" },
+  { path: "/editorial-policy", label: "Editorial Policy", type: "Single Page", priority: "0.3", changefreq: "yearly" },
+  { path: "/corrections-policy", label: "Corrections Policy", type: "Single Page", priority: "0.3", changefreq: "yearly" },
+  { path: "/ai-use-disclosure", label: "AI Use Disclosure", type: "Single Page", priority: "0.3", changefreq: "yearly" },
+  { path: "/product-facts", label: "Product Facts", type: "Single Page", priority: "0.4", changefreq: "monthly" },
   // Utility pages — excluded from sitemap
   { path: "/account-deletion", label: "Account Deletion", type: "Single Page", inSitemap: false },
   { path: "/invite", label: "Invite", type: "Single Page", inSitemap: false },

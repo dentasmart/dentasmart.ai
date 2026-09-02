@@ -175,6 +175,26 @@ const staticMeta: Record<string, MetaInfo> = {
     description:
       "Read DentaSmart's terms of service. Understand the terms and conditions for using our AI dental health platform.",
   },
+  "/editorial-policy": {
+    title: "Editorial Policy | DentaSmart",
+    description:
+      "Learn how DentaSmart approaches educational oral health content, source transparency, updates, corrections, and AI-assisted drafting.",
+  },
+  "/corrections-policy": {
+    title: "Corrections Policy | DentaSmart",
+    description:
+      "Learn how to report a suspected DentaSmart content error and how material website corrections are handled.",
+  },
+  "/ai-use-disclosure": {
+    title: "AI Use Disclosure | DentaSmart",
+    description:
+      "Learn how DentaSmart uses AI in its product and editorial workflow, with clear educational and professional-care boundaries.",
+  },
+  "/product-facts": {
+    title: "Product Facts | DentaSmart",
+    description:
+      "Review verified DentaSmart product availability, plans, prices, store destinations, free-preview boundary, and educational-use boundary.",
+  },
   "/account-deletion": {
     title: "Delete Your DentaSmart Account",
     description:
@@ -987,7 +1007,7 @@ async function refreshBlogMetaCache(): Promise<void> {
 
 // ─── Page meta override cache ─────────────────────────────────────────────────
 // DB overrides take precedence over hardcoded staticMeta.
-// TTL is 1 hour — matching blogMetaCache. Primary invalidation is explicit
+// TTL is 1 hour  -  matching blogMetaCache. Primary invalidation is explicit
 // clearPageOverrideCache() called synchronously on every admin save.
 type OverrideEntry = { metaTitle: string | null; metaDesc: string | null; canonical: string | null };
 let pageOverrideCache: Map<string, OverrideEntry> = new Map();
@@ -1054,7 +1074,7 @@ export async function resolveMetaTags(urlPath: string): Promise<MetaInfo | null>
   const utilityNoindexMeta = getUtilityNoindexMeta(cleanPath);
   if (utilityNoindexMeta) return utilityNoindexMeta;
 
-  // 0. DB override — admin-managed, takes precedence over staticMeta
+  // 0. DB override  -  admin-managed, takes precedence over staticMeta
   if (Date.now() - pageOverrideCacheTime > PAGE_OVERRIDE_CACHE_TTL) {
     await refreshPageOverrideCache();
   }
@@ -1079,7 +1099,7 @@ export async function resolveMetaTags(urlPath: string): Promise<MetaInfo | null>
     const blogHit = blogMetaCache.get(cleanPath);
     if (blogHit) return { ...blogHit, canonical: blogHit.canonical ?? `${BASE_URL}${canonicalPath}` };
 
-    // Cache miss — fall back to direct DB lookup (handles cold start and stale cache)
+    // Cache miss  -  fall back to direct DB lookup (handles cold start and stale cache)
     const slug = cleanPath.replace("/oral-health-hub/", "");
     if (slug) {
       const post = await getBlogPostBySlug(slug);
@@ -1094,7 +1114,7 @@ export async function resolveMetaTags(urlPath: string): Promise<MetaInfo | null>
     }
   }
 
-  // 3. No match — return null (index.html defaults will be used)
+  // 3. No match  -  return null (index.html defaults will be used)
   return null;
 }
 
@@ -1103,7 +1123,7 @@ export async function resolveMetaTags(urlPath: string): Promise<MetaInfo | null>
  *
  * Strategy: index.html uses unique placeholder strings (__PAGE_TITLE__, __PAGE_DESCRIPTION__,
  * __PAGE_CANONICAL__) instead of real values. The server replaces these placeholders with
- * per-page values using simple string replacement — completely immune to Vite build
+ * per-page values using simple string replacement  -  completely immune to Vite build
  * transformations that may change tag formats (e.g., /> vs >).
  *
  * Fallback: If placeholders are not found (e.g., old built index.html), falls back to

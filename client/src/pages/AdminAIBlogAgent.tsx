@@ -2,7 +2,6 @@ import { useState } from "react";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Switch } from "@/components/ui/switch";
 import {
   Table,
   TableBody,
@@ -33,19 +32,6 @@ export default function AdminAIBlogAgent() {
   // Fetch run history
   const { data: runs, isLoading: runsLoading, refetch: refetchRuns } = trpc.blog.agentListRuns.useQuery();
 
-  // Fetch auto-publish setting
-  const { data: autoPublishData, isLoading: settingsLoading } = trpc.blog.agentGetAutoPublish.useQuery();
-
-  // Set auto-publish mutation
-  const setAutoPublishMutation = trpc.blog.agentSetAutoPublish.useMutation({
-    onSuccess: (result) => {
-      toast.success(result.autoPublish ? "Auto-publish enabled. New posts go live immediately." : "Auto-publish disabled. New posts will be saved as drafts.");
-    },
-    onError: (err) => {
-      toast.error(`Failed to update setting: ${err.message}`);
-    },
-  });
-
   // Manual trigger mutation
   const triggerMutation = trpc.blog.agentTrigger.useMutation({
     onMutate: () => {
@@ -54,7 +40,7 @@ export default function AdminAIBlogAgent() {
     onSuccess: (result) => {
       setIsGenerating(false);
       if (result.success) {
-        toast.success(`Blog post created: "${result.title}"`);
+        toast.success(`Draft created: "${result.title}"`);
       } else {
         toast.error(`Generation failed: ${result.error}`);
       }
@@ -101,8 +87,6 @@ export default function AdminAIBlogAgent() {
     }
   };
 
-  const autoPublish = autoPublishData?.autoPublish ?? true;
-
   return (
     <AdminLayout activeId="ai-blog-agent">
       <div className="space-y-6">
@@ -136,7 +120,7 @@ export default function AdminAIBlogAgent() {
           </Button>
         </div>
 
-        {/* Settings Card */}
+        {/* Publication safeguards */}
         <div className="bg-white rounded-xl border border-stone-200 shadow-sm p-6">
           <div className="flex items-start gap-4">
             <div className="p-3 bg-primary/10 rounded-xl">
@@ -144,30 +128,20 @@ export default function AdminAIBlogAgent() {
             </div>
             <div className="flex-1 space-y-4">
               <div>
-                <h2 className="text-base font-semibold text-stone-900 mb-1">Agent Settings</h2>
+                <h2 className="text-base font-semibold text-stone-900 mb-1">Publication safeguards</h2>
                 <p className="text-sm text-stone-600">
-                  Configure how the AI Blog Agent behaves when generating new posts.
+                  The agent can generate a draft, but it cannot publish an article.
                 </p>
               </div>
 
-              {/* Auto-publish toggle */}
-              <div className="flex items-center justify-between bg-stone-50 rounded-lg px-4 py-3">
+              <div className="flex items-start justify-between gap-4 bg-amber-50 rounded-lg px-4 py-3">
                 <div className="flex-1">
-                  <p className="text-sm font-medium text-stone-900">Auto-publish</p>
-                  <p className="text-xs text-stone-500 mt-0.5">
-                    {autoPublish
-                      ? "New posts go live immediately after generation."
-                      : "New posts are saved as drafts for your review before publishing."}
+                  <p className="text-sm font-medium text-stone-900">Drafts require manual review</p>
+                  <p className="text-xs text-stone-600 mt-0.5">
+                    Review each draft in the editor and use the existing manual publication control only after the required checks are complete.
                   </p>
                 </div>
-                <Switch
-                  checked={autoPublish}
-                  disabled={settingsLoading || setAutoPublishMutation.isPending}
-                  onCheckedChange={(checked) => {
-                    setAutoPublishMutation.mutate({ autoPublish: checked });
-                  }}
-                  className="cursor-pointer"
-                />
+                <Badge className="bg-amber-100 text-amber-800 border-0 whitespace-nowrap">Draft-only</Badge>
               </div>
 
               {/* Scheduling info */}
@@ -192,7 +166,7 @@ export default function AdminAIBlogAgent() {
               { step: "1", title: "Research", desc: "Identifies trending dental topics, keyword gaps, and competitor angles" },
               { step: "2", title: "Outline", desc: "Creates a tight outline with H2s, H3s, FAQ section, and CTA placement" },
               { step: "3", title: "Write & Humanize", desc: "Drafts 1,500-2,000 words in a human voice with SEO/AEO/GEO formatting" },
-              { step: "4", title: "SEO & Save", desc: "Fills meta title, description, slug, OG tags, selects category, and saves" },
+              { step: "4", title: "SEO & Save", desc: "Fills meta title, description, slug, and category, then saves a draft for manual review" },
             ].map((item) => (
               <div key={item.step} className="relative p-4 bg-stone-50 rounded-xl">
                 <div className="text-3xl font-bold text-primary/20 absolute top-2 right-3">{item.step}</div>

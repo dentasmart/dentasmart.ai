@@ -152,8 +152,6 @@ export default function ComparisonPageTemplate({ data }: { data: ComparisonPageD
           <QuickAnswerBlock
             question={`${data.optionAName} vs ${data.optionBName}: How do they compare?`}
             answer={data.metaDescription}
-            sourceUrl={`https://dentasmart.ai/comparisons/${data.slug}`}
-            sourceLabel={`DentaSmart ${data.optionAName} vs ${data.optionBName} Guide`}
           />
         </div>
       </section>

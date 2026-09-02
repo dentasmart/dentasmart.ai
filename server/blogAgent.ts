@@ -1,18 +1,17 @@
 /**
- * AI Blog Agent. Generates and publishes SEO-optimized blog posts
+ * AI Blog Agent. Generates SEO-optimized blog drafts
  * using the built-in LLM helper. Each run:
  *   1. Picks a topic (keyword research via LLM)
  *   2. Creates an outline
  *   3. Writes the full article (1,500-2,000 words, human voice)
  *   4. Fills SEO fields
- *   5. Creates the blog post in the database and publishes it
+ *   5. Creates the blog post as a draft for manual human publication
  */
 
 import { invokeLLM } from "./_core/llm";
-import { getDb, getSetting } from "./db";
+import { getDb } from "./db";
 import { agentRuns, blogPosts, blogCategories } from "../drizzle/schema";
-import { eq, desc, sql } from "drizzle-orm";
-import { invalidateSitemapCache } from "./seo";
+import { eq, desc } from "drizzle-orm";
 
 // ─── DB Helpers ───────────────────────────────────────────────
 
@@ -116,9 +115,9 @@ export async function runBlogAgent(triggerType: "manual" | "scheduled" = "manual
   const startTime = Date.now();
   const runId = await createAgentRun({ triggerType });
 
-  // Check auto-publish setting
-  const autoPublishSetting = await getSetting("blog_agent_auto_publish");
-  const shouldPublish = autoPublishSetting !== "false"; // default true
+  // Generated content must remain draft-only. A manual human publication
+  // action remains the existing release gate and is not clinical-review proof.
+  const shouldPublish = false;
 
   try {
     // Step 1: Topic selection
@@ -404,7 +403,7 @@ Generate JSON with:
       c.parentId === parentCat.id && c.name.toLowerCase().includes(topic.subcategoryName.toLowerCase().split(" ")[0])
     ) : null;
 
-    // Step 5: Create and publish the blog post
+    // Step 5: Create a draft blog post. Manual publication remains required.
     const [insertResult] = await db.insert(blogPosts).values({
       title: topic.title,
       slug: finalSlug,
@@ -423,17 +422,13 @@ Generate JSON with:
       faqs: seo.faqs,
       categoryId: parentCat?.id ?? null,
       subcategoryId: subCat?.id ?? null,
-      status: shouldPublish ? "published" : "draft",
-      publishedAt: shouldPublish ? new Date() : null,
+      status: "draft",
+      publishedAt: null,
     }).$returningId();
-
-    if (shouldPublish) {
-      invalidateSitemapCache();
-    }
 
     const durationMs = Date.now() - startTime;
     await updateAgentRun(runId, {
-      status: shouldPublish ? "success" : "draft",
+      status: "draft",
       slug: finalSlug,
       postId: insertResult.id,
       durationMs,

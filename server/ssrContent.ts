@@ -11,7 +11,7 @@
  * which gets display:none once JS runs).
  *
  * The content includes: H1, intro paragraph, key sections with H2s, internal links,
- * and breadcrumb navigation — all the signals crawlers need.
+ * and breadcrumb navigation  -  all the signals crawlers need.
  */
 
 import { listBlogPosts } from "./blogDb";
@@ -27,7 +27,7 @@ interface SSRContent {
 function generateHomepageContent(): string {
   return `
 <article>
-  <h1>DentaSmart — Your Personal AI Dentist in Your Pocket</h1>
+  <h1>DentaSmart  -  Your Personal AI Dentist in Your Pocket</h1>
   <p>Upload supported mouth photos or dental X-rays and receive educational insights, an Oral Health Score when included, and plain-language information. DentaSmart helps you organize questions for a dental professional and does not provide a diagnosis.</p>
   <h2>How DentaSmart Works</h2>
   <p>Add supported photos, X-rays, symptoms, or treatment documents. DentaSmart organizes the information, provides an educational report and Oral Health Score when included, and helps you prepare questions for professional care.</p>
@@ -84,7 +84,7 @@ function generateConditionContent(slug: string): string {
 <article>
   <nav aria-label="breadcrumb"><a href="/">Home</a> &gt; <a href="/conditions">Conditions</a> &gt; ${title.split(':')[0]}</nav>
   <h1>${title}</h1>
-  <p>Learn about ${readableSlug} — what causes it, how to recognize the symptoms, available treatment options, and when you should see a dentist. This guide provides clear, easy-to-understand information to help you make informed decisions about your oral health.</p>
+  <p>Learn about ${readableSlug}  -  what causes it, how to recognize the symptoms, available treatment options, and when you should see a dentist. This guide provides clear, easy-to-understand information to help you make informed decisions about your oral health.</p>
   <h2>What Is ${title.split(':')[0]}?</h2>
   <p>Dental conditions can affect people differently. This general guide can help you recognize common topics to discuss with a dentist, but it cannot determine what is causing your symptoms.</p>
   <h2>Common Symptoms</h2>
@@ -268,11 +268,11 @@ function generateStaticPageContent(path: string): string | null {
 <article>
   <h1>DentaSmart Pricing: Plans for Every Need</h1>
   <p>The DentaSmart app is free to download, and a limited free scan preview is available before you choose a plan. Choose a paid one-time check or annual monitoring plan based on the decision you are making.</p>
-  <h2>Quick Check — $19.99 one-time</h2>
+  <h2>Quick Check  -  $19.99 one-time</h2>
   <p>A $19.99 one-time educational review of supported mouth photos and X-rays with visible observations, an Oral Health Score, a patient-friendly report, and Dr Din access for 30 days. It does not provide a diagnosis.</p>
-  <h2>Second Opinion — $29.99 one-time</h2>
+  <h2>Second Opinion  -  $29.99 one-time</h2>
   <p>A $29.99 one-time educational comparison for one case using supported treatment plans, bills, X-rays, and mouth photos, with cost context, questions for a licensed dentist, and Dr Din access for 30 days.</p>
-  <h2>Complete Care — $74.99/year (Individual) or $149.99/year (Family)</h2>
+  <h2>Complete Care  -  $74.99/year (Individual) or $149.99/year (Family)</h2>
   <p>Complete Care is $74.99/year for one person or $149.99/year for up to 4 family members. It includes year-round educational monitoring, supported photo and X-ray reviews, reports, Oral Health Score tracking, guided self-examination, record organization, and Dr Din access. It does not replace professional diagnosis or treatment.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/features">See All Features</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`,
@@ -280,9 +280,9 @@ function generateStaticPageContent(path: string): string | null {
 <article>
   <h1>Download DentaSmart: iOS & Android App</h1>
   <p>Download the DentaSmart app on iOS or Android. The app is free to download, with a limited scan preview available before you choose a plan. Quick Check, Second Opinion, and Complete Care are paid services.</p>
-  <h2>iOS — Available Now</h2>
+  <h2>iOS  -  Available Now</h2>
   <p>Download DentaSmart from the Apple App Store, then review the paid service options before purchase.</p>
-  <h2>Android — Available Now</h2>
+  <h2>Android  -  Available Now</h2>
   <p>Download DentaSmart from Google Play, then review the paid service options before purchase.</p>
   <p><a href="/pricing">View Pricing</a> | <a href="/features">See All Features</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`,
@@ -313,6 +313,39 @@ function generateStaticPageContent(path: string): string | null {
   <h1>Meet the DentaSmart Team</h1>
   <p>DentaSmart is built by product, technology, and dental professionals working to make oral health information easier to understand. Leadership, strategic advisory, and content-review roles are identified separately.</p>
   <p><a href="/how-it-works">How DentaSmart Works</a> | <a href="/features">Our Features</a> | <a href="/download">Download the App</a></p>
+</article>`,
+    "/editorial-policy": `
+<article>
+  <h1>Editorial Policy</h1>
+  <p>DentaSmart publishes plain-language oral health education to help people prepare for conversations with dental professionals. Website content is educational and does not replace diagnosis or treatment by a licensed professional.</p>
+  <h2>Sources, review, and updates</h2>
+  <p>Where a page includes sources or review information, the display is governed by available page data. AI assistance is not clinical review, and AI-generated blog content is saved as a draft before manual publication.</p>
+  <p><a href="/ai-use-disclosure">AI Use Disclosure</a> | <a href="/corrections-policy">Corrections Policy</a> | <a href="/product-facts">Product Facts</a></p>
+</article>`,
+    "/corrections-policy": `
+<article>
+  <h1>Corrections Policy</h1>
+  <p>To report a suspected content error, contact DentaSmart Support with the page URL and helpful context. Material errors may lead to a content update when appropriate.</p>
+  <h2>Review labels and dates</h2>
+  <p>Review labels and dates are displayed only when page governance data supports them. DentaSmart does not publish a fixed response or correction timeline.</p>
+  <p><a href="mailto:support@dentasmart.ai">Contact DentaSmart Support</a> | <a href="/editorial-policy">Editorial Policy</a></p>
+</article>`,
+    "/ai-use-disclosure": `
+<article>
+  <h1>AI Use Disclosure</h1>
+  <p>DentaSmart uses AI in parts of its product and may use AI tools to assist with editorial drafting. AI assistance does not itself constitute clinical review.</p>
+  <h2>Educational boundary</h2>
+  <p>DentaSmart website content is educational and does not replace diagnosis or treatment by a licensed professional. AI-generated blog content is saved as a draft and is not automatically published.</p>
+  <p><a href="/editorial-policy">Editorial Policy</a> | <a href="/product-facts">Product Facts</a></p>
+</article>`,
+    "/product-facts": `
+<article>
+  <h1>Product Facts</h1>
+  <p>DentaSmart is free to download on iOS and Android. A limited free scan preview is distinct from paid Quick Check, Second Opinion, and Complete Care services.</p>
+  <h2>Verified pricing</h2>
+  <ul><li>Quick Check: $19.99 one-time</li><li>Second Opinion: $29.99 one-time</li><li>Complete Care: $74.99/year individual or $149.99/year family, up to four family members</li><li>Additional family members: $19.99/year</li></ul>
+  <p>DentaSmart provides educational outputs and does not diagnose conditions or replace a licensed dental professional.</p>
+  <p><a href="/pricing">View Pricing</a> | <a href="/download">Download DentaSmart</a> | <a href="/features">See Features</a></p>
 </article>`,
     "/instant-scan": `
 <article>

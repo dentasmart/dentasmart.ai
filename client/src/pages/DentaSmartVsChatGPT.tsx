@@ -116,6 +116,14 @@ export default function DentaSmartVsChatGPT() {
         </div>
       </section>
 
+      <section className="py-5 bg-stone-50 border-y border-stone-100">
+        <div className="container px-4 mx-auto max-w-4xl">
+          <p className="text-sm text-stone-600 leading-relaxed">
+            <span className="font-medium text-stone-800">Comparison scope:</span> DentaSmart-controlled product details are maintained in our <Link href="/product-facts" className="text-action underline underline-offset-2 hover:text-action-hover">Product Facts</Link> page. Third-party capabilities and pricing can change, so verify them directly with the provider before making a decision.
+          </p>
+        </div>
+      </section>
+
       {/* ═══════════════════════════════════════════════════════════════════
           THE SIMPLE ANSWER
       ═══════════════════════════════════════════════════════════════════ */}

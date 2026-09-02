@@ -6,12 +6,15 @@ import MidContentCTA from "@/components/MidContentCTA";
 import NextStepsBox from "@/components/NextStepsBox";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, CheckCircle, ChevronDown, ChevronUp, Shield, Lightbulb, XCircle, MessageCircleQuestion } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle, ChevronDown, ChevronUp, Lightbulb, XCircle, MessageCircleQuestion } from "lucide-react";
 import { Link, useRoute } from "wouter";
 import { useState } from "react";
 import { guidesData } from "@/data/guides";
 import { aeoGuides } from "@/data/aeoContent";
 import { breadcrumbSchema, howToSchema, faqPageSchema } from "@/lib/schema";
+import ContentGovernanceMeta from "@/components/ContentGovernanceMeta";
+import QuickAnswerBlock from "@/components/QuickAnswerBlock";
+import type { ContentGovernance } from "@shared/contentGovernance";
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
@@ -38,6 +41,25 @@ export default function GuidePage() {
   const slug = params?.slug || "";
   const guide = slug ? guidesData[slug] : null;
   const aeo = slug ? aeoGuides[slug] : null;
+  const governance: ContentGovernance | undefined = guide ? {
+    contentId: `guide:${guide.slug}`,
+    contentVersion: guide.lastReviewed || "legacy",
+    riskClass: "health",
+    claimClasses: ["CLINICAL_EDUCATION"],
+    directAnswer: {
+      question: `What is the key point of ${guide.title}?`,
+      answer: guide.introduction,
+      intendedAudience: "People seeking general oral health education",
+    },
+    ctaPolicy: {
+      placement: "after_educational_context",
+      requiresProfessionalCareBoundary: true,
+    },
+    exceptions: [{
+      code: "legacy_review_metadata",
+      reason: "Existing guide review fields require governed provenance before public display.",
+    }],
+  } : undefined;
 
   if (!guide) {
     return (
@@ -103,11 +125,8 @@ export default function GuidePage() {
             <p className="text-xl text-white/80 font-light leading-relaxed max-w-2xl text-left">
               {guide.heroSubheading}
             </p>
-            <div className="flex items-center gap-3 mt-6 text-white/60 text-sm">
-              <Shield className="w-4 h-4" />
-              <span>Reviewed by {guide.reviewedBy}, {guide.reviewedByCredentials}</span>
-              <span className="mx-2">|</span>
-              <span>Last reviewed: {new Date(guide.lastReviewed).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
+            <div className="mt-6 text-white/60">
+              <ContentGovernanceMeta governance={governance} />
             </div>
           </motion.div>
         </div>
@@ -124,6 +143,16 @@ export default function GuidePage() {
           </div>
         </section>
       )}
+
+      <section className="py-6 bg-primary/5 border-b border-primary/10">
+        <div className="container px-4 mx-auto max-w-3xl">
+          <QuickAnswerBlock
+            question={governance?.directAnswer?.question || `What is the key point of ${guide.title}?`}
+            answer={guide.introduction}
+            governance={governance?.directAnswer}
+          />
+        </div>
+      </section>
 
       {/* Introduction */}
       <section className="py-8 bg-white">

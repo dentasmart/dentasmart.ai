@@ -98,7 +98,6 @@ export default function AgeSpecificTemplate({ data }: { data: AgeSpecificPageDat
     inLanguage: "en-US",
     isPartOf: { "@type": "WebSite", name: "DentaSmart", url: "https://dentasmart.ai" },
     audience: { "@type": "PeopleAudience", name: data.ageGroup },
-    lastReviewed: "2026-04-08",
   };
 
   return (

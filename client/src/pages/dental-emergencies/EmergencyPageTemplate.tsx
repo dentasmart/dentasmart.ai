@@ -115,7 +115,6 @@ export default function EmergencyPageTemplate({ data }: { data: EmergencyPageDat
     inLanguage: "en-US",
     isPartOf: { "@type": "WebSite", name: "DentaSmart", url: "https://dentasmart.ai" },
     audience: { "@type": "MedicalAudience", name: "Patients" },
-    lastReviewed: "2026-04-08",
   };
 
   const severityColor = (sev: string) => {
@@ -173,11 +172,6 @@ export default function EmergencyPageTemplate({ data }: { data: EmergencyPageDat
                   See What To Do Now
                 </Button>
               </a>
-              <Link href="/symptom-quiz">
-                <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
-                  Free Symptom Check <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
             </div>
           </motion.div>
         </div>

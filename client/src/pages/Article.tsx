@@ -1,9 +1,12 @@
 import { useRoute } from "wouter";
 import SEO from "@/components/SEO";
+import ContentGovernanceMeta from "@/components/ContentGovernanceMeta";
+import ExternalSources from "@/components/ExternalSources";
 import NotFound from "@/pages/NotFound";
 import { useEffect, useMemo } from "react";
 import { trpc } from "@/lib/trpc";
 import { Link } from "wouter";
+import type { ContentGovernance } from "@shared/contentGovernance";
 import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2, ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -54,7 +57,7 @@ export default function Article() {
     }
   }, [article]);
 
-  // Effect 1 — Handle initial page load with a URL hash (e.g. /post-slug/#5)
+  // Effect 1  -  Handle initial page load with a URL hash (e.g. /post-slug/#5)
   // Waits for content to be fully rendered before scrolling.
   useEffect(() => {
     if (!article || isLoading) return;
@@ -73,7 +76,7 @@ export default function Article() {
     return () => clearTimeout(timeoutId);
   }, [article, isLoading]);
 
-  // Effect 2 — Intercept in-page anchor link clicks so Wouter doesn't swallow them.
+  // Effect 2  -  Intercept in-page anchor link clicks so Wouter doesn't swallow them.
   // Only intercepts href="#..." links; all other links are unaffected.
   useEffect(() => {
     const handleAnchorClick = (e: MouseEvent) => {
@@ -121,6 +124,7 @@ export default function Article() {
   // Check if article has WYSIWYG body content or structured sections
   const hasBodyHtml = article.bodyHtml && article.bodyHtml.trim().length > 0;
   const hasStructuredContent = article.problemContent || article.empathyContent || article.solutionContent;
+  const articleGovernance = (article as typeof article & { governance?: ContentGovernance }).governance;
 
   return (
     <>
@@ -208,6 +212,8 @@ export default function Article() {
                     </span>
                   </>
                 )}
+                <span className="text-sm font-medium text-stone-400">•</span>
+                <span className="text-sm font-medium text-stone-500">By DentaSmart</span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-stone-900 mb-8 leading-tight tracking-tight">
                 {article.title}
@@ -219,6 +225,10 @@ export default function Article() {
                   </Button>
                 </Link>
               </div>
+              <p className="mt-5 text-sm text-stone-600 leading-relaxed max-w-2xl">
+                DentaSmart articles are educational and do not replace professional dental care. <Link href="/editorial-policy" className="text-action underline underline-offset-2 hover:text-action-hover">Read our editorial policy</Link>.
+              </p>
+              {articleGovernance && <ContentGovernanceMeta governance={articleGovernance} />}
             </motion.div>
           </div>
         </section>
@@ -289,6 +299,9 @@ export default function Article() {
                 </>
               ) : (
                 <p className="text-lg text-stone-600">This article has no content yet.</p>
+              )}
+              {articleGovernance?.sourceRefs && articleGovernance.sourceRefs.length > 0 && (
+                <ExternalSources governedSources={articleGovernance.sourceRefs} />
               )}
             </motion.div>
           </div>

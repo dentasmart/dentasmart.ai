@@ -153,6 +153,24 @@ describe("resolveMetaTags", () => {
     expect(meta!.title).toContain("Pricing");
   });
 
+  it("returns public, self-canonical metadata for the Phase 6 governance resources", async () => {
+    const expected = [
+      ["/editorial-policy", "Editorial Policy"],
+      ["/corrections-policy", "Corrections Policy"],
+      ["/ai-use-disclosure", "AI Use Disclosure"],
+      ["/product-facts", "Product Facts"],
+    ] as const;
+
+    for (const [path, title] of expected) {
+      const meta = await resolveMetaTags(path);
+      expect(meta).toMatchObject({
+        title: expect.stringContaining(title),
+        canonical: `https://dentasmart.ai${path}/`,
+      });
+      expect(meta?.robots).toBeUndefined();
+    }
+  });
+
   it("returns meta for /conditions/toothache", async () => {
     const meta = await resolveMetaTags("/conditions/toothache");
     expect(meta).not.toBeNull();

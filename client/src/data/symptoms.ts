@@ -22,6 +22,10 @@ export interface SymptomData {
   lastReviewed: string;
   ctaHeading?: string;
   ctaButton?: string;
+  professionalCareCta?: {
+    href: "/download";
+    label: string;
+  };
 }
 
 export const symptomsData: Record<string, SymptomData> = {
@@ -1807,7 +1811,10 @@ export const symptomsData: Record<string, SymptomData> = {
     reviewedByCredentials: "General Dentist at DentaSmart",
     lastReviewed: "2026-03-15",
     ctaHeading: "Don't Wait for Swelling to Get Worse",
-    ctaButton: "Find a Dentist Near You"
+    professionalCareCta: {
+      href: "/download",
+      label: "Download DentaSmart",
+    },
 },
   "tooth-migration": {
     slug: "tooth-migration",

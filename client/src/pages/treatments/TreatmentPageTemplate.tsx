@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Stethoscope, Clock, CheckCircle, AlertTriangle, ShieldCheck, Smartphone, TrendingDown } from "lucide-react";
 import { Link } from "wouter";
+import type { ContentGovernance } from "@shared/contentGovernance";
 
 /* ─── Types ─────────────────────────────────────────────── */
 export interface TimelineStep {
@@ -59,6 +60,7 @@ export interface TreatmentPageData {
   faqs: FAQ[];
   relatedTreatmentPages: { name: string; slug: string; tagline: string }[];
   relatedCostPage?: { name: string; slug: string };
+  governance?: ContentGovernance;
 }
 
 /* ─── Animation ─────────────────────────────────────────── */
@@ -115,7 +117,6 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
     isPartOf: { "@type": "WebSite", name: "DentaSmart", url: "https://dentasmart.ai" },
     about: [{ "@type": "MedicalProcedure", name: data.procedureName }],
     audience: { "@type": "MedicalAudience", name: "Patients" },
-    lastReviewed: "2026-04-08",
   };
 
   return (
@@ -169,8 +170,7 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
           <QuickAnswerBlock
             question={`What is ${data.procedureName.toLowerCase()} treatment?`}
             answer={data.metaDescription}
-            sourceUrl={canonicalUrl}
-            sourceLabel={`DentaSmart ${data.procedureName} Guide`}
+            governance={data.governance?.directAnswer}
           />
         </div>
       </section>
@@ -481,7 +481,7 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
               </motion.details>
             ))}
           </div>
-          <ExternalSources />
+          <ExternalSources governedSources={data.governance?.sourceRefs} />
         </div>
       </section>
 

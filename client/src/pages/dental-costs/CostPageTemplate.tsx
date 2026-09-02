@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import ExternalSources from "@/components/ExternalSources";
 import SEO from "@/components/SEO";
 import MidContentCTA from "@/components/MidContentCTA";
 import QuickAnswerBlock from "@/components/QuickAnswerBlock";
@@ -7,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, DollarSign, AlertTriangle, CheckCircle, Clock, TrendingDown, Smartphone } from "lucide-react";
 import { Link } from "wouter";
+import type { ContentGovernance } from "@shared/contentGovernance";
 
 /* ─── Types ─────────────────────────────────────────────── */
 export interface CostRange {
@@ -54,6 +56,7 @@ export interface CostPageData {
   faqs: FAQ[];
   relatedCostPages: { name: string; slug: string; price: string }[];
   relatedTreatmentPage?: { name: string; slug: string };
+  governance?: ContentGovernance;
 }
 
 /* ─── Animation ─────────────────────────────────────────── */
@@ -97,7 +100,6 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
     isPartOf: { "@type": "WebSite", name: "DentaSmart", url: "https://dentasmart.ai" },
     about: [{ "@type": "MedicalCondition", name: data.procedureName }],
     audience: { "@type": "MedicalAudience", name: "Patients" },
-    lastReviewed: "2026-04-07",
   };
 
   return (
@@ -151,8 +153,7 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
           <QuickAnswerBlock
             question={`How much does a ${data.procedureName.toLowerCase()} cost?`}
             answer={data.metaDescription}
-            sourceUrl={canonicalUrl}
-            sourceLabel={`DentaSmart ${data.procedureName} Cost Guide`}
+            governance={data.governance?.directAnswer}
           />
         </div>
       </section>
@@ -237,7 +238,7 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
               {data.procedureName} cost breakdown
             </h2>
             <p className="text-base md:text-lg text-stone-600 font-light mb-6 max-w-3xl">
-              These are 2026 national averages. Your actual cost depends on location, provider, and complexity.
+              Costs can vary by location, provider, treatment needs, and insurance coverage. Ask a dental office for an estimate for your situation.
             </p>
           </motion.div>
           <motion.div
@@ -268,9 +269,7 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
               </tbody>
             </table>
           </motion.div>
-          <p className="text-xs text-stone-500 mt-3 px-4 md:px-0">
-            Sources: <a href="https://www.ada.org/resources/research/health-policy-institute" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">ADA Health Policy Institute</a>, <a href="https://www.carecredit.com/dentistry/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">CareCredit</a>, <a href="https://www.fairhealthconsumer.org/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">Fair Health Consumer</a> (2025-2026 data). Costs vary by region and provider.
-          </p>
+          <ExternalSources governedSources={data.governance?.sourceRefs} />
         </div>
       </section>
 

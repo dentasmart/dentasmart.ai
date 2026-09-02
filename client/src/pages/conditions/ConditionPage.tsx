@@ -6,12 +6,15 @@ import MidContentCTA from "@/components/MidContentCTA";
 import NextStepsBox from "@/components/NextStepsBox";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, AlertTriangle, CheckCircle, ChevronDown, ChevronUp, Shield, MessageCircleQuestion, ClipboardList } from "lucide-react";
+import { ArrowLeft, ArrowRight, AlertTriangle, CheckCircle, ChevronDown, ChevronUp, MessageCircleQuestion, ClipboardList } from "lucide-react";
 import { Link, useRoute } from "wouter";
 import { useState } from "react";
 import { conditionsData } from "@/data/conditions";
 import { aeoConditions } from "@/data/aeoContent";
 import { breadcrumbSchema, medicalWebPageSchema, faqPageSchema } from "@/lib/schema";
+import ContentGovernanceMeta from "@/components/ContentGovernanceMeta";
+import QuickAnswerBlock from "@/components/QuickAnswerBlock";
+import type { ContentGovernance } from "@shared/contentGovernance";
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
@@ -38,6 +41,30 @@ export default function ConditionPage() {
   const slug = params?.slug || "";
   const condition = slug ? conditionsData[slug] : null;
   const aeo = slug ? aeoConditions[slug] : null;
+  const governance: ContentGovernance | undefined = condition ? {
+    contentId: `condition:${condition.slug}`,
+    contentVersion: condition.lastReviewed || "legacy",
+    riskClass: "health",
+    claimClasses: ["CLINICAL_EDUCATION", "URGENT_CARE"],
+    directAnswer: {
+      question: `What should I know about ${condition.title}?`,
+      answer: condition.directAnswer,
+      intendedAudience: "People seeking general oral health education",
+    },
+    urgentCare: {
+      title: "When to seek urgent dental care",
+      actions: condition.whenToSeeDentist,
+      contentBeforeConversion: true,
+    },
+    ctaPolicy: {
+      placement: "after_urgent_guidance",
+      requiresProfessionalCareBoundary: true,
+    },
+    exceptions: [{
+      code: "legacy_review_metadata",
+      reason: "Existing condition review fields require governed provenance before public display.",
+    }],
+  } : undefined;
 
   if (!condition) {
     return (
@@ -77,9 +104,6 @@ export default function ConditionPage() {
             name: condition.title,
             description: condition.metaDescription,
             url: `/conditions/${condition.slug}`,
-            lastReviewed: condition.lastReviewed,
-            reviewedBy: condition.reviewedBy,
-            reviewedByCredentials: condition.reviewedByCredentials,
           }),
           faqPageSchema(condition.faqs),
         ]}
@@ -106,11 +130,8 @@ export default function ConditionPage() {
             <p className="text-xl text-stone-300 font-light leading-relaxed max-w-2xl text-left">
               {condition.heroSubheading}
             </p>
-            <div className="flex items-center gap-3 mt-6 text-stone-400 text-sm">
-              <Shield className="w-4 h-4" />
-              <span>Reviewed by {condition.reviewedBy}, {condition.reviewedByCredentials}</span>
-              <span className="mx-2">|</span>
-              <span>Last reviewed: {new Date(condition.lastReviewed).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
+            <div className="mt-6 text-stone-400">
+              <ContentGovernanceMeta governance={governance} />
             </div>
           </motion.div>
         </div>
@@ -131,9 +152,31 @@ export default function ConditionPage() {
       {/* Direct Answer Box (for GEO/AI snippets) */}
       <section className="py-8 bg-primary/5 border-b border-primary/10">
         <div className="container px-4 mx-auto max-w-3xl">
-          <div className="bg-white rounded-2xl p-6 border border-primary/20 shadow-sm">
-            <h2 className="text-lg font-medium text-action mb-3">Quick Answer</h2>
-            <p className="text-stone-700 font-light leading-relaxed">{condition.directAnswer}</p>
+          <QuickAnswerBlock
+            question={governance?.directAnswer?.question || `What should I know about ${condition.title}?`}
+            answer={condition.directAnswer}
+            governance={governance?.directAnswer}
+          />
+        </div>
+      </section>
+
+      {/* Urgent-care guidance must precede non-urgent explanation and optional conversion. */}
+      <section className="py-8 bg-red-50">
+        <div className="container px-4 mx-auto max-w-3xl">
+          <div className="bg-white rounded-2xl p-6 border border-red-200">
+            <div className="flex items-center gap-3 mb-4">
+              <AlertTriangle className="w-6 h-6 text-red-500" />
+              <h2 className="text-xl font-medium text-red-700">When to Seek Urgent Dental Care</h2>
+            </div>
+            <p className="text-stone-600 font-light mb-4">While this information helps you understand a topic, it does not replace professional dental care. See a dentist as soon as possible if:</p>
+            <ul className="space-y-2">
+              {condition.whenToSeeDentist.map((item, idx) => (
+                <li key={idx} className="flex items-start gap-2">
+                  <ArrowRight className="w-4 h-4 text-red-400 mt-1 flex-shrink-0" />
+                  <span className="text-stone-700 font-light">{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -187,29 +230,6 @@ export default function ConditionPage() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* When to See a Dentist (Safety Box) */}
-      <section className="py-8 bg-red-50">
-        <div className="container px-4 mx-auto max-w-3xl">
-          <div className="bg-white rounded-2xl p-6 border border-red-200">
-            <div className="flex items-center gap-3 mb-4">
-              <AlertTriangle className="w-6 h-6 text-red-500" />
-              <h2 className="text-xl font-medium text-red-700">When to See a Dentist Urgently</h2>
-            </div>
-            <p className="text-stone-600 font-light mb-4">
-              While this information helps you understand your condition, it does not replace professional dental care. See a dentist as soon as possible if:
-            </p>
-            <ul className="space-y-2">
-              {condition.whenToSeeDentist.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-2">
-                  <ArrowRight className="w-4 h-4 text-red-400 mt-1 flex-shrink-0" />
-                  <span className="text-stone-700 font-light">{item}</span>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </section>

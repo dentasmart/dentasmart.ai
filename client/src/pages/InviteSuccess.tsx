@@ -20,7 +20,7 @@ export default function InviteSuccess() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-stone-50 px-4 py-12 font-sans">
       <SEO
-        title="Registration Successful — DentaSmart"
+        title="Registration Successful: DentaSmart"
         description="Your DentaSmart account has been created. Download the app to get started."
         canonical="https://dentasmart.ai/invite/success"
       />

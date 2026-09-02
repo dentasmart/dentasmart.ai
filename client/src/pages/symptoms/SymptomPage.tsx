@@ -6,12 +6,16 @@ import MidContentCTA from "@/components/MidContentCTA";
 import NextStepsBox from "@/components/NextStepsBox";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, AlertTriangle, CheckCircle, ChevronDown, ChevronUp, Shield, MessageCircleQuestion } from "lucide-react";
+import { ArrowLeft, ArrowRight, AlertTriangle, CheckCircle, ChevronDown, ChevronUp, MessageCircleQuestion } from "lucide-react";
 import { Link, useRoute } from "wouter";
 import { useState, type ReactNode } from "react";
 import { symptomsData } from "@/data/symptoms";
 import { aeoSymptoms } from "@/data/aeoContent";
 import { breadcrumbSchema, medicalWebPageSchema, faqPageSchema } from "@/lib/schema";
+import ContentGovernanceMeta from "@/components/ContentGovernanceMeta";
+import QuickAnswerBlock from "@/components/QuickAnswerBlock";
+import type { ContentGovernance } from "@shared/contentGovernance";
+import { trackSymptomProfessionalCareClick } from "@/lib/analytics";
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
@@ -112,6 +116,31 @@ export default function SymptomPage() {
   const symptom = slug ? symptomsData[slug] : null;
   const aeo = slug ? aeoSymptoms[slug] : null;
   const note = symptomNotes[slug];
+  const governance: ContentGovernance | undefined = symptom ? {
+    contentId: `symptom:${symptom.slug}`,
+    contentVersion: symptom.lastReviewed || "legacy",
+    riskClass: "health",
+    claimClasses: ["CLINICAL_EDUCATION", "URGENT_CARE"],
+    directAnswer: symptom.directAnswer ? {
+      question: `What should I know about ${symptom.title}?`,
+      answer: symptom.directAnswer,
+      intendedAudience: "People seeking general oral health education",
+    } : undefined,
+    urgentCare: {
+      title: "When to seek urgent dental care",
+      actions: symptom.whenToSeeDentist,
+      contentBeforeConversion: true,
+    },
+    ctaPolicy: {
+      placement: "after_urgent_guidance",
+      requiresProfessionalCareBoundary: true,
+    },
+    exceptions: [{
+      code: "legacy_review_metadata",
+      reason: "Existing symptom review fields require governed provenance before public display.",
+    }],
+  } : undefined;
+  const professionalCareCta = symptom?.professionalCareCta;
 
   if (!symptom) {
     return (
@@ -151,9 +180,6 @@ export default function SymptomPage() {
             name: symptom.title,
             description: symptom.metaDescription,
             url: `/symptoms/${symptom.slug}`,
-            lastReviewed: symptom.lastReviewed,
-            reviewedBy: symptom.reviewedBy,
-            reviewedByCredentials: symptom.reviewedByCredentials,
           }),
           faqPageSchema(symptom.faqs),
         ]}
@@ -180,11 +206,8 @@ export default function SymptomPage() {
             <p className="text-xl text-stone-300 font-light leading-relaxed max-w-2xl text-left">
               {symptom.heroSubheading}
             </p>
-            <div className="flex items-center gap-3 mt-6 text-stone-400 text-sm">
-              <Shield className="w-4 h-4" />
-              <span>Reviewed by {symptom.reviewedBy}, {symptom.reviewedByCredentials}</span>
-              <span className="mx-2">|</span>
-              <span>Last reviewed: {new Date(symptom.lastReviewed).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</span>
+            <div className="mt-6 text-stone-400">
+              <ContentGovernanceMeta governance={governance} />
             </div>
           </motion.div>
         </div>
@@ -205,9 +228,33 @@ export default function SymptomPage() {
       {/* Direct Answer Box */}
       <section className="py-8 bg-primary/5 border-b border-primary/10">
         <div className="container px-4 mx-auto max-w-3xl">
-          <div className="bg-white rounded-2xl p-6 border border-primary/20 shadow-sm">
-            <h2 className="text-lg font-medium text-primary mb-3">Quick Answer</h2>
-            <p className="text-stone-700 font-light leading-relaxed">{symptom.directAnswer || symptom.detailedExplanation?.[0]?.substring(0, 300) + '...'}</p>
+          <QuickAnswerBlock
+            question={governance?.directAnswer?.question || `What should I know about ${symptom.title}?`}
+            answer={symptom.directAnswer || `${symptom.detailedExplanation?.[0]?.substring(0, 300) || ""}...`}
+            governance={governance?.directAnswer}
+          />
+        </div>
+      </section>
+
+      {/* Urgent-care guidance must precede non-urgent explanation and optional conversion. */}
+      <section className="py-8 bg-red-50">
+        <div className="container px-4 mx-auto max-w-3xl">
+          <div className="bg-white rounded-2xl p-6 border border-red-200">
+            <div className="flex items-center gap-3 mb-4">
+              <AlertTriangle className="w-6 h-6 text-red-500" />
+              <h2 className="text-xl font-medium text-red-700">When to Seek Urgent Dental Care</h2>
+            </div>
+            <p className="text-stone-600 font-light mb-4">
+              This information is for education only and does not replace professional dental care. See a dentist as soon as possible if:
+            </p>
+            <ul className="space-y-2">
+              {symptom.whenToSeeDentist.map((item, idx) => (
+                <li key={idx} className="flex items-start gap-2">
+                  <ArrowRight className="w-4 h-4 text-red-400 mt-1 flex-shrink-0" />
+                  <span className="text-stone-700 font-light">{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -263,29 +310,6 @@ export default function SymptomPage() {
                 <p className="text-stone-700 font-light">{step}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* When to See a Dentist */}
-      <section className="py-8 bg-red-50">
-        <div className="container px-4 mx-auto max-w-3xl">
-          <div className="bg-white rounded-2xl p-6 border border-red-200">
-            <div className="flex items-center gap-3 mb-4">
-              <AlertTriangle className="w-6 h-6 text-red-500" />
-              <h2 className="text-xl font-medium text-red-700">When to See a Dentist Urgently</h2>
-            </div>
-            <p className="text-stone-600 font-light mb-4">
-              This information is for education only and does not replace professional dental care. See a dentist as soon as possible if:
-            </p>
-            <ul className="space-y-2">
-              {symptom.whenToSeeDentist.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-2">
-                  <ArrowRight className="w-4 h-4 text-red-400 mt-1 flex-shrink-0" />
-                  <span className="text-stone-700 font-light">{item}</span>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </section>
@@ -399,11 +423,22 @@ export default function SymptomPage() {
           <h2 className="text-3xl font-normal mb-3 text-white">{symptom.ctaHeading || "Worried about this symptom?"}</h2>
           <p className="text-white/80 font-light mb-6">Record what you notice, review educational guidance, and contact a dental professional for diagnosis or urgent concerns.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/download">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
-                {symptom.ctaButton || "Download the App"}
+            {professionalCareCta ? (
+              <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
+                <Link
+                  href={professionalCareCta.href}
+                  onClick={trackSymptomProfessionalCareClick}
+                >
+                  {professionalCareCta.label}
+                </Link>
               </Button>
-            </Link>
+            ) : (
+              <Link href="/download">
+                <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
+                  {symptom.ctaButton || "Download the App"}
+                </Button>
+              </Link>
+            )}
             <Link href="/symptom-quiz">
               <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
                 Try Free Symptom Check
