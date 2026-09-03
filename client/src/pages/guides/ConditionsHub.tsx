@@ -78,7 +78,7 @@ const faqs = [
   },
   {
     q: "Can I treat dental problems at home?",
-    a: "Some symptoms respond to home care temporarily. Saltwater rinses help with minor gum irritation. Over-the-counter pain relievers manage discomfort. Desensitizing toothpaste can ease mild sensitivity. But home care is a bridge, not a fix. If symptoms last more than a few days or get worse, you need a dentist.",
+    a: "Home care may reduce some symptoms temporarily, but it cannot diagnose or treat every cause. Follow product directions and seek professional advice when symptoms persist, worsen, or include swelling, fever, trauma, trouble swallowing, or trouble breathing.",
   },
   {
     q: "What happens if I ignore a dental condition?",
@@ -122,7 +122,7 @@ const webPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
   name: "Common Dental Conditions Explained in Plain Language",
-  description: "Understand 16+ dental conditions from cavities to TMJ. Review clear explanations, warning signs, and when to seek professional dental care.",
+  description: "Review common dental conditions, warning signs, possible causes, and when to seek professional dental care.",
   url: "https://dentasmart.ai/oral-health-hub/conditions",
   inLanguage: "en-US",
   isPartOf: {
@@ -155,7 +155,7 @@ export default function ConditionsHub() {
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
         title="Dental Conditions: Symptoms & Causes | DentaSmart"
-        description="Understand 16+ dental conditions from toothaches to TMJ. Review symptoms, possible causes, warning signs, and when to seek professional dental care."
+        description="Review common dental conditions, symptoms, possible causes, warning signs, and when to seek professional dental care."
         canonical="https://dentasmart.ai/oral-health-hub/conditions"
         keywords="dental conditions, tooth pain causes, gum disease stages, toothache, cavities, gingivitis, TMJ, dental abscess, wisdom teeth, teeth grinding, sensitive teeth, oral thrush, root canal, dental crown, dental implants"
         jsonLd={[faqJsonLd, breadcrumbJsonLd, webPageJsonLd]}
@@ -178,7 +178,7 @@ export default function ConditionsHub() {
               <span className="italic text-primary">Learn what to watch for.</span>
             </h1>
             <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed max-w-2xl mb-8 text-left">
-              Over 3.5 billion people worldwide have some form of oral disease. If something feels off in your mouth, you're not alone. We explain 16+ common dental conditions in plain language so you know what's happening and what to do next.
+              Review common dental conditions in plain language, note which symptoms need prompt care, and prepare useful questions for a dentist.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/symptom-quiz">
@@ -201,9 +201,9 @@ export default function ConditionsHub() {
         <div className="container px-4 mx-auto max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-white/20">
             {[
-              { value: "3.5B", label: "People With Oral Disease Worldwide" },
-              { value: "90%", label: "Of Adults Have Had a Cavity" },
-              { value: "47%", label: "Of Adults Over 30 Have Gum Disease" },
+              { value: "Symptoms", label: "Describe What You Notice" },
+              { value: "Causes", label: "Compare General Possibilities" },
+              { value: "Next Steps", label: "Know When to Seek Care" },
             ].map((stat, idx) => (
               <motion.div
                 key={idx}
@@ -227,14 +227,14 @@ export default function ConditionsHub() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-center">
             <motion.div {...fadeUp}>
               <h2 className="text-3xl md:text-4xl font-normal text-black mb-4 leading-tight text-left">
-                The scariest part isn't the condition. <br />
-                <span className="italic text-primary">It's not knowing what it is.</span>
+                Start with the symptom. <br />
+                <span className="italic text-primary">Then decide what needs attention.</span>
               </h2>
               <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed mb-4 text-left">
-                You notice something. A dull ache. Gums that bleed when you brush. A tooth that hurts when you drink cold water. You Google it and get 50 different answers, half of them terrifying.
+                Tooth pain, bleeding gums, swelling, sensitivity, and jaw symptoms can have more than one cause. Online descriptions cannot confirm which one applies.
               </p>
               <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed text-left">
-                Most dental conditions are treatable, especially when you catch them early. The problem is that most people wait because they don't know what they're dealing with. This guide gives you clarity so you can take the right next step.
+                Use these guides to organize what you notice and recognize warning signs. A dentist or clinician must make the diagnosis and recommend treatment.
               </p>
             </motion.div>
             <motion.div

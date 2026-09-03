@@ -62,7 +62,7 @@ const data: TreatmentPageData = {
     {
       step: "4",
       title: "Getting Your Braces Off",
-      description: "Once your teeth are in the perfect spot, the orthodontist will remove the brackets and wires. They'll clean and polish your teeth, and you'll get to see your new smile!",
+      description: "Once your teeth reach the planned position, the orthodontist will remove the brackets and wires, then clean and polish your teeth.",
       duration: "About 1 hour",
     },
     {

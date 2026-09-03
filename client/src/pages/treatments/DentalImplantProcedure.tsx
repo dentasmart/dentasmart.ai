@@ -5,31 +5,31 @@ const data: TreatmentPageData = {
   procedureName: "Dental Implant",
   heroTitle: "The Full Story on a",
   heroHighlight: "Dental Implant",
-  heroDescription: "Missing a tooth? A dental implant is the closest thing to getting your natural tooth back. It's a permanent solution that looks and feels real.",
+  heroDescription: "A dental implant is a fixed replacement for a missing tooth. The implant supports a crown designed to look and function like a tooth.",
   metaTitle: "Dental Implant Procedure: What to Expect | DentaSmart",
-  metaDescription: "Getting a dental implant? Learn the full procedure from consultation to final crown, recovery timeline, success rates, and what to expect at every stage.",
+  metaDescription: "Learn how dental implant treatment works, from consultation to final crown, including recovery, risks, and candidacy factors.",
   keywords: "dental implant procedure, tooth implant process, dental implant steps, what to expect dental implant",
   statsStrip: [
-    { value: "95-98%", label: "Success Rate" },
-    { value: "20+ Years", label: "Average Lifespan" },
-    { value: "3-9 Months", label: "Typical Process Time" },
+    { value: "Fixed", label: "Tooth Replacement" },
+    { value: "Multi-step", label: "Treatment Process" },
+    { value: "Varies", label: "Healing Time" },
   ],
   whyNeededTitle: "Why You Might Need a",
   whyNeededHighlight: "Dental Implant",
-  whyNeededDescription: "If you've lost a tooth due to injury, decay, or gum disease, a dental implant can fill the gap. Unlike dentures, an implant is a fixed, long-term solution that doesn't slip or require removal. It helps you chew properly, speak clearly, and smile with confidence again.",
-  whyNeededDescription2: "Implants also protect your jawbone. When a tooth is missing, the bone in that area starts to shrink. An implant stimulates the bone just like a natural tooth root, keeping your jaw strong and your face looking full.",
-  warningSignsTitle: "Signs You're a Good Candidate",
+  whyNeededDescription: "If you have lost a tooth because of injury, decay, or gum disease, an implant may be one replacement option. It is fixed in the jaw and supports a crown. A dentist can compare it with a bridge or removable denture.",
+  whyNeededDescription2: "Bone in a missing-tooth area can shrink over time. An implant transfers chewing forces to the jawbone, which may help maintain bone in that area.",
+  warningSignsTitle: "Factors a Dentist Will Review",
   warningSigns: [
     "You have one or more missing teeth.",
     "Your jawbone is fully grown.",
-    "You have healthy gums and enough bone to secure the implant.",
-    "You don't have health conditions that will affect bone healing.",
+    "The health of your gums and the amount of bone available.",
+    "Your health history and factors that may affect healing.",
   ],
   timelineSteps: [
     {
       step: "1",
       title: "Consultation & Planning",
-      description: "Your dentist will take x-rays and 3D images of your jaw to create a precise treatment plan tailored to your mouth.",
+      description: "Your dentist may take X-rays and 3D images of your jaw to plan the implant position and review nearby structures.",
       duration: "1-2 hours",
     },
     {
@@ -41,13 +41,13 @@ const data: TreatmentPageData = {
     {
       step: "3",
       title: "Healing (Osseointegration)",
-      description: "Over the next few months, your jawbone will naturally grow around and fuse with the implant, creating a super strong base.",
+      description: "Over the next few months, bone may grow around and connect with the implant, creating a stable base for the replacement tooth.",
       duration: "3-6 months",
     },
     {
       step: "4",
       title: "Abutment & Crown",
-      description: "Once healed, a small connector (the abutment) is attached. Then, your new, custom-made crown is placed on top, perfectly matching your other teeth.",
+      description: "Once the area has healed, a small connector called an abutment is attached. A crown is then made to match the general shape and shade of nearby teeth.",
       duration: "1-2 appointments",
     },
   ],
@@ -55,7 +55,7 @@ const data: TreatmentPageData = {
   risks: [
     {
       risk: "Infection at the implant site",
-      detail: "Like any surgery, there's a small risk of infection. We prevent this with sterile tools and provide clear aftercare instructions.",
+      detail: "Like any surgery, implant placement carries a risk of infection. Sterile technique and aftercare help lower that risk.",
     },
     {
       risk: "Nerve Damage",
@@ -63,15 +63,15 @@ const data: TreatmentPageData = {
     },
     {
       risk: "Implant Failure",
-      detail: "In rare cases (about 2-5%), the implant doesn't fuse properly with the bone. This is more common in smokers or those with certain health conditions.",
+      detail: "Sometimes an implant does not connect with the bone as planned. Smoking and some health conditions can affect healing.",
     },
     {
       risk: "Sinus Issues",
-      detail: "For upper jaw implants, there's a slight chance the implant could poke into the sinus cavity. We use precise imaging to map out your anatomy and avoid this.",
+      detail: "For upper-jaw implants, the sinus is one structure the dentist must consider. Imaging helps the dentist plan around your anatomy.",
     },
   ],
   recoveryTitle: "Your Recovery Plan",
-  recoveryDescription: "Recovery is usually smoother than people expect. You'll be able to get back to your normal routine quickly with a few simple care steps.",
+  recoveryDescription: "Initial recovery varies by person and by the extent of the procedure. Follow the care instructions from your dental team.",
   recoveryTimeline: "3-7 days for initial healing",
   recoveryTips: [
     {
@@ -80,7 +80,7 @@ const data: TreatmentPageData = {
     },
     {
       title: "Keep it Clean",
-      description: "Gently rinse your mouth with salt water a few times a day to keep the surgical site clean and help it heal faster.",
+      description: "Clean the area only as directed by your dental team. They may recommend a gentle rinse during recovery.",
     },
     {
       title: "Take it Easy",
@@ -90,11 +90,11 @@ const data: TreatmentPageData = {
   faqs: [
     {
       q: "Does getting a dental implant hurt?",
-      a: "You won't feel any pain during the procedure because the area will be completely numb. Afterwards, most people say it feels like a dull ache, easily managed with over-the-counter pain relievers for a few days.",
+      a: "The area is usually numbed before implant placement. Soreness can occur afterward, and your dental team can explain how to manage it safely.",
     },
     {
       q: "How long do dental implants last?",
-      a: "With proper care, dental implants can last a lifetime. The crown attached to it may need to be replaced after 15-20 years due to normal wear and tear.",
+      a: "Dental implants are designed for long-term use, but their lifespan varies. The implant, crown, surrounding gums, and bone all need ongoing care and monitoring.",
     },
     {
       q: "Can I get an implant right after a tooth is pulled?",
@@ -102,11 +102,11 @@ const data: TreatmentPageData = {
     },
     {
       q: "How do I take care of my dental implant?",
-      a: "You care for it just like a natural tooth. Brush twice a day, floss daily, and see your dentist for regular check-ups and cleanings.",
+      a: "Clean around the implant as your dentist recommends and keep regular checkups so the implant, crown, gums, and bone can be monitored.",
     },
     {
       q: "Am I too old for a dental implant?",
-      a: "Age is not usually a barrier. As long as you are in good general health and have enough jawbone, you can be a great candidate for a dental implant.",
+      a: "Age alone does not determine candidacy. A dentist must review your health history, gums, jawbone, medications, and healing risks.",
     },
   ],
   relatedTreatmentPages: [

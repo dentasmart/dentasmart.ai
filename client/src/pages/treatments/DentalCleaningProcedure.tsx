@@ -124,7 +124,7 @@ const data: TreatmentPageData = {
 
   relatedTreatmentPages: [
     { name: "Teeth Whitening", slug: "teeth-whitening-procedure", tagline: "Brighten your smile professionally." },
-    { name: "Braces", slug: "braces-treatment", tagline: "Straighten your teeth for a perfect smile." },
+    { name: "Braces", slug: "braces-treatment", tagline: "Straighten teeth and address alignment concerns." },
     { name: "Dental Crowns", slug: "dental-crown-procedure", tagline: "Protect and restore damaged teeth." },
     { name: "Root Canal", slug: "root-canal-procedure", tagline: "Save a tooth that is badly decayed or infected." },
   ],

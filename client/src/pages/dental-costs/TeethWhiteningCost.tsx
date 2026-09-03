@@ -3,21 +3,21 @@ import CostPageTemplate, { CostPageData } from "./CostPageTemplate";
 const data: CostPageData = {
   slug: "teeth-whitening-cost",
   procedureName: "Teeth Whitening",
-  heroTitle: "The Real Cost of",
-  heroHighlight: "a Brighter Smile",
-  heroDescription: "Everyone wants a dazzling white smile, but what does it actually cost? From professional treatments to at-home kits, we break down the real prices of teeth whitening. Understanding the options helps you choose the best path to a confident, brighter you.",
-  metaTitle: "Teeth Whitening Cost in 2026 | DentaSmart",
-  metaDescription: "How much does teeth whitening cost in 2026? Professional whitening runs $300 to $1,000. Compare in-office, at-home kits, and over-the-counter options.",
+  heroTitle: "What Does",
+  heroHighlight: "Teeth Whitening Cost?",
+  heroDescription: "Whitening costs vary by product, provider, stain type, and number of treatments. Compare in-office care, dentist-provided trays, and store-bought products.",
+  metaTitle: "Teeth Whitening Cost | DentaSmart",
+  metaDescription: "Compare common teeth-whitening options, the factors that affect cost, and questions to ask before professional or at-home treatment.",
   keywords: "teeth whitening cost, professional teeth whitening cost, zoom whitening cost, how much is teeth whitening, dental whitening price",
   statsStrip: [
-    { value: "$650", label: "Average In-Office Treatment" },
-    { value: "8 Shades", label: "Potential Whitening Power" },
-    { value: "92%", label: "of people say a great smile is a social asset" },
+    { value: "In Office", label: "Professional Option" },
+    { value: "At Home", label: "Dentist or Store Products" },
+    { value: "Varies", label: "By Stain and Treatment" },
   ],
-  problemTitle: "Stains Happen. Your Smile Doesn't Have to Show It.",
-  problemHighlight: "Coffee, tea, and time can dull even the brightest smile.",
-  problemDescription: "Daily life takes a toll on our teeth. Things like your morning coffee, red wine, and even healthy foods like berries can leave stains over time. This discoloration can make you feel self-conscious and hesitant to share your smile.",
-  problemDescription2: "While surface stains are a natural part of life, you do not have to live with them. Modern whitening treatments can safely and effectively remove years of discoloration, restoring the natural brightness of your teeth and giving you a major confidence boost.",
+  problemTitle: "Whitening Results Depend on",
+  problemHighlight: "The Type of Discoloration",
+  problemDescription: "Coffee, tea, tobacco, and some foods can stain the outside of teeth. Medication, injury, age, and dental materials can cause discoloration that responds differently to whitening.",
+  problemDescription2: "A dentist can check whether whitening is appropriate and explain how existing crowns, veneers, fillings, cavities, or sensitivity may affect the plan.",
   costBreakdown: [
     {
       type: "Professional In-Office Whitening",
@@ -48,28 +48,28 @@ const data: CostPageData = {
     {
       factor: "Type of Whitening",
       impact: "In-office laser treatments can cost over $1,000, while over-the-counter strips are often under $50.",
-      tip: "Start with a less expensive option like custom trays to see how you like the results before committing to a pricier in-office treatment.",
+      tip: "Compare the active ingredients, treatment time, expected result, and sensitivity risk before choosing an option.",
     },
     {
       factor: "Dentist's Location & Experience",
-      impact: "A treatment in a major city like New York could be $1,200, while the same procedure might be $700 in a smaller town.",
+      impact: "Professional fees vary by region, practice, and the treatment used.",
       tip: "Check prices from a few well-regarded dentists in your area. Some may offer promotions for new patients.",
     },
     {
       factor: "Severity of Stains",
-      impact: "Deep, intrinsic stains from medication may require multiple sessions, potentially costing $1,500 or more, whereas minor coffee stains might be lifted in one $600 session.",
+      impact: "Surface and internal stains respond differently, and some discoloration may need a different cosmetic approach.",
       tip: "Have a consultation first. Your dentist can tell you what kind of results to expect and how many treatments you might need.",
     },
     {
       factor: "Additional Procedures",
-      impact: "A preliminary cleaning is often required and adds $100-$200 to the total bill before whitening can even begin.",
-      tip: "Ask for a complete cost breakdown that includes any necessary prerequisite treatments so there are no surprises.",
+      impact: "A dentist may recommend an exam, cleaning, or treatment for decay or gum problems before whitening.",
+      tip: "Ask for a written breakdown that includes any recommended care before whitening.",
     },
   ],
   insuranceTips: [
     {
       title: "Usually Considered Cosmetic",
-      description: "Most dental insurance plans do not cover teeth whitening because it's an elective cosmetic procedure. Always assume you will be paying out-of-pocket.",
+      description: "Dental plans often treat whitening as elective cosmetic care, but coverage rules vary. Confirm with your insurer before treatment.",
     },
     {
       title: "Check Your Plan Details",
@@ -77,25 +77,25 @@ const data: CostPageData = {
     },
     {
       title: "Use FSA or HSA Funds",
-      description: "You can often use funds from your Flexible Spending Account (FSA) or Health Savings Account (HSA) to pay for teeth whitening. This allows you to use pre-tax dollars.",
+      description: "If you have an FSA or HSA, confirm whether whitening is an eligible expense under your plan before using those funds.",
     },
     {
       title: "Ask About Payment Plans",
-      description: "Many dental offices offer in-house financing or work with third-party lenders like CareCredit to help you spread the cost over several months.",
+      description: "Some dental offices offer financing or work with third-party lenders. Review the total cost, fees, interest, and repayment terms.",
     },
   ],
   savingsWithDentaSmart: [
     {
-      title: "Find Fair Prices",
-      description: "Our AI analyzes local dental prices to show you what a fair cost for teeth whitening is in your area, so you can avoid overpaying.",
+      title: "Understand the Options",
+      description: "Use DentaSmart cost guides to compare common whitening approaches and prepare questions for a dental office.",
     },
     {
-      title: "Virtual Consultations",
-      description: "Use the DentaSmart app to have a virtual consultation about your whitening goals, saving you the time and cost of an initial in-person visit.",
+      title: "Organize Questions",
+      description: "Keep questions about stain type, sensitivity, existing dental work, expected results, and total cost together before a visit.",
     },
     {
-      title: "Track Your Progress",
-      description: "Monitor your whitening journey with our smile tracker. It helps you maintain your results longer, reducing the need for frequent, costly touch-ups.",
+      title: "Review Supported Images",
+      description: "Use supported mouth photos for educational context, not as a substitute for a dental exam or whitening recommendation.",
     },
   ],
   faqs: [
@@ -105,7 +105,7 @@ const data: CostPageData = {
     },
     {
       q: "Is teeth whitening safe?",
-      a: "Yes, when done correctly. Professional treatments supervised by a dentist are the safest option. Some people experience temporary tooth sensitivity, but this usually goes away quickly.",
+      a: "Whitening can cause tooth sensitivity or gum irritation. A dentist can check for decay, exposed roots, gum problems, and dental restorations before recommending an option.",
     },
     {
       q: "Does teeth whitening work on crowns or veneers?",
@@ -113,11 +113,11 @@ const data: CostPageData = {
     },
     {
       q: "How white will my teeth get?",
-      a: "This depends on your natural tooth color and the type of treatment. Most professional treatments can lighten teeth by several shades, leading to a noticeably brighter smile.",
+      a: "The result depends on your starting tooth color, the cause of discoloration, existing dental work, and the treatment used. Ask a dentist what change is realistic for your teeth.",
     },
     {
       q: "Can I whiten my teeth if I have sensitive teeth?",
-      a: "Yes, but you should talk to your dentist first. They can recommend products with lower peroxide levels or desensitizing agents to make the process more comfortable for you.",
+      a: "Talk to a dentist first. They can look for the cause of sensitivity and discuss whether a lower-strength product, desensitizing approach, or different treatment is appropriate.",
     },
   ],
   relatedCostPages: [

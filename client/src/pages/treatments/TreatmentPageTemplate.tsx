@@ -253,7 +253,7 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
               What happens during a {data.procedureName.toLowerCase()}
             </h2>
             <p className="text-base md:text-lg text-stone-600 font-light max-w-3xl">
-              Here is exactly what to expect, step by step. No surprises.
+              Review the common steps, timing, and follow-up care.
             </p>
           </motion.div>
           <div className="relative">

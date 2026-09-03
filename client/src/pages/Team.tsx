@@ -333,10 +333,10 @@ export default function Team() {
           </h2>
           <div className="text-xl md:text-2xl text-stone-700 font-light leading-relaxed space-y-8">
             <p>
-              <strong className="font-medium text-stone-900">Your oral health is the gateway to your overall well-being.</strong> Yet, for too long, dental care has felt confusing, reactive, and disconnected from the rest of your healthcare journey.
+              <strong className="font-medium text-stone-900">Oral health affects how you eat, speak, and feel day to day.</strong> Dental care can still feel confusing, reactive, and disconnected from the rest of your care.
             </p>
             <p>
-              We believe you shouldn't have to be a dentist to understand what's happening in your own mouth. That's why we built DentaSmart, to give you the clarity to catch issues early, the confidence to make informed decisions, and the peace of mind that comes from knowing you're in control of your health.
+              You should not need dental training to understand what may be happening in your mouth. DentaSmart turns supported photos, X-rays, and treatment documents into plain-language educational information so you can prepare questions and discuss next steps with a dentist.
             </p>
           </div>
         </div>

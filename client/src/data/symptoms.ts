@@ -178,15 +178,15 @@ export const symptomsData: Record<string, SymptomData> = {
       "Do your teeth hurt with hot, cold, or sweet stuff? Find out what causes tooth sensitivity and how you can fix it.",
     primaryKeyword: "tooth sensitivity",
     secondaryKeywords: ["sensitive teeth", "teeth hurt cold water", "tooth sensitivity treatment", "why are my teeth sensitive"],
-    heroHeading: "Ouch! Sensitive Teeth?",
-    heroSubheading: "That sharp zing you get from cold or hot drinks isn't normal, but you don't have to live with it. Here’s what’s going on and how to make it stop.",
+    heroHeading: "Sensitive Teeth: Common Causes and Next Steps",
+    heroSubheading: "Temperature, sweets, touch, or biting can trigger sensitivity for different reasons, so the pattern matters.",
     directAnswer:
-      "Tooth sensitivity is what happens when your enamel gets thin or your gums pull back, showing a layer called dentin. This dentin has tiny tubes that go right to the nerve. So when you eat or drink something hot, cold, or sweet, you feel a sharp, quick pain. The fix? Usually a mix of using sensitivity toothpaste, getting fluoride treatments, and figuring out what’s causing it in the first place.",
+      "Tooth sensitivity can occur when dentin becomes exposed, but decay, cracks, gum recession, grinding, whitening, and recent dental work can also cause similar symptoms. Treatment depends on the cause and may require a dental examination.",
     detailedExplanation: [
-      "If you've ever felt a sudden, sharp pain in your teeth from hot or cold drinks, you know what tooth sensitivity is. It’s super common. It happens to about 1 in 8 adults. The pain is quick, but it can be a real pain (pun intended) and make you skip foods you love.",
+      "Sensitivity may feel sharp and brief or may linger after hot, cold, sweet, touch, or biting triggers. Note whether it affects one tooth or several and how long the feeling lasts.",
       "So what's happening? Your tooth has a tough outer layer called enamel. Underneath that is a softer layer called dentin, which has thousands of tiny little tubes that connect straight to the tooth's nerve. If your enamel wears thin or your gums recede, those tubes get exposed. Then, bam! Stimuli hit the nerve and you feel that zing.",
       "What causes this? A few things. It could be from acidic foods and drinks eating away at your enamel. Or maybe you're brushing too hard. Gums pulling back, grinding your teeth at night (that's called bruxism), a new filling, or even a cavity can all be culprits. Oh, and teeth whitening can make them sensitive for a little while, too.",
-      "How you fix it really depends on the 'why'. For a lot of people, just switching to a sensitivity toothpaste does the trick. The stuff in it (like potassium nitrate or stannous fluoride) helps block those little tubes. Give it a solid 2-4 weeks to work. If that doesn't cut it, your dentist might put on a fluoride varnish or even do some bonding. And if you're a grinder, a night guard is probably in your future. DentaSmart can actually help you figure out what’s going on by looking at pictures of your teeth and gums.",
+      "A desensitizing toothpaste may help some patterns when used as directed. A dentist may discuss fluoride, bonding, gum treatment, bite management, or treatment of decay or a crack depending on the findings. DentaSmart can provide educational observations from supported photos, but it cannot determine the cause.",
     ],
     possibleCauses: [
       { title: "Enamel Erosion", description: "When acidic stuff (food, drinks, even stomach acid) wears down that tough outer layer of your teeth.", urgency: "medium" },
@@ -202,7 +202,7 @@ export const symptomsData: Record<string, SymptomData> = {
       "Try to cut back on acidic foods and drinks like citrus, soda, and wine. If you do have them, rinse with water right after.",
       "Don't brush your teeth right after eating something acidic. Wait about 30 minutes.",
       "A fluoride mouthwash can help make your enamel stronger.",
-      "If you think you grind your teeth, a night guard from your dentist can be a game-changer.",
+      "If you think you grind your teeth, ask a dentist whether an appliance or another evaluation is appropriate.",
     ],
     whenToSeeDentist: [
       "You've been using sensitivity toothpaste for a month and nothing's changed.",
@@ -216,12 +216,12 @@ export const symptomsData: Record<string, SymptomData> = {
       "Tooth sensitivity is just exposed dentin, which happens when enamel wears away or gums recede.",
       "Sensitivity toothpaste is great, but it's not a quick fix. You have to use it for 2-4 weeks straight.",
       "If it’s just one tooth bugging you, that’s a sign you should probably see a dentist. Could be a cavity.",
-      "Not sure what the deal is? DentaSmart can help you get some clues by analyzing photos of your teeth.",
+      "DentaSmart can provide educational observations from supported photos, but a dentist must diagnose the cause of sensitivity.",
     ],
     faqs: [
-      { question: "Does sensitivity toothpaste actually work?", answer: "Yep, for most people it does. The active ingredients work by blocking the nerve signals. But you have to be consistent. Use it twice a day for at least two to four weeks to really feel a difference. Make it your new go-to toothpaste." },
+      { question: "Does sensitivity toothpaste work?", answer: "It can help some types of sensitivity when used as directed, but response and timing vary. See a dentist if one tooth hurts, symptoms worsen, pain lingers, or the toothpaste does not help." },
       { question: "Could my sensitive teeth be a sign of something serious?", answer: "It can be. If it's just general sensitivity, it's usually no big deal. But if the sensitivity is all in one tooth, it might be a cavity, a cracked tooth, or an old filling that's failing. If it comes on suddenly all over, it could be a sign of enamel erosion or a grinding habit." },
-      { question: "Is sensitivity from teeth whitening permanent?", answer: "Nope! That kind of sensitivity is just temporary. It almost always goes away a few days after you stop whitening. Pro tip: use a sensitivity toothpaste before and during your whitening treatment to help keep it at bay." },
+      { question: "Is sensitivity from teeth whitening permanent?", answer: "Whitening sensitivity is often temporary, but persistent, severe, or one-sided pain needs dental evaluation. Stop the product and follow its directions or contact a dentist if symptoms are concerning." },
     ],
     relatedConditions: [
       { slug: "cavities", title: "Cavities" },
@@ -653,16 +653,16 @@ export const symptomsData: Record<string, SymptomData> = {
     slug: "mouth-sores",
     title: "Mouth Sores: What They Are & When to Worry",
     metaTitle: "Mouth Sore Causes & What to Do | DentaSmart",
-    metaDescription: "Got a canker sore or a cold sore? Maybe something else? We'll help you figure out what kind of mouth sore you have, what's causing it, and when it's time to see a doctor.",
+    metaDescription: "Compare common mouth sores and learn which persistent, recurrent, painful, or changing lesions need professional evaluation.",
     primaryKeyword: "mouth sores",
     secondaryKeywords: ["canker sore treatment", "oral ulcer causes", "sore in mouth that won't heal", "mouth lesions"],
-    heroHeading: "Most mouth sores are harmless. But some aren't.",
-    heroSubheading: "Figuring out if that spot in your mouth is just a canker sore or something more serious can save you a lot of stress. And it helps you know when to act.",
-    directAnswer: "Almost everyone gets mouth sores, and they're usually no big deal. The most common kind are canker sores (the technical term is aphthous ulcers). They look like little round, white or yellowish spots inside your mouth with a red ring around them. Then you have cold sores (or fever blisters), which pop up on or near your lips and are caused by the herpes virus. Most of the time, mouth sores go away by themselves in a week or two. But if you have a sore that sticks around for more than three weeks, you should definitely get it checked out by a dentist or doctor.",
+    heroHeading: "Mouth Sores: Common Patterns and Warning Signs",
+    heroSubheading: "Location, appearance, duration, recurrence, and other symptoms help a clinician narrow the cause.",
+    directAnswer: "Mouth sores can result from irritation, canker sores, cold sores, infection, immune conditions, medicines, or other causes. A sore that persists, recurs often, changes, bleeds, or makes eating or swallowing difficult needs professional evaluation.",
     detailedExplanation: [
-      "Think about it. your mouth does a lot of work. Eating, talking, breathing... all that activity means the soft tissue inside is always dealing with friction, different temperatures, and tons of bacteria. So, it's really not surprising that a sore pops up now and then.",
-      "Canker sores are the ones you'll see most often. They aren't contagious, and they tend to show up when you're stressed, bite your cheek, eat acidic stuff, or even because of hormone shifts. They hurt, for sure, but they'll heal up on their own in about one to two weeks.",
-      "But cold sores are a different story. They come from the herpes simplex virus (HSV-1), which means they're contagious. You'll find them on your lips or right around your mouth. And once you have the virus, it just hangs out in your body and can flare up when you're stressed, sick, or get too much sun."
+      "The soft tissues in the mouth can be irritated by biting, sharp teeth, dental appliances, hot food, chemicals, infection, or inflammation.",
+      "Canker sores develop inside the mouth and are not contagious. Irritation, stress, medicines, nutritional deficiencies, and some health conditions may be associated with recurrent sores, but an examination may be needed to distinguish the cause.",
+      "Cold sores usually develop on or around the lips and are caused by herpes simplex virus. They can spread to other people, so avoid direct contact and sharing items that touch the mouth during an active outbreak."
     ],
     possibleCauses: [
       { title: "Canker sores (aphthous ulcers)", description: "Those small, painful sores you get inside your mouth. Often triggered by stress, accidentally biting your cheek, or even acidic foods. The good news? They're not contagious.", urgency: "low" },
@@ -673,7 +673,7 @@ export const symptomsData: Record<string, SymptomData> = {
       { title: "Oral cancer", description: "Okay, this is the serious one. If you have a sore or a lump that just won't heal after three weeks (especially if it doesn't hurt), you need to get it checked. Finding it early is everything.", urgency: "high" }
     ],
     selfCareSteps: [
-      "Try rinsing with warm salt water a few times a day. It can help with the pain and speed up healing.",
+      "A mild salt-water rinse may soothe some sores; stop if it irritates the area and do not delay evaluation of a persistent lesion.",
       "You can get over-the-counter gels (like benzocaine) to numb the sore spot.",
       "Stay away from spicy, acidic, or crunchy foods for a bit. They'll just make it hurt more.",
       "Use a toothbrush with soft bristles and be extra careful when you're brushing near the sore.",
@@ -688,7 +688,7 @@ export const symptomsData: Record<string, SymptomData> = {
       "It's getting hard to eat, drink, or swallow because of the sores"
     ],
     keyTakeaways: [
-      "The vast majority of mouth sores are totally harmless and will clear up in a week or two, even if you do nothing.",
+      "Many minor mouth sores heal, but appearance alone cannot rule out a more serious cause.",
       "But any sore that sticks around for more than three weeks is a red flag. Always get that checked by a pro.",
       "Knowing if you have a canker sore or a cold sore is useful. It tells you how to handle it and whether you need to worry about spreading it."
     ],
@@ -696,7 +696,7 @@ export const symptomsData: Record<string, SymptomData> = {
       { question: "Can I give my canker sore to someone else?", answer: "Nope. Canker sores aren't caused by a virus, so you can't spread them. Cold sores, though? Those are caused by the herpes virus and they are definitely contagious, especially when you can see the blisters." },
       { question: "So, when is a mouth sore a big deal?", answer: "You should see a dentist or doctor if a sore doesn't heal in three weeks, it's huge, you keep getting them, or you have other symptoms like a fever or trouble swallowing. And a sore that doesn't heal can, in rare cases, be a sign of oral cancer." },
       { question: "Does being stressed out cause mouth sores?", answer: "It sure can. Stress is a huge trigger for canker sores. It can also wake up the herpes virus and cause a cold sore outbreak. So, trying to manage your stress with good sleep, exercise, and relaxation can make a real difference." },
-      { question: "Can the DentaSmart app help with this?", answer: "Totally. You can use the DentaSmart app to take pictures and keep a log of any mouth sores. It's a really simple way to see if a sore is healing like it should or if it's time to get it looked at." }
+      { question: "Can the DentaSmart app help with this?", answer: "DentaSmart can help you capture supported images and track visible changes. It cannot identify the cause or determine that a sore is healing normally." }
     ],
     relatedConditions: [
       { slug: "gum-disease", title: "Gum Disease" }
@@ -712,7 +712,7 @@ export const symptomsData: Record<string, SymptomData> = {
     reviewedBy: "Areeba Aslam",
     reviewedByCredentials: "General Dentist at DentaSmart",
     lastReviewed: "2026-02-21",
-    ctaHeading: "Most mouth sores heal. Some don't.",
+    ctaHeading: "Track Changes and Know When to Seek Care",
     ctaButton: "Check My Mouth Sore"
   },
   "gum-bleeding-after-brushing": {
@@ -785,7 +785,7 @@ export const symptomsData: Record<string, SymptomData> = {
     reviewedByCredentials: "General Dentist at DentaSmart",
     lastReviewed: "2026-03-15",
     ctaHeading: "Ready to Stop the Bleeding?",
-    ctaButton: "Find a DentaSmart Dentist"
+    ctaButton: "Download DentaSmart"
 },
   "mouth-ulcers": {
     slug: "mouth-ulcers",
@@ -828,9 +828,9 @@ export const symptomsData: Record<string, SymptomData> = {
       "The ulcer bleeds or has a very irregular border."
     ],
     keyTakeaways: [
-      "Mouth ulcers are common and usually harmless, healing on their own in a week or two.",
-      "They can be caused by injuries, stress, certain foods, or nutritional deficiencies.",
-      "Good oral hygiene and avoiding triggers can help prevent them.",
+      "Mouth sores have several possible causes, and appearance alone may not identify which one applies.",
+      "Irritation, infection, medicines, immune conditions, and other factors can produce similar-looking lesions.",
+      "Gentle oral care and avoiding clear irritants may reduce discomfort while you monitor a minor sore.",
       "See a dentist if an ulcer lasts longer than three weeks or is unusually severe."
     ],
     faqs: [
@@ -856,24 +856,24 @@ export const symptomsData: Record<string, SymptomData> = {
     reviewedByCredentials: "General Dentist at DentaSmart",
     lastReviewed: "2026-03-15",
     ctaHeading: "Worried About Your Mouth Ulcers?",
-    ctaButton: "Find a DentaSmart Dentist"
+    ctaButton: "Download DentaSmart"
 },
   "canker-sores": 
 {
     slug: "canker-sores",
     title: "Got Canker Sores? Here's What's Going On",
     metaTitle: "Canker Sores: Causes and Treatments | DentaSmart",
-    metaDescription: "Annoying canker sores got you down? Learn what causes canker sores and how to treat them fast. Get tips from DentaSmart for quick relief.",
+    metaDescription: "Learn about canker sores, common triggers, ways to reduce irritation, and when a persistent or recurrent mouth ulcer needs evaluation.",
     primaryKeyword: "canker sores",
     secondaryKeywords: ["canker sore causes", "canker sore treatment", "mouth ulcers", "aphthous ulcers"],
-    heroSubheading: "Those little white spots in your mouth can be a real pain. Let's figure out what they are and how to get rid of them.",
+    heroSubheading: "Most minor canker sores heal, but persistent, recurrent, large, or unusually painful ulcers need evaluation.",
     detailedExplanation: [
     "Ever felt that tell-tale sting inside your lip, only to find a small, white or yellowish sore staring back at you in the mirror? Yep, you've probably got a canker sore. Don't worry, they're super common and not contagious, so you can't give them to anyone. Think of them as tiny, shallow ulcers that pop up on the soft tissues in your mouth, like inside your cheeks, on your tongue, or at the base of your gums. They're officially called aphthous ulcers, but most of us just call them canker sores. They usually start with a bit of a tingling or burning feeling, and then a small red bump appears that turns into an open sore. The center is typically white or yellow, with a red border around it. They can be really annoying, making it uncomfortable to eat, drink, or even talk.",
     "You might get just one, or sometimes a few can show up at once. The good news? Most canker sores are minor and heal on their own in about a week or two without leaving any scars. There are also major canker sores, which are larger, deeper, and can take up to six weeks to heal, sometimes leaving a scar. And then there's a less common type called herpetiform canker sores (which, despite the name, have nothing to do with the herpes virus), where you get clusters of dozens of tiny sores. No matter which kind you have, they can definitely put a damper on your day. It's just your body's weird way of reacting to something, and figuring out the trigger is half the battle.",
     "That's the million-dollar question, isn't it? The exact cause of canker sores is still a bit of a mystery, but we have a pretty good idea of what triggers them. A lot of the time, it comes down to stress. Feeling run-down or anxious can weaken your immune system, making you more likely to get these pesky sores. Another huge culprit is mouth injuries. Accidentally biting your cheek, a slip of the toothbrush, or even irritation from braces or dentures can all create the perfect environment for a canker sore to form. What you eat can play a big role, too. Acidic foods like citrus fruits, strawberries, and tomatoes are common triggers for some people. The same goes for certain food sensitivities or allergies, like those to chocolate, coffee, nuts, or cheese.",
     "Sometimes, it's what you're *not* getting enough of. Deficiencies in certain vitamins and minerals, especially B12, zinc, folic acid, and iron, have been linked to canker sores. Hormonal shifts, like the ones that happen during your menstrual cycle, can also bring them on. And for some unlucky folks, it just runs in the family. If your parents got canker sores, you're more likely to get them too. Certain medical conditions, like celiac disease, Crohn's disease, or other autoimmune disorders that affect the immune system, can also make you more prone to developing them. It's often a combination of these factors, so paying attention to when they pop up can help you connect the dots and identify your personal triggers.",
     "Most canker sores are just a temporary nuisance and don't require a trip to the dentist. They typically clear up on their own. However, you should definitely book an appointment if you have a sore that's unusually large, lasts for three weeks or longer, or is so painful that it makes eating and drinking almost impossible. You should also get it checked out if you're getting new sores before the old ones have even healed, or if they're accompanied by a fever or you just feel generally unwell. Your dentist will want to rule out any other, more serious conditions. When you go, they'll examine the sore and ask about your medical history and any other symptoms you're having. As for prevention, it really depends on your triggers. If stress is your issue, finding ways to relax, like through exercise or meditation, can make a real difference.",
-    "If you're constantly biting your cheek, try to chew your food more slowly. Using a soft-bristled toothbrush can help prevent irritation. If you suspect certain foods are the problem, try keeping a food diary to pinpoint the culprit and then avoid it. You can also try to boost your diet with foods rich in B vitamins, iron, and zinc. An over-the-counter topical paste can help protect the sore and numb the pain, and rinsing with warm salt water a few times a day can keep it clean and promote healing. Ultimately, a good oral hygiene routine is always your first line of defense. Brushing and flossing regularly helps keep your mouth clean and free of the food debris and bacteria that can contribute to all sorts of mouth troubles."
+    "Reduce local irritation with a soft toothbrush and avoid foods that clearly worsen the sore. Over-the-counter products may reduce discomfort when used as directed. Recurrent ulcers deserve dental or medical review before assuming a nutrient deficiency or food trigger."
   ],
     possibleCauses: [
       { title: "Mouth Injury", description: "Accidentally biting your cheek, brushing too hard, or irritation from dental work.", urgency: "low" },
@@ -1008,7 +1008,7 @@ export const symptomsData: Record<string, SymptomData> = {
     metaDescription: "Learn why you might be biting your cheek, what causes chronic cheek biting (morsicatio buccarum), and when it's time to see a dentist for help.",
     primaryKeyword: "cheek biting",
     secondaryKeywords: ["chronic cheek biting", "morsicatio buccarum", "cheek biting causes", "how to stop biting cheek"],
-    heroSubheading: "Ever find yourself accidentally chomping on the inside of your cheek? You're not alone, and we've got answers.",
+    heroSubheading: "Occasional cheek biting may be accidental; repeated biting can involve tooth position, appliances, swelling, or a behavioral habit.",
     detailedExplanation: [
     "Ouch! Did you just bite your cheek again? It’s a super common thing that happens to pretty much everyone at some point. Maybe you were eating too fast, talking while chewing, or just got distracted. An accidental, one-time cheek bite is usually no big deal. It might be a little sore for a day or two, but it heals up on its own. Your mouth is actually amazing at healing itself quickly. But what if it’s not just a once-in-a-while accident? What if you find yourself biting the inside of your cheek all the time, maybe even without realizing you’re doing it? When it becomes a habit, it's something we call chronic cheek biting. The fancy medical term for it is morsicatio buccarum, which is just Latin for ‘cheek biting.’ It might sound a little scary, but it’s really just a sign that something else is going on. Chronic cheek biting can be a habit that’s hard to break, kind of like biting your nails.",
     "Sometimes, people do it when they’re feeling stressed or anxious, and it becomes a repetitive behavior. Over time, this can cause some real issues. The inside of your cheek can get raw, develop sores, or even build up a line of white, rough tissue where you keep biting. It’s your body’s way of trying to protect the area, but it’s not a great long-term solution. Think of it like a callus on your hand, but on the soft tissue inside your mouth. This repeated irritation isn't something you want to ignore. Not only can it be painful, but it can also make you more likely to get infections in your mouth. So, while a single bite is nothing to worry about, if you notice a pattern, it’s a good idea to pay attention and figure out what’s causing it. Is it just a habit, or is there something about your teeth or jaw that’s making it happen more often?",
@@ -1069,7 +1069,7 @@ export const symptomsData: Record<string, SymptomData> = {
     reviewedByCredentials: "General Dentist at DentaSmart",
     lastReviewed: "2026-03-15",
     ctaHeading: "Ready to Stop Biting Your Cheek for Good?",
-    ctaButton: "Find a DentaSmart Dentist"
+    ctaButton: "Download DentaSmart"
 },
   "teeth-grinding": {
     slug: "teeth-grinding",
@@ -1078,11 +1078,11 @@ export const symptomsData: Record<string, SymptomData> = {
     metaDescription: "Waking up with a sore jaw? You might be grinding your teeth. Learn about the common causes of teeth grinding (bruxism) and what you can do to protect your smile.",
     primaryKeyword: "teeth grinding",
     secondaryKeywords: ["bruxism", "grinding teeth at night", "jaw clenching", "sore jaw from grinding"],
-    heroSubheading: "Ever wake up with a dull headache or a mysteriously sore jaw? You might be one of the millions of people who grind their teeth, a condition known as bruxism. Don't worry, you're not alone, and we can get to the bottom of it.",
+    heroSubheading: "Morning jaw soreness, tooth wear, headaches, or reports of grinding may warrant a dental and sleep-related assessment.",
     detailedExplanation: [
     "So, what exactly is teeth grinding? Think of it as your jaw muscles having a bit of a party at night while you're trying to sleep. Officially called bruxism, it's when you unconsciously clench, grind, or gnash your teeth. For many people, this happens during sleep, so you might not even realize you're doing it until a partner complains about the noise or your dentist spots the tell-tale signs. But it can happen during the daytime too, especially when you're feeling stressed or anxious. You might find yourself clenching your jaw while you're concentrating on a tough task at work or sitting in traffic. The problem is, all that pressure isn't great for your teeth. Over time, it can lead to some real damage, like wearing down your enamel, the hard, protective outer layer of your teeth.",
     "This can make your teeth more sensitive to hot and cold, and even cause them to chip or crack. And it's not just your teeth that suffer. Your jaw muscles are working overtime, which can lead to facial pain, headaches, and that lovely sore jaw feeling in the morning. It can even cause issues with your temporomandibular joint (TMJ), the hinge that connects your jaw to your skull. It sounds a bit scary, but the first step is just figuring out if it's happening. Are you waking up with unexplained headaches? Does your jaw feel tired or tight? These are classic clues that you might be a nighttime grinder.",
-    "Why do people even grind their teeth in the first place? It's not like you're deciding to do it. Well, there isn't one single answer, but it's often linked to a mix of physical and psychological factors. Stress and anxiety are huge culprits. When you're stressed, your body releases hormones that can make your muscles tense up, including your jaw muscles. Think about it. do you clench your jaw when you're frustrated or worried? It's a pretty common physical reaction. For many, that tension carries over into their sleep. Another big cause is your bite. If your teeth aren't aligned properly, what dentists call malocclusion, it can cause your jaw to shift around at night, leading to grinding. Your body is basically trying to find a comfortable resting position for your jaw, but it ends up just mashing your teeth together instead.",
+    "Bruxism can be associated with stress, sleep disorders, medicines, substances, and other factors. Tooth alignment alone does not explain every case, so persistent grinding or related pain may need dental and medical assessment.",
     "Sleep-related issues, especially sleep apnea, are also closely connected to bruxism. With sleep apnea, your breathing repeatedly stops and starts throughout the night. This can trigger a grinding reflex as your body tries to reopen your airway. Even your lifestyle can play a role. Do you drink a lot of coffee or alcohol? Both of these can interfere with your sleep and potentially make grinding worse. The same goes for smoking. In some cases, teeth grinding can be a side effect of certain medications, particularly some types of antidepressants. It's a complex puzzle, but identifying the potential causes is key to finding the right solution for you.",
     "Okay, so you suspect you're grinding your teeth. When is it time to call in the professionals? If you're dealing with regular jaw pain, headaches, or you can see visible wear and tear on your teeth, it's definitely time to schedule a visit with your dentist. Don't put it off. The sooner you get it checked out, the better you can protect your teeth from further damage. So, what will the dentist do? First, they'll examine your teeth for signs of grinding, like flattened chewing surfaces or tiny fractures. They'll also check your jaw muscles for tenderness and ask you about your symptoms, sleep habits, and stress levels. Be honest! The more information they have, the better they can help. The most common treatment is a custom-fitted mouthguard (or night guard). This isn't like the bulky ones you buy at the drugstore. A custom guard is made from a mold of your teeth, so it fits perfectly and comfortably. You wear it at night, and it acts as a protective barrier, absorbing the force of the grinding and preventing your top and bottom teeth from scraping against each other.",
     "If your grinding is caused by a misaligned bite, your dentist might recommend orthodontic treatment, like braces, to correct the issue. If stress is the main trigger, the focus will be on managing it. Your dentist might suggest relaxation techniques, exercise, or even counseling. In the meantime, you can try some things at home to ease the discomfort. Applying a warm, moist washcloth to your jaw can help relax the muscles. You can also make a conscious effort to relax your jaw throughout the day. Your teeth should be slightly apart, not clenched together. Prevention is really about managing the underlying causes, whether that's reducing stress or treating a sleep disorder. The important thing is to take action and work with your dentist to find a solution that saves your smile."
@@ -1217,7 +1217,7 @@ export const symptomsData: Record<string, SymptomData> = {
     reviewedByCredentials: "General Dentist at DentaSmart",
     lastReviewed: "2026-03-15",
     ctaHeading: "Worried About Your Jaw Clicking?",
-    ctaButton: "Find a DentaSmart Dentist"
+    ctaButton: "Download DentaSmart"
 },
   "gum-itching": {
     slug: "gum-itching",
@@ -1307,7 +1307,7 @@ export const symptomsData: Record<string, SymptomData> = {
     metaDescription: "Learn about the common causes of tooth staining and how to get your bright, white smile back. Find out when it's time to see a dentist about stained teeth.",
     primaryKeyword: "tooth staining",
     secondaryKeywords: ["stained teeth", "teeth stain causes", "yellow teeth", "tooth discoloration", "teeth whitening"],
-    heroSubheading: "Ever look in the mirror and wonder why your smile isn't as bright as it used to be? You're not alone.",
+    heroSubheading: "Tooth color can change from surface stains, plaque, enamel wear, medicines, trauma, or changes inside a tooth.",
     detailedExplanation: [
     "So, what's the deal with tooth staining? Put simply, it’s when the color of your teeth changes. They might look yellow, brown, or even a little grayish. It’s not usually a sign of anything serious, but it can definitely make you feel a bit self-conscious. Think of your tooth like a white t-shirt. Over time, if you spill coffee or wine on it, it’s going to get stained, right? The same thing happens with your teeth. Your tooth enamel, the hard outer layer, is actually porous. It has tiny little holes in it that can absorb the colors from the foods and drinks you consume. This is called extrinsic staining, because it’s on the outside of the tooth. Then there's intrinsic staining, which is when the inner part of your tooth, called dentin, gets darker. This can happen for a bunch of reasons, like taking certain medications or just getting older. Your dentin naturally yellows over time, and as your enamel gets thinner with age, more of that yellow color shows through. It's a totally normal part of aging, but it's still something you might want to address.",
     "What’s causing those pesky stains? A lot of things, actually. The biggest culprits are the things you eat and drink every day. Coffee, tea, red wine, and dark sodas are notorious for staining teeth. Berries, tomato sauce, and even some curries can also leave their mark. If it can stain your clothes, it can probably stain your teeth. Smoking or chewing tobacco is another major cause. The tar and nicotine in tobacco products seep into your enamel and can cause some serious discoloration. Poor dental hygiene is another big one. If you're not brushing and flossing regularly, you're letting plaque build up on your teeth.",
@@ -1439,7 +1439,7 @@ export const symptomsData: Record<string, SymptomData> = {
     reviewedByCredentials: "General Dentist at DentaSmart",
     lastReviewed: "2026-03-15",
     ctaHeading: "Worried About Enamel Erosion? Let's Take a Look.",
-    ctaButton: "Find a DentaSmart Dentist"
+    ctaButton: "Download DentaSmart"
 },
   "root-exposure": {
     slug: "root-exposure",
@@ -1510,7 +1510,7 @@ export const symptomsData: Record<string, SymptomData> = {
     reviewedByCredentials: "General Dentist at DentaSmart",
     lastReviewed: "2026-03-15",
     ctaHeading: "Worried About an Exposed Root?",
-    ctaButton: "Find a DentaSmart Dentist"
+    ctaButton: "Download DentaSmart"
 },
   "gum-inflammation": {
     slug: "gum-inflammation",
@@ -1967,9 +1967,9 @@ export const symptomsData: Record<string, SymptomData> = {
     metaDescription: "Experiencing mouth numbness? Learn about the common causes of a numb mouth (oral paresthesia) and when it's time to see a dentist for your oral health.",
     primaryKeyword: "mouth numbness",
     secondaryKeywords: ["numb mouth", "oral paresthesia", "tingling mouth", "lip numbness", "tongue numbness"],
-    heroSubheading: "Ever get that weird pins-and-needles feeling in your mouth? You're not alone. Let's figure out what's going on.",
+    heroSubheading: "New numbness or tingling in the lips, tongue, or mouth can have dental, neurologic, metabolic, allergic, or medicine-related causes.",
     detailedExplanation: [
-    "Feeling a strange numbness in your mouth can be a bit unsettling, can't it? One minute you're fine, and the next, it feels like your tongue, lips, or even your entire mouth has fallen asleep. This condition, which doctors sometimes call 'oral paresthesia,' is more common than you might think. It's that classic pins-and-needles sensation, but in your mouth. Sometimes it can feel like a tingling or even a slight burning. Think about it like this: you know how your foot falls asleep if you sit on it for too long? It's a similar idea, but it's happening in your mouth. The feeling can be localized to one specific spot, like the tip of your tongue, or it can affect a larger area.",
+    "Mouth numbness may feel like reduced sensation, tingling, burning, or pins and needles in one area or across the lips, tongue, gums, or face. Record when it started, which areas are affected, and whether weakness, facial droop, speech trouble, swelling, breathing difficulty, or a recent procedure is involved.",
     "For most people, it's a temporary annoyance that goes away on its own. But for others, it can be a sign of something more going on in your body. It's not always a dental issue, either. Sometimes, the culprit can be related to your nerves, your blood sugar, or even the vitamins you're getting. So, while it might be easy to brush off, it's a good idea to pay attention to it, especially if it keeps happening or gets worse. We'll dive into some of the common reasons why you might be experiencing mouth numbness and what you can do about it.",
     "So, what's actually causing this weird numbness? There are quite a few possibilities, and they range from simple to more complex. One of the most common reasons is actually something you might do every day: eating or drinking something extremely hot or cold. A burn or a temporary shock to the nerves can cause a short-lived numb sensation. Another frequent cause is an allergic reaction. You might be allergic to a certain food, a new toothpaste, or even a medication you're taking. This is often accompanied by other symptoms like swelling or itching. Then there are nutritional deficiencies. Not getting enough of certain vitamins, especially B12, can mess with your nerve health and lead to numbness. Similarly, low levels of calcium or even low blood sugar (hypoglycemia) can trigger this sensation.",
     "Sometimes, the issue is more directly related to your mouth. Dental procedures, especially extractions or root canals, can sometimes irritate or damage nearby nerves, leading to temporary or, in rare cases, permanent numbness. Grinding your teeth at night, a condition known as bruxism, can also put a lot of pressure on your jaw and nerves, causing a numb feeling. In some cases, mouth numbness can be a symptom of a larger medical condition like multiple sclerosis, a stroke, or even anxiety. It's a long list, right? That's why it's so important to think about any other symptoms you're having and talk to a professional to get to the bottom of it.",
@@ -2173,7 +2173,7 @@ export const symptomsData: Record<string, SymptomData> = {
     reviewedByCredentials: "General Dentist at DentaSmart",
     lastReviewed: "2026-03-15",
     ctaHeading: "Ready to Get to the Bottom of Your Jaw Pain?",
-    ctaButton: "Find a DentaSmart Dentist"
+    ctaButton: "Download DentaSmart"
 },
   "periodontal-disease": {
     slug: "periodontal-disease",
@@ -2248,7 +2248,7 @@ export const symptomsData: Record<string, SymptomData> = {
     reviewedByCredentials: "General Dentist at DentaSmart",
     lastReviewed: "2026-03-15",
     ctaHeading: "Concerned About Gum Disease? Let's Get It Checked Out.",
-    ctaButton: "Find a DentaSmart Dentist"
+    ctaButton: "Download DentaSmart"
 },
   "gingivitis": {
     slug: "gingivitis",
@@ -2318,7 +2318,7 @@ export const symptomsData: Record<string, SymptomData> = {
     reviewedByCredentials: "General Dentist at DentaSmart",
     lastReviewed: "2026-03-15",
     ctaHeading: "Ready to Get Your Gums Healthy Again?",
-    ctaButton: "Find a DentaSmart Dentist"
+    ctaButton: "Download DentaSmart"
 },
   "dental-caries": {
     slug: "dental-caries",
@@ -2399,7 +2399,7 @@ export const symptomsData: Record<string, SymptomData> = {
     metaDescription: "Struggling with enamel hypersensitivity? Learn what causes sensitive teeth and find real solutions to stop the pain. Get relief today.",
     primaryKeyword: "enamel hypersensitivity",
     secondaryKeywords: ["sensitive teeth", "dentin hypersensitivity", "tooth sensitivity", "painful teeth"],
-    heroSubheading: "Ever feel a jolt of pain when you drink something cold or bite into candy? You're not alone, and you don't have to just live with it.",
+    heroSubheading: "Cold, heat, sweets, touch, or biting can trigger sensitivity for different reasons, and the pattern helps guide evaluation.",
     detailedExplanation: [
     "Ever wonder why a sip of ice water or a bite of your favorite sweet treat sends a sharp, sudden pain through your teeth? It's a common complaint we hear all the time. This jarring experience is often due to something called enamel hypersensitivity, or as most people call it, sensitive teeth. So, what exactly is going on in your mouth? Think of your teeth as having a protective shield called enamel. It’s the hardest substance in your body, and its main job is to guard the softer layer underneath, called dentin. When your enamel is strong and healthy, you can eat and drink pretty much whatever you want without a problem. But if that enamel shield gets worn down or damaged, it exposes the dentin. Now, the dentin is full of thousands of microscopic tubes, like tiny little straws, that lead directly to the tooth's nerve center, the pulp.",
     "When things like cold, hot, sweet, or acidic foods and drinks touch this exposed dentin, they can travel down those tubes and zap the nerve. Ouch! That’s the jolt of pain you feel. It’s not a cavity, but it’s your body’s way of telling you that your tooth's defenses are down. It’s a really common issue, affecting millions of people, so you're definitely not the only one wincing after a sip of iced tea. The good news is that it’s usually very treatable, and you don't have to spend your life avoiding your favorite foods. Understanding that the pain is a direct result of this enamel erosion is the first step to finding a solution that works for you.",
@@ -2463,7 +2463,7 @@ export const symptomsData: Record<string, SymptomData> = {
     reviewedByCredentials: "General Dentist at DentaSmart",
     lastReviewed: "2026-03-15",
     ctaHeading: "Ready to Kick Tooth Sensitivity to the Curb?",
-    ctaButton: "Find a DentaSmart Dentist"
+    ctaButton: "Download DentaSmart"
 },
   "oral-thrush": {
     slug: "oral-thrush",
@@ -2546,7 +2546,7 @@ export const symptomsData: Record<string, SymptomData> = {
     heroSubheading: "Those painful little sores inside your mouth have a name: aphthous ulcers. Let's talk about what they are and how to deal with them.",
     detailedExplanation: [
     "Ever get those small, painful sores inside your mouth that make eating a total nightmare? They're called aphthous ulcers, but you probably know them as canker sores. They're super common, and most people get them at some point. Unlike cold sores, which are caused by a virus and pop up on your lips, canker sores are not contagious and only show up on the soft tissues inside your mouth. Think inside your cheeks, under your tongue, or on your gums. They usually look like a small, round, white or yellowish dot with a red border. And boy, can they hurt! Sometimes, you might even feel a little tingling or burning a day or two before one appears. The good news is that most canker sores are harmless and go away on their own in a week or two. But when you have one, it can make talking, eating, and even drinking feel like a chore. So, what exactly are these pesky things? Are they a sign of something more serious? And what can you do to get rid of them faster? We'll get into all of that.",
-    "So, what causes these annoying mouth sores? The honest answer is that doctors aren't 100% sure. It's likely a mix of things, and what triggers a canker sore for one person might not for another. One of the most common culprits is a minor injury to your mouth. Maybe you accidentally bit your cheek, brushed your teeth too hard, or even had some dental work done. Certain foods can also be a trigger for some people. Think spicy or acidic foods like citrus fruits, or even things like chocolate, coffee, and nuts. Sometimes, it can be a sign that you're low on certain vitamins, like B-12, zinc, or iron.",
+    "The exact cause of canker sores is not always known. Minor injury, irritation, stress, medicines, nutritional deficiencies, and some health conditions may be associated with recurrent sores. A clinician should evaluate frequent or severe episodes before you assume a specific trigger or deficiency.",
     "Hormonal changes, especially for women during their period, can also bring on a canker sore. And let's not forget about stress! Feeling run down or stressed out can definitely do a number on your body, and that includes your mouth. In some cases, canker sores can be linked to an underlying health condition, like celiac disease, Crohn's disease, or an autoimmune disorder. Even some medications can cause them as a side effect. It's a bit of a mystery, but paying attention to when you get them might help you figure out your personal triggers.",
     "Most of the time, canker sores are just a temporary pain in the... well, mouth. But there are times when you should probably see a dentist or doctor. If you have a canker sore that's unusually large, lasts for more than two weeks, or is so painful that you can't eat or drink, it's a good idea to get it checked out. You should also see a doctor if you get canker sores frequently, or if they come with a fever. Your dentist can help rule out any other issues and might prescribe a special mouth rinse or ointment to help with the pain and speed up healing.",
     "In the meantime, there are a few things you can do at home to make yourself more comfortable. Try to avoid spicy, acidic, or crunchy foods that can irritate the sore. Rinsing your mouth with warm salt water can also help. And of course, try to keep up with your regular brushing and flossing, but be gentle around the sore. To prevent them in the future, try to eat a healthy diet, manage your stress levels, and be careful not to injure your mouth. If you have braces or other dental appliances, your dentist can give you wax to cover any sharp edges."
@@ -2740,7 +2740,7 @@ export const symptomsData: Record<string, SymptomData> = {
     reviewedByCredentials: "General Dentist at DentaSmart",
     lastReviewed: "2026-03-15",
     ctaHeading: "Concerned About Mouth Sores?",
-    ctaButton: "Find a DentaSmart Dentist"
+    ctaButton: "Download DentaSmart"
 },
 
   "headache": {

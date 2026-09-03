@@ -16,13 +16,13 @@ const data: CostPageData = {
     { value: "Ask questions", label: "About your estimate and options" },
     { value: "Plan ahead", label: "Review your coverage with your provider" },
   ],
-  problemTitle: "That Throbbing Pain Isn't Just a",
-  problemHighlight: "Toothache",
-  problemDescription: "When the soft pulp inside your tooth becomes infected, it can cause serious pain. This infection won't go away on its own. Ignoring it can lead to an abscess, bone loss, or even the need to have the tooth pulled entirely.",
-  problemDescription2: "A root canal cleans out the infection, removes the damaged pulp, and seals the tooth to protect it. It's a way to save your natural tooth and stop the infection from spreading.",
+  problemTitle: "Infected Tooth Pulp Can Cause",
+  problemHighlight: "Pain and Swelling",
+  problemDescription: "Inflamed or infected pulp inside a tooth can cause pain and may lead to an abscess or bone changes around the root. The tooth may need root canal treatment or extraction.",
+  problemDescription2: "Root canal treatment removes damaged tissue, cleans the inside of the tooth, and seals it. The goal is to treat the infection and preserve the tooth when possible.",
   problemNote: (
     <>
-      Understanding what leads to a root canal can help you avoid one. <Link href="/oral-health-hub/what-causes-rotten-teeth/" className="text-primary underline hover:text-primary/80">Rotten teeth</Link> are often the end result of untreated decay that could have been caught earlier. After a root canal, most teeth need a protective cap. Our guide to <Link href="/oral-health-hub/what-is-a-dental-crown/" className="text-primary underline hover:text-primary/80">what is a dental crown</Link> explains what that involves. If the infection started with a cavity that was ignored, learning about <Link href="/oral-health-hub/is-getting-a-tooth-filling-really-that-big-of-a-deal/" className="text-primary underline hover:text-primary/80">tooth fillings</Link> early on is one of the best ways to prevent needing more extensive treatment.
+      Tooth decay is one reason a tooth may need root canal treatment. Learn how decay can progress in our guide to <Link href="/oral-health-hub/what-causes-rotten-teeth/" className="text-primary underline hover:text-primary/80">damaged and decayed teeth</Link>. A dentist may also recommend a crown after treatment; our guide to <Link href="/oral-health-hub/what-is-a-dental-crown/" className="text-primary underline hover:text-primary/80">dental crowns</Link> explains the purpose. For earlier-stage decay, read how <Link href="/oral-health-hub/is-getting-a-tooth-filling-really-that-big-of-a-deal/" className="text-primary underline hover:text-primary/80">tooth fillings</Link> are used.
     </>
   ),
   costBreakdown: [
@@ -33,16 +33,16 @@ const data: CostPageData = {
     { type: "Restoration after treatment", range: "Varies", average: "Ask for an estimate", notes: "Ask your dentist whether an additional restoration is recommended." },
   ],
   costFactors: [
-    { factor: "Tooth Location", impact: "High", tip: "Molars cost more than front teeth because they have more canals and are harder to reach." },
-    { factor: "Dentist vs. Endodontist", impact: "Medium", tip: "Endodontists are specialists and may charge more, but are recommended for complex cases." },
-    { factor: "Geographic Location", impact: "Medium", tip: "Costs are higher in major metropolitan areas compared to smaller towns." },
-    { factor: "Severity of Infection", impact: "Low", tip: "A more complex infection might require more appointments, slightly increasing the cost." },
+    { factor: "Tooth Location", impact: "High", tip: "Molars often have more canals, which can make treatment more complex than treatment for a front tooth." },
+    { factor: "Dentist vs. Endodontist", impact: "Medium", tip: "An endodontist is a root canal specialist and may charge differently from a general dentist." },
+    { factor: "Geographic Location", impact: "Medium", tip: "Fees vary by region, practice, and local operating costs." },
+    { factor: "Treatment Complexity", impact: "Varies", tip: "A complex tooth or infection may require additional appointments or specialist care." },
   ],
   insuranceTips: [
     { title: "Check Your Coverage", description: "Call your plan provider to understand your current benefits, limits, and out-of-pocket responsibility." },
     { title: "Compare Network Details", description: "Ask your plan and dental office how network status may affect the estimate for your situation." },
     { title: "Use Your FSA or HSA", description: "A Flexible Spending Account (FSA) or Health Savings Account (HSA) allows you to pay for your root canal with pre-tax dollars." },
-    { title: "Ask About Payment Plans", description: "Many dental offices offer payment plans to help you manage the cost. Don't be afraid to ask about your options." },
+    { title: "Ask About Payment Plans", description: "Some dental offices offer payment plans. Review the total cost, fees, interest, and repayment terms before enrolling." },
   ],
   savingsWithDentaSmart: [
     { title: "Organize Your Questions", description: "Keep treatment-plan and cost questions together before discussing them with a dental office." },
@@ -50,11 +50,11 @@ const data: CostPageData = {
     { title: "Prepare for the Visit", description: "Bring your questions, records, and plan details to a dental professional who can advise you." },
   ],
   faqs: [
-    { q: "Is a root canal painful?", a: "With modern anesthesia, a root canal is typically no more uncomfortable than getting a filling. You'll likely feel a lot of relief afterward since the source of the pain is removed." },
+    { q: "Is a root canal painful?", a: "The area is numbed before treatment. Some people have soreness afterward, and your dentist can explain how to manage it." },
     { q: "How long does a root canal take?", a: "A root canal procedure usually takes one or two appointments, each lasting about 90 minutes. The exact time depends on the complexity of the tooth." },
-    { q: "What happens after a root canal?", a: "Your tooth will be sensitive for a few days. Most people need a dental crown placed on top of the tooth to protect it from breaking in the future." },
-    { q: "Can I just have the tooth pulled instead?", a: "You can, but it's usually better to save your natural tooth if possible. Missing teeth can cause other teeth to shift and lead to other dental problems down the road." },
-    { q: "How long does a root canal last?", a: "A treated tooth can last a lifetime with proper care. Good oral hygiene and regular dental checkups are key to its longevity." },
+    { q: "What happens after a root canal?", a: "The tooth may feel sensitive for a few days. A dentist may recommend a crown or another restoration to protect it." },
+    { q: "Can I have the tooth pulled instead?", a: "Extraction may be an option in some cases. Ask your dentist to compare the risks, follow-up treatment, and total cost of preserving or replacing the tooth." },
+    { q: "How long does a root canal last?", a: "A treated tooth can remain functional for many years. Results depend on the tooth, final restoration, oral hygiene, and follow-up care." },
   ],
   relatedCostPages: [
     { name: "Dental Implant", slug: "dental-implant-cost", price: "$3,000 - $6,000" },

@@ -3,23 +3,23 @@ import CostPageTemplate, { CostPageData } from "./CostPageTemplate";
 const data: CostPageData = {
   slug: "wisdom-teeth-removal-cost",
   procedureName: "Wisdom Teeth Removal",
-  heroTitle: "How much does wisdom teeth removal",
-  heroHighlight: "actually cost?",
-  heroDescription: "Wisdom teeth removal costs $200 to $1,100 per tooth depending on how impacted they are. Most people need all four out, which means the total bill runs $800 to $4,400. Here is a full breakdown so you know what to expect before your oral surgery consultation.",
-  metaTitle: "Wisdom Teeth Removal Cost 2026 | DentaSmart",
-  metaDescription: "How much does wisdom teeth removal cost in 2026? Expect $200 to $600 per tooth. Learn what affects the price, insurance coverage, and how to save money.",
+  heroTitle: "What Does Wisdom Teeth Removal",
+  heroHighlight: "Cost?",
+  heroDescription: "The estimate depends on the number and position of the teeth, the procedure, anesthesia, imaging, and provider. Use these planning ranges to prepare questions for an oral surgery consultation.",
+  metaTitle: "Wisdom Teeth Removal Cost | DentaSmart",
+  metaDescription: "Review wisdom teeth removal cost factors, possible charges, insurance questions, and what to ask before an oral surgery consultation.",
   keywords: "wisdom teeth removal cost, wisdom tooth extraction cost, oral surgery cost, impacted wisdom teeth cost, how much to remove wisdom teeth, wisdom teeth removal without insurance",
 
   statsStrip: [
-    { value: "$200-$1,100", label: "Cost Per Tooth" },
-    { value: "5M+", label: "Removed Each Year in the U.S." },
-    { value: "85%", label: "Of Adults Need Them Out" },
+    { value: "Varies", label: "By Tooth Position" },
+    { value: "Per Tooth", label: "Or Package Estimate" },
+    { value: "Confirm", label: "Anesthesia and Coverage" },
   ],
 
-  problemTitle: "Ignoring impacted wisdom teeth",
-  problemHighlight: "costs more than removing them.",
-  problemDescription: "When a wisdom tooth does not have room to grow, it gets stuck in your jawbone or gums. That leads to pain, swelling, cysts, and damage to the teeth next to it. The longer you wait, the worse these problems get.",
-  problemDescription2: "Delaying removal means the roots grow longer and the jawbone gets denser. That makes the extraction harder, the recovery longer, and the bill bigger. Early removal is almost always simpler and cheaper.",
+  problemTitle: "Wisdom Teeth Need",
+  problemHighlight: "Individual Evaluation",
+  problemDescription: "A wisdom tooth that lacks room to erupt can remain partly or fully below the gum or bone. Some cause pain, infection, cysts, or damage to a nearby tooth, while others can be monitored.",
+  problemDescription2: "A dentist or oral surgeon can review symptoms and imaging, then explain whether monitoring or removal is appropriate and how timing may affect the procedure.",
 
   costBreakdown: [
     {
@@ -64,41 +64,41 @@ const data: CostPageData = {
     {
       factor: "Impaction Level",
       impact: "A fully erupted tooth costs $200-$400 to remove. A full bony impaction costs $650-$1,100+. The deeper the tooth, the higher the price.",
-      tip: "Get your wisdom teeth evaluated in your late teens. Removing them before the roots fully form is simpler and cheaper.",
+      tip: "Ask how the tooth position and root development affect the recommended procedure and estimate.",
     },
     {
       factor: "Number of Teeth",
-      impact: "Removing all four at once typically costs 10-20% less per tooth than removing them one at a time over separate visits.",
-      tip: "If your dentist recommends removing multiple wisdom teeth, doing them all in one session saves money on anesthesia and facility fees.",
+      impact: "Removing more than one tooth in one visit can change anesthesia, facility, and package fees.",
+      tip: "If several teeth are involved, ask for an itemized estimate and the reason for the proposed timing.",
     },
     {
       factor: "Anesthesia Choice",
-      impact: "Local anesthetic is included in the base price. IV sedation adds $200-$600. General anesthesia adds $300-$800.",
-      tip: "Local anesthetic works fine for simple extractions. Save IV sedation for impacted teeth or if you have significant dental anxiety.",
+      impact: "Local anesthesia, IV sedation, and general anesthesia have different clinical uses and costs.",
+      tip: "Ask which option is recommended, why, who will provide it, and whether it is included in the estimate.",
     },
     {
       factor: "Surgeon vs General Dentist",
-      impact: "Oral surgeons charge 20-40% more than general dentists but handle complex impactions more safely.",
-      tip: "For erupted wisdom teeth, a general dentist can handle the extraction. For impacted teeth, an oral surgeon is worth the extra cost.",
+      impact: "A general dentist and an oral surgeon may charge differently and may handle different levels of complexity.",
+      tip: "Ask who will perform the procedure and whether specialist care is recommended for your case.",
     },
   ],
 
   insuranceTips: [
     {
       title: "Surgical vs Basic Coverage",
-      description: "Wisdom teeth removal is usually classified as oral surgery, not basic extraction. Most plans cover 50-80% of surgical extractions after your deductible. Check which category your plan uses.",
+      description: "Plans may classify wisdom teeth removal as oral surgery or extraction. Ask how your plan classifies the procedure and what limits apply.",
     },
     {
       title: "Stay In-Network",
-      description: "Using an in-network oral surgeon cuts your out-of-pocket cost significantly. Out-of-network surgeons can charge whatever they want, and your insurance pays based on their own fee schedule.",
+      description: "Network status can change the allowed fee and your share of the bill. Confirm the provider's status with both the insurer and the office.",
     },
     {
       title: "Get a Pre-Treatment Estimate",
-      description: "Ask the surgeon's office to submit a pre-treatment estimate to your insurance before scheduling. This tells you exactly what your plan will cover and what you will owe.",
+      description: "Ask whether the office can submit a pre-treatment estimate. It can help you plan, but final coverage can change after the claim is reviewed.",
     },
     {
       title: "Use HSA or FSA Funds",
-      description: "Wisdom teeth removal qualifies as a medical expense under HSA and FSA plans. Paying with pre-tax dollars saves you 20-35% compared to paying with after-tax income.",
+      description: "If you have an HSA or FSA, confirm whether the procedure is an eligible expense under your plan.",
     },
   ],
 
@@ -109,26 +109,26 @@ const data: CostPageData = {
     },
     {
       title: "Understand Your Case Before the Consult",
-      description: "Walking into the surgeon's office already knowing your impaction level and typical price range changes the conversation. You can ask better questions and spot inflated quotes.",
+      description: "Use the guide to prepare questions about tooth position, symptoms, monitoring, anesthesia, and the written estimate. Imaging and a professional exam determine the clinical details.",
     },
     {
       title: "Track Your Recovery",
-      description: "Use DentaSmart to monitor your healing after surgery. Catch signs of dry socket or infection early so you can get treatment before a minor issue becomes an expensive emergency.",
+      description: "Keep your aftercare instructions and questions together. Contact the dental team if pain, swelling, bleeding, fever, or other symptoms concern you.",
     },
   ],
 
   faqs: [
     {
       q: "How much does it cost to remove all 4 wisdom teeth?",
-      a: "Removing all four wisdom teeth costs $800 to $4,400 depending on impaction level. With IV sedation, add $200-$800. Most oral surgeons offer a package price that is 10-20% cheaper per tooth than removing them individually.",
+      a: "The total depends on tooth position, procedure type, anesthesia, imaging, provider, and location. Ask for an itemized estimate that separates each tooth and any anesthesia or facility fee.",
     },
     {
       q: "Does wisdom teeth removal hurt?",
-      a: "You will not feel pain during the procedure because of anesthesia. Expect soreness and swelling for 3-5 days afterward. Over-the-counter pain medication and ice packs handle it for most people. Prescription pain meds are available for complex cases.",
+      a: "The area is numbed, and some procedures use sedation. Soreness and swelling can occur afterward. Follow the medication and aftercare instructions from your dental team.",
     },
     {
       q: "How long is recovery after wisdom teeth removal?",
-      a: "Initial recovery takes 3-5 days. Most people feel normal within a week. Full gum healing takes 3-4 weeks. Avoid straws, smoking, and hard foods for the first week to prevent dry socket.",
+      a: "Recovery varies by the number and position of the teeth, the procedure, and your health. Follow the surgeon's instructions on food, activity, cleaning, smoking, and when to seek help.",
     },
     {
       q: "Do I have to remove all four wisdom teeth?",
@@ -136,11 +136,11 @@ const data: CostPageData = {
     },
     {
       q: "Is it better to be awake or asleep for wisdom teeth removal?",
-      a: "For simple extractions of erupted teeth, local anesthetic works fine and costs less. For impacted teeth or if you have dental anxiety, IV sedation is common and keeps you comfortable. General anesthesia is rarely needed.",
+      a: "The anesthesia plan depends on tooth position, procedure complexity, health history, anxiety, and provider setting. Ask the clinician to explain the recommendation and risks.",
     },
     {
       q: "What happens if I do not get my wisdom teeth removed?",
-      a: "Impacted wisdom teeth can cause recurring infections, cysts, damage to neighboring teeth, and chronic pain. Not all wisdom teeth cause problems, but the ones that do tend to get worse over time. Regular monitoring with X-rays helps you decide.",
+      a: "Some impacted wisdom teeth cause infection, cysts, damage to nearby teeth, or pain; others can be monitored. A dentist can review symptoms and imaging and recommend follow-up.",
     },
   ],
 

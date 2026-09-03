@@ -6,27 +6,27 @@ const data: ComparisonPageData = {
   optionBName: "Dentures",
 
   // SEO & Metadata
-  metaTitle: "Dental Implants vs Dentures Compared | DentaSmart's Best for You",
-  metaDescription: "Compare dental implants and dentures on cost, comfort, and bone health. See which tooth replacement option is the right choice for your long-term oral health.",
+  metaTitle: "Dental Implants vs Dentures Compared | DentaSmart",
+  metaDescription: "Compare dental implants and dentures by cost, procedure, daily care, fit, and the clinical factors a dentist reviews.",
   keywords: "dental implants vs dentures, implants vs dentures cost, are dental implants worth it, tooth replacement options, denture alternatives",
 
   // Hero Section
   heroTitle: "Dental Implants vs. Dentures:",
   heroHighlight: "Which is Right for You?",
-  heroDescription: "Choosing between dental implants and dentures is a big decision. We'll break down the real differences in cost, comfort, and daily life to help you find the best fit for your smile.",
+  heroDescription: "Compare dental implants and dentures by treatment process, cost, daily care, fit, and the health factors that affect candidacy.",
 
   // Stats Strip
   statsStrip: [
-    { value: "Lifetime", label: "Implant Lifespan" },
-    { value: "5-10 Years", label: "Denture Lifespan" },
-    { value: "33K+", label: "Searches Per Month" },
+    { value: "Fixed", label: "Dental Implants" },
+    { value: "Removable", label: "Dentures" },
+    { value: "Individual", label: "Treatment Recommendation" },
   ],
 
   // Intro Section
-  introTitle: "Beyond the Price Tag",
-  introHighlight: "What really matters in the long run?",
-  introDescription: "When you're missing teeth, you want a solution that feels natural and lasts. Dental implants offer a permanent, fixed solution that protects your jawbone. Dentures are a more affordable, removable option.",
-  introDescription2: "This guide looks at the key trade-offs, from eating your favorite foods with confidence to long-term health, so you can make an informed choice.",
+  introTitle: "Compare the",
+  introHighlight: "Treatment Trade-offs",
+  introDescription: "Dental implants are fixed in the jaw and require surgery. Dentures are removable and usually avoid implant surgery, but their fit can change as the mouth changes.",
+  introDescription2: "The choice depends on your mouth, health history, treatment goals, budget, and willingness to manage surgery or a removable appliance.",
 
   // Comparison Table
   comparisonTable: [
@@ -38,27 +38,27 @@ const data: ComparisonPageData = {
     },
     {
       factor: "Longevity",
-      optionA: "Can last a lifetime with proper care",
-      optionB: "5-10 years before needing replacement",
-      winner: "A",
+      optionA: "Designed for long-term use; the crown and implant still need monitoring",
+      optionB: "Fit and materials change over time, so adjustment or replacement may be needed",
+      winner: "tie",
     },
     {
       factor: "Bone Health",
-      optionA: "Stimulates and preserves jawbone, preventing bone loss",
-      optionB: "Does not stimulate the jaw, leading to bone deterioration over time",
+      optionA: "Transfers chewing forces to bone and may help maintain bone at the site",
+      optionB: "Rests on the gums and does not replace stimulation from a tooth root",
       winner: "A",
     },
     {
       factor: "Eating & Speaking",
-      optionA: "Functions like natural teeth with no restrictions",
-      optionB: "May slip or click; requires adjusting to certain foods",
-      winner: "A",
+      optionA: "Fixed replacement; chewing comfort depends on healing and fit",
+      optionB: "May require practice and food adjustments, especially at first",
+      winner: "tie",
     },
     {
       factor: "Comfort & Fit",
-      optionA: "Permanent and stable, feels like your own teeth",
-      optionB: "Removable, can cause sore spots and require adhesives",
-      winner: "A",
+      optionA: "Fixed in the jaw; comfort depends on the implant, crown, gums, and bite",
+      optionB: "Removable; may need adjustments if sore spots or looseness develop",
+      winner: "tie",
     },
     {
       factor: "Maintenance",
@@ -68,23 +68,23 @@ const data: ComparisonPageData = {
     },
     {
       factor: "Appearance",
-      optionA: "Custom-made to look and feel like your natural teeth",
-      optionB: "Can look natural, but may not feel as integrated",
+      optionA: "Crown is made to match the general shape and shade of nearby teeth",
+      optionB: "Teeth and base can be made to suit the mouth and appearance goals",
       winner: "tie",
     },
     {
       factor: "Candidacy",
-      optionA: "Requires sufficient jawbone density and good overall health",
-      optionB: "Fewer requirements, suitable for most patients",
-      winner: "B",
+      optionA: "Requires surgical and bone-healing assessment",
+      optionB: "Requires assessment of gums, jaw shape, dexterity, and fit",
+      winner: "tie",
     },
   ],
 
   // Pros and Cons
   optionAProsCons: [
-    { text: "Permanent solution that can last a lifetime.", type: "pro" },
-    { text: "Prevents jawbone loss and preserves your facial structure.", type: "pro" },
-    { text: "No restrictions on eating or speaking.", type: "pro" },
+    { text: "Fixed replacement that does not need daily removal.", type: "pro" },
+    { text: "Transfers chewing forces to bone at the implant site.", type: "pro" },
+    { text: "May provide stable chewing after healing and adjustment.", type: "pro" },
     { text: "High initial investment.", type: "con" },
     { text: "Requires surgery and a healing period.", type: "con" },
     { text: "Not everyone is a candidate due to bone density.", type: "con" },
@@ -92,8 +92,8 @@ const data: ComparisonPageData = {
   optionBProsCons: [
     { text: "Lower upfront cost compared to implants.", type: "pro" },
     { text: "Non-invasive procedure with no surgery required.", type: "pro" },
-    { text: "Can be a quick solution for missing teeth.", type: "pro" },
-    { text: "Need to be replaced every 5-10 years.", type: "con" },
+    { text: "May avoid implant surgery and a long implant-healing period.", type: "pro" },
+    { text: "May need relining, adjustment, repair, or replacement as the mouth changes.", type: "con" },
     { text: "Can be uncomfortable and may affect taste and speech.", type: "con" },
     { text: "Does not prevent bone loss in the jaw.", type: "con" },
   ],
@@ -101,45 +101,45 @@ const data: ComparisonPageData = {
   // Who Should Choose
   whoShouldChooseA: {
     title: "Who Should Choose Dental Implants?",
-    description: "Implants are the gold standard for a reason. They are best for people who want a permanent, no-fuss solution that feels and functions just like natural teeth.",
+    description: "Implants may suit people who want a fixed replacement and whose health, gums, bone, and treatment plan support implant surgery.",
     bestFor: [
-      "Those prioritizing long-term health and bone preservation.",
-      "People who want to eat anything without worry.",
-      "Individuals looking for a permanent, fixed solution.",
+      "People considering a fixed replacement.",
+      "People willing to complete surgery, healing, and follow-up care.",
+      "People whose dentist confirms the site can support an implant.",
       "Patients with sufficient jawbone to support the implant.",
     ],
   },
   whoShouldChooseB: {
     title: "Who Should Choose Dentures?",
-    description: "Dentures are a practical and affordable choice, especially if you are missing multiple teeth. They offer a fast way to restore your smile and basic function.",
+    description: "Dentures may suit people who want a removable replacement, need to replace several teeth, or are not pursuing implant surgery.",
     bestFor: [
       "Those on a tighter budget.",
       "Individuals who are not candidates for dental surgery.",
-      "People needing a solution for multiple missing teeth quickly.",
+      "People replacing several or all teeth in an arch.",
       "Patients who are okay with a removable appliance.",
     ],
   },
 
   // Bottom Line
-  bottomLine: "Dental implants are a long-term investment in your health and quality of life, offering unmatched stability and bone preservation. Dentures provide a functional and affordable solution that can restore your smile quickly, but they require more maintenance and do not stop bone loss.",
+  bottomLine: "Implants involve surgery and a longer treatment process but provide a fixed replacement. Dentures are removable and may have a lower initial cost, but they need daily removal and periodic fit checks. A dentist can compare both options for your mouth and health history.",
 
   // FAQs
   faqs: [
     {
       q: "Are dental implants worth the cost?",
-      a: "Yes, for many people they are. While the upfront cost is higher, their longevity and ability to prevent bone loss can make them more cost-effective over a lifetime. They also provide a better quality of life with fewer eating restrictions.",
+      a: "The value depends on your treatment goals, health, implant site, total cost, alternatives, and follow-up needs. Ask for itemized plans for every option you are considering.",
     },
     {
       q: "How long do dentures last compared to implants?",
-      a: "Dentures typically need to be replaced every 5 to 10 years due to wear and changes in your jaw shape. Dental implants, with proper care, can last a lifetime, as the titanium post integrates with your bone.",
+      a: "Both need ongoing care. Dentures may need adjustments or replacement as the mouth changes. Implants and their crowns also need monitoring and may require repair or replacement over time.",
     },
     {
       q: "Can I eat normally with dentures?",
-      a: "You can eat most foods, but it takes practice. Chewy or hard foods can be challenging, and food particles can get trapped underneath. Implants allow you to eat anything you would with natural teeth.",
+      a: "Dentures often require practice and may make some foods harder to manage. Implant-supported crowns are fixed, but chewing comfort still depends on healing, fit, bite, and oral health.",
     },
     {
       q: "Does getting dental implants hurt?",
-      a: "The procedure is done under local anesthesia, so you will not feel pain during the surgery. Most people report some soreness and discomfort for a few days afterward, which is manageable with over-the-counter pain medication.",
+      a: "The area is usually numbed before implant placement. Soreness can occur afterward, and your dental team can explain how to manage it safely.",
     },
     {
       q: "Why do dentures become loose?",
@@ -147,7 +147,7 @@ const data: ComparisonPageData = {
     },
     {
       q: "Am I a good candidate for dental implants?",
-      a: "A good candidate has healthy gums and enough jawbone to anchor the implant. Your dentist will use a 3D scan to check your bone density. Even if you have some bone loss, a bone graft can often make implants possible.",
+      a: "A dentist must review your health history, medications, gums, jawbone, smoking, and healing risks. Imaging may be used to assess the site, and grafting is only appropriate in some cases.",
     },
   ],
 
@@ -157,7 +157,7 @@ const data: ComparisonPageData = {
     { name: "Braces vs Invisalign", href: "/comparisons/braces-vs-invisalign", tagline: "Compare two popular straightening options." },
     { name: "Dental Implant Cost", href: "/dental-costs/dental-implant-cost", tagline: "A full breakdown of implant expenses." },
     { name: "Dental Implant Procedure", href: "/treatments/dental-implant-procedure", tagline: "What to expect from the implant process." },
-    { name: "Dentures Cost Guide", href: "/dental-costs/dentures-cost", tagline: "What dentures cost in 2026." },
+    { name: "Dentures Cost Guide", href: "/dental-costs/dentures-cost", tagline: "Review denture cost factors and estimate questions." },
   ],
 };
 

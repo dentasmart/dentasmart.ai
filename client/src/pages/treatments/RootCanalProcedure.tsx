@@ -6,19 +6,19 @@ const data: TreatmentPageData = {
   procedureName: "Root Canal",
   heroTitle: "What to Expect During a",
   heroHighlight: "Root Canal",
-  heroDescription: "A root canal isn't the scary procedure it's made out to be. It's a treatment to save a tooth that's badly infected or decayed, relieving your pain and getting your smile back to normal.",
+  heroDescription: "A root canal removes inflamed or infected tissue from inside a tooth. The treatment may relieve pain and help preserve the natural tooth.",
   metaTitle: "Root Canal Procedure: A Step-by-Step Guide | DentaSmart",
   metaDescription: "Getting a root canal? Learn the step-by-step procedure, what to expect during and after treatment, recovery tips, and why it saves your natural tooth.",
   keywords: "root canal, root canal procedure, endodontic treatment, tooth infection, dental pain",
   statsStrip: [
-    { value: ">95%", label: "Success Rate" },
-    { value: "1-2", label: "Visits Typically Needed" },
-    { value: "25M+", label: "Root Canals Performed Annually" },
+    { value: "Inside Tooth", label: "Area Treated" },
+    { value: "Local", label: "Anesthesia Commonly Used" },
+    { value: "Crown", label: "May Be Recommended" },
   ],
   whyNeededTitle: "Why You Might Need a",
   whyNeededHighlight: "Root Canal",
   whyNeededDescription: "A root canal is needed when the soft tissue inside your tooth, called the pulp, becomes inflamed or infected. This can happen because of deep decay, repeated dental procedures on the tooth, or a crack or chip in the tooth. The pulp contains nerves and blood vessels, and when it's damaged, bacteria can multiply inside the tooth. This can lead to a serious infection or an abscess, which is a pus-filled pocket at the end of the tooth's roots.",
-  whyNeededDescription2: "If left untreated, the infection can spread to other parts of your body and can even be life-threatening. A root canal cleans out the infection and saves the natural tooth, which is always better than having to replace it with an artificial one.",
+  whyNeededDescription2: "Without treatment, the infection can worsen or spread. Root canal treatment removes infected tissue and may help preserve the natural tooth. A dentist can explain whether the tooth can be saved.",
   warningSignsTitle: "Signs You Might Need a Root Canal",
   warningSigns: [
     "Severe tooth pain when chewing or applying pressure",
@@ -31,7 +31,7 @@ const data: TreatmentPageData = {
     {
       step: "1",
       title: "X-ray and Anesthesia",
-      description: "First, your dentist will examine the tooth and take X-rays to see the shape of the root canals and determine if there are any signs of infection in the surrounding bone. Then, they'll use local anesthesia to numb the area near the tooth. You'll be awake during the procedure, but you won't feel any pain.",
+      description: "First, your dentist will examine the tooth and take X-rays to see the shape of the root canals and check the surrounding bone. They will usually use local anesthesia to numb the area and keep you comfortable during treatment.",
       duration: "10-15 minutes",
     },
     {
@@ -63,7 +63,7 @@ const data: TreatmentPageData = {
   risks: [
     {
       risk: "Re-infection",
-      detail: "New decay can expose the root canal filling material to bacteria, causing a new infection. A good crown and proper oral hygiene can prevent this.",
+      detail: "New decay can expose the root canal filling material to bacteria, causing a new infection. A well-fitting restoration and regular oral hygiene help reduce this risk.",
     },
     {
       risk: "Missed Canals",
@@ -79,7 +79,7 @@ const data: TreatmentPageData = {
     },
   ],
   recoveryTitle: "What to Expect After Your Root Canal",
-  recoveryDescription: "Recovery is usually straightforward. Your tooth might feel sensitive for the first few days, especially if there was pain or infection before the procedure. This is normal and can be managed with over-the-counter pain medication.",
+  recoveryDescription: "Your tooth may feel sensitive for the first few days, especially if there was pain or infection before the procedure. Follow your dentist's instructions for managing discomfort.",
   recoveryTimeline: "1-2 weeks",
   recoveryTips: [
     {
@@ -88,25 +88,25 @@ const data: TreatmentPageData = {
     },
     {
       title: "Practice Good Oral Hygiene",
-      description: "Brush and floss as you normally would to keep the area clean and prevent other problems. A clean mouth heals faster.",
+      description: "Brush and floss as directed to keep the area clean while it heals.",
     },
     {
       title: "Follow Up with Your Dentist",
-      description: "It's important to return for your crown or permanent filling. This final step is what protects your tooth and ensures the long-term success of the root canal.",
+      description: "Return for the crown or permanent filling your dentist recommends. The final restoration helps protect the treated tooth.",
     },
   ],
   faqs: [
     {
       q: "Is a root canal painful?",
-      a: "No, a root canal doesn't cause pain, it relieves it. With modern anesthesia, the procedure itself is painless. You might have some mild soreness afterward, but it's manageable.",
+      a: "The area is numbed before treatment. Some people have mild soreness afterward, and your dentist can explain how to manage it.",
     },
     {
       q: "How long does a root canal take?",
       a: "A root canal procedure can take anywhere from 90 minutes to 3 hours. It can be done in one or two appointments, depending on your specific situation.",
     },
     {
-      q: "What is the success rate of a root canal?",
-      a: "Root canals have a very high success rate, over 95%. Many root canal-treated teeth last a lifetime with proper care.",
+      q: "How long can a root canal-treated tooth last?",
+      a: "A treated tooth can remain functional for many years. Results depend on the tooth, the final restoration, oral hygiene, and follow-up care.",
     },
     {
       q: "Can I go back to work after a root canal?",
@@ -114,7 +114,7 @@ const data: TreatmentPageData = {
     },
     {
       q: "What happens if I don't get a root canal?",
-      a: "If you don't get a root canal, the infection will spread. This can lead to a dental abscess, bone loss around the root, and you will likely lose the tooth.",
+      a: "Without treatment, the infection may worsen or spread. It can lead to an abscess, affect bone around the root, or make extraction necessary.",
     },
   ],
   relatedTreatmentPages: [

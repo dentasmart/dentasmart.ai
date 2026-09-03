@@ -6,22 +6,22 @@ const data: CostPageData = {
   procedureName: "Dentures",
   heroTitle: "How Much Do",
   heroHighlight: "Dentures Really Cost?",
-  heroDescription: "Dentures are a popular way to replace missing teeth and bring back your smile. The price can swing widely depending on what you need. We will break down the real costs to help you understand what to expect.",
+  heroDescription: "Denture costs vary by type, material, extractions, fittings, and follow-up care. Review the charges that may appear in a written estimate.",
   metaTitle: "Dentures Cost in 2026 | DentaSmart",
-  metaDescription: "How much do dentures cost in 2026? Prices range from $600 to $8,000 depending on the type. See a full cost breakdown and ways to make them affordable.",
+  metaDescription: "Review typical denture fees, factors that affect the total, insurance questions, and ongoing adjustment or maintenance costs.",
   keywords: "dentures cost, cost of dentures, full dentures cost, partial dentures cost, affordable dentures",
   statsStrip: [
-    { value: "$1,800", label: "Average Full Set" },
-    { value: "7-10", label: "Years They Last" },
-    { value: "90%", label: "Of people who have lost all their teeth choose dentures" },
+    { value: "Full or Partial", label: "Common Types" },
+    { value: "Removable", label: "Replacement Option" },
+    { value: "Ongoing", label: "Fit and Maintenance" },
   ],
-  problemTitle: "The Hidden Costs",
-  problemHighlight: "Behind a New Smile",
+  problemTitle: "What the Total",
+  problemHighlight: "May Include",
   problemDescription: "Getting dentures seems straightforward, but the final bill can be a surprise. The price tag is not just for the teeth themselves. It often includes initial consultations, tooth extractions, fittings, and future adjustments. Each step adds to the overall expense, making it hard to budget accurately from the start.",
   problemDescription2: "Beyond the initial fitting, dentures require ongoing care. Relining to refit the dentures as your gums change, repairs for accidental breaks, and specialized cleaning solutions are all part of the long-term cost. These are not one-time expenses, but they are necessary to keep your dentures comfortable and functional.",
   problemNote: (
     <>
-      Before committing to dentures, many patients explore alternatives. <Link href="/oral-health-hub/dental-veneers-for-missing-teeth/" className="text-primary underline hover:text-primary/80">Dental veneers for missing teeth</Link> can be a cosmetic option for certain gaps, while <Link href="/oral-health-hub/dental-crowns-and-bridges/" className="text-primary underline hover:text-primary/80">dental crowns and bridges</Link> offer a fixed solution that doesn't need to be removed. For a lower-cost, non-permanent route, <Link href="/oral-health-hub/removable-veneers/" className="text-primary underline hover:text-primary/80">removable veneers</Link> are worth understanding before you decide.
+      Before committing to dentures, ask which missing-tooth options fit your anatomy, remaining teeth, health, and budget. <Link href="/oral-health-hub/dental-crowns-and-bridges/" className="text-primary underline hover:text-primary/80">Dental bridges</Link> are one fixed option when suitable supporting teeth are available. Veneers cover existing tooth surfaces and do not replace missing teeth.
     </>
   ),
   costBreakdown: [
@@ -34,19 +34,19 @@ const data: CostPageData = {
   costFactors: [
     { factor: "Material", impact: "Acrylic dentures can cost as little as $600 per arch, while high-end porcelain dentures can be over $4,000.", tip: "Discuss material trade-offs with your dentist. A slightly more expensive material might offer better durability and a more natural look." },
     { factor: "Full vs. Partial", impact: "A full set of dentures to replace all teeth costs between $1,200 and $8,000, while partial dentures for a few teeth range from $500 to $2,500.", tip: "If you only need a few teeth replaced, a partial denture is a more affordable option than a full set." },
-    { factor: "Geographic Location", impact: "Denture costs in major metropolitan areas can be 20-30% higher than in smaller towns. For example, a full set might cost $2,500 in a rural area but $3,500 in a big city.", tip: "Check with dental offices in nearby smaller towns. The travel could be worth the savings." },
+    { factor: "Geographic Location", impact: "Fees vary by region, practice, laboratory, and local operating costs.", tip: "Request written estimates from more than one office if travel and follow-up visits are practical for you." },
     { factor: "Extractions", impact: "If you need teeth pulled before getting dentures, each extraction can add $150 to $400 to your bill.", tip: "Ask your dentist for a package deal that includes extractions and the dentures to lower the overall cost." },
   ],
   insuranceTips: [
-    { title: "Check Your Coverage", description: "Many dental insurance plans cover up to 50% of the cost of dentures. Call your provider to understand your specific benefits and limitations." },
+    { title: "Check Your Coverage", description: "Denture coverage varies by plan. Ask about deductibles, annual maximums, waiting periods, replacement limits, and network rules." },
     { title: "Use Your FSA or HSA", description: "Flexible Spending Accounts (FSA) and Health Savings Accounts (HSA) let you use pre-tax dollars to pay for medical expenses, including dentures." },
-    { title: "Ask About Payment Plans", description: "Most dental offices offer financing options or payment plans to help you spread out the cost of your dentures over time." },
+    { title: "Ask About Payment Plans", description: "Some dental offices offer financing or payment plans. Ask for the total cost, fees, and repayment terms before enrolling." },
     { title: "Look into Dental Schools", description: "Dental schools often provide dentures at a lower cost as part of their training programs. The work is done by students but supervised by experienced dentists." },
   ],
   savingsWithDentaSmart: [
-    { title: "Find Affordable Dentists", description: "Our app helps you locate and compare prices from dentists in your area, ensuring you get the best deal on your dentures." },
-    { title: "Personalized Cost Estimates", description: "Get a more accurate idea of what you will pay. The DentaSmart app provides tailored cost estimates based on your specific needs and location." },
-    { title: "Track Your Dental Expenses", description: "Keep all your dental-related costs in one place. This makes it easier to manage your budget and see where your money is going." },
+    { title: "Understand the Estimate", description: "Use DentaSmart cost guides to review common denture charges and prepare questions for the dental office." },
+    { title: "Compare Treatment Documents", description: "Keep supported treatment documents together when you are reviewing recommendations or requesting a second opinion." },
+    { title: "Prepare Cost Questions", description: "Write down questions about extractions, fittings, adjustments, repairs, and replacement before you agree to treatment." },
   ],
   faqs: [
     { q: "How long do dentures last?", a: "With proper care, dentures can last between 7 and 10 years. Over time, they may need to be relined or replaced as your mouth changes." },

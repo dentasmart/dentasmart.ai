@@ -151,9 +151,9 @@ const staticMeta: Record<string, MetaInfo> = {
       "Review general educational information about dental symptoms, treatments, costs, and oral health. DentaSmart does not diagnose conditions.",
   },
   "/find-a-dentist": {
-    title: "Find a Dentist Near You | DentaSmart Dentist Finder",
+    title: "How to Choose a Dentist | DentaSmart Guide",
     description:
-      "Find a trusted dentist near you with DentaSmart's dentist finder. Search by location, specialty, and insurance acceptance.",
+      "Review practical questions about credentials, services, access, fees, insurance participation, and communication before choosing a dentist.",
   },
   "/symptom-quiz": {
     title: "Dental Symptom Quiz | Check Your Oral Health | DentaSmart",
@@ -210,12 +210,12 @@ const staticMeta: Record<string, MetaInfo> = {
   "/compare/dentasmart-vs-teledentistry": {
     title: "DentaSmart vs Teledentistry | Cost & Feature Comparison",
     description:
-      "Compare DentaSmart with teledentistry services. See how AI dental analysis compares to virtual dentist visits in cost, speed, and convenience.",
+      "Compare DentaSmart's educational tools with virtual dental visits by clinician access, records, services, pricing, and professional-care boundaries.",
   },
   "/compare/dentasmart-vs-dental-insurance": {
     title: "DentaSmart vs Dental Insurance | What's Right for You?",
     description:
-      "Compare DentaSmart with traditional dental insurance. Learn how AI dental analysis can complement or replace expensive insurance plans.",
+      "Compare DentaSmart's educational tools with dental insurance coverage. DentaSmart does not provide insurance or replace dental benefits.",
   },
 
   // ─── Conditions pages ──────────────────────────────────────────────
@@ -227,7 +227,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/conditions/toothache": {
     title: "Toothache Guide | Causes, Relief & When to See a Dentist",
     description:
-      "Your ultimate toothache guide to identify causes, find home relief, and know when to see a dentist for lasting comfort.",
+      "Learn common causes of toothache, ways to manage discomfort at home, and signs that call for dental care.",
   },
   "/conditions/cavities": {
     title: "Cavities Guide | Signs, Prevention & Treatment Options",
@@ -267,7 +267,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/conditions/root-canal": {
     title: "Root Canal Guide | What to Expect, Cost & Recovery",
     description:
-      "Nervous about getting a root canal? Find out what really happens, why you might need one, and how it's way easier than you've heard.",
+      "Learn why a root canal may be recommended, what happens during treatment, expected costs, and recovery.",
   },
   "/conditions/dental-crown": {
     title: "Dental Crown Guide | Types, Process & Care",
@@ -292,12 +292,12 @@ const staticMeta: Record<string, MetaInfo> = {
   "/conditions/oral-thrush": {
     title: "Oral Thrush Guide | Causes, Symptoms & Treatment",
     description:
-      "Got white stuff in your mouth? It could be oral thrush. Here's a simple guide to what causes it, how to treat it, and when you should see a doctor.",
+      "Learn common causes and symptoms of oral thrush, available treatments, and when to contact a dentist or doctor.",
   },
   "/conditions/tmj-disorder": {
     title: "TMJ Disorder Guide | Causes, Symptoms & Relief",
     description:
-      "Is your jaw clicking, popping, or just plain hurting? It could be TMJ disorder. Here's a simple guide to what causes it and how to find relief.",
+      "Learn common causes of jaw clicking, popping, or pain, ways to manage symptoms, and when to seek care.",
   },
   "/conditions/periodontitis": {
     title: "Periodontitis Guide | Advanced Gum Disease Treatment",
@@ -343,9 +343,9 @@ const staticMeta: Record<string, MetaInfo> = {
       "Is your jaw sore, clicking, or stiff? It could be TMJ, teeth grinding, or something else. Here's how to tell and when you should see a dentist.",
   },
   "/symptoms/bad-breath": {
-    title: "Bad Breath (Halitosis) | Real Causes & How to Fix It",
+    title: "Bad Breath (Halitosis) | Causes, Care & When to See a Dentist",
     description:
-      "Got bad breath that just won't quit? Find out the real reasons for halitosis and how to actually fix it for good.",
+      "Learn common causes of persistent bad breath, steps that may help, and when to see a dentist.",
   },
   "/symptoms/swollen-gums": {
     title: "Swollen Gums | Causes, Home Remedies & When to See a Dentist",
@@ -531,9 +531,9 @@ const staticMeta: Record<string, MetaInfo> = {
       "Browse DentaSmart's expert oral health guides covering brushing, flossing, dental visits, affordable care, and more.",
   },
   "/guides/brushing-guide": {
-    title: "How to Brush Your Teeth Properly | Complete Guide",
+    title: "How to Brush Your Teeth Properly | Step-by-Step Guide",
     description:
-      "You're probably brushing your teeth wrong. Here's a simple guide on how to brush correctly, for how long, and the mistakes to stop making.",
+      "Learn how to brush your teeth, how long to brush, and common technique mistakes to avoid.",
   },
   "/guides/flossing-guide": {
     title: "How to Floss Correctly | Simple Step-by-Step Guide",
@@ -548,30 +548,30 @@ const staticMeta: Record<string, MetaInfo> = {
   "/guides/affordable-dental-care": {
     title: "Affordable Dental Care Guide | Save on Dental Costs",
     description:
-      "Don't let cost be a barrier to a healthy smile. Our guide shows you how to find affordable dental care, from community clinics to payment plans.",
+      "Find affordable dental care options, including community clinics, dental schools, discount plans, and payment plans.",
   },
   "/guides/dental-insurance-alternatives": {
     title: "Dental Insurance Alternatives | Affordable Options Guide",
     description:
-      "Tired of expensive dental insurance? Explore affordable alternatives like discount plans, dental schools, and payment options.",
+      "Compare dental discount plans, teaching clinics, community health centers, payment plans, and tax-advantaged accounts.",
   },
   "/guides/diy-dental-care": {
     title: "DIY Dental Care | Safe Home Teeth Cleaning & Whitening",
     description:
-      "Want to manage your dental care at home? Learn which DIY teeth cleaning and whitening methods are safe and when you need to see a dentist.",
+      "Learn what daily home dental care can support, which remedies may cause harm, and which symptoms need professional evaluation.",
   },
   "/guides/preventing-expensive-dental-problems": {
     title: "Prevent Expensive Dental Problems | Money-Saving Guide",
     description:
-      "Learn how to prevent expensive dental problems with our comprehensive guide. A roadmap to a healthier smile and a happier wallet.",
+      "Use daily oral care, risk-based dental visits, fluoride, and early symptom checks to lower the chance that dental problems progress.",
   },
   "/guides/dental-emergencies-on-a-budget": {
     title: "Dental Emergencies on a Budget | Affordable Emergency Care",
     description:
-      "Don't let cost stop you from treating a dental emergency. Our guide helps you find affordable care, manage pain, and know when to seek help.",
+      "Know which dental symptoms require emergency care and how to ask about urgent dental services, fees, and payment options.",
   },
   "/guides/when-to-get-dental-second-opinion": {
-    title: "When to Get a Dental Second Opinion | Complete Guide",
+    title: "When to Get a Dental Second Opinion | Decision Guide",
     description:
       "Feeling unsure about a dental diagnosis? Learn the signs you need a second opinion, how to find the right dentist, and how to compare treatment plans.",
   },
@@ -586,7 +586,7 @@ const staticMeta: Record<string, MetaInfo> = {
       "Confused about whether you need a dental crown or a filling? Our guide breaks down the costs, longevity, and pros and cons.",
   },
   "/guides/implants-vs-bridges": {
-    title: "Dental Implants vs Bridges | Complete Comparison Guide",
+    title: "Dental Implants vs Bridges | Comparison Guide",
     description:
       "Explore the pros and cons of dental implants and bridges. Compare cost, longevity, and who is a good candidate.",
   },
@@ -601,14 +601,14 @@ const staticMeta: Record<string, MetaInfo> = {
       "Tired of hearing you have another cavity? Learn how to prevent cavities with science-backed tips on diet, fluoride, and daily habits.",
   },
   "/guides/gum-disease-prevention": {
-    title: "Gum Disease Prevention | Complete Guide to Healthy Gums",
+    title: "Gum Disease Prevention | Risk and Care Guide",
     description:
-      "Learn how to prevent gum disease with our complete guide. From daily habits to professional cleanings, everything you need for healthy gums.",
+      "Learn how daily plaque removal, professional cleaning, smoking status, health conditions, and follow-up affect gum-disease risk.",
   },
   "/guides/natural-teeth-whitening": {
-    title: "Natural Teeth Whitening | Safe Methods That Actually Work",
+    title: "Natural Teeth Whitening | Benefits, Limits and Risks",
     description:
-      "Discover safe and effective natural teeth whitening methods you can do at home. Learn what to use, what to avoid, and how to maintain a brighter smile.",
+      "Learn why tooth color changes, which home remedies may damage enamel or gums, and when to ask a dentist about whitening.",
   },
   "/guides/oral-health-life-stages": {
     title: "Oral Health by Life Stage | Baby to Senior Dental Care",

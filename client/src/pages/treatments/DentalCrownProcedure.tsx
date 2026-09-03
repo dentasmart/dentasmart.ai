@@ -68,7 +68,7 @@ const data: TreatmentPageData = {
     },
     {
       risk: "Gum Irritation",
-      detail: "The edge of the crown can sometimes irritate your gums if the fit isn't perfect. Good brushing and flossing are important to keep your gums healthy around the crown.",
+      detail: "The edge of the crown can sometimes irritate your gums if the fit needs adjustment. Regular brushing and flossing help keep the surrounding gums healthy.",
     },
   ],
   recoveryTitle: "Crown Recovery and Aftercare",

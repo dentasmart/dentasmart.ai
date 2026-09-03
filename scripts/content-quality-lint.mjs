@@ -104,6 +104,10 @@ const genericReviewDateMatches = findMatches(genericReviewDatePaths.map((path) =
 const agentSource = readFileSync(join(root, "server/blogAgent.ts"), "utf8");
 const aiDraftOnly = agentSource.includes("const shouldPublish = false") && agentSource.includes('status: "draft"') && agentSource.includes("publishedAt: null");
 const prohibitedClaimMatches = findMatches(renderedClaimFiles, /50K\+|100%\s*(?:detection|accuracy)|free\s+(?:AI\s+)?second opinion|bank[- ](?:grade|level)|HIPAA[- ]compliant/gi);
+const noAiSlopPatternMatches = findMatches(
+  activeCustomerFiles,
+  /\b(?:here(?:'|’)s the thing|let(?:'|’)s be honest|the truth is|think about it|you(?:'|’)re not alone|you are not alone|what most people get wrong|what nobody tells you|game[- ]changer|paradigm shift|cutting-edge|delve|tapestry|ever-evolving|supercharge|set it and forget it)\b/gi
+);
 
 const errors = [
   ...activePublicEmDashMatches,
@@ -111,6 +115,7 @@ const errors = [
   ...internalSelfCitationMatches,
   ...genericReviewDateMatches,
   ...prohibitedClaimMatches,
+  ...noAiSlopPatternMatches,
 ];
 if (!aiDraftOnly) errors.push({ file: "server/blogAgent.ts", count: 1 });
 
@@ -125,6 +130,7 @@ console.log(JSON.stringify({
   genericReviewDateMatches,
   aiDraftOnly,
   prohibitedClaimMatches,
+  noAiSlopPatternMatches,
   result: errors.length === 0 ? "PASS" : "FAIL",
 }, null, 2));
 

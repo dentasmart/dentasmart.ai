@@ -175,12 +175,12 @@ function generateGuideContent(slug: string): string {
   return `
 <article>
   <nav aria-label="breadcrumb"><a href="/">Home</a> &gt; <a href="/guides">Guides</a> &gt; ${readableSlug}</nav>
-  <h1>${readableSlug}: Complete Oral Health Guide</h1>
-  <p>This comprehensive guide covers everything you need to know about ${slug.replace(/-/g, ' ')}. Get practical, actionable advice for better oral health based on current dental best practices.</p>
+  <h1>${readableSlug}: Oral Health Guide</h1>
+  <p>Read practical information about ${slug.replace(/-/g, ' ')}, including care options, prevention steps, and signs that may need professional attention.</p>
   <h2>Why This Matters</h2>
-  <p>Good oral health habits prevent expensive dental problems down the road. This guide gives you the knowledge to take control of your dental health today.</p>
+  <p>Use this guide to understand common concerns, keep notes, and prepare questions for a dentist.</p>
   <h2>Practical Tips</h2>
-  <p>Follow these evidence-based recommendations to improve your oral health routine and prevent common dental issues.</p>
+  <p>Review the recommendations below and choose the steps that fit your routine. A dentist can advise you based on your health history and symptoms.</p>
   <h2>Get Personalized Guidance</h2>
   <p>DentaSmart provides educational reports and tracking tools for supported information. Use them to organize questions and records for professional care.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/guides">Browse All Guides</a> | <a href="/oral-health-hub">Oral Health Hub</a></p>

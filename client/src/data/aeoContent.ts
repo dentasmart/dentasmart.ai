@@ -404,11 +404,11 @@ export const aeoSymptoms: Record<string, AEOBlock> = {
   },
   "mouth-sores": {
     inOneSentence:
-      "Mouth sores (canker sores, cold sores, or irritation ulcers) are usually harmless and heal within 1 to 2 weeks, but persistent sores lasting longer than 3 weeks should be checked by a dentist.",
+      "Mouth sores have several possible causes, and a sore that persists, recurs, changes, bleeds, or makes eating or swallowing difficult needs professional evaluation.",
     whatToDoToday: [
-      "Rinse with warm salt water or a baking soda rinse to soothe the sore.",
+      "Use gentle oral care and avoid foods or products that clearly irritate the sore.",
       "Avoid spicy, acidic, or rough-textured foods that irritate the area.",
-      "Apply an over-the-counter oral gel (like benzocaine) to numb the pain."
+      "Use a nonprescription oral-care product only as labeled and ask a pharmacist or dentist if your medicines, age, or health conditions affect the choice."
     ],
     dentistQuestions: [
       "Is this a canker sore, cold sore, or something I should be concerned about?",
@@ -717,7 +717,7 @@ export const aeoGuides: Record<string, AEOBlock> = {
     ]
 },
   "mouth-ulcers": {
-    inOneSentence: "A mouth ulcer is a painful sore inside your mouth that's usually harmless and heals on its own, often caused by minor injuries, stress, or certain foods.",
+    inOneSentence: "A mouth ulcer can result from irritation, infection, medicines, immune conditions, or other causes; persistent, recurrent, or changing ulcers need professional evaluation.",
     whatToDoToday: [
       "Rinse your mouth with warm salt water to clean the area and reduce pain.",
       "Avoid spicy, acidic, or hard foods that could irritate the ulcer.",
@@ -732,7 +732,7 @@ export const aeoGuides: Record<string, AEOBlock> = {
     ]
 },
   "canker-sores": {
-    inOneSentence: "A canker sore is a small, painful ulcer inside your mouth that's usually harmless and heals on its own, often caused by stress or minor injury.",
+    inOneSentence: "A canker sore is a painful ulcer inside the mouth; recurrent, large, persistent, or unusually painful sores need professional evaluation.",
     whatToDoToday: [
       "Rinse your mouth with warm salt water to clean the sore.",
       "Avoid eating spicy or acidic foods that could make it hurt more.",

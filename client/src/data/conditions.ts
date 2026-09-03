@@ -28,7 +28,7 @@ export const conditionsData: Record<string, ConditionData> = {
     title: "Toothaches: What's Causing It, How to Get Relief, and When to Call a Dentist",
     metaTitle: "Toothache Causes, Relief & Treatment | DentaSmart",
     metaDescription:
-      "Figuring out what's causing your toothache is the first step. We'll help you understand the reasons, find some relief at home, and know when it's time to see a dentist.",
+      "Learn common causes of tooth pain, ways to manage discomfort temporarily, and signs that call for urgent or routine dental care.",
     primaryKeyword: "toothache",
     secondaryKeywords: [
       "tooth pain",
@@ -39,20 +39,20 @@ export const conditionsData: Record<string, ConditionData> = {
     ],
     heroHeading: "Toothache",
     heroSubheading:
-      "A toothache is your body sending a clear signal that something's wrong. Let's figure out what it means and what you can do.",
+      "Tooth pain can have several causes. The pattern, duration, and other symptoms help a dentist decide what to examine.",
     directAnswer:
-      "A toothache is just pain in or near a tooth. It's usually from a cavity, an infection, gum problems, or even a cracked tooth. For minor pain, you can try things like ibuprofen and saltwater rinses. But if the pain is bad, won't go away, or keeps getting worse, you need to see a dentist. Fast.",
+      "A toothache is pain in or near a tooth. Possible causes include decay, infection, gum problems, grinding, or a crack. Temporary measures may ease discomfort, but persistent or worsening pain needs a dental evaluation. Facial swelling or trouble breathing or swallowing requires urgent care.",
     detailedExplanation: [
-      "Almost everyone gets a toothache at some point. The pain can be a real pain (pun intended), ranging from a dull throb to a sharp, stabbing feeling that makes it impossible to think about anything else. Knowing what might be causing it helps you figure out your next move.",
-      "So, what's the most common culprit? A good old-fashioned cavity. Bacteria make acid that eats through your tooth's tough outer shell (the enamel). Once it gets to the softer layer inside, called dentin, things start to hurt. And if it gets all the way to the nerve? That's when you get the really bad pain that might mean a root canal is in your future.",
-      "But it's not always cavities. Gum disease can make your whole mouth ache. You could have a cracked tooth, a bad filling, or maybe you grind your teeth at night (that's called bruxism). Sometimes, it isn't even your tooth! A sinus infection can feel a lot like a toothache. Weird, right?",
-      "While you're waiting for your dental appointment, you can do a few things to feel better. Rinsing with warm salt water (about half a teaspoon of salt in a glass of water) can calm down some of the swelling. An over-the-counter painkiller like ibuprofen is a good choice because it fights both pain and inflammation. A cold pack on your cheek can help numb things up, too.",
+      "Tooth pain can feel dull, throbbing, sharp, or sensitive to pressure and temperature. Note when it started, what triggers it, and whether you also have swelling, fever, drainage, or a bad taste.",
+      "Decay is one possible cause. Acid made by plaque bacteria can weaken enamel and reach the softer dentin below. Pain may increase if decay reaches tissue inside the tooth, but symptoms alone cannot show how deep it is.",
+      "Gum disease, a cracked tooth, a damaged filling, grinding, and sinus pressure can also cause pain near a tooth. A dental exam is needed to tell these problems apart.",
+      "While waiting for care, follow any advice from your dental office. A cold pack on the outside of the cheek may help with swelling. If you use an over-the-counter pain medicine, follow the label and check that it is safe with your health conditions and other medicines.",
     ],
     causes: [
       {
         title: "Tooth Decay (Cavities)",
         description:
-          "This is the big one. Bacteria create acid that just eats away at your tooth until it hits the nerve. Ouch.",
+          "Plaque bacteria produce acids that weaken enamel. Deeper decay can irritate tissue inside the tooth.",
       },
       {
         title: "Gum Disease",
@@ -62,12 +62,12 @@ export const conditionsData: Record<string, ConditionData> = {
       {
         title: "Cracked or Fractured Tooth",
         description:
-          "A tiny crack can let hot or cold sensations get right to the nerve, causing a super sharp pain.",
+          "A crack can expose sensitive tooth layers and cause sharp pain with temperature or biting.",
       },
       {
         title: "Dental Abscess",
         description:
-          "This is a pocket of pus from an infection. It's a serious problem and you need to see a dentist right away. Don't wait.",
+          "An abscess is a pocket of infection. Prompt dental care is important, especially with swelling, fever, or spreading symptoms.",
       },
       {
         title: "Impacted Wisdom Teeth",
@@ -89,18 +89,18 @@ export const conditionsData: Record<string, ConditionData> = {
       { text: "There's a nasty taste in your mouth (could be an abscess)", severity: "severe" },
     ],
     whenToSeeDentist: [
-      "The pain just won't quit after a day or two, or it's getting worse.",
+      "The pain lasts more than a day or two or is getting worse.",
       "You're running a fever.",
       "Your face or jaw is swollen.",
-      "It's hard to breathe or swallow. (Go to the ER for this one!)",
+      "It is hard to breathe or swallow. Seek emergency care now.",
       "The pain is so bad that normal painkillers aren't helping.",
-      "You see pus or have a gross taste coming from the tooth.",
+      "You see drainage or have a bad taste coming from the tooth.",
     ],
     keyTakeaways: [
       "A toothache is usually from a cavity, infection, or a damaged tooth.",
       "Things like saltwater rinses and ibuprofen can help for a little while, but they won't fix the actual problem.",
-      "If you have bad pain, swelling, or a fever, you need to call your dentist. It's an emergency.",
-      "Using a tool like DentaSmart can help you spot issues before they turn into a full-blown, painful toothache.",
+      "Severe pain, swelling, or fever needs prompt dental advice. Trouble breathing or swallowing requires emergency care.",
+      "DentaSmart can help you organize symptoms and supported images for a dental conversation. It cannot diagnose the cause of tooth pain.",
     ],
     faqs: [
       {
@@ -111,17 +111,17 @@ export const conditionsData: Record<string, ConditionData> = {
       {
         question: "What's the quickest way to make a toothache stop hurting?",
         answer:
-          "For temporary relief, your best bet is ibuprofen (it helps with swelling), a warm saltwater rinse, and a cold pack on your cheek. But remember, this is just a temporary fix until you can see your dentist.",
+          "A cold pack on the outside of the cheek may help temporarily. Follow your dental office's advice, and use over-the-counter medicine only as directed and when it is safe for you.",
       },
       {
         question: "How much will it cost to fix my toothache?",
         answer:
-          "It really depends on what's wrong. A simple filling might be $150-$300. A root canal can be $700-$1,500. And taking the tooth out could be $150-$650. This is why catching things early is so much better for your wallet.",
+          "The cost depends on the cause, exam, imaging, procedure, provider, location, and insurance. Ask the dental office for an itemized estimate after the tooth has been evaluated.",
       },
       {
         question: "Can DentaSmart tell me what's wrong with my tooth?",
         answer:
-          "DentaSmart can look at your photos and X-rays to give you an idea of what might be going on. It's a great starting point, but you still need to see a real dentist to get a final diagnosis and a treatment plan.",
+          "DentaSmart can provide educational information from supported photos and X-rays and help you prepare questions. A licensed dentist must diagnose the cause and recommend treatment.",
       },
     ],
     relatedConditions: [
@@ -158,14 +158,14 @@ export const conditionsData: Record<string, ConditionData> = {
     ],
     heroHeading: "Cavities",
     heroSubheading:
-      "Yep, cavities are the most common dental issue on the planet. But here's the good news: you can prevent them, and they're totally treatable if you catch them early.",
+      "Cavities develop when tooth structure breaks down. Earlier changes may be easier to manage than deeper decay.",
     directAnswer:
-      "So, what is a cavity? It's a little hole that forms in your tooth when the hard outer layer gets damaged. This happens because of bacteria, snacking a lot, sipping on sugary drinks, and not cleaning your teeth well. If you catch it super early, you can sometimes reverse it with fluoride. But once a hole actually forms, a dentist has to put in a filling.",
+      "A cavity is tooth decay that has damaged enamel or deeper tooth structure. Plaque bacteria, frequent sugar exposure, dry mouth, and oral-hygiene habits can affect risk. Early mineral loss may be managed without drilling in some cases, while a formed cavity usually needs professional treatment.",
     detailedExplanation: [
-      "Cavities (your dentist might call them 'dental caries') get started when bacteria in your mouth make acids that literally eat away at your tooth enamel. It doesn't happen overnight. It all begins with a little white spot on your tooth where minerals have been lost. At this stage, you can still turn things around with fluoride and by being really good with your brushing and flossing.",
-      "But if the decay keeps going, it chews through the enamel and gets to the softer part of your tooth inside, called dentin. That's when you'll probably start to feel some sensitivity or a little pain. The cavity might look like a brown or black spot, and you could see a tiny hole. At that point, you'll need a dentist to put in a filling to fix it up.",
-      "If you just ignore it, the decay can get all the way to the nerve of the tooth (the pulp). And that's when you get some serious pain and maybe even an infection, called an abscess. Fixing it then means a root canal or even pulling the tooth, which is way more expensive and a much bigger deal than a simple filling.",
-      "The best way to deal with cavities is to not get them in the first place. It's pretty simple: brush twice a day with a fluoride toothpaste, floss once a day, don't go crazy with sugary snacks and drinks, and see your dentist for regular checkups. DentaSmart can help you keep an eye on things between visits and spot trouble before it turns into a real pain.",
+      "Cavities, also called dental caries, begin when acids produced by plaque bacteria remove minerals from enamel. A white spot can be an early sign, but a dentist must examine it to determine whether the surface is still intact.",
+      "As decay moves through enamel into dentin, sensitivity or pain may develop. Some cavities have no obvious symptoms, and not every dark spot is decay.",
+      "Deeper decay can irritate or infect tissue inside the tooth. Treatment may involve a filling, crown, root canal, or extraction depending on how much tooth structure is affected.",
+      "Brushing with fluoride toothpaste, cleaning between teeth, limiting frequent sugar exposure, and following a dentist's recall plan can lower cavity risk. DentaSmart can help you organize supported images and questions between visits, but it does not diagnose decay.",
     ],
     causes: [
       {
@@ -191,7 +191,7 @@ export const conditionsData: Record<string, ConditionData> = {
       {
         title: "Old Fillings or Dental Work",
         description:
-          "Sometimes, old fillings get worn down and can have tiny gaps or rough spots. These are perfect hiding places for bacteria to start new cavities.",
+          "Older fillings can wear, chip, or develop edges that are harder to clean. A dentist can check whether repair or replacement is needed.",
       },
     ],
     symptoms: [
@@ -210,21 +210,21 @@ export const conditionsData: Record<string, ConditionData> = {
       "It's been more than 6 months since your last dental checkup.",
     ],
     keyTakeaways: [
-      "Cavities start out small and don't hurt. By the time you feel pain, the problem is already pretty serious.",
+      "Early decay may not hurt, so symptoms do not show how deep a cavity is.",
       "You can sometimes reverse super early cavities (the white spot stage) with fluoride.",
-      "A simple filling might cost you $150-$300. But if you wait, it could turn into a $700-$1,500 root canal. Ouch.",
-      "Keeping an eye on your teeth with DentaSmart can help you catch decay before it gets painful and expensive.",
+      "Treatment cost depends on the extent of decay, procedure, provider, location, and insurance.",
+      "DentaSmart can help you keep supported images and questions together for a dental visit. It cannot confirm a cavity.",
     ],
     faqs: [
       {
         question: "How can I tell if I have a cavity?",
         answer:
-          "Honestly, early on you probably can't. They don't have symptoms. As they get bigger, you might feel sensitivity to sugar or temperature, or see a dark spot or a hole. DentaSmart can often spot early signs in your photos and X-rays before you feel a thing.",
+          "Early cavities may have no symptoms. Sensitivity, a dark spot, or a visible hole can have several causes, so a dental exam and sometimes X-rays are needed.",
       },
       {
         question: "Can I get rid of a cavity myself?",
         answer:
-          "Only if you catch it at the very, very beginning (when it's just a white spot). Using fluoride toothpaste and getting fluoride treatments can help your enamel heal. But once there's an actual hole, a dentist has to place a filling. No way around it.",
+          "Early mineral loss may be managed with fluoride and changes to oral care or diet, but a dentist must confirm the stage. A formed cavity usually needs professional treatment.",
       },
       {
         question: "How long does it take to get a filling?",
@@ -260,7 +260,7 @@ export const conditionsData: Record<string, ConditionData> = {
     title: "What Is Gum Disease? (And How to Keep Your Gums Healthy)",
     metaTitle: "Gum Disease 101: From Gingivitis to Healthy Gums | DentaSmart",
     metaDescription:
-      "Worried about bleeding gums? Learn about the stages of gum disease, what causes it, and simple ways you can protect your smile. It's easier than you think!",
+      "Learn how gingivitis and periodontitis differ, what bleeding or receding gums may mean, and when to arrange a dental evaluation.",
     primaryKeyword: "gum disease",
     secondaryKeywords: [
       "gingivitis",
@@ -271,14 +271,14 @@ export const conditionsData: Record<string, ConditionData> = {
     ],
     heroHeading: "Gum Disease",
     heroSubheading:
-      "Think of your gums as the foundation for your teeth. If they're not in good shape, your whole smile is at risk. Here’s what you need to know.",
+      "Gum disease can begin with redness, swelling, or bleeding and can progress to damage around the teeth.",
     directAnswer:
-      "Gum disease is basically an infection in the tissues holding your teeth. It usually starts with gingivitis, which is when your gums get red, puffy, and bleed when you brush. If you don't deal with it, it can turn into periodontitis, which is way more serious and can lead to bone and tooth loss. The main culprit? Plaque buildup. The good news is you can totally reverse the early stages with good habits.",
+      "Gum disease affects the tissues that support the teeth. Gingivitis can cause red, swollen, or bleeding gums. Periodontitis can damage the supporting bone and may loosen teeth. Plaque is a major cause, but health conditions, smoking, medicines, and oral-care habits can also affect risk.",
     detailedExplanation: [
-      "Did you know nearly half of all adults over 30 have some form of gum disease? It all starts with plaque, which is a sticky film of bacteria that loves to hang out along your gumline. If you don't brush and floss it away, it hardens into tartar. And tartar isn't something you can remove on your own; you'll need a dental pro for that.",
-      "The first stage is called gingivitis. You might notice your gums are a bit red or swollen. Or maybe they bleed when you brush. The great thing is, at this point, no permanent damage has been done to the bone holding your teeth. Gingivitis is 100% reversible with better brushing and flossing, plus a professional cleaning.",
-      "But if you let gingivitis slide, it can get worse and become periodontitis. This is when your gums start to pull away from your teeth, creating little pockets that get infected. Your body's immune system tries to fight the infection, but this process (along with the bacteria) starts to break down the actual bone and tissue that support your teeth. This is when teeth can get loose and might even need to be pulled. Scary stuff.",
-      "So what puts you at risk? Smoking is the biggest one, by far. But other things like diabetes, hormone shifts (hello, pregnancy!), certain meds that cause dry mouth, and even your genes can play a part. Your best defense is simple: see your dentist regularly and keep up with your brushing and flossing at home. Using DentaSmart can also help you spot any changes in your gums between those visits.",
+      "Plaque is a sticky film of bacteria that collects along the gumline. If it remains, it can harden into tartar, which requires professional removal.",
+      "Gingivitis affects the gums without the supporting bone loss seen in periodontitis. Improved home care and professional cleaning can often control gingivitis, but a dentist must assess the cause and extent.",
+      "Periodontitis can create deeper spaces around teeth and damage supporting tissue and bone. Teeth may become loose as the disease progresses.",
+      "Smoking, diabetes, hormonal changes, dry mouth, some medicines, genetics, and oral-care habits can affect risk. DentaSmart can help you document visible changes and questions, but a dental exam and gum measurements are needed for diagnosis.",
     ],
     causes: [
       {
@@ -289,7 +289,7 @@ export const conditionsData: Record<string, ConditionData> = {
       {
         title: "Smoking and Tobacco Use",
         description:
-          "Honestly, this is the worst thing you can do for your gums. Smoking messes with your immune system and makes it way harder for your gums to heal.",
+          "Smoking affects immune response and healing and is an important risk factor for gum disease.",
       },
       {
         title: "Not Brushing or Flossing Enough",
@@ -324,16 +324,16 @@ export const conditionsData: Record<string, ConditionData> = {
       "It hurts when you chew your food.",
     ],
     keyTakeaways: [
-      "Gum disease is the #1 reason adults lose teeth, but you can completely reverse the early stages.",
-      "Bleeding gums are never normal. Think of it as a warning sign.",
-      "If you smoke, quitting is the single best thing you can do for your gum health.",
-      "Using DentaSmart helps you keep an eye on your gums so you can catch problems before they get serious.",
+      "Gingivitis and periodontitis are different stages and need different care.",
+      "Repeated gum bleeding deserves attention, especially with swelling, recession, bad breath, or loose teeth.",
+      "Stopping tobacco use can support gum health and healing.",
+      "DentaSmart can help you document visible changes for a dental conversation. It cannot measure gum pockets or diagnose gum disease.",
     ],
     faqs: [
       {
         question: "Can you actually cure gum disease?",
         answer:
-          "Yep, the early stage (gingivitis) is totally reversible with good home care and a dental cleaning. But once it gets to the advanced stage (periodontitis), you can only manage it. The bone you lose, unfortunately, doesn't grow back.",
+          "Gingivitis can often be controlled with improved home care and professional cleaning. Periodontitis needs ongoing professional treatment and monitoring because it involves damage to supporting tissue and bone.",
       },
       {
         question: "Can I catch gum disease from someone?",
@@ -343,12 +343,12 @@ export const conditionsData: Record<string, ConditionData> = {
       {
         question: "What's the cost for gum disease treatment?",
         answer:
-          "A standard cleaning is usually $75 to $200. If you need a deep cleaning, that's more like $150-$350 for each quarter of your mouth. And if you need surgery, it can get expensive, from $500 to over $10,000. So, catching it early will save you a ton of money.",
+          "Cost depends on the diagnosis, cleaning or periodontal procedure, number of visits, provider, location, and insurance. Ask for an itemized estimate after a periodontal evaluation.",
       },
       {
         question: "Does DentaSmart know if I have gum disease?",
         answer:
-          "DentaSmart is pretty smart! It can spot visual clues like red gums or recession by analyzing your photos over time. It's a great way to track your gum health between appointments, but you still need a dentist to make the official call.",
+          "DentaSmart can help you review supported photos and organize questions about visible gum changes. A dentist or hygienist must examine and measure the gums to diagnose gum disease.",
       },
     ],
     relatedConditions: [
@@ -375,7 +375,7 @@ export const conditionsData: Record<string, ConditionData> = {
     title: "Wisdom Teeth Pain: What to Expect and When to Act",
     metaTitle: "Wisdom Teeth Pain: Causes & Treatment | DentaSmart",
     metaDescription:
-      "Wondering about wisdom teeth pain? Learn what causes it, what an 'impacted' tooth is, and figure out if you need to get them removed. We'll help you know what to do.",
+      "Learn what can cause pain near a wisdom tooth, what impaction means, and which symptoms need prompt dental care.",
     primaryKeyword: "wisdom teeth pain",
     secondaryKeywords: [
       "impacted wisdom teeth",
@@ -386,14 +386,14 @@ export const conditionsData: Record<string, ConditionData> = {
     ],
     heroHeading: "Wisdom Teeth Pain",
     heroSubheading:
-      "Your wisdom teeth can be a real pain if your mouth doesn't have enough space for them. Here's how to tell if yours are becoming a problem.",
+      "Pain near a wisdom tooth can come from eruption, trapped food, gum inflammation, decay, or infection. A dental exam can identify the cause.",
     directAnswer:
-      "That pain in the back of your mouth? It's likely your wisdom teeth trying to come in. This usually happens between 17 and 25. When there's no room, they get 'impacted' and can cause pain, swelling, and even mess up other teeth. You don't always have to get them out, but if they're bugging you, a dentist should definitely take a look.",
+      "Pain at the back of the mouth may involve a wisdom tooth, but symptoms alone cannot confirm the cause. A partly erupted or impacted tooth can be linked to swelling, infection, decay, or damage nearby. Not every wisdom tooth needs removal, so a dentist should review symptoms and imaging.",
     detailedExplanation: [
-      "So, what's the deal with wisdom teeth? They're your third and final set of molars, and they usually show up fashionably late to the party, somewhere between 17 and 25. You might get all four, or you might get none. It varies! The trouble starts when your jaw is too crowded for them to come in straight.",
-      "If a wisdom tooth gets stuck and can't pop through the gums all the way, it's called 'impacted.' These troublemakers can grow in all sorts of weird directions: sideways, angled, you name it. And when they do, you'll know it. Think pain, a swollen jaw, and good luck opening your mouth all the way.",
-      "A really common issue is something called pericoronitis. It’s a fancy word for an infection in the gum flap over a tooth that's only partway out. Food and germs get stuck under there and cause a real stink (literally) and a lot of pain. Your dentist will probably give you antibiotics, and it's a big hint that the tooth might need to come out.",
-      "But do you HAVE to get them removed? Not always. If your wisdom teeth come in straight, are healthy, and you can brush them properly, they can just hang out. Your dentist will keep an eye on them with X-rays. DentaSmart can even help you see what your dentist sees on those X-rays, so you're in the loop.",
+      "Wisdom teeth are third molars that often erupt in the late teens or early adulthood. People may have none, some, or all four.",
+      "An impacted tooth is partly or fully blocked by gum, bone, or another tooth. It may grow at an angle and can be hard to clean, but not every impacted tooth causes symptoms.",
+      "Pericoronitis is inflammation or infection around a partly erupted tooth. Treatment depends on the exam and may include cleaning, symptom care, medicine, or removal.",
+      "A dentist can compare monitoring and removal after reviewing the tooth position, symptoms, nearby structures, and ability to keep the area clean. DentaSmart can provide educational context for supported X-rays, but it does not decide whether a tooth needs removal.",
     ],
     causes: [
       {
@@ -437,7 +437,7 @@ export const conditionsData: Record<string, ConditionData> = {
       "Wisdom teeth cause problems because our jaws are often just too small for them.",
       "You don't automatically need your wisdom teeth pulled. Only if they're causing trouble.",
       "Pericoronitis (that gum infection) is super common and needs a dentist to check it out.",
-      "Using DentaSmart to check out your X-rays can help you spot issues early on.",
+      "DentaSmart can help you review supported X-rays and prepare questions; a dentist must interpret them for treatment.",
     ],
     faqs: [
       {
@@ -458,7 +458,7 @@ export const conditionsData: Record<string, ConditionData> = {
       {
         question: "Can DentaSmart look at my wisdom teeth X-ray?",
         answer:
-          "You bet. DentaSmart can check out your X-rays and show you what's going on. It can point out if a tooth looks impacted or if there are other problems. That way, you'll know what to ask your dentist.",
+          "DentaSmart can provide educational context for supported dental X-rays and help you prepare questions. A dentist must interpret the image and recommend monitoring or treatment.",
       },
     ],
     relatedConditions: [
@@ -483,7 +483,7 @@ export const conditionsData: Record<string, ConditionData> = {
     title: "Teeth Whitening: Your Guide to Options, Safety, and What Really Works",
     metaTitle: "Teeth Whitening: What Works & Is It Safe? | DentaSmart",
     metaDescription:
-      "Thinking about teeth whitening? We compare everything from strips to pro treatments so you know what works, what's safe, and what to expect.",
+      "Compare professional and at-home teeth whitening, common causes of discoloration, sensitivity risk, and questions to ask a dentist.",
     primaryKeyword: "teeth whitening",
     secondaryKeywords: [
       "teeth whitening options",
@@ -494,14 +494,14 @@ export const conditionsData: Record<string, ConditionData> = {
     ],
     heroHeading: "Teeth Whitening",
     heroSubheading:
-      "A brighter smile can make you feel great. But what actually works? Here's how to figure out the best and safest option for you.",
+      "Whitening options differ in strength, supervision, cost, and how they affect sensitivity and existing dental work.",
     directAnswer:
-      "Basically, teeth whitening uses a bleach (usually hydrogen or carbamide peroxide) to make your teeth lighter. Getting it done at the dentist is the fastest way to see big results. At-home stuff like strips and trays work too, they just take longer. Most of the time it's perfectly safe, but your teeth might feel a little sensitive for a bit.",
+      "Many whitening products use hydrogen peroxide or carbamide peroxide to lighten natural tooth structure. Results and sensitivity vary by product and the cause of discoloration. Whitening does not change the shade of crowns, veneers, or fillings.",
     detailedExplanation: [
-      "It's just a fact of life. Teeth get darker as we get older. Things like coffee, tea, red wine, and smoking don't help either. Whitening treatments use peroxide to get into your tooth enamel and break up the stains. It's a simple chemical reaction.",
-      "Getting it done by a pro? They use stronger stuff (like 25-40% hydrogen peroxide) and sometimes special lights to speed things up. You can walk out with teeth 3-8 shades lighter in just one visit. It'll cost you, though, anywhere from $300 to $1,000.",
-      "If you'd rather do it yourself, you've got options. Whitening strips have about 6-14% peroxide. Or your dentist can make you custom trays with a gel that's a bit stronger. Even whitening toothpastes can help a little, but they mostly just scrub off surface stains. With strips and trays, you should see a difference in a week or two if you stick with it.",
-      "But is it for everyone? Not really. Whitening won't change the color of crowns, veneers, or fillings. And if you have sensitive teeth, gum problems, or thin enamel, you should definitely talk to your dentist first. Don't overdo it, or you could hurt your enamel. The DentaSmart app can be a cool way to see how your tooth shade changes over time.",
+      "Teeth can darken with age and can develop surface stains from coffee, tea, wine, or tobacco. Peroxide-based products work on some types of discoloration but not every cause.",
+      "In-office whitening uses products under professional supervision. Store-bought strips, dentist-provided trays, and whitening toothpastes work differently and require different treatment times.",
+      "Whitening toothpaste mainly removes surface stains. Peroxide products can lighten natural tooth structure, but the degree of change varies.",
+      "A dentist can check for decay, gum problems, exposed roots, sensitivity, and restorations before whitening. Use DentaSmart for educational context and questions, not to measure or prescribe a whitening result.",
     ],
     causes: [
       {
@@ -537,38 +537,38 @@ export const conditionsData: Record<string, ConditionData> = {
       { text: "Feeling a bit shy about your smile", severity: "mild" },
     ],
     whenToSeeDentist: [
-      "You want the fastest, most dramatic results. Go pro.",
+      "You want a dentist to assess the cause of discoloration and discuss supervised treatment.",
       "You have sensitive teeth and want to make sure you whiten safely.",
       "The stains seem to be inside your tooth (kind of grayish), which surface whitening won't fix.",
       "You have crowns, veneers, or big fillings on your front teeth.",
       "You tried an over-the-counter kit and it's making your teeth hurt.",
     ],
     keyTakeaways: [
-      "A dentist will get you the fastest results, but whitening strips are pretty good for lighter stains.",
+      "Professional and at-home options use different products, strengths, and schedules.",
       "Remember, whitening only works on natural teeth. It won't change the color of crowns or fillings.",
-      "It's normal for your teeth to be a little sensitive afterward. It usually goes away in a day or two.",
-      "You can use the DentaSmart app to take pictures and see if your whitening is actually working.",
+      "Sensitivity and gum irritation can occur, and their duration varies.",
+      "DentaSmart can help you keep supported photos and questions together, but it does not measure whitening effectiveness.",
     ],
     faqs: [
       {
         question: "How long will my teeth stay white?",
         answer:
-          "If you get it done professionally, you can expect it to last 1-3 years. It really depends on what you eat and drink. You can do touch-ups every 6-12 months to keep things bright. And obviously, avoiding coffee and red wine helps a lot.",
+          "Duration varies with the treatment, stain type, diet, tobacco use, oral care, and natural tooth color. Ask a dentist when a touch-up is appropriate.",
       },
       {
         question: "Is teeth whitening bad for my enamel?",
         answer:
-          "Nope, not if you do it right. As long as you use products approved by dental associations and follow the directions, you're good. Just don't go crazy with it. When in doubt, ask your dentist.",
+          "Whitening can cause sensitivity or gum irritation, and it may not be appropriate for every mouth. Follow the product directions and ask a dentist if you have pain, decay, gum problems, exposed roots, or dental restorations.",
       },
       {
         question: "Why are my teeth so sensitive after whitening?",
         answer:
-          "The whitening gel opens up tiny pores in your enamel for a little while. This lets things get to the nerve layer easier. It's totally normal and should stop within a day or two. Try using a sensitivity toothpaste before and after.",
+          "Peroxide can temporarily increase tooth sensitivity in some people. Stop or adjust use according to the product directions and contact a dentist if sensitivity is severe or persistent.",
       },
       {
         question: "Can the DentaSmart app help me track my progress?",
         answer:
-          "It sure can. The app can analyze your tooth photos over time, giving you a clear, unbiased look at how much your tooth color is changing.",
+          "You can keep supported photos and notes together in DentaSmart, but lighting and camera settings affect color. The app does not provide a clinical shade measurement.",
       },
     ],
     relatedConditions: [
@@ -594,9 +594,9 @@ export const conditionsData: Record<string, ConditionData> = {
     metaDescription: "Tired of wincing from hot or cold foods? Find out what causes sensitive teeth and, more importantly, how to get relief. Simple fixes and when it's time to see a dentist.",
     primaryKeyword: "sensitive teeth",
     secondaryKeywords: ["tooth sensitivity causes", "sensitive teeth treatment", "why do my teeth hurt with cold", "dentin hypersensitivity"],
-    heroHeading: "That sudden 'zing' in your tooth isn't normal.",
-    heroSubheading: "You know the feeling. A sip of hot coffee or a bite of ice cream, and bam! A sharp pain. Let's figure out what your teeth are trying to tell you.",
-    directAnswer: "Got sensitive teeth? It's usually because the hard outer layer of your tooth (the enamel) has worn thin, or your gums have pulled back. This exposes a softer layer called dentin, which has tiny tunnels that lead right to the nerve. So when you eat something hot, cold, or sweet, it zaps the nerve and you feel that pain. For most people, using a special toothpaste for sensitivity and brushing gently does the trick. But if the pain just won't quit, you should definitely have a dentist take a look.",
+    heroHeading: "Tooth sensitivity has several possible causes.",
+    heroSubheading: "Hot, cold, sweet, or pressure can trigger pain when dentin or another sensitive part of a tooth is exposed.",
+    directAnswer: "Sensitivity can develop when enamel wears, gums recede, a tooth cracks, decay forms, or dental work irritates a tooth. Desensitizing toothpaste and gentle brushing may help some causes, but new, severe, or persistent pain needs a dental evaluation.",
     detailedExplanation: [
       "Think of your teeth as having their own little suit of armor. That's the enamel. It's super tough and protects the soft stuff inside from all the hot and cold things you eat and drink. Underneath the enamel is the dentin, which is more like a sponge with tiny, microscopic tubes that go straight to the tooth's nerve.",
       "So, what happens when that armor gets a chink in it? If your enamel gets thin or your gums shrink back, those little tubes are left wide open. Now, every cold drink or sugary snack sends a shockwave right to the nerve. Ouch. That's the sharp pain you're feeling. It's basically your tooth's alarm system going off, telling you its defenses are down.",
@@ -625,15 +625,15 @@ export const conditionsData: Record<string, ConditionData> = {
       "Your gums are also swollen or bleeding, or you have a gross taste in your mouth."
     ],
     keyTakeaways: [
-      "You don't have to just put up with sensitive teeth. It's a common problem and there are fixes.",
-      "First thing to try: grab a soft toothbrush and some desensitizing toothpaste. It often works wonders.",
-      "If it keeps getting worse or just won't go away, let a dentist check it out. They need to make sure it isn't something more serious like a cavity or gum disease."
+      "Sensitivity can come from enamel wear, gum recession, whitening, a crack, decay, or recent dental work.",
+      "A soft toothbrush and desensitizing toothpaste may help, depending on the cause.",
+      "A dentist should evaluate pain that is new, worsening, severe, or limited to one tooth."
     ],
     faqs: [
       { question: "Will my sensitive teeth get better on their own?", answer: "Sometimes! If it's from something temporary like a teeth whitening session, it'll probably fade in a few weeks. But if it's from worn-down enamel or receding gums, it won't fix itself. You'll need to do something about it." },
       { question: "Does sensitivity mean I have a cavity?", answer: "It could. A cavity is basically a hole that exposes the sensitive part of your tooth. If the pain is just in one spot and seems to be getting worse, you should get it checked for decay. Better safe than sorry." },
       { question: "Does that special toothpaste for sensitive teeth really work?", answer: "Yep, for a lot of people it does. It has ingredients that help block those tiny tubes in your dentin, so the nerve doesn't get zapped. You have to be patient, though. It can take 2 to 4 weeks of using it every day to notice a real difference." },
-      { question: "How can DentaSmart help with my sensitive teeth?", answer: "DentaSmart is a great tool for keeping track of your symptoms. You can see what triggers the pain and get a better idea of what might be causing it. It won't replace a trip to the dentist, but it gives you some solid info to bring to your appointment." }
+      { question: "How can DentaSmart help with my sensitive teeth?", answer: "DentaSmart can help you record triggers, timing, and supported images for a dental conversation. It cannot determine the cause of sensitivity." }
     ],
     relatedConditions: [
       { slug: "cavities", title: "Cavities" },
@@ -656,12 +656,12 @@ export const conditionsData: Record<string, ConditionData> = {
     slug: "cracked-tooth",
     title: "Cracked Tooth? Here's What to Know and What to Do",
     metaTitle: "Cracked Tooth Symptoms & What to Do | DentaSmart",
-    metaDescription: "Got a cracked tooth? It can be scary. We'll help you figure out what kind of crack you might have, what to look for, and when it's time to call the dentist. Simple advice for a not-so-simple problem.",
+    metaDescription: "Learn possible cracked-tooth symptoms, why cracks can be hard to identify, and when to arrange prompt dental care.",
     primaryKeyword: "cracked tooth",
     secondaryKeywords: ["cracked tooth symptoms", "fractured tooth treatment", "hairline crack in tooth", "craze lines teeth"],
-    heroHeading: "A cracked tooth isn't always a disaster.",
-    heroSubheading: "Some cracks are no big deal. Others? They need a dentist, fast. Here’s how you can tell the difference and figure out your next move.",
-    directAnswer: "So, you think you have a cracked tooth? It could be anything from a tiny, harmless line to a deep crack that puts the whole tooth at risk. You might feel a zing when you bite down, have a tooth that's suddenly sensitive to hot and cold, or just a pain that shows up and disappears. What the dentist does depends on how bad the crack is. For a little one, some bonding might be all it takes. For a deeper crack, you might be looking at a crown or even a root canal. If you think you have a crack, get it checked out. Sooner is always better.",
+    heroHeading: "A cracked tooth needs a dental evaluation.",
+    heroSubheading: "A surface line and a deeper crack can look similar at home, but they do not carry the same risk.",
+    directAnswer: "A cracked tooth may cause pain when biting, temperature sensitivity, or pain that comes and goes. Some visible lines affect only enamel, while deeper cracks can reach dentin or the pulp. A dentist must locate the crack and decide whether monitoring, bonding, a filling, a crown, root canal treatment, or extraction is appropriate.",
     detailedExplanation: [
       "Your teeth are tough, but they're not invincible. After years of munching, grinding, and going from hot coffee to ice water, cracks can happen. Some are just on the surface, but others can be a real problem.",
       "The weird thing about cracked teeth? They're sneaky. They don't always show up on an X-ray, and the pain can be all over the place. You might get a sharp pain when you bite, and then... nothing. For days. That on-again, off-again pain is a classic sign of a cracked tooth.",
@@ -690,15 +690,15 @@ export const conditionsData: Record<string, ConditionData> = {
       "You took a hit to your face or jaw recently"
     ],
     keyTakeaways: [
-      "Don't panic! Not all cracks are a big deal. Craze lines are just cosmetic, but deeper cracks need a pro.",
-      "That on-and-off pain is a huge clue. Don't ignore it just because it stops for a while.",
-      "Getting it treated early is the key. If you wait, a simple fix can turn into losing the tooth. Nobody wants that."
+      "Surface craze lines and deeper cracks are different, and a dentist must assess the depth.",
+      "Pain that comes and goes can still need evaluation.",
+      "Prompt care may give a dentist more treatment options if the crack is progressing."
     ],
     faqs: [
       { question: "Can a cracked tooth heal by itself?", answer: "Nope. Your teeth can't heal themselves like bones can. A crack won't get better on its own, and it can actually get worse if bacteria get in there and cause an infection." },
       { question: "How do I know if my tooth is cracked or just sensitive?", answer: "A cracked tooth usually gives you a sharp, sudden pain when you bite down. General sensitivity is more of a dull ache that you feel when you have something hot or cold. But really, the only way to know for sure is to have a dentist check it out." },
       { question: "Does a cracked tooth always mean I need a crown?", answer: "Not at all. For tiny cracks, a little bonding or a filling might be all you need. If the crack is deep and has reached the tooth’s pulp, you might need a root canal and then a crown. Your dentist will tell you the best way to fix it." },
-      { question: "Can DentaSmart tell me if my tooth is cracked?", answer: "DentaSmart can help you figure out if your symptoms point to a cracked tooth and how urgent it is. But since cracks can be tricky to spot, you'll need to see a dentist in person to be 100% sure." }
+      { question: "Can DentaSmart tell me if my tooth is cracked?", answer: "DentaSmart can help you record symptoms and review supported images for educational context. Cracks can be difficult to see, so a dentist must examine the tooth and decide how urgently it needs care." }
     ],
     relatedConditions: [
       { slug: "toothache", title: "Toothache" },
@@ -881,15 +881,15 @@ export const conditionsData: Record<string, ConditionData> = {
       "You have a weird taste or sensitivity around that tooth that won't go away"
     ],
     keyTakeaways: [
-      "A crown can save a tooth that you might otherwise have to get pulled. Think of it as an investment in keeping your own teeth.",
-      "Today's crowns look super natural and can last a long time, like 10-15 years or even more if you take care of them.",
+      "A crown may help restore and protect a tooth when a filling or partial restoration is not appropriate.",
+      "Crown appearance and longevity depend on the material, tooth, bite, gum position, home care, and future disease.",
       "You still have to brush and floss around your crown! A crown protects the top, but you can still get a cavity where the crown meets the tooth."
     ],
     faqs: [
-      { question: "How long do dental crowns actually last?", answer: "If you're good about brushing and seeing your dentist, a crown can last 10-15 years. Some people have them for 25 years or more. It really depends on the material, how hard you bite, and how well you take care of it." },
-      { question: "Is getting a crown going to hurt?", answer: "Your dentist will numb the area, so you won't feel any pain during the actual procedure. You might have some mild sensitivity for a few days after, but that's totally normal and it usually goes away pretty fast." },
-      { question: "How do I know if I need a crown or just a filling?", answer: "It's a judgment call. But usually, if more than half of your tooth is gone or damaged, a crown is a better bet for the long run. If the damage is smaller, a filling might be all you need. Your dentist will tell you what they think is best." },
-      { question: "Can DentaSmart tell me if I need a crown?", answer: "DentaSmart can definitely help you figure out what's going on with your teeth and understand why a dentist might suggest a crown. Our AI can spot the kind of major damage that usually means a crown is needed, so you'll have a better idea of what to expect before you even go to the dentist." }
+      { question: "How long do dental crowns actually last?", answer: "There is no fixed lifespan. Material, bite forces, tooth condition, gum health, home care, and new decay can all affect repair or replacement." },
+      { question: "Is getting a crown going to hurt?", answer: "Local anesthesia is used to control pain, but experiences vary. Tell the dentist if you feel pain during treatment and ask which symptoms afterward should prompt a call." },
+      { question: "How do I know if I need a crown or just a filling?", answer: "A dentist considers the diagnosis, cracks, location, remaining tooth structure, bite forces, and existing restorations. Ask to see the finding and discuss clinically reasonable options." },
+      { question: "Can DentaSmart tell me if I need a crown?", answer: "DentaSmart can provide educational context for supported images and treatment terms. It cannot diagnose the tooth or determine that a crown is needed." }
     ],
     relatedConditions: [
       { slug: "root-canal", title: "Root Canal" },
@@ -916,11 +916,11 @@ export const conditionsData: Record<string, ConditionData> = {
     secondaryKeywords: ["bruxism treatment", "grinding teeth at night", "jaw clenching causes", "night guard for teeth"],
     heroHeading: "Teeth grinding is silent. The damage isn't.",
     heroSubheading: "Most people who grind their teeth have no idea they're doing it. But over time, that quiet wear and tear really adds up.",
-    directAnswer: "Teeth grinding, or bruxism, is when you clench or grind your teeth without meaning to, mostly while you're asleep. It's pretty common, affecting about 10-15% of adults, and can mess with your teeth, jaw, and even face muscles. The main ways to stop it are getting a custom night guard, managing stress, and figuring out what's causing it in the first place.",
+    directAnswer: "Teeth grinding, or bruxism, is involuntary clenching or grinding that can happen while awake or asleep. It may contribute to tooth wear, damaged restorations, jaw soreness, or headaches, but a dental or medical assessment is needed to identify contributing factors.",
     detailedExplanation: [
       "Ever heard of bruxism? It's the official name for teeth grinding, where you clench or grind your teeth without thinking about it, usually in your sleep. A lot of people don't even know they do it until their partner says something or their dentist spots the tell-tale signs on their teeth.",
-      "So, what kicks it off? It's usually stress and anxiety. But it can also be linked to things like sleep apnea, a bite that's a little off, or even certain meds (like some antidepressants). Lifestyle choices matter too, so things like too much coffee or alcohol can make it worse. And since it all goes down while you're sleeping, the damage can pile up for a long time before you notice anything is wrong.",
-      "If you let it go, grinding can wear down your tooth enamel, crack or chip your teeth, lead to nagging jaw pain, and even cause headaches or TMJ problems. But here's the good news: it's totally treatable. A custom-fit night guard is a game-changer for protecting your teeth. Then, you can focus on what's causing the grinding to begin with (like stress or a sleep issue) for a real, long-term fix.",
+      "Bruxism can be associated with stress, sleep disorders, medicines, substances, and other factors. A dentist or clinician should assess the pattern rather than assuming one cause.",
+      "Grinding can contribute to tooth wear, cracks, damaged restorations, jaw soreness, or headaches. A dentist may discuss monitoring, habit changes, a custom appliance, or referral depending on the findings; no option stops every episode or prevents every complication.",
       "Think you might be a grinder? The DentaSmart app can help you keep an eye on how your tooth surfaces change over time. It's great info to have when you go see your dentist."
     ],
     causes: [
@@ -946,13 +946,13 @@ export const conditionsData: Record<string, ConditionData> = {
     ],
     keyTakeaways: [
       "You probably won't know you're grinding your teeth since it happens when you're asleep. The damage is the first clue.",
-      "Getting a custom night guard from your dentist is the best way to stop your teeth from getting worn down.",
-      "For a long-term fix, you have to get to the bottom of what's causing it. whether that's stress, a sleep problem, or something else."
+      "A custom appliance may protect teeth in some cases but does not treat every cause of grinding.",
+      "Ask whether sleep, medicines, substances, stress, bite forces, or another condition needs separate evaluation."
     ],
     faqs: [
       { question: "How can I tell if I grind my teeth at night?", answer: "Waking up with a sore jaw or a headache is a big clue. Or maybe you've noticed your teeth look a bit worn down. Sometimes, the first person to notice is the one sleeping next to you! The DentaSmart app can also help you track changes to your teeth." },
-      { question: "Can teeth grinding actually cause permanent damage?", answer: "Yep. If you don't do anything about it, chronic grinding can wear away your enamel for good, crack your teeth, mess up dental work, and lead to TMJ issues. Getting a night guard early on prevents almost all of that." },
-      { question: "Are the night guards from the drugstore any good?", answer: "They're better than nothing, but they don't fit nearly as well as one your dentist makes for you. A bad fit can actually make your jaw problems worse. If you grind your teeth regularly, it's worth getting a custom one." }
+      { question: "Can teeth grinding cause lasting damage?", answer: "Repeated grinding can contribute to tooth wear, cracks, sensitivity, or damaged dental work. The pattern and risk vary, so ask a dentist to examine the teeth and jaw." },
+      { question: "Are drugstore night guards appropriate?", answer: "Fit, material, jaw symptoms, and the reason for use matter. Ask a dentist before relying on an over-the-counter guard, especially if pain, locking, bite changes, or sleep symptoms are present." }
     ],
     relatedConditions: [
       { slug: "cracked-tooth", title: "Cracked Tooth" },
@@ -977,19 +977,19 @@ export const conditionsData: Record<string, ConditionData> = {
     metaDescription: "Thinking about dental implants? Find out how the process works, what they cost, how long recovery takes, and if they're the right choice for you.",
     primaryKeyword: "dental implants",
     secondaryKeywords: ["dental implant cost", "dental implant procedure", "are dental implants worth it", "implant recovery time"],
-    heroHeading: "Implants are as close as you can get to having your real teeth back.",
-    heroSubheading: "They look and feel so natural, and with good care, they can last forever. Here's what you need to know.",
-    directAnswer: "A dental implant is just a small titanium post that a surgeon puts into your jawbone where a tooth root used to be. After it heals and bonds with the bone, your dentist attaches a custom-made crown on top. People love implants because they save your jawbone, don't mess with the teeth next door, and can easily last 20+ years if you take care of them.",
+    heroHeading: "How Dental Implants Replace Missing Teeth",
+    heroSubheading: "Learn about surgery, healing, restoration, maintenance, risks, and who may be eligible.",
+    directAnswer: "A dental implant is placed in the jawbone to support a crown, bridge, or denture. Treatment involves clinical assessment, surgery, healing, and a final restoration. Eligibility and prognosis depend on anatomy, gum and bone health, medical history, healing factors, bite, and maintenance.",
     detailedExplanation: [
-      "If you're missing teeth, dental implants are hands-down the most natural and durable way to replace them. What makes them so great? Unlike dentures or a bridge, an implant actually replaces the root of the tooth. This is a big deal because it keeps your jawbone strong and prevents that sunken-in look that can happen when a tooth is gone.",
+      "An implant supports a restoration without using adjacent teeth in the same way as a traditional bridge. Bone can still change around an implant, and implants require cleaning and professional monitoring.",
       "The whole process does take a few months, so it's good to know what to expect. It starts with a minor surgery to place the titanium post in your jaw. Then you wait. For the next 3 to 6 months, your bone actually grows around the implant, making it super secure. This is called osseointegration. Once that's done, your dentist will put on a little connector piece (an abutment) and then your new, custom-matched crown.",
-      "And get this: the success rate for modern implants is over 95%. That's because they're made of titanium, which the body almost never rejects. If you brush, floss, and see your dentist for checkups, the implant itself should last your entire life. The crown on top might need to be replaced every 10-15 years from normal wear and tear, but the foundation is permanent.",
+      "Implants and their restorations can develop infection, bone loss, loosening, fracture, wear, or other complications. Longevity cannot be guaranteed and depends on the site, health, healing, habits, bite, maintenance, and follow-up.",
       "So, is everyone a good fit for implants? Not exactly. You'll need to have enough bone in your jaw for the implant to grip onto (though a bone graft can sometimes fix that). You also need healthy gums and to be in pretty good health overall. And, just a heads up, smoking can really hurt the chances of success. Your dentist will be able to tell you for sure if implants are a good option for you."
     ],
     causes: [
       { title: "A really bad cavity", description: "Sometimes a cavity is just too big to fix with a filling, crown, or even a root canal. The tooth has to come out, and an implant is a great way to fill that space." },
       { title: "Gum disease", description: "If gum disease gets bad enough, it can wreck the bone that holds your teeth in place, causing them to fall out. Once the gum disease is under control, an implant can replace what was lost." },
-      { title: "An accident or injury", description: "It happens. A tooth gets knocked out playing sports or in some kind of accident. An implant is a perfect fix for that." },
+      { title: "An accident or injury", description: "An implant may be one replacement option after a tooth is lost, depending on healing, bone, age, anatomy, and the treatment plan." },
       { title: "Old dental work giving out", description: "Maybe that old bridge or denture just isn't cutting it anymore. You can often replace it with a much more stable and comfortable implant." },
       { title: "Born without a tooth", description: "It's actually not that uncommon for some people to just be missing a permanent tooth from birth. An implant can fill that spot for good." }
     ],
@@ -1007,14 +1007,14 @@ export const conditionsData: Record<string, ConditionData> = {
       "You just want to know what all your options are before you make a decision."
     ],
     keyTakeaways: [
-      "Implants are the best option out there for a replacement tooth that looks and feels real.",
-      "It's a multi-month process, for sure, but the result is a tooth that can last the rest of your life.",
+      "Implants are one option for supporting a replacement tooth, bridge, or denture.",
+      "Treatment can take several stages, and neither the implant nor its restoration has a guaranteed lifespan.",
       "They aren't for everybody. You need a healthy jawbone and good health in general to be a good candidate."
     ],
     faqs: [
       { question: "What's the real cost of a dental implant?", answer: "Okay, so for a single implant, you're usually looking at somewhere between $3,000 and $6,000. That price includes the implant post, the abutment (the connector), and the crown. But the final bill can change depending on where you live, how tricky the surgery is, and if you need a bone graft first. A lot of dentists offer payment plans to make it more manageable." },
-      { question: "Does getting a dental implant hurt?", answer: "During the actual procedure? Nope. You'll be numbed up with local anesthesia, so you won't feel any pain. Afterwards, you can expect some soreness, but most people say it's nothing that over-the-counter pain meds can't handle. It usually feels much better in just a few days." },
-      { question: "How long do dental implants actually last?", answer: "Forever, hopefully! If you take good care of them, the implant post itself should last your whole life. The crown that sits on top will get a lot of wear and tear, so you might need to replace it after about 10 or 15 years. But the implant in your jawbone is there to stay." }
+      { question: "Does getting a dental implant hurt?", answer: "Anesthesia is used during placement, and recovery varies. Ask the surgeon what discomfort is expected, which medicines are safe for you, and which symptoms require an urgent call." },
+      { question: "How long do dental implants last?", answer: "There is no guaranteed lifespan. The implant, connector, and restoration have different risks and may need maintenance, repair, or replacement." }
     ],
     relatedConditions: [
       { slug: "gum-disease", title: "Gum Disease" },
@@ -1039,13 +1039,13 @@ export const conditionsData: Record<string, ConditionData> = {
     primaryKeyword: "dry socket",
     secondaryKeywords: ["dry socket symptoms", "dry socket after extraction", "alveolar osteitis", "how to prevent dry socket"],
     heroHeading: "Everyone worries about dry socket after an extraction. It sounds scary.",
-    heroSubheading: "But here's the good news: you can prevent it. And if it does happen, we can fix it. Let's break it down.",
-    directAnswer: "A dry socket, or alveolar osteitis, is what happens when the blood clot that's supposed to form in the hole after a tooth extraction gets knocked out or dissolves too soon. This leaves the bone and nerves underneath exposed. Ouch. It causes some pretty intense pain that usually kicks in about 2 to 4 days after you get the tooth pulled. It only happens in about 2-5% of regular extractions, but that number jumps to 30% for wisdom teeth. It hurts a lot, but it's not dangerous and your dentist can treat it easily.",
+    heroSubheading: "Follow the extraction instructions and contact the dental office if pain worsens instead of improving.",
+    directAnswer: "Dry socket, or alveolar osteitis, is a painful complication after an extraction. Pain often increases several days after the procedure and may spread toward the ear or temple. A dentist must distinguish it from infection and other causes of worsening pain.",
     detailedExplanation: [
       "Think of it like this: after a tooth comes out, your body makes a little blood clot in the socket. That clot is like a natural bandage. It protects the raw bone and nerves underneath while everything heals. It's also the foundation for new bone and gum tissue to grow back. A dry socket is what happens when that protective clot is gone too soon.",
       "So what causes it to disappear? Smoking is the biggest one, by far. Sucking on a straw or spitting really hard can also do it. Even a really tough extraction can increase your risk. And, believe it or not, women on birth control pills have a slightly higher risk because of how hormones can affect clotting.",
       "The main sign of a dry socket is a deep, throbbing pain that starts a few days *after* the extraction. The pain doesn't get better; it gets worse. It can even radiate up towards your ear or eye. You might also see the empty socket with the bone visible, or notice a bad taste or smell. Normal pain after an extraction gets better after a day or two. Dry socket pain is a whole different beast.",
-      "Getting it treated is simple. Your dentist will gently clean out the socket and place a special medicated dressing inside. This stuff brings relief almost instantly. You might have to come back in a few days to have the dressing changed out. With treatment, the whole thing usually heals up in about a week to 10 days."
+      "Treatment depends on the examination and may include cleaning the area, a medicated dressing, pain management, and follow-up. Relief and healing time vary."
     ],
     causes: [
       { title: "Losing the Clot", description: "Using a straw, spitting, or smoking can create enough suction to pull the blood clot right out of the socket." },
@@ -1070,14 +1070,14 @@ export const conditionsData: Record<string, ConditionData> = {
       "You start running a fever."
     ],
     keyTakeaways: [
-      "Dry socket hurts a lot, but it won't kill you. It's just the most common hiccup after getting a tooth pulled.",
+      "Worsening pain after an extraction needs a call to the treating dental office so dry socket, infection, and other complications can be assessed.",
       "The two best things you can do to avoid it? Don't smoke and don't use straws.",
       "If you do get it, don't panic. Your dentist can pack it with some medicated gauze that will make it feel better right away."
     ],
     faqs: [
       { question: "How long does dry socket last?", answer: "Once your dentist treats it, the pain gets way better in a day or two. The socket itself takes about a week to 10 days to heal up completely. If you don't get it treated, the pain can drag on for much longer. Don't do that to yourself." },
       { question: "Can a dry socket just heal on its own?", answer: "Well, technically, yes, it would eventually. But it would be a really, really painful and slow process. Just go to the dentist. The medicated dressing gives you quick relief and helps prevent infection. It's a no-brainer." },
-      { question: "How can I tell if it's dry socket or just normal pain?", answer: "Normal pain after an extraction is worst on day 1 or 2 and then starts to fade. Dry socket pain is the opposite: it shows up a few days later and gets much worse. If the pain is throbbing and spreading, or you can see bone, it's almost definitely a dry socket." }
+      { question: "How can I tell if it's dry socket or expected pain?", answer: "Pain that increases instead of improving, spreads toward the ear or temple, or comes with a bad taste or odor deserves a call to the dental office. Only an examination can confirm the cause." }
     ],
     relatedConditions: [
       { slug: "wisdom-teeth-pain", title: "Wisdom Teeth Pain" },
@@ -1102,13 +1102,13 @@ export const conditionsData: Record<string, ConditionData> = {
     primaryKeyword: "oral thrush",
     secondaryKeywords: ["white patches in mouth", "oral candidiasis treatment", "thrush in adults", "mouth fungal infection"],
     heroHeading: "White patches in your mouth? Could be oral thrush.",
-    heroSubheading: "It's common, it's treatable, and it's usually not a big deal. But you do need to take care of it.",
-    directAnswer: "Oral thrush is just a fungal infection that happens when a yeast called Candida gets a little out of control in your mouth. You'll probably see creamy white bumps on your tongue, cheeks, or gums. It pops up more often in babies, older folks, or anyone whose immune system is a bit weak. Taking antibiotics can also trigger it. The good news? It's usually easy to fix with antifungal medicine.",
+    heroSubheading: "White patches have several possible causes, so persistent or painful changes need professional evaluation.",
+    directAnswer: "Oral thrush is an overgrowth of Candida yeast in the mouth. It may cause white patches, redness, soreness, taste changes, or cracks at the corners of the mouth. A clinician should confirm the diagnosis and consider medicines, dentures, dry mouth, diabetes, immune status, and other contributing factors.",
     detailedExplanation: [
       "Everyone has a tiny bit of Candida yeast in their mouth and gut. It's totally normal. Your body's immune system and all the good bacteria usually keep it from growing too much. But sometimes, that balance gets thrown off, and the yeast takes over. That's when you get thrush.",
       "So what throws off the balance? A few things. Antibiotics are a big one because they can wipe out the good bacteria that keep the yeast in line. Using a steroid inhaler for asthma can do it too. And if you have a weaker immune system, dry mouth, or dentures that don't fit right, you're more likely to get it. It's also why babies and the elderly get it more often because their immune systems just aren't as strong.",
       "The classic sign of thrush is those white patches. If you wipe them away, the skin underneath will look red and sore. Some people also say it feels like they have cotton in their mouth, or they can't taste things properly. It can even make it tough to swallow and cause little cracks at the corners of your lips.",
-      "Your doctor or dentist will likely prescribe an antifungal medicine to clear it up. For a really mild case, you might get by with just salt water rinses or eating probiotic yogurt. Oh, and if you use an asthma inhaler, make sure to rinse your mouth with water right after. If you keep getting thrush over and over, it might be a sign that something else is going on with your health, so you'll want to get that checked out."
+      "Treatment depends on the diagnosis and contributing factors and may include prescription antifungal medicine. Repeated episodes or swallowing problems need medical or dental review. Follow the instructions provided with an inhaler and ask the prescriber about mouth rinsing."
     ],
     causes: [
       { title: "Weakened immune system", description: "If you're dealing with something like HIV, diabetes, or cancer treatments, your body has a harder time fighting off the Candida yeast." },
@@ -1141,7 +1141,7 @@ export const conditionsData: Record<string, ConditionData> = {
     faqs: [
       { question: "Can you catch oral thrush from someone?", answer: "Not really, it isn't considered contagious between adults. A mom and a nursing baby can pass it back and forth, though." },
       { question: "Will oral thrush go away by itself?", answer: "Sometimes a very mild case will clear up on its own if you're healthy. But why wait? Treatment makes it go away faster and stops it from spreading. If your immune system is weak, you should always see a doctor." },
-      { question: "Can the DentaSmart app spot oral thrush?", answer: "The DentaSmart app is great for taking pictures of things like white patches in your mouth so you can see how they change over time. It can't diagnose thrush for you, but it gives you a perfect record to show your dentist." }
+      { question: "Can the DentaSmart app spot oral thrush?", answer: "DentaSmart can help you capture supported images and track visible changes. It cannot diagnose thrush, and image quality or location may limit what can be documented." }
     ],
     relatedConditions: [
       { slug: "gum-disease", title: "Gum Disease" }
@@ -1168,12 +1168,12 @@ export const conditionsData: Record<string, ConditionData> = {
     secondaryKeywords: ["TMJ treatment", "jaw clicking and popping", "temporomandibular joint pain", "TMD causes"],
     heroHeading: "That jaw of yours is a pretty complex piece of machinery. And when it's not happy, nothing feels right.",
     heroSubheading: "Millions of people deal with TMJ trouble. Figuring out what's going on is your first step toward feeling better.",
-    directAnswer: "TMJ disorder (or TMD) is really just a catch-all term for problems with your jaw joint and the muscles that move it. You might notice jaw pain, weird clicking or popping sounds, a stiff jaw, or even headaches. The good news? Most TMJ issues don't last and get better with some simple self-care. Surgery is almost never the answer.",
+    directAnswer: "Temporomandibular disorders, or TMD, affect the jaw joint, chewing muscles, or related structures. Symptoms can include pain, limited movement, locking, or painful clicking. Management depends on the cause, duration, severity, and examination.",
     detailedExplanation: [
       "Your jawbone connects to your skull on both sides of your face with the temporomandibular joint (TMJ). It's a fancy name for one of the busiest joints in your body. It lets you talk, chew, and yawn. When this joint or the muscles around it act up, that's what we call TMJ disorder, or TMD.",
       "So what causes it? It can be a few things. Grinding your teeth at night (that's called bruxism), a direct hit to the jaw, arthritis, or even just stress making you clench your jaw all the time. For a lot of people, stress is the main trigger, even if the joint itself is perfectly fine.",
       "Symptoms can be all over the place. Sometimes it's just a mild click when you open your mouth (which is often no big deal). Other times, it's serious pain, your jaw might lock up, or you can barely eat. The pain can even spread to your ear, temple, or neck, which can be confusing.",
-      "But don't worry, most TMJ problems get better with some easy at-home care. Think soft foods, warm compresses, and gentle jaw exercises. Learning to manage stress helps a ton, too. If you're a grinder, a custom night guard from your dentist can be a game-changer. Surgery? That's a last resort. We only even think about it after trying everything else."
+      "A clinician may recommend short-term changes, physical therapy, medicine, an oral appliance, or referral depending on the findings. An appliance is not appropriate for every case, and exercises should match the diagnosis."
     ],
     causes: [
       { title: "Teeth grinding (bruxism)", description: "Constantly grinding your teeth puts a ton of stress on your jaw joint and muscles. It's a recipe for inflammation and pain." },
@@ -1199,9 +1199,9 @@ export const conditionsData: Record<string, ConditionData> = {
       "You're hearing constant clicking or popping and it hurts"
     ],
     keyTakeaways: [
-      "Most of the time, you can fix TMJ problems yourself with things like soft foods and warm compresses.",
-      "Grinding your teeth is a huge reason people get TMJ disorder.",
-      "Seriously, surgery is almost never needed. Most people get better without it."
+      "Short-term self-care may help some jaw symptoms, but persistent pain, locking, or limited movement needs professional evaluation.",
+      "Grinding can contribute to some TMD symptoms but is not the only possible cause.",
+      "Treatment should start with the diagnosis and use the least invasive appropriate option."
     ],
     faqs: [
       { question: "Will my TMJ disorder just go away by itself?", answer: "A lot of the time, yes. Mild cases often clear up in a few weeks with some self-care. But if it's really bad or just won't go away, you should see a dentist." },

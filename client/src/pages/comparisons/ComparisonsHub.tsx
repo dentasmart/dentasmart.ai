@@ -11,36 +11,36 @@ const comparisonPages = [
   {
     name: "Braces vs Invisalign",
     slug: "braces-vs-invisalign",
-    description: "Traditional metal braces vs clear aligners. Which straightens teeth better, costs less, and fits your lifestyle?",
-    searches: "110,000/mo",
+    description: "Compare fixed braces and removable clear aligners by clinical fit, daily care, treatment time, and cost.",
+    focus: "Orthodontic treatment",
     keyDifference: "Braces: $2,500-$7,000 | Invisalign: $3,000-$8,000",
   },
   {
     name: "Dental Implants vs Dentures",
     slug: "dental-implants-vs-dentures",
-    description: "Permanent implants vs removable dentures. Compare cost, comfort, durability, and long-term value for missing teeth.",
-    searches: "22,200/mo",
+    description: "Compare fixed dental implants and removable dentures by procedure, daily care, fit, and cost.",
+    focus: "Tooth replacement",
     keyDifference: "Implants: $3,000-$6,000/tooth | Dentures: $600-$8,000/set",
   },
   {
     name: "Crown vs Veneer",
     slug: "crown-vs-veneer",
-    description: "Full coverage crown vs thin veneer shell. Which one protects your tooth better and when does each make sense?",
-    searches: "14,800/mo",
+    description: "Compare a crown that covers a tooth with a veneer placed on its front surface.",
+    focus: "Restorative and cosmetic care",
     keyDifference: "Crown: $800-$2,500 | Veneer: $800-$2,500",
   },
   {
     name: "Electric vs Manual Toothbrush",
     slug: "electric-vs-manual-toothbrush",
-    description: "Does an electric toothbrush actually clean better? Compare plaque removal, gum health, and real-world results.",
-    searches: "12,100/mo",
+    description: "Compare powered and manual brushes by motion, technique, features, maintenance, and cost.",
+    focus: "Daily oral care",
     keyDifference: "Electric: $20-$300 | Manual: $1-$5",
   },
   {
     name: "Fluoride vs Fluoride-Free Toothpaste",
     slug: "fluoride-vs-fluoride-free-toothpaste",
-    description: "Is fluoride toothpaste really necessary? What the research says about cavity prevention and safety concerns.",
-    searches: "9,900/mo",
+    description: "Compare active ingredients, cavity-prevention claims, age directions, and sensitivity options.",
+    focus: "Toothpaste ingredients",
     keyDifference: "Fluoride: proven cavity prevention | Fluoride-free: natural ingredients",
   },
 ];
@@ -52,7 +52,7 @@ const faqs = [
   },
   {
     q: "Should I always choose the cheaper option?",
-    a: "Not necessarily. The cheapest option upfront can sometimes cost more over time. For example, dentures cost less than implants initially, but implants can last a lifetime while dentures need replacement every 5-10 years. Consider the total cost of ownership, not just the sticker price.",
+    a: "Not necessarily. Compare the initial treatment, maintenance, repairs, replacement, follow-up visits, and likely insurance coverage. The lower estimate may still be appropriate, but price alone does not show clinical fit or long-term cost.",
   },
   {
     q: "Can DentaSmart help me choose between treatments?",
@@ -60,11 +60,11 @@ const faqs = [
   },
   {
     q: "Do dentists always recommend the most expensive option?",
-    a: "Most dentists recommend what they believe is clinically best. But 'best' can mean different things. Sometimes a less expensive option works perfectly well for your situation. That is why understanding your options before your appointment helps you ask the right questions and make confident decisions.",
+    a: "A recommendation should be tied to the diagnosis, treatment goal, risks, alternatives, and expected result. Ask the dentist to explain that reasoning and to separate clinical need from optional cosmetic preferences.",
   },
   {
     q: "How often do dental recommendations change?",
-    a: "Dental technology and research evolve constantly. Treatments that were standard 10 years ago may have better alternatives today. For example, clear aligners now handle cases that previously required traditional braces. Staying informed helps you get the most current care available.",
+    a: "Recommendations can change when symptoms, imaging, tooth structure, health history, or treatment goals change. A second professional opinion may also weigh the same evidence differently.",
   },
 ];
 
@@ -91,7 +91,7 @@ const webPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
   name: "Dental Treatment Comparisons: Side-by-Side Guides | DentaSmart",
-  description: "Compare dental treatments side by side. Braces vs Invisalign, implants vs dentures, crowns vs veneers, and more. Honest comparisons with real costs.",
+  description: "Compare dental treatments side by side, including clinical fit, daily care, cost factors, risks, and questions to discuss with a dentist.",
   url: "https://dentasmart.ai/comparisons",
   inLanguage: "en-US",
   isPartOf: { "@type": "WebSite", name: "DentaSmart", url: "https://dentasmart.ai" },
@@ -110,7 +110,7 @@ export default function ComparisonsHub() {
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
         title="Dental Treatment Comparisons | DentaSmart"
-        description="Compare dental treatments side by side. Braces vs Invisalign, implants vs dentures, crowns vs veneers, and more. Honest comparisons with real costs to help you decide."
+        description="Compare dental treatments by clinical fit, daily care, cost factors, risks, and questions to discuss with a dentist."
         canonical="https://dentasmart.ai/comparisons"
         keywords="braces vs invisalign, dental implants vs dentures, crown vs veneer, electric vs manual toothbrush, fluoride vs fluoride free, dental treatment comparison"
         jsonLd={[faqJsonLd, breadcrumbJsonLd, webPageJsonLd]}
@@ -133,7 +133,7 @@ export default function ComparisonsHub() {
               <span className="italic text-primary">Choose with confidence.</span>
             </h1>
             <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed max-w-2xl mb-8">
-              Dental decisions are stressful when you do not understand the tradeoffs. These side-by-side comparisons give you the facts so you can pick what is right for your mouth, your budget, and your life.
+              These side-by-side guides explain practical differences and questions to discuss with a dentist. They do not choose a treatment for you.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
@@ -186,10 +186,10 @@ export default function ComparisonsHub() {
               <span className="italic text-primary">But which one?</span>
             </h2>
             <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed mb-4">
-              You are sitting in the dental chair and the dentist gives you two options. One costs twice as much. The other sounds simpler but maybe it will not last. You nod along, but inside you are thinking: "I have no idea which one to pick."
+              A dentist may give you two reasonable options with different procedures, maintenance, risks, and costs. A short explanation can leave important questions unanswered.
             </p>
             <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed">
-              That is exactly why we built these comparison guides. No jargon. No sales pitch. Just honest, side-by-side breakdowns of the most common dental decisions people face, so you can walk into your appointment with real knowledge.
+              These guides organize common tradeoffs in plain language so you can ask more specific questions before deciding with a licensed dentist.
             </p>
           </motion.div>
         </div>
@@ -221,7 +221,7 @@ export default function ComparisonsHub() {
                   </div>
                   <h3 className="text-lg md:text-xl font-medium text-black mb-2">{page.name}</h3>
                   <p className="text-stone-600 font-light text-sm leading-relaxed mb-3">{page.description}</p>
-                  <div className="text-xs text-stone-400 mb-3">{page.searches} searches</div>
+                  <div className="text-xs text-stone-400 mb-3">{page.focus}</div>
                   <div className="bg-stone-50 rounded-lg px-3 py-2 text-xs text-stone-600 font-medium mb-4">
                     {page.keyDifference}
                   </div>
