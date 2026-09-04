@@ -47,7 +47,7 @@ export default function Home() {
         title="Your Personal AI Dentist in Your Pocket" 
         description="Upload mouth photos or dental X-rays and get clear AI-powered oral health insights, a personalized Oral Health Score, and treatment considerations."
         canonical="https://dentasmart.ai/"
-        ogImage="https://dentasmart.ai/images/logo.png"
+        ogImage="https://dentasmart.ai/manus-storage/dentasmart-logo-social-card_89fe736d.png"
       />
       <Navigation />
       <OrganizationSchema />

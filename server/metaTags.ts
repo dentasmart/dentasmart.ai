@@ -75,7 +75,7 @@ const staticMeta: Record<string, MetaInfo> = {
     title: "DentaSmart | Your Personal AI Oral Health Guide",
     description:
       "DentaSmart provides educational oral health insights from supported photos, X-rays, symptoms, and treatment documents to help you prepare for dental care.",
-    ogImage: "https://dentasmart.ai/images/logo.png",
+    ogImage: "https://dentasmart.ai/manus-storage/dentasmart-logo-social-card_89fe736d.png",
   },
   "/how-it-works": {
     title: "How DentaSmart Works | AI Oral Health Guide in 4 Steps",

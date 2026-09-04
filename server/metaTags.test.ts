@@ -81,8 +81,8 @@ describe("injectMetaTags", () => {
     const homepage = await resolveMetaTags("/");
     const result = injectMetaTags(SAMPLE_HTML, homepage!);
 
-    expect(result).toContain('property="og:image" content="https://dentasmart.ai/images/logo.png"');
-    expect(result).toContain('name="twitter:image" content="https://dentasmart.ai/images/logo.png"');
+    expect(result).toContain('property="og:image" content="https://dentasmart.ai/manus-storage/dentasmart-logo-social-card_89fe736d.png"');
+    expect(result).toContain('name="twitter:image" content="https://dentasmart.ai/manus-storage/dentasmart-logo-social-card_89fe736d.png"');
     expect((await resolveMetaTags("/pricing"))?.ogImage).toBeUndefined();
   });
 
