@@ -20,6 +20,7 @@ interface MetaInfo {
   /** null explicitly omits canonical and og:url for a confirmed 404 response. */
   canonical?: string | null;
   robots?: string;
+  ogImage?: string;
 }
 
 const BASE_URL = "https://dentasmart.ai";
@@ -74,6 +75,7 @@ const staticMeta: Record<string, MetaInfo> = {
     title: "DentaSmart | Your Personal AI Oral Health Guide",
     description:
       "DentaSmart provides educational oral health insights from supported photos, X-rays, symptoms, and treatment documents to help you prepare for dental care.",
+    ogImage: "https://dentasmart.ai/images/logo.png",
   },
   "/how-it-works": {
     title: "How DentaSmart Works | AI Oral Health Guide in 4 Steps",
@@ -1144,6 +1146,20 @@ export function injectMetaTags(html: string, meta: MetaInfo): string {
     return source.replace("</head>", `    ${robots}\n  </head>`);
   };
 
+  const injectSocialImage = (source: string) => {
+    if (!meta.ogImage) return source;
+    const image = escapeHtml(meta.ogImage);
+    return source
+      .replace(
+        /<meta\s+property="og:image"\s+content="[^"]*"\s*\/?>/,
+        `<meta property="og:image" content="${image}" />`,
+      )
+      .replace(
+        /<meta\s+name="twitter:image"\s+content="[^"]*"\s*\/?>/,
+        `<meta name="twitter:image" content="${image}" />`,
+      );
+  };
+
   const omitCanonicalTags = (source: string) => source
     .replace(/\s*<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, "")
     .replace(/\s*<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/, "");
@@ -1158,7 +1174,7 @@ export function injectMetaTags(html: string, meta: MetaInfo): string {
     } else {
       html = html.split("__PAGE_CANONICAL__").join(canonicalUrl);
     }
-    return injectRobots(html);
+    return injectRobots(injectSocialImage(html));
   }
 
   // ── Fallback: regex-based replacement (handles old built index.html) ──────
@@ -1213,7 +1229,7 @@ export function injectMetaTags(html: string, meta: MetaInfo): string {
     /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/,
     `<meta name="twitter:description" content="${desc}" />`
   );
-  return injectRobots(html);
+  return injectRobots(injectSocialImage(html));
 }
 
 function escapeHtml(str: string): string {

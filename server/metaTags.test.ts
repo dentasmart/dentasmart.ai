@@ -25,9 +25,11 @@ const SAMPLE_HTML = `<!DOCTYPE html>
   <link rel="canonical" href="__PAGE_CANONICAL__" />
   <meta property="og:title" content="__PAGE_TITLE__" />
   <meta property="og:description" content="__PAGE_DESCRIPTION__" />
+  <meta property="og:image" content="https://dentasmart.ai/images/og-image.png" />
   <meta property="og:url" content="__PAGE_CANONICAL__" />
   <meta name="twitter:title" content="__PAGE_TITLE__" />
   <meta name="twitter:description" content="__PAGE_DESCRIPTION__" />
+  <meta name="twitter:image" content="https://dentasmart.ai/images/og-image.png" />
 </head>
 <body><div id="root"></div></body>
 </html>`;
@@ -73,6 +75,15 @@ describe("injectMetaTags", () => {
     expect(result).toContain('og:url" content="https://dentasmart.ai/conditions/cavities"');
     expect(result).not.toContain("__PAGE_CANONICAL__");
     expect(result).not.toContain('name="robots"');
+  });
+
+  it("uses the DentaSmart logo only for the homepage social image override", async () => {
+    const homepage = await resolveMetaTags("/");
+    const result = injectMetaTags(SAMPLE_HTML, homepage!);
+
+    expect(result).toContain('property="og:image" content="https://dentasmart.ai/images/logo.png"');
+    expect(result).toContain('name="twitter:image" content="https://dentasmart.ai/images/logo.png"');
+    expect((await resolveMetaTags("/pricing"))?.ogImage).toBeUndefined();
   });
 
   it("escapes HTML entities in title and description", () => {
