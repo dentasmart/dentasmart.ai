@@ -9,6 +9,7 @@
  */
 
 import { Helmet } from "react-helmet-async";
+import { serializeJsonLd } from "@shared/jsonLd";
 
 export interface FAQItem {
   question: string;
@@ -37,7 +38,7 @@ export default function FAQSchema({ faqs }: FAQSchemaProps) {
 
   return (
     <Helmet>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      <script type="application/ld+json">{serializeJsonLd(schema)}</script>
     </Helmet>
   );
 }

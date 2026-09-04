@@ -3,6 +3,8 @@
  * These generate structured data objects to pass into the SEO component's jsonLd prop.
  */
 
+import { toSchemaUrl } from "@shared/jsonLd";
+
 const SITE_URL = "https://dentasmart.ai";
 
 export interface BreadcrumbItem {
@@ -22,7 +24,7 @@ export function breadcrumbSchema(items: BreadcrumbItem[]): Record<string, unknow
       "@type": "ListItem",
       position: idx + 1,
       name: item.name,
-      item: item.url.startsWith("http") ? item.url : `${SITE_URL}${item.url}`,
+      item: toSchemaUrl(item.url),
     })),
   };
 }
@@ -40,7 +42,7 @@ export function webPageSchema(opts: {
     "@type": "WebPage",
     name: opts.name,
     description: opts.description,
-    url: opts.url.startsWith("http") ? opts.url : `${SITE_URL}${opts.url}`,
+    url: toSchemaUrl(opts.url),
     isPartOf: {
       "@type": "WebSite",
       name: "DentaSmart",
@@ -70,7 +72,7 @@ export function medicalWebPageSchema(opts: {
     "@type": "MedicalWebPage",
     name: opts.name,
     description: opts.description,
-    url: opts.url.startsWith("http") ? opts.url : `${SITE_URL}${opts.url}`,
+    url: toSchemaUrl(opts.url),
     ...(opts.lastReviewed && { lastReviewed: opts.lastReviewed }),
     ...(opts.reviewedBy && {
       reviewedBy: {
@@ -104,7 +106,7 @@ export function articleSchema(opts: {
     "@type": "Article",
     headline: opts.headline,
     description: opts.description,
-    url: opts.url.startsWith("http") ? opts.url : `${SITE_URL}${opts.url}`,
+    url: toSchemaUrl(opts.url),
     ...(opts.datePublished && { datePublished: opts.datePublished }),
     ...(opts.dateModified && { dateModified: opts.dateModified }),
     author: {

@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { Camera, ArrowRight, CheckCircle, Clock, Shield } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link } from "wouter";
+import { serializeJsonLd } from "@shared/jsonLd";
 
 // ─── Bug fix: use a safe animation variant that always ends at opacity:1 ─────
 // The original code used whileInView which can silently fail if IntersectionObserver
@@ -167,7 +168,7 @@ export default function InstantScan() {
       {/* FAQPage JSON-LD */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqJsonLd) }}
       />
       <Navigation />
 

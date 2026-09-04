@@ -15,6 +15,7 @@ const SITE_URL = "https://dentasmart.ai";
 import { getBlogPostBySlug } from "./blogDb";
 import { app, company, pricing } from "../shared/facts";
 import { getVerifiedReviewMetadata, type VerifiedReviewMetadata } from "./reviewMetadata";
+import { toSchemaUrl } from "../shared/jsonLd";
 
 // ─── Organization Schema (every page) ────────────────────────────────
 function getOrganizationSchema(): object {
@@ -22,7 +23,7 @@ function getOrganizationSchema(): object {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "DentaSmart",
-    url: SITE_URL,
+    url: toSchemaUrl(SITE_URL),
     logo: `${SITE_URL}/images/logo.png`,
     description: "DentaSmart is an AI-powered educational oral health app that helps people organize supported photos, X-rays, symptoms, and treatment documents for clearer dental conversations.",
     sameAs: [
@@ -33,7 +34,7 @@ function getOrganizationSchema(): object {
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
-      url: `${SITE_URL}/faqs`,
+      url: toSchemaUrl("/faqs"),
       availableLanguage: "English"
     }
   };
@@ -45,16 +46,8 @@ function getWebSiteSchema(): object {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "DentaSmart",
-    url: SITE_URL,
-    description: "Your Personal AI Dentist in Your Pocket. DentaSmart provides educational oral health reports, tracking tools, and plain-language explanations that do not replace professional diagnosis or care.",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${SITE_URL}/oral-health-hub?q={search_term_string}`
-      },
-      "query-input": "required name=search_term_string"
-    }
+    url: toSchemaUrl(SITE_URL),
+    description: "Your Personal AI Dentist in Your Pocket. DentaSmart provides educational oral health reports, tracking tools, and plain-language explanations that do not replace professional diagnosis or care."
   };
 }
 
@@ -67,8 +60,8 @@ function getSoftwareApplicationSchema(): object {
     operatingSystem: "iOS, Android",
     applicationCategory: "HealthApplication",
     description: "DentaSmart is an AI-powered educational oral health app for supported mouth photos, dental X-rays, symptoms, and treatment documents. It provides an Oral Health Score, plain-language reports, tracking tools, and AI guidance from Dr Din. It does not diagnose conditions or replace professional dental care.",
-    url: SITE_URL,
-    downloadUrl: `${SITE_URL}/download`,
+    url: toSchemaUrl(SITE_URL),
+    downloadUrl: toSchemaUrl("/download"),
     offers: [
       {
         "@type": "Offer",
@@ -115,7 +108,7 @@ function getBreadcrumbSchema(items: Array<{ name: string; url: string }>): objec
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: item.url.startsWith("http") ? item.url : `${SITE_URL}${item.url}`
+      item: toSchemaUrl(item.url)
     }))
   };
 }
@@ -132,11 +125,11 @@ function getMedicalWebPageSchema(
     "@type": "MedicalWebPage",
     name: title,
     description: description,
-    url: url.startsWith("http") ? url : `${SITE_URL}${url}`,
+    url: toSchemaUrl(url),
     publisher: {
       "@type": "Organization",
       name: "DentaSmart",
-      url: SITE_URL
+      url: toSchemaUrl(SITE_URL)
     },
     medicalAudience: {
       "@type": "PatientAudience",
@@ -162,7 +155,7 @@ function getProductSchema(): object {
     name: "DentaSmart AI Oral Health App",
     description: "AI-powered educational oral health app with supported photo and X-ray reviews, an Oral Health Score, plain-language reports, treatment-information comparisons, tracking tools, and AI guidance.",
     brand: { "@type": "Brand", name: "DentaSmart" },
-    url: `${SITE_URL}/pricing`,
+    url: toSchemaUrl("/pricing"),
     offers: [
       {
         "@type": "Offer",
@@ -172,7 +165,7 @@ function getProductSchema(): object {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        url: `${SITE_URL}/pricing`
+        url: toSchemaUrl("/pricing")
       },
       {
         "@type": "Offer",
@@ -182,7 +175,7 @@ function getProductSchema(): object {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        url: `${SITE_URL}/pricing`
+        url: toSchemaUrl("/pricing")
       },
       {
         "@type": "Offer",
@@ -192,7 +185,7 @@ function getProductSchema(): object {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        url: `${SITE_URL}/pricing`
+        url: toSchemaUrl("/pricing")
       },
       {
         "@type": "Offer",
@@ -202,7 +195,7 @@ function getProductSchema(): object {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        url: `${SITE_URL}/pricing`
+        url: toSchemaUrl("/pricing")
       }
     ]
   };
@@ -366,11 +359,11 @@ export async function resolveSchemaMarkup(urlPath: string): Promise<object[]> {
       "@type": "MedicalWebPage",
       name: `${title} Cost Guide`,
       description: `Understand the cost of ${title.toLowerCase()} procedures, insurance coverage, and ways to save.`,
-      url: `${SITE_URL}${cleanPath}/`,
+      url: toSchemaUrl(cleanPath),
       publisher: {
         "@type": "Organization",
         name: "DentaSmart",
-        url: SITE_URL,
+        url: toSchemaUrl(SITE_URL),
       },
       medicalAudience: {
         "@type": "PatientAudience",
@@ -528,15 +521,15 @@ export async function resolveSchemaMarkup(urlPath: string): Promise<object[]> {
         "@type": "BlogPosting",
         headline: post.metaTitle || post.title,
         description: post.metaDescription || "",
-        url: post.canonicalUrl || `${SITE_URL}/oral-health-hub/${post.slug}/`,
+        url: toSchemaUrl(post.canonicalUrl || `${SITE_URL}/oral-health-hub/${post.slug}/`),
         mainEntityOfPage: {
           "@type": "WebPage",
-          "@id": `${SITE_URL}/oral-health-hub/${post.slug}/`,
+          "@id": toSchemaUrl(`/oral-health-hub/${post.slug}/`),
         },
         publisher: {
           "@type": "Organization",
           name: "DentaSmart",
-          url: SITE_URL,
+          url: toSchemaUrl(SITE_URL),
         },
       };
       if (post.featuredImage || post.ogImage) {

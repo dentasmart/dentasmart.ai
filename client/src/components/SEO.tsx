@@ -12,6 +12,7 @@
  */
 import { Helmet } from 'react-helmet-async';
 import { app, company, pricing, productTerminology } from "@shared/facts";
+import { serializeJsonLd } from "@shared/jsonLd";
 
 const SITE_URL = "https://dentasmart.ai";
 
@@ -56,11 +57,6 @@ export default function SEO({
     "@type": "WebSite",
     name: "DentaSmart",
     url: SITE_URL,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${SITE_URL}/answers?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 
   // Build SoftwareApplication JSON-LD
@@ -122,7 +118,7 @@ export default function SEO({
     <Helmet>
       {jsonLdScripts.map((ld, i) => (
         <script key={i} type="application/ld+json">
-          {JSON.stringify(ld)}
+          {serializeJsonLd(ld)}
         </script>
       ))}
     </Helmet>

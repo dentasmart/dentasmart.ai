@@ -9,6 +9,7 @@ import { getNotFoundMeta, resolveMetaTags, injectMetaTags } from "../metaTags";
 import { resolveSSRContent } from "../ssrContent";
 import { resolveSchemaMarkup } from "../schemaMarkup";
 import { isEmailUnsubscribePath } from "../../shared/privacyRoutes";
+import { serializeJsonLd } from "../../shared/jsonLd";
 
 const APPLE_APP_SITE_ASSOCIATION_PATH = path.join(
   ".well-known",
@@ -51,7 +52,7 @@ export function injectSSRContent(html: string, ssrHtml: string): string {
 export function injectSchemaMarkup(html: string, schemas: object[]): string {
   if (!schemas || schemas.length === 0) return html;
   const scripts = schemas
-    .map(s => `<script type="application/ld+json">${JSON.stringify(s)}</script>`)
+    .map(s => `<script type="application/ld+json">${serializeJsonLd(s)}</script>`)
     .join('\n    ');
   // Insert before </head>
   html = html.replace('</head>', `    ${scripts}\n  </head>`);

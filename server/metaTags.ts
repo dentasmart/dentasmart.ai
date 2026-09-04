@@ -98,7 +98,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/team": {
     title: "Meet the DentaSmart Team and Advisors",
     description:
-      "Meet the DentaSmart leadership team, strategic advisors, and named dental content reviewer, with clear roles and professional-care boundaries.",
+      "Meet the DentaSmart leadership team and strategic advisors, with clear roles and professional-care boundaries.",
   },
   "/faqs": {
     title: "DentaSmart FAQs | Common Questions Answered",

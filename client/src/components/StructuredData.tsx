@@ -1,12 +1,13 @@
 /**
  * StructuredData - Comprehensive JSON-LD schema components for AEO.
- * 
+ *
  * Includes: Organization, WebSite, SoftwareApplication, BreadcrumbList,
  * Product/Service/Offer, HowTo, Article/BlogPosting, ItemList schemas.
  */
 
 import { Helmet } from "react-helmet-async";
 import { app, company } from "@shared/facts";
+import { serializeJsonLd, toSchemaUrl } from "@shared/jsonLd";
 
 const SITE_URL = "https://dentasmart.ai";
 
@@ -18,7 +19,7 @@ export function OrganizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "DentaSmart",
-    url: SITE_URL,
+    url: toSchemaUrl(SITE_URL),
     logo: `${SITE_URL}/images/logo.png`,
     description: "DentaSmart is an AI-powered educational oral health app that helps people organize supported photos, X-rays, symptoms, and treatment documents for clearer dental conversations.",
     sameAs: [
@@ -29,13 +30,14 @@ export function OrganizationSchema() {
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
-      url: `${SITE_URL}/faqs`,
-      availableLanguage: "English"
-    }
+      url: toSchemaUrl("/faqs"),
+      availableLanguage: "English",
+    },
   };
+
   return (
     <Helmet>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      <script type="application/ld+json">{serializeJsonLd(schema)}</script>
     </Helmet>
   );
 }
@@ -48,20 +50,13 @@ export function WebSiteSchema() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "DentaSmart",
-    url: SITE_URL,
+    url: toSchemaUrl(SITE_URL),
     description: "Your Personal AI Dentist in Your Pocket. DentaSmart provides educational oral health reports, tracking tools, and plain-language explanations that do not replace professional diagnosis or care.",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${SITE_URL}/oral-health-hub?q={search_term_string}`
-      },
-      "query-input": "required name=search_term_string"
-    }
   };
+
   return (
     <Helmet>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      <script type="application/ld+json">{serializeJsonLd(schema)}</script>
     </Helmet>
   );
 }
@@ -77,8 +72,8 @@ export function SoftwareApplicationSchema() {
     operatingSystem: "iOS, Android",
     applicationCategory: "HealthApplication",
     description: "DentaSmart is an AI-powered educational oral health app for supported mouth photos, dental X-rays, symptoms, and treatment documents. It provides an Oral Health Score, plain-language reports, tracking tools, and AI guidance from Dr Din. It does not diagnose conditions or replace professional dental care.",
-    url: SITE_URL,
-    downloadUrl: `${SITE_URL}/download`,
+    url: toSchemaUrl(SITE_URL),
+    downloadUrl: toSchemaUrl("/download"),
     offers: [
       {
         "@type": "Offer",
@@ -87,7 +82,7 @@ export function SoftwareApplicationSchema() {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        description: "One-time educational review of supported mouth photos and X-rays with visible areas to discuss, an Oral Health Score, a patient-friendly report, and Dr Din access for 30 days. $19.99 one-time."
+        description: "One-time educational review of supported mouth photos and X-rays with visible areas to discuss, an Oral Health Score, a patient-friendly report, and Dr Din access for 30 days. $19.99 one-time.",
       },
       {
         "@type": "Offer",
@@ -96,7 +91,7 @@ export function SoftwareApplicationSchema() {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        description: "One-time educational comparison for one case using supported treatment plans, bills, X-rays, and mouth photos, with cost context and questions to discuss with a licensed dentist. Dr Din access for 30 days. $29.99 one-time."
+        description: "One-time educational comparison for one case using supported treatment plans, bills, X-rays, and mouth photos, with cost context and questions to discuss with a licensed dentist. Dr Din access for 30 days. $29.99 one-time.",
       },
       {
         "@type": "Offer",
@@ -105,7 +100,7 @@ export function SoftwareApplicationSchema() {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        description: "Year-round educational monitoring for one person with supported photo and X-ray reviews, reports, Oral Health Score tracking, guided self-examination, record organization, and Dr Din access. $74.99/year."
+        description: "Year-round educational monitoring for one person with supported photo and X-ray reviews, reports, Oral Health Score tracking, guided self-examination, record organization, and Dr Din access. $74.99/year.",
       },
       {
         "@type": "Offer",
@@ -114,13 +109,14 @@ export function SoftwareApplicationSchema() {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        description: "Year-round educational monitoring for up to 4 family members, with separate profiles, reports, Oral Health Score tracking, dental history, and Dr Din access. $149.99/year."
-      }
+        description: "Year-round educational monitoring for up to 4 family members, with separate profiles, reports, Oral Health Score tracking, dental history, and Dr Din access. $149.99/year.",
+      },
     ],
   };
+
   return (
     <Helmet>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      <script type="application/ld+json">{serializeJsonLd(schema)}</script>
     </Helmet>
   );
 }
@@ -143,12 +139,13 @@ export function BreadcrumbSchema({ items }: { items: BreadcrumbItem[] }) {
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
-      item: item.url.startsWith("http") ? item.url : `${SITE_URL}${item.url}`
-    }))
+      item: toSchemaUrl(item.url),
+    })),
   };
+
   return (
     <Helmet>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      <script type="application/ld+json">{serializeJsonLd(schema)}</script>
     </Helmet>
   );
 }
@@ -173,12 +170,13 @@ export function HowToSchema({ name, description, steps }: { name: string; descri
       position: index + 1,
       name: step.name,
       text: step.text,
-      ...(step.url ? { url: step.url.startsWith("http") ? step.url : `${SITE_URL}${step.url}` } : {})
-    }))
+      ...(step.url ? { url: toSchemaUrl(step.url) } : {}),
+    })),
   };
+
   return (
     <Helmet>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      <script type="application/ld+json">{serializeJsonLd(schema)}</script>
     </Helmet>
   );
 }
@@ -186,19 +184,19 @@ export function HowToSchema({ name, description, steps }: { name: string; descri
 // ============================================================
 // Article/BlogPosting Schema
 // ============================================================
-export function ArticleSchema({ 
-  title, 
-  description, 
-  url, 
-  datePublished, 
-  dateModified, 
-  author 
-}: { 
-  title: string; 
-  description: string; 
-  url: string; 
-  datePublished: string; 
-  dateModified?: string; 
+export function ArticleSchema({
+  title,
+  description,
+  url,
+  datePublished,
+  dateModified,
+  author,
+}: {
+  title: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified?: string;
   author?: string;
 }) {
   const schema = {
@@ -206,31 +204,32 @@ export function ArticleSchema({
     "@type": "Article",
     headline: title,
     description,
-    url: url.startsWith("http") ? url : `${SITE_URL}${url}`,
+    url: toSchemaUrl(url),
     datePublished,
     dateModified: dateModified || datePublished,
     author: {
       "@type": "Organization",
       name: author || "DentaSmart",
-      url: SITE_URL
+      url: toSchemaUrl(SITE_URL),
     },
     publisher: {
       "@type": "Organization",
       name: "DentaSmart",
-      url: SITE_URL,
+      url: toSchemaUrl(SITE_URL),
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/images/logo.png`
-      }
+        url: `${SITE_URL}/images/logo.png`,
+      },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": url.startsWith("http") ? url : `${SITE_URL}${url}`
-    }
+      "@id": toSchemaUrl(url),
+    },
   };
+
   return (
     <Helmet>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      <script type="application/ld+json">{serializeJsonLd(schema)}</script>
     </Helmet>
   );
 }
@@ -246,9 +245,9 @@ export function ProductServiceSchema() {
     description: "AI-powered educational oral health app with supported photo and X-ray reviews, an Oral Health Score, plain-language reports, treatment-information comparisons, tracking tools, and AI guidance.",
     brand: {
       "@type": "Brand",
-      name: "DentaSmart"
+      name: "DentaSmart",
     },
-    url: `${SITE_URL}/pricing`,
+    url: toSchemaUrl("/pricing"),
     offers: [
       {
         "@type": "Offer",
@@ -257,8 +256,8 @@ export function ProductServiceSchema() {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        url: `${SITE_URL}/pricing`,
-        description: "One-time educational review of supported mouth photos and X-rays with visible areas to discuss, an Oral Health Score, a patient-friendly report, and Dr Din access for 30 days. $19.99 one-time."
+        url: toSchemaUrl("/pricing"),
+        description: "One-time educational review of supported mouth photos and X-rays with visible areas to discuss, an Oral Health Score, a patient-friendly report, and Dr Din access for 30 days. $19.99 one-time.",
       },
       {
         "@type": "Offer",
@@ -267,8 +266,8 @@ export function ProductServiceSchema() {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        url: `${SITE_URL}/pricing`,
-        description: "One-time educational comparison for one case using supported treatment plans, bills, X-rays, and mouth photos, with cost context and questions to discuss with a licensed dentist. Dr Din access for 30 days. $29.99 one-time."
+        url: toSchemaUrl("/pricing"),
+        description: "One-time educational comparison for one case using supported treatment plans, bills, X-rays, and mouth photos, with cost context and questions to discuss with a licensed dentist. Dr Din access for 30 days. $29.99 one-time.",
       },
       {
         "@type": "Offer",
@@ -277,8 +276,8 @@ export function ProductServiceSchema() {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        url: `${SITE_URL}/pricing`,
-        description: "Year-round educational monitoring for one person with supported photo and X-ray reviews, reports, Oral Health Score tracking, guided self-examination, record organization, and Dr Din access. $74.99/year."
+        url: toSchemaUrl("/pricing"),
+        description: "Year-round educational monitoring for one person with supported photo and X-ray reviews, reports, Oral Health Score tracking, guided self-examination, record organization, and Dr Din access. $74.99/year.",
       },
       {
         "@type": "Offer",
@@ -287,14 +286,15 @@ export function ProductServiceSchema() {
         priceCurrency: "USD",
         priceValidUntil: "2027-12-31",
         availability: "https://schema.org/InStock",
-        url: `${SITE_URL}/pricing`,
-        description: "Year-round educational monitoring for up to 4 family members, with separate profiles, reports, Oral Health Score tracking, dental history, and Dr Din access. $149.99/year."
-      }
-    ]
+        url: toSchemaUrl("/pricing"),
+        description: "Year-round educational monitoring for up to 4 family members, with separate profiles, reports, Oral Health Score tracking, dental history, and Dr Din access. $149.99/year.",
+      },
+    ],
   };
+
   return (
     <Helmet>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      <script type="application/ld+json">{serializeJsonLd(schema)}</script>
     </Helmet>
   );
 }
@@ -302,9 +302,9 @@ export function ProductServiceSchema() {
 // ============================================================
 // ItemList Schema (for listicle/hub pages)
 // ============================================================
-export function ItemListSchema({ name, description, items }: { 
-  name: string; 
-  description: string; 
+export function ItemListSchema({ name, description, items }: {
+  name: string;
+  description: string;
   items: Array<{ name: string; url: string; position?: number }>;
 }) {
   const schema = {
@@ -317,12 +317,13 @@ export function ItemListSchema({ name, description, items }: {
       "@type": "ListItem",
       position: item.position || index + 1,
       name: item.name,
-      url: item.url.startsWith("http") ? item.url : `${SITE_URL}${item.url}`
-    }))
+      url: toSchemaUrl(item.url),
+    })),
   };
+
   return (
     <Helmet>
-      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+      <script type="application/ld+json">{serializeJsonLd(schema)}</script>
     </Helmet>
   );
 }

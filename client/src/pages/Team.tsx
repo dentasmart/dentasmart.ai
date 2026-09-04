@@ -13,7 +13,7 @@ export default function Team() {
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
         title="Meet the DentaSmart Team and Advisors"
-        description="Meet the DentaSmart leadership team, strategic advisors, and named dental content reviewer, with clear roles and professional-care boundaries."
+        description="Meet the DentaSmart leadership team and strategic advisors, with clear roles and professional-care boundaries."
         canonical="https://dentasmart.ai/team"
       />
       <Navigation />

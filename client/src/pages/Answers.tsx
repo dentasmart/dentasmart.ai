@@ -4,6 +4,7 @@ import SEO from "@/components/SEO";
 import { pricing } from "@shared/facts";
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/lib/analytics";
+import { serializeJsonLd } from "@shared/jsonLd";
 import { motion } from "framer-motion";
 import { Search, ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
 import { useEffect, useState, useMemo } from "react";
@@ -130,7 +131,7 @@ export default function Answers() {
       {/* Inject FAQPage schema */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqSchema) }}
       />
       <Navigation />
 
