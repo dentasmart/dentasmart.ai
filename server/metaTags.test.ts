@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { describe, it, expect } from "vitest";
 
 /**
@@ -25,11 +26,11 @@ const SAMPLE_HTML = `<!DOCTYPE html>
   <link rel="canonical" href="__PAGE_CANONICAL__" />
   <meta property="og:title" content="__PAGE_TITLE__" />
   <meta property="og:description" content="__PAGE_DESCRIPTION__" />
-  <meta property="og:image" content="https://dentasmart.ai/images/og-image.png" />
+  <meta property="og:image" content="https://dentasmart.ai/manus-storage/dentasmart-free-quick-check-social-1200x630_b33c85da.png" />
   <meta property="og:url" content="__PAGE_CANONICAL__" />
   <meta name="twitter:title" content="__PAGE_TITLE__" />
   <meta name="twitter:description" content="__PAGE_DESCRIPTION__" />
-  <meta name="twitter:image" content="https://dentasmart.ai/images/og-image.png" />
+  <meta name="twitter:image" content="https://dentasmart.ai/manus-storage/dentasmart-free-quick-check-social-1200x630_b33c85da.png" />
 </head>
 <body><div id="root"></div></body>
 </html>`;
@@ -84,6 +85,15 @@ describe("injectMetaTags", () => {
     expect(result).toContain('property="og:image" content="https://dentasmart.ai/manus-storage/dentasmart-free-quick-check-social-1200x630_b33c85da.png"');
     expect(result).toContain('name="twitter:image" content="https://dentasmart.ai/manus-storage/dentasmart-free-quick-check-social-1200x630_b33c85da.png"');
     expect((await resolveMetaTags("/pricing"))?.ogImage).toBeUndefined();
+  });
+
+  it("keeps the static Open Graph and X fallback aligned with the approved homepage social card", () => {
+    const template = readFileSync(new URL("../client/index.html", import.meta.url), "utf8");
+    const approvedSocialCard = "https://dentasmart.ai/manus-storage/dentasmart-free-quick-check-social-1200x630_b33c85da.png";
+
+    expect(template).toContain(`property="og:image" content="${approvedSocialCard}"`);
+    expect(template).toContain(`name="twitter:image" content="${approvedSocialCard}"`);
+    expect(template).not.toContain("https://dentasmart.ai/images/og-image.png");
   });
 
   it("escapes HTML entities in title and description", () => {
