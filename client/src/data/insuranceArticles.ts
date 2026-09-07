@@ -104,7 +104,7 @@ export const insuranceArticles = [
     },
     result: {
       heading: "How DentaSmart Helps",
-      content: "DentaSmart offers educational image analysis and a paid Second Opinion service for eligible submissions. Neither feature guarantees claim payment or replaces the treating dentist's diagnosis and records."
+      content: "DentaSmart offers educational Quick Check services and Treatment Plan Review for eligible submissions. Neither feature guarantees claim payment or replaces the treating dentist's diagnosis and records."
     }
   },
   {

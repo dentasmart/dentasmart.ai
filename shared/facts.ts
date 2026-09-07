@@ -19,7 +19,7 @@
 export const brand = {
   productName: "DentaSmart",
   tagline: "Your Personal AI Dentist in Your Pocket",
-  aiPersonaName: "Dr Din",
+  aiPersonaName: "Dr. Din",
 } as const;
 
 // ─── Pricing ──────────────────────────────────────────────────────────────────
@@ -32,21 +32,43 @@ export interface PlanFact {
   readonly billingLabel: string;
 }
 
-export const pricing = {
-  quickCheck: {
-    name: "Quick Check",
+const freeQuickCheck = {
+    name: "Free Quick Check",
+    price: 0,
+    priceFormatted: "Free",
+    billing: "one-time",
+    billingLabel: "unlimited checks",
+    requiresXray: false,
+    acceptsMouthPhotos: true,
+    acceptsXrays: true,
+    freeXrayFindingScope: "Reduced subset of eligible X-ray finding data",
+  } as const;
+
+const fullQuickCheck = {
+    name: "Full Quick Check",
     price: 19.99,
     priceFormatted: "$19.99",
     billing: "one-time",
-    billingLabel: "one-time",
-  },
-  secondOpinion: {
-    name: "Second Opinion",
+    billingLabel: "per case",
+    requiresXray: true,
+    includesFullEligibleXrayInsights: true,
+  } as const;
+
+const treatmentPlanReview = {
+    name: "Treatment Plan Review",
     price: 29.99,
     priceFormatted: "$29.99",
     billing: "one-time",
-    billingLabel: "one-time",
-  },
+    billingLabel: "per case",
+  } as const;
+
+export const pricing = {
+  quickCheck: freeQuickCheck,
+  fullQuickCheck,
+  treatmentPlanReview,
+  /** Compatibility aliases while older internal identifiers and checkout paths are migrated. */
+  xrayAnalysis: fullQuickCheck,
+  secondOpinion: treatmentPlanReview,
   completeCareIndividual: {
     name: "Complete Care",
     price: 74.99,
@@ -75,10 +97,12 @@ export const pricing = {
 export const productTerminology = {
   dentaSmart: brand.productName,
   quickCheck: pricing.quickCheck.name,
+  fullQuickCheck: pricing.fullQuickCheck.name,
+  treatmentPlanReview: pricing.treatmentPlanReview.name,
   secondOpinion: pricing.secondOpinion.name,
   completeCare: pricing.completeCareIndividual.name,
   oralHealthScore: "Oral Health Score",
-  drDin: "Dr Din",
+  drDin: "Dr. Din",
   family: "Family",
 } as const;
 

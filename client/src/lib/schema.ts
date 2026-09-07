@@ -157,12 +157,14 @@ export function howToSchema(opts: {
   name: string;
   description: string;
   steps: { title: string; description: string }[];
+  citations?: string[];
 }): Record<string, unknown> {
   return {
     "@context": "https://schema.org",
     "@type": "HowTo",
     name: opts.name,
     description: opts.description,
+    ...(opts.citations?.length ? { citation: opts.citations.map(toSchemaUrl) } : {}),
     step: opts.steps.map((step, idx) => ({
       "@type": "HowToStep",
       position: idx + 1,

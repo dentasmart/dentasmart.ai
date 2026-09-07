@@ -122,7 +122,7 @@ function PolicyNavigation() {
 
 function ProductFactsPage() {
   const title = "Product Facts | DentaSmart";
-  const description = "Review verified DentaSmart availability, plans, prices, store links, free-preview details, and educational-use boundaries.";
+  const description = "Review verified DentaSmart availability, current plan names, prices, store links, Free Quick Check details, and educational-use boundaries.";
   const canonical = "https://dentasmart.ai/product-facts";
 
   return (
@@ -155,15 +155,16 @@ function ProductFactsPage() {
               <table className="w-full text-left text-sm">
                 <thead><tr className="border-b border-stone-200 text-stone-600"><th className="py-3 pr-4 font-medium">Service</th><th className="py-3 font-medium">Verified price</th></tr></thead>
                 <tbody className="text-stone-700">
-                  <tr className="border-b border-stone-100"><td className="py-3 pr-4">{pricing.quickCheck.name}</td><td className="py-3">{pricing.quickCheck.priceFormatted} {pricing.quickCheck.billingLabel}</td></tr>
-                  <tr className="border-b border-stone-100"><td className="py-3 pr-4">{pricing.secondOpinion.name}</td><td className="py-3">{pricing.secondOpinion.priceFormatted} {pricing.secondOpinion.billingLabel}</td></tr>
+                  <tr className="border-b border-stone-100"><td className="py-3 pr-4">{pricing.quickCheck.name}</td><td className="py-3">{pricing.quickCheck.priceFormatted}, {pricing.quickCheck.billingLabel}</td></tr>
+                  <tr className="border-b border-stone-100"><td className="py-3 pr-4">{pricing.fullQuickCheck.name}</td><td className="py-3">{pricing.fullQuickCheck.priceFormatted} {pricing.fullQuickCheck.billingLabel}</td></tr>
+                  <tr className="border-b border-stone-100"><td className="py-3 pr-4">{pricing.treatmentPlanReview.name}</td><td className="py-3">{pricing.treatmentPlanReview.priceFormatted} {pricing.treatmentPlanReview.billingLabel}</td></tr>
                   <tr className="border-b border-stone-100"><td className="py-3 pr-4">Complete Care, individual</td><td className="py-3">{pricing.completeCareIndividual.priceFormatted}{pricing.completeCareIndividual.billingLabel}</td></tr>
                   <tr className="border-b border-stone-100"><td className="py-3 pr-4">Complete Care, family</td><td className="py-3">{pricing.completeCareFamily.priceFormatted}{pricing.completeCareFamily.billingLabel}, up to {pricing.completeCareFamily.maxMembers} family members</td></tr>
                   <tr><td className="py-3 pr-4">Additional family member</td><td className="py-3">{pricing.additionalFamilyMember.priceFormatted}{pricing.additionalFamilyMember.billingLabel}</td></tr>
                 </tbody>
               </table>
             </div>
-            <p className="mt-5 text-stone-700 leading-relaxed">The app is free to download. A limited free scan preview is not a paid Quick Check, Second Opinion, or Complete Care service. Review plan details before purchase.</p>
+            <p className="mt-5 text-stone-700 leading-relaxed">Free Quick Check supports unlimited checks with mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray. Free X-ray submissions show a reduced subset of eligible finding data. Full Quick Check, Treatment Plan Review, and Complete Care are paid services.</p>
             <Link className="inline-block mt-4 text-action hover:underline" href="/pricing">View plan details</Link>
           </section>
 

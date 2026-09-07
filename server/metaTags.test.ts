@@ -41,9 +41,9 @@ describe("injectMetaTags", () => {
       description: "Explore features.",
       canonical: "https://dentasmart.ai/features",
     });
-    expect(result).toContain("<title>Features | DentaSmart</title>");
-    expect(result).toContain('og:title" content="Features | DentaSmart"');
-    expect(result).toContain('twitter:title" content="Features | DentaSmart"');
+    expect(result).toContain("<title>Features | Your Personal AI Dentist in Your Pocket</title>");
+    expect(result).toContain('og:title" content="Features | Your Personal AI Dentist in Your Pocket"');
+    expect(result).toContain('twitter:title" content="Features | Your Personal AI Dentist in Your Pocket"');
     expect(result).not.toContain("__PAGE_TITLE__");
   });
 
@@ -77,12 +77,12 @@ describe("injectMetaTags", () => {
     expect(result).not.toContain('name="robots"');
   });
 
-  it("uses the DentaSmart logo only for the homepage social image override", async () => {
+  it("uses the meaningful free Quick Check card only for the homepage social image override", async () => {
     const homepage = await resolveMetaTags("/");
     const result = injectMetaTags(SAMPLE_HTML, homepage!);
 
-    expect(result).toContain('property="og:image" content="https://dentasmart.ai/manus-storage/dentasmart-logo-social-card_89fe736d.png"');
-    expect(result).toContain('name="twitter:image" content="https://dentasmart.ai/manus-storage/dentasmart-logo-social-card_89fe736d.png"');
+    expect(result).toContain('property="og:image" content="https://dentasmart.ai/manus-storage/dentasmart-free-quick-check-social-1200x630_b33c85da.png"');
+    expect(result).toContain('name="twitter:image" content="https://dentasmart.ai/manus-storage/dentasmart-free-quick-check-social-1200x630_b33c85da.png"');
     expect((await resolveMetaTags("/pricing"))?.ogImage).toBeUndefined();
   });
 
@@ -119,7 +119,7 @@ describe("injectMetaTags", () => {
 
   it("emits server-visible noindex 404 metadata without canonical or og:url", () => {
     const result = injectMetaTags(SAMPLE_HTML, getNotFoundMeta());
-    expect(result).toContain("<title>Page Not Found | DentaSmart</title>");
+    expect(result).toContain("<title>Page Not Found | Your Personal AI Dentist in Your Pocket</title>");
     expect(result).toContain('name="robots" content="noindex, follow"');
     expect(result).not.toContain('rel="canonical"');
     expect(result).not.toContain('property="og:url"');

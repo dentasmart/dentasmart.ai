@@ -10,14 +10,14 @@ import { Link } from "wouter";
 export default function Features() {
   const features: { title: string; description: string; points: string[]; image: string; isPhone?: boolean }[] = [
     {
-      title: "Quick Check: X-Ray and Photo Review",
-      description: "Use the images you already have to prepare for a more informed dental conversation.\n\nQuick Check is a one-time educational review of supported mouth photos and dental X-rays. DentaSmart highlights visible areas that may warrant attention and explains them in plain language. You get an Oral Health Score and a patient-friendly report you can save or share. Dr Din is available for 30 days after your check.",
+      title: "Start with a Free Quick Check",
+      description: "Use supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray.\n\nFree Quick Check is unlimited. If you add supported X-rays, the free report shows a reduced subset of eligible finding data. Upgrade one case to Full Quick Check when you want the full eligible X-ray insights.",
       points: [
-        "Visible Areas: See what may warrant attention in your images, in plain English.",
-        "Oral Health Score: Understand where you stand with a clear 0-100 score.",
-        "Shareable Report: Save or share a patient-friendly summary with your dentist."
+        "Unlimited Free Checks: Start again whenever you have new information.",
+        "Flexible Inputs: Use mouth photos, supported X-rays, or both.",
+        "Clear Upgrade: Full Quick Check unlocks full eligible X-ray insights for one case."
       ],
-      image: "/manus-storage/quick-check-xray_0e827efc.png",
+      image: "/manus-storage/dentasmart-app-free-quick-check_303190e3.webp",
       isPhone: true
     },
     {
@@ -32,14 +32,14 @@ export default function Features() {
       isPhone: true
     },
     {
-      title: "Two Reports: One for You, One for Your Dentist",
-      description: "Use a report written for you, then share a more detailed version with your dentist.\n\nDentaSmart generates two versions of your report. The 'For You' version uses plain language with an Oral Health Score and clear discussion points. The 'For Dentist' version includes clinical terminology and tooth-by-tooth observations. Both are downloadable as PDF and shareable.",
+      title: "Reports for You and Your Dentist",
+      description: "Read the findings in plain language, then switch to the dentist view when you want more technical detail.\n\nDentaSmart reports organize your Oral Health Score, findings, mouth images, X-ray insights when eligible, and next questions. Available report actions depend on the plan and report state shown in the app.",
       points: [
-        "Patient Report: Simple score, clear priorities, and next steps you understand.",
-        "Dentist Report: Clinical detail with tooth-by-tooth observations and discussion points.",
-        "Share Your Report: Download a PDF to email, print, or bring to a dental visit."
+        "For You: Plain-language findings, score context, and discussion points.",
+        "For Dentist: More technical report detail for a dental conversation.",
+        "Report Sections: Move between score, findings, images, and next steps."
       ],
-      image: "/manus-storage/dual-report-dentist_5dcf6f0b.png",
+      image: "/manus-storage/dentasmart-app-ai-report-sections_5245a13a.webp",
       isPhone: true
     },
     {
@@ -60,7 +60,8 @@ export default function Features() {
         "Change Tracking: Compare visible changes across your saved records.",
         "Easy Monitoring: Track your gum and tooth health from the comfort of home."
       ],
-      image: "/images/optimized/AfieCruvYKKqBoIa-800.webp"
+      image: "/manus-storage/dentasmart-app-history_155206e4.webp",
+      isPhone: true
     },
     {
       title: "Guidance That Fits Your Routine",
@@ -100,28 +101,29 @@ export default function Features() {
         "History View: Compare your score with your earlier records.",
         "Conversation Starter: Use changes to prepare questions for your dentist."
       ],
-      image: "/images/optimized/DawnQOxKtdjguhLp-800.webp",
+      image: "/manus-storage/dentasmart-app-oral-health-score_ef84a3c3.webp",
       isPhone: true
     },
     {
-      title: "Your AI Oral Health Guide",
-      description: "Questions about dental terms do not always happen during office hours.\n\nMeet Dr Din, DentaSmart's AI oral health guide. Dr Din can explain DentaSmart reports, define common dental terms, and help you prepare questions in plain language. It does not diagnose conditions or replace professional care.",
+      title: "Ask Dr. Din About Your Report",
+      description: "Questions often come up after you read a report.\n\nDr. Din can explain DentaSmart report language, findings, dental terms, and general oral-health information. It can also help you prepare questions for a dentist. It does not diagnose conditions or replace professional care.",
       points: [
         "Plain-Language Help: Review report language and common dental terms.",
         "Question Preparation: Organize what to discuss with a dentist.",
         "Educational Support: Get plain-language context for common dental topics."
       ],
-      image: "/images/optimized/YSjOjqlpUabDbzAW-800.webp"
+      image: "/manus-storage/dentasmart-app-dr-din_f1bac3a2.webp",
+      isPhone: true
     },
     {
-      title: "Smart Reminders That Fit Your Life",
-      description: "Good habits don't happen by accident. They need gentle nudges.\n\nDentaSmart sends timely reminders to scan, brush, floss, and follow up on flagged issues. Whether it's your Apple Watch, phone notification, or email, you'll never miss a beat on your oral health journey.",
+      title: "Reminders and Report Updates",
+      description: "Use notifications to keep track of report readiness and oral-health reminders.\n\nDentaSmart can show in-app reminders and device notifications when a report is ready or when an oral-health task is due. The notification controls available depend on the app and device settings.",
       points: [
-        "Watch & Phone Alerts: Get nudges right on your wrist or lock screen.",
-        "Personalized Timing: Reminders adapt to your routine and scan history.",
-        "Follow-Up Prompts: Never forget to re-check a flagged area."
+        "Report Ready: See when a completed report is available.",
+        "Oral-Health Tasks: Keep scheduled reminders in view.",
+        "Device Controls: Manage notification access through supported settings."
       ],
-      image: "/images/optimized/XZusOpUDOktZBHbT-800.webp",
+      image: "/manus-storage/dentasmart-app-notifications_8daaeb1e.webp",
       isPhone: true
     },
     {
@@ -141,7 +143,7 @@ export default function Features() {
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
       <SEO
         title="DentaSmart Features - Understand Your Oral Health"
-        description="Explore DentaSmart features for supported mouth photos and X-rays, plain-language reports, Oral Health Score tracking, and preparing questions for your dentist."
+        description="Explore DentaSmart's unlimited Free Quick Checks, Full Quick Check, Treatment Plan Review, Oral Health Score tracking, reports, records, and guidance from Dr. Din."
         canonical="https://dentasmart.ai/features"
       />
       <Navigation />
@@ -191,10 +193,10 @@ export default function Features() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-start">
                 <Link
-                  href="/pricing#quick-check"
+                  href="/download"
                   className="inline-flex min-h-12 items-center justify-center rounded-full border-0 bg-action px-8 text-lg font-medium text-action-foreground shadow-lg transition-all duration-300 hover:scale-105 hover:bg-action-hover"
                 >
-                  Explore Quick Check
+                  Start with a Free Quick Check
                 </Link>
                 
               </div>

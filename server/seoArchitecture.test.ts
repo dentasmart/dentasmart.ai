@@ -14,19 +14,19 @@ describe("SEO Architecture", () => {
     it("returns canonical for condition page", async () => {
       const meta = await resolveMetaTags("/conditions/toothache");
       expect(meta).not.toBeNull();
-      expect(meta!.canonical).toBe("https://dentasmart.ai/conditions/toothache");
+      expect(meta!.canonical).toBe("https://dentasmart.ai/conditions/toothache/");
     });
 
     it("returns canonical for symptom page", async () => {
       const meta = await resolveMetaTags("/symptoms/bad-breath");
       expect(meta).not.toBeNull();
-      expect(meta!.canonical).toBe("https://dentasmart.ai/symptoms/bad-breath");
+      expect(meta!.canonical).toBe("https://dentasmart.ai/symptoms/bad-breath/");
     });
 
     it("returns canonical for cost page", async () => {
       const meta = await resolveMetaTags("/dental-costs/dental-crown-cost");
       expect(meta).not.toBeNull();
-      expect(meta!.canonical).toBe("https://dentasmart.ai/dental-costs/dental-crown-cost");
+      expect(meta!.canonical).toBe("https://dentasmart.ai/dental-costs/dental-crown-cost/");
     });
 
     it("returns unique title per page", async () => {
@@ -193,7 +193,7 @@ describe("SEO Architecture", () => {
       const schemas = await resolveSchemaMarkup("/pricing");
       const types = schemas.map((s: any) => s["@type"]);
       expect(types).toContain("Product");
-      expect(types).toContain("BreadcrumbList");
+      expect(types).not.toContain("BreadcrumbList");
     });
 
     it("returns HowTo schema for how-it-works page", async () => {

@@ -6,7 +6,7 @@ import MidContentCTA from "@/components/MidContentCTA";
 import NextStepsBox from "@/components/NextStepsBox";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, CheckCircle, ChevronDown, ChevronUp, Lightbulb, XCircle, MessageCircleQuestion } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle, ChevronDown, ChevronUp, ExternalLink, Lightbulb, ListChecks, XCircle, MessageCircleQuestion } from "lucide-react";
 import { Link, useRoute } from "wouter";
 import { useState } from "react";
 import { guidesData } from "@/data/guides";
@@ -18,17 +18,20 @@ import type { ContentGovernance } from "@shared/contentGovernance";
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
+  const panelId = `faq-${question.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")}`;
   return (
     <div className="border border-stone-200 rounded-xl overflow-hidden">
       <button
         onClick={() => setOpen(!open)}
+        aria-expanded={open}
+        aria-controls={panelId}
         className="w-full flex items-center justify-between p-5 text-left hover:bg-stone-50 transition-colors cursor-pointer"
       >
         <span className="font-medium text-black pr-4">{question}</span>
         {open ? <ChevronUp className="w-5 h-5 text-stone-400 flex-shrink-0" /> : <ChevronDown className="w-5 h-5 text-stone-400 flex-shrink-0" />}
       </button>
       {open && (
-        <div className="px-5 pb-5 text-stone-600 font-light leading-relaxed">
+        <div id={panelId} className="px-5 pb-5 text-stone-600 font-light leading-relaxed">
           {answer}
         </div>
       )}
@@ -41,6 +44,7 @@ export default function GuidePage() {
   const slug = params?.slug || "";
   const guide = slug ? guidesData[slug] : null;
   const aeo = slug ? aeoGuides[slug] : null;
+  const hasSourceNotes = Boolean(guide?.sources?.length);
   const governance: ContentGovernance | undefined = guide ? {
     contentId: `guide:${guide.slug}`,
     contentVersion: guide.lastReviewed || "legacy",
@@ -99,6 +103,7 @@ export default function GuidePage() {
             name: guide.title,
             description: guide.metaDescription,
             steps: guide.steps.map(s => ({ title: s.title, description: s.content })),
+            citations: guide.sources?.map((source) => source.url),
           }),
           faqPageSchema(guide.faqs),
         ]}
@@ -153,6 +158,27 @@ export default function GuidePage() {
           />
         </div>
       </section>
+
+      {aeo && hasSourceNotes && (
+        <section className="py-8 bg-white border-b border-stone-100">
+          <div className="container px-4 mx-auto max-w-3xl">
+            <div className="flex items-center gap-3 mb-5">
+              <ListChecks className="w-6 h-6 text-primary" />
+              <h2 className="text-2xl font-medium text-black">What You Can Check Today</h2>
+            </div>
+            <ol className="space-y-4">
+              {aeo.whatToDoToday.map((action, idx) => (
+                <li key={action} className="flex items-start gap-4 text-stone-700 font-light leading-relaxed">
+                  <span className="w-7 h-7 rounded-full bg-primary/10 text-primary font-medium flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                    {idx + 1}
+                  </span>
+                  <span>{action}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
 
       {/* Introduction */}
       <section className="py-8 bg-white">
@@ -313,7 +339,7 @@ export default function GuidePage() {
                 <h3 className="text-sm uppercase tracking-wider text-stone-600 font-medium mb-3">Guides</h3>
                 <div className="space-y-2">
                   {guide.relatedGuides.map((item) => (
-                    <Link key={item.slug} href={`/guides/${item.slug}`}>
+                    <Link key={item.slug} href={`/guides/${item.slug}${hasSourceNotes ? "/" : ""}`}>
                       <span className="block text-action hover:underline cursor-pointer font-light">{item.title}</span>
                     </Link>
                   ))}
@@ -321,18 +347,68 @@ export default function GuidePage() {
               </div>
             )}
           </div>
+          {guide.relatedResources && guide.relatedResources.length > 0 && (
+            <div className="mt-8 pt-6 border-t border-stone-200">
+              <h3 className="text-sm uppercase tracking-wider text-stone-600 font-medium mb-4">More Cost Resources</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {guide.relatedResources.map((resource) => (
+                  <Link key={resource.href} href={resource.href}>
+                    <span className="block h-full rounded-xl border border-stone-200 bg-white p-4 hover:border-primary/40 hover:shadow-sm transition-all cursor-pointer">
+                      <span className="block font-medium text-action mb-1">{resource.title}</span>
+                      {resource.description && (
+                        <span className="block text-sm text-stone-600 font-light leading-relaxed">{resource.description}</span>
+                      )}
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </section>
+
+      {guide.sources && guide.sources.length > 0 && (
+        <section className="py-8 bg-white border-t border-stone-100">
+          <div className="container px-4 mx-auto max-w-3xl">
+            <h2 className="text-2xl font-medium text-black mb-3">Sources and Further Reading</h2>
+            <p className="text-stone-600 font-light leading-relaxed mb-6">
+              These references explain the billing, benefit, and financing terms used in this guide. Your dental plan documents and written agreements control your specific coverage and payment terms.
+            </p>
+            <ul className="space-y-4">
+              {guide.sources.map((source) => (
+                <li key={source.url} className="rounded-xl border border-stone-200 p-5">
+                  <a
+                    href={source.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-start gap-2 font-medium text-action hover:underline"
+                  >
+                    <span>{source.organization}: {source.title}</span>
+                    <ExternalLink className="w-4 h-4 mt-1 flex-shrink-0" aria-hidden="true" />
+                  </a>
+                  <p className="text-sm text-stone-600 font-light leading-relaxed mt-2">{source.note}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="py-8 bg-action text-action-foreground">
         <div className="container px-4 mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-normal mb-3 text-action-foreground">Ready to take control of your oral health?</h2>
-          <p className="text-action-foreground font-light mb-6">DentaSmart helps you monitor your teeth and gums between dental visits.</p>
+          <h2 className="text-3xl font-normal mb-3 text-action-foreground">
+            {hasSourceNotes ? guide.ctaHeading : "Ready to take control of your oral health?"}
+          </h2>
+          <p className="text-action-foreground font-light mb-6">
+            {hasSourceNotes
+              ? "DentaSmart can help you organize supported dental information and prepare questions for professional care."
+              : "DentaSmart helps you monitor your teeth and gums between dental visits."}
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/instant-scan">
               <Button size="lg" className="bg-white text-action hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
-                Try Instant Scan
+                {hasSourceNotes ? "Review My Oral Health" : "Try Instant Scan"}
               </Button>
             </Link>
             <Link href="/download">

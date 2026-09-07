@@ -69,8 +69,8 @@ const savingsTips = [
   {
     icon: Smartphone,
     title: "Review a Treatment Plan",
-    description: "DentaSmart's paid Second Opinion service can organize supported treatment-plan information and questions. It does not provide a dentist's diagnosis or clinical recommendation.",
-    cta: "View Second Opinion",
+    description: "DentaSmart Treatment Plan Review can organize a supported dentist treatment plan, plain-language context, and questions. It does not provide a dentist's diagnosis or clinical recommendation.",
+    cta: "View Treatment Plan Review",
     href: "/pricing#second-opinion",
   },
 ];
@@ -582,7 +582,7 @@ export default function AffordabilityHub() {
               Prepare clearer cost questions.
             </h2>
             <p className="text-base md:text-lg text-stone-300 font-light mb-6 max-w-2xl mx-auto">
-              The app is free to download. Quick Check, Second Opinion, and Complete Care are paid services with current prices shown before purchase.
+              Free Quick Check is unlimited. Full Quick Check, Treatment Plan Review, and Complete Care are paid services with current prices shown before purchase.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/download">

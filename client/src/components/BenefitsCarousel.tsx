@@ -10,7 +10,7 @@ const benefits = [
     title: "Oral Health Score and Priorities",
     desc: "Know what needs attention now vs later.",
     detail: "Review an educational score based on supported photos and X-rays, then use the highlighted priorities to prepare questions for a dental professional.",
-    image: "/images/optimized/DawnQOxKtdjguhLp-800.webp"
+    image: "/manus-storage/dentasmart-app-oral-health-score_ef84a3c3.webp"
   },
   {
     id: 2,
@@ -18,15 +18,15 @@ const benefits = [
     title: "Plain-English Explanation of Photos and X-Rays",
     desc: "See what your dentist sees, in words you understand.",
     detail: "Upload mouth photos or supported dental X-rays. DentaSmart reviews visible teeth, gums, and oral structures based on the images you provide and shows you visible concerns and key insights in plain English.",
-    image: "/images/optimized/lBzNqmERojJqlfJE-800.webp"
+    image: "/manus-storage/dentasmart-app-ai-report-sections_5245a13a.webp"
   },
   {
     id: 3,
-    tag: "Second Opinion",
-    title: "Second Opinion Clarity Before You Say Yes",
-    desc: "Sanity check before you commit.",
+    tag: "Treatment Plan Review",
+    title: "Treatment Plan Review Before You Say Yes",
+    desc: "Understand a proposed plan before you commit.",
     detail: "Upload your dentist's treatment plan, bill, or recommendation along with your X-rays and mouth photos. DentaSmart shows you what aligns, what differs, and what questions to bring back to your dentist.",
-    image: "/images/optimized/XlgHEMbZpBAbEXnM-800.webp"
+    image: "/manus-storage/dentasmart-app-treatment-plan-review_e384bde5.webp"
   },
   {
     id: 4,
@@ -47,10 +47,10 @@ const benefits = [
   {
     id: 6,
     tag: "AI Oral Health Guide",
-    title: "Ask Din Questions Anytime (Educational)",
-    desc: "Ask questions anytime, 24/7.",
-    detail: "Dr Din is DentaSmart's AI oral health guide. It can explain report language and common dental terms in plain English, but it is not a licensed dentist and does not diagnose conditions.",
-    image: "/images/optimized/YSjOjqlpUabDbzAW-800.webp"
+    title: "Ask Dr. Din About Your Reports",
+    desc: "Ask questions about reports, findings, and dental terms.",
+    detail: "Dr. Din is DentaSmart's AI oral health guide. It can explain reports, findings, dental terms, history, and general oral-health information, but it is not a licensed dentist and does not diagnose conditions.",
+    image: "/manus-storage/dentasmart-app-dr-din_f1bac3a2.webp"
   }
 ];
 

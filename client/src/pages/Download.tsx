@@ -8,25 +8,10 @@ import { Smartphone, Shield, Zap, Heart, CheckCircle2, ArrowRight } from "lucide
 import { useEffect } from "react";
 import { Link } from "wouter";
 
-const appJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "DentaSmart",
-  operatingSystem: "iOS, Android",
-  applicationCategory: "HealthApplication",
-  description: "DentaSmart is free to download on iOS and Android. Paid services provide educational oral health insights, reports, and monitoring tools.",
-  url: "https://dentasmart.ai/download",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-  },
-};
-
 const steps = [
   { num: "1", title: "Download the App", desc: "Get DentaSmart on iOS or Android. The app is free to download." },
-  { num: "2", title: "Choose a Service", desc: "Select a one-time Quick Check, a Second Opinion, or annual Complete Care." },
-  { num: "3", title: "Add Your Information", desc: "Upload supported mouth photos, dental X-rays, or treatment documents for the service you chose." },
+  { num: "2", title: "Start a Free Quick Check", desc: "Use supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray." },
+  { num: "3", title: "Upgrade When Needed", desc: "Choose Full Quick Check, Treatment Plan Review, or Complete Care when you need those services." },
   { num: "4", title: "Review Your Report", desc: "Read the educational insights and prepare questions for your dentist. DentaSmart does not provide a diagnosis." },
 ];
 
@@ -38,11 +23,10 @@ export default function Download() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
-        title="Download DentaSmart for iOS or Android"
-        description="Download the DentaSmart app on iOS or Android. The app is free to download; one-time checks and annual monitoring plans are paid."
+        title="Download DentaSmart | iOS & Android App"
+        description="Download DentaSmart for unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Upgrade to Full Quick Check when you need full eligible X-ray insights."
         canonical="https://dentasmart.ai/download"
         keywords="download dentasmart, dental app, AI dental analysis, oral health score, dental X-ray analysis app"
-        jsonLd={appJsonLd}
       />
       <Navigation />
 
@@ -67,7 +51,7 @@ export default function Download() {
                 <span className="italic text-primary">on your phone</span>.
               </h1>
               <p className="text-xl text-stone-600 mb-8 font-light leading-relaxed">
-                The app is free to download. Choose a paid one-time check or annual plan when you are ready for a report or ongoing monitoring.
+                Start with unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -96,12 +80,12 @@ export default function Download() {
               </div>
 
               <div className="flex items-center gap-6 text-sm text-stone-500">
-                <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-green-500" /> Free to download</span>
+                <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-green-500" /> Unlimited Free Quick Checks</span>
                 <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-green-500" /> No card to download</span>
                 <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-green-500" /> Privacy &amp; Security</span>
               </div>
               <Link href="/pricing" className="mt-5 inline-flex min-h-11 items-center text-sm font-medium text-action hover:underline">
-                Compare paid services and plans <ArrowRight className="ml-1 h-4 w-4" />
+                Compare Full Quick Check and plans <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
             </motion.div>
 
@@ -112,14 +96,14 @@ export default function Download() {
               className="hidden lg:flex justify-center"
             >
               <div className="w-64 h-[520px] bg-black rounded-[3rem] p-3 shadow-2xl">
-                <div className="w-full h-full bg-white rounded-[2.2rem] overflow-hidden flex items-center justify-center">
-                  <div className="text-center p-6">
-                    <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Heart className="w-10 h-10 text-primary" />
-                    </div>
-                    <p className="text-2xl font-bold text-primary">83<span className="text-base">/100</span></p>
-                    <p className="text-sm text-stone-500 mt-2">Your Oral Health Score</p>
-                  </div>
+                <div className="w-full h-full bg-white rounded-[2.2rem] overflow-hidden">
+                  <img
+                    src="/manus-storage/dentasmart-app-free-quick-check_303190e3.webp"
+                    alt="DentaSmart Free Quick Check screen for guided mouth photos"
+                    className="h-full w-full object-cover object-top"
+                    width="828"
+                    height="1792"
+                  />
                 </div>
               </div>
             </motion.div>
@@ -184,10 +168,10 @@ export default function Download() {
       <section className="py-16 bg-action text-action-foreground text-center">
         <div className="container px-4 mx-auto max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-normal text-action-foreground mb-4">
-            Choose the service that fits your next decision
+            Start with a Free Quick Check
           </h2>
           <p className="text-xl text-action-foreground font-light mb-8">
-            Compare one-time checks and annual monitoring, or download the app first.
+            Use supported mouth photos, supported X-rays, or both. Upgrade one case only when you need the Full Quick Check package.
           </p>
           <Button
             asChild

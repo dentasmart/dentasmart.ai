@@ -19,6 +19,7 @@ import MidContentCTA from "@/components/MidContentCTA";
 import NextStepsBox from "@/components/NextStepsBox";
 import OralHealthScoreTeaser from "@/components/OralHealthScoreTeaser";
 import { breadcrumbSchema, articleSchema } from "@/lib/schema";
+import { formatPageTitle } from "@shared/pageTitle";
 
 export default function Article() {
   const [match, params] = useRoute("/oral-health-hub/:id");
@@ -52,7 +53,7 @@ export default function Article() {
 
   useEffect(() => {
     if (article) {
-      document.title = article.metaTitle || `${article.title} | DentaSmart Oral Health Hub`;
+      document.title = formatPageTitle(article.metaTitle || article.title);
       window.scrollTo(0, 0);
     }
   }, [article]);

@@ -12,7 +12,7 @@ const data: ComparisonPageData = {
   keywords: "dentasmart vs dental.com, dental.com smartscan review, best ai teeth scanner, dental.com vs dentasmart comparison",
   statsStrip: [
     { value: "iOS + Android", label: "DentaSmart Availability" },
-    { value: "$19.99", label: "DentaSmart Quick Check" },
+    { value: "Free", label: "Mouth-Photo Quick Check" },
   ],
   introTitle: "Two AI Scanners,",
   introHighlight: "Very Different Approaches",
@@ -23,7 +23,7 @@ const data: ComparisonPageData = {
     { factor: "Dental X-ray workflow", optionA: "Supported by DentaSmart", optionB: "Verify current provider details", winner: "tie" },
     { factor: "Oral Health Score", optionA: "Included with applicable DentaSmart services", optionB: "Verify current provider details", winner: "tie" },
     { factor: "Progress tracking", optionA: "Included with Complete Care", optionB: "Verify current provider details", winner: "tie" },
-    { factor: "Price", optionA: "Quick Check $19.99 one-time; other services listed on Pricing", optionB: "Verify current provider price", winner: "tie" },
+    { factor: "Price", optionA: "Free Quick Check unlimited; Full Quick Check $19.99 per case", optionB: "Verify current provider price", winner: "tie" },
     { factor: "Platform", optionA: "iOS and Android apps", optionB: "Verify current provider access", winner: "tie" },
     { factor: "Professional-care boundary", optionA: "Educational tool; not diagnosis or treatment", optionB: "Review the provider's current terms", winner: "tie" },
   ],

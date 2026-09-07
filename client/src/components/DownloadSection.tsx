@@ -15,7 +15,7 @@ export function DownloadSection({
             Download DentaSmart
           </h2>
           <p className="text-xl text-stone-600 font-light">
-            Free to download on iOS and Android. Quick Check and other DentaSmart services are paid.
+            Start with a free Quick Check using supported mouth photos. X-ray analysis and other services are paid.
           </p>
         </div>
 

@@ -1,9 +1,18 @@
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { ChevronDown, ChevronRight, Stethoscope, DollarSign, ShieldCheck, HeartPulse, BookOpen, Scale, HelpCircle, Activity, Search } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { Fragment, useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useReducedMotion, type Transition } from "framer-motion";
 import { trackEvent } from "@/lib/analytics";
+import { getBreadcrumbs } from "@shared/breadcrumbs";
 
 // Mega-menu category structure - scalable for future hubs
 const megaMenuCategories = [
@@ -155,6 +164,7 @@ export default function Navigation() {
   };
 
   const isLearnActive = allResourceItems.some(item => isActive(item.href));
+  const breadcrumbItems = getBreadcrumbs(location);
 
   const handleMegaMenuEnter = () => {
     if (megaMenuTimeoutRef.current) {
@@ -346,7 +356,7 @@ export default function Navigation() {
                 }
               }}
             >
-              Download App
+              Free Quick Check
             </Button>
           </div>
 
@@ -359,7 +369,7 @@ export default function Navigation() {
                 exit={{ opacity: 0, y: -10 }}
                 className="hidden lg:flex items-center gap-3 absolute right-4 top-full mt-2 bg-primary/95 backdrop-blur-sm text-white rounded-full px-5 py-2.5 shadow-lg"
               >
-                <span className="text-sm font-medium">Explore DentaSmart on your phone</span>
+                <span className="text-sm font-medium">Start with a Free Quick Check</span>
                 <Button
                   size="sm"
                   className="bg-white text-primary hover:bg-white/90 rounded-full px-4 py-1.5 text-xs font-medium cursor-pointer h-auto"
@@ -368,7 +378,7 @@ export default function Navigation() {
                     window.location.href = "/download";
                   }}
                 >
-                  Download App
+                  Start Free Quick Check
                 </Button>
               </motion.div>
             )}
@@ -400,6 +410,29 @@ export default function Navigation() {
           </button>
         </div>
       </motion.nav>
+
+      {!isOpen && breadcrumbItems.length > 0 && (
+        <div className="absolute left-0 right-0 top-20 z-40 px-4 md:top-24 pointer-events-none">
+          <Breadcrumb className="container max-w-7xl pointer-events-auto">
+            <BreadcrumbList className="w-fit max-w-full rounded-full bg-white/95 px-3 py-2 shadow-sm ring-1 ring-stone-200/80 backdrop-blur-sm">
+              {breadcrumbItems.map((item, index) => (
+                <Fragment key={item.url}>
+                  <BreadcrumbItem className="min-w-0">
+                    {index === breadcrumbItems.length - 1 ? (
+                      <BreadcrumbPage className="max-w-[12rem] truncate sm:max-w-[20rem]">{item.name}</BreadcrumbPage>
+                    ) : (
+                      <BreadcrumbLink asChild className="whitespace-nowrap text-teal-800 hover:text-teal-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 rounded-sm">
+                        <Link href={item.url}>{item.name}</Link>
+                      </BreadcrumbLink>
+                    )}
+                  </BreadcrumbItem>
+                  {index < breadcrumbItems.length - 1 && <BreadcrumbSeparator />}
+                </Fragment>
+              ))}
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
+      )}
 
       {/* Full Screen Mobile Menu */}
       <AnimatePresence>
@@ -561,7 +594,7 @@ export default function Navigation() {
                   }
                 }}
               >
-                Download App
+                Free Quick Check
               </Button>
               <p className="text-center text-stone-400 text-sm mt-6 font-light">
                 © 2025 DentaSmart. All rights reserved.

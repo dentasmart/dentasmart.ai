@@ -33,7 +33,7 @@ const products = [
   {
     name: "DentaSmart",
     type: "iOS and Android app",
-    verified: `Mouth-photo and X-ray workflows, Oral Health Score, and paid services from ${pricing.quickCheck.priceFormatted} one-time.`,
+    verified: `Unlimited Free Quick Checks, Full Quick Check from ${pricing.fullQuickCheck.priceFormatted} per case, and Oral Health Score features.`,
     verify: "Confirm that the selected service supports your image type and goal.",
     href: "/pricing",
     linkLabel: "See DentaSmart pricing",
@@ -71,7 +71,7 @@ const faqs = [
   },
   {
     question: "Are AI dental apps free?",
-    answer: `Some apps are free to download, but checks, reports, consultations, or subscriptions may cost extra. DentaSmart is free to download. Quick Check is ${pricing.quickCheck.priceFormatted} one-time, Second Opinion is ${pricing.secondOpinion.priceFormatted} one-time, and Complete Care starts at ${pricing.completeCareIndividual.priceFormatted} per year.`,
+    answer: `Some apps are free to download, but checks, reports, consultations, or subscriptions may cost extra. DentaSmart Free Quick Check is unlimited. Full Quick Check is ${pricing.fullQuickCheck.priceFormatted} per case, Treatment Plan Review is ${pricing.treatmentPlanReview.priceFormatted} per case, and Complete Care starts at ${pricing.completeCareIndividual.priceFormatted} per year.`,
   },
   {
     question: "Should I use an AI dental app instead of going to a dentist?",

@@ -12,6 +12,7 @@
 import { listBlogPosts, getBlogPostBySlug } from "./blogDb";
 import { getDb } from "./db";
 import { pageMetaOverrides } from "../drizzle/schema";
+import { formatPageTitle } from "../shared/pageTitle";
 
 // ─── Types ───────────────────────────────────────────────────────────
 interface MetaInfo {
@@ -74,8 +75,8 @@ const staticMeta: Record<string, MetaInfo> = {
   "/": {
     title: "DentaSmart | Your Personal AI Oral Health Guide",
     description:
-      "DentaSmart provides educational oral health insights from supported photos, X-rays, symptoms, and treatment documents to help you prepare for dental care.",
-    ogImage: "https://dentasmart.ai/manus-storage/dentasmart-logo-social-card_89fe736d.png",
+      "Start with DentaSmart's unlimited Free Quick Check using supported mouth photos, supported X-rays, or both. Full Quick Check unlocks full eligible X-ray insights for one case.",
+    ogImage: "https://dentasmart.ai/manus-storage/dentasmart-free-quick-check-social-1200x630_b33c85da.png",
   },
   "/how-it-works": {
     title: "How DentaSmart Works | AI Oral Health Guide in 4 Steps",
@@ -85,12 +86,12 @@ const staticMeta: Record<string, MetaInfo> = {
   "/features": {
     title: "DentaSmart Features | Oral Health Reports and Tracking",
     description:
-      "Explore DentaSmart features for supported dental photos and X-rays, plain-language reports, Oral Health Score tracking, cost context, and questions for your dentist.",
+      "Explore DentaSmart's unlimited Free Quick Checks, Full Quick Check, Treatment Plan Review, Oral Health Score tracking, reports, records, and guidance from Dr. Din.",
   },
   "/pricing": {
-    title: "DentaSmart Pricing | Quick Check, Second Opinion & Complete Care Plans",
+    title: "DentaSmart Pricing | Free Quick Check, Full Quick Check & Complete Care",
     description:
-      "DentaSmart offers a limited free scan preview, Quick Check for $19.99 one-time, Second Opinion for $29.99 one-time, Complete Care for $74.99/year individual, and $149.99/year family.",
+      "Compare unlimited Free Quick Check, Full Quick Check for $19.99 per case, Treatment Plan Review for $29.99 per case, and annual Complete Care plans.",
   },
   "/employers": {
     title: "DentaSmart for Employers | Oral Health Education and Decision Support",
@@ -110,12 +111,12 @@ const staticMeta: Record<string, MetaInfo> = {
   "/download": {
     title: "Download DentaSmart | iOS & Android App",
     description:
-      "Download DentaSmart free on iOS or Android. Review the app first, then compare paid Quick Check, Second Opinion, and Complete Care options.",
+      "Download DentaSmart for unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Full Quick Check unlocks full eligible X-ray insights for one case.",
   },
   "/instant-scan": {
     title: "Dental Photo Review | DentaSmart Educational Guide",
     description:
-      "Learn how DentaSmart uses supported mouth photos and dental X-rays for educational observations that do not replace professional diagnosis or care.",
+      "Try unlimited Free Quick Checks with supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray. Educational observations do not replace professional care.",
   },
   "/photo-guide": {
     title: "Photo Guide | How to Take the Best Dental Photos",
@@ -128,9 +129,9 @@ const staticMeta: Record<string, MetaInfo> = {
       "Compare AI dental apps by input support, output clarity, pricing transparency, professional-care boundaries, privacy, and current platform availability.",
   },
   "/free-ai-teeth-scanner": {
-    title: "Free AI Teeth Scanner Guide - What to Compare",
+    title: "Free AI Mouth Photo Analysis | DentaSmart Quick Check",
     description:
-      "Learn what free AI teeth scanner searches mean, what these tools can and cannot do, and how DentaSmart's free download differs from paid checks and plans.",
+      "Use supported mouth photos for a free DentaSmart Quick Check. No X-ray is required. See visible areas to discuss with a dentist without receiving a diagnosis.",
   },
   "/vs/dental-com": {
     title: "DentaSmart vs Dental.com SmartScan (2026) | Comparison Guide",
@@ -163,9 +164,9 @@ const staticMeta: Record<string, MetaInfo> = {
       "Use DentaSmart's free symptom quiz to organize what you notice and review general educational guidance. It does not diagnose or determine urgency.",
   },
   "/stories": {
-    title: "Ways to Use DentaSmart | Quick Check, Second Opinion and Monitoring",
+    title: "Ways to Use DentaSmart | Quick Check, Treatment Plan Review and Monitoring",
     description:
-      "Explore practical DentaSmart pathways for a one-time Quick Check, a treatment-plan Second Opinion, or ongoing Complete Care monitoring.",
+      "Explore practical DentaSmart pathways for Free Quick Check, Full Quick Check, Treatment Plan Review, or ongoing Complete Care monitoring.",
   },
   "/privacy-policy": {
     title: "Privacy Policy | DentaSmart",
@@ -556,6 +557,31 @@ const staticMeta: Record<string, MetaInfo> = {
     title: "Dental Insurance Alternatives | Affordable Options Guide",
     description:
       "Compare dental discount plans, teaching clinics, community health centers, payment plans, and tax-advantaged accounts.",
+  },
+  "/guides/how-to-read-dental-treatment-plan": {
+    title: "How to Read a Dental Treatment Plan | DentaSmart",
+    description:
+      "Learn how to check dental procedure codes, tooth numbers, treatment phases, alternatives, insurance estimates, and expected costs before care.",
+  },
+  "/guides/dental-insurance-annual-maximum": {
+    title: "Dental Insurance Annual Maximum Explained | DentaSmart",
+    description:
+      "Learn how a dental annual maximum works, what may count toward it, where to find your remaining benefit, and which plan details to verify.",
+  },
+  "/guides/how-to-read-dental-eob": {
+    title: "How to Read a Dental EOB | DentaSmart",
+    description:
+      "Learn what a dental EOB means, how to read submitted and allowed amounts, and how to compare patient responsibility with the office bill.",
+  },
+  "/guides/dental-payment-plans-and-financing": {
+    title: "Dental Payment Plans & Medical Credit Cards | DentaSmart",
+    description:
+      "Compare dental payment plans and medical credit cards by APR, deferred interest, fees, term, total repayment, and late-payment rules.",
+  },
+  "/guides/dental-bill-higher-than-expected": {
+    title: "Dental Bill Higher Than Expected? What to Check",
+    description:
+      "Compare your dental treatment plan, itemized bill, claim, and EOB to understand an unexpected balance and ask focused billing questions.",
   },
   "/guides/diy-dental-care": {
     title: "DIY Dental Care | Safe Home Teeth Cleaning & Whitening",
@@ -1132,7 +1158,7 @@ export async function resolveMetaTags(urlPath: string): Promise<MetaInfo | null>
  * regex-based replacement that handles both /> and > tag endings.
  */
 export function injectMetaTags(html: string, meta: MetaInfo): string {
-  const title = escapeHtml(meta.title);
+  const title = escapeHtml(formatPageTitle(meta.title));
   const desc = escapeHtml(meta.description);
   const omitCanonical = meta.canonical === null;
   const canonicalUrl = meta.canonical ? escapeHtml(meta.canonical) : "https://dentasmart.ai/";

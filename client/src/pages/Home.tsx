@@ -11,7 +11,16 @@ import { useEffect } from "react";
 import { useLocation } from "wouter";
 import QuickAnswerBlock from "@/components/QuickAnswerBlock";
 import FAQSchema from "@/components/FAQSchema";
-import { OrganizationSchema, WebSiteSchema, SoftwareApplicationSchema, HowToSchema } from "@/components/StructuredData";
+import { HowToSchema } from "@/components/StructuredData";
+
+const homeFaqs = [
+  { question: "What is DentaSmart?", answer: "DentaSmart is Your Personal AI Dentist in Your Pocket. It provides Free Quick Check, Full Quick Check, Treatment Plan Review, Oral Health Score tracking, reports, records, and guidance from Dr. Din. DentaSmart does not diagnose conditions or replace professional care." },
+  { question: "Who is DentaSmart for?", answer: "DentaSmart is for anyone who wants more clarity before making dental decisions. It is especially useful for people with tooth pain, gum bleeding, sensitivity, swelling, dental anxiety, no dental insurance, expensive treatment plans, or family oral health concerns. It is also helpful for parents, busy professionals, and anyone who wants to monitor their teeth and gums before problems become more serious." },
+  { question: "How much does DentaSmart cost?", answer: "Free Quick Check is unlimited. Full Quick Check is $19.99 per case, Treatment Plan Review is $29.99 per case, and Complete Care is $74.99/year for individuals or $149.99/year for families of up to 4 members. Additional family members beyond 4 are $19.99/year each." },
+  { question: "How is DentaSmart different from ChatGPT?", answer: "ChatGPT is a general AI assistant. DentaSmart is built for supported oral-health workflows, including Free Quick Check, Full Quick Check, Treatment Plan Review, Oral Health Score tracking, dental records, family profiles, cost context, and guidance from Dr. Din.", link: "/compare/dentasmart-vs-chatgpt-dental", linkText: "Read the full DentaSmart vs ChatGPT comparison" },
+  { question: "Is DentaSmart a replacement for a dentist?", answer: "No. DentaSmart provides educational oral health insights, monitoring tools, and questions you can take to a dental visit. It does not diagnose conditions, replace routine dental exams, or provide hands-on treatment." },
+  { question: "Can DentaSmart review dental X-rays?", answer: "DentaSmart supports educational review of eligible mouth photos and dental X-rays. It can highlight visible areas to discuss, but it does not diagnose conditions or replace a dentist's interpretation." },
+];
 
 export default function Home() {
   const [location, setLocation] = useLocation();
@@ -38,38 +47,28 @@ export default function Home() {
 
   const goToPlan = (intent: "quick_check" | "second_opinion", source: "hero" | "mid_page" | "post_faq") => {
     trackEvent("home_intent_click", { intent, source });
-    setLocation(intent === "quick_check" ? "/pricing#quick-check" : "/pricing#second-opinion");
+    setLocation(intent === "quick_check" ? "/download" : "/pricing#second-opinion");
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO 
-        title="Your Personal AI Dentist in Your Pocket" 
-        description="Upload mouth photos or dental X-rays and get clear AI-powered oral health insights, a personalized Oral Health Score, and treatment considerations."
+        title="DentaSmart | Your Personal AI Oral Health Guide"
+        description="Start with unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Full Quick Check unlocks full eligible X-ray insights for one case."
         canonical="https://dentasmart.ai/"
-        ogImage="https://dentasmart.ai/manus-storage/dentasmart-logo-social-card_89fe736d.png"
+        ogImage="https://dentasmart.ai/manus-storage/dentasmart-free-quick-check-social-1200x630_b33c85da.png"
       />
       <Navigation />
-      <OrganizationSchema />
-      <WebSiteSchema />
-      <SoftwareApplicationSchema />
       <HowToSchema
         name="How to Use DentaSmart for Oral Health Analysis"
-        description="Add supported mouth photos or dental X-rays to receive an educational report, an Oral Health Score when included, and questions to discuss with a dentist."
+        description="Start with a Free Quick Check using supported mouth photos, supported X-rays, or both. Upgrade one case to Full Quick Check for full eligible X-ray insights."
         steps={[
-          { name: "Upload Photos or X-Rays", text: "Take mouth photos, upload dental X-rays, or add symptoms, treatment plans, and dentist notes.", url: "/features" },
+          { name: "Start with a Free Quick Check", text: "Use supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray.", url: "/download" },
           { name: "Review the Educational Report", text: "DentaSmart organizes supported information into plain-language observations, an Oral Health Score when included, and discussion points.", url: "/how-it-works" },
           { name: "Act with Confidence", text: "Use your report to monitor your oral health, prepare for your dentist visit, compare treatment options, and ask better questions.", url: "/features" }
         ]}
       />
-      <FAQSchema faqs={[
-        { question: "What is DentaSmart?", answer: "DentaSmart is Your Personal AI Dentist in Your Pocket. It provides educational oral health reports, tracking tools, and plain-language explanations for supported photos, X-rays, symptoms, treatment documents, and records. Dr Din is its AI oral health guide. DentaSmart does not diagnose conditions or replace professional care." },
-        { question: "Who is DentaSmart for?", answer: "DentaSmart is for anyone who wants more clarity before making dental decisions. It is especially useful for people with tooth pain, gum bleeding, sensitivity, swelling, dental anxiety, no dental insurance, expensive treatment plans, or family oral health concerns." },
-        { question: "How much does DentaSmart cost?", answer: "Quick Check is $19.99 one-time. Second Opinion is $29.99 one-time. Complete Care is $74.99/year for individuals or $149.99/year for families of up to 4 members. Additional family members beyond 4 are $19.99/year each. The app is free to download, with a limited scan preview available; these services are paid." },
-        { question: "How is DentaSmart different from ChatGPT?", answer: "ChatGPT is a general AI assistant. DentaSmart is built for supported oral health workflows, including mouth photo and dental X-ray review, Oral Health Score tracking, second-opinion reports, dental records, family profiles, cost context, and guidance from Dr Din." },
-        { question: "Is DentaSmart a replacement for a dentist?", answer: "No. DentaSmart provides educational oral health insights, monitoring tools, and questions you can take to a dental visit. It does not diagnose conditions, replace routine dental exams, or provide hands-on treatment." },
-        { question: "Can DentaSmart review dental X-rays?", answer: "DentaSmart supports educational review of eligible mouth photos and dental X-rays. It can highlight visible areas to discuss, but it does not diagnose conditions or replace a dentist's interpretation." }
-      ]} />
+      <FAQSchema faqs={homeFaqs} />
 
       {/* ═══════════════════════════════════════════════════════════════════
           HERO SECTION
@@ -99,11 +98,11 @@ export default function Home() {
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-4">
                 <span className="text-sm font-semibold text-stone-800">Available on iOS and Android</span>
                 <span className="text-stone-300 hidden sm:inline">|</span>
-                <span className="text-sm text-stone-600">Plans from $19.99</span>
+                <span className="text-sm text-stone-600">Unlimited Free Quick Checks</span>
               </div>
               
               <p className="text-lg md:text-xl text-stone-700 mb-3 font-normal leading-relaxed text-balance">
-                Upload mouth photos and/or dental X-rays and get clear AI-powered oral health insights, a personalized Oral Health Score, and treatment considerations.
+                Use supported mouth photos, supported X-rays, or both. Free X-ray submissions show a reduced subset of eligible finding data; Full Quick Check unlocks the full eligible X-ray insights for one case.
               </p>
 
               <p className="text-sm text-stone-600 mb-5 leading-relaxed">
@@ -117,7 +116,7 @@ export default function Home() {
                   className="min-h-11 bg-action text-action-foreground hover:bg-action-hover rounded-full px-6 py-5 text-base font-medium transition-all duration-300 hover:scale-105 shadow-xl border-0 cursor-pointer w-full sm:w-auto"
                   onClick={() => goToPlan("quick_check", "hero")}
                 >
-                  Start with a Quick Check
+                  Start with a Free Quick Check
                 </Button>
                 <Button
                   size="lg"
@@ -125,11 +124,11 @@ export default function Home() {
                   className="min-h-11 bg-white/50 backdrop-blur-md border-primary/20 text-primary hover:bg-white/80 rounded-full px-6 py-5 text-base font-medium transition-all duration-300 cursor-pointer w-full sm:w-auto"
                   onClick={() => goToPlan("second_opinion", "hero")}
                 >
-                  Get a Second Opinion
+                  Review a Treatment Plan
                 </Button>
               </div>
               <p className="mt-3 text-sm text-stone-500">
-                Free to download, with a limited scan preview available. Paid checks and plans are available on{" "}
+                Free Quick Check is unlimited. Mouth photos do not require an X-ray. Full Quick Check and other paid services show their price before purchase on{" "}
                 <a href={getAppStoreUrl("hero_text")} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 min-w-11 items-center justify-center px-1 -mx-1 text-primary hover:underline" onClick={() => trackAppDownload("ios", "hero_text")}>iOS</a>
                 {" "}and{" "}
                 <a href={getPlayStoreUrl("hero_text")} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 min-w-11 items-center justify-center px-1 -mx-1 text-primary hover:underline" onClick={() => trackAppDownload("android", "hero_text")}>Android</a>.
@@ -149,8 +148,8 @@ export default function Home() {
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] sm:w-[100px] h-[22px] sm:h-[28px] bg-stone-900 rounded-b-2xl z-20" />
                   <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
                     <picture>
-                      <source type="image/webp" srcSet="/images/optimized/DawnQOxKtdjguhLp-400.webp 400w, /images/optimized/DawnQOxKtdjguhLp-800.webp 800w, /images/optimized/DawnQOxKtdjguhLp-1600.webp 1600w" sizes="(max-width: 640px) 140px, (max-width: 1024px) 200px, 220px" />
-                      <img src="/images/optimized/DawnQOxKtdjguhLp-800.webp" decoding="async" alt="DentaSmart Oral Health Score - Track your dental health over time with AI analysis" className="w-full h-full object-cover object-top" loading="eager" fetchPriority="high" width="800" height="1734" />
+                      <source type="image/webp" srcSet="/manus-storage/dentasmart-app-oral-health-score_ef84a3c3.webp" />
+                      <img src="/manus-storage/dentasmart-app-oral-health-score_ef84a3c3.webp" decoding="async" alt="DentaSmart Oral Health Score screen with a score summary and report details" className="w-full h-full object-cover object-top" loading="eager" fetchPriority="high" width="1080" height="2337" />
                     </picture>
                   </div>
                 </div>
@@ -165,13 +164,13 @@ export default function Home() {
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] sm:w-[100px] h-[22px] sm:h-[28px] bg-stone-900 rounded-b-2xl z-20" />
                   <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
                     <picture>
-                      <source type="image/webp" srcSet="/images/optimized/lBzNqmERojJqlfJE-400.webp 400w, /images/optimized/lBzNqmERojJqlfJE-800.webp 800w, /images/optimized/lBzNqmERojJqlfJE-1600.webp 1600w" sizes="(max-width: 640px) 140px, (max-width: 1024px) 200px, 220px" />
-                      <img src="/images/optimized/lBzNqmERojJqlfJE-800.webp" decoding="async" alt="DentaSmart AI X-Ray Analysis - Color-coded findings with plain-English explanations" className="w-full h-full object-cover object-top" loading="eager" width="945" height="2048" />
+                      <source type="image/webp" srcSet="/manus-storage/dentasmart-app-free-quick-check_303190e3.webp" />
+                      <img src="/manus-storage/dentasmart-app-free-quick-check_303190e3.webp" decoding="async" alt="DentaSmart Free Quick Check screen for guided mouth photos" className="w-full h-full object-cover object-top" loading="eager" width="828" height="1792" />
                     </picture>
                   </div>
                 </div>
                 <div className="text-center mt-3 sm:mt-4">
-                  <span className="text-xs sm:text-sm font-medium text-stone-600 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">AI X-Ray Analysis</span>
+                  <span className="text-xs sm:text-sm font-medium text-stone-600 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">Free Quick Check</span>
                 </div>
               </div>
             </motion.div>
@@ -271,7 +270,7 @@ export default function Home() {
         <div className="container px-4 mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-border/50">
               {[
-                { value: "$19.99", label: "Quick Check, One Time" },
+                { value: "Free", label: "Mouth-Photo Quick Check" },
                 { value: "4", label: "Family Members Included" },
                 { value: "iOS + Android", label: "Available Now" }
             ].map((stat, idx) => (
@@ -381,7 +380,7 @@ export default function Home() {
                 "Get a second opinion when a treatment plan feels serious or expensive",
                 "Understand risk factors to support long-term oral health",
                 "Organize dental records for yourself and your family",
-                "Ask Dr Din to explain DentaSmart reports and common dental terms"
+                "Ask Dr. Din to explain DentaSmart reports and common dental terms"
               ].map((item, idx) => (
                 <div key={idx} className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-primary/80 mt-0.5 flex-shrink-0" />
@@ -485,7 +484,7 @@ export default function Home() {
           >
             <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
               <FileText className="w-4 h-4" />
-              Second Opinion
+              Treatment Plan Review
             </div>
             <h2 className="text-4xl md:text-5xl font-normal text-black mb-6 leading-tight">
               Before you say yes to an expensive treatment plan, <span className="italic text-primary">get clarity.</span>
@@ -511,7 +510,7 @@ export default function Home() {
               </div>
               <div className="bg-white rounded-2xl p-6 border border-stone-100 shadow-sm">
                 <p className="text-lg text-stone-700 leading-relaxed mb-4">
-                  With Second Opinion, you can upload your dentist's treatment plan, X-rays, mouth images, bills, and questions.
+                  With Treatment Plan Review, you can upload a supported dentist treatment plan and related records for an educational plain-language review.
                 </p>
                 <p className="text-lg text-stone-700 leading-relaxed mb-4">
                   DentaSmart helps you understand the recommendation, compare it with the information you provide, and prepare for a more confident conversation with your dentist.
@@ -617,19 +616,19 @@ export default function Home() {
           >
             <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-4">
               <MessageCircle className="w-4 h-4" />
-              Dr Din
+              Dr. Din
             </div>
             <h2 className="text-4xl md:text-5xl font-normal text-black mb-6">
-              Meet Dr Din, your <span className="italic text-primary">AI oral health guide.</span>
+              Meet Dr. Din, your <span className="italic text-primary">AI oral health guide.</span>
             </h2>
             <p className="text-xl text-stone-700 font-light leading-relaxed mb-6 max-w-3xl mx-auto">
-              When report language or a dental term is confusing, Dr Din can explain it in plain language and help you organize questions for a dentist.
+              When report language or a dental term is confusing, Dr. Din can explain it in plain language and help you organize questions for a dentist.
             </p>
             <p className="text-lg text-stone-700 leading-relaxed mb-6 max-w-3xl mx-auto">
               Ask about DentaSmart reports, Oral Health Score history, common dental terms, or questions to prepare for a professional visit.
             </p>
             <p className="text-lg text-stone-800 font-medium max-w-2xl mx-auto">
-              Dr Din provides educational guidance. It does not diagnose conditions or replace professional care.
+              Dr. Din provides educational guidance. It does not diagnose conditions or replace professional care.
             </p>
           </motion.div>
         </div>
@@ -654,7 +653,7 @@ export default function Home() {
                 {
                   icon: Camera,
                   title: "Quick Check",
-                  desc: "A one-time educational review of supported mouth photos or dental X-rays when you want a clear starting point."
+                  desc: "A free educational analysis of supported mouth photos when you want a clear starting point. No X-ray is required."
                 },
                 {
                   icon: Search,
@@ -663,7 +662,7 @@ export default function Home() {
                 },
                 {
                   icon: FileText,
-                  title: "Second Opinion",
+                  title: "Treatment Plan Review",
                   desc: "Understand a dentist's treatment plan, compare recommendations, review possible risks, and prepare better questions before making a costly decision."
                 },
                 {
@@ -751,7 +750,7 @@ export default function Home() {
               className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium shadow-lg cursor-pointer"
               onClick={() => goToPlan("quick_check", "mid_page")}
             >
-              Start Your Quick Check
+              Start with a Free Quick Check
             </Button>
             <Button
               size="lg"
@@ -759,7 +758,7 @@ export default function Home() {
               className="border-action/30 text-action hover:bg-action/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer"
               onClick={() => goToPlan("second_opinion", "mid_page")}
             >
-              Get a Second Opinion
+              Review a Treatment Plan
             </Button>
           </div>
         </div>
@@ -829,37 +828,10 @@ export default function Home() {
         <div className="container px-4 mx-auto max-w-4xl">
           <h2 className="text-3xl md:text-4xl font-normal text-black mb-8">Quick Answers About DentaSmart</h2>
           <div className="space-y-6">
-            {[
-              { 
-                q: "What is DentaSmart?", 
-                a: "DentaSmart is Your Personal AI Dentist in Your Pocket. It provides educational oral health reports, tracking tools, and plain-language explanations for supported photos, X-rays, symptoms, treatment documents, and records. Dr Din is its AI oral health guide. DentaSmart does not diagnose conditions or replace professional care."
-              },
-              { 
-                q: "Who is DentaSmart for?", 
-                a: "DentaSmart is for anyone who wants more clarity before making dental decisions. It is especially useful for people with tooth pain, gum bleeding, sensitivity, swelling, dental anxiety, no dental insurance, expensive treatment plans, or family oral health concerns. It is also helpful for parents, busy professionals, and anyone who wants to monitor their teeth and gums before problems become more serious." 
-              },
-              { 
-                q: "How much does DentaSmart cost?", 
-                a: "Quick Check is $19.99 one-time. Second Opinion is $29.99 one-time. Complete Care is $74.99/year for individuals or $149.99/year for families of up to 4 members. Additional family members beyond 4 are $19.99/year each. The app is free to download; these services are paid."
-              },
-              { 
-                q: "How is DentaSmart different from ChatGPT?", 
-                a: "ChatGPT is a general AI assistant. DentaSmart is built for supported oral health workflows, including mouth photo and dental X-ray review, Oral Health Score tracking, second-opinion reports, dental records, family profiles, cost context, and guidance from Dr Din.",
-                link: "/compare/dentasmart-vs-chatgpt-dental",
-                linkText: "Read the full DentaSmart vs ChatGPT comparison"
-              },
-              { 
-                q: "Is DentaSmart a replacement for a dentist?", 
-                a: "No. DentaSmart provides educational oral health insights, monitoring tools, and questions you can take to a dental visit. It does not diagnose conditions, replace routine dental exams, or provide hands-on treatment."
-              },
-              { 
-                q: "Can DentaSmart review dental X-rays?",
-                a: "DentaSmart supports educational review of eligible mouth photos and dental X-rays. It can highlight visible areas to discuss, but it does not diagnose conditions or replace a dentist's interpretation."
-              }
-            ].map((faq, idx) => (
+            {homeFaqs.map((faq, idx) => (
               <div key={idx} className="bg-white rounded-xl p-6 border border-stone-100">
-                <h3 className="text-lg font-semibold text-black mb-2">{faq.q}</h3>
-                <p className="text-stone-700 leading-relaxed">{faq.a}</p>
+                <h3 className="text-lg font-semibold text-black mb-2">{faq.question}</h3>
+                <p className="text-stone-700 leading-relaxed">{faq.answer}</p>
                 {faq.link && (
                   <Link href={faq.link}>
                     <span className="inline-flex items-center gap-1 text-primary text-sm font-medium mt-3 hover:underline cursor-pointer">
@@ -888,7 +860,7 @@ export default function Home() {
               className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium shadow-lg cursor-pointer"
               onClick={() => goToPlan("quick_check", "post_faq")}
             >
-              Start Your Quick Check
+              Start with a Free Quick Check
             </Button>
             <Button
               size="lg"
@@ -896,7 +868,7 @@ export default function Home() {
               className="border-action/30 text-action hover:bg-action/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer"
               onClick={() => goToPlan("second_opinion", "post_faq")}
             >
-              Get a Second Opinion
+              Review a Treatment Plan
             </Button>
           </div>
         </div>

@@ -150,8 +150,12 @@ describe("Phase 6 content governance", () => {
   it("keeps public product facts connected to the central registry and preserves exact approved values", () => {
     const factsPage = read("client/src/pages/governance/GovernancePage.tsx");
     expect(factsPage).toMatch(/from ["']@shared\/facts["']/);
-    expect(pricing.quickCheck.priceFormatted).toBe("$19.99");
-    expect(pricing.secondOpinion.priceFormatted).toBe("$29.99");
+    expect(pricing.quickCheck.priceFormatted).toBe("Free");
+    expect(pricing.quickCheck.billingLabel).toBe("unlimited checks");
+    expect(pricing.fullQuickCheck.priceFormatted).toBe("$19.99");
+    expect(pricing.fullQuickCheck.billingLabel).toBe("per case");
+    expect(pricing.treatmentPlanReview.priceFormatted).toBe("$29.99");
+    expect(pricing.treatmentPlanReview.billingLabel).toBe("per case");
     expect(pricing.completeCareIndividual.priceFormatted).toBe("$74.99");
     expect(pricing.completeCareFamily.priceFormatted).toBe("$149.99");
     expect(pricing.completeCareFamily.maxMembers).toBe(4);

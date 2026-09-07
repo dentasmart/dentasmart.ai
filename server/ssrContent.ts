@@ -36,8 +36,8 @@ function generateHomepageContent(): string {
     <li>Educational review of supported dental photos and X-rays</li>
     <li>Personalized Oral Health Score tracking over time</li>
     <li>Plain-language cost context for supported treatment information</li>
-    <li>Dr Din AI guidance for report language and common dental terms</li>
-    <li>Second opinion reports for treatment plans</li>
+    <li>Dr. Din guidance for report language, findings, history, and common dental terms</li>
+    <li>Treatment Plan Review for supported dentist treatment plans</li>
     <li>Family profiles for up to 4 members</li>
   </ul>
   <h2>Explore Dental Health Resources</h2>
@@ -53,7 +53,7 @@ function generateHomepageContent(): string {
     </ul>
   </nav>
   <h2>Download DentaSmart</h2>
-  <p>The DentaSmart app is free to download on iOS and Android, with a limited free scan preview available before you choose a plan. Quick Check, Second Opinion, and Complete Care are paid services with prices shown before purchase.</p>
+  <p>Start with unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray. Full Quick Check, Treatment Plan Review, and Complete Care are paid services with prices shown before purchase.</p>
   <p><a href="/download">Download the App</a> | <a href="/pricing">View Pricing</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`;
 }
@@ -256,9 +256,9 @@ function generateStaticPageContent(path: string): string | null {
   <p>Upload supported mouth photos or dental X-rays. DentaSmart can highlight visible areas and explain why they may be worth discussing.</p>
   <h2>Oral Health Score</h2>
   <p>Review a 0-100 educational summary and compare it with your earlier DentaSmart records over time.</p>
-  <h2>Dr Din AI Oral Health Guide</h2>
-  <p>Ask Dr Din to explain report language and common dental terms. It does not diagnose conditions or replace professional care.</p>
-  <h2>Second Opinion Reports</h2>
+  <h2>Dr. Din AI Oral Health Guide</h2>
+  <p>Ask Dr. Din to explain report language, findings, history, and common dental terms. It does not diagnose conditions or replace professional care.</p>
+  <h2>Treatment Plan Review</h2>
   <p>Upload a treatment plan for an educational comparison with cost ranges and questions to discuss with your dentist.</p>
   <h2>Family Profiles</h2>
   <p>Monitor oral health for up to 4 family members under one account. Track everyone's dental health in one place.</p>
@@ -267,19 +267,21 @@ function generateStaticPageContent(path: string): string | null {
     "/pricing": `
 <article>
   <h1>DentaSmart Pricing: Plans for Every Need</h1>
-  <p>The DentaSmart app is free to download, and a limited free scan preview is available before you choose a plan. Choose a paid one-time check or annual monitoring plan based on the decision you are making.</p>
-  <h2>Quick Check  -  $19.99 one-time</h2>
-  <p>A $19.99 one-time educational review of supported mouth photos and X-rays with visible observations, an Oral Health Score, a patient-friendly report, and Dr Din access for 30 days. It does not provide a diagnosis.</p>
-  <h2>Second Opinion  -  $29.99 one-time</h2>
-  <p>A $29.99 one-time educational comparison for one case using supported treatment plans, bills, X-rays, and mouth photos, with cost context, questions for a licensed dentist, and Dr Din access for 30 days.</p>
+  <p>Start with unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Choose Full Quick Check, Treatment Plan Review, or annual Complete Care only when you need those services.</p>
+  <h2>Quick Check  -  Free for mouth photos</h2>
+  <p>A free educational analysis of supported mouth photos. No X-ray is required, and it does not provide a diagnosis.</p>
+  <h2>Full Quick Check - $19.99 per case</h2>
+  <p>A one-time educational analysis of a supported dental X-ray. A licensed dentist must interpret X-rays for diagnosis and treatment decisions.</p>
+  <h2>Treatment Plan Review - $29.99 per case</h2>
+  <p>A $29.99 educational plain-language review for one supported treatment-plan case, with context and questions to discuss with a licensed dentist.</p>
   <h2>Complete Care  -  $74.99/year (Individual) or $149.99/year (Family)</h2>
-  <p>Complete Care is $74.99/year for one person or $149.99/year for up to 4 family members. It includes year-round educational monitoring, supported photo and X-ray reviews, reports, Oral Health Score tracking, guided self-examination, record organization, and Dr Din access. It does not replace professional diagnosis or treatment.</p>
+  <p>Complete Care is $74.99/year for one person or $149.99/year for up to 4 family members. It includes year-round access to applicable reports, Oral Health Score tracking, guided self-examination, record organization, monitoring tools, and Dr. Din. It does not replace professional diagnosis or treatment.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/features">See All Features</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`,
     "/download": `
 <article>
   <h1>Download DentaSmart: iOS & Android App</h1>
-  <p>Download the DentaSmart app on iOS or Android. The app is free to download, with a limited scan preview available before you choose a plan. Quick Check, Second Opinion, and Complete Care are paid services.</p>
+  <p>Download the DentaSmart app on iOS or Android and start with unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Full Quick Check, Treatment Plan Review, and Complete Care are paid services.</p>
   <h2>iOS  -  Available Now</h2>
   <p>Download DentaSmart from the Apple App Store, then review the paid service options before purchase.</p>
   <h2>Android  -  Available Now</h2>
@@ -295,7 +297,7 @@ function generateStaticPageContent(path: string): string | null {
   <h2>Is DentaSmart a replacement for a dentist?</h2>
   <p>No. DentaSmart is an educational tool that helps you understand your oral health. Always consult a licensed dentist for diagnosis and treatment.</p>
   <h2>How much does DentaSmart cost?</h2>
-  <p>Quick Check is $19.99 one-time. Second Opinion is $29.99 one-time. Complete Care is $74.99/year for individuals or $149.99/year for families of up to 4 members. The app is free to download, with a limited scan preview available; these services are paid.</p>
+  <p>Free Quick Check is unlimited. Full Quick Check is $19.99 per case. Treatment Plan Review is $29.99 per case. Complete Care is $74.99/year for individuals or $149.99/year for families of up to 4 members.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/pricing">View Pricing</a> | <a href="/features">See All Features</a></p>
 </article>`,
     "/employers": `
@@ -341,9 +343,9 @@ function generateStaticPageContent(path: string): string | null {
     "/product-facts": `
 <article>
   <h1>Product Facts</h1>
-  <p>DentaSmart is free to download on iOS and Android. A limited free scan preview is distinct from paid Quick Check, Second Opinion, and Complete Care services.</p>
+  <p>DentaSmart Free Quick Check is unlimited and accepts supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray. Full Quick Check, Treatment Plan Review, and Complete Care are paid services.</p>
   <h2>Verified pricing</h2>
-  <ul><li>Quick Check: $19.99 one-time</li><li>Second Opinion: $29.99 one-time</li><li>Complete Care: $74.99/year individual or $149.99/year family, up to four family members</li><li>Additional family members: $19.99/year</li></ul>
+  <ul><li>Free Quick Check: $0, unlimited checks</li><li>Full Quick Check: $19.99 per case</li><li>Treatment Plan Review: $29.99 per case</li><li>Complete Care: $74.99/year individual or $149.99/year family, up to four family members</li><li>Additional family members: $19.99/year</li></ul>
   <p>DentaSmart provides educational outputs and does not diagnose conditions or replace a licensed dental professional.</p>
   <p><a href="/pricing">View Pricing</a> | <a href="/download">Download DentaSmart</a> | <a href="/features">See Features</a></p>
 </article>`,
@@ -396,7 +398,7 @@ function generateStaticPageContent(path: string): string | null {
     "/stories": `
 <article>
   <h1>Ways to Use DentaSmart</h1>
-  <p>Explore product-use examples for a one-time Quick Check, a treatment-plan Second Opinion, or ongoing Complete Care monitoring. These examples are not customer testimonials. DentaSmart provides educational guidance and does not diagnose conditions or replace a dentist.</p>
+  <p>Explore product-use examples for Free Quick Check, Full Quick Check, Treatment Plan Review, or ongoing Complete Care monitoring. These examples are not customer testimonials. DentaSmart provides educational guidance and does not diagnose conditions or replace a dentist.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/how-it-works">How It Works</a> | <a href="/pricing">View Pricing</a></p>
 </article>`,
     "/conditions": `

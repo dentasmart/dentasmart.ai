@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { serializeJsonLd, toSchemaUrl } from "../shared/jsonLd";
+import { normalizeSchemaUrls, serializeJsonLd, toSchemaUrl } from "../shared/jsonLd";
 import { resolveMetaTags } from "./metaTags";
 import { resolveSchemaMarkup } from "./schemaMarkup";
 
@@ -78,6 +78,19 @@ describe("Phase 7-A schema URL normalization", () => {
       "https://dentasmart.ai/files/dental-guide.pdf",
     );
     expect(toSchemaUrl("not a URL")).toBe("not a URL");
+  });
+
+  it("normalizes nested schema URL fields while preserving hostile text values exactly", () => {
+    const value = {
+      url: "/conditions/cavities",
+      acceptedAnswer: { text: "</script><script>alert(1)</script> <>&\"'\u2028\u2029" },
+    };
+    const normalized = normalizeSchemaUrls(value);
+    const serialized = serializeJsonLd(normalized);
+
+    expect(normalized.url).toBe("https://dentasmart.ai/conditions/cavities/");
+    expect(JSON.parse(serialized)).toEqual(normalized);
+    expect(serialized).not.toContain("</script>");
   });
 
   it("keeps homepage schema free of SearchAction and emits normalized internal URLs", async () => {

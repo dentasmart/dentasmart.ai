@@ -90,14 +90,14 @@ const whatYouGet = [
   "Dentist-ready report when included",
   "Cost context for supported information",
   "Organized records for a dental visit",
-  "Dr Din access according to the selected service",
+  "Dr. Din access according to the selected service",
   "Questions to discuss with a dentist",
 ];
 
 const faqs = [
   {
     q: "Is the dental scan really free?",
-    a: "The DentaSmart app is free to download, with a limited scan preview available before you choose a plan. Quick Check and Second Opinion are paid one-time services, and Complete Care is an annual paid plan. Review the current price and included features before purchase.",
+    a: "DentaSmart Free Quick Check is unlimited and accepts supported mouth photos, supported X-rays, or both. Full Quick Check and Treatment Plan Review are paid per case, while Complete Care is an annual paid plan. Review the current price and included features before purchase.",
   },
   {
     q: "How long does an instant scan take?",
@@ -213,8 +213,8 @@ export default function InstantScan() {
 
               <div className="space-y-3 mb-6">
                 {[
-                  "App is free to download",
-                  "Paid service prices shown before purchase",
+                  "Free Quick Check for mouth photos",
+                  "Paid X-ray analysis shown before purchase",
                   "Plain-language explanations",
                   "Educational, not diagnostic",
                 ].map((item, idx) => (
@@ -407,7 +407,7 @@ export default function InstantScan() {
             Start with clear service options
           </h2>
           <p className="text-xl text-white/80 font-light mb-8">
-            The app is free to download. Quick Check, Second Opinion, and Complete Care are paid services with prices shown before purchase.
+            Free Quick Check is unlimited. Full Quick Check, Treatment Plan Review, and Complete Care are paid services with prices shown before purchase.
           </p>
           <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer">
             <Link href="/pricing" onClick={() => trackEvent("cta_get_score_click", { source: "instant_scan_bottom" })}>

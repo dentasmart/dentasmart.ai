@@ -26,7 +26,7 @@ export default function HowItWorksHero() {
               in 4 steps.
             </h1>
             <p className="text-lg md:text-xl text-stone-700 font-normal leading-relaxed mb-8">
-              A quick scan gives you clarity, so you know what to do next.
+              Start with a Free Quick Check, review the report, and choose a paid service only when you need more.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-start">
               <Button 
@@ -34,7 +34,7 @@ export default function HowItWorksHero() {
                 className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105 shadow-lg border-0 cursor-pointer"
                 onClick={() => document.getElementById('download-cta')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Get My Oral Health Score
+                Start with a Free Quick Check
               </Button>
             </div>
           </motion.div>
@@ -46,7 +46,7 @@ export default function HowItWorksHero() {
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
             className="lg:col-span-7 flex justify-center items-end gap-4 md:gap-6 lg:gap-8 pb-8 lg:pb-0"
           >
-            {/* iPhone Mockup - X-Ray Analysis */}
+            {/* iPhone Mockup - Free Quick Check */}
             <div className="relative flex-shrink-0 w-[180px] sm:w-[220px] md:w-[260px] lg:w-[280px]">
               <div className="relative rounded-[2.5rem] sm:rounded-[3rem] border-[6px] sm:border-[8px] border-stone-900 bg-stone-900 shadow-2xl overflow-hidden">
                 {/* iPhone Notch */}
@@ -54,28 +54,24 @@ export default function HowItWorksHero() {
                 {/* Screen Content */}
                 <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
                   <picture>
-                    <source
-                      type="image/webp"
-                      srcSet="/images/optimized/lBzNqmERojJqlfJE-400.webp 400w, /images/optimized/lBzNqmERojJqlfJE-800.webp 800w, /images/optimized/lBzNqmERojJqlfJE-1600.webp 1600w"
-                      sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
-                    />
+                    <source type="image/webp" srcSet="/manus-storage/dentasmart-app-free-quick-check_303190e3.webp" />
                     <img
-                      src="/images/optimized/lBzNqmERojJqlfJE-800.webp"
-                      alt="DentaSmart X-Ray Analysis - AI-powered dental X-ray findings with highlighted areas" 
+                      src="/manus-storage/dentasmart-app-free-quick-check_303190e3.webp"
+                      alt="DentaSmart Free Quick Check screen for guided mouth photos"
                     className="w-full h-full object-cover object-top"
                       loading="lazy"
                     
-                      width="738" height="1600"/>
+                      width="828" height="1792"/>
                   </picture>
                 </div>
               </div>
               {/* Label */}
               <div className="text-center mt-3 sm:mt-4">
-                <span className="text-xs sm:text-sm font-medium text-stone-600 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">X-Ray Analysis</span>
+                <span className="text-xs sm:text-sm font-medium text-stone-600 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">Free Quick Check</span>
               </div>
             </div>
 
-            {/* iPhone Mockup - Initial Care */}
+            {/* iPhone Mockup - Treatment Plan Review */}
             <div className="relative flex-shrink-0 w-[180px] sm:w-[220px] md:w-[260px] lg:w-[280px] mt-12 sm:mt-16">
               <div className="relative rounded-[2.5rem] sm:rounded-[3rem] border-[6px] sm:border-[8px] border-stone-900 bg-stone-900 shadow-2xl overflow-hidden">
                 {/* iPhone Notch */}
@@ -83,24 +79,20 @@ export default function HowItWorksHero() {
                 {/* Screen Content */}
                 <div className="relative aspect-[9/19.5] overflow-hidden bg-white">
                   <picture>
-                    <source
-                      type="image/webp"
-                      srcSet="/images/optimized/XlgHEMbZpBAbEXnM-400.webp 400w, /images/optimized/XlgHEMbZpBAbEXnM-800.webp 800w, /images/optimized/XlgHEMbZpBAbEXnM-1600.webp 1600w"
-                      sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1600px"
-                    />
+                    <source type="image/webp" srcSet="/manus-storage/dentasmart-app-treatment-plan-review_e384bde5.webp" />
                     <img
-                      src="/images/optimized/XlgHEMbZpBAbEXnM-800.webp"
-                      alt="DentaSmart Initial Care Plan - Treatment recommendations with costs and timelines" 
+                      src="/manus-storage/dentasmart-app-treatment-plan-review_e384bde5.webp"
+                      alt="DentaSmart Treatment Plan Review upload screen"
                     className="w-full h-full object-cover object-top"
                       loading="lazy"
                     
-                      width="945" height="2048"/>
+                      width="828" height="1792"/>
                   </picture>
                 </div>
               </div>
               {/* Label */}
               <div className="text-center mt-3 sm:mt-4">
-                <span className="text-xs sm:text-sm font-medium text-stone-600 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">Initial Care Plan</span>
+                <span className="text-xs sm:text-sm font-medium text-stone-600 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">Treatment Plan Review</span>
               </div>
             </div>
           </motion.div>

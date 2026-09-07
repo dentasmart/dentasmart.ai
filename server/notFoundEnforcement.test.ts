@@ -93,7 +93,7 @@ describe("P3-C confirmed 404 enforcement safeguards", () => {
 
   it("renders confirmed 404 initial HTML with noindex and without canonical, og:url, SSR, or schema", async () => {
     const result = await renderHtmlForRequest(SAMPLE_HTML, "/conditions/not-a-real-condition/", true);
-    expect(result).toContain("Page Not Found | DentaSmart");
+    expect(result).toContain("Page Not Found | Your Personal AI Dentist in Your Pocket");
     expect(result).toContain('name="robots" content="noindex, follow"');
     expect(result).not.toContain('rel="canonical"');
     expect(result).not.toContain('property="og:url"');

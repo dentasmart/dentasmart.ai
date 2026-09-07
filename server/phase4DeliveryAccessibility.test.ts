@@ -8,9 +8,10 @@ describe("Phase 4-B first-viewport image delivery", () => {
   it("keeps the visible Home phone images eager and sizes them to their rendered layout", () => {
     const source = projectFile("client/src/pages/Home.tsx");
 
-    expect(source).toContain('sizes="(max-width: 640px) 140px, (max-width: 1024px) 200px, 220px"');
-    expect(source).toContain('loading="eager" fetchPriority="high" width="800" height="1734"');
-    expect(source).toContain('loading="eager" width="945" height="2048"');
+    expect(source).toContain('src="/manus-storage/dentasmart-app-oral-health-score_ef84a3c3.webp"');
+    expect(source).toContain('loading="eager" fetchPriority="high" width="1080" height="2337"');
+    expect(source).toContain('src="/manus-storage/dentasmart-app-free-quick-check_303190e3.webp"');
+    expect(source).toContain('loading="eager" width="828" height="1792"');
     expect(source).not.toContain('alt="DentaSmart AI X-Ray Analysis - Color-coded findings with plain-English explanations" className="w-full h-full object-cover object-top" loading="lazy"');
   });
 

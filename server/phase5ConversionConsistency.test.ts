@@ -36,27 +36,31 @@ const phase5PublicSources = [
 describe("Phase 5 verified product truth", () => {
   it("keeps the stable product terminology and approved tagline in the central facts registry", () => {
     expect(brand.tagline).toBe("Your Personal AI Dentist in Your Pocket");
-    expect(brand.aiPersonaName).toBe("Dr Din");
+    expect(brand.aiPersonaName).toBe("Dr. Din");
     expect(productTerminology).toEqual({
       dentaSmart: "DentaSmart",
-      quickCheck: "Quick Check",
-      secondOpinion: "Second Opinion",
+      quickCheck: "Free Quick Check",
+      fullQuickCheck: "Full Quick Check",
+      treatmentPlanReview: "Treatment Plan Review",
+      secondOpinion: "Treatment Plan Review",
       completeCare: "Complete Care",
       oralHealthScore: "Oral Health Score",
-      drDin: "Dr Din",
+      drDin: "Dr. Din",
       family: "Family",
     });
   });
 
-  it("standardizes Dr Din without adding a 24/7 dentist implication", () => {
-    expect(phase5PublicSources).not.toContain("Dr. Din");
-    expect(phase5PublicSources).not.toMatch(/24\/7 (Dr Din|Personal AI Dentist)/i);
+  it("standardizes Dr. Din without adding a 24/7 dentist implication", () => {
+    expect(phase5PublicSources).toContain("Dr. Din");
+    expect(phase5PublicSources).not.toMatch(/\bDr Din\b/);
+    expect(phase5PublicSources).not.toMatch(/24\/7 (Dr\.? Din|Personal AI Dentist)/i);
     expect(projectFile("server/seo.ts")).not.toMatch(/ChatGPT provides|Teledentistry requires|Traditional dental insurance costs/i);
   });
 
   it("keeps verified prices, family limits, availability, and store destinations unchanged", () => {
-    expect(pricing.quickCheck.price).toBe(19.99);
-    expect(pricing.secondOpinion.price).toBe(29.99);
+    expect(pricing.quickCheck.price).toBe(0);
+    expect(pricing.fullQuickCheck.price).toBe(19.99);
+    expect(pricing.treatmentPlanReview.price).toBe(29.99);
     expect(pricing.completeCareIndividual.price).toBe(74.99);
     expect(pricing.completeCareFamily.price).toBe(149.99);
     expect(pricing.completeCareFamily.maxMembers).toBe(4);
@@ -84,19 +88,15 @@ describe("Phase 5 verified product truth", () => {
 });
 
 describe("Phase 5 conversion and trust contracts", () => {
-  it("keeps free wording to the symptom quiz, app download, and qualified limited scan preview", () => {
+  it("keeps free wording tied to the symptom quiz and unlimited Free Quick Check", () => {
     const pricingPage = projectFile("client/src/pages/Pricing.tsx");
-    const nonPricingSources = phase5PublicSources
-      .replace(pricingPage, "")
-      .replace(projectFile("server/seo.ts"), "");
 
-    expect(nonPricingSources).not.toMatch(/free (assessment|scan|oral health score)/i);
-    expect(nonPricingSources).not.toMatch(/(start|try) free(?! symptom quiz)/i);
-    expect(pricingPage).toContain("limited free scan preview");
-    expect(pricingPage).toMatch(/Quick Check and Second Opinion are paid one-time services/i);
+    expect(pricingPage).toContain("Free Quick Check is unlimited");
+    expect(pricingPage).toMatch(/Full Quick Check.{0,120}(paid|\$19\.99|per case)/is);
     expect(phase5PublicSources).not.toMatch(/completely free/i);
     expect(phase5PublicSources).toContain("free symptom quiz");
-    expect(projectFile("server/seo.ts")).toContain("limited free scan preview");
+    expect(projectFile("server/seo.ts")).toContain("Free Quick Check is unlimited");
+    expect(projectFile("server/seo.ts")).toContain("Full Quick Check is $19.99 per case");
   });
 
   it("keeps symptom escalation clear without fixed dental-appointment timing", () => {
@@ -158,7 +158,7 @@ describe("Phase 5 conversion and trust contracts", () => {
 
     expect(highFanoutSources).not.toMatch(/free AI assessment|free AI oral health score|first free scan|results in 2 min|under 2 minutes|clarity in minutes/i);
     expect(highFanoutSources).not.toMatch(/save you thousands|insurance can save you thousands|guaranteed savings|helps you save on .* costs/i);
-    expect(highFanoutSources).not.toMatch(/Dr\. Din|24\/7 Personal AI Dentist/i);
+    expect(highFanoutSources).not.toMatch(/24\/7 Personal AI Dentist/i);
   });
 
   it("keeps the free symptom quiz educational rather than diagnostic or triage-directed", () => {
@@ -238,14 +238,14 @@ describe("Phase 5 conversion and trust contracts", () => {
 });
 
 describe("Phase 5 visible, metadata, and schema parity", () => {
-  it("keeps Home intent links mapped to the verified Quick Check and Second Opinion pricing anchors", () => {
+  it("keeps Home intent links mapped to the verified free-entry route and legacy-compatible Treatment Plan Review anchor", () => {
     const home = projectFile("client/src/pages/Home.tsx");
     const comparison = projectFile("client/src/pages/DentaSmartVsChatGPT.tsx");
     const pricingPage = projectFile("client/src/pages/Pricing.tsx");
 
-    expect(home).toContain('"/pricing#quick-check"');
+    expect(home).toContain('intent === "quick_check" ? "/download"');
     expect(home).toContain('"/pricing#second-opinion"');
-    expect(comparison).toContain('href="/pricing#quick-check"');
+    expect(comparison).toContain('href="/download"');
     expect(comparison).toContain('href="/pricing#second-opinion"');
     expect(comparison).not.toContain("scrollToDownload");
     expect(pricingPage).toContain('id="quick-check"');
@@ -254,7 +254,7 @@ describe("Phase 5 visible, metadata, and schema parity", () => {
 
   it("keeps the visible How It Works page, server HowTo schema, metadata, and crawler content at four steps", () => {
     const page = projectFile("client/src/pages/HowItWorks.tsx");
-    const schema = projectFile("server/schemaMarkup.ts");
+    const schema = projectFile("shared/schemaOwnership.ts");
     const metadata = projectFile("server/metaTags.ts");
     const crawler = projectFile("server/ssrContent.ts");
     const pricingPage = projectFile("client/src/pages/Pricing.tsx");
@@ -287,8 +287,8 @@ describe("Phase 5 visible, metadata, and schema parity", () => {
 
     expect(schemas).toContain("It does not diagnose conditions or replace professional dental care");
     expect(schemas).not.toMatch(/24\/7 AI dentist/i);
-    expect(schemas).toContain(pricing.quickCheck.price.toString());
-    expect(schemas).toContain(pricing.secondOpinion.price.toString());
+    expect(schemas).toContain(pricing.fullQuickCheck.price.toString());
+    expect(schemas).toContain(pricing.treatmentPlanReview.price.toString());
     expect(schemas).toContain(pricing.completeCareIndividual.price.toString());
     expect(schemas).toContain(pricing.completeCareFamily.price.toString());
   });

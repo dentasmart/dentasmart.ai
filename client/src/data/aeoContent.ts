@@ -1,3 +1,5 @@
+import { videoCostAeo } from "./videoCostAeo";
+
 /**
  * AEO (Answer Engine Optimization) supplemental content.
  * Keyed by slug. Used by condition, symptom, and guide templates
@@ -421,6 +423,7 @@ export const aeoSymptoms: Record<string, AEOBlock> = {
 };
 
 export const aeoGuides: Record<string, AEOBlock> = {
+  ...videoCostAeo,
   "brushing-guide": {
     inOneSentence:
       "Proper brushing means using a soft-bristle brush at a 45-degree angle to the gumline, brushing for two full minutes twice a day, and replacing your brush every 3 months.",

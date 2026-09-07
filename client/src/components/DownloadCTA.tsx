@@ -13,10 +13,10 @@ export function DownloadCTA() {
           className="max-w-3xl mx-auto flex flex-col items-center"
         >
           <h2 className="text-3xl md:text-4xl font-medium mb-4 tracking-wide">
-            Download DentaSmart Today
+            Start with a Free Quick Check
           </h2>
           <p className="text-white/90 text-lg font-light mb-8">
-            Download the app, review the available services, and choose the level of support that fits your situation.
+            Use mouth photos from your phone. No X-ray required. Paid X-ray analysis and other services are available separately.
           </p>
 
           {/* App Store Buttons */}

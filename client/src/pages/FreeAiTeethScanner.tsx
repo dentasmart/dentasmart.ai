@@ -38,7 +38,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 const faqs = [
   {
     question: "Is DentaSmart really free?",
-    answer: `The DentaSmart app is free to download, with a limited scan preview available before you choose a plan. Checks and plans are separate paid services. Quick Check costs ${pricing.quickCheck.priceFormatted} one-time, Second Opinion costs ${pricing.secondOpinion.priceFormatted} one-time, and Complete Care starts at ${pricing.completeCareIndividual.priceFormatted} per year.`
+    answer: `Yes. DentaSmart Free Quick Check is unlimited and accepts supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray. Full Quick Check costs ${pricing.fullQuickCheck.priceFormatted} per case, Treatment Plan Review costs ${pricing.treatmentPlanReview.priceFormatted} per case, and Complete Care starts at ${pricing.completeCareIndividual.priceFormatted} per year.`
   },
   {
     question: "How accurate is an AI teeth scanner?",
@@ -62,21 +62,6 @@ const faqs = [
   }
 ];
 
-const softwareAppSchema = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "DentaSmart",
-  operatingSystem: "iOS, Android",
-  applicationCategory: "HealthApplication",
-  description: "Oral health app with mouth-photo and dental X-ray workflows, an Oral Health Score, and plain-language educational reports.",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-    description: "App download at no cost; optional paid checks and plans are available"
-  },
-};
-
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -87,25 +72,6 @@ const faqSchema = {
   })),
 };
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://dentasmart.ai" },
-    { "@type": "ListItem", position: 2, name: "Free AI Teeth Scanner", item: "https://dentasmart.ai/free-ai-teeth-scanner" },
-  ],
-};
-
-const webPageSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  name: "Free AI Teeth Scanner Guide - What to Compare Before You Choose",
-  description: "Learn what free AI teeth scanner searches mean, what these tools can and cannot do, and how DentaSmart's free app download differs from paid checks and plans.",
-  url: "https://dentasmart.ai/free-ai-teeth-scanner",
-  inLanguage: "en-US",
-  isPartOf: { "@type": "WebSite", name: "DentaSmart", url: "https://dentasmart.ai" },
-};
-
 export default function FreeAiTeethScanner() {
   useEffect(() => {
     trackEvent("free_ai_scanner_page_view");
@@ -114,11 +80,11 @@ export default function FreeAiTeethScanner() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
-        title="Free AI Teeth Scanner Guide - What to Compare"
-        description="Learn what AI teeth scanners can and cannot do. DentaSmart is free to download, while Quick Check, Second Opinion, and Complete Care are paid services."
+        title="Free AI Mouth Photo Analysis | DentaSmart Quick Check"
+        description="Use supported mouth photos for a free DentaSmart Quick Check. No X-ray is required. See visible areas to discuss with a dentist without receiving a diagnosis."
         canonical="https://dentasmart.ai/free-ai-teeth-scanner"
         keywords="free AI teeth scanner, AI dental scan, online teeth checkup, AI X-ray analysis, dental photo analysis, free dental scan app"
-        jsonLd={[softwareAppSchema, faqSchema, breadcrumbSchema, webPageSchema]}
+        jsonLd={faqSchema}
       />
       <Navigation />
 
@@ -135,14 +101,14 @@ export default function FreeAiTeethScanner() {
             transition={{ duration: 0.8 }}
           >
             <div className="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full text-primary text-sm font-medium mb-6">
-              <Camera className="w-4 h-4" /> Free to download
+              <Camera className="w-4 h-4" /> Free mouth-photo analysis
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-4 leading-[1.1] max-w-4xl">
-              Looking for a Free AI Teeth Scanner?{" "}
-              <span className="italic text-primary">Know What to Compare First</span>
+              Start with a Free AI Mouth Photo Check{" "}
+              <span className="italic text-primary">No X-Ray Required</span>
             </h1>
             <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed max-w-2xl mb-8">
-              DentaSmart is free to download on iOS and Android. Mouth-photo checks, treatment-plan comparisons, and annual plans are paid services shown before purchase.
+              Use supported mouth photos, supported X-rays, or both for an unlimited Free Quick Check. Mouth photos do not require an X-ray.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/download">
@@ -164,8 +130,8 @@ export default function FreeAiTeethScanner() {
       <section className="py-6 bg-white border-b border-stone-100">
         <div className="container px-4 mx-auto max-w-4xl">
           <QuickAnswerBlock
-            question="What is a free AI teeth scanner?"
-            answer={`A free AI teeth scanner usually means an app or web tool with no-cost access. Check what is actually included before uploading an image. DentaSmart is free to download, but Quick Check starts at ${pricing.quickCheck.priceFormatted} one-time and other services have separate prices.`}
+            question="Can I analyze a mouth photo for free?"
+            answer={`Yes. DentaSmart Free Quick Check is unlimited and accepts supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray. Full Quick Check is ${pricing.fullQuickCheck.priceFormatted} per case and unlocks full eligible X-ray insights. DentaSmart provides educational observations, not a diagnosis.`}
           />
         </div>
       </section>
@@ -180,7 +146,7 @@ export default function FreeAiTeethScanner() {
             </div>
             <div className="flex items-center gap-2">
               <Camera className="w-4 h-4 text-primary" />
-              <span>Paid services shown before purchase</span>
+              <span>Free mouth-photo Quick Check</span>
             </div>
             <div className="flex items-center gap-2">
               <Shield className="w-4 h-4 text-primary" />
@@ -277,7 +243,8 @@ export default function FreeAiTeethScanner() {
           <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
             {[
               { title: "App download", price: "$0", detail: "Install DentaSmart from the App Store or Google Play." },
-              { title: pricing.quickCheck.name, price: `${pricing.quickCheck.priceFormatted} ${pricing.quickCheck.billingLabel}`, detail: "A paid one-time mouth-photo check." },
+              { title: pricing.quickCheck.name, price: pricing.quickCheck.priceFormatted, detail: "Unlimited checks using supported mouth photos, supported X-rays, or both." },
+              { title: pricing.fullQuickCheck.name, price: `${pricing.fullQuickCheck.priceFormatted} ${pricing.fullQuickCheck.billingLabel}`, detail: "Unlocks the paid Quick Check package and full eligible X-ray insights for one case." },
               { title: pricing.completeCareIndividual.name, price: `From ${pricing.completeCareIndividual.priceFormatted}${pricing.completeCareIndividual.billingLabel}`, detail: "An annual individual plan; family pricing is listed separately." },
             ].map((option) => (
               <article key={option.title} className="rounded-2xl border border-stone-200 bg-stone-50 p-6">
@@ -329,7 +296,7 @@ export default function FreeAiTeethScanner() {
         <div className="container px-4 mx-auto max-w-4xl text-center">
           <h2 className="text-2xl font-medium text-black mb-3">Not sure what is going on with your teeth?</h2>
           <p className="text-stone-600 font-light mb-6 max-w-xl mx-auto">
-            Download the app, then choose the paid check or plan that fits your goal. The service price is shown before purchase.
+            Download the app and start with an unlimited Free Quick Check. Choose Full Quick Check or another paid service only if you need it.
           </p>
           <Link href="/download">
             <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-10 py-6 text-lg font-medium cursor-pointer shadow-lg">
@@ -348,7 +315,7 @@ export default function FreeAiTeethScanner() {
             {[
               { title: "Supported inputs", detail: "Check whether the service accepts mouth photos, X-rays, or both, and whether your image type is supported." },
               { title: "Output and limitations", detail: "Look for plain-language reports, clear uncertainty, and an explicit statement that the tool does not diagnose." },
-              { title: "Full price", detail: "Separate a free app download from paid checks, subscriptions, and optional services." },
+              { title: "Full price", detail: "Confirm what is free and what is paid. DentaSmart mouth-photo Quick Check is free; X-ray analysis and other services are priced separately." },
               { title: "Privacy and follow-up", detail: "Review the privacy policy and understand when the service tells you to seek professional care." },
             ].map((item) => (
               <article key={item.title} className="rounded-2xl border border-stone-200 bg-stone-50 p-6">

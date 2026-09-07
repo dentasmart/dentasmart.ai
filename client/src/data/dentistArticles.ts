@@ -77,7 +77,7 @@ export const dentistArticles = [
     },
     result: {
       heading: "How DentaSmart Helps",
-      content: "DentaSmart offers educational image analysis and a paid Second Opinion service. Neither feature should be used to delay urgent care, and a licensed dentist remains responsible for diagnosis and treatment recommendations."
+      content: "DentaSmart offers educational Quick Check services and Treatment Plan Review. Neither feature should be used to delay urgent care, and a licensed dentist remains responsible for diagnosis and treatment recommendations."
     }
   },
   {
@@ -212,7 +212,7 @@ export const dentistArticles = [
     },
     result: {
       heading: "How DentaSmart Helps",
-      content: "DentaSmart's paid Second Opinion service reviews eligible submitted information. It does not replace emergency care, and the usefulness of the review depends on the records provided."
+      content: "DentaSmart Treatment Plan Review reviews a supported dentist treatment plan. It does not replace emergency care, and the usefulness of the review depends on the information provided."
     }
   },
   {

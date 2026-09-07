@@ -25,7 +25,7 @@ const rows = [
   },
   {
     name: "Treatment-plan comparison",
-    denta: "Educational Second Opinion service available",
+    denta: "Treatment Plan Review available",
     savings: "Not a standard feature",
     insurance: "Coverage review may be available",
   },

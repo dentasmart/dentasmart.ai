@@ -162,7 +162,7 @@ export default function HubCategory() {
         <div className="container px-4 mx-auto max-w-3xl text-center">
           <h2 className="text-2xl font-medium text-black mb-4">Want to review DentaSmart options?</h2>
           <p className="text-stone-600 font-light mb-6">
-            The app is free to download. Quick Check, Second Opinion, and Complete Care are paid services with different inputs and educational outputs.
+            Free Quick Check is unlimited. Full Quick Check and other paid services include different inputs and educational outputs.
           </p>
           <p className="text-xs text-stone-400 mb-4">
             Educational insights to help you understand your oral health and have better conversations with a licensed dentist.

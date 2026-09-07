@@ -407,8 +407,8 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
                 <TrendingDown className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-lg md:text-xl font-medium text-black mb-2">Get a Second Opinion</h3>
-              <p className="text-stone-600 font-light leading-relaxed text-sm md:text-base">DentaSmart's paid Second Opinion service can organize supported treatment-plan information and questions. It does not provide a dentist's diagnosis or clinical recommendation.</p>
+              <h3 className="text-lg md:text-xl font-medium text-black mb-2">Review a Treatment Plan</h3>
+              <p className="text-stone-600 font-light leading-relaxed text-sm md:text-base">DentaSmart Treatment Plan Review can organize a supported dentist treatment plan and questions. It does not provide a dentist's diagnosis or clinical recommendation.</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}

@@ -51,3 +51,20 @@ export function normalizeInternalSchemaUrl(rawUrl: string): string {
 export function toSchemaUrl(value: string): string {
   return normalizeInternalSchemaUrl(value.startsWith("/") ? `${SITE_URL}${value}` : value);
 }
+
+const SCHEMA_URL_KEYS = new Set(["url", "@id", "item", "downloadUrl", "installUrl"]);
+
+/** Normalizes schema URL fields recursively without altering content strings or external URLs. */
+export function normalizeSchemaUrls<T>(value: T): T {
+  if (Array.isArray(value)) {
+    return value.map((entry) => normalizeSchemaUrls(entry)) as T;
+  }
+  if (!value || typeof value !== "object") return value;
+
+  return Object.fromEntries(Object.entries(value as Record<string, unknown>).map(([key, entry]) => {
+    if (SCHEMA_URL_KEYS.has(key) && typeof entry === "string") {
+      return [key, toSchemaUrl(entry)];
+    }
+    return [key, normalizeSchemaUrls(entry)];
+  })) as T;
+}

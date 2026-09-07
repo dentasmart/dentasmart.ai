@@ -152,7 +152,7 @@ function getSteps(contentType: ContentType): Step[] {
     case "treatment":
       return [
         {
-          text: "If you already have a treatment plan, DentaSmart Second Opinion can help you compare the plan and prepare questions. It does not decide which treatment is right for you.",
+          text: "If you already have a treatment plan, DentaSmart Treatment Plan Review can organize it in plain language and help you prepare questions. It does not decide which treatment is right for you.",
         },
         {
           text: "Compare this treatment with alternatives to understand which factors may matter for your situation.",

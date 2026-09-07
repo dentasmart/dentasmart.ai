@@ -72,10 +72,10 @@ export function BlogCTABanner() {
 
               <div className="text-center md:text-left pr-8">
                 <h3 className="text-lg md:text-xl font-medium mb-1 text-white">
-                  Want clarity about your own mouth?
+                  Start with a Free Quick Check
                 </h3>
                 <p className="text-stone-400 text-sm hidden md:block">
-                  Download the app, then choose the check or plan that fits your goal. Paid services are shown before purchase.
+                  Use mouth photos from your phone. No X-ray required. Paid X-ray analysis is available separately.
                 </p>
               </div>
 
@@ -83,7 +83,7 @@ export function BlogCTABanner() {
                 onClick={handleCTAClick}
                 className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-6 text-base font-medium shadow-lg whitespace-nowrap w-full md:w-auto cursor-pointer"
               >
-                Explore DentaSmart
+                Start Free Quick Check
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>

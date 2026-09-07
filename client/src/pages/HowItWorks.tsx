@@ -136,7 +136,7 @@ export default function HowItWorks() {
               <h3 className="text-2xl font-medium text-foreground">Add the Information for Your Service</h3>
             </div>
             <p className="text-stone-700 leading-relaxed mb-3 ml-[52px]">
-              DentaSmart asks for the information needed for the service you choose. Quick Check can use supported mouth photos and dental X-rays. Second Opinion can use a treatment plan, bills, and X-rays. Complete Care includes guided self-examination and ongoing monitoring tools.
+              DentaSmart asks for the information needed for the service you choose. Free Quick Check accepts supported mouth photos, supported X-rays, or both. Full Quick Check unlocks full eligible X-ray insights for one case. Treatment Plan Review uses a supported dentist treatment plan. Complete Care includes guided self-examination and ongoing monitoring tools.
             </p>
             <p className="text-stone-700 leading-relaxed ml-[52px]">
               When guided self-examination is included, it can record observations from a Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection checklist. These observations add context but do not replace a clinical examination.
@@ -181,7 +181,7 @@ export default function HowItWorks() {
               Use the report to prepare questions, organize cost considerations, and keep your records in one place. If you have pain, swelling, bleeding, trauma, or another urgent concern, contact a dental professional rather than relying on the app.
             </p>
             <p className="text-stone-700 leading-relaxed ml-[52px]">
-              You can also ask Dr Din, DentaSmart's AI oral health guide, to explain report language and common dental terms. Dr Din provides educational guidance and does not diagnose conditions or replace professional care.
+              You can also ask Dr. Din, DentaSmart's AI oral health guide, to explain reports, findings, dental terms, history, and general oral-health information. Dr. Din does not diagnose conditions or replace professional care.
             </p>
           </div>
         </div>
@@ -343,8 +343,8 @@ export default function HowItWorks() {
                 desc: "Track records for up to four family members under one account. Organize each person's photos, reports, and oral hygiene reminders in one place."
               },
               {
-                title: "People Seeking a Dental Second Opinion",
-                desc: "Upload a treatment plan for an educational AI comparison. Organize procedures, cost ranges, and questions to discuss with your dentist before you decide."
+                title: "People Reviewing a Treatment Plan",
+                desc: "Use Treatment Plan Review to organize a supported dentist treatment plan, plain-language context, and questions to discuss before you decide."
               },
               {
                 title: "Anyone with Dental Anxiety",

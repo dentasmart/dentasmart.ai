@@ -39,7 +39,7 @@ const faqs = [
   },
   {
     q: "Should I get a second opinion before treatment?",
-    a: "You can ask another licensed dentist to review a treatment recommendation, especially when the plan is complex or costly. DentaSmart's paid Second Opinion service can help organize supported treatment-plan information and questions, but it does not provide a dentist's diagnosis or clinical recommendation.",
+    a: "You can ask another licensed dentist to review a treatment recommendation, especially when the plan is complex or costly. DentaSmart Treatment Plan Review can organize a supported dentist treatment plan and questions, but it does not provide a dentist's diagnosis or clinical recommendation.",
   },
   {
     q: "How can I prepare for a dental procedure?",

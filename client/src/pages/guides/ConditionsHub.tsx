@@ -86,7 +86,7 @@ const faqs = [
   },
   {
     q: "How does DentaSmart help me understand my dental condition?",
-    a: "DentaSmart supports mouth photos and dental X-rays with applicable paid checks and plans. It can highlight areas that may deserve attention, explain supported observations in plain language, and help you prepare questions for a dentist. Its educational guidance is not a diagnosis or a substitute for professional care.",
+    a: "DentaSmart offers a free Quick Check for supported mouth photos and paid analysis for supported dental X-rays. It can highlight areas that may deserve attention, explain supported observations in plain language, and help you prepare questions for a dentist. Its educational guidance is not a diagnosis or a substitute for professional care.",
   },
   {
     q: "Is DentaSmart a replacement for seeing a dentist?",

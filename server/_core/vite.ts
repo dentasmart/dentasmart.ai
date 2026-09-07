@@ -52,7 +52,7 @@ export function injectSSRContent(html: string, ssrHtml: string): string {
 export function injectSchemaMarkup(html: string, schemas: object[]): string {
   if (!schemas || schemas.length === 0) return html;
   const scripts = schemas
-    .map(s => `<script type="application/ld+json">${serializeJsonLd(s)}</script>`)
+    .map(s => `<script type="application/ld+json" data-dentasmart-schema="server">${serializeJsonLd(s)}</script>`)
     .join('\n    ');
   // Insert before </head>
   html = html.replace('</head>', `    ${scripts}\n  </head>`);
@@ -211,7 +211,7 @@ export async function renderHtmlForRequest(
     html = injectSSRContent(html, ssrContent.html);
   }
 
-  const schemas = await resolveSchemaMarkup(originalUrl);
+  const schemas = await resolveSchemaMarkup(originalUrl, meta);
   if (schemas && schemas.length > 0) {
     html = injectSchemaMarkup(html, schemas);
   }

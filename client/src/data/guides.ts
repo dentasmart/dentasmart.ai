@@ -1,3 +1,5 @@
+import { videoCostGuides } from "./videoCostGuides";
+
 export interface GuideData {
   slug: string;
   category?: string;
@@ -16,14 +18,26 @@ export interface GuideData {
   relatedConditions: { slug: string; title: string }[];
   relatedSymptoms: { slug: string; title: string }[];
   relatedGuides: { slug: string; title: string }[];
-  reviewedBy: string;
-  reviewedByCredentials: string;
-  lastReviewed: string;
+  reviewedBy?: string;
+  reviewedByCredentials?: string;
+  lastReviewed?: string;
   ctaHeading?: string;
   ctaButton?: string;
+  relatedResources?: {
+    href: string;
+    title: string;
+    description?: string;
+  }[];
+  sources?: {
+    organization: string;
+    title: string;
+    url: string;
+    note: string;
+  }[];
 }
 
 export const guidesData: Record<string, GuideData> = {
+  ...videoCostGuides,
   "brushing-guide": {
     category: "oral-care",
     slug: "brushing-guide",
@@ -1093,7 +1107,7 @@ export const guidesData: Record<string, GuideData> = {
     },
     {
       title: "When Another Opinion May Help",
-      content: "Another licensed dentist can review the diagnosis, images, remaining tooth structure, alternatives, and timing before a major non-emergency treatment. DentaSmart also offers a paid Second Opinion service for eligible records, but it does not replace an in-person examination."
+      content: "Another licensed dentist can review the diagnosis, images, remaining tooth structure, alternatives, and timing before a major non-emergency treatment. DentaSmart also offers Treatment Plan Review for a supported dentist treatment plan, but it does not replace an in-person examination."
     }
   ],
   commonMistakes: [
