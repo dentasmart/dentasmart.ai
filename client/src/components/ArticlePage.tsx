@@ -68,7 +68,7 @@ export default function ArticlePage({ article, relatedArticles = [] }: ArticlePa
               {article.title}
             </h1>
             <div className="flex items-center justify-start gap-4">
-              <Link href="/oral-health-hub">
+              <Link href="/oral-health-hub/">
                 <Button variant="ghost" className="text-stone-500 hover:text-stone-900 hover:bg-white/50 rounded-full">
                   <ArrowLeft className="w-4 h-4 mr-2" /> Back to Oral Health Hub
                 </Button>
@@ -144,7 +144,7 @@ export default function ArticlePage({ article, relatedArticles = [] }: ArticlePa
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <Link href={`/oral-health-hub/${relatedArticle.id}`}>
+                  <Link href={`/oral-health-hub/${relatedArticle.id}/`}>
                     <Card className="h-full hover:shadow-xl transition-all duration-300 border-stone-200 bg-white group cursor-pointer overflow-hidden flex flex-col">
                       <CardHeader className="pb-4">
                         <div className="flex justify-between items-start mb-4">

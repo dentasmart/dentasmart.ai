@@ -23,7 +23,7 @@ export interface SymptomData {
   ctaHeading?: string;
   ctaButton?: string;
   professionalCareCta?: {
-    href: "/download";
+    href: "/download/";
     label: string;
   };
 }
@@ -1812,7 +1812,7 @@ export const symptomsData: Record<string, SymptomData> = {
     lastReviewed: "2026-03-15",
     ctaHeading: "Don't Wait for Swelling to Get Worse",
     professionalCareCta: {
-      href: "/download",
+      href: "/download/",
       label: "Download DentaSmart",
     },
 },

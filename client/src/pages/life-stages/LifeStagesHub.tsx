@@ -96,12 +96,12 @@ export default function LifeStagesHub() {
               Your mouth changes at every stage of life. From baby teeth to dentures, here is what to watch for and how to stay ahead of problems.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/download">
+              <Link href="/download/">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
                   Download the App
                 </Button>
               </Link>
-              <Link href="/symptom-quiz">
+              <Link href="/symptom-quiz/">
                 <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
                   Try Free Symptom Check <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -138,7 +138,7 @@ export default function LifeStagesHub() {
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {lifeStagePages.map((page, idx) => (
-              <Link key={idx} href={`/life-stages/${page.slug}`}>
+              <Link key={idx} href={`/life-stages/${page.slug}/`}>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -188,11 +188,11 @@ export default function LifeStagesHub() {
           </motion.div>
           <div className="flex flex-wrap gap-3">
             {[
-              { name: "Treatment Guides", href: "/treatments" },
-              { name: "Dental Costs", href: "/dental-costs" },
-              { name: "Conditions Guide", href: "/oral-health-hub/conditions" },
-              { name: "Prevention Hub", href: "/oral-health-hub/prevention" },
-              { name: "Comparison Guides", href: "/comparisons" },
+              { name: "Treatment Guides", href: "/treatments/" },
+              { name: "Dental Costs", href: "/dental-costs/" },
+              { name: "Conditions Guide", href: "/oral-health-hub/conditions/" },
+              { name: "Prevention Hub", href: "/oral-health-hub/prevention/" },
+              { name: "Comparison Guides", href: "/comparisons/" },
             ].map((hub, idx) => (
               <Link key={idx} href={hub.href}>
                 <span className="inline-flex items-center gap-2 bg-stone-50 px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-sm">
@@ -213,12 +213,12 @@ export default function LifeStagesHub() {
               The app is free to download. Use DentaSmart for educational guidance and to prepare questions for professional care at each life stage.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/download">
+              <Link href="/download/">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                   Download the App
                 </Button>
               </Link>
-              <Link href="/symptom-quiz">
+              <Link href="/symptom-quiz/">
                 <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
                   Try Free Symptom Check
                 </Button>

@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { Link } from "wouter";
 import { Check, X, Shield, Sparkles, Zap, ArrowRight, Users } from "lucide-react";
 import { DownloadSection } from "@/components/DownloadSection";
 import { motion } from "framer-motion";
@@ -72,6 +73,9 @@ export default function Pricing() {
               <p className="text-lg md:text-xl text-stone-700 font-normal max-w-2xl mr-auto leading-relaxed mb-8">
                 Start with unlimited Free Quick Checks. Upgrade one case to Full Quick Check, review a treatment plan, or add year-round monitoring when you need it.
               </p>
+              <p className="mb-5 text-sm leading-relaxed text-stone-600">
+                Not sure which option fits your goal? <Link href="/stories/" className="font-medium text-action hover:underline">See examples of ways to use DentaSmart</Link>.
+              </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-start">
                 <Button
                   size="lg"
@@ -87,7 +91,7 @@ export default function Pricing() {
                   size="lg"
                   variant="outline"
                   className="bg-white/80 text-stone-700 hover:bg-white hover:text-primary border-stone-200 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 cursor-pointer"
-                  onClick={() => window.location.href = '/download'}
+                  onClick={() => window.location.href = '/download/'}
                 >
                   Download the App
                 </Button>

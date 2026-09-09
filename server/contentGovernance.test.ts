@@ -95,7 +95,7 @@ describe("Phase 6 content governance", () => {
     const symptomData = read("client/src/data/symptoms.ts");
     const symptomPage = read("client/src/pages/symptoms/SymptomPage.tsx");
     const facialRecord = symptomData.slice(symptomData.indexOf('"facial-swelling"'), symptomData.indexOf('"tooth-migration"'));
-    expect(facialRecord).toContain('href: "/download"');
+    expect(facialRecord).toContain('href: "/download/"');
     expect(facialRecord).toContain('label: "Download DentaSmart"');
     expect(facialRecord).not.toMatch(/find (a )?dentist|locator|provider/i);
     expect(symptomPage).toContain("<Button asChild size=\"lg\"");

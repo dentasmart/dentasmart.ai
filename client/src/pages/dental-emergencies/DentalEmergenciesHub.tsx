@@ -109,7 +109,7 @@ export default function DentalEmergenciesHub() {
                   Find Your Emergency
                 </Button>
               </a>
-              <Link href="/symptom-quiz">
+              <Link href="/symptom-quiz/">
                 <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
                   Free Symptom Check <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -146,7 +146,7 @@ export default function DentalEmergenciesHub() {
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {emergencyPages.map((page, idx) => (
-              <Link key={idx} href={`/dental-emergencies/${page.slug}`}>
+              <Link key={idx} href={`/dental-emergencies/${page.slug}/`}>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -248,11 +248,11 @@ export default function DentalEmergenciesHub() {
           </motion.div>
           <div className="flex flex-wrap gap-3">
             {[
-              { name: "Symptoms Guide", href: "/oral-health-hub/symptoms" },
-              { name: "Treatment Guides", href: "/treatments" },
-              { name: "Dental Costs", href: "/dental-costs" },
-              { name: "Conditions Guide", href: "/oral-health-hub/conditions" },
-              { name: "Symptom Checker", href: "/symptom-quiz" },
+              { name: "Symptoms Guide", href: "/oral-health-hub/symptoms/" },
+              { name: "Treatment Guides", href: "/treatments/" },
+              { name: "Dental Costs", href: "/dental-costs/" },
+              { name: "Conditions Guide", href: "/oral-health-hub/conditions/" },
+              { name: "Symptom Checker", href: "/symptom-quiz/" },
             ].map((hub, idx) => (
               <Link key={idx} href={hub.href}>
                 <span className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-sm">
@@ -273,12 +273,12 @@ export default function DentalEmergenciesHub() {
               Seek professional care for severe pain, swelling, uncontrolled bleeding, trauma, fever, or trouble breathing or swallowing. DentaSmart provides education, not emergency diagnosis or triage.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/download">
+              <Link href="/download/">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                   Download the App
                 </Button>
               </Link>
-              <Link href="/symptom-quiz">
+              <Link href="/symptom-quiz/">
                 <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
                   Try Free Symptom Check
                 </Button>

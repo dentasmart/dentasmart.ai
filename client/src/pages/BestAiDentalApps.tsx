@@ -35,7 +35,7 @@ const products = [
     type: "iOS and Android app",
     verified: `Unlimited Free Quick Checks, Full Quick Check from ${pricing.fullQuickCheck.priceFormatted} per case, and Oral Health Score features.`,
     verify: "Confirm that the selected service supports your image type and goal.",
-    href: "/pricing",
+    href: "/pricing/",
     linkLabel: "See DentaSmart pricing",
   },
   {
@@ -43,7 +43,7 @@ const products = [
     type: "Third-party dental scanning service",
     verified: "Third-party feature and pricing details are not controlled by DentaSmart.",
     verify: "Check the provider's current inputs, output, referral model, privacy terms, and full price.",
-    href: "/vs/dental-com",
+    href: "/vs/dental-com/",
     linkLabel: "Read the decision guide",
   },
   {
@@ -51,7 +51,7 @@ const products = [
     type: "Third-party dental scanning service",
     verified: "Third-party feature and pricing details are not controlled by DentaSmart.",
     verify: "Check the provider's current inputs, consultation options, privacy terms, and full price.",
-    href: "/vs/dentistry-one",
+    href: "/vs/dentistry-one/",
     linkLabel: "Read the decision guide",
   },
 ];
@@ -215,7 +215,7 @@ export default function BestAiDentalApps() {
             DentaSmart is available on the App Store and Google Play. Review current prices before choosing a check or plan.
           </p>
           <div className="flex flex-col justify-center gap-3 sm:flex-row">
-            <Link href="/pricing">
+            <Link href="/pricing/">
               <Button className="min-h-12 rounded-full bg-action px-7 text-action-foreground hover:bg-action-hover">View DentaSmart Pricing</Button>
             </Link>
             <a href={app.iosUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-12 items-center justify-center rounded-full border border-stone-300 px-7 font-medium text-stone-700 hover:bg-stone-50">

@@ -69,10 +69,10 @@ const data: ComparisonPageData = {
     { q: "Can I use both?", a: "Using more than one tool can create overlapping outputs. Compare privacy terms and costs first, and bring unresolved questions to a licensed dentist." },
   ],
   relatedPages: [
-    { name: "Free AI Teeth Scanner", href: "/free-ai-teeth-scanner", tagline: "How AI teeth scanning works" },
-    { name: "Best AI Dental Apps", href: "/best-ai-dental-apps", tagline: "Learn how to compare options" },
-    { name: "DentaSmart vs Dental.com", href: "/vs/dental-com", tagline: "Compare another provider" },
-    { name: "How DentaSmart Works", href: "/how-it-works", tagline: "See the scanning process" },
+    { name: "Free AI Teeth Scanner", href: "/free-ai-teeth-scanner/", tagline: "How AI teeth scanning works" },
+    { name: "Best AI Dental Apps", href: "/best-ai-dental-apps/", tagline: "Learn how to compare options" },
+    { name: "DentaSmart vs Dental.com", href: "/vs/dental-com/", tagline: "Compare another provider" },
+    { name: "How DentaSmart Works", href: "/how-it-works/", tagline: "See the scanning process" },
   ],
 };
 

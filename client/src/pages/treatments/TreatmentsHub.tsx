@@ -126,7 +126,7 @@ export default function TreatmentsHub() {
               >
                 Browse Treatments <ArrowRight className="w-4 h-4 ml-2" />
               </a>
-              <Link href="/comparisons">
+              <Link href="/comparisons/">
                 <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
                   Compare Treatment Options
                 </Button>
@@ -202,7 +202,7 @@ export default function TreatmentsHub() {
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
             {treatmentPages.map((page, idx) => (
-              <Link key={page.slug} href={`/treatments/${page.slug}`}>
+              <Link key={page.slug} href={`/treatments/${page.slug}/`}>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -245,7 +245,7 @@ export default function TreatmentsHub() {
             <p className="text-base md:text-lg text-stone-600 font-light mb-6 max-w-2xl mx-auto">
               Review side-by-side guides for common tradeoffs, then bring your questions to a licensed dentist who can diagnose your condition and recommend care.
             </p>
-            <Link href="/comparisons">
+            <Link href="/comparisons/">
               <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg">
                 Compare Treatment Guides <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
@@ -290,27 +290,27 @@ export default function TreatmentsHub() {
         <div className="container px-4 mx-auto max-w-6xl">
           <h2 className="text-lg font-medium text-black mb-3">Related Resource Hubs</h2>
           <div className="flex flex-wrap gap-2 md:gap-3">
-            <Link href="/dental-costs">
+            <Link href="/dental-costs/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Cost Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/oral-health-hub/conditions">
+            <Link href="/oral-health-hub/conditions/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Conditions Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/oral-health-hub/affordability">
+            <Link href="/oral-health-hub/affordability/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Affordability Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/oral-health-hub/second-opinion">
+            <Link href="/oral-health-hub/second-opinion/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Second Opinion Hub <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/symptom-quiz">
+            <Link href="/symptom-quiz/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Free Symptom Checker <ArrowRight className="w-3 h-3" />
               </span>
@@ -330,12 +330,12 @@ export default function TreatmentsHub() {
               Use these guides to understand common treatment steps, then compare DentaSmart's paid options or discuss your questions with a licensed dentist.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/pricing">
+              <Link href="/pricing/">
                 <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                   View DentaSmart Options
                 </Button>
               </Link>
-              <Link href="/symptom-quiz">
+              <Link href="/symptom-quiz/">
                 <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
                   Start Free Symptom Quiz
                 </Button>

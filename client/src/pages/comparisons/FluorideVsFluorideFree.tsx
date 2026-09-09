@@ -76,11 +76,11 @@ const data: ComparisonPageData = {
     { q: "Should my child use fluoride toothpaste?", a: "Ask your child's dentist or pediatrician about the product, amount, and supervision that fit the child's age and cavity risk. Follow the label and keep toothpaste out of reach when it is not in use." },
   ],
   relatedPages: [
-    { name: "Electric vs Manual Toothbrush", href: "/comparisons/electric-vs-manual-toothbrush", tagline: "Which brush cleans better?" },
-    { name: "Implants vs Dentures", href: "/comparisons/dental-implants-vs-dentures", tagline: "Permanent vs removable replacement." },
-    { name: "Braces vs Invisalign", href: "/comparisons/braces-vs-invisalign", tagline: "Compare two popular straightening options." },
-    { name: "Cavity Prevention Guide", href: "/guides/how-to-prevent-cavities", tagline: "Stop decay before it starts." },
-    { name: "Dental Cleaning Procedure", href: "/treatments/dental-cleaning-procedure", tagline: "What happens during a professional cleaning." },
+    { name: "Electric vs Manual Toothbrush", href: "/comparisons/electric-vs-manual-toothbrush/", tagline: "Which brush cleans better?" },
+    { name: "Implants vs Dentures", href: "/comparisons/dental-implants-vs-dentures/", tagline: "Permanent vs removable replacement." },
+    { name: "Braces vs Invisalign", href: "/comparisons/braces-vs-invisalign/", tagline: "Compare two popular straightening options." },
+    { name: "Cavity Prevention Guide", href: "/guides/how-to-prevent-cavities/", tagline: "Stop decay before it starts." },
+    { name: "Dental Cleaning Procedure", href: "/treatments/dental-cleaning-procedure/", tagline: "What happens during a professional cleaning." },
   ],
 };
 

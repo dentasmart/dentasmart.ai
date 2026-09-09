@@ -189,7 +189,7 @@ export default function ComparePage() {
 
           <div className="text-center mt-12">
             <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer">
-              <Link href="/pricing" onClick={() => trackEvent("cta_get_score_click", { source: `compare_${slug}` })}>
+              <Link href="/pricing/" onClick={() => trackEvent("cta_get_score_click", { source: `compare_${slug}` })}>
                 Compare DentaSmart Services
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>

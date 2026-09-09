@@ -354,9 +354,9 @@ export default function Team() {
               We help users understand oral health and prepare for licensed dental care.
             </p>
             <div className="flex justify-center gap-8 text-base font-medium text-action">
-              <Link href="/privacy-policy" className="hover:underline hover:text-action/80 transition-colors">Privacy Policy</Link>
+              <Link href="/privacy-policy/" className="hover:underline hover:text-action/80 transition-colors">Privacy Policy</Link>
               <span className="text-stone-300">|</span>
-              <Link href="/terms-of-service" className="hover:underline hover:text-action/80 transition-colors">Terms of Service</Link>
+              <Link href="/terms-of-service/" className="hover:underline hover:text-action/80 transition-colors">Terms of Service</Link>
             </div>
           </div>
         </div>

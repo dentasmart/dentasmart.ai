@@ -111,10 +111,10 @@ function PolicyNavigation() {
     <nav aria-label="Governance resources" className="mt-10 border-t border-stone-200 pt-6">
       <p className="text-sm font-medium text-stone-700 mb-3">Related resources</p>
       <ul className="flex flex-wrap gap-x-5 gap-y-3 text-sm">
-        <li><Link className="text-action hover:underline" href="/editorial-policy">Editorial Policy</Link></li>
-        <li><Link className="text-action hover:underline" href="/corrections-policy">Corrections Policy</Link></li>
-        <li><Link className="text-action hover:underline" href="/ai-use-disclosure">AI Use Disclosure</Link></li>
-        <li><Link className="text-action hover:underline" href="/product-facts">Product Facts</Link></li>
+        <li><Link className="text-action hover:underline" href="/editorial-policy/">Editorial Policy</Link></li>
+        <li><Link className="text-action hover:underline" href="/corrections-policy/">Corrections Policy</Link></li>
+        <li><Link className="text-action hover:underline" href="/ai-use-disclosure/">AI Use Disclosure</Link></li>
+        <li><Link className="text-action hover:underline" href="/product-facts/">Product Facts</Link></li>
       </ul>
     </nav>
   );
@@ -165,7 +165,7 @@ function ProductFactsPage() {
               </table>
             </div>
             <p className="mt-5 text-stone-700 leading-relaxed">Free Quick Check supports unlimited checks with mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray. Free X-ray submissions show a reduced subset of eligible finding data. Full Quick Check, Treatment Plan Review, and Complete Care are paid services.</p>
-            <Link className="inline-block mt-4 text-action hover:underline" href="/pricing">View plan details</Link>
+            <Link className="inline-block mt-4 text-action hover:underline" href="/pricing/">View plan details</Link>
           </section>
 
           <section className="mt-8 rounded-2xl border border-stone-200 bg-white p-6 md:p-8">

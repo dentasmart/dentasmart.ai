@@ -193,7 +193,7 @@ export default function Features() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-start">
                 <Link
-                  href="/download"
+                  href="/download/"
                   className="inline-flex min-h-12 items-center justify-center rounded-full border-0 bg-action px-8 text-lg font-medium text-action-foreground shadow-lg transition-all duration-300 hover:scale-105 hover:bg-action-hover"
                 >
                   Start with a Free Quick Check

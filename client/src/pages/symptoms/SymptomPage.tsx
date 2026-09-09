@@ -110,6 +110,20 @@ const symptomNotes: Record<string, ReactNode> = {
   ),
 };
 
+const canonicalRelatedDestinations = {
+  conditions: {
+    "dry-mouth": "/symptoms/dry-mouth/",
+  },
+  symptoms: {
+    "cracked-tooth": "/conditions/cracked-tooth/",
+    "sensitive-teeth": "/conditions/sensitive-teeth/",
+    toothache: "/conditions/toothache/",
+  },
+  guides: {
+    "teeth-whitening": "/conditions/teeth-whitening/",
+  },
+} as const;
+
 export default function SymptomPage() {
   const [, params] = useRoute("/symptoms/:slug");
   const slug = params?.slug || "";
@@ -150,7 +164,7 @@ export default function SymptomPage() {
           <div className="text-center">
             <h1 className="text-3xl font-medium text-black mb-4">Symptom Not Found</h1>
             <p className="text-stone-600 mb-6">The symptom you are looking for does not exist.</p>
-            <Link href="/symptoms">
+            <Link href="/symptoms/">
               <Button variant="outline" className="rounded-full cursor-pointer">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Browse All Symptoms
@@ -194,7 +208,7 @@ export default function SymptomPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Link href="/symptoms">
+            <Link href="/symptoms/">
               <span className="inline-flex items-center gap-2 text-primary hover:underline mb-4 cursor-pointer">
                 <ArrowLeft className="w-4 h-4" />
                 All Symptoms
@@ -382,7 +396,7 @@ export default function SymptomPage() {
                 <h3 className="text-sm uppercase tracking-wider text-stone-400 font-medium mb-3">Conditions</h3>
                 <div className="space-y-2">
                   {symptom.relatedConditions.map((item) => (
-                    <Link key={item.slug} href={`/conditions/${item.slug}`}>
+                    <Link key={item.slug} href={canonicalRelatedDestinations.conditions[item.slug as keyof typeof canonicalRelatedDestinations.conditions] || `/conditions/${item.slug}/`}>
                       <span className="block text-primary hover:underline cursor-pointer font-light">{item.title}</span>
                     </Link>
                   ))}
@@ -394,7 +408,7 @@ export default function SymptomPage() {
                 <h3 className="text-sm uppercase tracking-wider text-stone-400 font-medium mb-3">Symptoms</h3>
                 <div className="space-y-2">
                   {symptom.relatedSymptoms.map((item) => (
-                    <Link key={item.slug} href={`/symptoms/${item.slug}`}>
+                    <Link key={item.slug} href={canonicalRelatedDestinations.symptoms[item.slug as keyof typeof canonicalRelatedDestinations.symptoms] || `/symptoms/${item.slug}/`}>
                       <span className="block text-primary hover:underline cursor-pointer font-light">{item.title}</span>
                     </Link>
                   ))}
@@ -406,7 +420,7 @@ export default function SymptomPage() {
                 <h3 className="text-sm uppercase tracking-wider text-stone-400 font-medium mb-3">Guides</h3>
                 <div className="space-y-2">
                   {symptom.relatedGuides.map((item) => (
-                    <Link key={item.slug} href={`/guides/${item.slug}`}>
+                    <Link key={item.slug} href={canonicalRelatedDestinations.guides[item.slug as keyof typeof canonicalRelatedDestinations.guides] || `/guides/${item.slug}/`}>
                       <span className="block text-primary hover:underline cursor-pointer font-light">{item.title}</span>
                     </Link>
                   ))}
@@ -433,13 +447,13 @@ export default function SymptomPage() {
                 </Link>
               </Button>
             ) : (
-              <Link href="/download">
+              <Link href="/download/">
                 <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
                   {symptom.ctaButton || "Download the App"}
                 </Button>
               </Link>
             )}
-            <Link href="/symptom-quiz">
+            <Link href="/symptom-quiz/">
               <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
                 Try Free Symptom Check
               </Button>

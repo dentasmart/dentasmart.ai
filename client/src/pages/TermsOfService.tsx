@@ -234,6 +234,14 @@ export default function TermsOfService() {
               <ReactMarkdown
                 components={{
                   h1: ({node, ...props}) => <h1 className="text-4xl md:text-5xl font-semibold text-primary mb-2 tracking-tight" {...props} />,
+                  h2: ({node, children, ...props}) => {
+                    const id = String(children)
+                      .toLowerCase()
+                      .replace(/^\d+\.\s*/, "")
+                      .replace(/[^a-z0-9]+/g, "-")
+                      .replace(/(^-|-$)/g, "");
+                    return <h2 id={id} {...props}>{children}</h2>;
+                  },
                   p: ({node, children, ...props}) => {
                     // Check if this paragraph contains the "Last updated" text
                     const text = String(children);

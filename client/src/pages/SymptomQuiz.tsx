@@ -926,7 +926,7 @@ function ResultsSection({
             Processing time and included outputs vary by service.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <Link href="/download">
+            <Link href="/download/">
               <Button
                 size="lg"
                 className="bg-white text-primary hover:bg-white/90 rounded-full px-8 py-7 text-base font-medium w-full sm:w-auto cursor-pointer"
@@ -953,7 +953,7 @@ function ResultsSection({
               We have resources to help you find affordable dental care, even
               without insurance.
             </p>
-            <Link href="/guides/affordable-dental-care">
+            <Link href="/guides/affordable-dental-care/">
               <span className="text-primary font-medium text-sm hover:underline cursor-pointer">
                 Read our guide to affordable dental care &rarr;
               </span>

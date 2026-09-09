@@ -484,13 +484,13 @@ export const guidesData: Record<string, GuideData> = {
     {
       "slug": "gum-disease",
       "title": "Gum Disease"
-    }
-  ],
-  "relatedSymptoms": [
+    },
     {
       "slug": "toothache",
       "title": "Toothache"
-    },
+    }
+  ],
+  "relatedSymptoms": [
     {
       "slug": "bleeding-gums",
       "title": "Bleeding Gums"

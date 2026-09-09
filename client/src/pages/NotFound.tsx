@@ -7,12 +7,12 @@ import { DownloadCTA } from "@/components/DownloadCTA";
 import { Home, Search, BookOpen, Stethoscope, HelpCircle, ArrowRight } from "lucide-react";
 
 const popularLinks = [
-  { href: "/conditions", label: "Dental Conditions", icon: Stethoscope, desc: "Toothaches, cavities, gum disease, and more" },
-  { href: "/symptoms", label: "Symptom Checker", icon: Search, desc: "Find out what your symptoms mean" },
-  { href: "/guides", label: "Oral Health Guides", icon: BookOpen, desc: "Brushing, flossing, and prevention tips" },
-  { href: "/faqs", label: "FAQs", icon: HelpCircle, desc: "Common questions answered" },
-  { href: "/oral-health-hub", label: "Oral Health Hub", icon: BookOpen, desc: "Articles and resources for better dental health" },
-  { href: "/instant-scan", label: "Instant Scan", icon: Search, desc: "Upload a photo for AI analysis" },
+  { href: "/conditions/", label: "Dental Conditions", icon: Stethoscope, desc: "Toothaches, cavities, gum disease, and more" },
+  { href: "/symptoms/", label: "Symptom Checker", icon: Search, desc: "Find out what your symptoms mean" },
+  { href: "/guides/", label: "Oral Health Guides", icon: BookOpen, desc: "Brushing, flossing, and prevention tips" },
+  { href: "/faqs/", label: "FAQs", icon: HelpCircle, desc: "Common questions answered" },
+  { href: "/oral-health-hub/", label: "Oral Health Hub", icon: BookOpen, desc: "Articles and resources for better dental health" },
+  { href: "/instant-scan/", label: "Instant Scan", icon: Search, desc: "Upload a photo for AI analysis" },
 ];
 
 export default function NotFound() {

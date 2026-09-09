@@ -22,10 +22,10 @@ const megaMenuCategories = [
     color: "text-rose-500",
     bgColor: "bg-rose-50",
     items: [
-      { label: "Conditions Guide", href: "/oral-health-hub/conditions", description: "Common dental problems explained" },
-      { label: "Symptoms Guide", href: "/oral-health-hub/symptoms", description: "What your symptoms mean" },
-      { label: "Life Stages", href: "/life-stages", description: "Dental care by age group" },
-      { label: "Symptom Checker", href: "/symptom-quiz", description: "Free educational symptom quiz" },
+      { label: "Conditions Guide", href: "/oral-health-hub/conditions/", description: "Common dental problems explained" },
+      { label: "Symptoms Guide", href: "/oral-health-hub/symptoms/", description: "What your symptoms mean" },
+      { label: "Life Stages", href: "/life-stages/", description: "Dental care by age group" },
+      { label: "Symptom Checker", href: "/symptom-quiz/", description: "Free educational symptom quiz" },
     ],
   },
   {
@@ -34,9 +34,9 @@ const megaMenuCategories = [
     color: "text-emerald-500",
     bgColor: "bg-emerald-50",
     items: [
-      { label: "Treatment Guides", href: "/treatments", description: "What to expect from procedures" },
-      { label: "Dental Costs", href: "/dental-costs", description: "Know what procedures really cost" },
-      { label: "Comparison Guides", href: "/comparisons", description: "Side-by-side decision guides" },
+      { label: "Treatment Guides", href: "/treatments/", description: "What to expect from procedures" },
+      { label: "Dental Costs", href: "/dental-costs/", description: "Know what procedures really cost" },
+      { label: "Comparison Guides", href: "/comparisons/", description: "Side-by-side decision guides" },
     ],
   },
   {
@@ -45,10 +45,10 @@ const megaMenuCategories = [
     color: "text-sky-500",
     bgColor: "bg-sky-50",
     items: [
-      { label: "Prevention Hub", href: "/oral-health-hub/prevention", description: "Protect your teeth daily" },
-      { label: "Lifestyle & Oral Health", href: "/lifestyle", description: "How daily habits affect your teeth" },
-      { label: "Dental Guides", href: "/guides", description: "Step-by-step oral health guides" },
-      { label: "Blog", href: "/oral-health-hub", description: "Expert dental health articles" },
+      { label: "Prevention Hub", href: "/oral-health-hub/prevention/", description: "Protect your teeth daily" },
+      { label: "Lifestyle & Oral Health", href: "/lifestyle/", description: "How daily habits affect your teeth" },
+      { label: "Dental Guides", href: "/guides/", description: "Step-by-step oral health guides" },
+      { label: "Blog", href: "/oral-health-hub/", description: "Expert dental health articles" },
     ],
   },
   {
@@ -57,10 +57,10 @@ const megaMenuCategories = [
     color: "text-amber-500",
     bgColor: "bg-amber-50",
     items: [
-      { label: "Dental Emergencies", href: "/dental-emergencies", description: "What to do right now" },
-      { label: "Affordability Guide", href: "/oral-health-hub/affordability", description: "Save on dental care costs" },
-      { label: "Second Opinion Hub", href: "/oral-health-hub/second-opinion", description: "Verify treatment recommendations" },
-      { label: "FAQs", href: "/faqs", description: "Common questions answered" },
+      { label: "Dental Emergencies", href: "/dental-emergencies/", description: "What to do right now" },
+      { label: "Affordability Guide", href: "/oral-health-hub/affordability/", description: "Save on dental care costs" },
+      { label: "Second Opinion Hub", href: "/oral-health-hub/second-opinion/", description: "Verify treatment recommendations" },
+      { label: "FAQs", href: "/faqs/", description: "Common questions answered" },
     ],
   },
 ];
@@ -151,11 +151,11 @@ export default function Navigation() {
 
   const navItems = [
     { label: "Home", href: "/" },
-    { label: "How It Works", href: "/how-it-works" },
-    { label: "Features", href: "/features" },
-    { label: "Pricing", href: "/pricing" },
-    { label: "Employers", href: "/employers" },
-    { label: "Team", href: "/team" },
+    { label: "How It Works", href: "/how-it-works/" },
+    { label: "Features", href: "/features/" },
+    { label: "Pricing", href: "/pricing/" },
+    { label: "Employers", href: "/employers/" },
+    { label: "Team", href: "/team/" },
   ];
 
   const isActive = (href: string) => {
@@ -314,7 +314,7 @@ export default function Navigation() {
                         <p className="text-sm font-medium text-stone-700">Not sure where to start?</p>
                         <p className="text-xs text-stone-500">Try the free symptom quiz</p>
                       </div>
-                      <Link href="/symptom-quiz" onClick={() => setMegaMenuOpen(false)}>
+                      <Link href="/symptom-quiz/" onClick={() => setMegaMenuOpen(false)}>
                         <Button
                           size="sm"
                           className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-5 text-xs font-medium cursor-pointer"
@@ -375,7 +375,7 @@ export default function Navigation() {
                   className="bg-white text-primary hover:bg-white/90 rounded-full px-4 py-1.5 text-xs font-medium cursor-pointer h-auto"
                   onClick={() => {
                     trackEvent("sticky_cta_click", { page: location });
-                    window.location.href = "/download";
+                    window.location.href = "/download/";
                   }}
                 >
                   Start Free Quick Check

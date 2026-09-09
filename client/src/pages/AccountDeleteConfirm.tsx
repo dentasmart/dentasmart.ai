@@ -188,7 +188,7 @@ function InvalidState() {
         <p className="text-stone-600 leading-relaxed mb-8">
           This deletion link is invalid or has already been used.
         </p>
-        <Link href="/account-deletion">
+        <Link href="/account-deletion/">
           <button className="bg-primary hover:bg-primary/90 text-white font-medium px-8 py-3.5 rounded-full transition-colors text-sm">
             Request New Deletion
           </button>
@@ -214,7 +214,7 @@ function ExpiredState() {
         <p className="text-stone-600 leading-relaxed mb-8">
           This deletion link has expired. Please submit a new request to delete your account.
         </p>
-        <Link href="/account-deletion">
+        <Link href="/account-deletion/">
           <button className="bg-primary hover:bg-primary/90 text-white font-medium px-8 py-3.5 rounded-full transition-colors text-sm">
             Request New Deletion
           </button>

@@ -153,11 +153,11 @@ const data: ComparisonPageData = {
 
   // Related Pages
   relatedPages: [
-    { name: "Crown vs Veneer", href: "/comparisons/crown-vs-veneer", tagline: "Which restoration fits your needs?" },
-    { name: "Braces vs Invisalign", href: "/comparisons/braces-vs-invisalign", tagline: "Compare two popular straightening options." },
-    { name: "Dental Implant Cost", href: "/dental-costs/dental-implant-cost", tagline: "A full breakdown of implant expenses." },
-    { name: "Dental Implant Procedure", href: "/treatments/dental-implant-procedure", tagline: "What to expect from the implant process." },
-    { name: "Dentures Cost Guide", href: "/dental-costs/dentures-cost", tagline: "Review denture cost factors and estimate questions." },
+    { name: "Crown vs Veneer", href: "/comparisons/crown-vs-veneer/", tagline: "Which restoration fits your needs?" },
+    { name: "Braces vs Invisalign", href: "/comparisons/braces-vs-invisalign/", tagline: "Compare two popular straightening options." },
+    { name: "Dental Implant Cost", href: "/dental-costs/dental-implant-cost/", tagline: "A full breakdown of implant expenses." },
+    { name: "Dental Implant Procedure", href: "/treatments/dental-implant-procedure/", tagline: "What to expect from the implant process." },
+    { name: "Dentures Cost Guide", href: "/dental-costs/dentures-cost/", tagline: "Review denture cost factors and estimate questions." },
   ],
 };
 

@@ -149,7 +149,7 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
               {data.heroDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/download">
+              <Link href="/download/">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
                   Download the App
                 </Button>
@@ -425,7 +425,7 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
             </motion.div>
           </div>
           <div className="mt-6 text-center">
-            <Link href="/pricing">
+            <Link href="/pricing/">
               <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                 Explore DentaSmart Options <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
@@ -443,7 +443,7 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
                 <h3 className="text-lg font-medium text-black mb-1">How much does a {data.procedureName.toLowerCase()} cost?</h3>
                 <p className="text-sm text-stone-600 font-light">See our full cost breakdown with insurance and payment options.</p>
               </div>
-              <Link href={`/dental-costs/${data.relatedCostPage.slug}`}>
+              <Link href={`/dental-costs/${data.relatedCostPage.slug}/`}>
                 <Button variant="outline" className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-6 py-5 text-sm font-medium cursor-pointer whitespace-nowrap">
                   See {data.relatedCostPage.name} Costs <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -494,7 +494,7 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
           </motion.div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
             {data.relatedTreatmentPages.map((page, idx) => (
-              <Link key={page.slug} href={`/treatments/${page.slug}`}>
+              <Link key={page.slug} href={`/treatments/${page.slug}/`}>
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -516,27 +516,27 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
         <div className="container px-4 mx-auto max-w-6xl">
           <h2 className="text-lg font-medium text-black mb-3">Related Resource Hubs</h2>
           <div className="flex flex-wrap gap-2 md:gap-3">
-            <Link href="/treatments">
+            <Link href="/treatments/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 All Treatments <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/dental-costs">
+            <Link href="/dental-costs/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Cost Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/oral-health-hub/conditions">
+            <Link href="/oral-health-hub/conditions/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Conditions Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/oral-health-hub/second-opinion">
+            <Link href="/oral-health-hub/second-opinion/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Second Opinion Hub <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/symptom-quiz">
+            <Link href="/symptom-quiz/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Free Symptom Checker <ArrowRight className="w-3 h-3" />
               </span>
@@ -556,12 +556,12 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
               Use DentaSmart to organize supported information and prepare questions for professional care. DentaSmart does not diagnose conditions or decide which treatment you need.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/download">
+              <Link href="/download/">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                   Download the App
                 </Button>
               </Link>
-              <Link href="/symptom-quiz">
+              <Link href="/symptom-quiz/">
                 <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
                   Try Free Symptom Check
                 </Button>

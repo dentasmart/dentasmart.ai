@@ -126,7 +126,7 @@ export default function LifestyleTemplate({ data }: { data: LifestylePageData })
               {data.heroDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/download">
+              <Link href="/download/">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
                   Download the App
                 </Button>
@@ -367,7 +367,7 @@ export default function LifestyleTemplate({ data }: { data: LifestylePageData })
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {data.relatedLifestylePages.map((page, idx) => (
-              <Link key={idx} href={`/lifestyle/${page.slug}`}>
+              <Link key={idx} href={`/lifestyle/${page.slug}/`}>
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -389,20 +389,20 @@ export default function LifestyleTemplate({ data }: { data: LifestylePageData })
           {(data.relatedCostPage || data.relatedTreatmentPage) && (
             <div className="flex flex-wrap gap-3 mt-6">
               {data.relatedCostPage && (
-                <Link href={`/dental-costs/${data.relatedCostPage.slug}`}>
+              <Link href={`/dental-costs/${data.relatedCostPage.slug}/`}>
                   <span className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-stone-200 text-sm text-stone-700 hover:border-primary/30 hover:text-primary transition-all cursor-pointer">
                     💰 {data.relatedCostPage.name}
                   </span>
                 </Link>
               )}
               {data.relatedTreatmentPage && (
-                <Link href={`/treatments/${data.relatedTreatmentPage.slug}`}>
+              <Link href={`/treatments/${data.relatedTreatmentPage.slug}/`}>
                   <span className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-stone-200 text-sm text-stone-700 hover:border-primary/30 hover:text-primary transition-all cursor-pointer">
                     🏥 {data.relatedTreatmentPage.name}
                   </span>
                 </Link>
               )}
-              <Link href="/lifestyle">
+            <Link href="/lifestyle/">
                 <span className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-stone-200 text-sm text-stone-700 hover:border-primary/30 hover:text-primary transition-all cursor-pointer">
                   📚 All Lifestyle Guides
                 </span>
@@ -424,12 +424,12 @@ export default function LifestyleTemplate({ data }: { data: LifestylePageData })
               The app is free to download. Use DentaSmart for educational guidance and to prepare questions for professional dental care.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/download">
+              <Link href="/download/">
                 <Button size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                   Download the App
                 </Button>
               </Link>
-              <Link href="/symptom-quiz">
+              <Link href="/symptom-quiz/">
                 <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
                   Try Free Symptom Check <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>

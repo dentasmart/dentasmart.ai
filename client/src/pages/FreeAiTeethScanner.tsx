@@ -111,7 +111,7 @@ export default function FreeAiTeethScanner() {
               Use supported mouth photos, supported X-rays, or both for an unlimited Free Quick Check. Mouth photos do not require an X-ray.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/download">
+              <Link href="/download/">
                 <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
                   Download DentaSmart
                 </Button>
@@ -255,7 +255,7 @@ export default function FreeAiTeethScanner() {
             ))}
           </div>
           <p className="text-sm text-stone-500 mt-4 font-light">
-            <Link href="/pricing" className="text-action hover:underline cursor-pointer">See current prices and service details</Link> before choosing.
+            <Link href="/pricing/" className="text-action hover:underline cursor-pointer">See current prices and service details</Link> before choosing.
           </p>
         </div>
       </section>
@@ -298,7 +298,7 @@ export default function FreeAiTeethScanner() {
           <p className="text-stone-600 font-light mb-6 max-w-xl mx-auto">
             Download the app and start with an unlimited Free Quick Check. Choose Full Quick Check or another paid service only if you need it.
           </p>
-          <Link href="/download">
+          <Link href="/download/">
             <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-10 py-6 text-lg font-medium cursor-pointer shadow-lg">
               <Smartphone className="w-5 h-5 mr-2" />
               Download DentaSmart
@@ -325,7 +325,7 @@ export default function FreeAiTeethScanner() {
             ))}
           </div>
           <p className="text-sm text-stone-500 mt-4 font-light">
-            Comparison based on publicly available information as of June 2026. Features may change. <Link href="/best-ai-dental-apps"><span className="text-action hover:underline cursor-pointer">Read the full comparison</span></Link>.
+            Comparison based on publicly available information as of June 2026. Features may change. <Link href="/best-ai-dental-apps/"><span className="text-action hover:underline cursor-pointer">Read the full comparison</span></Link>.
           </p>
         </div>
       </section>

@@ -118,7 +118,7 @@ export function WaitlistSuccessModal({
               DentaSmart is available now
             </p>
             <Link
-              href="/download"
+              href="/download/"
               className="block"
               onClick={() => trackEvent("download_page_view", { source: "waitlist_success_modal" })}
             >

@@ -115,7 +115,7 @@ function getSteps(contentType: ContentType): Step[] {
       return [
         {
           text: "Take the free symptom quiz to organize what you notice and review possible next steps.",
-          link: { label: "Start Symptom Quiz", href: "/symptom-quiz" },
+          link: { label: "Start Symptom Quiz", href: "/symptom-quiz/" },
         },
         {
           text: "Use a photo to organize what you notice and prepare questions for a dental professional.",
@@ -143,7 +143,7 @@ function getSteps(contentType: ContentType): Step[] {
         },
         {
           text: "Compare costs in your area using our dental cost guides.",
-          link: { label: "Browse Cost Guides", href: "/dental-costs" },
+          link: { label: "Browse Cost Guides", href: "/dental-costs/" },
         },
         {
           text: "Ask your dentist for an itemized treatment plan and get a second opinion.",
@@ -156,7 +156,7 @@ function getSteps(contentType: ContentType): Step[] {
         },
         {
           text: "Compare this treatment with alternatives to understand which factors may matter for your situation.",
-          link: { label: "View Comparisons", href: "/comparisons" },
+          link: { label: "View Comparisons", href: "/comparisons/" },
         },
         {
           text: "Ask your dentist these questions before proceeding: What happens if I wait? Are there alternatives? What is the total cost?",
@@ -169,7 +169,7 @@ function getSteps(contentType: ContentType): Step[] {
         },
         {
           text: "Take the symptom quiz to organize your symptoms and review possible next steps.",
-          link: { label: "Start Symptom Quiz", href: "/symptom-quiz" },
+          link: { label: "Start Symptom Quiz", href: "/symptom-quiz/" },
         },
         {
           text: "Schedule a dentist visit for a professional diagnosis if you notice any warning signs.",
@@ -182,7 +182,7 @@ function getSteps(contentType: ContentType): Step[] {
         },
         {
           text: "Review the cost differences between these options.",
-          link: { label: "Cost Guides", href: "/dental-costs" },
+          link: { label: "Cost Guides", href: "/dental-costs/" },
         },
         {
           text: "Discuss both options with your dentist and ask which is better for your specific case.",
@@ -195,11 +195,11 @@ function getSteps(contentType: ContentType): Step[] {
         },
         {
           text: "Take the symptom quiz if you have any dental concerns.",
-          link: { label: "Start Symptom Quiz", href: "/symptom-quiz" },
+          link: { label: "Start Symptom Quiz", href: "/symptom-quiz/" },
         },
         {
           text: "Browse our oral health guides for more information.",
-          link: { label: "Oral Health Hub", href: "/oral-health-hub" },
+          link: { label: "Oral Health Hub", href: "/oral-health-hub/" },
         },
       ];
   }

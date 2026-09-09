@@ -73,7 +73,7 @@ export default function GuidePage() {
           <div className="text-center">
             <h1 className="text-3xl font-medium text-black mb-4">Guide Not Found</h1>
             <p className="text-stone-600 mb-6">The guide you are looking for does not exist.</p>
-            <Link href="/guides">
+            <Link href="/guides/">
               <Button variant="outline" className="rounded-full cursor-pointer">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Browse All Guides
@@ -118,7 +118,7 @@ export default function GuidePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Link href="/guides">
+            <Link href="/guides/">
               <span className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-4 cursor-pointer">
                 <ArrowLeft className="w-4 h-4" />
                 All Guides
@@ -315,7 +315,7 @@ export default function GuidePage() {
                 <h3 className="text-sm uppercase tracking-wider text-stone-600 font-medium mb-3">Conditions</h3>
                 <div className="space-y-2">
                   {guide.relatedConditions.map((item) => (
-                    <Link key={item.slug} href={`/conditions/${item.slug}`}>
+                    <Link key={item.slug} href={`/conditions/${item.slug}/`}>
                       <span className="block text-action hover:underline cursor-pointer font-light">{item.title}</span>
                     </Link>
                   ))}
@@ -327,7 +327,7 @@ export default function GuidePage() {
                 <h3 className="text-sm uppercase tracking-wider text-stone-600 font-medium mb-3">Symptoms</h3>
                 <div className="space-y-2">
                   {guide.relatedSymptoms.map((item) => (
-                    <Link key={item.slug} href={`/symptoms/${item.slug}`}>
+                    <Link key={item.slug} href={`/symptoms/${item.slug}/`}>
                       <span className="block text-action hover:underline cursor-pointer font-light">{item.title}</span>
                     </Link>
                   ))}
@@ -339,7 +339,7 @@ export default function GuidePage() {
                 <h3 className="text-sm uppercase tracking-wider text-stone-600 font-medium mb-3">Guides</h3>
                 <div className="space-y-2">
                   {guide.relatedGuides.map((item) => (
-                    <Link key={item.slug} href={`/guides/${item.slug}${hasSourceNotes ? "/" : ""}`}>
+                    <Link key={item.slug} href={`/guides/${item.slug}/`}>
                       <span className="block text-action hover:underline cursor-pointer font-light">{item.title}</span>
                     </Link>
                   ))}
@@ -406,12 +406,12 @@ export default function GuidePage() {
               : "DentaSmart helps you monitor your teeth and gums between dental visits."}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/instant-scan">
+            <Link href="/instant-scan/">
               <Button size="lg" className="bg-white text-action hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
                 {hasSourceNotes ? "Review My Oral Health" : "Try Instant Scan"}
               </Button>
             </Link>
-            <Link href="/download">
+            <Link href="/download/">
               <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
                 Download the App
               </Button>

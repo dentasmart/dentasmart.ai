@@ -243,10 +243,10 @@ describe("Phase 5 visible, metadata, and schema parity", () => {
     const comparison = projectFile("client/src/pages/DentaSmartVsChatGPT.tsx");
     const pricingPage = projectFile("client/src/pages/Pricing.tsx");
 
-    expect(home).toContain('intent === "quick_check" ? "/download"');
-    expect(home).toContain('"/pricing#second-opinion"');
-    expect(comparison).toContain('href="/download"');
-    expect(comparison).toContain('href="/pricing#second-opinion"');
+    expect(home).toContain('intent === "quick_check" ? "/download/"');
+    expect(home).toContain('"/pricing/#second-opinion"');
+    expect(comparison).toContain('href="/download/"');
+    expect(comparison).toContain('href="/pricing/#second-opinion"');
     expect(comparison).not.toContain("scrollToDownload");
     expect(pricingPage).toContain('id="quick-check"');
     expect(pricingPage).toContain('id="second-opinion"');

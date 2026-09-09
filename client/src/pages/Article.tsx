@@ -181,7 +181,7 @@ export default function Article() {
                   if (catInfo) {
                     return (
                       <div className="flex items-center gap-1.5">
-                        <Link href="/oral-health-hub">
+                        <Link href="/oral-health-hub/">
                           <Badge variant="secondary" className="bg-white/80 border border-primary/10 text-stone-600 hover:bg-white cursor-pointer">
                             {catInfo.name}
                           </Badge>
@@ -220,14 +220,14 @@ export default function Article() {
                 {article.title}
               </h1>
               <div className="flex items-center justify-start gap-4">
-                <Link href="/oral-health-hub">
+                <Link href="/oral-health-hub/">
                   <Button variant="ghost" className="text-stone-500 hover:text-stone-900 hover:bg-white/50 rounded-full">
                     <ArrowLeft className="w-4 h-4 mr-2" /> Back to Oral Health Hub
                   </Button>
                 </Link>
               </div>
               <p className="mt-5 text-sm text-stone-600 leading-relaxed max-w-2xl">
-                DentaSmart articles are educational and do not replace professional dental care. <Link href="/editorial-policy" className="text-action underline underline-offset-2 hover:text-action-hover">Read our editorial policy</Link>.
+                DentaSmart articles are educational and do not replace professional dental care. <Link href="/editorial-policy/" className="text-action underline underline-offset-2 hover:text-action-hover">Read our editorial policy</Link>.
               </p>
               {articleGovernance && <ContentGovernanceMeta governance={articleGovernance} />}
             </motion.div>
@@ -350,7 +350,7 @@ export default function Article() {
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Link href={`/oral-health-hub/${relatedArticle.slug}`}>
+                    <Link href={`/oral-health-hub/${relatedArticle.slug}/`}>
                       <Card className="h-full hover:shadow-xl transition-all duration-300 border-stone-200 bg-white group cursor-pointer overflow-hidden flex flex-col">
                         <CardHeader className="pb-4">
                           <div className="flex justify-between items-start mb-4">

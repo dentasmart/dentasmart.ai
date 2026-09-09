@@ -122,7 +122,7 @@ export default function LifestyleHub() {
               Smoking, diet, medical conditions, sports, and even piercings all affect your teeth and gums. Learn how your daily choices impact your oral health and what you can do to protect your smile.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/download">
+              <Link href="/download/">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
                   Download the App
                 </Button>
@@ -177,7 +177,7 @@ export default function LifestyleHub() {
             {lifestylePages.map((page, idx) => {
               const Icon = page.icon;
               return (
-                <Link key={idx} href={`/lifestyle/${page.slug}`}>
+                <Link key={idx} href={`/lifestyle/${page.slug}/`}>
                   <motion.div
                     initial={{ opacity: 0, y: 15 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -273,9 +273,9 @@ export default function LifestyleHub() {
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
-              { name: "Prevention Hub", slug: "/prevention", tagline: "Daily habits that protect your teeth" },
-              { name: "Conditions Guide", slug: "/conditions", tagline: "Understand common dental problems" },
-              { name: "Treatment Guides", slug: "/treatments", tagline: "What to expect from procedures" },
+              { name: "Prevention Hub", slug: "/oral-health-hub/prevention/", tagline: "Daily habits that protect your teeth" },
+              { name: "Conditions Guide", slug: "/conditions/", tagline: "Understand common dental problems" },
+              { name: "Treatment Guides", slug: "/treatments/", tagline: "What to expect from procedures" },
             ].map((hub, idx) => (
               <Link key={idx} href={hub.slug}>
                 <motion.div

@@ -93,11 +93,11 @@ const data: ComparisonPageData = {
     },
   ],
   relatedPages: [
-    { name: "Fluoride vs Fluoride-Free", href: "/comparisons/fluoride-vs-fluoride-free-toothpaste", tagline: "Which toothpaste is right for you?" },
-    { name: "Crown vs Veneer", href: "/comparisons/crown-vs-veneer", tagline: "Which restoration fits your needs?" },
-    { name: "Braces vs Invisalign", href: "/comparisons/braces-vs-invisalign", tagline: "Compare two popular straightening options." },
-    { name: "Dental Cleaning Cost", href: "/dental-costs/dental-cleaning-cost", tagline: "How much should you pay?" },
-    { name: "Brushing Guide", href: "/guides/brushing-guide", tagline: "Master the basics of proper brushing." },
+    { name: "Fluoride vs Fluoride-Free", href: "/comparisons/fluoride-vs-fluoride-free-toothpaste/", tagline: "Which toothpaste is right for you?" },
+    { name: "Crown vs Veneer", href: "/comparisons/crown-vs-veneer/", tagline: "Which restoration fits your needs?" },
+    { name: "Braces vs Invisalign", href: "/comparisons/braces-vs-invisalign/", tagline: "Compare two popular straightening options." },
+    { name: "Dental Cleaning Cost", href: "/dental-costs/dental-cleaning-cost/", tagline: "How much should you pay?" },
+    { name: "Brushing Guide", href: "/guides/brushing-guide/", tagline: "Master the basics of proper brushing." },
   ],
 };
 

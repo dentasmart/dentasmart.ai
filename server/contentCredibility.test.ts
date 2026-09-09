@@ -65,7 +65,7 @@ describe("source-controlled public content credibility", () => {
     );
 
     expect(symptomData).not.toContain('ctaButton: "Find a DentaSmart Dentist"');
-    expect(symptomTemplate).toContain('<Link href="/download">');
+    expect(symptomTemplate).toContain('<Link href="/download/">');
   });
 
   it("describes the dentist page as an educational guide rather than a locator", () => {

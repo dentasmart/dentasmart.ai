@@ -39,7 +39,7 @@ export default function HubCategory() {
           <div className="text-center">
             <h1 className="text-3xl font-medium text-black mb-4">Category Not Found</h1>
             <p className="text-stone-600 mb-6">The category you are looking for does not exist.</p>
-            <Link href="/oral-health-hub">
+            <Link href="/oral-health-hub/">
               <Button variant="outline" className="rounded-full cursor-pointer">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Oral Health Hub
@@ -70,7 +70,7 @@ export default function HubCategory() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Link href="/oral-health-hub">
+            <Link href="/oral-health-hub/">
               <span className="inline-flex items-center gap-2 text-primary hover:underline mb-4 cursor-pointer">
                 <ArrowLeft className="w-4 h-4" />
                 Back to Oral Health Hub
@@ -99,7 +99,7 @@ export default function HubCategory() {
           ) : filteredArticles.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredArticles.map((article: any) => (
-                <Link key={article.id} href={`/oral-health-hub/${article.slug}`}>
+                <Link key={article.id} href={`/oral-health-hub/${article.slug}/`}>
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -127,8 +127,8 @@ export default function HubCategory() {
           ) : (
             <div className="text-center py-12">
               <p className="text-stone-500 text-lg mb-6">No articles in this category yet. Check back soon!</p>
-              <Link href="/oral-health-hub">
-                <Button variant="outline" className="rounded-full cursor-pointer">
+              <Link href="/oral-health-hub/">
+              <Button variant="outline" className="rounded-full cursor-pointer">
                   Browse All Articles
                 </Button>
               </Link>
@@ -168,7 +168,7 @@ export default function HubCategory() {
             Educational insights to help you understand your oral health and have better conversations with a licensed dentist.
           </p>
           <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer">
-            <Link href="/pricing" onClick={() => trackEvent("cta_get_score_click", { source: `hub_${category}` })}>
+            <Link href="/pricing/" onClick={() => trackEvent("cta_get_score_click", { source: `hub_${category}` })}>
               Compare DentaSmart Services
               <ArrowRight className="w-5 h-5 ml-2" />
             </Link>

@@ -68,10 +68,10 @@ const data: ComparisonPageData = {
     { q: "Does DentaSmart work on Android?", a: "Yes. DentaSmart is available on both iOS (App Store) and Android (Google Play)." },
   ],
   relatedPages: [
-    { name: "Free AI Teeth Scanner", href: "/free-ai-teeth-scanner", tagline: "Learn how AI teeth scanning works" },
-    { name: "Best AI Dental Apps", href: "/best-ai-dental-apps", tagline: "Learn how to compare options" },
-    { name: "DentaSmart vs Dentistry.One", href: "/vs/dentistry-one", tagline: "Compare another provider" },
-    { name: "How DentaSmart Works", href: "/how-it-works", tagline: "See the full scanning process" },
+    { name: "Free AI Teeth Scanner", href: "/free-ai-teeth-scanner/", tagline: "Learn how AI teeth scanning works" },
+    { name: "Best AI Dental Apps", href: "/best-ai-dental-apps/", tagline: "Learn how to compare options" },
+    { name: "DentaSmart vs Dentistry.One", href: "/vs/dentistry-one/", tagline: "Compare another provider" },
+    { name: "How DentaSmart Works", href: "/how-it-works/", tagline: "See the full scanning process" },
   ],
 };
 

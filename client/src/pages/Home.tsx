@@ -17,7 +17,7 @@ const homeFaqs = [
   { question: "What is DentaSmart?", answer: "DentaSmart is Your Personal AI Dentist in Your Pocket. It provides Free Quick Check, Full Quick Check, Treatment Plan Review, Oral Health Score tracking, reports, records, and guidance from Dr. Din. DentaSmart does not diagnose conditions or replace professional care." },
   { question: "Who is DentaSmart for?", answer: "DentaSmart is for anyone who wants more clarity before making dental decisions. It is especially useful for people with tooth pain, gum bleeding, sensitivity, swelling, dental anxiety, no dental insurance, expensive treatment plans, or family oral health concerns. It is also helpful for parents, busy professionals, and anyone who wants to monitor their teeth and gums before problems become more serious." },
   { question: "How much does DentaSmart cost?", answer: "Free Quick Check is unlimited. Full Quick Check is $19.99 per case, Treatment Plan Review is $29.99 per case, and Complete Care is $74.99/year for individuals or $149.99/year for families of up to 4 members. Additional family members beyond 4 are $19.99/year each." },
-  { question: "How is DentaSmart different from ChatGPT?", answer: "ChatGPT is a general AI assistant. DentaSmart is built for supported oral-health workflows, including Free Quick Check, Full Quick Check, Treatment Plan Review, Oral Health Score tracking, dental records, family profiles, cost context, and guidance from Dr. Din.", link: "/compare/dentasmart-vs-chatgpt-dental", linkText: "Read the full DentaSmart vs ChatGPT comparison" },
+  { question: "How is DentaSmart different from ChatGPT?", answer: "ChatGPT is a general AI assistant. DentaSmart is built for supported oral-health workflows, including Free Quick Check, Full Quick Check, Treatment Plan Review, Oral Health Score tracking, dental records, family profiles, cost context, and guidance from Dr. Din.", link: "/compare/dentasmart-vs-chatgpt-dental/", linkText: "Read the full DentaSmart vs ChatGPT comparison" },
   { question: "Is DentaSmart a replacement for a dentist?", answer: "No. DentaSmart provides educational oral health insights, monitoring tools, and questions you can take to a dental visit. It does not diagnose conditions, replace routine dental exams, or provide hands-on treatment." },
   { question: "Can DentaSmart review dental X-rays?", answer: "DentaSmart supports educational review of eligible mouth photos and dental X-rays. It can highlight visible areas to discuss, but it does not diagnose conditions or replace a dentist's interpretation." },
 ];
@@ -47,7 +47,7 @@ export default function Home() {
 
   const goToPlan = (intent: "quick_check" | "second_opinion", source: "hero" | "mid_page" | "post_faq") => {
     trackEvent("home_intent_click", { intent, source });
-    setLocation(intent === "quick_check" ? "/download" : "/pricing#second-opinion");
+    setLocation(intent === "quick_check" ? "/download/" : "/pricing/#second-opinion");
   };
 
   return (
@@ -785,17 +785,17 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: "Toothache", desc: "Review common causes of tooth pain and signs that call for professional care.", href: "/conditions/toothache" },
-              { title: "Tooth Sensitivity", desc: "Learn why hot or cold triggers sharp pain and how to manage it.", href: "/conditions/sensitive-teeth" },
-              { title: "Gum Recession", desc: "Discover why gums pull back and what you can do to protect them.", href: "/conditions/gum-disease" },
-              { title: "Pain When Biting", desc: "Learn about possible reasons for pain when chewing and what to discuss with a dentist.", href: "/symptoms/tooth-pain-when-biting" },
-              { title: "Bad Breath", desc: "Review common reasons for persistent bad breath and when to seek dental advice.", href: "/symptoms/bad-breath" },
-              { title: "Cracked Tooth", desc: "A crack can worsen fast. Know the signs and your options.", href: "/conditions/cracked-tooth" },
-              { title: "Swollen Gums", desc: "Swelling around one tooth or many? Here is what to look for.", href: "/symptoms/swollen-gums" },
-              { title: "Wisdom Tooth Pain", desc: "Review warning signs and prepare questions about wisdom-tooth pain.", href: "/conditions/wisdom-teeth-pain" },
-              { title: "Cavity Symptoms", desc: "Learn about changes that may warrant a dental examination.", href: "/conditions/cavities" },
-              { title: "Jaw Pain", desc: "Review common reasons for jaw clicking, locking, or aching.", href: "/symptoms/jaw-pain" },
-              { title: "Dental Abscess", desc: "An abscess is serious. Know the warning signs and next steps.", href: "/conditions/dental-abscess" }
+              { title: "Toothache", desc: "Review common causes of tooth pain and signs that call for professional care.", href: "/conditions/toothache/" },
+              { title: "Tooth Sensitivity", desc: "Learn why hot or cold triggers sharp pain and how to manage it.", href: "/conditions/sensitive-teeth/" },
+              { title: "Gum Recession", desc: "Discover why gums pull back and what you can do to protect them.", href: "/conditions/gum-disease/" },
+              { title: "Pain When Biting", desc: "Learn about possible reasons for pain when chewing and what to discuss with a dentist.", href: "/symptoms/tooth-pain-when-biting/" },
+              { title: "Bad Breath", desc: "Review common reasons for persistent bad breath and when to seek dental advice.", href: "/symptoms/bad-breath/" },
+              { title: "Cracked Tooth", desc: "A crack can worsen fast. Know the signs and your options.", href: "/conditions/cracked-tooth/" },
+              { title: "Swollen Gums", desc: "Swelling around one tooth or many? Here is what to look for.", href: "/symptoms/swollen-gums/" },
+              { title: "Wisdom Tooth Pain", desc: "Review warning signs and prepare questions about wisdom-tooth pain.", href: "/conditions/wisdom-teeth-pain/" },
+              { title: "Cavity Symptoms", desc: "Learn about changes that may warrant a dental examination.", href: "/conditions/cavities/" },
+              { title: "Jaw Pain", desc: "Review common reasons for jaw clicking, locking, or aching.", href: "/symptoms/jaw-pain/" },
+              { title: "Dental Abscess", desc: "An abscess is serious. Know the warning signs and next steps.", href: "/conditions/dental-abscess/" }
             ].map((item, idx) => (
               <motion.div
                 key={idx}

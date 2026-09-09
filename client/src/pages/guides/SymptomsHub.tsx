@@ -180,7 +180,7 @@ export default function SymptomsHub() {
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
-                  href="/symptom-quiz"
+                  href="/symptom-quiz/"
                   className="inline-flex min-h-12 items-center justify-center rounded-full bg-action px-8 py-3 text-base font-medium text-action-foreground transition-all hover:scale-105 hover:bg-action-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring w-full sm:w-auto"
                 >
                   Check Your Symptoms Free <ArrowRight className="w-4 h-4 ml-2" />
@@ -338,7 +338,7 @@ export default function SymptomsHub() {
                     const symptom = symptomsMap[slug];
                     if (!symptom) return null;
                     return (
-                      <Link key={slug} href={`/symptoms/${slug}`}>
+                      <Link key={slug} href={`/symptoms/${slug}/`}>
                         <div className="flex items-center justify-between py-2 px-3 rounded-lg bg-stone-50 hover:bg-primary/5 transition-colors cursor-pointer group">
                           <span className="text-sm font-medium text-stone-700 group-hover:text-primary transition-colors">
                             {symptom.primaryKeyword.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
@@ -403,8 +403,8 @@ export default function SymptomsHub() {
               </motion.div>
             ))}
           </div>
-          <div className="mt-6 text-center">
-            <Link href="/symptom-quiz">
+            <div className="mt-6 text-center">
+            <Link href="/symptom-quiz/">
               <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                 Start Free Symptom Quiz <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
@@ -424,7 +424,7 @@ export default function SymptomsHub() {
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
             {symptomsList.map((symptom, idx) => (
-              <Link key={symptom.slug} href={`/symptoms/${symptom.slug}`}>
+              <Link key={symptom.slug} href={`/symptoms/${symptom.slug}/`}>
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -484,37 +484,37 @@ export default function SymptomsHub() {
         <div className="container px-4 mx-auto max-w-6xl">
           <h2 className="text-lg font-medium text-black mb-3 text-left">Related Resource Hubs</h2>
           <div className="flex flex-wrap gap-2 md:gap-3">
-            <Link href="/oral-health-hub/conditions">
+            <Link href="/oral-health-hub/conditions/">
               <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Conditions Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/dental-costs">
+            <Link href="/dental-costs/">
               <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Cost Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/treatments">
+            <Link href="/treatments/">
               <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Treatment Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/oral-health-hub/affordability">
+            <Link href="/oral-health-hub/affordability/">
               <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Affordability Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/oral-health-hub/second-opinion">
+            <Link href="/oral-health-hub/second-opinion/">
               <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Second Opinion Hub <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/oral-health-hub/prevention">
+            <Link href="/oral-health-hub/prevention/">
               <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Prevention Hub <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/symptom-quiz">
+            <Link href="/symptom-quiz/">
               <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Free Symptom Checker <ArrowRight className="w-3 h-3" />
               </span>
@@ -533,13 +533,13 @@ export default function SymptomsHub() {
             <p className="text-base md:text-lg text-stone-300 font-light mb-6 max-w-2xl mx-auto">
               Start with the free symptom quiz, or explore DentaSmart's paid checks and plans when you need help organizing supported information.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/symptom-quiz">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/symptom-quiz/">
                 <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                   Start Free Symptom Quiz
                 </Button>
               </Link>
-              <Link href="/pricing">
+              <Link href="/pricing/">
                 <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
                   View DentaSmart Options
                 </Button>

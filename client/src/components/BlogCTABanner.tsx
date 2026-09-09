@@ -47,7 +47,7 @@ export function BlogCTABanner() {
       source: location,
       label: "blog_floating_banner",
     });
-    window.location.href = "/download";
+    window.location.href = "/download/";
   };
 
   return (

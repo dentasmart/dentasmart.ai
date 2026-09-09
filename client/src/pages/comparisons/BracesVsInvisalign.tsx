@@ -88,11 +88,11 @@ const data: ComparisonPageData = {
     { q: "Is it easier to keep teeth clean with braces or Invisalign?", a: "Clear aligners can be removed for brushing and flossing. Braces require cleaning around brackets and wires. Both options need a consistent routine." },
   ],
   relatedPages: [
-    { name: "Crown vs Veneer", href: "/comparisons/crown-vs-veneer", tagline: "Which restoration fits your needs?" },
-    { name: "Implants vs Dentures", href: "/comparisons/dental-implants-vs-dentures", tagline: "Permanent vs removable tooth replacement." },
-    { name: "Braces Cost Guide", href: "/dental-costs/braces-cost", tagline: "Review braces cost factors and estimate questions." },
-    { name: "Braces Treatment Guide", href: "/treatments/braces-treatment", tagline: "What to expect during orthodontic treatment." },
-    { name: "Symptom Quiz", href: "/symptom-quiz", tagline: "Check your symptoms with our AI-powered tool." },
+    { name: "Crown vs Veneer", href: "/comparisons/crown-vs-veneer/", tagline: "Which restoration fits your needs?" },
+    { name: "Implants vs Dentures", href: "/comparisons/dental-implants-vs-dentures/", tagline: "Permanent vs removable tooth replacement." },
+    { name: "Braces Cost Guide", href: "/dental-costs/braces-cost/", tagline: "Review braces cost factors and estimate questions." },
+    { name: "Braces Treatment Guide", href: "/treatments/braces-treatment/", tagline: "What to expect during orthodontic treatment." },
+    { name: "Symptom Quiz", href: "/symptom-quiz/", tagline: "Check your symptoms with our AI-powered tool." },
   ],
 };
 

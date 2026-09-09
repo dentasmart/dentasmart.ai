@@ -74,7 +74,7 @@ export default function ConditionPage() {
           <div className="text-center">
             <h1 className="text-3xl font-medium text-black mb-4">Condition Not Found</h1>
             <p className="text-stone-600 mb-6">The condition you are looking for does not exist.</p>
-            <Link href="/conditions">
+            <Link href="/conditions/">
               <Button variant="outline" className="rounded-full cursor-pointer">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Browse All Conditions
@@ -118,7 +118,7 @@ export default function ConditionPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <Link href="/conditions">
+            <Link href="/conditions/">
               <span className="inline-flex items-center gap-2 text-action hover:underline mb-4 cursor-pointer">
                 <ArrowLeft className="w-4 h-4" />
                 All Conditions
@@ -324,7 +324,7 @@ export default function ConditionPage() {
                 <h3 className="text-sm uppercase tracking-wider text-stone-600 font-medium mb-3">Conditions</h3>
                 <div className="space-y-2">
                   {condition.relatedConditions.map((item) => (
-                    <Link key={item.slug} href={`/conditions/${item.slug}`}>
+                    <Link key={item.slug} href={`/conditions/${item.slug}/`}>
                       <span className="block text-action hover:underline cursor-pointer font-light">{item.title}</span>
                     </Link>
                   ))}
@@ -336,7 +336,7 @@ export default function ConditionPage() {
                 <h3 className="text-sm uppercase tracking-wider text-stone-600 font-medium mb-3">Symptoms</h3>
                 <div className="space-y-2">
                   {condition.relatedSymptoms.map((item) => (
-                    <Link key={item.slug} href={`/symptoms/${item.slug}`}>
+                    <Link key={item.slug} href={`/symptoms/${item.slug}/`}>
                       <span className="block text-action hover:underline cursor-pointer font-light">{item.title}</span>
                     </Link>
                   ))}
@@ -348,7 +348,7 @@ export default function ConditionPage() {
                 <h3 className="text-sm uppercase tracking-wider text-stone-600 font-medium mb-3">Guides</h3>
                 <div className="space-y-2">
                   {condition.relatedGuides.map((item) => (
-                    <Link key={item.slug} href={`/guides/${item.slug}`}>
+                    <Link key={item.slug} href={`/guides/${item.slug}/`}>
                       <span className="block text-action hover:underline cursor-pointer font-light">{item.title}</span>
                     </Link>
                   ))}
@@ -365,12 +365,12 @@ export default function ConditionPage() {
           <h2 className="text-3xl font-normal mb-3 text-action-foreground">Want more educational context?</h2>
           <p className="text-action-foreground font-light mb-6">Review how DentaSmart uses supported images for educational observations that do not replace professional diagnosis or care.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/instant-scan">
+            <Link href="/instant-scan/">
               <Button size="lg" className="bg-white text-action hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
                 Review the Photo Guide
               </Button>
             </Link>
-            <Link href="/download">
+            <Link href="/download/">
               <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
                 Download the App
               </Button>

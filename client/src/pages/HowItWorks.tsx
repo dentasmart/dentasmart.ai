@@ -383,7 +383,7 @@ export default function HowItWorks() {
             <span className="hidden md:block text-stone-300">•</span>
             <p>Is it a dentist replacement?</p>
           </div>
-          <Link href="/faqs">
+          <Link href="/faqs/">
             <Button variant="outline" size="lg" className="rounded-full px-8 border-stone-300 text-stone-600 hover:bg-stone-100 hover:text-black">
               Read all FAQs
             </Button>

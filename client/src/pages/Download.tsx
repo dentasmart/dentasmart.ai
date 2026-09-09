@@ -84,7 +84,7 @@ export default function Download() {
                 <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-green-500" /> No card to download</span>
                 <span className="flex items-center gap-1"><CheckCircle2 className="w-4 h-4 text-green-500" /> Privacy &amp; Security</span>
               </div>
-              <Link href="/pricing" className="mt-5 inline-flex min-h-11 items-center text-sm font-medium text-action hover:underline">
+              <Link href="/pricing/" className="mt-5 inline-flex min-h-11 items-center text-sm font-medium text-action hover:underline">
                 Compare Full Quick Check and plans <ArrowRight className="ml-1 h-4 w-4" />
               </Link>
             </motion.div>

@@ -35,7 +35,7 @@ const variations: PopupVariation[] = [
     ctaText: "Take the Free Quiz",
     dismissText: "No thanks, I will figure it out myself",
     action: "internal",
-    link: "/symptom-quiz",
+    link: "/symptom-quiz/",
   },
   {
     id: "cost",
@@ -48,7 +48,7 @@ const variations: PopupVariation[] = [
     ctaText: "Compare Plans",
     dismissText: "No thanks, I trust my current plan",
     action: "internal",
-    link: "/pricing",
+    link: "/pricing/",
   },
   {
     id: "second-opinion",
@@ -61,7 +61,7 @@ const variations: PopupVariation[] = [
     ctaText: "Get a Second Opinion",
     dismissText: "No thanks, I will decide another way",
     action: "internal",
-    link: "/pricing#second-opinion",
+    link: "/pricing/#second-opinion",
   },
 ];
 
@@ -178,7 +178,7 @@ export default function ExitIntentPopup() {
     } catch {}
 
     if (variation.action === "external") {
-      window.location.href = "/download";
+      window.location.href = "/download/";
     }
     setDismissed(true);
   };

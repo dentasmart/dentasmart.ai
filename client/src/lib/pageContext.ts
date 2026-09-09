@@ -47,7 +47,7 @@ export function getPageContext(path: string): PageContext {
       ctaDescription: "Take our free symptom quiz to organize what you notice and review possible next steps. It does not provide a diagnosis.",
       ctaButtonText: "Check My Symptoms",
       ctaAction: "symptom-quiz",
-      ctaLink: "/symptom-quiz",
+      ctaLink: "/symptom-quiz/",
     };
   }
 
@@ -59,7 +59,7 @@ export function getPageContext(path: string): PageContext {
       ctaDescription: "Use DentaSmart to organize what you are experiencing and prepare for urgent dental care. It does not replace emergency treatment.",
       ctaButtonText: "Check What to Do Next",
       ctaAction: "instant-scan",
-      ctaLink: "/instant-scan",
+      ctaLink: "/instant-scan/",
     };
   }
 
@@ -71,7 +71,7 @@ export function getPageContext(path: string): PageContext {
       ctaDescription: "Explore a one-time check or treatment-plan comparison before making an expensive dental decision.",
       ctaButtonText: "Compare DentaSmart Plans",
       ctaAction: "app-download",
-      ctaLink: "/pricing",
+      ctaLink: "/pricing/",
     };
   }
 
@@ -83,7 +83,7 @@ export function getPageContext(path: string): PageContext {
       ctaDescription: "Use Second Opinion to compare the treatment information you received and prepare questions for your dentist.",
       ctaButtonText: "Get a Second Opinion",
       ctaAction: "app-download",
-      ctaLink: "/pricing#second-opinion",
+      ctaLink: "/pricing/#second-opinion",
     };
   }
 
@@ -95,7 +95,7 @@ export function getPageContext(path: string): PageContext {
       ctaDescription: "Explore a Quick Check for educational insights you can use before your next dentist visit.",
       ctaButtonText: "Explore Quick Check",
       ctaAction: "app-download",
-      ctaLink: "/pricing#quick-check",
+      ctaLink: "/pricing/#quick-check",
     };
   }
 
@@ -107,7 +107,7 @@ export function getPageContext(path: string): PageContext {
       ctaDescription: "Compare the options, then see which DentaSmart service matches the decision you are making.",
       ctaButtonText: "See DentaSmart Plans",
       ctaAction: "app-download",
-      ctaLink: "/pricing",
+      ctaLink: "/pricing/",
     };
   }
 
@@ -119,7 +119,7 @@ export function getPageContext(path: string): PageContext {
       ctaDescription: "Track oral health over time with separate profiles, reports, and history for up to four family members.",
       ctaButtonText: "Explore Complete Care",
       ctaAction: "app-download",
-      ctaLink: "/pricing#complete-care",
+      ctaLink: "/pricing/#complete-care",
     };
   }
 
@@ -131,7 +131,7 @@ export function getPageContext(path: string): PageContext {
       ctaDescription: "Explore DentaSmart tools that help you monitor visible changes and organize your oral health history.",
       ctaButtonText: "Explore DentaSmart",
       ctaAction: "app-download",
-      ctaLink: "/download",
+      ctaLink: "/download/",
     };
   }
 
@@ -143,7 +143,7 @@ export function getPageContext(path: string): PageContext {
       ctaDescription: "Explore DentaSmart services that can help you apply what you learned and prepare better questions.",
       ctaButtonText: "See DentaSmart Plans",
       ctaAction: "app-download",
-      ctaLink: "/pricing",
+      ctaLink: "/pricing/",
     };
   }
 
@@ -155,7 +155,7 @@ export function getPageContext(path: string): PageContext {
       ctaDescription: "Explore a Quick Check for educational insights you can use in a more informed dental conversation.",
       ctaButtonText: "Explore Quick Check",
       ctaAction: "app-download",
-      ctaLink: "/pricing#quick-check",
+      ctaLink: "/pricing/#quick-check",
     };
   }
 
@@ -167,7 +167,7 @@ export function getPageContext(path: string): PageContext {
       ctaDescription: "Upload a supported photo for an educational report and clearer questions for your next dental decision.",
       ctaButtonText: "Explore Quick Check",
       ctaAction: "app-download",
-      ctaLink: "/pricing#quick-check",
+      ctaLink: "/pricing/#quick-check",
     };
   }
 
@@ -178,6 +178,6 @@ export function getPageContext(path: string): PageContext {
     ctaDescription: "Explore DentaSmart's one-time checks and annual monitoring plans.",
     ctaButtonText: "See DentaSmart Plans",
     ctaAction: "app-download",
-    ctaLink: "/pricing",
+    ctaLink: "/pricing/",
   };
 }

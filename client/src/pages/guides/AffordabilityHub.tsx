@@ -13,14 +13,14 @@ const affordabilityGuides = guidesList.filter(g => g.category === "affordability
 /* ─── Cost Data ─────────────────────────────────────────────── */
 const procedureCosts = [
   { procedure: "Routine Dental Exam", withoutInsurance: "$50-$350", avgCost: "$203", withDentaSmart: "Know before you go", costLink: null, treatmentLink: null },
-  { procedure: "Teeth Cleaning", withoutInsurance: "$75-$200", avgCost: "$130", withDentaSmart: "Track when you're due", costLink: "/dental-costs/dental-cleaning-cost", treatmentLink: "/treatments/dental-cleaning-procedure" },
+  { procedure: "Teeth Cleaning", withoutInsurance: "$75-$200", avgCost: "$130", withDentaSmart: "Track when you're due", costLink: "/dental-costs/dental-cleaning-cost/", treatmentLink: "/treatments/dental-cleaning-procedure/" },
   { procedure: "Dental X-rays", withoutInsurance: "$25-$250", avgCost: "$150", withDentaSmart: "AI analysis included", costLink: null, treatmentLink: null },
   { procedure: "Cavity Filling", withoutInsurance: "$100-$1,050", avgCost: "$250", withDentaSmart: "Catch early, save more", costLink: null, treatmentLink: null },
-  { procedure: "Tooth Extraction", withoutInsurance: "$50-$500", avgCost: "$200", withDentaSmart: "Second opinion first", costLink: "/dental-costs/tooth-extraction-cost", treatmentLink: "/treatments/tooth-extraction-procedure" },
-  { procedure: "Root Canal", withoutInsurance: "$700-$1,500", avgCost: "$1,000", withDentaSmart: "Verify if needed", costLink: "/dental-costs/root-canal-cost", treatmentLink: "/treatments/root-canal-procedure" },
-  { procedure: "Dental Crown", withoutInsurance: "$800-$2,500", avgCost: "$1,200", withDentaSmart: "Compare options", costLink: "/dental-costs/dental-crown-cost", treatmentLink: "/treatments/dental-crown-procedure" },
-  { procedure: "Dental Implant", withoutInsurance: "$3,000-$6,000", avgCost: "$4,500", withDentaSmart: "Plan ahead", costLink: "/dental-costs/dental-implant-cost", treatmentLink: "/treatments/dental-implant-procedure" },
-  { procedure: "Braces", withoutInsurance: "$2,500-$7,000", avgCost: "$5,000", withDentaSmart: "Explore alternatives", costLink: "/dental-costs/braces-cost", treatmentLink: "/treatments/braces-treatment" },
+  { procedure: "Tooth Extraction", withoutInsurance: "$50-$500", avgCost: "$200", withDentaSmart: "Second opinion first", costLink: "/dental-costs/tooth-extraction-cost/", treatmentLink: "/treatments/tooth-extraction-procedure/" },
+  { procedure: "Root Canal", withoutInsurance: "$700-$1,500", avgCost: "$1,000", withDentaSmart: "Verify if needed", costLink: "/dental-costs/root-canal-cost/", treatmentLink: "/treatments/root-canal-procedure/" },
+  { procedure: "Dental Crown", withoutInsurance: "$800-$2,500", avgCost: "$1,200", withDentaSmart: "Compare options", costLink: "/dental-costs/dental-crown-cost/", treatmentLink: "/treatments/dental-crown-procedure/" },
+  { procedure: "Dental Implant", withoutInsurance: "$3,000-$6,000", avgCost: "$4,500", withDentaSmart: "Plan ahead", costLink: "/dental-costs/dental-implant-cost/", treatmentLink: "/treatments/dental-implant-procedure/" },
+  { procedure: "Braces", withoutInsurance: "$2,500-$7,000", avgCost: "$5,000", withDentaSmart: "Explore alternatives", costLink: "/dental-costs/braces-cost/", treatmentLink: "/treatments/braces-treatment/" },
 ];
 
 const savingsTips = [
@@ -29,14 +29,14 @@ const savingsTips = [
     title: "Review Your Questions First",
     description: "Organize supported records and treatment-plan questions before a dental visit. DentaSmart provides educational context, not a diagnosis or treatment decision.",
     cta: "Compare DentaSmart Services",
-    href: "/pricing",
+    href: "/pricing/",
   },
   {
     icon: Shield,
     title: "Consider Dental Discount Plans",
     description: "Discount plans are not insurance. Fees, participating providers, exclusions, and discounts vary, so compare current plan documents before enrolling.",
     cta: "Learn More",
-    href: "/guides/dental-insurance-alternatives",
+    href: "/guides/dental-insurance-alternatives/",
   },
   {
     icon: Heart,
@@ -57,7 +57,7 @@ const savingsTips = [
     title: "Prioritize Prevention",
     description: "Routine preventive care may reduce the chance that some problems become more complex. Ask a dentist which schedule and home-care steps fit your needs.",
     cta: "Prevention Guide",
-    href: "/oral-health-hub/prevention",
+    href: "/oral-health-hub/prevention/",
   },
   {
     icon: Clock,
@@ -71,7 +71,7 @@ const savingsTips = [
     title: "Review a Treatment Plan",
     description: "DentaSmart Treatment Plan Review can organize a supported dentist treatment plan, plain-language context, and questions. It does not provide a dentist's diagnosis or clinical recommendation.",
     cta: "View Treatment Plan Review",
-    href: "/pricing#second-opinion",
+    href: "/pricing/#second-opinion",
   },
 ];
 
@@ -193,7 +193,7 @@ export default function AffordabilityHub() {
               If you do not have dental insurance or feel unsure about a treatment estimate, this guide explains lower-cost care options and questions to ask before you agree to treatment.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/download">
+              <Link href="/download/">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
                   Download the App
                 </Button>
@@ -394,7 +394,7 @@ export default function AffordabilityHub() {
             ))}
           </div>
           <div className="mt-6 text-center">
-            <Link href="/pricing">
+            <Link href="/pricing/">
               <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                 Compare DentaSmart Services <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
@@ -489,7 +489,7 @@ export default function AffordabilityHub() {
             </motion.div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
               {affordabilityGuides.map((guide, idx) => (
-                <Link key={guide.slug} href={`/guides/${guide.slug}`}>
+                <Link key={guide.slug} href={`/guides/${guide.slug}/`}>
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -520,52 +520,52 @@ export default function AffordabilityHub() {
         <div className="container px-4 mx-auto max-w-6xl">
           <h2 className="text-lg font-medium text-black mb-3">Related Resource Hubs</h2>
           <div className="flex flex-wrap gap-2 md:gap-3">
-            <Link href="/dental-costs">
+            <Link href="/dental-costs/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Cost Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/treatments">
+            <Link href="/treatments/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Treatment Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/oral-health-hub/second-opinion">
+            <Link href="/oral-health-hub/second-opinion/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Second Opinion Hub <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/oral-health-hub/prevention">
+            <Link href="/oral-health-hub/prevention/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Prevention Hub <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/oral-health-hub/conditions">
+            <Link href="/oral-health-hub/conditions/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Conditions Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/oral-health-hub/symptoms">
+            <Link href="/oral-health-hub/symptoms/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Symptoms Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/dental-costs">
+            <Link href="/dental-costs/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Cost Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/treatments">
+            <Link href="/treatments/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Treatment Guides <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/symptom-quiz">
+            <Link href="/symptom-quiz/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Free Symptom Checker <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/guides">
+            <Link href="/guides/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 All Guides <ArrowRight className="w-3 h-3" />
               </span>
@@ -585,12 +585,12 @@ export default function AffordabilityHub() {
               Free Quick Check is unlimited. Full Quick Check, Treatment Plan Review, and Complete Care are paid services with current prices shown before purchase.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/download">
+              <Link href="/download/">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                   Download the App
                 </Button>
               </Link>
-              <Link href="/symptom-quiz">
+              <Link href="/symptom-quiz/">
                 <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
                   Try Free Symptom Check
                 </Button>

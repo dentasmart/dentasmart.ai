@@ -49,7 +49,7 @@ export default function SymptomsIndex() {
         <div className="container px-4 mx-auto max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {symptomsList.map((symptom, idx) => (
-              <Link key={symptom.slug} href={`/symptoms/${symptom.slug}`}>
+              <Link key={symptom.slug} href={`/symptoms/${symptom.slug}/`}>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -77,7 +77,7 @@ export default function SymptomsIndex() {
           <h2 className="text-3xl font-normal mb-3 text-action-foreground">Not sure how to describe a symptom?</h2>
           <p className="text-action-foreground font-light mb-6">Use the free symptom quiz to organize what you notice. A dentist is still needed for diagnosis and treatment advice.</p>
           <Link
-            href="/symptom-quiz"
+            href="/symptom-quiz/"
             className="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-8 py-3 text-base font-medium text-action transition-colors hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             Start Free Symptom Quiz

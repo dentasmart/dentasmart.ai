@@ -131,7 +131,7 @@ export default function ComparisonPageTemplate({ data }: { data: ComparisonPageD
               {data.heroDescription}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/pricing#quick-check">
+              <Link href="/pricing/#quick-check">
                 <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
                   Compare DentaSmart Options
                 </Button>
@@ -355,7 +355,7 @@ export default function ComparisonPageTemplate({ data }: { data: ComparisonPageD
             <p className="text-base md:text-lg text-stone-300 font-light leading-relaxed max-w-3xl mx-auto mb-6">
               {data.bottomLine}
             </p>
-            <Link href="/pricing#quick-check">
+            <Link href="/pricing/#quick-check">
               <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                 <Smartphone className="w-4 h-4 mr-2" /> View DentaSmart Options
               </Button>
@@ -433,12 +433,12 @@ export default function ComparisonPageTemplate({ data }: { data: ComparisonPageD
               Review DentaSmart's paid checks and plans, or use the symptom quiz to organize questions before professional care.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/pricing">
+              <Link href="/pricing/">
                 <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                   View Pricing
                 </Button>
               </Link>
-              <Link href="/symptom-quiz">
+              <Link href="/symptom-quiz/">
                 <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
                   Start Symptom Quiz
                 </Button>

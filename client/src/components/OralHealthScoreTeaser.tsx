@@ -162,7 +162,7 @@ export default function OralHealthScoreTeaser() {
               </div>
 
               <Link
-                href="/pricing"
+                href="/pricing/"
                 onClick={handleGetScore}
                 className="bg-primary hover:bg-primary/90 text-white rounded-full px-6 py-3 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15 inline-flex items-center gap-2"
               >

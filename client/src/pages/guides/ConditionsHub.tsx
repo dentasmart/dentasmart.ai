@@ -181,7 +181,7 @@ export default function ConditionsHub() {
               Review common dental conditions in plain language, note which symptoms need prompt care, and prepare useful questions for a dentist.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/symptom-quiz">
+              <Link href="/symptom-quiz/">
                 <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
                   Check Your Symptoms
                 </Button>
@@ -298,7 +298,7 @@ export default function ConditionsHub() {
                     const condition = conditionsMap[slug];
                     if (!condition) return null;
                     return (
-                      <Link key={slug} href={`/conditions/${slug}`}>
+                      <Link key={slug} href={`/conditions/${slug}/`}>
                         <div className="flex items-center justify-between py-2 px-3 rounded-lg bg-stone-50 hover:bg-primary/5 transition-colors cursor-pointer group">
                           <span className="text-sm font-medium text-stone-700 group-hover:text-primary transition-colors">
                             {condition.primaryKeyword.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
@@ -313,7 +313,7 @@ export default function ConditionsHub() {
             ))}
           </div>
           <div className="mt-6 text-center">
-            <Link href="/conditions">
+            <Link href="/conditions/">
               <Button size="lg" variant="outline" className="border-primary/30 text-action hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
                 View All {conditionsList.length} Conditions <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
@@ -368,7 +368,7 @@ export default function ConditionsHub() {
             ))}
           </div>
           <div className="mt-6 text-center">
-            <Link href="/pricing">
+            <Link href="/pricing/">
               <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                 Explore DentaSmart Options <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
@@ -388,7 +388,7 @@ export default function ConditionsHub() {
           </motion.div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
             {conditionsList.map((condition, idx) => (
-              <Link key={condition.slug} href={`/conditions/${condition.slug}`}>
+              <Link key={condition.slug} href={`/conditions/${condition.slug}/`}>
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -448,52 +448,52 @@ export default function ConditionsHub() {
         <div className="container px-4 mx-auto max-w-6xl">
           <h2 className="text-lg font-medium text-black mb-3 text-left">Related Resource Hubs</h2>
           <div className="flex flex-wrap gap-2 md:gap-3">
-            <Link href="/oral-health-hub/affordability">
+            <Link href="/oral-health-hub/affordability/">
               <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Affordability Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/dental-costs">
+            <Link href="/dental-costs/">
               <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Cost Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/treatments">
+            <Link href="/treatments/">
               <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Treatment Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/oral-health-hub/second-opinion">
+            <Link href="/oral-health-hub/second-opinion/">
               <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Second Opinion Hub <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/oral-health-hub/prevention">
+            <Link href="/oral-health-hub/prevention/">
               <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Prevention Hub <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/oral-health-hub/symptoms">
+            <Link href="/oral-health-hub/symptoms/">
               <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Symptoms Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/dental-costs">
+            <Link href="/dental-costs/">
               <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Cost Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/treatments">
+            <Link href="/treatments/">
               <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Treatment Guides <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/symptom-quiz">
+            <Link href="/symptom-quiz/">
               <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Free Symptom Checker <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/guides">
+            <Link href="/guides/">
               <span className="inline-flex items-center gap-2 bg-white px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 All Guides <ArrowRight className="w-3 h-3" />
               </span>
@@ -513,12 +513,12 @@ export default function ConditionsHub() {
               Use the free symptom quiz to organize what you notice, or compare DentaSmart's paid checks and plans before you continue.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/pricing">
+              <Link href="/pricing/">
                 <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                   View Pricing
                 </Button>
               </Link>
-              <Link href="/symptom-quiz">
+              <Link href="/symptom-quiz/">
                 <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
                   Start Free Symptom Quiz
                 </Button>

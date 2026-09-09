@@ -142,7 +142,7 @@ export default function ComparisonsHub() {
               >
                 Browse Comparisons <ArrowRight className="w-4 h-4 ml-2" />
               </a>
-              <Link href="/features">
+              <Link href="/features/">
                 <Button size="lg" variant="outline" className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
                   See How DentaSmart Works
                 </Button>
@@ -208,7 +208,7 @@ export default function ComparisonsHub() {
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
             {comparisonPages.map((page, idx) => (
-              <Link key={page.slug} href={`/comparisons/${page.slug}`}>
+              <Link key={page.slug} href={`/comparisons/${page.slug}/`}>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -231,6 +231,29 @@ export default function ComparisonsHub() {
                 </motion.div>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-stone-100 bg-white py-10">
+        <div className="container mx-auto max-w-6xl px-4">
+          <div className="mb-6 max-w-3xl">
+            <h2 className="mb-2 text-2xl font-medium text-black">Compare DentaSmart with other tools</h2>
+            <p className="text-sm leading-relaxed text-stone-600">Use these decision guides to compare DentaSmart with other digital dental services before choosing. Verify third-party details directly with each provider.</p>
+          </div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            <Link href="/vs/dental-com/">
+              <div className="h-full rounded-2xl border border-stone-200 bg-stone-50 p-5 transition-all hover:border-primary/30 hover:shadow-md">
+                <h3 className="mb-2 text-lg font-medium text-black">DentaSmart vs Dental.com SmartScan</h3>
+                <p className="text-sm leading-relaxed text-stone-600">Compare supported inputs, report details, pricing information, and professional-care boundaries.</p>
+              </div>
+            </Link>
+            <Link href="/vs/dentistry-one/">
+              <div className="h-full rounded-2xl border border-stone-200 bg-stone-50 p-5 transition-all hover:border-primary/30 hover:shadow-md">
+                <h3 className="mb-2 text-lg font-medium text-black">DentaSmart vs Dentistry.One SmileScan</h3>
+                <p className="text-sm leading-relaxed text-stone-600">Compare supported inputs, report details, consultation options, and professional-care boundaries.</p>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -281,7 +304,7 @@ export default function ComparisonsHub() {
             ))}
           </div>
           <div className="mt-6 text-center">
-            <Link href="/pricing">
+            <Link href="/pricing/">
               <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                 Compare DentaSmart Options <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
@@ -326,27 +349,27 @@ export default function ComparisonsHub() {
         <div className="container px-4 mx-auto max-w-6xl">
           <h2 className="text-lg font-medium text-black mb-3">Related Resource Hubs</h2>
           <div className="flex flex-wrap gap-2 md:gap-3">
-            <Link href="/dental-costs">
+            <Link href="/dental-costs/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Cost Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/treatments">
+            <Link href="/treatments/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Treatment Guides <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/oral-health-hub/affordability">
+            <Link href="/oral-health-hub/affordability/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Affordability Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/oral-health-hub/conditions">
+            <Link href="/oral-health-hub/conditions/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 Conditions Guide <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/guides">
+            <Link href="/guides/">
               <span className="inline-flex items-center gap-2 bg-stone-50 px-3 md:px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-xs md:text-sm">
                 All Guides <ArrowRight className="w-3 h-3" />
               </span>
@@ -366,12 +389,12 @@ export default function ComparisonsHub() {
               Use these guides for general decision support, then compare DentaSmart's paid options or discuss your questions with a licensed dentist.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/pricing">
+              <Link href="/pricing/">
                 <Button size="lg" className="bg-action text-action-foreground hover:bg-action-hover rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                   View Pricing
                 </Button>
               </Link>
-              <Link href="/symptom-quiz">
+              <Link href="/symptom-quiz/">
                 <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
                   Start Free Symptom Quiz
                 </Button>

@@ -392,7 +392,7 @@ export default function EmergencyPageTemplate({ data }: { data: EmergencyPageDat
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {data.relatedEmergencyPages.map((page, idx) => (
-              <Link key={idx} href={`/dental-emergencies/${page.slug}`}>
+              <Link key={idx} href={`/dental-emergencies/${page.slug}/`}>
                 <motion.div
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -411,25 +411,25 @@ export default function EmergencyPageTemplate({ data }: { data: EmergencyPageDat
           </div>
           <div className="flex flex-wrap gap-3 mt-6">
             {data.relatedCostPage && (
-              <Link href={`/dental-costs/${data.relatedCostPage.slug}`}>
+              <Link href={`/dental-costs/${data.relatedCostPage.slug}/`}>
                 <span className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-sm">
                   {data.relatedCostPage.name} <ArrowRight className="w-3 h-3" />
                 </span>
               </Link>
             )}
             {data.relatedTreatmentPage && (
-              <Link href={`/treatments/${data.relatedTreatmentPage.slug}`}>
+              <Link href={`/treatments/${data.relatedTreatmentPage.slug}/`}>
                 <span className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-sm">
                   {data.relatedTreatmentPage.name} <ArrowRight className="w-3 h-3" />
                 </span>
               </Link>
             )}
-            <Link href="/dental-emergencies">
+            <Link href="/dental-emergencies/">
               <span className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-sm">
                 All Emergencies <ArrowRight className="w-3 h-3" />
               </span>
             </Link>
-            <Link href="/symptom-quiz">
+            <Link href="/symptom-quiz/">
               <span className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-stone-200 text-stone-700 hover:border-primary/30 transition-colors cursor-pointer text-sm">
                 Free Symptom Checker <ArrowRight className="w-3 h-3" />
               </span>
@@ -449,12 +449,12 @@ export default function EmergencyPageTemplate({ data }: { data: EmergencyPageDat
               Seek professional care for severe pain, swelling, uncontrolled bleeding, trauma, fever, or trouble breathing or swallowing. DentaSmart provides education, not emergency diagnosis or triage.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/download">
+              <Link href="/download/">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 w-full sm:w-auto">
                   Download the App
                 </Button>
               </Link>
-              <Link href="/symptom-quiz">
+              <Link href="/symptom-quiz/">
                 <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
                   Try Free Symptom Check
                 </Button>

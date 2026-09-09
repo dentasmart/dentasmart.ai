@@ -122,18 +122,18 @@ const faqs = [
 ];
 
 const internalLinks = [
-  { label: "Toothache", href: "/conditions/toothache" },
-  { label: "Bleeding Gums", href: "/symptoms/bleeding-gums" },
-  { label: "Tooth Sensitivity", href: "/symptoms/tooth-sensitivity" },
-  { label: "Gum Recession", href: "/oral-health-hub/gum-recession" },
-  { label: "Pain When Biting", href: "/symptoms/tooth-pain-when-biting" },
-  { label: "Bad Breath", href: "/symptoms/bad-breath" },
-  { label: "Cracked Tooth", href: "/oral-health-hub/cracked-tooth-symptoms" },
-  { label: "Swollen Gums", href: "/oral-health-hub/swollen-gums" },
-  { label: "Wisdom Tooth Pain", href: "/conditions/wisdom-teeth-pain" },
-  { label: "Cavity Symptoms", href: "/oral-health-hub/cavity-symptoms" },
-  { label: "Jaw Pain", href: "/symptoms/jaw-pain" },
-  { label: "Dental Abscess", href: "/oral-health-hub/tooth-abscess-symptoms" },
+  { label: "Toothache", href: "/conditions/toothache/" },
+  { label: "Bleeding Gums", href: "/symptoms/bleeding-gums/" },
+  { label: "Tooth Sensitivity", href: "/symptoms/tooth-sensitivity/" },
+  { label: "Gum Recession", href: "/oral-health-hub/gum-recession/" },
+  { label: "Pain When Biting", href: "/symptoms/tooth-pain-when-biting/" },
+  { label: "Bad Breath", href: "/symptoms/bad-breath/" },
+  { label: "Cracked Tooth", href: "/oral-health-hub/cracked-tooth-symptoms/" },
+  { label: "Swollen Gums", href: "/oral-health-hub/swollen-gums/" },
+  { label: "Wisdom Tooth Pain", href: "/conditions/wisdom-teeth-pain/" },
+  { label: "Cavity Symptoms", href: "/oral-health-hub/cavity-symptoms/" },
+  { label: "Jaw Pain", href: "/symptoms/jaw-pain/" },
+  { label: "Dental Abscess", href: "/oral-health-hub/tooth-abscess-symptoms/" },
 ];
 
 // FAQPage JSON-LD structured data
@@ -226,7 +226,7 @@ export default function InstantScan() {
               </div>
 
               <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-6 text-lg font-medium cursor-pointer shadow-xl">
-                <Link href="/pricing" onClick={() => trackEvent("cta_get_score_click", { source: "instant_scan_page" })}>
+                <Link href="/pricing/" onClick={() => trackEvent("cta_get_score_click", { source: "instant_scan_page" })}>
                   <Camera className="w-5 h-5 mr-2" />
                   Compare DentaSmart Services
                 </Link>
@@ -410,7 +410,7 @@ export default function InstantScan() {
             Free Quick Check is unlimited. Full Quick Check, Treatment Plan Review, and Complete Care are paid services with prices shown before purchase.
           </p>
           <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer">
-            <Link href="/pricing" onClick={() => trackEvent("cta_get_score_click", { source: "instant_scan_bottom" })}>
+            <Link href="/pricing/" onClick={() => trackEvent("cta_get_score_click", { source: "instant_scan_bottom" })}>
               Compare Services
               <ArrowRight className="w-5 h-5 ml-2" />
             </Link>

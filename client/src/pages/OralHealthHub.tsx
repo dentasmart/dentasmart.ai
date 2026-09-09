@@ -272,28 +272,28 @@ export default function OralHealthHub() {
                 emoji: "🦷",
                 title: "Something hurts?",
                 desc: "Take the free symptom quiz",
-                href: "/symptom-quiz",
+                href: "/symptom-quiz/",
                 color: "bg-red-50 border-red-100 hover:border-red-200",
               },
               {
                 emoji: "📷",
                 title: "Check your teeth",
                 desc: "Compare photo and X-ray check options",
-                href: "/pricing#quick-check",
+                href: "/pricing/#quick-check",
                 color: "bg-blue-50 border-blue-100 hover:border-blue-200",
               },
               {
                 emoji: "\uD83D\uDCB0",
                 title: "Treatment costs",
                 desc: "Know what to expect before you go",
-                href: "/dental-costs",
+                href: "/dental-costs/",
                 color: "bg-amber-50 border-amber-100 hover:border-amber-200",
               },
               {
                 emoji: "🤔",
                 title: "Second opinion?",
                 desc: "Review questions and decision support",
-                href: "/oral-health-hub/second-opinion",
+                href: "/oral-health-hub/second-opinion/",
                 color: "bg-green-50 border-green-100 hover:border-green-200",
               },
             ].map((path) => (
@@ -355,7 +355,7 @@ export default function OralHealthHub() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
                 >
-                  <Link href={`/oral-health-hub/${article.slug}`}>
+                  <Link href={`/oral-health-hub/${article.slug}/`}>
                     <Card className="h-full hover:shadow-xl transition-all duration-300 border-stone-200 bg-white group cursor-pointer overflow-hidden flex flex-col">
                       <CardHeader className="pb-4">
                         <div className="flex justify-between items-start mb-4">

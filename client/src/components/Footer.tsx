@@ -53,17 +53,17 @@ export default function Footer() {
               <p className="font-semibold text-black mb-5 tracking-wide text-base">Product</p>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/how-it-works" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/how-it-works/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     How It Works
                   </Link>
                 </li>
                 <li>
-                  <Link href="/features" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/features/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Features
                   </Link>
                 </li>
                 <li>
-                  <Link href="/pricing" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/pricing/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Pricing
                   </Link>
                 </li>
@@ -80,17 +80,17 @@ export default function Footer() {
               <p className="font-semibold text-black mb-5 tracking-wide text-base">Company</p>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/team" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/team/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Team
                   </Link>
                 </li>
                 <li>
-                  <Link href="/employers" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/employers/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     For Employers
                   </Link>
                 </li>
                 <li>
-                  <Link href="/oral-health-hub" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/oral-health-hub/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Blogs
                   </Link>
                 </li>
@@ -107,32 +107,32 @@ export default function Footer() {
               <p className="font-semibold text-black mb-5 tracking-wide text-base">Dental Costs</p>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/dental-costs" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/dental-costs/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Cost Guide Hub
                   </Link>
                 </li>
                 <li>
-                  <Link href="/dental-costs/root-canal-cost" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/dental-costs/root-canal-cost/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Root Canal Cost
                   </Link>
                 </li>
                 <li>
-                  <Link href="/dental-costs/dental-implant-cost" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/dental-costs/dental-implant-cost/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Dental Implant Cost
                   </Link>
                 </li>
                 <li>
-                  <Link href="/dental-costs/braces-cost" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/dental-costs/braces-cost/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Braces Cost
                   </Link>
                 </li>
                 <li>
-                  <Link href="/dental-costs/dental-crown-cost" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/dental-costs/dental-crown-cost/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Dental Crown Cost
                   </Link>
                 </li>
                 <li>
-                  <Link href="/dental-costs/dentures-cost" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/dental-costs/dentures-cost/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Dentures Cost
                   </Link>
                 </li>
@@ -144,17 +144,17 @@ export default function Footer() {
               <p className="font-semibold text-black mb-5 tracking-wide text-base">Comparisons</p>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/compare/dentasmart-vs-chatgpt-dental" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/compare/dentasmart-vs-chatgpt-dental/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     DentaSmart vs ChatGPT
                   </Link>
                 </li>
                 <li>
-                  <Link href="/compare/dentasmart-vs-teledentistry" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/compare/dentasmart-vs-teledentistry/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     DentaSmart vs Teledentistry
                   </Link>
                 </li>
                 <li>
-                  <Link href="/compare/dentasmart-vs-dental-insurance" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/compare/dentasmart-vs-dental-insurance/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     DentaSmart vs Insurance
                   </Link>
                 </li>
@@ -166,42 +166,42 @@ export default function Footer() {
               <p className="font-semibold text-black mb-5 tracking-wide text-base">Guides</p>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/oral-health-hub/conditions" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/oral-health-hub/conditions/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Conditions Guide
                   </Link>
                 </li>
                 <li>
-                  <Link href="/oral-health-hub/symptoms" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/oral-health-hub/symptoms/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Symptoms Guide
                   </Link>
                 </li>
                 <li>
-                  <Link href="/guides" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/guides/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Oral Health Guides
                   </Link>
                 </li>
                 <li>
-                  <Link href="/treatments" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/treatments/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Treatment Guides
                   </Link>
                 </li>
                 <li>
-                  <Link href="/comparisons" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/comparisons/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Comparison Guides
                   </Link>
                 </li>
                 <li>
-                  <Link href="/life-stages" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/life-stages/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Life Stages
                   </Link>
                 </li>
                 <li>
-                  <Link href="/dental-emergencies" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/dental-emergencies/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Dental Emergencies
                   </Link>
                 </li>
                 <li>
-                  <Link href="/lifestyle" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/lifestyle/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Lifestyle &amp; Oral Health
                   </Link>
                 </li>
@@ -213,57 +213,57 @@ export default function Footer() {
               <p className="font-semibold text-black mb-5 tracking-wide text-base">Help &amp; Legal</p>
               <ul className="space-y-3">
                 <li>
-                  <Link href="/faqs" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/faqs/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     FAQs
                   </Link>
                 </li>
                 <li>
-                  <Link href="/answers" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/answers/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Dental Answers
                   </Link>
                 </li>
                 <li>
-                  <Link href="/photo-guide" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/photo-guide/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Photo Guide
                   </Link>
                 </li>
                 <li>
-                  <Link href="/find-a-dentist" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/find-a-dentist/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Find a Dentist
                   </Link>
                 </li>
                 <li>
-                  <Link href="/account-deletion" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/account-deletion/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Delete Account
                   </Link>
                 </li>
                 <li>
-                  <Link href="/privacy-policy" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/privacy-policy/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link href="/terms-of-service" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/terms-of-service/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Terms of Service
                   </Link>
                 </li>
                 <li>
-                  <Link href="/editorial-policy" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/editorial-policy/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Editorial Policy
                   </Link>
                 </li>
                 <li>
-                  <Link href="/corrections-policy" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/corrections-policy/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Corrections Policy
                   </Link>
                 </li>
                 <li>
-                  <Link href="/ai-use-disclosure" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/ai-use-disclosure/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     AI Use Disclosure
                   </Link>
                 </li>
                 <li>
-                  <Link href="/product-facts" className="text-black hover:text-primary transition-colors font-light text-sm">
+                  <Link href="/product-facts/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Product Facts
                   </Link>
                 </li>

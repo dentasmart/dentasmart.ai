@@ -261,7 +261,7 @@ export default function Employers() {
             >
               Book a Demo
             </Button>
-            <Link href="/team" className="inline-flex min-h-12 items-center px-4 font-medium text-white underline underline-offset-4">
+            <Link href="/team/" className="inline-flex min-h-12 items-center px-4 font-medium text-white underline underline-offset-4">
               Meet the Team
             </Link>
           </div>
