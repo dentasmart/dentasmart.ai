@@ -58,6 +58,14 @@ export function createNotFoundDetectionMiddleware(
   };
 }
 
+/**
+ * Redirect legacy app-entry URLs to the current download landing page without
+ * matching unrelated paths such as /application.
+ */
+export function getAppDownloadRedirectTarget(path: string): string | null {
+  return path === "/app" || path.startsWith("/app/") ? "/download/" : null;
+}
+
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
     const server = net.createServer();
@@ -171,6 +179,10 @@ async function startServer() {
     }
 
     const path = req.path;
+    const appDownloadTarget = getAppDownloadRedirectTarget(path);
+    if (appDownloadTarget) {
+      return res.redirect(301, appDownloadTarget);
+    }
     const pathNoSlash = path.endsWith('/') && path.length > 1
       ? path.slice(0, -1)
       : path;
