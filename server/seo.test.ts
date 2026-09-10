@@ -58,6 +58,8 @@ describe("SEO Routes", () => {
         expect(res.text).not.toContain("https://dentasmart.ai/oral-health-hub/best-ai-dental-apps/");
         if (endpoint === "/llms-full.txt") {
           expect(res.text).toContain("https://dentasmart.ai/oral-health-hub/top-10-best-ai-dental-apps/");
+          expect(res.text).toContain("https://dentasmart.ai/compare/dentasmart-vs-dental-insurance/");
+          expect(res.text).not.toContain("https://dentasmart.ai/oral-health-hub/dentasmart-vs-dental-insurance/");
         }
         expect(res.text).toContain("https://www.instagram.com/dentasmart");
       }

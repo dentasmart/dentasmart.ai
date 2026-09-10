@@ -174,6 +174,15 @@ describe("resolveMetaTags", () => {
     expect(meta!.title).toContain("Pricing");
   });
 
+  it("keeps the primary insurance comparison metadata neutral and self-canonical", async () => {
+    const meta = await resolveMetaTags("/compare/dentasmart-vs-dental-insurance/");
+    expect(meta).toMatchObject({
+      title: "DentaSmart vs Dental Insurance | Different Purposes",
+      description: "Compare DentaSmart's educational oral health tools with dental insurance. Learn what each may do, what neither replaces, and questions to review.",
+      canonical: "https://dentasmart.ai/compare/dentasmart-vs-dental-insurance/",
+    });
+  });
+
   it("returns public, self-canonical metadata for the Phase 6 governance resources", async () => {
     const expected = [
       ["/editorial-policy", "Editorial Policy"],

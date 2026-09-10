@@ -216,9 +216,9 @@ const staticMeta: Record<string, MetaInfo> = {
       "Compare DentaSmart's educational tools with virtual dental visits by clinician access, records, services, pricing, and professional-care boundaries.",
   },
   "/compare/dentasmart-vs-dental-insurance": {
-    title: "DentaSmart vs Dental Insurance | What's Right for You?",
+    title: "DentaSmart vs Dental Insurance | Different Purposes",
     description:
-      "Compare DentaSmart's educational tools with dental insurance coverage. DentaSmart does not provide insurance or replace dental benefits.",
+      "Compare DentaSmart's educational oral health tools with dental insurance. Learn what each may do, what neither replaces, and questions to review.",
   },
 
   // ─── Conditions pages ──────────────────────────────────────────────

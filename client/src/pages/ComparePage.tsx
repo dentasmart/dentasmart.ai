@@ -9,6 +9,13 @@ import { CheckCircle, XCircle, ArrowRight } from "lucide-react";
 import { useEffect } from "react";
 import { Link, useRoute } from "wouter";
 
+interface ComparisonRow {
+  feature: string;
+  dentasmart: string;
+  competitor: string;
+  dentasmartWins?: boolean;
+}
+
 interface CompareData {
   title: string;
   metaTitle: string;
@@ -18,7 +25,7 @@ interface CompareData {
   competitor: string;
   competitorDesc: string;
   dentasmartDesc: string;
-  rows: { feature: string; dentasmart: string; competitor: string; dentasmartWins: boolean }[];
+  rows: ComparisonRow[];
   verdict: string;
 }
 
@@ -65,21 +72,20 @@ const compareData: Record<string, CompareData> = {
   },
   "dentasmart-vs-dental-insurance": {
     title: "DentaSmart vs Dental Insurance",
-    metaTitle: "DentaSmart vs Dental Insurance - Do You Need Both?",
-    metaDescription: "Compare DentaSmart's educational oral health tools with dental insurance. They serve different purposes and DentaSmart is not insurance.",
+    metaTitle: "DentaSmart vs Dental Insurance | Different Purposes",
+    metaDescription: "Compare DentaSmart's educational oral health tools with dental insurance. Learn what each may do, what neither replaces, and questions to review.",
     heroHeading: "DentaSmart vs Dental Insurance",
-    heroSubheading: "Dental insurance and DentaSmart serve different purposes. Review both before deciding what fits your needs.",
+    heroSubheading: "DentaSmart and dental insurance serve different purposes. A dental plan may help pay for eligible services under its own terms. DentaSmart provides educational oral-health tools and does not provide insurance benefits. Neither replaces professional dental care, and neither is a universal replacement for the other.",
     competitor: "Dental Insurance",
-    competitorDesc: "Traditional dental insurance that covers a portion of dental procedures after deductibles and waiting periods.",
+    competitorDesc: "Dental insurance may help pay for eligible dental services according to plan terms. Coverage features and cost-sharing can vary.",
     dentasmartDesc: "Educational oral health tools that help organize supported records and treatment questions. DentaSmart is not insurance and does not diagnose conditions.",
     rows: [
-      { feature: "Cost", dentasmart: `${pricing.completeCareIndividual.priceFormatted}/year`, competitor: "Varies by plan and coverage.", dentasmartWins: true },
-      { feature: "Waiting period", dentasmart: "Not an insurance benefit", competitor: "Verify current plan terms", dentasmartWins: true },
-      { feature: "Covers dental procedures", dentasmart: "No, monitoring tool", competitor: "Yes, partial coverage", dentasmartWins: false },
-      { feature: "Educational monitoring", dentasmart: "Organizes supported records over time", competitor: "Coverage does not replace examinations", dentasmartWins: true },
-      { feature: "Cost context", dentasmart: "Educational ranges are not provider quotes", competitor: "Review current benefit schedules", dentasmartWins: true },
-      { feature: "Available without employer", dentasmart: "Yes, direct to consumer", competitor: "May be available through employers, individual plans, or Marketplace options.", dentasmartWins: true },
-      { feature: "Professional-care questions", dentasmart: "Helps organize questions; does not recommend treatment", competitor: "Network rules vary by plan", dentasmartWins: true },
+      { feature: "Purpose", dentasmart: "Educational oral-health tools for supported information and questions", competitor: "May help pay for eligible dental services under plan terms" },
+      { feature: "Insurance coverage", dentasmart: "No. DentaSmart is not insurance.", competitor: "Benefits and covered services depend on the plan" },
+      { feature: "Dental claims", dentasmart: "Does not pay dental claims", competitor: "Plan payment depends on eligible services and plan terms" },
+                { feature: "Professional care", dentasmart: "Does not diagnose, prescribe treatment, or replace professional care", competitor: "Plan coverage does not replace professional diagnosis or treatment" },
+      { feature: "Availability", dentasmart: "Services are available directly to consumers", competitor: "May be available through employers, individual plans, or Marketplace options." },
+      { feature: "What to review", dentasmart: "Service scope, supported information, and what the service does not provide", competitor: "Premium, deductible, covered services, network rules, waiting periods, and out-of-pocket terms, if applicable" },
     ],
     verdict: "DentaSmart is not dental insurance and does not replace professional care. Review current insurance terms separately and use DentaSmart for educational organization of supported information.",
   },
@@ -89,6 +95,7 @@ export default function ComparePage() {
   const [, params] = useRoute("/compare/:slug");
   const slug = params?.slug || "";
   const data = slug ? compareData[slug] : null;
+  const isInsuranceComparison = slug === "dentasmart-vs-dental-insurance";
 
   useEffect(() => {
     trackEvent("compare_page_view", { slug: slug || "" });
@@ -119,11 +126,11 @@ export default function ComparePage() {
       <Navigation />
 
       {/* Hero */}
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden">
+      <section className={`relative flex items-center overflow-hidden ${isInsuranceComparison ? "min-h-[52vh]" : "min-h-[70vh]"}`}>
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-white to-primary/10" />
         </div>
-        <div className="container relative z-10 px-4 mx-auto max-w-5xl pt-40 md:pt-32 text-center">
+        <div className={`container relative z-10 px-4 mx-auto max-w-5xl text-center ${isInsuranceComparison ? "py-20 md:py-24" : "pt-40 md:pt-32"}`}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -139,7 +146,127 @@ export default function ComparePage() {
         </div>
       </section>
 
+      {isInsuranceComparison && (
+        <>
+          <section className="py-16 bg-white">
+            <div className="container px-4 mx-auto max-w-5xl">
+              <div className="grid gap-10 md:grid-cols-2">
+                <div>
+                  <h2 className="text-3xl font-medium text-black mb-4">What dental insurance may do</h2>
+                  <p className="text-lg text-stone-600 font-light leading-relaxed">
+                    Depending on the plan, dental insurance may help pay for eligible services. When you compare a plan, look at its premium, deductible, copayments or coinsurance, covered services, provider-network rules, waiting periods, annual maximum, and out-of-pocket terms, if they apply.
+                  </p>
+                </div>
+                <div>
+                  <h2 className="text-3xl font-medium text-black mb-4">What DentaSmart does</h2>
+                  <p className="text-lg text-stone-600 font-light leading-relaxed">
+                    DentaSmart offers Free Quick Check, Full Quick Check, Treatment Plan Review, and Complete Care. Treatment Plan Review helps you understand a dentist&apos;s recommendation. Complete Care Individual is {pricing.completeCareIndividual.priceFormatted}/year. DentaSmart is not insurance, does not pay dental claims, diagnose conditions, prescribe treatment, or replace professional care.
+                  </p>
+                  <Link href="/product-facts/" className="inline-flex mt-4 text-primary font-medium hover:underline">
+                    See DentaSmart product facts
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="py-16 bg-stone-50">
+            <div className="container px-4 mx-auto max-w-5xl">
+              <h2 className="text-3xl font-medium text-black mb-8">Key differences</h2>
+              <div className="overflow-x-auto rounded-2xl border border-stone-200 bg-white" tabIndex={0} aria-label="Comparison table: DentaSmart and dental insurance">
+                <table className="w-full min-w-[760px] border-collapse">
+                  <thead>
+                    <tr>
+                      <th scope="col" className="text-left p-4 border-b-2 border-stone-200 text-stone-600 font-medium">Comparison point</th>
+                      <th scope="col" className="text-left p-4 border-b-2 border-primary bg-primary/5 text-primary font-medium">DentaSmart</th>
+                      <th scope="col" className="text-left p-4 border-b-2 border-stone-200 text-stone-600 font-medium">Dental insurance</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data.rows.map((row, idx) => (
+                      <tr key={idx} className="border-b border-stone-100 last:border-b-0">
+                        <th scope="row" className="p-4 text-left align-top font-medium text-black">{row.feature}</th>
+                        <td className="p-4 align-top bg-primary/5 text-stone-700">{row.dentasmart}</td>
+                        <td className="p-4 align-top text-stone-700">{row.competitor}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section className="py-16 bg-white">
+            <div className="container px-4 mx-auto max-w-5xl">
+              <div className="grid gap-10 md:grid-cols-2">
+                <div>
+                  <h2 className="text-3xl font-medium text-black mb-4">What neither replaces</h2>
+                  <p className="text-lg text-stone-600 font-light leading-relaxed">
+                    Dental insurance may help with eligible costs, but insurance itself does not replace diagnosis or treatment from a dental professional. DentaSmart also does not replace professional dental care.
+                  </p>
+                </div>
+                <div>
+                  <h2 className="text-3xl font-medium text-black mb-4">Can someone use both?</h2>
+                  <p className="text-lg text-stone-600 font-light leading-relaxed">
+                    Some people may use DentaSmart and dental coverage for different needs. Whether coverage is useful depends on your plan, expected needs, budget, and circumstances. DentaSmart does not substitute for coverage or professional care.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="py-16 bg-stone-50">
+            <div className="container px-4 mx-auto max-w-5xl">
+              <h2 className="text-3xl font-medium text-black mb-6">Questions to compare in your dental plan</h2>
+              <div className="grid gap-8 md:grid-cols-2">
+                <div className="rounded-2xl bg-white p-7 border border-stone-200">
+                  <h3 className="text-xl font-medium text-black mb-4">Questions about a dental plan</h3>
+                  <ul className="space-y-3 text-stone-700 leading-relaxed list-disc pl-5">
+                    <li>What is the premium and deductible?</li>
+                    <li>Which services are covered, and what may you pay out of pocket?</li>
+                    <li>Are there provider-network rules, an annual maximum, or waiting periods?</li>
+                  </ul>
+                </div>
+                <div className="rounded-2xl bg-white p-7 border border-stone-200">
+                  <h3 className="text-xl font-medium text-black mb-4">Questions about DentaSmart</h3>
+                  <ul className="space-y-3 text-stone-700 leading-relaxed list-disc pl-5">
+                    <li>Which DentaSmart service fits the information you want to understand?</li>
+                    <li>What information, images, or records does that service use?</li>
+                    <li>What does the service not provide?</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="py-14 bg-white">
+            <div className="container px-4 mx-auto max-w-5xl">
+              <div className="rounded-2xl border border-stone-200 bg-stone-50 p-8">
+                <h2 className="text-2xl font-medium text-black mb-3">Sources for dental plan information</h2>
+                <p className="text-stone-600 font-light leading-relaxed">
+                  Dental plan terms can vary. Review current plan documents before enrolling or using a plan. This page uses consumer guidance from{" "}
+                  <a className="text-primary font-medium hover:underline" href="https://www.healthcare.gov/coverage/dental-coverage/">HealthCare.gov: Dental coverage in the Marketplace</a>{" "}
+                  and the{" "}
+                  <a className="text-primary font-medium hover:underline" href="https://www.ada.org/resources/practice/dental-insurance/typical-dental-plan-benefits-and-limitations">American Dental Association: Typical Dental Plan Benefits and Limitations</a>, plus{" "}
+                  <a className="text-primary font-medium hover:underline" href="https://www.bls.gov/news.release/ebs2.nr0.htm">U.S. Bureau of Labor Statistics: Employee Benefits in the United States</a>{" "}
+                  for employer dental-benefit availability.
+                </p>
+              </div>
+              <div className="text-center mt-10">
+                <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer">
+                  <Link href="/pricing/" onClick={() => trackEvent("cta_get_score_click", { source: `compare_${slug}` })}>
+                    View DentaSmart services and pricing
+                    <ArrowRight className="w-5 h-5 ml-2" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </section>
+        </>
+      )}
+
       {/* Comparison Table */}
+      {!isInsuranceComparison && (
       <section className="py-16 bg-white">
         <div className="container px-4 mx-auto max-w-5xl">
           <div className="overflow-x-auto">
@@ -197,6 +324,7 @@ export default function ComparePage() {
           </div>
         </div>
       </section>
+      )}
 
       <Footer />
     </div>

@@ -489,7 +489,7 @@ function buildLlmsFullTxt(): string {
     "### Comparison Pages",
     "DentaSmart vs ChatGPT for Dental Advice (https://dentasmart.ai/oral-health-hub/dentasmart-vs-chatgpt-dental-advice)",
     "DentaSmart vs Teledentistry (https://dentasmart.ai/oral-health-hub/dentasmart-vs-teledentistry)",
-    "DentaSmart vs Dental Insurance (https://dentasmart.ai/oral-health-hub/dentasmart-vs-dental-insurance)",
+    "DentaSmart vs Dental Insurance (https://dentasmart.ai/compare/dentasmart-vs-dental-insurance/)",
     "DentaSmart vs Traditional Second Opinion (https://dentasmart.ai/oral-health-hub/dentasmart-vs-traditional-second-opinion)",
     "DentaSmart vs Dental Discount Plans (https://dentasmart.ai/oral-health-hub/dentasmart-vs-dental-discount-plans)",
     "DentaSmart vs Dental Savings Plans (https://dentasmart.ai/oral-health-hub/dentasmart-vs-dental-savings-plans)",
