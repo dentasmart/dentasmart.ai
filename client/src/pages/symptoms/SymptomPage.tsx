@@ -14,6 +14,7 @@ import { aeoSymptoms } from "@/data/aeoContent";
 import { breadcrumbSchema, medicalWebPageSchema, faqPageSchema } from "@/lib/schema";
 import ContentGovernanceMeta from "@/components/ContentGovernanceMeta";
 import QuickAnswerBlock from "@/components/QuickAnswerBlock";
+import ExternalSources from "@/components/ExternalSources";
 import type { ContentGovernance } from "@shared/contentGovernance";
 import { trackSymptomProfessionalCareClick } from "@/lib/analytics";
 
@@ -38,25 +39,6 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 }
 
 const symptomNotes: Record<string, ReactNode> = {
-  "tooth-pain-when-biting": (
-    <>
-      If you are also dealing with{" "}
-      <Link href="/oral-health-hub/is-your-wisdom-tooth-pain-normal/" className="text-primary underline hover:text-primary/80">
-        wisdom tooth pain
-      </Link>
-      , it can sometimes mimic bite pain and make it harder to pinpoint the source. A deep
-      cavity that has been ignored can also lead to a full infection. Understanding what a{" "}
-      <Link href="/oral-health-hub/is-getting-a-tooth-filling-really-that-big-of-a-deal/" className="text-primary underline hover:text-primary/80">
-        tooth filling
-      </Link>{" "}
-      involves early on can help you avoid that outcome. In severe cases, untreated decay
-      is one of the main causes of{" "}
-      <Link href="/oral-health-hub/what-causes-rotten-teeth/" className="text-primary underline hover:text-primary/80">
-        rotten teeth
-      </Link>
-      , which are much harder and more expensive to fix.
-    </>
-  ),
   "loose-tooth": (
     <>
       In children, loose teeth are normal. Adults sometimes worry about whether habits
@@ -139,7 +121,9 @@ export default function SymptomPage() {
       question: `What should I know about ${symptom.title}?`,
       answer: symptom.directAnswer,
       intendedAudience: "People seeking general oral health education",
+      sourceRefIds: symptom.sourceRefs?.map((source) => source.id),
     } : undefined,
+    sourceRefs: symptom.sourceRefs,
     urgentCare: {
       title: "When to seek urgent dental care",
       actions: symptom.whenToSeeDentist,
@@ -284,6 +268,9 @@ export default function SymptomPage() {
             {note && (
               <p className="text-stone-700 font-light leading-relaxed mt-4">{note}</p>
             )}
+            {symptom.sourceRefs && (
+              <ExternalSources governedSources={symptom.sourceRefs} />
+            )}
           </div>
         </div>
       </section>
@@ -335,7 +322,10 @@ export default function SymptomPage() {
             variant="interactive"
             trackingLabel="symptom_page_mid_cta"
           />
-          <NextStepsBox forceContentType="symptom" />
+          <NextStepsBox
+            forceContentType="symptom"
+            urgentCareText={symptom.nextStepsUrgencyText}
+          />
         </div>
       </section>
 

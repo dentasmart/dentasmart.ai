@@ -183,6 +183,35 @@ describe("resolveMetaTags", () => {
     });
   });
 
+  it("keeps the three Phase 9 medical-page metadata entries aligned with their qualified education pages", async () => {
+    const expected = [
+      {
+        path: "/symptoms/tooth-pain-when-biting/",
+        title: "Tooth Pain When Biting: What to Notice | DentaSmart",
+        description: "Learn what to note about tooth pain when biting, possible reasons a dentist may consider, and when to seek timely dental care.",
+      },
+      {
+        path: "/symptoms/tongue-pain/",
+        title: "Tongue Pain: What to Notice and When to Get Care | DentaSmart",
+        description: "Learn what to note about tongue pain, visible and non-visible symptoms, and when to contact a dentist or doctor.",
+      },
+      {
+        path: "/treatments/root-canal-procedure/",
+        title: "Root Canal Procedure: Steps, Recovery, and Questions | DentaSmart",
+        description: "Learn how dentists may clean and seal the inside of a tooth during a root canal, what restoration may follow, and when to contact the treating clinician.",
+      },
+    ] as const;
+
+    for (const item of expected) {
+      const meta = await resolveMetaTags(item.path);
+      expect(meta).toMatchObject({
+        title: item.title,
+        description: item.description,
+        canonical: `https://dentasmart.ai${item.path}`,
+      });
+    }
+  });
+
   it("returns public, self-canonical metadata for the Phase 6 governance resources", async () => {
     const expected = [
       ["/editorial-policy", "Editorial Policy"],

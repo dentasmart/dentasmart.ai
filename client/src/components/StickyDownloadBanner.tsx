@@ -29,7 +29,16 @@ export default function StickyDownloadBanner() {
   const isExcluded = excludedPaths.some((p) => location.startsWith(p));
 
   const context = getPageContext(location);
-  const isFreeQuiz = context.ctaAction === "symptom-quiz";
+  const normalizedPathname = location.split(/[?#]/, 1)[0];
+  const ctaContext = normalizedPathname === "/treatments/root-canal-procedure" || normalizedPathname === "/treatments/root-canal-procedure/"
+    ? {
+        ...context,
+        ctaHeadline: "Already have a treatment recommendation?",
+        ctaDescription: "Treatment Plan Review can help you organize an already-provided dentist recommendation and prepare questions. It does not determine whether a root canal is needed.",
+        ctaButtonText: "Review Your Treatment Plan",
+      }
+    : context;
+  const isFreeQuiz = ctaContext.ctaAction === "symptom-quiz";
 
   useEffect(() => {
     // Check if already dismissed this session
@@ -91,7 +100,7 @@ export default function StickyDownloadBanner() {
     trackEvent("sticky_cta_click", {
       source: location,
       content_type: context.contentType,
-      cta_text: context.ctaButtonText,
+      cta_text: ctaContext.ctaButtonText,
     });
 
   };
@@ -113,18 +122,18 @@ export default function StickyDownloadBanner() {
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-semibold text-stone-900 leading-tight truncate">
-                {context.ctaHeadline}
+                {ctaContext.ctaHeadline}
               </p>
               <p className="text-xs text-stone-500 leading-tight mt-0.5">
                 {isFreeQuiz ? "Free symptom quiz" : "Prices shown before purchase"}
               </p>
             </div>
             <Link
-              href={context.ctaLink}
+              href={ctaContext.ctaLink}
               onClick={handleClick}
               className="bg-action text-action-foreground text-sm font-semibold px-4 py-2.5 rounded-full hover:bg-action-hover transition-colors flex-shrink-0 cursor-pointer inline-flex min-h-11 items-center gap-1"
             >
-              {context.ctaButtonText.split(" ").slice(0, 2).join(" ")}
+              {ctaContext.ctaButtonText.split(" ").slice(0, 2).join(" ")}
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
             <button
@@ -159,10 +168,10 @@ export default function StickyDownloadBanner() {
 
           <div className="pr-6">
             <p className="text-base font-semibold text-stone-900 mb-1">
-              {context.ctaHeadline}
+              {ctaContext.ctaHeadline}
             </p>
             <p className="text-sm text-stone-500 leading-relaxed mb-3">
-              {context.ctaDescription}
+              {ctaContext.ctaDescription}
             </p>
           </div>
 
@@ -172,11 +181,11 @@ export default function StickyDownloadBanner() {
           </div>
 
           <Link
-            href={context.ctaLink}
+            href={ctaContext.ctaLink}
             onClick={handleClick}
             className="w-full bg-action text-action-foreground hover:bg-action-hover rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15 inline-flex min-h-11 items-center justify-center gap-1.5"
           >
-            {context.ctaButtonText}
+            {ctaContext.ctaButtonText}
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

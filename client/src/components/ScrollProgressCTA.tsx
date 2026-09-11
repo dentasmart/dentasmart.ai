@@ -26,6 +26,15 @@ export function ScrollProgressCTA() {
   const hasTrackedStrong = useRef(false);
 
   const context = getPageContext(location);
+  const normalizedPathname = location.split(/[?#]/, 1)[0];
+  const ctaContext = normalizedPathname === "/treatments/root-canal-procedure" || normalizedPathname === "/treatments/root-canal-procedure/"
+    ? {
+        ...context,
+        ctaHeadline: "Already have a treatment recommendation?",
+        ctaDescription: "Treatment Plan Review can help you organize an already-provided dentist recommendation and prepare questions. It does not determine whether a root canal is needed.",
+        ctaButtonText: "Review Your Treatment Plan",
+      }
+    : context;
 
   const excludedPaths = ["/admin", "/download", "/pricing", "/instant-scan", "/symptom-quiz", "/"];
   const isExcluded = excludedPaths.some((p) => location === p || (p !== "/" && location.startsWith(p)));
@@ -88,7 +97,7 @@ export function ScrollProgressCTA() {
 
   };
 
-  const isFreeTool = context.ctaAction === "symptom-quiz";
+  const isFreeTool = ctaContext.ctaAction === "symptom-quiz";
 
   return (
     <AnimatePresence mode="wait">
@@ -119,7 +128,7 @@ export function ScrollProgressCTA() {
                   Want to check your own teeth?
                 </p>
                 <Link
-                  href={context.ctaLink}
+                  href={ctaContext.ctaLink}
                   onClick={handleClick}
                   className="text-xs text-action font-medium hover:underline cursor-pointer inline-flex min-h-11 items-center gap-0.5 mt-0.5"
                 >
@@ -149,10 +158,10 @@ export function ScrollProgressCTA() {
               </div>
 
               <p className="text-base font-semibold text-stone-900 mb-1 pr-6">
-                {context.ctaHeadline}
+                {ctaContext.ctaHeadline}
               </p>
               <p className="text-sm text-stone-500 leading-relaxed mb-3">
-                {context.ctaDescription}
+                {ctaContext.ctaDescription}
               </p>
 
               <p className="mb-3 text-xs text-stone-500">
@@ -160,11 +169,11 @@ export function ScrollProgressCTA() {
               </p>
 
               <Link
-                href={context.ctaLink}
+                href={ctaContext.ctaLink}
                 onClick={handleClick}
                 className="w-full bg-action hover:bg-action-hover text-action-foreground rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15 inline-flex min-h-11 items-center justify-center gap-1.5"
               >
-                {context.ctaButtonText}
+                {ctaContext.ctaButtonText}
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

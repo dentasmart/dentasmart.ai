@@ -8,6 +8,8 @@ interface NextStepsBoxProps {
   forceContentType?: ContentType;
   /** Optional related article links */
   relatedLinks?: { title: string; href: string }[];
+  /** Optional page-specific symptom escalation language */
+  urgentCareText?: string;
 }
 
 /**
@@ -19,7 +21,7 @@ interface NextStepsBoxProps {
  * bottom. Instead, it gives the user a clear path forward based on what
  * they just read about.
  */
-export default function NextStepsBox({ forceContentType, relatedLinks }: NextStepsBoxProps) {
+export default function NextStepsBox({ forceContentType, relatedLinks, urgentCareText }: NextStepsBoxProps) {
   const [location] = useLocation();
   const context = getPageContext(location);
   const contentType = forceContentType || context.contentType;
@@ -42,7 +44,7 @@ export default function NextStepsBox({ forceContentType, relatedLinks }: NextSte
   };
 
   // Build contextual steps based on content type
-  const steps = getSteps(contentType);
+  const steps = getSteps(contentType, urgentCareText);
 
   return (
     <div className="my-12 rounded-2xl border border-stone-200 bg-stone-50 overflow-hidden">
@@ -109,7 +111,7 @@ interface Step {
   };
 }
 
-function getSteps(contentType: ContentType): Step[] {
+function getSteps(contentType: ContentType, urgentCareText?: string): Step[] {
   switch (contentType) {
     case "symptom":
       return [
@@ -121,7 +123,7 @@ function getSteps(contentType: ContentType): Step[] {
           text: "Use a photo to organize what you notice and prepare questions for a dental professional.",
         },
         {
-          text: "If symptoms are severe or worsening, see a dentist within 24-48 hours.",
+          text: urgentCareText || "If symptoms are severe or worsening, see a dentist within 24-48 hours.",
         },
       ];
     case "emergency":

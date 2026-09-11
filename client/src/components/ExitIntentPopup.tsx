@@ -10,7 +10,7 @@ import { getPageContext, type ContentType } from "@/lib/pageContext";
  * Each variation targets a different user mindset.
  */
 interface PopupVariation {
-  id: "symptom" | "cost" | "second-opinion";
+  id: "symptom" | "cost" | "second-opinion" | "root-canal-treatment-plan";
   icon: React.ReactNode;
   badge: string;
   headline: string;
@@ -63,13 +63,31 @@ const variations: PopupVariation[] = [
     action: "internal",
     link: "/pricing/#second-opinion",
   },
+  {
+    id: "root-canal-treatment-plan",
+    icon: <Shield className="w-7 h-7 text-primary" />,
+    badge: "Treatment Plan Review",
+    headline: "Already have a treatment recommendation?",
+    description:
+      "Upload a supported dentist treatment plan and relevant records for a plain-language review and questions to discuss with your dentist.",
+    supportingText: "$29.99 one-time",
+    ctaText: "Review Your Treatment Plan",
+    dismissText: "No thanks, I will decide another way",
+    action: "internal",
+    link: "/pricing/#second-opinion",
+  },
 ];
 
 /**
  * Select the most relevant popup variation based on the page content type.
  * Falls back to a rotation based on session count if no strong match.
  */
-function selectVariation(contentType: ContentType): PopupVariation {
+function selectVariation(contentType: ContentType, pathname: string): PopupVariation {
+  const normalizedPathname = pathname.split(/[?#]/, 1)[0];
+  if (normalizedPathname === "/treatments/root-canal-procedure" || normalizedPathname === "/treatments/root-canal-procedure/") {
+    return variations[3];
+  }
+
   // Direct content-type mapping
   switch (contentType) {
     case "symptom":
@@ -118,7 +136,7 @@ export default function ExitIntentPopup() {
   const isExcluded = excludedPaths.some((p) => location.startsWith(p));
 
   const context = getPageContext(location);
-  const variation = selectVariation(context.contentType);
+  const variation = selectVariation(context.contentType, location);
 
   const handleMouseLeave = useCallback(
     (e: MouseEvent) => {

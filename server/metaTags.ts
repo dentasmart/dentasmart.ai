@@ -325,9 +325,9 @@ const staticMeta: Record<string, MetaInfo> = {
       "Browse common dental symptoms like tooth pain, bleeding gums, jaw pain, and more. Learn what they mean and when to see a dentist.",
   },
   "/symptoms/tooth-pain-when-biting": {
-    title: "Tooth Pain When Biting | Causes & What to Do",
+    title: "Tooth Pain When Biting: What to Notice | DentaSmart",
     description:
-      "Got tooth pain when you bite or chew? It could be a few things. Here are the most common causes and what you should do next.",
+      "Learn what to note about tooth pain when biting, possible reasons a dentist may consider, and when to seek timely dental care.",
   },
 
   "/symptoms/bleeding-gums": {
@@ -391,9 +391,8 @@ const staticMeta: Record<string, MetaInfo> = {
       "Annoying canker sores got you down? Learn what causes canker sores and how to treat them fast. Get tips from DentaSmart for quick relief.",
   },
   "/symptoms/tongue-pain": {
-    title: "Tongue Pain | Common Causes & When to See a Dentist",
-    description:
-      "Experiencing tongue pain? Learn about the common causes of a sore tongue and find out when it's time to see a dentist for your tongue pain.",
+    title: "Tongue Pain: What to Notice and When to Get Care | DentaSmart",
+    description: "Learn what to note about tongue pain, visible and non-visible symptoms, and when to contact a dentist or doctor.",
   },
   "/symptoms/cheek-biting": {
     title: "Cheek Biting | Why It Happens & How to Stop",
@@ -708,9 +707,9 @@ const staticMeta: Record<string, MetaInfo> = {
       "Learn about common dental treatments including root canals, implants, crowns, and more. Understand what to expect, recovery time, and costs.",
   },
   "/treatments/root-canal-procedure": {
-    title: "Root Canal Procedure | Step-by-Step Guide & Recovery",
+    title: "Root Canal Procedure: Steps, Recovery, and Questions | DentaSmart",
     description:
-      "Learn exactly what happens during a root canal procedure, from start to finish. Understand recovery time, pain management, and aftercare.",
+      "Learn how dentists may clean and seal the inside of a tooth during a root canal, what restoration may follow, and when to contact the treating clinician.",
   },
   "/treatments/dental-implant-procedure": {
     title: "Dental Implant Procedure | Complete Guide & Timeline",

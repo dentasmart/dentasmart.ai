@@ -262,18 +262,18 @@ export const aeoConditions: Record<string, AEOBlock> = {
 export const aeoSymptoms: Record<string, AEOBlock> = {
   "tooth-pain-when-biting": {
     inOneSentence:
-      "Pain when biting down usually means a tooth is cracked, has a deep cavity, or the nerve inside is inflamed (pulpitis), and it should be checked by a dentist.",
+      "Tooth pain when biting can have several causes, including a crack, decay, a loose or damaged filling, or irritation around the root. An exam is needed to identify the cause.",
     whatToDoToday: [
-      "Avoid chewing on the painful side to prevent further damage.",
-      "Take ibuprofen to reduce inflammation and manage pain.",
-      "Schedule a dental exam to identify the exact cause before it worsens."
+      "Choose softer foods and avoid chewing on the painful side.",
+      "Do not keep biting on the tooth to test it.",
+      "Arrange a dental visit for pain that continues, gets worse, or returns often."
     ],
     dentistQuestions: [
-      "Is the pain from a crack, cavity, or nerve inflammation?",
-      "Do I need an X-ray to see what is happening below the surface?",
+      "What might be causing this pattern of bite pain?",
+      "Would an exam or X-ray help assess the tooth?",
       "Could this be related to a recent filling or dental work?",
-      "What treatment options do I have, and which do you recommend?",
-      "Is there a risk of losing this tooth if I wait?"
+      "What should I do while I wait for treatment, if any is needed?",
+      "What changes should prompt me to contact the office sooner?"
     ]
   },
   "bleeding-gums": {
@@ -750,18 +750,18 @@ export const aeoGuides: Record<string, AEOBlock> = {
     ]
 },
   "tongue-pain": {
-    inOneSentence: "Tongue pain is usually a temporary discomfort caused by a minor injury, sore, or irritation, but it can sometimes signal an underlying infection or nutritional issue.",
+    inOneSentence: "Tongue pain can follow a visible irritation, but burning, tingling, or soreness can also occur when the mouth looks normal. Persistent symptoms need professional assessment.",
     whatToDoToday: [
-      "Rinse your mouth with warm salt water to soothe the area.",
-      "Avoid spicy, acidic, or hard foods that could make the pain worse.",
-      "Gently brush your tongue and teeth to keep your mouth clean."
+      "Avoid foods, drinks, or products that clearly irritate the area.",
+      "Use gentle oral hygiene and avoid scrubbing a sore spot.",
+      "Note when the pain started, what it feels like, and whether you see a change."
     ],
     dentistQuestions: [
-      "What do you think is causing my tongue pain?",
-      "Is this something that will go away on its own?",
-      "Are there any specific mouthwashes or gels you recommend?",
-      "Could my diet or any of my habits be contributing to this?",
-      "When should I be concerned enough to come back for a follow-up?"
+      "What should you examine to understand this tongue pain?",
+      "Could dry mouth, medicines, or another health condition be relevant?",
+      "Does a visible change or lack of one change what you need to check?",
+      "What signs should prompt me to contact you sooner?",
+      "Should I also speak with my doctor?"
     ]
 },
   "cheek-biting": {

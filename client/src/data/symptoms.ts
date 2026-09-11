@@ -1,3 +1,5 @@
+import type { ContentSourceRef } from "@shared/contentGovernance";
+
 export interface SymptomData {
   slug: string;
   title: string;
@@ -20,6 +22,8 @@ export interface SymptomData {
   reviewedBy: string;
   reviewedByCredentials: string;
   lastReviewed: string;
+  sourceRefs?: ContentSourceRef[];
+  nextStepsUrgencyText?: string;
   ctaHeading?: string;
   ctaButton?: string;
   professionalCareCta?: {
@@ -31,64 +35,62 @@ export interface SymptomData {
 export const symptomsData: Record<string, SymptomData> = {
   "tooth-pain-when-biting": {
     slug: "tooth-pain-when-biting",
-    title: "Why Does My Tooth Hurt When I Bite Down?",
-    metaTitle: "Tooth Pain When Biting Down? Here's What It Could Be | DentaSmart",
+    title: "Tooth Pain When Biting: What to Notice and When to Get Care",
+    metaTitle: "Tooth Pain When Biting: What to Notice | DentaSmart",
     metaDescription:
-      "Ouch! Got tooth pain when you bite or chew? It could be a few things. Here are the most common causes and what you should do next.",
+      "Learn what to note about tooth pain when biting, possible reasons a dentist may consider, and when to seek timely dental care.",
     primaryKeyword: "tooth pain when biting",
-    secondaryKeywords: ["pain when chewing", "tooth hurts when I bite down", "cracked tooth pain", "sharp tooth pain biting"],
-    heroHeading: "That Sharp Pain When You Bite Down",
-    heroSubheading: "Yep, that's your tooth trying to tell you something isn't right. Let's figure out what's going on and what to do about it.",
+    secondaryKeywords: ["pain when chewing", "tooth hurts when I bite down", "pain on release", "sharp tooth pain biting"],
+    heroHeading: "Tooth Pain When Biting Down",
+    heroSubheading: "Pain while chewing can be hard to pin down. Here is what to notice and when to call a dentist.",
     directAnswer:
-      "Most of the time, pain when you bite down means you've got a cracked tooth, a bad filling, a deep cavity, or maybe even an infection (called an abscess). It hurts because the pressure from biting is hitting a weak spot. If it's just a little twinge now and then, it might not be a huge deal, but if it's a sharp pain every time, you should get it checked out.",
+      "Tooth pain when biting can have several causes. A dentist may look for a crack, decay, a loose or damaged filling, or inflammation around the root. The pattern of pain can help describe the problem, but it cannot confirm the cause.",
     detailedExplanation: [
-      "Healthy teeth shouldn't hurt. Period. So if you feel a sharp pain or a dull ache in one spot when you bite, something's up with the tooth or the gums around it. The pressure from chewing is basically squeezing a damaged part of your tooth, and it doesn't like that.",
-      "A cracked tooth is the usual suspect. These cracks can be so small you can't even see them, but when you bite, the crack opens up just enough to irritate the nerve inside. Ouch. The weird thing is, the pain can come and go, which makes it tricky to know exactly which tooth is the problem.",
-      "But it's not always a crack. It could also be a cavity that's gotten deep enough to tick off the nerve. Or maybe an old filling has decided to retire. It might be cracked, loose, or have tiny gaps where gunk can get in. Sometimes, it's an infection at the root of the tooth, which is no fun at all. And hey, sometimes it's just a new filling or crown that's a little too high and needs to be filed down.",
-      "So, what to do? If the pain is minor and doesn't happen often, you can wait and see for a couple of days. But if it's a sharp pain that shows up every time you bite, it's getting worse, or you see any swelling, it's time to call the dentist. Don't wait for it to get worse. You can even send a photo to DentaSmart to get a quick look first.",
+      "Pain can happen when pressure reaches a part of the tooth or the tissue around its root that is irritated. It may feel sharp, dull, or hard to locate. The same person may notice pain only with certain foods or at a particular point in the bite.",
+      "Note whether pain starts when you press down, when you release pressure, or both. Also note whether it began after an injury or recent dental work, whether hot or cold triggers it, and whether you can see a broken tooth, crown, or filling. These details can help a dentist evaluate the problem.",
+      "A cracked tooth can cause erratic pain while chewing, including pain when biting pressure is released. Decay, a loose filling, recent dental work, and inflammation or infection around a tooth can cause similar discomfort. Only an examination can sort out the cause.",
+      "Make a dental appointment for pain that continues, gets worse, or returns often. Avoid repeatedly biting on the tooth to test it. That can aggravate a painful area without telling you why it hurts.",
     ],
     possibleCauses: [
-      { title: "Cracked Tooth", description: "A tiny, often invisible crack in the tooth flexes when you bite, bugging the nerve inside.", urgency: "medium" },
-      { title: "Deep Cavity", description: "A cavity has gotten close to the tooth's nerve, and pressure makes it hurt.", urgency: "medium" },
-      { title: "Bad Filling", description: "Your filling is old, cracked, or loose, letting bacteria sneak in and cause trouble.", urgency: "medium" },
-      { title: "Dental Abscess", description: "This is an infection at the root of the tooth. Biting down puts pressure on it, causing pain.", urgency: "high" },
-      { title: "Uneven Bite", description: "A new filling or crown is a bit too high, so it takes all the pressure when you bite.", urgency: "low" },
-      { title: "Sore Ligament", description: "The little ligament that holds your tooth in place can get sore from grinding, a knock to the mouth, or an infection.", urgency: "medium" },
+      { title: "Cracked Tooth", description: "A crack can cause chewing pain, sometimes when you release biting pressure. A dentist needs to examine the tooth to confirm it.", urgency: "medium" },
+      { title: "Decay or Changes Inside a Tooth", description: "Decay and irritation inside a tooth can make it painful to bite. A dentist can check whether this may be involved.", urgency: "medium" },
+      { title: "Loose or Damaged Filling", description: "A filling, crown, or other restoration that is loose, damaged, or cracked can change how a tooth feels during chewing.", urgency: "medium" },
+      { title: "Recent Dental Work", description: "A new filling or crown can sometimes feel uneven when you bite and may need to be checked.", urgency: "low" },
+      { title: "Inflammation or Infection Around the Root", description: "Pain with pressure, swelling, or severe ongoing pain can need prompt dental evaluation.", urgency: "high" },
     ],
     selfCareSteps: [
-      "Try not to chew on the side that hurts until you see a dentist.",
-      "Ibuprofen can help with the pain and any swelling.",
-      "Rinse your mouth with warm salt water. Just mix half a teaspoon of salt in a cup of warm water.",
-      "Stay away from foods that are super hot, cold, or hard. They can make it worse.",
-      "Don't keep biting down on the tooth to see if it still hurts. You'll just make it angrier.",
-      "You can upload a photo to DentaSmart to get a first opinion.",
+      "Choose softer foods and avoid chewing on the painful side until a dentist can examine the tooth.",
+      "Avoid foods and drinks that reliably make the pain worse, such as very hot, cold, or hard items.",
+      "Keep brushing and cleaning between your teeth gently around the area.",
+      "Write down when the pain happens, including whether it occurs on pressure or release.",
+      "Do not keep biting on the tooth to test it. Repeated pressure can make the area more sore.",
     ],
     whenToSeeDentist: [
-      "It hurts every single time you bite down.",
-      "The pain is definitely getting worse.",
-      "You notice your cheek or gums are getting puffy or swollen.",
-      "You have a fever along with the tooth pain.",
-      "You can actually see a crack, a hole, or a dark spot on your tooth.",
-      "A chunk of your tooth or an old filling broke off.",
+      "The pain is severe, gets worse, or keeps returning when you bite.",
+      "You notice swelling in your gums, face, or jaw.",
+      "You have fever with tooth pain or swelling.",
+      "You have severe pain that does not get better with pain medicine.",
+      "Part of a tooth, crown, or filling breaks or falls out.",
+      "You have trouble breathing or swallowing.",
     ],
     keyTakeaways: [
-      "Pain when you bite isn't normal. It's a sign your tooth is probably cracked, has a cavity, or is infected.",
-      "A cracked tooth is the most common reason, and you often can't see the crack yourself.",
-      "While you wait for your dental appointment, just chew on the other side and take some ibuprofen.",
-      "DentaSmart can take a look at a photo or X-ray to give you an idea of what's going on.",
+      "Pain when biting can have more than one cause, so the pattern alone cannot identify the problem.",
+      "Pressure pain and pain on release are useful details to share with a dentist.",
+      "Ongoing or worsening bite pain needs a dental evaluation.",
+      "DentaSmart can help you organize what you notice and prepare questions. It does not diagnose the cause of tooth pain.",
     ],
     faqs: [
-      { question: "Can a cracked tooth just heal by itself?", answer: "Nope. Teeth can't heal themselves like bones do. A cracked tooth needs a dentist to fix it with bonding, a crown, or maybe a root canal. If you ignore it, the crack can get bigger and the tooth could break for good." },
-      { question: "Why does the pain come and go?", answer: "That on-and-off pain is a classic sign of a cracked tooth. When you bite, the crack flexes open and hurts. When you stop biting, it closes, and the pain goes away. Annoying, right?" },
-      { question: "What's this going to cost me?", answer: "It really depends. If it's just a bite adjustment, that's often free. A filling might be $150-$300. A crown can run you $800-$1,500, and a root canal is usually $700-$1,500. The sooner you get it fixed, the cheaper it almost always is." },
+      { question: "Can a cracked tooth heal on its own?", answer: "A tooth crack does not heal like a broken bone. A dentist can examine the tooth and discuss options based on the crack and the rest of the tooth." },
+      { question: "Why can the pain come and go?", answer: "Pain that comes and goes can happen with a cracked tooth, but other dental problems can cause a similar pattern. An exam is needed to identify the cause." },
+      { question: "What should I tell my dentist about bite pain?", answer: "Share when it began, whether it happens on pressure or release, what foods trigger it, any recent dental work or injury, and whether you have swelling or temperature sensitivity." },
     ],
     relatedConditions: [
       { slug: "toothache", title: "Toothache" },
       { slug: "cavities", title: "Cavities" },
     ],
     relatedSymptoms: [
+      { slug: "cracked-tooth", title: "Cracked Tooth" },
       { slug: "tooth-sensitivity", title: "Tooth Sensitivity" },
-      { slug: "jaw-pain", title: "Jaw Pain" },
     ],
     relatedGuides: [
       { slug: "dental-visit-guide", title: "What to Expect at a Dental Visit" },
@@ -96,8 +98,15 @@ export const symptomsData: Record<string, SymptomData> = {
     reviewedBy: "Areeba Aslam",
     reviewedByCredentials: "General Dentist at DentaSmart",
     lastReviewed: "2026-02-21",
-    ctaHeading: "Find out what's causing that bite pain",
-    ctaButton: "Diagnose My Tooth Pain",
+    sourceRefs: [
+      { id: "aae-tooth-pain", title: "Tooth Pain", publisher: "American Association of Endodontists", url: "https://www.aae.org/patients/dental-symptoms/tooth-pain/", sourceType: "professional_dental_organization", verificationStatus: "verified", publicDisplayAllowed: true },
+      { id: "aae-cracked-teeth", title: "Cracked Teeth", publisher: "American Association of Endodontists", url: "https://www.aae.org/patients/dental-symptoms/cracked-teeth/", sourceType: "professional_dental_organization", verificationStatus: "verified", publicDisplayAllowed: true },
+      { id: "cleveland-dental-emergencies", title: "Dental Emergencies", publisher: "Cleveland Clinic", url: "https://my.clevelandclinic.org/health/articles/11368--dental-emergencies-what-to-do", sourceType: "academic_health_system", verificationStatus: "verified", publicDisplayAllowed: true },
+      { id: "nhs-dental-abscess", title: "Dental Abscess", publisher: "NHS", url: "https://www.nhs.uk/conditions/dental-abscess/", sourceType: "government_public_health", verificationStatus: "verified", publicDisplayAllowed: true },
+    ],
+    nextStepsUrgencyText: "Contact a dentist urgently for fever with tooth pain or swelling, or for worsening swelling of the face or jaw. Get emergency medical care now if swelling makes it hard to breathe, speak, or swallow, if you have a lot of swelling in your mouth, if swelling affects an eye, or if you cannot open your mouth normally.",
+    ctaHeading: "Prepare for a bite-pain dental visit",
+    ctaButton: "Download DentaSmart",
   },
   "bleeding-gums": {
   slug: "bleeding-gums",
@@ -932,58 +941,55 @@ export const symptomsData: Record<string, SymptomData> = {
 ,
   "tongue-pain": {
     slug: "tongue-pain",
-    title: "Why Does My Tongue Hurt? Figuring Out That Sore Tongue",
-    metaTitle: "Tongue Pain: Causes and Treatments | DentaSmart",
-    metaDescription: "Experiencing tongue pain? Learn about the common causes of a sore tongue and find out when it's time to see a dentist for your tongue pain.",
+    title: "Tongue Pain: What to Notice and When to Get Care",
+    metaTitle: "Tongue Pain: What to Notice and When to Get Care | DentaSmart",
+    metaDescription: "Learn what to note about tongue pain, visible and non-visible symptoms, and when to contact a dentist or doctor.",
     primaryKeyword: "tongue pain",
-    secondaryKeywords: ["sore tongue", "tongue pain causes", "painful tongue", "tongue irritation"],
-    heroSubheading: "Ouch! A sore tongue can be a real pain. Let's figure out what's going on and how to get some relief.",
+    secondaryKeywords: ["sore tongue", "tongue pain causes", "painful tongue", "tongue irritation", "burning tongue"],
+    heroHeading: "Tongue Pain: What to Notice",
+    heroSubheading: "Tongue pain can have visible and non-visible causes. Here is what to note and when to get professional care.",
+    directAnswer: "Tongue pain can follow a visible irritation, but burning, tingling, or soreness can also occur when the mouth looks normal. Persistent pain or an ongoing sore, patch, lump, swelling, bleeding, or trouble chewing, speaking, or swallowing needs professional assessment.",
     detailedExplanation: [
-    "Ever wake up and your tongue just… hurts? It’s a weirdly specific and annoying feeling, right? You haven’t done anything to it, but there it is, a dull ache or a sharp sting making it hard to enjoy your morning coffee. What gives? Think of your tongue as one of the unsung heroes of your body. It's a complex muscle that works tirelessly, helping you taste, talk, and swallow. And just like any other muscle, it can get sore, tired, or injured. Tongue pain isn’t just one thing, either. It can show up as a burning sensation all over, a single painful spot that feels like you bit it (even if you don’t remember doing it), or just a general feeling of soreness that makes every movement a little uncomfortable. It’s easy to jump to the worst-case scenario, but most of the time, tongue pain is just your body’s way of sending up a little flare signal.",
-    "It might be as simple as you accidentally chomping down on it in your sleep or scalding it on a slice of pizza that was way too hot. Sometimes, it’s a sign of a small, harmless issue like a canker sore getting ready to pop up. Your tongue is incredibly sensitive, packed with nerve endings, which is great for tasting that delicious ice cream, but not so great when something is irritating it. The good news is that your mouth is a super-fast healer, so most minor tongue troubles clear up on their own in a few days. It’s just a matter of being patient and trying not to poke it with your finger every five minutes to see if it still hurts. So, before you start panicking, take a deep breath. We’re going to walk through all the common reasons your tongue might be bothering you.",
-    "So, what’s actually causing this annoying pain in your tongue? There are a bunch of reasons, and most of them are pretty harmless. Let's start with the most obvious one: you hurt it. Did you bite your tongue? It happens to the best of us. Or maybe you ate something really crunchy, like a sharp tortilla chip, that scraped it. Another classic is burning your tongue on hot soup or coffee. These kinds of injuries are painful but usually heal up pretty quickly. Then there are canker sores, those small, round, white ulcers that can pop up anywhere in your mouth, including your tongue. They are a total mystery, but stress or certain foods can trigger them. Another weird but harmless one is called 'geographic tongue,' where your tongue develops a map-like pattern of smooth, red patches. It looks strange but isn’t dangerous.",
-    "Sometimes, the little bumps on your tongue, your papillae, can get inflamed and swollen, a condition sometimes called 'lie bumps.' It feels like a little pimple on your tongue. Infections can also be the culprit. Oral thrush, which is a type of yeast infection, can cause a sore tongue along with creamy white patches. Your diet could also be to blame. If you're not getting enough of certain nutrients, like iron, vitamin B12, or folate, it can lead to a sore, smooth-feeling tongue. And don't forget about habits. If you grind your teeth at night, you might be biting the sides of your tongue without even knowing it. Even certain toothpastes or mouthwashes with harsh ingredients can irritate a sensitive tongue. It’s a long list, but figuring out the cause is the first step to feeling better.",
-    "Okay, so your tongue hurts. When is it just an annoyance you can ignore, and when is it time to actually call your dentist? If the pain is really bad, doesn't go away after a couple of weeks, or you see a lump or a sore that just won’t heal, it’s definitely time to get it checked out. The same goes for if you have white or red patches that stick around, or if the pain is making it hard to eat, swallow, or talk. Don’t try to be a hero; just make the appointment. When you go to the dentist, they’ll start by taking a good look at your tongue and the rest of your mouth. They'll ask you a bunch of questions, like when the pain started, what it feels like, and about your diet and habits. It’s just like being a detective for your mouth. Depending on what they see, they might suggest a few things.",
-    "If it looks like an infection, they might prescribe an antifungal mouthwash. If they think it might be a nutritional deficiency, they might suggest you see your doctor for some blood tests. For canker sores or irritation, they might recommend a special soothing mouth rinse. As for prevention, a lot of it comes down to good old-fashioned oral hygiene. Brushing and flossing regularly keeps the bad bacteria in check. Be gentle when you brush your tongue! Also, try to avoid foods and drinks that you know irritate your mouth. If you grind your teeth, ask your dentist about a nightguard. It might feel weird at first, but it can save your teeth and your tongue a lot of grief. And, of course, keeping up with your regular dental checkups is key. Your dentist can spot little problems before they become big ones."
-  ],
+      "Tongue pain may feel like soreness in one spot, a burning feeling, tingling, or discomfort when you eat, talk, or swallow. A visible sore, a sharp tooth edge, a recent bite, or an irritating food can be useful details to share with a dentist or doctor.",
+      "Some mouth symptoms are not easy to see. Burning mouth syndrome, for example, can cause burning, scalding, tingling, or numbness-like feelings even when the mouth looks healthy. A dentist or doctor rules out other possible causes before diagnosing it.",
+      "Dry mouth can also make the tongue feel rough, red, burning, or uncomfortable. A dry mouth, changed taste, medicines, and other health factors are all details that can help guide an evaluation.",
+      "A photo can help you document a visible change, but it cannot rule out a cause of tongue pain or assess symptoms that are not visible. Contact a dentist or doctor for pain that lasts, a sore or patch that does not heal, or a change that concerns you.",
+    ],
     possibleCauses: [
-      { title: "Accidental Injury", description: "Biting your tongue, eating sharp foods, or burning it on hot liquids.", urgency: "low" },
-      { title: "Canker Sores (Aphthous Ulcers)", description: "Small, painful, round sores that appear on the tongue or inside the mouth.", urgency: "low" },
-      { title: "Oral Thrush", description: "A yeast infection that can cause white patches and soreness on the tongue.", urgency: "medium" },
-      { title: "Nutritional Deficiencies", description: "A lack of iron, vitamin B12, or folate can lead to a sore, smooth tongue.", urgency: "medium" },
-      { title: "Geographic Tongue", description: "A harmless condition that creates a map-like pattern of red patches on the tongue.", urgency: "low" },
-      { title: "Teeth Grinding (Bruxism)", description: "Grinding or clenching your teeth, often during sleep, can injure the sides of your tongue.", urgency: "medium" }
+      { title: "Recent Irritation or Injury", description: "A bite, hot food, or a rough tooth or restoration can irritate the tongue or nearby tissue.", urgency: "low" },
+      { title: "A Mouth Sore or Sore Spot", description: "A painful sore can occur on the tongue. A dentist should examine a sore that does not heal or keeps returning.", urgency: "medium" },
+      { title: "Dry Mouth", description: "Not having enough saliva can make the mouth feel dry, rough, burning, or uncomfortable.", urgency: "medium" },
+      { title: "Burning or Tingling Without a Visible Change", description: "A burning or tingling feeling can occur even when the mouth looks healthy and needs professional evaluation if it persists.", urgency: "medium" },
+      { title: "Other Oral or Health Conditions", description: "Infections, medicines, and other oral or medical conditions can affect the tongue. A dentist or doctor can help evaluate the full picture.", urgency: "medium" },
     ],
     selfCareSteps: [
-      "Rinse your mouth with warm salt water (1/2 teaspoon of salt in a glass of warm water) a few times a day.",
-      "Avoid spicy, acidic, or crunchy foods that can irritate your tongue further.",
-      "Suck on ice chips or a popsicle to numb the area and reduce swelling.",
-      "Practice good oral hygiene by gently brushing your teeth and tongue.",
-      "Try over-the-counter oral pain relief gels to numb the sore spots.",
-      "Stay hydrated by drinking plenty of water throughout the day."
+      "Avoid foods, drinks, or products that clearly irritate the area, such as hot, spicy, acidic, or alcoholic products.",
+      "Use gentle oral hygiene and avoid scrubbing a sore area.",
+      "Sip water if your mouth feels dry and it is comfortable to do so.",
+      "Write down when the pain started, what it feels like, and whether you notice a visible change.",
+      "Arrange dental or medical care rather than trying to identify the cause on your own if the pain persists.",
     ],
     whenToSeeDentist: [
-      "The pain is severe and doesn't get better with self-care.",
-      "The pain lasts for more than two weeks.",
-      "You find a lump, ulcer, or sore that isn't healing.",
-      "You have persistent white or red patches on your tongue.",
-      "You have difficulty swallowing, chewing, or speaking.",
-      "You also have a fever or feel generally unwell."
+      "A mouth sore lasts a week or longer or keeps returning.",
+      "Pain, a sore, patch, lump, swelling, bleeding, numbness, or trouble chewing, speaking, swallowing, or moving your tongue lasts more than two weeks.",
+      "You have a sore, lump, patch, or rough area that does not heal.",
+      "You notice unusual bleeding, swelling, or persistent white or red patches.",
+      "You have trouble chewing, speaking, swallowing, or moving your tongue.",
+      "Swelling makes it hard to breathe, speak, or swallow.",
     ],
     keyTakeaways: [
-      "Most tongue pain is temporary and caused by minor injuries or irritations.",
-      "Good oral hygiene and avoiding irritants can prevent many common causes of a sore tongue.",
-      "Pay attention to persistent symptoms; if pain lasts over two weeks or you see unusual changes, see a dentist.",
-      "Your overall health, including your diet, can directly impact the health of your tongue."
+      "A visible irritation can explain some tongue pain, but pain can also occur without a visible change.",
+      "A clear photo does not rule out a dental or medical cause of tongue pain.",
+      "Persistent pain, a non-healing sore, a lump, unusual bleeding, or trouble using your mouth needs professional care.",
+      "DentaSmart can help you organize observations and questions. It does not diagnose the cause of tongue pain."
     ],
     faqs: [
-      { question: "Can stress cause tongue pain?", answer: "You bet. Stress can trigger things like canker sores and teeth grinding, both of which can make your tongue hurt. It's all connected!" },
-      { question: "Why does my tongue burn?", answer: "A burning sensation could be from something as simple as eating spicy food, or it could be a condition called Burning Mouth Syndrome. If it doesn't go away, it's a good idea to chat with your dentist about it." },
-      { question: "Are cracks on the tongue normal?", answer: "Cracks or fissures on the tongue can be totally normal. It's called a 'fissured tongue.' As long as it doesn't hurt and you keep it clean, it's usually nothing to worry about." }
+      { question: "Why does my tongue burn?", answer: "Burning can follow an irritation or dry mouth. Burning mouth syndrome is another possibility, but a dentist or doctor rules out other causes before making that diagnosis." },
+      { question: "What if my tongue looks normal in a photo?", answer: "Some causes of tongue pain are not visible. A normal-looking photo cannot rule out a dental or medical cause, especially when pain lasts or affects eating, speaking, or swallowing." },
+      { question: "What should I tell a dentist or doctor about tongue pain?", answer: "Share when it began, where it hurts, what the feeling is like, whether you notice dryness or taste changes, and whether you see a sore, patch, swelling, or bleeding." }
     ],
     relatedConditions: [
       { slug: "oral-thrush", title: "Oral Thrush" },
-      { slug: "teeth-grinding", title: "Teeth Grinding (Bruxism)" },
       { slug: "dry-mouth", title: "Dry Mouth" }
     ],
     relatedSymptoms: [
@@ -998,8 +1004,17 @@ export const symptomsData: Record<string, SymptomData> = {
     reviewedBy: "Areeba Aslam",
     reviewedByCredentials: "General Dentist at DentaSmart",
     lastReviewed: "2026-03-15",
-    ctaHeading: "Worried About Your Tongue Pain?",
-    ctaButton: "Find a Dentist Near You"
+    sourceRefs: [
+      { id: "nidcr-burning-mouth", title: "Burning Mouth Syndrome", publisher: "National Institute of Dental and Craniofacial Research", url: "https://www.nidcr.nih.gov/health-info/burning-mouth", sourceType: "government_public_health", verificationStatus: "verified", publicDisplayAllowed: true },
+      { id: "nidcr-dry-mouth", title: "Dry Mouth", publisher: "National Institute of Dental and Craniofacial Research", url: "https://www.nidcr.nih.gov/health-info/dry-mouth", sourceType: "government_public_health", verificationStatus: "verified", publicDisplayAllowed: true },
+      { id: "nidcr-oral-cancer", title: "Oral Cancer", publisher: "National Institute of Dental and Craniofacial Research", url: "https://www.nidcr.nih.gov/health-info/oral-cancer", sourceType: "government_public_health", verificationStatus: "verified", publicDisplayAllowed: true },
+      { id: "cdc-oral-cancer", title: "About Oral Cancer", publisher: "Centers for Disease Control and Prevention", url: "https://www.cdc.gov/oral-health/about/about-oral-cancer.html", sourceType: "government_public_health", verificationStatus: "verified", publicDisplayAllowed: true },
+      { id: "ada-mouth-sores", title: "Mouth Sores", publisher: "American Dental Association, MouthHealthy", url: "https://www.mouthhealthy.org/all-topics-a-z/mouth-sores/", sourceType: "professional_dental_organization", verificationStatus: "verified", publicDisplayAllowed: true },
+      { id: "nhs-dental-abscess", title: "Dental Abscess", publisher: "NHS", url: "https://www.nhs.uk/conditions/dental-abscess/", sourceType: "government_public_health", verificationStatus: "verified", publicDisplayAllowed: true },
+    ],
+    nextStepsUrgencyText: "Contact a dentist or doctor promptly for severe or worsening symptoms. Get emergency medical care now if swelling makes it hard to breathe, speak, or swallow. Do not wait for an app result or a routine appointment when these symptoms are present.",
+    ctaHeading: "Prepare questions about tongue pain",
+    ctaButton: "Download DentaSmart"
 },
   "cheek-biting": {
     slug: "cheek-biting",

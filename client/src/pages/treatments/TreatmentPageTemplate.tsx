@@ -59,7 +59,9 @@ export interface TreatmentPageData {
   recoveryTimeline?: string;
   faqs: FAQ[];
   relatedTreatmentPages: { name: string; slug: string; tagline: string }[];
-  relatedCostPage?: { name: string; slug: string };
+  relatedCostPage?: { name: string; slug: string; ctaLabel?: string };
+  midContentCta?: { headline: string; description: string; buttonText: string };
+  followUpSupport?: { title: string; description: string };
   governance?: ContentGovernance;
 }
 
@@ -295,8 +297,9 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
 
       {/* ═══ MID-CONTENT CTA ═══ */}
       <MidContentCTA
-        headline={`Want more context about a ${data.procedureName.toLowerCase()}?`}
-        description="Review educational information, organize your treatment-plan questions, and ask a licensed dentist what applies to your case."
+        headline={data.midContentCta?.headline || `Want more context about a ${data.procedureName.toLowerCase()}?`}
+        description={data.midContentCta?.description || "Review educational information, organize your treatment-plan questions, and ask a licensed dentist what applies to your case."}
+        buttonText={data.midContentCta?.buttonText}
         trackingLabel={`treatment_page_${data.slug}`}
         variant="card"
       />
@@ -420,8 +423,8 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
                 <Clock className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-lg md:text-xl font-medium text-black mb-2">Track Your Recovery</h3>
-              <p className="text-stone-600 font-light leading-relaxed text-sm md:text-base">After your procedure, use DentaSmart to monitor your healing progress and get reminders for follow-up care.</p>
+              <h3 className="text-lg md:text-xl font-medium text-black mb-2">{data.followUpSupport?.title || "Track Your Recovery"}</h3>
+              <p className="text-stone-600 font-light leading-relaxed text-sm md:text-base">{data.followUpSupport?.description || "After your procedure, use DentaSmart to monitor your healing progress and get reminders for follow-up care."}</p>
             </motion.div>
           </div>
           <div className="mt-6 text-center">
@@ -445,7 +448,7 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
               </div>
               <Link href={`/dental-costs/${data.relatedCostPage.slug}/`}>
                 <Button variant="outline" className="border-primary/30 text-primary hover:bg-primary/5 rounded-full px-6 py-5 text-sm font-medium cursor-pointer whitespace-nowrap">
-                  See {data.relatedCostPage.name} Costs <ArrowRight className="w-4 h-4 ml-2" />
+                  {data.relatedCostPage.ctaLabel || `See ${data.relatedCostPage.name} Costs`} <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
             </div>
