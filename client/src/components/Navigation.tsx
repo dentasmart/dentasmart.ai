@@ -11,7 +11,7 @@ import {
 import { ChevronDown, ChevronRight, Stethoscope, DollarSign, ShieldCheck, HeartPulse, BookOpen, Scale, HelpCircle, Activity, Search } from "lucide-react";
 import { Fragment, useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useReducedMotion, type Transition } from "framer-motion";
-import { trackEvent } from "@/lib/analytics";
+import { trackConversionEvent } from "@/lib/analytics";
 import { getBreadcrumbs } from "@shared/breadcrumbs";
 
 // Mega-menu category structure - scalable for future hubs
@@ -347,11 +347,25 @@ export default function Navigation() {
               className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-5 text-sm font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
               onClick={() => {
                 if (location === '/') {
+                  trackConversionEvent("quick_check_start", {
+                    cta_id: "header_free_quick_check",
+                    surface: "header",
+                    intent: "quick_check",
+                    destination_type: "internal_route",
+                    destination_path: "/#download-cta",
+                  });
                   const element = document.getElementById('download-cta');
                   if (element) {
                     element.scrollIntoView({ behavior: 'smooth' });
                   }
                 } else {
+                  trackConversionEvent("download_hub_open", {
+                    cta_id: "header_free_quick_check",
+                    surface: "header",
+                    intent: "download",
+                    destination_type: "internal_route",
+                    destination_path: "/download/",
+                  });
                   window.location.href = '/#download-cta';
                 }
               }}
@@ -374,7 +388,13 @@ export default function Navigation() {
                   size="sm"
                   className="bg-white text-primary hover:bg-white/90 rounded-full px-4 py-1.5 text-xs font-medium cursor-pointer h-auto"
                   onClick={() => {
-                    trackEvent("sticky_cta_click", { page: location });
+                    trackConversionEvent("download_hub_open", {
+                      cta_id: "header_sticky_free_quick_check",
+                      surface: "sticky",
+                      intent: "download",
+                      destination_type: "internal_route",
+                      destination_path: "/download/",
+                    });
                     window.location.href = "/download/";
                   }}
                 >
@@ -584,13 +604,27 @@ export default function Navigation() {
                 className="w-full bg-action text-action-foreground rounded-full py-6 text-lg font-medium hover:bg-action-hover cursor-pointer"
                 onClick={() => {
                   setIsOpen(false);
-                  if (location === '/') {
-                    const element = document.getElementById('download-cta');
+                if (location === '/') {
+                  trackConversionEvent("quick_check_start", {
+                    cta_id: "mobile_header_free_quick_check",
+                    surface: "header",
+                    intent: "quick_check",
+                    destination_type: "internal_route",
+                    destination_path: "/#download-cta",
+                  });
+                  const element = document.getElementById('download-cta');
                     if (element) {
                       element.scrollIntoView({ behavior: 'smooth' });
                     }
-                  } else {
-                    window.location.href = '/#download-cta';
+                } else {
+                  trackConversionEvent("download_hub_open", {
+                    cta_id: "mobile_header_free_quick_check",
+                    surface: "header",
+                    intent: "download",
+                    destination_type: "internal_route",
+                    destination_path: "/download/",
+                  });
+                  window.location.href = '/#download-cta';
                   }
                 }}
               >

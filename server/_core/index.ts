@@ -14,6 +14,7 @@ import { registerSeoRoutes } from "../seo";
 import { resolveRedirect } from "../redirectCache";
 import { isKnownRoute } from "../knownRoutes";
 import { upsertNotFoundHit } from "../notFoundDb";
+import { getAppDownloadRedirectTarget } from "../appRedirect";
 
 export interface NotFoundMiddlewareDependencies {
   isKnownRoute?: typeof isKnownRoute;
@@ -56,14 +57,6 @@ export function createNotFoundDetectionMiddleware(
     }
     next();
   };
-}
-
-/**
- * Redirect legacy app-entry URLs to the current download landing page without
- * matching unrelated paths such as /application.
- */
-export function getAppDownloadRedirectTarget(path: string): string | null {
-  return path === "/app" || path.startsWith("/app/") ? "/download/" : null;
 }
 
 function isPortAvailable(port: number): Promise<boolean> {
@@ -179,7 +172,10 @@ async function startServer() {
     }
 
     const path = req.path;
-    const appDownloadTarget = getAppDownloadRedirectTarget(path);
+    const appDownloadTarget = getAppDownloadRedirectTarget(
+      path,
+      req.url.includes("?") ? req.url.slice(req.url.indexOf("?")) : "",
+    );
     if (appDownloadTarget) {
       return res.redirect(301, appDownloadTarget);
     }

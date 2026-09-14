@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { trpc } from "@/lib/trpc";
-import { trackEvent } from "@/lib/analytics";
+import { trackConversionEvent } from "@/lib/analytics";
 
 interface DemoRequestModalProps {
   isOpen: boolean;
@@ -30,7 +30,12 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
     onSuccess: () => {
       setIsSubmitting(false);
       setIsSuccess(true);
-      trackEvent("employer_demo_request", { source: "employers_page" });
+      trackConversionEvent("employer_demo_submitted", {
+        cta_id: "employer_demo_form_submitted",
+        surface: "employer_form",
+        intent: "employer_demo",
+        destination_type: "employer_form",
+      });
     },
     onError: () => {
       setIsSubmitting(false);
@@ -42,6 +47,12 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitError(null);
+    trackConversionEvent("employer_demo_submit_attempt", {
+      cta_id: "employer_demo_form_submit_attempt",
+      surface: "employer_form",
+      intent: "employer_demo",
+      destination_type: "employer_form",
+    });
 
     const message = [
       "Employer demo request",

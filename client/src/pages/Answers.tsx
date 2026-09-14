@@ -3,11 +3,11 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { pricing } from "@shared/facts";
 import { Button } from "@/components/ui/button";
-import { trackEvent } from "@/lib/analytics";
+import { trackConversionEvent } from "@/lib/analytics";
 import { serializeJsonLd } from "@shared/jsonLd";
 import { motion } from "framer-motion";
 import { Search, ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
-import { useEffect, useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 
 interface QA {
   q: string;
@@ -91,10 +91,6 @@ export default function Answers() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
   const [expandedIdx, setExpandedIdx] = useState<number | null>(null);
-
-  useEffect(() => {
-    trackEvent("answers_page_view");
-  }, []);
 
   const filtered = useMemo(() => {
     return qaData.filter((qa) => {
@@ -203,7 +199,11 @@ export default function Answers() {
                   <button
                     onClick={() => {
                       setExpandedIdx(isExpanded ? null : idx);
-                      if (!isExpanded) trackEvent("faq_expand", { question: qa.q.substring(0, 50) });
+                      if (!isExpanded) trackConversionEvent("content_engagement", {
+                        cta_id: "answers_faq_expand",
+                        surface: "mid_content",
+                        intent: "content_engagement",
+                      });
                     }}
                     className="w-full flex items-center justify-between p-5 text-left hover:bg-stone-50 transition-colors cursor-pointer"
                   >
@@ -237,7 +237,13 @@ export default function Answers() {
               size="lg"
               className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer"
               onClick={() => {
-                trackEvent("cta_get_score_click", { source: "answers_page" });
+                trackConversionEvent("cta_click", {
+                  cta_id: "answers_oral_health_score",
+                  surface: "mid_content",
+                  intent: "download",
+                  destination_type: "internal_route",
+                  destination_path: "/",
+                });
                 window.location.href = "/#download-cta";
               }}
             >

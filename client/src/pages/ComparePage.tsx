@@ -3,10 +3,9 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { pricing } from "@shared/facts";
 import { Button } from "@/components/ui/button";
-import { trackEvent } from "@/lib/analytics";
+import { trackConversionEvent } from "@/lib/analytics";
 import { motion } from "framer-motion";
 import { CheckCircle, XCircle, ArrowRight } from "lucide-react";
-import { useEffect } from "react";
 import { Link, useRoute } from "wouter";
 
 interface ComparisonRow {
@@ -96,10 +95,6 @@ export default function ComparePage() {
   const slug = params?.slug || "";
   const data = slug ? compareData[slug] : null;
   const isInsuranceComparison = slug === "dentasmart-vs-dental-insurance";
-
-  useEffect(() => {
-    trackEvent("compare_page_view", { slug: slug || "" });
-  }, [slug]);
 
   if (!data) {
     return (
@@ -254,7 +249,13 @@ export default function ComparePage() {
               </div>
               <div className="text-center mt-10">
                 <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer">
-                  <Link href="/pricing/" onClick={() => trackEvent("cta_get_score_click", { source: `compare_${slug}` })}>
+                  <Link href="/pricing/" onClick={() => trackConversionEvent("cta_click", {
+                    cta_id: "comparison_pricing_primary",
+                    surface: "mid_content",
+                    intent: "pricing",
+                    destination_type: "internal_route",
+                    destination_path: "/pricing/",
+                  })}>
                     View DentaSmart services and pricing
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Link>
@@ -316,7 +317,13 @@ export default function ComparePage() {
 
           <div className="text-center mt-12">
             <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer">
-              <Link href="/pricing/" onClick={() => trackEvent("cta_get_score_click", { source: `compare_${slug}` })}>
+              <Link href="/pricing/" onClick={() => trackConversionEvent("cta_click", {
+                cta_id: "comparison_pricing_final",
+                surface: "mid_content",
+                intent: "pricing",
+                destination_type: "internal_route",
+                destination_path: "/pricing/",
+              })}>
                 Compare DentaSmart Services
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>

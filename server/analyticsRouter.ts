@@ -8,7 +8,7 @@ import {
   getDeviceBreakdown,
   getRecentConversionEvents,
 } from "./db";
-import type { InsertConversionEvent } from "../drizzle/schema";
+import { analyticsEventEnvelopeSchema, toConversionEventInsert } from "./analyticsValidation";
 
 // Admin auth middleware (reuse blog admin pattern)
 import { getDb } from "./db";
@@ -29,70 +29,15 @@ async function verifyAdminToken(token: string) {
   }
 }
 
-// Event category mapping
-const EVENT_CATEGORY_MAP: Record<string, InsertConversionEvent["eventCategory"]> = {
-  download_ios_click: "download",
-  download_android_click: "download",
-  android_waitlist_submit: "lead",
-  cta_get_score_click: "cta_click",
-  sticky_cta_click: "cta_click",
-  exit_intent_cta_click: "cta_click",
-  mid_content_cta_click: "cta_click",
-  symptom_quiz_start: "quiz",
-  symptom_quiz_complete: "quiz",
-  symptom_quiz_email_submit: "lead",
-  demo_request_submit: "lead",
-  employer_demo_request: "lead",
-  pricing_plan_select: "cta_click",
-  page_view: "page_view",
-  hub_article_view: "page_view",
-  hub_category_view: "page_view",
-  blog_read: "engagement",
-  faq_expand: "engagement",
-  story_open: "engagement",
-  scroll_depth_50: "engagement",
-  scroll_depth_75: "engagement",
-  scroll_depth_100: "engagement",
-};
-
 export const analyticsRouter = router({
   /**
    * Public endpoint: Track a conversion event from the frontend.
    * No auth required since this fires from visitor browsers.
    */
   trackEvent: publicProcedure
-    .input(
-      z.object({
-        eventName: z.string().max(100),
-        sourcePage: z.string().max(500),
-        sourcePageTitle: z.string().max(500).optional(),
-        referrer: z.string().max(1000).optional(),
-        utmSource: z.string().max(200).optional(),
-        utmMedium: z.string().max(200).optional(),
-        utmCampaign: z.string().max(200).optional(),
-        deviceType: z.enum(["desktop", "tablet", "mobile"]).optional(),
-        sessionId: z.string().max(100).optional(),
-        metadata: z.record(z.string(), z.any()).optional(),
-      })
-    )
-    .mutation(async ({ input, ctx }) => {
-      const eventCategory = EVENT_CATEGORY_MAP[input.eventName] || "engagement";
-      const userAgent = ctx.req.headers["user-agent"]?.substring(0, 500) || "";
-
-      await insertConversionEvent({
-        eventName: input.eventName,
-        eventCategory,
-        sourcePage: input.sourcePage,
-        sourcePageTitle: input.sourcePageTitle ?? null,
-        referrer: input.referrer ?? null,
-        utmSource: input.utmSource ?? null,
-        utmMedium: input.utmMedium ?? null,
-        utmCampaign: input.utmCampaign ?? null,
-        deviceType: input.deviceType ?? "desktop",
-        userAgent: userAgent || null,
-        sessionId: input.sessionId ?? null,
-        metadata: input.metadata ?? null,
-      });
+    .input(analyticsEventEnvelopeSchema)
+    .mutation(async ({ input }) => {
+      await insertConversionEvent(toConversionEventInsert(input));
 
       return { success: true };
     }),

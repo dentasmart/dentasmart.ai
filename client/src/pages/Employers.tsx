@@ -8,12 +8,17 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { DemoRequestModal } from "@/components/DemoRequestModal";
 import { Link } from "wouter";
-import { trackEvent } from "@/lib/analytics";
+import { trackConversionEvent } from "@/lib/analytics";
 
 export default function Employers() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const openDemo = (source: "hero" | "final_cta") => {
-    trackEvent("employer_demo_request", { source });
+    trackConversionEvent("cta_click", {
+      cta_id: `employer_${source}_open_demo`,
+      surface: source === "hero" ? "hero" : "mid_content",
+      intent: "employer_demo",
+      destination_type: "employer_form",
+    });
     setIsDemoModalOpen(true);
   };
 

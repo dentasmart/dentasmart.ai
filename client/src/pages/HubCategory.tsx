@@ -2,10 +2,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { trackEvent } from "@/lib/analytics";
+import { trackConversionEvent } from "@/lib/analytics";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowLeft } from "lucide-react";
-import { useEffect } from "react";
 import { useParams, Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { hubCategoryData } from "@/data/hubCategories";
@@ -17,10 +16,6 @@ const categoryMeta = hubCategoryData;
 export default function HubCategory() {
   const { category } = useParams<{ category: string }>();
   const meta = category ? categoryMeta[category] : null;
-
-  useEffect(() => {
-    trackEvent("hub_category_view", { category: category || "" });
-  }, [category]);
 
   // Fetch published articles
   const { data, isLoading } = trpc.blog.list.useQuery({ publishedOnly: true, limit: 50 });
@@ -168,7 +163,13 @@ export default function HubCategory() {
             Educational insights to help you understand your oral health and have better conversations with a licensed dentist.
           </p>
           <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer">
-            <Link href="/pricing/" onClick={() => trackEvent("cta_get_score_click", { source: `hub_${category}` })}>
+            <Link href="/pricing/" onClick={() => trackConversionEvent("cta_click", {
+              cta_id: "hub_category_pricing",
+              surface: "mid_content",
+              intent: "pricing",
+              destination_type: "internal_route",
+              destination_path: "/pricing/",
+            })}>
               Compare DentaSmart Services
               <ArrowRight className="w-5 h-5 ml-2" />
             </Link>

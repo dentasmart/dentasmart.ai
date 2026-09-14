@@ -111,9 +111,11 @@ describe("Phase 6 content governance", () => {
     const helperEnd = analytics.indexOf("export function shouldDisableAnalyticsForPath", helperStart);
     const helper = analytics.slice(helperStart, helperEnd);
 
-    expect(helper).toContain('trackEvent("symptom_professional_care_click", context)');
-    expect(helper).toContain('source: "symptom_page"');
-    expect(helper).toContain('destination: "/download"');
+    expect(helper).toContain('trackConversionEvent("download_hub_open", {');
+    expect(helper).toContain('cta_id: "symptom_professional_care_download"');
+    expect(helper).toContain('surface: "symptom_next_steps"');
+    expect(helper).toContain('intent: "symptom_support"');
+    expect(helper).toContain('destination_path: "/download/"');
     expect(helper).not.toMatch(/symptom\.|slug|title|condition|health|report|image|user|email|name/i);
     expect(symptomPage).toContain("onClick={trackSymptomProfessionalCareClick}");
     expect(symptomPage).not.toContain("symptom: symptom.slug");

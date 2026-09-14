@@ -3,9 +3,8 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useCallback } from "react";
-import { trackEvent } from "@/lib/analytics";
-import { trackPixelLead } from "@/lib/fbpixel";
+import { useState, useCallback } from "react";
+import { trackConversionEvent } from "@/lib/analytics";
 import { quizQuestions, calculateQuizResult, type QuizResult } from "@/lib/quizData";
 import { trpc } from "@/lib/trpc";
 import {
@@ -307,10 +306,6 @@ export default function SymptomQuiz() {
 
   const submitQuiz = trpc.quiz.submit.useMutation();
 
-  useEffect(() => {
-    trackEvent("page_view");
-  }, []);
-
   const totalQuestions = quizQuestions.length;
   const progress =
     currentStep === 0
@@ -374,8 +369,6 @@ export default function SymptomQuiz() {
 
     setSubmitted(true);
     setCurrentStep(totalQuestions + 2); // Go to results
-    trackEvent("cta_get_score_click", { source: "symptom_quiz_complete" });
-    trackPixelLead({ content_name: "Symptom Quiz", content_category: "quiz_submission" });
   }, [email, answers, submitQuiz, totalQuestions]);
 
   const handleSkipEmail = useCallback(() => {
@@ -930,7 +923,13 @@ function ResultsSection({
               <Button
                 size="lg"
                 className="bg-white text-primary hover:bg-white/90 rounded-full px-8 py-7 text-base font-medium w-full sm:w-auto cursor-pointer"
-                onClick={() => trackEvent("download_page_view", { source: "symptom_quiz_results" })}
+                onClick={() => trackConversionEvent("download_hub_open", {
+                  cta_id: "symptom_quiz_results_download",
+                  surface: "download_hub",
+                  intent: "download",
+                  destination_type: "internal_route",
+                  destination_path: "/download/",
+                })}
               >
                 Download DentaSmart
               </Button>

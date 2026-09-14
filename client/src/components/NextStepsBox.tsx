@@ -1,5 +1,5 @@
 import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
-import { trackEvent } from "@/lib/analytics";
+import { trackConversionEvent } from "@/lib/analytics";
 import { useLocation, Link } from "wouter";
 import { getPageContext, type ContentType } from "@/lib/pageContext";
 
@@ -25,21 +25,25 @@ export default function NextStepsBox({ forceContentType, relatedLinks, urgentCar
   const [location] = useLocation();
   const context = getPageContext(location);
   const contentType = forceContentType || context.contentType;
+  const primaryIntent = contentType === "treatment" ? "treatment_plan_review" : contentType === "symptom" ? "quick_check" : "content_engagement";
 
   const handlePrimaryClick = () => {
-    trackEvent("mid_content_cta_click", {
-      source: location,
-      label: "next_steps_primary",
-      content_type: contentType,
+    trackConversionEvent("cta_click", {
+      cta_id: "next_steps_primary",
+      surface: "mid_content",
+      intent: primaryIntent,
+      destination_type: "internal_route",
+      destination_path: context.ctaLink,
     });
-
   };
 
   const handleQuizClick = () => {
-    trackEvent("mid_content_cta_click", {
-      source: location,
-      label: "next_steps_quiz",
-      content_type: contentType,
+    trackConversionEvent("cta_click", {
+      cta_id: "next_steps_quiz",
+      surface: "mid_content",
+      intent: "quick_check",
+      destination_type: "internal_route",
+      destination_path: "/symptom-quiz/",
     });
   };
 

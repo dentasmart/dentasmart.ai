@@ -11,8 +11,6 @@ import {
   Camera, Shield, Clock, FileText, ChevronDown, ChevronUp,
   CheckCircle, Smartphone, ArrowRight, AlertTriangle
 } from "lucide-react";
-import { trackEvent } from "@/lib/analytics";
-import { useEffect } from "react";
 import { pricing } from "@shared/facts";
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
@@ -73,10 +71,6 @@ const faqSchema = {
 };
 
 export default function FreeAiTeethScanner() {
-  useEffect(() => {
-    trackEvent("free_ai_scanner_page_view");
-  }, []);
-
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO

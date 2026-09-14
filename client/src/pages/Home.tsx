@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight, Shield, Smartphone, Activity, Users, Clock, DollarSign, Heart, MessageCircle, Camera, FileText, Search, CheckCircle } from "lucide-react";
-import { trackAppDownload, trackEvent, getAppStoreUrl, getPlayStoreUrl } from "@/lib/analytics";
+import { trackAppDownload, trackConversionEvent, getAppStoreUrl, getPlayStoreUrl } from "@/lib/analytics";
 import { DownloadSection } from "@/components/DownloadSection";
 import Navigation from "@/components/Navigation";
 import SEO from "@/components/SEO";
@@ -46,8 +46,26 @@ export default function Home() {
   };
 
   const goToPlan = (intent: "quick_check" | "second_opinion", source: "hero" | "mid_page" | "post_faq") => {
-    trackEvent("home_intent_click", { intent, source });
-    setLocation(intent === "quick_check" ? "/download/" : "/pricing/#second-opinion");
+    const surface = source === "hero" ? "hero" : "mid_content";
+    if (intent === "quick_check") {
+      trackConversionEvent("download_hub_open", {
+        cta_id: `${source}_free_quick_check`,
+        surface,
+        intent: "quick_check",
+        destination_type: "internal_route",
+        destination_path: "/download/",
+      });
+      setLocation("/download/");
+      return;
+    }
+    trackConversionEvent("cta_click", {
+      cta_id: `${source}_treatment_plan_review`,
+      surface,
+      intent: "treatment_plan_review",
+      destination_type: "internal_route",
+      destination_path: "/pricing/",
+    });
+    setLocation("/pricing/#second-opinion");
   };
 
   return (

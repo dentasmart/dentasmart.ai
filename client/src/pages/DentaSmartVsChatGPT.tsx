@@ -3,10 +3,9 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import FAQSchema from "@/components/FAQSchema";
 import { Button } from "@/components/ui/button";
-import { trackEvent, getAppStoreUrl, getPlayStoreUrl, trackAppDownload } from "@/lib/analytics";
+import { trackAppDownload, trackConversionEvent, getAppStoreUrl, getPlayStoreUrl } from "@/lib/analytics";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, MinusCircle, Smartphone, Shield, Clock, TrendingUp, Heart, DollarSign, Users } from "lucide-react";
-import { useEffect } from "react";
 import { Link } from "wouter";
 
 const fadeUp = {
@@ -42,10 +41,6 @@ const faqs = [
 ];
 
 export default function DentaSmartVsChatGPT() {
-  useEffect(() => {
-    trackEvent("compare_page_view", { slug: "dentasmart-vs-chatgpt-dental" });
-  }, []);
-
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
@@ -102,12 +97,24 @@ export default function DentaSmartVsChatGPT() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild size="lg" className="bg-teal-700 text-white hover:bg-teal-800 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
-                <Link href="/download/" onClick={() => trackEvent("cta_get_score_click", { source: "vs_chatgpt_quick_check" })}>
+                <Link href="/download/" onClick={() => trackConversionEvent("download_hub_open", {
+                  cta_id: "vs_chatgpt_hero_free_quick_check",
+                  surface: "hero",
+                  intent: "quick_check",
+                  destination_type: "internal_route",
+                  destination_path: "/download/",
+                })}>
                   Start with a Free Quick Check
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-teal-700 text-teal-700 hover:bg-teal-50 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
-                <Link href="/pricing/#second-opinion" onClick={() => trackEvent("cta_get_score_click", { source: "vs_chatgpt_second_opinion" })}>
+                <Link href="/pricing/#second-opinion" onClick={() => trackConversionEvent("cta_click", {
+                  cta_id: "vs_chatgpt_hero_treatment_plan_review",
+                  surface: "hero",
+                  intent: "treatment_plan_review",
+                  destination_type: "internal_route",
+                  destination_path: "/pricing/",
+                })}>
                   Review a Treatment Plan
                 </Link>
               </Button>
@@ -214,7 +221,13 @@ export default function DentaSmartVsChatGPT() {
           {/* CTA after table */}
           <div className="text-center mt-10">
             <Button asChild size="lg" className="bg-teal-700 text-white hover:bg-teal-800 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg">
-              <Link href="/download/" onClick={() => trackEvent("cta_get_score_click", { source: "vs_chatgpt_table_quick_check" })}>
+              <Link href="/download/" onClick={() => trackConversionEvent("download_hub_open", {
+                cta_id: "vs_chatgpt_table_free_quick_check",
+                surface: "mid_content",
+                intent: "quick_check",
+                destination_type: "internal_route",
+                destination_path: "/download/",
+              })}>
                 Start with a Free Quick Check <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </Button>
@@ -541,12 +554,24 @@ export default function DentaSmartVsChatGPT() {
             <p className="text-white/90 font-medium mb-8">Start with an unlimited Free Quick Check or compare Full Quick Check, Treatment Plan Review, and Complete Care.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="bg-white text-teal-700 hover:bg-stone-100 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">
-                <Link href="/download/" onClick={() => trackEvent("cta_get_score_click", { source: "vs_chatgpt_final_quick_check" })}>
+                <Link href="/download/" onClick={() => trackConversionEvent("download_hub_open", {
+                  cta_id: "vs_chatgpt_final_free_quick_check",
+                  surface: "mid_content",
+                  intent: "quick_check",
+                  destination_type: "internal_route",
+                  destination_path: "/download/",
+                })}>
                   <Smartphone className="w-4 h-4 mr-2" /> Start with a Free Quick Check
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
-                <Link href="/pricing/#second-opinion" onClick={() => trackEvent("cta_get_score_click", { source: "vs_chatgpt_final_second_opinion" })}>
+                <Link href="/pricing/#second-opinion" onClick={() => trackConversionEvent("cta_click", {
+                  cta_id: "vs_chatgpt_final_treatment_plan_review",
+                  surface: "mid_content",
+                  intent: "treatment_plan_review",
+                  destination_type: "internal_route",
+                  destination_path: "/pricing/",
+                })}>
                   Review a Treatment Plan
                 </Link>
               </Button>

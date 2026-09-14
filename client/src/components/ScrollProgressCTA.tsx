@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight, Camera, Sparkles } from "lucide-react";
-import { trackEvent } from "@/lib/analytics";
+import { trackConversionEvent } from "@/lib/analytics";
 import { useLocation, Link } from "wouter";
 import { getPageContext } from "@/lib/pageContext";
 
@@ -38,6 +38,8 @@ export function ScrollProgressCTA() {
 
   const excludedPaths = ["/admin", "/download", "/pricing", "/instant-scan", "/symptom-quiz", "/"];
   const isExcluded = excludedPaths.some((p) => location === p || (p !== "/" && location.startsWith(p)));
+  const isFreeTool = ctaContext.ctaAction === "symptom-quiz";
+  const ctaIntent = isFreeTool ? "quick_check" : context.contentType === "treatment" ? "treatment_plan_review" : "content_engagement";
 
   useEffect(() => {
     try {
@@ -71,11 +73,23 @@ export function ScrollProgressCTA() {
   useEffect(() => {
     if (phase === "soft" && !hasTrackedSoft.current) {
       hasTrackedSoft.current = true;
-      trackEvent("scroll_depth_50", { source: location });
+      trackConversionEvent("content_engagement", {
+        cta_id: "scroll_progress_soft_seen",
+        surface: "sticky",
+        intent: "content_engagement",
+        destination_type: "internal_route",
+        destination_path: ctaContext.ctaLink,
+      });
     }
     if (phase === "strong" && !hasTrackedStrong.current) {
       hasTrackedStrong.current = true;
-      trackEvent("scroll_depth_75", { source: location });
+      trackConversionEvent("content_engagement", {
+        cta_id: "scroll_progress_strong_seen",
+        surface: "sticky",
+        intent: "content_engagement",
+        destination_type: "internal_route",
+        destination_path: ctaContext.ctaLink,
+      });
     }
   }, [phase, location]);
 
@@ -89,15 +103,14 @@ export function ScrollProgressCTA() {
   };
 
   const handleClick = () => {
-    trackEvent("mid_content_cta_click", {
-      source: location,
-      label: `scroll_progress_${phase}`,
-      content_type: context.contentType,
+    trackConversionEvent("cta_click", {
+      cta_id: `scroll_progress_${phase}_cta`,
+      surface: "sticky",
+      intent: ctaIntent,
+      destination_type: "internal_route",
+      destination_path: ctaContext.ctaLink,
     });
-
   };
-
-  const isFreeTool = ctaContext.ctaAction === "symptom-quiz";
 
   return (
     <AnimatePresence mode="wait">

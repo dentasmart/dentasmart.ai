@@ -188,16 +188,16 @@ export default function AdminSeoSetup() {
             <div className="bg-stone-50 rounded-lg p-4 text-sm text-stone-600">
               <p className="font-medium text-stone-800 mb-2">Meta Pixel event mapping:</p>
               <p className="text-xs text-stone-500 mb-2">
-                DentaSmart events are automatically mapped to Meta standard events for better ad optimization:
+                Canonical events are sent only after Marketing consent. Standard Meta events are used only when the corresponding action has occurred:
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
                 {[
-                  { from: "download_ios_click", to: "Lead" },
-                  { from: "android_waitlist_submit", to: "Lead" },
-                  { from: "cta_get_score_click", to: "InitiateCheckout" },
-                  { from: "symptom_quiz_start", to: "ViewContent" },
-                  { from: "symptom_quiz_complete", to: "CompleteRegistration" },
-                  { from: "employer_demo_request", to: "Contact" },
+                  { from: "page_view", to: "PageView" },
+                  { from: "quick_check_start", to: "Quick Check Start (custom)" },
+                  { from: "store_listing_click", to: "Store Listing Click (custom)" },
+                  { from: "pricing_plan_selected", to: "Pricing Plan Selected (custom)" },
+                  { from: "checkout_started", to: "InitiateCheckout" },
+                  { from: "employer_demo_submitted", to: "Lead" },
                 ].map((m) => (
                   <div key={m.from} className="flex items-center gap-1 py-0.5">
                     <code className="text-xs bg-stone-100 px-1 rounded">{m.from}</code>

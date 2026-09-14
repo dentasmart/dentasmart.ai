@@ -1,5 +1,5 @@
 import { ArrowRight, Camera, Stethoscope, DollarSign, Shield, Sparkles } from "lucide-react";
-import { trackEvent } from "@/lib/analytics";
+import { trackConversionEvent } from "@/lib/analytics";
 import { useLocation, Link } from "wouter";
 import { getPageContext, type ContentType } from "@/lib/pageContext";
 
@@ -58,18 +58,17 @@ export default function MidContentCTA({
   const finalDescription = description || resolvedContext.ctaDescription;
   const finalButtonText = buttonText || resolvedContext.ctaButtonText;
   const icon = getIcon(contentType);
+  const isFreeQuiz = resolvedContext.ctaAction === "symptom-quiz";
 
   const handleClick = () => {
-    trackEvent("mid_content_cta_click", {
-      source: location,
-      label: trackingLabel,
-      content_type: contentType,
-      cta_text: finalButtonText,
+    trackConversionEvent("cta_click", {
+      cta_id: `mid_content_${trackingLabel.replace(/[^a-z0-9_]/gi, "_").toLowerCase().slice(0, 80)}`,
+      surface: "mid_content",
+      intent: isFreeQuiz ? "quick_check" : "content_engagement",
+      destination_type: "internal_route",
+      destination_path: resolvedContext.ctaLink,
     });
-
   };
-
-  const isFreeQuiz = resolvedContext.ctaAction === "symptom-quiz";
 
   // ── Interactive variant: mini engagement prompt ──
   if (variant === "interactive") {

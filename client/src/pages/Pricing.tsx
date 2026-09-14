@@ -8,8 +8,7 @@ import { Check, X, Shield, Sparkles, Zap, ArrowRight, Users } from "lucide-react
 import { DownloadSection } from "@/components/DownloadSection";
 import { motion } from "framer-motion";
 import { WaitlistPopup } from "@/components/WaitlistPopup";
-import { trackPixelInitiateCheckout } from "@/lib/fbpixel";
-import { trackEvent } from "@/lib/analytics";
+import { trackConversionEvent } from "@/lib/analytics";
 import QuickAnswerBlock from "@/components/QuickAnswerBlock";
 import FAQSchema from "@/components/FAQSchema";
 import { pricing } from "@shared/facts";
@@ -26,6 +25,22 @@ const pricingFaqs = [
 export default function Pricing() {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
   const [planType, setPlanType] = useState<"individual" | "family">("individual");
+
+  const beginCheckout = (planId: string, destination: string) => {
+    trackConversionEvent("pricing_plan_selected", {
+      cta_id: `pricing_${planId}_selected`,
+      surface: "pricing_card",
+      intent: "pricing",
+      destination_type: "external_checkout",
+    });
+    trackConversionEvent("checkout_started", {
+      cta_id: `pricing_${planId}_checkout_started`,
+      surface: "pricing_card",
+      intent: "checkout",
+      destination_type: "external_checkout",
+    });
+    window.location.href = destination;
+  };
 
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
@@ -91,7 +106,16 @@ export default function Pricing() {
                   size="lg"
                   variant="outline"
                   className="bg-white/80 text-stone-700 hover:bg-white hover:text-primary border-stone-200 rounded-full px-8 py-6 text-lg font-medium transition-all duration-300 cursor-pointer"
-                  onClick={() => window.location.href = '/download/'}
+                  onClick={() => {
+                    trackConversionEvent("download_hub_open", {
+                      cta_id: "pricing_hero_download_app",
+                      surface: "hero",
+                      intent: "download",
+                      destination_type: "internal_route",
+                      destination_path: "/download/",
+                    });
+                    window.location.href = "/download/";
+                  }}
                 >
                   Download the App
                 </Button>
@@ -201,9 +225,7 @@ export default function Pricing() {
                 variant="outline"
                 className="w-full border-stone-300 text-stone-700 hover:bg-stone-50 hover:border-primary hover:text-primary rounded-full py-5 text-base font-medium transition-all duration-300 cursor-pointer"
                 onClick={() => {
-                  trackEvent("pricing_plan_select", { plan: "quick_check", billing: "one_time", price: 19.99 });
-                  trackPixelInitiateCheckout({ content_name: "Quick Check", content_category: "pricing", value: 19.99, currency: "USD" });
-                  window.location.href = 'https://subscription.dentasmart.ai/create-saas-account?plan=quick_check';
+                  beginCheckout("full_quick_check", "https://subscription.dentasmart.ai/create-saas-account?plan=quick_check");
                 }}
               >
                 Get Full Quick Check
@@ -260,9 +282,7 @@ export default function Pricing() {
                 variant="outline"
                 className="w-full border-stone-300 text-stone-700 hover:bg-stone-50 hover:border-primary hover:text-primary rounded-full py-5 text-base font-medium transition-all duration-300 cursor-pointer"
                 onClick={() => {
-                  trackEvent("pricing_plan_select", { plan: "second_opinion", billing: "one_time", price: 29.99 });
-                  trackPixelInitiateCheckout({ content_name: "Second Opinion", content_category: "pricing", value: 29.99, currency: "USD" });
-                  window.location.href = 'https://subscription.dentasmart.ai/create-saas-account?plan=second_review';
+                  beginCheckout("treatment_plan_review", "https://subscription.dentasmart.ai/create-saas-account?plan=second_review");
                 }}
               >
                 Get Treatment Plan Review
@@ -396,13 +416,9 @@ export default function Pricing() {
                 className="w-full bg-action hover:bg-action-hover text-action-foreground rounded-full py-5 text-base font-medium transition-all duration-300 shadow-lg cursor-pointer"
                 onClick={() => {
                   if (planType === "individual") {
-                    trackEvent("pricing_plan_select", { plan: "complete_care_individual", billing: "annual", price: 74.99 });
-                    trackPixelInitiateCheckout({ content_name: "Complete Care Annual Plan", content_category: "pricing", value: 74.99, currency: "USD" });
-                    window.location.href = 'https://subscription.dentasmart.ai/create-saas-account?plan=insights_individual_yearly';
+                    beginCheckout("complete_care_individual", "https://subscription.dentasmart.ai/create-saas-account?plan=insights_individual_yearly");
                   } else {
-                    trackEvent("pricing_plan_select", { plan: "complete_care_family", billing: "annual", price: 149.99 });
-                    trackPixelInitiateCheckout({ content_name: "Complete Care Family Plan", content_category: "pricing", value: 149.99, currency: "USD" });
-                    window.location.href = 'https://subscription.dentasmart.ai/create-saas-account?plan=insights_family_yearly';
+                    beginCheckout("complete_care_family", "https://subscription.dentasmart.ai/create-saas-account?plan=insights_family_yearly");
                   }
                 }}
               >

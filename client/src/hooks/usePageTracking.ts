@@ -1,6 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useLocation } from "wouter";
-import { trackPageView } from "@/lib/analytics";
+import { beginRouteView } from "@/lib/analytics";
 import { isEmailUnsubscribePath } from "@shared/privacyRoutes";
 
 /**
@@ -9,9 +9,12 @@ import { isEmailUnsubscribePath } from "@shared/privacyRoutes";
  */
 export function usePageTracking() {
   const [location] = useLocation();
+  const lastLocation = useRef<string | null>(null);
 
   useEffect(() => {
     if (isEmailUnsubscribePath(location)) return;
-    trackPageView(location);
+    if (lastLocation.current === location) return;
+    lastLocation.current = location;
+    beginRouteView(location);
   }, [location]);
 }

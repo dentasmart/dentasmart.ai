@@ -2,10 +2,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { trackEvent } from "@/lib/analytics";
+import { trackConversionEvent } from "@/lib/analytics";
 import { motion } from "framer-motion";
 import { MapPin, Search, ArrowRight, Star, Phone, Clock } from "lucide-react";
-import { useEffect, useState } from "react";
 
 const dentistTypes = [
   { type: "General Dentist", desc: "Routine checkups, cleanings, fillings, and basic dental care." },
@@ -26,10 +25,6 @@ const tips = [
 ];
 
 export default function FindADentist() {
-  useEffect(() => {
-    trackEvent("find_dentist_page_view");
-  }, []);
-
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
@@ -66,7 +61,13 @@ export default function FindADentist() {
                 size="lg"
                 className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer"
                 onClick={() => {
-                  trackEvent("cta_get_score_click", { source: "find_dentist" });
+                  trackConversionEvent("cta_click", {
+                    cta_id: "find_dentist_hero_recommendation",
+                    surface: "hero",
+                    intent: "download",
+                    destination_type: "internal_route",
+                    destination_path: "/",
+                  });
                   window.location.href = "/#download-cta";
                 }}
               >
@@ -145,7 +146,13 @@ export default function FindADentist() {
             size="lg"
             className="bg-white text-primary hover:bg-white/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer"
             onClick={() => {
-              trackEvent("cta_get_score_click", { source: "find_dentist_bottom" });
+              trackConversionEvent("cta_click", {
+                cta_id: "find_dentist_final_oral_health_score",
+                surface: "mid_content",
+                intent: "download",
+                destination_type: "internal_route",
+                destination_path: "/",
+              });
               window.location.href = "/#download-cta";
             }}
           >

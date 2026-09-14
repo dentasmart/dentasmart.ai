@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { X, ArrowRight } from "lucide-react";
-import { trackEvent } from "@/lib/analytics";
+import { trackConversionEvent } from "@/lib/analytics";
 import { useLocation, Link } from "wouter";
 import { getPageContext } from "@/lib/pageContext";
 
@@ -39,6 +39,7 @@ export default function StickyDownloadBanner() {
       }
     : context;
   const isFreeQuiz = ctaContext.ctaAction === "symptom-quiz";
+  const ctaIntent = isFreeQuiz ? "quick_check" : context.contentType === "treatment" ? "treatment_plan_review" : "content_engagement";
 
   useEffect(() => {
     // Check if already dismissed this session
@@ -97,12 +98,13 @@ export default function StickyDownloadBanner() {
   };
 
   const handleClick = () => {
-    trackEvent("sticky_cta_click", {
-      source: location,
-      content_type: context.contentType,
-      cta_text: ctaContext.ctaButtonText,
+    trackConversionEvent("cta_click", {
+      cta_id: "sticky_download_banner_cta",
+      surface: "sticky",
+      intent: ctaIntent,
+      destination_type: "internal_route",
+      destination_path: ctaContext.ctaLink,
     });
-
   };
 
   // ── Mobile: Full-width bottom bar ──

@@ -2,16 +2,11 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { trackEvent } from "@/lib/analytics";
+import { trackConversionEvent } from "@/lib/analytics";
 import { motion } from "framer-motion";
 import { Camera, Sun, Smartphone, CheckCircle, XCircle, ArrowRight } from "lucide-react";
-import { useEffect } from "react";
 
 export default function PhotoGuide() {
-  useEffect(() => {
-    trackEvent("photo_guide_view");
-  }, []);
-
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
@@ -139,7 +134,13 @@ export default function PhotoGuide() {
               size="lg"
               className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer"
               onClick={() => {
-                trackEvent("cta_get_score_click", { source: "photo_guide" });
+                trackConversionEvent("cta_click", {
+                  cta_id: "photo_guide_oral_health_score",
+                  surface: "mid_content",
+                  intent: "download",
+                  destination_type: "internal_route",
+                  destination_path: "/",
+                });
                 window.location.href = "/#download-cta";
               }}
             >

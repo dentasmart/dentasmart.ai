@@ -6,9 +6,8 @@ import { DownloadSection } from "@/components/DownloadSection";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ArrowRight, CheckCircle, ChevronDown, ChevronUp, ExternalLink, ShieldCheck } from "lucide-react";
-import { trackEvent } from "@/lib/analytics";
 import { app, pricing } from "@shared/facts";
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
@@ -103,10 +102,6 @@ const itemListSchema = {
 };
 
 export default function BestAiDentalApps() {
-  useEffect(() => {
-    trackEvent("best_ai_dental_apps_page_view");
-  }, []);
-
   return (
     <div className="flex min-h-screen flex-col bg-white font-sans text-black">
       <SEO

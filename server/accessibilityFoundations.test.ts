@@ -6,6 +6,7 @@ const clientRoot = path.resolve(import.meta.dirname, "../client");
 const indexHtml = fs.readFileSync(path.join(clientRoot, "index.html"), "utf8");
 const indexCss = fs.readFileSync(path.join(clientRoot, "src/index.css"), "utf8");
 const navigationSource = fs.readFileSync(path.join(clientRoot, "src/components/Navigation.tsx"), "utf8");
+const consentSource = fs.readFileSync(path.join(clientRoot, "src/components/ConsentManager.tsx"), "utf8");
 
 describe("Phase 4 Batch 4-A accessibility foundations", () => {
   it("keeps a non-restrictive responsive viewport", () => {
@@ -60,5 +61,14 @@ describe("Phase 4 Batch 4-A accessibility foundations", () => {
     expect(indexCss).toContain("transition-duration: 0.01ms !important");
     expect(navigationSource).toContain("useReducedMotion");
     expect(navigationSource).toContain("const shouldReduceMotion = useReducedMotion()");
+  });
+
+  it("keeps consent focus inside the modal and prevents background pointer interaction", () => {
+    expect(consentSource).toContain('aria-modal="true"');
+    expect(consentSource).toContain('aria-describedby="consent-dialog-description"');
+    expect(consentSource).toContain('className="fixed inset-0 z-[99]"');
+    expect(consentSource).toContain('if (event.key !== "Tab") return;');
+    expect(consentSource).toContain('window.addEventListener("keydown", trapFocus)');
+    expect(consentSource).toContain('window.removeEventListener("keydown", trapFocus)');
   });
 });

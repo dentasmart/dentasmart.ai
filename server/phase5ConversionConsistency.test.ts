@@ -186,12 +186,13 @@ describe("Phase 5 conversion and trust contracts", () => {
   });
 
   it("keeps one low-cardinality event for each approved new conversion decision and preserves the employer lead form", () => {
-    const analytics = projectFile("client/src/lib/analytics.ts");
+    const home = projectFile("client/src/pages/Home.tsx");
     const demoModal = projectFile("client/src/components/DemoRequestModal.tsx");
 
-    expect(analytics).toContain('| "home_intent_click"');
-    expect(analytics).toContain('| "pricing_plan_select"');
-    expect(analytics).toContain('| "employer_demo_request"');
+    expect(home).toContain('trackConversionEvent("download_hub_open", {');
+    expect(home).toContain('trackConversionEvent("cta_click", {');
+    expect(demoModal).toContain('trackConversionEvent("employer_demo_submit_attempt", {');
+    expect(demoModal).toContain('trackConversionEvent("employer_demo_submitted", {');
     expect(demoModal).toContain('id="fullName"');
     expect(demoModal).toContain('id="email"');
     expect(demoModal).toContain('id="phone"');
@@ -206,7 +207,8 @@ describe("Phase 5 conversion and trust contracts", () => {
     const waitlistRouter = projectFile("server/waitlistRouter.ts");
 
     expect(demoModal).toContain("trpc.waitlist.joinBenefits.useMutation");
-    expect(demoModal).toContain('trackEvent("employer_demo_request", { source: "employers_page" })');
+    expect(demoModal).toContain('trackConversionEvent("employer_demo_submit_attempt", {');
+    expect(demoModal).toContain('trackConversionEvent("employer_demo_submitted", {');
     expect(demoModal).toContain("onSuccess: () => {");
     expect(demoModal).toContain("setIsSuccess(true)");
     expect(demoModal).toContain("onError: () => {");
@@ -243,8 +245,10 @@ describe("Phase 5 visible, metadata, and schema parity", () => {
     const comparison = projectFile("client/src/pages/DentaSmartVsChatGPT.tsx");
     const pricingPage = projectFile("client/src/pages/Pricing.tsx");
 
-    expect(home).toContain('intent === "quick_check" ? "/download/"');
-    expect(home).toContain('"/pricing/#second-opinion"');
+    expect(home).toContain('destination_path: "/download/"');
+    expect(home).toContain('setLocation("/download/")');
+    expect(home).toContain('destination_path: "/pricing/"');
+    expect(home).toContain('setLocation("/pricing/#second-opinion")');
     expect(comparison).toContain('href="/download/"');
     expect(comparison).toContain('href="/pricing/#second-opinion"');
     expect(comparison).not.toContain("scrollToDownload");

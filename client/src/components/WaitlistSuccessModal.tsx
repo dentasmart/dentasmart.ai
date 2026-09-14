@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
-import { trackEvent } from "@/lib/analytics";
+import { trackConversionEvent } from "@/lib/analytics";
 import { Link } from "wouter";
 
 interface WaitlistSuccessModalProps {
@@ -120,7 +120,13 @@ export function WaitlistSuccessModal({
             <Link
               href="/download/"
               className="block"
-              onClick={() => trackEvent("download_page_view", { source: "waitlist_success_modal" })}
+              onClick={() => trackConversionEvent("download_hub_open", {
+                cta_id: "waitlist_success_download",
+                surface: "mid_content",
+                intent: "download",
+                destination_type: "internal_route",
+                destination_path: "/download/",
+              })}
             >
               <div className="flex items-center justify-center gap-3 bg-primary text-white rounded-xl py-3.5 px-6 hover:bg-primary/90 transition-colors">
                 <svg viewBox="0 0 24 24" className="w-6 h-6 fill-white flex-shrink-0">

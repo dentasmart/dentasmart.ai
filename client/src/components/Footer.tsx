@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
-import { trackAppDownload, getAppStoreUrl } from "@/lib/analytics";
+import { trackAppDownload, getAppStoreUrl, openConsentPreferences } from "@/lib/analytics";
 
 export default function Footer() {
   return (
@@ -241,6 +241,15 @@ export default function Footer() {
                   <Link href="/privacy-policy/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Privacy Policy
                   </Link>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={openConsentPreferences}
+                    className="text-left text-black hover:text-primary transition-colors font-light text-sm underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                  >
+                    Tracking preferences
+                  </button>
                 </li>
                 <li>
                   <Link href="/terms-of-service/" className="text-black hover:text-primary transition-colors font-light text-sm">

@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { X, ArrowRight } from "lucide-react";
-import { trackEvent } from "@/lib/analytics";
-import { useLocation } from "wouter";
+import { trackConversionEvent } from "@/lib/analytics";
 
 /**
  * BlogCTABanner: Floating bottom banner that appears at 25% scroll on blog/content pages.
@@ -14,7 +13,6 @@ import { useLocation } from "wouter";
 export function BlogCTABanner() {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
-  const [location] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,9 +41,12 @@ export function BlogCTABanner() {
   if (isDismissed) return null;
 
   const handleCTAClick = () => {
-    trackEvent("mid_content_cta_click", {
-      source: location,
-      label: "blog_floating_banner",
+    trackConversionEvent("download_hub_open", {
+      cta_id: "blog_floating_banner_quick_check",
+      surface: "sticky",
+      intent: "quick_check",
+      destination_type: "internal_route",
+      destination_path: "/download/",
     });
     window.location.href = "/download/";
   };

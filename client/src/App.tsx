@@ -7,6 +7,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { usePageTracking } from "@/hooks/usePageTracking";
 import { useEffect, lazy, Suspense } from "react";
 import { initAllAnalytics } from "@/lib/analytics";
+import ConsentManager from "@/components/ConsentManager";
 import AdminRouter, { useIsAdminRoute } from "@/components/AdminRouter";
 import StickyDownloadBanner from "@/components/StickyDownloadBanner";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
@@ -480,6 +481,7 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light">
         <TooltipProvider>
+          <ConsentManager />
           <AppContent />
         </TooltipProvider>
       </ThemeProvider>

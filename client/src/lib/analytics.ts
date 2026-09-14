@@ -1,435 +1,447 @@
-/**
- * Analytics utility for DentaSmart
- * Supports GA4, Meta Pixel, and Google Ads conversion tracking.
- * All platforms fire from a single trackEvent() call.
- */
-
 import { app } from "@shared/facts";
+import {
+  ANALYTICS_EVENT_VERSION,
+  type AnalyticsDestinationType,
+  type AnalyticsEventEnvelope,
+  type AnalyticsIntent,
+  type AnalyticsPlatform,
+  type AnalyticsSurface,
+  type CampaignContext,
+  isCanonicalAnalyticsEvent,
+  normalizeAnalyticsPath,
+} from "@shared/analyticsContract";
 import { isEmailUnsubscribePath } from "@shared/privacyRoutes";
+import { createPageviewDeliveryState } from "@shared/pageviewState";
+import {
+  type ConsentPreferences,
+  canTrackCurrentPath,
+  getConsentPreferences,
+  hasAnalyticsConsent,
+  hasMarketingConsent,
+} from "@/lib/consent";
 
-// ── Global type extensions ──────────────────────────────────────────────────
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void;
-    dataLayer?: any[];
-    fbq?: (...args: any[]) => void;
-    _fbq?: any;
+    gtag?: (...args: unknown[]) => void;
+    dataLayer?: unknown[];
+    fbq?: (...args: unknown[]) => void;
+    umami?: {
+      track?: (
+        event?: string | Record<string, unknown> | ((properties: Record<string, unknown>) => Record<string, unknown>),
+        data?: Record<string, unknown>,
+      ) => void;
+    };
   }
 }
 
-// ── Event names ─────────────────────────────────────────────────────────────
 export type AnalyticsEvent =
-  | "cta_get_score_click"
-  | "home_intent_click"
-  | "download_ios_click"
-  | "download_android_click"
-  | "android_waitlist_submit"
-  | "download_page_view"
-  | "instant_scan_page_view"
-  | "photo_guide_view"
-  | "hub_article_view"
-  | "hub_category_view"
-  | "faq_expand"
-  | "story_open"
-  | "compare_page_view"
-  | "find_dentist_page_view"
-  | "symptom_professional_care_click"
-  | "answers_page_view"
-  | "sticky_cta_click"
-  | "exit_intent_cta_click"
-  | "exit_intent_shown"
-  | "exit_intent_click"
-  | "mid_content_cta_click"
-  | "demo_request_submit"
-  | "symptom_quiz_start"
-  | "symptom_quiz_complete"
-  | "symptom_quiz_email_submit"
-  | "pricing_plan_select"
-  | "blog_read"
-  | "employer_demo_request"
-  | "scroll_depth_50"
-  | "scroll_depth_75"
-  | "scroll_depth_100"
-  | "free_ai_scanner_page_view"
-  | "best_ai_dental_apps_page_view"
-  | "vs_comparison_page_view"
-  | "page_view";
+  | "page_view" | "quick_check_start" | "download_hub_open" | "store_listing_click"
+  | "pricing_plan_selected" | "checkout_started" | "employer_demo_submit_attempt"
+  | "employer_demo_submitted" | "cta_click" | "content_engagement"
+  | "cta_get_score_click" | "home_intent_click" | "download_ios_click" | "download_android_click"
+  | "android_waitlist_submit" | "download_page_view" | "instant_scan_page_view" | "photo_guide_view"
+  | "hub_article_view" | "hub_category_view" | "faq_expand" | "story_open" | "compare_page_view"
+  | "find_dentist_page_view" | "symptom_professional_care_click" | "answers_page_view"
+  | "sticky_cta_click" | "exit_intent_cta_click" | "exit_intent_shown" | "exit_intent_click"
+  | "mid_content_cta_click" | "demo_request_submit" | "symptom_quiz_start"
+  | "symptom_quiz_complete" | "symptom_quiz_email_submit" | "pricing_plan_select"
+  | "blog_read" | "employer_demo_request" | "scroll_depth_50" | "scroll_depth_75"
+  | "scroll_depth_100" | "free_ai_scanner_page_view" | "best_ai_dental_apps_page_view"
+  | "vs_comparison_page_view";
 
-export interface EventParams {
-  [key: string]: string | number | boolean | undefined;
-}
+export type EventParams = Record<string, string | number | boolean | undefined>;
 
-type SymptomProfessionalCareEventContext = {
-  source: "symptom_page";
-  destination: "/download";
+const CAMPAIGN_STORAGE_KEY = "dentasmart_campaign_v1";
+const MARKETING_STORAGE_KEY = "dentasmart_marketing_click_ids_v1";
+const SESSION_STORAGE_KEY = "dentasmart_analytics_session_v1";
+const TRACKER_ATTRIBUTE = "data-dentasmart-consent-tracker";
+const pageviewDelivery = createPageviewDeliveryState();
+let ga4Configured = false;
+let metaConfigured = false;
+let umamiConfigured = false;
+let sessionId: string | null = null;
+let pendingUmamiPageviews: string[] = [];
+
+const legacyEventMap: Partial<Record<AnalyticsEvent, AnalyticsEvent>> = {
+  cta_get_score_click: "download_hub_open",
+  home_intent_click: "download_hub_open",
+  download_ios_click: "store_listing_click",
+  download_android_click: "store_listing_click",
+  download_page_view: "download_hub_open",
+  pricing_plan_select: "pricing_plan_selected",
+  employer_demo_request: "employer_demo_submit_attempt",
+  demo_request_submit: "employer_demo_submitted",
+  symptom_professional_care_click: "download_hub_open",
+  sticky_cta_click: "cta_click",
+  exit_intent_cta_click: "cta_click",
+  exit_intent_click: "cta_click",
+  mid_content_cta_click: "cta_click",
+  scroll_depth_50: "content_engagement",
+  scroll_depth_75: "content_engagement",
+  scroll_depth_100: "content_engagement",
 };
-
-export function trackSymptomProfessionalCareClick(): void {
-  const context: SymptomProfessionalCareEventContext = {
-    source: "symptom_page",
-    destination: "/download",
-  };
-  trackEvent("symptom_professional_care_click", context);
-}
 
 export function shouldDisableAnalyticsForPath(path: string): boolean {
   return isEmailUnsubscribePath(path);
 }
 
-function isAnalyticsDisabledForCurrentPage(): boolean {
-  return typeof window !== "undefined" && shouldDisableAnalyticsForPath(window.location.pathname);
-}
-
-// ── Env var helpers ─────────────────────────────────────────────────────────
-
-export function getGA4MeasurementId(): string | null {
+function getEnv(name: string): string | null {
   try {
-    const id = (import.meta as any).env?.VITE_GA4_MEASUREMENT_ID;
-    return id && id.startsWith("G-") ? id : null;
+    const value = (import.meta as ImportMeta & { env?: Record<string, string | undefined> }).env?.[name];
+    return value && value.trim() ? value.trim() : null;
   } catch {
     return null;
   }
+}
+
+export function getGA4MeasurementId(): string | null {
+  const value = getEnv("VITE_GA4_MEASUREMENT_ID");
+  return value?.startsWith("G-") ? value : null;
 }
 
 export function getMetaPixelId(): string | null {
-  try {
-    const id = (import.meta as any).env?.VITE_META_PIXEL_ID;
-    return id && /^\d+$/.test(id) ? id : null;
-  } catch {
-    return null;
-  }
+  const value = getEnv("VITE_META_PIXEL_ID");
+  return value && /^\d+$/.test(value) ? value : null;
 }
 
 export function getGoogleAdsId(): string | null {
-  try {
-    const id = (import.meta as any).env?.VITE_GOOGLE_ADS_ID;
-    return id && id.startsWith("AW-") ? id : null;
-  } catch {
-    return null;
-  }
+  const value = getEnv("VITE_GOOGLE_ADS_ID");
+  return value?.startsWith("AW-") ? value : null;
 }
 
 export function getGoogleAdsConversionLabel(): string | null {
-  try {
-    const label = (import.meta as any).env?.VITE_GOOGLE_ADS_CONVERSION_LABEL;
-    return label || null;
-  } catch {
-    return null;
-  }
+  return getEnv("VITE_GOOGLE_ADS_CONVERSION_LABEL");
 }
 
-// ── GA4 initialization ──────────────────────────────────────────────────────
-
-export function initGA4(measurementId?: string): void {
-  if (isAnalyticsDisabledForCurrentPage()) return;
-  const id = measurementId || getGA4MeasurementId();
-  if (!id || typeof window === "undefined") return;
-
-  // gtag.js is loaded directly from index.html <head> for reliable data collection.
-  // The inline script in index.html already calls gtag('config', id) with
-  // send_page_view: true (default), so the initial page view fires immediately
-  // before React even mounts. This function only needs to handle:
-  // 1. Ensuring dataLayer/gtag exist (fallback if index.html script hasn't run)
-  // 2. Configuring Google Ads if present
-
-  if (!window.dataLayer) {
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function (...args: any[]) {
-      window.dataLayer!.push(args);
-    };
-    window.gtag("js", new Date());
-    window.gtag("config", id);
-
-    // Fallback: dynamically add script if not already present
-    if (!document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${id}"]`)) {
-      const script = document.createElement("script");
-      script.async = true;
-      script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
-      document.head.appendChild(script);
-    }
-  }
-
-  // Configure Google Ads if present (shares the gtag.js script)
-  const adsId = getGoogleAdsId();
-  if (adsId && window.gtag) {
-    window.gtag("config", adsId);
-  }
+function addExternalScript(src: string, attributes: Record<string, string> = {}, onLoad?: () => void): void {
+  if (typeof document === "undefined" || document.querySelector(`script[${TRACKER_ATTRIBUTE}][src="${src}"]`)) return;
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = src;
+  script.setAttribute(TRACKER_ATTRIBUTE, "true");
+  Object.entries(attributes).forEach(([key, value]) => script.setAttribute(key, value));
+  if (onLoad) script.addEventListener("load", onLoad, { once: true });
+  document.head.appendChild(script);
 }
 
-// ── Meta Pixel initialization ───────────────────────────────────────────────
+function initGA4(): void {
+  const id = getGA4MeasurementId();
+  if (!id || typeof window === "undefined" || ga4Configured) return;
+  window.dataLayer = window.dataLayer ?? [];
+  window.gtag = (...args: unknown[]) => window.dataLayer?.push(args);
+  window.gtag("js", new Date());
+  window.gtag("config", id, { send_page_view: false });
+  addExternalScript(`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(id)}`);
+  ga4Configured = true;
+}
 
-export function initMetaPixel(): void {
-  if (isAnalyticsDisabledForCurrentPage()) return;
-  const pixelId = getMetaPixelId();
-  if (!pixelId || typeof window === "undefined") return;
+function initMetaPixel(): void {
+  const id = getMetaPixelId();
+  if (!id || typeof window === "undefined" || metaConfigured) return;
+  const queued: { queue: unknown[][]; callMethod?: (...args: unknown[]) => void } & ((...args: unknown[]) => void) = Object.assign(
+    (...args: unknown[]) => queued.callMethod ? queued.callMethod(...args) : queued.queue.push(args),
+    { queue: [] as unknown[][] },
+  );
+  window.fbq = queued;
+  window.fbq("init", id);
+  addExternalScript("https://connect.facebook.net/en_US/fbevents.js");
+  metaConfigured = true;
+}
 
-  // Avoid double-init
-  if (window.fbq) return;
+function initUmami(): void {
+  const endpoint = getEnv("VITE_ANALYTICS_ENDPOINT");
+  const websiteId = getEnv("VITE_ANALYTICS_WEBSITE_ID");
+  if (!endpoint || !websiteId || umamiConfigured) return;
+  addExternalScript(
+    `${endpoint.replace(/\/$/, "")}/umami`,
+    { "data-website-id": websiteId, "data-auto-track": "false", "data-auto-pageview": "false" },
+    flushPendingUmamiPageviews,
+  );
+  umamiConfigured = true;
+}
 
-  // Standard Meta Pixel base code
-  const f: any = window;
-  const b = document;
-  const e = "script";
-
-  if (f.fbq) return;
-  const n: any = (f.fbq = function (...args: any[]) {
-    if (n.callMethod) {
-      n.callMethod.apply(n, args);
-    } else {
-      n.queue.push(args);
-    }
+function removeTrackers(category: "analytics" | "marketing"): void {
+  if (typeof document === "undefined") return;
+  const matcher = category === "analytics" ? /googletagmanager|umami/ : /facebook\.net/;
+  document.querySelectorAll<HTMLScriptElement>(`script[${TRACKER_ATTRIBUTE}]`).forEach(script => {
+    if (matcher.test(script.src)) script.remove();
   });
-  if (!f._fbq) f._fbq = n;
-  n.push = n;
-  n.loaded = true;
-  n.version = "2.0";
-  n.queue = [];
-
-  const t = b.createElement(e) as HTMLScriptElement;
-  t.async = true;
-  t.src = "https://connect.facebook.net/en_US/fbevents.js";
-  const s = b.getElementsByTagName(e)[0];
-  s?.parentNode?.insertBefore(t, s);
-
-  window.fbq!("init", pixelId);
-  window.fbq!("track", "PageView");
-}
-
-// ── Cross-platform event mapping ────────────────────────────────────────────
-
-/**
- * Maps DentaSmart events to Meta Pixel standard/custom events.
- * Meta has specific standard events that improve ad optimization.
- */
-function getMetaEventName(event: AnalyticsEvent): { name: string; isStandard: boolean } {
-  switch (event) {
-    case "download_ios_click":
-      return { name: "CompleteRegistration", isStandard: true };
-    case "download_android_click":
-      return { name: "CompleteRegistration", isStandard: true };
-    case "android_waitlist_submit":
-      return { name: "Lead", isStandard: true };
-    case "cta_get_score_click":
-      return { name: "InitiateCheckout", isStandard: true };
-    case "symptom_quiz_start":
-      return { name: "ViewContent", isStandard: true };
-    case "symptom_quiz_complete":
-      return { name: "Lead", isStandard: true };
-    case "symptom_quiz_email_submit":
-      return { name: "Subscribe", isStandard: true };
-    case "demo_request_submit":
-    case "employer_demo_request":
-      return { name: "Contact", isStandard: true };
-    case "pricing_plan_select":
-      return { name: "AddToCart", isStandard: true };
-    default:
-      return { name: event, isStandard: false };
+  if (category === "analytics") {
+    ga4Configured = false;
+    umamiConfigured = false;
+    pendingUmamiPageviews = [];
+    window.gtag = undefined;
+  } else {
+    metaConfigured = false;
+    window.fbq = undefined;
   }
 }
 
-// ── Core tracking functions ─────────────────────────────────────────────────
+export function applyConsentState(consent: ConsentPreferences = getConsentPreferences()): void {
+  if (typeof window === "undefined" || !canTrackCurrentPath()) return;
+  if (consent.analytics) {
+    initGA4();
+    initUmami();
+  } else {
+    removeTrackers("analytics");
+    pageviewDelivery.resetChannel("analytics");
+    try { window.sessionStorage.removeItem(CAMPAIGN_STORAGE_KEY); window.sessionStorage.removeItem(SESSION_STORAGE_KEY); } catch { /* storage is optional */ }
+    sessionId = null;
+  }
+  if (consent.marketing) {
+    initMetaPixel();
+    persistMarketingClickIds();
+  } else {
+    removeTrackers("marketing");
+    pageviewDelivery.resetChannel("marketing");
+    try { window.sessionStorage.removeItem(MARKETING_STORAGE_KEY); } catch { /* storage is optional */ }
+  }
+}
 
-/**
- * Send a custom event to all configured platforms (GA4 + Meta Pixel + Google Ads).
- * Silently no-ops if a platform is not loaded.
- */
-export function trackEvent(event: AnalyticsEvent, params?: EventParams): void {
+function randomId(): string {
+  if (typeof crypto !== "undefined" && "randomUUID" in crypto) return crypto.randomUUID();
+  return `${Math.random().toString(36).slice(2)}${Math.random().toString(36).slice(2)}`;
+}
+
+function getSessionId(): string | undefined {
+  if (!hasAnalyticsConsent()) return undefined;
+  if (sessionId) return sessionId;
   try {
-    if (isAnalyticsDisabledForCurrentPage()) return;
-    // GA4
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", event, params);
-    }
-
-    // Meta Pixel
-    if (typeof window !== "undefined" && window.fbq) {
-      const metaEvent = getMetaEventName(event);
-      const metaParams = params ? { ...params, content_name: event } : { content_name: event };
-      if (metaEvent.isStandard) {
-        window.fbq("track", metaEvent.name, metaParams);
-      } else {
-        window.fbq("trackCustom", metaEvent.name, metaParams);
-      }
-    }
-
-    // Google Ads conversion (fires on high-value events only)
-    if (typeof window !== "undefined" && window.gtag) {
-      const adsId = getGoogleAdsId();
-      const convLabel = getGoogleAdsConversionLabel();
-      if (adsId && convLabel) {
-        const conversionEvents: AnalyticsEvent[] = [
-          "download_ios_click",
-          "download_android_click",
-          "android_waitlist_submit",
-          "symptom_quiz_complete",
-          "demo_request_submit",
-          "employer_demo_request",
-        ];
-        if (conversionEvents.includes(event)) {
-          window.gtag("event", "conversion", {
-            send_to: `${adsId}/${convLabel}`,
-            event_callback: () => {},
-          });
-        }
-      }
-    }
-
-    // Server-side tracking (fires for all events to build our own analytics)
-    trackEventServer(event, params);
+    sessionId = window.sessionStorage.getItem(SESSION_STORAGE_KEY) || randomId();
+    window.sessionStorage.setItem(SESSION_STORAGE_KEY, sessionId);
   } catch {
-    // Analytics should never break the app
+    sessionId = randomId();
   }
+  return sessionId;
 }
 
-/**
- * Track a virtual page view for SPA navigation.
- * Fires to GA4 and Meta Pixel.
- */
-export function trackPageView(path: string, title?: string): void {
-  try {
-    if (shouldDisableAnalyticsForPath(path) || isAnalyticsDisabledForCurrentPage()) return;
-    // GA4 page view
-    if (typeof window !== "undefined" && window.gtag) {
-      window.gtag("event", "page_view", {
-        page_path: path,
-        page_title: title || document.title,
-      });
-    }
-
-    // Meta Pixel page view
-    if (typeof window !== "undefined" && window.fbq) {
-      window.fbq("track", "PageView");
-    }
-  } catch {
-    // Silently fail
-  }
+function safeCampaignValue(value: string | null): string | undefined {
+  if (!value || value.length > 100 || !/^[A-Za-z0-9._~-]+$/.test(value)) return undefined;
+  return value;
 }
 
-/**
- * Track an app download click with full attribution.
- * Adds UTM parameters to the app store URL for campaign tracking.
- */
-export function trackAppDownload(
-  platform: "ios" | "android",
-  source: string
-): void {
-  const event: AnalyticsEvent = platform === "ios" ? "download_ios_click" : "download_android_click";
-  trackEvent(event, {
-    platform,
-    source,
-    page_url: typeof window !== "undefined" ? window.location.pathname : "",
-  });
-}
-
-
-/**
- * Build an App Store URL with UTM parameters for campaign tracking.
- * These UTMs show up in App Store Connect and Google Play Console analytics.
- */
-export function getAppStoreUrl(source: string): string {
-  const baseUrl = app.iosUrl;
-  const params = new URLSearchParams({
-    pt: "126584659", // Provider Token (Apple)
-    ct: source, // Campaign Token - tracks which page drove the download
-    mt: "8", // Media Type (8 = mobile software)
-  });
-  return `${baseUrl}?${params.toString()}`;
-}
-
-/**
- * Build a Google Play Store URL with UTM parameters for campaign tracking.
- * These UTMs show up in Google Play Console analytics.
- */
-export function getPlayStoreUrl(source: string): string {
-  const baseUrl = "https://play.google.com/store/apps/details?id=com.dentaSmart.app.android";
-  const params = new URLSearchParams({
-    utm_source: "dentasmart_website",
-    utm_medium: "cta",
-    utm_campaign: source,
-  });
-  return `${baseUrl}&${params.toString()}`;
-}
-
-// ── Server-side tracking ───────────────────────────────────────────────────
-
-let _sessionId: string | null = null;
-
-function getSessionId(): string {
-  if (_sessionId) return _sessionId;
-  // Try to read from sessionStorage, or create a new one
-  try {
-    _sessionId = sessionStorage.getItem('ds_session_id');
-    if (!_sessionId) {
-      _sessionId = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
-      sessionStorage.setItem('ds_session_id', _sessionId);
-    }
-  } catch {
-    _sessionId = `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
-  }
-  return _sessionId;
-}
-
-function getDeviceType(): "desktop" | "tablet" | "mobile" {
-  if (typeof window === "undefined") return "desktop";
-  const w = window.innerWidth;
-  if (w < 768) return "mobile";
-  if (w < 1024) return "tablet";
-  return "desktop";
-}
-
-function getUTMParams(): { utmSource?: string; utmMedium?: string; utmCampaign?: string } {
+function parseIncomingCampaign(): Omit<CampaignContext, "landing_path" | "captured_at" | "updated_at"> {
   if (typeof window === "undefined") return {};
   const params = new URLSearchParams(window.location.search);
   return {
-    utmSource: params.get('utm_source') || undefined,
-    utmMedium: params.get('utm_medium') || undefined,
-    utmCampaign: params.get('utm_campaign') || undefined,
+    utm_source: safeCampaignValue(params.get("utm_source")),
+    utm_medium: safeCampaignValue(params.get("utm_medium")),
+    utm_campaign: safeCampaignValue(params.get("utm_campaign")),
+    utm_content: safeCampaignValue(params.get("utm_content")),
+    utm_term: safeCampaignValue(params.get("utm_term")),
   };
 }
 
-/**
- * Send event to our server-side tracking database.
- * Uses navigator.sendBeacon for reliable delivery (survives page unload).
- * Falls back to fetch if sendBeacon is not available.
- */
-export function trackEventServer(event: AnalyticsEvent, params?: EventParams): void {
+function captureCampaign(): CampaignContext | undefined {
+  if (!hasAnalyticsConsent() || typeof window === "undefined" || shouldDisableAnalyticsForPath(window.location.pathname)) return undefined;
+  const incoming = parseIncomingCampaign();
+  const hasIncoming = Object.values(incoming).some(Boolean);
   try {
-    if (typeof window === "undefined") return;
-    if (isAnalyticsDisabledForCurrentPage()) return;
-    
-    const utm = getUTMParams();
-    const payload = {
-      eventName: event,
-      sourcePage: window.location.pathname,
-      sourcePageTitle: document.title,
-      referrer: document.referrer || undefined,
-      utmSource: utm.utmSource,
-      utmMedium: utm.utmMedium,
-      utmCampaign: utm.utmCampaign,
-      deviceType: getDeviceType(),
-      sessionId: getSessionId(),
-      metadata: params ? { ...params } : undefined,
+    const stored = JSON.parse(window.sessionStorage.getItem(CAMPAIGN_STORAGE_KEY) ?? "null") as CampaignContext | null;
+    if (!hasIncoming) return stored ?? undefined;
+    const now = new Date().toISOString();
+    const next: CampaignContext = {
+      ...incoming,
+      landing_path: stored?.landing_path ?? window.location.pathname,
+      captured_at: stored?.captured_at ?? now,
+      updated_at: now,
     };
-
-    // Use fetch with keepalive for reliable delivery
-    fetch('/api/trpc/analytics.trackEvent', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ json: payload }),
-      keepalive: true,
-      credentials: 'include',
-    }).catch(() => { /* silently fail */ });
+    window.sessionStorage.setItem(CAMPAIGN_STORAGE_KEY, JSON.stringify(next));
+    return next;
   } catch {
-    // Server tracking should never break the app
+    return undefined;
   }
 }
 
-/**
- * Initialize all analytics platforms.
- * Called once from App.tsx on mount.
- */
+function persistMarketingClickIds(): void {
+  if (!hasMarketingConsent() || typeof window === "undefined") return;
+  const params = new URLSearchParams(window.location.search);
+  const values = ["gclid", "fbclid"].reduce<Record<string, string>>((result, key) => {
+    const value = safeCampaignValue(params.get(key));
+    if (value) result[key] = value;
+    return result;
+  }, {});
+  if (Object.keys(values).length) {
+    try { window.sessionStorage.setItem(MARKETING_STORAGE_KEY, JSON.stringify(values)); } catch { /* storage is optional */ }
+  }
+}
+
+function getRouteFamily(path: string): string {
+  if (path.startsWith("/symptoms/")) return "symptom";
+  if (path.startsWith("/treatments/")) return "treatment";
+  if (path.startsWith("/dental-costs/")) return "dental_cost";
+  if (path.startsWith("/compare/") || path.startsWith("/vs/")) return "comparison";
+  if (path.startsWith("/oral-health-hub/")) return "oral_health_hub";
+  if (path === "/pricing/" || path === "/pricing") return "pricing";
+  if (path === "/download/" || path === "/download") return "download";
+  return "general";
+}
+
+function canonicalEvent(event: AnalyticsEvent): Extract<AnalyticsEvent, "page_view" | "quick_check_start" | "download_hub_open" | "store_listing_click" | "pricing_plan_selected" | "checkout_started" | "employer_demo_submit_attempt" | "employer_demo_submitted" | "cta_click" | "content_engagement"> {
+  const mapped = legacyEventMap[event] ?? event;
+  return isCanonicalAnalyticsEvent(mapped) ? mapped : "content_engagement";
+}
+
+function sendFirstParty(payload: AnalyticsEventEnvelope): void {
+  if (!hasAnalyticsConsent() || typeof window === "undefined") return;
+  fetch("/api/trpc/analytics.trackEvent", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ json: payload }),
+    keepalive: true,
+    credentials: "include",
+  }).catch(() => undefined);
+}
+
+function externalPayload(payload: AnalyticsEventEnvelope): Record<string, string> {
+  return {
+    event_id: payload.event_id,
+    surface: payload.surface ?? "",
+    intent: payload.intent ?? "",
+    cta_id: payload.cta_id ?? "",
+    route_family: payload.route_family ?? "",
+    platform: payload.platform ?? "",
+  };
+}
+
+function trackUmamiPageview(pagePath: string): void {
+  const websiteId = getEnv("VITE_ANALYTICS_WEBSITE_ID");
+  if (!websiteId || typeof window === "undefined" || !hasAnalyticsConsent()) return;
+  const send = () => {
+    if (!window.umami?.track) return false;
+    window.umami.track((properties: Record<string, unknown>) => ({
+      website: properties.website ?? websiteId,
+      url: pagePath,
+      title: document.title,
+    }));
+    return true;
+  };
+  if (!send()) pendingUmamiPageviews.push(pagePath);
+}
+
+function flushPendingUmamiPageviews(): void {
+  if (!hasAnalyticsConsent()) {
+    pendingUmamiPageviews = [];
+    return;
+  }
+  const queued = pendingUmamiPageviews;
+  pendingUmamiPageviews = [];
+  queued.forEach(trackUmamiPageview);
+}
+
+function sendExternal(payload: AnalyticsEventEnvelope, channels: { analytics: boolean; marketing: boolean }): void {
+  if (typeof window === "undefined") return;
+  if (channels.analytics) {
+    if (payload.event_name === "page_view") {
+      window.gtag?.("event", "page_view", { page_path: payload.page_path });
+      trackUmamiPageview(payload.page_path);
+    } else {
+      window.gtag?.("event", payload.event_name, externalPayload(payload));
+      window.umami?.track?.(payload.event_name, externalPayload(payload));
+    }
+  }
+  if (!channels.marketing || !window.fbq) return;
+  if (payload.event_name === "page_view") window.fbq("track", "PageView");
+  else if (payload.event_name === "checkout_started") window.fbq("track", "InitiateCheckout", externalPayload(payload));
+  else if (payload.event_name === "employer_demo_submitted") window.fbq("track", "Lead", externalPayload(payload));
+  else window.fbq("trackCustom", payload.event_name, externalPayload(payload));
+}
+
+function emit(
+  event: AnalyticsEvent,
+  details: Partial<AnalyticsEventEnvelope> = {},
+  channels = { analytics: hasAnalyticsConsent(), marketing: hasMarketingConsent() },
+): void {
+  if (typeof window === "undefined" || !canTrackCurrentPath()) return;
+  const analyticsAllowed = channels.analytics && hasAnalyticsConsent();
+  const marketingAllowed = channels.marketing && hasMarketingConsent();
+  if (!analyticsAllowed && !marketingAllowed) return;
+  const pagePath = normalizeAnalyticsPath(window.location.pathname) ?? "/";
+  const payload: AnalyticsEventEnvelope = {
+    event_name: canonicalEvent(event),
+    event_version: ANALYTICS_EVENT_VERSION,
+    event_id: randomId(),
+    timestamp: new Date().toISOString(),
+    page_path: pagePath,
+    route_family: getRouteFamily(pagePath),
+    landing_path: captureCampaign()?.landing_path,
+    session_id: getSessionId(),
+    ...details,
+  };
+  if (analyticsAllowed) payload.campaign = captureCampaign();
+  sendExternal(payload, { analytics: analyticsAllowed, marketing: marketingAllowed });
+  if (analyticsAllowed) sendFirstParty(payload);
+}
+
+export function beginRouteView(path: string): void {
+  trackPageView(path, pageviewDelivery.startRouteView());
+}
+
+export function trackPageView(path: string, routeViewId = pageviewDelivery.currentOrStartRouteView()): void {
+  const normalized = normalizeAnalyticsPath(path);
+  if (!normalized || shouldDisableAnalyticsForPath(normalized) || (!hasAnalyticsConsent() && !hasMarketingConsent())) return;
+  const analytics = hasAnalyticsConsent() && pageviewDelivery.claim(routeViewId, "analytics");
+  const marketing = hasMarketingConsent() && pageviewDelivery.claim(routeViewId, "marketing");
+  if (!analytics && !marketing) return;
+  emit("page_view", { page_path: normalized, route_family: getRouteFamily(normalized) }, { analytics, marketing });
+}
+
+export function trackConversionEvent(event: AnalyticsEvent, details: Pick<AnalyticsEventEnvelope, "cta_id" | "surface" | "intent" | "destination_type" | "destination_path" | "platform">): void {
+  emit(event, details);
+}
+
+export function trackEvent(event: AnalyticsEvent, _params?: EventParams): void {
+  emit(event);
+}
+
+export function trackSymptomProfessionalCareClick(): void {
+  trackConversionEvent("download_hub_open", {
+    cta_id: "symptom_professional_care_download",
+    surface: "symptom_next_steps",
+    intent: "symptom_support",
+    destination_type: "internal_route",
+    destination_path: "/download/",
+  });
+}
+
+function surfaceForStoreSource(source: string): AnalyticsSurface {
+  if (source.includes("footer")) return "footer";
+  if (source.includes("header")) return "header";
+  if (source.includes("hero")) return "hero";
+  if (source.includes("sticky")) return "sticky";
+  if (source.includes("pricing")) return "pricing_card";
+  if (source.includes("download_page")) return "download_hub";
+  return "download_section";
+}
+
+export function trackAppDownload(platform: AnalyticsPlatform, source = "download_section"): void {
+  trackConversionEvent("store_listing_click", {
+    cta_id: `store_${platform}_${source.replace(/[^a-z0-9_]/gi, "").slice(0, 80) || "website"}`,
+    surface: surfaceForStoreSource(source),
+    intent: "download",
+    destination_type: platform === "ios" ? "app_store" : "play_store",
+    platform,
+  });
+}
+
+export function getAppStoreUrl(source: string): string {
+  const token = source.replace(/[^a-z0-9_]/gi, "").slice(0, 80) || "website";
+  return `${app.iosUrl}?${new URLSearchParams({ pt: "126584659", ct: token, mt: "8" }).toString()}`;
+}
+
+export function getPlayStoreUrl(source: string): string {
+  const token = source.replace(/[^a-z0-9_]/gi, "").slice(0, 80) || "website";
+  return `${app.androidUrl}&${new URLSearchParams({ utm_source: "dentasmart_website", utm_medium: "cta", utm_campaign: token }).toString()}`;
+}
+
 export function initAllAnalytics(): void {
-  if (isAnalyticsDisabledForCurrentPage()) return;
-  initGA4();
-  initMetaPixel();
+  applyConsentState();
+}
+
+export function openConsentPreferences(): void {
+  if (typeof window !== "undefined") window.dispatchEvent(new Event("dentasmart:open-consent"));
+}
+
+export function getConsentStateForTesting(): { analytics: boolean; marketing: boolean } {
+  return { analytics: hasAnalyticsConsent(), marketing: hasMarketingConsent() };
 }

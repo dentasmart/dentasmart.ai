@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ArrowRight, Camera, Shield, CheckCircle2 } from "lucide-react";
-import { trackEvent } from "@/lib/analytics";
+import { trackConversionEvent } from "@/lib/analytics";
 import { Link, useLocation } from "wouter";
 
 /**
@@ -28,9 +28,10 @@ export default function OralHealthScoreTeaser() {
         if (entry.isIntersecting && !hasAnimated.current) {
           hasAnimated.current = true;
           setIsVisible(true);
-          trackEvent("mid_content_cta_click", {
-            source: location,
-            label: "score_teaser_viewed",
+          trackConversionEvent("content_engagement", {
+            cta_id: "oral_health_score_teaser_viewed",
+            surface: "mid_content",
+            intent: "content_engagement",
           });
         }
       },
@@ -70,9 +71,12 @@ export default function OralHealthScoreTeaser() {
   }, [isVisible]);
 
   const handleGetScore = () => {
-    trackEvent("mid_content_cta_click", {
-      source: location,
-      label: "score_teaser_cta",
+    trackConversionEvent("cta_click", {
+      cta_id: "oral_health_score_teaser_pricing",
+      surface: "mid_content",
+      intent: "pricing",
+      destination_type: "internal_route",
+      destination_path: "/pricing/",
     });
   };
 

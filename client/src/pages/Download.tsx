@@ -2,10 +2,9 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { trackEvent, trackAppDownload, getAppStoreUrl, getPlayStoreUrl } from "@/lib/analytics";
+import { trackAppDownload, getAppStoreUrl, getPlayStoreUrl } from "@/lib/analytics";
 import { motion } from "framer-motion";
 import { Smartphone, Shield, Zap, Heart, CheckCircle2, ArrowRight } from "lucide-react";
-import { useEffect } from "react";
 import { Link } from "wouter";
 
 const steps = [
@@ -16,10 +15,6 @@ const steps = [
 ];
 
 export default function Download() {
-  useEffect(() => {
-    trackEvent("download_page_view");
-  }, []);
-
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO

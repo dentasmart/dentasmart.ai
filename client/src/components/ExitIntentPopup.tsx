@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { X, ArrowRight, Stethoscope, DollarSign, Shield, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { trackEvent } from "@/lib/analytics";
+import { trackConversionEvent } from "@/lib/analytics";
 import { useLocation, Link } from "wouter";
 import { getPageContext, type ContentType } from "@/lib/pageContext";
 
@@ -153,10 +153,12 @@ export default function ExitIntentPopup() {
         sessionStorage.setItem("ds_exit_counter", String(counter + 1));
       } catch {}
 
-      trackEvent("exit_intent_shown", {
-        source: location,
-        variation: variation.id,
-        content_type: context.contentType,
+      trackConversionEvent("content_engagement", {
+        cta_id: `exit_intent_${variation.id}_shown`,
+        surface: "exit_intent",
+        intent: "content_engagement",
+        destination_type: "internal_route",
+        destination_path: variation.action === "external" ? "/download/" : variation.link,
       });
     },
     [location, variation.id, context.contentType]
@@ -186,10 +188,12 @@ export default function ExitIntentPopup() {
   };
 
   const handleCTA = () => {
-    trackEvent("exit_intent_click", {
-      source: location,
-      variation: variation.id,
-      platform: variation.action === "external" ? "ios" : "internal",
+    trackConversionEvent("cta_click", {
+      cta_id: `exit_intent_${variation.id}_cta`,
+      surface: "exit_intent",
+      intent: variation.id === "symptom" ? "quick_check" : variation.id.includes("treatment") || variation.id === "second-opinion" ? "treatment_plan_review" : "pricing",
+      destination_type: "internal_route",
+      destination_path: variation.action === "external" ? "/download/" : variation.link,
     });
     try {
       sessionStorage.setItem("ds_exit_shown", "1");
