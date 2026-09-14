@@ -105,7 +105,7 @@ export default function ConsentManager() {
         </fieldset>
       )}
       <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-        <button type="button" onClick={() => save({ analytics: true, marketing: true })} className="rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+        <button type="button" onClick={() => save({ analytics: true, marketing: true })} className="rounded-lg border border-border bg-background px-4 py-2.5 text-sm font-semibold text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
           Accept all
         </button>
         <button type="button" onClick={() => save({ analytics: false, marketing: false })} className="rounded-lg border border-border bg-background px-4 py-2.5 text-sm font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">

@@ -288,6 +288,14 @@ function generateStaticPageContent(path: string): string | null {
   <p>Download DentaSmart from Google Play, then review the paid service options before purchase.</p>
   <p><a href="/pricing">View Pricing</a> | <a href="/features">See All Features</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`,
+    "/best-ai-dental-apps": `
+<article>
+  <h1>Best AI Dental Apps in 2026: How to Compare Without Guessing</h1>
+</article>`,
+    "/free-ai-teeth-scanner": `
+<article>
+  <h1>Start with a Free AI Mouth Photo Check No X-Ray Required</h1>
+</article>`,
     "/faqs": `
 <article>
   <h1>DentaSmart FAQs: Common Questions Answered</h1>
@@ -376,6 +384,30 @@ function generateStaticPageContent(path: string): string | null {
     </ul>
   </nav>
   <p><a href="/download">Download DentaSmart</a> | <a href="/symptom-quiz">Take the Symptom Quiz</a></p>
+</article>`,
+    "/oral-health-hub/conditions": `
+<article>
+  <h1>Something wrong with your teeth? Learn what to watch for.</h1>
+</article>`,
+    "/oral-health-hub/symptoms": `
+<article>
+  <h1>What is your mouth trying to tell you?</h1>
+</article>`,
+    "/privacy-policy": `
+<article>
+  <h1>Privacy Policy</h1>
+</article>`,
+    "/terms-of-service": `
+<article>
+  <h1>Terms and Conditions</h1>
+</article>`,
+    "/vs/dental-com": `
+<article>
+  <h1>DentaSmart vs Dental.com: How Should You Compare Them?</h1>
+</article>`,
+    "/vs/dentistry-one": `
+<article>
+  <h1>DentaSmart vs Dentistry.One: How Should You Compare Them?</h1>
 </article>`,
     "/symptom-quiz": `
 <article>

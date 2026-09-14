@@ -71,4 +71,11 @@ describe("Phase 4 Batch 4-A accessibility foundations", () => {
     expect(consentSource).toContain('window.addEventListener("keydown", trapFocus)');
     expect(consentSource).toContain('window.removeEventListener("keydown", trapFocus)');
   });
+
+  it("keeps Accept all visually equivalent to Reject non-essential with a compliant foreground pairing", () => {
+    const acceptAllControl = consentSource.match(/<button[^>]*onClick=\{\(\) => save\(\{ analytics: true, marketing: true \}\)\}[^>]*className="([^"]+)"/);
+    expect(acceptAllControl?.[1]).toContain("border border-border bg-background");
+    expect(acceptAllControl?.[1]).toContain("text-foreground");
+    expect(acceptAllControl?.[1]).not.toContain("bg-primary");
+  });
 });
