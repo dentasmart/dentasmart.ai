@@ -24,6 +24,7 @@ const AdminMediaLibrary = lazy(() => import("@/pages/AdminMediaLibrary"));
 const AdminPages = lazy(() => import("@/pages/AdminPages"));
 const AdminRedirects = lazy(() => import("@/pages/AdminRedirects"));
 const Admin404s = lazy(() => import("@/pages/Admin404s"));
+const AdminGovernance = lazy(() => import("@/pages/AdminGovernance"));
 
 // Build paths at runtime to prevent any static analysis from detecting them
 const prefix = "/adm" + "in";
@@ -43,6 +44,7 @@ const paths = {
   pages: prefix + "/pages",
   redirects: prefix + "/redirects",
   notFound404s: prefix + "/404s",
+  governance: prefix + "/governance",
 };
 
 function PageLoader() {
@@ -81,6 +83,7 @@ export default function AdminRouter() {
         <Route path={paths.pages} component={AdminPages} />
         <Route path={paths.redirects} component={AdminRedirects} />
         <Route path={paths.notFound404s} component={Admin404s} />
+        <Route path={paths.governance} component={AdminGovernance} />
         <Route path={paths.dashboard} component={AdminDashboard} />
       </Switch>
     </Suspense>

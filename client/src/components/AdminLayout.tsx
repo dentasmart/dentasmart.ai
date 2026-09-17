@@ -23,6 +23,7 @@ import {
   LayoutGrid,
   ArrowLeftRight,
   AlertTriangle,
+  ShieldCheck,
 } from "lucide-react";
 
 interface NavItem {
@@ -74,6 +75,7 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
     if (location.includes("/admin/pages")) return "pages";
     if (location.includes("/admin/redirects")) return "redirects";
     if (location.includes("/admin/404s")) return "404s";
+    if (location.includes("/admin/governance")) return "governance";
     if (location.includes("/admin/edit") || location.includes("/admin/new")) return "articles";
     return "articles";
   }, [activeId, location]);
@@ -142,6 +144,13 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
       icon: <Bot className="w-5 h-5" />,
       path: "/admin/ai-blog-agent",
       section: "AI Agents",
+    },
+    {
+      id: "governance",
+      label: "Content Governance",
+      icon: <ShieldCheck className="w-5 h-5" />,
+      path: "/admin/governance",
+      section: "Tools",
     },
     {
       id: "seo-analytics",

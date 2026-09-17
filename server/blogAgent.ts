@@ -1,33 +1,24 @@
 /**
- * AI Blog Agent. Generates SEO-optimized blog drafts
- * using the built-in LLM helper. Each run:
- *   1. Picks a topic (keyword research via LLM)
- *   2. Creates an outline
- *   3. Writes the full article (1,500-2,000 words, human voice)
- *   4. Fills SEO fields
- *   5. Creates the blog post as a draft for manual human publication
+ * AI Blog Agent. Generates governed Oral Health Hub drafts only after an admin
+ * has approved a candidate, its intent owner, claim set, sources, canonical plan,
+ * internal links, and release prerequisites. The agent never publishes content.
  */
 
 import { invokeLLM } from "./_core/llm";
 import { getDb } from "./db";
 import { agentRuns, blogPosts, blogCategories } from "../drizzle/schema";
-import { eq, desc } from "drizzle-orm";
+import { desc, eq } from "drizzle-orm";
+import { resolveGovernedDraftContext, type GovernedDraftContext } from "./governanceAgent";
+import { createGovernedContentVersionHash } from "./governanceReview";
+import { governedBlogContentKey } from "./governancePublishing";
 
-// ─── DB Helpers ───────────────────────────────────────────────
-
-export async function createAgentRun(data: {
-  triggerType: "manual" | "scheduled";
-}) {
-  const db = await getDb();
-  if (!db) throw new Error("Database not available");
-  const [result] = await db.insert(agentRuns).values({
-    status: "running",
-    triggerType: data.triggerType,
-  }).$returningId();
-  return result.id;
+export interface GovernedDraftValidation {
+  status: "passed" | "blocked";
+  checks: readonly string[];
+  issues: readonly string[];
 }
 
-export async function updateAgentRun(id: number, data: Partial<{
+type AgentRunUpdate = Partial<{
   status: "running" | "success" | "draft" | "failed";
   title: string;
   slug: string;
@@ -35,7 +26,35 @@ export async function updateAgentRun(id: number, data: Partial<{
   postId: number;
   error: string;
   durationMs: number;
-}>) {
+  governanceCandidateId: number;
+  intentOwnerId: string;
+  governanceVersion: string;
+  governanceRiskLevel: "LOW" | "MEDIUM" | "HIGH" | "CRITICAL";
+  requiredReviewerRoles: string[];
+  claimContextIds: number[];
+  sourceContextIds: number[];
+  contentVersionHash: string;
+  validationResult: GovernedDraftValidation;
+  governanceApprovalState: "PENDING" | "APPROVED" | "BLOCKED";
+  governanceBlockReason: string | null;
+}>;
+
+export async function createAgentRun(data: {
+  triggerType: "manual";
+  governanceCandidateId: number;
+}) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const [result] = await db.insert(agentRuns).values({
+    status: "running",
+    triggerType: data.triggerType,
+    governanceCandidateId: data.governanceCandidateId,
+    governanceApprovalState: "PENDING",
+  }).$returningId();
+  return result.id;
+}
+
+export async function updateAgentRun(id: number, data: AgentRunUpdate) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
   await db.update(agentRuns).set(data).where(eq(agentRuns.id, id));
@@ -47,7 +66,7 @@ export async function listAgentRuns(limit = 50) {
   return db.select().from(agentRuns).orderBy(desc(agentRuns.createdAt)).limit(limit);
 }
 
-/** Delete specific agent_runs by ID. used by tests to clean up after themselves */
+/** Delete specific agent runs by ID. Used only by test cleanup. */
 export async function cleanupTestRuns(ids: number[]) {
   const db = await getDb();
   if (!db) return;
@@ -56,405 +75,309 @@ export async function cleanupTestRuns(ids: number[]) {
   }
 }
 
-// ─── Slug helpers ─────────────────────────────────────────────
-
-function generateSlug(title: string): string {
-  return title
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-")
-    .replace(/^-|-$/g, "")
-    .substring(0, 200);
+function slugFromCanonicalPlan(canonicalPlan: string): string {
+  const path = canonicalPlan.replace(/[?#].*$/, "").replace(/\/+$/, "");
+  const slug = path.split("/").filter(Boolean).at(-1) ?? "";
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
+    throw new Error("Candidate canonical plan must end with a URL-safe lowercase slug");
+  }
+  return slug;
 }
 
-async function ensureUniqueSlug(baseSlug: string): Promise<string> {
-  let slug = baseSlug;
-  let counter = 0;
-  while (true) {
-    const db = await getDb();
-    if (!db) throw new Error("Database not available");
-    const existing = await db.select({ id: blogPosts.id })
-      .from(blogPosts)
-      .where(eq(blogPosts.slug, slug))
-      .limit(1);
-    if (existing.length === 0) return slug;
-    counter++;
-    slug = `${baseSlug}-${counter}`;
+async function assertSlugIsAvailable(slug: string): Promise<void> {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const existing = await db.select({ id: blogPosts.id }).from(blogPosts).where(eq(blogPosts.slug, slug)).limit(1);
+  if (existing.length > 0) throw new Error("Candidate canonical plan conflicts with an existing blog slug");
+}
+
+function stripFence(value: string): string {
+  return value.replace(/^```html?\n?/i, "").replace(/\n?```$/i, "").replace(/\\"/g, '"').trim();
+}
+
+function wordCount(value: string): number {
+  return value.replace(/<[^>]+>/g, " ").trim().split(/\s+/).filter(Boolean).length;
+}
+
+function parseFaqs(value: string): readonly { question: string; answer: string }[] | null {
+  try {
+    const parsed = JSON.parse(value);
+    if (!Array.isArray(parsed) || parsed.length < 3 || parsed.length > 6) return null;
+    if (!parsed.every((faq) => typeof faq?.question === "string" && typeof faq?.answer === "string" && faq.question.trim() && faq.answer.trim())) return null;
+    return parsed;
+  } catch {
+    return null;
   }
 }
 
-// ─── Get existing titles to avoid duplicates ──────────────────
+export function validateGovernedDraft(
+  context: GovernedDraftContext,
+  articleHtml: string,
+  seo: {
+    metaTitle: string;
+    metaDescription: string;
+    ogTitle: string;
+    ogDescription: string;
+    readTime: string;
+    atAGlanceAnswer: string;
+    faqs: string;
+  },
+): GovernedDraftValidation {
+  const issues: string[] = [];
+  const checks: string[] = [
+    "approved candidate",
+    "intent owner",
+    "approved claim context",
+    "verified source context",
+    "canonical plan",
+    "internal link plan",
+    "manual-only draft status",
+  ];
+  const words = wordCount(articleHtml);
+  if (words < 900 || words > 2400) issues.push("Draft word count must be between 900 and 2,400 words.");
+  if (!articleHtml.includes("<h2")) issues.push("Draft requires at least one H2 heading.");
+  if (!articleHtml.includes("<p")) issues.push("Draft requires paragraph content.");
+  if (seo.metaTitle.length === 0 || seo.metaTitle.length > 60) issues.push("Meta title must be 1 to 60 characters.");
+  if (seo.metaDescription.length < 120 || seo.metaDescription.length > 170) issues.push("Meta description must be 120 to 170 characters.");
+  if (wordCount(seo.atAGlanceAnswer) < 60 || wordCount(seo.atAGlanceAnswer) > 140) issues.push("At-a-glance answer must be 60 to 140 words.");
+  if (!parseFaqs(seo.faqs)) issues.push("FAQs must be a JSON array of 3 to 6 non-empty question-and-answer pairs.");
 
-async function getRecentTitles(): Promise<string[]> {
-  const db = await getDb();
-  if (!db) throw new Error("Database not available");
-  const posts = await db.select({ title: blogPosts.title })
-    .from(blogPosts)
-    .orderBy(desc(blogPosts.createdAt))
-    .limit(60);
-  return posts.map((p: { title: string }) => p.title);
+  const hrefs = Array.from(articleHtml.matchAll(/href=["']([^"']+)["']/gi)).map((match) => match[1]);
+  const allowedLinks = new Set([...context.internalLinkPlan, context.ctaDestination]);
+  for (const href of hrefs) {
+    const normalized = href.replace(/^https:\/\/dentasmart\.ai/, "").replace(/\/+$/, "") || "/";
+    if (!allowedLinks.has(normalized) && !allowedLinks.has(`${normalized}/`)) {
+      issues.push(`Draft contains an unplanned link: ${href}`);
+      break;
+    }
+  }
+
+  const restrictedPatterns: readonly RegExp[] = [
+    /\b100%\s+(?:accurate|accuracy|detection)\b/i,
+    /\b50k\+?\s+(?:scans|users|patients)\b/i,
+    /\b(?:save|saves|saving)\s+\$?\d/i,
+    /\b(?:careington|dialcare)\b/i,
+    /\b(?:broker|peo|association|self-insured)\s+(?:package|plan|offering)\b/i,
+    /\b(?:diagnos(?:e|es|ed|is|ing)|prescrib(?:e|es|ed|ing))\b/i,
+    /\bguarantee(?:d|s)?\b/i,
+  ];
+  const publicText = [articleHtml, seo.metaTitle, seo.metaDescription, seo.ogTitle, seo.ogDescription, seo.atAGlanceAnswer, seo.faqs].join("\n");
+  if (restrictedPatterns.some((pattern) => pattern.test(publicText))) {
+    issues.push("Draft contains a restricted claim or clinical representation.");
+  }
+
+  return { status: issues.length === 0 ? "passed" : "blocked", checks, issues };
 }
 
-// ─── Get existing slugs for internal linking ──────────────────
-
-async function getPublishedSlugs(): Promise<{ slug: string; title: string }[]> {
-  const db = await getDb();
-  if (!db) throw new Error("Database not available");
-  const posts = await db.select({ slug: blogPosts.slug, title: blogPosts.title })
-    .from(blogPosts)
-    .where(eq(blogPosts.status, "published"))
-    .orderBy(desc(blogPosts.publishedAt))
-    .limit(40);
-  return posts;
+function formatClaimContext(context: GovernedDraftContext): string {
+  return context.claims.map((claim) => [
+    `- ID ${claim.id}: ${claim.approvedWording}`,
+    claim.qualification ? `  Qualification: ${claim.qualification}` : "",
+  ].filter(Boolean).join("\n")).join("\n");
 }
 
-// ─── Main generation pipeline ─────────────────────────────────
+function formatSourceContext(context: GovernedDraftContext): string {
+  return context.sources.map((source) => `- ${source.title} (${source.publisher ?? "Publisher not recorded"}). Scope: ${source.scope ?? "No scope recorded"}`).join("\n");
+}
 
-export async function runBlogAgent(triggerType: "manual" | "scheduled" = "manual") {
+async function resolveCategoryIds(categoryName: string) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+  const categories = await db.select().from(blogCategories);
+  const parent = categories.find((category) => !category.parentId && category.name.toLowerCase() === categoryName.toLowerCase())
+    ?? categories.find((category) => !category.parentId && category.name.toLowerCase().includes(categoryName.toLowerCase().split(" ")[0]));
+  return { categoryId: parent?.id ?? null, subcategoryId: null };
+}
+
+/**
+ * Generates one governed draft. Callers must provide an approved candidate ID.
+ * There is no scheduled trigger and no auto-publish branch.
+ */
+export async function runBlogAgent(input: { candidateId: number }) {
   const startTime = Date.now();
-  const runId = await createAgentRun({ triggerType });
-
-  // Generated content must remain draft-only. A manual human publication
-  // action remains the existing release gate and is not clinical-review proof.
+  const runId = await createAgentRun({ triggerType: "manual", governanceCandidateId: input.candidateId });
   const shouldPublish = false;
+  let governancePreflightComplete = false;
 
   try {
-    // Step 1: Topic selection
-    const recentTitles = await getRecentTitles();
-    const publishedSlugs = await getPublishedSlugs();
-
-    const topicResult = await invokeLLM({
-      messages: [
-        {
-          role: "system",
-          content: `You are a dental health content strategist for DentaSmart, an AI-powered oral health app. Your job is to pick ONE blog topic that will drive organic search traffic and app downloads.
-
-Target audience: everyday people with dental questions (not dental professionals). Focus on uninsured or confused dental patients.
-
-Topic priorities:
-P1: High-intent, high-volume keyword not yet covered
-P2: Trending dental question (educational, evergreen), dentist issues, dental insurance challenges
-P3: Expand an existing condition hub (cluster building)
-
-Alternate between: dental issues, dentist issues/challenges + second opinions, dental insurance challenges.
-
-TERMINOLOGY RULE: Always use "Second Opinion" (never "Second Review") when referring to DentaSmart's second opinion feature or the concept of getting a second opinion on dental work. This is the accepted industry term.
-
-The topic MUST fit a single search intent (e.g., "causes," "treatment," "timeline," "cost," "when to see a dentist," "emergency steps," "dental insurance challenges," "no dental insurance," "dentist trust," "dentist issues").
-
-Title rules:
-- Write titles that sound like a real person asking a question or making a statement, not a marketing headline
-- No exclamation marks
-- No AI-tell words ("comprehensive", "ultimate", "essential", "everything you need to know")
-- Prefer specific, concrete titles ("Why your tooth hurts when you bite down" over "Understanding tooth pain")
-- Optimize for AEO: titles should match how people actually type questions into Google or ask AI assistants`
-        },
-        {
-          role: "user",
-          content: `Here are the most recent blog titles already published (DO NOT repeat these topics):
-${recentTitles.map(t => `- ${t}`).join("\n")}
-
-Pick ONE new topic. Return JSON with these fields:
-- title: The blog post title (H1). Must be specific, keyword-rich, and compelling.
-- primaryKeyword: The main keyword to target (2-4 words)
-- secondaryKeywords: 2-4 secondary keywords (comma-separated)
-- searchIntent: The search intent this post targets
-- category: One of "Dental Problems", "Dentist Problems", "Insurance Problems", "Symptoms", "Gums", "Cavities", "X-Rays", "Costs"
-- categoryName: A human-readable category name for the hierarchical system (e.g., "Dental Issues", "Dentist Challenges", "Insurance Problems")
-- subcategoryName: A subcategory name (e.g., "Tooth Pain & Sensitivity", "Gum Disease", "Coverage Gaps")`
-        }
-      ],
-      response_format: {
-        type: "json_schema",
-        json_schema: {
-          name: "topic_selection",
-          strict: true,
-          schema: {
-            type: "object",
-            properties: {
-              title: { type: "string" },
-              primaryKeyword: { type: "string" },
-              secondaryKeywords: { type: "string" },
-              searchIntent: { type: "string" },
-              category: { type: "string", enum: ["Dental Problems", "Dentist Problems", "Insurance Problems", "Symptoms", "Gums", "Cavities", "X-Rays", "Costs"] },
-              categoryName: { type: "string" },
-              subcategoryName: { type: "string" },
-            },
-            required: ["title", "primaryKeyword", "secondaryKeywords", "searchIntent", "category", "categoryName", "subcategoryName"],
-            additionalProperties: false,
-          },
-        },
-      },
+    const context = await resolveGovernedDraftContext(input.candidateId);
+    governancePreflightComplete = true;
+    const slug = slugFromCanonicalPlan(context.canonicalPlan);
+    await assertSlugIsAvailable(slug);
+    await updateAgentRun(runId, {
+      intentOwnerId: context.intentOwnerId,
+      governanceVersion: "phase2-governed-draft-v1",
+      governanceRiskLevel: context.riskLevel,
+      requiredReviewerRoles: Array.from(context.requiredReviewerRoles),
+      claimContextIds: context.claims.map((claim) => claim.id),
+      sourceContextIds: context.sources.map((source) => source.id),
+      governanceApprovalState: "APPROVED",
+      governanceBlockReason: null,
     });
 
-    const topic = JSON.parse(topicResult.choices[0].message.content as string);
-    await updateAgentRun(runId, { title: topic.title, primaryKeyword: topic.primaryKeyword });
-
-    // Step 2: Write the full article
-    const blogLinksContext = publishedSlugs.slice(0, 20).map((p: { slug: string; title: string }) =>
-      `- /oral-health-hub/${p.slug}. "${p.title}"`
-    ).join("\n");
-
-    // Static content pages for cross-linking (improves internal linking & reduces orphaned pages)
-    const staticPagesContext = [
-      '- /conditions/cavities. "Cavities: Causes, Prevention & Treatment"',
-      '- /conditions/gum-disease. "Gum Disease: Signs, Stages & Treatment"',
-      '- /conditions/toothaches. "Toothache Guide: Causes & Relief"',
-      '- /symptoms/tooth-sensitivity. "Tooth Sensitivity: Causes & Solutions"',
-      '- /symptoms/bleeding-gums. "Bleeding Gums: What It Means"',
-      '- /dental-costs/root-canal-cost. "Root Canal Cost Guide"',
-      '- /dental-costs/dental-crown-cost. "Dental Crown Cost Guide"',
-      '- /dental-costs/dental-implant-cost. "Dental Implant Cost Guide"',
-      '- /treatments/root-canal. "Root Canal Treatment Guide"',
-      '- /treatments/dental-crowns. "Dental Crowns: What to Expect"',
-      '- /dental-emergencies. "Dental Emergency Guide"',
-      '- /symptom-quiz. "Free AI Symptom Checker"',
-      '- /download. "Download DentaSmart App"',
-    ].join("\n");
-
-    const internalLinksContext = `${blogLinksContext}\n\nStatic content pages (prefer these for relevant topics):\n${staticPagesContext}`;
+    const internalLinks = context.internalLinkPlan.map((path) => `- ${path}`).join("\n");
 
     const articleResult = await invokeLLM({
       messages: [
         {
           role: "system",
-          content: `You are an expert dental health writer for DentaSmart (dentasmart.ai), an AI-powered oral health app positioned as "Your Personal AI Dentist in Your Pocket."
+          content: `You write a governed DentaSmart dental-health education draft for everyday people. Write in clear, natural language at roughly an eighth-grade reading level. This is a draft for human review, not a publication.
 
-=== WRITING VOICE & ANTI-AI RULES (CRITICAL) ===
-Your writing must be indistinguishable from a skilled human health writer. Follow these rules strictly:
+Candidate question: ${context.workingQuestion}
+Audience: ${context.targetAudience}
+Search-intent family: ${context.queryFamily}
+Information gain: ${context.informationGain}
+Intent owner: ${context.intentOwnerId}
 
-1. NEVER use these AI-tell words/phrases:
-   - "delve", "dive into", "navigate", "landscape", "tapestry", "multifaceted", "nuanced"
-   - "crucial", "vital", "pivotal", "key" (as adjectives for importance)
-   - "comprehensive", "intricate", "innovative", "groundbreaking"
-   - "bustling", "vibrant", "renowned", "fostering", "leveraging", "harnessing"
-   - "spearheaded", "underscored", "a testament to", "indelible mark"
-   - "It is important to note", "It is worth noting", "Notably"
-   - "Furthermore", "Moreover" as sentence starters
-   - "In conclusion", "In summary", "Let's dive in", "Let's explore"
-   - "Whether you're a... or a..." constructions
-   - "Not only... but also" (overused)
-   - "reflects broader trends", "setting the stage for", "evolving landscape"
-   - "plays a vital role", "serves as a reminder", "stands as"
+Approved claims. Use only the exact approved wording when a claim is needed. Do not invent, extend, or paraphrase these claims.
+${formatClaimContext(context)}
 
-2. NEVER add disclaimers, caveats, or "consult a professional" notes at the end. No disclaimer section at all.
+Verified source context. Use it only for the approved scope. Do not invent citations, statistics, clinical studies, reviewer identities, medical evidence, or unsupported facts.
+${formatSourceContext(context)}
 
-3. NEVER use exclamation marks. Zero.
+Safety and editorial boundaries:
+- Keep the content educational. Do not diagnose, prescribe, confirm treatment need, replace a dentist, promise outcomes, or give false reassurance.
+- Use appropriate uncertainty. Add accurate escalation guidance where the topic warrants it.
+- Do not claim savings, partners, insurance, financing, benefits, employer access, compliance, privacy, security, ratings, or accuracy unless those exact claims appear above.
+- Avoid em dashes, exclamation marks, generic AI phrasing, and formulaic transitions.
+- Start with a concise direct answer. Use descriptive H2 headings, paragraphs, at least one list, and a 3 to 6 question FAQ section.
 
-4. NEVER use em dashes (—) or en dashes (–). Use commas, periods, or rewrite the sentence instead.
+Internal links. Use only the relevant planned links below, with descriptive anchors. Do not add any other link.
+${internalLinks}
 
-5. NEVER write meta-commentary about the article ("In this article, we will explore...", "Let's take a look at...").
+CTA destination: ${context.ctaDestination}
+Use the CTA only if it fits the approved educational context. Do not present the CTA as medical advice or a replacement for professional care.
 
-6. NEVER use formulaic paragraph patterns. Vary your openings. Do not start 2+ paragraphs the same way.
-
-7. Write like a real person talking to a friend:
-   - Use contractions naturally ("you'll", "it's", "don't")
-   - Use "you" and "your" directly
-   - Include imperfect, real-world observations ("Most people put off flossing. That's normal.")
-   - Vary sentence length dramatically: some 4-word sentences, some 20+ word sentences
-   - Start some sentences with "And", "But", "So", "Or" for natural rhythm
-   - Use specific numbers and examples ("If cold water stings for 3 seconds...")
-   - Occasionally use colloquial phrasing ("here's the thing", "the short answer", "that said")
-
-=== TERMINOLOGY ===
-- Always use "Second Opinion" (never "Second Review") when referring to DentaSmart's second opinion feature or the concept of getting a second opinion on dental work. "Second Opinion" is the accepted dental industry term.
-
-=== CONTENT RULES ===
-- 1,500-2,000 words total
-- NO "Key Takeaways" or summary section
-- Paragraphs: 2-4 sentences max. No walls of text.
-- Use concrete examples and "what to do next" advice
-- Avoid medical certainty; use appropriate hedging + encourage dental evaluation
-- Include a "When to See a Dentist" checklist section
-- Include FAQ section (3-6 questions with direct, concise answers)
-- Reading level: 8th grade, conversational tone
-- Be genuinely helpful, not promotional or salesy
-
-=== SEO / AEO / GEO FORMATTING (for search engines + AI answer engines) ===
-- Start the article with a direct, concise answer to the primary search query in the first 2-3 sentences (this is what Google AI Overviews and featured snippets pull from)
-- Use H2 for major sections, H3 for sub-points. Use sentence case for all headings.
-- Structure at least one section as a numbered or bulleted list (Google pulls these for featured snippets)
-- Write FAQ answers as standalone, self-contained responses (each answer should make sense without reading the question). This is critical for Answer Engine Optimization.
-- Use <strong> tags strategically on key phrases a skimmer should catch (1-2 per section max, not every other sentence)
-- Use <blockquote> for one powerful pull-quote or key stat mid-article
-- Include specific data points, percentages, or dollar amounts where relevant (AI answer engines prefer concrete data)
-- Front-load each section: put the most important information in the first sentence of each section
-- Keep URL-friendly structure: each H2 should be a potential answer to a related search query
-
-INTERNAL LINKING (2-4 links required):
-Use descriptive anchor text (never "click here"). Only use these verified slugs:
-${internalLinksContext}
-
-Format links as: <a href="/PATH" style="color: #DC2626; text-decoration: underline;">anchor text</a>
-Use the exact path from the list above (e.g., /oral-health-hub/SLUG for blog posts, /conditions/SLUG for conditions, etc.)
-
-CTA (end of post, woven naturally into the closing paragraph):
-- Bold lead-in question
-- 1-2 lines mentioning "Your Personal AI Dentist in Your Pocket"
-- Link: <a href="https://dentasmart.ai/download" style="color: #DC2626; text-decoration: underline; font-weight: bold;">Check your symptoms with DentaSmart AI</a>
-
-NO DISCLAIMER. Do not add any disclaimer, legal note, or "consult a professional" statement at the end. The article ends with the CTA paragraph. Nothing after it.
-
-OUTPUT FORMAT:
-Return the article as clean HTML with proper heading tags (h2, h3), paragraphs, lists, bold text, and links. Do NOT include h1 (the CMS adds it). Do NOT wrap in a code block.`
+Return clean HTML only. Do not include an H1, a source list, a disclaimer heading, markdown fences, or commentary about this instruction.`,
         },
         {
           role: "user",
-          content: `Write a blog post with this topic:
-Title: ${topic.title}
-Primary keyword: ${topic.primaryKeyword}
-Secondary keywords: ${topic.secondaryKeywords}
-Search intent: ${topic.searchIntent}
-
-Write the full article now as HTML.`
-        }
+          content: `Draft a 1,200 to 2,000 word article that answers: ${context.workingQuestion}`,
+        },
       ],
       maxTokens: 8192,
     });
+    const articleHtml = stripFence(articleResult.choices[0].message.content as string);
 
-    let articleHtml = articleResult.choices[0].message.content as string;
-    // Clean up any markdown code fences the LLM might wrap around HTML
-    articleHtml = articleHtml.replace(/^```html?\n?/i, "").replace(/\n?```$/i, "").trim();
-    // Fix escaped quotes in href attributes (LLM sometimes outputs \" instead of ")
-    articleHtml = articleHtml.replace(/\\"/g, '"');
-
-    // Step 3: Generate SEO pack
     const seoResult = await invokeLLM({
       messages: [
         {
           role: "system",
-          content: `You are an SEO/AEO/GEO specialist for DentaSmart. Generate the SEO metadata for a blog post.
-
-Rules:
-- Always use "Second Opinion" (never "Second Review") when referring to DentaSmart's second opinion feature
-- Write meta descriptions that directly answer the search query (AEO-optimized for AI answer engines)
-- Use natural, human language. No AI-tell words ("comprehensive", "delve", "navigate", "landscape")
-- No exclamation marks
-- No em dashes or en dashes
-- atAGlanceAnswer must be a direct, factual answer suitable for Google AI Overviews and featured snippets
-- FAQ answers must be self-contained (each answer makes sense without reading the question)`
+          content: `Create an SEO and answer-engine metadata pack for a governed DentaSmart draft. Use only the supplied candidate and approved claim context. Do not introduce a product claim, clinical fact, medical statistic, citation, review proof, price, savings claim, diagnosis, or treatment recommendation. Use clear language with no em dashes or exclamation marks.`,
         },
         {
           role: "user",
-          content: `Blog title: ${topic.title}
-Primary keyword: ${topic.primaryKeyword}
+          content: `Candidate question: ${context.workingQuestion}
+Search-intent family: ${context.queryFamily}
+Article HTML: ${articleHtml}
 
-Generate JSON with:
-- metaTitle: ≤60 chars, includes primary keyword + benefit, optionally "| DentaSmart" if it fits
-- metaDescription: 145-160 chars, active voice, includes primary keyword naturally + gentle CTA
-- slug: short, keyword-rich, lowercase, hyphens only (no leading slash)
-- ogTitle: slightly more click-oriented version of meta title
-- ogDescription: compelling summary for social sharing
-- readTime: estimated read time like "7 min read"
-- atAGlanceAnswer: 80-120 word summary of the article
-- faqs: JSON string of array of {question, answer} pairs (3-6 FAQs from the article)`
-        }
+Return JSON with metaTitle (1-60 characters), metaDescription (120-170 characters), ogTitle, ogDescription, readTime, atAGlanceAnswer (60-140 words), and faqs (a JSON string representing 3-6 question-and-answer pairs).`,
+        },
       ],
       response_format: {
         type: "json_schema",
         json_schema: {
-          name: "seo_pack",
+          name: "governed_seo_pack",
           strict: true,
           schema: {
             type: "object",
             properties: {
               metaTitle: { type: "string" },
               metaDescription: { type: "string" },
-              slug: { type: "string" },
               ogTitle: { type: "string" },
               ogDescription: { type: "string" },
               readTime: { type: "string" },
               atAGlanceAnswer: { type: "string" },
               faqs: { type: "string" },
             },
-            required: ["metaTitle", "metaDescription", "slug", "ogTitle", "ogDescription", "readTime", "atAGlanceAnswer", "faqs"],
+            required: ["metaTitle", "metaDescription", "ogTitle", "ogDescription", "readTime", "atAGlanceAnswer", "faqs"],
             additionalProperties: false,
           },
         },
       },
     });
+    const seo = JSON.parse(seoResult.choices[0].message.content as string) as {
+      metaTitle: string;
+      metaDescription: string;
+      ogTitle: string;
+      ogDescription: string;
+      readTime: string;
+      atAGlanceAnswer: string;
+      faqs: string;
+    };
 
-    const seo = JSON.parse(seoResult.choices[0].message.content as string);
+    const validation = validateGovernedDraft(context, articleHtml, seo);
+    if (validation.status !== "passed") {
+      throw new Error(`Governance validation blocked the draft: ${validation.issues.join(" ")}`);
+    }
 
-    // Sanitize slug
-    const cleanSlug = seo.slug
-      .trim()
-      .replace(/^\/+|\/+$/g, "")
-      .toLowerCase()
-      .replace(/[^a-z0-9\s-]/g, "")
-      .replace(/\s+/g, "-")
-      .replace(/-+/g, "-")
-      .replace(/^-|-$/g, "")
-      .substring(0, 200);
-
-    const finalSlug = await ensureUniqueSlug(cleanSlug || generateSlug(topic.title));
-
-    // Step 4: Look up category/subcategory IDs
+    const { categoryId, subcategoryId } = await resolveCategoryIds(context.cmsCategory);
     const db = await getDb();
     if (!db) throw new Error("Database not available");
-    const allCategories = await db.select().from(blogCategories);
-    
-    // Find best matching category
-    const parentCat = allCategories.find((c: any) => 
-      !c.parentId && c.name.toLowerCase().includes(topic.categoryName.toLowerCase().split(" ")[0])
-    );
-    const subCat = parentCat ? allCategories.find((c: any) =>
-      c.parentId === parentCat.id && c.name.toLowerCase().includes(topic.subcategoryName.toLowerCase().split(" ")[0])
-    ) : null;
-
-    // Step 5: Create a draft blog post. Manual publication remains required.
     const [insertResult] = await db.insert(blogPosts).values({
-      title: topic.title,
-      slug: finalSlug,
-      category: topic.category as any,
+      title: context.workingQuestion,
+      slug,
+      category: context.cmsCategory,
       readTime: seo.readTime,
       bodyHtml: articleHtml,
       metaTitle: seo.metaTitle,
       metaDescription: seo.metaDescription,
-      metaKeywords: `${topic.primaryKeyword}, ${topic.secondaryKeywords}`,
       ogTitle: seo.ogTitle,
       ogDescription: seo.ogDescription,
-      canonicalUrl: `https://dentasmart.ai/oral-health-hub/${finalSlug}`,
-      primaryKeyword: topic.primaryKeyword,
-      secondaryKeywords: topic.secondaryKeywords,
+      canonicalUrl: `https://dentasmart.ai/oral-health-hub/${slug}`,
+      primaryKeyword: context.queryFamily,
       atAGlanceAnswer: seo.atAGlanceAnswer,
       faqs: seo.faqs,
-      categoryId: parentCat?.id ?? null,
-      subcategoryId: subCat?.id ?? null,
+      categoryId,
+      subcategoryId,
       status: "draft",
       publishedAt: null,
+      governanceCandidateId: context.candidateId,
+      governanceIntentOwnerId: context.intentOwnerId,
     }).$returningId();
+
+    const contentVersionHash = createGovernedContentVersionHash({
+      contentKey: governedBlogContentKey(insertResult.id),
+      title: context.workingQuestion,
+      routePath: context.canonicalPlan,
+      bodyHtml: articleHtml,
+      metadata: {
+        metaTitle: seo.metaTitle,
+        metaDescription: seo.metaDescription,
+        ogTitle: seo.ogTitle,
+        ogDescription: seo.ogDescription,
+        atAGlanceAnswer: seo.atAGlanceAnswer,
+        faqs: seo.faqs,
+      },
+      claimIds: context.claims.map((claim) => claim.id),
+      sourceIds: context.sources.map((source) => source.id),
+    });
 
     const durationMs = Date.now() - startTime;
     await updateAgentRun(runId, {
       status: "draft",
-      slug: finalSlug,
+      title: context.workingQuestion,
+      slug,
+      primaryKeyword: context.queryFamily,
       postId: insertResult.id,
       durationMs,
+      contentVersionHash,
+      validationResult: validation,
+      governanceApprovalState: "APPROVED",
     });
-
-    return {
-      success: true,
-      runId,
-      postId: insertResult.id,
-      title: topic.title,
-      slug: finalSlug,
-      primaryKeyword: topic.primaryKeyword,
-    };
-
+    return { success: true, runId, postId: insertResult.id, title: context.workingQuestion, slug, primaryKeyword: context.queryFamily, candidateId: context.candidateId };
   } catch (error: any) {
     const durationMs = Date.now() - startTime;
+    const reason = error.message?.substring(0, 1000) || "Unknown error";
+    const blocked = !governancePreflightComplete || reason.includes("PRECONDITION_FAILED") || reason.includes("Candidate") || reason.includes("Governance validation");
     await updateAgentRun(runId, {
       status: "failed",
-      error: error.message?.substring(0, 1000) || "Unknown error",
+      error: reason,
       durationMs,
+      validationResult: { status: "blocked", checks: ["governance preflight"], issues: [reason] },
+      governanceApprovalState: blocked ? "BLOCKED" : "PENDING",
+      governanceBlockReason: blocked ? reason : null,
     });
-
-    return {
-      success: false,
-      runId,
-      error: error.message || "Unknown error",
-    };
+    return { success: false, runId, error: reason, candidateId: input.candidateId };
   }
 }

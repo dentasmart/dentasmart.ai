@@ -26,8 +26,9 @@ import { SignJWT } from "jose";
 import { storagePut } from "./storage";
 import { invalidateSitemapCache } from "./seo";
 import { runBlogAgent, listAgentRuns } from "./blogAgent";
-import { getDb, getSetting, setSetting } from "./db";
+import { getDb } from "./db";
 import { adminProcedure, ADMIN_COOKIE_NAME, JWT_SECRET, verifyAdminToken, parseCookies } from "./adminAuth";
+import { canPublishBlogPost } from "./governancePublishing";
 
 // Helper to create JWT token (blogRouter-only: signs new sessions on login)
 async function createAdminToken(adminId: number, username: string) {
@@ -239,6 +240,12 @@ export const blogRouter = router({
 
       // Set publishedAt when publishing for the first time
       const existing = await getBlogPostById(id);
+      if (data.status === "published") {
+        const publicationGate = await canPublishBlogPost(id);
+        if (!publicationGate.allowed) {
+          throw new TRPCError({ code: "PRECONDITION_FAILED", message: publicationGate.reason });
+        }
+      }
       if (data.status === "published" && existing && !existing.publishedAt) {
         (data as any).publishedAt = new Date();
       }
@@ -266,6 +273,10 @@ export const blogRouter = router({
     .mutation(async ({ input }) => {
       const post = await getBlogPostById(input.id);
       if (!post) throw new TRPCError({ code: "NOT_FOUND", message: "Blog post not found" });
+      const publicationGate = await canPublishBlogPost(input.id);
+      if (!publicationGate.allowed) {
+        throw new TRPCError({ code: "PRECONDITION_FAILED", message: publicationGate.reason });
+      }
 
       await updateBlogPost(input.id, {
         status: "published",
@@ -437,8 +448,9 @@ export const blogRouter = router({
   // ─── AI Blog Agent procedures ─────────────────────────────
 
   agentTrigger: adminBlogProcedure
-    .mutation(async () => {
-      const result = await runBlogAgent("manual");
+    .input(z.object({ candidateId: z.number().int().positive() }))
+    .mutation(async ({ input }) => {
+      const result = await runBlogAgent({ candidateId: input.candidateId });
       return result;
     }),
 
@@ -449,15 +461,16 @@ export const blogRouter = router({
 
   agentGetAutoPublish: adminBlogProcedure
     .query(async () => {
-      const val = await getSetting("blog_agent_auto_publish");
-      return { autoPublish: val !== "false" }; // default true
+      return { autoPublish: false, locked: true };
     }),
 
   agentSetAutoPublish: adminBlogProcedure
     .input(z.object({ autoPublish: z.boolean() }))
-    .mutation(async ({ input }) => {
-      await setSetting("blog_agent_auto_publish", input.autoPublish ? "true" : "false");
-      return { success: true, autoPublish: input.autoPublish };
+    .mutation(async () => {
+      throw new TRPCError({
+        code: "PRECONDITION_FAILED",
+        message: "Auto-publish is disabled. Governed drafts require explicit human review and manual publication.",
+      });
     }),
 
   // Image upload for blog editor

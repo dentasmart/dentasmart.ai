@@ -100,41 +100,23 @@ describe("Site Settings & Auto-Publish", () => {
       await expect(caller.blog.agentSetAutoPublish({ autoPublish: false })).rejects.toThrow();
     });
 
-    it("should get auto-publish default (true) with admin auth", async () => {
-      // Clear any existing setting first
-      await setSetting("blog_agent_auto_publish", "true");
-
+    it("keeps auto-publish locked off with admin auth", async () => {
       const ctx = createAdminContext(adminCookie);
       const caller = appRouter.createCaller(ctx);
       const result = await caller.blog.agentGetAutoPublish();
-      expect(result.autoPublish).toBe(true);
+      expect(result).toEqual({ autoPublish: false, locked: true });
     });
 
-    it("should set auto-publish to false with admin auth", async () => {
+    it("rejects any admin attempt to change the locked auto-publish control", async () => {
       const ctx = createAdminContext(adminCookie);
       const caller = appRouter.createCaller(ctx);
-
-      const setResult = await caller.blog.agentSetAutoPublish({ autoPublish: false });
-      expect(setResult.success).toBe(true);
-      expect(setResult.autoPublish).toBe(false);
-
-      const getResult = await caller.blog.agentGetAutoPublish();
-      expect(getResult.autoPublish).toBe(false);
-    });
-
-    it("should set auto-publish back to true with admin auth", async () => {
-      const ctx = createAdminContext(adminCookie);
-      const caller = appRouter.createCaller(ctx);
-
-      await caller.blog.agentSetAutoPublish({ autoPublish: true });
-      const getResult = await caller.blog.agentGetAutoPublish();
-      expect(getResult.autoPublish).toBe(true);
+      await expect(caller.blog.agentSetAutoPublish({ autoPublish: false })).rejects.toThrow("Auto-publish is disabled");
+      await expect(caller.blog.agentSetAutoPublish({ autoPublish: true })).rejects.toThrow("Auto-publish is disabled");
     });
   });
 
   afterAll(async () => {
     // Clean up test settings
     await setSetting("test_setting_key", "");
-    await setSetting("blog_agent_auto_publish", "true");
   });
 });

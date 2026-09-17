@@ -71,13 +71,13 @@ describe("Blog Agent", () => {
 
   describe("Agent DB Helpers", () => {
     it("should create an agent run record", async () => {
-      const runId = await createAgentRun({ triggerType: "manual" });
+      const runId = await createAgentRun({ triggerType: "manual", governanceCandidateId: 1 });
       testRunIds.push(runId);
       expect(runId).toBeGreaterThan(0);
     });
 
     it("should update an agent run record", async () => {
-      const runId = await createAgentRun({ triggerType: "scheduled" });
+      const runId = await createAgentRun({ triggerType: "manual", governanceCandidateId: 1 });
       testRunIds.push(runId);
       await updateAgentRun(runId, {
         status: "success",
@@ -97,8 +97,8 @@ describe("Blog Agent", () => {
 
     it("should list agent runs in descending order", async () => {
       // Create a couple of runs
-      const id1 = await createAgentRun({ triggerType: "manual" });
-      const id2 = await createAgentRun({ triggerType: "scheduled" });
+      const id1 = await createAgentRun({ triggerType: "manual", governanceCandidateId: 1 });
+      const id2 = await createAgentRun({ triggerType: "manual", governanceCandidateId: 1 });
       testRunIds.push(id1, id2);
 
       const runs = await listAgentRuns(10);
@@ -113,7 +113,7 @@ describe("Blog Agent", () => {
     });
 
     it("should record failed runs with error message", async () => {
-      const runId = await createAgentRun({ triggerType: "manual" });
+      const runId = await createAgentRun({ triggerType: "manual", governanceCandidateId: 1 });
       testRunIds.push(runId);
       await updateAgentRun(runId, {
         status: "failed",
@@ -150,7 +150,7 @@ describe("Blog Agent", () => {
     it("should reject agentTrigger without admin auth", async () => {
       const ctx = createPublicContext();
       const caller = appRouter.createCaller(ctx);
-      await expect(caller.blog.agentTrigger()).rejects.toThrow();
+      await expect(caller.blog.agentTrigger({ candidateId: 1 })).rejects.toThrow();
     });
   });
 

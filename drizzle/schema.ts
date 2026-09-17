@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean, json } from "drizzle-orm/mysql-core";
+import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean, json, uniqueIndex } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -71,7 +71,11 @@ export const blogPosts = mysqlTable("blog_posts", {
   // Review/authority fields
   reviewedByName: varchar("reviewedByName", { length: 200 }),
   reviewedByCredentials: varchar("reviewedByCredentials", { length: 500 }),
-  
+  // Set only by the governed agent at draft creation. This prevents a new governed
+  // draft from being mistaken for legacy content before its run audit is finalized.
+  governanceCandidateId: int("governanceCandidateId"),
+  governanceIntentOwnerId: varchar("governanceIntentOwnerId", { length: 120 }),
+
   // Category references (new hierarchical system)
   categoryId: int("categoryId"),
   subcategoryId: int("subcategoryId"),
@@ -184,12 +188,237 @@ export const agentRuns = mysqlTable("agent_runs", {
   error: text("error"),
   triggerType: mysqlEnum("triggerType", ["manual", "scheduled"]).default("manual").notNull(),
   durationMs: int("durationMs"),
+  // Phase 2 governance audit context. These fields remain null for historic runs.
+  governanceCandidateId: int("governanceCandidateId"),
+  intentOwnerId: varchar("intentOwnerId", { length: 120 }),
+  governanceVersion: varchar("governanceVersion", { length: 128 }),
+  governanceRiskLevel: mysqlEnum("governanceRiskLevel", ["LOW", "MEDIUM", "HIGH", "CRITICAL"]),
+  requiredReviewerRoles: json("requiredReviewerRoles"),
+  claimContextIds: json("claimContextIds"),
+  sourceContextIds: json("sourceContextIds"),
+  contentVersionHash: varchar("contentVersionHash", { length: 128 }),
+  validationResult: json("validationResult"),
+  governanceApprovalState: mysqlEnum("governanceApprovalState", ["PENDING", "APPROVED", "BLOCKED"]),
+  governanceBlockReason: text("governanceBlockReason"),
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
 });
 
 export type AgentRun = typeof agentRuns.$inferSelect;
 export type InsertAgentRun = typeof agentRuns.$inferInsert;
+
+/**
+ * Governance evidence sources. These records are not public citations by default
+ * and never contain uploaded clinical records or private user data.
+ */
+export const governanceSources = mysqlTable("governance_sources", {
+  id: int("id").autoincrement().primaryKey(),
+  sourceKey: varchar("sourceKey", { length: 191 }).notNull().unique(),
+  sourceType: mysqlEnum("sourceType", [
+    "government_public_health",
+    "professional_dental_organization",
+    "peer_reviewed_journal",
+    "academic_health_system",
+    "official_regulatory_product",
+    "commercial_health_reference",
+    "external_product_provider",
+    "other",
+    "unknown",
+  ]).notNull(),
+  publisher: varchar("publisher", { length: 500 }),
+  title: varchar("title", { length: 1000 }).notNull(),
+  location: varchar("location", { length: 2000 }).notNull(),
+  sourceDate: varchar("sourceDate", { length: 64 }),
+  accessedAt: timestamp("accessedAt"),
+  verifiedAt: timestamp("verifiedAt"),
+  verificationStatus: mysqlEnum("verificationStatus", [
+    "verified",
+    "legacy_existing",
+    "pending_verification",
+    "not_applicable",
+  ]).notNull().default("pending_verification"),
+  scope: text("scope"),
+  publicDisplayAllowed: boolean("publicDisplayAllowed").notNull().default(false),
+  snapshotHash: varchar("snapshotHash", { length: 128 }),
+  sourceVersion: varchar("sourceVersion", { length: 255 }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type GovernanceSource = typeof governanceSources.$inferSelect;
+export type InsertGovernanceSource = typeof governanceSources.$inferInsert;
+
+/**
+ * Reusable claims for new governed work. Existing public content is not
+ * automatically imported or marked verified by this table.
+ */
+export const governanceClaims = mysqlTable("governance_claims", {
+  id: int("id").autoincrement().primaryKey(),
+  claimKey: varchar("claimKey", { length: 191 }).notNull().unique(),
+  claimText: text("claimText").notNull(),
+  approvedWording: text("approvedWording").notNull(),
+  claimClass: mysqlEnum("claimClass", [
+    "PRODUCT_FACT",
+    "CLINICAL_EDUCATION",
+    "URGENT_CARE",
+    "TREATMENT_INFORMATION",
+    "COST_INFORMATION",
+    "EXTERNAL_COMPARISON",
+    "POLICY",
+    "TESTIMONIAL_OR_USER_CLAIM",
+    "BUSINESS_ROI",
+    "REGULATORY",
+    "PRIVACY",
+  ]).notNull(),
+  riskLevel: mysqlEnum("riskLevel", ["LOW", "MEDIUM", "HIGH", "CRITICAL"]).notNull(),
+  status: mysqlEnum("status", ["VERIFIED", "PENDING", "RETIRED", "RESTRICTED", "REJECTED"]).notNull().default("PENDING"),
+  productEntity: varchar("productEntity", { length: 300 }),
+  audience: varchar("audience", { length: 300 }),
+  geography: varchar("geography", { length: 120 }),
+  allowedParaphrase: boolean("allowedParaphrase").notNull().default(false),
+  allowedChannels: json("allowedChannels").notNull(),
+  prohibitedChannels: json("prohibitedChannels"),
+  qualification: text("qualification"),
+  effectiveAt: timestamp("effectiveAt"),
+  reviewedAt: timestamp("reviewedAt"),
+  expiresAt: timestamp("expiresAt"),
+  retiredAt: timestamp("retiredAt"),
+  replacementClaimId: int("replacementClaimId"),
+  notes: text("notes"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type GovernanceClaim = typeof governanceClaims.$inferSelect;
+export type InsertGovernanceClaim = typeof governanceClaims.$inferInsert;
+
+/**
+ * Normalized evidence association. A claim may require several sources and an
+ * evidence source may be reused by several governed claims.
+ */
+export const governanceClaimSources = mysqlTable("governance_claim_sources", {
+  id: int("id").autoincrement().primaryKey(),
+  claimId: int("claimId").notNull(),
+  sourceId: int("sourceId").notNull(),
+  notes: text("notes"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (table) => [
+  uniqueIndex("governance_claim_sources_claim_source_unique").on(table.claimId, table.sourceId),
+]);
+
+export type GovernanceClaimSource = typeof governanceClaimSources.$inferSelect;
+export type InsertGovernanceClaimSource = typeof governanceClaimSources.$inferInsert;
+
+/**
+ * Declared use of a governed claim. This records content identity and a clean
+ * route path only, never query strings, user input, images, or health records.
+ */
+export const governanceClaimUses = mysqlTable("governance_claim_uses", {
+  id: int("id").autoincrement().primaryKey(),
+  claimId: int("claimId").notNull(),
+  contentKey: varchar("contentKey", { length: 300 }).notNull(),
+  routePath: varchar("routePath", { length: 1000 }).notNull(),
+  channel: mysqlEnum("channel", [
+    "visible_body",
+    "title",
+    "meta_description",
+    "open_graph",
+    "faq",
+    "direct_answer",
+    "schema",
+    "llms",
+  ]).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (table) => [
+  uniqueIndex("governance_claim_uses_claim_content_channel_unique").on(table.claimId, table.contentKey, table.channel),
+]);
+
+export type GovernanceClaimUse = typeof governanceClaimUses.$inferSelect;
+export type InsertGovernanceClaimUse = typeof governanceClaimUses.$inferInsert;
+
+/**
+ * Append-only review records bind approved evidence to a deterministic content
+ * version. A reviewer display still requires the existing verified profile gate.
+ */
+export const governanceApprovals = mysqlTable("governance_approvals", {
+  id: int("id").autoincrement().primaryKey(),
+  approvalKey: varchar("approvalKey", { length: 191 }).notNull().unique(),
+  contentKey: varchar("contentKey", { length: 300 }).notNull(),
+  contentRoute: varchar("contentRoute", { length: 1000 }),
+  contentType: varchar("contentType", { length: 100 }).notNull(),
+  intentOwnerId: varchar("intentOwnerId", { length: 120 }),
+  contentVersionHash: varchar("contentVersionHash", { length: 128 }).notNull(),
+  finalApprovedVersionHash: varchar("finalApprovedVersionHash", { length: 128 }),
+  publicationState: mysqlEnum("publicationState", ["draft", "pending_review", "approved_for_publish", "published", "unpublished", "archived"]).notNull().default("draft"),
+  riskLevel: mysqlEnum("riskLevel", ["LOW", "MEDIUM", "HIGH", "CRITICAL"]).notNull(),
+  claimIdsReviewed: json("claimIdsReviewed").notNull(),
+  sourceIdsReviewed: json("sourceIdsReviewed").notNull(),
+  reviewScope: text("reviewScope"),
+  changeSummary: text("changeSummary"),
+  reReviewRequired: boolean("reReviewRequired").notNull().default(true),
+  decisionMakerName: varchar("decisionMakerName", { length: 300 }).notNull(),
+  decisionMakerRole: varchar("decisionMakerRole", { length: 300 }).notNull(),
+  clinicalReviewerReference: varchar("clinicalReviewerReference", { length: 300 }),
+  clinicalReviewerCredentialsReference: varchar("clinicalReviewerCredentialsReference", { length: 500 }),
+  verifiedReviewerProfileReference: varchar("verifiedReviewerProfileReference", { length: 300 }),
+  publicDisplayAllowed: boolean("publicDisplayAllowed").notNull().default(false),
+  clinicalDecision: mysqlEnum("clinicalDecision", ["APPROVED", "APPROVED_WITH_CHANGES", "REJECTED", "REVIEW_NOT_REQUIRED", "PENDING"]).notNull().default("PENDING"),
+  clinicalReviewedAt: timestamp("clinicalReviewedAt"),
+  productBusinessDecision: mysqlEnum("productBusinessDecision", ["APPROVED", "APPROVED_WITH_CHANGES", "REJECTED", "REVIEW_NOT_REQUIRED", "PENDING"]).notNull().default("PENDING"),
+  legalPrivacyDecision: mysqlEnum("legalPrivacyDecision", ["APPROVED", "APPROVED_WITH_CHANGES", "REJECTED", "REVIEW_NOT_REQUIRED", "PENDING"]).notNull().default("PENDING"),
+  editorialDecision: mysqlEnum("editorialDecision", ["APPROVED", "APPROVED_WITH_CHANGES", "REJECTED", "REVIEW_NOT_REQUIRED", "PENDING"]).notNull().default("PENDING"),
+  approvedAt: timestamp("approvedAt"),
+  publicationAuthority: varchar("publicationAuthority", { length: 300 }),
+  nextReviewAt: timestamp("nextReviewAt"),
+  supersededByApprovalId: int("supersededByApprovalId"),
+  correctionReference: varchar("correctionReference", { length: 300 }),
+  notes: text("notes"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type GovernanceApproval = typeof governanceApprovals.$inferSelect;
+export type InsertGovernanceApproval = typeof governanceApprovals.$inferInsert;
+
+/**
+ * A governance decision record, not a direct publication, redirect, canonical,
+ * sitemap, noindex, or deletion action.
+ */
+export const governanceCandidates = mysqlTable("governance_candidates", {
+  id: int("id").autoincrement().primaryKey(),
+  candidateKey: varchar("candidateKey", { length: 191 }).notNull().unique(),
+  workingQuestion: text("workingQuestion").notNull(),
+  targetAudience: varchar("targetAudience", { length: 300 }).notNull(),
+  funnelStage: varchar("funnelStage", { length: 80 }).notNull(),
+  queryFamily: varchar("queryFamily", { length: 300 }).notNull(),
+  intentOwnerId: varchar("intentOwnerId", { length: 120 }).notNull(),
+  cmsCategory: mysqlEnum("cmsCategory", ["Dentist Problems", "Dental Problems", "Insurance Problems", "Symptoms", "Gums", "Cavities", "X-Rays", "Costs"]).notNull(),
+  existingRoute: varchar("existingRoute", { length: 1000 }),
+  proposedRoute: varchar("proposedRoute", { length: 1000 }),
+  informationGain: text("informationGain"),
+  overlapScores: json("overlapScores").notNull(),
+  overlapScoreTotal: int("overlapScoreTotal").notNull().default(0),
+  overlapEvidence: text("overlapEvidence"),
+  performanceEvidence: mysqlEnum("performanceEvidence", ["AVAILABLE", "UNAVAILABLE"]).notNull().default("UNAVAILABLE"),
+  sourceFeasibility: mysqlEnum("sourceFeasibility", ["VERIFIED", "PENDING", "NOT_FEASIBLE"]).notNull().default("PENDING"),
+  claimIds: json("claimIds").notNull(),
+  sourceIds: json("sourceIds").notNull(),
+  riskLevel: mysqlEnum("riskLevel", ["LOW", "MEDIUM", "HIGH", "CRITICAL"]).notNull(),
+  requiredReviewerRoles: json("requiredReviewerRoles").notNull(),
+  ctaDestination: varchar("ctaDestination", { length: 1000 }),
+  canonicalPlan: varchar("canonicalPlan", { length: 1000 }),
+  internalLinkPlan: json("internalLinkPlan").notNull(),
+  decision: mysqlEnum("decision", ["KEEP", "IMPROVE", "REFRESH", "MERGE", "REDIRECT", "NOINDEX", "REMOVE", "CREATE_CANDIDATE", "DEFER"]).notNull().default("CREATE_CANDIDATE"),
+  decisionReason: text("decisionReason"),
+  approvalState: mysqlEnum("approvalState", ["PENDING", "APPROVED", "REJECTED", "BLOCKED"]).notNull().default("PENDING"),
+  blocker: text("blocker"),
+  plannedWindow: varchar("plannedWindow", { length: 120 }),
+  status: mysqlEnum("status", ["OPEN", "APPROVED", "BLOCKED", "ARCHIVED"]).notNull().default("OPEN"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type GovernanceCandidate = typeof governanceCandidates.$inferSelect;
+export type InsertGovernanceCandidate = typeof governanceCandidates.$inferInsert;
 
 /**
  * Conversion events table for tracking user interactions.
