@@ -128,7 +128,9 @@ function initGA4(): void {
   const id = getGA4MeasurementId();
   if (!id || typeof window === "undefined" || ga4Configured) return;
   window.dataLayer = window.dataLayer ?? [];
-  window.gtag = (...args: unknown[]) => window.dataLayer?.push(args);
+  window.gtag = function gtag(..._args: unknown[]) {
+    window.dataLayer?.push(arguments);
+  };
   window.gtag("js", new Date());
   window.gtag("config", id, { send_page_view: false });
   addExternalScript(`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(id)}`);

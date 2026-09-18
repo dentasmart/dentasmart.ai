@@ -55,4 +55,17 @@ describe("GA4 Configuration", () => {
     );
     expect(analyticsSource).toContain('window.gtag("config", id, { send_page_view: false })');
   });
+
+  it("queues Google tag commands as native arguments for the external loader", async () => {
+    const fs = await import("fs");
+    const path = await import("path");
+    const analyticsSource = fs.readFileSync(
+      path.resolve(__dirname, "../client/src/lib/analytics.ts"),
+      "utf-8"
+    );
+
+    expect(analyticsSource).toContain("window.gtag = function gtag(..._args: unknown[]) {");
+    expect(analyticsSource).toContain("window.dataLayer?.push(arguments);");
+    expect(analyticsSource).not.toContain("window.gtag = (...args: unknown[]) => window.dataLayer?.push(args);");
+  });
 });
