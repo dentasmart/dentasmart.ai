@@ -32,6 +32,49 @@ interface SEOProps {
   };
 }
 
+/**
+ * The initial server response owns the baseline metadata. React Helmet adds
+ * client-side metadata after SPA navigation, so normalize these two singleton
+ * tags to prevent a prior route's canonical or og:url from remaining in head.
+ */
+export function reconcileCanonicalAndOpenGraphUrl(
+  documentRef: Pick<Document, "createElement" | "head" | "querySelectorAll">,
+  canonical?: string,
+  noindex = false,
+): void {
+  const canonicalSelector = 'link[rel="canonical"]';
+  const ogUrlSelector = 'meta[property="og:url"]';
+  const removeAll = (selector: string) => {
+    Array.from(documentRef.querySelectorAll<HTMLElement>(selector)).forEach((element) => element.remove());
+  };
+
+  if (noindex) {
+    removeAll(canonicalSelector);
+    removeAll(ogUrlSelector);
+    return;
+  }
+
+  if (!canonical) return;
+
+  const reconcile = (selector: string, tagName: "link" | "meta", attribute: "href" | "content") => {
+    const matches = Array.from(documentRef.querySelectorAll<HTMLElement>(selector));
+    const preferred = matches.find((element) => element.hasAttribute("data-loc")) ?? matches[0];
+    const retained = preferred ?? documentRef.createElement(tagName);
+
+    if (!preferred) {
+      if (tagName === "link") retained.setAttribute("rel", "canonical");
+      if (tagName === "meta") retained.setAttribute("property", "og:url");
+      documentRef.head.appendChild(retained);
+    }
+
+    retained.setAttribute(attribute, canonical);
+    matches.filter((element) => element !== retained).forEach((element) => element.remove());
+  };
+
+  reconcile(canonicalSelector, "link", "href");
+  reconcile(ogUrlSelector, "meta", "content");
+}
+
 export default function SEO({
   title,
   description,
@@ -72,7 +115,8 @@ export default function SEO({
     document
       .querySelectorAll('script[type="application/ld+json"][data-dentasmart-schema="server"]')
       .forEach((script) => script.remove());
-  }, [location]);
+    reconcileCanonicalAndOpenGraphUrl(document, normalizedCanonical, noindex);
+  }, [location, noindex, normalizedCanonical]);
 
   return (
     <Helmet>
