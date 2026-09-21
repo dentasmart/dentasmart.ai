@@ -575,7 +575,8 @@ export type InsertPageMetaOverride = typeof pageMetaOverrides.$inferInsert;
  */
 export const redirects = mysqlTable("redirects", {
   id:         int("id").autoincrement().primaryKey(),
-  sourcePath: varchar("sourcePath", { length: 1000 }).notNull().unique(),
+  // 768 × 4 bytes fits the full utf8mb4 unique-index limit used in production.
+  sourcePath: varchar("sourcePath", { length: 768 }).notNull().unique(),
   targetPath: varchar("targetPath", { length: 1000 }).notNull(),
   statusCode: int("statusCode").notNull().default(301),
   isEnabled:  boolean("isEnabled").notNull().default(true),

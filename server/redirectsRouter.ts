@@ -17,6 +17,17 @@ import { adminProcedure } from "./adminAuth";
 import { getAllRedirects, upsertRedirect, deleteRedirect } from "./redirectDb";
 import { clearRedirectCache } from "./redirectCache";
 
+export const redirectUpsertInputSchema = z.object({
+  id: z.number().optional(),
+  sourcePath: z.string().min(1).max(768).startsWith("/"),
+  targetPath: z.string().min(1),
+  statusCode: z.number().int().refine((n) => [301, 302, 307, 308].includes(n), {
+    message: "Status code must be 301, 302, 307, or 308",
+  }),
+  isEnabled: z.boolean(),
+  note: z.string().nullable().optional(),
+});
+
 // ─── Router ──────────────────────────────────────────────────────────────────
 export const redirectsRouter = router({
   listRedirects: adminProcedure.query(async () => {
@@ -26,18 +37,7 @@ export const redirectsRouter = router({
   }),
 
   upsertRedirect: adminProcedure
-    .input(
-      z.object({
-        id: z.number().optional(),
-        sourcePath: z.string().min(1).startsWith("/"),
-        targetPath: z.string().min(1),
-        statusCode: z.number().int().refine((n) => [301, 302, 307, 308].includes(n), {
-          message: "Status code must be 301, 302, 307, or 308",
-        }),
-        isEnabled: z.boolean(),
-        note: z.string().nullable().optional(),
-      })
-    )
+    .input(redirectUpsertInputSchema)
     .mutation(async ({ input }) => {
       // Normalise sourcePath: strip trailing slash (except root "/") so the
       // middleware can always match it against the incoming request path.
