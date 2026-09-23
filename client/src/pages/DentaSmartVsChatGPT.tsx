@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import ExternalSources from "@/components/ExternalSources";
 import FAQSchema from "@/components/FAQSchema";
 import { Button } from "@/components/ui/button";
 import { trackAppDownload, trackConversionEvent, getAppStoreUrl, getPlayStoreUrl } from "@/lib/analytics";
@@ -676,6 +677,12 @@ export default function DentaSmartVsChatGPT() {
               <p className="text-xs text-stone-500">Available now on Google Play.</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="py-8 bg-white">
+        <div className="container px-4 mx-auto max-w-4xl">
+          <ExternalSources route="/compare/dentasmart-vs-chatgpt-dental/" heading="Provider information" />
         </div>
       </section>
 

@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import QuickAnswerBlock from "@/components/QuickAnswerBlock";
 import { DownloadSection } from "@/components/DownloadSection";
+import ExternalSources from "@/components/ExternalSources";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
@@ -319,7 +320,7 @@ export default function FreeAiTeethScanner() {
             ))}
           </div>
           <p className="text-sm text-stone-500 mt-4 font-light">
-            Comparison based on publicly available information as of June 2026. Features may change. <Link href="/best-ai-dental-apps/"><span className="text-action hover:underline cursor-pointer">Read the full comparison</span></Link>.
+            Compare current information directly with each provider before choosing a tool. <Link href="/best-ai-dental-apps/"><span className="text-action hover:underline cursor-pointer">Read the full comparison</span></Link>.
           </p>
         </div>
       </section>
@@ -333,6 +334,7 @@ export default function FreeAiTeethScanner() {
               <FAQItem key={idx} question={faq.question} answer={faq.answer} />
             ))}
           </div>
+          <ExternalSources route="/free-ai-teeth-scanner/" heading="Free Quick Check verification" />
         </div>
       </section>
 

@@ -344,7 +344,7 @@ export default function AgeSpecificTemplate({ data }: { data: AgeSpecificPageDat
               </details>
             ))}
           </div>
-          <ExternalSources category="life-stage" />
+          <ExternalSources route={`/life-stages/${data.slug}/`} />
         </div>
       </section>
 

@@ -117,26 +117,44 @@ ${urls}
 // ============================================================
 // Segmented sitemap generation
 // ============================================================
-async function generateBlogSitemap(): Promise<string> {
-  let blogUrls: Array<{ path: string; priority: string; changefreq: string; lastmod: string }> = [];
+export interface CanonicalPublicBlogPost {
+  slug: string;
+  title: string;
+  updatedAt: Date | string | null;
+}
+
+export function filterCanonicalPublicBlogPosts<T extends CanonicalPublicBlogPost>(
+  posts: readonly T[],
+  redirectSources: ReadonlySet<string>,
+): T[] {
+  return posts.filter((post) => {
+    const path = `/oral-health-hub/${post.slug}`;
+    return !redirectSources.has(path) && !redirectSources.has(`${path}/`);
+  });
+}
+
+async function getCanonicalPublicBlogPosts(): Promise<CanonicalPublicBlogPost[]> {
   try {
     const result = await listBlogPosts({ publishedOnly: true, limit: 1000 });
     // Build redirect source set  -  if cache is unavailable, skip filtering (never fail sitemap)
     const redirectSources = await getEnabledRedirectSources();
-    blogUrls = result.posts
-      .map((post) => ({
-        path: `/oral-health-hub/${post.slug}`,
-        priority: "0.7",
-        changefreq: "weekly",
-        lastmod: post.updatedAt
-          ? new Date(post.updatedAt).toISOString().split("T")[0]
-          : today,
-      }))
-      // Exclude any post whose canonical path is an enabled redirect source
-      .filter((entry) => !redirectSources.has(entry.path) && !redirectSources.has(entry.path + "/"));
+    return filterCanonicalPublicBlogPosts(result.posts, redirectSources);
   } catch (e) {
     console.error("Failed to fetch blog posts for blog sitemap:", e);
+    return [];
   }
+}
+
+async function generateBlogSitemap(): Promise<string> {
+  const publicBlogPosts = await getCanonicalPublicBlogPosts();
+  const blogUrls = publicBlogPosts.map((post) => ({
+    path: `/oral-health-hub/${post.slug}`,
+    priority: "0.7",
+    changefreq: "weekly",
+    lastmod: post.updatedAt
+      ? new Date(post.updatedAt).toISOString().split("T")[0]
+      : today,
+  }));
   return wrapUrlset(routesToXml(blogUrls));
 }
 
@@ -349,7 +367,15 @@ function buildLlmsTxt(): string {
 // ============================================================
 // llms-full.txt content builder (extended with page summaries)
 // ============================================================
-function buildLlmsFullTxt(): string {
+function markdownLinkLabel(value: string): string {
+  return value.replace(/[\r\n\[\]]+/g, " ").replace(/\s+/g, " ").trim();
+}
+
+async function buildLlmsFullTxt(): Promise<string> {
+  const publicBlogPosts = await getCanonicalPublicBlogPosts();
+  const canonicalBlogLines = publicBlogPosts.map((post) =>
+    `- [${markdownLinkLabel(post.title)}](${SITE_URL}/oral-health-hub/${post.slug})`,
+  );
   const content = [
     "# DentaSmart - Full Content Reference for AI Engines",
     "> Complete content reference for DentaSmart.ai, an AI-powered oral health education app (Your Personal AI Dentist in Your Pocket).",
@@ -423,6 +449,11 @@ function buildLlmsFullTxt(): string {
     "",
     "This comparison explains the difference between dental insurance and DentaSmart. DentaSmart has published individual and family annual prices and is not dental insurance. It provides educational tools and does not pay claims, replace coverage, or replace professional dental care.",
     "",
+    "## Product Comparison Owners",
+    `- [DentaSmart vs ChatGPT for Dental](${SITE_URL}/compare/dentasmart-vs-chatgpt-dental/)`,
+    `- [DentaSmart vs Teledentistry](${SITE_URL}/compare/dentasmart-vs-teledentistry/)`,
+    `- [DentaSmart vs Dental Insurance](${SITE_URL}/compare/dentasmart-vs-dental-insurance/)`,
+    "",
     "## Page Summaries",
     "",
     "### Homepage (https://dentasmart.ai/)",
@@ -455,60 +486,10 @@ function buildLlmsFullTxt(): string {
     "### For Employers (https://dentasmart.ai/employers)",
     "DentaSmart offers an educational oral health service for employers exploring decision-support tools. It is not dental insurance, and employer eligibility and service terms require separate confirmation.",
     "",
-    "## New AEO Content (Published April 2026)",
+    "## Canonical Oral Health Hub Articles",
     "",
-    "### AEO Blog Posts",
-    "What Is an AI Oral Health Guide (https://dentasmart.ai/oral-health-hub/what-is-ai-oral-health-guide) - Explains what AI dental tools are and how DentaSmart works as your personal AI dentist.",
-    "What Is DentaSmart and How Does It Work (https://dentasmart.ai/oral-health-hub/what-is-dentasmart-how-does-it-work) - Complete overview of DentaSmart features, pricing, and how to use it.",
-    "How Much Does DentaSmart Cost (https://dentasmart.ai/oral-health-hub/how-much-does-dentasmart-cost) - Detailed pricing breakdown for all DentaSmart plans.",
-    "DentaSmart vs ChatGPT for Dental Questions (https://dentasmart.ai/oral-health-hub/dentasmart-vs-chatgpt-dental-questions) - Comparison of DentaSmart vs ChatGPT for dental advice.",
-    "Can AI Help Explain Dental X-Rays (https://dentasmart.ai/oral-health-hub/can-ai-explain-dental-xrays) - How AI tools like DentaSmart analyze and explain dental X-rays.",
-    "Dental Second Opinion Without Insurance (https://dentasmart.ai/oral-health-hub/dental-second-opinion-without-insurance) - How to get a dental second opinion without insurance.",
-    "Is DentaSmart a Dental Insurance Alternative (https://dentasmart.ai/oral-health-hub/is-dentasmart-dental-insurance-alternative) - Whether DentaSmart can serve as an insurance alternative.",
-    "What Is an Oral Health Score (https://dentasmart.ai/oral-health-hub/what-is-oral-health-score) - Explains DentaSmart Oral Health Score 0-100.",
-    "How to Avoid Surprise Dental Bills (https://dentasmart.ai/oral-health-hub/how-to-avoid-surprise-dental-bills) - Strategies to prevent unexpected dental costs.",
-    "What to Do When Dentist Says You Need a Crown (https://dentasmart.ai/oral-health-hub/what-to-do-dentist-says-need-crown) - Guide for patients told they need a dental crown.",
-    "",
-    "### Use-Case Pages",
-    "AI Dental Second Opinion Without Insurance (https://dentasmart.ai/oral-health-hub/ai-dental-second-opinion-without-insurance)",
-    "How to Understand Your Dental X-Rays with AI (https://dentasmart.ai/oral-health-hub/understand-dental-x-rays)",
-    "Confused by Your Dental Treatment Plan (https://dentasmart.ai/oral-health-hub/dental-treatment-plan-confusion)",
-    "How to Avoid Surprise Dental Bills Guide (https://dentasmart.ai/oral-health-hub/avoid-surprise-dental-bills-guide)",
-    "Dental Anxiety Before Your Appointment (https://dentasmart.ai/oral-health-hub/dental-anxiety-before-appointment)",
-    "Parents Checking Kids Teeth (https://dentasmart.ai/oral-health-hub/parents-checking-kids-teeth)",
-    "Family Oral Health Monitoring (https://dentasmart.ai/oral-health-hub/family-oral-health-monitoring)",
-    "Small Business Dental Benefits Alternative (https://dentasmart.ai/oral-health-hub/small-business-dental-benefits-alternative)",
-    "Worried About Dental Overtreatment (https://dentasmart.ai/oral-health-hub/worried-about-overtreatment)",
-    "Tooth Pain at Night (https://dentasmart.ai/oral-health-hub/tooth-pain-at-night)",
-    "Gig Workers Without Dental Insurance (https://dentasmart.ai/oral-health-hub/gig-workers-without-dental-insurance)",
-    "Second Opinion Before Root Canal (https://dentasmart.ai/oral-health-hub/second-opinion-before-root-canal)",
-    "Second Opinion Before Crown (https://dentasmart.ai/oral-health-hub/second-opinion-before-crown)",
-    "Dental Cost Help for Families (https://dentasmart.ai/oral-health-hub/dental-cost-help-for-families)",
-    "AI Dental App for Parents (https://dentasmart.ai/oral-health-hub/ai-dental-app-for-parents)",
-    "",
-    "### Comparison Pages",
-    "DentaSmart vs ChatGPT for Dental Advice (https://dentasmart.ai/oral-health-hub/dentasmart-vs-chatgpt-dental-advice)",
-    "DentaSmart vs Teledentistry (https://dentasmart.ai/oral-health-hub/dentasmart-vs-teledentistry)",
-    "DentaSmart vs Dental Insurance (https://dentasmart.ai/compare/dentasmart-vs-dental-insurance/)",
-    "DentaSmart vs Traditional Second Opinion (https://dentasmart.ai/oral-health-hub/dentasmart-vs-traditional-second-opinion)",
-    "DentaSmart vs Dental Discount Plans (https://dentasmart.ai/oral-health-hub/dentasmart-vs-dental-discount-plans)",
-    "DentaSmart vs Dental Savings Plans (https://dentasmart.ai/oral-health-hub/dentasmart-vs-dental-savings-plans)",
-    "DentaSmart vs Toothpic (https://dentasmart.ai/oral-health-hub/dentasmart-vs-toothpic)",
-    "DentaSmart vs Pearl and Overjet (https://dentasmart.ai/oral-health-hub/dentasmart-vs-pearl-overjet)",
-    "DentaSmart vs Googling Dental Symptoms (https://dentasmart.ai/oral-health-hub/dentasmart-vs-googling-dental-symptoms)",
-    "DentaSmart vs Waiting for Dental Visit (https://dentasmart.ai/oral-health-hub/dentasmart-vs-waiting-for-dental-visit)",
-    "",
-    "### Listicle Pages",
-    "7 Best AI Dental Apps in 2026 (https://dentasmart.ai/oral-health-hub/top-10-best-ai-dental-apps/)",
-    "5 Best Dental Second Opinion Apps (https://dentasmart.ai/oral-health-hub/best-dental-second-opinion-apps)",
-    "Best Apps to Understand Dental X-Rays (https://dentasmart.ai/oral-health-hub/best-apps-understand-dental-xrays)",
-    "7 Best Dental Insurance Alternatives (https://dentasmart.ai/oral-health-hub/best-dental-insurance-alternatives)",
-    "5 Best Oral Health Apps for Families (https://dentasmart.ai/oral-health-hub/best-oral-health-apps-families)",
-    "5 Best Dental Cost Transparency Tools (https://dentasmart.ai/oral-health-hub/best-dental-cost-transparency-tools)",
-    "5 Best Apps for Tooth Pain Guidance (https://dentasmart.ai/oral-health-hub/best-apps-tooth-pain-guidance)",
-    "5 Best Dental Apps Without Insurance (https://dentasmart.ai/oral-health-hub/best-dental-apps-without-insurance)",
-    "7 Best AI Health Apps for Preventive Care (https://dentasmart.ai/oral-health-hub/best-ai-health-apps-preventive-care)",
-    "5 Best Dental Apps for Parents (https://dentasmart.ai/oral-health-hub/best-dental-apps-for-parents)",
+    "The article list below is derived from the same published-blog eligibility path used for the public blog sitemap. Titles and availability can change as the canonical public article set changes.",
+    ...canonicalBlogLines,
     "",
     "## Contact & Social",
     "",
@@ -527,46 +508,23 @@ function buildLlmsFullTxt(): string {
 // ============================================================
 // robots.txt content builder
 // ============================================================
-function buildRobotsTxt(): string {
-  const lines = [
-    "User-agent: *",
+export const publicRobotsAgents = [
+  "*", "OAI-SearchBot", "GPTBot", "Google-Extended", "PerplexityBot",
+  "ClaudeBot", "Anthropic-ai", "Bytespider", "CCBot", "cohere-ai", "Applebot-Extended",
+] as const;
+
+export function buildRobotsTxt(): string {
+  const lines = publicRobotsAgents.flatMap((agent) => [
+    `User-agent: ${agent}`,
     "Allow: /",
     "Disallow: /admin/",
     "Disallow: /api/",
     "",
-    "User-agent: OAI-SearchBot",
-    "Allow: /",
-    "",
-    "User-agent: GPTBot",
-    "Allow: /",
-    "",
-    "User-agent: Google-Extended",
-    "Allow: /",
-    "",
-    "User-agent: PerplexityBot",
-    "Allow: /",
-    "",
-    "User-agent: ClaudeBot",
-    "Allow: /",
-    "",
-    "User-agent: Anthropic-ai",
-    "Allow: /",
-    "",
-    "User-agent: Bytespider",
-    "Allow: /",
-    "",
-    "User-agent: CCBot",
-    "Allow: /",
-    "",
-    "User-agent: cohere-ai",
-    "Allow: /",
-    "",
-    "User-agent: Applebot-Extended",
-    "Allow: /",
-    "",
+  ]);
+  lines.push(
     `Sitemap: ${SITE_URL}/sitemap-index.xml`,
-    ""
-  ];
+    "",
+  );
   return lines.join(NL);
 }
 
@@ -589,10 +547,10 @@ export function registerSeoRoutes(app: Express) {
   });
 
   // llms-full.txt
-  app.get("/llms-full.txt", (_req: Request, res: Response) => {
+  app.get("/llms-full.txt", async (_req: Request, res: Response) => {
     res.type("text/markdown");
     res.set("Cache-Control", "public, max-age=0, s-maxage=3600, must-revalidate");
-    res.send(buildLlmsFullTxt());
+    res.send(await buildLlmsFullTxt());
   });
 
   // ============================================================

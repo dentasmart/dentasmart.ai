@@ -1,7 +1,9 @@
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
 import SEO from "@/components/SEO";
+import ExternalSources from "@/components/ExternalSources";
 import { app, brand, company, pricing } from "@shared/facts";
+import { getPublicEvidence } from "@shared/evidenceRegistry";
 import { Link } from "wouter";
 
 export type GovernancePageKind = "editorial" | "corrections" | "ai-use" | "product-facts";
@@ -124,6 +126,7 @@ function ProductFactsPage() {
   const title = "Product Facts | DentaSmart";
   const description = "Review verified DentaSmart availability, current plan names, prices, store links, Free Quick Check details, and educational-use boundaries.";
   const canonical = "https://dentasmart.ai/product-facts";
+  const productEvidence = getPublicEvidence("productFacts", "pricing", "iosStore", "androidStore");
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-black">
@@ -133,7 +136,7 @@ function ProductFactsPage() {
         <article className="container max-w-4xl px-4 mx-auto">
           <p className="text-sm font-medium text-action uppercase tracking-wide mb-3">DentaSmart governance resource</p>
           <h1 className="text-4xl md:text-5xl font-normal tracking-tight text-black mb-5">Product Facts</h1>
-          <p className="text-lg text-stone-700 leading-relaxed max-w-3xl">This page lists verified DentaSmart product information. It does not list ratings, user counts, savings, accuracy, regulatory claims, or unverified review claims.</p>
+          <p className="text-lg text-stone-700 leading-relaxed max-w-3xl">This page lists current DentaSmart product information that has a public verification basis. It does not list ratings, user counts, savings, accuracy, regulatory claims, or unverified review claims.</p>
 
           <section className="mt-10 rounded-2xl border border-stone-200 bg-white p-6 md:p-8">
             <h2 className="text-2xl font-medium text-black mb-4">Product and availability</h2>
@@ -172,6 +175,7 @@ function ProductFactsPage() {
             <h2 className="text-2xl font-medium text-black mb-3">Educational-use boundary</h2>
             <p className="text-stone-700 leading-relaxed">DentaSmart organizes supported information and gives educational outputs. It does not diagnose conditions. It does not replace care from a licensed dental professional.</p>
           </section>
+          <ExternalSources sources={productEvidence} heading="How these facts are checked" />
           <PolicyNavigation />
         </article>
       </main>

@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import ExternalSources from "@/components/ExternalSources";
 import { Button } from "@/components/ui/button";
 import { trackAppDownload, getAppStoreUrl, getPlayStoreUrl } from "@/lib/analytics";
 import { motion } from "framer-motion";
@@ -201,6 +202,12 @@ export default function Download() {
               </a>
             </Button>
           </div>
+        </div>
+      </section>
+
+      <section className="py-8 bg-white">
+        <div className="container px-4 mx-auto max-w-4xl">
+          <ExternalSources route="/download/" heading="App availability" />
         </div>
       </section>
 

@@ -6,6 +6,7 @@ import { useLayoutEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Check, X, Shield, Sparkles, Zap, ArrowRight, Users } from "lucide-react";
 import { DownloadSection } from "@/components/DownloadSection";
+import ExternalSources from "@/components/ExternalSources";
 import { motion } from "framer-motion";
 import { WaitlistPopup } from "@/components/WaitlistPopup";
 import { trackConversionEvent } from "@/lib/analytics";
@@ -584,6 +585,7 @@ export default function Pricing() {
               </details>
             ))}
           </div>
+          <ExternalSources route="/pricing/" heading="Pricing verification" />
         </div>
       </section>
 

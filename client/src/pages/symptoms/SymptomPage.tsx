@@ -268,9 +268,7 @@ export default function SymptomPage() {
             {note && (
               <p className="text-stone-700 font-light leading-relaxed mt-4">{note}</p>
             )}
-            {symptom.sourceRefs && (
-              <ExternalSources governedSources={symptom.sourceRefs} />
-            )}
+            <ExternalSources governedSources={symptom.sourceRefs} route={`/symptoms/${symptom.slug}/`} />
           </div>
         </div>
       </section>

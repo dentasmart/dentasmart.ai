@@ -13,6 +13,7 @@ import { conditionsData } from "@/data/conditions";
 import { aeoConditions } from "@/data/aeoContent";
 import { breadcrumbSchema, medicalWebPageSchema, faqPageSchema } from "@/lib/schema";
 import ContentGovernanceMeta from "@/components/ContentGovernanceMeta";
+import ExternalSources from "@/components/ExternalSources";
 import QuickAnswerBlock from "@/components/QuickAnswerBlock";
 import type { ContentGovernance } from "@shared/contentGovernance";
 
@@ -311,6 +312,7 @@ export default function ConditionPage() {
               <FAQItem key={idx} question={faq.question} answer={faq.answer} />
             ))}
           </div>
+          <ExternalSources route={`/conditions/${condition.slug}/`} />
         </div>
       </section>
 

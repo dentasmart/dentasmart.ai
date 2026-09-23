@@ -398,7 +398,7 @@ export default function ComparisonPageTemplate({ data }: { data: ComparisonPageD
               </motion.details>
             ))}
           </div>
-          <ExternalSources />
+          <ExternalSources route={data.canonicalPath ?? `/comparisons/${data.slug}/`} heading="Provider information" />
         </div>
       </section>
 

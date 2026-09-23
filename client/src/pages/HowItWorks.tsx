@@ -4,6 +4,7 @@ import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import HowItWorksHero from "@/components/HowItWorksHero";
 import { DownloadSection } from "@/components/DownloadSection";
+import ExternalSources from "@/components/ExternalSources";
 import { BenefitsCarousel } from "@/components/BenefitsCarousel";
 import { Camera, Brain, FileText, MessageSquare, Activity, ShieldCheck, ClipboardList, Calendar, Bell, TrendingUp, HeartPulse, CheckCircle2, Scan, Upload, Stethoscope } from "lucide-react";
 import { motion } from "framer-motion";
@@ -388,6 +389,12 @@ export default function HowItWorks() {
               Read all FAQs
             </Button>
           </Link>
+        </div>
+      </section>
+
+      <section className="pb-8 bg-white">
+        <div className="container px-4 mx-auto max-w-4xl">
+          <ExternalSources route="/how-it-works/" heading="Product fact verification" />
         </div>
       </section>
 

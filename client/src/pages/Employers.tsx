@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import ExternalSources from "@/components/ExternalSources";
 import { Button } from "@/components/ui/button";
 import { BarChart3, FileText, Users } from "lucide-react";
 import { ValueComparisonTable } from "@/components/ValueComparisonTable";
@@ -270,6 +271,12 @@ export default function Employers() {
               Meet the Team
             </Link>
           </div>
+        </div>
+      </section>
+
+      <section className="py-8 bg-white">
+        <div className="container px-4 mx-auto max-w-4xl">
+          <ExternalSources route="/employers/" heading="Current program status" />
         </div>
       </section>
 

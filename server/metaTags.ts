@@ -154,7 +154,7 @@ const staticMeta: Record<string, MetaInfo> = {
       "Review general educational information about dental symptoms, treatments, costs, and oral health. DentaSmart does not diagnose conditions.",
   },
   "/find-a-dentist": {
-    title: "How to Choose a Dentist | DentaSmart Guide",
+    title: "How to Find the Right Dentist - DentaSmart Guide",
     description:
       "Review practical questions about credentials, services, access, fees, insurance participation, and communication before choosing a dentist.",
   },
@@ -233,7 +233,7 @@ const staticMeta: Record<string, MetaInfo> = {
       "Learn common causes of toothache, ways to manage discomfort at home, and signs that call for dental care.",
   },
   "/conditions/cavities": {
-    title: "Cavities Guide | Signs, Prevention & Treatment Options",
+    title: "Cavities: Causes, Symptoms & Treatment | DentaSmart",
     description:
       "Find out what cavities are, how to spot the early signs, and what you can do about them. Simple, clear info from DentaSmart.",
   },
@@ -650,7 +650,7 @@ const staticMeta: Record<string, MetaInfo> = {
       "Find out how much common dental procedures cost, from cleanings to implants. Compare prices with and without insurance.",
   },
   "/dental-costs/root-canal-cost": {
-    title: "Root Canal Cost | Average Prices With & Without Insurance",
+    title: "Root Canal Cost | DentaSmart",
     description:
       "How much does a root canal cost? Compare average prices by tooth type, with and without insurance, and learn how to save.",
   },
@@ -833,7 +833,7 @@ const staticMeta: Record<string, MetaInfo> = {
       "Know what to do in a dental emergency. Quick guides for knocked-out teeth, broken teeth, severe toothaches, and dental abscesses.",
   },
   "/dental-emergencies/knocked-out-tooth": {
-    title: "Knocked Out Tooth | Emergency Steps to Save Your Tooth",
+    title: "Knocked Out Tooth Guide: What To Do In The First 30 Minutes",
     description:
       "Knocked out a tooth? Act fast. Follow these emergency steps to save your tooth and get the best chance of successful reimplantation.",
   },

@@ -126,6 +126,21 @@ export default function Article() {
   const hasBodyHtml = article.bodyHtml && article.bodyHtml.trim().length > 0;
   const hasStructuredContent = article.problemContent || article.empathyContent || article.solutionContent;
   const articleGovernance = (article as typeof article & { governance?: ContentGovernance }).governance;
+  const governedAnswer = articleGovernance ? article.atAGlanceAnswer?.trim() : undefined;
+  const governedFaqs = (() => {
+    if (!articleGovernance || !article.faqs) return [];
+    try {
+      const parsed: unknown = JSON.parse(article.faqs);
+      return Array.isArray(parsed)
+        ? parsed.filter((item): item is { question: string; answer: string } => Boolean(
+          item && typeof item === "object" && typeof (item as { question?: unknown }).question === "string" &&
+          typeof (item as { answer?: unknown }).answer === "string",
+        ))
+        : [];
+    } catch {
+      return [];
+    }
+  })();
 
   return (
     <>
@@ -300,6 +315,25 @@ export default function Article() {
                 </>
               ) : (
                 <p className="text-lg text-stone-600">This article has no content yet.</p>
+              )}
+              {governedAnswer && (
+                <section className="mt-10 rounded-2xl border border-primary/15 bg-primary/5 p-6" aria-labelledby="at-a-glance-heading">
+                  <h2 id="at-a-glance-heading" className="text-xl font-medium text-black mb-2">At a glance</h2>
+                  <p className="text-stone-700 leading-relaxed">{governedAnswer}</p>
+                </section>
+              )}
+              {governedFaqs.length > 0 && (
+                <section className="mt-10" aria-labelledby="article-faq-heading">
+                  <h2 id="article-faq-heading" className="text-2xl font-medium text-black mb-4">Frequently asked questions</h2>
+                  <div className="space-y-4">
+                    {governedFaqs.map((faq) => (
+                      <div key={faq.question} className="rounded-xl bg-stone-50 p-5">
+                        <h3 className="font-medium text-black">{faq.question}</h3>
+                        <p className="mt-2 text-stone-700 leading-relaxed">{faq.answer}</p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
               )}
               {articleGovernance?.sourceRefs && articleGovernance.sourceRefs.length > 0 && (
                 <ExternalSources governedSources={articleGovernance.sourceRefs} />

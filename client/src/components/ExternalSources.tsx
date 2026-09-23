@@ -1,71 +1,95 @@
 import { ExternalLink } from "lucide-react";
 import type { ContentSourceRef } from "@shared/contentGovernance";
-import { isExternalEvidenceUrl } from "@shared/contentGovernance";
+import type { PublicEvidenceSource } from "@shared/evidenceRegistry";
+import { getDisplayableEvidenceSources, resolvePublicEvidenceSources } from "@shared/evidenceRegistry";
 
-interface Source {
-  name: string;
+type DisplaySource = {
+  id: string;
+  title: string;
+  publisher?: string;
   url: string;
-}
-
-const defaultSources: Source[] = [
-  { name: "American Dental Association", url: "https://www.ada.org/resources/research/science-and-research-institute/oral-health-topics" },
-  { name: "National Institute of Dental and Craniofacial Research", url: "https://www.nidcr.nih.gov/health-info" },
-  { name: "MouthHealthy.org (ADA)", url: "https://www.mouthhealthy.org/" },
-];
-
-const costSources: Source[] = [
-  { name: "ADA Health Policy Institute", url: "https://www.ada.org/resources/research/health-policy-institute" },
-  { name: "Fair Health Consumer", url: "https://www.fairhealthconsumer.org/" },
-  { name: "CareCredit", url: "https://www.carecredit.com/dentistry/" },
-];
-
-const emergencySources: Source[] = [
-  { name: "American Dental Association (Emergency)", url: "https://www.ada.org/resources/research/science-and-research-institute/oral-health-topics/dental-emergencies" },
-  { name: "National Institute of Dental and Craniofacial Research", url: "https://www.nidcr.nih.gov/health-info" },
-  { name: "MedlinePlus (Dental)", url: "https://medlineplus.gov/dentalhealth.html" },
-];
-
-const lifeStageSources: Source[] = [
-  { name: "American Academy of Pediatric Dentistry", url: "https://www.aapd.org/resources/parent/" },
-  { name: "National Institute of Dental and Craniofacial Research", url: "https://www.nidcr.nih.gov/health-info" },
-  { name: "MouthHealthy.org (ADA)", url: "https://www.mouthhealthy.org/" },
-];
-
-export type SourceCategory = "default" | "cost" | "emergency" | "life-stage";
-
-const sourceMap: Record<SourceCategory, Source[]> = {
-  default: defaultSources,
-  cost: costSources,
-  emergency: emergencySources,
-  "life-stage": lifeStageSources,
+  sourceDate?: string;
+  accessedOn?: string;
+  scope?: string;
 };
 
-export default function ExternalSources({ category = "default", governedSources }: { category?: SourceCategory; governedSources?: readonly ContentSourceRef[] }) {
-  const sources = governedSources
-    ? governedSources
-      .filter((source) => source.publicDisplayAllowed !== false && isExternalEvidenceUrl(source.url))
-      .map((source) => ({ name: source.publisher ? `${source.title} (${source.publisher})` : source.title, url: source.url }))
-    : sourceMap[category];
+function formatDate(value?: string): string | undefined {
+  if (!value) return undefined;
+  const date = new Date(`${value}T00:00:00Z`);
+  if (Number.isNaN(date.getTime())) return undefined;
+  return new Intl.DateTimeFormat("en", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(date);
+}
 
-  if (sources.length === 0) return null;
+function isPublicEvidenceUrl(value: string): boolean {
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" || url.protocol === "http:";
+  } catch {
+    return false;
+  }
+}
+
+function toDisplaySource(source: ContentSourceRef | PublicEvidenceSource): DisplaySource | undefined {
+  if (source.publicDisplayAllowed !== true || !isPublicEvidenceUrl(source.url)) return undefined;
+  const evidence = source as PublicEvidenceSource;
+  return {
+    id: source.id,
+    title: source.title,
+    publisher: source.publisher,
+    url: source.url,
+    sourceDate: source.publicationDate,
+    accessedOn: source.accessedOn ?? evidence.verifiedAt,
+    scope: source.notes ?? evidence.sourceScope,
+  };
+}
+
+/** Displays only source records explicitly marked safe for public display. */
+export default function ExternalSources({
+  sources,
+  governedSources,
+  route,
+  heading = "Sources",
+}: {
+  sources?: readonly PublicEvidenceSource[];
+  governedSources?: readonly ContentSourceRef[];
+  route?: string;
+  heading?: string;
+}) {
+  const sourceRecords = getDisplayableEvidenceSources(resolvePublicEvidenceSources({ sources, governedSources, route }));
+  const visibleSources = sourceRecords
+    .map(toDisplaySource)
+    .filter((source): source is DisplaySource => Boolean(source));
+
+  if (visibleSources.length === 0) return null;
 
   return (
-    <div className="mt-6 pt-4 border-t border-stone-200">
-      <p className="text-xs text-stone-500 mb-2 font-medium">Sources & References</p>
-      <div className="flex flex-wrap gap-x-4 gap-y-1">
-        {sources.map((source, idx) => (
-          <a
-            key={idx}
-            href={source.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-xs text-stone-500 hover:text-primary transition-colors"
-          >
-            {source.name}
-            <ExternalLink className="w-2.5 h-2.5" />
-          </a>
-        ))}
-      </div>
-    </div>
+    <section className="mt-8 border-t border-stone-200 pt-5" aria-label={heading}>
+      <h2 className="text-sm font-medium text-stone-800 mb-3">{heading}</h2>
+      <ul className="space-y-3">
+        {visibleSources.map((source) => {
+          const sourceDate = formatDate(source.sourceDate);
+          const accessedOn = formatDate(source.accessedOn);
+          return (
+            <li key={source.id} className="text-sm text-stone-600 leading-relaxed">
+              <a
+                href={source.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 font-medium text-action hover:underline"
+              >
+                {source.title}
+                <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
+              {source.publisher && <span> · {source.publisher}</span>}
+              {(sourceDate || accessedOn) && (
+                <span className="text-stone-500"> · {sourceDate ? `Published ${sourceDate}` : `Checked ${accessedOn}`}</span>
+              )}
+              {source.scope && <p className="mt-0.5 text-xs text-stone-500">Applies to: {source.scope}</p>}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   );
 }

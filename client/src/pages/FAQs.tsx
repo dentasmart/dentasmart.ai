@@ -8,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { DownloadSection } from "@/components/DownloadSection";
+import ExternalSources from "@/components/ExternalSources";
 import FAQSchema from "@/components/FAQSchema";
 import { pricing } from "@shared/facts";
 
@@ -263,6 +264,12 @@ export default function FAQs() {
             </div>
             ) : null
           ))}
+        </div>
+      </section>
+
+      <section className="pb-8 bg-white">
+        <div className="container px-4 mx-auto max-w-4xl">
+          <ExternalSources route="/faqs/" heading="Product fact verification" />
         </div>
       </section>
 

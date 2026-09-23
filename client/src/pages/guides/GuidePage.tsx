@@ -4,6 +4,7 @@ import SEO from "@/components/SEO";
 import { DownloadSection } from "@/components/DownloadSection";
 import MidContentCTA from "@/components/MidContentCTA";
 import NextStepsBox from "@/components/NextStepsBox";
+import ExternalSources from "@/components/ExternalSources";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, CheckCircle, ChevronDown, ChevronUp, ExternalLink, Lightbulb, ListChecks, XCircle, MessageCircleQuestion } from "lucide-react";
@@ -302,6 +303,7 @@ export default function GuidePage() {
               <FAQItem key={idx} question={faq.question} answer={faq.answer} />
             ))}
           </div>
+          <ExternalSources route={`/guides/${guide.slug}/`} />
         </div>
       </section>
 

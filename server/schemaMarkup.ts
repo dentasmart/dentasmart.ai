@@ -91,9 +91,9 @@ async function getBlogSchemas(cleanedPath: string): Promise<Record<string, unkno
   if (post.featuredImage || post.ogImage) blogPosting.image = post.featuredImage || post.ogImage;
   if (post.publishedAt) blogPosting.datePublished = new Date(post.publishedAt).toISOString();
   if (post.updatedAt) blogPosting.dateModified = new Date(post.updatedAt).toISOString();
-  blogPosting.author = post.reviewedByName
-    ? { "@type": "Person", name: post.reviewedByName }
-    : { "@id": ORGANIZATION_ID };
+  // A legacy CMS reviewer name is not verified public-author schema evidence.
+  // Emit a Person only through the separately verified review-metadata path.
+  blogPosting.author = { "@id": ORGANIZATION_ID };
   schemas.push(blogPosting);
   return schemas;
 }

@@ -269,7 +269,7 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
               </tbody>
             </table>
           </motion.div>
-          <ExternalSources governedSources={data.governance?.sourceRefs} />
+          <ExternalSources governedSources={data.governance?.sourceRefs} route={`/dental-costs/${data.slug}/`} />
         </div>
       </section>
 

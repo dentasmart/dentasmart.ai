@@ -29,6 +29,7 @@ import { runBlogAgent, listAgentRuns } from "./blogAgent";
 import { getDb } from "./db";
 import { adminProcedure, ADMIN_COOKIE_NAME, JWT_SECRET, verifyAdminToken, parseCookies } from "./adminAuth";
 import { canPublishBlogPost } from "./governancePublishing";
+import { getApprovedPublicBlogGovernance } from "./governedBlogEvidence";
 
 // Helper to create JWT token (blogRouter-only: signs new sessions on login)
 async function createAdminToken(adminId: number, username: string) {
@@ -304,7 +305,10 @@ export const blogRouter = router({
   getBySlug: publicProcedure
     .input(z.object({ slug: z.string() }))
     .query(async ({ input }) => {
-      return await getBlogPostBySlug(input.slug);
+      const post = await getBlogPostBySlug(input.slug);
+      if (!post) return null;
+      const governance = await getApprovedPublicBlogGovernance(post);
+      return governance ? { ...post, governance } : post;
     }),
 
   list: publicProcedure

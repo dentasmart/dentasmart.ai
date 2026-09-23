@@ -484,7 +484,7 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
               </motion.details>
             ))}
           </div>
-          <ExternalSources governedSources={data.governance?.sourceRefs} />
+          <ExternalSources governedSources={data.governance?.sourceRefs} route={`/treatments/${data.slug}/`} />
         </div>
       </section>
 

@@ -18,12 +18,18 @@ vi.mock("./blogDb", () => ({
         title: "Another Post",
         updatedAt: new Date("2026-02-01"),
       },
+      {
+        id: 3,
+        slug: "top-10-best-ai-dental-apps",
+        title: "7 Best AI Dental Apps in 2026",
+        updatedAt: new Date("2026-02-02"),
+      },
     ],
     total: 2,
   }),
 }));
 
-import { registerSeoRoutes, toFinalPublicUrl } from "./seo";
+import { filterCanonicalPublicBlogPosts, registerSeoRoutes, toFinalPublicUrl } from "./seo";
 
 function createTestApp() {
   const app = express();
@@ -33,6 +39,17 @@ function createTestApp() {
 
 describe("SEO Routes", () => {
   describe("llms final public URL normalization", () => {
+    it("uses the same canonical-public blog eligibility filter as the blog sitemap", () => {
+      const posts = [
+        { slug: "published-article", title: "Published article", updatedAt: null },
+        { slug: "redirect-source", title: "Redirect source", updatedAt: null },
+      ];
+
+      expect(filterCanonicalPublicBlogPosts(posts, new Set(["/oral-health-hub/redirect-source/"]))).toEqual([
+        posts[0],
+      ]);
+    });
+
     it("normalizes DentaSmart pages to final trailing-slash URLs while preserving files and external URLs", () => {
       expect(toFinalPublicUrl("https://dentasmart.ai/pricing")).toBe("https://dentasmart.ai/pricing/");
       expect(toFinalPublicUrl("https://www.dentasmart.ai/guides/brushing-guide")).toBe("https://dentasmart.ai/guides/brushing-guide/");
@@ -57,6 +74,7 @@ describe("SEO Routes", () => {
         }
         expect(res.text).not.toContain("https://dentasmart.ai/oral-health-hub/best-ai-dental-apps/");
         if (endpoint === "/llms-full.txt") {
+          expect(res.text).toContain("https://dentasmart.ai/oral-health-hub/test-post/");
           expect(res.text).toContain("https://dentasmart.ai/oral-health-hub/top-10-best-ai-dental-apps/");
           expect(res.text).toContain("https://dentasmart.ai/compare/dentasmart-vs-dental-insurance/");
           expect(res.text).not.toContain("https://dentasmart.ai/oral-health-hub/dentasmart-vs-dental-insurance/");
@@ -91,11 +109,13 @@ describe("SEO Routes", () => {
       expect(res.text).not.toContain("Sitemap: https://dentasmart.ai/sitemap.xml");
     });
 
-    it("should allow /api/sitemap explicitly for crawlers", async () => {
+    it("keeps API routes disallowed and uses the public sitemap index", async () => {
       const app = createTestApp();
       const res = await request(app).get("/robots.txt");
 
-      expect(res.text).toContain("Allow: /api/sitemap");
+      expect(res.text).toContain("Sitemap: https://dentasmart.ai/sitemap-index.xml");
+      expect(res.text).toContain("Disallow: /api/");
+      expect(res.text).not.toContain("Allow: /api/sitemap");
     });
 
     it("should not reference deprecated flat sitemap.xml", async () => {

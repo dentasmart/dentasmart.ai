@@ -380,7 +380,7 @@ export default function EmergencyPageTemplate({ data }: { data: EmergencyPageDat
               </details>
             ))}
           </div>
-          <ExternalSources category="emergency" />
+          <ExternalSources route={`/dental-emergencies/${data.slug}/`} />
         </div>
       </section>
 

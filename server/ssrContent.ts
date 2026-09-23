@@ -15,8 +15,14 @@
  */
 
 import { listBlogPosts } from "./blogDb";
+import { staticRoutes } from "../shared/routes";
 
 const SITE_URL = "https://dentasmart.ai";
+const sourceControlledSsrPaths = new Set(staticRoutes.map((route) => route.path.replace(/\/+$/, "") || "/"));
+
+function isSourceControlledSsrPath(path: string): boolean {
+  return sourceControlledSsrPaths.has(path.replace(/\/+$/, "") || "/");
+}
 
 interface SSRContent {
   html: string;
@@ -648,58 +654,68 @@ export async function resolveSSRContent(urlPath: string): Promise<SSRContent | n
 
   // Condition pages
   if (cleanPath.startsWith("/conditions/")) {
+    if (!isSourceControlledSsrPath(cleanPath)) return null;
     const slug = cleanPath.replace("/conditions/", "");
     if (slug) return { html: generateConditionContent(slug) };
   }
 
   // Symptom pages
   if (cleanPath.startsWith("/symptoms/")) {
+    if (!isSourceControlledSsrPath(cleanPath)) return null;
     const slug = cleanPath.replace("/symptoms/", "");
     if (slug) return { html: generateSymptomContent(slug) };
   }
 
   // Cost pages
   if (cleanPath.startsWith("/dental-costs/")) {
+    if (!isSourceControlledSsrPath(cleanPath)) return null;
     const slug = cleanPath.replace("/dental-costs/", "");
     if (slug) return { html: generateCostContent(slug) };
   }
 
   // Treatment pages
   if (cleanPath.startsWith("/treatments/")) {
+    if (!isSourceControlledSsrPath(cleanPath)) return null;
     const slug = cleanPath.replace("/treatments/", "");
     if (slug) return { html: generateTreatmentContent(slug) };
   }
 
   // Comparison pages
   if (cleanPath.startsWith("/comparisons/")) {
+    if (!isSourceControlledSsrPath(cleanPath)) return null;
     const slug = cleanPath.replace("/comparisons/", "");
     if (slug) return { html: generateComparisonContent(slug) };
   }
   if (cleanPath.startsWith("/compare/")) {
+    if (!isSourceControlledSsrPath(cleanPath)) return null;
     const slug = cleanPath.replace("/compare/", "");
     if (slug) return { html: generateComparisonContent(slug) };
   }
 
   // Guide pages
   if (cleanPath.startsWith("/guides/")) {
+    if (!isSourceControlledSsrPath(cleanPath)) return null;
     const slug = cleanPath.replace("/guides/", "");
     if (slug) return { html: generateGuideContent(slug) };
   }
 
   // Life stage pages
   if (cleanPath.startsWith("/life-stages/")) {
+    if (!isSourceControlledSsrPath(cleanPath)) return null;
     const slug = cleanPath.replace("/life-stages/", "");
     if (slug) return { html: generateLifeStageContent(slug) };
   }
 
   // Emergency pages
   if (cleanPath.startsWith("/dental-emergencies/")) {
+    if (!isSourceControlledSsrPath(cleanPath)) return null;
     const slug = cleanPath.replace("/dental-emergencies/", "");
     if (slug) return { html: generateEmergencyContent(slug) };
   }
 
   // Lifestyle pages
   if (cleanPath.startsWith("/lifestyle/")) {
+    if (!isSourceControlledSsrPath(cleanPath)) return null;
     const slug = cleanPath.replace("/lifestyle/", "");
     if (slug) return { html: generateLifestyleContent(slug) };
   }
@@ -714,15 +730,8 @@ export async function resolveSSRContent(urlPath: string): Promise<SSRContent | n
       }
       const blogContent = blogContentCache.get(cleanPath);
       if (blogContent) return { html: blogContent };
-      // Fallback for blog posts not in cache yet
-      const readableTitle = subPath.replace(/-/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase());
-      return { html: `
-<article>
-  <nav aria-label="breadcrumb"><a href="/">Home</a> &gt; <a href="/oral-health-hub">Oral Health Hub</a> &gt; ${readableTitle}</nav>
-  <h1>${readableTitle}</h1>
-  <p>Read about ${readableTitle.toLowerCase()} on DentaSmart's Oral Health Hub. Expert dental health information and guidance to help you understand your oral health and make informed decisions.</p>
-  <p><a href="/download">Download DentaSmart</a> | <a href="/oral-health-hub">Browse All Articles</a> | <a href="/symptom-quiz">Take the Symptom Quiz</a></p>
-</article>` };
+      // Do not synthesize health content for an unknown, unavailable, or unpublished blog slug.
+      return null;
     }
   }
 

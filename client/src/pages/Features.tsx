@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { DownloadSection } from "@/components/DownloadSection";
+import ExternalSources from "@/components/ExternalSources";
 import { BenefitsCarousel } from "@/components/BenefitsCarousel";
 import { Lock, Check } from "lucide-react";
 import { motion } from "framer-motion";
@@ -308,6 +309,12 @@ export default function Features() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="pb-8 bg-white">
+        <div className="container px-4 mx-auto max-w-4xl">
+          <ExternalSources route="/features/" heading="Product fact verification" />
         </div>
       </section>
 
