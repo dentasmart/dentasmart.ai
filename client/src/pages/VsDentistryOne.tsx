@@ -2,13 +2,14 @@ import ComparisonPageTemplate, { ComparisonPageData } from "./comparisons/Compar
 
 const data: ComparisonPageData = {
   slug: "vs-dentistry-one",
+  canonicalPath: "/vs/dentistry-one",
   optionAName: "DentaSmart",
   optionBName: "Dentistry.One SmileScan",
   heroTitle: "DentaSmart vs Dentistry.One:",
   heroHighlight: "How Should You Compare Them?",
   heroDescription: "Compare your goal, supported inputs, report detail, price, privacy information, and professional-care boundaries. Verify Dentistry.One details directly before deciding.",
-  metaTitle: "DentaSmart vs Dentistry.One SmileScan | Decision Guide",
-  metaDescription: "Compare DentaSmart and Dentistry.One SmileScan using transparent criteria, verified DentaSmart facts, and clear third-party verification boundaries.",
+  metaTitle: "DentaSmart vs Dentistry.One SmileScan (2026) | Comparison Guide",
+  metaDescription: "Compare verified DentaSmart facts with a framework for checking Dentistry.One SmileScan's current features, pricing, availability, and professional-care boundaries.",
   keywords: "dentasmart vs dentistry.one, smilescan review, dentistry one vs dentasmart, best ai dental app comparison",
   statsStrip: [
     { value: "iOS + Android", label: "DentaSmart Availability" },

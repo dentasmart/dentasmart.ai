@@ -168,21 +168,39 @@ export default function Download() {
           <p className="text-xl text-action-foreground font-light mb-8">
             Use supported mouth photos, supported X-rays, or both. Upgrade one case only when you need the Full Quick Check package.
           </p>
-          <Button
-            asChild
-            size="lg"
-            className="bg-white text-action hover:bg-white/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer"
-          >
-            <a
-              href={getAppStoreUrl("download_page_bottom")}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackAppDownload("ios", "download_page_bottom")}
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
+            <Button
+              asChild
+              size="lg"
+              className="bg-white text-action hover:bg-white/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer"
             >
-              Download DentaSmart Free
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </a>
-          </Button>
+              <a
+                href={getAppStoreUrl("download_page_bottom")}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackAppDownload("ios", "download_page_bottom")}
+              >
+                Download on iOS
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </a>
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-white bg-transparent text-white hover:bg-white/10 rounded-full px-10 py-7 text-lg font-medium cursor-pointer"
+            >
+              <a
+                href={getPlayStoreUrl("download_page_bottom")}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackAppDownload("android", "download_page_bottom")}
+              >
+                Download on Android
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
 

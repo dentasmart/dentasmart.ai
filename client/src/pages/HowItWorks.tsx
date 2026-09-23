@@ -13,7 +13,7 @@ export default function HowItWorks() {
   return (
     <div className="min-h-screen flex flex-col bg-white font-sans text-foreground selection:bg-primary/20">
       <SEO
-        title="How DentaSmart Works - AI Dental Analysis in 4 Simple Steps"
+        title="How DentaSmart Works | AI Oral Health Guide in 4 Steps"
         description="Learn how DentaSmart reviews supported dental photos, X-rays, symptoms, and treatment documents to provide educational reports and questions for your dentist."
         canonical="https://dentasmart.ai/how-it-works"
       />
@@ -35,7 +35,7 @@ export default function HowItWorks() {
             Upload supported information, and DentaSmart highlights visible areas or details that may be worth discussing. Depending on the service you choose, you can receive an Oral Health Score, plain-English explanations, cost context, and questions to bring to your dentist.
           </p>
           <p className="text-lg text-stone-700 leading-relaxed">
-            DentaSmart is not a replacement for a licensed dentist. It is an educational tool that helps you understand what is happening in your mouth, prepare better questions for your dental visit, and catch potential problems before they become expensive emergencies.
+            DentaSmart is an educational tool, not a replacement for a licensed dentist. It helps you organize information and prepare questions for dental visits.
           </p>
         </div>
       </section>
@@ -136,7 +136,7 @@ export default function HowItWorks() {
               <h3 className="text-2xl font-medium text-foreground">Add the Information for Your Service</h3>
             </div>
             <p className="text-stone-700 leading-relaxed mb-3 ml-[52px]">
-              DentaSmart asks for the information needed for the service you choose. Free Quick Check accepts supported mouth photos, supported X-rays, or both. Full Quick Check unlocks full eligible X-ray insights for one case. Treatment Plan Review uses a supported dentist treatment plan. Complete Care includes guided self-examination and ongoing monitoring tools.
+              DentaSmart asks for the information needed for the service you choose. Free Quick Check accepts supported mouth photos, supported X-rays, or both. Full Quick Check unlocks full eligible X-ray insights for one case. Treatment Plan Review uses a supported dentist treatment plan. Review current Complete Care features before purchase.
             </p>
             <p className="text-stone-700 leading-relaxed ml-[52px]">
               When guided self-examination is included, it can record observations from a Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection checklist. These observations add context but do not replace a clinical examination.
@@ -282,7 +282,7 @@ export default function HowItWorks() {
               { 
                 icon: Bell, 
                 title: "Reminders", 
-                desc: "Smart notifications so you never miss a check-up or daily habit." 
+                desc: "Manage available notification settings for report updates and reminders in the app."
               },
               { 
                 icon: TrendingUp, 
@@ -336,11 +336,11 @@ export default function HowItWorks() {
             {[
               {
                 title: "People Without Dental Insurance",
-                desc: "If you do not have dental insurance, DentaSmart helps you understand your oral health before committing to an expensive dental visit. Get clarity on whether that toothache needs urgent care or can wait."
+                desc: "If you do not have dental insurance, DentaSmart can help you organize information and questions before a dental visit. It does not determine whether symptoms are urgent."
               },
               {
                 title: "Parents Monitoring Family Dental Health",
-                desc: "Track records for up to four family members under one account. Organize each person's photos, reports, and oral hygiene reminders in one place."
+                desc: "Complete Care Family covers up to four total members, including the primary user. Review current plan details before purchase."
               },
               {
                 title: "People Reviewing a Treatment Plan",
@@ -348,7 +348,7 @@ export default function HowItWorks() {
               },
               {
                 title: "Anyone with Dental Anxiety",
-                desc: "If dental visits make you anxious, DentaSmart gives you a way to understand your oral health from home. Know what to expect, prepare your questions, and walk into the dental office with confidence."
+                desc: "If dental visits make you anxious, DentaSmart can help you organize questions and information before you speak with a dental professional."
               }
             ].map((item, idx) => (
               <motion.div

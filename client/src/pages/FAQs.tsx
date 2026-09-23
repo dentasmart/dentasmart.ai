@@ -9,6 +9,7 @@ import { Plus, Minus, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { DownloadSection } from "@/components/DownloadSection";
 import FAQSchema from "@/components/FAQSchema";
+import { pricing } from "@shared/facts";
 
 // Map FAQ challenge IDs to their image paths
 const faqChallengeImages: Record<number, string> = {
@@ -40,7 +41,7 @@ export default function FAQs() {
       faqs: [
         { q: "How do I get started with DentaSmart?", a: "Download the app from the App Store or Google Play, create an account, and add the supported photos, X-rays, symptoms, or treatment documents needed for the service you choose. Report timing depends on the service and the information submitted." },
         { q: "Can I use DentaSmart for free?", a: "Yes. Free Quick Check is unlimited and accepts supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray. Full Quick Check and Treatment Plan Review are paid per case, while Complete Care is an annual paid plan." },
-        { q: "What phones does DentaSmart work on?", a: "DentaSmart works on iOS 14+ and Android 10+. Download from the App Store or Google Play." },
+        { q: "Where can I download DentaSmart?", a: "DentaSmart is available on the App Store and Google Play. Visit the Download page for the current store links." },
       ],
     },
     {
@@ -62,7 +63,7 @@ export default function FAQs() {
     {
       title: "Privacy",
       faqs: [
-        { q: "Is my data secure?", a: "We use safeguards designed to protect your information. DentaSmart never sells your data." },
+        { q: "Is my data secure?", a: "We use safeguards designed to protect your information. Review the Privacy Policy for current details about how information is handled." },
         { q: "Who has access to my information?", a: "You can choose when to share your DentaSmart reports with your dentist or others." },
         { q: "How do you protect my information?", a: "We take the privacy and security of your information seriously. Please review our Privacy Policy to understand how we collect, use, and handle information." },
         { q: "How long is my data stored?", a: "We retain information as described in our Privacy Policy. You can request account deletion at any time." },
@@ -71,28 +72,28 @@ export default function FAQs() {
     {
       title: "Pricing",
       faqs: [
-        { q: "What are DentaSmart's pricing options?", a: "Free Quick Check is unlimited. Full Quick Check is $19.99 per case, Treatment Plan Review is $29.99 per case, and Complete Care is $74.99/year for individuals or $149.99/year for families of up to 4 members. Additional family members beyond 4 are $19.99/year each." },
-        { q: "Do you offer family plans?", a: "Yes. The Complete Care Family plan is $149.99/year and covers up to 4 family members (including the main user). Each member gets their own profile, reports, Oral Health Score tracking, and dental history. Additional members beyond 4 are $19.99/year each." },
-        { q: "Can I cancel anytime?", a: "Yes. You can cancel your subscription anytime without penalties." },
+        { q: "What are DentaSmart's pricing options?", a: `Free Quick Check is unlimited. Full Quick Check is ${pricing.fullQuickCheck.priceFormatted} per case, Treatment Plan Review is ${pricing.treatmentPlanReview.priceFormatted} per case, and Complete Care is ${pricing.completeCareIndividual.priceFormatted}/year for individuals or ${pricing.completeCareFamily.priceFormatted}/year for up to ${pricing.completeCareFamily.maxMembers} total family members. Additional members beyond the included ${pricing.additionalFamilyMember.appliesAfterIncludedMembers} are ${pricing.additionalFamilyMember.priceFormatted}${pricing.additionalFamilyMember.billingLabel}.` },
+        { q: "Do you offer family plans?", a: `Yes. Complete Care Family is ${pricing.completeCareFamily.priceFormatted}/year for up to ${pricing.completeCareFamily.maxMembers} total members, including the primary user. Additional members beyond the included ${pricing.additionalFamilyMember.appliesAfterIncludedMembers} are ${pricing.additionalFamilyMember.priceFormatted}${pricing.additionalFamilyMember.billingLabel}. Review current plan details before purchase.` },
+        { q: "Where can I review cancellation terms?", a: "Review the current billing, renewal, and cancellation terms during checkout or in your account before you purchase a paid plan." },
 
       ],
     },
     {
       title: "Dentist Relationship",
       faqs: [
-        { q: "Do I need to be a patient at a specific dental office?", a: "No. DentaSmart works with any dentist at any dental office. It's designed to complement your existing dental care." },
-        { q: "Can I share my report with my dentist?", a: "Yes. You can easily share your DentaSmart report with your dentist via email or print it out to bring to your appointment." },
+        { q: "Do I need to be a patient at a specific dental office?", a: "DentaSmart is an educational tool and does not require a relationship with a particular dental office. A licensed dentist can assess your situation and provide professional care." },
+        { q: "Can I share my report with my dentist?", a: "When sharing or download tools are available for your selected service, you can use them to support a conversation with your dentist." },
         { q: "Is it a dentist replacement?", a: "No. DentaSmart is a tool to help you monitor your oral health between visits and understand your dentist's recommendations better. It does not replace professional care." },
       ],
     },
     {
       title: "New Features",
       faqs: [
-        { q: "What is Quick Check?", a: "Quick Check is a free educational analysis of supported mouth photos. It highlights visible areas in plain language, does not require an X-ray, and does not provide a diagnosis." },
+        { q: "What is Quick Check?", a: "Free Quick Check is an unlimited educational service that accepts supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray. Free X-ray output is limited, and the service does not provide a diagnosis." },
         { q: "What are the Self-Examination tests?", a: "When included with Complete Care, guided self-examination can help you record observations from a Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection checklist. These observations add context but do not replace a clinical examination." },
-        { q: "What's the difference between the two report formats?", a: "When both formats are included with a selected service, the 'For You' report explains information in plain language and the 'For Dentist' report organizes details for a professional conversation. Available reports can be downloaded and shared." },
-        { q: "Can I share the dentist report directly?", a: "Yes. Both report versions can be downloaded as PDF and shared via email or printed to bring to your dental appointment." },
-        { q: "Is Quick Check different from Complete Care?", a: "Yes. Free Quick Check is an unlimited starting point for supported mouth photos, supported X-rays, or both. Complete Care adds year-round monitoring, guided self-examination, applicable reports, Oral Health Score tracking, record organization, and Dr. Din access. Neither service provides a diagnosis or replaces professional dental care." },
+        { q: "What's the difference between the two report formats?", a: "When both formats are included with a selected service, the 'For You' report explains information in plain language and the 'For Dentist' report organizes details for a professional conversation. Available formats depend on the selected service." },
+        { q: "Can I share the dentist report directly?", a: "When download or sharing is included with your selected service, use it to support a conversation with your dental professional." },
+        { q: "Is Quick Check different from Complete Care?", a: "Yes. Free Quick Check is an unlimited starting point for supported mouth photos, supported X-rays, or both. Complete Care is an annual plan. Review the current plan details before purchase. Neither service provides a diagnosis or replaces professional dental care." },
       ],
     },
   ];

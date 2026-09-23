@@ -4,6 +4,7 @@ import { resolveSSRContent } from "./ssrContent";
 const routeHeadings = {
   "/best-ai-dental-apps/": "Best AI Dental Apps in 2026: How to Compare Without Guessing",
   "/free-ai-teeth-scanner/": "Start with a Free AI Mouth Photo Check No X-Ray Required",
+  "/compare/dentasmart-vs-chatgpt-dental/": "DentaSmart vs ChatGPT: How Purpose-Built and General AI Tools Differ",
   "/oral-health-hub/conditions/": "Something wrong with your teeth? Learn what to watch for.",
   "/oral-health-hub/symptoms/": "What is your mouth trying to tell you?",
   "/privacy-policy/": "Privacy Policy",

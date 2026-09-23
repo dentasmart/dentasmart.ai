@@ -108,7 +108,7 @@ export default function DentaSmartVsChatGPT() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-teal-700 text-teal-700 hover:bg-teal-50 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
-                <Link href="/pricing/#second-opinion" onClick={() => trackConversionEvent("cta_click", {
+                <Link href="/pricing/#treatment-plan-review" onClick={() => trackConversionEvent("cta_click", {
                   cta_id: "vs_chatgpt_hero_treatment_plan_review",
                   surface: "hero",
                   intent: "treatment_plan_review",
@@ -263,7 +263,7 @@ export default function DentaSmartVsChatGPT() {
                 That is where DentaSmart is different.
               </p>
               <p className="text-base text-stone-700 leading-relaxed">
-                DentaSmart helps you see what may be happening, monitor changes, understand possible risks, compare treatment recommendations, and reduce surprise dental costs before the problem gets worse.
+                DentaSmart helps organize supported information, explain report language, and prepare questions for a dentist when you need more context.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 items-start">
@@ -326,7 +326,7 @@ export default function DentaSmartVsChatGPT() {
                   "Getting your Oral Health Score",
                   "Monitoring changes over time",
                   "Understanding a treatment plan",
-                  "Getting a second opinion before expensive dental work",
+                  "Understanding an already-provided treatment plan",
                   "Saving dental visit history",
                   "Tracking family oral health",
                   "Asking Dr. Din about your reports, findings, score, and next questions",
@@ -352,7 +352,7 @@ export default function DentaSmartVsChatGPT() {
               DentaSmart does what a chatbot cannot: it remembers your mouth.
             </h2>
             <p className="text-base md:text-lg text-stone-300 font-light leading-relaxed mb-6">
-              Free Quick Checks, Full Quick Checks, Complete Oral Health Checkups, Treatment Plan Reviews, mouth images, X-rays, scores, visits, prescriptions, bills, and notes can become part of your oral-health history.
+              Supported DentaSmart services can help organize mouth images, X-rays, treatment plans, scores, visits, reports, and notes in one place.
             </p>
             <p className="text-base md:text-lg text-stone-300 font-light leading-relaxed mb-8">
               That means DentaSmart is not just answering a question today. It is helping you track your teeth and gums over time.
@@ -459,7 +459,7 @@ export default function DentaSmartVsChatGPT() {
             </p>
             <div className="bg-primary/5 rounded-xl p-5 border border-primary/10">
               <p className="text-sm text-stone-500 mb-1">ChatGPT can explain what a root canal is.</p>
-              <p className="text-sm text-primary font-medium">DentaSmart helps you understand whether your uploaded case, images, X-rays, and treatment plan appear to support the recommendation.</p>
+              <p className="text-sm text-primary font-medium">DentaSmart helps you organize the recommendation and prepare questions to discuss with your dentist.</p>
             </div>
           </motion.div>
         </div>
@@ -482,7 +482,7 @@ export default function DentaSmartVsChatGPT() {
             {[
               { icon: <Smartphone className="w-5 h-5 text-primary" />, title: "Based on your actual images", desc: "DentaSmart analyzes your specific photos and X-rays, not generic examples." },
               { icon: <Users className="w-5 h-5 text-primary" />, title: "Connected to your history", desc: "Previous scans, scores, and visits inform every new analysis." },
-              { icon: <TrendingUp className="w-5 h-5 text-primary" />, title: "Progress-aware recommendations", desc: "DentaSmart knows what changed since your last check and adjusts accordingly." },
+              { icon: <TrendingUp className="w-5 h-5 text-primary" />, title: "Progress-aware record context", desc: "Review earlier supported records alongside newer information and discuss changes with a dentist." },
               { icon: <DollarSign className="w-5 h-5 text-primary" />, title: "Cost-informed decisions", desc: "Understand the financial implications before committing to a treatment plan." },
             ].map((item, idx) => (
               <motion.div
@@ -565,7 +565,7 @@ export default function DentaSmartVsChatGPT() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 rounded-full px-8 py-6 text-base font-medium cursor-pointer w-full sm:w-auto">
-                <Link href="/pricing/#second-opinion" onClick={() => trackConversionEvent("cta_click", {
+                <Link href="/pricing/#treatment-plan-review" onClick={() => trackConversionEvent("cta_click", {
                   cta_id: "vs_chatgpt_final_treatment_plan_review",
                   surface: "mid_content",
                   intent: "treatment_plan_review",
@@ -652,7 +652,7 @@ export default function DentaSmartVsChatGPT() {
                   Download on App Store
                 </Button>
               </a>
-              <p className="text-xs text-stone-500">Live now. Rated 5.0.</p>
+              <p className="text-xs text-stone-500">Available now on the App Store.</p>
             </div>
             {/* Android */}
             <div className="flex flex-col items-center space-y-4 p-6 rounded-2xl bg-white border border-stone-100">
@@ -673,7 +673,7 @@ export default function DentaSmartVsChatGPT() {
                   Get on Google Play
                 </Button>
               </a>
-              <p className="text-xs text-stone-500">Early access available.</p>
+              <p className="text-xs text-stone-500">Available now on Google Play.</p>
             </div>
           </div>
         </div>

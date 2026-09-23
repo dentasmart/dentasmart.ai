@@ -2,13 +2,14 @@ import ComparisonPageTemplate, { ComparisonPageData } from "./comparisons/Compar
 
 const data: ComparisonPageData = {
   slug: "vs-dental-com",
+  canonicalPath: "/vs/dental-com",
   optionAName: "DentaSmart",
   optionBName: "Dental.com SmartScan",
   heroTitle: "DentaSmart vs Dental.com:",
   heroHighlight: "How Should You Compare Them?",
   heroDescription: "Use this guide to compare your goal, supported inputs, report detail, price, privacy information, and professional-care boundaries. Verify Dental.com details with the provider before deciding.",
-  metaTitle: "DentaSmart vs Dental.com SmartScan | Decision Guide",
-  metaDescription: "Compare DentaSmart and Dental.com SmartScan using transparent criteria, verified DentaSmart facts, and clear third-party verification boundaries.",
+  metaTitle: "DentaSmart vs Dental.com SmartScan (2026) | Comparison Guide",
+  metaDescription: "Compare verified DentaSmart facts with a framework for checking Dental.com SmartScan's current features, pricing, availability, and professional-care boundaries.",
   keywords: "dentasmart vs dental.com, dental.com smartscan review, best ai teeth scanner, dental.com vs dentasmart comparison",
   statsStrip: [
     { value: "iOS + Android", label: "DentaSmart Availability" },

@@ -80,10 +80,10 @@ export function getPageContext(path: string): PageContext {
     return {
       contentType: "treatment",
       ctaHeadline: "Considering this treatment?",
-      ctaDescription: "Use Second Opinion to compare the treatment information you received and prepare questions for your dentist.",
-      ctaButtonText: "Get a Second Opinion",
+      ctaDescription: "Use Treatment Plan Review to organize a supported dentist treatment plan and prepare questions for your dentist.",
+      ctaButtonText: "Review a Treatment Plan",
       ctaAction: "app-download",
-      ctaLink: "/pricing/#second-opinion",
+      ctaLink: "/pricing/#treatment-plan-review",
     };
   }
 

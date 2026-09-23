@@ -234,8 +234,8 @@ describe("Phase 5 conversion and trust contracts", () => {
   it("keeps the lower iOS Download CTA as one tracked anchor control", () => {
     const download = projectFile("client/src/pages/Download.tsx");
 
-    expect(download).toMatch(/<Button\s+asChild\s+size="lg"[\s\S]*?<a\s+href=\{getAppStoreUrl\("download_page_bottom"\)\}[\s\S]*?target="_blank"[\s\S]*?rel="noopener noreferrer"[\s\S]*?trackAppDownload\("ios", "download_page_bottom"\)[\s\S]*?Download DentaSmart Free[\s\S]*?<\/a>[\s\S]*?<\/Button>/);
-    expect(download).not.toMatch(/<a[\s\S]*?<Button[\s\S]*?Download DentaSmart Free[\s\S]*?<\/Button>[\s\S]*?<\/a>/);
+    expect(download).toMatch(/<Button\s+asChild\s+size="lg"[\s\S]*?<a\s+href=\{getAppStoreUrl\("download_page_bottom"\)\}[\s\S]*?target="_blank"[\s\S]*?rel="noopener noreferrer"[\s\S]*?trackAppDownload\("ios", "download_page_bottom"\)[\s\S]*?Download on iOS[\s\S]*?<\/a>[\s\S]*?<\/Button>/);
+    expect(download).not.toMatch(/<a[^>]*>\s*<Button/);
   });
 });
 
@@ -248,11 +248,12 @@ describe("Phase 5 visible, metadata, and schema parity", () => {
     expect(home).toContain('destination_path: "/download/"');
     expect(home).toContain('setLocation("/download/")');
     expect(home).toContain('destination_path: "/pricing/"');
-    expect(home).toContain('setLocation("/pricing/#second-opinion")');
+    expect(home).toContain('setLocation("/pricing/#treatment-plan-review")');
     expect(comparison).toContain('href="/download/"');
-    expect(comparison).toContain('href="/pricing/#second-opinion"');
+    expect(comparison).toContain('href="/pricing/#treatment-plan-review"');
     expect(comparison).not.toContain("scrollToDownload");
     expect(pricingPage).toContain('id="quick-check"');
+    expect(pricingPage).toContain('id="treatment-plan-review"');
     expect(pricingPage).toContain('id="second-opinion"');
   });
 

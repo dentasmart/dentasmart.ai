@@ -54,7 +54,7 @@ describe("free Quick Check positioning", () => {
     expect(read("client/src/components/Navigation.tsx")).toContain("Free Quick Check");
     expect(read("client/src/components/DownloadCTA.tsx")).toContain("Start with a Free Quick Check");
     expect(read("client/src/components/BlogCTABanner.tsx")).toContain("Start with a Free Quick Check");
-    expect(acquisitionSources).toContain("Use mouth photos from your phone. No X-ray required.");
+    expect(acquisitionSources).toContain("Use mouth photos from your phone, supported X-rays, or both.");
   });
 
   it("keeps crawler metadata and commercial schema aligned with the visible boundary", async () => {

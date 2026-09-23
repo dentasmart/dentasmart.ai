@@ -18,8 +18,8 @@ const pricingFaqs = [
   { question: "What does Free Quick Check include?", answer: "Free Quick Check organizes supported inputs into an educational report. Mouth photos can show visible photo-based findings. Supported X-rays receive a reduced subset of eligible X-ray finding data. DentaSmart does not provide a diagnosis or replace a dental examination." },
   { question: "What is Full Quick Check?", answer: `Full Quick Check costs ${pricing.fullQuickCheck.priceFormatted} per case and unlocks the paid Quick Check package, including full eligible X-ray insights for that case.` },
   { question: "When should I choose Treatment Plan Review?", answer: `Choose Treatment Plan Review (${pricing.treatmentPlanReview.priceFormatted} per case) when you have a dentist's treatment plan and want an educational plain-language review before deciding what to ask next.` },
-  { question: "How do I manage my subscription?", answer: "All subscriptions are managed through dentasmart.ai, not through the app stores. This keeps things simple and gives you full control over your plan." },
-  { question: "What does the Complete Care Family plan include?", answer: "The Complete Care Family plan ($149.99/year) covers up to 4 family members. Each person gets a separate profile, reports, Oral Health Score tracking, and dental history, with Dr. Din access. Additional members can be added for $19.99/year each." },
+  { question: "How do I manage my subscription?", answer: "Review the current billing, renewal, and cancellation terms during checkout or in your account before you purchase a paid plan." },
+  { question: "What does the Complete Care Family plan cover?", answer: `The Complete Care Family plan is ${pricing.completeCareFamily.priceFormatted}/year for up to ${pricing.completeCareFamily.maxMembers} total members, including the primary user. Additional members beyond the included ${pricing.additionalFamilyMember.appliesAfterIncludedMembers} are ${pricing.additionalFamilyMember.priceFormatted}${pricing.additionalFamilyMember.billingLabel}.` },
 ];
 
 export default function Pricing() {
@@ -234,13 +234,14 @@ export default function Pricing() {
 
             {/* Treatment Plan Review - $29.99 per case */}
             <motion.div
-              id="second-opinion"
+              id="treatment-plan-review"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.5 }}
               className="scroll-mt-32 bg-white rounded-3xl p-6 md:p-8 border border-stone-200 hover:shadow-xl transition-all duration-500 flex flex-col"
             >
+              <span id="second-opinion" className="absolute -top-32" aria-hidden="true" />
               <div className="mb-5">
                 <div className="flex items-center gap-2 mb-2">
                   <Sparkles className="w-5 h-5 text-purple-500" />
@@ -298,9 +299,6 @@ export default function Pricing() {
               transition={{ delay: 0.2, duration: 0.5 }}
               className="scroll-mt-32 bg-primary/5 rounded-3xl p-6 md:p-8 border-2 border-primary hover:shadow-2xl transition-all duration-500 flex flex-col relative ring-1 ring-primary/20"
             >
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-white shadow-lg">
-                Most Popular
-              </div>
               <div className="mb-5 mt-2">
                 <div className="flex items-center gap-2 mb-2">
                   <Shield className="w-5 h-5 text-primary" />
@@ -318,18 +316,14 @@ export default function Pricing() {
                   <span className="text-stone-500 ml-2 text-sm">/year</span>
                 </div>
                 {planType === "individual" ? (
-                  <p className="text-sm text-stone-500 mt-1">
-                    About $0.21/day, less than a coffee
-                  </p>
+                  <p className="text-sm text-stone-500 mt-1">Annual individual plan</p>
                 ) : (
-                  <p className="text-sm text-stone-500 mt-1">
-                    About $0.41/day for up to 4 family members
-                  </p>
+                  <p className="text-sm text-stone-500 mt-1">Up to 4 total members, including the primary user</p>
                 )}
                 <p className="text-stone-600 mt-3 font-light leading-relaxed text-sm">
                   {planType === "individual"
-                    ? "Year-round monitoring, reports, Oral Health Score tracking, record organization, and Dr. Din access for one person."
-                    : "Protect up to 4 family members with separate profiles, reports, scores, and history."
+                    ? "Complete Care is an annual individual plan. Review current plan details before purchase."
+                    : "Complete Care Family is an annual plan for up to 4 total members, including the primary user."
                   }
                 </p>
               </div>
@@ -339,11 +333,11 @@ export default function Pricing() {
                   <>
                     {/* Included services */}
                     <div className="mb-3">
-                      <p className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Includes unlimited access to</p>
+                      <p className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Plan details</p>
                       {[
-                        { text: "Quick Check", bold: true },
-                        { text: "Treatment Plan Review", bold: true },
-                        { text: "Complete Oral Health Checkup", bold: true },
+                        { text: "Annual individual plan", bold: true },
+                        { text: "Review current included features before purchase", bold: true },
+                        { text: "DentaSmart provides educational information, not diagnosis or treatment", bold: true },
                       ].map((f, i) => (
                         <div key={i} className="flex items-start text-stone-700 text-sm mb-1.5">
                           <Check className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
@@ -351,21 +345,11 @@ export default function Pricing() {
                         </div>
                       ))}
                     </div>
-                    {/* Complete Oral Health Checkup features */}
+                    {/* Annual-plan information */}
                     <div className="border-t border-stone-100 pt-3">
-                      <p className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Complete Care features</p>
+                      <p className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Before purchase</p>
                       {[
-                        { text: "Guided self-examination", bold: false },
-                        { text: "Oral Health Score tracking over time", bold: false },
-                        { text: "Educational risk context and record trends", bold: false },
-                        { text: "Guidance based on supported records and reports", bold: false },
-                        { text: "Treatment and cost questions to discuss with a dentist", bold: false },
-                        { text: "Preventive and maintenance education", bold: false },
-                        { text: "Discussion prompts for choosing professional care", bold: false },
-                        { text: "Patient-friendly and dentist-ready report versions", bold: false },
-                        { text: "Secure dental history storage", bold: false },
-                        { text: "Dr. Din AI oral health guide access", bold: false },
-                        { text: "Full year access", bold: false },
+                        { text: "Review the price, current terms, and included features", bold: false },
                       ].map((f, i) => (
                         <div key={i} className="flex items-start text-stone-700 font-light text-sm mb-1.5">
                           <Check className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
@@ -378,11 +362,10 @@ export default function Pricing() {
                   <>
                     {/* Included services per member */}
                     <div className="mb-3">
-                      <p className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Each family member gets</p>
+                      <p className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Plan details</p>
                       {[
-                        { text: "Quick Check (unlimited per family member)", bold: true },
-                        { text: "Treatment Plan Review (included per family member)", bold: true },
-                        { text: "Complete Oral Health Checkup (unlimited per family member)", bold: true },
+                        { text: "Annual family plan", bold: true },
+                        { text: "Review current included features before purchase", bold: true },
                       ].map((f, i) => (
                         <div key={i} className="flex items-start text-stone-700 text-sm mb-1.5">
                           <Check className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
@@ -394,13 +377,10 @@ export default function Pricing() {
                     <div className="border-t border-stone-100 pt-3">
                       <p className="text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Family management</p>
                       {[
-                        { text: "Up to 4 separate family profiles", bold: false },
-                        { text: "One account holder manages all members", bold: false },
-                        { text: "Separate Oral Health Score, reports, and dental history per family member", bold: false },
-                        { text: "Dr. Din access for each family profile", bold: false },
-                        { text: "Share any family member's report with a dentist", bold: false },
-                        { text: "Additional family members: $19.99/year each", bold: false },
-                        { text: "Full year access", bold: false },
+                        { text: "Up to 4 total members, including the primary user", bold: false },
+                        { text: "Review the plan details and included features before purchase", bold: false },
+                        { text: `Additional family members: ${pricing.additionalFamilyMember.priceFormatted}${pricing.additionalFamilyMember.billingLabel} after the included ${pricing.additionalFamilyMember.appliesAfterIncludedMembers}`, bold: false },
+                        { text: "Annual plan", bold: false },
                       ].map((f, i) => (
                         <div key={i} className="flex items-start text-stone-700 font-light text-sm mb-1.5">
                           <Check className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
@@ -467,28 +447,10 @@ export default function Pricing() {
                 </thead>
                 <tbody className="divide-y divide-stone-100">
                   {[
-                    { feature: "Full eligible X-ray insights", quickCheck: "One case", secondOpinion: "When included", complete: "Included" },
-                    { feature: "Visible concerns and key insights", quickCheck: true, secondOpinion: true, complete: true },
-                    { feature: "Oral Health Score", quickCheck: true, secondOpinion: true, complete: true },
-                    { feature: "Patient-friendly report", quickCheck: true, secondOpinion: true, complete: true },
-                    { feature: "Guided self-examination", quickCheck: false, secondOpinion: false, complete: true },
-                    { feature: "Oral Health Score tracking over time", quickCheck: false, secondOpinion: false, complete: true },
-                    { feature: "Educational risk context and record trends", quickCheck: false, secondOpinion: false, complete: true },
-                    { feature: "Compare with dentist's plan", quickCheck: false, secondOpinion: true, complete: true },
-                    { feature: "Treatment Plan Review with plain-language explanations", quickCheck: false, secondOpinion: true, complete: true },
-                    { feature: "Guidance based on supported records and reports", quickCheck: false, secondOpinion: false, complete: true },
-                    { feature: "Treatment and cost questions for a dentist", quickCheck: false, secondOpinion: true, complete: true },
-                    { feature: "Preventive and maintenance education", quickCheck: false, secondOpinion: false, complete: true },
-                    { feature: "Professional-care discussion prompts", quickCheck: false, secondOpinion: false, complete: true },
-                    { feature: "Dentist-ready report version", quickCheck: false, secondOpinion: false, complete: true },
-                    { feature: "Secure dental history storage", quickCheck: true, secondOpinion: true, complete: true },
-                    { feature: "Dr. Din access", quickCheck: "30 days", secondOpinion: "Not listed", complete: "Included" },
-                    ...(planType === "family" ? [
-                      { feature: "Family members included", quickCheck: "1", secondOpinion: "1", complete: "Up to 4" },
-                      { feature: "Separate profiles and history per member", quickCheck: false, secondOpinion: false, complete: true },
-                      { feature: "Additional members ($19.99/yr each)", quickCheck: false, secondOpinion: false, complete: true },
-                    ] : []),
-                    { feature: "Access duration", quickCheck: "One-time", secondOpinion: "One-time", complete: "Full year" },
+                    { feature: "Price", quickCheck: `${pricing.fullQuickCheck.priceFormatted} per case`, secondOpinion: `${pricing.treatmentPlanReview.priceFormatted} per case`, complete: planType === "individual" ? `${pricing.completeCareIndividual.priceFormatted}/year` : `${pricing.completeCareFamily.priceFormatted}/year` },
+                    { feature: "Purpose", quickCheck: "Full eligible X-ray insights for one supported case", secondOpinion: "Educational plain-language review of a supported dentist treatment plan", complete: "Annual plan. Review current details before purchase." },
+                    ...(planType === "family" ? [{ feature: "Family capacity", quickCheck: "One case", secondOpinion: "One case", complete: `Up to ${pricing.completeCareFamily.maxMembers} total members; ${pricing.additionalFamilyMember.priceFormatted}/year each after included ${pricing.additionalFamilyMember.appliesAfterIncludedMembers}` }] : []),
+                    { feature: "Professional-care boundary", quickCheck: "Does not diagnose", secondOpinion: "Does not determine treatment need", complete: "Does not diagnose or replace professional care" },
                   ].map((row, idx) => (
                     <tr key={idx} className="hover:bg-stone-50/50 transition-colors">
                       <td className="text-left py-3 px-4 font-medium text-stone-700 text-sm sticky left-0 bg-white z-10 border-r border-stone-100">{row.feature}</td>
@@ -578,7 +540,7 @@ export default function Pricing() {
         <div className="container px-4 mx-auto max-w-3xl">
           <QuickAnswerBlock
             question="How much does DentaSmart cost?"
-            answer="Free Quick Check is unlimited. Full Quick Check is $19.99 per case, Treatment Plan Review is $29.99 per case, and Complete Care is $74.99/year for individuals or $149.99/year for families of up to 4 members."
+            answer={`Free Quick Check is unlimited. Full Quick Check is ${pricing.fullQuickCheck.priceFormatted} per case, Treatment Plan Review is ${pricing.treatmentPlanReview.priceFormatted} per case, and Complete Care is ${pricing.completeCareIndividual.priceFormatted}/year for individuals or ${pricing.completeCareFamily.priceFormatted}/year for up to ${pricing.completeCareFamily.maxMembers} total family members. Additional members are ${pricing.additionalFamilyMember.priceFormatted}${pricing.additionalFamilyMember.billingLabel} after the included ${pricing.additionalFamilyMember.appliesAfterIncludedMembers}.`}
           />
         </div>
       </section>

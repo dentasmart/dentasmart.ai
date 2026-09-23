@@ -183,6 +183,14 @@ describe("resolveMetaTags", () => {
     });
   });
 
+  it("keeps the established /vs/Dental.com canonical owner stable", async () => {
+    const meta = await resolveMetaTags("/vs/dental-com/");
+    expect(meta).toMatchObject({
+      title: "DentaSmart vs Dental.com SmartScan (2026) | Comparison Guide",
+      canonical: "https://dentasmart.ai/vs/dental-com/",
+    });
+  });
+
   it("keeps the three Phase 9 medical-page metadata entries aligned with their qualified education pages", async () => {
     const expected = [
       {

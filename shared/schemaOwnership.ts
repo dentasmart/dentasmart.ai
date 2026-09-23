@@ -37,7 +37,13 @@ const commercialOffers = [
   {
     name: pricing.completeCareFamily.name,
     price: pricing.completeCareFamily.price,
-    description: "Year-round educational monitoring for up to 4 family members. $149.99/year.",
+    description: "Annual Complete Care Family plan for up to 4 total members, including the primary user. $149.99/year.",
+  },
+  {
+    name: pricing.additionalFamilyMember.name,
+    price: pricing.additionalFamilyMember.price,
+    description: "Annual add-on for one additional Complete Care Family member beyond the first 4 total members. $19.99/year each.",
+    isAddOn: true,
   },
 ] as const;
 
@@ -47,8 +53,10 @@ function getOfferSchema(offer: (typeof commercialOffers)[number]): Record<string
     name: offer.name,
     price: offer.price.toFixed(2),
     priceCurrency: "USD",
-    availability: "https://schema.org/InStock",
-    url: toSchemaUrl("/pricing"),
+    ...(!("isAddOn" in offer) ? {
+      availability: "https://schema.org/InStock",
+      url: toSchemaUrl("/pricing"),
+    } : {}),
     description: offer.description,
   };
 }

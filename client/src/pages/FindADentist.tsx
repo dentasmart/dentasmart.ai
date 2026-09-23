@@ -16,12 +16,12 @@ const dentistTypes = [
 ];
 
 const tips = [
-  { title: "Know What You Need", desc: "DentaSmart tells you which type of dentist to see based on your scan results, whether that is a general dentist, periodontist, endodontist, or oral surgeon." },
-  { title: "Check Reviews", desc: "Look for dentists with consistent 4+ star reviews. Pay attention to comments about communication, wait times, and treatment explanations." },
-  { title: "Ask About Costs Upfront", desc: "Use DentaSmart's cost estimates as a baseline. Call the office and ask for their fee for the specific procedure you need." },
-  { title: "Verify Insurance Acceptance", desc: "If you have insurance, confirm the dentist is in-network before booking. Out-of-network visits can cost 2-3x more." },
+  { title: "Know What You Need", desc: "Use general guidance to understand the kinds of dental professionals you may encounter. A licensed dentist can assess your situation and recommend appropriate care." },
+  { title: "Check Reviews", desc: "Look for details about communication, appointment access, and how the practice explains options. Review several sources before deciding." },
+  { title: "Ask About Costs Upfront", desc: "Ask the office for current fees, what an appointment includes, and any questions you have about the estimate." },
+  { title: "Verify Insurance Details", desc: "If you have insurance, confirm coverage and network details directly with your insurer and the dental office before booking." },
   { title: "Consider Location & Hours", desc: "Choose a dentist close to home or work with hours that fit your schedule. Evening and weekend availability can be valuable." },
-  { title: "Bring Your DentaSmart Report", desc: "Share your DentaSmart analysis with your dentist. It gives them a head start and helps you have a more productive conversation." },
+  { title: "Bring Your DentaSmart Report", desc: "If sharing is available for your selected service, bring your report and questions to the appointment for discussion with your dentist." },
 ];
 
 export default function FindADentist() {
@@ -29,7 +29,7 @@ export default function FindADentist() {
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
         title="How to Find the Right Dentist - DentaSmart Guide"
-        description="Learn how to find the right dentist for your needs. DentaSmart helps you understand which specialist to see and what questions to ask before your visit."
+        description="Learn how to compare common dentist roles and prepare questions for a dental office. A licensed dentist can assess your individual needs."
         canonical="https://dentasmart.ai/find-a-dentist"
       />
       <Navigation />
@@ -55,23 +55,23 @@ export default function FindADentist() {
                 <span className="italic text-primary">for your needs</span>.
               </h1>
               <p className="text-xl text-stone-600 mb-8 font-light leading-relaxed">
-                Not sure which type of dentist you need? DentaSmart analyzes your scan and recommends the right specialist, so you skip the guesswork and go straight to the right care.
+                Not sure what type of dentist to look for? Use this guide to understand common dental roles and prepare questions for a licensed dentist or dental office.
               </p>
               <Button
                 size="lg"
                 className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer"
                 onClick={() => {
                   trackConversionEvent("cta_click", {
-                    cta_id: "find_dentist_hero_recommendation",
+                  cta_id: "find_dentist_hero_free_quick_check",
                     surface: "hero",
                     intent: "download",
                     destination_type: "internal_route",
-                    destination_path: "/",
+                    destination_path: "/download/",
                   });
-                  window.location.href = "/#download-cta";
+                  window.location.href = "/download/";
                 }}
               >
-                Get My Recommendation
+                Start with a Free Quick Check
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </motion.div>
@@ -137,26 +137,26 @@ export default function FindADentist() {
       <section className="py-16 bg-primary text-white text-center">
         <div className="container px-4 mx-auto max-w-3xl">
           <h2 className="text-3xl md:text-4xl font-normal text-white mb-4">
-            Know exactly which dentist to see
+            Prepare for your next dental visit
           </h2>
           <p className="text-xl text-white/80 font-light mb-8">
-            Upload a photo or X-ray. DentaSmart will tell you what type of specialist you need and what to expect cost-wise.
+            Use supported information to organize your questions, then discuss your situation, care options, and costs with a dental professional.
           </p>
           <Button
             size="lg"
             className="bg-white text-primary hover:bg-white/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer"
             onClick={() => {
               trackConversionEvent("cta_click", {
-                cta_id: "find_dentist_final_oral_health_score",
+                  cta_id: "find_dentist_final_free_quick_check",
                 surface: "mid_content",
                 intent: "download",
                 destination_type: "internal_route",
-                destination_path: "/",
+                destination_path: "/download/",
               });
-              window.location.href = "/#download-cta";
+              window.location.href = "/download/";
             }}
           >
-            Get My Oral Health Score
+            Start with a Free Quick Check
             <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
         </div>

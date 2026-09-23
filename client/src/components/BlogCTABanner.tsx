@@ -76,7 +76,7 @@ export function BlogCTABanner() {
                   Start with a Free Quick Check
                 </h3>
                 <p className="text-stone-400 text-sm hidden md:block">
-                  Use mouth photos from your phone. No X-ray required. Paid X-ray analysis is available separately.
+                  Use mouth photos from your phone, supported X-rays, or both. Mouth photos do not require an X-ray.
                 </p>
               </div>
 

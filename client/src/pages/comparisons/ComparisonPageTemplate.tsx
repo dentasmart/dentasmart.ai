@@ -35,6 +35,8 @@ export interface FAQ {
 
 export interface ComparisonPageData {
   slug: string;
+  /** Preserve the established public route when it differs from /comparisons/:slug. */
+  canonicalPath?: string;
   optionAName: string;
   optionBName: string;
   heroTitle: string;
@@ -59,6 +61,10 @@ export interface ComparisonPageData {
   relatedPages: { name: string; href: string; tagline: string }[];
 }
 
+export function resolveComparisonCanonicalUrl(data: Pick<ComparisonPageData, "slug" | "canonicalPath">): string {
+  return `https://dentasmart.ai${data.canonicalPath ?? `/comparisons/${data.slug}`}`;
+}
+
 /* ─── Animation ─────────────────────────────────────────── */
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -68,7 +74,7 @@ const fadeUp = {
 };
 
 export default function ComparisonPageTemplate({ data }: { data: ComparisonPageData }) {
-  const canonicalUrl = `https://dentasmart.ai/comparisons/${data.slug}`;
+  const canonicalUrl = resolveComparisonCanonicalUrl(data);
 
   const faqJsonLd = {
     "@context": "https://schema.org",

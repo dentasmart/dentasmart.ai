@@ -22,7 +22,7 @@ export default function Features() {
     },
     {
       title: "Guided Self-Examination for More Context",
-      description: "Symptoms and observations can add useful context to an image.\n\nIncluded in Complete Care, the guided self-examination walks you through simple checks before your photo upload, including a Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection with a mirror. These checks help organize what you are experiencing alongside the images you provide.",
+      description: "Symptoms and observations can add useful context to an image.\n\nWhen available with a selected service, the guided self-examination walks you through simple checks before your photo upload, including a Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection with a mirror. These checks help organize what you are experiencing alongside the images you provide.",
       points: [
         "Bite Pressure Test: Records tenderness and pain patterns you notice.",
         "Cold Sensitivity Test: Records where and when sensitivity occurs.",
@@ -75,11 +75,11 @@ export default function Features() {
     },
     {
       title: "See Your Progress, Stay Motivated",
-      description: "It's hard to improve what you can't measure.\n\nOur Interactive Health Timeline turns your oral health journey into a clear visual story. Watch your improvements over time, celebrate your wins, and stay motivated to keep your smile healthy for life.",
+      description: "It can be easier to follow a record when you can compare it with earlier information.\n\nThe Interactive Health Timeline provides a visual record of available DentaSmart information over time. It is educational and does not confirm a clinical outcome.",
       points: [
-        "Visual Proof: See your health score improve as you build better habits.",
-        "Complete History: Keep all your scans and insights in one secure place.",
-        "Stay on Track: A clear view of your journey keeps you focused on the long term."
+        "Visual record: Compare available information over time.",
+        "History view: Keep supported records together.",
+        "Context for questions: Use the record to prepare for professional care."
       ],
       image: "/images/optimized/QmtzzNkXnZNbJvtj-800.webp"
     },
@@ -142,7 +142,7 @@ export default function Features() {
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
       <SEO
-        title="DentaSmart Features - Understand Your Oral Health"
+        title="DentaSmart Features | Oral Health Reports and Tracking"
         description="Explore DentaSmart's unlimited Free Quick Checks, Full Quick Check, Treatment Plan Review, Oral Health Score tracking, reports, records, and guidance from Dr. Din."
         canonical="https://dentasmart.ai/features"
       />

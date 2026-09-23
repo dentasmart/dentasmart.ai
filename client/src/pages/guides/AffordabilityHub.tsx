@@ -12,12 +12,12 @@ const affordabilityGuides = guidesList.filter(g => g.category === "affordability
 
 /* ─── Cost Data ─────────────────────────────────────────────── */
 const procedureCosts = [
-  { procedure: "Routine Dental Exam", withoutInsurance: "$50-$350", avgCost: "$203", withDentaSmart: "Know before you go", costLink: null, treatmentLink: null },
-  { procedure: "Teeth Cleaning", withoutInsurance: "$75-$200", avgCost: "$130", withDentaSmart: "Track when you're due", costLink: "/dental-costs/dental-cleaning-cost/", treatmentLink: "/treatments/dental-cleaning-procedure/" },
-  { procedure: "Dental X-rays", withoutInsurance: "$25-$250", avgCost: "$150", withDentaSmart: "AI analysis included", costLink: null, treatmentLink: null },
-  { procedure: "Cavity Filling", withoutInsurance: "$100-$1,050", avgCost: "$250", withDentaSmart: "Catch early, save more", costLink: null, treatmentLink: null },
-  { procedure: "Tooth Extraction", withoutInsurance: "$50-$500", avgCost: "$200", withDentaSmart: "Second opinion first", costLink: "/dental-costs/tooth-extraction-cost/", treatmentLink: "/treatments/tooth-extraction-procedure/" },
-  { procedure: "Root Canal", withoutInsurance: "$700-$1,500", avgCost: "$1,000", withDentaSmart: "Verify if needed", costLink: "/dental-costs/root-canal-cost/", treatmentLink: "/treatments/root-canal-procedure/" },
+  { procedure: "Routine Dental Exam", withoutInsurance: "$50-$350", avgCost: "$203", withDentaSmart: "Prepare questions before a visit", costLink: null, treatmentLink: null },
+  { procedure: "Teeth Cleaning", withoutInsurance: "$75-$200", avgCost: "$130", withDentaSmart: "Keep your records organized", costLink: "/dental-costs/dental-cleaning-cost/", treatmentLink: "/treatments/dental-cleaning-procedure/" },
+  { procedure: "Dental X-rays", withoutInsurance: "$25-$250", avgCost: "$150", withDentaSmart: "Review supported X-ray context", costLink: null, treatmentLink: null },
+  { procedure: "Cavity Filling", withoutInsurance: "$100-$1,050", avgCost: "$250", withDentaSmart: "Organize questions for a dentist", costLink: null, treatmentLink: null },
+  { procedure: "Tooth Extraction", withoutInsurance: "$50-$500", avgCost: "$200", withDentaSmart: "Compare treatment information", costLink: "/dental-costs/tooth-extraction-cost/", treatmentLink: "/treatments/tooth-extraction-procedure/" },
+  { procedure: "Root Canal", withoutInsurance: "$700-$1,500", avgCost: "$1,000", withDentaSmart: "Understand the recommendation", costLink: "/dental-costs/root-canal-cost/", treatmentLink: "/treatments/root-canal-procedure/" },
   { procedure: "Dental Crown", withoutInsurance: "$800-$2,500", avgCost: "$1,200", withDentaSmart: "Compare options", costLink: "/dental-costs/dental-crown-cost/", treatmentLink: "/treatments/dental-crown-procedure/" },
   { procedure: "Dental Implant", withoutInsurance: "$3,000-$6,000", avgCost: "$4,500", withDentaSmart: "Plan ahead", costLink: "/dental-costs/dental-implant-cost/", treatmentLink: "/treatments/dental-implant-procedure/" },
   { procedure: "Braces", withoutInsurance: "$2,500-$7,000", avgCost: "$5,000", withDentaSmart: "Explore alternatives", costLink: "/dental-costs/braces-cost/", treatmentLink: "/treatments/braces-treatment/" },
@@ -71,7 +71,7 @@ const savingsTips = [
     title: "Review a Treatment Plan",
     description: "DentaSmart Treatment Plan Review can organize a supported dentist treatment plan, plain-language context, and questions. It does not provide a dentist's diagnosis or clinical recommendation.",
     cta: "View Treatment Plan Review",
-    href: "/pricing/#second-opinion",
+    href: "/pricing/#treatment-plan-review",
   },
 ];
 

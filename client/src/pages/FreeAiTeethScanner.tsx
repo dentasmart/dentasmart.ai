@@ -48,7 +48,7 @@ const faqs = [
   },
   {
     question: "Is my dental data private?",
-    answer: "DentaSmart does not sell your data. We take the privacy and security of your information seriously. See our Privacy Policy for details on how your information is handled."
+    answer: "We use safeguards designed to protect your information. See our Privacy Policy for current details on how information is handled."
   },
   {
     question: "Do I need to visit a dentist after using DentaSmart?",
@@ -144,7 +144,7 @@ export default function FreeAiTeethScanner() {
             </div>
             <div className="flex items-center gap-2">
               <Shield className="w-4 h-4 text-primary" />
-              <span>Your data is never sold</span>
+              <span>Review the Privacy Policy for information-handling details</span>
             </div>
             <div className="flex items-center gap-2">
               <Clock className="w-4 h-4 text-primary" />
@@ -237,9 +237,9 @@ export default function FreeAiTeethScanner() {
           <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
             {[
               { title: "App download", price: "$0", detail: "Install DentaSmart from the App Store or Google Play." },
-              { title: pricing.quickCheck.name, price: pricing.quickCheck.priceFormatted, detail: "Unlimited checks using supported mouth photos, supported X-rays, or both." },
-              { title: pricing.fullQuickCheck.name, price: `${pricing.fullQuickCheck.priceFormatted} ${pricing.fullQuickCheck.billingLabel}`, detail: "Unlocks the paid Quick Check package and full eligible X-ray insights for one case." },
-              { title: pricing.completeCareIndividual.name, price: `From ${pricing.completeCareIndividual.priceFormatted}${pricing.completeCareIndividual.billingLabel}`, detail: "An annual individual plan; family pricing is listed separately." },
+              { title: pricing.quickCheck.name, price: pricing.quickCheck.priceFormatted, detail: "Unlimited educational checks using supported mouth photos, supported X-rays, or both. Free X-ray output is limited." },
+              { title: "Full Quick Check", price: "Paid service", detail: "Provides fuller eligible X-ray insights for one supported case. See Pricing for the current service detail." },
+              { title: "Complete Care", price: "Annual plans", detail: "Individual and family annual options are listed on Pricing." },
             ].map((option) => (
               <article key={option.title} className="rounded-2xl border border-stone-200 bg-stone-50 p-6">
                 <h3 className="font-medium text-black">{option.title}</h3>
@@ -309,7 +309,7 @@ export default function FreeAiTeethScanner() {
             {[
               { title: "Supported inputs", detail: "Check whether the service accepts mouth photos, X-rays, or both, and whether your image type is supported." },
               { title: "Output and limitations", detail: "Look for plain-language reports, clear uncertainty, and an explicit statement that the tool does not diagnose." },
-              { title: "Full price", detail: "Confirm what is free and what is paid. DentaSmart mouth-photo Quick Check is free; X-ray analysis and other services are priced separately." },
+              { title: "Full price", detail: "Confirm what is free and what is paid. Free Quick Check can accept supported mouth photos or X-rays, while Full Quick Check provides fuller eligible X-ray insights." },
               { title: "Privacy and follow-up", detail: "Review the privacy policy and understand when the service tells you to seek professional care." },
             ].map((item) => (
               <article key={item.title} className="rounded-2xl border border-stone-200 bg-stone-50 p-6">

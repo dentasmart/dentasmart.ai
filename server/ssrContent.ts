@@ -154,6 +154,16 @@ function generateTreatmentContent(slug: string): string {
 }
 
 function generateComparisonContent(slug: string): string {
+  if (slug === "dentasmart-vs-chatgpt-dental") {
+    return `
+<article>
+  <nav aria-label="breadcrumb"><a href="/">Home</a> &gt; <a href="/comparisons">Comparisons</a> &gt; DentaSmart vs ChatGPT</nav>
+  <h1>DentaSmart vs ChatGPT: How Purpose-Built and General AI Tools Differ</h1>
+  <p>Compare a purpose-built educational oral-health workflow with a general AI chatbot, including records, pricing, and professional-care boundaries.</p>
+  <p><a href="/download">Start with a Free Quick Check</a> | <a href="/pricing#treatment-plan-review">Review a Treatment Plan</a></p>
+</article>`;
+  }
+
   const readableSlug = slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
   return `
 <article>
@@ -259,23 +269,23 @@ function generateStaticPageContent(path: string): string | null {
   <h2>Dr. Din AI Oral Health Guide</h2>
   <p>Ask Dr. Din to explain report language, findings, history, and common dental terms. It does not diagnose conditions or replace professional care.</p>
   <h2>Treatment Plan Review</h2>
-  <p>Upload a treatment plan for an educational comparison with cost ranges and questions to discuss with your dentist.</p>
+  <p>Upload a supported dentist treatment plan for an educational plain-language review and questions to discuss with your dentist. It does not determine treatment need.</p>
   <h2>Family Profiles</h2>
-  <p>Monitor oral health for up to 4 family members under one account. Track everyone's dental health in one place.</p>
+  <p>Complete Care Family covers up to 4 total members, including the primary user. Review current included features before purchase.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/pricing">View Pricing</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`,
     "/pricing": `
 <article>
   <h1>DentaSmart Pricing: Plans for Every Need</h1>
   <p>Start with unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Choose Full Quick Check, Treatment Plan Review, or annual Complete Care only when you need those services.</p>
-  <h2>Quick Check  -  Free for mouth photos</h2>
-  <p>A free educational analysis of supported mouth photos. No X-ray is required, and it does not provide a diagnosis.</p>
+  <h2>Free Quick Check</h2>
+  <p>Free Quick Check accepts supported mouth photos, supported X-rays, or both. Free X-ray output is limited, and it does not provide a diagnosis.</p>
   <h2>Full Quick Check - $19.99 per case</h2>
-  <p>A one-time educational analysis of a supported dental X-ray. A licensed dentist must interpret X-rays for diagnosis and treatment decisions.</p>
+  <p>A one-time service with full eligible X-ray insights for one supported case. A licensed dentist must interpret X-rays for diagnosis and treatment decisions.</p>
   <h2>Treatment Plan Review - $29.99 per case</h2>
   <p>A $29.99 educational plain-language review for one supported treatment-plan case, with context and questions to discuss with a licensed dentist.</p>
   <h2>Complete Care  -  $74.99/year (Individual) or $149.99/year (Family)</h2>
-  <p>Complete Care is $74.99/year for one person or $149.99/year for up to 4 family members. It includes year-round access to applicable reports, Oral Health Score tracking, guided self-examination, record organization, monitoring tools, and Dr. Din. It does not replace professional diagnosis or treatment.</p>
+  <p>Complete Care is $74.99/year for one person or $149.99/year for up to 4 total members, including the primary user. Additional members are $19.99/year after the included four. Review current plan details before purchase. DentaSmart does not replace professional diagnosis or treatment.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/features">See All Features</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`,
     "/download": `
@@ -353,7 +363,7 @@ function generateStaticPageContent(path: string): string | null {
   <h1>Product Facts</h1>
   <p>DentaSmart Free Quick Check is unlimited and accepts supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray. Full Quick Check, Treatment Plan Review, and Complete Care are paid services.</p>
   <h2>Verified pricing</h2>
-  <ul><li>Free Quick Check: $0, unlimited checks</li><li>Full Quick Check: $19.99 per case</li><li>Treatment Plan Review: $29.99 per case</li><li>Complete Care: $74.99/year individual or $149.99/year family, up to four family members</li><li>Additional family members: $19.99/year</li></ul>
+  <ul><li>Free Quick Check: $0, unlimited checks</li><li>Full Quick Check: $19.99 per case</li><li>Treatment Plan Review: $29.99 per case</li><li>Complete Care: $74.99/year individual or $149.99/year family, up to four total members including the primary user</li><li>Additional family members: $19.99/year after the included four total members</li></ul>
   <p>DentaSmart provides educational outputs and does not diagnose conditions or replace a licensed dental professional.</p>
   <p><a href="/pricing">View Pricing</a> | <a href="/download">Download DentaSmart</a> | <a href="/features">See Features</a></p>
 </article>`,
@@ -729,8 +739,9 @@ export async function resolveSSRContent(urlPath: string): Promise<SSRContent | n
     return { html: `
 <article>
   <h1>Dental Second Opinion Hub</h1>
-  <p>Not sure about your dental diagnosis? Browse our second opinion resources to understand your options and make informed decisions about your treatment.</p>
-  <p><a href="/download">Download DentaSmart</a> | <a href="/guides/when-to-get-dental-second-opinion">Second Opinion Guide</a></p>
+  <p>A clinical second opinion comes from another licensed dentist. Browse these resources to prepare questions and understand how to seek one when appropriate.</p>
+  <p>DentaSmart's Treatment Plan Review provides educational plain-language context for an already-provided recommendation. It does not provide a licensed-dentist second opinion, diagnosis, or treatment decision.</p>
+  <p><a href="/pricing#treatment-plan-review">View Treatment Plan Review</a> | <a href="/guides/when-to-get-dental-second-opinion">Second Opinion Guide</a></p>
 </article>` };
   }
   if (cleanPath === "/oral-health-hub/prevention") {

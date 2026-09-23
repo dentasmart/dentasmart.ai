@@ -27,10 +27,10 @@ const variations: PopupVariation[] = [
   {
     id: "symptom",
     icon: <Stethoscope className="w-7 h-7 text-primary" />,
-    badge: "60-Second Quiz",
+    badge: "Symptom Quiz",
     headline: "Not sure what is going on with your teeth?",
     description:
-      "Take our free symptom quiz. Answer 8 quick questions and get a personalized summary with possible next steps. It does not provide a diagnosis.",
+      "Take the free symptom quiz to organize what you notice and review general educational guidance. It does not provide a diagnosis or determine urgency.",
     supportingText: "Educational guidance, not a diagnosis",
     ctaText: "Take the Free Quiz",
     dismissText: "No thanks, I will figure it out myself",
@@ -41,7 +41,7 @@ const variations: PopupVariation[] = [
     id: "cost",
     icon: <DollarSign className="w-7 h-7 text-primary" />,
     badge: "Plan Clarity",
-    headline: "Could you be overpaying for dental care?",
+    headline: "Need a clearer view of DentaSmart options?",
     description:
       "Compare DentaSmart's one-time checks and annual plans before making an expensive dental decision.",
     supportingText: "Plans start at $19.99",
@@ -53,15 +53,15 @@ const variations: PopupVariation[] = [
   {
     id: "second-opinion",
     icon: <Shield className="w-7 h-7 text-primary" />,
-    badge: "Second Opinion",
-    headline: "Wondering if you really need that procedure?",
+    badge: "Treatment Plan Review",
+    headline: "Want to understand a treatment plan before your next conversation?",
     description:
-      "Upload a treatment plan and supporting records for a plain-English comparison before you decide.",
+      "Upload a supported dentist treatment plan and relevant records for an educational plain-language review.",
     supportingText: "$29.99 one-time",
-    ctaText: "Get a Second Opinion",
+    ctaText: "Review a Treatment Plan",
     dismissText: "No thanks, I will decide another way",
     action: "internal",
-    link: "/pricing/#second-opinion",
+    link: "/pricing/#treatment-plan-review",
   },
   {
     id: "root-canal-treatment-plan",
@@ -74,7 +74,7 @@ const variations: PopupVariation[] = [
     ctaText: "Review Your Treatment Plan",
     dismissText: "No thanks, I will decide another way",
     action: "internal",
-    link: "/pricing/#second-opinion",
+    link: "/pricing/#treatment-plan-review",
   },
 ];
 

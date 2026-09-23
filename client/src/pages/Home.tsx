@@ -65,7 +65,7 @@ export default function Home() {
       destination_type: "internal_route",
       destination_path: "/pricing/",
     });
-    setLocation("/pricing/#second-opinion");
+      setLocation("/pricing/#treatment-plan-review");
   };
 
   return (
@@ -289,7 +289,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center divide-y md:divide-y-0 md:divide-x divide-border/50">
               {[
                 { value: "Free", label: "Mouth-Photo Quick Check" },
-                { value: "4", label: "Family Members Included" },
+                { value: "4", label: "Total Family Members Included" },
                 { value: "iOS + Android", label: "Available Now" }
             ].map((stat, idx) => (
               <motion.div 
@@ -385,18 +385,18 @@ export default function Home() {
               Know what is happening in your mouth <span className="italic text-primary/80">before you decide what to do next.</span>
             </h2>
             <p className="text-xl text-stone-200 font-light mb-10 leading-relaxed max-w-3xl">
-              DentaSmart helps you understand your oral health from home using mouth photos, dental X-rays, symptoms, treatment plans, and visit history. You get simple, visual, plain-English insights so you can stop guessing and start making better dental decisions.
+              DentaSmart organizes supported mouth photos, dental X-rays, symptoms, treatment plans, and visit history into plain-language educational context. Use it to prepare questions and make more informed decisions with a dentist.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
-                "Check visible concerns early via detailed mouth images and X-rays analysis",
-                "Get in-depth insights that highlight potential issues",
+                "Organize supported mouth photos and X-rays for educational context",
+                "Review plain-language observations to discuss with a dentist",
                 "Track your Oral Health Score over time",
                 "Monitor changes in your teeth and gums",
-                "Get treatment considerations before a visit",
-                "Get a second opinion when a treatment plan feels serious or expensive",
-                "Understand risk factors to support long-term oral health",
+                "Prepare questions before a dental visit",
+                "Use Treatment Plan Review to understand an already-provided recommendation",
+                "Review educational context for factors that may be worth discussing",
                 "Organize dental records for yourself and your family",
                 "Ask Dr. Din to explain DentaSmart reports and common dental terms"
               ].map((item, idx) => (
@@ -421,8 +421,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {[
               { step: "01", title: "Upload", desc: "Take mouth photos, upload dental X-rays, or add symptoms, treatment plans, bills, prescriptions, or dentist notes." },
-              { step: "02", title: "Understand", desc: "DentaSmart reviews the information and gives you clear insights, visual findings, an Oral Health Score, and possible next steps." },
-              { step: "03", title: "Act with confidence", desc: "Use your report to monitor your oral health, prepare for your dentist visit, compare treatment options, and ask better questions." }
+              { step: "02", title: "Understand", desc: "DentaSmart organizes the information into plain-language educational observations, available report details, and questions to consider." },
+              { step: "03", title: "Prepare", desc: "Use your report to organize records and prepare questions for your dentist visit." }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}
@@ -464,13 +464,13 @@ export default function Home() {
                 Your mouth changes over time. <span className="italic text-primary">DentaSmart helps you keep track.</span>
               </h2>
               <p className="text-lg text-stone-700 leading-relaxed mb-4">
-                Most dental apps answer one question once. DentaSmart helps you monitor your oral health over time.
+                Keep supported information together so you can compare it with earlier records over time.
               </p>
               <p className="text-lg text-stone-700 leading-relaxed mb-4">
-                Your Oral Health Score, reports, X-rays, mouth images, symptoms, visit history, and family profiles stay organized in one place, so you can see what is improving, what is stable, and what may need attention.
+                Oral Health Score records, reports, X-rays, mouth images, symptoms, visit history, and family profiles can stay organized in one place for your own reference and dental conversations.
               </p>
               <p className="text-base text-stone-600 font-medium">
-                Better monitoring helps you act earlier, protect your teeth, and reduce the risk of bigger dental problems later.
+                Use your record to prepare questions for a dentist when something changes or concerns you.
               </p>
             </div>
             <div className="flex justify-center">
@@ -490,7 +490,7 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          SECOND OPINION (new)
+          TREATMENT PLAN REVIEW
       ═══════════════════════════════════════════════════════════════════ */}
       <section className="py-10 bg-stone-50">
         <div className="container px-4 mx-auto max-w-5xl">
@@ -505,7 +505,7 @@ export default function Home() {
               Treatment Plan Review
             </div>
             <h2 className="text-4xl md:text-5xl font-normal text-black mb-6 leading-tight">
-              Before you say yes to an expensive treatment plan, <span className="italic text-primary">get clarity.</span>
+              Before your next treatment-plan conversation, <span className="italic text-primary">prepare your questions.</span>
             </h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -515,11 +515,11 @@ export default function Home() {
                 </p>
                 <div className="space-y-3">
                   {[
-                    "Do I really need a root canal?",
-                    "Is a crown necessary?",
-                    "Can this tooth be saved?",
-                    "What happens if I wait?",
-                    "Is this cost reasonable?",
+                    "What does this recommendation mean?",
+                    "What questions should I ask about the options?",
+                    "What records should I bring to the conversation?",
+                    "What should I ask about timing and follow-up?",
+                    "What should I ask about the estimate?",
                     "What should I ask my dentist?"
                   ].map((q, idx) => (
                     <p key={idx} className="text-stone-800 font-medium italic">{q}</p>
@@ -531,10 +531,10 @@ export default function Home() {
                   With Treatment Plan Review, you can upload a supported dentist treatment plan and related records for an educational plain-language review.
                 </p>
                 <p className="text-lg text-stone-700 leading-relaxed mb-4">
-                  DentaSmart helps you understand the recommendation, compare it with the information you provide, and prepare for a more confident conversation with your dentist.
+                  DentaSmart helps you organize the information you provide in plain language and prepare for a more informed conversation with your dentist.
                 </p>
                 <p className="text-base text-stone-600 font-medium border-t border-stone-100 pt-4 mt-4">
-                  It is not about replacing your dentist. It is about helping you make informed decisions before you commit.
+                  Treatment Plan Review is educational. It does not determine whether treatment is needed or replace a dentist's advice.
                 </p>
               </div>
             </div>
@@ -561,13 +561,13 @@ export default function Home() {
               Avoid surprise dental costs.
             </h2>
             <p className="text-xl text-stone-700 font-light leading-relaxed mb-4 max-w-3xl mx-auto">
-              Dental care becomes more stressful when you do not understand what is needed, what can wait, or what it may cost.
+              Dental care can feel more stressful when the recommendation, estimate, or next step is unclear.
             </p>
             <p className="text-lg text-stone-700 leading-relaxed mb-6 max-w-3xl mx-auto">
-              DentaSmart gives you cost guidance, treatment context, and next-step clarity before you walk into a dental office or approve a major procedure.
+              DentaSmart can help you organize treatment-plan information and prepare questions to discuss with a dental professional.
             </p>
             <p className="text-lg text-stone-800 font-medium">
-              You may not always avoid treatment. But you can avoid walking in blind.
+              Use the information you have to prepare for the conversation.
             </p>
           </motion.div>
         </div>
@@ -671,17 +671,17 @@ export default function Home() {
                 {
                   icon: Camera,
                   title: "Quick Check",
-                  desc: "A free educational analysis of supported mouth photos when you want a clear starting point. No X-ray is required."
+                  desc: "A free educational starting point using supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray."
                 },
                 {
                   icon: Search,
                   title: "Complete Care",
-                  desc: "Year-round educational monitoring, reports, Oral Health Score tracking, guided self-examination, and organized records."
+                  desc: "An annual plan with current details shown before purchase. Review available features and limits on the pricing page."
                 },
                 {
                   icon: FileText,
                   title: "Treatment Plan Review",
-                  desc: "Understand a dentist's treatment plan, compare recommendations, review possible risks, and prepare better questions before making a costly decision."
+                  desc: "Review a supported dentist treatment plan in plain language and prepare questions for a dental conversation."
                 },
                 {
                   icon: Clock,

@@ -16,7 +16,7 @@ export function DownloadCTA() {
             Start with a Free Quick Check
           </h2>
           <p className="text-white/90 text-lg font-light mb-8">
-            Use mouth photos from your phone. No X-ray required. Paid X-ray analysis and other services are available separately.
+            Use mouth photos from your phone, supported X-rays, or both. Mouth photos do not require an X-ray.
           </p>
 
           {/* App Store Buttons */}

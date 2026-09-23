@@ -59,7 +59,7 @@ const megaMenuCategories = [
     items: [
       { label: "Dental Emergencies", href: "/dental-emergencies/", description: "What to do right now" },
       { label: "Affordability Guide", href: "/oral-health-hub/affordability/", description: "Save on dental care costs" },
-      { label: "Second Opinion Hub", href: "/oral-health-hub/second-opinion/", description: "Verify treatment recommendations" },
+      { label: "Second Opinion Hub", href: "/oral-health-hub/second-opinion/", description: "Learn when another dentist's opinion may help" },
       { label: "FAQs", href: "/faqs/", description: "Common questions answered" },
     ],
   },
@@ -366,7 +366,7 @@ export default function Navigation() {
                     destination_type: "internal_route",
                     destination_path: "/download/",
                   });
-                  window.location.href = '/#download-cta';
+                  window.location.href = '/download/';
                 }
               }}
             >
@@ -624,7 +624,7 @@ export default function Navigation() {
                     destination_type: "internal_route",
                     destination_path: "/download/",
                   });
-                  window.location.href = '/#download-cta';
+                  window.location.href = '/download/';
                   }
                 }}
               >

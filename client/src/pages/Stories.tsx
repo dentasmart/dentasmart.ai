@@ -15,9 +15,9 @@ const pathways = [
   {
     icon: FileSearch,
     title: "Organize a Treatment-Plan Review",
-    description: "Use Second Opinion to compare treatment-plan details, cost ranges, and questions to discuss with your dentist.",
-    link: "/pricing/#second-opinion",
-    label: "Explore Second Opinion",
+    description: "Use Treatment Plan Review to organize an already-provided recommendation in plain language and prepare questions for your dentist.",
+    link: "/pricing/#treatment-plan-review",
+    label: "Explore Treatment Plan Review",
   },
   {
     icon: History,
@@ -33,7 +33,7 @@ export default function Stories() {
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
         title="Ways to Use DentaSmart"
-        description="Explore practical DentaSmart pathways for a one-time Quick Check, a treatment-plan Second Opinion, or ongoing Complete Care monitoring."
+        description="Explore practical DentaSmart pathways for a one-time Quick Check, a Treatment Plan Review, or Complete Care."
         canonical="https://dentasmart.ai/stories"
       />
       <Navigation />

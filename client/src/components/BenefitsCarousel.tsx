@@ -8,7 +8,7 @@ const benefits = [
     id: 1,
     tag: "Oral Health Score",
     title: "Oral Health Score and Priorities",
-    desc: "Know what needs attention now vs later.",
+    desc: "Review an educational summary of supported information.",
     detail: "Review an educational score based on supported photos and X-rays, then use the highlighted priorities to prepare questions for a dental professional.",
     image: "/manus-storage/dentasmart-app-oral-health-score_ef84a3c3.webp"
   },
@@ -16,8 +16,8 @@ const benefits = [
     id: 2,
     tag: "Photo & X-Ray Analysis",
     title: "Plain-English Explanation of Photos and X-Rays",
-    desc: "See what your dentist sees, in words you understand.",
-    detail: "Upload mouth photos or supported dental X-rays. DentaSmart reviews visible teeth, gums, and oral structures based on the images you provide and shows you visible concerns and key insights in plain English.",
+    desc: "Review supported images in plain language.",
+    detail: "Upload supported mouth photos or dental X-rays. DentaSmart organizes visible observations from the images you provide in plain language. It does not provide a diagnosis.",
     image: "/manus-storage/dentasmart-app-ai-report-sections_5245a13a.webp"
   },
   {
@@ -25,23 +25,23 @@ const benefits = [
     tag: "Treatment Plan Review",
     title: "Treatment Plan Review Before You Say Yes",
     desc: "Understand a proposed plan before you commit.",
-    detail: "Upload your dentist's treatment plan, bill, or recommendation along with your X-rays and mouth photos. DentaSmart shows you what aligns, what differs, and what questions to bring back to your dentist.",
+    detail: "Upload a supported dentist treatment plan and relevant records for an educational plain-language review. Use the result to prepare questions for your dentist.",
     image: "/manus-storage/dentasmart-app-treatment-plan-review_e384bde5.webp"
   },
   {
     id: 4,
     tag: "Personalized Guidance",
     title: "Personalized Guidance Based on Your History",
-    desc: "A plan built around your actual situation.",
-    detail: "Complete Care provides educational guidance based on supported photos, symptoms, history, and previous reports. It can help you organize preventive and maintenance questions and note which type of dental professional may be relevant.",
+    desc: "Organize records and questions over time.",
+    detail: "Complete Care is an annual plan. Review the current plan details before purchase, and use any included educational tools to organize questions for dental care.",
     image: "/images/optimized/ChlTSVZDNZEOfine-800.webp"
   },
   {
     id: 5,
     tag: "Track Changes",
     title: "Track Changes Over Time",
-    desc: "Monitor changes and improvements over time.",
-    detail: "Keep a digital log of your oral health journey. See how your habits impact your score and get motivated by visualizing your progress.",
+    desc: "Keep a record of selected information over time.",
+    detail: "Use the selected service's record tools to review your own history over time. Changes in a score or report do not confirm a diagnosis or treatment outcome.",
     image: "/images/optimized/QmtzzNkXnZNbJvtj-800.webp"
   },
   {

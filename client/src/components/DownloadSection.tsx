@@ -15,7 +15,7 @@ export function DownloadSection({
             Download DentaSmart
           </h2>
           <p className="text-xl text-stone-600 font-light">
-            Start with a free Quick Check using supported mouth photos. X-ray analysis and other services are paid.
+            Start with a free Quick Check using supported mouth photos, supported X-rays, or both. Free X-ray output is limited; Full Quick Check provides fuller eligible X-ray insights.
           </p>
         </div>
 

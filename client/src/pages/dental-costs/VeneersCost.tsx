@@ -124,9 +124,9 @@ const data: CostPageData = {
         "We help you find skilled cosmetic dentists who have been vetted by other patients. You can compare offices and read real reviews.",
     },
     {
-      title: "Financing Options Made Easy",
+      title: "Questions to Take to the Dental Office",
       description:
-        "DentaSmart connects you with financing partners to make your dream smile more affordable. See your payment options in minutes.",
+        "Use your written treatment plan to prepare questions about the procedure, expected fees, and any payment options offered directly by the dental office.",
     },
   ],
   faqs: [

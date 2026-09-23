@@ -209,8 +209,8 @@ export default function InstantScan() {
 
               <div className="space-y-3 mb-6">
                 {[
-                  "Free Quick Check for mouth photos",
-                  "Paid X-ray analysis shown before purchase",
+                  "Free Quick Check accepts supported photos or X-rays",
+                  "Full Quick Check provides fuller eligible X-ray insights",
                   "Plain-language explanations",
                   "Educational, not diagnostic",
                 ].map((item, idx) => (
@@ -305,7 +305,7 @@ export default function InstantScan() {
         <div className="container px-4 mx-auto max-w-5xl">
           <h2 className="text-3xl md:text-4xl font-normal text-black mb-4 text-center">What DentaSmart can help highlight</h2>
           <p className="text-stone-500 text-center mb-10 max-w-2xl mx-auto font-light">
-            DentaSmart reviews your images for the most common oral health concerns and explains each finding in plain language.
+            DentaSmart organizes supported image observations in plain language to help you prepare questions for a dentist.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {aiLooksFor.map((item, idx) => (

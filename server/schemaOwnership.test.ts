@@ -52,6 +52,7 @@ describe("Phase 7 source-controlled schema ownership", () => {
       pricing.treatmentPlanReview.price.toFixed(2),
       pricing.completeCareIndividual.price.toFixed(2),
       pricing.completeCareFamily.price.toFixed(2),
+      pricing.additionalFamilyMember.price.toFixed(2),
     ]);
     expect(offers.every((offer) => offer.priceCurrency === "USD")).toBe(true);
     expect(offers.every((offer) => !("priceValidUntil" in offer))).toBe(true);

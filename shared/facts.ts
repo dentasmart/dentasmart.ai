@@ -85,10 +85,12 @@ export const pricing = {
     maxMembers: 4,
   },
   additionalFamilyMember: {
+    name: "Additional Complete Care Family Member",
     price: 19.99,
     priceFormatted: "$19.99",
     billing: "year",
     billingLabel: "/year each",
+    appliesAfterIncludedMembers: 4,
   },
 } as const;
 

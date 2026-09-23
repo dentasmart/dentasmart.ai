@@ -35,12 +35,12 @@ export default function SecondOpinionHub() {
               Your Dentist Said You Need What?
             </h1>
             <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed max-w-2xl text-left">
-              Before you commit to expensive dental work, get the full picture. These guides help you understand your options and ask the right questions.
+              A second opinion comes from another licensed dentist. These guides explain how to prepare questions, review a recommendation, and decide when to seek professional care.
             </p>
             <div className="mt-6">
-              <Link href="/download/">
+              <Link href="/pricing/#treatment-plan-review">
                 <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg">
-                  Upload Your X-Rays for a Second Look
+                  Explore Treatment Plan Review
                 </Button>
               </Link>
             </div>
@@ -122,11 +122,11 @@ export default function SecondOpinionHub() {
       <section className="py-8 bg-stone-900 text-white">
         <div className="container px-4 mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-normal mb-3 text-white">Get clarity before you commit</h2>
-          <p className="text-stone-300 font-light mb-6">Upload your X-rays to DentaSmart and get an AI-powered second look at your treatment plan.</p>
+          <p className="text-stone-300 font-light mb-6">DentaSmart's Treatment Plan Review helps organize an already-provided recommendation in plain language. It is not a licensed-dentist second opinion or a diagnosis.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/download/">
+            <Link href="/pricing/#treatment-plan-review">
               <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
-                Download the App
+                View Treatment Plan Review
               </Button>
             </Link>
             <Link href="/guides/">
