@@ -174,6 +174,26 @@ describe("resolveMetaTags", () => {
     expect(meta!.title).toContain("Pricing");
   });
 
+  it("keeps the commercial route descriptions owned by their current page contracts", async () => {
+    const expected = [
+      ["/", "Start with unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Full Quick Check unlocks full eligible X-ray insights for one case."],
+      ["/pricing", "Compare unlimited Free Quick Check, Full Quick Check for $19.99 per case, Treatment Plan Review for $29.99 per case, and annual Complete Care plans."],
+      ["/download", "Download DentaSmart for unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Upgrade to Full Quick Check when you need full eligible X-ray insights."],
+      ["/free-ai-teeth-scanner", "Use supported mouth photos for a free DentaSmart Quick Check. No X-ray is required. See visible areas to discuss with a dentist without receiving a diagnosis."],
+      ["/instant-scan", "Learn how DentaSmart uses supported mouth photos and dental X-rays for educational observations that do not replace professional diagnosis or care."],
+      ["/features", "Explore DentaSmart's unlimited Free Quick Checks, Full Quick Check, Treatment Plan Review, Oral Health Score tracking, reports, records, and guidance from Dr. Din."],
+      ["/how-it-works", "Learn how DentaSmart reviews supported dental photos, X-rays, symptoms, and treatment documents to provide educational reports and questions for your dentist."],
+      ["/employers", "Explore DentaSmart as an educational oral health resource for employees. Employer pricing, eligibility, implementation, and success measures are confirmed during discovery."],
+      ["/compare/dentasmart-vs-chatgpt-dental", "Compare DentaSmart's purpose-built educational workflow with a general AI chatbot, including records, pricing, and professional-care boundaries."],
+      ["/vs/dental-com", "Compare verified DentaSmart facts with a framework for checking Dental.com SmartScan's current features, pricing, availability, and professional-care boundaries."],
+    ] as const;
+
+    for (const [path, description] of expected) {
+      const meta = await resolveMetaTags(path);
+      expect(meta?.description).toBe(description);
+    }
+  });
+
   it("keeps the primary insurance comparison metadata neutral and self-canonical", async () => {
     const meta = await resolveMetaTags("/compare/dentasmart-vs-dental-insurance/");
     expect(meta).toMatchObject({

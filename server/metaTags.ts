@@ -75,13 +75,13 @@ const staticMeta: Record<string, MetaInfo> = {
   "/": {
     title: "DentaSmart | Your Personal AI Oral Health Guide",
     description:
-      "Start with DentaSmart's unlimited Free Quick Check using supported mouth photos, supported X-rays, or both. Full Quick Check unlocks full eligible X-ray insights for one case.",
+      "Start with unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Full Quick Check unlocks full eligible X-ray insights for one case.",
     ogImage: "https://dentasmart.ai/manus-storage/dentasmart-free-quick-check-social-1200x630_b33c85da.png",
   },
   "/how-it-works": {
     title: "How DentaSmart Works | AI Oral Health Guide in 4 Steps",
     description:
-      "See how DentaSmart reviews supported dental information, organizes educational insights, and helps you prepare questions for professional care in four steps.",
+      "Learn how DentaSmart reviews supported dental photos, X-rays, symptoms, and treatment documents to provide educational reports and questions for your dentist.",
   },
   "/features": {
     title: "DentaSmart Features | Oral Health Reports and Tracking",
@@ -111,12 +111,12 @@ const staticMeta: Record<string, MetaInfo> = {
   "/download": {
     title: "Download DentaSmart | iOS & Android App",
     description:
-      "Download DentaSmart for unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Full Quick Check unlocks full eligible X-ray insights for one case.",
+      "Download DentaSmart for unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Upgrade to Full Quick Check when you need full eligible X-ray insights.",
   },
   "/instant-scan": {
     title: "Dental Photo Review | DentaSmart Educational Guide",
     description:
-      "Try unlimited Free Quick Checks with supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray. Educational observations do not replace professional care.",
+      "Learn how DentaSmart uses supported mouth photos and dental X-rays for educational observations that do not replace professional diagnosis or care.",
   },
   "/photo-guide": {
     title: "Photo Guide | How to Take the Best Dental Photos",

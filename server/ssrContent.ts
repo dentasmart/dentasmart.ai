@@ -27,7 +27,7 @@ interface SSRContent {
 function generateHomepageContent(): string {
   return `
 <article>
-  <h1>DentaSmart  -  Your Personal AI Dentist in Your Pocket</h1>
+  <h1>Understand your teeth before it costs you.</h1>
   <p>Upload supported mouth photos or dental X-rays and receive educational insights, an Oral Health Score when included, and plain-language information. DentaSmart helps you organize questions for a dental professional and does not provide a diagnosis.</p>
   <h2>How DentaSmart Works</h2>
   <p>Add supported photos, X-rays, symptoms, or treatment documents. DentaSmart organizes the information, provides an educational report and Oral Health Score when included, and helps you prepare questions for professional care.</p>
@@ -246,7 +246,7 @@ function generateStaticPageContent(path: string): string | null {
   const pages: Record<string, string> = {
     "/how-it-works": `
 <article>
-  <h1>How DentaSmart Works in 4 Simple Steps</h1>
+  <h1>From "I'm not sure" to "I've got a plan" in 4 steps.</h1>
   <p>DentaSmart helps you organize supported dental information, review educational insights, and prepare questions for professional care. It does not diagnose conditions or replace a dentist.</p>
   <h2>Step 1: Add Your Information</h2>
   <p>Add the supported photos, X-rays, symptoms, or treatment documents needed for the service you choose.</p>
@@ -260,7 +260,7 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/features": `
 <article>
-  <h1>DentaSmart Features: Oral Health Reports and Tracking</h1>
+  <h1>Everything you need to understand your oral health.</h1>
   <p>DentaSmart provides educational tools for supported mouth photos, dental X-rays, symptoms, and treatment documents. Use the reports to organize questions for a dental professional.</p>
   <h2>Photo and X-Ray Review</h2>
   <p>Upload supported mouth photos or dental X-rays. DentaSmart can highlight visible areas and explain why they may be worth discussing.</p>
@@ -276,7 +276,7 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/pricing": `
 <article>
-  <h1>DentaSmart Pricing: Plans for Every Need</h1>
+  <h1>Know what's happening before it costs you.</h1>
   <p>Start with unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Choose Full Quick Check, Treatment Plan Review, or annual Complete Care only when you need those services.</p>
   <h2>Free Quick Check</h2>
   <p>Free Quick Check accepts supported mouth photos, supported X-rays, or both. Free X-ray output is limited, and it does not provide a diagnosis.</p>
@@ -290,7 +290,7 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/download": `
 <article>
-  <h1>Download DentaSmart: iOS & Android App</h1>
+  <h1>Download DentaSmart on your phone.</h1>
   <p>Download the DentaSmart app on iOS or Android and start with unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Full Quick Check, Treatment Plan Review, and Complete Care are paid services.</p>
   <h2>iOS  -  Available Now</h2>
   <p>Download DentaSmart from the Apple App Store, then review the paid service options before purchase.</p>
@@ -320,7 +320,7 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/employers": `
 <article>
-  <h1>DentaSmart for Employers: Oral Health Education and Decision Support</h1>
+  <h1>Help employees navigate dental questions with clearer information.</h1>
   <p>Explore DentaSmart as an educational oral health resource that can help employees organize information and prepare questions for professional care. DentaSmart is not dental insurance.</p>
   <h2>Plan a Responsible Pilot</h2>
   <p>Confirm eligibility, employer pricing, implementation timing, support, privacy responsibilities, professional-care boundaries, and success measures during discovery.</p>
@@ -369,7 +369,7 @@ function generateStaticPageContent(path: string): string | null {
 </article>`,
     "/instant-scan": `
 <article>
-  <h1>Dental Photo Review: Upload Supported Images</h1>
+  <h1>See what your dentist sees before your visit.</h1>
   <p>Upload supported mouth photos or dental X-rays for educational observations through a selected DentaSmart service. DentaSmart does not diagnose conditions or replace a dental examination.</p>
   <p><a href="/download">Download DentaSmart</a> | <a href="/pricing">View Service Pricing</a> | <a href="/photo-guide">Photo Guide</a></p>
 </article>`,

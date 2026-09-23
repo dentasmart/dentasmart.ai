@@ -2,8 +2,15 @@ import { describe, expect, it } from "vitest";
 import { resolveSSRContent } from "./ssrContent";
 
 const routeHeadings = {
+  "/": "Understand your teeth before it costs you.",
+  "/pricing/": "Know what's happening before it costs you.",
+  "/download/": "Download DentaSmart on your phone.",
   "/best-ai-dental-apps/": "Best AI Dental Apps in 2026: How to Compare Without Guessing",
   "/free-ai-teeth-scanner/": "Start with a Free AI Mouth Photo Check No X-Ray Required",
+  "/instant-scan/": "See what your dentist sees before your visit.",
+  "/features/": "Everything you need to understand your oral health.",
+  "/how-it-works/": "From \"I'm not sure\" to \"I've got a plan\" in 4 steps.",
+  "/employers/": "Help employees navigate dental questions with clearer information.",
   "/compare/dentasmart-vs-chatgpt-dental/": "DentaSmart vs ChatGPT: How Purpose-Built and General AI Tools Differ",
   "/oral-health-hub/conditions/": "Something wrong with your teeth? Learn what to watch for.",
   "/oral-health-hub/symptoms/": "What is your mouth trying to tell you?",

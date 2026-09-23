@@ -2,13 +2,14 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
-import { Link } from "wouter";
+import { useLayoutEffect, useState } from "react";
+import { Link, useLocation } from "wouter";
 import { Check, X, Shield, Sparkles, Zap, ArrowRight, Users } from "lucide-react";
 import { DownloadSection } from "@/components/DownloadSection";
 import { motion } from "framer-motion";
 import { WaitlistPopup } from "@/components/WaitlistPopup";
 import { trackConversionEvent } from "@/lib/analytics";
+import { getTreatmentPlanReviewTargetId } from "@/lib/treatmentPlanReviewHash";
 import QuickAnswerBlock from "@/components/QuickAnswerBlock";
 import FAQSchema from "@/components/FAQSchema";
 import { pricing } from "@shared/facts";
@@ -25,6 +26,25 @@ const pricingFaqs = [
 export default function Pricing() {
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
   const [planType, setPlanType] = useState<"individual" | "family">("individual");
+  const [location] = useLocation();
+
+  useLayoutEffect(() => {
+    const scrollToTreatmentPlanReview = () => {
+      const targetId = getTreatmentPlanReviewTargetId(window.location.hash);
+      if (!targetId) return;
+
+      document.getElementById(targetId)?.scrollIntoView({ block: "start" });
+    };
+
+    scrollToTreatmentPlanReview();
+    window.addEventListener("hashchange", scrollToTreatmentPlanReview);
+    window.addEventListener("popstate", scrollToTreatmentPlanReview);
+
+    return () => {
+      window.removeEventListener("hashchange", scrollToTreatmentPlanReview);
+      window.removeEventListener("popstate", scrollToTreatmentPlanReview);
+    };
+  }, [location]);
 
   const beginCheckout = (planId: string, destination: string) => {
     trackConversionEvent("pricing_plan_selected", {
