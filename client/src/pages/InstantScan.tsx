@@ -130,11 +130,11 @@ const internalLinks = [
   { label: "Pain When Biting", href: "/symptoms/tooth-pain-when-biting/" },
   { label: "Bad Breath", href: "/symptoms/bad-breath/" },
   { label: "Cracked Tooth", href: "/oral-health-hub/cracked-tooth-symptoms/" },
-  { label: "Swollen Gums", href: "/oral-health-hub/swollen-gums/" },
+  { label: "Swollen Gums", href: "/symptoms/swollen-gums/" },
   { label: "Wisdom Tooth Pain", href: "/conditions/wisdom-teeth-pain/" },
-  { label: "Cavity Symptoms", href: "/oral-health-hub/cavity-symptoms/" },
+  { label: "Cavity Symptoms", href: "/oral-health-hub/cavity-symptoms-tooth-decay/" },
   { label: "Jaw Pain", href: "/symptoms/jaw-pain/" },
-  { label: "Dental Abscess", href: "/oral-health-hub/tooth-abscess-symptoms/" },
+  { label: "Dental Abscess", href: "/conditions/dental-abscess/" },
 ];
 
 // FAQPage JSON-LD structured data

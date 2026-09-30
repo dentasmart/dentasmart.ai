@@ -369,7 +369,7 @@ export default function ConditionPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/instant-scan/">
               <Button size="lg" className="bg-white text-action hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">
-                Review the Photo Guide
+                Explore Image Review Options
               </Button>
             </Link>
             <Link href="/download/">
