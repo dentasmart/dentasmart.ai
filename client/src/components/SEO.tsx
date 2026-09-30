@@ -99,6 +99,10 @@ export default function SEO({
     "MedicalWebPage",
     "WebPage",
   ]);
+  const isVerifiedArticleReviewWebPage = (schema: Record<string, unknown>) => (
+    schema["@type"] === "WebPage" &&
+    (typeof schema.lastReviewed === "string" || Boolean(schema.reviewedBy))
+  );
   const staticSchemas = !noindex && title && description && normalizedCanonical
     ? resolveStaticSchemaMarkup(location, {
       title,
@@ -108,7 +112,9 @@ export default function SEO({
     : [];
   const jsonLdScripts = [
     ...staticSchemas,
-    ...pageLocalSchemas.filter((schema) => !serverOwnedTypes.has(schema["@type"] as string)),
+    ...pageLocalSchemas.filter((schema) => (
+      !serverOwnedTypes.has(schema["@type"] as string) || isVerifiedArticleReviewWebPage(schema)
+    )),
   ].map((schema) => normalizeSchemaUrls(schema));
 
   useLayoutEffect(() => {

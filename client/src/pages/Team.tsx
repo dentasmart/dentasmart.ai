@@ -198,6 +198,7 @@ export default function Team() {
 
             {/* Dr. Saba Ahmed */}
             <motion.div 
+              id="dr-saba-ahmed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

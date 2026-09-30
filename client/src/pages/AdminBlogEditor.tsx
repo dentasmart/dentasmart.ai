@@ -91,6 +91,10 @@ export default function AdminBlogEditor() {
   const [status, setStatus] = useState<"draft" | "published" | "unpublished">("draft");
   const [reviewedByName, setReviewedByName] = useState("");
   const [reviewedByCredentials, setReviewedByCredentials] = useState("");
+  const [reviewerShortBio, setReviewerShortBio] = useState("");
+  const [reviewerProfileUrl, setReviewerProfileUrl] = useState("");
+  const [lastReviewed, setLastReviewed] = useState("");
+  const [reviewerJsonLd, setReviewerJsonLd] = useState("");
 
   // Structured content (StoryBrand sections)
   const [problemHeading, setProblemHeading] = useState("");
@@ -135,6 +139,10 @@ export default function AdminBlogEditor() {
       setStatus(existingPost.status);
       setReviewedByName(existingPost.reviewedByName || "");
       setReviewedByCredentials(existingPost.reviewedByCredentials || "");
+      setReviewerShortBio(existingPost.reviewerShortBio || "");
+      setReviewerProfileUrl(existingPost.reviewerProfileUrl || "");
+      setLastReviewed(existingPost.lastReviewed || "");
+      setReviewerJsonLd(existingPost.reviewerJsonLd || "");
       setProblemHeading(existingPost.problemHeading || "");
       setProblemContent(existingPost.problemContent || "");
       setEmpathyHeading(existingPost.empathyHeading || "");
@@ -359,6 +367,10 @@ export default function AdminBlogEditor() {
     featuredImage: featuredImage || undefined,
     reviewedByName: reviewedByName.trim() || undefined,
     reviewedByCredentials: reviewedByCredentials.trim() || undefined,
+    reviewerShortBio: reviewerShortBio.trim() || undefined,
+    reviewerProfileUrl: reviewerProfileUrl.trim() || undefined,
+    lastReviewed: lastReviewed || undefined,
+    reviewerJsonLd: reviewerJsonLd.trim() || undefined,
     status,
   };
 
@@ -725,8 +737,9 @@ export default function AdminBlogEditor() {
               </div>
 
               <div className="border-t border-stone-100 pt-4 space-y-3">
+                <h4 className="text-sm font-semibold text-stone-800">Editorial reviewer metadata</h4>
                 <div>
-                  <Label className="text-xs font-medium text-stone-500 mb-1 block">Reviewer name, optional</Label>
+                  <Label className="text-xs font-medium text-stone-500 mb-1 block">Reviewer name</Label>
                   <Input
                     value={reviewedByName}
                     onChange={(e) => setReviewedByName(e.target.value)}
@@ -735,7 +748,7 @@ export default function AdminBlogEditor() {
                   />
                 </div>
                 <div>
-                  <Label className="text-xs font-medium text-stone-500 mb-1 block">Reviewer credentials, optional</Label>
+                  <Label className="text-xs font-medium text-stone-500 mb-1 block">Reviewer credentials</Label>
                   <Input
                     value={reviewedByCredentials}
                     onChange={(e) => setReviewedByCredentials(e.target.value)}
@@ -743,7 +756,44 @@ export default function AdminBlogEditor() {
                     className="border-stone-200"
                   />
                 </div>
-                <p className="text-xs text-stone-500 leading-relaxed">These fields store editorial context. Do not enter a reviewer unless identity, credentials, and public-display permission are verified. Publishing alone does not create a clinical-review label.</p>
+                <div>
+                  <Label className="text-xs font-medium text-stone-500 mb-1 block">Reviewer short bio</Label>
+                  <Textarea
+                    value={reviewerShortBio}
+                    onChange={(e) => setReviewerShortBio(e.target.value)}
+                    placeholder="Approved public bio only. Do not add unverified credentials or claims."
+                    className="border-stone-200 min-h-[88px]"
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs font-medium text-stone-500 mb-1 block">Reviewer profile URL</Label>
+                  <Input
+                    value={reviewerProfileUrl}
+                    onChange={(e) => setReviewerProfileUrl(e.target.value)}
+                    placeholder="/team/#dr-saba-ahmed or /authors/dr-saba-ahmed/"
+                    className="border-stone-200"
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs font-medium text-stone-500 mb-1 block">Last reviewed</Label>
+                  <Input
+                    type="date"
+                    value={lastReviewed}
+                    onChange={(e) => setLastReviewed(e.target.value)}
+                    className="border-stone-200"
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs font-medium text-stone-500 mb-1 block">Supplemental JSON-LD, optional</Label>
+                  <Textarea
+                    value={reviewerJsonLd}
+                    onChange={(e) => setReviewerJsonLd(e.target.value)}
+                    placeholder='{"@context":"https://schema.org","@type":"FAQPage",...}'
+                    className="border-stone-200 min-h-[120px] font-mono text-xs"
+                    spellCheck={false}
+                  />
+                </div>
+                <p className="text-xs text-stone-500 leading-relaxed">A public reviewer label needs a manually entered name and a valid first-party DentaSmart Team or author profile URL, such as /team/#dr-saba-ahmed or /authors/dr-saba-ahmed/. Last reviewed displays independently when a valid date is supplied. Credentials and short bio display only when supplied. Existing legacy reviewer fields remain stored but do not publish a label on their own. Supplemental JSON-LD must not replace DentaSmart's Article, reviewer, or WebPage schema. Publishing alone does not create a clinical-review label.</p>
               </div>
 
               <div>

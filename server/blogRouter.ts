@@ -30,6 +30,7 @@ import { getDb } from "./db";
 import { adminProcedure, ADMIN_COOKIE_NAME, JWT_SECRET, verifyAdminToken, parseCookies } from "./adminAuth";
 import { canPublishBlogPost } from "./governancePublishing";
 import { getApprovedPublicBlogGovernance } from "./governedBlogEvidence";
+import { validateBlogReviewerMetadata } from "../shared/blogReviewerMetadata";
 
 // Helper to create JWT token (blogRouter-only: signs new sessions on login)
 async function createAdminToken(adminId: number, username: string) {
@@ -77,6 +78,23 @@ function sanitizeSlug(slug: string): string {
     .replace(/-+/g, "-")
     .replace(/^-|-$/g, "")
     .substring(0, 200);
+}
+
+function validateReviewerMetadataInput(input: {
+  reviewedByName?: string;
+  reviewedByCredentials?: string;
+  reviewerShortBio?: string;
+  reviewerProfileUrl?: string;
+  lastReviewed?: string;
+  reviewerJsonLd?: string;
+}): void {
+  const validation = validateBlogReviewerMetadata(input);
+  if (validation.errors.length > 0) {
+    throw new TRPCError({
+      code: "BAD_REQUEST",
+      message: validation.errors.map((error) => error.message).join(" "),
+    });
+  }
 }
 
 export const blogRouter = router({
@@ -156,9 +174,14 @@ export const blogRouter = router({
       relatedPosts: z.string().optional(),
       reviewedByName: z.string().optional(),
       reviewedByCredentials: z.string().optional(),
+      reviewerShortBio: z.string().max(2000).optional(),
+      reviewerProfileUrl: z.string().max(1000).optional(),
+      lastReviewed: z.string().max(10).optional(),
+      reviewerJsonLd: z.string().max(20000).optional(),
       status: z.enum(["draft", "published", "unpublished"]).optional(),
     }))
     .mutation(async ({ input }) => {
+      validateReviewerMetadataInput(input);
       // Sanitize slug: strip leading slashes and normalise (prevents /slug → 404)
       let slug = input.slug ? sanitizeSlug(input.slug) : generateSlug(input.title);
 
@@ -222,10 +245,16 @@ export const blogRouter = router({
       relatedPosts: z.string().optional(),
       reviewedByName: z.string().optional(),
       reviewedByCredentials: z.string().optional(),
+      reviewerShortBio: z.string().max(2000).optional(),
+      reviewerProfileUrl: z.string().max(1000).optional(),
+      lastReviewed: z.string().max(10).optional(),
+      reviewerJsonLd: z.string().max(20000).optional(),
       status: z.enum(["draft", "published", "unpublished"]).optional(),
     }))
     .mutation(async ({ input }) => {
       const { id, ...data } = input;
+
+      validateReviewerMetadataInput(data);
 
       // Sanitize and check slug uniqueness if slug is being changed
       if (data.slug) {

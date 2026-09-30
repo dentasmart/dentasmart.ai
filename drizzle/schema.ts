@@ -71,6 +71,12 @@ export const blogPosts = mysqlTable("blog_posts", {
   // Review/authority fields
   reviewedByName: varchar("reviewedByName", { length: 200 }),
   reviewedByCredentials: varchar("reviewedByCredentials", { length: 500 }),
+  reviewerShortBio: text("reviewerShortBio"),
+  reviewerProfileUrl: varchar("reviewerProfileUrl", { length: 1000 }),
+  // Explicit editorial review date. It is never derived from post updates.
+  lastReviewed: varchar("lastReviewed", { length: 10 }),
+  // Optional supplemental schema. Core BlogPosting and reviewer schema stay generated server-side.
+  reviewerJsonLd: text("reviewerJsonLd"),
   // Set only by the governed agent at draft creation. This prevents a new governed
   // draft from being mistaken for legacy content before its run audit is finalized.
   governanceCandidateId: int("governanceCandidateId"),

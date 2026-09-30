@@ -2,6 +2,7 @@ import { useRoute } from "wouter";
 import SEO from "@/components/SEO";
 import ContentGovernanceMeta from "@/components/ContentGovernanceMeta";
 import ExternalSources from "@/components/ExternalSources";
+import ArticleReviewerMetadata from "@/components/ArticleReviewerMetadata";
 import NotFound from "@/pages/NotFound";
 import { useEffect, useMemo } from "react";
 import { trpc } from "@/lib/trpc";
@@ -20,6 +21,7 @@ import NextStepsBox from "@/components/NextStepsBox";
 import OralHealthScoreTeaser from "@/components/OralHealthScoreTeaser";
 import { breadcrumbSchema, articleSchema } from "@/lib/schema";
 import { formatPageTitle } from "@shared/pageTitle";
+import { buildBlogReviewWebPageSchema, formatReviewedDate, getPublicBlogReviewerMetadata, getPublicLastReviewed, getPublicSupplementalJsonLd } from "@shared/blogReviewerMetadata";
 
 export default function Article() {
   const [match, params] = useRoute("/oral-health-hub/:id");
@@ -126,6 +128,9 @@ export default function Article() {
   const hasBodyHtml = article.bodyHtml && article.bodyHtml.trim().length > 0;
   const hasStructuredContent = article.problemContent || article.empathyContent || article.solutionContent;
   const articleGovernance = (article as typeof article & { governance?: ContentGovernance }).governance;
+  const publicReviewerMetadata = getPublicBlogReviewerMetadata(article);
+  const publicLastReviewed = getPublicLastReviewed(article);
+  const publicSupplementalJsonLd = getPublicSupplementalJsonLd(article);
   const governedAnswer = articleGovernance ? article.atAGlanceAnswer?.trim() : undefined;
   const governedFaqs = (() => {
     if (!articleGovernance || !article.faqs) return [];
@@ -174,6 +179,14 @@ export default function Article() {
             author: "DentaSmart",
             image: article.featuredImage || undefined,
           }),
+          ...(publicLastReviewed || publicReviewerMetadata ? [buildBlogReviewWebPageSchema({
+            canonicalUrl: `https://dentasmart.ai/oral-health-hub/${article.slug}`,
+            title: article.metaTitle || article.title,
+            description: article.metaDescription || "",
+            ...(publicLastReviewed ? { lastReviewed: publicLastReviewed } : {}),
+            ...(publicReviewerMetadata ? { review: publicReviewerMetadata } : {}),
+          })] : []),
+          ...(publicSupplementalJsonLd ? [publicSupplementalJsonLd] : []),
         ]}
       />
       <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
@@ -224,12 +237,33 @@ export default function Article() {
                   <>
                     <span className="text-sm font-medium text-stone-400">•</span>
                     <span className="text-sm font-medium text-stone-500">
-                      {new Date(article.publishedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+                      Published {new Date(article.publishedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
                     </span>
                   </>
                 )}
-                <span className="text-sm font-medium text-stone-400">•</span>
-                <span className="text-sm font-medium text-stone-500">By DentaSmart</span>
+                {publicReviewerMetadata ? (
+                  <>
+                    <span className="text-sm font-medium text-stone-400">•</span>
+                    <span className="text-sm font-medium text-stone-500">
+                      Medically reviewed by {" "}
+                      <a href={publicReviewerMetadata.profileUrl} className="text-action underline underline-offset-2 hover:text-action-hover">
+                        {publicReviewerMetadata.name}
+                      </a>
+                      {publicReviewerMetadata.credentials ? `, ${publicReviewerMetadata.credentials}` : ""}
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span className="text-sm font-medium text-stone-400">•</span>
+                    <span className="text-sm font-medium text-stone-500">By DentaSmart Editorial Team</span>
+                  </>
+                )}
+                {publicLastReviewed && (
+                  <>
+                    <span className="text-sm font-medium text-stone-400">•</span>
+                    <span className="text-sm font-medium text-stone-500">Last reviewed {formatReviewedDate(publicLastReviewed)}</span>
+                  </>
+                )}
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-stone-900 mb-8 leading-tight tracking-tight">
                 {article.title}
@@ -338,6 +372,7 @@ export default function Article() {
               {articleGovernance?.sourceRefs && articleGovernance.sourceRefs.length > 0 && (
                 <ExternalSources governedSources={articleGovernance.sourceRefs} />
               )}
+              <ArticleReviewerMetadata review={publicReviewerMetadata} lastReviewed={publicLastReviewed} />
             </motion.div>
           </div>
         </section>
