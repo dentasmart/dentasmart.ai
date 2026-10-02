@@ -21,6 +21,7 @@ import {
   deleteCategory,
   categorySlugExists,
   getSlugAuditResults,
+  isReviewerMetadataMigrationPendingError,
 } from "./blogDb";
 import { SignJWT } from "jose";
 import { storagePut } from "./storage";
@@ -95,6 +96,13 @@ function validateReviewerMetadataInput(input: {
       message: validation.errors.map((error) => error.message).join(" "),
     });
   }
+}
+
+function rethrowReviewerMetadataPrecondition(error: unknown): never {
+  if (isReviewerMetadataMigrationPendingError(error)) {
+    throw new TRPCError({ code: "PRECONDITION_FAILED", message: error.message });
+  }
+  throw error;
 }
 
 export const blogRouter = router({
@@ -193,12 +201,17 @@ export const blogRouter = router({
         slug = `${baseSlug}-${counter}`;
       }
 
-      const id = await createBlogPost({
-        ...input,
-        slug,
-        status: input.status || "draft",
-        publishedAt: input.status === "published" ? new Date() : undefined,
-      });
+      let id: number;
+      try {
+        id = await createBlogPost({
+          ...input,
+          slug,
+          status: input.status || "draft",
+          publishedAt: input.status === "published" ? new Date() : undefined,
+        });
+      } catch (error) {
+        rethrowReviewerMetadataPrecondition(error);
+      }
 
       // Invalidate sitemap cache if post was created as published
       if (input.status === "published") {
@@ -280,7 +293,11 @@ export const blogRouter = router({
         (data as any).publishedAt = new Date();
       }
 
-      await updateBlogPost(id, data);
+      try {
+        await updateBlogPost(id, data);
+      } catch (error) {
+        rethrowReviewerMetadataPrecondition(error);
+      }
 
       // Invalidate sitemap cache if status changed (publish/unpublish/slug change)
       if (data.status || data.slug) {

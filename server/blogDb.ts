@@ -3,6 +3,204 @@ import { getDb } from "./db";
 import { blogPosts, adminUsers, blogCategories, InsertBlogPost, BlogPost, InsertAdminUser, BlogCategory, InsertBlogCategory } from "../drizzle/schema";
 import bcrypt from "bcryptjs";
 
+type PendingReviewerMetadataColumn =
+  | "reviewerShortBio"
+  | "reviewerProfileUrl"
+  | "lastReviewed"
+  | "reviewerJsonLd";
+
+type LegacyBlogPost = Omit<BlogPost, PendingReviewerMetadataColumn>;
+type DatabaseClient = NonNullable<Awaited<ReturnType<typeof getDb>>>;
+
+const pendingReviewerMetadataColumns = [
+  "reviewerShortBio",
+  "reviewerProfileUrl",
+  "lastReviewed",
+  "reviewerJsonLd",
+] as const satisfies readonly PendingReviewerMetadataColumn[];
+
+export const REVIEWER_METADATA_MIGRATION_PENDING_MESSAGE =
+  "Reviewer metadata is unavailable until migration 0017_blog_reviewer_metadata is applied. No reviewer metadata was saved.";
+
+const legacyBlogPostSelection = {
+  id: blogPosts.id,
+  title: blogPosts.title,
+  slug: blogPosts.slug,
+  category: blogPosts.category,
+  readTime: blogPosts.readTime,
+  problemHeading: blogPosts.problemHeading,
+  problemContent: blogPosts.problemContent,
+  empathyHeading: blogPosts.empathyHeading,
+  empathyContent: blogPosts.empathyContent,
+  solutionHeading: blogPosts.solutionHeading,
+  solutionContent: blogPosts.solutionContent,
+  changeHeading: blogPosts.changeHeading,
+  changeContent: blogPosts.changeContent,
+  resultHeading: blogPosts.resultHeading,
+  resultContent: blogPosts.resultContent,
+  bodyHtml: blogPosts.bodyHtml,
+  metaTitle: blogPosts.metaTitle,
+  metaDescription: blogPosts.metaDescription,
+  metaKeywords: blogPosts.metaKeywords,
+  ogTitle: blogPosts.ogTitle,
+  ogDescription: blogPosts.ogDescription,
+  ogImage: blogPosts.ogImage,
+  canonicalUrl: blogPosts.canonicalUrl,
+  primaryKeyword: blogPosts.primaryKeyword,
+  secondaryKeywords: blogPosts.secondaryKeywords,
+  atAGlanceAnswer: blogPosts.atAGlanceAnswer,
+  keyTakeaways: blogPosts.keyTakeaways,
+  whenUrgent: blogPosts.whenUrgent,
+  faqs: blogPosts.faqs,
+  relatedPosts: blogPosts.relatedPosts,
+  reviewedByName: blogPosts.reviewedByName,
+  reviewedByCredentials: blogPosts.reviewedByCredentials,
+  governanceCandidateId: blogPosts.governanceCandidateId,
+  governanceIntentOwnerId: blogPosts.governanceIntentOwnerId,
+  categoryId: blogPosts.categoryId,
+  subcategoryId: blogPosts.subcategoryId,
+  status: blogPosts.status,
+  featuredImage: blogPosts.featuredImage,
+  publishedAt: blogPosts.publishedAt,
+  createdAt: blogPosts.createdAt,
+  updatedAt: blogPosts.updatedAt,
+};
+
+const legacyBlogPostWriteColumns = [
+  "id",
+  "title",
+  "slug",
+  "category",
+  "readTime",
+  "problemHeading",
+  "problemContent",
+  "empathyHeading",
+  "empathyContent",
+  "solutionHeading",
+  "solutionContent",
+  "changeHeading",
+  "changeContent",
+  "resultHeading",
+  "resultContent",
+  "bodyHtml",
+  "metaTitle",
+  "metaDescription",
+  "metaKeywords",
+  "ogTitle",
+  "ogDescription",
+  "ogImage",
+  "canonicalUrl",
+  "primaryKeyword",
+  "secondaryKeywords",
+  "atAGlanceAnswer",
+  "keyTakeaways",
+  "whenUrgent",
+  "faqs",
+  "relatedPosts",
+  "reviewedByName",
+  "reviewedByCredentials",
+  "governanceCandidateId",
+  "governanceIntentOwnerId",
+  "categoryId",
+  "subcategoryId",
+  "status",
+  "featuredImage",
+  "publishedAt",
+  "createdAt",
+  "updatedAt",
+] as const satisfies readonly Exclude<keyof InsertBlogPost, PendingReviewerMetadataColumn>[];
+
+let reviewerMetadataColumnsAvailable: { value: boolean; checkedAt: number } | null = null;
+const REVIEWER_METADATA_SCHEMA_TTL_MS = 60_000;
+const PENDING_REVIEWER_METADATA_SCHEMA_RECHECK_MS = 5_000;
+
+function withUnavailableReviewerMetadata(post: LegacyBlogPost): BlogPost {
+  return {
+    ...post,
+    reviewerShortBio: null,
+    reviewerProfileUrl: null,
+    lastReviewed: null,
+    reviewerJsonLd: null,
+  };
+}
+
+function pendingReviewerMetadataWrite(data: Partial<InsertBlogPost>): boolean {
+  // The editor omits empty inputs, but API clients may serialize those same
+  // empty nullable fields as `null`. Neither form is a reviewer write on a
+  // pre-0017 database, so only a non-empty value must fail closed.
+  return pendingReviewerMetadataColumns.some((column) => data[column] != null);
+}
+
+function assertLegacyReviewerMetadataWriteSafe(data: Partial<InsertBlogPost>): void {
+  if (pendingReviewerMetadataWrite(data)) {
+    throw new Error(REVIEWER_METADATA_MIGRATION_PENDING_MESSAGE);
+  }
+}
+
+export function isReviewerMetadataMigrationPendingError(error: unknown): error is Error {
+  return error instanceof Error && error.message === REVIEWER_METADATA_MIGRATION_PENDING_MESSAGE;
+}
+
+function legacyBlogPostWriteEntries(data: Partial<InsertBlogPost>) {
+  return legacyBlogPostWriteColumns.flatMap((column) => {
+    const value = data[column];
+    return value === undefined ? [] : [[column, value] as const];
+  });
+}
+
+async function hasReviewerMetadataColumns(db: DatabaseClient): Promise<boolean> {
+  const now = Date.now();
+  const cacheTtl = reviewerMetadataColumnsAvailable?.value
+    ? REVIEWER_METADATA_SCHEMA_TTL_MS
+    : PENDING_REVIEWER_METADATA_SCHEMA_RECHECK_MS;
+  if (reviewerMetadataColumnsAvailable && now - reviewerMetadataColumnsAvailable.checkedAt < cacheTtl) {
+    return reviewerMetadataColumnsAvailable.value;
+  }
+
+  const result = await db.execute(sql`
+    SELECT column_name
+    FROM information_schema.columns
+    WHERE table_schema = DATABASE()
+      AND table_name = 'blog_posts'
+      AND column_name IN ('reviewerShortBio', 'reviewerProfileUrl', 'lastReviewed', 'reviewerJsonLd')
+  `) as unknown as [{ column_name: string }[], unknown];
+  const existingColumns = new Set(result[0].map((row) => row.column_name));
+  const value = pendingReviewerMetadataColumns.every((column) => existingColumns.has(column));
+  reviewerMetadataColumnsAvailable = { value, checkedAt: now };
+  return value;
+}
+
+async function insertLegacyBlogPost(db: DatabaseClient, data: InsertBlogPost): Promise<number> {
+  assertLegacyReviewerMetadataWriteSafe(data);
+  const entries = legacyBlogPostWriteEntries(data);
+  if (entries.length === 0) throw new Error("Blog post data is required");
+
+  const columns = sql.join(entries.map(([column]) => sql.identifier(column)), sql`, `);
+  const values = sql.join(entries.map(([, value]) => sql`${value}`), sql`, `);
+  const executionResult: unknown = await db.execute(sql`INSERT INTO ${sql.identifier("blog_posts")} (${columns}) VALUES (${values})`);
+  const [result] = executionResult as [{ insertId: number }, unknown];
+  return Number(result.insertId);
+}
+
+async function updateLegacyBlogPost(db: DatabaseClient, id: number, data: Partial<InsertBlogPost>): Promise<void> {
+  assertLegacyReviewerMetadataWriteSafe(data);
+  // Drizzle adds `onUpdateNow()` fields to ordinary updates. Mirror that
+  // behavior on the legacy explicit-column path rather than leaving a stale
+  // CMS update timestamp until migration 0017 is applied.
+  const entries = legacyBlogPostWriteEntries({
+    ...data,
+    updatedAt: data.updatedAt ?? new Date(),
+  });
+  if (entries.length === 0) return;
+
+  const assignments = sql.join(entries.map(([column, value]) => sql`${sql.identifier(column)} = ${value}`), sql`, `);
+  await db.execute(sql`UPDATE ${sql.identifier("blog_posts")} SET ${assignments} WHERE ${sql.identifier("id")} = ${id}`);
+}
+
+export function resetBlogPostSchemaCompatibilityCacheForTests(): void {
+  reviewerMetadataColumnsAvailable = null;
+}
+
 // ============ Admin User Helpers ============
 
 export async function createAdminUser(username: string, password: string, displayName?: string) {
@@ -52,6 +250,9 @@ export async function createBlogPost(data: InsertBlogPost): Promise<number> {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
 
+  if (!(await hasReviewerMetadataColumns(db))) {
+    return insertLegacyBlogPost(db, data);
+  }
   const result = await db.insert(blogPosts).values(data);
   return Number(result[0].insertId);
 }
@@ -60,6 +261,10 @@ export async function updateBlogPost(id: number, data: Partial<InsertBlogPost>) 
   const db = await getDb();
   if (!db) throw new Error("Database not available");
 
+  if (!(await hasReviewerMetadataColumns(db))) {
+    await updateLegacyBlogPost(db, id, data);
+    return;
+  }
   await db.update(blogPosts).set(data).where(eq(blogPosts.id, id));
 }
 
@@ -74,6 +279,10 @@ export async function getBlogPostById(id: number): Promise<BlogPost | null> {
   const db = await getDb();
   if (!db) return null;
 
+  if (!(await hasReviewerMetadataColumns(db))) {
+    const results = await db.select(legacyBlogPostSelection).from(blogPosts).where(eq(blogPosts.id, id)).limit(1);
+    return results.length > 0 ? withUnavailableReviewerMetadata(results[0]) : null;
+  }
   const results = await db.select().from(blogPosts).where(eq(blogPosts.id, id)).limit(1);
   return results.length > 0 ? results[0] : null;
 }
@@ -82,6 +291,10 @@ export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> 
   const db = await getDb();
   if (!db) return null;
 
+  if (!(await hasReviewerMetadataColumns(db))) {
+    const results = await db.select(legacyBlogPostSelection).from(blogPosts).where(eq(blogPosts.slug, slug)).limit(1);
+    return results.length > 0 ? withUnavailableReviewerMetadata(results[0]) : null;
+  }
   const results = await db.select().from(blogPosts).where(eq(blogPosts.slug, slug)).limit(1);
   return results.length > 0 ? results[0] : null;
 }
@@ -154,15 +367,25 @@ export async function listBlogPosts(options: {
     : sortBy === "publishedAt" ? blogPosts.publishedAt
     : blogPosts.updatedAt;
 
+  if (await hasReviewerMetadataColumns(db)) {
+    const posts = await db
+      .select()
+      .from(blogPosts)
+      .where(whereClause)
+      .orderBy(orderFn(orderColumn))
+      .limit(limit)
+      .offset((page - 1) * limit);
+    return { posts, total };
+  }
+
   const posts = await db
-    .select()
+    .select(legacyBlogPostSelection)
     .from(blogPosts)
     .where(whereClause)
     .orderBy(orderFn(orderColumn))
     .limit(limit)
     .offset((page - 1) * limit);
-
-  return { posts, total };
+  return { posts: posts.map(withUnavailableReviewerMetadata), total };
 }
 
 export async function slugExists(slug: string, excludeId?: number): Promise<boolean> {

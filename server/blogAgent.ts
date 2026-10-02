@@ -11,6 +11,7 @@ import { desc, eq } from "drizzle-orm";
 import { resolveGovernedDraftContext, type GovernedDraftContext } from "./governanceAgent";
 import { createGovernedContentVersionHash } from "./governanceReview";
 import { governedBlogContentKey } from "./governancePublishing";
+import { createBlogPost } from "./blogDb";
 
 export interface GovernedDraftValidation {
   status: "passed" | "blocked";
@@ -312,9 +313,7 @@ Return JSON with metaTitle (1-60 characters), metaDescription (120-170 character
     }
 
     const { categoryId, subcategoryId } = await resolveCategoryIds(context.cmsCategory);
-    const db = await getDb();
-    if (!db) throw new Error("Database not available");
-    const [insertResult] = await db.insert(blogPosts).values({
+    const postId = await createBlogPost({
       title: context.workingQuestion,
       slug,
       category: context.cmsCategory,
@@ -334,10 +333,10 @@ Return JSON with metaTitle (1-60 characters), metaDescription (120-170 character
       publishedAt: null,
       governanceCandidateId: context.candidateId,
       governanceIntentOwnerId: context.intentOwnerId,
-    }).$returningId();
+    });
 
     const contentVersionHash = createGovernedContentVersionHash({
-      contentKey: governedBlogContentKey(insertResult.id),
+      contentKey: governedBlogContentKey(postId),
       title: context.workingQuestion,
       routePath: context.canonicalPlan,
       bodyHtml: articleHtml,
@@ -359,13 +358,13 @@ Return JSON with metaTitle (1-60 characters), metaDescription (120-170 character
       title: context.workingQuestion,
       slug,
       primaryKeyword: context.queryFamily,
-      postId: insertResult.id,
+      postId,
       durationMs,
       contentVersionHash,
       validationResult: validation,
       governanceApprovalState: "APPROVED",
     });
-    return { success: true, runId, postId: insertResult.id, title: context.workingQuestion, slug, primaryKeyword: context.queryFamily, candidateId: context.candidateId };
+    return { success: true, runId, postId, title: context.workingQuestion, slug, primaryKeyword: context.queryFamily, candidateId: context.candidateId };
   } catch (error: any) {
     const durationMs = Date.now() - startTime;
     const reason = error.message?.substring(0, 1000) || "Unknown error";
