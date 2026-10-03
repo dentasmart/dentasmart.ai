@@ -95,6 +95,19 @@ describe("Phase 10 privacy-conscious analytics foundation", () => {
     expect(symptomQuiz).not.toContain("fbpixel");
   });
 
+  it("installs Origami through the first-party proxy with pending consent", () => {
+    const html = readFileSync(path.join(projectRoot, "client/index.html"), "utf8");
+    const analytics = readFileSync(path.join(projectRoot, "client/src/lib/analytics.ts"), "utf8");
+    const origami = readFileSync(path.join(projectRoot, "client/src/lib/origamiVisitors.ts"), "utf8");
+
+    expect(html).toContain('src="/_ov/o.js"');
+    expect(html).toContain('data-endpoint="/_ov"');
+    expect(html).toContain('data-consent="pending"');
+    expect(analytics).toContain("applyOrigamiConsent(consent)");
+    expect(origami).toContain('consent.marketing ? "granted" : "denied"');
+    expect(origami).toContain("canTrackCurrentPath()");
+  });
+
   it("uses explicit consent-gated Umami pageview ownership", () => {
     const analytics = readFileSync(path.join(projectRoot, "client/src/lib/analytics.ts"), "utf8");
     expect(analytics).toContain('"data-auto-track": "false"');

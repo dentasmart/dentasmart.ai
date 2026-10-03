@@ -19,6 +19,7 @@ import {
   hasAnalyticsConsent,
   hasMarketingConsent,
 } from "@/lib/consent";
+import { applyOrigamiConsent } from "@/lib/origamiVisitors";
 
 declare global {
   interface Window {
@@ -181,6 +182,7 @@ function removeTrackers(category: "analytics" | "marketing"): void {
 
 export function applyConsentState(consent: ConsentPreferences = getConsentPreferences()): void {
   if (typeof window === "undefined" || !canTrackCurrentPath()) return;
+  applyOrigamiConsent(consent);
   if (consent.analytics) {
     initGA4();
     initUmami();

@@ -1,6 +1,8 @@
 import { useState, useEffect, useMemo, type ReactNode } from "react";
 import { useLocation, Link } from "wouter";
 import { trpc } from "@/lib/trpc";
+import { CONSENT_CHANGED_EVENT } from "@/lib/consent";
+import { identifyOrigamiUser } from "@/lib/origamiVisitors";
 import { Button } from "@/components/ui/button";
 import {
   LogOut,
@@ -53,6 +55,14 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
   const logoutMutation = trpc.blog.adminLogout.useMutation({
     onSuccess: () => setLocation("/admin/login"),
   });
+
+  useEffect(() => {
+    if (!admin?.id) return;
+    const identify = () => identifyOrigamiUser(`admin:${admin.id}`);
+    identify();
+    window.addEventListener(CONSENT_CHANGED_EVENT, identify);
+    return () => window.removeEventListener(CONSENT_CHANGED_EVENT, identify);
+  }, [admin?.id]);
 
   // Redirect if not authenticated
   useEffect(() => {
