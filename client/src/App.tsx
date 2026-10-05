@@ -34,6 +34,7 @@ const ProductFacts = lazy(() => import("@/pages/ProductFacts"));
 const AccountDeletion = lazy(() => import("@/pages/AccountDeletion"));
 const AccountDeleteConfirm = lazy(() => import("@/pages/AccountDeleteConfirm"));
 const EmailUnsubscribe = lazy(() => import("@/pages/EmailUnsubscribe"));
+const SMSConsent = lazy(() => import("@/pages/SMSConsent"));
 const Invite = lazy(() => import("@/pages/Invite"));
 const InviteSuccess = lazy(() => import("@/pages/InviteSuccess"));
 const Stories = lazy(() => import("@/pages/Stories"));
@@ -159,6 +160,7 @@ function Router() {
         <Route path="/invite" component={Invite} />
         <Route path="/account/delete/:token" component={AccountDeleteConfirm} />
         <Route path="/email/unsubscribe/:token" component={EmailUnsubscribe} />
+        <Route path="/sms-consent" component={SMSConsent} />
         <Route path="/stories" component={Stories} />
         <Route path="/download" component={Download} />
         <Route path="/instant-scan" component={InstantScan} />

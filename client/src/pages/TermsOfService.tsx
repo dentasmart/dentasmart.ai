@@ -8,7 +8,7 @@ import { DownloadSection } from "@/components/DownloadSection";
 const termsContent = `
 # Terms and Conditions
 
-Last updated June 12, 2025
+Last updated October 5, 2026
 
 ## Agreement to Our Legal Terms
 
@@ -42,6 +42,7 @@ We recommend that you print a copy of these Legal Terms for your records.
 17. [Electronic Communications, Transactions, and Signatures](#electronic-communications-transactions-and-signatures)
 18. [Miscellaneous](#miscellaneous)
 19. [Contact Us](#contact-us)
+20. [SMS Communications](#sms-communications)
 
 ## 1. Our Services
 
@@ -201,6 +202,12 @@ DentaSmart
 Wilmington, DE 19808
 United States
 support@dentasmart.ai
+
+## 20. SMS Communications
+
+By voluntarily opting in, you agree to receive sms customer care-related and one-on-one communication messages from DentaSmart. Message frequency may vary. Standard Message and Data Rates may apply. Reply STOP to opt out. Reply Help for help.
+
+SMS delivery is subject to carrier and network availability. DentaSmart may modify or discontinue SMS services subject to applicable requirements.
 `;
 
 export default function TermsOfService() {

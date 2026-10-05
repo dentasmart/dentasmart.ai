@@ -582,6 +582,13 @@ function generateStaticPageContent(path: string): string | null {
   </nav>
   <p><a href="/find-a-dentist">Find a Dentist</a> | <a href="/download">Download DentaSmart</a></p>
 </article>`,
+    "/sms-consent": `
+<article>
+  <h1>SMS Communication Preferences</h1>
+  <p>Choose whether to receive DentaSmart customer care-related and one-on-one communication messages.</p>
+  <h2>Your choice</h2>
+  <p>By clicking here you consent to receive sms customer care-related and one-on-one communication messages from DentaSmart. Message frequency may vary. Standard Message and Data Rates may apply. Reply STOP to opt out. Reply Help for help. <a href="/privacy-policy/">https://dentasmart.ai/privacy-policy/</a> <a href="/terms-of-service/">https://dentasmart.ai/terms-of-service/</a></p>
+</article>`,
     "/lifestyle": `
 <article>
   <h1>Lifestyle & Oral Health: How Habits Affect Your Teeth</h1>

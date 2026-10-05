@@ -8,7 +8,7 @@ import { DownloadSection } from "@/components/DownloadSection";
 const privacyContent = `
 # Privacy Policy
 
-Last updated June 12, 2025
+Last updated October 5, 2026
 
 This Privacy Policy for DentaSmart ("we," "us," or "our") describes how and why we might access, collect, store, use, and/or share ("process") your personal information when you use our services ("Services"), including when you:
 
@@ -191,6 +191,16 @@ If you would like at any time to review or change the information in your accoun
 *   Log in to your account settings and update your user account.
 
 Upon your request to terminate your account, we will deactivate or delete your account and information from our active databases. However, we may retain some information in our files to prevent fraud, troubleshoot problems, assist with any investigations, enforce our legal terms and/or comply with applicable legal requirements.
+
+## SMS Communications
+
+DentaSmart sends SMS messages only after a person provides appropriate consent for customer care-related and one-on-one communication. Message frequency may vary, and Standard Message and Data Rates may apply.
+
+You may reply STOP at any time to unsubscribe or Help for help. You may also contact us at support@dentasmart.ai.
+
+We will not share your opt-in to an SMS campaign with any third party for purposes unrelated to providing you with the services of that campaign. We may share your Personal Data, including your SMS opt-in or consent status, with third parties that help us provide our messaging services, including but not limited to platform providers, phone companies, and any other vendors who assist us in the delivery of text messages.
+
+All the above categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.
 
 ## 10. Controls For Do-Not-Track Features
 
