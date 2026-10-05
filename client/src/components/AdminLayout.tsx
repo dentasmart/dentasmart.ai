@@ -5,6 +5,12 @@ import { CONSENT_CHANGED_EVENT } from "@/lib/consent";
 import { identifyOrigamiUser } from "@/lib/origamiVisitors";
 import { Button } from "@/components/ui/button";
 import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
+import {
   LogOut,
   FileText,
   FolderTree,
@@ -26,6 +32,8 @@ import {
   ArrowLeftRight,
   AlertTriangle,
   ShieldCheck,
+  MessageSquareText,
+  Menu,
 } from "lucide-react";
 
 interface NavItem {
@@ -45,10 +53,76 @@ interface AdminLayoutProps {
   auditIssueCount?: number;
 }
 
+function AdminNavigation({
+  sections,
+  currentActive,
+  collapsed,
+  onNavigate,
+}: {
+  sections: Map<string, NavItem[]>;
+  currentActive: string;
+  collapsed: boolean;
+  onNavigate: (path: string) => void;
+}) {
+  return (
+    <>
+      {Array.from(sections.entries()).map(([sectionName, items], idx) => (
+        <div key={sectionName}>
+          {!collapsed && (
+            <div className={`px-4 ${idx > 0 ? "pt-4" : ""} pb-1`}>
+              <span className="text-[10px] font-semibold uppercase tracking-wider text-stone-400">
+                {sectionName}
+              </span>
+            </div>
+          )}
+          {collapsed && idx > 0 && (
+            <div className="mx-3 my-2 border-t border-stone-100" />
+          )}
+          {items.map((item) => {
+            const isActive = currentActive === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => onNavigate(item.path)}
+                title={collapsed ? item.label : undefined}
+                className={`relative w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-colors cursor-pointer ${
+                  isActive
+                    ? "bg-primary/10 text-primary border-r-2 border-primary"
+                    : "text-stone-600 hover:bg-stone-50 hover:text-stone-900"
+                } ${collapsed ? "justify-center px-0" : ""}`}
+              >
+                <span className={`shrink-0 ${isActive ? "text-primary" : "text-stone-400"}`}>
+                  {item.icon}
+                </span>
+                {!collapsed && (
+                  <>
+                    <span className="flex-1 text-left">{item.label}</span>
+                    {item.badge !== undefined && item.badge > 0 && (
+                      <span className="bg-red-500 text-white text-[10px] rounded-full px-1.5 py-0.5 leading-none font-semibold">
+                        {item.badge}
+                      </span>
+                    )}
+                  </>
+                )}
+                {collapsed && item.badge !== undefined && item.badge > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[8px] rounded-full w-4 h-4 flex items-center justify-center font-semibold">
+                    {item.badge}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+      ))}
+    </>
+  );
+}
+
 export default function AdminLayout({ children, activeId, auditIssueCount }: AdminLayoutProps) {
   const [, setLocation] = useLocation();
   const [location] = useLocation();
   const [collapsed, setCollapsed] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   // Auth check
   const { data: admin, isLoading: authLoading } = trpc.blog.adminMe.useQuery();
@@ -76,6 +150,7 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
     if (activeId) return activeId;
     if (location.includes("/admin/categories")) return "categories";
     if (location.includes("/admin/leads")) return "leads";
+    if (location.includes("/admin/sms-consents")) return "sms-consents";
     if (location.includes("/admin/link-audit")) return "link-audit";
     if (location.includes("/admin/ai-blog-agent")) return "ai-blog-agent";
     if (location.includes("/admin/seo-analytics")) return "seo-analytics";
@@ -110,6 +185,13 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
       label: "Leads",
       icon: <Users className="w-5 h-5" />,
       path: "/admin/leads",
+      section: "Content",
+    },
+    {
+      id: "sms-consents",
+      label: "SMS Consents",
+      icon: <MessageSquareText className="w-5 h-5" />,
+      path: "/admin/sms-consents",
       section: "Content",
     },
     {
@@ -196,6 +278,11 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
     return sectionMap;
   }, [auditIssueCount]);
 
+  const navigate = (path: string) => {
+    setLocation(path);
+    setMobileNavOpen(false);
+  };
+
   if (authLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-stone-50">
@@ -215,10 +302,17 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setCollapsed(!collapsed)}
-                className="p-1.5 rounded-lg hover:bg-stone-100 text-stone-500 transition-colors cursor-pointer"
+                className="hidden md:inline-flex p-1.5 rounded-lg hover:bg-stone-100 text-stone-500 transition-colors cursor-pointer"
                 title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
               >
                 {collapsed ? <PanelLeft className="w-5 h-5" /> : <PanelLeftClose className="w-5 h-5" />}
+              </button>
+              <button
+                onClick={() => setMobileNavOpen(true)}
+                className="inline-flex md:hidden p-1.5 rounded-lg hover:bg-stone-100 text-stone-500 transition-colors cursor-pointer"
+                aria-label="Open admin navigation"
+              >
+                <Menu className="w-5 h-5" />
               </button>
               <img src="/images/logo.png" alt="DentaSmart" className="h-7" />
               <div className="hidden sm:flex items-center">
@@ -250,63 +344,36 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
         </div>
       </header>
 
+      <Sheet open={mobileNavOpen} onOpenChange={setMobileNavOpen}>
+        <SheetContent side="left" className="!w-[85vw] !max-w-[20rem] gap-0 p-0 md:hidden">
+          <SheetHeader className="border-b border-stone-200 px-4 py-4 text-left">
+            <SheetTitle>DentaSmart Admin</SheetTitle>
+          </SheetHeader>
+          <nav className="flex-1 overflow-y-auto py-4">
+            <AdminNavigation
+              sections={sections}
+              currentActive={currentActive}
+              collapsed={false}
+              onNavigate={navigate}
+            />
+          </nav>
+        </SheetContent>
+      </Sheet>
+
       <div className="flex flex-1">
         {/* Sidebar */}
         <aside
-          className={`bg-white border-r border-stone-200 flex flex-col shrink-0 transition-all duration-200 ${
+          className={`hidden md:flex bg-white border-r border-stone-200 flex-col shrink-0 transition-all duration-200 ${
             collapsed ? "w-16" : "w-56"
           }`}
         >
           <nav className="flex-1 py-4 space-y-1 overflow-y-auto">
-            {Array.from(sections.entries()).map(([sectionName, items], idx) => (
-              <div key={sectionName}>
-                {/* Section label */}
-                {!collapsed && (
-                  <div className={`px-4 ${idx > 0 ? "pt-4" : ""} pb-1`}>
-                    <span className="text-[10px] font-semibold uppercase tracking-wider text-stone-400">
-                      {sectionName}
-                    </span>
-                  </div>
-                )}
-                {collapsed && idx > 0 && (
-                  <div className="mx-3 my-2 border-t border-stone-100" />
-                )}
-                {items.map((item) => {
-                  const isActive = currentActive === item.id;
-                  return (
-                    <button
-                      key={item.id}
-                      onClick={() => setLocation(item.path)}
-                      title={collapsed ? item.label : undefined}
-                      className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium transition-colors cursor-pointer ${
-                        isActive
-                          ? "bg-primary/10 text-primary border-r-2 border-primary"
-                          : "text-stone-600 hover:bg-stone-50 hover:text-stone-900"
-                      } ${collapsed ? "justify-center px-0" : ""}`}
-                    >
-                      <span className={`shrink-0 ${isActive ? "text-primary" : "text-stone-400"}`}>
-                        {item.icon}
-                      </span>
-                      {!collapsed && (
-                        <>
-                          <span className="flex-1 text-left">{item.label}</span>
-                          {item.badge !== undefined && item.badge > 0 && (
-                            <span className="bg-red-500 text-white text-[10px] rounded-full px-1.5 py-0.5 leading-none font-semibold">
-                              {item.badge}
-                            </span>
-                          )}
-                        </>
-                      )}
-                      {collapsed && item.badge !== undefined && item.badge > 0 && (
-                        <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[8px] rounded-full w-4 h-4 flex items-center justify-center font-semibold">
-                          {item.badge}
-                        </span>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
-            ))}
+            <AdminNavigation
+              sections={sections}
+              currentActive={currentActive}
+              collapsed={collapsed}
+              onNavigate={navigate}
+            />
           </nav>
 
           {/* Sidebar footer */}

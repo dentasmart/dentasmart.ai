@@ -16,6 +16,7 @@ const AdminBlogEditor = lazy(() => import("@/pages/AdminBlogEditor"));
 const AdminSeoSetup = lazy(() => import("@/pages/AdminSeoSetup"));
 const AdminCategories = lazy(() => import("@/pages/AdminCategories"));
 const AdminLeads = lazy(() => import("@/pages/AdminLeads"));
+const AdminSmsConsents = lazy(() => import("@/pages/AdminSmsConsents"));
 const AdminLinkAudit = lazy(() => import("@/pages/AdminLinkAudit"));
 const AdminAIBlogAgent = lazy(() => import("@/pages/AdminAIBlogAgent"));
 const AdminAnalytics = lazy(() => import("@/pages/AdminAnalytics"));
@@ -36,6 +37,7 @@ const paths = {
   seoSetup: prefix + "/seo-analytics",
   categories: prefix + "/categories",
   leads: prefix + "/leads",
+  smsConsents: prefix + "/sms-consents",
   linkAudit: prefix + "/link-audit",
   aiBlogAgent: prefix + "/ai-blog-agent",
   conversionAnalytics: prefix + "/conversion-analytics",
@@ -75,6 +77,7 @@ export default function AdminRouter() {
         <Route path={paths.seoSetup} component={AdminSeoSetup} />
         <Route path={paths.categories} component={AdminCategories} />
         <Route path={paths.leads} component={AdminLeads} />
+        <Route path={paths.smsConsents} component={AdminSmsConsents} />
         <Route path={paths.linkAudit} component={AdminLinkAudit} />
         <Route path={paths.aiBlogAgent} component={AdminAIBlogAgent} />
         <Route path={paths.conversionAnalytics} component={AdminAnalytics} />

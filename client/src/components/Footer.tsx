@@ -252,6 +252,11 @@ export default function Footer() {
                   </button>
                 </li>
                 <li>
+                  <Link href="/sms-consent/" className="text-black hover:text-primary transition-colors font-light text-sm">
+                    SMS Preferences
+                  </Link>
+                </li>
+                <li>
                   <Link href="/terms-of-service/" className="text-black hover:text-primary transition-colors font-light text-sm">
                     Terms of Service
                   </Link>
