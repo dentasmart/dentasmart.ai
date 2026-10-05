@@ -12,6 +12,7 @@ import { pagesRouter } from "./pagesRouter";
 import { redirectsRouter } from "./redirectsRouter";
 import { notFoundRouter } from "./notFoundRouter";
 import { governanceRouter } from "./governanceRouter";
+import { smsConsentRouter } from "./smsConsentRouter";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -37,6 +38,7 @@ export const appRouter = router({
   redirects: redirectsRouter,
   notFound: notFoundRouter,
   governance: governanceRouter,
+  smsConsent: smsConsentRouter,
 });
 
 export type AppRouter = typeof appRouter;

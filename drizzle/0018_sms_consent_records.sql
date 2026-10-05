@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS `sms_consent_records` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`fullName` varchar(200),
+	`email` varchar(320),
+	`phoneE164` varchar(16) NOT NULL,
+	`consentGranted` boolean NOT NULL,
+	`consentAt` timestamp NOT NULL,
+	`consentSource` varchar(64) NOT NULL,
+	`sourcePath` varchar(255) NOT NULL,
+	`consentWordingVersion` varchar(32) NOT NULL,
+	`consentWording` text NOT NULL,
+	`privacyPolicyVersion` varchar(32) NOT NULL,
+	`termsOfServiceVersion` varchar(32) NOT NULL,
+	`sourceIp` varchar(64),
+	`userAgent` varchar(512),
+	`idempotencyKey` varchar(64) NOT NULL,
+	`createdAt` timestamp NOT NULL DEFAULT (now()),
+	CONSTRAINT `sms_consent_records_id` PRIMARY KEY(`id`),
+	CONSTRAINT `sms_consent_records_idempotency_key_unique` UNIQUE(`idempotencyKey`),
+	INDEX `sms_consent_records_phone_e164_idx` (`phoneE164`)
+);

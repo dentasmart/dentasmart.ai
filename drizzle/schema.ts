@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean, json, uniqueIndex } from "drizzle-orm/mysql-core";
+import { index, int, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean, json, uniqueIndex } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -127,6 +127,35 @@ export const benefitsWaitlist = mysqlTable("benefits_waitlist", {
 });
 
 export type BenefitsWaitlistEntry = typeof benefitsWaitlist.$inferSelect;
+
+/**
+ * Recipient-controlled audit records for voluntary transactional and
+ * customer-care SMS opt-ins. This table intentionally stores no dental or
+ * health information.
+ */
+export const smsConsentRecords = mysqlTable("sms_consent_records", {
+  id: int("id").autoincrement().primaryKey(),
+  fullName: varchar("fullName", { length: 200 }),
+  email: varchar("email", { length: 320 }),
+  phoneE164: varchar("phoneE164", { length: 16 }).notNull(),
+  consentGranted: boolean("consentGranted").notNull(),
+  consentAt: timestamp("consentAt").notNull(),
+  consentSource: varchar("consentSource", { length: 64 }).notNull(),
+  sourcePath: varchar("sourcePath", { length: 255 }).notNull(),
+  consentWordingVersion: varchar("consentWordingVersion", { length: 32 }).notNull(),
+  consentWording: text("consentWording").notNull(),
+  privacyPolicyVersion: varchar("privacyPolicyVersion", { length: 32 }).notNull(),
+  termsOfServiceVersion: varchar("termsOfServiceVersion", { length: 32 }).notNull(),
+  sourceIp: varchar("sourceIp", { length: 64 }),
+  userAgent: varchar("userAgent", { length: 512 }),
+  idempotencyKey: varchar("idempotencyKey", { length: 64 }).notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (table) => ({
+  phoneE164Index: index("sms_consent_records_phone_e164_idx").on(table.phoneE164),
+  idempotencyKeyUnique: uniqueIndex("sms_consent_records_idempotency_key_unique").on(table.idempotencyKey),
+}));
+export type SmsConsentRecord = typeof smsConsentRecords.$inferSelect;
+export type InsertSmsConsentRecord = typeof smsConsentRecords.$inferInsert;
 
 /**
  * Admin users table for blog management authentication.
