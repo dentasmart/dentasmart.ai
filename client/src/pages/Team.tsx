@@ -7,8 +7,25 @@ import { MedicalAdvisoryBoard } from "@/components/MedicalAdvisoryBoard";
 import { DownloadSection } from "@/components/DownloadSection";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
+import { useEffect } from "react";
+
+const DR_SABA_PROFILE_ID = "dr-saba-ahmed";
 
 export default function Team() {
+  useEffect(() => {
+    const scrollToDrSabaProfile = () => {
+      if (window.location.hash !== `#${DR_SABA_PROFILE_ID}`) return;
+
+      window.requestAnimationFrame(() => {
+        document.getElementById(DR_SABA_PROFILE_ID)?.scrollIntoView({ block: "start" });
+      });
+    };
+
+    scrollToDrSabaProfile();
+    window.addEventListener("hashchange", scrollToDrSabaProfile);
+    return () => window.removeEventListener("hashchange", scrollToDrSabaProfile);
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
@@ -199,11 +216,11 @@ export default function Team() {
             {/* Dr. Saba Ahmed */}
             <motion.div 
               id="dr-saba-ahmed"
-              initial={{ opacity: 0, y: 20 }}
+              initial={false}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.6 }}
-              className="bg-white p-8 rounded-3xl shadow-sm border border-border/50 hover:shadow-md transition-all duration-300 group"
+              className="scroll-mt-28 bg-white p-8 rounded-3xl shadow-sm border border-border/50 hover:shadow-md transition-all duration-300 group"
             >
               <div className="w-24 h-24 rounded-full mb-6 overflow-hidden group-hover:scale-110 transition-transform duration-300 border-2 border-primary/10">
                 <picture>
