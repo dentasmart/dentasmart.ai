@@ -585,9 +585,9 @@ function generateStaticPageContent(path: string): string | null {
     "/sms-consent": `
 <article>
   <h1>SMS Communication Preferences</h1>
-  <p>Choose whether to receive DentaSmart customer care-related and one-on-one communication messages.</p>
+  <p>Choose whether to receive DentaSmart customer care-related or one-on-one communication messages.</p>
   <h2>Your choice</h2>
-  <p>By clicking here you consent to receive sms customer care-related and one-on-one communication messages from DentaSmart. Message frequency may vary. Standard Message and Data Rates may apply. Reply STOP to opt out. Reply Help for help. <a href="/privacy-policy/">https://dentasmart.ai/privacy-policy/</a> <a href="/terms-of-service/">https://dentasmart.ai/terms-of-service/</a></p>
+  <p>By clicking here you consent to receive sms customer care-related or one-on-one communication messages from DentaSmart. Message frequency may vary. Standard Message and Data Rates may apply. Reply STOP to opt out. Reply Help for help. <a href="https://dentasmart.ai/privacy-policy/">https://dentasmart.ai/privacy-policy/</a> <a href="https://dentasmart.ai/terms-of-service/">https://dentasmart.ai/terms-of-service/</a>.</p>
 </article>`,
     "/lifestyle": `
 <article>

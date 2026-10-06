@@ -194,7 +194,7 @@ Upon your request to terminate your account, we will deactivate or delete your a
 
 ## SMS Communications
 
-DentaSmart sends SMS messages only after a person provides appropriate consent for customer care-related and one-on-one communication. Message frequency may vary, and Standard Message and Data Rates may apply.
+DentaSmart sends SMS messages only after a person provides appropriate consent for customer care-related or one-on-one communication. Message frequency may vary, and Standard Message and Data Rates may apply.
 
 You may reply STOP at any time to unsubscribe or Help for help. You may also contact us at support@dentasmart.ai.
 

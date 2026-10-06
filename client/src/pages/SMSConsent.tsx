@@ -1,5 +1,4 @@
 import { FormEvent, useState } from "react";
-import { Link } from "wouter";
 import { CheckCircle2, Loader2, MessageSquareText } from "lucide-react";
 import Footer from "@/components/Footer";
 import Navigation from "@/components/Navigation";
@@ -93,7 +92,7 @@ export default function SMSConsent() {
     <div className="min-h-screen bg-stone-50 font-sans text-stone-900 selection:bg-primary/20">
       <SEO
         title="SMS Communication Preferences | DentaSmart"
-        description="Manage your consent to receive DentaSmart customer care-related and one-on-one communication messages."
+        description="Manage your consent to receive DentaSmart customer care-related or one-on-one communication messages."
         canonical="https://dentasmart.ai/sms-consent"
       />
       <Navigation />
@@ -107,7 +106,7 @@ export default function SMSConsent() {
               </div>
               <h1 className="text-3xl md:text-5xl">SMS Communication Preferences</h1>
               <p className="mt-4 max-w-2xl text-base leading-7 text-stone-700 md:text-lg">
-                Use your preferred number for DentaSmart customer care-related and one-on-one communication.
+                Use your preferred number for DentaSmart customer care-related or one-on-one communication.
               </p>
             </div>
 
@@ -203,8 +202,8 @@ export default function SMSConsent() {
                       <div className="min-w-0">
                         <Label id="sms-consent-copy" htmlFor="sms-consent-checkbox" className="!block cursor-pointer text-sm !leading-6 text-stone-700">
                           {SMS_CONSENT_DISCLOSURE_PREFIX}{" "}
-                          <Link href="/privacy-policy/" className="font-medium text-action underline underline-offset-2">{SMS_PRIVACY_POLICY_URL}</Link>{" "}
-                          <Link href="/terms-of-service/" className="font-medium text-action underline underline-offset-2">{SMS_TERMS_OF_SERVICE_URL}</Link>
+                          <a href={SMS_PRIVACY_POLICY_URL} className="font-medium text-action underline underline-offset-2">{SMS_PRIVACY_POLICY_URL}</a>{" "}
+                          <a href={SMS_TERMS_OF_SERVICE_URL} className="font-medium text-action underline underline-offset-2">{SMS_TERMS_OF_SERVICE_URL}</a>.
                         </Label>
                       </div>
                     </div>

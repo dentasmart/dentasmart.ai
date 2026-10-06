@@ -181,7 +181,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/sms-consent": {
     title: "SMS Communication Preferences | DentaSmart",
     description:
-      "Manage your consent to receive DentaSmart customer care-related and one-on-one communication messages.",
+      "Manage your consent to receive DentaSmart customer care-related or one-on-one communication messages.",
   },
   "/editorial-policy": {
     title: "Editorial Policy | DentaSmart",

@@ -174,6 +174,16 @@ describe("resolveMetaTags", () => {
     expect(meta!.title).toContain("Pricing");
   });
 
+  it("keeps SMS consent metadata aligned with the current provider wording", async () => {
+    const meta = await resolveMetaTags("/sms-consent/");
+
+    expect(meta).toMatchObject({
+      title: "SMS Communication Preferences | DentaSmart",
+      description: "Manage your consent to receive DentaSmart customer care-related or one-on-one communication messages.",
+      canonical: "https://dentasmart.ai/sms-consent/",
+    });
+  });
+
   it("keeps the commercial route descriptions owned by their current page contracts", async () => {
     const expected = [
       ["/", "Start with unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Full Quick Check unlocks full eligible X-ray insights for one case."],

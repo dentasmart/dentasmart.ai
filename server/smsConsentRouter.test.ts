@@ -22,7 +22,7 @@ import {
 } from "./smsConsentRouter";
 
 const PROVIDER_DISCLOSURE =
-  "By clicking here you consent to receive sms customer care-related and one-on-one communication messages from DentaSmart. Message frequency may vary. Standard Message and Data Rates may apply. Reply STOP to opt out. Reply Help for help. https://dentasmart.ai/privacy-policy/ https://dentasmart.ai/terms-of-service/";
+  "By clicking here you consent to receive sms customer care-related or one-on-one communication messages from DentaSmart. Message frequency may vary. Standard Message and Data Rates may apply. Reply STOP to opt out. Reply Help for help. https://dentasmart.ai/privacy-policy/ https://dentasmart.ai/terms-of-service/.";
 const GENERIC_PERSISTENCE_ERROR =
   "We could not save your SMS preference. Please try again.";
 
@@ -89,12 +89,16 @@ describe("SMS consent input safeguards", () => {
     expect(getSmsConsentAuditIp("not-an-ip", undefined)).toBeNull();
   });
 
-  it("keeps the provider disclosure literal and customer-care specific", async () => {
+  it("keeps the provider disclosure literal, versioned, and customer-care specific", async () => {
     const disclosure = await import("../shared/smsConsent");
     expect(disclosure.SMS_CONSENT_DISCLOSURE).toBe(PROVIDER_DISCLOSURE);
     expect(disclosure.SMS_CONSENT_DISCLOSURE_PREFIX).toBe(
-      PROVIDER_DISCLOSURE.replace(" https://dentasmart.ai/privacy-policy/ https://dentasmart.ai/terms-of-service/", ""),
+      PROVIDER_DISCLOSURE.replace(" https://dentasmart.ai/privacy-policy/ https://dentasmart.ai/terms-of-service/.", ""),
     );
+    expect(disclosure.SMS_CONSENT_WORDING_VERSION).toBe("2026-10-06-provider-v2");
+    expect(disclosure.SMS_CONSENT_DISCLOSURE).toContain("sms customer care-related or one-on-one");
+    expect(disclosure.SMS_CONSENT_DISCLOSURE).not.toContain("customer care-related and one-on-one");
+    expect(disclosure.SMS_CONSENT_DISCLOSURE).toContain("Reply Help for help.");
   });
 
   it("keeps the provider privacy-policy paragraphs literal", () => {
@@ -117,11 +121,23 @@ describe("SMS consent input safeguards", () => {
   it("keeps server-rendered SMS disclosure text and absolute-link labels aligned", async () => {
     const result = await resolveSSRContent("/sms-consent/");
     expect(result).not.toBeNull();
-    const visibleText = result!.html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    const visibleText = result!.html
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .replace(/\s+([.,!?;:])/g, "$1")
+      .trim();
 
     expect(visibleText).toContain(PROVIDER_DISCLOSURE);
-    expect(result!.html).toContain('<a href="/privacy-policy/">https://dentasmart.ai/privacy-policy/</a>');
-    expect(result!.html).toContain('<a href="/terms-of-service/">https://dentasmart.ai/terms-of-service/</a>');
+    expect(result!.html).toContain('<a href="https://dentasmart.ai/privacy-policy/">https://dentasmart.ai/privacy-policy/</a>');
+    expect(result!.html).toContain('<a href="https://dentasmart.ai/terms-of-service/">https://dentasmart.ai/terms-of-service/</a>.');
+  });
+
+  it("keeps the public SMS form links and final punctuation outside the Terms link", () => {
+    const smsPage = readFileSync(resolve(process.cwd(), "client/src/pages/SMSConsent.tsx"), "utf8");
+
+    expect(smsPage).toContain('href={SMS_PRIVACY_POLICY_URL}');
+    expect(smsPage).toContain('href={SMS_TERMS_OF_SERVICE_URL}');
+    expect(smsPage).toContain('{SMS_TERMS_OF_SERVICE_URL}</a>.');
   });
 
   it("updates only the legal route sitemap lastmod values", () => {
@@ -182,6 +198,8 @@ describe("SMS consent input safeguards", () => {
       phoneE164: "+14155552671",
       consentGranted: true,
       sourcePath: "/sms-consent/",
+      consentWordingVersion: "2026-10-06-provider-v2",
+      consentWording: PROVIDER_DISCLOSURE,
     }));
   });
 

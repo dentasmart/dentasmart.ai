@@ -205,7 +205,7 @@ support@dentasmart.ai
 
 ## 20. SMS Communications
 
-By voluntarily opting in, you agree to receive sms customer care-related and one-on-one communication messages from DentaSmart. Message frequency may vary. Standard Message and Data Rates may apply. Reply STOP to opt out. Reply Help for help.
+By voluntarily opting in, you agree to receive sms customer care-related or one-on-one communication messages from DentaSmart. Message frequency may vary. Standard Message and Data Rates may apply. Reply STOP to opt out. Reply Help for help.
 
 SMS delivery is subject to carrier and network availability. DentaSmart may modify or discontinue SMS services subject to applicable requirements.
 `;
