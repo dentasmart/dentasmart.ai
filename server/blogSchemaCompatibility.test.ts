@@ -105,6 +105,31 @@ function legacyDatabaseFixture() {
   };
 }
 
+function migratedDatabaseFixture() {
+  const reviewerColumns = [
+    "reviewerShortBio",
+    "reviewerProfileUrl",
+    "lastReviewed",
+    "reviewerJsonLd",
+  ].map((column_name) => ({ column_name }));
+  const execute = vi.fn().mockResolvedValue([reviewerColumns, []]);
+  const insertValues = vi.fn().mockResolvedValue([{ insertId: 190 }, []]);
+  const insert = vi.fn().mockReturnValue({ values: insertValues });
+  const updateWhere = vi.fn().mockResolvedValue([{}, []]);
+  const updateSet = vi.fn().mockReturnValue({ where: updateWhere });
+  const update = vi.fn().mockReturnValue({ set: updateSet });
+
+  return {
+    db: { execute, insert, update },
+    execute,
+    insert,
+    insertValues,
+    update,
+    updateSet,
+    updateWhere,
+  };
+}
+
 describe("pre-0017 blog schema compatibility", () => {
   beforeEach(() => {
     resetBlogPostSchemaCompatibilityCacheForTests();
@@ -192,6 +217,45 @@ describe("pre-0017 blog schema compatibility", () => {
     await expect(updateBlogPost(id, { reviewerShortBio: "Must not be silently dropped" }))
       .rejects.toThrow("Reviewer metadata is unavailable until migration 0017_blog_reviewer_metadata is applied");
     expect(fixture.execute).toHaveBeenCalledTimes(4);
+  });
+
+  it("aliases MySQL's uppercase information-schema key and uses the normal write path after migration 0017", async () => {
+    const source = await import("node:fs/promises").then((fs) => fs.readFile(new URL("./blogDb.ts", import.meta.url), "utf8"));
+    const mysqlDefaultRows = [
+      "reviewerShortBio",
+      "reviewerProfileUrl",
+      "lastReviewed",
+      "reviewerJsonLd",
+    ].map((COLUMN_NAME) => ({ COLUMN_NAME }));
+    const fixture = migratedDatabaseFixture();
+    mocks.getDb.mockResolvedValue(fixture.db);
+
+    // mysql2 exposes an unaliased information_schema column as COLUMN_NAME.
+    // The detector reads row.column_name, so the SQL alias is required.
+    expect(mysqlDefaultRows.every((row) => !("column_name" in row))).toBe(true);
+    expect(source).toContain("SELECT column_name AS column_name");
+
+    const reviewerData = {
+      reviewerShortBio: "Approved public reviewer bio.",
+      reviewerProfileUrl: "/team/#dr-saba-ahmed",
+      lastReviewed: "2026-10-06",
+      reviewerJsonLd: '{"@context":"https://schema.org","@type":"FAQPage"}',
+    };
+    const id = await createBlogPost({
+      title: "Migrated reviewer metadata draft",
+      slug: "migrated-reviewer-metadata-draft",
+      category: "Dental Problems",
+      status: "draft",
+      ...reviewerData,
+    });
+    await updateBlogPost(id, reviewerData);
+
+    expect(fixture.execute).toHaveBeenCalledTimes(1);
+    expect(fixture.insert).toHaveBeenCalledTimes(1);
+    expect(fixture.insertValues).toHaveBeenCalledWith(expect.objectContaining(reviewerData));
+    expect(fixture.update).toHaveBeenCalledTimes(1);
+    expect(fixture.updateSet).toHaveBeenCalledWith(expect.objectContaining(reviewerData));
+    expect(fixture.updateWhere).toHaveBeenCalledTimes(1);
   });
 
   it("keeps the Blog Agent on the guarded createBlogPost path", async () => {
