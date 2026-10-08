@@ -31,6 +31,7 @@ const SAMPLE_HTML = `<!DOCTYPE html>
   <meta name="twitter:title" content="__PAGE_TITLE__" />
   <meta name="twitter:description" content="__PAGE_DESCRIPTION__" />
   <meta name="twitter:image" content="https://dentasmart.ai/manus-storage/dentasmart-free-quick-check-social-1200x630_b33c85da.png" />
+  <script type="application/ld+json">{"@type":"WebPage","name":"Fixed schema title"}</script>
 </head>
 <body><div id="root"></div></body>
 </html>`;
@@ -42,10 +43,49 @@ describe("injectMetaTags", () => {
       description: "Explore features.",
       canonical: "https://dentasmart.ai/features",
     });
-    expect(result).toContain("<title>Features | Your Personal AI Dentist in Your Pocket</title>");
-    expect(result).toContain('og:title" content="Features | Your Personal AI Dentist in Your Pocket"');
-    expect(result).toContain('twitter:title" content="Features | Your Personal AI Dentist in Your Pocket"');
+    expect(result).toContain("<title>Features | DentaSmart</title>");
+    expect(result).toContain('og:title" content="Features | DentaSmart"');
+    expect(result).toContain('twitter:title" content="Features | DentaSmart"');
     expect(result).not.toContain("__PAGE_TITLE__");
+  });
+
+  it("keeps the homepage tagline while using compact titles on representative routes", async () => {
+    const expected = [
+      ["/", "DentaSmart | Your Personal AI Dentist in Your Pocket"],
+      ["/team", "Meet the DentaSmart Team and Advisors | DentaSmart"],
+      ["/pricing", "DentaSmart Pricing | Free Quick Check, Full Quick Check & Complete Care | DentaSmart"],
+      ["/features", "DentaSmart Features | Oral Health Reports and Tracking | DentaSmart"],
+      ["/how-it-works", "How DentaSmart Works | AI Oral Health Guide in 4 Steps | DentaSmart"],
+      ["/oral-health-hub", "Oral Health Hub | Dental Education & Guides | DentaSmart"],
+    ] as const;
+
+    for (const [path, expectedTitle] of expected) {
+      const meta = await resolveMetaTags(path);
+      const result = injectMetaTags(SAMPLE_HTML, meta!);
+      const escapedTitle = expectedTitle.replace(/&/g, "&amp;");
+
+      expect(result).toContain(`<title>${escapedTitle}</title>`);
+      expect(result).toContain(`og:title" content="${escapedTitle}"`);
+      expect(result).toContain(`twitter:title" content="${escapedTitle}"`);
+    }
+  });
+
+  it("normalizes the Buck Teeth legacy title without changing its description or canonical", () => {
+    const description = "Buck teeth, or overjet, happen when upper front teeth stick out past 2mm.";
+    const canonical = "https://dentasmart.ai/oral-health-hub/buck-teeth/";
+    const result = injectMetaTags(SAMPLE_HTML, {
+      title: "Buck Teeth (Overjet): Causes, Costs & How to Fix Them | Your Personal AI Dentist in Your Pocket",
+      description,
+      canonical,
+    });
+
+    const expectedTitle = "Buck Teeth (Overjet): Causes, Costs &amp; How to Fix Them | DentaSmart";
+    expect(result).toContain(`<title>${expectedTitle}</title>`);
+    expect(result).toContain(`og:title" content="${expectedTitle}"`);
+    expect(result).toContain(`twitter:title" content="${expectedTitle}"`);
+    expect(result).toContain(`name="description" content="${description}"`);
+    expect(result).toContain(`href="${canonical}"`);
+    expect(result).toContain(`og:url" content="${canonical}"`);
   });
 
   it("replaces __PAGE_DESCRIPTION__ in all locations", () => {
@@ -115,6 +155,7 @@ describe("injectMetaTags", () => {
     expect(result).toContain('<div id="root"></div>');
     expect(result).toContain("<!DOCTYPE html>");
     expect(result).toContain('<meta charset="UTF-8" />');
+    expect(result).toContain('{"@type":"WebPage","name":"Fixed schema title"}');
   });
 
   it("produces exactly one canonical tag", () => {
@@ -129,7 +170,7 @@ describe("injectMetaTags", () => {
 
   it("emits server-visible noindex 404 metadata without canonical or og:url", () => {
     const result = injectMetaTags(SAMPLE_HTML, getNotFoundMeta());
-    expect(result).toContain("<title>Page Not Found | Your Personal AI Dentist in Your Pocket</title>");
+    expect(result).toContain("<title>Page Not Found | DentaSmart</title>");
     expect(result).toContain('name="robots" content="noindex, follow"');
     expect(result).not.toContain('rel="canonical"');
     expect(result).not.toContain('property="og:url"');

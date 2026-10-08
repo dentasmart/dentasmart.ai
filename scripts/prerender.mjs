@@ -11,10 +11,18 @@
 import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
+import { register } from "tsx/esm/api";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
+
+// Keep build-time title output aligned with the server and client title formatter.
+const unregisterTsx = register();
+const { formatPageTitle } = await import(
+  pathToFileURL(path.join(ROOT, "shared/pageTitle.ts")).href,
+);
+unregisterTsx();
 
 // ─── Step 1: Extract staticMeta and escapeHtml from server/metaTags.ts ────────
 // We use esbuild to bundle a tiny shim that re-exports what we need.
@@ -152,7 +160,7 @@ for (const [routePath, meta] of Object.entries(staticMeta)) {
   // Skip blog posts (dynamic, handled separately)
   if (routePath.startsWith("/oral-health-hub/")) continue;
 
-  const title = escapeHtml(meta.title);
+  const title = escapeHtml(formatPageTitle(meta.title));
   const description = escapeHtml(meta.description);
   const canonical = `${BASE_URL}${routePath}`;
 
