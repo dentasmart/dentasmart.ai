@@ -144,9 +144,9 @@ const staticMeta: Record<string, MetaInfo> = {
       "Compare verified DentaSmart facts with a framework for checking Dentistry.One SmileScan's current features, pricing, availability, and professional-care boundaries.",
   },
   "/oral-health-hub": {
-    title: "Oral Health Hub | Dental Education & Guides | DentaSmart",
+    title: "Oral Health Hub: Conditions, Symptoms & Guides",
     description:
-      "Browse DentaSmart's Oral Health Hub for expert dental guides, symptom explanations, treatment information, and preventive care tips.",
+      "Explore dental conditions, symptoms, treatments, costs, emergencies, and prevention guides. Find clear oral health information in one place.",
   },
   "/answers": {
     title: "Dental Answers | Educational Dental Q&A | DentaSmart",

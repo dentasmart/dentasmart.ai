@@ -56,7 +56,7 @@ describe("injectMetaTags", () => {
       ["/pricing", "DentaSmart Pricing | Free Quick Check, Full Quick Check & Complete Care | DentaSmart"],
       ["/features", "DentaSmart Features | Oral Health Reports and Tracking | DentaSmart"],
       ["/how-it-works", "How DentaSmart Works | AI Oral Health Guide in 4 Steps | DentaSmart"],
-      ["/oral-health-hub", "Oral Health Hub | Dental Education & Guides | DentaSmart"],
+      ["/oral-health-hub", "Oral Health Hub: Conditions, Symptoms & Guides | DentaSmart"],
     ] as const;
 
     for (const [path, expectedTitle] of expected) {

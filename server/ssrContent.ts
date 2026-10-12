@@ -16,6 +16,7 @@
 
 import { listBlogPosts } from "./blogDb";
 import { staticRoutes } from "../shared/routes";
+import { oralHealthHubPopularTopics, oralHealthHubResourceGroups } from "../shared/oralHealthHub";
 
 const SITE_URL = "https://dentasmart.ai";
 const sourceControlledSsrPaths = new Set(staticRoutes.map((route) => route.path.replace(/\/+$/, "") || "/"));
@@ -26,6 +27,42 @@ function isSourceControlledSsrPath(path: string): boolean {
 
 interface SSRContent {
   html: string;
+}
+
+function escapeHtmlText(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function generateOralHealthHubContent(): string {
+  const resourceLinks = oralHealthHubResourceGroups
+    .flatMap((group) => group.links)
+    .map((link) => `      <li><a href="${link.href}">${escapeHtmlText(link.title)}</a></li>`)
+    .join("\n");
+  const popularTopics = oralHealthHubPopularTopics
+    .map((topic) => `<a href="${topic.href}">${escapeHtmlText(topic.title)}</a>`)
+    .join(" | ");
+
+  return `
+<article>
+  <h1>Clear Answers for Your Oral Health</h1>
+  <p>Explore easy-to-understand guides on dental conditions, symptoms, treatments, costs, and prevention. Find useful information, understand your options, and prepare better questions for your dentist.</p>
+  <h2>Explore Oral Health Resources</h2>
+  <nav>
+    <ul>
+${resourceLinks}
+    </ul>
+  </nav>
+  <h2>Explore Popular Dental Topics</h2>
+  <p>${popularTopics}</p>
+  <h2>Take the Next Step Toward Understanding Your Oral Health</h2>
+  <p>DentaSmart helps you explore educational insights from supported dental photos and X-rays, understand dental information, and prepare questions for professional care. DentaSmart does not diagnose conditions or replace professional care.</p>
+  <p><a href="/download/">Start Free Quick Check</a> | <a href="/how-it-works/">Explore How It Works</a></p>
+</article>`;
 }
 
 // ─── Content generators by page type ─────────────────────────────────
@@ -385,22 +422,7 @@ function generateStaticPageContent(path: string): string | null {
   <p>Learn how to take clear, well-lit mouth photos for supported DentaSmart services. Follow practical tips for lighting, angles, and what to capture.</p>
   <p><a href="/pricing">View Service Pricing</a> | <a href="/download">Download DentaSmart</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`,
-    "/oral-health-hub": `
-<article>
-  <h1>Oral Health Hub: Dental Education & Guides</h1>
-  <p>Browse DentaSmart's Oral Health Hub for expert dental guides, symptom explanations, treatment information, cost breakdowns, and preventive care tips. Clear, accessible information to help you understand your oral health.</p>
-  <nav>
-    <ul>
-      <li><a href="/conditions">Dental Conditions</a></li>
-      <li><a href="/symptoms">Dental Symptoms</a></li>
-      <li><a href="/treatments">Treatment Guides</a></li>
-      <li><a href="/dental-costs">Cost Guides</a></li>
-      <li><a href="/guides">Oral Health Guides</a></li>
-      <li><a href="/comparisons">Treatment Comparisons</a></li>
-    </ul>
-  </nav>
-  <p><a href="/download">Download DentaSmart</a> | <a href="/symptom-quiz">Take the Symptom Quiz</a></p>
-</article>`,
+    "/oral-health-hub": generateOralHealthHubContent(),
     "/oral-health-hub/conditions": `
 <article>
   <h1>Something wrong with your teeth? Learn what to watch for.</h1>
