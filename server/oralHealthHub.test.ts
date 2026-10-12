@@ -9,6 +9,7 @@ import { resolveMetaTags } from "./metaTags";
 import { resolveSSRContent } from "./ssrContent";
 
 const pageSource = readFileSync(resolve(process.cwd(), "client/src/pages/OralHealthHub.tsx"), "utf8");
+const blogDbSource = readFileSync(resolve(process.cwd(), "server/blogDb.ts"), "utf8");
 
 describe("Oral Health Hub resource directory", () => {
   it("keeps exactly four resource groups and all 15 unique verified Learn destinations", () => {
@@ -48,11 +49,25 @@ describe("Oral Health Hub resource directory", () => {
     expect(pageSource).toContain("trpc.blog.list.useQuery");
     expect(pageSource).toContain("publishedOnly: true");
     expect(pageSource).toContain("limit: 200");
+    expect(pageSource).toContain("cardView: true");
     expect(pageSource).toContain("search: searchQuery || undefined");
     expect(pageSource).toContain("selectedCategory");
     expect(pageSource).toContain("selectedSubcategory");
     expect(pageSource).toContain("View all ${articles.length} articles");
     expect(pageSource).toContain("Search dental topics, symptoms, or treatments...");
+  });
+
+  it("uses a declared hero or only a genuine top-of-article image for Hub cards", () => {
+    expect(pageSource).toContain("article.heroImageUrl");
+    expect(pageSource).toContain("article.heroImageAlt || article.title");
+    expect(pageSource).toContain("onError={() => setHasImageError(true)}");
+    expect(pageSource).toContain("loading=\"lazy\"");
+    const cardSelection = blogDbSource.slice(blogDbSource.indexOf("if (cardView)"), blogDbSource.indexOf("if (await hasReviewerMetadataColumns"));
+    expect(cardSelection).toContain("featuredImage: blogPosts.featuredImage");
+    expect(cardSelection).toContain("case when nullif(trim(${blogPosts.featuredImage}), '') is null then left(${blogPosts.bodyHtml}, 2048) else null end");
+    expect(cardSelection).toContain("selectBlogCardHero(post)");
+    expect(cardSelection).not.toContain(".select()");
+    expect(cardSelection).not.toContain("thumbnailUrl");
   });
 
   it("keeps unique popular-topic routes and the requested DentaSmart action paths", () => {

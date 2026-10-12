@@ -367,6 +367,7 @@ export const blogRouter = router({
       sortBy: z.string().optional(),
       sortOrder: z.enum(["asc", "desc"]).optional(),
       publishedOnly: z.boolean().optional(),
+      cardView: z.boolean().optional(),
     }).optional())
     .query(async ({ input }) => {
       return await listBlogPosts(input || {});

@@ -2,6 +2,7 @@ import { eq, like, and, or, desc, asc, sql, isNull } from "drizzle-orm";
 import { getDb } from "./db";
 import { blogPosts, adminUsers, blogCategories, InsertBlogPost, BlogPost, InsertAdminUser, BlogCategory, InsertBlogCategory } from "../drizzle/schema";
 import bcrypt from "bcryptjs";
+import { selectBlogCardHero } from "./blogCardHero";
 
 type PendingReviewerMetadataColumn =
   | "reviewerShortBio"
@@ -109,6 +110,8 @@ const legacyBlogPostWriteColumns = [
   "createdAt",
   "updatedAt",
 ] as const satisfies readonly Exclude<keyof InsertBlogPost, PendingReviewerMetadataColumn>[];
+
+type BlogListResult = { posts: BlogPost[]; total: number };
 
 let reviewerMetadataColumnsAvailable: { value: boolean; checkedAt: number } | null = null;
 const REVIEWER_METADATA_SCHEMA_TTL_MS = 60_000;
@@ -308,7 +311,8 @@ export async function listBlogPosts(options: {
   sortBy?: string;
   sortOrder?: "asc" | "desc";
   publishedOnly?: boolean;
-}) {
+  cardView?: boolean;
+}): Promise<BlogListResult> {
   const db = await getDb();
   if (!db) return { posts: [], total: 0 };
 
@@ -321,6 +325,7 @@ export async function listBlogPosts(options: {
     sortBy = "publishedAt",
     sortOrder = "desc",
     publishedOnly = false,
+    cardView = false,
   } = options;
 
   const conditions = [];
@@ -366,6 +371,45 @@ export async function listBlogPosts(options: {
     : sortBy === "createdAt" ? blogPosts.createdAt
     : sortBy === "publishedAt" ? blogPosts.publishedAt
     : blogPosts.updatedAt;
+
+  if (cardView) {
+    // Hub cards load only a bounded markup prefix to identify a genuine
+    // top-of-article image. Later inline illustrations remain excluded.
+    const posts = await db
+      .select({
+        id: blogPosts.id,
+        title: blogPosts.title,
+        slug: blogPosts.slug,
+        category: blogPosts.category,
+        readTime: blogPosts.readTime,
+        problemContent: blogPosts.problemContent,
+        metaDescription: blogPosts.metaDescription,
+        categoryId: blogPosts.categoryId,
+        subcategoryId: blogPosts.subcategoryId,
+        featuredImage: blogPosts.featuredImage,
+        topBodyMarkup: sql<string | null>`case when nullif(trim(${blogPosts.featuredImage}), '') is null then left(${blogPosts.bodyHtml}, 2048) else null end`,
+        publishedAt: blogPosts.publishedAt,
+        updatedAt: blogPosts.updatedAt,
+      })
+      .from(blogPosts)
+      .where(whereClause)
+      .orderBy(orderFn(orderColumn))
+      .limit(limit)
+      .offset((page - 1) * limit);
+    return {
+      posts: posts.map((post) => {
+        const hero = selectBlogCardHero(post);
+        const { topBodyMarkup: _topBodyMarkup, ...card } = post;
+        return {
+          ...card,
+          heroImageUrl: hero?.url ?? null,
+          heroImageAlt: hero?.alt ?? null,
+          heroImageSource: hero?.source ?? null,
+        };
+      }) as unknown as BlogPost[],
+      total,
+    };
+  }
 
   if (await hasReviewerMetadataColumns(db)) {
     const posts = await db

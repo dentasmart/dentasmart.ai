@@ -56,6 +56,28 @@ const resourceGroupStyles: Record<(typeof oralHealthHubResourceGroups)[number]["
 
 const articlePageSize = 9;
 
+function ArticleThumbnail({ article }: { article: { heroImageUrl?: string | null; heroImageAlt?: string | null; title: string } }) {
+  const [hasImageError, setHasImageError] = useState(false);
+
+  if (!article.heroImageUrl || hasImageError) {
+    return (
+      <div className="flex aspect-[16/9] items-center justify-center bg-gradient-to-br from-primary/10 via-teal-50 to-white text-primary">
+        <BookOpen className="h-9 w-9" aria-hidden="true" />
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={article.heroImageUrl}
+      alt={article.heroImageAlt || article.title}
+      className="aspect-[16/9] w-full object-cover"
+      loading="lazy"
+      onError={() => setHasImageError(true)}
+    />
+  );
+}
+
 export default function OralHealthHub() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -87,6 +109,7 @@ export default function OralHealthHub() {
     limit: 200,
     category: selectedCategory !== "All" ? selectedCategory : undefined,
     search: searchQuery || undefined,
+    cardView: true,
   });
 
   const selectedCategoryLabel = useMemo(() => {
@@ -406,13 +429,7 @@ export default function OralHealthHub() {
                 <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                   {visibleArticles.map((article: any) => (
                     <Link key={article.id} href={`/oral-health-hub/${article.slug}/`} className="group flex min-h-full flex-col overflow-hidden rounded-2xl border border-stone-200 bg-white shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-                      {article.featuredImage ? (
-                        <img src={article.featuredImage} alt="" className="aspect-[16/9] w-full object-cover" loading="lazy" />
-                      ) : (
-                        <div className="flex aspect-[16/9] items-center justify-center bg-gradient-to-br from-primary/10 via-teal-50 to-white text-primary">
-                          <BookOpen className="h-9 w-9" aria-hidden="true" />
-                        </div>
-                      )}
+                      <ArticleThumbnail article={article} />
                       <div className="flex flex-1 flex-col p-5">
                         <div className="flex items-start justify-between gap-3">
                           {getArticleCategoryDisplay(article)}
