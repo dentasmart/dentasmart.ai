@@ -327,7 +327,7 @@ export default function OralHealthHub() {
               <p className="mt-4 text-lg leading-8 text-stone-600">Find the information you need, from understanding a dental concern to comparing treatment options.</p>
             </div>
 
-            <div className="oral-health-resource-grid mt-10 grid items-start gap-4 md:grid-cols-2">
+            <div className="oral-health-resource-grid mt-10 grid gap-4 md:grid-cols-2">
               {oralHealthHubResourceGroups.map((group) => {
                 const Icon = resourceGroupIcons[group.id];
                 const style = resourceGroupStyles[group.id];

@@ -47,7 +47,8 @@ describe("Oral Health Hub resource directory", () => {
   });
 
   it("uses compact responsive resource columns without hiding link details", () => {
-    expect(pageSource).toContain('oral-health-resource-grid mt-10 grid items-start gap-4 md:grid-cols-2');
+    expect(pageSource).toContain('oral-health-resource-grid mt-10 grid gap-4 md:grid-cols-2');
+    expect(pageSource).not.toContain('oral-health-resource-grid mt-10 grid items-start gap-4 md:grid-cols-2');
     expect(stylesheet).toContain('@media (min-width: 1440px)');
     expect(stylesheet).toContain('.oral-health-resource-grid {\n    grid-template-columns: repeat(4, minmax(0, 1fr));');
     expect(pageSource).toContain('rounded-3xl border bg-white p-5');
