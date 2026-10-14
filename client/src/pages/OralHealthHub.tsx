@@ -327,13 +327,13 @@ export default function OralHealthHub() {
               <p className="mt-4 text-lg leading-8 text-stone-600">Find the information you need, from understanding a dental concern to comparing treatment options.</p>
             </div>
 
-            <div className="mt-10 grid gap-5 md:grid-cols-2">
+            <div className="oral-health-resource-grid mt-10 grid items-start gap-4 md:grid-cols-2">
               {oralHealthHubResourceGroups.map((group) => {
                 const Icon = resourceGroupIcons[group.id];
                 const style = resourceGroupStyles[group.id];
                 return (
-                  <section key={group.id} className={`rounded-3xl border bg-white p-6 shadow-sm transition-shadow hover:shadow-lg ${style.accent}`} aria-labelledby={`${group.id}-resources-heading`}>
-                    <div className="flex items-start gap-4">
+                  <section key={group.id} className={`rounded-3xl border bg-white p-5 shadow-sm transition-shadow hover:shadow-lg ${style.accent}`} aria-labelledby={`${group.id}-resources-heading`}>
+                    <div className="flex items-start gap-3">
                       <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl ${style.icon}`}>
                         <Icon className="h-6 w-6" aria-hidden="true" />
                       </div>
@@ -342,7 +342,7 @@ export default function OralHealthHub() {
                         <p className="mt-1 leading-6 text-stone-600">{group.description}</p>
                       </div>
                     </div>
-                    <ul className="mt-6 space-y-1" aria-label={`${group.title} links`}>
+                    <ul className="mt-5 space-y-1" aria-label={`${group.title} links`}>
                       {group.links.map((link) => (
                         <li key={link.href}>
                           <Link

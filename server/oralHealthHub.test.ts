@@ -11,6 +11,7 @@ import { resolveSSRContent } from "./ssrContent";
 
 const pageSource = readFileSync(resolve(process.cwd(), "client/src/pages/OralHealthHub.tsx"), "utf8");
 const blogDbSource = readFileSync(resolve(process.cwd(), "server/blogDb.ts"), "utf8");
+const stylesheet = readFileSync(resolve(process.cwd(), "client/src/index.css"), "utf8");
 
 describe("Oral Health Hub resource directory", () => {
   it("keeps exactly four resource groups and all 15 unique verified Learn destinations", () => {
@@ -43,6 +44,16 @@ describe("Oral Health Hub resource directory", () => {
       ["Second Opinion Hub", "/oral-health-hub/second-opinion/"],
       ["FAQs", "/faqs/"],
     ]);
+  });
+
+  it("uses compact responsive resource columns without hiding link details", () => {
+    expect(pageSource).toContain('oral-health-resource-grid mt-10 grid items-start gap-4 md:grid-cols-2');
+    expect(stylesheet).toContain('@media (min-width: 1440px)');
+    expect(stylesheet).toContain('.oral-health-resource-grid {\n    grid-template-columns: repeat(4, minmax(0, 1fr));');
+    expect(pageSource).toContain('rounded-3xl border bg-white p-5');
+    expect(pageSource).toContain('className="mt-5 space-y-1" aria-label={`${group.title} links`}');
+    expect(pageSource).toContain('link.description');
+    expect(pageSource).toContain('<ArrowRight className="h-4 w-4 shrink-0');
   });
 
   it("keeps the dynamic published-article browser, search, filters, and view-all discoverability", () => {

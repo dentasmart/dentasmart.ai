@@ -237,6 +237,12 @@
   }
 }
 
+@media (min-width: 1440px) {
+  .oral-health-resource-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
 /* Blog WYSIWYG Content Styles — shared between editor and public page */
 .blog-content {
   font-family: 'Poppins', sans-serif;
