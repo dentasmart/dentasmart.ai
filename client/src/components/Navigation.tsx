@@ -67,20 +67,21 @@ const megaMenuCategories = [
 
 // Flatten all resource items for active state checking
 const allResourceItems = megaMenuCategories.flatMap(cat => cat.items);
-const DESKTOP_LEARN_MENU_ID = "desktop-learn-menu";
+const DESKTOP_ORAL_HEALTH_MENU_ID = "desktop-oral-health-menu";
 const MOBILE_NAV_MENU_ID = "mobile-navigation-menu";
-const MOBILE_LEARN_MENU_ID = "mobile-learn-menu";
+const MOBILE_ORAL_HEALTH_MENU_ID = "mobile-oral-health-menu";
+const ORAL_HEALTH_HUB_PATH = "/oral-health-hub/";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showStickyCta, setShowStickyCta] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
-  const [mobileLearnOpen, setMobileLearnOpen] = useState(false);
+  const [mobileOralHealthOpen, setMobileOralHealthOpen] = useState(false);
   const [mobileExpandedCategory, setMobileExpandedCategory] = useState<string | null>(null);
   const megaMenuRef = useRef<HTMLDivElement>(null);
   const megaMenuTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const desktopLearnButtonRef = useRef<HTMLButtonElement>(null);
+  const desktopOralHealthButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const [location] = useLocation();
@@ -121,7 +122,7 @@ export default function Navigation() {
   useEffect(() => {
     setIsOpen(false);
     setMegaMenuOpen(false);
-    setMobileLearnOpen(false);
+    setMobileOralHealthOpen(false);
     setMobileExpandedCategory(null);
   }, [location]);
 
@@ -134,13 +135,13 @@ export default function Navigation() {
       if (megaMenuOpen) {
         event.preventDefault();
         setMegaMenuOpen(false);
-        desktopLearnButtonRef.current?.focus();
+        desktopOralHealthButtonRef.current?.focus();
         return;
       }
 
       event.preventDefault();
       setIsOpen(false);
-      setMobileLearnOpen(false);
+      setMobileOralHealthOpen(false);
       setMobileExpandedCategory(null);
       mobileMenuButtonRef.current?.focus();
     };
@@ -163,7 +164,7 @@ export default function Navigation() {
     return location.startsWith(href);
   };
 
-  const isLearnActive = allResourceItems.some(item => isActive(item.href));
+  const isOralHealthActive = location.startsWith(ORAL_HEALTH_HUB_PATH) || allResourceItems.some(item => isActive(item.href));
   const breadcrumbItems = getBreadcrumbs(location);
 
   const handleMegaMenuEnter = () => {
@@ -226,36 +227,46 @@ export default function Navigation() {
               </Link>
             ))}
 
-            {/* Learn Mega-Menu Trigger */}
+            {/* Oral Health destination with a separate resource disclosure */}
             <div
               ref={megaMenuRef}
-              className="relative"
+              className="relative flex items-center"
               onMouseEnter={handleMegaMenuEnter}
               onMouseLeave={handleMegaMenuLeave}
             >
-              <button
-                ref={desktopLearnButtonRef}
-                onClick={() => setMegaMenuOpen(!megaMenuOpen)}
-                aria-expanded={megaMenuOpen}
-                aria-controls={DESKTOP_LEARN_MENU_ID}
-                className={`flex items-center gap-1 text-[15px] font-medium tracking-wide transition-all duration-300 relative group cursor-pointer ${
-                  isLearnActive
+              <Link
+                href={ORAL_HEALTH_HUB_PATH}
+                aria-current={isOralHealthActive ? "page" : undefined}
+                className={`text-[15px] font-medium tracking-wide transition-all duration-300 relative group whitespace-nowrap ${
+                  isOralHealthActive
                     ? "text-teal-900"
                     : (scrolled ? "text-teal-600 hover:text-teal-800" : "text-teal-700 hover:text-teal-900")
                 }`}
               >
-                Learn
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${megaMenuOpen ? "rotate-180" : ""}`} />
+                Oral Health
                 <span className={`absolute -bottom-1 left-0 w-full h-px bg-teal-900 origin-left transition-transform duration-300 ${
-                  isLearnActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-50"
+                  isOralHealthActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-50"
                 }`} />
+              </Link>
+              <button
+                ref={desktopOralHealthButtonRef}
+                type="button"
+                onClick={() => setMegaMenuOpen(!megaMenuOpen)}
+                aria-expanded={megaMenuOpen}
+                aria-controls={DESKTOP_ORAL_HEALTH_MENU_ID}
+                aria-label={megaMenuOpen ? "Hide Oral Health resources" : "Show Oral Health resources"}
+                className={`ml-0.5 inline-flex min-h-8 min-w-8 items-center justify-center rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 cursor-pointer ${
+                  isOralHealthActive ? "text-teal-900" : (scrolled ? "text-teal-600 hover:text-teal-800" : "text-teal-700 hover:text-teal-900")
+                }`}
+              >
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${megaMenuOpen ? "rotate-180" : ""}`} />
               </button>
 
               {/* Mega Menu Panel */}
               <AnimatePresence>
                 {megaMenuOpen && (
                   <motion.div
-                    id={DESKTOP_LEARN_MENU_ID}
+                    id={DESKTOP_ORAL_HEALTH_MENU_ID}
                     initial={shouldReduceMotion ? undefined : { opacity: 0, y: 8, scale: 0.98 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={shouldReduceMotion ? undefined : { opacity: 0, y: 8, scale: 0.98 }}
@@ -485,29 +496,42 @@ export default function Navigation() {
                 </motion.div>
               ))}
 
-              {/* Mobile Learn Section - Grouped Accordion */}
+              {/* Mobile Oral Health destination with a grouped resource accordion */}
               <motion.div
                 initial={shouldReduceMotion ? undefined : { opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={shouldReduceMotion ? mobileItemTransition : { delay: 0.1 + navItems.length * 0.05, ...mobileItemTransition }}
                 className="border-t border-stone-200 pt-3 mt-1"
               >
-                <button
-                  onClick={() => setMobileLearnOpen(!mobileLearnOpen)}
-                  aria-expanded={mobileLearnOpen}
-                  aria-controls={MOBILE_LEARN_MENU_ID}
-                  className={`text-2xl font-light tracking-tight py-2 flex items-center gap-2 w-full text-left cursor-pointer ${
-                    isLearnActive ? "text-primary font-medium" : "text-muted-foreground"
-                  }`}
-                >
-                  Learn
-                  <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${mobileLearnOpen ? "rotate-180" : ""}`} />
-                </button>
+                <div className="flex items-center gap-1">
+                  <Link
+                    href={ORAL_HEALTH_HUB_PATH}
+                    aria-current={isOralHealthActive ? "page" : undefined}
+                    className={`flex-1 text-2xl font-light tracking-tight py-2 ${
+                      isOralHealthActive ? "text-primary font-medium" : "text-muted-foreground"
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    Oral Health
+                  </Link>
+                  <button
+                    type="button"
+                    onClick={() => setMobileOralHealthOpen(!mobileOralHealthOpen)}
+                    aria-expanded={mobileOralHealthOpen}
+                    aria-controls={MOBILE_ORAL_HEALTH_MENU_ID}
+                    aria-label={mobileOralHealthOpen ? "Hide Oral Health resources" : "Show Oral Health resources"}
+                    className={`min-h-11 min-w-11 inline-flex items-center justify-center rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 cursor-pointer ${
+                      isOralHealthActive ? "text-primary" : "text-muted-foreground"
+                    }`}
+                  >
+                    <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${mobileOralHealthOpen ? "rotate-180" : ""}`} />
+                  </button>
+                </div>
 
                 <AnimatePresence>
-                  {mobileLearnOpen && (
+                  {mobileOralHealthOpen && (
                     <motion.div
-                      id={MOBILE_LEARN_MENU_ID}
+                      id={MOBILE_ORAL_HEALTH_MENU_ID}
                       initial={shouldReduceMotion ? undefined : { height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={shouldReduceMotion ? undefined : { height: 0, opacity: 0 }}
@@ -563,7 +587,7 @@ export default function Navigation() {
                                           }`}
                                           onClick={() => {
                                             setIsOpen(false);
-                                            setMobileLearnOpen(false);
+                                            setMobileOralHealthOpen(false);
                                             setMobileExpandedCategory(null);
                                           }}
                                         >

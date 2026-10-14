@@ -23,11 +23,11 @@ describe("Phase 4 Batch 4-A accessibility foundations", () => {
     expect(navigationSource).toContain('aria-label="Toggle menu"');
   });
 
-  it("connects the desktop Learn disclosure to its real controlled menu", () => {
-    expect(navigationSource).toContain('const DESKTOP_LEARN_MENU_ID = "desktop-learn-menu"');
+  it("connects the desktop Oral Health disclosure to its real controlled menu", () => {
+    expect(navigationSource).toContain('const DESKTOP_ORAL_HEALTH_MENU_ID = "desktop-oral-health-menu"');
     expect(navigationSource).toContain("aria-expanded={megaMenuOpen}");
-    expect(navigationSource).toContain("aria-controls={DESKTOP_LEARN_MENU_ID}");
-    expect(navigationSource).toContain("id={DESKTOP_LEARN_MENU_ID}");
+    expect(navigationSource).toContain("aria-controls={DESKTOP_ORAL_HEALTH_MENU_ID}");
+    expect(navigationSource).toContain("id={DESKTOP_ORAL_HEALTH_MENU_ID}");
   });
 
   it("implements scoped Escape close behavior for both disclosures", () => {
@@ -40,14 +40,14 @@ describe("Phase 4 Batch 4-A accessibility foundations", () => {
   });
 
   it("restores focus to the matching disclosure trigger after Escape", () => {
-    expect(navigationSource).toContain("desktopLearnButtonRef.current?.focus()");
+    expect(navigationSource).toContain("desktopOralHealthButtonRef.current?.focus()");
     expect(navigationSource).toContain("mobileMenuButtonRef.current?.focus()");
   });
 
   it("preserves native navigation links and menu close handlers", () => {
     expect(navigationSource).toContain("href={item.href}");
     expect(navigationSource).toContain("onClick={() => setIsOpen(false)}");
-    expect(navigationSource).toContain("setMobileLearnOpen(false)");
+    expect(navigationSource).toContain("setMobileOralHealthOpen(false)");
   });
 
   it("defines a shared focus-visible baseline without removing browser focus", () => {
