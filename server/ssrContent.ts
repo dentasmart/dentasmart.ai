@@ -16,7 +16,7 @@
 
 import { listBlogPosts } from "./blogDb";
 import { staticRoutes } from "../shared/routes";
-import { oralHealthHubPopularTopics, oralHealthHubResourceGroups } from "../shared/oralHealthHub";
+import { oralHealthHubResourceGroups } from "../shared/oralHealthHub";
 
 const SITE_URL = "https://dentasmart.ai";
 const sourceControlledSsrPaths = new Set(staticRoutes.map((route) => route.path.replace(/\/+$/, "") || "/"));
@@ -43,9 +43,6 @@ function generateOralHealthHubContent(): string {
     .flatMap((group) => group.links)
     .map((link) => `      <li><a href="${link.href}">${escapeHtmlText(link.title)}</a></li>`)
     .join("\n");
-  const popularTopics = oralHealthHubPopularTopics
-    .map((topic) => `<a href="${topic.href}">${escapeHtmlText(topic.title)}</a>`)
-    .join(" | ");
 
   return `
 <article>
@@ -57,8 +54,6 @@ function generateOralHealthHubContent(): string {
 ${resourceLinks}
     </ul>
   </nav>
-  <h2>Explore Popular Dental Topics</h2>
-  <p>${popularTopics}</p>
   <h2>Take the Next Step Toward Understanding Your Oral Health</h2>
   <p>DentaSmart helps you explore educational insights from supported dental photos and X-rays, understand dental information, and prepare questions for professional care. DentaSmart does not diagnose conditions or replace professional care.</p>
   <p><a href="/download/">Start Free Quick Check</a> | <a href="/how-it-works/">Explore How It Works</a></p>

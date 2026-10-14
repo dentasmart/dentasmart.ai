@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type ComponentType } from "react";
+import { useEffect, useMemo, useState, type ComponentType, type MouseEvent } from "react";
 import { Link } from "wouter";
 import {
   ArrowRight,
@@ -22,7 +22,8 @@ import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
 import { trpc } from "@/lib/trpc";
 import { trackConversionEvent } from "@/lib/analytics";
 import {
-  oralHealthHubPopularTopics,
+  oralHealthHubArticlesAnchorEvent,
+  oralHealthHubArticlesHref,
   oralHealthHubResourceGroups,
   oralHealthHubSearchTopics,
 } from "@shared/oralHealthHub";
@@ -137,8 +138,47 @@ export default function OralHealthHub() {
     setShowAllArticles(false);
   }, [searchQuery, selectedCategory, selectedSubcategory]);
 
+  useEffect(() => {
+    let firstFrame = 0;
+    let secondFrame = 0;
+
+    const scrollToArticleAnchor = () => {
+      if (window.location.hash !== "#articles") return;
+      window.cancelAnimationFrame(firstFrame);
+      window.cancelAnimationFrame(secondFrame);
+      firstFrame = window.requestAnimationFrame(() => {
+        secondFrame = window.requestAnimationFrame(() => {
+          document.getElementById("articles")?.scrollIntoView({ block: "start" });
+        });
+      });
+    };
+
+    window.addEventListener("hashchange", scrollToArticleAnchor);
+    window.addEventListener("popstate", scrollToArticleAnchor);
+    window.addEventListener(oralHealthHubArticlesAnchorEvent, scrollToArticleAnchor);
+    scrollToArticleAnchor();
+
+    return () => {
+      window.cancelAnimationFrame(firstFrame);
+      window.cancelAnimationFrame(secondFrame);
+      window.removeEventListener("hashchange", scrollToArticleAnchor);
+      window.removeEventListener("popstate", scrollToArticleAnchor);
+      window.removeEventListener(oralHealthHubArticlesAnchorEvent, scrollToArticleAnchor);
+    };
+  }, []);
+
   const scrollToArticles = () => {
     document.getElementById("articles")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  const handleArticleAnchorNavigation = (event: MouseEvent<HTMLAnchorElement>) => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+    event.preventDefault();
+    if (window.location.hash !== "#articles") {
+      window.history.pushState(null, "", oralHealthHubArticlesHref);
+    }
+    window.dispatchEvent(new Event(oralHealthHubArticlesAnchorEvent));
   };
 
   const applyTopicSearch = (topic: string) => {
@@ -305,7 +345,11 @@ export default function OralHealthHub() {
                     <ul className="mt-6 space-y-1" aria-label={`${group.title} links`}>
                       {group.links.map((link) => (
                         <li key={link.href}>
-                          <Link href={link.href} className="group flex min-h-14 items-center justify-between gap-4 rounded-xl px-3 py-2 transition-colors hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                          <Link
+                            href={link.href}
+                            onClick={link.href === oralHealthHubArticlesHref ? handleArticleAnchorNavigation : undefined}
+                            className="group flex min-h-14 items-center justify-between gap-4 rounded-xl px-3 py-2 transition-colors hover:bg-stone-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                          >
                             <span>
                               <span className="block font-medium text-stone-900 group-hover:text-primary">{link.title}</span>
                               <span className="mt-0.5 block text-sm leading-5 text-stone-600">{link.description}</span>
@@ -318,32 +362,6 @@ export default function OralHealthHub() {
                   </section>
                 );
               })}
-            </div>
-          </div>
-        </section>
-
-        <section className="border-y border-stone-100 bg-stone-50 py-16 md:py-20" aria-labelledby="popular-topics-heading">
-          <div className="container mx-auto max-w-7xl px-4">
-            <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
-              <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Start with a topic</p>
-                <h2 id="popular-topics-heading" className="mt-3 text-3xl font-semibold tracking-tight text-stone-950 md:text-4xl">Explore Popular Dental Topics</h2>
-              </div>
-              <button type="button" onClick={() => applyTopicSearch("")} className="inline-flex min-h-11 items-center text-sm font-semibold text-primary hover:text-action focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-                Browse articles
-                <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
-              </button>
-            </div>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {oralHealthHubPopularTopics.map((topic) => (
-                <Link key={topic.href} href={topic.href} className="group flex min-h-28 items-start justify-between gap-4 rounded-2xl border border-stone-200 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
-                  <span>
-                    <span className="block font-semibold text-stone-900 group-hover:text-primary">{topic.title}</span>
-                    <span className="mt-1 block text-sm leading-5 text-stone-600">{topic.description}</span>
-                  </span>
-                  <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-primary transition-transform group-hover:translate-x-1" aria-hidden="true" />
-                </Link>
-              ))}
             </div>
           </div>
         </section>

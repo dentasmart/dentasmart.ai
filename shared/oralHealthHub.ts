@@ -11,6 +11,9 @@ export interface OralHealthHubResourceGroup {
   links: readonly OralHealthHubLink[];
 }
 
+export const oralHealthHubArticlesHref = "/oral-health-hub/#articles";
+export const oralHealthHubArticlesAnchorEvent = "dentasmart:oral-health-hub-articles";
+
 /**
  * The main Hub is the directory for existing Learn destinations. Keep these
  * first-party paths in one place so the rendered page and crawler-visible
@@ -46,7 +49,7 @@ export const oralHealthHubResourceGroups: readonly OralHealthHubResourceGroup[] 
       { title: "Prevention Hub", description: "Preventive oral health information", href: "/oral-health-hub/prevention/" },
       { title: "Lifestyle & Oral Health", description: "How everyday habits affect oral health", href: "/lifestyle/" },
       { title: "Dental Guides", description: "Step-by-step educational dental guides", href: "/guides/" },
-      { title: "Blog", description: "Browse oral health articles and educational content", href: "/oral-health-hub/#articles" },
+      { title: "Blog", description: "Browse oral health articles and educational content", href: oralHealthHubArticlesHref },
     ],
   },
   {
@@ -61,18 +64,6 @@ export const oralHealthHubResourceGroups: readonly OralHealthHubResourceGroup[] 
     ],
   },
 ];
-
-export const oralHealthHubPopularTopics = [
-  { title: "Cavities", description: "Signs, prevention, and treatment information", href: "/conditions/cavities/", search: "cavities" },
-  { title: "Gum Disease", description: "Learn about gum health concerns", href: "/conditions/gum-disease/", search: "gum disease" },
-  { title: "Tooth Pain", description: "Understand common pain concerns", href: "/symptoms/tooth-pain-when-biting/", search: "tooth pain" },
-  { title: "Tooth Sensitivity", description: "Explore sensitivity and next steps", href: "/symptoms/tooth-sensitivity/", search: "tooth sensitivity" },
-  { title: "Wisdom Teeth", description: "Read about wisdom tooth discomfort", href: "/conditions/wisdom-teeth-pain/", search: "wisdom teeth" },
-  { title: "Root Canal", description: "Review the procedure and questions to ask", href: "/treatments/root-canal-procedure/", search: "root canal" },
-  { title: "Buck Teeth / Overjet", description: "Understand overjet and treatment conversations", href: "/oral-health-hub/buck-teeth/", search: "buck teeth" },
-  { title: "Dental Crowns", description: "Learn how crowns are used and cared for", href: "/treatments/dental-crown-procedure/", search: "dental crown" },
-  { title: "Dental Emergencies", description: "Know when prompt care may be needed", href: "/dental-emergencies/", search: "dental emergency" },
-] as const;
 
 export const oralHealthHubSearchTopics = [
   "Tooth Pain",

@@ -2,7 +2,8 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import {
-  oralHealthHubPopularTopics,
+  oralHealthHubArticlesAnchorEvent,
+  oralHealthHubArticlesHref,
   oralHealthHubResourceGroups,
 } from "../shared/oralHealthHub";
 import { resolveMetaTags } from "./metaTags";
@@ -70,9 +71,21 @@ describe("Oral Health Hub resource directory", () => {
     expect(cardSelection).not.toContain("thumbnailUrl");
   });
 
-  it("keeps unique popular-topic routes and the requested DentaSmart action paths", () => {
-    expect(new Set(oralHealthHubPopularTopics.map((topic) => topic.href)).size).toBe(oralHealthHubPopularTopics.length);
-    expect(oralHealthHubPopularTopics.map((topic) => topic.href)).toContain("/oral-health-hub/buck-teeth/");
+  it("keeps the stable articles anchor while removing the duplicate popular-topics grid", () => {
+    expect(oralHealthHubArticlesHref).toBe("/oral-health-hub/#articles");
+    expect(pageSource).toContain('id="articles"');
+    expect(pageSource).toContain("scroll-mt-24");
+    expect(pageSource).toContain('window.addEventListener("hashchange", scrollToArticleAnchor)');
+    expect(pageSource).toContain('window.addEventListener("popstate", scrollToArticleAnchor)');
+    expect(pageSource).toContain("window.addEventListener(oralHealthHubArticlesAnchorEvent, scrollToArticleAnchor)");
+    expect(pageSource).toContain("window.dispatchEvent(new Event(oralHealthHubArticlesAnchorEvent));");
+    expect(pageSource).not.toContain("Explore Popular Dental Topics");
+    expect(pageSource).not.toContain("popular-topics-heading");
+    expect(pageSource).not.toContain("oralHealthHubPopularTopics");
+    expect(oralHealthHubArticlesAnchorEvent).toBe("dentasmart:oral-health-hub-articles");
+  });
+
+  it("keeps the requested DentaSmart action paths", () => {
     expect(pageSource).toContain('href="/download/"');
     expect(pageSource).toContain('href="/how-it-works/"');
     expect(pageSource).toContain("Start Free Quick Check");
@@ -86,6 +99,7 @@ describe("Oral Health Hub resource directory", () => {
   it("keeps server-visible Hub links and aligned indexable metadata", async () => {
     const content = await resolveSSRContent("/oral-health-hub/");
     expect(content?.html).toContain("<h1>Clear Answers for Your Oral Health</h1>");
+    expect(content?.html).not.toContain("Explore Popular Dental Topics");
     for (const link of oralHealthHubResourceGroups.flatMap((group) => group.links)) {
       expect(content?.html).toContain(`href="${link.href}"`);
       expect(content?.html).toContain(`>${link.title.replace(/&/g, "&amp;")}</a>`);

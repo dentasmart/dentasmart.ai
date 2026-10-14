@@ -9,10 +9,11 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { ChevronDown, ChevronRight, Stethoscope, DollarSign, ShieldCheck, HeartPulse, BookOpen, Scale, HelpCircle, Activity, Search } from "lucide-react";
-import { Fragment, useState, useEffect, useRef } from "react";
+import { Fragment, useState, useEffect, useRef, type MouseEvent as ReactMouseEvent } from "react";
 import { motion, AnimatePresence, useReducedMotion, type Transition } from "framer-motion";
 import { trackConversionEvent } from "@/lib/analytics";
 import { getBreadcrumbs } from "@shared/breadcrumbs";
+import { oralHealthHubArticlesAnchorEvent, oralHealthHubArticlesHref } from "@shared/oralHealthHub";
 
 // Mega-menu category structure - scalable for future hubs
 const megaMenuCategories = [
@@ -48,7 +49,7 @@ const megaMenuCategories = [
       { label: "Prevention Hub", href: "/oral-health-hub/prevention/", description: "Protect your teeth daily" },
       { label: "Lifestyle & Oral Health", href: "/lifestyle/", description: "How daily habits affect your teeth" },
       { label: "Dental Guides", href: "/guides/", description: "Step-by-step oral health guides" },
-      { label: "Blog", href: "/oral-health-hub/", description: "Expert dental health articles" },
+      { label: "Blog", href: oralHealthHubArticlesHref, description: "Expert dental health articles" },
     ],
   },
   {
@@ -181,6 +182,17 @@ export default function Navigation() {
     }, 200);
   };
 
+  const handleArticleAnchorNavigation = (event: ReactMouseEvent<HTMLAnchorElement>) => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    if (window.location.pathname !== ORAL_HEALTH_HUB_PATH && window.location.pathname !== "/oral-health-hub") return;
+
+    event.preventDefault();
+    if (window.location.hash !== "#articles") {
+      window.history.pushState(null, "", oralHealthHubArticlesHref);
+    }
+    window.dispatchEvent(new Event(oralHealthHubArticlesAnchorEvent));
+  };
+
   return (
     <>
       <motion.nav
@@ -195,13 +207,13 @@ export default function Navigation() {
       >
         <div className="container flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link href="/" className="flex flex-col items-center gap-1 group z-50 relative">
+          <Link href="/" className="flex flex-none flex-col items-center gap-1 group z-50 relative">
             <img
               src="/images/logo.png"
               alt="DentaSmart Logo"
               className="h-8 md:h-10 w-auto transition-transform duration-300 group-hover:scale-105"
             />
-            <p className={`text-[10px] md:text-xs font-medium tracking-wide transition-colors duration-300 ${
+            <p className={`whitespace-nowrap text-[10px] md:text-xs font-medium tracking-wide transition-colors duration-300 ${
               scrolled || isOpen ? "text-teal-700" : "text-teal-800"
             }`}>
               Your Personal AI Dentist in Your Pocket
@@ -209,12 +221,12 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-7">
+          <div className="hidden xl:flex flex-none items-center gap-5">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-[15px] font-medium tracking-wide transition-all duration-300 relative group ${
+                className={`whitespace-nowrap text-[15px] font-medium tracking-wide transition-all duration-300 relative group ${
                   isActive(item.href)
                     ? "text-teal-900"
                     : (scrolled ? "text-teal-600 hover:text-teal-800" : "text-teal-700 hover:text-teal-900")
@@ -243,7 +255,7 @@ export default function Navigation() {
                     : (scrolled ? "text-teal-600 hover:text-teal-800" : "text-teal-700 hover:text-teal-900")
                 }`}
               >
-                Oral Health
+                Oral Health Hub
                 <span className={`absolute -bottom-1 left-0 w-full h-px bg-teal-900 origin-left transition-transform duration-300 ${
                   isOralHealthActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-50"
                 }`} />
@@ -298,7 +310,10 @@ export default function Navigation() {
                                 <Link
                                   key={item.href}
                                   href={item.href}
-                                  onClick={() => setMegaMenuOpen(false)}
+                                  onClick={(event) => {
+                                    setMegaMenuOpen(false);
+                                    if (item.href === oralHealthHubArticlesHref) handleArticleAnchorNavigation(event);
+                                  }}
                                   className={`block px-3 py-2 rounded-lg transition-all duration-150 group/item ${
                                     isActive(item.href)
                                       ? "bg-primary/8"
@@ -342,7 +357,7 @@ export default function Navigation() {
           </div>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden xl:flex flex-none items-center gap-3">
             <Button
               size="sm"
               variant="outline"
@@ -392,7 +407,7 @@ export default function Navigation() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="hidden lg:flex items-center gap-3 absolute right-4 top-full mt-2 bg-primary/95 backdrop-blur-sm text-white rounded-full px-5 py-2.5 shadow-lg"
+                className="hidden xl:flex items-center gap-3 absolute right-4 top-full mt-2 bg-primary/95 backdrop-blur-sm text-white rounded-full px-5 py-2.5 shadow-lg"
               >
                 <span className="text-sm font-medium">Start with a Free Quick Check</span>
                 <Button
@@ -418,7 +433,7 @@ export default function Navigation() {
           {/* Mobile Menu Button */}
           <button
             ref={mobileMenuButtonRef}
-            className={`lg:hidden min-h-11 min-w-11 p-2 z-50 relative transition-colors duration-300 ${scrolled || isOpen ? "text-teal-900" : "text-teal-900"}`}
+            className={`xl:hidden min-h-11 min-w-11 p-2 z-50 relative transition-colors duration-300 ${scrolled || isOpen ? "text-teal-900" : "text-teal-900"}`}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
             aria-expanded={isOpen}
@@ -474,7 +489,7 @@ export default function Navigation() {
             animate={{ opacity: 1, clipPath: "circle(150% at 100% 0%)" }}
             exit={shouldReduceMotion ? undefined : { opacity: 0, clipPath: "circle(0% at 100% 0%)" }}
             transition={mobileMenuTransition}
-            className="fixed inset-0 z-40 bg-background flex flex-col pt-24 px-6 pb-8 lg:hidden"
+            className="fixed inset-0 z-40 bg-background flex flex-col pt-24 px-6 pb-8 xl:hidden"
           >
             <div className="flex flex-col gap-3 flex-1 overflow-y-auto">
               {navItems.map((item, idx) => (
@@ -512,7 +527,7 @@ export default function Navigation() {
                     }`}
                     onClick={() => setIsOpen(false)}
                   >
-                    Oral Health
+                    Oral Health Hub
                   </Link>
                   <button
                     type="button"
@@ -585,10 +600,11 @@ export default function Navigation() {
                                           className={`block py-2 text-base font-light ${
                                             isActive(item.href) ? "text-primary font-medium" : "text-stone-600"
                                           }`}
-                                          onClick={() => {
+                                          onClick={(event) => {
                                             setIsOpen(false);
                                             setMobileOralHealthOpen(false);
                                             setMobileExpandedCategory(null);
+                                            if (item.href === oralHealthHubArticlesHref) handleArticleAnchorNavigation(event);
                                           }}
                                         >
                                           {item.label}
