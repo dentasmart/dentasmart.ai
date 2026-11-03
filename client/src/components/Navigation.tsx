@@ -373,7 +373,7 @@ export default function Navigation() {
               className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-5 text-sm font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 cursor-pointer"
               onClick={() => {
                 if (location === '/') {
-                  trackConversionEvent("quick_check_start", {
+                  trackConversionEvent("cta_click", {
                     cta_id: "header_free_quick_check",
                     surface: "header",
                     intent: "quick_check",
@@ -388,7 +388,7 @@ export default function Navigation() {
                   trackConversionEvent("download_hub_open", {
                     cta_id: "header_free_quick_check",
                     surface: "header",
-                    intent: "download",
+                    intent: "quick_check",
                     destination_type: "internal_route",
                     destination_path: "/download/",
                   });
@@ -417,7 +417,7 @@ export default function Navigation() {
                     trackConversionEvent("download_hub_open", {
                       cta_id: "header_sticky_free_quick_check",
                       surface: "sticky",
-                      intent: "download",
+                      intent: "quick_check",
                       destination_type: "internal_route",
                       destination_path: "/download/",
                     });
@@ -645,7 +645,7 @@ export default function Navigation() {
                 onClick={() => {
                   setIsOpen(false);
                 if (location === '/') {
-                  trackConversionEvent("quick_check_start", {
+                  trackConversionEvent("cta_click", {
                     cta_id: "mobile_header_free_quick_check",
                     surface: "header",
                     intent: "quick_check",
@@ -660,7 +660,7 @@ export default function Navigation() {
                   trackConversionEvent("download_hub_open", {
                     cta_id: "mobile_header_free_quick_check",
                     surface: "header",
-                    intent: "download",
+                    intent: "quick_check",
                     destination_type: "internal_route",
                     destination_path: "/download/",
                   });

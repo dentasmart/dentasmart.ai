@@ -27,15 +27,17 @@ export function DemoRequestModal({ isOpen, onClose }: DemoRequestModalProps) {
   });
 
   const joinBenefits = trpc.waitlist.joinBenefits.useMutation({
-    onSuccess: () => {
+    onSuccess: (data) => {
       setIsSubmitting(false);
       setIsSuccess(true);
-      trackConversionEvent("employer_demo_submitted", {
-        cta_id: "employer_demo_form_submitted",
-        surface: "employer_form",
-        intent: "employer_demo",
-        destination_type: "employer_form",
-      });
+      if (data.success === true && data.alreadyExists !== true) {
+        trackConversionEvent("employer_demo_submitted", {
+          cta_id: "employer_demo_form_submitted",
+          surface: "employer_form",
+          intent: "employer_demo",
+          destination_type: "employer_form",
+        });
+      }
     },
     onError: () => {
       setIsSubmitting(false);
