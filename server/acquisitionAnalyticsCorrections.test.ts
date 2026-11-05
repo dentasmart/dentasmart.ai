@@ -231,6 +231,47 @@ function scroll(runner: HookRunner, y: number) {
   runner.render();
 }
 
+describe("Navigation visible breadcrumbs", () => {
+  const lists = (runner: HookRunner) => elements(runner.tree).filter((element) => element.type === "ol");
+
+  it.each(["/oral-health-hub", "/oral-health-hub/"])("omits the Hub index breadcrumb on %s, including after mobile menu disclosure", (path) => {
+    const runner = navigation(path);
+    expect(lists(runner)).toHaveLength(0);
+    const toggle = () => {
+      one(runner.tree, (element) => element.props["aria-label"] === "Toggle menu").props.onClick();
+      runner.render();
+    };
+    toggle();
+    expect(lists(runner)).toHaveLength(0);
+    toggle();
+    expect(lists(runner)).toHaveLength(0);
+    expect(mocks.track).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ["/conditions/", "HomeConditions"],
+    ["/symptoms/tooth-pain-when-biting/", "HomeSymptomsTooth Pain When Biting"],
+    ["/treatments/braces/", "HomeTreatmentsBraces"],
+  ])("retains the existing hierarchy breadcrumb on %s", (path, expected) => {
+    const runner = navigation(path);
+    expect(lists(runner)).toHaveLength(1);
+    expect(text(lists(runner)[0])).toBe(expected);
+    expect(mocks.track).not.toHaveBeenCalled();
+  });
+
+  it("removes and restores only the visible breadcrumb when the SPA route changes", () => {
+    const runner = navigation("/conditions/");
+    expect(lists(runner)).toHaveLength(1);
+    mocks.route = "/oral-health-hub/";
+    runner.render();
+    expect(lists(runner)).toHaveLength(0);
+    mocks.route = "/conditions/";
+    runner.render();
+    expect(text(lists(runner)[0])).toBe("HomeConditions");
+    expect(mocks.track).not.toHaveBeenCalled();
+  });
+});
+
 describe.each(["desktop", "mobile"] as const)("Navigation %s Free Quick Check callbacks", (device) => {
   const ctaId = device === "desktop" ? "header_free_quick_check" : "mobile_header_free_quick_check";
 

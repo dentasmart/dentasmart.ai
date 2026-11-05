@@ -166,7 +166,9 @@ export default function Navigation() {
   };
 
   const isOralHealthActive = location.startsWith(ORAL_HEALTH_HUB_PATH) || allResourceItems.some(item => isActive(item.href));
-  const breadcrumbItems = getBreadcrumbs(location);
+  const breadcrumbItems = location === ORAL_HEALTH_HUB_PATH || location === "/oral-health-hub"
+    ? []
+    : getBreadcrumbs(location);
 
   const handleMegaMenuEnter = () => {
     if (megaMenuTimeoutRef.current) {
