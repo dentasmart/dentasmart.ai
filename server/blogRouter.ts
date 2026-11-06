@@ -104,6 +104,16 @@ function rethrowReviewerMetadataPrecondition(error: unknown): never {
   }
   throw error;
 }
+// Admins may supply an explicit first-publication date so a refreshed legacy
+// article keeps its original date instead of inheriting today's date on save.
+function parsePublishedAt(value?: string): Date | undefined {
+  if (!value) return undefined;
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) {
+    throw new TRPCError({ code: "BAD_REQUEST", message: "publishedAt must be a valid ISO date" });
+  }
+  return parsed;
+}
 
 export const blogRouter = router({
   // ============ Admin Auth ============
@@ -186,6 +196,7 @@ export const blogRouter = router({
       reviewerProfileUrl: z.string().max(1000).optional(),
       lastReviewed: z.string().max(10).optional(),
       reviewerJsonLd: z.string().max(20000).optional(),
+      publishedAt: z.string().optional(),
       status: z.enum(["draft", "published", "unpublished"]).optional(),
     }))
     .mutation(async ({ input }) => {
@@ -207,7 +218,9 @@ export const blogRouter = router({
           ...input,
           slug,
           status: input.status || "draft",
-          publishedAt: input.status === "published" ? new Date() : undefined,
+          publishedAt: input.status === "published"
+            ? parsePublishedAt(input.publishedAt) ?? new Date()
+            : undefined,
         });
       } catch (error) {
         rethrowReviewerMetadataPrecondition(error);
@@ -262,12 +275,15 @@ export const blogRouter = router({
       reviewerProfileUrl: z.string().max(1000).optional(),
       lastReviewed: z.string().max(10).optional(),
       reviewerJsonLd: z.string().max(20000).optional(),
+      publishedAt: z.string().optional(),
       status: z.enum(["draft", "published", "unpublished"]).optional(),
     }))
     .mutation(async ({ input }) => {
       const { id, ...data } = input;
 
       validateReviewerMetadataInput(data);
+      (data as any).publishedAt = parsePublishedAt(input.publishedAt);
+      if (!(data as any).publishedAt) delete (data as any).publishedAt;
 
       // Sanitize and check slug uniqueness if slug is being changed
       if (data.slug) {
