@@ -35,7 +35,7 @@ const phase5PublicSources = [
 
 describe("Phase 5 verified product truth", () => {
   it("keeps the stable product terminology and approved tagline in the central facts registry", () => {
-    expect(brand.tagline).toBe("Your Personal AI Dentist in Your Pocket");
+    expect(brand.tagline).toBe("Better Teeth. Lower Costs");
     expect(brand.aiPersonaName).toBe("Dr. Din");
     expect(productTerminology).toEqual({
       dentaSmart: "DentaSmart",

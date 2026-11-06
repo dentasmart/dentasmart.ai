@@ -51,7 +51,7 @@ describe("injectMetaTags", () => {
 
   it("keeps the homepage tagline while using compact titles on representative routes", async () => {
     const expected = [
-      ["/", "DentaSmart | Your Personal AI Dentist in Your Pocket"],
+      ["/", "DentaSmart | Better Teeth. Lower Costs"],
       ["/team", "Meet the DentaSmart Team and Advisors | DentaSmart"],
       ["/pricing", "DentaSmart Pricing | Free Quick Check, Full Quick Check & Complete Care | DentaSmart"],
       ["/features", "DentaSmart Features | Oral Health Reports and Tracking | DentaSmart"],

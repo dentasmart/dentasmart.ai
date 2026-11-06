@@ -14,6 +14,7 @@ import { motion, AnimatePresence, useReducedMotion, type Transition } from "fram
 import { trackConversionEvent } from "@/lib/analytics";
 import { getBreadcrumbs } from "@shared/breadcrumbs";
 import { oralHealthHubArticlesAnchorEvent, oralHealthHubArticlesHref } from "@shared/oralHealthHub";
+import { brand } from "@shared/facts";
 
 // Mega-menu category structure - scalable for future hubs
 const megaMenuCategories = [
@@ -218,7 +219,7 @@ export default function Navigation() {
             <p className={`whitespace-nowrap text-[10px] md:text-xs font-medium tracking-wide transition-colors duration-300 ${
               scrolled || isOpen ? "text-teal-700" : "text-teal-800"
             }`}>
-              Your Personal AI Dentist in Your Pocket
+              {brand.tagline}
             </p>
           </Link>
 

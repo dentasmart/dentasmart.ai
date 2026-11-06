@@ -164,7 +164,7 @@ describe("Phase 6 content governance", () => {
     expect(pricing.additionalFamilyMember.priceFormatted).toBe("$19.99");
     expect(app.iosId).toBe("6670311232");
     expect(app.androidPackage).toBe("com.dentaSmart.app.android");
-    expect(brand.tagline).toBe("Your Personal AI Dentist in Your Pocket");
+    expect(brand.tagline).toBe("Better Teeth. Lower Costs");
   });
 
   it("keeps active public sources free of Unicode em dashes", () => {

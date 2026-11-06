@@ -272,6 +272,22 @@ describe("Navigation visible breadcrumbs", () => {
   });
 });
 
+describe("Navigation approved brand lockup", () => {
+  it.each(["/", "/pricing/", "/oral-health-hub/"])("renders the exact tagline on %s before and after mobile menu disclosure", (path) => {
+    const runner = navigation(path);
+    const expectTagline = () => {
+      const treeText = text(runner.tree);
+      expect(treeText.match(/Better Teeth\. Lower Costs(?!\.)/g)).toHaveLength(1);
+      expect(treeText).not.toContain("Your Personal AI Dentist in Your Pocket");
+      expect(mocks.track).not.toHaveBeenCalled();
+    };
+    expectTagline();
+    one(runner.tree, (element) => element.props["aria-label"] === "Toggle menu").props.onClick();
+    runner.render();
+    expectTagline();
+  });
+});
+
 describe.each(["desktop", "mobile"] as const)("Navigation %s Free Quick Check callbacks", (device) => {
   const ctaId = device === "desktop" ? "header_free_quick_check" : "mobile_header_free_quick_check";
 

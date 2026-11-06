@@ -1,9 +1,11 @@
-export const SITE_TITLE_PHRASE = "Your Personal AI Dentist in Your Pocket";
+import { brand } from "./facts";
+
+export const SITE_TITLE_PHRASE = brand.tagline;
 const SITE_TITLE_SUFFIX = "DentaSmart";
 
 const OLD_HOME_TITLE = "DentaSmart | Your Personal AI Oral Health Guide";
 const CURRENT_HOME_TITLE = `DentaSmart | ${SITE_TITLE_PHRASE}`;
-const LEGACY_BRAND_SUFFIX = /\s*\|\s*(?:Your Personal AI Dentist in Your Pocket|DentaSmart(?:\s+Oral Health Hub)?)\s*$/i;
+const LEGACY_BRAND_SUFFIX = /\s*\|\s*(?:Your Personal AI Dentist in Your Pocket|Better Teeth\. Lower Costs\.?|DentaSmart(?:\s+Oral Health Hub)?)\s*$/i;
 
 function removeTrailingBrandSuffixes(title: string): string {
   let topic = title.trim();

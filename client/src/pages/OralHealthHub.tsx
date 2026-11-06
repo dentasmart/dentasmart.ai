@@ -21,6 +21,7 @@ import Footer from "@/components/Footer";
 import { breadcrumbSchema, webPageSchema } from "@/lib/schema";
 import { trpc } from "@/lib/trpc";
 import { trackConversionEvent } from "@/lib/analytics";
+import { brand } from "@shared/facts";
 import {
   oralHealthHubArticlesAnchorEvent,
   oralHealthHubArticlesHref,
@@ -310,7 +311,7 @@ export default function OralHealthHub() {
                     />
                   </picture>
                   <div className="absolute bottom-7 left-7 right-7 rounded-2xl bg-white/95 p-4 shadow-lg backdrop-blur-sm">
-                    <p className="text-sm font-semibold text-stone-950">Your Personal AI Dentist in Your Pocket</p>
+                    <p className="text-sm font-semibold text-stone-950">{brand.tagline}</p>
                     <p className="mt-1 text-sm leading-5 text-stone-600">Educational information to help you prepare for professional care.</p>
                   </div>
                 </div>

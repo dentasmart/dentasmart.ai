@@ -18,7 +18,7 @@
 
 export const brand = {
   productName: "DentaSmart",
-  tagline: "Your Personal AI Dentist in Your Pocket",
+  tagline: "Better Teeth. Lower Costs",
   aiPersonaName: "Dr. Din",
 } as const;
 

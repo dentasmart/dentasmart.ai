@@ -2,7 +2,7 @@ import { Express, Request, Response } from "express";
 import { listBlogPosts } from "./blogDb";
 import { staticRoutes as allRoutes } from "../shared/routes";
 import { resolveRedirect } from "./redirectCache";
-import { company, pricing } from "../shared/facts";
+import { brand, company, pricing } from "../shared/facts";
 
 const SITE_URL = "https://dentasmart.ai";
 const NL = "\r\n";
@@ -225,7 +225,7 @@ function normalizeLlmsOutputUrls(content: string): string {
 
 function buildLlmsTxt(): string {
   const content = [
-    "# DentaSmart - Your Personal AI Dentist in Your Pocket",
+    `# DentaSmart - ${brand.tagline}`,
     "> AI-powered oral health education and decision-preparation tools.",
     "",
     "DentaSmart helps people organize oral health information with supported photo, X-ray, treatment-document, and educational tools. It provides educational information and does not diagnose conditions or replace professional dental care.",

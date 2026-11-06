@@ -8,6 +8,7 @@ import { trackAppDownload, trackConversionEvent, getAppStoreUrl, getPlayStoreUrl
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle, MinusCircle, Smartphone, Shield, Clock, TrendingUp, Heart, DollarSign, Users } from "lucide-react";
 import { Link } from "wouter";
+import { brand } from "@shared/facts";
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -94,7 +95,7 @@ export default function DentaSmartVsChatGPT() {
               ChatGPT can answer general questions. DentaSmart organizes supported oral health records and educational context. Neither tool replaces a licensed dentist's diagnosis or treatment decision.
             </p>
             <p className="text-sm text-stone-500 mb-8 font-medium">
-              Your Personal AI Dentist in Your Pocket.
+              {brand.tagline}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild size="lg" className="bg-teal-700 text-white hover:bg-teal-800 rounded-full px-8 py-6 text-base font-medium cursor-pointer transition-all hover:scale-105 shadow-lg w-full sm:w-auto">

@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
 import { trackAppDownload, getAppStoreUrl, openConsentPreferences } from "@/lib/analytics";
+import { brand } from "@shared/facts";
 
 export default function Footer() {
   return (
@@ -16,7 +17,7 @@ export default function Footer() {
                 className="h-12 w-auto"
               />
               <p className="text-xl font-light tracking-wide text-black">
-                Your Personal AI Dentist in Your Pocket
+                {brand.tagline}
               </p>
             </div>
 
