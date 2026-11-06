@@ -279,11 +279,14 @@ export const blogRouter = router({
       status: z.enum(["draft", "published", "unpublished"]).optional(),
     }))
     .mutation(async ({ input }) => {
-      const { id, ...data } = input;
+      const { id, publishedAt, ...fields } = input;
 
-      validateReviewerMetadataInput(data);
-      (data as any).publishedAt = parsePublishedAt(input.publishedAt);
-      if (!(data as any).publishedAt) delete (data as any).publishedAt;
+      validateReviewerMetadataInput(fields);
+      const data: Parameters<typeof updateBlogPost>[1] = {
+        ...fields,
+        publishedAt: parsePublishedAt(publishedAt),
+      };
+      if (!data.publishedAt) delete data.publishedAt;
 
       // Sanitize and check slug uniqueness if slug is being changed
       if (data.slug) {
@@ -306,7 +309,7 @@ export const blogRouter = router({
         }
       }
       if (data.status === "published" && existing && !existing.publishedAt) {
-        (data as any).publishedAt = new Date();
+        data.publishedAt = new Date();
       }
 
       try {
