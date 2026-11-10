@@ -108,8 +108,10 @@ describe("Phase 9 source-only medical page safeguards", () => {
     expect(symptomsSource).toContain("sourceRefs?: ContentSourceRef[];");
     expect(symptomsSource.match(/sourceRefs: \[/g)).toHaveLength(2);
     expect(symptomPageSource).toContain("sourceRefs: symptom.sourceRefs");
-    expect(symptomPageSource).toContain("<ExternalSources governedSources={symptom.sourceRefs} />");
-    expect(symptomPageSource).toContain("symptom.sourceRefs &&");
+    expect(symptomPageSource).toContain("<ExternalSources governedSources={symptom.sourceRefs} route={`/symptoms/${symptom.slug}/`} />");
+    const externalSourcesSource = readFileSync(path.join(projectRoot, "client/src/components/ExternalSources.tsx"), "utf8");
+    expect(externalSourcesSource).toContain("if (visibleSources.length === 0) return null;");
+    expect(externalSourcesSource).toContain("resolvePublicEvidenceSources({ sources, governedSources, route })");
     expect(symptomPageSource).toContain("urgentCareText={symptom.nextStepsUrgencyText}");
   });
 });

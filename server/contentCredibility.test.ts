@@ -75,7 +75,8 @@ describe("source-controlled public content credibility", () => {
     )?.[1];
 
     expect(finderEntry).toBeTruthy();
-    expect(finderEntry).toContain("How to Choose a Dentist");
+    expect(finderEntry).toContain("How to Find the Right Dentist");
+    expect(finderEntry).toContain("credentials, services, access, fees");
     expect(finderEntry).not.toMatch(/dentist finder|search by location|search by specialty/i);
   });
 });

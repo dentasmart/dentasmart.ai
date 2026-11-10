@@ -16,6 +16,8 @@ import ContentGovernanceMeta from "@/components/ContentGovernanceMeta";
 import ExternalSources from "@/components/ExternalSources";
 import QuickAnswerBlock from "@/components/QuickAnswerBlock";
 import type { ContentGovernance } from "@shared/contentGovernance";
+import { trpc } from "@/lib/trpc";
+import CmsPublishedCondition from "@/components/cms/CmsPublishedCondition";
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [open, setOpen] = useState(false);
@@ -42,6 +44,10 @@ export default function ConditionPage() {
   const slug = params?.slug || "";
   const condition = slug ? conditionsData[slug] : null;
   const aeo = slug ? aeoConditions[slug] : null;
+  const { data: testPublication, isLoading: checkingTestPublication } = trpc.cms.getTestPublished.useQuery(
+    { slug },
+    { enabled: slug === "toothache", retry: false, staleTime: 15_000 },
+  );
   const governance: ContentGovernance | undefined = condition ? {
     contentId: `condition:${condition.slug}`,
     contentVersion: condition.lastReviewed || "legacy",
@@ -66,6 +72,13 @@ export default function ConditionPage() {
       reason: "Existing condition review fields require governed provenance before public display.",
     }],
   } : undefined;
+
+  if (slug === "toothache" && checkingTestPublication) {
+    return <div className="min-h-screen flex items-center justify-center text-stone-500">Loading page…</div>;
+  }
+  if (slug === "toothache" && testPublication) {
+    return <CmsPublishedCondition document={testPublication} />;
+  }
 
   if (!condition) {
     return (

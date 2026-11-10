@@ -7,6 +7,8 @@ import net from "net";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerOAuthRoutes } from "./oauth";
 import { registerStorageProxy } from "./storageProxy";
+import { registerCmsTestMediaRoutes } from "../cmsTestMedia";
+import { registerCmsPrivateMediaRoutes } from "../cmsPrivateMediaRead";
 import { registerOrigamiVisitorsProxy } from "./origamiVisitorsProxy";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
@@ -91,6 +93,8 @@ async function startServer() {
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
   // Storage proxy for uploaded assets
   registerStorageProxy(app);
+  registerCmsTestMediaRoutes(app);
+  registerCmsPrivateMediaRoutes(app);
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
 

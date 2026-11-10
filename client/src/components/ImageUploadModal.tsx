@@ -17,6 +17,8 @@ import {
 } from "@/components/ui/tabs";
 import { Upload, Link as LinkIcon, Loader2, ImageIcon, X, Library, Search, Check } from "lucide-react";
 import { trpc } from "@/lib/trpc";
+import { toast } from "sonner";
+import { shouldSaveMediaAltDefault } from "@shared/mediaAltPolicy";
 
 interface ImageUploadModalProps {
   open: boolean;
@@ -41,6 +43,9 @@ export default function ImageUploadModal({ open, onClose, onInsert, defaultTab =
   const [libraryAlt, setLibraryAlt] = useState("");
 
   const uploadMutation = trpc.blog.uploadImage.useMutation();
+  const mediaUpdate = trpc.media.update.useMutation();
+  const utils = trpc.useUtils();
+  const [error, setError] = useState("");
 
   // Fetch media items for library tab (only when tab is active and modal is open)
   const { data: mediaData, isLoading: mediaLoading } = trpc.media.list.useQuery(
@@ -61,6 +66,7 @@ export default function ImageUploadModal({ open, onClose, onInsert, defaultTab =
     setLibrarySearch("");
     setSelectedMediaId(null);
     setLibraryAlt("");
+    setError("");
   }, [defaultTab]);
 
   const handleClose = () => {
@@ -96,21 +102,26 @@ export default function ImageUploadModal({ open, onClose, onInsert, defaultTab =
 
   const handleUploadAndInsert = async () => {
     if (!selectedFile) return;
+    setError("");
     try {
-      const reader = new FileReader();
-      reader.onload = async (e) => {
-        const base64 = (e.target?.result as string).split(",")[1];
-        const result = await uploadMutation.mutateAsync({
-          fileName: selectedFile.name,
-          fileBase64: base64,
-          mimeType: selectedFile.type,
-        });
-        onInsert(result.url, altText || undefined);
-        handleClose();
-      };
-      reader.readAsDataURL(selectedFile);
-    } catch {
-      // Error handled by mutation
+      const base64 = await new Promise<string>((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onerror = () => reject(new Error("Unable to read the image file."));
+        reader.onload = () => resolve(String(reader.result || "").split(",")[1] || "");
+        reader.readAsDataURL(selectedFile);
+      });
+      if (!base64) throw new Error("The selected file is empty.");
+      const result = await uploadMutation.mutateAsync({
+        fileName: selectedFile.name,
+        fileBase64: base64,
+        mimeType: selectedFile.type,
+        altText: altText.trim(),
+      });
+      await utils.media.list.invalidate();
+      onInsert(result.url, altText || undefined);
+      handleClose();
+    } catch (error) {
+      setError(error instanceof Error ? error.message : "Unable to save image and alt text.");
     }
   };
 
@@ -120,12 +131,28 @@ export default function ImageUploadModal({ open, onClose, onInsert, defaultTab =
     handleClose();
   };
 
-  const handleLibraryInsert = () => {
+  const handleLibraryInsert = async () => {
     if (!selectedMedia) return;
-    const src = selectedMedia.mediumUrl || selectedMedia.url;
-    const alt = libraryAlt || selectedMedia.altText || selectedMedia.filename;
-    onInsert(src, alt || undefined);
-    handleClose();
+    setError("");
+    try {
+      // The library default changes only when the editor deliberately changes
+      // this field. The inserted article still owns its own alt attribute.
+      if (shouldSaveMediaAltDefault(selectedMedia.id, selectedMedia.altText || "", libraryAlt)) {
+        try {
+          await mediaUpdate.mutateAsync({ id: selectedMedia.id, altText: libraryAlt });
+        } catch (error) {
+          if (!(error instanceof Error) || !error.message.includes("MULTIPLE_USE_CONFIRMATION_REQUIRED") ||
+            !window.confirm("This image is used on several pages. Update alt text in all saved drafts?")) throw error;
+          await mediaUpdate.mutateAsync({ id: selectedMedia.id, altText: libraryAlt, confirmMultiple: true });
+        }
+        await utils.media.list.invalidate();
+        toast.success("Alt text saved to Media Library");
+      }
+      onInsert(selectedMedia.mediumUrl || selectedMedia.url, libraryAlt || undefined);
+      handleClose();
+    } catch (error) {
+      setError(error instanceof Error ? error.message : "Cannot save alt text to Media Library.");
+    }
   };
 
   const handleSelectMedia = (id: number) => {
@@ -311,7 +338,7 @@ export default function ImageUploadModal({ open, onClose, onInsert, defaultTab =
                   </div>
                 </div>
                 <div>
-                  <Label className="text-sm text-stone-600">Alt Text</Label>
+                  <Label className="text-sm text-stone-600">Alt Text (also updates Media Library default)</Label>
                   <Input
                     value={libraryAlt}
                     onChange={(e) => setLibraryAlt(e.target.value)}
@@ -324,6 +351,7 @@ export default function ImageUploadModal({ open, onClose, onInsert, defaultTab =
           </TabsContent>
         </Tabs>
 
+        {error && <p role="alert" className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>}
         <DialogFooter className="mt-4 shrink-0">
           <Button variant="outline" onClick={handleClose} className="cursor-pointer">
             Cancel
@@ -354,7 +382,7 @@ export default function ImageUploadModal({ open, onClose, onInsert, defaultTab =
           {tab === "library" && (
             <Button
               onClick={handleLibraryInsert}
-              disabled={!selectedMediaId}
+              disabled={!selectedMediaId || mediaUpdate.isPending}
               className="bg-primary hover:bg-primary/90 text-white cursor-pointer"
             >
               <ImageIcon className="w-4 h-4 mr-1.5" />

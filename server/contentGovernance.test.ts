@@ -168,6 +168,19 @@ describe("Phase 6 content governance", () => {
   });
 
   it("keeps active public sources free of Unicode em dashes", () => {
+    // The SEO audit is rendered only inside the admin Blog Editor, not public pages.
+    // Keep its exclusion narrow and verify that the admin editor owns the import.
+    const adminEditor = read("client/src/pages/AdminBlogEditor.tsx");
+    expect(adminEditor).toContain('import BlogAdvancedSeoAudit from "@/components/blog/BlogAdvancedSeoAudit"');
+    const adminCmsEditor = read("client/src/pages/AdminCmsPreview.tsx");
+    expect(adminCmsEditor).toContain('import CmsOrganizationReviewPanel from "@/components/cms/CmsOrganizationReviewPanel"');
+    expect(adminCmsEditor).toContain('import CmsSeoPanels from "@/components/cms/CmsSeoPanels"');
+    expect(adminCmsEditor).toContain('<AdminLayout activeId="cms-preview">');
+    const cmsWorkspace = read("client/src/pages/CmsContentWorkspace.tsx");
+    expect(cmsWorkspace).toContain('import AdminLayout from "@/components/AdminLayout"');
+    expect(cmsWorkspace).toContain('setLocation("/admin/content-workspace")');
+    expect(cmsWorkspace).toContain('<AdminLayout');
+
     const files = [
       "client/src",
       "server/metaTags.ts",
@@ -189,10 +202,19 @@ describe("Phase 6 content governance", () => {
     }).filter((path) =>
       !path.endsWith("/shared/routes.ts") &&
       !path.includes("/pages/Admin") &&
-      !path.includes("/components/editor/")
+      !path.includes("/components/editor/") &&
+      !path.endsWith("/components/blog/BlogAdvancedSeoAudit.tsx") &&
+      !path.endsWith("/components/cms/CmsOrganizationReviewPanel.tsx") &&
+      !path.endsWith("/components/cms/CmsSeoPanels.tsx") &&
+      !path.endsWith("/pages/CmsContentWorkspace.tsx")
     );
-    for (const path of scan) {
-      expect(withoutNonRenderedComments(readFileSync(path, "utf8"))).not.toContain("—");
-    }
+    const violations = scan.flatMap((path) => {
+      const source = withoutNonRenderedComments(readFileSync(path, "utf8"));
+      return source.split("\n").flatMap((line, index) =>
+        line.includes("—") ? [`${path.replace(root + "/", "")}:${index + 1}`] : []
+      );
+    });
+    // Report all locations together so new components cannot hide subsequent public violations.
+    expect(violations).toEqual([]);
   });
 });

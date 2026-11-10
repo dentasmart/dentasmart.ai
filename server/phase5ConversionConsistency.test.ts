@@ -209,7 +209,8 @@ describe("Phase 5 conversion and trust contracts", () => {
     expect(demoModal).toContain("trpc.waitlist.joinBenefits.useMutation");
     expect(demoModal).toContain('trackConversionEvent("employer_demo_submit_attempt", {');
     expect(demoModal).toContain('trackConversionEvent("employer_demo_submitted", {');
-    expect(demoModal).toContain("onSuccess: () => {");
+    expect(demoModal).toContain("onSuccess: (data) => {");
+    expect(demoModal).toContain("if (data.success === true && data.alreadyExists !== true) {");
     expect(demoModal).toContain("setIsSuccess(true)");
     expect(demoModal).toContain("onError: () => {");
     expect(demoModal).toContain("We could not send your demo request. Please try again.");
@@ -225,7 +226,7 @@ describe("Phase 5 conversion and trust contracts", () => {
     const home = projectFile("client/src/pages/Home.tsx");
     const faqs = projectFile("client/src/pages/FAQs.tsx");
 
-    expect(navigation).toContain("lg:hidden min-h-11 min-w-11 p-2");
+    expect(navigation).toContain("xl:hidden min-h-11 min-w-11 p-2");
     expect(home).toContain("min-h-11 bg-action");
     expect(home.match(/inline-flex min-h-11 min-w-11 items-center justify-center/g)?.length).toBeGreaterThanOrEqual(2);
     expect(faqs.match(/className={`min-h-11 rounded-full px-6/g)).toHaveLength(2);

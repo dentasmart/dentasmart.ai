@@ -64,7 +64,7 @@ describe("Phase 9 insurance comparison factual safety", () => {
 
   it("uses the primary comparison page for source-controlled AEO ownership", () => {
     expect(llmsSource).toContain(
-      "DentaSmart vs Dental Insurance (https://dentasmart.ai/compare/dentasmart-vs-dental-insurance/)",
+      "`- [DentaSmart vs Dental Insurance](${SITE_URL}/compare/dentasmart-vs-dental-insurance/)`",
     );
     expect(llmsSource).not.toContain(
       "DentaSmart vs Dental Insurance (https://dentasmart.ai/oral-health-hub/dentasmart-vs-dental-insurance)",

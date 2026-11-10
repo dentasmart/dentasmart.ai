@@ -1,6 +1,7 @@
 import { eq, like, and, or, desc, asc, sql, isNull } from "drizzle-orm";
 import { getDb } from "./db";
-import { blogPosts, adminUsers, blogCategories, InsertBlogPost, BlogPost, InsertAdminUser, BlogCategory, InsertBlogCategory } from "../drizzle/schema";
+import { blogPosts, blogPostRevisions, adminUsers, blogCategories, InsertBlogPost, BlogPost, InsertAdminUser, BlogCategory, InsertBlogCategory } from "../drizzle/schema";
+import { appendBlogPostRevision, inferBlogRevisionAction, isBlogRevisionHistoryAvailable } from "./blogRevisions";
 import bcrypt from "bcryptjs";
 import { selectBlogCardHero } from "./blogCardHero";
 
@@ -256,6 +257,16 @@ export async function createBlogPost(data: InsertBlogPost): Promise<number> {
   if (!(await hasReviewerMetadataColumns(db))) {
     return insertLegacyBlogPost(db, data);
   }
+  if (await isBlogRevisionHistoryAvailable(db)) {
+    return db.transaction(async (tx) => {
+      const result = await tx.insert(blogPosts).values(data);
+      const postId = Number(result[0].insertId);
+      const [created] = await tx.select().from(blogPosts).where(eq(blogPosts.id, postId)).limit(1);
+      if (!created) throw new Error("Unable to read newly created blog revision");
+      await appendBlogPostRevision(tx, postId, null, created, "created");
+      return postId;
+    });
+  }
   const result = await db.insert(blogPosts).values(data);
   return Number(result[0].insertId);
 }
@@ -268,6 +279,17 @@ export async function updateBlogPost(id: number, data: Partial<InsertBlogPost>) 
     await updateLegacyBlogPost(db, id, data);
     return;
   }
+  if (await isBlogRevisionHistoryAvailable(db)) {
+    await db.transaction(async (tx) => {
+      const [before] = await tx.select().from(blogPosts).where(eq(blogPosts.id, id)).limit(1).for("update");
+      if (!before) throw new Error("Blog post not found; no revision saved");
+      await tx.update(blogPosts).set(data).where(eq(blogPosts.id, id));
+      const [after] = await tx.select().from(blogPosts).where(eq(blogPosts.id, id)).limit(1);
+      if (!after) throw new Error("Unable to verify updated blog revision");
+      await appendBlogPostRevision(tx, id, before, after, inferBlogRevisionAction(before, after));
+    });
+    return;
+  }
   await db.update(blogPosts).set(data).where(eq(blogPosts.id, id));
 }
 
@@ -275,6 +297,13 @@ export async function deleteBlogPost(id: number) {
   const db = await getDb();
   if (!db) throw new Error("Database not available");
 
+  if (await isBlogRevisionHistoryAvailable(db)) {
+    await db.transaction(async (tx) => {
+      await tx.delete(blogPostRevisions).where(eq(blogPostRevisions.blogPostId, id));
+      await tx.delete(blogPosts).where(eq(blogPosts.id, id));
+    });
+    return;
+  }
   await db.delete(blogPosts).where(eq(blogPosts.id, id));
 }
 

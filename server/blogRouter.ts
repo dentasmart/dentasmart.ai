@@ -12,7 +12,6 @@ import {
   verifyAdminCredentials,
   getAdminById,
   slugExists,
-  seedAdminUser,
   getBlogStats,
   listCategories,
   getCategoryById,
@@ -25,13 +24,21 @@ import {
 } from "./blogDb";
 import { SignJWT } from "jose";
 import { storagePut } from "./storage";
+import { isCmsTestPublicationEnvironment } from "./cmsTestPublication";
+import { saveCmsTestImage, cleanupCmsTestImage, CmsTestMediaError } from "./cmsTestMedia";
 import { invalidateSitemapCache } from "./seo";
 import { runBlogAgent, listAgentRuns } from "./blogAgent";
 import { getDb } from "./db";
+import { hydrateBlogDraftAltFromLibrary } from "./mediaAltSync";
 import { adminProcedure, ADMIN_COOKIE_NAME, JWT_SECRET, verifyAdminToken, parseCookies } from "./adminAuth";
 import { canPublishBlogPost } from "./governancePublishing";
 import { getApprovedPublicBlogGovernance } from "./governedBlogEvidence";
 import { validateBlogReviewerMetadata } from "../shared/blogReviewerMetadata";
+import { readAdminBlogTags, saveAdminBlogTags } from "./blogTags";
+import { MAX_BLOG_TAGS, MAX_BLOG_TAG_LENGTH } from "../shared/blogTags";
+import { isUnsafeBlogStatusDemotion } from "../shared/blogSavePolicy";
+import { getBlogRevision, listBlogRevisions } from "./blogRevisions";
+import { shouldRejectPublicPrivateMedia } from "./cmsPrivateMediaPolicy";
 
 // Helper to create JWT token (blogRouter-only: signs new sessions on login)
 async function createAdminToken(adminId: number, username: string) {
@@ -82,12 +89,12 @@ function sanitizeSlug(slug: string): string {
 }
 
 function validateReviewerMetadataInput(input: {
-  reviewedByName?: string;
-  reviewedByCredentials?: string;
-  reviewerShortBio?: string;
-  reviewerProfileUrl?: string;
-  lastReviewed?: string;
-  reviewerJsonLd?: string;
+  reviewedByName?: string | null;
+  reviewedByCredentials?: string | null;
+  reviewerShortBio?: string | null;
+  reviewerProfileUrl?: string | null;
+  lastReviewed?: string | null;
+  reviewerJsonLd?: string | null;
 }): void {
   const validation = validateBlogReviewerMetadata(input);
   if (validation.errors.length > 0) {
@@ -123,8 +130,7 @@ export const blogRouter = router({
       password: z.string().min(1),
     }))
     .mutation(async ({ input, ctx }) => {
-      // Ensure admin user exists
-      await seedAdminUser();
+      // Only explicitly created admin accounts can log in.
 
       const admin = await verifyAdminCredentials(input.username, input.password);
       if (!admin) {
@@ -154,6 +160,20 @@ export const blogRouter = router({
     const admin = await getAdminFromContext(ctx);
     return admin;
   }),
+
+  // ============ Existing Blog Editor Tags (admin-only, isolated test DB) ============
+  getEditorialTags: adminBlogProcedure
+    .input(z.object({ id: z.number().int().positive() }))
+    .query(async ({ input }) => ({ tags: await readAdminBlogTags(input.id) })),
+
+  saveEditorialTags: adminBlogProcedure
+    .input(z.object({
+      id: z.number().int().positive(),
+      tags: z.array(z.string().trim().min(1).max(MAX_BLOG_TAG_LENGTH)).max(MAX_BLOG_TAGS),
+    }))
+    .mutation(async ({ input }) => ({
+      tags: await saveAdminBlogTags(input.id, input.tags),
+    })),
 
   // ============ Blog CRUD (Admin Only) ============
   create: adminBlogProcedure
@@ -190,17 +210,20 @@ export const blogRouter = router({
       whenUrgent: z.string().optional(),
       faqs: z.string().optional(),
       relatedPosts: z.string().optional(),
-      reviewedByName: z.string().optional(),
-      reviewedByCredentials: z.string().optional(),
-      reviewerShortBio: z.string().max(2000).optional(),
-      reviewerProfileUrl: z.string().max(1000).optional(),
-      lastReviewed: z.string().max(10).optional(),
-      reviewerJsonLd: z.string().max(20000).optional(),
+      reviewedByName: z.string().nullable().optional(),
+      reviewedByCredentials: z.string().nullable().optional(),
+      reviewerShortBio: z.string().max(2000).nullable().optional(),
+      reviewerProfileUrl: z.string().max(1000).nullable().optional(),
+      lastReviewed: z.string().max(10).nullable().optional(),
+      reviewerJsonLd: z.string().max(20000).nullable().optional(),
       publishedAt: z.string().optional(),
       status: z.enum(["draft", "published", "unpublished"]).optional(),
     }))
     .mutation(async ({ input }) => {
       validateReviewerMetadataInput(input);
+      if (shouldRejectPublicPrivateMedia(input.status === "published", input)) {
+        throw new TRPCError({ code: "PRECONDITION_FAILED", message: "Private CMS draft images cannot be published as blog assets." });
+      }
       // Sanitize slug: strip leading slashes and normalise (prevents /slug → 404)
       let slug = input.slug ? sanitizeSlug(input.slug) : generateSlug(input.title);
 
@@ -212,6 +235,11 @@ export const blogRouter = router({
         slug = `${baseSlug}-${counter}`;
       }
 
+      // Alt attributes of linked images are independent of the blog draft save.
+      if (isCmsTestPublicationEnvironment() && input.status !== "published" && input.bodyHtml) {
+        const db = await getDb();
+        if (db) input.bodyHtml = await hydrateBlogDraftAltFromLibrary(db, input.bodyHtml);
+      }
       let id: number;
       try {
         id = await createBlogPost({
@@ -269,12 +297,12 @@ export const blogRouter = router({
       whenUrgent: z.string().optional(),
       faqs: z.string().optional(),
       relatedPosts: z.string().optional(),
-      reviewedByName: z.string().optional(),
-      reviewedByCredentials: z.string().optional(),
-      reviewerShortBio: z.string().max(2000).optional(),
-      reviewerProfileUrl: z.string().max(1000).optional(),
-      lastReviewed: z.string().max(10).optional(),
-      reviewerJsonLd: z.string().max(20000).optional(),
+      reviewedByName: z.string().nullable().optional(),
+      reviewedByCredentials: z.string().nullable().optional(),
+      reviewerShortBio: z.string().max(2000).nullable().optional(),
+      reviewerProfileUrl: z.string().max(1000).nullable().optional(),
+      lastReviewed: z.string().max(10).nullable().optional(),
+      reviewerJsonLd: z.string().max(20000).nullable().optional(),
       publishedAt: z.string().optional(),
       status: z.enum(["draft", "published", "unpublished"]).optional(),
     }))
@@ -302,6 +330,17 @@ export const blogRouter = router({
 
       // Set publishedAt when publishing for the first time
       const existing = await getBlogPostById(id);
+      if (shouldRejectPublicPrivateMedia(data.status === "published" ||
+          (existing?.status === "published" && data.status !== "unpublished"),
+          { ...existing, ...data })) {
+        throw new TRPCError({ code: "PRECONDITION_FAILED", message: "Private CMS draft images cannot be used on a published blog." });
+      }
+      if (isUnsafeBlogStatusDemotion(existing?.status, data.status)) {
+        throw new TRPCError({
+          code: "PRECONDITION_FAILED",
+          message: "Saving changes cannot unpublish a live article. Use the explicit Unpublish action first.",
+        });
+      }
       if (data.status === "published") {
         const publicationGate = await canPublishBlogPost(id);
         if (!publicationGate.allowed) {
@@ -312,6 +351,13 @@ export const blogRouter = router({
         data.publishedAt = new Date();
       }
 
+      // Never restore stale alt attributes from an open blog editor tab.
+      // Explicit published content is NOT rewritten by this automatic overlay.
+      if (isCmsTestPublicationEnvironment() && existing?.status !== "published" &&
+          data.status !== "published" && data.bodyHtml !== undefined) {
+        const db = await getDb();
+        if (db && typeof data.bodyHtml === "string") data.bodyHtml = await hydrateBlogDraftAltFromLibrary(db, data.bodyHtml);
+      }
       try {
         await updateBlogPost(id, data);
       } catch (error) {
@@ -339,6 +385,9 @@ export const blogRouter = router({
     .mutation(async ({ input }) => {
       const post = await getBlogPostById(input.id);
       if (!post) throw new TRPCError({ code: "NOT_FOUND", message: "Blog post not found" });
+      if (shouldRejectPublicPrivateMedia(true, post)) {
+        throw new TRPCError({ code: "PRECONDITION_FAILED", message: "Private CMS draft images cannot be published as blog assets." });
+      }
       const publicationGate = await canPublishBlogPost(input.id);
       if (!publicationGate.allowed) {
         throw new TRPCError({ code: "PRECONDITION_FAILED", message: publicationGate.reason });
@@ -360,18 +409,54 @@ export const blogRouter = router({
       return { success: true };
     }),
 
+  // Private draft preview always reads a saved row and requires an admin session.
+  // This never mutates publication status, reviewer metadata or SEO fields.
+  getPreviewById: adminBlogProcedure
+    .input(z.object({ id: z.number().int().positive() }))
+    .query(async ({ input }) => {
+      const post = await getBlogPostById(input.id);
+      if (!post) throw new TRPCError({ code: "NOT_FOUND", message: "Saved article not found." });
+      return post;
+    }),
+
+  // Versioned Blog Editor snapshots are ADMIN-ONLY and READ-ONLY.
+  // The test-only migration must be explicitly applied before history is available.
+  listRevisions: adminBlogProcedure
+    .input(z.object({ id: z.number().int().positive() }))
+    .query(async ({ input }) => {
+      const post = await getBlogPostById(input.id);
+      if (!post) throw new TRPCError({ code: "NOT_FOUND", message: "Article not found." });
+      return listBlogRevisions(input.id);
+    }),
+
+  getRevision: adminBlogProcedure
+    .input(z.object({ id: z.number().int().positive(), revision: z.number().int().min(0) }))
+    .query(async ({ input }) => {
+      const post = await getBlogPostById(input.id);
+      if (!post) throw new TRPCError({ code: "NOT_FOUND", message: "Article not found." });
+      const revision = await getBlogRevision(input.id, input.revision);
+      if (!revision) throw new TRPCError({ code: "NOT_FOUND", message: "Revision not available." });
+      return revision;
+    }),
+
   // ============ Blog Read (Public) ============
-  getById: publicProcedure
+  // Drafts and their metadata require admin authentication, including numeric-ID requests.
+  getById: adminBlogProcedure
     .input(z.object({ id: z.number() }))
     .query(async ({ input }) => {
-      return await getBlogPostById(input.id);
+      const post = await getBlogPostById(input.id);
+      if (!post || post.status === "published" || !post.bodyHtml ||
+          !isCmsTestPublicationEnvironment()) return post;
+      const db = await getDb();
+      return db ? { ...post, bodyHtml: await hydrateBlogDraftAltFromLibrary(db, post.bodyHtml) } : post;
     }),
 
   getBySlug: publicProcedure
     .input(z.object({ slug: z.string() }))
     .query(async ({ input }) => {
       const post = await getBlogPostBySlug(input.slug);
-      if (!post) return null;
+      // Public slugs must never disclose saved drafts or unpublished articles.
+      if (!post || post.status !== "published") return null;
       const governance = await getApprovedPublicBlogGovernance(post);
       return governance ? { ...post, governance } : post;
     }),
@@ -389,7 +474,9 @@ export const blogRouter = router({
       cardView: z.boolean().optional(),
     }).optional())
     .query(async ({ input }) => {
-      return await listBlogPosts(input || {});
+      // Public listings must not disclose drafts even if a caller asks for
+      // status=draft or publishedOnly=false. Admin listing is separate.
+      return await listBlogPosts({ ...(input || {}), status: "published", publishedOnly: true });
     }),
 
   // Admin list (includes all statuses)
@@ -549,31 +636,63 @@ export const blogRouter = router({
       fileName: z.string(),
       fileBase64: z.string(),
       mimeType: z.string(),
+      altText: z.string().max(500).optional(),
     }))
     .mutation(async ({ input }) => {
       const { fileName, fileBase64, mimeType } = input;
+
+      // In the isolated Codespace, never upload Blog Editor images to shared
+      // storage. Use the same private local media store as the CMS picker.
+      if (isCmsTestPublicationEnvironment()) {
+        const db = await getDb();
+        if (!db) throw new TRPCError({ code: "PRECONDITION_FAILED", message: "Test Media Library database unavailable." });
+        let uploaded: Awaited<ReturnType<typeof saveCmsTestImage>>;
+        try {
+          uploaded = await saveCmsTestImage(fileName, fileBase64, mimeType);
+        } catch (error) {
+          if (error instanceof CmsTestMediaError) {
+            throw new TRPCError({ code: "BAD_REQUEST", message: error.message });
+          }
+          throw error;
+        }
+        try {
+          await db.insert(mediaItems).values({
+            url: uploaded.url,
+            fileKey: uploaded.fileKey,
+            filename: uploaded.filename,
+            mimeType: uploaded.mimeType,
+            fileSizeBytes: uploaded.fileSizeBytes,
+            width: uploaded.width,
+            height: uploaded.height,
+            altText: input.altText?.trim() || null,
+          });
+          return { url: uploaded.url };
+        } catch (error) {
+          await cleanupCmsTestImage(uploaded.filePath);
+          throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Test image or its alt text could not be saved to Media Library." });
+        }
+      }
+
       const buffer = Buffer.from(fileBase64, "base64");
       const randomSuffix = Math.random().toString(36).substring(2, 10);
       const sanitizedName = fileName.replace(/[^a-zA-Z0-9.-]/g, "_");
       const fileKey = `blog-images/${randomSuffix}-${sanitizedName}`;
       const { url } = await storagePut(fileKey, buffer, mimeType);
 
-      // Register in media library (best-effort — never blocks the upload)
-      try {
-        const db = await getDb();
-        if (db) {
-          await db.insert(mediaItems).values({
-            url,
-            fileKey,
-            filename: input.fileName,
-            mimeType,
-            fileSizeBytes: buffer.length,
-          });
-        }
-      } catch {
-        // Silently swallow — media_items write failure must not fail the upload
+      // Do not silently report success when the Media Library record or its
+      // alt text was not saved. This is the source of missing library metadata.
+      const db = await getDb();
+      if (!db) {
+        throw new TRPCError({ code: "PRECONDITION_FAILED", message: "Media Library database is unavailable. Image metadata was not saved." });
       }
-
+      await db.insert(mediaItems).values({
+        url,
+        fileKey,
+        filename: input.fileName,
+        mimeType,
+        fileSizeBytes: buffer.length,
+        altText: input.altText?.trim() || null,
+      });
       return { url };
     }),
 });

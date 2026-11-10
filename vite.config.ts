@@ -21,11 +21,30 @@ export default defineConfig({
     dedupe: ["react", "react-dom"],
   },
   optimizeDeps: {
+    // This app has many lazy-loaded pages, including the original Blog Editor.
+    // Scan their imports before the first browser request, otherwise Vite can
+    // discover dependencies later, re-optimize them, and serve mixed hashes
+    // for react-dom and hook consumers (wouter / Radix / TipTap).
+    // Paths are relative to Vite's root ("client"), not the repository root.
+    entries: ["index.html", "src/**/*.{ts,tsx}", "!src/**/*.test.{ts,tsx}", "!src/**/__tests__/**"],
     // Force Vite to pre-bundle react and react-dom as a single shared chunk.
     // Without this, Vite may create separate pre-bundled copies for packages
     // that list react as a peer dep (e.g. @tiptap/react, @trpc/react-query),
     // causing the "Invalid hook call" / "Cannot read properties of null" errors.
-    include: ["react", "react-dom"],
+    // Include dependencies reached only after the lazy-loaded Blog Editor opens.
+    // Avoid a second optimization cycle that can invalidate the React renderer
+    // while Radix Tabs / TipTap initialize in the same browser session.
+    include: [
+      "react",
+      "react-dom",
+      "react-dom/client",
+      "react/jsx-runtime",
+      "react/jsx-dev-runtime",
+      "@radix-ui/react-tabs",
+      "@tiptap/react",
+      "wouter",
+      "react-helmet-async",
+    ],
   },
   envDir: path.resolve(import.meta.dirname),
   root: path.resolve(import.meta.dirname, "client"),

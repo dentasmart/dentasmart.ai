@@ -37,6 +37,8 @@ import {
   Trash2,
   Eye,
   EyeOff,
+  FileSearch,
+  Send,
   FileText,
   Loader2,
   ChevronLeft,
@@ -45,6 +47,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import AdminLayout from "@/components/AdminLayout";
+import { blogDraftPreviewPath } from "@shared/blogPreviewPolicy";
 
 const STATUSES = ["All", "draft", "published", "unpublished"];
 
@@ -282,6 +285,16 @@ export default function AdminDashboard() {
                         >
                           <Edit className="w-4 h-4" />
                         </Button>
+                        <a
+                          href={blogDraftPreviewPath(post.id)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title={post.status === "draft" ? "Preview Draft" : "Preview Saved"}
+                          aria-label={post.status === "draft" ? "Preview Draft" : "Preview Saved"}
+                          className="inline-flex h-9 w-9 items-center justify-center rounded-md text-stone-500 hover:bg-stone-100 hover:text-primary"
+                        >
+                          <FileSearch className="w-4 h-4" />
+                        </a>
                         {post.status === "published" ? (
                           <Button
                             variant="ghost"
@@ -302,7 +315,7 @@ export default function AdminDashboard() {
                             title="Publish"
                             disabled={publishMutation.isPending}
                           >
-                            <Eye className="w-4 h-4" />
+                            <Send className="w-4 h-4" />
                           </Button>
                         )}
                         {post.status === "published" && (

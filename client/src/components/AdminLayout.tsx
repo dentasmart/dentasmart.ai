@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo, type ReactNode } from "react";
 import { useLocation, Link } from "wouter";
 import { trpc } from "@/lib/trpc";
 import { CONSENT_CHANGED_EVENT } from "@/lib/consent";
+import { cmsAdminHubDefinitions } from "@shared/cmsHubRegistry";
 import { identifyOrigamiUser } from "@/lib/origamiVisitors";
 import { Button } from "@/components/ui/button";
 import {
@@ -158,6 +159,8 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
     if (location.includes("/admin/aeo-dashboard")) return "aeo-dashboard";
     if (location.includes("/admin/media-library")) return "media-library";
     if (location.includes("/admin/pages")) return "pages";
+    if (location.includes("/admin/cms-preview")) return "cms-preview";
+    if (location.includes("/admin/content-workspace")) return "cms-workspace";
     if (location.includes("/admin/redirects")) return "redirects";
     if (location.includes("/admin/404s")) return "404s";
     if (location.includes("/admin/governance")) return "governance";
@@ -168,17 +171,17 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
   const navItems: NavItem[] = [
     {
       id: "articles",
-      label: "Articles",
+      label: "Blog Management",
       icon: <FileText className="w-5 h-5" />,
       path: "/admin",
-      section: "Content",
+      section: "Blogs",
     },
     {
       id: "categories",
-      label: "Categories",
+      label: "Blog Categories",
       icon: <FolderTree className="w-5 h-5" />,
       path: "/admin/categories",
-      section: "Content",
+      section: "Blogs",
     },
     {
       id: "leads",
@@ -201,6 +204,27 @@ export default function AdminLayout({ children, activeId, auditIssueCount }: Adm
       path: "/admin/media-library",
       section: "Content",
     },
+    {
+      id: "cms-preview",
+      label: "Advanced CMS Editor (Test)",
+      icon: <LayoutGrid className="w-5 h-5" />,
+      path: "/admin/cms-preview",
+      section: "Content",
+    },
+    {
+      id: "cms-workspace",
+      label: "All Content (CMS)",
+      icon: <LayoutGrid className="w-5 h-5" />,
+      path: "/admin/content-workspace",
+      section: "Content Hubs",
+    },
+    ...cmsAdminHubDefinitions.map((hub): NavItem => ({
+      id: "cms-hub-" + hub.id,
+      label: hub.label,
+      icon: <FolderTree className="w-4 h-4" />,
+      path: "/admin/content-workspace?hub=" + hub.id,
+      section: "Content Hubs",
+    })),
     {
       id: "pages",
       label: "Pages",
