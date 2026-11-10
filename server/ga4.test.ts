@@ -1,18 +1,26 @@
 import { describe, it, expect } from "vitest";
 
 describe("GA4 Configuration", () => {
-  it("should have VITE_GA4_MEASUREMENT_ID environment variable set", () => {
+  it("allows an unset local GA4 ID but validates any configured ID", () => {
+    // Local QA is deliberately allowed to run without analytics credentials.
+    // Production deployment configuration is validated separately.
     const ga4Id = process.env.VITE_GA4_MEASUREMENT_ID;
-    expect(ga4Id).toBeDefined();
-    expect(ga4Id).not.toBe("");
+    if (!ga4Id) {
+      expect(ga4Id ?? "").toBe("");
+      return;
+    }
     expect(ga4Id).toMatch(/^G-[A-Z0-9]+$/);
   });
 
-  it("should have a valid GA4 Measurement ID format", () => {
-    const ga4Id = process.env.VITE_GA4_MEASUREMENT_ID!;
-    // GA4 IDs start with G- followed by alphanumeric characters
-    expect(ga4Id.startsWith("G-")).toBe(true);
-    expect(ga4Id.length).toBeGreaterThan(3);
+  it("fails closed rather than loading GA4 when no measurement ID is available", async () => {
+    const fs = await import("fs");
+    const path = await import("path");
+    const analyticsSource = fs.readFileSync(
+      path.resolve(__dirname, "../client/src/lib/analytics.ts"),
+      "utf-8"
+    );
+    expect(analyticsSource).toContain('const id = getGA4MeasurementId();');
+    expect(analyticsSource).toContain('if (!id || typeof window === "undefined" || ga4Configured) return;');
   });
 
   it("keeps GA4 out of the document bootstrap and loads it only through the consent-gated runtime", async () => {

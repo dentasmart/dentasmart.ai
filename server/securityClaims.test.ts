@@ -77,6 +77,7 @@ describe("active public security claims", () => {
     expect(answers).not.toMatch(/delete your data at any time from the app/i);
     expect(scanner).not.toMatch(/photos are processed securely and are not shared with third parties/i);
     expect(scanner).not.toMatch(/complies with standard data protection practices/i);
-    expect(scanner).toContain("We take the privacy and security of your information seriously.");
+    expect(scanner).toContain("We use safeguards designed to protect your information.");
+    expect(scanner).toContain("See our Privacy Policy for current details on how information is handled.");
   });
 });

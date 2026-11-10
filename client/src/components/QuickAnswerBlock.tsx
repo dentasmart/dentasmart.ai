@@ -3,14 +3,17 @@ import { isExternalEvidenceUrl, type DirectAnswerData } from "@shared/contentGov
 interface QuickAnswerBlockProps {
   question: string;
   answer: string;
+  /** Existing callers default to H2; CMS can select H3 or H4. */
+  headingLevel?: "h2" | "h3" | "h4";
   /** Optional legacy citation. Internal DentaSmart URLs are not displayed as medical evidence. */
   sourceUrl?: string;
   sourceLabel?: string;
   governance?: Pick<DirectAnswerData, "definition" | "intendedAudience">;
 }
 
-export default function QuickAnswerBlock({ question, answer, sourceUrl, sourceLabel, governance }: QuickAnswerBlockProps) {
+export default function QuickAnswerBlock({ question, answer, sourceUrl, sourceLabel, governance, headingLevel = "h2" }: QuickAnswerBlockProps) {
   const showExternalSource = Boolean(sourceUrl && isExternalEvidenceUrl(sourceUrl));
+  const HeadingTag = headingLevel;
 
   return (
     <div 
@@ -19,7 +22,7 @@ export default function QuickAnswerBlock({ question, answer, sourceUrl, sourceLa
       aria-label="Quick Answer"
     >
       <p className="text-sm font-semibold text-action uppercase tracking-wide mb-1">Quick Answer</p>
-      <h2 className="text-lg font-semibold text-[#232020] mb-2">{question}</h2>
+      <HeadingTag className="text-lg font-semibold text-[#232020] mb-2">{question}</HeadingTag>
       <p className="text-[#232020] text-base leading-relaxed">{answer}</p>
       {governance?.definition && (
         <p className="text-sm text-stone-700 mt-3 leading-relaxed"><span className="font-medium">Definition:</span> {governance.definition}</p>

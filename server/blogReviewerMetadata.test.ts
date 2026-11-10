@@ -88,6 +88,23 @@ describe("public blog reviewer metadata", () => {
     expect(reviewWebPage).not.toHaveProperty("lastReviewed");
   });
 
+  it("treats cleared/null reviewer values as no verified reviewer evidence", () => {
+    const cleared = {
+      reviewedByName: null,
+      reviewedByCredentials: null,
+      reviewerShortBio: null,
+      reviewerProfileUrl: null,
+      lastReviewed: null,
+      reviewerJsonLd: null,
+    };
+    const validation = validateBlogReviewerMetadata(cleared);
+    expect(validation.errors).toEqual([]);
+    expect(validation.isComplete).toBe(false);
+    expect(validation.hasAnyReviewInput).toBe(false);
+    expect(getPublicLastReviewed(cleared)).toBeUndefined();
+    expect(getPublicSupplementalJsonLd(cleared)).toBeUndefined();
+  });
+
   it("keeps Last Reviewed fail-closed when the stored date is invalid", () => {
     const validation = validateBlogReviewerMetadata({ lastReviewed: "2026-02-30" });
     expect(validation.errors).toContainEqual({
@@ -192,7 +209,7 @@ describe("public blog reviewer metadata", () => {
     expect(blogPosting).toMatchObject({
       "@type": "BlogPosting",
       author: { "@id": "https://dentasmart.ai/#organization" },
-      mainEntityOfPage: { "@id": "https://dentasmart.ai/oral-health-hub/reviewed-article/" },
+      mainEntityOfPage: { "@id": "https://dentasmart.ai/oral-health-hub/reviewed-article/#webpage" },
     });
     expect(blogPosting).not.toHaveProperty("reviewedBy");
     expect(reviewWebPage).toMatchObject({
@@ -216,6 +233,7 @@ describe("public blog reviewer metadata", () => {
     const cardSource = readFileSync(resolve(root, "client/src/components/ArticleReviewerMetadata.tsx"), "utf8");
     const seoSource = readFileSync(resolve(root, "client/src/components/SEO.tsx"), "utf8");
     const serverSource = readFileSync(resolve(root, "server/schemaMarkup.ts"), "utf8");
+    const sharedBlogSchemaSource = readFileSync(resolve(root, "shared/blogPostSchemas.ts"), "utf8");
     const editorSource = readFileSync(resolve(root, "client/src/pages/AdminBlogEditor.tsx"), "utf8");
     const teamSource = readFileSync(resolve(root, "client/src/pages/Team.tsx"), "utf8");
     const migrationSource = readFileSync(resolve(root, "drizzle/0017_blog_reviewer_metadata.sql"), "utf8");
@@ -226,12 +244,14 @@ describe("public blog reviewer metadata", () => {
     expect(articleSource).toContain("Last reviewed");
     expect(cardSource).toContain("View reviewer profile");
     expect(seoSource).toContain("typeof schema.lastReviewed === \"string\"");
-    expect(serverSource).toContain("getPublicLastReviewed(post)");
+    expect(serverSource).toContain("buildBlogPostingSchemas");
+    expect(sharedBlogSchemaSource).toContain("getPublicLastReviewed(post)");
     expect(editorSource).toContain("setReviewerJsonLd(existingPost.reviewerJsonLd || \"\")");
     expect(editorSource).toContain("Reviewer short bio");
     expect(editorSource).toContain("Reviewer profile URL");
     expect(editorSource).toContain("Last reviewed");
-    expect(editorSource).toContain("Supplemental JSON-LD, optional");
+    expect(editorSource).toContain('<TabsContent value="schema">');
+    expect(editorSource).not.toContain("Supplemental JSON-LD, optional");
     expect(teamSource).toContain('id="dr-saba-ahmed"');
     expect(migrationSource).toContain("reviewerShortBio");
     expect(migrationSource).toContain("reviewerProfileUrl");

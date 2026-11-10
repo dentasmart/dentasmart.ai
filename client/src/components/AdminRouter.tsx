@@ -13,6 +13,7 @@ import { Route, Switch, useLocation } from "wouter";
 const AdminLogin = lazy(() => import("@/pages/AdminLogin"));
 const AdminDashboard = lazy(() => import("@/pages/AdminDashboard"));
 const AdminBlogEditor = lazy(() => import("@/pages/AdminBlogEditor"));
+const AdminBlogDraftPreview = lazy(() => import("@/pages/AdminBlogDraftPreview"));
 const AdminSeoSetup = lazy(() => import("@/pages/AdminSeoSetup"));
 const AdminCategories = lazy(() => import("@/pages/AdminCategories"));
 const AdminLeads = lazy(() => import("@/pages/AdminLeads"));
@@ -26,6 +27,9 @@ const AdminPages = lazy(() => import("@/pages/AdminPages"));
 const AdminRedirects = lazy(() => import("@/pages/AdminRedirects"));
 const Admin404s = lazy(() => import("@/pages/Admin404s"));
 const AdminGovernance = lazy(() => import("@/pages/AdminGovernance"));
+const AdminCmsPreview = lazy(() => import("@/pages/AdminCmsPreview"));
+const AdminCmsDraftPreview = lazy(() => import("@/pages/AdminCmsDraftPreview"));
+const CmsContentWorkspace = lazy(() => import("@/pages/CmsContentWorkspace"));
 
 // Build paths at runtime to prevent any static analysis from detecting them
 const prefix = "/adm" + "in";
@@ -34,6 +38,8 @@ const paths = {
   dashboard: prefix,
   newPost: prefix + "/new",
   editPost: prefix + "/edit/:id",
+  blogDraftPreview: prefix + "/blog-draft-preview/:id",
+  blogRevisionPreview: prefix + "/blog-revision-preview/:id/:revision",
   seoSetup: prefix + "/seo-analytics",
   categories: prefix + "/categories",
   leads: prefix + "/leads",
@@ -44,6 +50,9 @@ const paths = {
   aeoDashboard: prefix + "/aeo-dashboard",
   mediaLibrary: prefix + "/media-library",
   pages: prefix + "/pages",
+  cmsPreview: prefix + "/cms-preview",
+  cmsDraftPreview: prefix + "/cms-draft-preview",
+  cmsWorkspace: prefix + "/content-workspace",
   redirects: prefix + "/redirects",
   notFound404s: prefix + "/404s",
   governance: prefix + "/governance",
@@ -73,6 +82,8 @@ export default function AdminRouter() {
       <Switch>
         <Route path={paths.login} component={AdminLogin} />
         <Route path={paths.editPost} component={AdminBlogEditor} />
+        <Route path={paths.blogDraftPreview} component={AdminBlogDraftPreview} />
+        <Route path={paths.blogRevisionPreview} component={AdminBlogDraftPreview} />
         <Route path={paths.newPost} component={AdminBlogEditor} />
         <Route path={paths.seoSetup} component={AdminSeoSetup} />
         <Route path={paths.categories} component={AdminCategories} />
@@ -84,6 +95,9 @@ export default function AdminRouter() {
         <Route path={paths.aeoDashboard} component={AdminAEODashboard} />
         <Route path={paths.mediaLibrary} component={AdminMediaLibrary} />
         <Route path={paths.pages} component={AdminPages} />
+        <Route path={paths.cmsPreview} component={AdminCmsPreview} />
+        <Route path={paths.cmsDraftPreview} component={AdminCmsDraftPreview} />
+        <Route path={paths.cmsWorkspace} component={CmsContentWorkspace} />
         <Route path={paths.redirects} component={AdminRedirects} />
         <Route path={paths.notFound404s} component={Admin404s} />
         <Route path={paths.governance} component={AdminGovernance} />

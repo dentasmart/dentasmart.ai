@@ -50,6 +50,7 @@ import {
   Square,
 } from "lucide-react";
 import { toast } from "sonner";
+import { canConfirmVerifiedMediaDelete } from "@shared/mediaDeleteVerification";
 import AdminLayout from "@/components/AdminLayout";
 import ReactCrop, { type Crop as CropType, type PixelCrop } from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
@@ -408,11 +409,51 @@ function DetailPanel({
   const [filename, setFilename] = useState(item.filename);
   const [copied, setCopied] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
+  const [confirmDeleteInUse, setConfirmDeleteInUse] = useState(false);
 
-  const { data: usageData, isLoading: usageLoading } = trpc.media.checkUsage.useQuery(
+  const {
+    data: usageData, isLoading: usageLoading, isFetching: usageFetching,
+    error: usageError, refetch: refetchUsage,
+  } = trpc.media.checkUsage.useQuery(
     { id: item.id },
-    { staleTime: 5 * 60 * 1000, retry: false }
+    // Recheck whenever the image panel is opened or the user returns to it.
+    { staleTime: 0, retry: false, refetchOnMount: "always", refetchOnWindowFocus: true }
   );
+  const [deleteUsage, setDeleteUsage] = useState<typeof usageData>(undefined);
+  const [deleteUsageError, setDeleteUsageError] = useState<string | null>(null);
+  const [verifyingDeleteUsage, setVerifyingDeleteUsage] = useState(false);
+  const deleteCheckId = useRef(0);
+
+  const handleDeleteDialogOpenChange = (open: boolean) => {
+    const checkId = ++deleteCheckId.current;
+    if (!open) {
+      setDeleteUsage(undefined);
+      setDeleteUsageError(null);
+      setVerifyingDeleteUsage(false);
+      setConfirmDeleteInUse(false);
+      return;
+    }
+    // Do NOT use cached Used In data to authorize deletion. Always request
+    // a fresh server-side scan when the confirmation is opened.
+    setDeleteUsage(undefined);
+    setDeleteUsageError(null);
+    setConfirmDeleteInUse(false);
+    setVerifyingDeleteUsage(true);
+    void refetchUsage().then(result => {
+      if (checkId !== deleteCheckId.current) return;
+      if (result.error || !result.data) {
+        setDeleteUsageError("Could not verify current image usage. Close and retry.");
+      } else {
+        setDeleteUsage(result.data);
+      }
+    }).catch(() => {
+      if (checkId === deleteCheckId.current) {
+        setDeleteUsageError("Could not verify current image usage. Close and retry.");
+      }
+    }).finally(() => {
+      if (checkId === deleteCheckId.current) setVerifyingDeleteUsage(false);
+    });
+  };
 
   const updateMutation = trpc.media.update.useMutation({
     onSuccess: (updated) => {
@@ -420,6 +461,7 @@ function DetailPanel({
       setIsDirty(false);
       onItemUpdated(updated as MediaItem);
       utils.media.list.invalidate();
+      utils.cms.getDraft.invalidate();
     },
     onError: (err) => toast.error(err.message),
   });
@@ -433,12 +475,17 @@ function DetailPanel({
   });
 
   const handleSave = () => {
+    if (altText !== (item.altText || "") && usageData && usageData.publishedCount > 0) {
+      toast.error("Published content uses this image. Review/publish the changes before synchronizing alt text.");
+      return;
+    }
+    const confirmMultiple = altText !== (item.altText || "") &&
+      (usageData?.usageCount || 0) > 1 &&
+      window.confirm("This image appears in multiple CMS/blog pages. Update alt text in all saved private drafts?");
+    if (altText !== (item.altText || "") && (usageData?.usageCount || 0) > 1 && !confirmMultiple) return;
     updateMutation.mutate({
-      id: item.id,
-      altText: altText || undefined,
-      caption: caption || undefined,
-      title: title || undefined,
-      filename: filename || undefined,
+      id: item.id, altText, caption, title, filename,
+      confirmMultiple: !!confirmMultiple,
     });
   };
 
@@ -564,19 +611,22 @@ function DetailPanel({
         {/* Usage */}
         <div className="px-4 py-3 border-b border-stone-100">
           <p className="text-xs font-semibold text-stone-600 mb-2 uppercase tracking-wide">Used In</p>
-          {usageLoading ? (
+          {usageLoading || usageFetching ? (
             <div className="flex items-center gap-2 text-xs text-stone-400">
-              <Loader2 className="w-3 h-3 animate-spin" /> Checking usage...
+              <Loader2 className="w-3 h-3 animate-spin" /> Checking current usage...
+            </div>
+          ) : usageError ? (
+            <div className="flex items-center gap-2 text-xs text-red-600">
+              <AlertCircle className="w-3 h-3" /> Unable to check usage. Please retry.
             </div>
           ) : usageData && usageData.usageCount > 0 ? (
             <div className="space-y-1.5">
-              {(usageData.posts as UsagePost[]).map((post) => (
-                <a key={post.postId} href={`/oral-health-hub/${post.postSlug}/`}
-                  target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-xs text-primary hover:underline">
+              {usageData.usages.map((use, index) => (
+                <p key={use.kind + use.id + use.status + index}
+                  className="flex items-center gap-2 text-xs text-stone-700">
                   <FileText className="w-3 h-3 flex-shrink-0" />
-                  <span className="truncate">{post.postTitle}</span>
-                </a>
+                  <span className="truncate">{use.kind === "cms" ? "CMS" : "Blog"}: {use.title} ({use.status})</span>
+                </p>
               ))}
             </div>
           ) : (
@@ -589,7 +639,8 @@ function DetailPanel({
 
       {/* Footer actions */}
       <div className="px-4 py-3 border-t border-stone-100 space-y-2">
-        <Button onClick={handleSave} disabled={!isDirty || updateMutation.isPending}
+        <Button onClick={handleSave} disabled={!isDirty || updateMutation.isPending ||
+          (altText !== (item.altText || "") && !usageData)}
           size="sm" className="w-full bg-primary hover:bg-primary/90 text-white cursor-pointer">
           {updateMutation.isPending ? (
             <Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" />
@@ -599,7 +650,7 @@ function DetailPanel({
           Save Metadata
         </Button>
 
-        <AlertDialog>
+        <AlertDialog onOpenChange={handleDeleteDialogOpenChange}>
           <AlertDialogTrigger asChild>
             <Button variant="outline" size="sm"
               className="w-full text-red-600 border-red-200 hover:bg-red-50 cursor-pointer">
@@ -614,16 +665,39 @@ function DetailPanel({
                 <span className="block mt-2 text-amber-700 bg-amber-50 border border-amber-200 rounded p-2 text-xs">
                   {CDN_WARNING}
                 </span>
-                {usageData && usageData.usageCount > 0 && (
+                {deleteUsage && deleteUsage.usageCount > 0 && (
                   <span className="block text-red-600 font-medium text-xs">
-                    ⚠ This image is used in {usageData.usageCount} post(s). Deleting it will break those images.
+                    This image is used in {deleteUsage.usageCount} CMS/blog page(s)
+                    {deleteUsage.publishedCount > 0 ? `, including ${deleteUsage.publishedCount} published use(s)` : ""}.
+                    Removing it from the Media Library may break existing page images.
                   </span>
                 )}
+                {verifyingDeleteUsage && <span className="block text-amber-700 text-xs">
+                  Checking current image usage before deletion…
+                </span>}
+                {deleteUsageError && <span className="block text-red-700 text-xs" role="alert">
+                  {deleteUsageError}
+                </span>}
               </AlertDialogDescription>
             </AlertDialogHeader>
+            {deleteUsage && deleteUsage.usageCount > 0 && <label className="flex items-center gap-2 text-sm font-medium text-red-700">
+              <input type="checkbox" checked={confirmDeleteInUse}
+                onChange={e => setConfirmDeleteInUse(e.target.checked)} />
+              I understand this image is still in use and confirm deletion.
+            </label>}
             <AlertDialogFooter>
               <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction onClick={() => deleteMutation.mutate({ id: item.id })}
+              <AlertDialogAction
+                disabled={!canConfirmVerifiedMediaDelete(
+                  deleteUsage?.usageCount ?? null, confirmDeleteInUse,
+                  verifyingDeleteUsage || deleteMutation.isPending || !!deleteUsageError
+                )}
+                onClick={() => {
+                  if (!deleteUsage) return;
+                  deleteMutation.mutate({
+                    id: item.id, confirmInUse: deleteUsage.usageCount > 0 && confirmDeleteInUse
+                  });
+                }}
                 className="bg-red-600 hover:bg-red-700 text-white">
                 {deleteMutation.isPending ? <Loader2 className="w-4 h-4 animate-spin" /> : "Remove"}
               </AlertDialogAction>
@@ -962,7 +1036,7 @@ function BulkDeleteModal({
             <div className="flex items-start gap-2 p-3 bg-red-50 border border-red-200 rounded text-sm text-red-800">
               <AlertTriangle className="w-4 h-4 flex-shrink-0 mt-0.5" />
               <p>
-                <span className="font-medium">{totalInUse} of these images are used in published posts.</span>{" "}
+                <span className="font-medium">{totalInUse} of these images are referenced in CMS or blog pages.</span>{" "}
                 Deleting them will break those images.
               </p>
             </div>
@@ -974,7 +1048,10 @@ function BulkDeleteModal({
         </div>
         <DialogFooter>
           <Button variant="outline" onClick={onClose} className="cursor-pointer">Cancel</Button>
-          <Button onClick={onConfirm} disabled={isPending}
+          <Button onClick={() => {
+            if (totalInUse > 0 && !window.confirm("These images are still referenced by CMS/blog pages. Confirm removing their Media Library records?")) return;
+            onConfirm();
+          }} disabled={isPending}
             className="bg-red-600 hover:bg-red-700 text-white cursor-pointer">
             {isPending ? (
               <><Loader2 className="w-4 h-4 mr-2 animate-spin" /> Deleting…</>
@@ -1003,6 +1080,9 @@ export default function AdminMediaLibrary() {
   const [anchorId, setAnchorId] = useState<number | null>(null);
   const [showBulkDelete, setShowBulkDelete] = useState(false);
   const [bulkUsageTotalInUse, setBulkUsageTotalInUse] = useState(0);
+  const [bulkDeleteIds, setBulkDeleteIds] = useState<number[]>([]);
+  const [checkingBulkUsage, setCheckingBulkUsage] = useState(false);
+  const currentSelectedIds = useRef<Set<number>>(new Set());
 
   // Phase 3: edit/replace modals
   const [editItem, setEditItem] = useState<MediaItem | null>(null);
@@ -1037,21 +1117,18 @@ export default function AdminMediaLibrary() {
       toast.success(`${result.deleted} image${result.deleted !== 1 ? "s" : ""} removed from catalogue`);
       setSelectedIds(new Set());
       setAnchorId(null);
+      setBulkDeleteIds([]);
       setShowBulkDelete(false);
       utils.media.list.invalidate();
     },
     onError: (err) => toast.error(err.message),
   });
 
-  const checkBulkUsage = trpc.media.checkBulkUsage.useQuery(
-    { ids: Array.from(selectedIds) },
-    { enabled: false }
-  );
-
   const items: MediaItem[] = (data?.items ?? []) as MediaItem[];
   const total = data?.total ?? 0;
   const nullDimensionCount = items.filter((i) => i.width === null).length;
   const anySelected = selectedIds.size > 0;
+  currentSelectedIds.current = selectedIds;
 
   const handleSearchChange = (value: string) => {
     setSearch(value);
@@ -1106,9 +1183,26 @@ export default function AdminMediaLibrary() {
   }, [anchorId, items]);
 
   const handleBulkDeleteClick = async () => {
-    const result = await checkBulkUsage.refetch();
-    setBulkUsageTotalInUse(result.data?.totalInUse ?? 0);
-    setShowBulkDelete(true);
+    const ids = Array.from(selectedIds);
+    if (!ids.length || checkingBulkUsage) return;
+    setCheckingBulkUsage(true);
+    setShowBulkDelete(false);
+    try {
+      // Direct query bypasses any cached query state and scans exactly these IDs.
+      const result = await utils.client.media.checkBulkUsage.query({ ids });
+      if (result.results.length !== ids.length ||
+          ids.some(id => !currentSelectedIds.current.has(id)) ||
+          currentSelectedIds.current.size !== ids.length) {
+        throw new Error("Selection changed during verification. Please try again.");
+      }
+      setBulkDeleteIds(ids);
+      setBulkUsageTotalInUse(result.totalInUse);
+      setShowBulkDelete(true);
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Could not verify usage. Deletion cancelled.");
+    } finally {
+      setCheckingBulkUsage(false);
+    }
   };
 
   // Upload logic
@@ -1241,8 +1335,10 @@ export default function AdminMediaLibrary() {
             <CheckSquare className="w-4 h-4 text-primary" />
             <span className="text-sm font-medium text-primary">{selectedIds.size} selected</span>
             <Button variant="outline" size="sm" onClick={handleBulkDeleteClick}
+              disabled={checkingBulkUsage}
               className="text-red-600 border-red-200 hover:bg-red-50 flex items-center gap-1 text-xs cursor-pointer">
-              <Trash2 className="w-3 h-3" /> Delete Selected
+              {checkingBulkUsage ? <Loader2 className="w-3 h-3 animate-spin" /> : <Trash2 className="w-3 h-3" />}
+              {checkingBulkUsage ? "Checking usage..." : "Delete Selected"}
             </Button>
             <Button variant="outline" size="sm" onClick={() => { setSelectedIds(new Set()); setAnchorId(null); }}
               className="flex items-center gap-1 text-xs cursor-pointer">
@@ -1354,10 +1450,12 @@ export default function AdminMediaLibrary() {
       {/* Bulk delete modal */}
       {showBulkDelete && (
         <BulkDeleteModal
-          ids={Array.from(selectedIds)}
+          ids={bulkDeleteIds}
           totalInUse={bulkUsageTotalInUse}
-          onClose={() => setShowBulkDelete(false)}
-          onConfirm={() => bulkDeleteMutation.mutate({ ids: Array.from(selectedIds) })}
+          onClose={() => { setShowBulkDelete(false); setBulkDeleteIds([]); }}
+          onConfirm={() => bulkDeleteMutation.mutate({
+            ids: bulkDeleteIds, confirmInUse: bulkUsageTotalInUse > 0,
+          })}
           isPending={bulkDeleteMutation.isPending}
         />
       )}

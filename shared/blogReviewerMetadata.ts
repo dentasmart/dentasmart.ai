@@ -1,4 +1,5 @@
 import { normalizeSchemaUrls, toSchemaUrl } from "./jsonLd";
+import { getManualBlogSchemaText, isManualBlogSchema, parseManualBlogSchema } from "./blogSchemaOverride";
 
 const SITE_URL = "https://dentasmart.ai";
 const INTERNAL_HOSTS = new Set(["dentasmart.ai", "www.dentasmart.ai"]);
@@ -179,7 +180,9 @@ export function validateBlogReviewerMetadata(
   }
 
   if (reviewerJsonLd) {
-    const parsed = parseSupplementalReviewerJsonLd(reviewerJsonLd);
+    const parsed = isManualBlogSchema(reviewerJsonLd)
+      ? parseManualBlogSchema(getManualBlogSchemaText(reviewerJsonLd))
+      : parseSupplementalReviewerJsonLd(reviewerJsonLd);
     if (parsed.error) errors.push({ field: "reviewerJsonLd", message: parsed.error });
   }
 
@@ -189,7 +192,7 @@ export function validateBlogReviewerMetadata(
   const isComplete = Boolean(name && profileUrl);
 
   return {
-    hasAnyReviewInput: Boolean(name || credentials || shortBio || profileUrlInput || lastReviewed || reviewerJsonLd),
+    hasAnyReviewInput: Boolean(name || credentials || shortBio || profileUrlInput || lastReviewed),
     isComplete,
     ...(isComplete ? {
       publicMetadata: {
@@ -221,7 +224,7 @@ export function getPublicSupplementalJsonLd(
   input: Pick<BlogReviewerMetadataInput, "reviewerJsonLd">,
 ): Record<string, unknown> | undefined {
   const value = valueOrUndefined(input.reviewerJsonLd);
-  return value ? parseSupplementalReviewerJsonLd(value).value : undefined;
+  return value && !isManualBlogSchema(value) ? parseSupplementalReviewerJsonLd(value).value : undefined;
 }
 
 /**

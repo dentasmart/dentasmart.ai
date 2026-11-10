@@ -15,6 +15,8 @@
  */
 
 import { listBlogPosts } from "./blogDb";
+import { getCmsTestPublishedToothache } from "./cmsTestPublication";
+import { getCmsPublishedHeading, type CmsDocument } from "../shared/cmsBlocks";
 import { staticRoutes } from "../shared/routes";
 import { oralHealthHubResourceGroups } from "../shared/oralHealthHub";
 
@@ -94,6 +96,34 @@ function generateHomepageContent(): string {
   <p>Start with unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray. Full Quick Check, Treatment Plan Review, and Complete Care are paid services with prices shown before purchase.</p>
   <p><a href="/download">Download the App</a> | <a href="/pricing">View Pricing</a> | <a href="/how-it-works">How It Works</a></p>
 </article>`;
+}
+
+
+/** A safe, textual noindex SSR representation of the same TEST-published blocks. */
+function renderCmsTestPublicationSsr(document: CmsDocument): string {
+  const h1 = getCmsPublishedHeading(document);
+  const pieces = document.blocks.flatMap(block => {
+    if (block.type === "hero") return [];
+    const heading = "heading" in block ? String(block.heading || "") : "";
+    let paragraphs: string[] = [];
+    switch (block.type) {
+      case "quick_answer": paragraphs = [block.answer]; break;
+      case "urgent_care": case "list": paragraphs = block.items; break;
+      case "rich_text": paragraphs = [block.html.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ")]; break;
+      case "causes": paragraphs = block.items.map(item => item.title + ": " + item.description); break;
+      case "symptoms": paragraphs = block.items.map(item => item.text); break;
+      case "faq": paragraphs = block.items.map(item => item.question + " " + item.answer); break;
+      case "related_links": paragraphs = block.links.map(item => item.title); break;
+      case "image": paragraphs = block.image?.altText ? [block.image.altText] : []; break;
+      case "table": paragraphs = [...block.headers, ...block.rows.flat()]; break;
+      case "cta": paragraphs = [block.description]; break;
+    }
+    return [
+      heading ? "<h2>" + escapeHtmlText(heading) + "</h2>" : "",
+      ...paragraphs.filter(Boolean).map(item => "<p>" + escapeHtmlText(item) + "</p>"),
+    ];
+  }).join("\n");
+  return "<article><h1>" + escapeHtmlText(h1) + "</h1><p>Test CMS publication. Not clinically approved for patient use.</p>" + pieces + "</article>";
 }
 
 function generateConditionContent(slug: string): string {
@@ -680,6 +710,10 @@ export async function resolveSSRContent(urlPath: string): Promise<SSRContent | n
   if (cleanPath.startsWith("/conditions/")) {
     if (!isSourceControlledSsrPath(cleanPath)) return null;
     const slug = cleanPath.replace("/conditions/", "");
+    if (slug === "toothache") {
+      const published = await getCmsTestPublishedToothache();
+      if (published) return { html: renderCmsTestPublicationSsr(published) };
+    }
     if (slug) return { html: generateConditionContent(slug) };
   }
 
