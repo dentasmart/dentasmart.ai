@@ -210,7 +210,7 @@ export default function LifeStagesHub() {
           <motion.div {...fadeUp}>
             <h2 className="text-3xl md:text-4xl font-normal mb-3 text-white">Every age deserves a healthy smile.</h2>
             <p className="text-base md:text-lg text-stone-300 font-light mb-6 max-w-2xl mx-auto">
-              The app is free to download. Use DentaSmart for educational guidance and to prepare questions for professional care at each life stage.
+              The app is free to download. Use DentaSmart to review submitted mouth-photo and supported X-ray findings and keep scores, reports, and dentist-visit history together. Complete Care Family keeps separate records for up to four members. The app does not replace an in-person dental examination.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/download/">

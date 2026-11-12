@@ -158,7 +158,7 @@ function getSteps(contentType: ContentType, urgentCareText?: string): Step[] {
     case "treatment":
       return [
         {
-          text: "If you already have a treatment plan, DentaSmart Treatment Plan Review can organize it in plain language and help you prepare questions. It does not decide which treatment is right for you.",
+          text: "If you already have a treatment plan, DentaSmart Treatment Plan Review can explain treatment considerations, priorities, possible timelines, and questions to discuss. Licensed dentists review and approve the report before delivery. Discuss the care decision with your dentist.",
         },
         {
           text: "Compare this treatment with alternatives to understand which factors may matter for your situation.",
@@ -197,7 +197,7 @@ function getSteps(contentType: ContentType, urgentCareText?: string): Step[] {
     default:
       return [
         {
-          text: "Explore DentaSmart's Oral Health Score and report options if you want to organize a mouth photo.",
+          text: "Explore DentaSmart's mouth-photo and supported X-ray analysis, with findings and an Oral Health Score for the areas assessed.",
         },
         {
           text: "Take the symptom quiz if you have any dental concerns.",

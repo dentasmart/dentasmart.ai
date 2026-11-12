@@ -8,8 +8,8 @@ const benefits = [
     id: 1,
     tag: "Oral Health Score",
     title: "Oral Health Score and Priorities",
-    desc: "Review an educational summary of supported information.",
-    detail: "Review an educational score based on supported photos and X-rays, then use the highlighted priorities to prepare questions for a dental professional.",
+    desc: "See a score and priorities for the areas assessed.",
+    detail: "Review your 0–100 Oral Health Score, based only on areas DentaSmart could assess from submitted photos and supported X-rays. Use the findings and priorities to plan questions for your dentist.",
     image: "/manus-storage/dentasmart-app-oral-health-score_ef84a3c3.webp"
   },
   {
@@ -17,7 +17,7 @@ const benefits = [
     tag: "Photo & X-Ray Analysis",
     title: "Plain-English Explanation of Photos and X-Rays",
     desc: "Review supported images in plain language.",
-    detail: "Upload supported mouth photos or dental X-rays. DentaSmart organizes visible observations from the images you provide in plain language. It does not provide a diagnosis.",
+    detail: "Upload mouth photos or supported dental X-rays for analysis of the areas shown. Get a plain-language report of findings and priorities, reviewed and approved by licensed dentists before delivery.",
     image: "/manus-storage/dentasmart-app-ai-report-sections_5245a13a.webp"
   },
   {
@@ -25,7 +25,7 @@ const benefits = [
     tag: "Treatment Plan Review",
     title: "Treatment Plan Review Before You Say Yes",
     desc: "Understand a proposed plan before you commit.",
-    detail: "Upload a supported dentist treatment plan and relevant records for an educational plain-language review. Use the result to prepare questions for your dentist.",
+    detail: "Upload a dentist-provided treatment plan and supporting records to review treatment considerations, priorities, possible timelines, and questions to discuss with your dentist. Licensed dentists review and approve the report before delivery.",
     image: "/manus-storage/dentasmart-app-treatment-plan-review_e384bde5.webp"
   },
   {
@@ -33,7 +33,7 @@ const benefits = [
     tag: "Personalized Guidance",
     title: "Personalized Guidance Based on Your History",
     desc: "Organize records and questions over time.",
-    detail: "Complete Care is an annual plan. Review the current plan details before purchase, and use any included educational tools to organize questions for dental care.",
+    detail: "Complete Care is an annual plan for assessments, report and Oral Health Score tracking, dental history, and help from Dr. Din, DentaSmart's AI oral health companion. Review the current plan details before purchase.",
     image: "/images/optimized/ChlTSVZDNZEOfine-800.webp"
   },
   {
@@ -41,7 +41,7 @@ const benefits = [
     tag: "Track Changes",
     title: "Track Changes Over Time",
     desc: "Keep a record of selected information over time.",
-    detail: "Use the selected service's record tools to review your own history over time. Changes in a score or report do not confirm a diagnosis or treatment outcome.",
+    detail: "Compare scores, reports, findings, and dentist-visit records over time. Each assessment reflects the evidence available; changes in a score or report do not confirm a treatment outcome.",
     image: "/images/optimized/QmtzzNkXnZNbJvtj-800.webp"
   },
   {
@@ -49,7 +49,7 @@ const benefits = [
     tag: "AI Oral Health Guide",
     title: "Ask Dr. Din About Your Reports",
     desc: "Ask questions about reports, findings, and dental terms.",
-    detail: "Dr. Din is DentaSmart's AI oral health guide. It can explain reports, findings, dental terms, history, and general oral-health information, but it is not a licensed dentist and does not diagnose conditions.",
+    detail: "Dr. Din is DentaSmart's AI oral health companion. Ask about reports, findings, dental terms, treatment explanations, or your saved history. Dr. Din is AI, not a licensed dentist; the app does not replace an in-person dental examination.",
     image: "/manus-storage/dentasmart-app-dr-din_f1bac3a2.webp"
   }
 ];

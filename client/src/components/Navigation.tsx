@@ -27,7 +27,7 @@ const megaMenuCategories = [
       { label: "Conditions Guide", href: "/oral-health-hub/conditions/", description: "Common dental problems explained" },
       { label: "Symptoms Guide", href: "/oral-health-hub/symptoms/", description: "What your symptoms mean" },
       { label: "Life Stages", href: "/life-stages/", description: "Dental care by age group" },
-      { label: "Symptom Checker", href: "/symptom-quiz/", description: "Free educational symptom quiz" },
+      { label: "Symptom Checker", href: "/symptom-quiz/", description: "Free quiz to organize symptoms" },
     ],
   },
   {

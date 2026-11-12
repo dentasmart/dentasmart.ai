@@ -46,7 +46,7 @@ const data: CostPageData = {
   ],
   savingsWithDentaSmart: [
     { title: "Organize Your Questions", description: "Keep treatment-plan and cost questions together before discussing them with a dental office." },
-    { title: "Review Cost Context", description: "Use educational context to prepare questions about an estimate, coverage, and treatment options." },
+    { title: "Review Cost Context", description: "Review a submitted treatment plan and supporting records to understand treatment considerations and prepare questions about the estimate. Confirm coverage with your insurer and dental office." },
     { title: "Prepare for the Visit", description: "Bring your questions, records, and plan details to a dental professional who can advise you." },
   ],
   faqs: [

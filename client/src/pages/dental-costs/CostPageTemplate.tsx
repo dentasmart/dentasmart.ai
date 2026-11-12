@@ -276,7 +276,7 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
       {/* ═══ MID-CONTENT CTA ═══ */}
       <MidContentCTA 
         headline={`Want more context before a ${data.procedureName.toLowerCase()}?`}
-        description="Review educational cost context, organize treatment-plan questions, and ask a licensed dentist what applies to your case."
+        description="Review a dentist-provided treatment plan and supporting records to understand proposed treatments, priorities, and cost questions for your dentist."
         trackingLabel={`cost_page_${data.slug}`}
         variant="card"
       />
@@ -459,7 +459,7 @@ export default function CostPageTemplate({ data }: { data: CostPageData }) {
               Review your options before treatment.
             </h2>
             <p className="text-base md:text-lg text-stone-300 font-light mb-6 max-w-2xl mx-auto">
-              Use DentaSmart to organize supported information, review educational cost context, and prepare questions for a licensed dentist. DentaSmart does not diagnose conditions or decide which treatment you need.
+              Use DentaSmart Treatment Plan Review to understand a submitted plan, treatment considerations, priorities, and questions about costs. Licensed dentists review and approve reports before delivery. Discuss care decisions with your dentist; the app does not replace an in-person examination.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/download/">

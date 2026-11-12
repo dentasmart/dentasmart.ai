@@ -78,7 +78,9 @@ describe("Phase 9 source-only medical page safeguards", () => {
     expect(rootCanalSource).toContain("https://www.aae.org/patients/root-canal-treatment/what-is-a-root-canal/root-canal-explained/");
     expect(rootCanalSource).toContain("https://www.aae.org/patients/your-office-visit/post-treatment-care/");
     expect(rootCanalSource).toContain("https://www.mouthhealthy.org/all-topics-a-z/root-canals");
-    expect(rootCanalSource).toContain("It does not determine whether you need a root canal");
+    expect(rootCanalSource).toContain("DentaSmart Treatment Plan Review can explain a dentist-provided plan, supporting findings, treatment considerations, priorities, and questions.");
+    expect(rootCanalSource).toContain("Licensed dentists review and approve the report before delivery.");
+    expect(rootCanalSource).toContain("An in-person examination and any needed tests remain necessary to determine whether a root canal is appropriate for your tooth.");
     expect(rootCanalSource).toContain("buttonText: \"Review Your Treatment Plan\"");
     expect(rootCanalSource).toContain("ctaLabel: \"See Root Canal Cost\"");
     expect(rootCanalSource).toContain("It does not verify healing or treatment success.");

@@ -46,14 +46,17 @@ describe("approved website brand tagline", () => {
     });
   });
 
-  it("uses the new tagline in the llms branding header but keeps the educational description", async () => {
+  it("uses the new tagline in the llms branding header and keeps analysis scope and care boundaries", async () => {
     const app = express();
     registerSeoRoutes(app);
     const res = await request(app).get("/llms.txt");
     expect(res.status).toBe(200);
     expect(res.text.split("\r\n")[0]).toBe("# DentaSmart - Better Teeth. Lower Costs");
-    expect(res.text).toContain("AI-powered oral health education and decision-preparation tools.");
-    expect(res.text).toContain("does not diagnose conditions or replace professional dental care.");
+    expect(res.text).toContain("AI-powered mouth-photo and dental X-ray analysis, reports, and oral-health tracking.");
+    expect(res.text).toContain("Depending on the assessment and available information, reports can include an Oral Health Score, risk summaries, treatment considerations and possible timelines.");
+    expect(res.text).toContain("Every generated report is reviewed and approved by licensed dentists before delivery.");
+    expect(res.text).toContain("Ask Dr. Din, the AI oral-health companion, about your reports and oral health.");
+    expect(res.text).toContain("The app does not replace an in-person dental examination or hands-on treatment.");
   });
 
   it("retains both full llms product-definition uses and their professional-care boundary", async () => {
@@ -61,14 +64,26 @@ describe("approved website brand tagline", () => {
     registerSeoRoutes(app);
     const res = await request(app).get("/llms-full.txt");
     expect(res.status).toBe(200);
-    expect(res.text).toContain(`an AI-powered oral health education app (${LEGACY_DEFINITION}).`);
-    expect(res.text).toContain(`DentaSmart is ${LEGACY_DEFINITION}. It is an AI-powered oral health app`);
-    expect(res.text).toContain("does not diagnose conditions or replace a licensed dentist.");
+    expect(res.text).toContain(`an AI-powered oral health app (${LEGACY_DEFINITION}).`);
+    expect(res.text).toContain(`DentaSmart is ${LEGACY_DEFINITION}. It analyzes submitted mouth photos, dental X-rays and supporting records.`);
+    expect(res.text).toContain("Depending on the assessment and available information, reports can include an Oral Health Score from 0 to 100, risk summaries, treatment considerations, priorities and possible timelines.");
+    expect(res.text).toContain("Every generated report is reviewed and approved by licensed dentists before delivery.");
+    expect(res.text).toContain("Dr. Din: An AI oral-health companion");
+    expect(res.text).toContain("The app does not replace an in-person dental examination or hands-on treatment.");
+    expect(res.text).toContain("Estimates are not provider quotes or coverage decisions.");
+    expect(res.text).toContain("it does not pay claims, replace coverage or replace professional dental care.");
+    expect(res.text).toContain("Emergency symptoms should be handled by a licensed dentist, urgent care or emergency services.");
   });
 
-  it("retains the homepage FAQ and structured-data educational product definitions", () => {
-    expect(source("client/src/pages/Home.tsx")).toContain(`DentaSmart is ${LEGACY_DEFINITION}. It provides Free Quick Check`);
-    expect(source("client/src/components/StructuredData.tsx")).toContain(`${LEGACY_DEFINITION}. DentaSmart provides educational oral health reports`);
+  it("retains the homepage FAQ and structured-data product definitions with report and examination boundaries", () => {
+    const home = source("client/src/pages/Home.tsx");
+    const schemas = source("client/src/components/StructuredData.tsx");
+    expect(home).toContain(`DentaSmart is ${LEGACY_DEFINITION}. It analyzes submitted mouth photos, supported dental X-rays`);
+    expect(home).toContain("Free Quick Check");
+    expect(home).toContain("It does not replace an in-person dental examination, routine dental care, or hands-on treatment.");
+    expect(schemas).toContain(`${LEGACY_DEFINITION}. DentaSmart provides mouth-photo and supported X-ray analysis, plain-language reports, and oral health tracking.`);
+    expect(schemas).toContain("Licensed dentists review and approve reports before delivery.");
+    expect(schemas).toContain("The app does not replace an in-person dental examination.");
   });
 
   it("normalizes the new legacy suffix without changing a definitional description, canonical, or schema", () => {

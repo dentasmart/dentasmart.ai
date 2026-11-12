@@ -56,7 +56,7 @@ const faqs = [
   },
   {
     q: "Can DentaSmart help me choose between treatments?",
-    a: "DentaSmart can help you organize supported information, understand common terms, and prepare questions about a treatment plan. It does not recommend a treatment or replace a licensed dentist's diagnosis and clinical advice.",
+    a: "DentaSmart Treatment Plan Review uses a dentist-provided plan and supporting records to explain treatment considerations, priorities, possible alternatives, and questions. Licensed dentists review and approve the report before delivery. Discuss the options with your dentist; the app does not replace an in-person examination.",
   },
   {
     q: "Do dentists always recommend the most expensive option?",
@@ -279,7 +279,7 @@ export default function ComparisonsHub() {
               {
                 icon: Shield,
                 title: "Understand Common Terms",
-                desc: "Review educational explanations so you can follow the options and ask clearer questions about your care.",
+                desc: "Ask Dr. Din, DentaSmart's AI oral health companion, to explain report findings, dental terms, and treatment considerations so you can prepare questions.",
               },
               {
                 icon: TrendingDown,

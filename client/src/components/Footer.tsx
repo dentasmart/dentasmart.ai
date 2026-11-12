@@ -23,9 +23,9 @@ export default function Footer() {
 
             <div className="space-y-4 max-w-sm">
               <p className="text-black font-light leading-relaxed text-sm">
-                Most people feel anxious and confused about their dental health.
-                DentaSmart provides educational oral health tools and plain-language explanations,
-                so you can organize questions and make more informed decisions with a dental professional.
+                DentaSmart analyzes submitted mouth photos and supported dental X-rays,
+                explains findings and treatment considerations, and helps you track oral health over time.
+                Licensed dentists review and approve reports before delivery.
               </p>
 
               <div className="flex flex-col gap-2">
@@ -293,9 +293,6 @@ export default function Footer() {
           <div>
             <p className="text-black text-sm font-light">
               © 2026 DentaSmart. All rights reserved.
-            </p>
-            <p className="text-black/60 text-xs font-light mt-1">
-              DentaSmart provides educational guidance, not medical advice. Consult a licensed dentist for diagnosis and treatment. Learn more at <a href="https://www.ada.org/resources/research/science-and-research-institute/oral-health-topics" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">ADA.org</a>.
             </p>
           </div>
 

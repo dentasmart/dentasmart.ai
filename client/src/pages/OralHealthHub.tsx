@@ -312,7 +312,7 @@ export default function OralHealthHub() {
                   </picture>
                   <div className="absolute bottom-7 left-7 right-7 rounded-2xl bg-white/95 p-4 shadow-lg backdrop-blur-sm">
                     <p className="text-sm font-semibold text-stone-950">{brand.tagline}</p>
-                    <p className="mt-1 text-sm leading-5 text-stone-600">Educational information to help you prepare for professional care.</p>
+                    <p className="mt-1 text-sm leading-5 text-stone-600">Understand findings and prepare questions for your next dental visit.</p>
                   </div>
                 </div>
               </div>
@@ -535,7 +535,7 @@ export default function OralHealthHub() {
           <div className="container mx-auto max-w-5xl px-4 text-center">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-teal-200">DentaSmart</p>
             <h2 id="dentasmart-cta-heading" className="mx-auto mt-3 max-w-3xl text-3xl font-semibold tracking-tight text-white md:text-4xl">Take the Next Step Toward Understanding Your Oral Health</h2>
-            <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-stone-300">DentaSmart helps you explore educational insights from supported dental photos and X-rays, understand dental information, and prepare questions for professional care.</p>
+            <p className="mx-auto mt-5 max-w-3xl text-lg leading-8 text-stone-300">Submit mouth photos or supported dental X-rays for analysis. Review findings, an Oral Health Score for assessed areas, and priorities to discuss with your dentist. Ask Dr. Din, DentaSmart's AI oral health companion, for help understanding your reports.</p>
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <Link
                 href="/download/"
@@ -555,7 +555,7 @@ export default function OralHealthHub() {
                 Explore How It Works
               </Link>
             </div>
-            <p className="mx-auto mt-5 max-w-2xl text-sm leading-6 text-stone-400">DentaSmart provides educational information and does not diagnose conditions or replace professional care.</p>
+            <p className="mx-auto mt-5 max-w-2xl text-sm leading-6 text-stone-400">Licensed dentists review and approve reports before delivery. The app does not replace an in-person dental examination.</p>
           </div>
         </section>
       </main>

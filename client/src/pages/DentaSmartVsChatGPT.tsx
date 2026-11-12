@@ -21,25 +21,25 @@ const comparisonRows = [
   { feature: "Built for oral health", dentasmart: "Yes. Designed around teeth, gums, X-rays, symptoms, treatment plans, reports, and dental history.", chatgpt: "General AI assistant that can answer dental questions among many other topics.", dentasmartWins: true },
   { feature: "Mouth photo analysis", dentasmart: "Yes. Part of the DentaSmart oral-health workflow with guided self-examination.", chatgpt: "Can accept images, but not built as a dental monitoring system.", dentasmartWins: true },
   { feature: "Dental X-ray workflow", dentasmart: "Yes. Free Quick Check accepts supported X-rays and shows a reduced subset of eligible finding data. Full Quick Check unlocks the full eligible X-ray insights for one case.", chatgpt: "Verify current image features directly with the provider.", dentasmartWins: true },
-  { feature: "Oral Health Score", dentasmart: "Yes. An educational 0-100 summary that can be compared with your own records over time.", chatgpt: "No dedicated oral-health scoring system.", dentasmartWins: true },
+  { feature: "Oral Health Score", dentasmart: "Yes. A 0–100 summary based only on the areas DentaSmart could assess from available evidence, with your score history for comparison.", chatgpt: "No dedicated oral-health scoring system.", dentasmartWins: true },
   { feature: "Monitoring over time", dentasmart: "Yes. Tracks reports, scores, symptoms, images, visits, and changes tooth by tooth.", chatgpt: "Memory can help personalization, but it is not a dental record or tooth-by-tooth timeline.", dentasmartWins: true },
-  { feature: "Treatment Plan Review", dentasmart: "Yes. The paid service organizes a supported dentist treatment plan into an educational plain-language review and questions for discussion with a dentist.", chatgpt: "Can explain general dental terms, but does not provide a DentaSmart Treatment Plan Review.", dentasmartWins: true },
-  { feature: "Cost context", dentasmart: "Yes. Includes educational cost context that is not a provider quote or savings guarantee.", chatgpt: "General cost explanations only.", dentasmartWins: true },
+  { feature: "Treatment Plan Review", dentasmart: "Yes. The paid service reviews a dentist-provided plan and supporting records to explain treatment considerations, priorities, possible timelines, and questions. Licensed dentists review and approve the report before delivery.", chatgpt: "Can explain general dental terms, but does not provide a DentaSmart Treatment Plan Review.", dentasmartWins: true },
+  { feature: "Cost context", dentasmart: "Yes. Helps you understand submitted treatment costs and prepare questions; it is not a provider quote or savings guarantee.", chatgpt: "General cost explanations only.", dentasmartWins: true },
   { feature: "Family oral-health tracking", dentasmart: "Yes. Separate family profiles and records for up to 4 members.", chatgpt: "Not designed for family dental profiles.", dentasmartWins: true },
   { feature: "Dentist visit history", dentasmart: "Yes. Stores visits, prescriptions, bills, notes, reports, images, and X-rays.", chatgpt: "Not built as a dental record system.", dentasmartWins: true },
-  { feature: "Dr. Din", dentasmart: "Yes. DentaSmart's AI oral health guide can explain reports, findings, dental terms, history, and general oral-health information. It does not diagnose conditions.", chatgpt: "General chatbot without DentaSmart report context.", dentasmartWins: true },
-  { feature: "Best use", dentasmart: "Free Quick Checks, Treatment Plan Review, educational monitoring, cost context, and family dental records.", chatgpt: "General Q&A and broad explanations. Verify current features directly.", dentasmartWins: false },
+  { feature: "Dr. Din", dentasmart: "Yes. Dr. Din is DentaSmart's AI oral health companion for help with reports, findings, dental terms, treatment explanations, and saved history.", chatgpt: "General chatbot without DentaSmart report context.", dentasmartWins: true },
+  { feature: "Best use", dentasmart: "Free Quick Checks, Treatment Plan Review, oral health monitoring, cost context, and family dental records.", chatgpt: "General Q&A and broad explanations. Verify current features directly.", dentasmartWins: false },
 ];
 
 const faqs = [
-  { question: "Can ChatGPT analyze dental images?", answer: "Third-party image features can change, so verify ChatGPT's current capabilities and professional-care boundaries directly. DentaSmart supports specific mouth-photo and dental X-ray workflows for educational reports that do not diagnose conditions." },
+  { question: "Can ChatGPT analyze dental images?", answer: "Third-party image features can change, so verify ChatGPT's current capabilities and professional-care boundaries directly. DentaSmart analyzes submitted mouth photos and supported dental X-rays, with reports reviewed and approved by licensed dentists before delivery." },
   { question: "Does ChatGPT have memory for dental conversations?", answer: "Third-party memory and privacy features can change, so review the provider's current terms. DentaSmart can organize supported reports, scores, visits, and treatment-plan information in an oral health record." },
-  { question: "Is DentaSmart a replacement for a dentist?", answer: "No. DentaSmart provides educational information, monitoring tools, and questions you can bring to a dental visit. It does not diagnose conditions, replace routine dental examinations, or provide hands-on treatment." },
-  { question: "Can DentaSmart help me understand a treatment plan?", answer: "Yes. DentaSmart's paid Treatment Plan Review can organize a supported dentist treatment plan into an educational plain-language review and questions. It does not provide a dentist's diagnosis or clinical recommendation." },
+  { question: "Is DentaSmart a replacement for a dentist?", answer: "No. DentaSmart explains image findings and treatment considerations and keeps oral health records together. Licensed dentists review and approve reports before delivery, but the app does not provide an in-person dental examination or hands-on treatment. Discuss treatment decisions with your dentist." },
+  { question: "Can DentaSmart help me understand a treatment plan?", answer: "Yes. DentaSmart's paid Treatment Plan Review uses a dentist-provided plan and supporting records to explain treatment considerations, priorities, possible timelines, and questions to discuss. Licensed dentists review and approve the report before delivery." },
   { question: "How much does DentaSmart cost compared to ChatGPT?", answer: "Third-party pricing can change, so verify ChatGPT's current terms directly. DentaSmart offers unlimited Free Quick Checks, Full Quick Check for $19.99 per case, Treatment Plan Review for $29.99 per case, and Complete Care individual and family annual plans." },
   { question: "Can I use both DentaSmart and ChatGPT?", answer: "Absolutely. Use ChatGPT when you want general explanations about dental topics. Use DentaSmart when the question is about your mouth, your teeth, your X-rays, your treatment plan, or your family's oral health. They serve different purposes." },
-  { question: "Does DentaSmart organize tooth history?", answer: "DentaSmart can organize supported tooth records, treatments, images, and notes over time. These records are educational and do not determine which teeth need treatment." },
-  { question: "What about reminders?", answer: "DentaSmart can support reminders connected to your saved oral health information. A reminder is not a diagnosis, urgent-care determination, or professional treatment schedule." },
+  { question: "Does DentaSmart organize tooth history?", answer: "DentaSmart can organize tooth records, treatments, images, and notes over time so you can compare findings and discuss changes with your dentist." },
+  { question: "What about reminders?", answer: "DentaSmart can support reminders connected to your saved oral health information. Follow your dentist's care schedule and seek professional care for urgent symptoms rather than waiting for an app reminder." },
 ];
 
 export default function DentaSmartVsChatGPT() {
@@ -47,7 +47,7 @@ export default function DentaSmartVsChatGPT() {
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
         title="DentaSmart vs ChatGPT for Dental Questions | Comparison Guide"
-        description="Compare DentaSmart's purpose-built educational workflow with a general AI chatbot, including records, pricing, and professional-care boundaries."
+        description="Compare DentaSmart's dental analysis, dentist-reviewed and approved reports, records, pricing, and Dr. Din AI conversations with a general AI chatbot."
         canonical="https://dentasmart.ai/compare/dentasmart-vs-chatgpt-dental"
         keywords="dentasmart vs chatgpt, chatgpt dental advice, ai dental app, chatgpt for teeth, dentasmart comparison, ai oral health"
         jsonLd={[
@@ -55,7 +55,7 @@ export default function DentaSmartVsChatGPT() {
             "@context": "https://schema.org",
             "@type": "MedicalWebPage",
             name: "DentaSmart vs ChatGPT for Dental Questions",
-            description: "An educational comparison of DentaSmart's supported oral health workflow with a general AI chatbot.",
+            description: "A comparison of DentaSmart's supported oral-health analysis workflow with a general AI chatbot.",
             url: "https://dentasmart.ai/compare/dentasmart-vs-chatgpt-dental",
             inLanguage: "en-US",
             isPartOf: { "@type": "WebSite", name: "DentaSmart", url: "https://dentasmart.ai" },
@@ -92,7 +92,7 @@ export default function DentaSmartVsChatGPT() {
               <span className="italic text-teal-700">How Purpose-Built and General AI Tools Differ</span>
             </h1>
             <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed max-w-3xl mb-4">
-              ChatGPT can answer general questions. DentaSmart organizes supported oral health records and educational context. Neither tool replaces a licensed dentist's diagnosis or treatment decision.
+              ChatGPT can answer general questions. DentaSmart analyzes submitted mouth photos and supported X-rays, explains findings and treatment considerations, and tracks oral health records. Licensed dentists review and approve reports before delivery. Neither tool replaces an in-person dental examination.
             </p>
             <p className="text-sm text-stone-500 mb-8 font-medium">
               {brand.tagline}
@@ -357,7 +357,7 @@ export default function DentaSmartVsChatGPT() {
               Supported DentaSmart services can help organize mouth images, X-rays, treatment plans, scores, visits, reports, and notes in one place.
             </p>
             <p className="text-base md:text-lg text-stone-300 font-light leading-relaxed mb-8">
-              That means DentaSmart is not just answering a question today. It is helping you track your teeth and gums over time.
+              Compare earlier reports and scores with new findings to track the areas assessed over time.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
@@ -386,7 +386,7 @@ export default function DentaSmartVsChatGPT() {
               A lifetime companion for your oral health
             </h2>
             <p className="text-base md:text-lg text-stone-600 font-light leading-relaxed max-w-3xl">
-              DentaSmart is not a one-time tool. It grows with you, tracking every tooth, every visit, and every change over the years.
+              Keep reports, scores, and dentist-visit records together so you can review changes in the areas assessed over time.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -394,7 +394,7 @@ export default function DentaSmartVsChatGPT() {
               {
                 icon: <TrendingUp className="w-6 h-6 text-primary" />,
                 title: "Tooth Longevity Tracking",
-                desc: "Monitor each tooth over time. Know which teeth are at risk and what you can do to protect them before problems escalate.",
+                desc: "Review findings tied to assessed teeth and compare supported records over time. Discuss changes and follow-up with your dentist.",
               },
               {
                 icon: <Clock className="w-6 h-6 text-primary" />,
@@ -404,7 +404,7 @@ export default function DentaSmartVsChatGPT() {
               {
                 icon: <Shield className="w-6 h-6 text-primary" />,
                 title: "Risk Assessment",
-                desc: "Understand your risk factors for gum disease, decay, and tooth loss. Take action early instead of reacting to emergencies.",
+                desc: "Review risk summaries when the assessment supports them, including findings to monitor and possible risks of delaying care. Missing evidence is not a normal finding.",
               },
             ].map((card, idx) => (
               <motion.div
@@ -551,7 +551,7 @@ export default function DentaSmartVsChatGPT() {
               Move from general answers to questions you can take to a dentist.
             </h2>
             <p className="text-base md:text-lg text-white/80 font-light leading-relaxed max-w-2xl mx-auto mb-4">
-              DentaSmart organizes supported oral health information and educational reports. It does not diagnose conditions or replace professional care.
+              DentaSmart analyzes submitted mouth photos and supported X-rays and explains findings, priorities, and treatment considerations. Licensed dentists review and approve reports before delivery. Use the report to prepare for care, not to replace an in-person examination.
             </p>
             <p className="text-white/90 font-medium mb-8">Start with an unlimited Free Quick Check or compare Full Quick Check, Treatment Plan Review, and Complete Care.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -124,7 +124,7 @@ function PolicyNavigation() {
 
 function ProductFactsPage() {
   const title = "Product Facts | DentaSmart";
-  const description = "Review verified DentaSmart availability, current plan names, prices, store links, Free Quick Check details, and educational-use boundaries.";
+  const description = "Review verified DentaSmart availability, current plan names, prices, store links, Free Quick Check details and service limits.";
   const canonical = "https://dentasmart.ai/product-facts";
   const productEvidence = getPublicEvidence("productFacts", "pricing", "iosStore", "androidStore");
 
@@ -172,8 +172,8 @@ function ProductFactsPage() {
           </section>
 
           <section className="mt-8 rounded-2xl border border-stone-200 bg-white p-6 md:p-8">
-            <h2 className="text-2xl font-medium text-black mb-3">Educational-use boundary</h2>
-            <p className="text-stone-700 leading-relaxed">DentaSmart organizes supported information and gives educational outputs. It does not diagnose conditions. It does not replace care from a licensed dental professional.</p>
+            <h2 className="text-2xl font-medium text-black mb-3">Product scope and limits</h2>
+            <p className="text-stone-700 leading-relaxed">DentaSmart analyzes submitted mouth photos, supported dental X-rays and records. Report details may include an Oral Health Score, risk summaries, treatment considerations and possible timelines, depending on the assessment and available information. Every generated report is reviewed and approved by licensed dentists before delivery. Ask Dr. Din, the AI oral-health companion, about your reports and oral health. The app does not replace an in-person dental examination or hands-on treatment.</p>
           </section>
           <ExternalSources sources={productEvidence} heading="How these facts are checked" />
           <PolicyNavigation />

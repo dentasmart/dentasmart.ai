@@ -17,9 +17,9 @@ import { pricing } from "@shared/facts";
 
 const pricingFaqs = [
   { question: "Can I use DentaSmart before paying?", answer: "Yes. Free Quick Check is unlimited and accepts supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray. If you add X-rays, the free report shows a reduced subset of eligible finding data." },
-  { question: "What does Free Quick Check include?", answer: "Free Quick Check organizes supported inputs into an educational report. Mouth photos can show visible photo-based findings. Supported X-rays receive a reduced subset of eligible X-ray finding data. DentaSmart does not provide a diagnosis or replace a dental examination." },
+  { question: "What does Free Quick Check include?", answer: "Free Quick Check analyzes mouth photos, supported X-rays, or both and returns report findings and an Oral Health Score based on assessable areas. Mouth photos do not require an X-ray. Free X-ray reports show limited eligible findings." },
   { question: "What is Full Quick Check?", answer: `Full Quick Check costs ${pricing.fullQuickCheck.priceFormatted} per case and unlocks the paid Quick Check package, including full eligible X-ray insights for that case.` },
-  { question: "When should I choose Treatment Plan Review?", answer: `Choose Treatment Plan Review (${pricing.treatmentPlanReview.priceFormatted} per case) when you have a dentist's treatment plan and want an educational plain-language review before deciding what to ask next.` },
+  { question: "When should I choose Treatment Plan Review?", answer: `Choose Treatment Plan Review (${pricing.treatmentPlanReview.priceFormatted} per case) when you have a dentist's treatment plan and want to understand the proposed care, possible alternatives, priorities, and questions to discuss based on available records.` },
   { question: "How do I manage my subscription?", answer: "Review the current billing, renewal, and cancellation terms during checkout or in your account before you purchase a paid plan." },
   { question: "What does the Complete Care Family plan cover?", answer: `The Complete Care Family plan is ${pricing.completeCareFamily.priceFormatted}/year for up to ${pricing.completeCareFamily.maxMembers} total members, including the primary user. Additional members beyond the included ${pricing.additionalFamilyMember.appliesAfterIncludedMembers} are ${pricing.additionalFamilyMember.priceFormatted}${pricing.additionalFamilyMember.billingLabel}.` },
 ];
@@ -276,7 +276,7 @@ export default function Pricing() {
                   <span className="text-stone-500 ml-2 text-sm">per case</span>
                 </div>
                 <p className="text-stone-600 mt-3 font-light leading-relaxed text-sm">
-                  Upload a supported treatment plan and get an educational plain-language review before deciding what to ask next.
+                  Upload a dentist-provided treatment plan for a plain-language review of proposed care, possible alternatives, and priorities based on available records.
                 </p>
               </div>
 
@@ -358,7 +358,7 @@ export default function Pricing() {
                       {[
                         { text: "Annual individual plan", bold: true },
                         { text: "Review current included features before purchase", bold: true },
-                        { text: "DentaSmart provides educational information, not diagnosis or treatment", bold: true },
+                        { text: "Reports support dental conversations, not in-person exams or hands-on treatment", bold: true },
                       ].map((f, i) => (
                         <div key={i} className="flex items-start text-stone-700 text-sm mb-1.5">
                           <Check className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
@@ -469,9 +469,9 @@ export default function Pricing() {
                 <tbody className="divide-y divide-stone-100">
                   {[
                     { feature: "Price", quickCheck: `${pricing.fullQuickCheck.priceFormatted} per case`, secondOpinion: `${pricing.treatmentPlanReview.priceFormatted} per case`, complete: planType === "individual" ? `${pricing.completeCareIndividual.priceFormatted}/year` : `${pricing.completeCareFamily.priceFormatted}/year` },
-                    { feature: "Purpose", quickCheck: "Full eligible X-ray insights for one supported case", secondOpinion: "Educational plain-language review of a supported dentist treatment plan", complete: "Annual plan. Review current details before purchase." },
+                    { feature: "Purpose", quickCheck: "Full eligible X-ray insights for one supported case", secondOpinion: "Plain-language review of a dentist-provided treatment plan", complete: "Annual plan. Review current details before purchase." },
                     ...(planType === "family" ? [{ feature: "Family capacity", quickCheck: "One case", secondOpinion: "One case", complete: `Up to ${pricing.completeCareFamily.maxMembers} total members; ${pricing.additionalFamilyMember.priceFormatted}/year each after included ${pricing.additionalFamilyMember.appliesAfterIncludedMembers}` }] : []),
-                    { feature: "Professional-care boundary", quickCheck: "Does not diagnose", secondOpinion: "Does not determine treatment need", complete: "Does not diagnose or replace professional care" },
+                    { feature: "Professional-care boundary", quickCheck: "Does not replace an in-person exam", secondOpinion: "Confirm care needs with your treating dentist", complete: "Does not replace exams or hands-on treatment" },
                   ].map((row, idx) => (
                     <tr key={idx} className="hover:bg-stone-50/50 transition-colors">
                       <td className="text-left py-3 px-4 font-medium text-stone-700 text-sm sticky left-0 bg-white z-10 border-r border-stone-100">{row.feature}</td>
@@ -512,7 +512,7 @@ export default function Pricing() {
             <h2 className="text-3xl md:text-4xl font-light text-black mb-3">
               How a DentaSmart service works
             </h2>
-            <p className="text-stone-500 text-lg">Four steps to organize dental information and prepare for professional care</p>
+            <p className="text-stone-500 text-lg">Upload your information, review findings, and discuss care with your dentist</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             {[
@@ -523,18 +523,18 @@ export default function Pricing() {
               },
               {
                 step: "2",
-                title: "DentaSmart reviews",
-                desc: "Choose Full Quick Check, Treatment Plan Review, or Complete Care only when you need those services. Prices and included features are shown before purchase.",
+                title: "AI analysis and dentist review",
+                desc: "DentaSmart analyzes your submitted information. Every generated report is reviewed and approved by licensed dentists before delivery.",
               },
               {
                 step: "3",
-                title: "Review your educational report",
-                desc: "Review the plain-language report and educational observations included with your selected service. DentaSmart does not provide a diagnosis.",
+                title: "Review your report",
+                desc: "Read findings and score context. Broader assessments may include treatment considerations, priorities, possible timelines, and risk summaries based on available information.",
               },
               {
                 step: "4",
                 title: "Prepare questions and monitor",
-                desc: "Use the report to prepare questions for a dentist and organize your oral health records over time when your selected service includes monitoring.",
+                desc: "Ask Dr. Din AI about your report, discuss findings with your dentist, and track your records when your selected service includes monitoring.",
               },
             ].map((item, idx) => (
               <motion.div

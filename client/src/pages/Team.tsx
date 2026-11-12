@@ -354,7 +354,7 @@ export default function Team() {
               <strong className="font-medium text-stone-900">Oral health affects how you eat, speak, and feel day to day.</strong> Dental care can still feel confusing, reactive, and disconnected from the rest of your care.
             </p>
             <p>
-              You should not need dental training to understand what may be happening in your mouth. DentaSmart turns supported photos, X-rays, and treatment documents into plain-language educational information so you can prepare questions and discuss next steps with a dentist.
+              You should not need dental training to understand what may be happening in your mouth. DentaSmart analyzes submitted mouth photos, supported X-rays and treatment documents to explain findings and treatment considerations. Every generated report is reviewed and approved by licensed dentists before delivery, so you can discuss next steps with clearer information.
             </p>
           </div>
         </div>

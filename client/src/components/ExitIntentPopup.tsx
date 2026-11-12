@@ -30,8 +30,8 @@ const variations: PopupVariation[] = [
     badge: "Symptom Quiz",
     headline: "Not sure what is going on with your teeth?",
     description:
-      "Take the free symptom quiz to organize what you notice and review general educational guidance. It does not provide a diagnosis or determine urgency.",
-    supportingText: "Educational guidance, not a diagnosis",
+      "Take the free symptom quiz to organize what you notice and review related oral health topics. It cannot diagnose the cause or determine urgency.",
+    supportingText: "Organize symptoms for your dentist",
     ctaText: "Take the Free Quiz",
     dismissText: "No thanks, I will figure it out myself",
     action: "internal",
@@ -56,7 +56,7 @@ const variations: PopupVariation[] = [
     badge: "Treatment Plan Review",
     headline: "Want to understand a treatment plan before your next conversation?",
     description:
-      "Upload a supported dentist treatment plan and relevant records for an educational plain-language review.",
+      "Upload a dentist-provided treatment plan and relevant records to review treatment considerations, priorities, and questions for your dentist. Licensed dentists review and approve the report before delivery.",
     supportingText: "$29.99 one-time",
     ctaText: "Review a Treatment Plan",
     dismissText: "No thanks, I will decide another way",
@@ -69,7 +69,7 @@ const variations: PopupVariation[] = [
     badge: "Treatment Plan Review",
     headline: "Already have a treatment recommendation?",
     description:
-      "Upload a supported dentist treatment plan and relevant records for a plain-language review and questions to discuss with your dentist.",
+      "Upload a dentist-provided treatment plan and relevant records to understand the proposed options and priorities. Get a report reviewed and approved by licensed dentists before delivery, with questions for your dentist.",
     supportingText: "$29.99 one-time",
     ctaText: "Review Your Treatment Plan",
     dismissText: "No thanks, I will decide another way",

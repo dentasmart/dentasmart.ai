@@ -121,7 +121,7 @@ export const conditionsData: Record<string, ConditionData> = {
       {
         question: "Can DentaSmart tell me what's wrong with my tooth?",
         answer:
-          "DentaSmart can provide educational information from supported photos and X-rays and help you prepare questions. A licensed dentist must diagnose the cause and recommend treatment.",
+          "DentaSmart can provide oral-health information from supported photos and X-rays and help you prepare questions. A licensed dentist must diagnose the cause and recommend treatment.",
       },
     ],
     relatedConditions: [
@@ -393,7 +393,7 @@ export const conditionsData: Record<string, ConditionData> = {
       "Wisdom teeth are third molars that often erupt in the late teens or early adulthood. People may have none, some, or all four.",
       "An impacted tooth is partly or fully blocked by gum, bone, or another tooth. It may grow at an angle and can be hard to clean, but not every impacted tooth causes symptoms.",
       "Pericoronitis is inflammation or infection around a partly erupted tooth. Treatment depends on the exam and may include cleaning, symptom care, medicine, or removal.",
-      "A dentist can compare monitoring and removal after reviewing the tooth position, symptoms, nearby structures, and ability to keep the area clean. DentaSmart can provide educational context for supported X-rays, but it does not decide whether a tooth needs removal.",
+      "A dentist can compare monitoring and removal after reviewing the tooth position, symptoms, nearby structures, and ability to keep the area clean. DentaSmart can provide plain-language context for supported X-rays, but it does not decide whether a tooth needs removal.",
     ],
     causes: [
       {
@@ -458,7 +458,7 @@ export const conditionsData: Record<string, ConditionData> = {
       {
         question: "Can DentaSmart look at my wisdom teeth X-ray?",
         answer:
-          "DentaSmart can provide educational context for supported dental X-rays and help you prepare questions. A dentist must interpret the image and recommend monitoring or treatment.",
+          "DentaSmart can provide plain-language context for supported dental X-rays and help you prepare questions. A dentist must interpret the image and recommend monitoring or treatment.",
       },
     ],
     relatedConditions: [
@@ -501,7 +501,7 @@ export const conditionsData: Record<string, ConditionData> = {
       "Teeth can darken with age and can develop surface stains from coffee, tea, wine, or tobacco. Peroxide-based products work on some types of discoloration but not every cause.",
       "In-office whitening uses products under professional supervision. Store-bought strips, dentist-provided trays, and whitening toothpastes work differently and require different treatment times.",
       "Whitening toothpaste mainly removes surface stains. Peroxide products can lighten natural tooth structure, but the degree of change varies.",
-      "A dentist can check for decay, gum problems, exposed roots, sensitivity, and restorations before whitening. Use DentaSmart for educational context and questions, not to measure or prescribe a whitening result.",
+      "A dentist can check for decay, gum problems, exposed roots, sensitivity, and restorations before whitening. Use DentaSmart for plain-language context and questions, not to measure or prescribe a whitening result.",
     ],
     causes: [
       {
@@ -698,7 +698,7 @@ export const conditionsData: Record<string, ConditionData> = {
       { question: "Can a cracked tooth heal by itself?", answer: "Nope. Your teeth can't heal themselves like bones can. A crack won't get better on its own, and it can actually get worse if bacteria get in there and cause an infection." },
       { question: "How do I know if my tooth is cracked or just sensitive?", answer: "A cracked tooth usually gives you a sharp, sudden pain when you bite down. General sensitivity is more of a dull ache that you feel when you have something hot or cold. But really, the only way to know for sure is to have a dentist check it out." },
       { question: "Does a cracked tooth always mean I need a crown?", answer: "Not at all. For tiny cracks, a little bonding or a filling might be all you need. If the crack is deep and has reached the tooth’s pulp, you might need a root canal and then a crown. Your dentist will tell you the best way to fix it." },
-      { question: "Can DentaSmart tell me if my tooth is cracked?", answer: "DentaSmart can help you record symptoms and review supported images for educational context. Cracks can be difficult to see, so a dentist must examine the tooth and decide how urgently it needs care." }
+      { question: "Can DentaSmart tell me if my tooth is cracked?", answer: "DentaSmart can help you record symptoms and review supported images for plain-language context. Cracks can be difficult to see, so a dentist must examine the tooth and decide how urgently it needs care." }
     ],
     relatedConditions: [
       { slug: "toothache", title: "Toothache" },
@@ -889,7 +889,7 @@ export const conditionsData: Record<string, ConditionData> = {
       { question: "How long do dental crowns actually last?", answer: "There is no fixed lifespan. Material, bite forces, tooth condition, gum health, home care, and new decay can all affect repair or replacement." },
       { question: "Is getting a crown going to hurt?", answer: "Local anesthesia is used to control pain, but experiences vary. Tell the dentist if you feel pain during treatment and ask which symptoms afterward should prompt a call." },
       { question: "How do I know if I need a crown or just a filling?", answer: "A dentist considers the diagnosis, cracks, location, remaining tooth structure, bite forces, and existing restorations. Ask to see the finding and discuss clinically reasonable options." },
-      { question: "Can DentaSmart tell me if I need a crown?", answer: "DentaSmart can provide educational context for supported images and treatment terms. It cannot diagnose the tooth or determine that a crown is needed." }
+      { question: "Can DentaSmart tell me if I need a crown?", answer: "DentaSmart can provide plain-language context for supported images and treatment terms. It cannot diagnose the tooth or determine that a crown is needed." }
     ],
     relatedConditions: [
       { slug: "root-canal", title: "Root Canal" },

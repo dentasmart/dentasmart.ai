@@ -8,14 +8,14 @@ const pathways = [
   {
     icon: Camera,
     title: "Start with a Quick Check",
-    description: "Use supported mouth photos or dental X-rays for a one-time educational review and Oral Health Score.",
+    description: "Analyze submitted mouth photos or supported dental X-rays and review findings and an Oral Health Score based on the areas assessed.",
     link: "/pricing/#quick-check",
     label: "Explore Quick Check",
   },
   {
     icon: FileSearch,
     title: "Organize a Treatment-Plan Review",
-    description: "Use Treatment Plan Review to organize an already-provided recommendation in plain language and prepare questions for your dentist.",
+    description: "Use Treatment Plan Review to understand a dentist-provided plan, treatment considerations, priorities, possible timelines, and questions to discuss.",
     link: "/pricing/#treatment-plan-review",
     label: "Explore Treatment Plan Review",
   },
@@ -46,7 +46,7 @@ export default function Stories() {
               Find the DentaSmart path that fits your question
             </h1>
             <p className="mx-auto max-w-2xl text-lg leading-relaxed text-stone-700 md:text-xl">
-              These are product-use examples, not customer testimonials. DentaSmart provides educational guidance and does not diagnose conditions or replace a dentist.
+              These are product-use examples, not customer testimonials. DentaSmart reports are reviewed and approved by licensed dentists before delivery. The app does not replace an in-person dental examination.
             </p>
           </div>
         </section>

@@ -122,7 +122,7 @@ export default function SymptomsHub() {
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
         title="Dental Symptoms: What Your Mouth Says | DentaSmart"
-        description="Learn about common dental symptoms, warning signs for professional care, and ways to record what you notice. Includes a free educational symptom quiz."
+        description="Learn about common dental symptoms, warning signs for professional care, and ways to record what you notice. Includes a free symptom quiz."
         canonical="https://dentasmart.ai/oral-health-hub/symptoms"
         keywords="dental symptoms, why does my tooth hurt, bleeding gums causes, tooth pain when biting, sensitive teeth, jaw pain, bad breath causes, swollen gums, mouth sores, TMJ symptoms"
         jsonLd={{
@@ -366,7 +366,7 @@ export default function SymptomsHub() {
               Stop guessing. <span className="italic text-primary">Organize what you notice.</span>
             </h2>
             <p className="text-base md:text-lg text-stone-600 font-light max-w-3xl text-left">
-              DentaSmart can help you describe symptoms and prepare questions. It does not diagnose conditions or replace a dentist.
+              DentaSmart's free symptom quiz organizes your answers and related topics for your dentist. It cannot diagnose the cause or determine urgency and does not replace professional care.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
@@ -379,7 +379,7 @@ export default function SymptomsHub() {
               {
                 icon: Search,
                 title: "Review common patterns",
-                desc: "See plain-language educational context and warning signs that can help you prepare for professional care.",
+                desc: "Review related oral health topics and warning signs that can help you prepare for professional care.",
               },
               {
                 icon: Shield,

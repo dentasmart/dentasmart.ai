@@ -23,7 +23,7 @@ export const clinicalArticles = [
     },
     result: {
       heading: "How DentaSmart Helps",
-      content: "DentaSmart can provide educational context for supported photos and X-rays and help you prepare questions. A dentist must confirm whether an area is decay and recommend care."
+      content: "DentaSmart can provide plain-language context for supported photos and X-rays and help you prepare questions. A dentist must confirm whether an area is decay and recommend care."
     }
   },
   {
@@ -77,7 +77,7 @@ export const clinicalArticles = [
     },
     result: {
       heading: "How DentaSmart Helps",
-      content: "DentaSmart can help you document symptoms and review supported images for educational context. It cannot determine whether a tooth is cracked or which treatment it needs."
+      content: "DentaSmart can help you document symptoms and review supported images for plain-language context. It cannot determine whether a tooth is cracked or which treatment it needs."
     }
   },
   {
@@ -104,7 +104,7 @@ export const clinicalArticles = [
     },
     result: {
       heading: "How DentaSmart Helps",
-      content: "DentaSmart can provide educational context for supported images and help you organize symptoms and questions. It cannot diagnose or rule out an infection."
+      content: "DentaSmart can provide plain-language context for supported images and help you organize symptoms and questions. It cannot diagnose or rule out an infection."
     }
   },
   {
@@ -131,7 +131,7 @@ export const clinicalArticles = [
     },
     result: {
       heading: "How DentaSmart Helps",
-      content: "DentaSmart can provide educational context for supported images and help you prepare questions. It cannot measure decay depth or decide whether a filling or root canal is required."
+      content: "DentaSmart can provide plain-language context for supported images and help you prepare questions. It cannot measure decay depth or decide whether a filling or root canal is required."
     }
   },
   {
@@ -185,7 +185,7 @@ export const clinicalArticles = [
     },
     result: {
       heading: "How DentaSmart Helps",
-      content: "DentaSmart can provide educational context for supported images and help you prepare questions. A dentist or oral surgeon must assess the tooth and recommend timing."
+      content: "DentaSmart can provide plain-language context for supported images and help you prepare questions. A dentist or oral surgeon must assess the tooth and recommend timing."
     }
   },
   {

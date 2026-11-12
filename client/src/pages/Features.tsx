@@ -23,21 +23,21 @@ export default function Features() {
     },
     {
       title: "Guided Self-Examination for More Context",
-      description: "Symptoms and observations can add useful context to an image.\n\nWhen available with a selected service, the guided self-examination walks you through simple checks before your photo upload, including a Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection with a mirror. These checks help organize what you are experiencing alongside the images you provide.",
+      description: "Symptoms and observations can add useful context to an image.\n\nWhen offered in your assessment, optional guided self-examination helps you record what you notice alongside your images. Follow the safe in-app instructions; these observations do not replace an in-person examination.",
       points: [
-        "Bite Pressure Test: Records tenderness and pain patterns you notice.",
-        "Cold Sensitivity Test: Records where and when sensitivity occurs.",
-        "Visual Inspection: Guides you to describe what you see accurately."
+        "Symptoms: Record tenderness and pain patterns you notice.",
+        "Sensitivity: Describe where and when sensitivity occurs.",
+        "Visual observations: Describe the area of concern with the available prompts."
       ],
       image: "/manus-storage/self-examination_c897255b.png",
       isPhone: true
     },
     {
       title: "Reports for You and Your Dentist",
-      description: "Read the findings in plain language, then switch to the dentist view when you want more technical detail.\n\nDentaSmart reports organize your Oral Health Score, findings, mouth images, X-ray insights when eligible, and next questions. Available report actions depend on the plan and report state shown in the app.",
+      description: "Every generated report is reviewed and approved by licensed dentists before delivery.\n\nRead findings linked to your submitted photos and X-rays, with plain-language explanations and an Oral Health Score where included. Broader assessments may add treatment considerations, priorities, possible timelines, and risk summaries based on available information. Report formats and actions depend on the selected service.",
       points: [
-        "For You: Plain-language findings, score context, and discussion points.",
-        "For Dentist: More technical report detail for a dental conversation.",
+        "For You: Understand findings, score context, and what to watch for.",
+        "For Dentist: More technical detail when that report format is included.",
         "Report Sections: Move between score, findings, images, and next steps."
       ],
       image: "/manus-storage/dentasmart-app-ai-report-sections_5245a13a.webp",
@@ -45,11 +45,11 @@ export default function Features() {
     },
     {
       title: "Stop Wondering What Your X-Rays Mean",
-      description: "You should not have to nod along when dental language feels confusing.\n\nDentaSmart highlights visible areas on supported X-rays and explains why they may be worth discussing. Use the visual context to prepare clearer questions for your dentist.",
+      description: "You should not have to nod along when dental language feels confusing.\n\nDentaSmart analyzes supported dental X-rays and links findings to the submitted view. Overlays and explanations help you understand what the findings mean, why they matter, and what to watch for.",
       points: [
         "Visual Context: See color-coded overlays that make areas easier to discuss.",
-        "Plain English: No more confusing medical terms. Just clear explanations.",
-        "Confidence: Walk into your appointment knowing exactly what to ask."
+        "Plain English: Read explanations alongside dental terms.",
+        "Visit Preparation: Use findings to prepare questions for your dentist."
       ],
       image: "/images/optimized/ZDzeChpbpgMeHJVN-800.webp"
     },
@@ -57,48 +57,48 @@ export default function Features() {
       title: "Monitor Visible Changes Between Visits",
       description: "A photo history can help you notice when something looks different.\n\nWith DentaSmart's mouth image tools, you can add new photos over time and compare them with earlier records. If you notice pain, swelling, bleeding, or another urgent change, contact a dental professional.",
       points: [
-        "Peace of Mind: Check your oral health whenever you feel uncertain.",
+        "New Photos: Add mouth images when you have a change to record.",
         "Change Tracking: Compare visible changes across your saved records.",
-        "Easy Monitoring: Track your gum and tooth health from the comfort of home."
+        "Between Visits: Keep photo-based findings and records together."
       ],
       image: "/manus-storage/dentasmart-app-history_155206e4.webp",
       isPhone: true
     },
     {
       title: "Guidance That Fits Your Routine",
-      description: "Generic reminders are easy to ignore.\n\nDentaSmart organizes educational guidance around the images, symptoms, history, and service you choose. Use it to build a manageable routine and prepare questions for professional care.",
+      description: "DentaSmart reports can include preventive care and maintenance guidance based on the images, symptoms, history, and assessment you submit. Use the available recommendations to plan your routine and discuss care with your dentist.",
       points: [
-        "Tailored for You: Advice based on your specific scan results.",
-        "Simple Steps: Actionable tips that fit easily into your daily routine.",
-        "Better Habits: Learn exactly what *your* mouth needs to stay healthy."
+        "Assessment Context: Guidance based on the information you submit.",
+        "Preventive Care: Review daily-care considerations where included.",
+        "Maintenance: Keep follow-up and care guidance with your report."
       ],
       image: "/images/optimized/ChlTSVZDNZEOfine-800.webp"
     },
     {
       title: "See Your Progress, Stay Motivated",
-      description: "It can be easier to follow a record when you can compare it with earlier information.\n\nThe Interactive Health Timeline provides a visual record of available DentaSmart information over time. It is educational and does not confirm a clinical outcome.",
+      description: "Compare scores, reports, findings, and dental-visit history over time. Your history keeps earlier information available between visits so you can see what changed in the areas assessed.",
       points: [
-        "Visual record: Compare available information over time.",
-        "History view: Keep supported records together.",
-        "Context for questions: Use the record to prepare for professional care."
+        "Visual Record: Compare available scores and findings over time.",
+        "History View: Keep reports and dental-visit records together.",
+        "Visit Context: Refer to earlier findings in a dental conversation."
       ],
       image: "/images/optimized/QmtzzNkXnZNbJvtj-800.webp"
     },
     {
       title: "Keep Risk Factors in View",
-      description: "Your records can help you keep recurring concerns and habits in view.\n\nDentaSmart organizes educational risk context from the information you provide. It does not predict outcomes or replace a professional examination.",
+      description: "Depending on your assessment and the information available, reports can summarize risk factors and considerations if care is delayed. Keep recurring findings and relevant habits in view, then discuss them with your dentist.",
       points: [
-        "Risk Context: Review factors that may be worth discussing.",
+        "Risk Summary: Review factors supported by your assessment.",
         "Follow-Up Prompts: Keep track of areas you plan to revisit.",
         "Professional Boundary: Bring persistent or urgent concerns to a dentist."
       ],
       image: "/images/optimized/OmKqTEPOiEaBSwig-800.webp"
     },
     {
-      title: "One Oral Health Score to Track Over Time",
-      description: "A consistent reference point can make progress easier to follow.\n\nYour Oral Health Score is a 0-100 educational summary based on information in DentaSmart. It helps you compare your own records over time; it is not a diagnosis or clinical grade.",
+      title: "Your Oral Health Score Over Time",
+      description: "Your Oral Health Score is a 0-100 summary of the areas DentaSmart could assess from available photos, X-rays, or other evidence. Areas that could not be assessed are not counted as healthy. Quick Check and Complete Oral Health Checkup have separate score histories.",
       points: [
-        "At-a-Glance Summary: Review one consistent educational measure.",
+        "At-a-Glance Summary: Review your score and its assessed coverage.",
         "History View: Compare your score with your earlier records.",
         "Conversation Starter: Use changes to prepare questions for your dentist."
       ],
@@ -107,11 +107,11 @@ export default function Features() {
     },
     {
       title: "Ask Dr. Din About Your Report",
-      description: "Questions often come up after you read a report.\n\nDr. Din can explain DentaSmart report language, findings, dental terms, and general oral-health information. It can also help you prepare questions for a dentist. It does not diagnose conditions or replace professional care.",
+      description: "Dr. Din is DentaSmart's AI oral-health companion. Ask about report findings, your Oral Health Score, treatment explanations, dental history, or everyday oral-health questions. Dr. Din can help you prepare for a dental visit but cannot examine you or provide hands-on care.",
       points: [
         "Plain-Language Help: Review report language and common dental terms.",
         "Question Preparation: Organize what to discuss with a dentist.",
-        "Educational Support: Get plain-language context for common dental topics."
+        "Oral-Health Conversations: Ask follow-up questions about your reports and dental topics."
       ],
       image: "/manus-storage/dentasmart-app-dr-din_f1bac3a2.webp",
       isPhone: true
@@ -129,7 +129,7 @@ export default function Features() {
     },
     {
       title: "Cost Context Before You Commit",
-      description: "Dental estimates can be hard to compare.\n\nDentaSmart provides educational cost ranges for common services and helps you organize treatment-plan questions. These ranges are not provider quotes and can vary by location, case, and dentist.",
+      description: "DentaSmart provides cost context for common services and helps you understand a submitted treatment plan. Estimated ranges are not provider quotes and can vary by location, case, and dentist.",
       points: [
         "Cost Ranges: Review typical price context for common services.",
         "Plan Questions: Identify what to clarify before accepting treatment.",
@@ -144,7 +144,7 @@ export default function Features() {
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
       <SEO
         title="DentaSmart Features | Oral Health Reports and Tracking"
-        description="Explore DentaSmart's unlimited Free Quick Checks, Full Quick Check, Treatment Plan Review, Oral Health Score tracking, reports, records, and guidance from Dr. Din."
+        description="Explore dentist-reviewed reports from mouth photos and X-rays, treatment considerations, Oral Health Score tracking, records, and conversations with Dr. Din AI."
         canonical="https://dentasmart.ai/features"
       />
       <Navigation />
@@ -190,7 +190,7 @@ export default function Features() {
               </h1>
               
               <p className="text-lg md:text-xl text-stone-700 mb-8 font-normal leading-relaxed text-balance">
-                Clarity first. Confidence next.
+                Analyze mouth photos and X-rays, read dentist-reviewed findings, and talk with Dr. Din AI about your oral health.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-start">
                 <Link

@@ -423,7 +423,7 @@ export default function SymptomPage() {
       <section className="py-8 bg-primary text-white">
         <div className="container px-4 mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-normal mb-3 text-white">{symptom.ctaHeading || "Worried about this symptom?"}</h2>
-          <p className="text-white/80 font-light mb-6">Record what you notice, review educational guidance, and contact a dental professional for diagnosis or urgent concerns.</p>
+          <p className="text-white/80 font-light mb-6">Record what you notice and prepare questions for your dentist. The free symptom quiz cannot diagnose the cause or determine urgency. Contact a dental professional for diagnosis or urgent concerns.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {professionalCareCta ? (
               <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">

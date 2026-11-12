@@ -48,7 +48,7 @@ const faqs = [
   },
   {
     q: "How can I save money on dental work?",
-    a: "Ask for a written treatment plan, compare prices between providers, review payment options, and check whether dental schools or discount plans are available in your area. DentaSmart's educational tools can help you organize questions, but a licensed dentist must diagnose conditions and recommend treatment.",
+    a: "Ask for a written treatment plan, compare prices between providers, review payment options, and check whether dental schools or discount plans are available in your area. DentaSmart Treatment Plan Review can explain a submitted plan and treatment considerations so you can prepare questions. A licensed dentist must examine you, diagnose conditions, and recommend treatment for your case.",
   },
   {
     q: "Are dental costs different by state?",

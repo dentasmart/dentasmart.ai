@@ -29,7 +29,7 @@ const quizJsonLd = {
   "@type": "Quiz",
   name: "Free Dental Symptom Checker. Oral Health Quiz",
   description:
-    "Answer 8 questions to organize dental symptoms and habits, then review an educational summary and topics to discuss with a dental professional.",
+    "Answer 8 questions to organize dental symptoms and habits, then review an answer summary and topics to discuss with a dental professional.",
   url: "https://dentasmart.ai/symptom-quiz",
   educationalLevel: "beginner",
   provider: {
@@ -165,7 +165,7 @@ const faqJsonLd = {
       name: "What does a dental symptom checker do?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A dental symptom checker asks questions about symptoms and habits, then organizes the answers into an educational summary and topic links. DentaSmart's free quiz does not diagnose conditions, determine urgency, or replace professional care.",
+        text: "A dental symptom checker asks questions about symptoms and habits, then organizes the answers into an answer summary and topic links. DentaSmart's free quiz does not diagnose conditions, determine urgency, or replace professional care.",
       },
     },
     {
@@ -173,7 +173,7 @@ const faqJsonLd = {
       name: "Can I check my dental symptoms online for free?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. DentaSmart offers a free online symptom quiz at dentasmart.ai/symptom-quiz. Answer 8 questions to organize what you notice and review general educational guidance. No account or credit card is required for the quiz.",
+        text: "Yes. DentaSmart offers a free online symptom quiz at dentasmart.ai/symptom-quiz. Answer 8 questions to organize what you notice and review general oral-health guidance. No account or credit card is required for the quiz.",
       },
     },
     {
@@ -204,13 +204,13 @@ const webAppJsonLd = {
   applicationCategory: "HealthApplication",
   operatingSystem: "Web, iOS, Android",
   description:
-    "Free educational symptom quiz that organizes answers and links to general oral health information. It does not diagnose or determine urgency.",
+    "Free symptom quiz that organizes answers and links to general oral health information. It does not diagnose or determine urgency.",
   offers: {
     "@type": "Offer",
     price: "0",
     priceCurrency: "USD",
   },
-  featureList: "Free symptom quiz, Educational answer summary, Related topic links, Professional-care reminders, No account required",
+  featureList: "Free symptom quiz, Answer summary, Related topic links, Professional-care reminders, No account required",
   author: {
     "@type": "Organization",
     name: "DentaSmart",
@@ -245,7 +245,7 @@ const medicalPageJsonLd = {
   name: "Free Dental Symptom Checker. Oral Health Quiz",
   url: "https://dentasmart.ai/symptom-quiz",
   description:
-    "A free educational symptom quiz that helps people organize tooth pain, gum, sensitivity, and habit observations before professional care.",
+    "A free symptom quiz that helps people organize tooth pain, gum, sensitivity, and habit observations before professional care.",
   audience: {
     "@type": "MedicalAudience",
     name: "Patients",
@@ -382,7 +382,7 @@ export default function SymptomQuiz() {
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
         title="Free Dental Symptom Checker | DentaSmart"
-        description="Use DentaSmart's free educational symptom quiz to organize what you notice and review general guidance. It does not diagnose or determine urgency."
+        description="Use DentaSmart's free symptom quiz to organize what you notice and review general guidance. It does not diagnose or determine urgency."
         canonical="https://dentasmart.ai/symptom-quiz"
         keywords="dental symptom checker, tooth pain quiz, do I need a dentist quiz, dental symptoms checker, oral health quiz, gum disease quiz, tooth sensitivity quiz, free dental assessment, online dental check"
         ogType="website"
@@ -505,14 +505,14 @@ function IntroSection({ onStart }: { onStart: () => void }) {
             </h1>
             <p className="text-xl text-stone-600 mb-8 font-light leading-relaxed max-w-lg">
               Answer 8 questions about tooth pain, gum health, sensitivity, and
-              habits. Review an educational summary and related topics. This quiz
+              habits. Review an answer summary and related topics. This quiz
               does not diagnose or determine urgency.
             </p>
 
             <div className="space-y-4 mb-10">
               {[
                 "8 questions about what you notice",
-                "Educational answer summary",
+                "Answer summary",
                 "Related oral health topics",
                 "Free quiz with no account required",
               ].map((item, idx) => (
@@ -550,7 +550,7 @@ function IntroSection({ onStart }: { onStart: () => void }) {
                     </div>
                     <div>
                       <div className="font-medium text-black">Symptom Summary</div>
-                      <div className="text-sm text-stone-500">Educational quiz result</div>
+                      <div className="text-sm text-stone-500">Quiz result</div>
                     </div>
                   </div>
 
@@ -720,7 +720,7 @@ function EmailCapture({
               <Mail className="w-8 h-8 text-primary" />
             </div>
             <h2 className="text-2xl md:text-3xl font-normal text-black mb-3">
-              Your educational summary is ready
+              Your answer summary is ready
             </h2>
             <p className="text-stone-600 leading-relaxed">
               Enter your email to receive your quiz summary and general oral
@@ -914,9 +914,10 @@ function ResultsSection({
             Get a deeper look with DentaSmart
           </h2>
           <p className="text-white/90 text-lg mb-8 leading-relaxed">
-            Compare paid DentaSmart services for supported mouth photos, dental
-            X-rays, educational reports, and questions to discuss with a dentist.
-            Processing time and included outputs vary by service.
+            Compare DentaSmart services for submitted mouth-photo and supported
+            X-ray analysis, findings, and treatment considerations. Licensed dentists
+            review and approve reports before delivery. Processing time and included
+            outputs vary by service; the app does not replace an in-person examination.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/download/">
@@ -963,7 +964,7 @@ function ResultsSection({
         {/* Disclaimer */}
         <div className="mt-8 text-center">
           <p className="text-xs text-stone-400 max-w-lg mx-auto leading-relaxed">
-            This quiz provides general educational information only and is not a
+            This quiz provides general oral-health information only and is not a
             substitute for professional dental advice, diagnosis, or treatment.
             Always consult a qualified dentist for concerns about your oral
             health.

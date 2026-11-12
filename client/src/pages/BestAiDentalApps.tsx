@@ -62,7 +62,7 @@ const faqs = [
   },
   {
     question: "Can an AI dental app diagnose dental problems?",
-    answer: "No. DentaSmart is an educational tool and does not diagnose conditions, prescribe treatment, or replace a licensed dentist. Review each third-party provider's current limitations before using it.",
+    answer: "An app cannot replace an in-person dental examination and any needed tests. DentaSmart analyzes submitted mouth photos and supported X-rays, then explains findings and priorities in reports reviewed and approved by licensed dentists before delivery. It does not provide prescriptions or hands-on treatment. Review each third-party provider's current limitations before using it.",
   },
   {
     question: "How should I compare AI dental apps?",

@@ -15,7 +15,7 @@ export default function HowItWorks() {
     <div className="min-h-screen flex flex-col bg-white font-sans text-foreground selection:bg-primary/20">
       <SEO
         title="How DentaSmart Works | AI Oral Health Guide in 4 Steps"
-        description="Learn how DentaSmart reviews supported dental photos, X-rays, symptoms, and treatment documents to provide educational reports and questions for your dentist."
+        description="See how DentaSmart analyzes mouth photos, X-rays, symptoms, and records, with licensed dentist review before reports are delivered."
         canonical="https://dentasmart.ai/how-it-works"
       />
       <Navigation />
@@ -30,13 +30,13 @@ export default function HowItWorks() {
             How AI Dental Analysis Works
           </h2>
           <p className="text-lg text-stone-700 leading-relaxed mb-4">
-            DentaSmart uses artificial intelligence to review supported photos of your teeth, dental X-rays, symptoms, and treatment documents. Whether you are dealing with tooth pain, bleeding gums, a chipped tooth, or want to organize questions before a dental visit, the app gives you an educational starting point.
+            DentaSmart uses AI to analyze submitted mouth photos, supported dental X-rays, symptoms, and treatment records. Start with an unlimited Free Quick Check, or submit a broader assessment or a dentist-provided treatment plan for review.
           </p>
           <p className="text-lg text-stone-700 leading-relaxed mb-4">
-            Upload supported information, and DentaSmart highlights visible areas or details that may be worth discussing. Depending on the service you choose, you can receive an Oral Health Score, plain-English explanations, cost context, and questions to bring to your dentist.
+            Reports explain findings in plain language and show an Oral Health Score based on assessable areas where included. Depending on the assessment and available information, they may also include treatment considerations, priorities, possible timelines, and risk summaries.
           </p>
           <p className="text-lg text-stone-700 leading-relaxed">
-            DentaSmart is an educational tool, not a replacement for a licensed dentist. It helps you organize information and prepare questions for dental visits.
+            Every generated report is reviewed and approved by licensed dentists before delivery. The app does not replace an in-person dental examination or hands-on treatment.
           </p>
         </div>
       </section>
@@ -80,7 +80,7 @@ export default function HowItWorks() {
               </div>
               <h3 className="text-2xl font-medium text-foreground mb-4">Analyze</h3>
               <p className="text-muted-foreground font-normal leading-relaxed max-w-xs">
-                DentaSmart organizes the information and highlights details that may warrant attention.
+                AI analyzes the submitted information, then licensed dentists review and approve the generated report before delivery.
               </p>
             </motion.div>
 
@@ -98,7 +98,7 @@ export default function HowItWorks() {
               </div>
               <h3 className="text-2xl font-medium text-foreground mb-4">Understand</h3>
               <p className="text-muted-foreground font-normal leading-relaxed max-w-xs">
-                Review plain-English educational insights and, when included, a more detailed report you can share with your dentist.
+                Read findings, score context, and any treatment considerations, priorities, and risk summaries included in your assessment.
               </p>
             </motion.div>
 
@@ -116,7 +116,7 @@ export default function HowItWorks() {
               </div>
               <h3 className="text-2xl font-medium text-foreground mb-4">Act</h3>
               <p className="text-muted-foreground font-normal leading-relaxed max-w-xs">
-                Use the report to monitor your records and prepare questions for professional care.
+                Discuss your report with your dentist, ask Dr. Din AI follow-up questions, and keep track of changes.
               </p>
             </motion.div>
           </div>
@@ -137,10 +137,10 @@ export default function HowItWorks() {
               <h3 className="text-2xl font-medium text-foreground">Add the Information for Your Service</h3>
             </div>
             <p className="text-stone-700 leading-relaxed mb-3 ml-[52px]">
-              DentaSmart asks for the information needed for the service you choose. Free Quick Check accepts supported mouth photos, supported X-rays, or both. Full Quick Check unlocks full eligible X-ray insights for one case. Treatment Plan Review uses a supported dentist treatment plan. Review current Complete Care features before purchase.
+              Free Quick Check accepts mouth photos, supported X-rays, or both, with no X-ray required. It is unlimited; free X-ray reports show limited eligible findings. Full Quick Check unlocks full eligible X-ray insights for one case. A broader assessment can use symptoms and history, while Treatment Plan Review uses a dentist-provided plan and supporting records.
             </p>
             <p className="text-stone-700 leading-relaxed ml-[52px]">
-              When guided self-examination is included, it can record observations from a Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection checklist. These observations add context but do not replace a clinical examination.
+              When offered, optional guided self-examination helps you record observations that add context to your assessment. Follow the safe in-app instructions; these checks do not replace a clinical examination.
             </p>
           </div>
 
@@ -154,7 +154,7 @@ export default function HowItWorks() {
               Follow the in-app instructions for supported photos or documents. If you have dental X-rays from a recent visit, you can add them when the selected service supports them.
             </p>
             <p className="text-stone-700 leading-relaxed ml-[52px]">
-              DentaSmart can highlight visible areas and organize observations from the information you submit. Color-coded overlays and plain-language notes are educational aids, not a diagnosis or a substitute for a dentist's examination.
+              DentaSmart analyzes the available evidence and links findings to the submitted image or view. Color-coded overlays and plain-language notes help explain each finding. Areas that cannot be assessed are not treated as healthy.
             </p>
           </div>
 
@@ -162,13 +162,13 @@ export default function HowItWorks() {
           <div className="mb-10">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center font-medium text-sm flex-shrink-0">3</div>
-              <h3 className="text-2xl font-medium text-foreground">Review Your Educational Report</h3>
+              <h3 className="text-2xl font-medium text-foreground">Review Your Report</h3>
             </div>
             <p className="text-stone-700 leading-relaxed mb-3 ml-[52px]">
-              Your report uses plain language to organize the information DentaSmart reviewed. Depending on the selected service, it may include an Oral Health Score, visible observations, cost context, treatment-plan comparison points, and questions to discuss with your dentist.
+              Your report explains findings, what they mean, why they matter, and what to watch for. Broader assessments and treatment-plan reviews may include treatment considerations, priorities, possible timelines, cost context, and risk summaries based on available information.
             </p>
             <p className="text-stone-700 leading-relaxed ml-[52px]">
-              Reports are designed to support understanding and preparation. When a downloadable PDF is included, you can save, print, or share it. Cost ranges are educational estimates, not provider quotes.
+              When a downloadable PDF is included, you can save, print, or share it. Cost ranges are estimates, not provider quotes or insurance coverage decisions.
             </p>
           </div>
 
@@ -182,7 +182,7 @@ export default function HowItWorks() {
               Use the report to prepare questions, organize cost considerations, and keep your records in one place. If you have pain, swelling, bleeding, trauma, or another urgent concern, contact a dental professional rather than relying on the app.
             </p>
             <p className="text-stone-700 leading-relaxed ml-[52px]">
-              You can also ask Dr. Din, DentaSmart's AI oral health guide, to explain reports, findings, dental terms, history, and general oral-health information. Dr. Din does not diagnose conditions or replace professional care.
+              Talk with Dr. Din, DentaSmart's AI oral-health companion, about report findings, your Oral Health Score, treatment explanations, dental history, and general oral-health questions. Dr. Din is AI and cannot examine you or provide hands-on care.
             </p>
           </div>
         </div>
@@ -207,17 +207,17 @@ export default function HowItWorks() {
               { 
                 icon: Activity, 
                 title: "Oral Health Score", 
-                desc: "A 0-100 educational summary you can compare with your earlier DentaSmart records."
+                desc: "A 0-100 summary of assessable areas, with coverage and score history where available."
               },
               { 
                 icon: ShieldCheck, 
-                title: "Top findings with severity", 
-                desc: "See which observations may be worth discussing sooner or monitoring over time."
+                title: "Findings and priorities",
+                desc: "Review findings marked for attention or monitoring, based on the available assessment information."
               },
               { 
                 icon: ClipboardList, 
-                title: "Action plan and reminders", 
-                desc: "Questions, reminders, and educational guidance based on the service you choose."
+                title: "Treatment considerations",
+                desc: "Possible options and next steps, depending on the assessment and available records."
               }
             ].map((feature, idx) => (
               <motion.div 
@@ -258,27 +258,27 @@ export default function HowItWorks() {
               { 
                 icon: Activity, 
                 title: "Visual Findings", 
-                desc: "DentaSmart can mark visible areas on supported images to make them easier to discuss."
+                desc: "See findings linked to the submitted image, with overlays where available."
               },
               { 
                 icon: FileText, 
                 title: "Plain English", 
-                desc: "\"Mesial caries on #14\" becomes \"Small cavity between your upper left molars.\"" 
+                desc: "Read dental terms alongside explanations of the finding and affected area."
               },
               { 
-                icon: ShieldCheck, 
+                icon: ShieldCheck,
                 title: "Action Plan", 
-                desc: "Educational next steps and questions to help you prepare for a dental conversation."
+                desc: "Preventive-care and maintenance considerations where included in your assessment."
               },
               { 
                 icon: ClipboardList, 
                 title: "Discussion Plan",
-                desc: "A structured list of observations and questions for your next dental conversation."
+                desc: "Review treatment considerations and priorities to discuss with your treating dentist."
               },
               { 
                 icon: Calendar, 
                 title: "Timelines", 
-                desc: "Keep track of dates and follow-up reminders you choose to record."
+                desc: "Possible timing and follow-up considerations based on the assessment and available information."
               },
               { 
                 icon: Bell, 
@@ -288,12 +288,12 @@ export default function HowItWorks() {
               { 
                 icon: TrendingUp, 
                 title: "Risk Context",
-                desc: "Review educational context for factors that may be worth discussing with a dentist."
+                desc: "Risk summaries and considerations if care is delayed, where supported by the assessment."
               },
               { 
                 icon: HeartPulse, 
                 title: "Oral Health Score", 
-                desc: "A 0-100 educational summary for comparing your own records over time."
+                desc: "A 0-100 summary based only on areas DentaSmart could assess from the available evidence."
               },
               { 
                 icon: MessageSquare, 
@@ -345,7 +345,7 @@ export default function HowItWorks() {
               },
               {
                 title: "People Reviewing a Treatment Plan",
-                desc: "Use Treatment Plan Review to organize a supported dentist treatment plan, plain-language context, and questions to discuss before you decide."
+                desc: "Use Treatment Plan Review to understand a dentist-provided plan, possible alternatives, priorities, and questions to discuss before you decide."
               },
               {
                 title: "Anyone with Dental Anxiety",

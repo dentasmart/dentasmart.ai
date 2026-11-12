@@ -436,7 +436,7 @@ export default function ComparisonPageTemplate({ data }: { data: ComparisonPageD
               Still deciding? <span className="italic text-primary">Choose your next step.</span>
             </h2>
             <p className="text-base md:text-lg text-stone-600 font-light mb-6 max-w-2xl mx-auto">
-              Review DentaSmart's paid checks and plans, or use the symptom quiz to organize questions before professional care.
+              Compare DentaSmart's mouth-photo and supported X-ray analysis, Treatment Plan Review, and oral health tracking. Reports are reviewed and approved by licensed dentists before delivery. The free symptom quiz can organize questions but cannot determine urgency.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/pricing/">

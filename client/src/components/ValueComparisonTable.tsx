@@ -1,7 +1,7 @@
 const rows = [
   {
     name: "Primary purpose",
-    denta: "Educational app, reports, and monitoring tools",
+    denta: "Photo and X-ray analysis, reports, and oral health tracking",
     savings: "Provider discounts under plan terms",
     insurance: "Benefits and coverage under policy terms",
   },

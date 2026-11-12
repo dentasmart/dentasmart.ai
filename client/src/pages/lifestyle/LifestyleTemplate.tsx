@@ -421,7 +421,7 @@ export default function LifestyleTemplate({ data }: { data: LifestylePageData })
               Take control of your oral health
             </h2>
             <p className="text-base md:text-lg text-white/80 font-light max-w-xl mx-auto mb-6">
-              The app is free to download. Use DentaSmart for educational guidance and to prepare questions for professional dental care.
+              The app is free to download. Use DentaSmart to review mouth-photo and supported X-ray findings and track scores and reports for assessed areas. Ask Dr. Din, the AI oral health companion, to help explain your reports before your next dental visit.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/download/">

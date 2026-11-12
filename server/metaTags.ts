@@ -73,20 +73,20 @@ function getUtilityNoindexMeta(cleanPath: string): MetaInfo | null {
 // have a matching entry here so crawlers see the same meta in raw HTML.
 const staticMeta: Record<string, MetaInfo> = {
   "/": {
-    title: "DentaSmart | Your Personal AI Oral Health Guide",
+    title: "DentaSmart | Better Teeth. Lower Costs",
     description:
-      "Start with unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Full Quick Check unlocks full eligible X-ray insights for one case.",
+      "Analyze mouth photos and supported X-rays, read dentist-reviewed reports, and track your Oral Health Score. Free Quick Check is unlimited. Better Teeth. Lower Costs",
     ogImage: "https://dentasmart.ai/manus-storage/dentasmart-free-quick-check-social-1200x630_b33c85da.png",
   },
   "/how-it-works": {
-    title: "How DentaSmart Works | AI Oral Health Guide in 4 Steps",
+    title: "How DentaSmart Works | Your Personal AI Dentist in 4 Steps",
     description:
-      "Learn how DentaSmart reviews supported dental photos, X-rays, symptoms, and treatment documents to provide educational reports and questions for your dentist.",
+      "See how DentaSmart analyzes mouth photos, X-rays, symptoms, and records, with licensed dentist review before reports are delivered.",
   },
   "/features": {
     title: "DentaSmart Features | Oral Health Reports and Tracking",
     description:
-      "Explore DentaSmart's unlimited Free Quick Checks, Full Quick Check, Treatment Plan Review, Oral Health Score tracking, reports, records, and guidance from Dr. Din.",
+      "Explore dentist-reviewed reports from mouth photos and X-rays, treatment considerations, Oral Health Score tracking, records, and conversations with Dr. Din AI.",
   },
   "/pricing": {
     title: "DentaSmart Pricing | Free Quick Check, Full Quick Check & Complete Care",
@@ -94,14 +94,14 @@ const staticMeta: Record<string, MetaInfo> = {
       "Compare unlimited Free Quick Check, Full Quick Check for $19.99 per case, Treatment Plan Review for $29.99 per case, and annual Complete Care plans.",
   },
   "/employers": {
-    title: "DentaSmart for Employers | Oral Health Education and Decision Support",
+    title: "DentaSmart for Employers | Oral Health Analysis and Reports",
     description:
-      "Explore DentaSmart as an educational oral health resource for employees. Employer pricing, eligibility, implementation, and success measures are confirmed during discovery.",
+      "Explore dentist-reviewed oral health reports, record tracking, and Dr. Din AI for employees. Employer pricing, eligibility, and pilot measures are confirmed during discovery.",
   },
   "/team": {
     title: "Meet the DentaSmart Team and Advisors",
     description:
-      "Meet the DentaSmart leadership team and strategic advisors, with clear roles and professional-care boundaries.",
+      "Meet the DentaSmart leadership team and strategic advisors, with leadership, advisory, and content-review roles identified separately.",
   },
   "/faqs": {
     title: "DentaSmart FAQs | Common Questions Answered",
@@ -111,12 +111,12 @@ const staticMeta: Record<string, MetaInfo> = {
   "/download": {
     title: "Download DentaSmart | iOS & Android App",
     description:
-      "Download DentaSmart for unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Upgrade to Full Quick Check when you need full eligible X-ray insights.",
+      "Download DentaSmart on iOS and Android for unlimited Free Quick Checks with mouth photos or supported X-rays. Read dentist-reviewed findings; free X-ray findings are limited.",
   },
   "/instant-scan": {
-    title: "Dental Photo Review | DentaSmart Educational Guide",
+    title: "Mouth Photo and Dental X-Ray Analysis | DentaSmart",
     description:
-      "Learn how DentaSmart uses supported mouth photos and dental X-rays for educational observations that do not replace professional diagnosis or care.",
+      "Analyze mouth photos and supported X-rays with DentaSmart Quick Check. Read dentist-reviewed findings and an Oral Health Score based on assessable areas.",
   },
   "/photo-guide": {
     title: "Photo Guide | How to Take the Best Dental Photos",
@@ -126,22 +126,22 @@ const staticMeta: Record<string, MetaInfo> = {
   "/best-ai-dental-apps": {
     title: "Best AI Dental Apps (2026): How to Compare Safely",
     description:
-      "Compare AI dental apps by input support, output clarity, pricing transparency, professional-care boundaries, privacy, and current platform availability.",
+      "Compare AI dental apps by supported inputs, report findings, dentist review and approval, pricing, privacy, and current iOS and Android availability.",
   },
   "/free-ai-teeth-scanner": {
     title: "Free AI Mouth Photo Analysis | DentaSmart Quick Check",
     description:
-      "Use supported mouth photos for a free DentaSmart Quick Check. No X-ray is required. See visible areas to discuss with a dentist without receiving a diagnosis.",
+      "Start an unlimited Free Quick Check with mouth photos, no X-ray required. Read dentist-reviewed findings and an Oral Health Score. Free X-ray findings are limited.",
   },
   "/vs/dental-com": {
     title: "DentaSmart vs Dental.com SmartScan (2026) | Comparison Guide",
     description:
-      "Compare verified DentaSmart facts with a framework for checking Dental.com SmartScan's current features, pricing, availability, and professional-care boundaries.",
+      "Compare verified DentaSmart analysis and report facts with questions for checking Dental.com SmartScan's current inputs, reports, pricing, and availability.",
   },
   "/vs/dentistry-one": {
     title: "DentaSmart vs Dentistry.One SmileScan (2026) | Comparison Guide",
     description:
-      "Compare verified DentaSmart facts with a framework for checking Dentistry.One SmileScan's current features, pricing, availability, and professional-care boundaries.",
+      "Compare verified DentaSmart analysis and report facts with questions for checking Dentistry.One SmileScan's current inputs, reports, pricing, and availability.",
   },
   "/oral-health-hub": {
     title: "Oral Health Hub: Conditions, Symptoms & Guides",
@@ -149,9 +149,9 @@ const staticMeta: Record<string, MetaInfo> = {
       "Explore dental conditions, symptoms, treatments, costs, emergencies, and prevention guides. Find clear oral health information in one place.",
   },
   "/answers": {
-    title: "Dental Answers | Educational Dental Q&A | DentaSmart",
+    title: "Dental Answers | Dental Q&A | DentaSmart",
     description:
-      "Review general educational information about dental symptoms, treatments, costs, and oral health. DentaSmart does not diagnose conditions.",
+      "Review general information about dental symptoms, treatments, costs, and oral health, and prepare questions for your dentist.",
   },
   "/find-a-dentist": {
     title: "How to Find the Right Dentist - DentaSmart Guide",
@@ -161,7 +161,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/symptom-quiz": {
     title: "Dental Symptom Quiz | Check Your Oral Health | DentaSmart",
     description:
-      "Use DentaSmart's free symptom quiz to organize what you notice and review general educational guidance. It does not diagnose or determine urgency.",
+      "Use DentaSmart's free symptom quiz to organize what you notice and review general oral-health guidance. It does not diagnose or determine urgency.",
   },
   "/stories": {
     title: "Ways to Use DentaSmart | Quick Check, Treatment Plan Review and Monitoring",
@@ -201,7 +201,7 @@ const staticMeta: Record<string, MetaInfo> = {
   "/product-facts": {
     title: "Product Facts | DentaSmart",
     description:
-      "Review verified DentaSmart product availability, plans, prices, store destinations, free-preview boundary, and educational-use boundary.",
+      "Review verified DentaSmart availability, current plan names, prices, store links, Free Quick Check details and service limits.",
   },
   "/account-deletion": {
     title: "Delete Your DentaSmart Account",
@@ -213,17 +213,17 @@ const staticMeta: Record<string, MetaInfo> = {
   "/compare/dentasmart-vs-chatgpt-dental": {
     title: "DentaSmart vs ChatGPT for Dental Questions | Comparison Guide",
     description:
-      "Compare DentaSmart's purpose-built educational workflow with a general AI chatbot, including records, pricing, and professional-care boundaries.",
+      "Compare DentaSmart's dental analysis, dentist-reviewed and approved reports, records, pricing, and Dr. Din AI conversations with a general AI chatbot.",
   },
   "/compare/dentasmart-vs-teledentistry": {
     title: "DentaSmart vs Teledentistry | Cost & Feature Comparison",
     description:
-      "Compare DentaSmart's educational tools with virtual dental visits by clinician access, records, services, pricing, and professional-care boundaries.",
+      "Compare DentaSmart's dental analysis and dentist-reviewed and approved reports with virtual dental visits by clinician access, records, services, and pricing.",
   },
   "/compare/dentasmart-vs-dental-insurance": {
     title: "DentaSmart vs Dental Insurance | Different Purposes",
     description:
-      "Compare DentaSmart's educational oral health tools with dental insurance. Learn what each may do, what neither replaces, and questions to review.",
+      "Compare DentaSmart's dental analysis, reports, and records with dental insurance's coverage role. DentaSmart is not dental insurance.",
   },
 
   // ─── Conditions pages ──────────────────────────────────────────────

@@ -37,15 +37,15 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 const faqs = [
   {
     question: "Is DentaSmart really free?",
-    answer: `Yes. DentaSmart Free Quick Check is unlimited and accepts supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray. Full Quick Check costs ${pricing.fullQuickCheck.priceFormatted} per case, Treatment Plan Review costs ${pricing.treatmentPlanReview.priceFormatted} per case, and Complete Care starts at ${pricing.completeCareIndividual.priceFormatted} per year.`
+    answer: `Yes. DentaSmart Free Quick Check is unlimited and accepts supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray. Free X-ray reports show limited eligible findings. Full Quick Check costs ${pricing.fullQuickCheck.priceFormatted} per case, Treatment Plan Review costs ${pricing.treatmentPlanReview.priceFormatted} per case, and Complete Care starts at ${pricing.completeCareIndividual.priceFormatted} per year.`
   },
   {
     question: "How accurate is an AI teeth scanner?",
-    answer: "An AI teeth scanner can help highlight areas that may deserve attention, but performance depends on the image, the area being reviewed, and the tool. DentaSmart does not diagnose conditions or replace a licensed dentist's examination."
+    answer: "DentaSmart does not publish a universal accuracy rate. Findings depend on image quality, the areas shown, and the information submitted. Every generated report is reviewed and approved by licensed dentists before delivery, but it does not replace an in-person dental examination."
   },
   {
     question: "What can DentaSmart detect from a photo?",
-    answer: "From a mouth photo, DentaSmart can help highlight visible areas such as discoloration, buildup, gum changes, or damage. Its X-ray workflow can help organize areas to discuss with a dentist. These educational observations are not a diagnosis."
+    answer: "DentaSmart analyzes submitted mouth photos for visible findings such as discoloration, buildup, gum changes, or damage and explains them in plain language. Supported X-rays can add findings that photos do not show. Results cover only areas that can be assessed from the available images."
   },
   {
     question: "Is my dental data private?",
@@ -53,11 +53,11 @@ const faqs = [
   },
   {
     question: "Do I need to visit a dentist after using DentaSmart?",
-    answer: "DentaSmart is an educational tool, not a replacement for professional dental care. If the app flags a concern, you should follow up with a licensed dentist. Think of it as a starting point that helps you understand what is happening before your appointment."
+    answer: "Yes. Keep routine dental examinations and care. Follow up with a licensed dentist about report findings or persistent concerns; DentaSmart cannot examine you or provide hands-on treatment."
   },
   {
     question: "How is DentaSmart different from other AI dental apps?",
-    answer: "DentaSmart supports mouth-photo and dental X-ray workflows, provides an Oral Health Score, and creates plain-language reports. Compare any app by supported inputs, report detail, price, privacy information, and whether it clearly states its professional-care limits."
+    answer: "DentaSmart analyzes mouth photos and supported dental X-rays, creates dentist-reviewed reports, and tracks an Oral Health Score based on assessable areas. You can also talk with Dr. Din, the AI companion, about your reports and oral health. Compare supported inputs, report detail, price, privacy, and examination limits."
   }
 ];
 
@@ -76,7 +76,7 @@ export default function FreeAiTeethScanner() {
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
         title="Free AI Mouth Photo Analysis | DentaSmart Quick Check"
-        description="Use supported mouth photos for a free DentaSmart Quick Check. No X-ray is required. See visible areas to discuss with a dentist without receiving a diagnosis."
+        description="Start an unlimited Free Quick Check with mouth photos, no X-ray required. Read dentist-reviewed findings and an Oral Health Score. Free X-ray findings are limited."
         canonical="https://dentasmart.ai/free-ai-teeth-scanner"
         keywords="free AI teeth scanner, AI dental scan, online teeth checkup, AI X-ray analysis, dental photo analysis, free dental scan app"
         jsonLd={faqSchema}
@@ -103,7 +103,7 @@ export default function FreeAiTeethScanner() {
               <span className="italic text-primary">No X-Ray Required</span>
             </h1>
             <p className="text-lg md:text-xl text-stone-600 font-light leading-relaxed max-w-2xl mb-8">
-              Use supported mouth photos, supported X-rays, or both for an unlimited Free Quick Check. Mouth photos do not require an X-ray.
+              Use mouth photos, supported X-rays, or both for an unlimited Free Quick Check. No X-ray is required. Free X-ray reports show limited eligible findings; Full Quick Check unlocks full eligible X-ray insights for one case.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/download/">
@@ -126,7 +126,7 @@ export default function FreeAiTeethScanner() {
         <div className="container px-4 mx-auto max-w-4xl">
           <QuickAnswerBlock
             question="Can I analyze a mouth photo for free?"
-            answer={`Yes. DentaSmart Free Quick Check is unlimited and accepts supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray. Full Quick Check is ${pricing.fullQuickCheck.priceFormatted} per case and unlocks full eligible X-ray insights. DentaSmart provides educational observations, not a diagnosis.`}
+            answer={`Yes. Free Quick Check is unlimited, and mouth photos do not require an X-ray. You can add supported X-rays, but free reports show limited eligible X-ray findings. Full Quick Check is ${pricing.fullQuickCheck.priceFormatted} per case and unlocks full eligible X-ray insights for that case.`}
           />
         </div>
       </section>
@@ -214,8 +214,8 @@ export default function FreeAiTeethScanner() {
             {[
               { step: "1", title: "Download the app", desc: "DentaSmart is available on iOS and Android and is free to download." },
               { step: "2", title: "Take a photo or upload an X-ray", desc: "Use your phone camera to photograph your teeth, or upload a dental X-ray image from your dentist. The app guides you through getting a clear shot." },
-              { step: "3", title: "Review the educational output", desc: "Processing time can vary by image quality and the selected service. The selected service explains supported observations in plain language and does not provide a diagnosis." },
-              { step: "4", title: "Understand your next steps", desc: "The report includes a patient-friendly version you can read yourself and a dentist-ready version you can bring to your appointment." },
+              { step: "3", title: "Review your report findings", desc: "DentaSmart analyzes your submitted images and returns findings with plain-language explanations and an Oral Health Score based on assessable areas. Processing time varies by image quality and service." },
+              { step: "4", title: "Understand your next steps", desc: "Use findings to prepare for a dental conversation, and ask Dr. Din AI about your report or oral health. Available report formats and sharing tools depend on your selected service." },
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-4 bg-white rounded-xl p-5 border border-stone-200">
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -238,7 +238,7 @@ export default function FreeAiTeethScanner() {
           <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
             {[
               { title: "App download", price: "$0", detail: "Install DentaSmart from the App Store or Google Play." },
-              { title: pricing.quickCheck.name, price: pricing.quickCheck.priceFormatted, detail: "Unlimited educational checks using supported mouth photos, supported X-rays, or both. Free X-ray output is limited." },
+              { title: pricing.quickCheck.name, price: pricing.quickCheck.priceFormatted, detail: "Unlimited checks using mouth photos, supported X-rays, or both. Free X-ray reports show limited eligible findings." },
               { title: "Full Quick Check", price: "Paid service", detail: "Provides fuller eligible X-ray insights for one supported case. See Pricing for the current service detail." },
               { title: "Complete Care", price: "Annual plans", detail: "Individual and family annual options are listed on Pricing." },
             ].map((option) => (
@@ -264,12 +264,12 @@ export default function FreeAiTeethScanner() {
               <h2 className="text-xl font-medium text-amber-800">What DentaSmart Cannot Do</h2>
             </div>
             <p className="text-stone-600 font-light mb-4">
-              DentaSmart is an educational screening tool. It is not a substitute for professional dental care. Here is what it cannot do:
+              DentaSmart analyzes the information you submit. It cannot examine your mouth in person or provide hands-on care. It cannot:
             </p>
             <ul className="space-y-2">
               {[
-                "Diagnose dental conditions (only a licensed dentist can do that)",
-                "Detect issues that require physical examination (bite problems, internal nerve damage)",
+                "Confirm your care needs without an in-person dental examination",
+                "Assess issues that require a physical examination or clinical tests",
                 "Replace regular dental checkups and cleanings",
                 "Provide treatment or prescribe medication",
               ].map((item, i) => (
@@ -280,7 +280,7 @@ export default function FreeAiTeethScanner() {
               ))}
             </ul>
             <p className="text-stone-600 font-light mt-4">
-              If DentaSmart flags a concern, follow up with your dentist. Think of it as a starting point that helps you walk into your appointment informed, not a replacement for the appointment itself.
+              If DentaSmart flags a concern, follow up with your dentist. A report finding is a reason to discuss care, not a reason to skip your examination.
             </p>
           </div>
         </div>
@@ -309,8 +309,8 @@ export default function FreeAiTeethScanner() {
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {[
               { title: "Supported inputs", detail: "Check whether the service accepts mouth photos, X-rays, or both, and whether your image type is supported." },
-              { title: "Output and limitations", detail: "Look for plain-language reports, clear uncertainty, and an explicit statement that the tool does not diagnose." },
-              { title: "Full price", detail: "Confirm what is free and what is paid. Free Quick Check can accept supported mouth photos or X-rays, while Full Quick Check provides fuller eligible X-ray insights." },
+              { title: "Output and limitations", detail: "Look for plain-language findings, clear assessed coverage, report review, and an explanation of when an in-person examination is needed." },
+              { title: "Full price", detail: "Confirm what is free and what is paid. Free Quick Check is unlimited with limited eligible X-ray findings; Full Quick Check unlocks full eligible X-ray insights for one case." },
               { title: "Privacy and follow-up", detail: "Review the privacy policy and understand when the service tells you to seek professional care." },
             ].map((item) => (
               <article key={item.title} className="rounded-2xl border border-stone-200 bg-stone-50 p-6">

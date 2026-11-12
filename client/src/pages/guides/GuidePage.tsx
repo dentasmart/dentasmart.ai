@@ -404,8 +404,8 @@ export default function GuidePage() {
           </h2>
           <p className="text-action-foreground font-light mb-6">
             {hasSourceNotes
-              ? "DentaSmart can help you organize supported dental information and prepare questions for professional care."
-              : "DentaSmart helps you monitor your teeth and gums between dental visits."}
+              ? "DentaSmart analyzes submitted mouth photos and supported X-rays and explains findings for assessed areas. Licensed dentists review and approve reports before delivery. Use the report to prepare questions; the app does not replace an in-person examination."
+              : "Review submitted mouth-photo and supported X-ray findings, compare scores and reports for assessed areas, and keep your dental history together between visits. Licensed dentists review and approve reports before delivery."}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/instant-scan/">

@@ -55,7 +55,7 @@ describe("injectMetaTags", () => {
       ["/team", "Meet the DentaSmart Team and Advisors | DentaSmart"],
       ["/pricing", "DentaSmart Pricing | Free Quick Check, Full Quick Check & Complete Care | DentaSmart"],
       ["/features", "DentaSmart Features | Oral Health Reports and Tracking | DentaSmart"],
-      ["/how-it-works", "How DentaSmart Works | AI Oral Health Guide in 4 Steps | DentaSmart"],
+      ["/how-it-works", "How DentaSmart Works | Your Personal AI Dentist in 4 Steps | DentaSmart"],
       ["/oral-health-hub", "Oral Health Hub: Conditions, Symptoms & Guides | DentaSmart"],
     ] as const;
 
@@ -206,7 +206,7 @@ describe("resolveMetaTags", () => {
     const meta = await resolveMetaTags("/features");
     expect(meta).not.toBeNull();
     expect(meta!.title).toContain("Features");
-    expect(meta!.description).toContain("DentaSmart");
+    expect(meta!.description).toBe("Explore dentist-reviewed reports from mouth photos and X-rays, treatment considerations, Oral Health Score tracking, records, and conversations with Dr. Din AI.");
   });
 
   it("returns meta for /pricing", async () => {
@@ -227,21 +227,27 @@ describe("resolveMetaTags", () => {
 
   it("keeps the commercial route descriptions owned by their current page contracts", async () => {
     const expected = [
-      ["/", "Start with unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Full Quick Check unlocks full eligible X-ray insights for one case."],
+      ["/", "Analyze mouth photos and supported X-rays, read dentist-reviewed reports, and track your Oral Health Score. Free Quick Check is unlimited. Better Teeth. Lower Costs"],
       ["/pricing", "Compare unlimited Free Quick Check, Full Quick Check for $19.99 per case, Treatment Plan Review for $29.99 per case, and annual Complete Care plans."],
-      ["/download", "Download DentaSmart for unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Upgrade to Full Quick Check when you need full eligible X-ray insights."],
-      ["/free-ai-teeth-scanner", "Use supported mouth photos for a free DentaSmart Quick Check. No X-ray is required. See visible areas to discuss with a dentist without receiving a diagnosis."],
-      ["/instant-scan", "Learn how DentaSmart uses supported mouth photos and dental X-rays for educational observations that do not replace professional diagnosis or care."],
-      ["/features", "Explore DentaSmart's unlimited Free Quick Checks, Full Quick Check, Treatment Plan Review, Oral Health Score tracking, reports, records, and guidance from Dr. Din."],
-      ["/how-it-works", "Learn how DentaSmart reviews supported dental photos, X-rays, symptoms, and treatment documents to provide educational reports and questions for your dentist."],
-      ["/employers", "Explore DentaSmart as an educational oral health resource for employees. Employer pricing, eligibility, implementation, and success measures are confirmed during discovery."],
-      ["/compare/dentasmart-vs-chatgpt-dental", "Compare DentaSmart's purpose-built educational workflow with a general AI chatbot, including records, pricing, and professional-care boundaries."],
-      ["/vs/dental-com", "Compare verified DentaSmart facts with a framework for checking Dental.com SmartScan's current features, pricing, availability, and professional-care boundaries."],
+      ["/download", "Download DentaSmart on iOS and Android for unlimited Free Quick Checks with mouth photos or supported X-rays. Read dentist-reviewed findings; free X-ray findings are limited."],
+      ["/free-ai-teeth-scanner", "Start an unlimited Free Quick Check with mouth photos, no X-ray required. Read dentist-reviewed findings and an Oral Health Score. Free X-ray findings are limited."],
+      ["/instant-scan", "Analyze mouth photos and supported X-rays with DentaSmart Quick Check. Read dentist-reviewed findings and an Oral Health Score based on assessable areas."],
+      ["/features", "Explore dentist-reviewed reports from mouth photos and X-rays, treatment considerations, Oral Health Score tracking, records, and conversations with Dr. Din AI."],
+      ["/how-it-works", "See how DentaSmart analyzes mouth photos, X-rays, symptoms, and records, with licensed dentist review before reports are delivered."],
+      ["/employers", "Explore dentist-reviewed oral health reports, record tracking, and Dr. Din AI for employees. Employer pricing, eligibility, and pilot measures are confirmed during discovery."],
+      ["/faqs", "Find answers to frequently asked questions about DentaSmart, including how AI analysis works, pricing, privacy, and app availability."],
+      ["/compare/dentasmart-vs-chatgpt-dental", "Compare DentaSmart's dental analysis, dentist-reviewed and approved reports, records, pricing, and Dr. Din AI conversations with a general AI chatbot."],
+      ["/vs/dental-com", "Compare verified DentaSmart analysis and report facts with questions for checking Dental.com SmartScan's current inputs, reports, pricing, and availability."],
     ] as const;
 
+    const corePages: Record<string, string> = { "/": "Home", "/pricing": "Pricing", "/download": "Download", "/free-ai-teeth-scanner": "FreeAiTeethScanner", "/instant-scan": "InstantScan", "/features": "Features", "/how-it-works": "HowItWorks", "/employers": "Employers", "/faqs": "FAQs" };
     for (const [path, description] of expected) {
       const meta = await resolveMetaTags(path);
       expect(meta?.description).toBe(description);
+      if (corePages[path]) {
+        const page = readFileSync(new URL(`../client/src/pages/${corePages[path]}.tsx`, import.meta.url), "utf8");
+        expect(page).toContain(`description="${description}"`);
+      }
     }
   });
 
@@ -249,7 +255,7 @@ describe("resolveMetaTags", () => {
     const meta = await resolveMetaTags("/compare/dentasmart-vs-dental-insurance/");
     expect(meta).toMatchObject({
       title: "DentaSmart vs Dental Insurance | Different Purposes",
-      description: "Compare DentaSmart's educational oral health tools with dental insurance. Learn what each may do, what neither replaces, and questions to review.",
+      description: "Compare DentaSmart's dental analysis, reports, and records with dental insurance's coverage role. DentaSmart is not dental insurance.",
       canonical: "https://dentasmart.ai/compare/dentasmart-vs-dental-insurance/",
     });
   });

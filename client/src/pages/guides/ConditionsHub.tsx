@@ -86,11 +86,11 @@ const faqs = [
   },
   {
     q: "How does DentaSmart help me understand my dental condition?",
-    a: "DentaSmart offers a free Quick Check for supported mouth photos and paid analysis for supported dental X-rays. It can highlight areas that may deserve attention, explain supported observations in plain language, and help you prepare questions for a dentist. Its educational guidance is not a diagnosis or a substitute for professional care.",
+    a: "DentaSmart analyzes submitted mouth photos and supported dental X-rays and explains findings and priorities for the areas assessed. Free Quick Check is unlimited; free X-ray results show a reduced subset of eligible finding data, while Full Quick Check unlocks full eligible X-ray insights for one case. Licensed dentists review and approve reports before delivery. The app does not replace an in-person examination.",
   },
   {
     q: "Is DentaSmart a replacement for seeing a dentist?",
-    a: "No. DentaSmart is your starting point, not your endpoint. Think of it like checking your symptoms before a doctor's visit. It helps you understand what's happening, prepare better questions, and make more confident decisions about your care. You still need a dentist for diagnosis and treatment.",
+    a: "No. DentaSmart helps you understand submitted image findings, treatment considerations, and priorities and track oral health records. You still need a dentist for an in-person examination, any needed tests, and hands-on treatment.",
   },
 ];
 

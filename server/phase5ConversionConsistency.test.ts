@@ -2,6 +2,9 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, expect, it } from "vitest";
 import { app, brand, pricing, productTerminology } from "../shared/facts";
+import { resolveStaticSchemaMarkup } from "../shared/schemaOwnership";
+import { resolveMetaTags } from "./metaTags";
+import { resolveSchemaMarkup } from "./schemaMarkup";
 
 const projectFile = (path: string) => readFileSync(resolve(process.cwd(), path), "utf8");
 
@@ -70,10 +73,14 @@ describe("Phase 5 verified product truth", () => {
     expect(app.androidUrl).toContain("com.dentaSmart.app.android");
   });
 
-  it("states on Home that DentaSmart does not diagnose or replace a licensed dentist", () => {
+  it("states on Home that DentaSmart does not replace dental examinations, routine care, or hands-on treatment", () => {
     const home = projectFile("client/src/pages/Home.tsx");
 
-    expect(home).toContain("does not diagnose conditions, replace routine dental exams");
+    expect(home).toContain("It does not replace an in-person dental examination, routine dental care, or hands-on treatment.");
+    expect(home).toContain("Every generated report is reviewed and approved by licensed dentists before delivery.");
+    expect(home).toContain("depending on the assessment and available information, treatment considerations, priorities, possible timelines, and risk summaries.");
+    expect(home).toContain("Oral Health Score based on assessable areas");
+    expect(home).toContain("Dr. Din is AI, not the licensed dentist who reviews your report, and cannot examine you or provide hands-on care.");
     expect(home).not.toContain("Yes. DentaSmart can analyze your symptoms");
     expect(home).not.toContain("you do not need to visit a dentist");
   });
@@ -257,7 +264,7 @@ describe("Phase 5 visible, metadata, and schema parity", () => {
     expect(pricingPage).toContain('id="second-opinion"');
   });
 
-  it("keeps the visible How It Works page, server HowTo schema, metadata, and crawler content at four steps", () => {
+  it("keeps the visible How It Works page, server HowTo schema, metadata, and crawler content at four steps", async () => {
     const page = projectFile("client/src/pages/HowItWorks.tsx");
     const schema = projectFile("shared/schemaOwnership.ts");
     const metadata = projectFile("server/metaTags.ts");
@@ -269,14 +276,36 @@ describe("Phase 5 visible, metadata, and schema parity", () => {
     expect(page).toContain("Step 3: Understand");
     expect(page).toContain("Step 4: Act");
     expect(schema.match(/"@type": "HowToStep"/g)).toHaveLength(4);
-    expect(metadata).toContain("in 4 Steps");
-    expect(crawler).toContain("Step 4: Prepare Questions and Monitor Records");
-    expect(pricingPage).toContain("Four steps to organize dental information");
+    expect(metadata).toContain('title: "How DentaSmart Works | Your Personal AI Dentist in 4 Steps"');
+    expect(metadata).toContain("See how DentaSmart analyzes mouth photos, X-rays, symptoms, and records, with licensed dentist review before reports are delivered.");
+    expect(crawler).toContain("Step 1: Add Your Information");
+    expect(crawler).toContain("Step 2: Analysis and Dentist Review");
+    expect(crawler).toContain("Step 3: Review Your Report");
+    expect(crawler).toContain("Step 4: Talk with Dr. Din AI and Track Your History");
+    expect(page).toContain("Add the supported photos, X-rays, symptoms, or treatment documents needed for your chosen service.");
+    expect(page).toContain("AI analyzes the submitted information, then licensed dentists review and approve the generated report before delivery.");
+    expect(page).toContain("Read findings, score context, and any treatment considerations, priorities, and risk summaries included in your assessment.");
+    expect(page).toContain("Discuss your report with your dentist, ask Dr. Din AI follow-up questions, and keep track of changes.");
+    expect(page).toContain("Cost ranges are estimates, not provider quotes or insurance coverage decisions.");
+    expect(page).toContain("Dr. Din is AI and cannot examine you or provide hands-on care.");
+    expect(pricingPage).toContain("Upload your information, review findings, and discuss care with your dentist");
     expect(pricingPage).toContain('title: "Add your information"');
-    expect(pricingPage).toContain('title: "DentaSmart reviews"');
-    expect(pricingPage).toContain('title: "Review your educational report"');
+    expect(pricingPage).toContain('title: "AI analysis and dentist review"');
+    expect(pricingPage).toContain('title: "Review your report"');
     expect(pricingPage).toContain('title: "Prepare questions and monitor"');
     expect(pricingPage).not.toContain("Three simple steps to better oral health");
+
+    const meta = await resolveMetaTags("/how-it-works/");
+    const serverHowTo = (await resolveSchemaMarkup("/how-it-works/", undefined, meta)).find((item) => item["@type"] === "HowTo");
+    const clientHowTo = resolveStaticSchemaMarkup("/how-it-works/", meta).find((item) => item["@type"] === "HowTo");
+    expect(projectFile("client/src/components/SEO.tsx")).toContain("? resolveStaticSchemaMarkup(location, {");
+    expect(serverHowTo).toEqual(clientHowTo);
+    expect(serverHowTo?.step).toEqual([
+      { "@type": "HowToStep", position: 1, name: "Add Your Information", text: "Add the supported photos, X-rays, symptoms, or treatment documents needed for the DentaSmart service you choose." },
+      { "@type": "HowToStep", position: 2, name: "DentaSmart Reviews the Information", text: "DentaSmart analyzes the submitted information. Every generated report is reviewed and approved by licensed dentists before delivery." },
+      { "@type": "HowToStep", position: 3, name: "Review Your Report", text: "Review plain-language findings and the report contents included with your selected service." },
+      { "@type": "HowToStep", position: 4, name: "Prepare Questions and Monitor Records", text: "Use the report to prepare questions for a dentist and keep relevant records organized over time." },
+    ]);
   });
 
   it("keeps FAQ rendering and FAQ JSON-LD sourced from the same filtered item collection", () => {
@@ -287,10 +316,14 @@ describe("Phase 5 visible, metadata, and schema parity", () => {
     expect(faqPage).toContain("displayCategories.map");
   });
 
-  it("keeps global structured data educational and preserves all verified offer prices", () => {
-    const schemas = `${projectFile("client/src/components/SEO.tsx")}\n${projectFile("client/src/components/StructuredData.tsx")}\n${projectFile("server/schemaMarkup.ts")}`;
+  it("keeps global structured data within submitted-information and care boundaries and preserves all verified offer prices", () => {
+    const schemas = `${projectFile("client/src/components/SEO.tsx")}\n${projectFile("client/src/components/StructuredData.tsx")}\n${projectFile("server/schemaMarkup.ts")}\n${projectFile("shared/schemaOwnership.ts")}`;
 
-    expect(schemas).toContain("It does not diagnose conditions or replace professional dental care");
+    expect(schemas).toContain("The app does not replace an in-person dental examination.");
+    expect(schemas).toContain("Findings reflect submitted information and do not replace an in-person dental examination or hands-on treatment.");
+    expect(schemas).toContain("Every generated report is reviewed and approved by licensed dentists before delivery.");
+    expect(schemas).toContain("Oral Health Score tracking for assessed areas");
+    expect(schemas).toContain("Dr. Din, the AI oral-health companion");
     expect(schemas).not.toMatch(/24\/7 AI dentist/i);
     expect(schemas).toContain(pricing.fullQuickCheck.price.toString());
     expect(schemas).toContain(pricing.treatmentPlanReview.price.toString());

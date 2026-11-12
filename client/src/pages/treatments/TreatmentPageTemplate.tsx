@@ -298,7 +298,7 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
       {/* ═══ MID-CONTENT CTA ═══ */}
       <MidContentCTA
         headline={data.midContentCta?.headline || `Want more context about a ${data.procedureName.toLowerCase()}?`}
-        description={data.midContentCta?.description || "Review educational information, organize your treatment-plan questions, and ask a licensed dentist what applies to your case."}
+        description={data.midContentCta?.description || "Review a dentist-provided treatment plan and supporting records to understand treatment considerations, priorities, and questions to discuss with your dentist."}
         buttonText={data.midContentCta?.buttonText}
         trackingLabel={`treatment_page_${data.slug}`}
         variant="card"
@@ -398,7 +398,7 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
                 <Smartphone className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-lg md:text-xl font-medium text-black mb-2">Understand Before You Go</h3>
-              <p className="text-stone-600 font-light leading-relaxed text-sm md:text-base">Use supported information to review plain-language educational context and prepare questions for your appointment.</p>
+              <p className="text-stone-600 font-light leading-relaxed text-sm md:text-base">Analyze submitted mouth photos and supported X-rays, review findings for assessed areas, and prepare questions for your appointment.</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -411,7 +411,7 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
                 <TrendingDown className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-lg md:text-xl font-medium text-black mb-2">Review a Treatment Plan</h3>
-              <p className="text-stone-600 font-light leading-relaxed text-sm md:text-base">DentaSmart Treatment Plan Review can organize a supported dentist treatment plan and questions. It does not provide a dentist's diagnosis or clinical recommendation.</p>
+              <p className="text-stone-600 font-light leading-relaxed text-sm md:text-base">DentaSmart Treatment Plan Review explains a dentist-provided plan, treatment considerations, priorities, and possible timelines. Licensed dentists review and approve the report before delivery.</p>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -556,7 +556,7 @@ export default function TreatmentPageTemplate({ data }: { data: TreatmentPageDat
               Knowledge is the best preparation.
             </h2>
             <p className="text-base md:text-lg text-stone-300 font-light mb-6 max-w-2xl mx-auto">
-              Use DentaSmart to organize supported information and prepare questions for professional care. DentaSmart does not diagnose conditions or decide which treatment you need.
+              Use DentaSmart to understand image findings, treatment considerations, and priorities before discussing care with your dentist. The app does not replace an in-person dental examination or hands-on treatment.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/download/">

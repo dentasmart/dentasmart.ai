@@ -364,8 +364,8 @@ export default function ConditionPage() {
       {/* CTA */}
       <section className="py-8 bg-action text-action-foreground">
         <div className="container px-4 mx-auto max-w-3xl text-center">
-          <h2 className="text-3xl font-normal mb-3 text-action-foreground">Want more educational context?</h2>
-          <p className="text-action-foreground font-light mb-6">Review how DentaSmart uses supported images for educational observations that do not replace professional diagnosis or care.</p>
+          <h2 className="text-3xl font-normal mb-3 text-action-foreground">Want to understand your image findings?</h2>
+          <p className="text-action-foreground font-light mb-6">DentaSmart analyzes submitted mouth photos and supported X-rays and explains findings for assessed areas. Licensed dentists review and approve reports before delivery. The app does not replace an in-person dental examination.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/instant-scan/">
               <Button size="lg" className="bg-white text-action hover:bg-white/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">

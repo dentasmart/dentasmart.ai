@@ -17,7 +17,7 @@ const commercialOffers = [
   {
     name: pricing.quickCheck.name,
     price: pricing.quickCheck.price,
-    description: "Unlimited free educational Quick Checks using supported mouth photos, supported X-rays, or both. Free X-ray submissions show a reduced subset of eligible finding data.",
+    description: "Unlimited free Quick Checks using supported mouth photos, supported X-rays, or both. Free X-ray submissions show a reduced subset of eligible finding data.",
   },
   {
     name: pricing.fullQuickCheck.name,
@@ -27,12 +27,12 @@ const commercialOffers = [
   {
     name: pricing.treatmentPlanReview.name,
     price: pricing.treatmentPlanReview.price,
-    description: "One-time educational review of a supported treatment plan for one case. $29.99 per case.",
+    description: "One-time analysis of a supported treatment plan for one case. $29.99 per case.",
   },
   {
     name: "Complete Care (Individual)",
     price: pricing.completeCareIndividual.price,
-    description: "Year-round educational monitoring for one person. $74.99/year.",
+    description: "Year-round oral-health tracking for one person. $74.99/year.",
   },
   {
     name: pricing.completeCareFamily.name,
@@ -69,7 +69,7 @@ export function getOrganizationSchema(): Record<string, unknown> {
     name: company.name,
     url: toSchemaUrl(SITE_URL),
     logo: `${SITE_URL}/images/logo.png`,
-    description: "DentaSmart is an AI-powered educational oral health app that helps people organize supported photos, X-rays, symptoms, and treatment documents for clearer dental conversations.",
+    description: "DentaSmart is an AI-powered oral health app that analyzes submitted mouth photos, supported X-rays, symptoms and treatment documents to help users understand findings and next steps.",
     sameAs: [company.social.instagram, company.social.linkedin, app.iosUrl],
     contactPoint: {
       "@type": "ContactPoint",
@@ -99,7 +99,7 @@ function getSoftwareApplicationSchema(): Record<string, unknown> {
     name: company.name,
     operatingSystem: "iOS, Android",
     applicationCategory: "HealthApplication",
-    description: "DentaSmart is an AI-powered educational oral health app with unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Full Quick Check unlocks full eligible X-ray insights for one case. The app also provides reports, tracking tools, and guidance from Dr. Din. It does not diagnose conditions or replace professional dental care.",
+    description: "DentaSmart is an AI-powered oral health app with unlimited Free Quick Checks using supported mouth photos, supported X-rays or both. Full Quick Check unlocks full eligible X-ray insights for one case. It provides reports, tracking tools and conversations with Dr. Din, the AI oral-health companion. Every generated report is reviewed and approved by licensed dentists before delivery. Findings reflect submitted information and do not replace an in-person dental examination or hands-on treatment.",
     url: toSchemaUrl(SITE_URL),
     downloadUrl: toSchemaUrl("/download"),
     installUrl: [app.iosUrl, app.androidUrl],
@@ -114,7 +114,7 @@ function getProductSchema(): Record<string, unknown> {
     "@type": "Product",
     "@id": `${toSchemaUrl("/pricing")}#product`,
     name: "DentaSmart AI Oral Health App",
-    description: "AI-powered educational oral health app with Free Quick Check, Full Quick Check, Treatment Plan Review, Complete Care, plain-language reports, tracking tools, and AI guidance.",
+    description: "AI-powered oral health app with Free Quick Check, Full Quick Check, Treatment Plan Review, Complete Care, plain-language reports, tracking tools and AI guidance.",
     brand: { "@type": "Brand", name: company.name },
     url: toSchemaUrl("/pricing"),
     isRelatedTo: { "@id": SOFTWARE_APPLICATION_ID },
@@ -144,11 +144,11 @@ function getHowToSchema(): Record<string, unknown> {
     "@context": "https://schema.org",
     "@type": "HowTo",
     name: "How to Use DentaSmart as an AI Oral Health Guide",
-    description: "Use DentaSmart in four steps to organize supported dental information, review educational insights, and prepare for professional care.",
+    description: "Use DentaSmart in four steps to submit supported dental information, review findings and use your report to plan next steps.",
     step: [
       { "@type": "HowToStep", position: 1, name: "Add Your Information", text: "Add the supported photos, X-rays, symptoms, or treatment documents needed for the DentaSmart service you choose." },
-      { "@type": "HowToStep", position: 2, name: "DentaSmart Reviews the Information", text: "DentaSmart organizes the submitted information and highlights details that may be worth discussing." },
-      { "@type": "HowToStep", position: 3, name: "Review Your Educational Report", text: "Review plain-language educational insights and the report contents included with your selected service." },
+      { "@type": "HowToStep", position: 2, name: "DentaSmart Reviews the Information", text: "DentaSmart analyzes the submitted information. Every generated report is reviewed and approved by licensed dentists before delivery." },
+      { "@type": "HowToStep", position: 3, name: "Review Your Report", text: "Review plain-language findings and the report contents included with your selected service." },
       { "@type": "HowToStep", position: 4, name: "Prepare Questions and Monitor Records", text: "Use the report to prepare questions for a dentist and keep relevant records organized over time." },
     ],
   };

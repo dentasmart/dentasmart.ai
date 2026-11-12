@@ -14,12 +14,12 @@ import FAQSchema from "@/components/FAQSchema";
 import { HowToSchema } from "@/components/StructuredData";
 
 const homeFaqs = [
-  { question: "What is DentaSmart?", answer: "DentaSmart is Your Personal AI Dentist in Your Pocket. It provides Free Quick Check, Full Quick Check, Treatment Plan Review, Oral Health Score tracking, reports, records, and guidance from Dr. Din. DentaSmart does not diagnose conditions or replace professional care." },
-  { question: "Who is DentaSmart for?", answer: "DentaSmart is for anyone who wants more clarity before making dental decisions. It is especially useful for people with tooth pain, gum bleeding, sensitivity, swelling, dental anxiety, no dental insurance, expensive treatment plans, or family oral health concerns. It is also helpful for parents, busy professionals, and anyone who wants to monitor their teeth and gums before problems become more serious." },
+  { question: "What is DentaSmart?", answer: "DentaSmart is Your Personal AI Dentist in Your Pocket. It analyzes submitted mouth photos, supported dental X-rays, and other information for reports with findings, treatment considerations, and priorities, depending on the assessment. Track your Oral Health Score and records, and ask Dr. Din, the AI companion, about your reports and oral health." },
+  { question: "Who is DentaSmart for?", answer: "DentaSmart is for people who want to understand their mouth photos, X-rays, or treatment plans and keep track of oral health between dental visits. It can help individuals and families organize records and questions, including when dental anxiety, a confusing estimate, or a lack of insurance makes planning care harder. Persistent or urgent symptoms need professional care." },
   { question: "How much does DentaSmart cost?", answer: "Free Quick Check is unlimited. Full Quick Check is $19.99 per case, Treatment Plan Review is $29.99 per case, and Complete Care is $74.99/year for individuals or $149.99/year for families of up to 4 members. Additional family members beyond 4 are $19.99/year each." },
   { question: "How is DentaSmart different from ChatGPT?", answer: "ChatGPT is a general AI assistant. DentaSmart is built for supported oral-health workflows, including Free Quick Check, Full Quick Check, Treatment Plan Review, Oral Health Score tracking, dental records, family profiles, cost context, and guidance from Dr. Din.", link: "/compare/dentasmart-vs-chatgpt-dental/", linkText: "Read the full DentaSmart vs ChatGPT comparison" },
-  { question: "Is DentaSmart a replacement for a dentist?", answer: "No. DentaSmart provides educational oral health insights, monitoring tools, and questions you can take to a dental visit. It does not diagnose conditions, replace routine dental exams, or provide hands-on treatment." },
-  { question: "Can DentaSmart review dental X-rays?", answer: "DentaSmart supports educational review of eligible mouth photos and dental X-rays. It can highlight visible areas to discuss, but it does not diagnose conditions or replace a dentist's interpretation." },
+  { question: "Is DentaSmart a replacement for a dentist?", answer: "No. DentaSmart helps you understand findings and treatment considerations and track your oral health between visits. It does not replace an in-person dental examination, routine dental care, or hands-on treatment." },
+  { question: "Can DentaSmart review dental X-rays?", answer: "Yes. DentaSmart analyzes supported dental X-rays and mouth photos and explains findings in plain language. Free Quick Check shows limited eligible X-ray findings; Full Quick Check unlocks full eligible X-ray insights for one case. Findings reflect the information available, not a complete examination of your mouth." },
 ];
 
 export default function Home() {
@@ -71,19 +71,19 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO 
-        title="DentaSmart | Your Personal AI Oral Health Guide"
-        description="Start with unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Full Quick Check unlocks full eligible X-ray insights for one case."
+        title="DentaSmart | Your Personal AI Dentist in Your Pocket"
+        description="Analyze mouth photos and supported X-rays, read dentist-reviewed reports, and track your Oral Health Score. Free Quick Check is unlimited. Better Teeth. Lower Costs"
         canonical="https://dentasmart.ai/"
         ogImage="https://dentasmart.ai/manus-storage/dentasmart-free-quick-check-social-1200x630_b33c85da.png"
       />
       <Navigation />
       <HowToSchema
         name="How to Use DentaSmart for Oral Health Analysis"
-        description="Start with a Free Quick Check using supported mouth photos, supported X-rays, or both. Upgrade one case to Full Quick Check for full eligible X-ray insights."
+        description="Upload mouth photos, supported X-rays, or both for a Free Quick Check. Read your dentist-approved report, then use the findings to track changes and discuss care."
         steps={[
-          { name: "Start with a Free Quick Check", text: "Use supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray.", url: "/download" },
-          { name: "Review the Educational Report", text: "DentaSmart organizes supported information into plain-language observations, an Oral Health Score when included, and discussion points.", url: "/how-it-works" },
-          { name: "Act with Confidence", text: "Use your report to monitor your oral health, prepare for your dentist visit, compare treatment options, and ask better questions.", url: "/features" }
+          { name: "Upload", text: "Take mouth photos or upload supported dental X-rays for a Quick Check. Other assessments can use symptoms, treatment plans, bills, prescriptions, or dentist notes.", url: "/download" },
+          { name: "Understand", text: "Read your dentist-approved report with findings and an Oral Health Score based on assessable areas. Broader assessments may include treatment considerations, priorities, possible timelines, and risk summaries.", url: "/how-it-works" },
+          { name: "Prepare", text: "Discuss findings and treatment considerations with your dentist, ask Dr. Din about your report, and keep your records together.", url: "/features" }
         ]}
       />
       <FAQSchema faqs={homeFaqs} />
@@ -108,8 +108,8 @@ export default function Home() {
               className="text-left max-w-2xl lg:col-span-5"
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-black mb-3 leading-[1.1]">
-                Understand your teeth <br />
-                <span className="font-normal italic text-primary">before it costs you.</span>
+                Better Teeth. <br />
+                <span className="font-normal italic text-primary">Lower Costs</span>
               </h1>
 
               {/* Verified orientation bar */}
@@ -120,11 +120,11 @@ export default function Home() {
               </div>
               
               <p className="text-lg md:text-xl text-stone-700 mb-3 font-normal leading-relaxed text-balance">
-                Use supported mouth photos, supported X-rays, or both. Free X-ray submissions show a reduced subset of eligible finding data; Full Quick Check unlocks the full eligible X-ray insights for one case.
+                Your Personal AI Dentist in Your Pocket. Upload mouth photos, supported dental X-rays, or both for plain-language findings. Free X-ray reports show limited findings; Full Quick Check unlocks full eligible X-ray insights for one case.
               </p>
 
               <p className="text-sm text-stone-600 mb-5 leading-relaxed">
-                Monitor your oral health. Prevent bigger problems. Get clarity before expensive decisions.
+                Every generated report is reviewed and approved by licensed dentists before delivery.
               </p>
 
               {/* CTAs */}
@@ -236,7 +236,7 @@ export default function Home() {
               See DentaSmart in Action
             </h2>
             <p className="text-xl text-stone-700 font-normal max-w-2xl mx-auto mb-6 leading-relaxed">
-              Watch how DentaSmart turns supported information into an educational report you can discuss with a dental professional.
+              Watch how DentaSmart analyzes mouth photos and X-rays, explains findings, and keeps your oral health records together.
             </p>
             
             <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl bg-foreground group">
@@ -360,10 +360,10 @@ export default function Home() {
               </div>
 
               <p className="mt-8 text-lg text-stone-800 font-normal leading-relaxed">
-                Most people wait because they are not sure what is happening. But waiting can turn a small concern into a bigger treatment, a higher bill, or a tooth that could have been saved.
+                A new symptom or an unclear treatment plan can leave you unsure what to ask next. Keep track of the concern and bring persistent or urgent symptoms to a dental professional.
               </p>
               <p className="mt-4 text-lg text-primary font-medium">
-                DentaSmart gives you a clearer starting point before small signs become expensive surprises.
+                DentaSmart helps you understand the information you have before your next dental conversation.
               </p>
             </motion.div>
           </div>
@@ -385,20 +385,20 @@ export default function Home() {
               Know what is happening in your mouth <span className="italic text-primary/80">before you decide what to do next.</span>
             </h2>
             <p className="text-xl text-stone-200 font-light mb-10 leading-relaxed max-w-3xl">
-              DentaSmart organizes supported mouth photos, dental X-rays, symptoms, treatment plans, and visit history into plain-language educational context. Use it to prepare questions and make more informed decisions with a dentist.
+              DentaSmart analyzes submitted mouth photos, supported dental X-rays, symptoms, and records. Reports explain findings and, depending on the assessment and available information, treatment considerations, priorities, possible timelines, and risk summaries.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
-                "Organize supported mouth photos and X-rays for educational context",
-                "Review plain-language observations to discuss with a dentist",
+                "Analyze submitted mouth photos and supported X-rays",
+                "Read findings with plain-language explanations",
                 "Track your Oral Health Score over time",
                 "Monitor changes in your teeth and gums",
                 "Prepare questions before a dental visit",
-                "Use Treatment Plan Review to understand an already-provided recommendation",
-                "Review educational context for factors that may be worth discussing",
+                "Review a dentist-provided treatment plan and possible alternatives",
+                "Review risk summaries based on available assessment information",
                 "Organize dental records for yourself and your family",
-                "Ask Dr. Din to explain DentaSmart reports and common dental terms"
+                "Ask Dr. Din, the AI companion, about your reports and oral health"
               ].map((item, idx) => (
                 <div key={idx} className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-primary/80 mt-0.5 flex-shrink-0" />
@@ -416,13 +416,13 @@ export default function Home() {
       <section className="py-8 bg-action text-action-foreground">
         <div className="container px-4 mx-auto max-w-6xl">
           <h2 className="text-3xl md:text-4xl font-normal text-center text-action-foreground mb-10">
-            From worry to clarity in three simple steps.
+            From photos and records to a report
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {[
-              { step: "01", title: "Upload", desc: "Take mouth photos, upload dental X-rays, or add symptoms, treatment plans, bills, prescriptions, or dentist notes." },
-              { step: "02", title: "Understand", desc: "DentaSmart organizes the information into plain-language educational observations, available report details, and questions to consider." },
-              { step: "03", title: "Prepare", desc: "Use your report to organize records and prepare questions for your dentist visit." }
+              { step: "01", title: "Upload", desc: "Take mouth photos or upload supported dental X-rays for a Quick Check. Other assessments can use symptoms, treatment plans, bills, prescriptions, or dentist notes." },
+              { step: "02", title: "Understand", desc: "Read your dentist-approved report with findings and an Oral Health Score based on assessable areas. Broader assessments may include treatment considerations, priorities, possible timelines, and risk summaries." },
+              { step: "03", title: "Prepare", desc: "Discuss findings and treatment considerations with your dentist, ask Dr. Din about your report, and keep your records together." }
             ].map((item, idx) => (
               <motion.div 
                 key={idx}
@@ -464,7 +464,7 @@ export default function Home() {
                 Your mouth changes over time. <span className="italic text-primary">DentaSmart helps you keep track.</span>
               </h2>
               <p className="text-lg text-stone-700 leading-relaxed mb-4">
-                Keep supported information together so you can compare it with earlier records over time.
+                Compare your Oral Health Score and findings with earlier assessments to follow changes in the areas DentaSmart could assess.
               </p>
               <p className="text-lg text-stone-700 leading-relaxed mb-4">
                 Oral Health Score records, reports, X-rays, mouth images, symptoms, visit history, and family profiles can stay organized in one place for your own reference and dental conversations.
@@ -528,13 +528,13 @@ export default function Home() {
               </div>
               <div className="bg-white rounded-2xl p-6 border border-stone-100 shadow-sm">
                 <p className="text-lg text-stone-700 leading-relaxed mb-4">
-                  With Treatment Plan Review, you can upload a supported dentist treatment plan and related records for an educational plain-language review.
+                  With Treatment Plan Review, upload a dentist-provided treatment plan, your questions, and supporting records such as X-rays or bills.
                 </p>
                 <p className="text-lg text-stone-700 leading-relaxed mb-4">
-                  DentaSmart helps you organize the information you provide in plain language and prepare for a more informed conversation with your dentist.
+                  Your report can explain the proposed care, possible alternatives, priorities, and timing considerations based on the information available.
                 </p>
                 <p className="text-base text-stone-600 font-medium border-t border-stone-100 pt-4 mt-4">
-                  Treatment Plan Review is educational. It does not determine whether treatment is needed or replace a dentist's advice.
+                  An in-person dental examination is still needed to confirm your care needs. Discuss the report with your treating dentist.
                 </p>
               </div>
             </div>
@@ -558,16 +558,16 @@ export default function Home() {
               Cost Clarity
             </div>
             <h2 className="text-4xl md:text-5xl font-normal text-black mb-6">
-              Avoid surprise dental costs.
+              Understand the estimate before you commit.
             </h2>
             <p className="text-xl text-stone-700 font-light leading-relaxed mb-4 max-w-3xl mx-auto">
               Dental care can feel more stressful when the recommendation, estimate, or next step is unclear.
             </p>
             <p className="text-lg text-stone-700 leading-relaxed mb-6 max-w-3xl mx-auto">
-              DentaSmart can help you organize treatment-plan information and prepare questions to discuss with a dental professional.
+              Treatment Plan Review puts proposed treatments, possible options, and available cost context in plain language so you can ask about the estimate.
             </p>
             <p className="text-lg text-stone-800 font-medium">
-              Use the information you have to prepare for the conversation.
+              Cost ranges are estimates, not a quote from your dentist or an insurance coverage decision.
             </p>
           </motion.div>
         </div>
@@ -614,7 +614,7 @@ export default function Home() {
                 DentaSmart lets you create family profiles so each person's checkups, X-rays, mouth photos, Oral Health Score, treatment notes, and dental history stay organized separately.
               </p>
               <p className="text-base text-stone-600 font-medium">
-                Because protecting your family's teeth should not depend on memory, scattered papers, or waiting until something hurts.
+                Complete Care Family includes up to 4 total members, including the primary account holder.
               </p>
             </div>
           </motion.div>
@@ -640,13 +640,13 @@ export default function Home() {
               Meet Dr. Din, your <span className="italic text-primary">AI oral health guide.</span>
             </h2>
             <p className="text-xl text-stone-700 font-light leading-relaxed mb-6 max-w-3xl mx-auto">
-              When report language or a dental term is confusing, Dr. Din can explain it in plain language and help you organize questions for a dentist.
+              Talk with Dr. Din about your report findings, treatment explanations, dental history, or everyday oral-health questions.
             </p>
             <p className="text-lg text-stone-700 leading-relaxed mb-6 max-w-3xl mx-auto">
-              Ask about DentaSmart reports, Oral Health Score history, common dental terms, or questions to prepare for a professional visit.
+              Dr. Din can explain your Oral Health Score and common dental terms and help you prepare questions before or after a dental visit.
             </p>
             <p className="text-lg text-stone-800 font-medium max-w-2xl mx-auto">
-              Dr. Din provides educational guidance. It does not diagnose conditions or replace professional care.
+              Dr. Din is AI, not the licensed dentist who reviews your report, and cannot examine you or provide hands-on care.
             </p>
           </motion.div>
         </div>
@@ -671,17 +671,17 @@ export default function Home() {
                 {
                   icon: Camera,
                   title: "Quick Check",
-                  desc: "A free educational starting point using supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray."
+                  desc: "An unlimited Free Quick Check using mouth photos, supported X-rays, or both. No X-ray is required; free X-ray findings are limited."
                 },
                 {
                   icon: Search,
                   title: "Complete Care",
-                  desc: "An annual plan with current details shown before purchase. Review available features and limits on the pricing page."
+                  desc: "Annual individual and family plans for keeping oral health records over time. See Pricing for current included services and limits."
                 },
                 {
                   icon: FileText,
                   title: "Treatment Plan Review",
-                  desc: "Review a supported dentist treatment plan in plain language and prepare questions for a dental conversation."
+                  desc: "Review a dentist-provided treatment plan with explanations, possible alternatives, and priorities based on available records."
                 },
                 {
                   icon: Clock,
@@ -725,7 +725,7 @@ export default function Home() {
             {[
               {
                 title: "Understand what you see",
-                description: "Review mouth photos and supported dental X-rays with plain-English educational insights."
+                description: "See findings linked to your submitted mouth photos and supported dental X-rays, with plain-English explanations."
               },
               {
                 title: "Prepare better questions",
@@ -761,7 +761,7 @@ export default function Home() {
           <h3 className="text-2xl md:text-3xl font-normal text-black mb-3">
             Ready to understand your oral health?
           </h3>
-          <p className="text-stone-600 mb-6">Choose a one-time check or compare a treatment plan before you decide.</p>
+          <p className="text-stone-600 mb-6">Start with an unlimited Free Quick Check or review a dentist-provided treatment plan.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
@@ -871,7 +871,7 @@ export default function Home() {
           <h3 className="text-2xl md:text-3xl font-normal text-black mb-3">
             Stop guessing about your oral health.
           </h3>
-          <p className="text-stone-600 mb-6">Your teeth are easier to protect when you understand what is happening early.</p>
+          <p className="text-stone-600 mb-6">Upload mouth photos for a Free Quick Check, or bring a treatment plan and your questions for review.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"

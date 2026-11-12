@@ -26,8 +26,8 @@ export default function Employers() {
   return (
     <div className="min-h-screen flex flex-col bg-stone-50 font-sans text-stone-900 selection:bg-stone-200">
       <SEO
-        title="DentaSmart for Employers | Oral Health Education and Decision Support"
-        description="Explore DentaSmart as an educational oral health resource for employees. Employer pricing, eligibility, implementation, and success measures are confirmed during discovery."
+        title="DentaSmart for Employers | Oral Health Reports and Decision Support"
+        description="Explore dentist-reviewed oral health reports, record tracking, and Dr. Din AI for employees. Employer pricing, eligibility, and pilot measures are confirmed during discovery."
         canonical="https://dentasmart.ai/employers"
       />
       <DemoRequestModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
@@ -67,7 +67,7 @@ export default function Employers() {
               <span className="font-normal italic text-primary">with clearer information</span>.
             </h1>
             <p className="text-xl md:text-2xl text-black font-normal max-w-3xl mr-auto mb-12 leading-relaxed">
-              Explore an educational oral health service that can help employees organize information and prepare questions for professional care. DentaSmart is not dental insurance.
+              Give employees tools to understand submitted mouth photos, X-rays, and treatment plans, track oral health records, and ask Dr. Din AI about their reports. DentaSmart is not dental insurance.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-start">
               <Button 
@@ -101,7 +101,7 @@ export default function Employers() {
               { 
                 icon: FileText,
                 title: "Confusing Information",
-                desc: "Employees may need plain-language context before deciding what to ask a dental professional."
+                desc: "Employees may need help understanding report findings, a proposed treatment, or a dental estimate before their next visit."
               },
               { 
                 icon: Users, 
@@ -171,9 +171,9 @@ export default function Employers() {
           </div>
           <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
             {[
-              { title: "Plain-language reports", desc: "Educational explanations for supported photos, X-rays, and treatment documents." },
-              { title: "Decision preparation", desc: "Cost context and questions to bring to a dentist before accepting a treatment plan." },
-              { title: "Record organization", desc: "Oral Health Score history, reminders, and separate profiles when the selected service includes them." },
+              { title: "Plain-language reports", desc: "Findings from submitted mouth photos, supported X-rays, and assessment records. Every generated report is reviewed and approved by licensed dentists before delivery." },
+              { title: "Decision preparation", desc: "Treatment considerations, possible alternatives, priorities, and cost context where supported by the assessment and available records." },
+              { title: "Record organization", desc: "Oral Health Score history, dental-visit records, and separate profiles when included. Ask Dr. Din AI about reports and oral health." },
             ].map((item) => (
               <article key={item.title} className="rounded-3xl border border-stone-200 bg-white p-7">
                 <h3 className="mb-3 text-xl font-medium text-stone-900">{item.title}</h3>
@@ -192,7 +192,7 @@ export default function Employers() {
               Compare the role of each option
             </h2>
             <p className="text-xl text-stone-600 font-light max-w-3xl mx-auto">
-              DentaSmart is an educational service, not a replacement for dental insurance or professional care.
+              DentaSmart analyzes submitted information and helps employees understand findings. It does not replace dental insurance, in-person examinations, or hands-on care.
             </p>
           </div>
 

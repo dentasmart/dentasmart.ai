@@ -54,7 +54,10 @@ describe("Phase 3 commercial owner integrity", () => {
     expect(stories).not.toContain("Explore Second Opinion");
     expect(secondOpinionHub).toContain("another licensed dentist");
     expect(secondOpinionHub).toContain("/pricing/#treatment-plan-review");
-    expect(home).toContain("Use Treatment Plan Review to understand an already-provided recommendation");
+    expect(home).toContain("With Treatment Plan Review, upload a dentist-provided treatment plan, your questions, and supporting records such as X-rays or bills.");
+    expect(home).toContain("Your report can explain the proposed care, possible alternatives, priorities, and timing considerations based on the information available.");
+    expect(home).toContain("An in-person dental examination is still needed to confirm your care needs. Discuss the report with your treating dentist.");
+    expect(home).toContain("Cost ranges are estimates, not a quote from your dentist or an insurance coverage decision.");
     expect(home).not.toContain("Get a second opinion when a treatment plan feels serious or expensive");
   });
 
@@ -96,7 +99,9 @@ describe("Phase 3 commercial owner integrity", () => {
     expect(chatgpt).not.toMatch(/appear to support the recommendation/i);
     expect(chatgpt).not.toMatch(/reduce surprise dental costs/i);
     expect(genericComparison).toContain("DentaSmart is not insurance");
-    expect(genericComparison).toContain("does not diagnose conditions");
+    expect(genericComparison).toContain("does not pay dental claims, and does not provide an in-person examination, prescriptions, or hands-on treatment.");
+    expect(genericComparison).toContain("DentaSmart does not substitute for coverage or professional care.");
+    expect(genericComparison).toContain("Licensed dentists review and approve reports before delivery.");
   });
 
   it("keeps affordability guidance educational rather than a treatment, savings, or verification service", () => {

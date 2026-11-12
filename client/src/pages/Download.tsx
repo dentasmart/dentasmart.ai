@@ -12,7 +12,7 @@ const steps = [
   { num: "1", title: "Download the App", desc: "Get DentaSmart on iOS or Android. The app is free to download." },
   { num: "2", title: "Start a Free Quick Check", desc: "Use supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray." },
   { num: "3", title: "Upgrade When Needed", desc: "Choose Full Quick Check, Treatment Plan Review, or Complete Care when you need those services." },
-  { num: "4", title: "Review Your Report", desc: "Read the educational insights and prepare questions for your dentist. DentaSmart does not provide a diagnosis." },
+  { num: "4", title: "Review Your Report", desc: "Every generated report is reviewed and approved by licensed dentists before delivery. Read the findings and score context, then discuss care with your dentist." },
 ];
 
 export default function Download() {
@@ -20,7 +20,7 @@ export default function Download() {
     <div className="min-h-screen flex flex-col bg-background font-sans text-black">
       <SEO
         title="Download DentaSmart | iOS & Android App"
-        description="Download DentaSmart for unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Upgrade to Full Quick Check when you need full eligible X-ray insights."
+        description="Download DentaSmart on iOS and Android for unlimited Free Quick Checks with mouth photos or supported X-rays. Read dentist-reviewed findings; free X-ray findings are limited."
         canonical="https://dentasmart.ai/download"
         keywords="download dentasmart, dental app, AI dental analysis, oral health score, dental X-ray analysis app"
       />
@@ -47,7 +47,7 @@ export default function Download() {
                 <span className="italic text-primary">on your phone</span>.
               </h1>
               <p className="text-xl text-stone-600 mb-8 font-light leading-relaxed">
-                Start with unlimited Free Quick Checks using supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray.
+                Your Personal AI Dentist in Your Pocket. Start with unlimited Free Quick Checks using mouth photos, supported X-rays, or both. No X-ray is required; free X-ray reports show limited eligible findings.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -137,9 +137,9 @@ export default function Download() {
         <div className="container px-4 mx-auto max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { icon: Zap, title: "Clear Educational Insights", desc: "Upload supported information and receive a report that helps you prepare for a dental conversation." },
+              { icon: Zap, title: "Plain-Language Findings", desc: "Analyze submitted mouth photos and supported X-rays, with an Oral Health Score based on assessable areas. The app does not replace an in-person examination." },
               { icon: Shield, title: "Privacy & Security", desc: "We take the privacy and security of your dental data seriously. See our Privacy Policy for details on how information is handled." },
-              { icon: Heart, title: "Organized Next Steps", desc: "Review questions, cost context, and monitoring tools based on the service you choose." },
+              { icon: Heart, title: "Organized Next Steps", desc: "Ask Dr. Din AI about reports and oral health. Broader assessments may include treatment considerations, priorities, and risk summaries based on available information." },
             ].map((item, idx) => (
               <motion.div
                 key={idx}
@@ -167,7 +167,7 @@ export default function Download() {
             Start with a Free Quick Check
           </h2>
           <p className="text-xl text-action-foreground font-light mb-8">
-            Use supported mouth photos, supported X-rays, or both. Upgrade one case only when you need the Full Quick Check package.
+            Use mouth photos, supported X-rays, or both. Free X-ray reports show limited eligible findings; upgrade one case for full eligible X-ray insights.
           </p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <Button

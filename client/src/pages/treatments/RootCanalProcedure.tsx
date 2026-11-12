@@ -138,7 +138,7 @@ const data: TreatmentPageData = {
     },
     {
       q: "Can DentaSmart tell me whether I need a root canal?",
-      a: "No. DentaSmart can help organize an already-provided dentist treatment plan and questions. It does not determine whether you need a root canal or replace a dentist's diagnosis or recommendation.",
+      a: "DentaSmart Treatment Plan Review can explain a dentist-provided plan, supporting findings, treatment considerations, priorities, and questions. Licensed dentists review and approve the report before delivery. An in-person examination and any needed tests remain necessary to determine whether a root canal is appropriate for your tooth.",
     },
   ],
   relatedTreatmentPages: [
@@ -150,7 +150,7 @@ const data: TreatmentPageData = {
   relatedCostPage: { name: "Root Canal Cost", slug: "root-canal-cost", ctaLabel: "See Root Canal Cost" },
   midContentCta: {
     headline: "Already have a treatment recommendation?",
-    description: "Treatment Plan Review can help you organize an already-provided dentist recommendation and prepare questions. It does not determine whether a root canal is needed.",
+    description: "Treatment Plan Review explains a dentist-provided recommendation, treatment considerations, priorities, and questions. Discuss the report with your dentist; an in-person examination and any needed tests determine whether a root canal is appropriate.",
     buttonText: "Review Your Treatment Plan",
   },
   followUpSupport: {

@@ -40,25 +40,25 @@ export default function FAQs() {
     {
       title: "Getting Started",
       faqs: [
-        { q: "How do I get started with DentaSmart?", a: "Download the app from the App Store or Google Play, create an account, and add the supported photos, X-rays, symptoms, or treatment documents needed for the service you choose. Report timing depends on the service and the information submitted." },
-        { q: "Can I use DentaSmart for free?", a: "Yes. Free Quick Check is unlimited and accepts supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray. Full Quick Check and Treatment Plan Review are paid per case, while Complete Care is an annual paid plan." },
-        { q: "Where can I download DentaSmart?", a: "DentaSmart is available on the App Store and Google Play. Visit the Download page for the current store links." },
+        { q: "How do I get started with DentaSmart?", a: "Download DentaSmart for iOS from the App Store or for Android from Google Play. Create an account and start a Free Quick Check with mouth photos, supported X-rays, or both. Other assessments can use symptoms, history, and treatment records. Report timing depends on the service and information submitted." },
+        { q: "Can I use DentaSmart for free?", a: "Yes. Free Quick Check is unlimited and accepts mouth photos, supported X-rays, or both. No X-ray is required. Free X-ray reports show limited eligible findings; Full Quick Check unlocks full eligible X-ray insights for one case. Full Quick Check and Treatment Plan Review are paid per case, while Complete Care is an annual paid plan." },
+        { q: "Where can I download DentaSmart?", a: "DentaSmart is live on iOS and Android. Visit the Download page for App Store and Google Play links." },
       ],
     },
     {
       title: "Photos and X-rays",
       faqs: [
-        { q: "What if I don't have any X-rays?", a: "No problem. You can start with monthly mouth photos using your smartphone. Upload X-rays whenever you have them." },
+        { q: "What if I don't have any X-rays?", a: "No X-ray is required. Start a Free Quick Check with mouth photos from your phone camera or gallery. Free Quick Check is unlimited, so you can submit new photos when you have a change to record." },
         { q: "How long does analysis take?", a: "Processing time can vary by image quality and the selected service. If your symptoms are severe, worsening, or urgent, do not wait for a report; contact a dentist or emergency service." },
-        { q: "What can DentaSmart show me?", a: "DentaSmart can highlight visible areas that may warrant attention, such as possible signs of cavities, gum inflammation, tooth wear, or alignment concerns. These are educational insights, not a diagnosis." },
+        { q: "What can DentaSmart show me?", a: "DentaSmart reports explain findings from your submitted mouth photos, supported X-rays, and other assessment information. You may see an Oral Health Score, findings marked for attention or monitoring, and, in broader assessments, treatment considerations, priorities, possible timelines, and risk summaries. Contents depend on the assessment and available evidence." },
       ],
     },
     {
       title: "Accuracy and Safety",
       faqs: [
-        { q: "How should I use DentaSmart's AI results?", a: "Use DentaSmart's educational observations to organize questions and records for a dental visit. DentaSmart does not publish a universal accuracy rate, diagnose conditions, or replace a professional examination." },
-        { q: "Is Dr. Din a real dentist?", a: "No. Dr. Din is an AI oral health guide that can explain reports, findings, dental terms, history, and general oral-health information. It does not provide a diagnosis or replace professional dental care." },
-        { q: "Can Dr. Din diagnose me?", a: "No. Dr. Din can explain DentaSmart information and help you prepare questions, but it cannot diagnose conditions or replace a dentist." },
+        { q: "How should I use DentaSmart's AI results?", a: "Every generated report is reviewed and approved by licensed dentists before delivery. Use the findings to track changes and discuss care with your treating dentist. Results depend on the evidence provided; DentaSmart does not publish a universal accuracy rate or replace an in-person dental examination." },
+        { q: "Is Dr. Din a real dentist?", a: "No. Dr. Din is an AI oral-health companion. You can ask about your reports, findings, Oral Health Score, treatment explanations, dental history, and general oral-health questions. Licensed dentists review and approve generated reports; Dr. Din is not a human reviewer." },
+        { q: "Can Dr. Din diagnose me?", a: "No. Dr. Din is AI. It can explain report findings and oral-health information, but a licensed dentist must examine you to confirm your care needs." },
       ],
     },
     {
@@ -82,19 +82,19 @@ export default function FAQs() {
     {
       title: "Dentist Relationship",
       faqs: [
-        { q: "Do I need to be a patient at a specific dental office?", a: "DentaSmart is an educational tool and does not require a relationship with a particular dental office. A licensed dentist can assess your situation and provide professional care." },
+        { q: "Do I need to be a patient at a specific dental office?", a: "No. You do not need to be a patient at a particular dental office to use DentaSmart. You can discuss your report with your own dentist; an in-person examination and hands-on care still require a dental professional." },
         { q: "Can I share my report with my dentist?", a: "When sharing or download tools are available for your selected service, you can use them to support a conversation with your dentist." },
-        { q: "Is it a dentist replacement?", a: "No. DentaSmart is a tool to help you monitor your oral health between visits and understand your dentist's recommendations better. It does not replace professional care." },
+        { q: "Is it a dentist replacement?", a: "No. DentaSmart helps you track oral health between visits and understand findings and your dentist's recommendations. It does not replace in-person dental examinations, routine dental care, or hands-on treatment." },
       ],
     },
     {
       title: "New Features",
       faqs: [
-        { q: "What is Quick Check?", a: "Free Quick Check is an unlimited educational service that accepts supported mouth photos, supported X-rays, or both. Mouth photos do not require an X-ray. Free X-ray output is limited, and the service does not provide a diagnosis." },
-        { q: "What are the Self-Examination tests?", a: "When included with Complete Care, guided self-examination can help you record observations from a Bite Pressure Test, Cold Sensitivity Test, and Visual Inspection checklist. These observations add context but do not replace a clinical examination." },
+        { q: "What is Quick Check?", a: "Quick Check analyzes mouth photos, supported dental X-rays, or both and returns an Oral Health Score and report findings based on assessable areas. Free Quick Check is unlimited, with no X-ray required. Free X-ray reports show limited eligible findings; Full Quick Check unlocks full eligible X-ray insights for one case." },
+        { q: "What are the Self-Examination tests?", a: "When offered in your assessment, optional self-examination prompts help you record observations such as pain patterns, sensitivity, and what you can see. Follow the safe in-app instructions. These observations add context but do not replace a clinical examination." },
         { q: "What's the difference between the two report formats?", a: "When both formats are included with a selected service, the 'For You' report explains information in plain language and the 'For Dentist' report organizes details for a professional conversation. Available formats depend on the selected service." },
         { q: "Can I share the dentist report directly?", a: "When download or sharing is included with your selected service, use it to support a conversation with your dental professional." },
-        { q: "Is Quick Check different from Complete Care?", a: "Yes. Free Quick Check is an unlimited starting point for supported mouth photos, supported X-rays, or both. Complete Care is an annual plan. Review the current plan details before purchase. Neither service provides a diagnosis or replaces professional dental care." },
+        { q: "Is Quick Check different from Complete Care?", a: "Yes. Quick Check is an assessment using mouth photos, supported X-rays, or both. Free Quick Check is unlimited, with limited eligible X-ray findings. Full Quick Check unlocks full eligible X-ray insights for one case. Complete Care is an annual individual or family plan; review its current included services and limits before purchase." },
       ],
     },
   ];
@@ -154,7 +154,7 @@ export default function FAQs() {
                 <span className="font-normal italic text-primary">not confusion</span>.
               </h1>
               <p className="text-lg md:text-xl text-stone-700 font-normal max-w-2xl mr-auto leading-relaxed mb-8">
-                You have questions about your dental health and our app. We have clear, simple answers. No jargon, just the facts.
+                Find answers about mouth photos and X-rays, dentist-reviewed reports, Dr. Din AI, pricing, privacy, and the iOS and Android apps.
               </p>
 
               {/* Search Bar */}

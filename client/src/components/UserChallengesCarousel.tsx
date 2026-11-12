@@ -40,7 +40,7 @@ export function UserChallengesCarousel({
   challenges = defaultChallenges, 
   images = defaultImages,
   title = "Challenges we solve",
-  subtitle = "See how DentaSmart transforms common dental struggles into confident smiles."
+  subtitle = "Use DentaSmart to understand image findings, review treatment considerations, and keep dental records together."
 }: UserChallengesCarouselProps) {
   const [expandedId, setExpandedId] = useState<number | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);

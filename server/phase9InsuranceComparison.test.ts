@@ -34,15 +34,16 @@ describe("Phase 9 insurance comparison factual safety", () => {
     expect(comparisonSource).not.toContain("Varies by plan and coverage.");
   });
 
-  it("retains the DentaSmart insurance, claims, diagnosis, prescription, and professional-care boundaries", () => {
+  it("retains the DentaSmart insurance, claims, examination, prescription, and professional-care boundaries", () => {
     expect(comparisonSource).toContain(
-      "DentaSmart is not insurance and does not diagnose conditions.",
+      "DentaSmart is not insurance, does not pay dental claims, and does not provide an in-person examination, prescriptions, or hands-on treatment.",
     );
     expect(comparisonSource).toContain("does not pay dental claims");
-    expect(comparisonSource).toContain("prescribe treatment");
+    expect(comparisonSource).toContain("Licensed dentists review and approve reports before delivery.");
     expect(comparisonSource).toContain(
-      "DentaSmart also does not replace professional dental care.",
+      "DentaSmart is not dental insurance and does not replace professional care.",
     );
+    expect(comparisonSource).toContain("DentaSmart does not substitute for coverage or professional care.");
   });
 
   it("uses the current registry price only as a DentaSmart service fact", () => {
@@ -57,7 +58,7 @@ describe("Phase 9 insurance comparison factual safety", () => {
       'title: "DentaSmart vs Dental Insurance | Different Purposes"',
     );
     expect(metaSource).toContain(
-      "Learn what each may do, what neither replaces, and questions to review.",
+      "Compare DentaSmart's dental analysis, reports, and records with dental insurance's coverage role. DentaSmart is not dental insurance.",
     );
     expect(comparisonSource).toContain("https://dentasmart.ai/compare/${slug}");
   });

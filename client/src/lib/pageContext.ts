@@ -44,7 +44,7 @@ export function getPageContext(path: string): PageContext {
     return {
       contentType: "symptom",
       ctaHeadline: "Experiencing this symptom?",
-      ctaDescription: "Take our free symptom quiz to organize what you notice and review possible next steps. It does not provide a diagnosis.",
+      ctaDescription: "Take our free symptom quiz to organize what you notice and review topics for your dentist. It cannot diagnose the cause or determine urgency.",
       ctaButtonText: "Check My Symptoms",
       ctaAction: "symptom-quiz",
       ctaLink: "/symptom-quiz/",
@@ -80,7 +80,7 @@ export function getPageContext(path: string): PageContext {
     return {
       contentType: "treatment",
       ctaHeadline: "Considering this treatment?",
-      ctaDescription: "Use Treatment Plan Review to organize a supported dentist treatment plan and prepare questions for your dentist.",
+      ctaDescription: "Use Treatment Plan Review to understand a dentist-provided plan, treatment considerations, priorities, and questions to discuss next.",
       ctaButtonText: "Review a Treatment Plan",
       ctaAction: "app-download",
       ctaLink: "/pricing/#treatment-plan-review",
@@ -92,7 +92,7 @@ export function getPageContext(path: string): PageContext {
     return {
       contentType: "condition",
       ctaHeadline: "Think you might have this?",
-      ctaDescription: "Explore a Quick Check for educational insights you can use before your next dentist visit.",
+      ctaDescription: "Use Quick Check to analyze submitted mouth photos or supported X-rays and review findings for the areas assessed before your next dentist visit.",
       ctaButtonText: "Explore Quick Check",
       ctaAction: "app-download",
       ctaLink: "/pricing/#quick-check",
@@ -152,7 +152,7 @@ export function getPageContext(path: string): PageContext {
     return {
       contentType: "article",
       ctaHeadline: "Want to check your own oral health?",
-      ctaDescription: "Explore a Quick Check for educational insights you can use in a more informed dental conversation.",
+      ctaDescription: "Explore Quick Check for mouth-photo or supported X-ray analysis, findings, and an Oral Health Score based on the areas assessed.",
       ctaButtonText: "Explore Quick Check",
       ctaAction: "app-download",
       ctaLink: "/pricing/#quick-check",
@@ -164,7 +164,7 @@ export function getPageContext(path: string): PageContext {
     return {
       contentType: "homepage",
       ctaHeadline: "Know what is happening in your mouth",
-      ctaDescription: "Upload a supported photo for an educational report and clearer questions for your next dental decision.",
+      ctaDescription: "Submit mouth photos for analysis and a report reviewed and approved by licensed dentists before delivery, with findings and priorities to discuss at your next visit.",
       ctaButtonText: "Explore Quick Check",
       ctaAction: "app-download",
       ctaLink: "/pricing/#quick-check",

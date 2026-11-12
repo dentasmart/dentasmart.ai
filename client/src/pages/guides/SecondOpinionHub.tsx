@@ -122,7 +122,7 @@ export default function SecondOpinionHub() {
       <section className="py-8 bg-stone-900 text-white">
         <div className="container px-4 mx-auto max-w-3xl text-center">
           <h2 className="text-3xl font-normal mb-3 text-white">Get clarity before you commit</h2>
-          <p className="text-stone-300 font-light mb-6">DentaSmart's Treatment Plan Review helps organize an already-provided recommendation in plain language. It is not a licensed-dentist second opinion or a diagnosis.</p>
+          <p className="text-stone-300 font-light mb-6">DentaSmart's Treatment Plan Review uses a dentist-provided plan and supporting records to explain treatment considerations, priorities, possible timelines, and questions. Licensed dentists review and approve the report before delivery. The app does not replace an in-person dental examination or hands-on treatment.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/pricing/#treatment-plan-review">
               <Button size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-8 py-6 text-base font-medium cursor-pointer">

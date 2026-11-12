@@ -18,7 +18,7 @@ const data: ComparisonPageData = {
   introTitle: "Two AI Scanners,",
   introHighlight: "Very Different Approaches",
   introDescription: "Dental.com SmartScan is a third-party service. Its current inputs, output, referral model, pricing, and privacy terms should be confirmed directly with Dental.com.",
-  introDescription2: "DentaSmart is an iOS and Android app with mouth-photo and dental X-ray workflows, an Oral Health Score, and educational reports. It does not diagnose or replace professional dental care.",
+  introDescription2: "DentaSmart is an iOS and Android app for submitted mouth-photo and supported dental X-ray analysis, an Oral Health Score for assessed areas, and plain-language reports. Licensed dentists review and approve reports before delivery.",
   comparisonTable: [
     { factor: "Mouth-photo workflow", optionA: "Available with supported DentaSmart services", optionB: "Verify current provider details", winner: "tie" },
     { factor: "Dental X-ray workflow", optionA: "Supported by DentaSmart", optionB: "Verify current provider details", winner: "tie" },
@@ -26,7 +26,7 @@ const data: ComparisonPageData = {
     { factor: "Progress tracking", optionA: "Included with Complete Care", optionB: "Verify current provider details", winner: "tie" },
     { factor: "Price", optionA: "Free Quick Check unlimited; Full Quick Check $19.99 per case", optionB: "Verify current provider price", winner: "tie" },
     { factor: "Platform", optionA: "iOS and Android apps", optionB: "Verify current provider access", winner: "tie" },
-    { factor: "Professional-care boundary", optionA: "Educational tool; not diagnosis or treatment", optionB: "Review the provider's current terms", winner: "tie" },
+    { factor: "Professional-care boundary", optionA: "Image-based assessment; no in-person examination or hands-on treatment", optionB: "Review the provider's current terms", winner: "tie" },
   ],
   optionAProsCons: [
     { text: "Supports mouth-photo and dental X-ray workflows", type: "pro" },
@@ -34,7 +34,7 @@ const data: ComparisonPageData = {
     { text: "Published consumer prices make the next purchase decision visible", type: "pro" },
     { text: "Guided self-examination walks you through each area of your mouth", type: "pro" },
     { text: "Requires app download (iOS and Android)", type: "con" },
-    { text: "Not a diagnostic tool and does not replace a dentist visit", type: "neutral" },
+    { text: "Does not replace an in-person dental examination", type: "neutral" },
   ],
   optionBProsCons: [
     { text: "Confirm current access requirements on the Dental.com website", type: "neutral" },
@@ -43,7 +43,7 @@ const data: ComparisonPageData = {
   ],
   whoShouldChooseA: {
     title: "Choose DentaSmart if you want",
-    description: "An app-based workflow for supported photos or X-rays, an Oral Health Score, and educational reports you can discuss with a dentist.",
+    description: "Analysis of submitted mouth photos or supported X-rays, a score for assessed areas, and reports explaining findings and priorities to discuss with a dentist.",
     bestFor: [
       "People who want to understand their X-rays before a dental visit",
       "Anyone tracking oral health over time (monthly or quarterly scans)",
@@ -63,7 +63,7 @@ const data: ComparisonPageData = {
   bottomLine: "Choose based on the image type you have, the output you need, the full price, privacy information, and how each service directs you to professional care. DentaSmart publishes its current consumer prices and supports mouth-photo and dental X-ray workflows. Verify Dental.com details directly before comparing.",
   faqs: [
     { q: "Is Dental.com SmartScan free?", a: "Verify current access and pricing directly with Dental.com. Third-party offers can change and are not controlled by DentaSmart." },
-    { q: "Can DentaSmart use my dental X-rays?", a: "DentaSmart supports dental X-ray workflows with applicable services and presents educational observations to discuss with a dentist. It does not diagnose conditions." },
+    { q: "Can DentaSmart use my dental X-rays?", a: "DentaSmart analyzes supported dental X-rays and explains findings for the areas it could assess. Free Quick Check shows a reduced subset of eligible X-ray finding data; Full Quick Check unlocks full eligible X-ray insights for one case. Licensed dentists review and approve reports before delivery." },
     { q: "How should I compare the apps?", a: "Compare supported image types, report detail, total price, privacy information, and professional-care boundaries. Do not use either app as a substitute for a dental examination." },
     { q: "Do I still need to see a dentist?", a: "Yes. DentaSmart does not replace a licensed dentist's examination, diagnosis, or treatment. Review Dental.com's current professional-care boundaries directly with the provider." },
     { q: "Does DentaSmart work on Android?", a: "Yes. DentaSmart is available on both iOS (App Store) and Android (Google Play)." },

@@ -21,7 +21,7 @@ export function OrganizationSchema() {
     name: "DentaSmart",
     url: toSchemaUrl(SITE_URL),
     logo: `${SITE_URL}/images/logo.png`,
-    description: "DentaSmart is an AI-powered educational oral health app that helps people organize supported photos, X-rays, symptoms, and treatment documents for clearer dental conversations.",
+    description: "DentaSmart analyzes submitted mouth photos and supported dental X-rays, explains findings and treatment considerations, and tracks oral health records. Licensed dentists review and approve reports before delivery.",
     sameAs: [
       company.social.instagram,
       company.social.linkedin,
@@ -51,7 +51,7 @@ export function WebSiteSchema() {
     "@type": "WebSite",
     name: "DentaSmart",
     url: toSchemaUrl(SITE_URL),
-    description: "Your Personal AI Dentist in Your Pocket. DentaSmart provides educational oral health reports, tracking tools, and plain-language explanations that do not replace professional diagnosis or care.",
+    description: "Your Personal AI Dentist in Your Pocket. DentaSmart provides mouth-photo and supported X-ray analysis, plain-language reports, and oral health tracking. Licensed dentists review and approve reports before delivery. The app does not replace an in-person dental examination.",
   };
 
   return (
@@ -71,7 +71,7 @@ export function SoftwareApplicationSchema() {
     name: "DentaSmart",
     operatingSystem: "iOS, Android",
     applicationCategory: "HealthApplication",
-    description: "DentaSmart is an AI-powered educational oral health app with Free Quick Check, Full Quick Check, Treatment Plan Review, Complete Care, Oral Health Score tracking, reports, and guidance from Dr. Din. It does not diagnose conditions or replace professional dental care.",
+    description: "DentaSmart is an AI-powered oral health app with Free Quick Check, Full Quick Check, Treatment Plan Review, Complete Care, Oral Health Score tracking for assessed areas, and help from Dr. Din, its AI oral health companion. Licensed dentists review and approve reports before delivery. The app does not replace an in-person dental examination.",
     url: toSchemaUrl(SITE_URL),
     downloadUrl: toSchemaUrl("/download"),
     offers: [
@@ -97,7 +97,7 @@ export function SoftwareApplicationSchema() {
         price: pricing.treatmentPlanReview.price.toFixed(2),
         priceCurrency: "USD",
         availability: "https://schema.org/InStock",
-        description: "Educational Treatment Plan Review for one supported case, with plain-language context and questions to discuss with a licensed dentist. $29.99 per case.",
+        description: "Treatment Plan Review for one supported case, explaining a dentist-provided plan, treatment considerations, priorities, possible timelines, and questions to discuss. Licensed dentists review and approve the report before delivery. $29.99 per case.",
       },
       {
         "@type": "Offer",
@@ -105,7 +105,7 @@ export function SoftwareApplicationSchema() {
         price: "74.99",
         priceCurrency: "USD",
         availability: "https://schema.org/InStock",
-        description: "Year-round educational monitoring for one person with applicable reports, Oral Health Score tracking, guided self-examination, record organization, and Dr. Din access. $74.99/year.",
+        description: "Year-round oral health monitoring for one person with applicable reports, Oral Health Score tracking for assessed areas, guided self-examination, record organization, and access to Dr. Din, the AI oral health companion. $74.99/year.",
       },
       {
         "@type": "Offer",
@@ -113,7 +113,7 @@ export function SoftwareApplicationSchema() {
         price: "149.99",
         priceCurrency: "USD",
         availability: "https://schema.org/InStock",
-        description: "Year-round educational monitoring for up to 4 family members, with separate profiles, reports, Oral Health Score tracking, dental history, and Dr. Din access. $149.99/year.",
+        description: "Year-round oral health monitoring for up to 4 family members, with separate profiles, reports, Oral Health Score tracking for assessed areas, dental history, and access to Dr. Din, the AI oral health companion. $149.99/year.",
       },
     ],
   };
@@ -246,7 +246,7 @@ export function ProductServiceSchema() {
     "@context": "https://schema.org",
     "@type": "Product",
     name: "DentaSmart AI Oral Health App",
-    description: "AI-powered educational oral health app with Free Quick Check, Full Quick Check, Treatment Plan Review, Complete Care, Oral Health Score tracking, reports, and AI guidance.",
+    description: "AI-powered oral health app for submitted mouth-photo and supported X-ray analysis, Treatment Plan Review, Complete Care, Oral Health Score tracking for assessed areas, and help from Dr. Din, its AI oral health companion. Licensed dentists review and approve reports before delivery.",
     brand: {
       "@type": "Brand",
       name: "DentaSmart",
@@ -278,7 +278,7 @@ export function ProductServiceSchema() {
         priceCurrency: "USD",
         availability: "https://schema.org/InStock",
         url: toSchemaUrl("/pricing"),
-        description: "Educational Treatment Plan Review for one supported case, with plain-language context and questions to discuss with a licensed dentist. $29.99 per case.",
+        description: "Treatment Plan Review for one supported case, explaining a dentist-provided plan, treatment considerations, priorities, possible timelines, and questions to discuss. Licensed dentists review and approve the report before delivery. $29.99 per case.",
       },
       {
         "@type": "Offer",
@@ -287,7 +287,7 @@ export function ProductServiceSchema() {
         priceCurrency: "USD",
         availability: "https://schema.org/InStock",
         url: toSchemaUrl("/pricing"),
-        description: "Year-round educational monitoring for one person with applicable reports, Oral Health Score tracking, guided self-examination, record organization, and Dr. Din access. $74.99/year.",
+        description: "Year-round oral health monitoring for one person with applicable reports, Oral Health Score tracking for assessed areas, guided self-examination, record organization, and access to Dr. Din, the AI oral health companion. $74.99/year.",
       },
       {
         "@type": "Offer",
@@ -296,7 +296,7 @@ export function ProductServiceSchema() {
         priceCurrency: "USD",
         availability: "https://schema.org/InStock",
         url: toSchemaUrl("/pricing"),
-        description: "Year-round educational monitoring for up to 4 family members, with separate profiles, reports, Oral Health Score tracking, dental history, and Dr. Din access. $149.99/year.",
+        description: "Year-round oral health monitoring for up to 4 family members, with separate profiles, reports, Oral Health Score tracking for assessed areas, dental history, and access to Dr. Din, the AI oral health companion. $149.99/year.",
       },
     ],
   };

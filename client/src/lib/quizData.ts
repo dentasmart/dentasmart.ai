@@ -204,7 +204,7 @@ export function calculateQuizResult(answers: Record<string, string>): QuizResult
         "Your answers include symptoms or habits worth discussing with a dental professional. This quiz cannot rule out a condition or confirm that a symptom is harmless.",
       recommendations: [
         "Arrange a dental checkup if symptoms persist, worsen, or concern you",
-        "Use DentaSmart to organize educational information between visits",
+        "Use DentaSmart to organize oral-health information between visits",
         "Focus on consistent brushing (2 min, twice daily) and daily flossing",
         "Consider a sensitivity toothpaste if hot/cold foods bother you",
       ],
@@ -220,7 +220,7 @@ export function calculateQuizResult(answers: Record<string, string>): QuizResult
       "Your answers did not include the quiz's higher-weight warning pattern. This does not rule out dental problems or replace routine professional care.",
     recommendations: [
       "Keep up your brushing and flossing routine",
-      "Use DentaSmart to organize educational information between visits",
+      "Use DentaSmart to organize oral-health information between visits",
       "Follow the examination schedule recommended by your dentist",
       "Contact a dentist if new, persistent, or worsening symptoms appear",
     ],

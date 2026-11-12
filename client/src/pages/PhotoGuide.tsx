@@ -49,7 +49,7 @@ export default function PhotoGuide() {
                 <span className="italic text-primary">in 3 easy steps</span>.
               </h1>
               <p className="text-xl text-stone-600 mb-8 font-light leading-relaxed">
-                A good photo means better AI insights. Follow these simple tips to get the most accurate analysis of your oral health.
+                Clear photos help DentaSmart assess the areas shown. Follow these capture tips before submitting mouth photos for analysis; reports reflect only the available evidence.
               </p>
             </motion.div>
           </div>

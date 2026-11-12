@@ -195,7 +195,7 @@ export const symptomsData: Record<string, SymptomData> = {
       "Sensitivity may feel sharp and brief or may linger after hot, cold, sweet, touch, or biting triggers. Note whether it affects one tooth or several and how long the feeling lasts.",
       "So what's happening? Your tooth has a tough outer layer called enamel. Underneath that is a softer layer called dentin, which has thousands of tiny little tubes that connect straight to the tooth's nerve. If your enamel wears thin or your gums recede, those tubes get exposed. Then, bam! Stimuli hit the nerve and you feel that zing.",
       "What causes this? A few things. It could be from acidic foods and drinks eating away at your enamel. Or maybe you're brushing too hard. Gums pulling back, grinding your teeth at night (that's called bruxism), a new filling, or even a cavity can all be culprits. Oh, and teeth whitening can make them sensitive for a little while, too.",
-      "A desensitizing toothpaste may help some patterns when used as directed. A dentist may discuss fluoride, bonding, gum treatment, bite management, or treatment of decay or a crack depending on the findings. DentaSmart can provide educational observations from supported photos, but it cannot determine the cause.",
+      "A desensitizing toothpaste may help some patterns when used as directed. A dentist may discuss fluoride, bonding, gum treatment, bite management, or treatment of decay or a crack depending on the findings. DentaSmart can provide observations from supported photos, but it cannot determine the cause.",
     ],
     possibleCauses: [
       { title: "Enamel Erosion", description: "When acidic stuff (food, drinks, even stomach acid) wears down that tough outer layer of your teeth.", urgency: "medium" },
@@ -225,7 +225,7 @@ export const symptomsData: Record<string, SymptomData> = {
       "Tooth sensitivity is just exposed dentin, which happens when enamel wears away or gums recede.",
       "Sensitivity toothpaste is great, but it's not a quick fix. You have to use it for 2-4 weeks straight.",
       "If it’s just one tooth bugging you, that’s a sign you should probably see a dentist. Could be a cavity.",
-      "DentaSmart can provide educational observations from supported photos, but a dentist must diagnose the cause of sensitivity.",
+      "DentaSmart can provide observations from supported photos, but a dentist must diagnose the cause of sensitivity.",
     ],
     faqs: [
       { question: "Does sensitivity toothpaste work?", answer: "It can help some types of sensitivity when used as directed, but response and timing vary. See a dentist if one tooth hurts, symptoms worsen, pain lingers, or the toothpaste does not help." },

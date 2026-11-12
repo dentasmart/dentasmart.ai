@@ -59,7 +59,7 @@ describe("free Quick Check positioning", () => {
 
   it("keeps crawler metadata and commercial schema aligned with the visible boundary", async () => {
     const homepageMeta = await resolveMetaTags("/", undefined);
-    expect(homepageMeta.description).toContain("unlimited Free Quick Check");
+    expect(homepageMeta.description).toBe("Analyze mouth photos and supported X-rays, read dentist-reviewed reports, and track your Oral Health Score. Free Quick Check is unlimited. Better Teeth. Lower Costs");
     expect(homepageMeta.ogImage).toContain("dentasmart-free-quick-check-social-1200x630_b33c85da.png");
 
     const pricingMeta = await resolveMetaTags("/pricing/", undefined);
@@ -74,6 +74,11 @@ describe("free Quick Check positioning", () => {
     expect(serialized).toContain('"price":"19.99"');
     expect(serialized).toContain('"name":"Treatment Plan Review"');
     expect(serialized).toContain('"price":"29.99"');
+    expect(serialized).toContain("Free X-ray submissions show a reduced subset of eligible finding data.");
+    const applicationSchemas = JSON.stringify(await resolveSchemaMarkup("/", undefined, homepageMeta));
+    expect(applicationSchemas).toContain("unlimited Free Quick Checks using supported mouth photos, supported X-rays or both");
+    expect(applicationSchemas).toContain("Every generated report is reviewed and approved by licensed dentists before delivery.");
+    expect(applicationSchemas).toContain("Findings reflect submitted information and do not replace an in-person dental examination or hands-on treatment.");
   });
 
   it("removes stale paid-mouth-photo and limited-preview claims from active acquisition sources", () => {
@@ -86,7 +91,9 @@ describe("free Quick Check positioning", () => {
   it("keeps paid per-case upgrades explicit and preserves the professional-care boundary", () => {
     expect(acquisitionSources).toMatch(/Full Quick Check.{0,120}(\$19\.99|paid|per case)/is);
     expect(acquisitionSources).toMatch(/Treatment Plan Review.{0,120}(\$29\.99|paid|per case)/is);
-    expect(acquisitionSources).toMatch(/does not (provide a diagnosis|diagnose conditions)/i);
+    expect(acquisitionSources).toContain("It does not replace an in-person dental examination, routine dental care, or hands-on treatment.");
+    expect(acquisitionSources).toContain("Every generated report is reviewed and approved by licensed dentists before delivery.");
+    expect(acquisitionSources).toContain("Findings reflect the information available, not a complete examination of your mouth.");
   });
 
   it("uses current product terminology and verified app screens on priority surfaces", () => {

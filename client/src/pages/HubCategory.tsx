@@ -157,10 +157,10 @@ export default function HubCategory() {
         <div className="container px-4 mx-auto max-w-3xl text-center">
           <h2 className="text-2xl font-medium text-black mb-4">Want to review DentaSmart options?</h2>
           <p className="text-stone-600 font-light mb-6">
-            Free Quick Check is unlimited. Full Quick Check and other paid services include different inputs and educational outputs.
+            Free Quick Check is unlimited. Compare mouth-photo and supported X-ray analysis, Treatment Plan Review, and ongoing oral health tracking across DentaSmart services.
           </p>
           <p className="text-xs text-stone-400 mb-4">
-            Educational insights to help you understand your oral health and have better conversations with a licensed dentist.
+            Licensed dentists review and approve reports before delivery. The app does not replace an in-person dental examination.
           </p>
           <Button asChild size="lg" className="bg-primary text-white hover:bg-primary/90 rounded-full px-10 py-7 text-lg font-medium cursor-pointer">
             <Link href="/pricing/" onClick={() => trackConversionEvent("cta_click", {

@@ -27,7 +27,7 @@ const savingsTips = [
   {
     icon: Search,
     title: "Review Your Questions First",
-    description: "Organize supported records and treatment-plan questions before a dental visit. DentaSmart provides educational context, not a diagnosis or treatment decision.",
+    description: "Use DentaSmart to analyze submitted mouth photos or supported X-rays and review findings and priorities before a dental visit. The app does not replace an in-person examination.",
     cta: "Compare DentaSmart Services",
     href: "/pricing/",
   },
@@ -69,7 +69,7 @@ const savingsTips = [
   {
     icon: Smartphone,
     title: "Review a Treatment Plan",
-    description: "DentaSmart Treatment Plan Review can organize a supported dentist treatment plan, plain-language context, and questions. It does not provide a dentist's diagnosis or clinical recommendation.",
+    description: "DentaSmart Treatment Plan Review explains a submitted plan, treatment considerations, priorities, possible timelines, and questions. Licensed dentists review and approve the report before delivery.",
     cta: "View Treatment Plan Review",
     href: "/pricing/#treatment-plan-review",
   },
@@ -79,7 +79,7 @@ const savingsTips = [
 const faqs = [
   {
     q: "How much does dental care cost without insurance?",
-    a: "Dental fees vary by location, provider, procedure, materials, and treatment complexity. Ask for an itemized estimate and compare qualified providers. DentaSmart can help you organize cost questions, but it does not diagnose conditions or decide which treatment you need.",
+    a: "Dental fees vary by location, provider, procedure, materials, and treatment complexity. Ask for an itemized estimate and compare qualified providers. DentaSmart Treatment Plan Review can explain a submitted plan and treatment considerations to help you prepare cost questions. Discuss care decisions with your dentist.",
   },
   {
     q: "What are the best alternatives to dental insurance?",
@@ -103,11 +103,11 @@ const faqs = [
   },
   {
     q: "Does DentaSmart replace going to the dentist?",
-    a: "No. DentaSmart provides educational information and tools that can help you organize supported records and prepare questions. It does not diagnose conditions, provide hands-on care, or replace a licensed dentist's examination and treatment decisions.",
+    a: "No. DentaSmart analyzes submitted mouth photos and supported X-rays, explains findings and treatment considerations, and tracks oral health records. Licensed dentists review and approve reports before delivery, but the app does not provide an in-person examination or hands-on care. Discuss treatment decisions with your dentist.",
   },
   {
     q: "How does DentaSmart help me save on dental care?",
-    a: "DentaSmart can help you organize supported records, review educational cost context, and prepare questions about a treatment plan. It does not guarantee savings or determine whether a procedure is necessary.",
+    a: "DentaSmart Treatment Plan Review uses a submitted plan and supporting records to explain treatment considerations, priorities, possible alternatives, and cost questions. It does not guarantee savings or determine whether a procedure is necessary.",
   },
 ];
 
@@ -139,7 +139,7 @@ const webPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "MedicalWebPage",
   name: "Affordable Dental Care Guide. How to Save on Dental Work",
-  description: "Educational guide to lower-cost dental care options, questions to ask about fees, and ways to compare treatment estimates.",
+  description: "Guide to lower-cost dental care options, questions to ask about fees, and ways to compare treatment estimates.",
   url: "https://dentasmart.ai/oral-health-hub/affordability",
   inLanguage: "en-US",
   isPartOf: {
@@ -166,7 +166,7 @@ export default function AffordabilityHub() {
     <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">
       <SEO
         title="Affordable Dental Care Without Insurance | DentaSmart"
-        description="Review educational cost context, lower-cost care options, and questions to ask about dental fees when you do not have insurance."
+        description="Review cost context, lower-cost care options, and questions to ask about dental fees when you do not have insurance."
         canonical="https://dentasmart.ai/oral-health-hub/affordability"
         keywords="affordable dental care, dental care without insurance, how much does dental work cost, cheap dental care, dental savings plan, low cost dental care, dental care for uninsured, dental discount plans, free dental assessment, save money on dental care"
         jsonLd={[faqJsonLd, breadcrumbJsonLd, webPageJsonLd]}
@@ -356,7 +356,7 @@ export default function AffordabilityHub() {
               How DentaSmart helps you prepare <span className="italic text-primary">cost questions</span>
             </h2>
             <p className="text-base md:text-lg text-stone-600 font-light max-w-3xl">
-              DentaSmart can organize supported records and educational cost context before a dental visit. A licensed dentist must diagnose conditions and recommend treatment.
+              DentaSmart Treatment Plan Review explains a submitted plan, treatment considerations, priorities, and questions about costs. Licensed dentists review and approve reports before delivery. Discuss the findings and care decisions with your dentist.
             </p>
           </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">

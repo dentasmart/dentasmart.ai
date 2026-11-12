@@ -23,7 +23,7 @@ export const dentistArticles = [
     },
     result: {
       heading: "How DentaSmart Helps",
-      content: "DentaSmart can provide educational context for supported dental images and help you prepare questions. It does not replace a dentist's interpretation, diagnosis, or treatment plan."
+      content: "DentaSmart can provide plain-language context for supported dental images and help you prepare questions. It does not replace a dentist's interpretation, diagnosis, or treatment plan."
     }
   },
   {
@@ -77,7 +77,7 @@ export const dentistArticles = [
     },
     result: {
       heading: "How DentaSmart Helps",
-      content: "DentaSmart offers educational Quick Check services and Treatment Plan Review. Neither feature should be used to delay urgent care, and a licensed dentist remains responsible for diagnosis and treatment recommendations."
+      content: "DentaSmart offers Quick Check services and Treatment Plan Review. Neither feature should be used to delay urgent care, and a licensed dentist remains responsible for diagnosis and treatment recommendations."
     }
   },
   {
@@ -185,7 +185,7 @@ export const dentistArticles = [
     },
     result: {
       heading: "How DentaSmart Helps",
-      content: "DentaSmart offers educational image insights, oral-health tracking, and reminders. These tools support questions and routines between visits but do not replace professional exams."
+      content: "DentaSmart offers image insights, oral-health tracking, and reminders. These tools support questions and routines between visits but do not replace professional exams."
     }
   },
   {
@@ -239,7 +239,7 @@ export const dentistArticles = [
     },
     result: {
       heading: "How DentaSmart Helps",
-      content: "DentaSmart can provide educational context for supported records and help you prepare specific questions. It cannot determine a dentist's motives or guarantee that a recommendation is necessary."
+      content: "DentaSmart can provide plain-language context for supported records and help you prepare specific questions. It cannot determine a dentist's motives or guarantee that a recommendation is necessary."
     }
   },
   {

@@ -148,14 +148,14 @@ export default function OralHealthScoreTeaser() {
                 What is your oral health score?
               </h3>
               <p className="text-stone-600 text-sm leading-relaxed mb-4">
-                An Oral Health Score may be included with a selected paid service. It is an educational summary, not a diagnosis or clinical grade.
+                Quick Check includes a 0–100 Oral Health Score based only on the areas DentaSmart could assess from your submitted mouth photos, supported X-rays, or both. It does not measure areas the evidence cannot show.
               </p>
 
               {/* Trust signals */}
               <div className="flex flex-wrap gap-3 mb-5">
                 {[
                   { icon: Camera, text: "Supported photos and X-rays" },
-                  { icon: Shield, text: "Educational, not diagnostic" },
+                  { icon: Shield, text: "Reports reviewed and approved by licensed dentists before delivery" },
                   { icon: CheckCircle2, text: "Timing varies by service" },
                 ].map(({ icon: Icon, text }, idx) => (
                   <div key={idx} className="flex items-center gap-1.5 text-xs text-stone-500">

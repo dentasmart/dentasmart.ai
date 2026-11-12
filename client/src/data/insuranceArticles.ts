@@ -77,7 +77,7 @@ export const insuranceArticles = [
     },
     result: {
       heading: "How DentaSmart Helps",
-      content: "DentaSmart can provide educational context for supported records and help you prepare questions about urgency. It cannot diagnose a deep cavity or infection or decide whether treatment can wait."
+      content: "DentaSmart can provide plain-language context for supported records and help you prepare questions about urgency. It cannot diagnose a deep cavity or infection or decide whether treatment can wait."
     }
   },
   {
@@ -104,7 +104,7 @@ export const insuranceArticles = [
     },
     result: {
       heading: "How DentaSmart Helps",
-      content: "DentaSmart offers educational Quick Check services and Treatment Plan Review for eligible submissions. Neither feature guarantees claim payment or replaces the treating dentist's diagnosis and records."
+      content: "DentaSmart offers Quick Check services and Treatment Plan Review for eligible submissions. Neither feature guarantees claim payment or replaces the treating dentist's diagnosis and records."
     }
   },
   {
@@ -185,7 +185,7 @@ export const insuranceArticles = [
     },
     result: {
       heading: "How DentaSmart Helps",
-      content: "DentaSmart can provide educational context for supported records and help you prepare questions. It cannot confirm medical necessity, diagnose the condition, or determine coverage."
+      content: "DentaSmart can provide plain-language context for supported records and help you prepare questions. It cannot confirm medical necessity, diagnose the condition, or determine coverage."
     }
   },
   {
@@ -239,7 +239,7 @@ export const insuranceArticles = [
     },
     result: {
       heading: "How DentaSmart Helps",
-      content: "DentaSmart offers educational image insights, tracking, and reminders between visits. These tools do not guarantee prevention or replace professional exams."
+      content: "DentaSmart offers image insights, tracking, and reminders between visits. These tools do not guarantee prevention or replace professional exams."
     }
   },
   {

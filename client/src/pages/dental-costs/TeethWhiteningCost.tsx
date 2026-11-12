@@ -95,7 +95,7 @@ const data: CostPageData = {
     },
     {
       title: "Review Supported Images",
-      description: "Use supported mouth photos for educational context, not as a substitute for a dental exam or whitening recommendation.",
+      description: "Submit mouth photos for analysis of the areas shown and a report reviewed and approved by licensed dentists before delivery. The app does not replace a dental exam or a whitening recommendation from your dentist.",
     },
   ],
   faqs: [

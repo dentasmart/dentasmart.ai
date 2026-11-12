@@ -28,7 +28,7 @@ export const oralHealthHubResourceGroups: readonly OralHealthHubResourceGroup[] 
       { title: "Conditions Guide", description: "Common dental conditions explained", href: "/oral-health-hub/conditions/" },
       { title: "Symptoms Guide", description: "Understand what different symptoms may mean", href: "/oral-health-hub/symptoms/" },
       { title: "Life Stages", description: "Oral health guidance for different ages and life stages", href: "/life-stages/" },
-      { title: "Symptom Checker", description: "Educational tool to help organize dental concerns", href: "/symptom-quiz/" },
+      { title: "Symptom Checker", description: "Organize what you notice about dental symptoms", href: "/symptom-quiz/" },
     ],
   },
   {
@@ -44,12 +44,12 @@ export const oralHealthHubResourceGroups: readonly OralHealthHubResourceGroup[] 
   {
     id: "healthy",
     title: "Stay Healthy",
-    description: "Discover prevention tips, healthy habits, and practical oral health education.",
+    description: "Find prevention tips and practical daily oral care habits.",
     links: [
       { title: "Prevention Hub", description: "Preventive oral health information", href: "/oral-health-hub/prevention/" },
       { title: "Lifestyle & Oral Health", description: "How everyday habits affect oral health", href: "/lifestyle/" },
-      { title: "Dental Guides", description: "Step-by-step educational dental guides", href: "/guides/" },
-      { title: "Blog", description: "Browse oral health articles and educational content", href: oralHealthHubArticlesHref },
+      { title: "Dental Guides", description: "Step-by-step dental care guides", href: "/guides/" },
+      { title: "Blog", description: "Browse oral health articles and practical guidance", href: oralHealthHubArticlesHref },
     ],
   },
   {

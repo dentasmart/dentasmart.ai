@@ -19,7 +19,7 @@ const data: ComparisonPageData = {
   introTitle: "Same Category,",
   introHighlight: "Different Depth",
   introDescription: "Dentistry.One SmileScan is a third-party service. Its current inputs, output, consultation model, pricing, and privacy terms should be confirmed directly with Dentistry.One.",
-  introDescription2: "DentaSmart is an iOS and Android app with mouth-photo and dental X-ray workflows, an Oral Health Score, and educational reports. It does not diagnose or replace professional dental care.",
+  introDescription2: "DentaSmart is an iOS and Android app for submitted mouth-photo and supported dental X-ray analysis, an Oral Health Score for assessed areas, and plain-language reports. Licensed dentists review and approve reports before delivery.",
   comparisonTable: [
     { factor: "Mouth-photo workflow", optionA: "Available with supported DentaSmart services", optionB: "Verify current provider details", winner: "tie" },
     { factor: "Dental X-ray workflow", optionA: "Supported by DentaSmart", optionB: "Verify current provider details", winner: "tie" },
@@ -27,7 +27,7 @@ const data: ComparisonPageData = {
     { factor: "Progress tracking", optionA: "Included with Complete Care", optionB: "Verify current provider details", winner: "tie" },
     { factor: "Price", optionA: "Free Quick Check unlimited; Full Quick Check $19.99 per case", optionB: "Verify current provider price", winner: "tie" },
     { factor: "Platform", optionA: "iOS and Android apps", optionB: "Verify current provider access", winner: "tie" },
-    { factor: "Professional-care boundary", optionA: "Educational tool; not diagnosis or treatment", optionB: "Review the provider's current terms", winner: "tie" },
+    { factor: "Professional-care boundary", optionA: "Image-based assessment; no in-person examination or hands-on treatment", optionB: "Review the provider's current terms", winner: "tie" },
   ],
   optionAProsCons: [
     { text: "Supports mouth-photo and dental X-ray workflows", type: "pro" },
@@ -35,7 +35,7 @@ const data: ComparisonPageData = {
     { text: "Published consumer prices make the next purchase decision visible", type: "pro" },
     { text: "Dual reports let you share findings with your dentist easily", type: "pro" },
     { text: "Requires app download (iOS and Android)", type: "con" },
-    { text: "Not a diagnostic tool and does not replace a dentist visit", type: "neutral" },
+    { text: "Does not replace an in-person dental examination", type: "neutral" },
   ],
   optionBProsCons: [
     { text: "Confirm the current access method on the Dentistry.One website", type: "neutral" },
@@ -44,7 +44,7 @@ const data: ComparisonPageData = {
   ],
   whoShouldChooseA: {
     title: "Choose DentaSmart if you want",
-    description: "An app-based workflow for supported photos or X-rays, an Oral Health Score, and educational reports you can discuss with a dentist.",
+    description: "Analysis of submitted mouth photos or supported X-rays, a score for assessed areas, and reports explaining findings and priorities to discuss with a dentist.",
     bestFor: [
       "People who have X-rays and want to understand what they show",
       "Anyone who wants to track oral health changes month to month",
@@ -64,7 +64,7 @@ const data: ComparisonPageData = {
   bottomLine: "Choose based on the image type you have, the output you need, the full price, privacy information, and how each service directs you to professional care. DentaSmart publishes its current consumer prices and supports mouth-photo and dental X-ray workflows. Verify Dentistry.One details directly before comparing.",
   faqs: [
     { q: "Is Dentistry.One SmileScan free?", a: "Verify current access and pricing directly with Dentistry.One. Third-party offers can change and are not controlled by DentaSmart." },
-    { q: "Can DentaSmart replace a dentist visit?", a: "No. DentaSmart is an educational tool that helps organize supported information and prepare questions. It does not diagnose conditions, recommend treatment, or replace a licensed dentist." },
+    { q: "Can DentaSmart replace a dentist visit?", a: "No. DentaSmart analyzes submitted mouth photos and supported X-rays and explains findings, treatment considerations, and priorities in reports reviewed and approved by licensed dentists before delivery. The app does not provide an in-person examination or hands-on treatment." },
     { q: "Which one supports my image type?", a: "DentaSmart supports mouth-photo and dental X-ray workflows with applicable services. Verify Dentistry.One's current supported inputs directly with the provider." },
     { q: "How should I compare the tools?", a: "Compare supported inputs, report detail, total price, privacy information, and professional-care boundaries. Neither should replace professional examination." },
     { q: "Can I use both?", a: "Using more than one tool can create overlapping outputs. Compare privacy terms and costs first, and bring unresolved questions to a licensed dentist." },
