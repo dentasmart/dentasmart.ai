@@ -19,10 +19,18 @@ interface SEOProps {
   description?: string;
   canonical?: string;
   ogImage?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
   ogType?: string;
   keywords?: string;
   noindex?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  /** Only enabled for an explicit custom blog schema override. */
+  allowBlogManualPageSchema?: boolean;
+  /** Article route owns its schema nodes; prevent generic WebPage/Breadcrumb duplicates. */
+  blogArticleSchemaOwned?: boolean;
   article?: {
     publishedTime?: string;
     modifiedTime?: string;
@@ -80,15 +88,23 @@ export default function SEO({
   description,
   canonical,
   ogImage,
+  ogTitle,
+  ogDescription,
+  twitterTitle,
+  twitterDescription,
   ogType,
   noindex,
   jsonLd,
+  allowBlogManualPageSchema = false,
+  blogArticleSchemaOwned = false,
   article,
 }: SEOProps) {
   const [location] = useLocation();
   const pageLocalSchemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
   const normalizedCanonical = canonical ? toSchemaUrl(canonical) : undefined;
   const pageTitle = title ? formatPageTitle(title) : undefined;
+  const socialTitle = ogTitle ? formatPageTitle(ogTitle) : pageTitle;
+  const socialDescription = ogDescription || description;
   const robots = noindex ? "noindex, nofollow" : undefined;
   const serverOwnedTypes = new Set([
     "Organization",
@@ -108,12 +124,13 @@ export default function SEO({
       title,
       description,
       canonical: normalizedCanonical,
-    })
+    }).filter(schema => !blogArticleSchemaOwned || ["Organization", "WebSite"].includes(schema["@type"] as string))
     : [];
   const jsonLdScripts = [
     ...staticSchemas,
     ...pageLocalSchemas.filter((schema) => (
-      !serverOwnedTypes.has(schema["@type"] as string) || isVerifiedArticleReviewWebPage(schema)
+      !serverOwnedTypes.has(schema["@type"] as string) || isVerifiedArticleReviewWebPage(schema) ||
+      (allowBlogManualPageSchema && schema["@type"] === "WebPage")
     )),
   ].map((schema) => normalizeSchemaUrls(schema));
 
@@ -129,8 +146,8 @@ export default function SEO({
       {pageTitle && <title>{pageTitle}</title>}
       {description && <meta name="description" content={description} />}
       {robots && <meta name="robots" content={robots} />}
-      {pageTitle && <meta property="og:title" content={pageTitle} />}
-      {description && <meta property="og:description" content={description} />}
+      {socialTitle && <meta property="og:title" content={socialTitle} />}
+      {socialDescription && <meta property="og:description" content={socialDescription} />}
       {ogType && <meta property="og:type" content={ogType} />}
       {ogImage && <meta property="og:image" content={ogImage} />}
       {!noindex && normalizedCanonical && (
@@ -139,8 +156,8 @@ export default function SEO({
           <meta property="og:url" content={normalizedCanonical} />
         </>
       )}
-      {pageTitle && <meta name="twitter:title" content={pageTitle} />}
-      {description && <meta name="twitter:description" content={description} />}
+      {(twitterTitle || socialTitle) && <meta name="twitter:title" content={twitterTitle ? formatPageTitle(twitterTitle) : socialTitle} />}
+      {(twitterDescription || socialDescription) && <meta name="twitter:description" content={twitterDescription || socialDescription} />}
       {ogImage && <meta name="twitter:image" content={ogImage} />}
       {article?.publishedTime && <meta property="article:published_time" content={article.publishedTime} />}
       {article?.modifiedTime && <meta property="article:modified_time" content={article.modifiedTime} />}

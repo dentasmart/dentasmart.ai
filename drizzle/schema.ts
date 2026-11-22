@@ -102,6 +102,36 @@ export type BlogPost = typeof blogPosts.$inferSelect;
 export type InsertBlogPost = typeof blogPosts.$inferInsert;
 
 /**
+ * Test-only Blog Editor revision audit. The paired SQL migration is explicit;
+ * no production migration or schema push is authorized by adding this model.
+ * Snapshots are immutable and admin-only.
+ */
+export const blogPostRevisions = mysqlTable("blog_post_revisions", {
+  id: int("id").autoincrement().primaryKey(),
+  blogPostId: int("blogPostId").notNull(),
+  revision: int("revision").notNull(),
+  action: mysqlEnum("action", ["baseline", "created", "saved", "published", "unpublished"]).notNull(),
+  snapshot: json("snapshot").$type<BlogPost>().notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, table => [
+  uniqueIndex("blog_post_revisions_post_rev_unique").on(table.blogPostId, table.revision),
+  index("blog_post_revisions_blog_post_id_idx").on(table.blogPostId),
+]);
+export type BlogPostRevision = typeof blogPostRevisions.$inferSelect;
+
+/** Separate editorial tags for the existing Blog Editor. Never reuse SEO keywords. */
+export const blogPostTags = mysqlTable("blog_post_tags", {
+  id: int("id").autoincrement().primaryKey(),
+  blogPostId: int("blogPostId").notNull(),
+  tag: varchar("tag", { length: 100 }).notNull(),
+  position: int("position").default(0).notNull(),
+}, table => [
+  uniqueIndex("blog_post_tags_post_tag_unique").on(table.blogPostId, table.tag),
+  index("blog_post_tags_blog_post_id_idx").on(table.blogPostId),
+]);
+
+
+/**
  * Android waitlist for email capture.
  */
 export const androidWaitlist = mysqlTable("android_waitlist", {
@@ -646,3 +676,40 @@ export const notFoundLog = mysqlTable("not_found_log", {
 });
 export type NotFoundLog = typeof notFoundLog.$inferSelect;
 export type InsertNotFoundLog = typeof notFoundLog.$inferInsert;
+
+/**
+ * Advanced CMS drafts (isolated storage; public page renderers do NOT read this
+ * table until a separately reviewed publishing integration is approved).
+ *
+ * A published snapshot is independent of the editable draft snapshot.
+ * Editing a draft must never change the public page or a saved publication.
+ */
+export const cmsPages = mysqlTable("cms_pages", {
+  id: int("id").autoincrement().primaryKey(),
+  routePath: varchar("routePath", { length: 500 }).notNull().unique(),
+  contentType: mysqlEnum("contentType", [
+    "blog", "condition", "symptom", "guide", "treatment", "cost", "other",
+  ]).notNull(),
+  slug: varchar("slug", { length: 200 }).notNull(),
+  draftContent: json("draftContent").$type<import("../shared/cmsBlocks").CmsDocument>().notNull(),
+  draftRevision: int("draftRevision").notNull().default(0),
+  publishedContent: json("publishedContent").$type<import("../shared/cmsBlocks").CmsDocument>(),
+  publishedRevision: int("publishedRevision"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+export type CmsPage = typeof cmsPages.$inferSelect;
+
+/** Immutable history: includes the original source-code baseline at revision 0. */
+export const cmsPageRevisions = mysqlTable("cms_page_revisions", {
+  id: int("id").autoincrement().primaryKey(),
+  pageId: int("pageId").notNull(),
+  revision: int("revision").notNull(),
+  action: mysqlEnum("action", ["baseline", "draft_saved", "restored", "published"]).notNull(),
+  content: json("content").$type<import("../shared/cmsBlocks").CmsDocument>().notNull(),
+  adminId: int("adminId"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+}, (table) => ({
+  pageRevisionUnique: uniqueIndex("cms_page_revisions_page_revision_unique").on(table.pageId, table.revision),
+}));
+export type CmsPageRevision = typeof cmsPageRevisions.$inferSelect;

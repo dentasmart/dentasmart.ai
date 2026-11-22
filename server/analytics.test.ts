@@ -1,172 +1,159 @@
-import { describe, it, expect, beforeAll, afterAll } from "vitest";
-import { createTRPCProxyClient, httpBatchLink } from "@trpc/client";
-import superjson from "superjson";
-import type { AppRouter } from "./routers";
+/**
+ * In-process analytics router regression tests.
+ *
+ * The old suite imported the server bootstrap and called localhost:3099, but
+ * the app intentionally suppresses auto-listening during Vitest. This suite
+ * uses the current privacy-safe analytics envelope and mocks database I/O,
+ * so it cannot write conversion events to the shared QA database.
+ */
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import type { TrpcContext } from "./_core/context";
+import type { AnalyticsEventEnvelope } from "@shared/analyticsContract";
+import { ANALYTICS_EVENT_VERSION } from "@shared/analyticsContract";
 
-const PORT = 3099;
-let server: any;
-let client: ReturnType<typeof createTRPCProxyClient<AppRouter>>;
+vi.mock("./db", () => ({
+  insertConversionEvent: vi.fn(async () => ({ insertId: 1 })),
+  getConversionStats: vi.fn(),
+  getTopConversionPages: vi.fn(),
+  getDailyConversionTrend: vi.fn(),
+  getDeviceBreakdown: vi.fn(),
+  getRecentConversionEvents: vi.fn(),
+  getDb: vi.fn(),
+}));
 
-beforeAll(async () => {
-  process.env.PORT = String(PORT);
-  const mod = await import("./_core/index");
-  server = mod.default || mod;
+import { analyticsRouter } from "./analyticsRouter";
+import { insertConversionEvent } from "./db";
 
-  client = createTRPCProxyClient<AppRouter>({
-    links: [
-      httpBatchLink({
-        url: `http://localhost:${PORT}/api/trpc`,
-        transformer: superjson,
-      }),
-    ],
+function publicCaller() {
+  const ctx = {
+    user: null,
+    req: { cookies: {}, headers: {} },
+    res: {},
+  } as unknown as TrpcContext;
+  return analyticsRouter.createCaller(ctx);
+}
+
+function envelope(
+  event_name: AnalyticsEventEnvelope["event_name"],
+  fields: Partial<AnalyticsEventEnvelope> = {},
+): AnalyticsEventEnvelope {
+  return {
+    event_name,
+    event_version: ANALYTICS_EVENT_VERSION,
+    event_id: "qa_event_00000001",
+    timestamp: "2026-10-29T06:00:00.000Z",
+    page_path: "/download/",
+    session_id: "qa_session_0001",
+    ...fields,
+  };
+}
+
+beforeEach(() => {
+  vi.clearAllMocks();
+});
+
+describe("Analytics Router - privacy-safe public tracking", () => {
+  it("accepts a canonical page_view event", async () => {
+    expect(await publicCaller().trackEvent(envelope("page_view", { page_path: "/" })))
+      .toEqual({ success: true });
+    expect(insertConversionEvent).toHaveBeenCalledWith(
+      expect.objectContaining({ eventName: "page_view", sourcePage: "/" }),
+    );
   });
 
-  await new Promise((resolve) => setTimeout(resolve, 1500));
-});
+  it("tracks a download_hub_open event", async () => {
+    expect(await publicCaller().trackEvent(envelope("download_hub_open", {
+      page_path: "/conditions/toothache/",
+      cta_id: "symptom_professional_care_download",
+      surface: "symptom_next_steps",
+      intent: "symptom_support",
+      destination_type: "internal_route",
+      destination_path: "/download/",
+    }))).toEqual({ success: true });
+    expect(insertConversionEvent).toHaveBeenCalledWith(
+      expect.objectContaining({ eventCategory: "cta_click" }),
+    );
+  });
 
-afterAll(async () => {
-  if (server?.close) server.close();
-});
+  it("tracks an iOS store_listing_click event", async () => {
+    expect(await publicCaller().trackEvent(envelope("store_listing_click", {
+      platform: "ios",
+      destination_type: "app_store",
+      surface: "download_hub",
+    }))).toEqual({ success: true });
+    expect(insertConversionEvent).toHaveBeenCalledWith(
+      expect.objectContaining({ eventCategory: "download" }),
+    );
+  });
 
-describe("Analytics Router", () => {
-  describe("Event Tracking (Public)", () => {
-    it("should track a download_ios_click event", async () => {
-      const result = await client.analytics.trackEvent.mutate({
-        eventName: "download_ios_click",
-        sourcePage: "/",
-        sourcePageTitle: "Home",
-        deviceType: "mobile",
-        sessionId: "test-session-123",
-      });
+  it("tracks a sticky CTA using approved fields", async () => {
+    expect(await publicCaller().trackEvent(envelope("cta_click", {
+      page_path: "/oral-health-hub/",
+      cta_id: "sticky_quick_check",
+      surface: "sticky",
+      intent: "quick_check",
+    }))).toEqual({ success: true });
+  });
 
-      expect(result).toBeDefined();
-      expect(result.success).toBe(true);
-    });
-
-    it("should track an event with UTM parameters", async () => {
-      const result = await client.analytics.trackEvent.mutate({
-        eventName: "cta_get_score_click",
-        sourcePage: "/oral-health-hub/symptoms",
-        sourcePageTitle: "Symptoms Hub",
-        referrer: "https://google.com",
+  it("maps campaign UTM values without storing raw referrer or titles", async () => {
+    expect(await publicCaller().trackEvent(envelope("cta_click", {
+      campaign: {
+        utm_source: "google",
+        utm_medium: "organic",
+        utm_campaign: "dental_symptoms",
+        landing_path: "/oral-health-hub/symptoms/",
+        captured_at: "2026-10-29T05:50:00.000Z",
+        updated_at: "2026-10-29T05:55:00.000Z",
+      },
+    }))).toEqual({ success: true });
+    expect(insertConversionEvent).toHaveBeenCalledWith(
+      expect.objectContaining({
         utmSource: "google",
         utmMedium: "organic",
         utmCampaign: "dental_symptoms",
-        deviceType: "desktop",
-        sessionId: "test-session-456",
-      });
-
-      expect(result).toBeDefined();
-      expect(result.success).toBe(true);
-    });
-
-    it("should track a mid_content_cta_click event with metadata", async () => {
-      const result = await client.analytics.trackEvent.mutate({
-        eventName: "mid_content_cta_click",
-        sourcePage: "/conditions/tooth-decay",
-        sourcePageTitle: "Tooth Decay",
-        deviceType: "mobile",
-        sessionId: "test-session-789",
-        metadata: { label: "condition_page_mid_cta" },
-      });
-
-      expect(result).toBeDefined();
-      expect(result.success).toBe(true);
-    });
-
-    it("should track a sticky_cta_click event", async () => {
-      const result = await client.analytics.trackEvent.mutate({
-        eventName: "sticky_cta_click",
-        sourcePage: "/oral-health-hub",
-        sourcePageTitle: "Oral Health Hub",
-        deviceType: "mobile",
-        sessionId: "test-session-101",
-      });
-
-      expect(result).toBeDefined();
-      expect(result.success).toBe(true);
-    });
-
-    it("should track an exit_intent_shown event", async () => {
-      const result = await client.analytics.trackEvent.mutate({
-        eventName: "exit_intent_shown",
-        sourcePage: "/features",
-        sourcePageTitle: "Features",
-        deviceType: "desktop",
-        sessionId: "test-session-202",
-      });
-
-      expect(result).toBeDefined();
-      expect(result.success).toBe(true);
-    });
+        referrer: null,
+        sourcePageTitle: null,
+      }),
+    );
   });
 
-  describe("Dashboard Endpoints (Admin Protected)", () => {
-    // These endpoints require admin auth, so they should return "Unauthorized"
-    // when called without a valid admin_token cookie.
-    // This verifies the endpoints exist and are properly protected.
+  it("rejects arbitrary metadata that could contain private dental information", async () => {
+    await expect(publicCaller().trackEvent({
+      ...envelope("cta_click"),
+      metadata: { symptom_text: "private value" },
+    } as any)).rejects.toThrow();
+    expect(insertConversionEvent).not.toHaveBeenCalled();
+  });
 
-    const today = new Date().toISOString().split("T")[0];
-    const weekAgo = new Date(Date.now() - 7 * 86400000).toISOString().split("T")[0];
+  it("rejects a full URL instead of a privacy-safe path", async () => {
+    await expect(publicCaller().trackEvent(envelope("page_view", {
+      page_path: "https://dentasmart.ai/conditions/toothache/?health=private",
+    }))).rejects.toThrow();
+    expect(insertConversionEvent).not.toHaveBeenCalled();
+  });
+});
 
-    it("should reject getStats without admin auth", async () => {
-      try {
-        await client.analytics.getStats.query({
-          startDate: weekAgo,
-          endDate: today,
-        });
-        // Should not reach here
-        expect(true).toBe(false);
-      } catch (error: any) {
-        expect(error.message).toContain("Unauthorized");
-      }
-    });
+describe("Analytics Router - admin dashboard protection", () => {
+  const startDate = "2026-10-01";
+  const endDate = "2026-10-29";
 
-    it("should reject getTopPages without admin auth", async () => {
-      try {
-        await client.analytics.getTopPages.query({
-          startDate: weekAgo,
-          endDate: today,
-        });
-        expect(true).toBe(false);
-      } catch (error: any) {
-        expect(error.message).toContain("Unauthorized");
-      }
-    });
+  it("rejects getStats without an admin session", async () => {
+    await expect(publicCaller().getStats({ startDate, endDate })).rejects.toThrow("Unauthorized");
+  });
 
-    it("should reject getDailyTrend without admin auth", async () => {
-      try {
-        await client.analytics.getDailyTrend.query({
-          startDate: weekAgo,
-          endDate: today,
-        });
-        expect(true).toBe(false);
-      } catch (error: any) {
-        expect(error.message).toContain("Unauthorized");
-      }
-    });
+  it("rejects getTopPages without an admin session", async () => {
+    await expect(publicCaller().getTopPages({ startDate, endDate })).rejects.toThrow("Unauthorized");
+  });
 
-    it("should reject getDeviceBreakdown without admin auth", async () => {
-      try {
-        await client.analytics.getDeviceBreakdown.query({
-          startDate: weekAgo,
-          endDate: today,
-        });
-        expect(true).toBe(false);
-      } catch (error: any) {
-        expect(error.message).toContain("Unauthorized");
-      }
-    });
+  it("rejects getDailyTrend without an admin session", async () => {
+    await expect(publicCaller().getDailyTrend({ startDate, endDate })).rejects.toThrow("Unauthorized");
+  });
 
-    it("should reject getRecentEvents without admin auth", async () => {
-      try {
-        await client.analytics.getRecentEvents.query({
-          limit: 20,
-        });
-        expect(true).toBe(false);
-      } catch (error: any) {
-        expect(error.message).toContain("Unauthorized");
-      }
-    });
+  it("rejects getDeviceBreakdown without an admin session", async () => {
+    await expect(publicCaller().getDeviceBreakdown({ startDate, endDate })).rejects.toThrow("Unauthorized");
+  });
+
+  it("rejects getRecentEvents without an admin session", async () => {
+    await expect(publicCaller().getRecentEvents({ limit: 20 })).rejects.toThrow("Unauthorized");
   });
 });

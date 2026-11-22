@@ -254,8 +254,10 @@ describe("Conditions/Symptoms/Guides in Sitemap", () => {
       expect(res.text).toContain(`https://dentasmart.ai/conditions/${condition}`);
     }
 
-    // Also check the conditions index (trailing slash)
-    expect(res.text).toContain("https://dentasmart.ai/conditions/</loc>");
+    // Index hubs are listed in the general pages sitemap, not duplicated in category sitemaps.
+    const hubRes = await request(app).get("/sitemap-pages.xml");
+    expect(hubRes.text).toContain("https://dentasmart.ai/conditions/</loc>");
+    expect(res.text).not.toContain("https://dentasmart.ai/conditions/</loc>");
   });
 
   it("should include all 10 symptom pages in sitemap", async () => {
@@ -271,8 +273,9 @@ describe("Conditions/Symptoms/Guides in Sitemap", () => {
       expect(res.text).toContain(`https://dentasmart.ai/symptoms/${symptom}`);
     }
 
-    // Also check the symptoms index (trailing slash)
-    expect(res.text).toContain("https://dentasmart.ai/symptoms/</loc>");
+    const hubRes = await request(app).get("/sitemap-pages.xml");
+    expect(hubRes.text).toContain("https://dentasmart.ai/symptoms/</loc>");
+    expect(res.text).not.toContain("https://dentasmart.ai/symptoms/</loc>");
   });
 
   it("should include all 3 guide pages in sitemap", async () => {
@@ -285,15 +288,16 @@ describe("Conditions/Symptoms/Guides in Sitemap", () => {
       expect(res.text).toContain(`https://dentasmart.ai/guides/${guide}`);
     }
 
-    // Also check the guides index (trailing slash)
-    expect(res.text).toContain("https://dentasmart.ai/guides/</loc>");
+    const hubRes = await request(app).get("/sitemap-pages.xml");
+    expect(hubRes.text).toContain("https://dentasmart.ai/guides/</loc>");
+    expect(res.text).not.toContain("https://dentasmart.ai/guides/</loc>");
   });
 });
 
 describe("Dental Cost Pages in Sitemap", () => {
   it("should include the dental costs hub in sitemap", async () => {
     const app = createTestApp();
-    const res = await request(app).get("/sitemap-costs.xml");
+    const res = await request(app).get("/sitemap-pages.xml");
 
     expect(res.text).toContain("https://dentasmart.ai/dental-costs/</loc>");
   });
@@ -322,9 +326,9 @@ describe("Dental Cost Pages in Sitemap", () => {
 
   it("should have high priority for dental cost pages", async () => {
     const app = createTestApp();
-    const res = await request(app).get("/sitemap-costs.xml");
+    const res = await request(app).get("/sitemap-pages.xml");
 
-    // Dental cost hub should have 0.9 priority
+    // Index hubs live in the general pages sitemap and retain their 0.9 priority
     const hubMatch = res.text.match(
       /dental-costs\/<\/loc>[\s\S]*?<priority>([\d.]+)<\/priority>/
     );
@@ -345,7 +349,7 @@ describe("Dental Cost Pages in Sitemap", () => {
 describe("Treatment Explainer Pages SEO", () => {
   it("should include treatments hub in sitemap", async () => {
     const app = createTestApp();
-    const res = await request(app).get("/sitemap-treatments.xml");
+    const res = await request(app).get("/sitemap-pages.xml");
 
     expect(res.text).toContain("https://dentasmart.ai/treatments/</loc>");
   });
@@ -374,9 +378,9 @@ describe("Treatment Explainer Pages SEO", () => {
 
   it("should have high priority for treatment pages", async () => {
     const app = createTestApp();
-    const res = await request(app).get("/sitemap-treatments.xml");
+    const res = await request(app).get("/sitemap-pages.xml");
 
-    // Treatments hub should have 0.9 priority
+    // Index hubs live in the general pages sitemap and retain their 0.9 priority
     const hubMatch = res.text.match(
       /treatments\/<\/loc>[\s\S]*?<priority>([\d.]+)<\/priority>/
     );
@@ -417,9 +421,9 @@ describe("Comparison Pages SEO", () => {
 
   it("should have high priority for comparison pages", async () => {
     const app = createTestApp();
-    const res = await request(app).get("/sitemap-comparisons.xml");
+    const res = await request(app).get("/sitemap-pages.xml");
 
-    // Comparisons hub should have 0.9 priority
+    // Index hubs live in the general pages sitemap and retain their 0.9 priority
     const hubMatch = res.text.match(
       /comparisons\/<\/loc>[\s\S]*?<priority>([\d.]+)<\/priority>/
     );
@@ -457,7 +461,7 @@ describe("Life Stages Pages SEO", () => {
 
   it("should have high priority for life stages hub", async () => {
     const app = createTestApp();
-    const res = await request(app).get("/sitemap-life-stages.xml");
+    const res = await request(app).get("/sitemap-pages.xml");
 
     const hubMatch = res.text.match(
       /\/life-stages\/<\/loc>[\s\S]*?<priority>([\d.]+)<\/priority>/
@@ -496,7 +500,7 @@ describe("Dental Emergencies Pages SEO", () => {
 
   it("should have high priority for emergencies hub", async () => {
     const app = createTestApp();
-    const res = await request(app).get("/sitemap-emergencies.xml");
+    const res = await request(app).get("/sitemap-pages.xml");
 
     const hubMatch = res.text.match(
       /dental-emergencies\/<\/loc>[\s\S]*?<priority>([\d.]+)<\/priority>/
@@ -535,7 +539,7 @@ describe("Lifestyle Pages SEO", () => {
 
   it("should have lifestyle hub with priority >= 0.9", async () => {
     const app = createTestApp();
-    const res = await request(app).get("/sitemap-lifestyle.xml");
+    const res = await request(app).get("/sitemap-pages.xml");
 
     const hubMatch = res.text.match(
       /\/lifestyle\/<\/loc>[\s\S]*?<priority>([\d.]+)<\/priority>/

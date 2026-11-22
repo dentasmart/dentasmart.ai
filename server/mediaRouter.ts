@@ -7,6 +7,11 @@ import { mediaItems, blogPosts, mediaReplacementLog } from "../drizzle/schema";
 import { eq, like, desc, or, sql, isNull, inArray } from "drizzle-orm";
 import { storagePut, storageDelete } from "./storage";
 import sharp from "sharp";
+import { isCmsTestPublicationEnvironment } from "./cmsTestPublication";
+import { saveCmsTestImage, cleanupCmsTestImage, CmsTestMediaError } from "./cmsTestMedia";
+import { applyAltToUnpublishedContent, scanMediaReferences, summarizeMediaUsages, blocksProductionCmsMediaDeletion } from "./mediaAltSync";
+import { isPrivateCmsMediaRecord } from "./cmsPrivateMediaPolicy";
+import { getPrivateCmsMediaConfig } from "./cmsPrivateMediaS3";
 
 // ─── Usage cache (5-minute TTL) ──────────────────────────────────────────────
 
@@ -160,6 +165,32 @@ async function deleteStorageVariants(item: {
   }
 }
 
+// All CMS and Blog Editor media uploads in this isolated test database
+// must remain local. No shared storage provider is invoked in this branch.
+async function uploadToLocalTestMedia(fileName: string, fileBase64: string, mimeType: string) {
+  const db = await getDb();
+  if (!db) throw new TRPCError({ code: "PRECONDITION_FAILED", message: "Test database unavailable." });
+  let uploaded: Awaited<ReturnType<typeof saveCmsTestImage>>;
+  try {
+    uploaded = await saveCmsTestImage(fileName, fileBase64, mimeType);
+  } catch (error) {
+    if (error instanceof CmsTestMediaError) throw new TRPCError({ code: "BAD_REQUEST", message: error.message });
+    throw error;
+  }
+  try {
+    const [inserted] = await db.insert(mediaItems).values({
+      url: uploaded.url, fileKey: uploaded.fileKey, filename: uploaded.filename,
+      mimeType: uploaded.mimeType, fileSizeBytes: uploaded.fileSizeBytes,
+      width: uploaded.width, height: uploaded.height,
+    }).$returningId();
+    const [item] = await db.select().from(mediaItems).where(eq(mediaItems.id, inserted.id));
+    return item;
+  } catch (error) {
+    await cleanupCmsTestImage(uploaded.filePath);
+    throw error;
+  }
+}
+
 // ─── Router ───────────────────────────────────────────────────────────────────
 
 export const mediaRouter = router({
@@ -203,7 +234,30 @@ export const mediaRouter = router({
       return { item, usage };
     }),
 
-  // ── Update metadata ────────────────────────────────────────────────────────
+  // ── Resolve a blog image regardless of library pagination or URL variant ────
+  findByUrl: adminProcedure
+    .input(z.object({ url: z.string().trim().min(1).max(2048) }))
+    .query(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      const [item] = await db.select().from(mediaItems).where(or(
+        eq(mediaItems.url, input.url), eq(mediaItems.mediumUrl, input.url),
+        eq(mediaItems.thumbnailUrl, input.url), eq(mediaItems.webpUrl, input.url)
+      )).limit(1);
+      return item || null;
+    }),
+
+  // ── Usage details (includes CMS and every blog page, not only recent 200) ──
+  usageSummary: adminProcedure.input(z.object({ id: z.number().int().positive() }))
+    .query(async ({ input }) => {
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      const [item] = await db.select().from(mediaItems).where(eq(mediaItems.id, input.id));
+      if (!item) throw new TRPCError({ code: "NOT_FOUND", message: "Media not found" });
+      return summarizeMediaUsages((await scanMediaReferences(db, item)).usages);
+    }),
+
+  // ── Update metadata / synchronize alt ONLY with eligible saved content ────
   update: adminProcedure
     .input(z.object({
       id: z.number(),
@@ -211,108 +265,170 @@ export const mediaRouter = router({
       caption: z.string().optional(),
       title: z.string().max(500).optional(),
       filename: z.string().max(500).optional(),
+      confirmMultiple: z.boolean().optional(),
+      originCms: z.object({ hubId: z.string(), slug: z.string() }).optional(),
     }))
     .mutation(async ({ input }) => {
-      const { id, ...fields } = input;
+      const { id, confirmMultiple, originCms, ...fields } = input;
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
+      const updated = await db.transaction(async tx => {
+        const [existing] = await tx.select().from(mediaItems).where(eq(mediaItems.id, id)).limit(1).for("update");
+        if (!existing) throw new TRPCError({ code: "NOT_FOUND", message: "Media item not found" });
 
-      const [existing] = await db.select({ id: mediaItems.id }).from(mediaItems).where(eq(mediaItems.id, id));
-      if (!existing) throw new TRPCError({ code: "NOT_FOUND", message: "Media item not found" });
+        const updateData: Partial<typeof mediaItems.$inferInsert> = {};
+        if (fields.altText !== undefined) updateData.altText = fields.altText;
+        if (fields.caption !== undefined) updateData.caption = fields.caption;
+        if (fields.title !== undefined) updateData.title = fields.title;
+        if (fields.filename !== undefined) updateData.filename = fields.filename;
+        if (!Object.keys(updateData).length) {
+          throw new TRPCError({ code: "BAD_REQUEST", message: "No fields to update" });
+        }
 
-      const updateData: Partial<typeof mediaItems.$inferInsert> = {};
-      if (fields.altText !== undefined) updateData.altText = fields.altText;
-      if (fields.caption !== undefined) updateData.caption = fields.caption;
-      if (fields.title !== undefined) updateData.title = fields.title;
-      if (fields.filename !== undefined) updateData.filename = fields.filename;
-
-      if (Object.keys(updateData).length === 0) {
-        throw new TRPCError({ code: "BAD_REQUEST", message: "No fields to update" });
-      }
-
-      await db.update(mediaItems).set(updateData).where(eq(mediaItems.id, id));
-      const [updated] = await db.select().from(mediaItems).where(eq(mediaItems.id, id));
+        // Synchronize private CMS draft ALT only under isolated test or approved private storage.
+        const canSynchronize = isCmsTestPublicationEnvironment() ||
+          (isPrivateCmsMediaRecord(existing) && !!getPrivateCmsMediaConfig(process.env));
+        if (canSynchronize && fields.altText !== undefined &&
+            fields.altText !== (existing.altText || "")) {
+          const scanned = await scanMediaReferences(tx, existing);
+          if (process.env.NODE_ENV === "production" && !scanned.cmsInventoryComplete) {
+            throw new TRPCError({ code: "PRECONDITION_FAILED", message: "CMS image ALT synchronization requires a complete CMS inventory." });
+          }
+          const summary = summarizeMediaUsages(scanned.usages);
+          if (summary.publishedCount > 0) {
+            throw new TRPCError({
+              code: "PRECONDITION_FAILED",
+              message: "Published content uses this image. Alt-text sync is blocked until the existing editorial review/publishing workflow approves those changes.",
+            });
+          }
+          if (summary.distinctPages > 1 && !confirmMultiple) {
+            throw new TRPCError({
+              code: "PRECONDITION_FAILED",
+              message: "MULTIPLE_USE_CONFIRMATION_REQUIRED: This image appears on " +
+                summary.distinctPages + " pages. Confirm updating alt text in every saved draft.",
+            });
+          }
+          await applyAltToUnpublishedContent(tx, scanned, fields.altText, originCms);
+        }
+        await tx.update(mediaItems).set(updateData).where(eq(mediaItems.id, id));
+        const [row] = await tx.select().from(mediaItems).where(eq(mediaItems.id, id));
+        return row;
+      });
       return updated;
     }),
 
-  // ── Delete single item ─────────────────────────────────────────────────────
+  // ── Delete catalogue entry ONLY after server-side in-use confirmation ────
   delete: adminProcedure
-    .input(z.object({ id: z.number() }))
+    .input(z.object({ id: z.number(), confirmInUse: z.boolean().optional() }))
     .mutation(async ({ input }) => {
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-
-      const [existing] = await db.select().from(mediaItems).where(eq(mediaItems.id, input.id));
-      if (!existing) throw new TRPCError({ code: "NOT_FOUND", message: "Media item not found" });
-
-      // Attempt to delete storage variants (no-op stub — storage proxy has no delete API)
-      await deleteStorageVariants(existing);
-
-      await db.delete(mediaItems).where(eq(mediaItems.id, input.id));
+      const deleted = await db.transaction(async tx => {
+        const [existing] = await tx.select().from(mediaItems).where(eq(mediaItems.id, input.id)).limit(1).for("update");
+        if (!existing) throw new TRPCError({ code: "NOT_FOUND", message: "Media item not found" });
+        if (isPrivateCmsMediaRecord(existing)) {
+          throw new TRPCError({ code: "PRECONDITION_FAILED", message: "Private CMS media deletion requires verified S3 removal; catalog-only deletion is blocked." });
+        }
+        const scanned = await scanMediaReferences(tx, existing);
+        if (process.env.NODE_ENV === "production" && !scanned.cmsInventoryComplete) {
+          throw new TRPCError({
+            code: "PRECONDITION_FAILED",
+            message: "CMS media inventory is incomplete. Deletion is blocked until CMS storage is verified.",
+          });
+        }
+        const summary = summarizeMediaUsages(scanned.usages);
+        if (blocksProductionCmsMediaDeletion(process.env.NODE_ENV, summary.usages)) {
+          throw new TRPCError({
+            code: "PRECONDITION_FAILED",
+            message: "Production CMS images cannot be deleted while referenced by CMS pages.",
+          });
+        }
+        if (summary.distinctPages > 0 && !input.confirmInUse) {
+          throw new TRPCError({ code: "PRECONDITION_FAILED",
+            message: "This image is used in " + summary.distinctPages +
+              " CMS/blog page(s). Confirm deletion explicitly. Existing page image links may break." });
+        }
+        await tx.delete(mediaItems).where(eq(mediaItems.id, input.id));
+        return existing;
+      });
+      await deleteStorageVariants(deleted);
       invalidateUsageCache([input.id]);
-
-      return {
-        success: true,
-        storageNote: "CDN files cannot be deleted via the current storage API and may remain accessible via direct URLs.",
-      };
+      return { success: true,
+        storageNote: "Catalogue entry deleted. CDN storage deletion is unavailable; old files may remain accessible." };
     }),
 
-  // ── Bulk delete ────────────────────────────────────────────────────────────
   bulkDelete: adminProcedure
-    .input(z.object({ ids: z.array(z.number()).min(1).max(100) }))
+    .input(z.object({
+      ids: z.array(z.number()).min(1).max(100),
+      confirmInUse: z.boolean().optional(),
+    }))
     .mutation(async ({ input }) => {
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-
-      const rows = await db.select().from(mediaItems).where(inArray(mediaItems.id, input.ids));
-      if (rows.length === 0) throw new TRPCError({ code: "NOT_FOUND", message: "No matching media items found" });
-
-      // Attempt storage deletion for each item (no-op stub)
-      for (const row of rows) {
-        await deleteStorageVariants(row);
-      }
-
-      await db.delete(mediaItems).where(inArray(mediaItems.id, input.ids));
+      const rows = await db.transaction(async tx => {
+        const existing = await tx.select().from(mediaItems).where(inArray(mediaItems.id, input.ids)).for("update");
+        if (!existing.length) throw new TRPCError({ code: "NOT_FOUND", message: "No matching media items found" });
+        const used: Array<{filename:string;count:number}> = [];
+        for (const item of existing) {
+          if (isPrivateCmsMediaRecord(item)) {
+            throw new TRPCError({ code: "PRECONDITION_FAILED", message: "Bulk deletion cannot remove private CMS media until verified S3 cleanup is supported." });
+          }
+          const scanned = await scanMediaReferences(tx, item);
+          if (process.env.NODE_ENV === "production" && !scanned.cmsInventoryComplete) {
+            throw new TRPCError({
+              code: "PRECONDITION_FAILED",
+              message: "CMS media inventory is incomplete. Deletion is blocked until CMS storage is verified.",
+            });
+          }
+          const summary = summarizeMediaUsages(scanned.usages);
+          if (blocksProductionCmsMediaDeletion(process.env.NODE_ENV, summary.usages)) {
+            throw new TRPCError({
+              code: "PRECONDITION_FAILED",
+              message: "Bulk deletion is blocked: an image is referenced by a production CMS page.",
+            });
+          }
+          if (summary.distinctPages > 0) used.push({filename:item.filename,count:summary.distinctPages});
+        }
+        if (used.length && !input.confirmInUse) {
+          throw new TRPCError({ code: "PRECONDITION_FAILED",
+            message: used.length + " image(s) are referenced by CMS/blog pages. Explicitly confirm before removing their library records." });
+        }
+        await tx.delete(mediaItems).where(inArray(mediaItems.id, existing.map((item: {id:number}) => item.id)));
+        return existing;
+      });
+      for (const item of rows) await deleteStorageVariants(item);
       invalidateUsageCache(input.ids);
-
-      return {
-        success: true,
-        deleted: rows.length,
-        storageNote: "CDN files cannot be deleted via the current storage API and may remain accessible via direct URLs.",
-      };
+      return { success: true, deleted: rows.length,
+        storageNote: "Catalogue entries removed. CDN files may remain accessible." };
     }),
 
-  // ── Check usage ────────────────────────────────────────────────────────────
+  // Legacy clients also receive CMS-aware usage totals.
   checkUsage: adminProcedure
     .input(z.object({ id: z.number() }))
     .query(async ({ input }) => {
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-
-      const [item] = await db.select({ id: mediaItems.id, url: mediaItems.url }).from(mediaItems).where(eq(mediaItems.id, input.id));
+      const [item] = await db.select().from(mediaItems).where(eq(mediaItems.id, input.id));
       if (!item) throw new TRPCError({ code: "NOT_FOUND", message: "Media item not found" });
-
-      const usage = await getUsageForItem(item.id, item.url);
-      return { id: item.id, usageCount: usage.length, posts: usage };
+      const summary = summarizeMediaUsages((await scanMediaReferences(db, item)).usages);
+      return { id: item.id, usageCount: summary.distinctPages,
+        posts: summary.usages.filter(u => u.kind === "blog").map(u => ({
+          postId: u.id, postSlug: u.slug || "", postTitle: u.title,
+        })), usages: summary.usages, publishedCount: summary.publishedCount };
     }),
 
-  // ── Check usage for multiple items ────────────────────────────────────────
   checkBulkUsage: adminProcedure
     .input(z.object({ ids: z.array(z.number()).min(1).max(100) }))
     .query(async ({ input }) => {
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
-
-      const rows = await db.select({ id: mediaItems.id, url: mediaItems.url }).from(mediaItems).where(inArray(mediaItems.id, input.ids));
-
-      const results: Array<{ id: number; usageCount: number; posts: { postId: number; postSlug: string; postTitle: string }[] }> = [];
+      const rows = await db.select().from(mediaItems).where(inArray(mediaItems.id, input.ids));
+      const results = [];
       for (const row of rows) {
-        const usage = await getUsageForItem(row.id, row.url);
-        results.push({ id: row.id, usageCount: usage.length, posts: usage });
+        const summary = summarizeMediaUsages((await scanMediaReferences(db, row)).usages);
+        results.push({ id: row.id, usageCount: summary.distinctPages, posts: [] as {postId:number;postSlug:string;postTitle:string}[] });
       }
-
-      const totalInUse = results.filter((r) => r.usageCount > 0).length;
-      return { results, totalInUse };
+      return { results, totalInUse: results.filter(row => row.usageCount > 0).length };
     }),
 
   // ── Register (called by blog editor upload flow) ───────────────────────────
@@ -355,6 +471,9 @@ export const mediaRouter = router({
     }))
     .mutation(async ({ input }) => {
       const { fileName, fileBase64, mimeType } = input;
+      if (isCmsTestPublicationEnvironment()) {
+        return uploadToLocalTestMedia(fileName, fileBase64, mimeType);
+      }
       const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp", "image/gif", "image/svg+xml", "application/pdf"]);
 
       if (!ALLOWED_TYPES.has(mimeType)) {
@@ -409,6 +528,11 @@ export const mediaRouter = router({
 
       for (const file of input.files) {
         try {
+          if (isCmsTestPublicationEnvironment()) {
+            const item = await uploadToLocalTestMedia(file.fileName, file.fileBase64, file.mimeType);
+            results.push({ success: true, fileName: file.fileName, mediaItem: item });
+            continue;
+          }
           const ALLOWED_TYPES = new Set(["image/jpeg", "image/png", "image/webp", "image/gif", "image/svg+xml", "application/pdf"]);
           if (!ALLOWED_TYPES.has(file.mimeType)) {
             results.push({ success: false, fileName: file.fileName, error: `File type "${file.mimeType}" is not allowed.` });
@@ -525,6 +649,9 @@ export const mediaRouter = router({
       rotate: z.number().int().refine((v) => v % 90 === 0, "Must be multiple of 90").optional(),
     }))
     .mutation(async ({ input }) => {
+      if (isCmsTestPublicationEnvironment()) {
+        throw new TRPCError({ code: "FORBIDDEN", message: "Media crop/resize/rotate through shared storage is disabled in the isolated test Codespace." });
+      }
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
 
@@ -612,6 +739,9 @@ export const mediaRouter = router({
       mimeType: z.string(),
     }))
     .mutation(async ({ input }) => {
+      if (isCmsTestPublicationEnvironment()) {
+        throw new TRPCError({ code: "FORBIDDEN", message: "Replacing media across published posts is disabled in the isolated test Codespace." });
+      }
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database unavailable" });
 

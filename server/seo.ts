@@ -3,6 +3,7 @@ import { listBlogPosts } from "./blogDb";
 import { staticRoutes as allRoutes } from "../shared/routes";
 import { resolveRedirect } from "./redirectCache";
 import { brand, company, pricing } from "../shared/facts";
+import { getCmsTestPublishedToothache, isCmsTestPublicationEnvironment } from "./cmsTestPublication";
 
 const SITE_URL = "https://dentasmart.ai";
 const NL = "\r\n";
@@ -593,9 +594,18 @@ export function registerSeoRoutes(app: Express) {
   app.get("/sitemap-conditions.xml", async (_req: Request, res: Response) => {
     try {
       res.set("Content-Type", "application/xml; charset=utf-8");
-      res.set("Cache-Control", "public, max-age=0, s-maxage=300, must-revalidate");
+      res.set("Cache-Control", isCmsTestPublicationEnvironment()
+        ? "private, no-store" : "public, max-age=0, s-maxage=300, must-revalidate");
       const redirectSources = await getEnabledRedirectSources();
-      res.send(generateSegmentedSitemap(deriveRoutes(allRoutes, ["Condition"], redirectSources)));
+      // A TEST-published Toothache overlay is always noindex. Do not advertise
+      // that overlay in the isolated test sitemap. Once it is withdrawn, the
+      // original source-controlled Toothache route remains and reappears.
+      const testSnapshot = isCmsTestPublicationEnvironment()
+        ? await getCmsTestPublishedToothache() : null;
+      const routes = deriveRoutes(allRoutes, ["Condition"], redirectSources);
+      res.send(generateSegmentedSitemap(testSnapshot
+        ? routes.filter(route => (route.path.endsWith("/") ? route.path.slice(0, -1) : route.path) !== "/conditions/toothache")
+        : routes));
     } catch (e) { console.error("sitemap-conditions error:", e); res.status(500).send("Error"); }
   });
 

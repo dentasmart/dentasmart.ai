@@ -8,13 +8,13 @@ import { getStaticMetaSnapshot } from "./metaTags";
 import {
   getOrganizationSchema,
   getWebSiteSchema,
-  ORGANIZATION_ID,
   resolveStaticSchemaMarkup,
   type PageSchemaMetadata,
 } from "../shared/schemaOwnership";
-import { toSchemaUrl } from "../shared/jsonLd";
 import { getVerifiedReviewMetadata } from "./reviewMetadata";
-import { buildBlogReviewWebPageSchema, getPublicBlogReviewerMetadata, getPublicLastReviewed, getPublicSupplementalJsonLd } from "../shared/blogReviewerMetadata";
+import { buildBlogPostingSchemas } from "../shared/blogPostSchemas";
+export { buildBlogPostingSchemas } from "../shared/blogPostSchemas";
+export type { PublicBlogPostSchemaInput } from "../shared/blogPostSchemas";
 
 const SITE_URL = "https://dentasmart.ai";
 
@@ -24,23 +24,6 @@ interface ResolvedMetadata {
   canonical?: string | null;
 }
 
-export interface PublicBlogPostSchemaInput {
-  slug: string;
-  title: string;
-  metaTitle?: string | null;
-  metaDescription?: string | null;
-  canonicalUrl?: string | null;
-  featuredImage?: string | null;
-  ogImage?: string | null;
-  publishedAt?: Date | string | null;
-  updatedAt?: Date | string | null;
-  reviewedByName?: string | null;
-  reviewedByCredentials?: string | null;
-  reviewerShortBio?: string | null;
-  reviewerProfileUrl?: string | null;
-  lastReviewed?: string | null;
-  reviewerJsonLd?: string | null;
-}
 
 function cleanPath(urlPath: string): string {
   return urlPath.split(/[?#]/, 1)[0].replace(/\/+$/, "") || "/";
@@ -87,42 +70,6 @@ function getStaticSchemaMetadata(urlPath: string, resolved?: ResolvedMetadata | 
   };
 }
 
-export function buildBlogPostingSchemas(post: PublicBlogPostSchemaInput): Record<string, unknown>[] {
-  const schemas: Record<string, unknown>[] = [getOrganizationSchema(), getWebSiteSchema()];
-  const blogPosting: Record<string, unknown> = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.metaTitle || post.title,
-    description: post.metaDescription || "",
-    url: toSchemaUrl(post.canonicalUrl || `${SITE_URL}/oral-health-hub/${post.slug}/`),
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": toSchemaUrl(`/oral-health-hub/${post.slug}/`),
-    },
-    publisher: { "@id": ORGANIZATION_ID },
-  };
-  if (post.featuredImage || post.ogImage) blogPosting.image = post.featuredImage || post.ogImage;
-  if (post.publishedAt) blogPosting.datePublished = new Date(post.publishedAt).toISOString();
-  if (post.updatedAt) blogPosting.dateModified = new Date(post.updatedAt).toISOString();
-  // A legacy CMS reviewer name is not verified public-author schema evidence.
-  // Emit a Person only through the separately verified review-metadata path.
-  blogPosting.author = { "@id": ORGANIZATION_ID };
-  const publicReviewerMetadata = getPublicBlogReviewerMetadata(post);
-  const publicLastReviewed = getPublicLastReviewed(post);
-  if (publicLastReviewed || publicReviewerMetadata) {
-    schemas.push(buildBlogReviewWebPageSchema({
-      canonicalUrl: post.canonicalUrl || `${SITE_URL}/oral-health-hub/${post.slug}/`,
-      title: post.metaTitle || post.title,
-      description: post.metaDescription || "",
-      ...(publicLastReviewed ? { lastReviewed: publicLastReviewed } : {}),
-      ...(publicReviewerMetadata ? { review: publicReviewerMetadata } : {}),
-    }));
-  }
-  schemas.push(blogPosting);
-  const publicSupplementalJsonLd = getPublicSupplementalJsonLd(post);
-  if (publicSupplementalJsonLd) schemas.push(publicSupplementalJsonLd);
-  return schemas;
-}
 
 async function getBlogSchemas(cleanedPath: string): Promise<Record<string, unknown>[]> {
   const schemas: Record<string, unknown>[] = [getOrganizationSchema(), getWebSiteSchema()];

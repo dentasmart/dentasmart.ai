@@ -134,6 +134,13 @@
       "when": 1791186234572,
       "tag": "0018_sms_consent_records",
       "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "5",
+      "when": 1793346366470,
+      "tag": "0019_advanced_cms_tables",
+      "breakpoints": true
     }
   ]
 }

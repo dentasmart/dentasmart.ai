@@ -19,9 +19,11 @@ import { motion } from "framer-motion";
 import MidContentCTA from "@/components/MidContentCTA";
 import NextStepsBox from "@/components/NextStepsBox";
 import OralHealthScoreTeaser from "@/components/OralHealthScoreTeaser";
-import { breadcrumbSchema, articleSchema } from "@/lib/schema";
+import { breadcrumbSchema } from "@/lib/schema";
+import { buildBlogPostingSchemas } from "@shared/blogPostSchemas";
+import { isManualBlogSchema } from "@shared/blogSchemaOverride";
 import { formatPageTitle } from "@shared/pageTitle";
-import { buildBlogReviewWebPageSchema, formatReviewedDate, getPublicBlogReviewerMetadata, getPublicLastReviewed, getPublicSupplementalJsonLd } from "@shared/blogReviewerMetadata";
+import { formatReviewedDate, getPublicBlogReviewerMetadata, getPublicLastReviewed } from "@shared/blogReviewerMetadata";
 
 export default function Article() {
   const [match, params] = useRoute("/oral-health-hub/:id");
@@ -130,7 +132,7 @@ export default function Article() {
   const articleGovernance = (article as typeof article & { governance?: ContentGovernance }).governance;
   const publicReviewerMetadata = getPublicBlogReviewerMetadata(article);
   const publicLastReviewed = getPublicLastReviewed(article);
-  const publicSupplementalJsonLd = getPublicSupplementalJsonLd(article);
+  const manualBlogSchemaActive = isManualBlogSchema(article.reviewerJsonLd);
   const governedAnswer = articleGovernance ? article.atAGlanceAnswer?.trim() : undefined;
   const governedFaqs = (() => {
     if (!articleGovernance || !article.faqs) return [];
@@ -164,29 +166,15 @@ export default function Article() {
             return catInfo?.name || article.category || undefined;
           })(),
         }}
+        allowBlogManualPageSchema={manualBlogSchemaActive}
+        blogArticleSchemaOwned
         jsonLd={[
-          breadcrumbSchema([
+          ...(!manualBlogSchemaActive ? [breadcrumbSchema([
             { name: "Home", url: "/" },
             { name: "Oral Health Hub", url: "/oral-health-hub" },
             { name: article.title, url: `/oral-health-hub/${article.slug}` },
-          ]),
-          articleSchema({
-            headline: article.title,
-            description: article.metaDescription || "",
-            url: `/oral-health-hub/${article.slug}`,
-            datePublished: article.publishedAt ? new Date(article.publishedAt).toISOString() : undefined,
-            dateModified: article.updatedAt ? new Date(article.updatedAt).toISOString() : undefined,
-            author: "DentaSmart",
-            image: article.featuredImage || undefined,
-          }),
-          ...(publicLastReviewed || publicReviewerMetadata ? [buildBlogReviewWebPageSchema({
-            canonicalUrl: `https://dentasmart.ai/oral-health-hub/${article.slug}`,
-            title: article.metaTitle || article.title,
-            description: article.metaDescription || "",
-            ...(publicLastReviewed ? { lastReviewed: publicLastReviewed } : {}),
-            ...(publicReviewerMetadata ? { review: publicReviewerMetadata } : {}),
-          })] : []),
-          ...(publicSupplementalJsonLd ? [publicSupplementalJsonLd] : []),
+          ])] : []),
+          ...buildBlogPostingSchemas(article).filter(node => node["@type"] !== "Organization" && node["@type"] !== "WebSite"),
         ]}
       />
       <div className="min-h-screen flex flex-col bg-background font-sans text-black selection:bg-primary/20">

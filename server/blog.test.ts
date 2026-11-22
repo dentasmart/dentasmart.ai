@@ -158,13 +158,12 @@ describe("Blog Router", () => {
       expect(post?.metaTitle).toBe("Test Meta Title");
     });
 
-    it("should get blog post by slug", async () => {
+    it("should not expose a draft via the public slug endpoint", async () => {
       const ctx = createPublicContext();
       const caller = appRouter.createCaller(ctx);
 
       const post = await caller.blog.getBySlug({ slug: createdSlug });
-      expect(post).not.toBeNull();
-      expect(post?.title).toBe("Test Blog Post for Vitest");
+      expect(post).toBeNull();
     });
 
     it("should update a blog post", async () => {
@@ -195,6 +194,11 @@ describe("Blog Router", () => {
       const post = await caller.blog.getById({ id: createdPostId });
       expect(post?.status).toBe("published");
       expect(post?.publishedAt).not.toBeNull();
+
+      const publicCaller = appRouter.createCaller(createPublicContext());
+      const publicPost = await publicCaller.blog.getBySlug({ slug: createdSlug });
+      expect(publicPost?.id).toBe(createdPostId);
+      expect(publicPost?.status).toBe("published");
     });
 
     it("should unpublish a blog post", async () => {
@@ -206,6 +210,10 @@ describe("Blog Router", () => {
 
       const post = await caller.blog.getById({ id: createdPostId });
       expect(post?.status).toBe("unpublished");
+
+      const publicCaller = appRouter.createCaller(createPublicContext());
+      const publicPost = await publicCaller.blog.getBySlug({ slug: createdSlug });
+      expect(publicPost).toBeNull();
     });
 
     it("should check slug uniqueness", async () => {

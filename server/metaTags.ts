@@ -11,6 +11,8 @@
 
 import { listBlogPosts, getBlogPostBySlug } from "./blogDb";
 import { getDb } from "./db";
+import { getCmsTestPublishedToothache } from "./cmsTestPublication";
+import { resolveCmsSocialImage } from "../shared/cmsBlocks";
 import { pageMetaOverrides } from "../drizzle/schema";
 import { formatPageTitle } from "../shared/pageTitle";
 
@@ -22,6 +24,10 @@ interface MetaInfo {
   canonical?: string | null;
   robots?: string;
   ogImage?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  twitterTitle?: string;
+  twitterDescription?: string;
 }
 
 const BASE_URL = "https://dentasmart.ai";
@@ -1106,6 +1112,24 @@ export async function resolveMetaTags(urlPath: string): Promise<MetaInfo | null>
   const utilityNoindexMeta = getUtilityNoindexMeta(cleanPath);
   if (utilityNoindexMeta) return utilityNoindexMeta;
 
+  // Isolated Toothache TEST publication takes precedence only on local test DB.
+  if (cleanPath === "/conditions/toothache") {
+    const testPublished = await getCmsTestPublishedToothache();
+    if (testPublished) {
+      return {
+        title: testPublished.seo.metaTitle || testPublished.title,
+        description: testPublished.seo.metaDescription,
+        canonical: null, // Never point unreviewed test publications at live production URLs.
+        robots: "noindex, nofollow",
+        ogImage: resolveCmsSocialImage(testPublished.images)?.url,
+        ogTitle: testPublished.seo.ogTitle,
+        ogDescription: testPublished.seo.ogDescription,
+        twitterTitle: testPublished.seo.twitterTitle,
+        twitterDescription: testPublished.seo.twitterDescription,
+      };
+    }
+  }
+
   // 0. DB override  -  admin-managed, takes precedence over staticMeta
   if (Date.now() - pageOverrideCacheTime > PAGE_OVERRIDE_CACHE_TTL) {
     await refreshPageOverrideCache();
@@ -1164,6 +1188,10 @@ export async function resolveMetaTags(urlPath: string): Promise<MetaInfo | null>
 export function injectMetaTags(html: string, meta: MetaInfo): string {
   const title = escapeHtml(formatPageTitle(meta.title));
   const desc = escapeHtml(meta.description);
+  const socialTitle = escapeHtml(formatPageTitle(meta.ogTitle || meta.title));
+  const socialDescription = escapeHtml(meta.ogDescription || meta.description);
+  const twitterTitle = escapeHtml(formatPageTitle(meta.twitterTitle || meta.ogTitle || meta.title));
+  const twitterDescription = escapeHtml(meta.twitterDescription || meta.ogDescription || meta.description);
   const omitCanonical = meta.canonical === null;
   const canonicalUrl = meta.canonical ? escapeHtml(meta.canonical) : "https://dentasmart.ai/";
 
@@ -1190,6 +1218,16 @@ export function injectMetaTags(html: string, meta: MetaInfo): string {
       );
   };
 
+  const injectSocialText = (source: string) => source
+    .replace(/<meta\s+property="og:title"\s+content="[^"]*"\s*\/?>/,
+      `<meta property="og:title" content="${socialTitle}" />`)
+    .replace(/<meta\s+property="og:description"\s+content="[^"]*"\s*\/?>/,
+      `<meta property="og:description" content="${socialDescription}" />`)
+    .replace(/<meta\s+name="twitter:title"\s+content="[^"]*"\s*\/?>/,
+      `<meta name="twitter:title" content="${twitterTitle}" />`)
+    .replace(/<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/,
+      `<meta name="twitter:description" content="${twitterDescription}" />`);
+
   const omitCanonicalTags = (source: string) => source
     .replace(/\s*<meta\s+property="og:url"\s+content="[^"]*"\s*\/?>/, "")
     .replace(/\s*<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/, "");
@@ -1204,7 +1242,7 @@ export function injectMetaTags(html: string, meta: MetaInfo): string {
     } else {
       html = html.split("__PAGE_CANONICAL__").join(canonicalUrl);
     }
-    return injectRobots(injectSocialImage(html));
+    return injectRobots(injectSocialImage(injectSocialText(html)));
   }
 
   // ── Fallback: regex-based replacement (handles old built index.html) ──────
@@ -1259,7 +1297,7 @@ export function injectMetaTags(html: string, meta: MetaInfo): string {
     /<meta\s+name="twitter:description"\s+content="[^"]*"\s*\/?>/,
     `<meta name="twitter:description" content="${desc}" />`
   );
-  return injectRobots(injectSocialImage(html));
+  return injectRobots(injectSocialImage(injectSocialText(html)));
 }
 
 function escapeHtml(str: string): string {

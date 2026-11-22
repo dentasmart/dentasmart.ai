@@ -67,6 +67,8 @@ import EditorFooter from "./editor/EditorFooter";
 import { createSlashCommandExtension } from "./editor/SlashCommandMenu";
 import ImageNodeView from "./editor/ImageNodeView";
 import { trpc } from "@/lib/trpc";
+import { findCmsReviewTextSpan } from "@shared/cmsReviewHighlight";
+import { getBlogReadabilityScrollDelta } from "@shared/blogReadabilityNavigation";
 
 // ─── Types ──────────────────────────────────────────────────────────────────
 interface BlogEditorProps {
@@ -77,6 +79,8 @@ interface BlogEditorProps {
   postStatus?: string;
   postTitle?: string;
   onAutoSave?: (html: string) => Promise<void>;
+  /** Optional CMS-only, transient editor selection. Does not change the article HTML. */
+  reviewSelection?: { excerpt: string; requestId: number };
 }
 
 // ─── Lowlight setup ─────────────────────────────────────────────────────────
@@ -93,6 +97,7 @@ export default function BlogEditor({
   postStatus,
   postTitle,
   onAutoSave,
+  reviewSelection,
 }: BlogEditorProps) {
   const [showImageModal, setShowImageModal] = useState(false);
   const [imageModalDefaultTab, setImageModalDefaultTab] = useState<"upload" | "url" | "library">("upload");
@@ -194,7 +199,11 @@ export default function BlogEditor({
       }).configure({ levels: [1, 2, 3, 4] }),
       Link.configure({
         openOnClick: false,
+        // Do not inject the extension's default "nofollow" into every link.
+        // The shared link dialog explicitly controls rel per individual link.
         HTMLAttributes: {
+          target: null,
+          rel: null,
           class: "text-primary underline hover:text-primary/80",
         },
       }),
@@ -365,9 +374,57 @@ export default function BlogEditor({
   // ─── Sync content prop → editor ───────────────────────────────────────
   useEffect(() => {
     if (editor && content !== undefined && editor.getHTML() !== content) {
-      editor.commands.setContent(content);
+      // Programmatic hydration is NOT an edit: do not emit onUpdate and
+      // accidentally overwrite the parent field or mark the article dirty.
+      editor.commands.setContent(content, { emitUpdate: false });
     }
   }, [content, editor]);
+
+  // CMS readability review: select the matching sentence or paragraph in
+  // TipTap without inserting a mark, changing HTML, or creating an undo step.
+  useEffect(() => {
+    if (!editor || !reviewSelection?.excerpt || htmlMode) return;
+    let range: { from: number; to: number } | null = null;
+    editor.state.doc.descendants((node, position) => {
+      if (range) return false;
+      if (!node.isTextblock) return true;
+      const span = findCmsReviewTextSpan(node.textContent, reviewSelection.excerpt);
+      if (span) {
+        let cursor = 0;
+        let from: number | null = null;
+        let to: number | null = null;
+        node.forEach((child, offset) => {
+          const length = child.textContent.length;
+          const start = cursor;
+          const end = cursor + length;
+          if (child.isText && end > span.from && start < span.to) {
+            if (from === null) from = position + 1 + offset + Math.max(0, span.from - start);
+            to = position + 1 + offset + Math.min(length, span.to - start);
+          }
+          cursor = end;
+        });
+        if (from !== null && to !== null && to > from) range = { from, to };
+      }
+      return false;
+    });
+    if (range) {
+      editor.chain().focus().setTextSelection(range).run();
+      // TipTap selection can scroll its container automatically. After it has
+      // updated the DOM, align the actual sentence start in the viewport,
+      // leaving room for the sticky navigation; never align the editor wrapper.
+      const selectedStart = editor.state.selection.from;
+      const frame = window.requestAnimationFrame(() => {
+        if (editor.isDestroyed || !editor.view.dom.isConnected) return;
+        const position = Math.min(selectedStart, editor.state.doc.content.size);
+        const targetTop = editor.view.coordsAtPos(position).top;
+        const delta = getBlogReadabilityScrollDelta(targetTop, window.innerHeight);
+        if (Math.abs(delta) > 8) {
+          window.scrollBy({ top: delta, behavior: "smooth" });
+        }
+      });
+      return () => window.cancelAnimationFrame(frame);
+    }
+  }, [editor, reviewSelection?.requestId, htmlMode]);
 
   // ─── HTML source mode ─────────────────────────────────────────────────
   const enterHtmlMode = useCallback(() => {

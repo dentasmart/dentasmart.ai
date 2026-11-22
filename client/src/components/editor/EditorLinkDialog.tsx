@@ -11,20 +11,12 @@ import {
 } from "@/components/ui/dialog";
 import { Link as LinkIcon } from "lucide-react";
 import type { Editor } from "@tiptap/react";
+import { editorLinkHasNoFollow, editorLinkRel, isExternalEditorLink, validEditorLinkHref } from "@shared/editorLinkPolicy";
 
 interface EditorLinkDialogProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   editor: Editor | null;
-}
-
-function isExternalUrl(url: string): boolean {
-  try {
-    const parsed = new URL(url);
-    return !parsed.hostname.includes("dentasmart.ai");
-  } catch {
-    return false;
-  }
 }
 
 export default function EditorLinkDialog({ open, onOpenChange, editor }: EditorLinkDialogProps) {
@@ -33,58 +25,57 @@ export default function EditorLinkDialog({ open, onOpenChange, editor }: EditorL
   const [openInNewTab, setOpenInNewTab] = useState(false);
   const [nofollow, setNofollow] = useState(false);
 
-  // Populate from existing link when dialog opens
+  const [error, setError] = useState("");
+  const [nofollowEdited, setNofollowEdited] = useState(false);
+  const [tabEdited, setTabEdited] = useState(false);
+  const [wasExisting, setWasExisting] = useState(false);
+
+  // Read the mark ONCE when opened; changing the URL must not overwrite a
+  // person's custom nofollow/new-tab choices on an existing link.
   useEffect(() => {
-    if (open && editor) {
-      const attrs = editor.getAttributes("link");
-      const existingUrl = attrs.href || "";
-      setUrl(existingUrl);
-
-      const rel: string = attrs.rel || "";
-      setNofollow(rel.includes("nofollow"));
-      setOpenInNewTab(attrs.target === "_blank");
-
-      // Get selected text as display text suggestion
-      const { from, to } = editor.state.selection;
-      const selectedText = editor.state.doc.textBetween(from, to, "");
-      setDisplayText(selectedText || "");
-    }
+    if (!open || !editor) return;
+    const existing = editor.isActive("link");
+    const attrs = existing ? editor.getAttributes("link") : {};
+    const existingUrl: string = attrs.href || "";
+    setWasExisting(existing);
+    setUrl(existingUrl);
+    setNofollow(existing ? editorLinkHasNoFollow(attrs.rel) : false);
+    setOpenInNewTab(existing ? attrs.target === "_blank" : false);
+    setNofollowEdited(existing);
+    setTabEdited(existing);
+    setError("");
+    const { from, to } = editor.state.selection;
+    setDisplayText(editor.state.doc.textBetween(from, to, "") || "");
   }, [open, editor]);
 
-  // Auto-suggest nofollow for external URLs
-  useEffect(() => {
-    if (url && isExternalUrl(url)) {
-      setNofollow(true);
-      setOpenInNewTab(true);
-    } else if (url && !isExternalUrl(url)) {
-      setNofollow(false);
-      setOpenInNewTab(false);
+  const handleUrlChange = (value: string) => {
+    setUrl(value);
+    setError("");
+    if (!wasExisting) {
+      // External nofollow is a suggestion, never mandatory.
+      if (!nofollowEdited) setNofollow(isExternalEditorLink(value));
+      if (!tabEdited) setOpenInNewTab(isExternalEditorLink(value));
     }
-  }, [url]);
+  };
 
   const handleSubmit = () => {
     if (!editor) return;
-
+    const href = validEditorLinkHref(url);
     if (!url.trim()) {
-      editor.chain().focus().extendMarkRange("link").unsetLink().run();
+      if (wasExisting) editor.chain().focus().extendMarkRange("link").unsetLink().run();
       onOpenChange(false);
+      resetState();
       return;
     }
-
-    const relParts: string[] = ["noopener", "noreferrer"];
-    if (nofollow) relParts.push("nofollow");
-
-    editor
-      .chain()
-      .focus()
-      .extendMarkRange("link")
-      .setLink({
-        href: url.trim(),
-        target: openInNewTab ? "_blank" : null,
-        rel: relParts.join(" "),
-      })
-      .run();
-
+    if (!href) {
+      setError("Enter a valid https:// URL, a website-relative /path, or a #section link.");
+      return;
+    }
+    editor.chain().focus().extendMarkRange("link").setLink({
+      href,
+      target: openInNewTab ? "_blank" : null,
+      rel: editorLinkRel(nofollow, openInNewTab),
+    }).run();
     onOpenChange(false);
     resetState();
   };
@@ -101,6 +92,10 @@ export default function EditorLinkDialog({ open, onOpenChange, editor }: EditorL
     setDisplayText("");
     setOpenInNewTab(false);
     setNofollow(false);
+    setNofollowEdited(false);
+    setTabEdited(false);
+    setWasExisting(false);
+    setError("");
   };
 
   const handleClose = () => {
@@ -108,7 +103,7 @@ export default function EditorLinkDialog({ open, onOpenChange, editor }: EditorL
     resetState();
   };
 
-  const isExisting = editor?.isActive("link");
+  const isExisting = wasExisting;
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
@@ -126,7 +121,7 @@ export default function EditorLinkDialog({ open, onOpenChange, editor }: EditorL
             <Label className="text-sm text-stone-600 mb-1 block">URL *</Label>
             <Input
               value={url}
-              onChange={(e) => setUrl(e.target.value)}
+              onChange={(e) => handleUrlChange(e.target.value)}
               placeholder="https://example.com"
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
@@ -137,6 +132,8 @@ export default function EditorLinkDialog({ open, onOpenChange, editor }: EditorL
               autoFocus
             />
           </div>
+
+          {error && <p role="alert" className="text-xs text-red-700">{error}</p>}
 
           {/* Display text (informational — TipTap handles selection) */}
           {displayText && (
@@ -154,7 +151,7 @@ export default function EditorLinkDialog({ open, onOpenChange, editor }: EditorL
               <input
                 type="checkbox"
                 checked={openInNewTab}
-                onChange={(e) => setOpenInNewTab(e.target.checked)}
+                onChange={(e) => { setTabEdited(true); setOpenInNewTab(e.target.checked); }}
                 className="w-4 h-4 rounded border-stone-300 text-primary accent-primary cursor-pointer"
               />
               <span className="text-sm text-stone-700 group-hover:text-stone-900">
@@ -166,16 +163,16 @@ export default function EditorLinkDialog({ open, onOpenChange, editor }: EditorL
               <input
                 type="checkbox"
                 checked={nofollow}
-                onChange={(e) => setNofollow(e.target.checked)}
+                onChange={(e) => { setNofollowEdited(true); setNofollow(e.target.checked); }}
                 className="w-4 h-4 mt-0.5 rounded border-stone-300 text-primary accent-primary cursor-pointer"
               />
               <div>
                 <span className="text-sm text-stone-700 group-hover:text-stone-900 block">
-                  Add nofollow
+                  Add rel="nofollow" to this link
                 </span>
-                {url && isExternalUrl(url) && (
+                {url && isExternalEditorLink(url) && (
                   <span className="text-xs text-amber-600">
-                    Suggested — external link detected
+                    Suggested for external links; you can turn it off.
                   </span>
                 )}
               </div>

@@ -107,3 +107,6 @@ temp/
 *.sqlite3
 .project-config.json
 Dockerfile
+
+# Private image uploads for the isolated CMS test server (never commit)
+.cms-test-media/

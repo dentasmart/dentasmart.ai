@@ -125,7 +125,11 @@ describe("Phase 4 public display and reviewer fail-closed controls", () => {
     expect(schema).not.toMatch(/aggregateRating/i);
     expect(schema).toContain("getVerifiedReviewMetadata(cleanedPath)");
     expect(schema).toContain("if (reviewMetadata)");
-    expect(schema).toContain("legacy CMS reviewer name is not verified public-author schema evidence");
+    expect(schema).toContain("if (medicalWebPage)");
+    expect(schema).toContain("medicalWebPage.reviewedBy = {");
+    expect(reviewMetadata).toContain('profile.verificationStatus === "verified"');
+    expect(reviewMetadata).toContain("profile.publicDisplayAllowed");
+    expect(reviewMetadata).toContain("if (!publicProfile || !publicProfile.displayName || !publicProfile.credentials) return undefined;");
   });
 });
 

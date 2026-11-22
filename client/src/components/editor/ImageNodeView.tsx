@@ -64,18 +64,36 @@ export default function ImageNodeView({ node, updateAttributes, deleteNode, edit
   const clickTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // ─── Find media item by URL ───────────────────────────────────────────────
-  const { data: mediaData } = trpc.media.list.useQuery(
-    { limit: 200 },
-    { retry: false, staleTime: 60_000, enabled: showMetaModal || showActionBar }
+  const utils = trpc.useUtils();
+  const { data: mediaItem } = trpc.media.findByUrl.useQuery(
+    { url: src },
+    { retry: false, staleTime: 60_000,
+      enabled: !!src && (showMetaModal || showActionBar || showAltEditor) }
   );
-  const mediaItem = mediaData?.items.find(
-    (m) => m.url === src || m.mediumUrl === src || m.thumbnailUrl === src || m.webpUrl === src
-  );
-
-  const updateMutation = trpc.media.update.useMutation({
-    onSuccess: () => toast.success("Alt text saved to library"),
-    onError: () => toast.error("Failed to save alt text"),
-  });
+  const updateMutation = trpc.media.update.useMutation();
+  const saveAltToLibrary = async (value: string): Promise<boolean> => {
+    try {
+      // Resolve directly even if the user presses Save before the query finishes.
+      const found = mediaItem || await utils.client.media.findByUrl.query({ url: src });
+      if (!found) {
+        toast.info("This URL is not in Media Library. Alt text is saved to this article only.");
+        return true;
+      }
+      try {
+        await updateMutation.mutateAsync({ id: found.id, altText: value });
+      } catch (error) {
+        if (!(error instanceof Error) || !error.message.includes("MULTIPLE_USE_CONFIRMATION_REQUIRED") ||
+          !window.confirm("This image appears on several pages. Update the alt text in all saved drafts?")) throw error;
+        await updateMutation.mutateAsync({ id: found.id, altText: value, confirmMultiple: true });
+      }
+      await Promise.all([utils.media.list.invalidate(), utils.media.findByUrl.invalidate()]);
+      toast.success("Alt text saved to Media Library");
+      return true;
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : "Media Library update failed; the article alt text was not changed.");
+      return false;
+    }
+  };
 
   // ─── Click handling ───────────────────────────────────────────────────────
 
@@ -119,13 +137,11 @@ export default function ImageNodeView({ node, updateAttributes, deleteNode, edit
 
   // ─── Action handlers ──────────────────────────────────────────────────────
 
-  const handleSaveAlt = () => {
+  const handleSaveAlt = async () => {
+    const success = await saveAltToLibrary(editingAlt);
+    if (!success) return;
     updateAttributes({ alt: editingAlt });
     setShowAltEditor(false);
-    // Also update library if we found the media item
-    if (mediaItem) {
-      updateMutation.mutate({ id: mediaItem.id, altText: editingAlt });
-    }
   };
 
   const handleToggleCaption = () => {
@@ -156,11 +172,11 @@ export default function ImageNodeView({ node, updateAttributes, deleteNode, edit
   // ─── Meta modal alt save ──────────────────────────────────────────────────
 
   const [metaAlt, setMetaAlt] = useState(alt);
-  const handleSaveMetaAlt = () => {
-    updateAttributes({ alt: metaAlt });
-    if (mediaItem) {
-      updateMutation.mutate({ id: mediaItem.id, altText: metaAlt });
-    }
+  useEffect(() => {
+    if (showMetaModal) setMetaAlt(alt);
+  }, [showMetaModal, alt]);
+  const handleSaveMetaAlt = async () => {
+    if (await saveAltToLibrary(metaAlt)) updateAttributes({ alt: metaAlt });
   };
 
   // ─── Replace modal (opens ImageUploadModal in library tab) ───────────────
@@ -353,9 +369,9 @@ export default function ImageNodeView({ node, updateAttributes, deleteNode, edit
                   {updateMutation.isPending ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : "Save"}
                 </Button>
               </div>
-              {mediaItem && (
-                <p className="text-xs text-stone-400 mt-1">Saving updates the media library entry.</p>
-              )}
+              <p className="text-xs text-stone-400 mt-1">
+                Saving updates the Media Library default when the image is registered there.
+              </p>
             </div>
 
             {/* View in library link */}

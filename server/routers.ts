@@ -9,6 +9,7 @@ import { waitlistRouter } from "./waitlistRouter";
 import { analyticsRouter } from "./analyticsRouter";
 import { mediaRouter } from "./mediaRouter";
 import { pagesRouter } from "./pagesRouter";
+import { cmsRouter } from "./cmsRouter";
 import { redirectsRouter } from "./redirectsRouter";
 import { notFoundRouter } from "./notFoundRouter";
 import { governanceRouter } from "./governanceRouter";
@@ -36,6 +37,7 @@ export const appRouter = router({
   analytics: analyticsRouter,
   media: mediaRouter,
   pages: pagesRouter,
+  cms: cmsRouter,
   redirects: redirectsRouter,
   notFound: notFoundRouter,
   governance: governanceRouter,
