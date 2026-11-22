@@ -187,8 +187,10 @@ describe("Phase 5 conversion and trust contracts", () => {
       "client/src/components/NextStepsBox.tsx",
     ].map(projectFile).join("\n");
 
-    expect(sharedCtas).toContain("href={context.ctaLink}");
-    expect(sharedCtas).toContain("href={resolvedContext.ctaLink}");
+    expect(projectFile("client/src/components/MidContentCTA.tsx")).toContain('href={resolvedContext.ctaLink + (resolvedContext.ctaFragment ?? "")}');
+    expect(projectFile("client/src/components/MidContentCTA.tsx")).toContain("destination_path: resolvedContext.ctaLink");
+    expect(projectFile("client/src/components/NextStepsBox.tsx")).toContain('href={context.ctaLink + (context.ctaFragment ?? "")}');
+    expect(projectFile("client/src/components/NextStepsBox.tsx")).toContain("destination_path: context.ctaLink");
     expect(sharedCtas).not.toContain('window.location.href = "/download"');
   });
 

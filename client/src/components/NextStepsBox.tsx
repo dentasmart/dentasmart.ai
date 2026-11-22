@@ -92,7 +92,7 @@ export default function NextStepsBox({ forceContentType, relatedLinks, urgentCar
               </p>
             </div>
             <Link
-              href={context.ctaLink}
+              href={context.ctaLink + (context.ctaFragment ?? "")}
               onClick={handlePrimaryClick}
               className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-3 text-sm font-semibold cursor-pointer shadow-md shadow-primary/15 inline-flex items-center gap-1.5 transition-all hover:scale-[1.02] whitespace-nowrap"
             >

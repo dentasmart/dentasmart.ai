@@ -30,6 +30,8 @@ export interface PageContext {
   ctaAction: "symptom-quiz" | "app-download" | "instant-scan";
   /** Link path for internal actions */
   ctaLink: string;
+  /** Optional navigation-only fragment, excluded from analytics paths. */
+  ctaFragment?: `#${string}`;
 }
 
 /**
@@ -137,13 +139,15 @@ export function getPageContext(path: string): PageContext {
 
   // Guide pages
   if (p.startsWith("/guides/")) {
+    const isTreatmentPlanGuide = /^\/guides\/when-to-get-dental-second-opinion\/?$/.test(p);
     return {
       contentType: "guide",
       ctaHeadline: "Put this knowledge into action",
       ctaDescription: "Explore DentaSmart services that can help you apply what you learned and prepare better questions.",
-      ctaButtonText: "See DentaSmart Plans",
+      ctaButtonText: isTreatmentPlanGuide ? "View Treatment Plan Review" : "See DentaSmart Plans",
       ctaAction: "app-download",
       ctaLink: "/pricing/",
+      ...(isTreatmentPlanGuide ? { ctaFragment: "#treatment-plan-review" as const } : {}),
     };
   }
 

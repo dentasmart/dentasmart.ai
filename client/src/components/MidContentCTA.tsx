@@ -100,7 +100,7 @@ export default function MidContentCTA({
 
           <div className="pl-15">
             <Link
-              href={resolvedContext.ctaLink}
+              href={resolvedContext.ctaLink + (resolvedContext.ctaFragment ?? "")}
               onClick={handleClick}
               className="inline-flex min-h-11 items-center gap-2 bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-3 text-sm font-semibold transition-all hover:scale-[1.02] cursor-pointer shadow-md shadow-primary/15"
             >
@@ -134,7 +134,7 @@ export default function MidContentCTA({
             </p>
           </div>
           <Link
-            href={resolvedContext.ctaLink}
+            href={resolvedContext.ctaLink + (resolvedContext.ctaFragment ?? "")}
             onClick={handleClick}
             className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-6 py-3 text-sm font-semibold whitespace-nowrap cursor-pointer shadow-md shadow-primary/15 inline-flex min-h-11 items-center gap-1.5 transition-all hover:scale-[1.02]"
           >
@@ -160,7 +160,7 @@ export default function MidContentCTA({
           </p>
         </div>
         <Link
-          href={resolvedContext.ctaLink}
+          href={resolvedContext.ctaLink + (resolvedContext.ctaFragment ?? "")}
           onClick={handleClick}
           className="bg-action hover:bg-action-hover text-action-foreground rounded-full px-5 py-2.5 text-sm font-medium whitespace-nowrap cursor-pointer inline-flex min-h-11 items-center gap-1"
         >
